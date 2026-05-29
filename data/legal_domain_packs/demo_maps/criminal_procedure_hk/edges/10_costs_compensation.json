@@ -1,0 +1,17 @@
+{
+  "section_id": "10",
+  "domain_id": "criminal_procedure_hk",
+  "edges": [
+    { "from": "crim_proc_costs", "to": "costs_criminal_cases", "relationship": "has_subtopic" },
+    { "from": "crim_proc_costs", "to": "costs_compensation", "relationship": "has_subtopic" },
+    { "from": "crim_proc_costs", "to": "costs_restitution", "relationship": "has_subtopic" },
+    { "from": "crim_proc_costs", "to": "costs_bankruptcy_orders", "relationship": "has_subtopic" },
+    { "from": "crim_proc_costs", "to": "costs_post_sentence", "relationship": "has_subtopic" },
+    { "from": "costs_criminal_cases", "to": "cap492_s3", "relationship": "statutory_anchor" },
+    { "from": "costs_criminal_cases", "to": "cap492_s7", "relationship": "statutory_anchor" },
+    { "from": "costs_criminal_cases", "to": "hksar_v_chen_keen_no2", "relationship": "case_seed" },
+    { "from": "costs_compensation", "to": "cap221_s73", "relationship": "statutory_anchor" },
+    { "from": "costs_restitution", "to": "cap221_s102", "relationship": "statutory_anchor" },
+    { "from": "costs_bankruptcy_orders", "to": "cap221_s84a", "relationship": "statutory_anchor" }
+  ]
+}

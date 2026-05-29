@@ -1,0 +1,28 @@
+{
+  "section_id": "04",
+  "domain_id": "criminal_procedure_hk",
+  "edges": [
+    { "from": "crim_proc_bail", "to": "bail_right_to_bail", "relationship": "has_subtopic" },
+    { "from": "crim_proc_bail", "to": "bail_factors", "relationship": "has_subtopic" },
+    { "from": "crim_proc_bail", "to": "bail_pending_appeal", "relationship": "has_subtopic" },
+    { "from": "crim_proc_bail", "to": "bail_variation_revocation", "relationship": "has_subtopic" },
+    { "from": "crim_proc_bail", "to": "bail_police_icac", "relationship": "has_subtopic" },
+    { "from": "bail_right_to_bail", "to": "cap221_s9d", "relationship": "statutory_anchor" },
+    { "from": "bail_right_to_bail", "to": "nsl_art42", "relationship": "statutory_anchor" },
+    { "from": "bail_factors", "to": "cap221_s9d", "relationship": "statutory_anchor" },
+    { "from": "bail_pending_appeal", "to": "cap221_s9k", "relationship": "statutory_anchor" },
+    { "from": "bail_pending_appeal", "to": "cap484_s35", "relationship": "statutory_anchor" },
+    { "from": "bail_pending_appeal", "to": "hksar_v_milne_john", "relationship": "case_seed" },
+    { "from": "bail_variation_revocation", "to": "cap221_s9n", "relationship": "statutory_anchor" },
+    { "from": "bail_police_icac", "to": "cap232_s52", "relationship": "statutory_anchor" },
+    { "from": "bail_police_icac", "to": "cap204_s10a", "relationship": "statutory_anchor" },
+    { "from": "bail_police_icac", "to": "dpp_v_richards", "relationship": "case_seed" },
+    { "from": "bail_police_icac", "to": "gizzonio_v_chief_constable", "relationship": "case_seed" },
+    { "from": "bail_flow_start", "to": "bail_flow_step2", "relationship": "flow_transition" },
+    { "from": "bail_flow_step2", "to": "bail_flow_step3", "relationship": "flow_transition" },
+    { "from": "bail_flow_step3", "to": "bail_flow_step4", "relationship": "flow_transition" },
+    { "from": "bail_flow_step4", "to": "bail_flow_step5", "relationship": "flow_transition" },
+    { "from": "bail_flow_step5", "to": "bail_flow_step6", "relationship": "flow_transition" },
+    { "from": "bail_flow_step6", "to": "bail_flow_step7", "relationship": "flow_transition" }
+  ]
+}

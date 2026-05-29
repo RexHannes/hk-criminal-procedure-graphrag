@@ -1,0 +1,26 @@
+{
+  "section_id": "12",
+  "domain_id": "criminal_procedure_hk",
+  "edges": [
+    { "from": "crim_proc_nsl_submap", "to": "nsl_submap_overview", "relationship": "has_subtopic" },
+    { "from": "crim_proc_nsl_submap", "to": "nsl_bail", "relationship": "has_subtopic" },
+    { "from": "crim_proc_nsl_submap", "to": "nsl_search_seizure", "relationship": "has_subtopic" },
+    { "from": "crim_proc_nsl_submap", "to": "nsl_designated_judges", "relationship": "has_subtopic" },
+    { "from": "crim_proc_nsl_submap", "to": "nsl_overseas_lawyers", "relationship": "has_subtopic" },
+    { "from": "crim_proc_nsl_submap", "to": "nsl_no_jury", "relationship": "has_subtopic" },
+    { "from": "crim_proc_nsl_submap", "to": "nsl_surveillance", "relationship": "has_subtopic" },
+    { "from": "crim_proc_nsl_submap", "to": "nsl_key_cases", "relationship": "has_subtopic" },
+    { "from": "nsl_submap_overview", "to": "nsl_bail", "relationship": "cross_reference" },
+    { "from": "nsl_submap_overview", "to": "nsl_designated_judges", "relationship": "cross_reference" },
+    { "from": "nsl_submap_overview", "to": "nsl_no_jury", "relationship": "cross_reference" },
+    { "from": "nsl_bail", "to": "nsl_art42", "relationship": "statutory_anchor" },
+    { "from": "nsl_search_seizure", "to": "lai_chee_ying_v_commissioner_of_police", "relationship": "case_seed" },
+    { "from": "nsl_search_seizure", "to": "hksar_v_lai_man_ling", "relationship": "case_seed" },
+    { "from": "nsl_designated_judges", "to": "nsl_art44", "relationship": "statutory_anchor" },
+    { "from": "nsl_overseas_lawyers", "to": "cap159_s27a", "relationship": "statutory_anchor" },
+    { "from": "nsl_no_jury", "to": "nsl_art46", "relationship": "statutory_anchor" },
+    { "from": "nsl_key_cases", "to": "hksar_v_lai_chee_ying", "relationship": "case_seed" },
+    { "from": "nsl_key_cases", "to": "lai_chee_ying_v_commissioner_of_police", "relationship": "case_seed" },
+    { "from": "nsl_key_cases", "to": "hksar_v_lai_man_ling", "relationship": "case_seed" }
+  ]
+}

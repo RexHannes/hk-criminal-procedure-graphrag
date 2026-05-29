@@ -1,0 +1,204 @@
+{
+  "section_id": "03",
+  "section_title": "Initiation and Pre-Trial Disposition",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_proc_pre_trial",
+      "type": "section_header",
+      "label": "Initiation and Pre-Trial Disposition",
+      "summary": "Modes of initiation, offence classification, committal/transfer, discharge, time limits, and abuse of process.",
+      "section": "03"
+    },
+    {
+      "id": "pre_trial_modes_of_initiation",
+      "type": "legal_issue",
+      "label": "Modes of Initiation",
+      "summary": "Information/complaint (Cap 227 ss.8, 26) for summary trial. Charge sheet (Cap 221 s.14A) for indictable offences filed at magistracy; becomes indictment after transfer or filing in CFI/DC. Prosecution by Secretary for Justice: absolute discretion subject to judicial review only in exceptional circumstances.",
+      "subsection": "03.01",
+      "subtopic": "Initiation",
+      "section": "03",
+      "statute_refs": ["cap227_s8", "cap227_s26", "cap221_s14a"],
+      "case_seeds": ["hksar_v_cheung_tsz_wan"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap227_s8",
+      "type": "statute",
+      "label": "Magistrates Ordinance (Cap 227) s.8",
+      "summary": "Information/complaint for summary trial.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap227_s26",
+      "type": "statute",
+      "label": "Magistrates Ordinance (Cap 227) s.26",
+      "summary": "Time limit for laying information: 6 months for summary offences.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap221_s14a",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.14A",
+      "summary": "Charge sheet for indictable offences; classification of offences as summary/indictable/either way.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hksar_v_cheung_tsz_wan",
+      "type": "case_seed",
+      "label": "HKSAR v Cheung Tsz Wan (2009) 12 HKCFAR 520",
+      "summary": "Prosecutorial discretion; judicial review only in exceptional circumstances. Reaffirmation of burden for stay.",
+      "section": "03",
+      "neutral_citation": "(2009) 12 HKCFAR 520",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "pre_trial_offence_classification",
+      "type": "legal_issue",
+      "label": "Classification of Offences",
+      "summary": "Summary only: triable only in Magistrates' Court. Indictable only: must go to CFI (or DC after transfer). Either way: may be tried summarily or on indictment, depending on prosecution election and magistrate's view (Cap 221 s.14A).",
+      "subsection": "03.02",
+      "subtopic": "Classification",
+      "section": "03",
+      "statute_refs": ["cap221_s14a"],
+      "case_seeds": ["hksar_v_chan_tai_sum"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "hksar_v_chan_tai_sum",
+      "type": "case_seed",
+      "label": "HKSAR v Chan Tai Sum (2021)",
+      "summary": "Classification under s.14A; whether offence is summary or indictable.",
+      "section": "03",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "pre_trial_committal_transfer",
+      "type": "legal_issue",
+      "label": "Committal / Transfer Route",
+      "summary": "Magistrates' committal for CFI trial: paper committal under Cap 221 Part II (ss.79A-79H) for indictable only offences. Transfer to District Court under Cap 221 s.77C: Secretary for Justice may apply; magistrate orders transfer if conditions met.",
+      "subsection": "03.03",
+      "subtopic": "Committal",
+      "section": "03",
+      "statute_refs": ["cap221_s79a", "cap221_s77c"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s79a",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) ss.79A-79H",
+      "summary": "Paper committal procedure for indictable only offences to CFI.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap221_s77c",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.77C",
+      "summary": "Transfer to District Court; Secretary for Justice may apply.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "pre_trial_discharge",
+      "type": "legal_issue",
+      "label": "Discharge Before Trial / Stay for Abuse of Process",
+      "summary": "Magistrate may discharge defendant if insufficient evidence at committal or if no case. Abuse of process/stay: rare remedy where fair trial impossible or proceedings an affront to justice. Stay only exceptional; prosecution misconduct alone not enough if fair trial possible.",
+      "subsection": "03.04",
+      "subtopic": "Discharge",
+      "section": "03",
+      "case_seeds": ["hksar_v_milne_john", "r_v_holgate_no1", "hksar_v_cheung_tsz_wan", "hksar_v_chen_keen"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "r_v_holgate_no1",
+      "type": "case_seed",
+      "label": "R v Holgate (No 1) (comparative)",
+      "summary": "Burden on applicant for stay.",
+      "section": "03",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "pre_trial_time_limits",
+      "type": "legal_issue",
+      "label": "Time Limits / Delay",
+      "summary": "Statute of limitations: some offences have time limits for laying information (e.g. summary offences: 6 months, Cap 227 s.26). Indictable offences generally no time limit, but delay causing prejudice may ground stay.",
+      "subsection": "03.05",
+      "subtopic": "Time Limits",
+      "section": "03",
+      "statute_refs": ["cap227_s26"],
+      "case_seeds": ["hksar_v_lai_man_ling"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "pre_trial_stay_flow_start",
+      "type": "flow_step",
+      "label": "Stay Flow: Identify Alleged Abuse",
+      "summary": "Step 1: Identify alleged abuse of process (prosecutorial misconduct, delay, unfairness).",
+      "section": "03",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "pre_trial_stay_flow_step2",
+      "type": "flow_step",
+      "label": "Stay Flow: Assess Fair Trial Possibility",
+      "summary": "Step 2: Is a fair trial still possible? If yes, stay rarely granted.",
+      "section": "03",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "pre_trial_stay_flow_step3",
+      "type": "flow_step",
+      "label": "Stay Flow: Exceptional Circumstances",
+      "summary": "Step 3: Are the circumstances exceptional? Stay is a rare remedy.",
+      "section": "03",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "pre_trial_stay_flow_step4",
+      "type": "flow_step",
+      "label": "Stay Flow: Applicant Burden",
+      "summary": "Step 4: Applicant bears burden of establishing grounds for stay.",
+      "section": "03",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "pre_trial_stay_flow_step5",
+      "type": "flow_step",
+      "label": "Stay Flow: Court Decision or Lesser Remedy",
+      "summary": "Step 5: Court considers stay or lesser remedy (adjournment, exclusion of evidence).",
+      "section": "03",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "pre_trial_stay_flow_step6",
+      "type": "flow_step",
+      "label": "Stay Flow: Appeal Route",
+      "summary": "Step 6: Appeal route if stay granted or refused.",
+      "section": "03",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    }
+  ]
+}

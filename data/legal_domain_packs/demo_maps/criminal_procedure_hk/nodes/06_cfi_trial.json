@@ -1,0 +1,306 @@
+{
+  "section_id": "06",
+  "section_title": "CFI Trial Procedure",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_proc_cfi_trial",
+      "type": "section_header",
+      "label": "CFI Trial Procedure",
+      "summary": "Trial by judge and jury, pre-trial review, arraignment, prosecution/defence case, summing up, verdict, sentencing.",
+      "section": "06"
+    },
+    {
+      "id": "trial_allocation_and_ptp",
+      "type": "legal_issue",
+      "label": "Allocation and Mode of Trial",
+      "summary": "CFI trial by judge and jury for indictable offences. Pre-trial review (PTR) under Practice Direction 9.2 to narrow issues.",
+      "subsection": "06.01",
+      "subtopic": "Allocation",
+      "section": "06",
+      "practice_direction_refs": ["pd_9_2"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "trial_judge_and_jury",
+      "type": "legal_issue",
+      "label": "Judge and Jury",
+      "summary": "Judge rules on law, sums up, directs jury; jury decides facts. Jury selection under Jury Ordinance (Cap 3) s.4; challenges for cause or peremptory. Discharge of juror if unable to understand proceedings (s.4(2)).",
+      "subsection": "06.02",
+      "subtopic": "Judge and Jury",
+      "section": "06",
+      "statute_refs": ["cap3_s4"],
+      "case_seeds": ["hksar_v_chan_hon_wing"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap3_s4",
+      "type": "statute",
+      "label": "Jury Ordinance (Cap 3) s.4",
+      "summary": "Jury selection and discharge of juror.",
+      "section": "06",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hksar_v_chan_hon_wing",
+      "type": "case_seed",
+      "label": "HKSAR v Chan Hon Wing (2006)",
+      "summary": "Discharge of juror unable to understand proceedings.",
+      "section": "06",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "trial_arraignment",
+      "type": "legal_issue",
+      "label": "Arraignment and Plea",
+      "summary": "Accused arraigned before jury; plea taken from each count.",
+      "subsection": "06.03",
+      "subtopic": "Arraignment",
+      "section": "06",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "trial_prosecution_case",
+      "type": "legal_issue",
+      "label": "Prosecution Opening and Case",
+      "summary": "Opening address; then evidence led. Voir dire: challenges to admissibility of evidence (confessions, identification, etc.) heard in absence of jury.",
+      "subsection": "06.04",
+      "subtopic": "Prosecution Case",
+      "section": "06",
+      "case_seeds": ["hksar_v_wong_sau_ming", "hksar_v_lee_kwok_wah"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "trial_no_case_submission",
+      "type": "legal_issue",
+      "label": "No Case to Answer Submission",
+      "summary": "At close of prosecution case, accused may submit no case. Test: could a reasonable jury properly directed convict on the evidence? (Galbraith test). HK application: judge must not usurp jury function.",
+      "subsection": "06.04",
+      "subtopic": "Prosecution Case",
+      "section": "06",
+      "case_seeds": ["hksar_v_wong_sau_ming", "hksar_v_lee_kwok_wah"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "hksar_v_wong_sau_ming",
+      "type": "case_seed",
+      "label": "HKSAR v Wong Sau Ming (2003) 6 HKCFAR 163",
+      "summary": "Galbraith test applied in HK for no-case submissions.",
+      "section": "06",
+      "neutral_citation": "(2003) 6 HKCFAR 163",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "hksar_v_lee_kwok_wah",
+      "type": "case_seed",
+      "label": "HKSAR v Lee Kwok Wah (2008) 11 HKCFAR 318",
+      "summary": "Judge must not usurp jury function in no-case submission.",
+      "section": "06",
+      "neutral_citation": "(2008) 11 HKCFAR 318",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "trial_defence_case",
+      "type": "legal_issue",
+      "label": "Defence Case",
+      "summary": "Defence opening (optional), then evidence. Accused may testify or remain silent; silence cannot be used to strengthen prosecution case but may be subject to inference in limited circumstances (Cap 8 s.54).",
+      "subsection": "06.05",
+      "subtopic": "Defence Case",
+      "section": "06",
+      "statute_refs": ["cap8_s54"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap8_s54",
+      "type": "statute",
+      "label": "Evidence Ordinance (Cap 8) s.54",
+      "summary": "Accused's silence: cannot strengthen prosecution case but inference may be drawn in limited circumstances.",
+      "section": "06",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "trial_witnesses",
+      "type": "legal_issue",
+      "label": "Witnesses and Evidence",
+      "summary": "Competence and compellability. Expert evidence: governed by common law admissibility rules; expert must give objective opinion. Vulnerable witnesses: special procedures under Cap 221 Part IIIA.",
+      "subsection": "06.06",
+      "subtopic": "Witnesses",
+      "section": "06",
+      "statute_refs": ["cap221_part3a"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_part3a",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) Part IIIA",
+      "summary": "Special procedures for vulnerable witnesses.",
+      "section": "06",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "trial_live_tv_link",
+      "type": "legal_issue",
+      "label": "Evidence From Outside Hong Kong by Live TV Link",
+      "summary": "Cap 221 Part IIIB: witness abroad may give evidence by live television link if court satisfied it is in the interests of justice and technical arrangements satisfactory.",
+      "subsection": "06.07",
+      "subtopic": "Live TV Link",
+      "section": "06",
+      "statute_refs": ["cap221_part3b"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_part3b",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) Part IIIB (s.79I)",
+      "summary": "Evidence from outside Hong Kong by live television link.",
+      "section": "06",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "trial_summng_up",
+      "type": "legal_issue",
+      "label": "Summing Up and Jury Directions",
+      "summary": "Judge must sum up facts and law; direct on burden and standard of proof. Lucas direction for lies (*R v Lucas* (1981)). Circumstantial evidence direction: inference of guilt must be only rational inference. Turnbull guidelines for identification. Good character direction: credibility and propensity.",
+      "subsection": "06.08",
+      "subtopic": "Summing Up",
+      "section": "06",
+      "case_seeds": ["hksar_v_amarjit"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "hksar_v_amarjit",
+      "type": "case_seed",
+      "label": "HKSAR v Amarjit",
+      "summary": "Circumstantial evidence, lies/flight directions.",
+      "section": "06",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "trial_verdict",
+      "type": "legal_issue",
+      "label": "Verdict",
+      "summary": "Unanimous verdict preferred; majority verdict possible after time and under Cap 3 s.24 (at least 7:2 or 6:1 in 9/7-person jury). Jury to be discharged if unable to agree; retrial possible.",
+      "subsection": "06.09",
+      "subtopic": "Verdict",
+      "section": "06",
+      "statute_refs": ["cap3_s24"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap3_s24",
+      "type": "statute",
+      "label": "Jury Ordinance (Cap 3) s.24",
+      "summary": "Majority verdict: at least 7:2 or 6:1 in 9/7-person jury.",
+      "section": "06",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "trial_sentencing",
+      "type": "legal_issue",
+      "label": "Sentencing After Verdict",
+      "summary": "After conviction, sentencing adjourned for reports if necessary. Mitigation; victim impact statement.",
+      "subsection": "06.10",
+      "subtopic": "Sentencing",
+      "section": "06",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "trial_cfi_flow_start",
+      "type": "flow_step",
+      "label": "CFI Trial Flow: Allocation",
+      "summary": "Step 1: Allocation to CFI; pre-trial review to narrow issues.",
+      "section": "06",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "trial_cfi_flow_step2",
+      "type": "flow_step",
+      "label": "CFI Trial Flow: Judge and Jury Empaneled",
+      "summary": "Step 2: Judge assigned; jury selected and sworn.",
+      "section": "06",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "trial_cfi_flow_step3",
+      "type": "flow_step",
+      "label": "CFI Trial Flow: Arraignment",
+      "summary": "Step 3: Accused arraigned; plea taken before jury.",
+      "section": "06",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "trial_cfi_flow_step4",
+      "type": "flow_step",
+      "label": "CFI Trial Flow: Prosecution Case",
+      "summary": "Step 4: Prosecution opening; evidence led; voir dire if needed.",
+      "section": "06",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "trial_cfi_flow_step5",
+      "type": "flow_step",
+      "label": "CFI Trial Flow: No Case Submission",
+      "summary": "Step 5: Defence may submit no case to answer at close of prosecution case.",
+      "section": "06",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "trial_cfi_flow_step6",
+      "type": "flow_step",
+      "label": "CFI Trial Flow: Defence Case",
+      "summary": "Step 6: Defence opening (optional); defence evidence led.",
+      "section": "06",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "trial_cfi_flow_step7",
+      "type": "flow_step",
+      "label": "CFI Trial Flow: Summing Up",
+      "summary": "Step 7: Judge sums up facts and law; directs jury on burden, standard, and specific issues.",
+      "section": "06",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "trial_cfi_flow_step8",
+      "type": "flow_step",
+      "label": "CFI Trial Flow: Verdict and Sentencing",
+      "summary": "Step 8: Jury returns verdict; if guilty, sentencing hearing (may be adjourned for reports).",
+      "section": "06",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    }
+  ]
+}

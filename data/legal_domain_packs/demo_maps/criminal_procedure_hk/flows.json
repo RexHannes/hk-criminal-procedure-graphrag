@@ -1,0 +1,89 @@
+{
+  "domain_id": "criminal_procedure_hk",
+  "flows": [
+    {
+      "flow_id": "crim_proc_arrest_detention_flow",
+      "title": "Arrest / Detention Flow",
+      "description": "Stage-by-stage flow from identification of power to charge/release/bail.",
+      "steps": [
+        "invest_arrest_detention_flow_start",
+        "invest_arrest_detention_flow_step2",
+        "invest_arrest_detention_flow_step3",
+        "invest_arrest_detention_flow_step4",
+        "invest_arrest_detention_flow_step5",
+        "invest_arrest_detention_flow_step6"
+      ]
+    },
+    {
+      "flow_id": "crim_proc_bail_flow",
+      "title": "Bail Application Flow",
+      "description": "Flow from arrest/charge through bail application, conditions, and variation/appeal.",
+      "steps": [
+        "bail_flow_start",
+        "bail_flow_step2",
+        "bail_flow_step3",
+        "bail_flow_step4",
+        "bail_flow_step5",
+        "bail_flow_step6",
+        "bail_flow_step7"
+      ]
+    },
+    {
+      "flow_id": "crim_proc_stay_flow",
+      "title": "Stay / Abuse of Process Flow",
+      "description": "Flow for assessing and applying for stay of proceedings.",
+      "steps": [
+        "pre_trial_stay_flow_start",
+        "pre_trial_stay_flow_step2",
+        "pre_trial_stay_flow_step3",
+        "pre_trial_stay_flow_step4",
+        "pre_trial_stay_flow_step5",
+        "pre_trial_stay_flow_step6"
+      ]
+    },
+    {
+      "flow_id": "crim_proc_indictment_flow",
+      "title": "Indictment Flow",
+      "description": "Flow from institution of proceedings through to trial or disposal.",
+      "steps": [
+        "indictment_flow_start",
+        "indictment_flow_step2",
+        "indictment_flow_step3",
+        "indictment_flow_step4",
+        "indictment_flow_step5",
+        "indictment_flow_step6",
+        "indictment_flow_step7",
+        "indictment_flow_step8"
+      ]
+    },
+    {
+      "flow_id": "crim_proc_trial_cfi_flow",
+      "title": "CFI Trial Flow",
+      "description": "Full CFI trial procedure from allocation to verdict and sentencing.",
+      "steps": [
+        "trial_cfi_flow_start",
+        "trial_cfi_flow_step2",
+        "trial_cfi_flow_step3",
+        "trial_cfi_flow_step4",
+        "trial_cfi_flow_step5",
+        "trial_cfi_flow_step6",
+        "trial_cfi_flow_step7",
+        "trial_cfi_flow_step8"
+      ]
+    },
+    {
+      "flow_id": "crim_proc_appeal_conviction_flow",
+      "title": "Appeal Against Conviction Flow",
+      "description": "Flow from conviction through appeal to final determination.",
+      "steps": [
+        "appeal_conviction_flow_start",
+        "appeal_conviction_flow_step2",
+        "appeal_conviction_flow_step3",
+        "appeal_conviction_flow_step4",
+        "appeal_conviction_flow_step5",
+        "appeal_conviction_flow_step6",
+        "appeal_conviction_flow_step7"
+      ]
+    }
+  ]
+}

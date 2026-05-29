@@ -1,0 +1,12 @@
+{
+  "section_id": "11",
+  "domain_id": "criminal_procedure_hk",
+  "edges": [
+    { "from": "crim_proc_practice_directions", "to": "pd_4_2", "relationship": "has_subtopic" },
+    { "from": "crim_proc_practice_directions", "to": "pd_9_2", "relationship": "has_subtopic" },
+    { "from": "crim_proc_practice_directions", "to": "pd_9_5", "relationship": "has_subtopic" },
+    { "from": "crim_proc_practice_directions", "to": "pd_11_1", "relationship": "has_subtopic" },
+    { "from": "crim_proc_practice_directions", "to": "pd_12_1", "relationship": "has_subtopic" },
+    { "from": "crim_proc_practice_directions", "to": "pd_15_1", "relationship": "has_subtopic" }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "section_id": "01",
+  "section_title": "Criminal Legal System and Jurisdiction",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_sys_jurisdiction",
+      "type": "section_header",
+      "label": "Criminal Legal System and Jurisdiction",
+      "summary": "Foundation of HK criminal jurisdiction, court hierarchy, and constitutional/NSL limits.",
+      "section": "01"
+    },
+    {
+      "id": "crim_sys_territorial_jurisdiction",
+      "type": "legal_issue",
+      "label": "Territorial / Extra-Territorial Jurisdiction",
+      "summary": "Hong Kong courts exercise criminal jurisdiction over offences committed within Hong Kong; extra-territorial jurisdiction only where expressly provided by statute or international law.",
+      "subsection": "01.01",
+      "subtopic": "Territorial Jurisdiction",
+      "section": "01",
+      "statute_refs": ["bl_art19"],
+      "case_seeds": ["hksar_v_ma_wai_kwan_david", "ng_ka_ling_v_director_of_immigration", "hksar_v_lai_chee_ying"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "bl_art19",
+      "type": "statute",
+      "label": "Basic Law Article 19",
+      "summary": "Courts have jurisdiction except over acts of state; NPCSC may interpret.",
+      "section": "01",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hksar_v_ma_wai_kwan_david",
+      "type": "case_seed",
+      "label": "HKSAR v Ma Wai Kwan David [1997] HKCFA 28",
+      "summary": "Continuity of law and jurisdiction after 1997.",
+      "section": "01",
+      "neutral_citation": "[1997] HKCFA 28",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "ng_ka_ling_v_director_of_immigration",
+      "type": "case_seed",
+      "label": "Ng Ka Ling v Director of Immigration [1999] 2 HKCFAR 4",
+      "summary": "Constitutional jurisdiction; courts may review legislation for inconsistency with Basic Law but cannot strike down.",
+      "section": "01",
+      "neutral_citation": "[1999] 2 HKCFAR 4",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "hksar_v_lai_chee_ying",
+      "type": "case_seed",
+      "label": "HKSAR v Lai Chee Ying (2021) 24 HKCFAR 121",
+      "summary": "No jurisdiction to review NPC/NPCSC acts.",
+      "section": "01",
+      "neutral_citation": "(2021) 24 HKCFAR 121",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "crim_sys_jurisdiction_flow",
+      "type": "flow_step",
+      "label": "Jurisdiction Flow: Determine Locus → Check Extra-Territorial Reach → NSL Rules",
+      "summary": "Step 1: Determine locus of offence. Step 2: Check if statute provides extra-territorial reach. Step 3: If national security offence, apply NSL separate jurisdictional rules.",
+      "section": "01",
+      "subsection": "01.01",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "crim_sys_courts_hierarchy",
+      "type": "legal_issue",
+      "label": "Courts Exercising Criminal Jurisdiction",
+      "summary": "Magistrates' Courts (Cap 227), District Court (Cap 336, max 7 years), Court of First Instance (Cap 4, judge and jury), Court of Appeal (Cap 4), Court of Final Appeal (Cap 484, leave required).",
+      "subsection": "01.02",
+      "subtopic": "Court Hierarchy",
+      "section": "01",
+      "statute_refs": ["cap227", "cap336", "cap4", "cap484"],
+      "case_seeds": ["hksar_v_chen_keen", "hksar_v_milne_john"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap227",
+      "type": "statute",
+      "label": "Magistrates Ordinance (Cap 227)",
+      "summary": "Summary trial, committal, bail, transfer jurisdiction.",
+      "section": "01",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap336",
+      "type": "statute",
+      "label": "District Court Ordinance (Cap 336)",
+      "summary": "Indictable offences transferred from magistrates; max sentence 7 years (or aggregate).",
+      "section": "01",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap4",
+      "type": "statute",
+      "label": "High Court Ordinance (Cap 4)",
+      "summary": "Original jurisdiction over most serious indictable offences; trial by judge and jury.",
+      "section": "01",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap484",
+      "type": "statute",
+      "label": "Hong Kong Court of Final Appeal Ordinance (Cap 484)",
+      "summary": "Final appellate court; leave required; only 'final decisions' in criminal matters, except where miscarriage of justice.",
+      "section": "01",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hksar_v_chen_keen",
+      "type": "case_seed",
+      "label": "HKSAR v Chen Keen [2013] 4 HKC 615",
+      "summary": "Final vs interlocutory decision in CFA jurisdiction.",
+      "section": "01",
+      "neutral_citation": "[2013] 4 HKC 615",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "hksar_v_milne_john",
+      "type": "case_seed",
+      "label": "HKSAR v Milne John (2019) 22 HKCFAR 218",
+      "summary": "Prosecution appeal; bail pending CFA proceedings.",
+      "section": "01",
+      "neutral_citation": "(2019) 22 HKCFAR 218",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "crim_sys_constitutional_limits",
+      "type": "legal_issue",
+      "label": "Constitutional Limits and NSL-Specific Procedure",
+      "summary": "Acts of state (Art 19 Basic Law) non-justiciable. NPCSC interpretations binding. National Security Law (NSL): designated judges, special bail rules, restricted legal representation (overseas lawyers need CE certificate – Cap 159 s.27A).",
+      "subsection": "01.03",
+      "subtopic": "Constitutional Limits",
+      "section": "01",
+      "statute_refs": ["bl_art19", "cap159_s27a"],
+      "case_seeds": ["hksar_v_lai_chee_ying"],
+      "cross_refs": ["nsl_submap_overview"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap159_s27a",
+      "type": "statute",
+      "label": "Legal Practitioners Ordinance (Cap 159) s.27A",
+      "summary": "Overseas lawyers need Chief Executive certificate for NSL cases.",
+      "section": "01",
+      "verification_status": "needs_official_source_verification"
+    }
+  ]
+}

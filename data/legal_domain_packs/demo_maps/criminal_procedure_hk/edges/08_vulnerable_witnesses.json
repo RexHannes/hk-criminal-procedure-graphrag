@@ -1,0 +1,19 @@
+{
+  "section_id": "08",
+  "domain_id": "criminal_procedure_hk",
+  "edges": [
+    { "from": "crim_proc_vulnerable_witnesses", "to": "witness_child", "relationship": "has_subtopic" },
+    { "from": "crim_proc_vulnerable_witnesses", "to": "witness_mentally_incapacitated", "relationship": "has_subtopic" },
+    { "from": "crim_proc_vulnerable_witnesses", "to": "witness_sexual_offence_complainants", "relationship": "has_subtopic" },
+    { "from": "crim_proc_vulnerable_witnesses", "to": "witness_outside_hk", "relationship": "has_subtopic" },
+    { "from": "crim_proc_vulnerable_witnesses", "to": "witness_anonymity", "relationship": "has_subtopic" },
+    { "from": "witness_child", "to": "cap8_s4", "relationship": "statutory_anchor" },
+    { "from": "witness_child", "to": "cap221_s79b", "relationship": "statutory_anchor" },
+    { "from": "witness_mentally_incapacitated", "to": "cap221_s79b", "relationship": "statutory_anchor" },
+    { "from": "witness_sexual_offence_complainants", "to": "cap221_s79c", "relationship": "statutory_anchor" },
+    { "from": "witness_sexual_offence_complainants", "to": "cap221_s79d", "relationship": "statutory_anchor" },
+    { "from": "witness_outside_hk", "to": "cap221_part3b", "relationship": "statutory_anchor" },
+    { "from": "witness_anonymity", "to": "hksar_v_cheung_shu_cheong", "relationship": "case_seed" },
+    { "from": "witness_anonymity", "to": "hksar_v_chan_kam_shing", "relationship": "case_seed" }
+  ]
+}

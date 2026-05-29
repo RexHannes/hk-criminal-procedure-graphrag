@@ -1,0 +1,69 @@
+{
+  "section_id": "07",
+  "section_title": "District Court Transferred Cases",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_proc_dc_cases",
+      "type": "section_header",
+      "label": "District Court Transferred Cases",
+      "summary": "Transfer to DC, dismissal application, trial procedure, sentencing powers, appeal route.",
+      "section": "07"
+    },
+    {
+      "id": "dc_transfer",
+      "type": "legal_issue",
+      "label": "Transfer to District Court",
+      "summary": "Secretary for Justice applies to magistrate; order if appropriate (Cap 221 s.77C). Notice of transfer served; no committal proceedings needed.",
+      "subsection": "07.01",
+      "subtopic": "Transfer to DC",
+      "section": "07",
+      "statute_refs": ["cap221_s77c"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "dc_dismissal",
+      "type": "legal_issue",
+      "label": "Dismissal Application",
+      "summary": "Accused may apply to DC to dismiss charge on ground of no case or abuse (Cap 221 s.77E). Test: same as no-case submission in CFI.",
+      "subsection": "07.02",
+      "subtopic": "Dismissal",
+      "section": "07",
+      "statute_refs": ["cap221_s77e"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s77e",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.77E",
+      "summary": "DC dismissal application on ground of no case or abuse.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "dc_trial_procedure",
+      "type": "legal_issue",
+      "label": "District Court Trial Procedure",
+      "summary": "Judge alone; no jury. Arraignment, plea, trial; evidence and submissions. Sentencing powers: up to 7 years (or aggregate). Appeal route: to Court of Appeal against conviction/sentence (Cap 221 ss.83B-83U).",
+      "subsection": "07.03",
+      "subtopic": "DC Trial",
+      "section": "07",
+      "statute_refs": ["cap221_s83b"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s83b",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) ss.83B-83U",
+      "summary": "Appeal route from DC to Court of Appeal against conviction/sentence.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    }
+  ]
+}

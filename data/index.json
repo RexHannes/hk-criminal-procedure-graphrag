@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-05-30",
+  "purpose": "Legal domain pack registry for Casemap4 GraphRAG demo maps",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "authority_status": "unverified_case_seed"
+  },
+  "domains": [
+    {
+      "domain_id": "criminal_procedure_hk",
+      "title": "Hong Kong Criminal Procedure",
+      "path": "criminal_procedure_hk/domain.json",
+      "status": {
+        "not_product_answer_layer": true,
+        "needs_hklii_verification": true,
+        "authority_status": "unverified_case_seed"
+      }
+    }
+  ]
+}

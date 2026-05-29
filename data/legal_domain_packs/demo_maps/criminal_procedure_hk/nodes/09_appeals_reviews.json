@@ -1,0 +1,268 @@
+{
+  "section_id": "09",
+  "section_title": "Appeals, Reviews and Questions of Law",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_proc_appeals",
+      "type": "section_header",
+      "label": "Appeals, Reviews and Questions of Law",
+      "summary": "Appeals against conviction/sentence, SJ reference, retrial, CFA jurisdiction, procedural compliance.",
+      "section": "09"
+    },
+    {
+      "id": "appeal_conviction",
+      "type": "legal_issue",
+      "label": "Appeal Against Conviction (CFI/DC)",
+      "summary": "Grounds: conviction unsafe or unsatisfactory (Cap 221 s.83). Proviso: court may dismiss appeal if no substantial miscarriage of justice (s.83(1) proviso). Alternative verdict substitution: court may substitute conviction for lesser offence if jury could have convicted of it.",
+      "subsection": "09.01",
+      "subtopic": "Appeal Conviction",
+      "section": "09",
+      "statute_refs": ["cap221_s83"],
+      "case_seeds": ["hksar_v_ma_ka_kin", "hksar_v_chan_kam_ching"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s83",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.83",
+      "summary": "Appeal against conviction: unsafe or unsatisfactory ground; proviso if no substantial miscarriage of justice.",
+      "section": "09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hksar_v_ma_ka_kin",
+      "type": "case_seed",
+      "label": "HKSAR v Ma Ka Kin (2015)",
+      "summary": "Unsafe and unsatisfactory ground for appeal against conviction.",
+      "section": "09",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "hksar_v_chan_kam_ching",
+      "type": "case_seed",
+      "label": "HKSAR v Chan Kam Ching (2008)",
+      "summary": "Court may substitute conviction for lesser offence on appeal.",
+      "section": "09",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "appeal_sentence",
+      "type": "legal_issue",
+      "label": "Appeal Against Sentence",
+      "summary": "Grounds: sentence manifestly excessive, wrong in principle, or otherwise unlawful. Review of sentence by Secretary for Justice: under Cap 221 s.81A, SJ may refer sentence believed to be unduly lenient; Court of Appeal may increase.",
+      "subsection": "09.02",
+      "subtopic": "Appeal Sentence",
+      "section": "09",
+      "statute_refs": ["cap221_s81a"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s81a",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.81A",
+      "summary": "Secretary for Justice may refer unduly lenient sentence to Court of Appeal.",
+      "section": "09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "appeal_reference_sj",
+      "type": "legal_issue",
+      "label": "Reservation of Question of Law / Reference by SJ",
+      "summary": "Cap 221 s.81A (reference by SJ) and s.81D (reservation by judge).",
+      "subsection": "09.03",
+      "subtopic": "Reference SJ",
+      "section": "09",
+      "statute_refs": ["cap221_s81a", "cap221_s81d"],
+      "case_seeds": ["hksar_v_fu_chiu_wa"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s81d",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.81D",
+      "summary": "Reservation of question of law by judge to Court of Appeal.",
+      "section": "09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hksar_v_fu_chiu_wa",
+      "type": "case_seed",
+      "label": "HKSAR v Fu Chiu Wa (2013)",
+      "summary": "Chief Executive reference to Court of Appeal under s.81D.",
+      "section": "09",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "appeal_discharge",
+      "type": "legal_issue",
+      "label": "Appeal Against Discharge",
+      "summary": "Prosecution may appeal against discharge of defendant before trial (Cap 221 s.81G).",
+      "subsection": "09.04",
+      "subtopic": "Appeal Discharge",
+      "section": "09",
+      "statute_refs": ["cap221_s81g"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s81g",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.81G",
+      "summary": "Prosecution appeal against discharge of defendant before trial.",
+      "section": "09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "appeal_retrial",
+      "type": "legal_issue",
+      "label": "Retrial",
+      "summary": "Court of Appeal may order retrial if conviction quashed and interests of justice require.",
+      "subsection": "09.05",
+      "subtopic": "Retrial",
+      "section": "09",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "appeal_insanity_unfitness",
+      "type": "legal_issue",
+      "label": "Appeal in Insanity / Unfitness Cases",
+      "summary": "Special appeal routes under Cap 221 Part IV.",
+      "subsection": "09.06",
+      "subtopic": "Insanity",
+      "section": "09",
+      "statute_refs": ["cap221_part4"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_part4",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) Part IV",
+      "summary": "Special appeal routes for insanity/unfitness cases.",
+      "section": "09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "appeal_cfa_jurisdiction",
+      "type": "legal_issue",
+      "label": "CFA: Final Decision / Interlocutory Decision",
+      "summary": "CFA only hears 'final decisions' in criminal matters; exceptions for certified questions and miscarriage.",
+      "subsection": "09.07",
+      "subtopic": "CFA Jurisdiction",
+      "section": "09",
+      "case_seeds": ["hksar_v_chen_keen", "hksar_v_milne_john"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "appeal_procedural_compliance",
+      "type": "legal_issue",
+      "label": "Procedural Compliance and PD 4.2",
+      "summary": "Perfected grounds of appeal: PD 4.2 requires precise grounds; failure may result in loss of time.",
+      "subsection": "09.08",
+      "subtopic": "Procedural Compliance",
+      "section": "09",
+      "practice_direction_refs": ["pd_4_2"],
+      "case_seeds": ["hksar_v_khaw_kin_sun", "hksar_v_malik_mohammad_tariq"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "hksar_v_khaw_kin_sun",
+      "type": "case_seed",
+      "label": "HKSAR v Khaw Kin Sun (2019)",
+      "summary": "Compliance with PD 4.2 perfected grounds of appeal.",
+      "section": "09",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "hksar_v_malik_mohammad_tariq",
+      "type": "case_seed",
+      "label": "HKSAR v Malik Mohammad Tariq",
+      "summary": "Loss of time for failure to prosecute appeal.",
+      "section": "09",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "appeal_conviction_flow_start",
+      "type": "flow_step",
+      "label": "Appeal Conviction Flow: Conviction Entered",
+      "summary": "Step 1: Conviction entered in CFI or DC.",
+      "section": "09",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "appeal_conviction_flow_step2",
+      "type": "flow_step",
+      "label": "Appeal Flow: Notice and Grounds",
+      "summary": "Step 2: File notice of appeal and draft grounds within time limit.",
+      "section": "09",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "appeal_conviction_flow_step3",
+      "type": "flow_step",
+      "label": "Appeal Flow: Leave if Required",
+      "summary": "Step 3: Obtain leave to appeal if required (e.g. appeals from DC).",
+      "section": "09",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "appeal_conviction_flow_step4",
+      "type": "flow_step",
+      "label": "Appeal Flow: Perfected Grounds",
+      "summary": "Step 4: File perfected grounds of appeal per PD 4.2.",
+      "section": "09",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "appeal_conviction_flow_step5",
+      "type": "flow_step",
+      "label": "Appeal Flow: Unsafe/Unsatisfactory Test",
+      "summary": "Step 5: Court applies unsafe/unsatisfactory test to conviction.",
+      "section": "09",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "appeal_conviction_flow_step6",
+      "type": "flow_step",
+      "label": "Appeal Flow: Proviso / Retrial / Substitution",
+      "summary": "Step 6: Court applies proviso, orders retrial, or substitutes alternative verdict.",
+      "section": "09",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "appeal_conviction_flow_step7",
+      "type": "flow_step",
+      "label": "Appeal Flow: Costs and Loss of Time",
+      "summary": "Step 7: Court awards costs or orders loss of time for frivolous appeals.",
+      "section": "09",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "section_id": "11",
+  "section_title": "Practice Directions (Seed References)",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_proc_practice_directions",
+      "type": "section_header",
+      "label": "Practice Directions (Seed References)",
+      "summary": "Practice directions requiring official source verification from judiciary website.",
+      "section": "11"
+    },
+    {
+      "id": "pd_4_2",
+      "type": "practice_direction",
+      "label": "PD 4.2: Perfected Grounds of Appeal in Criminal Cases",
+      "summary": "Requires precise grounds of appeal; failure may result in loss of time.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "pd_9_2",
+      "type": "practice_direction",
+      "label": "PD 9.2: Pre-Trial Review in CFI Criminal Cases",
+      "summary": "Pre-trial review procedure to narrow issues before CFI trial.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "pd_9_5",
+      "type": "practice_direction",
+      "label": "PD 9.5: Criminal Proceedings in the Court of Appeal",
+      "summary": "Practice direction for criminal proceedings in the Court of Appeal.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "pd_11_1",
+      "type": "practice_direction",
+      "label": "PD 11.1: Criminal Proceedings in the CFA",
+      "summary": "Practice direction for criminal proceedings in the Court of Final Appeal.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "pd_12_1",
+      "type": "practice_direction",
+      "label": "PD 12.1: Video Link Evidence",
+      "summary": "Practice direction for video link evidence in criminal proceedings.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "pd_15_1",
+      "type": "practice_direction",
+      "label": "PD 15.1: Vulnerable Witnesses",
+      "summary": "Practice direction for vulnerable witness procedures.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    }
+  ]
+}

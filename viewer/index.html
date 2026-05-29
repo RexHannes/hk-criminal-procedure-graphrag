@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HK Criminal Procedure — GraphRAG Map</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="header">
+    <div id="header-title">
+      <span class="domain-badge">not_product_answer_layer</span>
+      <span class="domain-badge verification">needs_hklii_verification</span>
+      <h1>Hong Kong Criminal Procedure — GraphRAG Map</h1>
+    </div>
+    <div id="header-controls">
+      <input type="text" id="search-box" placeholder="Search nodes by keyword..." />
+      <div id="legend">
+        <span class="legend-item"><span class="dot" style="background:#2266cc"></span>Legal Issue</span>
+        <span class="legend-item"><span class="dot" style="background:#2d8a4e"></span>Statute</span>
+        <span class="legend-item"><span class="dot" style="background:#7b2d8e"></span>Case Seed</span>
+        <span class="legend-item"><span class="dot" style="background:#d97706"></span>Flow Step</span>
+        <span class="legend-item"><span class="dot" style="background:#0e7490"></span>PD</span>
+        <span class="legend-item"><span class="dot" style="background:#dc2626"></span>NSL</span>
+        <span class="legend-item"><span class="dot" style="background:#6b7280"></span>Section</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="sidebar">
+      <div id="flow-player">
+        <h3>Flow Player</h3>
+        <select id="flow-select">
+          <option value="">— Select a flow —</option>
+        </select>
+        <div id="flow-controls">
+          <button id="flow-prev" disabled>&#9664; Prev</button>
+          <span id="flow-step-indicator">0 / 0</span>
+          <button id="flow-next" disabled>Next &#9654;</button>
+          <button id="flow-play" disabled>&#9654; Play</button>
+          <button id="flow-reset" disabled>&#8634; Reset</button>
+        </div>
+        <div id="flow-step-info"></div>
+      </div>
+      <div id="section-tree">
+        <h3>Sections</h3>
+        <ul id="section-list"></ul>
+      </div>
+    </div>
+
+    <div id="graph-container"></div>
+
+    <div id="detail-panel">
+      <div id="detail-content">
+        <p class="hint">Click a node to see details</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="status-bar">
+    <span id="status-nodes">Nodes: 0</span>
+    <span id="status-edges">Edges: 0</span>
+    <span id="status-verified">Verified: 0</span>
+    <span id="status-unverified">Unverified: 0</span>
+    <span id="status-selected">Selected: —</span>
+  </div>
+
+  <script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>

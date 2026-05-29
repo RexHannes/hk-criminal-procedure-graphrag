@@ -1,0 +1,184 @@
+{
+  "section_id": "04",
+  "section_title": "Bail",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_proc_bail",
+      "type": "section_header",
+      "label": "Bail",
+      "summary": "Right to bail, statutory exceptions, factors, bail pending appeal, variation/revocation, police/ICAC bail.",
+      "section": "04"
+    },
+    {
+      "id": "bail_right_to_bail",
+      "type": "legal_issue",
+      "label": "Right to Bail and Statutory Exceptions",
+      "summary": "Presumption: accused has right to bail under Cap 221 s.9D(1). Exceptions (s.9D(2)): substantial grounds to believe accused would: (a) fail to surrender; (b) commit offence while on bail; (c) interfere with witnesses or pervert course of justice. Additional NSL exception: Art.42 NSL — bail shall not be granted unless judge satisfied no risk of national security danger.",
+      "subsection": "04.01",
+      "subtopic": "Right to Bail",
+      "section": "04",
+      "statute_refs": ["cap221_s9d", "nsl_art42"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s9d",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.9D",
+      "summary": "Right to bail (s.9D(1)) and statutory exceptions for refusal (s.9D(2)).",
+      "section": "04",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "nsl_art42",
+      "type": "statute",
+      "label": "National Security Law Article 42",
+      "summary": "Bail shall not be granted unless judge satisfied no risk of national security danger.",
+      "section": "04",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "bail_factors",
+      "type": "legal_issue",
+      "label": "Factors in Bail Decisions",
+      "summary": "Risk of absconding: nature/gravity of offence, strength of evidence, community ties, previous bail record, financial resources. Risk of reoffending: past convictions, nature of alleged offence, employment, family. Interference with witnesses: relationship to complainant, nature of threats. Surety and recognizance: court may require surety (cash deposit) and/or recognizance; amount must be proportionate.",
+      "subsection": "04.02",
+      "subtopic": "Bail Factors",
+      "section": "04",
+      "statute_refs": ["cap221_s9d"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "bail_pending_appeal",
+      "type": "legal_issue",
+      "label": "Bail Pending Appeal",
+      "summary": "Cap 221 s.9K: appeal against conviction/sentence does not automatically confer bail; special test — must not be in interests of justice. CFA bail pending appeal: under Cap 484 s.35; exceptional; high threshold.",
+      "subsection": "04.03",
+      "subtopic": "Bail Pending Appeal",
+      "section": "04",
+      "statute_refs": ["cap221_s9k", "cap484_s35"],
+      "case_seeds": ["hksar_v_milne_john"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s9k",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.9K",
+      "summary": "Bail pending appeal; special test — must not be in interests of justice.",
+      "section": "04",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap484_s35",
+      "type": "statute",
+      "label": "Hong Kong Court of Final Appeal Ordinance (Cap 484) s.35",
+      "summary": "CFA bail pending appeal; exceptional.",
+      "section": "04",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "bail_variation_revocation",
+      "type": "legal_issue",
+      "label": "Variation / Revocation / Breach of Bail",
+      "summary": "Court may vary conditions on application by prosecution or accused. Breach of bail condition: accused may be arrested without warrant (Cap 221 s.9N); new bail hearing required. Anticipated breach: police may apply to court.",
+      "subsection": "04.04",
+      "subtopic": "Bail Variation",
+      "section": "04",
+      "statute_refs": ["cap221_s9n"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s9n",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.9N",
+      "summary": "Breach of bail condition; arrest without warrant and new bail hearing.",
+      "section": "04",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "bail_police_icac",
+      "type": "legal_issue",
+      "label": "Police / ICAC Bail",
+      "summary": "Police may grant bail after arrest (Cap 232 s.52(1A)), with conditions; if refused, accused brought to court. ICAC bail similar (Cap 204 s.10A(3)).",
+      "subsection": "04.05",
+      "subtopic": "Police/ICAC Bail",
+      "section": "04",
+      "statute_refs": ["cap232_s52", "cap204_s10a"],
+      "case_seeds": ["dpp_v_richards", "gizzonio_v_chief_constable"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "bail_flow_start",
+      "type": "flow_step",
+      "label": "Bail Flow: Person Arrested or Charged",
+      "summary": "Step 1: Person is arrested or charged with an offence.",
+      "section": "04",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "bail_flow_step2",
+      "type": "flow_step",
+      "label": "Bail Flow: Police/ICAC/Court Route",
+      "summary": "Step 2: Determine whether bail route is police, ICAC, or court-based.",
+      "section": "04",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "bail_flow_step3",
+      "type": "flow_step",
+      "label": "Bail Flow: Consider Right to Bail",
+      "summary": "Step 3: Apply presumption of right to bail under Cap 221 s.9D(1).",
+      "section": "04",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "bail_flow_step4",
+      "type": "flow_step",
+      "label": "Bail Flow: Refusal Grounds",
+      "summary": "Step 4: Check statutory refusal grounds (s.9D(2): absconding, reoffending, witness interference). Check NSL Art.42 if applicable.",
+      "section": "04",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "bail_flow_step5",
+      "type": "flow_step",
+      "label": "Bail Flow: Conditions / Recognizance / Surety",
+      "summary": "Step 5: If bail granted, impose proportionate conditions, recognizance, or surety.",
+      "section": "04",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "bail_flow_step6",
+      "type": "flow_step",
+      "label": "Bail Flow: Breach or Anticipated Breach",
+      "summary": "Step 6: If conditions breached or breach anticipated, apply for arrest warrant or variation.",
+      "section": "04",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "bail_flow_step7",
+      "type": "flow_step",
+      "label": "Bail Flow: Variation / Revocation / Appeal",
+      "summary": "Step 7: Variation or revocation of bail, or appeal against bail decision.",
+      "section": "04",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    }
+  ]
+}

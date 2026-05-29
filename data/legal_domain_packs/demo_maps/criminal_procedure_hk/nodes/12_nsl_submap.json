@@ -1,0 +1,132 @@
+{
+  "section_id": "12",
+  "section_title": "Restricted NSL Submap",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_proc_nsl_submap",
+      "type": "section_header",
+      "label": "Restricted NSL Submap",
+      "summary": "All NSL-specific procedural deviations from ordinary criminal procedure.",
+      "section": "12"
+    },
+    {
+      "id": "nsl_submap_overview",
+      "type": "restricted_nsl",
+      "label": "NSL Overview — Separate Procedural Regime",
+      "summary": "National Security Law (NSL) creates a separate procedural regime with: designated judges, special bail rules, restricted legal representation, no jury for certain offences, enhanced search/seizure powers.",
+      "subsection": "12.01",
+      "subtopic": "NSL Overview",
+      "section": "12",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "nsl_bail",
+      "type": "restricted_nsl",
+      "label": "NSL Bail — Article 42 and Implementation Rule 3",
+      "summary": "Bail shall not be granted unless judge satisfied no risk of national security danger (NSL Art.42, Implementation Rule 3). Higher threshold than ordinary bail under Cap 221 s.9D.",
+      "subsection": "12.01",
+      "subtopic": "NSL Bail",
+      "section": "12",
+      "statute_refs": ["nsl_art42"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "nsl_search_seizure",
+      "type": "restricted_nsl",
+      "label": "NSL Search and Seizure — Implementation Rules 5-7",
+      "summary": "Broader search and seizure powers under NSL Implementation Rules 5-7, allowing search without warrant in certain national security cases.",
+      "subsection": "12.02",
+      "subtopic": "NSL Search",
+      "section": "12",
+      "case_seeds": ["lai_chee_ying_v_commissioner_of_police", "hksar_v_lai_man_ling"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "nsl_designated_judges",
+      "type": "restricted_nsl",
+      "label": "Designated Judges — NSL Article 44",
+      "summary": "NSL Art.44: Chief Executive designates judges to handle national security cases. Only designated judges may hear NSL cases.",
+      "subsection": "12.03",
+      "subtopic": "Designated Judges",
+      "section": "12",
+      "statute_refs": ["nsl_art44"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "nsl_art44",
+      "type": "statute",
+      "label": "National Security Law Article 44",
+      "summary": "Chief Executive designates judges to handle national security cases.",
+      "section": "12",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "nsl_overseas_lawyers",
+      "type": "restricted_nsl",
+      "label": "NSL — Overseas Lawyers (Cap 159 s.27A)",
+      "summary": "Overseas lawyers need Chief Executive certificate under Cap 159 s.27A to practice in NSL cases.",
+      "subsection": "12.04",
+      "subtopic": "Overseas Lawyers",
+      "section": "12",
+      "statute_refs": ["cap159_s27a"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "nsl_no_jury",
+      "type": "restricted_nsl",
+      "label": "No Jury for Certain NSL Offences — NSL Article 46",
+      "summary": "NSL Art.46: Certain NSL offences may be tried without a jury. Trial by three designated judges instead.",
+      "subsection": "12.05",
+      "subtopic": "No Jury",
+      "section": "12",
+      "statute_refs": ["nsl_art46"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "nsl_art46",
+      "type": "statute",
+      "label": "National Security Law Article 46",
+      "summary": "Certain NSL offences may be tried without a jury; three designated judges instead.",
+      "section": "12",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "nsl_surveillance",
+      "type": "restricted_nsl",
+      "label": "NSL — Enhanced Interception and Covert Surveillance Powers",
+      "summary": "NSL Implementation Rules provide enhanced interception and covert surveillance powers beyond ordinary regime.",
+      "subsection": "12.06",
+      "subtopic": "Surveillance",
+      "section": "12",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "nsl_key_cases",
+      "type": "restricted_nsl",
+      "label": "Key NSL Case Seeds",
+      "summary": "HKSAR v Lai Chee Ying (2021) 24 HKCFAR 121 — no jurisdiction to review NPC/NPCSC acts. Lai Chee Ying v Commissioner of Police [2020] — journalistic material search. HKSAR v Lai Man Ling [2021] HKCFA 28 — NSL evidence-gathering powers.",
+      "subsection": "12.07",
+      "subtopic": "Key Cases",
+      "section": "12",
+      "case_seeds": ["hksar_v_lai_chee_ying", "lai_chee_ying_v_commissioner_of_police", "hksar_v_lai_man_ling"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    }
+  ]
+}

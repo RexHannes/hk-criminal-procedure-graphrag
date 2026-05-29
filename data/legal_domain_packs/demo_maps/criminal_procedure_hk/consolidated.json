@@ -1,0 +1,118 @@
+{
+  "domain_id": "criminal_procedure_hk",
+  "title": "Hong Kong Criminal Procedure",
+  "version": "1.0.0",
+  "last_updated": "2026-05-30",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "authority_status": "unverified_case_seed"
+  },
+  "sections": [
+    {
+      "id": "01",
+      "title": "Criminal Legal System and Jurisdiction",
+      "node_file": "nodes/01_jurisdiction.json",
+      "edge_file": "edges/01_jurisdiction.json"
+    },
+    {
+      "id": "02",
+      "title": "Investigation, Arrest, Search and Detention",
+      "node_file": "nodes/02_investigation_arrest_search_detention.json",
+      "edge_file": "edges/02_investigation_arrest_search_detention.json"
+    },
+    {
+      "id": "03",
+      "title": "Initiation and Pre-Trial Disposition",
+      "node_file": "nodes/03_pre_trial_disposition.json",
+      "edge_file": "edges/03_pre_trial_disposition.json"
+    },
+    {
+      "id": "04",
+      "title": "Bail",
+      "node_file": "nodes/04_bail.json",
+      "edge_file": "edges/04_bail.json"
+    },
+    {
+      "id": "05",
+      "title": "Indictments and Charge Sheets",
+      "node_file": "nodes/05_indictments.json",
+      "edge_file": "edges/05_indictments.json"
+    },
+    {
+      "id": "06",
+      "title": "CFI Trial Procedure",
+      "node_file": "nodes/06_cfi_trial.json",
+      "edge_file": "edges/06_cfi_trial.json"
+    },
+    {
+      "id": "07",
+      "title": "District Court Transferred Cases",
+      "node_file": "nodes/07_dc_transferred_cases.json",
+      "edge_file": "edges/07_dc_transferred_cases.json"
+    },
+    {
+      "id": "08",
+      "title": "Vulnerable Witnesses and Special Evidence Procedures",
+      "node_file": "nodes/08_vulnerable_witnesses.json",
+      "edge_file": "edges/08_vulnerable_witnesses.json"
+    },
+    {
+      "id": "09",
+      "title": "Appeals, Reviews and Questions of Law",
+      "node_file": "nodes/09_appeals_reviews.json",
+      "edge_file": "edges/09_appeals_reviews.json"
+    },
+    {
+      "id": "10",
+      "title": "Costs, Compensation and Post-Trial Orders",
+      "node_file": "nodes/10_costs_compensation.json",
+      "edge_file": "edges/10_costs_compensation.json"
+    },
+    {
+      "id": "11",
+      "title": "Practice Directions (Seed References)",
+      "node_file": "nodes/11_practice_directions.json",
+      "edge_file": "edges/11_practice_directions.json"
+    },
+    {
+      "id": "12",
+      "title": "Restricted NSL Submap",
+      "node_file": "nodes/12_nsl_submap.json",
+      "edge_file": "edges/12_nsl_submap.json"
+    }
+  ],
+  "flows_file": "flows.json",
+  "flow_chains": [
+    {
+      "flow_id": "crim_proc_arrest_detention_flow",
+      "title": "Arrest / Detention Flow",
+      "steps": ["invest_arrest_detention_flow_start", "invest_arrest_detention_flow_step2", "invest_arrest_detention_flow_step3", "invest_arrest_detention_flow_step4", "invest_arrest_detention_flow_step5", "invest_arrest_detention_flow_step6"]
+    },
+    {
+      "flow_id": "crim_proc_bail_flow",
+      "title": "Bail Application Flow",
+      "steps": ["bail_flow_start", "bail_flow_step2", "bail_flow_step3", "bail_flow_step4", "bail_flow_step5", "bail_flow_step6", "bail_flow_step7"]
+    },
+    {
+      "flow_id": "crim_proc_stay_flow",
+      "title": "Stay / Abuse of Process Flow",
+      "steps": ["pre_trial_stay_flow_start", "pre_trial_stay_flow_step2", "pre_trial_stay_flow_step3", "pre_trial_stay_flow_step4", "pre_trial_stay_flow_step5", "pre_trial_stay_flow_step6"]
+    },
+    {
+      "flow_id": "crim_proc_indictment_flow",
+      "title": "Indictment Flow",
+      "steps": ["indictment_flow_start", "indictment_flow_step2", "indictment_flow_step3", "indictment_flow_step4", "indictment_flow_step5", "indictment_flow_step6", "indictment_flow_step7", "indictment_flow_step8"]
+    },
+    {
+      "flow_id": "crim_proc_trial_cfi_flow",
+      "title": "CFI Trial Flow",
+      "steps": ["trial_cfi_flow_start", "trial_cfi_flow_step2", "trial_cfi_flow_step3", "trial_cfi_flow_step4", "trial_cfi_flow_step5", "trial_cfi_flow_step6", "trial_cfi_flow_step7", "trial_cfi_flow_step8"]
+    },
+    {
+      "flow_id": "crim_proc_appeal_conviction_flow",
+      "title": "Appeal Against Conviction Flow",
+      "steps": ["appeal_conviction_flow_start", "appeal_conviction_flow_step2", "appeal_conviction_flow_step3", "appeal_conviction_flow_step4", "appeal_conviction_flow_step5", "appeal_conviction_flow_step6", "appeal_conviction_flow_step7"]
+    }
+  ]
+}

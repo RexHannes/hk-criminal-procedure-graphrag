@@ -1,0 +1,30 @@
+{
+  "section_id": "03",
+  "domain_id": "criminal_procedure_hk",
+  "edges": [
+    { "from": "crim_proc_pre_trial", "to": "pre_trial_modes_of_initiation", "relationship": "has_subtopic" },
+    { "from": "crim_proc_pre_trial", "to": "pre_trial_offence_classification", "relationship": "has_subtopic" },
+    { "from": "crim_proc_pre_trial", "to": "pre_trial_committal_transfer", "relationship": "has_subtopic" },
+    { "from": "crim_proc_pre_trial", "to": "pre_trial_discharge", "relationship": "has_subtopic" },
+    { "from": "crim_proc_pre_trial", "to": "pre_trial_time_limits", "relationship": "has_subtopic" },
+    { "from": "pre_trial_modes_of_initiation", "to": "cap227_s8", "relationship": "statutory_anchor" },
+    { "from": "pre_trial_modes_of_initiation", "to": "cap227_s26", "relationship": "statutory_anchor" },
+    { "from": "pre_trial_modes_of_initiation", "to": "cap221_s14a", "relationship": "statutory_anchor" },
+    { "from": "pre_trial_modes_of_initiation", "to": "hksar_v_cheung_tsz_wan", "relationship": "case_seed" },
+    { "from": "pre_trial_offence_classification", "to": "cap221_s14a", "relationship": "statutory_anchor" },
+    { "from": "pre_trial_offence_classification", "to": "hksar_v_chan_tai_sum", "relationship": "case_seed" },
+    { "from": "pre_trial_committal_transfer", "to": "cap221_s79a", "relationship": "statutory_anchor" },
+    { "from": "pre_trial_committal_transfer", "to": "cap221_s77c", "relationship": "statutory_anchor" },
+    { "from": "pre_trial_discharge", "to": "hksar_v_milne_john", "relationship": "case_seed" },
+    { "from": "pre_trial_discharge", "to": "r_v_holgate_no1", "relationship": "case_seed" },
+    { "from": "pre_trial_discharge", "to": "hksar_v_cheung_tsz_wan", "relationship": "case_seed" },
+    { "from": "pre_trial_discharge", "to": "hksar_v_chen_keen", "relationship": "case_seed" },
+    { "from": "pre_trial_time_limits", "to": "cap227_s26", "relationship": "statutory_anchor" },
+    { "from": "pre_trial_time_limits", "to": "hksar_v_lai_man_ling", "relationship": "case_seed" },
+    { "from": "pre_trial_stay_flow_start", "to": "pre_trial_stay_flow_step2", "relationship": "flow_transition" },
+    { "from": "pre_trial_stay_flow_step2", "to": "pre_trial_stay_flow_step3", "relationship": "flow_transition" },
+    { "from": "pre_trial_stay_flow_step3", "to": "pre_trial_stay_flow_step4", "relationship": "flow_transition" },
+    { "from": "pre_trial_stay_flow_step4", "to": "pre_trial_stay_flow_step5", "relationship": "flow_transition" },
+    { "from": "pre_trial_stay_flow_step5", "to": "pre_trial_stay_flow_step6", "relationship": "flow_transition" }
+  ]
+}

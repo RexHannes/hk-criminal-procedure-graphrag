@@ -1,0 +1,250 @@
+{
+  "section_id": "05",
+  "section_title": "Indictments and Charge Sheets",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_proc_indictments",
+      "type": "section_header",
+      "label": "Indictments and Charge Sheets",
+      "summary": "Drafting charges, filing/service, amendment, joinder/severance, quashing, and plea.",
+      "section": "05"
+    },
+    {
+      "id": "indictment_drafting",
+      "type": "legal_issue",
+      "label": "Drafting Charge / Indictment",
+      "summary": "Particulars: must give reasonable information as to the nature of the offence; include date, place, person, property, statutory provision. Duplicity: one offence per count (no duplicity). Uncertainty: charge must be sufficiently clear; otherwise subject to motion to quash.",
+      "subsection": "05.01",
+      "subtopic": "Drafting",
+      "section": "05",
+      "statute_refs": ["cap221_s16"],
+      "case_seeds": ["hksar_v_leung_kwok_hung", "hksar_v_tam_shing_hoi"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "hksar_v_leung_kwok_hung_1996",
+      "type": "case_seed",
+      "label": "HKSAR v Leung Kwok Hung (1996)",
+      "summary": "Indictment quashed for defect/duplicity.",
+      "section": "05",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "hksar_v_tam_shing_hoi",
+      "type": "case_seed",
+      "label": "HKSAR v Tam Shing Hoi (2004)",
+      "summary": "Indictment defect and uncertainty.",
+      "section": "05",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "indictment_filing_service",
+      "type": "legal_issue",
+      "label": "Filing and Service",
+      "summary": "Charge sheet filed in magistracy; indictment filed in CFI after committal. Service on accused; indictment must be signed by law officer.",
+      "subsection": "05.02",
+      "subtopic": "Filing",
+      "section": "05",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "indictment_amendment",
+      "type": "legal_issue",
+      "label": "Amendment of Indictment",
+      "summary": "Court may amend indictment at any stage before verdict if no injustice (Cap 221 s.23). If amendment raises new issues, adjournment may be needed.",
+      "subsection": "05.03",
+      "subtopic": "Amendment",
+      "section": "05",
+      "statute_refs": ["cap221_s23"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s23",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.23",
+      "summary": "Court may amend indictment at any stage before verdict if no injustice.",
+      "section": "05",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "indictment_joinder_severance",
+      "type": "legal_issue",
+      "label": "Joinder and Severance",
+      "summary": "Joinder of counts: may join multiple charges if founded on same facts or form part of a series of similar character (Cap 221 s.16). Joinder of defendants: may be tried jointly if alleged to have committed same offence or connected offences (s.17). Severance: court may order separate trials if joinder prejudicial or embarrassing (s.18).",
+      "subsection": "05.04",
+      "subtopic": "Joinder",
+      "section": "05",
+      "statute_refs": ["cap221_s16", "cap221_s17", "cap221_s18"],
+      "case_seeds": ["talbot_v_r"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s16",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.16",
+      "summary": "Joinder of counts: same facts or series of similar character.",
+      "section": "05",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap221_s17",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.17",
+      "summary": "Joinder of defendants: same or connected offences.",
+      "section": "05",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap221_s18",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.18",
+      "summary": "Severance: court may order separate trials if joinder prejudicial or embarrassing.",
+      "section": "05",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "talbot_v_r",
+      "type": "case_seed",
+      "label": "Talbot v R (PC) (comparative)",
+      "summary": "Severance test; prejudice not curable by jury direction.",
+      "section": "05",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "indictment_quashing",
+      "type": "legal_issue",
+      "label": "Quashing Indictment",
+      "summary": "Application to quash for formal defect or abuse of process. Must show substantial prejudice; court will amend rather than quash if possible.",
+      "subsection": "05.05",
+      "subtopic": "Quashing",
+      "section": "05",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "indictment_plea",
+      "type": "legal_issue",
+      "label": "Plea",
+      "summary": "Arraignment in CFI/DC; plea to each count. Guilty plea: court must ensure plea is unequivocal and voluntary; factual basis agreed or resolved by Newton hearing. Alternative offences: jury may convict of lesser alternative if supported by evidence.",
+      "subsection": "05.06",
+      "subtopic": "Plea",
+      "section": "05",
+      "statute_refs": ["cap221_s51"],
+      "case_seeds": ["r_v_tailford", "hksar_v_asif_ahfaq_mehmood", "hksar_v_lai_man_ling"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s51",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.51",
+      "summary": "Alternative offences: jury may convict of lesser alternative if supported by evidence.",
+      "section": "05",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "r_v_tailford",
+      "type": "case_seed",
+      "label": "R v Tailford (comparative)",
+      "summary": "Plea to alternative offence not averred in indictment.",
+      "section": "05",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "hksar_v_asif_ahfaq_mehmood",
+      "type": "case_seed",
+      "label": "HKSAR v Asif Ahfaq Mehmood",
+      "summary": "Alternative offence issue under Cap 221 s.51.",
+      "section": "05",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "indictment_flow_start",
+      "type": "flow_step",
+      "label": "Indictment Flow: Proceedings Instituted",
+      "summary": "Step 1: Criminal proceedings are instituted by information, complaint, or charge sheet.",
+      "section": "05",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "indictment_flow_step2",
+      "type": "flow_step",
+      "label": "Indictment Flow: Offence Classification",
+      "summary": "Step 2: Classify the offence as summary, indictable, or either way.",
+      "section": "05",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "indictment_flow_step3",
+      "type": "flow_step",
+      "label": "Indictment Flow: Indictment Drafted",
+      "summary": "Step 3: Draft indictment with proper particulars, avoiding duplicity.",
+      "section": "05",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "indictment_flow_step4",
+      "type": "flow_step",
+      "label": "Indictment Flow: Particulars Checked",
+      "summary": "Step 4: Check particulars for date, place, person, property, and statutory provision.",
+      "section": "05",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "indictment_flow_step5",
+      "type": "flow_step",
+      "label": "Indictment Flow: Filing and Service",
+      "summary": "Step 5: File indictment and serve on accused.",
+      "section": "05",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "indictment_flow_step6",
+      "type": "flow_step",
+      "label": "Indictment Flow: Amendment/Severance/Joinder",
+      "summary": "Step 6: Consider amendment, severance, or joinder issues.",
+      "section": "05",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "indictment_flow_step7",
+      "type": "flow_step",
+      "label": "Indictment Flow: Plea",
+      "summary": "Step 7: Arraignment and plea to each count.",
+      "section": "05",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "indictment_flow_step8",
+      "type": "flow_step",
+      "label": "Indictment Flow: Trial or Disposal",
+      "summary": "Step 8: Proceed to trial or other disposal (guilty plea, discharge, etc.).",
+      "section": "05",
+      "subsection": "Flow",
+      "verification_status": "needs_hklii_verification"
+    }
+  ]
+}

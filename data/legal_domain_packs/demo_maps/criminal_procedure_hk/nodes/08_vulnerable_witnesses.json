@@ -1,0 +1,129 @@
+{
+  "section_id": "08",
+  "section_title": "Vulnerable Witnesses and Special Evidence Procedures",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_proc_vulnerable_witnesses",
+      "type": "section_header",
+      "label": "Vulnerable Witnesses and Special Evidence Procedures",
+      "summary": "Child witnesses, mentally incapacitated witnesses, sexual offence complainants, live link, anonymity.",
+      "section": "08"
+    },
+    {
+      "id": "witness_child",
+      "type": "legal_issue",
+      "label": "Child Witnesses (Under 14)",
+      "summary": "May give evidence unsworn if court considers child understands duty to tell truth (Cap 8 s.4). Special measures: live TV link, video recorded evidence-in-chief (Cap 221 ss.79B-79E). Available for offences involving assault, injury, threat; child or mentally incapacitated witness.",
+      "subsection": "08.01",
+      "subtopic": "Child Witnesses",
+      "section": "08",
+      "statute_refs": ["cap8_s4", "cap221_s79b"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap8_s4",
+      "type": "statute",
+      "label": "Evidence Ordinance (Cap 8) s.4",
+      "summary": "Child witness unsworn evidence if understands duty to tell truth.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap221_s79b",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) ss.79B-79E",
+      "summary": "Special measures for vulnerable witnesses: live TV link, video-recorded evidence-in-chief.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "witness_mentally_incapacitated",
+      "type": "legal_issue",
+      "label": "Mentally Incapacitated Witnesses",
+      "summary": "Same special measures as children under Cap 221 ss.79B-79E.",
+      "subsection": "08.02",
+      "subtopic": "Mentally Incapacitated",
+      "section": "08",
+      "statute_refs": ["cap221_s79b"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "witness_sexual_offence_complainants",
+      "type": "legal_issue",
+      "label": "Complainants in Specified Sexual Offences",
+      "summary": "Cap 221 s.79C: complainants of certain sexual offences automatically eligible for live TV link unless court orders otherwise. Video-recorded evidence-in-chief admissible (s.79D).",
+      "subsection": "08.03",
+      "subtopic": "Sexual Offence Complainants",
+      "section": "08",
+      "statute_refs": ["cap221_s79c", "cap221_s79d"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s79c",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.79C",
+      "summary": "Complainants of certain sexual offences automatically eligible for live TV link.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap221_s79d",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.79D",
+      "summary": "Video-recorded evidence-in-chief for vulnerable witnesses.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "witness_outside_hk",
+      "type": "legal_issue",
+      "label": "Witnesses Outside Hong Kong",
+      "summary": "Live television link under Cap 221 Part IIIB as above in trial section.",
+      "subsection": "08.04",
+      "subtopic": "Outside HK Witnesses",
+      "section": "08",
+      "statute_refs": ["cap221_part3b"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "witness_anonymity",
+      "type": "legal_issue",
+      "label": "Witness Anonymity / In Camera Proceedings",
+      "summary": "Court may permit witness to testify behind screen or under pseudonym if necessary to protect witness and interests of justice. Fairness safeguards: directions to jury to avoid prejudice.",
+      "subsection": "08.05",
+      "subtopic": "Anonymity",
+      "section": "08",
+      "case_seeds": ["hksar_v_cheung_shu_cheong", "hksar_v_chan_kam_shing"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "hksar_v_cheung_shu_cheong",
+      "type": "case_seed",
+      "label": "HKSAR v Cheung Shu Cheong (2018)",
+      "summary": "Vulnerable witness and live-link procedures.",
+      "section": "08",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "hksar_v_chan_kam_shing",
+      "type": "case_seed",
+      "label": "HKSAR v Chan Kam Shing (2010)",
+      "summary": "Vulnerable witness procedures.",
+      "section": "08",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    }
+  ]
+}

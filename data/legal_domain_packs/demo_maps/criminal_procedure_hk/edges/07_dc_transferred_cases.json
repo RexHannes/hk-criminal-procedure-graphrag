@@ -1,0 +1,12 @@
+{
+  "section_id": "07",
+  "domain_id": "criminal_procedure_hk",
+  "edges": [
+    { "from": "crim_proc_dc_cases", "to": "dc_transfer", "relationship": "has_subtopic" },
+    { "from": "crim_proc_dc_cases", "to": "dc_dismissal", "relationship": "has_subtopic" },
+    { "from": "crim_proc_dc_cases", "to": "dc_trial_procedure", "relationship": "has_subtopic" },
+    { "from": "dc_transfer", "to": "cap221_s77c", "relationship": "statutory_anchor" },
+    { "from": "dc_dismissal", "to": "cap221_s77e", "relationship": "statutory_anchor" },
+    { "from": "dc_trial_procedure", "to": "cap221_s83b", "relationship": "statutory_anchor" }
+  ]
+}

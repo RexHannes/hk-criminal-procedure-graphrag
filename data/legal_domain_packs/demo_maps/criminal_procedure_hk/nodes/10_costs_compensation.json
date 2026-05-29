@@ -1,0 +1,120 @@
+{
+  "section_id": "10",
+  "section_title": "Costs, Compensation and Post-Trial Orders",
+  "domain_id": "criminal_procedure_hk",
+  "nodes": [
+    {
+      "id": "crim_proc_costs",
+      "type": "section_header",
+      "label": "Costs, Compensation and Post-Trial Orders",
+      "summary": "Costs orders, compensation, restitution, post-sentence orders.",
+      "section": "10"
+    },
+    {
+      "id": "costs_criminal_cases",
+      "type": "legal_issue",
+      "label": "Costs in Criminal Cases",
+      "summary": "Costs in Criminal Cases Ordinance (Cap 492): Court may award costs to prosecution or defence. Defence costs: may be ordered if defendant acquitted and no sufficient reason for prosecution, or if proceedings not instituted in good faith (s.3). Prosecution costs: may be ordered against convicted defendant (s.7). Costs must be reasonable; taxed if necessary.",
+      "subsection": "10.01",
+      "subtopic": "Costs",
+      "section": "10",
+      "statute_refs": ["cap492_s3", "cap492_s7"],
+      "case_seeds": ["hksar_v_chen_keen_no2"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap492_s3",
+      "type": "statute",
+      "label": "Costs in Criminal Cases Ordinance (Cap 492) s.3",
+      "summary": "Defence costs may be ordered if acquitted and no sufficient reason for prosecution.",
+      "section": "10",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cap492_s7",
+      "type": "statute",
+      "label": "Costs in Criminal Cases Ordinance (Cap 492) s.7",
+      "summary": "Prosecution costs may be ordered against convicted defendant.",
+      "section": "10",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hksar_v_chen_keen_no2",
+      "type": "case_seed",
+      "label": "HKSAR v Chen Keen (No 2)",
+      "summary": "Costs after jury discharge before verdict.",
+      "section": "10",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "costs_compensation",
+      "type": "legal_issue",
+      "label": "Compensation Orders",
+      "summary": "Under Cap 221 s.73, court may order compensation from offender for personal injury, loss or damage. Not a full civil damages assessment; must be quantum ascertainable.",
+      "subsection": "10.02",
+      "subtopic": "Compensation",
+      "section": "10",
+      "statute_refs": ["cap221_s73"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s73",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.73",
+      "summary": "Compensation order for personal injury, loss or damage.",
+      "section": "10",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "costs_restitution",
+      "type": "legal_issue",
+      "label": "Restitution and Disposal of Property",
+      "summary": "Cap 221 ss.102-106A: Court may order return of stolen property, disposal of exhibits, forfeiture of instrumentalities.",
+      "subsection": "10.03",
+      "subtopic": "Restitution",
+      "section": "10",
+      "statute_refs": ["cap221_s102"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "costs_bankruptcy_orders",
+      "type": "legal_issue",
+      "label": "Criminal Bankruptcy Orders",
+      "summary": "Under Cap 221 s.84A (check status) or under Bankruptcy Ordinance — essentially now unused.",
+      "subsection": "10.04",
+      "subtopic": "Bankruptcy",
+      "section": "10",
+      "statute_refs": ["cap221_s84a"],
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    },
+    {
+      "id": "cap221_s84a",
+      "type": "statute",
+      "label": "Criminal Procedure Ordinance (Cap 221) s.84A",
+      "summary": "Criminal bankruptcy orders (may be repealed; check status).",
+      "section": "10",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "costs_post_sentence",
+      "type": "legal_issue",
+      "label": "Post-Sentence Orders",
+      "summary": "Suspended sentence; supervision order for young offenders; probation.",
+      "subsection": "10.05",
+      "subtopic": "Post-Sentence",
+      "section": "10",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed"
+    }
+  ]
+}
