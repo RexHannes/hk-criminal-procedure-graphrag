@@ -16,14 +16,29 @@
     sehk_decision_seed: '#7c3aed',
     guidance_letter_seed: '#0891b2',
     practice_note_anchor: '#0f766e',
+    sfc_material_seed: '#dc2626',
     textbook_seed: '#b45309',
     enforcement_seed: '#dc2626',
     cross_reference: '#9333ea',
+    gap_node: '#6b7280',
   };
 
   const REGULATORY_TYPES = new Set([
     'listing_rule_anchor', 'sehk_decision_seed', 'guidance_letter_seed',
-    'practice_note_anchor', 'textbook_seed', 'enforcement_seed',
+    'practice_note_anchor', 'textbook_seed', 'enforcement_seed', 'sfc_material_seed',
+  ]);
+
+  const SUPPORT_RELATIONSHIPS = new Set([
+    'statutory_anchor',
+    'case_seed',
+    'practice_direction_ref',
+    'cross_reference',
+    'listing_rule_anchor',
+    'guidance_letter_seed',
+    'sehk_decision_seed',
+    'practice_note_anchor',
+    'enforcement_seed',
+    'sfc_material_seed',
   ]);
 
   const SECTION_PALETTES = [
@@ -48,10 +63,12 @@
     sehk_decision_seed: 4,
     guidance_letter_seed: 4,
     enforcement_seed: 4,
+    sfc_material_seed: 4,
     practice_note_anchor: 3,
     textbook_seed: 5,
     cross_reference: 6,
     gap: 7,
+    gap_node: 7,
   };
 
   let allNodes = [];
@@ -144,6 +161,9 @@
     } else {
       disclaimer.innerHTML = '<strong>Seed-layer map.</strong> Not a product answer layer. Use verified paragraph proof before legal reliance.';
     }
+    if (!selectedId) {
+      document.getElementById('detail-content').innerHTML = getEmptyAuditMarkup();
+    }
   }
 
   function updateLegend(domain) {
@@ -183,7 +203,7 @@
     document.getElementById('tree-root').innerHTML = '';
     document.getElementById('detail-content').innerHTML = getEmptyAuditMarkup();
     document.getElementById('section-list').innerHTML = '';
-    document.getElementById('flow-select').innerHTML = '<option value="">— Select a flow —</option>';
+    document.getElementById('flow-select').innerHTML = '<option value="">Select a flow</option>';
     document.getElementById('flow-step-indicator').textContent = '0 / 0';
     document.getElementById('flow-step-info').textContent = '';
     document.getElementById('flow-prev').disabled = true;
@@ -221,7 +241,7 @@
           if (!primaryChildrenMap[e.from]) primaryChildrenMap[e.from] = [];
           primaryChildrenMap[e.from].push(e.to);
           primaryParentMap[e.to] = e.from;
-        } else if (['statutory_anchor', 'case_seed', 'practice_direction_ref', 'cross_reference'].includes(e.relationship)) {
+        } else if (SUPPORT_RELATIONSHIPS.has(e.relationship)) {
           if (!supportParentMap[e.to]) supportParentMap[e.to] = [];
           supportParentMap[e.to].push(e.from);
         }
@@ -825,6 +845,10 @@
   }
 
   function getEmptyAuditMarkup() {
+    const status = (currentDomain && (currentDomain.status || currentDomain.domainData.status)) || {};
+    const verificationTag = status.needs_official_source_verification
+      ? 'needs_official_source_verification'
+      : 'needs_hklii_verification';
     return [
       '<div class="empty-audit">',
       '<div class="empty-audit-icon">Audit</div>',
@@ -832,7 +856,7 @@
       '<p>Open a section, principle, flow step, case seed, or source anchor to inspect status, support links, and paragraph-proof readiness.</p>',
       '<div class="empty-audit-tags">',
       '<span>not_product_answer_layer</span>',
-      '<span>needs_hklii_verification</span>',
+      `<span>${verificationTag}</span>`,
       '<span>case audit pending</span>',
       '</div>',
       '</div>',

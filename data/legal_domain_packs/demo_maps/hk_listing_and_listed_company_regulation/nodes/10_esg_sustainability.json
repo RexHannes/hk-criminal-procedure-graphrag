@@ -1,0 +1,76 @@
+{
+  "section_id": "10",
+  "section_title": "ESG, Sustainability & Climate Disclosure",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "nodes": [
+    {
+      "id": "esg_sustainability",
+      "type": "section_header",
+      "label": "ESG, Sustainability & Climate Disclosure",
+      "summary": "Environmental, social, and governance reporting requirements including ESG Guide, board oversight, climate disclosures, and scope 1/2/3 emissions reporting.",
+      "section": "10"
+    },
+    {
+      "id": "esg_guide",
+      "type": "legal_issue",
+      "label": "ESG Guide Requirements",
+      "summary": "Listed companies must report on ESG matters in accordance with the ESG Guide. The guide covers environmental, social, and governance aspects with mandatory and recommended disclosures.",
+      "subsection": "10.01",
+      "subtopic": "ESG Guide",
+      "section": "10",
+      "listing_rule_refs": ["mbl_app_c2", "mbl_esg_guide"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_esg_guide",
+      "type": "listing_rule_anchor",
+      "label": "MBL ESG Guide — Environmental, Social and Governance Reporting",
+      "summary": "Sets out ESG reporting requirements including environmental emissions, social practices, and governance structure. Mandatory and recommended disclosures.",
+      "section": "10",
+      "rule_chapter": "ESG Guide",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "board_oversight_esg",
+      "type": "legal_issue",
+      "label": "Board Oversight of ESG",
+      "summary": "The board must oversee ESG matters and ensure the company has appropriate ESG governance structures and reporting processes.",
+      "subsection": "10.02",
+      "subtopic": "Board Oversight",
+      "section": "10",
+      "listing_rule_refs": ["mbl_esg_guide"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "climate_disclosures",
+      "type": "legal_issue",
+      "label": "Climate Disclosures",
+      "summary": "Listed companies must disclose climate-related risks and opportunities in line with the Task Force on Climate-related Financial Disclosures (TCFD) recommendations.",
+      "subsection": "10.03",
+      "subtopic": "Climate Disclosures",
+      "section": "10",
+      "listing_rule_refs": ["mbl_esg_guide"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "scope_1_2_3",
+      "type": "legal_issue",
+      "label": "Scope 1/2/3 Emissions Reporting",
+      "summary": "Listed companies must report Scope 1 and Scope 2 greenhouse gas emissions. Scope 3 emissions reporting is recommended where material.",
+      "subsection": "10.04",
+      "subtopic": "Emissions Reporting",
+      "section": "10",
+      "listing_rule_refs": ["mbl_esg_guide"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    }
+  ]
+}

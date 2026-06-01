@@ -1,0 +1,160 @@
+{
+  "section_id": "04",
+  "section_title": "Continuing Disclosure & Inside Information",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "nodes": [
+    {
+      "id": "continuing_obligations",
+      "type": "section_header",
+      "label": "Continuing Disclosure & Inside Information",
+      "summary": "Ongoing disclosure obligations of listed issuers under Part XIVA of the SFO and the Listing Rules, including the duty to disclose inside information, safe harbours, profit warnings, and general disclosure obligations to avoid false markets.",
+      "section": "04"
+    },
+    {
+      "id": "inside_information_disclosure",
+      "type": "legal_issue",
+      "label": "Disclosure of Inside Information",
+      "summary": "Under Part XIVA of the SFO, a listed issuer must disclose inside information as soon as reasonably practicable. The disclosure must be accurate, complete, and not misleading.",
+      "subsection": "04.01",
+      "subtopic": "Inside Information",
+      "section": "04",
+      "statute_refs": ["sfo_307a", "sfo_307b"],
+      "listing_rule_refs": ["mbl_13_09", "mbl_13_10"],
+      "guidance_refs": ["sfc_inside_info_gl"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "sfo_307a",
+      "type": "statute",
+      "label": "SFO s.307A — Duty of Disclosure",
+      "summary": "A listed issuer must disclose inside information to the public as soon as reasonably practicable.",
+      "section": "04",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_307b",
+      "type": "statute",
+      "label": "SFO s.307B — Safe Harbours",
+      "summary": "Safe harbours from the disclosure obligation, including where the information concerns incomplete proposals or trade secrets.",
+      "section": "04",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfc_inside_info_gl",
+      "type": "guidance_letter_seed",
+      "label": "SFC Guidance on Disclosure of Inside Information",
+      "summary": "Guidance on the statutory disclosure regime under Part XIVA, including practical examples of what constitutes inside information.",
+      "section": "04",
+      "effective_date": null,
+      "source_url": null,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_13_09",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 13.09 — General Disclosure Obligation",
+      "summary": "An issuer must announce any information necessary to avoid a false market or that would be reasonably expected to materially affect share price.",
+      "section": "04",
+      "rule_chapter": "13",
+      "rule_number": "13.09",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_13_10",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 13.10 — Trading Halt Guidance",
+      "summary": "The Exchange may halt trading if information is not accurate or complete, or to maintain an orderly market.",
+      "section": "04",
+      "rule_chapter": "13",
+      "rule_number": "13.10",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "inside_info_definition",
+      "type": "legal_issue",
+      "label": "Definition of Inside Information",
+      "summary": "Inside information is defined in SFO s.307A as specific information about the issuer (or its shareholders/officers) that is not generally known and would be likely to materially affect share price if known.",
+      "subsection": "04.02",
+      "subtopic": "Definition and Scope",
+      "section": "04",
+      "statute_refs": ["sfo_307a"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "profit_warning",
+      "type": "legal_issue",
+      "label": "Profit Warning and False Market",
+      "summary": "An issuer must issue a profit warning or trading update if financial performance is materially different from market expectations, to avoid a false market under MBL 13.09 and SFO Part XIVA.",
+      "subsection": "04.03",
+      "subtopic": "Profit Warning",
+      "section": "04",
+      "listing_rule_refs": ["mbl_13_09"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "disclosure_safe_harbours",
+      "type": "legal_issue",
+      "label": "Safe Harbours and Exceptions",
+      "summary": "SFO s.307B provides safe harbours including: information concerns an incomplete proposal or negotiation, trade secrets, or where disclosure would breach a court order or statutory duty.",
+      "subsection": "04.04",
+      "subtopic": "Safe Harbours",
+      "section": "04",
+      "statute_refs": ["sfo_307b"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "sfc_mmt_enforcement_disclosure",
+      "type": "legal_issue",
+      "label": "Enforcement for Disclosure Breaches",
+      "summary": "The SFC and Market Misconduct Tribunal may take enforcement action for failure to disclose inside information under Part XIVA. Penalties include fines and disqualification orders.",
+      "subsection": "04.05",
+      "subtopic": "Enforcement",
+      "section": "04",
+      "statute_refs": ["sfo_307a", "sfo_285"],
+      "case_seeds": ["mmt_tiger_asia"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mmt_tiger_asia",
+      "type": "case_seed",
+      "label": "Market Misconduct Tribunal — Tiger Asia",
+      "summary": "Seed enforcement reference for future official-source checking. Do not treat as verified authority.",
+      "section": "04",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "obligations_flow_start",
+      "type": "flow_step",
+      "label": "Identify Trigger Event",
+      "summary": "Step 1: Identify event requiring disclosure (inside information, profit warning, false market risk).",
+      "section": "04"
+    },
+    {
+      "id": "obligations_flow_step2",
+      "type": "flow_step",
+      "label": "Prepare and File Announcement",
+      "summary": "Step 2: Prepare announcement, verify accuracy, file with HKEX.",
+      "section": "04"
+    },
+    {
+      "id": "obligations_flow_step3",
+      "type": "flow_step",
+      "label": "Trading Halt or Continue",
+      "summary": "Step 3: If information is not ready or is incomplete, request trading halt; otherwise publish and continue trading.",
+      "section": "04"
+    }
+  ]
+}

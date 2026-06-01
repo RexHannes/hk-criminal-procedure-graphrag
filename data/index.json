@@ -19,12 +19,12 @@
       }
     },
     {
-      "domain_id": "hk_listing_law",
-      "title": "Hong Kong Listing Law",
-      "path": "hk_listing_law/domain.json",
+      "domain_id": "hk_listing_and_listed_company_regulation",
+      "title": "Hong Kong Listing & Listed Company Regulation",
+      "path": "hk_listing_and_listed_company_regulation/domain.json",
       "status": {
         "not_product_answer_layer": true,
-        "needs_hklii_verification": true,
+        "needs_hklii_verification": false,
         "needs_official_source_verification": true,
         "authority_status": "unverified_seed"
       }

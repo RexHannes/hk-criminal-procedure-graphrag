@@ -20,16 +20,30 @@ import sys
 
 DOMAIN_DIRS = [
     'criminal_procedure_hk',
-    'hk_listing_law',
+    'hk_listing_and_listed_company_regulation',
 ]
 
 REGULATORY_TYPES = {'listing_rule_anchor', 'sehk_decision_seed', 'guidance_letter_seed',
-                    'practice_note_anchor', 'textbook_seed', 'enforcement_seed'}
+                    'practice_note_anchor', 'textbook_seed', 'enforcement_seed',
+                    'sfc_material_seed'}
 
 NAV_TYPES = {'section_header', 'legal_issue', 'restricted_nsl', 'practice_direction',
-             'flow_step', 'gap', 'cross_reference'}
+             'flow_step', 'gap', 'gap_node', 'cross_reference'}
 
 SUPPORT_TYPES = {'statute', 'case_seed'} | REGULATORY_TYPES
+
+SUPPORT_RELATIONSHIPS = {
+    'statutory_anchor',
+    'case_seed',
+    'practice_direction_ref',
+    'cross_reference',
+    'listing_rule_anchor',
+    'guidance_letter_seed',
+    'sehk_decision_seed',
+    'practice_note_anchor',
+    'enforcement_seed',
+    'sfc_material_seed',
+}
 
 errors = []
 warnings = []
@@ -144,7 +158,7 @@ def validate_domain(domain_dir):
         to = e.get('to')
         if rel == 'has_subtopic':
             primary_children.setdefault(frm, []).append(to)
-        elif rel in ('statutory_anchor', 'case_seed', 'practice_direction_ref', 'cross_reference'):
+        elif rel in SUPPORT_RELATIONSHIPS:
             support_parents.setdefault(to, []).append(frm)
 
     for n in all_nodes:

@@ -1,0 +1,245 @@
+{
+  "section_id": "11",
+  "section_title": "Compliance, Waivers, Enforcement & Sanctions",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "nodes": [
+    {
+      "id": "compliance_enforcement",
+      "type": "section_header",
+      "label": "Compliance, Waivers, Enforcement & Sanctions",
+      "summary": "Compliance framework including breach self-reporting, waiver applications, HKEX disciplinary powers, SFC enforcement, cooling-off periods, director unsuitability, and sanctions.",
+      "section": "11"
+    },
+    {
+      "id": "breach_self_reporting",
+      "type": "legal_issue",
+      "label": "Breach Self-Reporting",
+      "summary": "Listed companies must self-report breaches of Listing Rules to the Exchange. Self-reporting is a mitigating factor in disciplinary proceedings.",
+      "subsection": "11.01",
+      "subtopic": "Breach Self-Reporting",
+      "section": "11",
+      "listing_rule_refs": ["mbl_2a_02"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "waiver_applications",
+      "type": "legal_issue",
+      "label": "Waiver Applications",
+      "summary": "The Exchange may grant waivers from strict Listing Rule compliance in appropriate circumstances. Waivers are published on the HKEX website.",
+      "subsection": "11.02",
+      "subtopic": "Waivers",
+      "section": "11",
+      "listing_rule_refs": ["mbl_2_04"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_2_04",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 2.04 — Waivers",
+      "summary": "The Exchange may waive or modify any Listing Rule in specific circumstances.",
+      "section": "11",
+      "rule_chapter": "2",
+      "rule_number": "2.04",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hkex_disciplinary_powers",
+      "type": "legal_issue",
+      "label": "HKEX Disciplinary Powers",
+      "summary": "HKEX has contractual disciplinary powers under the Listing Rules, including the Listing Committee and Listing Review Committee, to impose sanctions on issuers and directors for Rule breaches.",
+      "subsection": "11.03",
+      "subtopic": "HKEX Disciplinary",
+      "section": "11",
+      "listing_rule_refs": ["mbl_2a_02", "mbl_2a_09", "mbl_2a_10"],
+      "case_seeds": ["hkex_disciplinary_hontex", "hkex_disciplinary_hcig"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_2a_02",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 2A.02 — Exchange Disciplinary Powers",
+      "summary": "Seed anchor for the Exchange's disciplinary jurisdiction and powers under Chapter 2A. Official source verification required.",
+      "section": "11",
+      "rule_chapter": "2A",
+      "rule_number": "2A.02",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_2a_09",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 2A.09 — Sanctions",
+      "summary": "Sanctions available include public censure, fines (up to HK$30 million), suspension, cancellation of listing, and director unsuitability statements.",
+      "section": "11",
+      "rule_chapter": "2A",
+      "rule_number": "2A.09",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_2a_10",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 2A.10 — Disciplinary Sanctions",
+      "summary": "Seed anchor for sanctions and remedial directions under the Listing Rules. Official source verification required.",
+      "section": "11",
+      "rule_chapter": "2A",
+      "rule_number": "2A.10",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hkex_disciplinary_hontex",
+      "type": "case_seed",
+      "label": "HKEX Disciplinary Action — Hontex",
+      "summary": "Seed disciplinary reference for future official-source checking. Do not treat as verified authority.",
+      "section": "11",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hkex_disciplinary_hcig",
+      "type": "case_seed",
+      "label": "HKEX Disciplinary Action — HCIG",
+      "summary": "Seed disciplinary reference for future official-source checking. Do not treat as verified authority.",
+      "section": "11",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfc_enforcement",
+      "type": "legal_issue",
+      "label": "SFC Enforcement",
+      "summary": "The SFC has broad investigatory and enforcement powers under the SFO, including the power to investigate, discipline licensed persons, suspend trading, and prosecute market misconduct.",
+      "subsection": "11.04",
+      "subtopic": "SFC Enforcement",
+      "section": "11",
+      "statute_refs": ["sfo_179", "sfo_182", "sfo_194", "sfo_195"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "sfo_179",
+      "type": "statute",
+      "label": "SFO s.179 — SFC Investigatory Powers",
+      "summary": "The SFC may require production of documents, attend for examination, and enter premises to investigate suspected breaches.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_182",
+      "type": "statute",
+      "label": "SFO s.182 — SFC Investigation Powers",
+      "summary": "Seed statutory anchor for SFC investigation powers. Official source verification required.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_194",
+      "type": "statute",
+      "label": "SFO s.194 — Disciplinary Powers",
+      "summary": "Seed statutory anchor for SFC disciplinary powers over regulated persons. Official source verification required.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_195",
+      "type": "statute",
+      "label": "SFO s.195 — Disciplinary Powers",
+      "summary": "Seed statutory anchor for SFC disciplinary powers over registered institutions. Official source verification required.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cooling_off_period",
+      "type": "legal_issue",
+      "label": "Cooling-Off / Director Unsuitability",
+      "summary": "Directors found unsuitable by the Exchange may be subject to cooling-off periods before they can serve as directors of listed companies.",
+      "subsection": "11.05",
+      "subtopic": "Cooling-Off",
+      "section": "11",
+      "listing_rule_refs": ["mbl_2a_09"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "sanctions_remedial",
+      "type": "legal_issue",
+      "label": "Sanctions and Remedial Steps",
+      "summary": "Sanctions include public censure, fines, suspension, cancellation of listing, and director disqualification. Remedial steps may be required to address breaches.",
+      "subsection": "11.06",
+      "subtopic": "Sanctions",
+      "section": "11",
+      "listing_rule_refs": ["mbl_2a_09"],
+      "statute_refs": ["sfo_285"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "sfo_285",
+      "type": "statute",
+      "label": "SFO s.285 — MMT Sanctions",
+      "summary": "Sanctions include disqualification (up to 5 years), disgorgement of profits, fines (up to 3x profit), and cold shoulder orders.",
+      "section": "11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "enforcement_flow_start",
+      "type": "flow_step",
+      "label": "Detect Potential Breach",
+      "summary": "Step 1: Identify a possible Listing Rule, disclosure, or regulatory breach.",
+      "section": "11"
+    },
+    {
+      "id": "enforcement_flow_step2",
+      "type": "flow_step",
+      "label": "Investigation and Information Request",
+      "summary": "Step 2: Exchange or SFC requests information and investigates the alleged breach.",
+      "section": "11"
+    },
+    {
+      "id": "enforcement_flow_step3",
+      "type": "flow_step",
+      "label": "Disciplinary Referral",
+      "summary": "Step 3: Refer matter to the relevant disciplinary or enforcement body where appropriate.",
+      "section": "11"
+    },
+    {
+      "id": "enforcement_flow_step4",
+      "type": "flow_step",
+      "label": "Sanction and Remediation",
+      "summary": "Step 4: Impose sanctions, remedial directions, or follow-up compliance steps.",
+      "section": "11"
+    },
+    {
+      "id": "breach_flow_start",
+      "type": "flow_step",
+      "label": "Identify Breach",
+      "summary": "Step 1: Identify and triage a possible breach or non-compliance event.",
+      "section": "11"
+    },
+    {
+      "id": "breach_flow_step2",
+      "type": "flow_step",
+      "label": "Self-Report or Seek Waiver",
+      "summary": "Step 2: Decide whether to self-report, seek a waiver, or make remedial disclosure.",
+      "section": "11"
+    },
+    {
+      "id": "breach_flow_step3",
+      "type": "flow_step",
+      "label": "Remedial Follow-Up",
+      "summary": "Step 3: Implement remedial steps and maintain an audit trail for review.",
+      "section": "11"
+    }
+  ]
+}

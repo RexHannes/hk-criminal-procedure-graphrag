@@ -1,0 +1,169 @@
+{
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "flows": [
+    {
+      "flow_id": "listing_eligibility_flow",
+      "title": "Listing Eligibility Assessment Flow",
+      "description": "Stage-by-stage flow from identifying eligibility requirements through suitability assessment and document preparation.",
+      "steps": [
+        "listing_requirements_flow_start",
+        "listing_requirements_flow_step2"
+      ]
+    },
+    {
+      "flow_id": "ipo_process_flow",
+      "title": "IPO Process Flow",
+      "description": "Full IPO lifecycle from sponsor appointment through to listing and commencement of trading.",
+      "steps": [
+        "ipo_flow_start",
+        "ipo_flow_step2",
+        "ipo_flow_step3",
+        "ipo_flow_step4",
+        "ipo_flow_step5"
+      ]
+    },
+    {
+      "flow_id": "prospectus_flow",
+      "title": "Prospectus Registration and Vetting Flow",
+      "description": "Flow from draft prospectus preparation through registration, SFC dual filing, and objection period.",
+      "steps": [
+        "prospectus_flow_start",
+        "prospectus_flow_step2",
+        "prospectus_flow_step3"
+      ]
+    },
+    {
+      "flow_id": "continuing_obligations_flow",
+      "title": "Continuing Disclosure Flow",
+      "description": "Flow for identifying trigger events and fulfilling disclosure obligations under the Listing Rules and SFO.",
+      "steps": [
+        "obligations_flow_start",
+        "obligations_flow_step2",
+        "obligations_flow_step3"
+      ]
+    },
+    {
+      "flow_id": "notifiable_transaction_flow",
+      "title": "Notifiable Transaction Classification and Approval Flow",
+      "description": "Flow from calculating percentage ratios through classification, announcement, and shareholder approval.",
+      "steps": [
+        "notifiable_flow_start",
+        "notifiable_flow_step2",
+        "notifiable_flow_step3",
+        "notifiable_flow_step4"
+      ]
+    },
+    {
+      "flow_id": "connected_transaction_flow",
+      "title": "Connected Transaction Compliance Flow",
+      "description": "Flow for identifying connected persons, applying de minimis exemptions, and obtaining approvals.",
+      "steps": [
+        "connected_flow_start",
+        "connected_flow_step2",
+        "connected_flow_step3",
+        "connected_flow_step4"
+      ]
+    },
+    {
+      "flow_id": "financial_reporting_cycle_flow",
+      "title": "Financial Reporting Cycle Flow",
+      "description": "Annual reporting cycle from preliminary announcement through audit, annual report dispatch, and AGM.",
+      "steps": [
+        "reporting_flow_start",
+        "reporting_flow_step2",
+        "reporting_flow_step3",
+        "reporting_flow_step4"
+      ]
+    },
+    {
+      "flow_id": "enforcement_flow",
+      "title": "Enforcement and Disciplinary Flow",
+      "description": "Flow from detection and investigation through disciplinary referral and sanction imposition.",
+      "steps": [
+        "enforcement_flow_start",
+        "enforcement_flow_step2",
+        "enforcement_flow_step3",
+        "enforcement_flow_step4"
+      ]
+    },
+    {
+      "flow_id": "breach_reporting_flow",
+      "title": "Breach Self-Reporting and Waiver Flow",
+      "description": "Flow from breach detection through self-reporting, waiver application, and remedial steps.",
+      "steps": [
+        "breach_flow_start",
+        "breach_flow_step2",
+        "breach_flow_step3"
+      ]
+    },
+    {
+      "flow_id": "hk_listing_ipo_flow",
+      "title": "HK Listing IPO Complete Flow",
+      "description": "Full IPO lifecycle from pre-IPO restructuring through financial testing, sponsor appointment, A1 filing, HKEX vetting, prospectus registration, offering structure, pricing, and listing commencement.",
+      "domain_id": "hk_listing_and_listed_company_regulation",
+      "steps": [
+        "pre_ipo_restructuring",
+        "pre_ipo_restructuring",
+        "financial_test_selection",
+        "track_record_check",
+        "sponsor_appointment",
+        "filing_Form_A1",
+        "sehk_vetting",
+        "prospectus_registration",
+        "offering_structure_public_offer_placement",
+        "pricing_and_allocation",
+        "listing_and_commencement_of_trading"
+      ],
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "flow_id": "hk_listing_prospectus_liability_flow",
+      "title": "HK Listing Prospectus Liability Flow",
+      "description": "Flow for prospectus compliance from document identification through exemption checking, content standards, registration, liability consideration, and due diligence defence.",
+      "domain_id": "hk_listing_and_listed_company_regulation",
+      "steps": [
+        "identify_document_as_prospectus",
+        "check_exemptions",
+        "ensure_content_standard",
+        "prospectus_flow_step2",
+        "consider_civil_and_criminal_liability",
+        "SFO_market_misconduct_offences",
+        "due_diligence_defence"
+      ],
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "flow_id": "hk_listing_notifiable_transactions_flow",
+      "title": "HK Listing Notifiable Transactions Flow",
+      "description": "Flow for notifiable transactions from transaction type determination through size test calculation, classification, aggregation checks, disclosure and approval rules, and shareholder meeting.",
+      "domain_id": "hk_listing_and_listed_company_regulation",
+      "steps": [
+        "determine_transaction_type",
+        "calculate_size_tests",
+        "classify_transaction",
+        "check_aggregation_requirements",
+        "apply_disclosure_and_approval_rules",
+        "prepare_announcement_or_circular",
+        "convene_shareholder_meeting_if_required"
+      ],
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "flow_id": "hk_listing_connected_transactions_flow",
+      "title": "HK Listing Connected Transactions Flow",
+      "description": "Flow for connected transactions from counterparty identification through value determination, exemption checking, IFA appointment, announcement, circular, and independent shareholder vote.",
+      "domain_id": "hk_listing_and_listed_company_regulation",
+      "steps": [
+        "identify_counterparty_as_connected_person",
+        "determine_transaction_value_and_size_tests",
+        "check_fully_exempt",
+        "check_partially_exempt",
+        "if_non_exempt_appoint_IFA",
+        "issue_announcement",
+        "despatch_circular",
+        "convene_independent_shareholder_vote"
+      ],
+      "verification_status": "needs_official_source_verification"
+    }
+  ]
+}

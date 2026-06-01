@@ -1,7 +1,7 @@
 {
   "section_id": "05",
   "section_title": "Notifiable Transactions",
-  "domain_id": "hk_listing_law",
+  "domain_id": "hk_listing_and_listed_company_regulation",
   "nodes": [
     {
       "id": "notifiable_transactions",
@@ -31,6 +31,7 @@
       "section": "05",
       "rule_chapter": "14",
       "rule_number": "14.06",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -41,6 +42,7 @@
       "section": "05",
       "rule_chapter": "14",
       "rule_number": "14.07",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -51,6 +53,7 @@
       "section": "05",
       "rule_chapter": "14",
       "rule_number": "14.08",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -61,6 +64,7 @@
       "section": "05",
       "rule_chapter": "14",
       "rule_number": "14.22",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -84,6 +88,7 @@
       "section": "05",
       "rule_chapter": "14",
       "rule_number": "14.04(9)",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -107,6 +112,7 @@
       "section": "05",
       "rule_chapter": "14",
       "rule_number": "14.40",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -117,6 +123,7 @@
       "section": "05",
       "rule_chapter": "14",
       "rule_number": "14.42",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -145,6 +152,55 @@
       "type": "flow_step",
       "label": "Circular and Shareholder Meeting (if applicable)",
       "summary": "Step 4: For major/very substantial transactions, dispatch circular, convene general meeting, and obtain approval.",
+      "section": "05"
+    },
+    {
+      "id": "determine_transaction_type",
+      "type": "flow_step",
+      "label": "Determine Transaction Type",
+      "summary": "Step 1: Identify the nature of the transaction (acquisition, disposal, very substantial disposal, very substantial acquisition).",
+      "section": "05"
+    },
+    {
+      "id": "calculate_size_tests",
+      "type": "flow_step",
+      "label": "Calculate Size Tests",
+      "summary": "Step 2: Calculate all five percentage ratios (assets, profits, revenue, consideration, equity capital).",
+      "section": "05"
+    },
+    {
+      "id": "classify_transaction",
+      "type": "flow_step",
+      "label": "Classify Transaction",
+      "summary": "Step 3: Classify based on highest percentage ratio: share transaction (<5%), discloseable (5-25%), major (25-100%), or very substantial (>=100%).",
+      "section": "05"
+    },
+    {
+      "id": "check_aggregation_requirements",
+      "type": "flow_step",
+      "label": "Check Aggregation Requirements",
+      "summary": "Step 4: Check whether transactions within 12 months with same counterparty must be aggregated (LR 14.22-14.23).",
+      "section": "05"
+    },
+    {
+      "id": "apply_disclosure_and_approval_rules",
+      "type": "flow_step",
+      "label": "Apply Disclosure and Approval Rules",
+      "summary": "Step 5: Apply appropriate disclosure and approval requirements based on classification.",
+      "section": "05"
+    },
+    {
+      "id": "prepare_announcement_or_circular",
+      "type": "flow_step",
+      "label": "Prepare Announcement or Circular",
+      "summary": "Step 6: Draft and publish announcement; for major/very substantial transactions, prepare circular.",
+      "section": "05"
+    },
+    {
+      "id": "convene_shareholder_meeting_if_required",
+      "type": "flow_step",
+      "label": "Convene Shareholder Meeting (if required)",
+      "summary": "Step 7: For major/very substantial transactions, convene general meeting and obtain shareholder approval.",
       "section": "05"
     }
   ]

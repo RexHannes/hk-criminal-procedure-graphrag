@@ -1,13 +1,13 @@
 {
   "section_id": "01",
-  "section_title": "Requirements for Listing",
-  "domain_id": "hk_listing_law",
+  "section_title": "Listing Eligibility & Suitability",
+  "domain_id": "hk_listing_and_listed_company_regulation",
   "nodes": [
     {
       "id": "listing_requirements",
       "type": "section_header",
-      "label": "Requirements for Listing",
-      "summary": "Qualitative and quantitative eligibility requirements for Main Board and GEM listing under the HK Listing Rules.",
+      "label": "Listing Eligibility & Suitability",
+      "summary": "Qualitative and quantitative eligibility requirements for Main Board and GEM listing under the HK Listing Rules, including financial tests, suitability, public float, and VIE structure concerns.",
       "section": "01"
     },
     {
@@ -32,6 +32,7 @@
       "section": "01",
       "rule_chapter": "8",
       "rule_number": "8.04",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -42,6 +43,7 @@
       "section": "01",
       "rule_chapter": "8",
       "rule_number": "8.05",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -52,6 +54,7 @@
       "section": "01",
       "rule_chapter": "8",
       "rule_number": "8.06",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -62,13 +65,14 @@
       "section": "01",
       "rule_chapter": "8",
       "rule_number": "8.07",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
       "id": "mbl_profit_test",
       "type": "legal_issue",
       "label": "Profit Test (MBL 8.05(1))",
-      "summary": "Profit attributable to shareholders of at least HK$50 million in the most recent 3 financial years (HK$20m in most recent year, HK$20m in two preceding years).",
+      "summary": "Profit attributable to shareholders of at least HK$50 million in the most recent 3 financial years (HK$20m in most recent year, HK$20m in two preceding years). All thresholds require official source verification.",
       "subsection": "01.01",
       "subtopic": "Financial Tests",
       "section": "01",
@@ -85,6 +89,7 @@
       "section": "01",
       "rule_chapter": "8",
       "rule_number": "8.05A",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -107,8 +112,8 @@
       "label": "HKEX Guidance Letter GL68-13A — Suitability for Listing",
       "summary": "Guidance on factors the Exchange considers when assessing suitability, including regulatory non-compliance, business model viability, and director integrity.",
       "section": "01",
-      "effective_date": "2013-05-01",
-      "source_url": "https://www.hkex.com.hk/Listing/Rules-and-Guidance/Listing-Guidance",
+      "effective_date": null,
+      "source_url": null,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -121,11 +126,79 @@
       "verification_status": "needs_official_source_verification"
     },
     {
+      "id": "public_float_spread",
+      "type": "legal_issue",
+      "label": "Public Float and Spread Requirements",
+      "summary": "At least 25% of the issuer's total issued shares must be held by the public at listing (MBL 8.08(1)). For issuers with market cap over HK$10 billion, a lower percentage may be accepted.",
+      "subsection": "01.03",
+      "subtopic": "Public Float",
+      "section": "01",
+      "listing_rule_refs": ["mbl_8_08", "mbl_8_09"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_8_08",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 8.08 — Public Float",
+      "summary": "At least 25% of the issuer's total issued shares must be held by the public at all times (waiver possible for large caps).",
+      "section": "01",
+      "rule_chapter": "8",
+      "rule_number": "8.08",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_8_09",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 8.09 — Distribution of Shares",
+      "summary": "At least 300 shareholders for Main Board listing; at least 100 for GEM.",
+      "section": "01",
+      "rule_chapter": "8",
+      "rule_number": "8.09",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "vie_structure_seed",
+      "type": "legal_issue",
+      "label": "VIE / Contractual Arrangement Structures",
+      "summary": "HKEX guidance on VIE structures for listing applicants in restricted sectors. VIE structures must be narrowly tailored, and no equity interest may be held by the listed entity in the operating entity. Decision seeds require official source verification.",
+      "subsection": "01.04",
+      "subtopic": "VIE Structures",
+      "section": "01",
+      "guidance_refs": ["gl94_18", "gl77_14"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "gl94_18",
+      "type": "guidance_letter_seed",
+      "label": "HKEX Guidance Letter GL94-18 — VIE Structures",
+      "summary": "Guidance on acceptable use of VIE structures for listing in restricted sectors. VIE must be the only structure available; no equity cap in operating entity.",
+      "section": "01",
+      "effective_date": null,
+      "source_url": null,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "gl77_14",
+      "type": "guidance_letter_seed",
+      "label": "HKEX Guidance Letter GL77-14 — VIE Disclosure",
+      "summary": "Guidance on disclosure requirements for VIE structures in listing documents.",
+      "section": "01",
+      "effective_date": null,
+      "source_url": null,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
       "id": "gem_eligibility",
       "type": "legal_issue",
       "label": "GEM Eligibility Requirements",
       "summary": "GEM listing requirements are less onerous: a cash flow test of at least HK$30 million for the 2 preceding financial years, with management and ownership continuity of 2 financial years.",
-      "subsection": "01.03",
+      "subsection": "01.05",
       "subtopic": "GEM Eligibility",
       "section": "01",
       "listing_rule_refs": ["gem_11_06", "gem_11_10", "gem_11_12"],
@@ -141,6 +214,7 @@
       "section": "01",
       "rule_chapter": "11",
       "rule_number": "11.06",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -151,6 +225,7 @@
       "section": "01",
       "rule_chapter": "11",
       "rule_number": "11.10",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -161,6 +236,7 @@
       "section": "01",
       "rule_chapter": "11",
       "rule_number": "11.12",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -172,11 +248,47 @@
       "verification_status": "needs_official_source_verification"
     },
     {
+      "id": "track_record_continuity",
+      "type": "legal_issue",
+      "label": "Track Record and Continuity",
+      "summary": "A three-year trading record period (TRP) is required to assess management stability and likely future performance. Substantially the same management must exist throughout the TRP, and continuous control of voting rights by a controlling shareholder is required for at least the most recent audited financial year.",
+      "subsection": "01.02",
+      "subtopic": "Track Record",
+      "section": "01",
+      "listing_rule_refs": ["mbl_8_05", "mbl_8_06", "mbl_8_07"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "market_cap_public_float_details",
+      "type": "legal_issue",
+      "label": "Market Capitalisation, Public Float and Spread (Detailed)",
+      "summary": "Generally at least 25% of total issued shares must be held by the public (LR 8.08(1)). May be reduced to 15% if expected market cap > HK$10 billion (LR 8.08(2)). At least 300 public shareholders required (LR 8.08(3)). Not more than 50% of the public float may be held by the three largest public shareholders (LR 8.08(4)). Shares held by directors, controlling shareholders, and core connected persons excluded from 'public' definition.",
+      "subsection": "01.03",
+      "subtopic": "Public Float Details",
+      "section": "01",
+      "listing_rule_refs": ["mbl_8_08"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "ld43_3",
+      "type": "sehk_decision_seed",
+      "label": "SEHK Listing Decision LD43-3 — Structure Contracts (VIEs)",
+      "summary": "Core SEHK decision outlining VIE requirements. VIE structures are only permitted where foreign ownership is restricted by PRC law and the VIE arrangement is narrowly tailored to minimise risk. Extensive disclosure required in prospectus.",
+      "section": "01",
+      "authority_status": "unverified_sehk_decision",
+      "verification_status": "needs_official_source_verification"
+    },
+
+    {
       "id": "listing_document_requirements",
       "type": "legal_issue",
       "label": "Listing Document Requirements",
       "summary": "The listing document (prospectus) must contain all information necessary for investors to make an informed assessment of the applicant's business and prospects.",
-      "subsection": "01.04",
+      "subsection": "01.06",
       "subtopic": "Listing Document Requirements",
       "section": "01",
       "listing_rule_refs": ["mbl_11_07", "mbl_11_11"],
@@ -193,6 +305,7 @@
       "section": "01",
       "rule_chapter": "11",
       "rule_number": "11.07",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
@@ -203,13 +316,14 @@
       "section": "01",
       "rule_chapter": "11",
       "rule_number": "11.11",
+      "official_source_required": true,
       "verification_status": "needs_official_source_verification"
     },
     {
       "id": "cwo_38d",
       "type": "statute",
       "label": "Companies (WUMP) Ordinance s.38D — Prospectus Liability",
-      "summary": "Civil liability for misstatements in prospectuses; persons responsible include the issuer, directors, promoters, and experts.",
+      "summary": "Civil liability for misstatements in prospectuses; persons responsible include the issuer, directors, promoters, and experts. Official source label requires verification.",
       "section": "01",
       "verification_status": "needs_official_source_verification"
     },

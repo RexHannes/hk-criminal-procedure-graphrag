@@ -1,0 +1,383 @@
+{
+  "section_id": "03",
+  "section_title": "Prospectus Regime & Liability",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "nodes": [
+    {
+      "id": "prospectus_regime",
+      "type": "section_header",
+      "label": "Prospectus Regime & Liability",
+      "summary": "The statutory and regulatory framework governing the content, registration, and liability of prospectuses for public offerings in Hong Kong, including civil and criminal liability, safe harbours, and professional adviser liability.",
+      "section": "03"
+    },
+    {
+      "id": "prospectus_definition",
+      "type": "legal_issue",
+      "label": "Prospectus Definition and Requirement",
+      "summary": "Any document offering shares or debentures to the public must comply with the Companies Ordinance (Cap 622) prospectus registration and content requirements. Broadly includes any notice, circular, brochure, or advertisement offering securities to the public (CO s.2). Must contain 'sufficient particulars and information' to enable an investor to form a valid and justifiable opinion of the issuer's financial position and prospects (CO Sch.3). Must be registered with the Registrar of Companies before issue (CO s.38D).",
+      "subsection": "03.01",
+      "subtopic": "Prospectus Definition",
+      "section": "03",
+      "statute_refs": ["co_s2", "co_s38d", "co_sch3"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "co_s2",
+      "type": "statute",
+      "label": "Companies Ordinance s.2 — Definition of Prospectus",
+      "summary": "Broadly includes any notice, circular, brochure, or advertisement offering securities to the public.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s38d",
+      "type": "statute",
+      "label": "Companies Ordinance s.38D — Registration of Prospectus",
+      "summary": "Prospectus must be registered with the Registrar of Companies before issue.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_sch3",
+      "type": "statute",
+      "label": "Companies Ordinance Schedule 3 — Prospectus Content",
+      "summary": "Sets out the detailed content requirements for prospectuses, including auditors' reports, directors' biographies, and material contracts.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "prospectus_requirements",
+      "type": "legal_issue",
+      "label": "Prospectus Content Requirements",
+      "summary": "A prospectus must comply with the Companies (WUMP) Ordinance and the Listing Rules, containing all information necessary for investors to make an informed assessment.",
+      "subsection": "03.02",
+      "subtopic": "Content Requirements",
+      "section": "03",
+      "statute_refs": ["cwo_38d", "cwo_38b"],
+      "listing_rule_refs": ["mbl_11_07"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "cwo_38b",
+      "type": "statute",
+      "label": "Companies (WUMP) Ordinance s.38B — Prospectus Contents",
+      "summary": "A prospectus must contain the matters specified in Schedule 3 to the Ordinance, including financial statements, directors' interests, and expert reports. Official source label requires verification.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "prospectus_safe_harbours",
+      "type": "legal_issue",
+      "label": "Safe Harbours (Private Placements)",
+      "summary": "Certain offers are exempt from the prospectus requirement: Professional Investors (CO 17th Sch., Part 1); Offers to <=50 Persons (CO 17th Sch., Part 2); Small-scale Offers with total consideration <= HK$5 million (CO 17th Sch., Part 3); Employee share schemes, qualified institutional placements, etc.",
+      "subsection": "03.03",
+      "subtopic": "Safe Harbours",
+      "section": "03",
+      "statute_refs": ["co_17sch"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "co_17sch",
+      "type": "statute",
+      "label": "Companies Ordinance 17th Schedule — Safe Harbour Exemptions",
+      "summary": "Exemptions from the prospectus requirement for professional investors, small offers, and other specified categories.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "prospectus_exemptions",
+      "type": "legal_issue",
+      "label": "Prospectus Exemptions",
+      "summary": "Certain offers are exempt from the prospectus requirement, including offers to professional investors, offers to not more than 50 persons, and minimum consideration offers of at least HK$5 million.",
+      "subsection": "03.04",
+      "subtopic": "Exemptions",
+      "section": "03",
+      "statute_refs": ["cwo_38a", "cwo_38b_sch3"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "cwo_38a",
+      "type": "statute",
+      "label": "Companies (WUMP) Ordinance s.38A — Exemptions",
+      "summary": "Exemptions from the prospectus requirement for offers to professional investors, small offers, and minimum consideration offers.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cwo_38b_sch3",
+      "type": "statute",
+      "label": "Companies (WUMP) Ordinance Schedule 3 — Matters to Be Specified",
+      "summary": "Schedule 3 sets out the detailed content requirements for prospectuses, including auditors' reports, directors' biographies, and material contracts.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "prospectus_liability_market_misconduct",
+      "type": "legal_issue",
+      "label": "Prospectus Liability & Market Misconduct",
+      "summary": "Severe civil and criminal liability attaches to false, misleading, or deceptive statements in a prospectus or offer-related communications. The SFO separately creates market misconduct offences. Criminal Liability (CO s.40A / s.342F): Any person who authorises the issue of a prospectus containing an untrue statement commits an offence, liable to fine and imprisonment. Civil Liability (CO s.40 / s.342E): Persons responsible for a prospectus are liable to pay compensation to subscribers for loss from untrue statements. Defences: due diligence, reasonable belief in truth, withdrawal of consent (CO s.40(2)). SFO Offences: s.107 - Fraudulent or reckless misrepresentation inducing investment; s.298 - Disclosing false or misleading information likely to induce transactions; s.384 - Providing false or misleading information to the SFC or SEHK.",
+      "subsection": "03.05",
+      "subtopic": "Liability & Market Misconduct",
+      "section": "03",
+      "statute_refs": ["co_s40", "co_s40a", "co_s342e", "co_s342f", "sfo_s107", "sfo_298", "sfo_s384"],
+      "case_seeds": ["case_shanghai_land", "case_hontex_sfc", "case_uba_investments"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "co_s40",
+      "type": "statute",
+      "label": "Companies Ordinance s.40 — Civil Liability for Untrue Statements",
+      "summary": "Persons responsible for a prospectus are liable to pay compensation to subscribers for loss from untrue statements.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s40a",
+      "type": "statute",
+      "label": "Companies Ordinance s.40A — Criminal Liability for Untrue Statements",
+      "summary": "Any person who authorises the issue of a prospectus containing an untrue statement commits an offence, liable to fine and imprisonment.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s342e",
+      "type": "statute",
+      "label": "Companies Ordinance s.342E — Civil Liability (New Regime)",
+      "summary": "Persons responsible for a prospectus are liable to pay compensation to subscribers for loss from untrue statements under the new Companies Ordinance.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s342f",
+      "type": "statute",
+      "label": "Companies Ordinance s.342F — Criminal Liability (New Regime)",
+      "summary": "Any person who authorises the issue of a prospectus containing an untrue statement commits an offence under the new Companies Ordinance.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_s107",
+      "type": "statute",
+      "label": "SFO s.107 — Fraudulent or Reckless Misrepresentation",
+      "summary": "Fraudulent or reckless misrepresentation inducing investment is a criminal offence.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_s384",
+      "type": "statute",
+      "label": "SFO s.384 — False Information to Regulators",
+      "summary": "Providing false or misleading information to the SFC or SEHK is a criminal offence.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "case_shanghai_land",
+      "type": "case_seed",
+      "label": "R v BMA & Others (Shanghai Land) — Prospectus Fraud",
+      "summary": "Conviction of lawyers and bankers for conspiracy to defraud over false statements in offer documents and annual reports, establishing professional adviser liability.",
+      "section": "03",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "case_hontex_sfc",
+      "type": "case_seed",
+      "label": "SFC v Hontex International Holdings [2012] 4 HKLRD 1",
+      "summary": "SFC obtained injunction freezing IPO proceeds under s.214 SFO; first use of such power for prospectus fraud.",
+      "section": "03",
+      "neutral_citation": "[2012] 4 HKLRD 1",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "case_uba_investments",
+      "type": "case_seed",
+      "label": "SFC v UBA Investments Ltd (2008) — Director Liability",
+      "summary": "Director liable for false prospectus statements (CO s.40A).",
+      "section": "03",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "prospectus_liability",
+      "type": "legal_issue",
+      "label": "Prospectus Civil Liability",
+      "summary": "Civil liability under s.38D(3) of the Companies (WUMP) Ordinance for misstatements or omissions in a prospectus. Liability extends to the issuer, directors, promoters, and experts.",
+      "subsection": "03.06",
+      "subtopic": "Civil Liability",
+      "section": "03",
+      "statute_refs": ["cwo_38d"],
+      "case_seeds": ["re_bank_of_china_prospectus", "re_hontex_prospectus"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "re_bank_of_china_prospectus",
+      "type": "case_seed",
+      "label": "Re Bank of China (Hong Kong) Ltd [2009] HKCFI 123",
+      "summary": "Court considered prospectus liability for failure to disclose contingent liabilities; held that the test is whether a reasonable investor would have attached importance to the omission.",
+      "section": "03",
+      "neutral_citation": null,
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "re_hontex_prospectus",
+      "type": "case_seed",
+      "label": "Re Hontex Listing [2012] HKCFI 134",
+      "summary": "HKEX successfully sought suspension and cancellation of Hontex's listing for materially false or misleading prospectus statements.",
+      "section": "03",
+      "neutral_citation": null,
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "prospectus_adviser_liability",
+      "type": "legal_issue",
+      "label": "Professional Adviser Liability",
+      "summary": "Professional advisers (sponsors, lawyers, accountants) may face civil or regulatory liability for prospectus misstatements. SFO and SFC enforcement actions against sponsors for deficient due diligence.",
+      "subsection": "03.04",
+      "subtopic": "Adviser Liability",
+      "section": "03",
+      "statute_refs": ["cwo_38d", "sfo_298"],
+      "case_seeds": ["sfc_sponsor_enforcement_1"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "sfc_sponsor_enforcement_1",
+      "type": "enforcement_seed",
+      "label": "SFC v Sponsor Firm (2019) — Due Diligence Failures",
+      "summary": "SFC disciplined a sponsor for deficient due diligence on a listing applicant; fined and suspended. Specific case reference requires official verification.",
+      "section": "03",
+      "authority_status": "unverified_seed",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "prospectus_criminal_liability",
+      "type": "legal_issue",
+      "label": "Prospectus Criminal Liability",
+      "summary": "Criminal liability for false or misleading statements in a prospectus under the Companies (WUMP) Ordinance and SFO provisions on market misconduct.",
+      "subsection": "03.05",
+      "subtopic": "Criminal Liability",
+      "section": "03",
+      "statute_refs": ["cwo_40", "sfo_298"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "cwo_40",
+      "type": "statute",
+      "label": "Companies (WUMP) Ordinance s.40 — Criminal Liability",
+      "summary": "Criminal liability for untrue statements in prospectuses; persons responsible may face fines and imprisonment.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_298",
+      "type": "statute",
+      "label": "SFO s.298 — False or Misleading Statements",
+      "summary": "Criminal offence for making false or misleading statements in connection with a prospectus or listing document.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "prospectus_registration_vetting",
+      "type": "legal_issue",
+      "label": "Prospectus Registration and SFC Vetting",
+      "summary": "A prospectus must be registered with the Registrar of Companies. The SFC vets the prospectus under the dual filing regime and may suspend or object.",
+      "subsection": "03.06",
+      "subtopic": "Registration",
+      "section": "03",
+      "statute_refs": ["cwo_38d", "sfo_105"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "gap_verify_prospectus_statutory_source_labels",
+      "type": "gap_node",
+      "label": "Verify prospectus statutory source labels",
+      "summary": "Confirm exact ordinance name, Cap number, section numbers, current wording, and effective dates for prospectus definition, registration, safe harbours, and liability provisions.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "prospectus_flow_start",
+      "type": "flow_step",
+      "label": "Draft Prospectus Preparation",
+      "summary": "Step 1: Prepare draft prospectus with sponsor, legal counsel, and auditors.",
+      "section": "03"
+    },
+    {
+      "id": "prospectus_flow_step2",
+      "type": "flow_step",
+      "label": "Registration and Dual Filing",
+      "summary": "Step 2: Register prospectus with Companies Registry and file with SFC.",
+      "section": "03"
+    },
+    {
+      "id": "prospectus_flow_step3",
+      "type": "flow_step",
+      "label": "SFC Objection Period",
+      "summary": "Step 3: 14-day SFC objection period; if no objection, prospectus becomes effective.",
+      "section": "03"
+    },
+    {
+      "id": "identify_document_as_prospectus",
+      "type": "flow_step",
+      "label": "Identify Document as Prospectus",
+      "summary": "Step 1: Determine whether the document constitutes a prospectus under CO s.2.",
+      "section": "03"
+    },
+    {
+      "id": "check_exemptions",
+      "type": "flow_step",
+      "label": "Check Exemptions",
+      "summary": "Step 2: Verify whether any safe harbour exemptions apply (CO 17th Schedule).",
+      "section": "03"
+    },
+    {
+      "id": "ensure_content_standard",
+      "type": "flow_step",
+      "label": "Ensure Content Standard",
+      "summary": "Step 3: Ensure prospectus contains sufficient particulars and information (CO Sch.3).",
+      "section": "03"
+    },
+    {
+      "id": "consider_civil_and_criminal_liability",
+      "type": "flow_step",
+      "label": "Consider Civil and Criminal Liability",
+      "summary": "Step 4: Assess potential liability under CO s.40/s.40A and SFO provisions.",
+      "section": "03"
+    },
+    {
+      "id": "SFO_market_misconduct_offences",
+      "type": "flow_step",
+      "label": "SFO Market Misconduct Offences",
+      "summary": "Step 5: Consider SFO s.107, s.298, s.384 market misconduct provisions.",
+      "section": "03"
+    },
+    {
+      "id": "due_diligence_defence",
+      "type": "flow_step",
+      "label": "Due Diligence Defence",
+      "summary": "Step 6: Establish due diligence defence under CO s.40(2).",
+      "section": "03"
+    }
+  ]
+}

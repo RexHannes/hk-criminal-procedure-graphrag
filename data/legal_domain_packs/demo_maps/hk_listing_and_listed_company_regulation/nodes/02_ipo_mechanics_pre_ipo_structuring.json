@@ -1,0 +1,410 @@
+{
+  "section_id": "02",
+  "section_title": "IPO Mechanics & Pre-IPO Structuring",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "nodes": [
+    {
+      "id": "ipo_mechanics",
+      "type": "section_header",
+      "label": "IPO Mechanics & Pre-IPO Structuring",
+      "summary": "The procedural stages of a Hong Kong IPO from sponsor engagement through to listing, including pre-IPO investments, HKEX vetting, SFC dual filing, placing mechanics, reverse takeovers, and PN18 clawback.",
+      "section": "02"
+    },
+    {
+      "id": "sponsor_engagement",
+      "type": "legal_issue",
+      "label": "Sponsor Engagement and Due Diligence",
+      "summary": "Every IPO applicant must appoint at least one sponsor (independent), which must conduct reasonable due diligence and submit a sponsor declaration.",
+      "subsection": "02.01",
+      "subtopic": "Sponsor Role",
+      "section": "02",
+      "listing_rule_refs": ["mbl_3A_02", "mbl_3A_10"],
+      "guidance_refs": ["sponsor_gl"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_3A_02",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3A.02 — Requirement for Sponsors",
+      "summary": "A new applicant must appoint a sponsor at least 2 months before the submission of the listing application.",
+      "section": "02",
+      "rule_chapter": "3A",
+      "rule_number": "3A.02",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_3A_10",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3A.10 — Sponsor Declaration",
+      "summary": "The sponsor must submit a declaration confirming reasonable due diligence and compliance with the Listing Rules.",
+      "section": "02",
+      "rule_chapter": "3A",
+      "rule_number": "3A.10",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_2_03",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 2.03 — General Principles",
+      "summary": "Seed anchor for general Listing Rule principles relevant to pre-IPO investments and fair market operation. Official source verification required.",
+      "section": "02",
+      "rule_chapter": "2",
+      "rule_number": "2.03",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sponsor_gl",
+      "type": "guidance_letter_seed",
+      "label": "HKEX Guidance Letter — Sponsor Due Diligence",
+      "summary": "Guidance on the scope of sponsor due diligence, including business, legal, financial, and regulatory aspects.",
+      "section": "02",
+      "effective_date": null,
+      "source_url": null,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "a1_filing",
+      "type": "legal_issue",
+      "label": "A1 Filing and HKEX Vetting",
+      "summary": "The listing application (A1 form) is submitted to HKEX, which reviews the application for completeness and compliance with the Listing Rules.",
+      "subsection": "02.02",
+      "subtopic": "HKEX Review",
+      "section": "02",
+      "listing_rule_refs": ["mbl_9_03", "mbl_9_11"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_9_03",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 9.03 — Formal Application",
+      "summary": "The formal listing application is submitted in the prescribed form; HKEX may require additional information.",
+      "section": "02",
+      "rule_chapter": "9",
+      "rule_number": "9.03",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_9_11",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 9.11 — Vetting Process",
+      "summary": "HKEX vets the listing application to ensure compliance with the Listing Rules and Companies Ordinance requirements.",
+      "section": "02",
+      "rule_chapter": "9",
+      "rule_number": "9.11",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfc_dual_filing",
+      "type": "legal_issue",
+      "label": "SFC Dual Filing Regime",
+      "summary": "Under the dual filing regime, a listing applicant files a copy of the prospectus with the SFC under s.38D of the Companies (WUMP) Ordinance, and the SFC has a 14-day objection period.",
+      "subsection": "02.03",
+      "subtopic": "SFC Dual Filing",
+      "section": "02",
+      "statute_refs": ["cwo_38d", "sfo_105"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "sfo_105",
+      "type": "statute",
+      "label": "SFO s.105 — SFC Power to Object",
+      "summary": "The SFC may object to a listing application within 14 days of receiving the prospectus.",
+      "section": "02",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "pre_ipo_investments",
+      "type": "legal_issue",
+      "label": "Pre-IPO Investments and Special Rights",
+      "summary": "Pre-IPO investments (PIPE or cornerstone) must comply with HKEX guidance. Special rights granted to pre-IPO investors (board seats, veto, information rights) must generally sunset upon or shortly after listing. HKEX Guidance Letter GL43-12.",
+      "subsection": "02.04",
+      "subtopic": "Pre-IPO Investments",
+      "section": "02",
+      "guidance_refs": ["gl43_12"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "gl43_12",
+      "type": "guidance_letter_seed",
+      "label": "HKEX Guidance Letter GL43-12 — Pre-IPO Investments",
+      "summary": "Guidance on pre-IPO investments: special rights must sunset at or before listing; investments must be completed at least 28 days before A1 filing (or fully disclosed and subject to lock-up).",
+      "section": "02",
+      "effective_date": null,
+      "source_url": null,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "reverse_takeovers",
+      "type": "legal_issue",
+      "label": "Reverse Takeovers and Backdoor Listings",
+      "summary": "A reverse takeover (RTO) is treated as a new listing under MBL Rule 14.06B. HKEX examines the substance of the transaction; if a listing shell is acquired, the enlarged group must meet all listing requirements. Guidance Letter GL104-19.",
+      "subsection": "02.05",
+      "subtopic": "Reverse Takeovers",
+      "section": "02",
+      "listing_rule_refs": ["mbl_14_06b"],
+      "guidance_refs": ["gl104_19"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_14_06b",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14.06B — Reverse Takeover Classification",
+      "summary": "A reverse takeover (including a backdoor listing or shell acquisition) is classified as a very substantial acquisition and is treated as a new listing application.",
+      "section": "02",
+      "rule_chapter": "14",
+      "rule_number": "14.06B",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "gl104_19",
+      "type": "guidance_letter_seed",
+      "label": "HKEX Guidance Letter GL104-19 — Reverse Takeovers",
+      "summary": "Guidance on RTO classification, including the three-stage test and factors indicating a shell transaction.",
+      "section": "02",
+      "effective_date": null,
+      "source_url": null,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "pn18_clawback",
+      "type": "legal_issue",
+      "label": "PN18 Clawback Mechanism",
+      "summary": "Practice Note 18 to the MBL Rules sets out the clawback mechanism whereby institutional placing tranche shares are reallocated to the retail tranche if the retail tranche is heavily oversubscribed (typically 15x+).",
+      "subsection": "02.06",
+      "subtopic": "Clawback Mechanism",
+      "section": "02",
+      "listing_rule_refs": ["mbl_pn18"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_pn18",
+      "type": "practice_note_anchor",
+      "label": "MBL Practice Note 18 — Placing Tranche Clawback",
+      "summary": "Sets out the clawback/retranchement mechanism for oversubscribed retail tranches. Official thresholds require verification.",
+      "section": "02",
+      "rule_chapter": "Practice Note 18",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "placing_mechanics",
+      "type": "legal_issue",
+      "label": "Placing and Underwriting",
+      "summary": "IPOs are typically conducted by way of placement to institutional and retail investors, governed by the Listing Rules and the Code of Conduct for Share Placings.",
+      "subsection": "02.07",
+      "subtopic": "Placing",
+      "section": "02",
+      "listing_rule_refs": ["mbl_10_02", "mbl_10_03"],
+      "statute_refs": ["sfo_105"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_10_02",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 10.02 — Underwriting Requirement",
+      "summary": "A listing of equity securities must be fully underwritten unless otherwise agreed by the Exchange.",
+      "section": "02",
+      "rule_chapter": "10",
+      "rule_number": "10.02",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_10_03",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 10.03 — Placing of Securities",
+      "summary": "Rules governing the marketing and allotment of securities in a placing, including the 25% public float requirement.",
+      "section": "02",
+      "rule_chapter": "10",
+      "rule_number": "10.03",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "ipo_timeline",
+      "type": "legal_issue",
+      "label": "IPO Timeline and Listing Approval",
+      "summary": "The IPO timeline spans sponsor engagement (T-4 months), A1 filing (T-2 months), HKEX vetting (4-6 weeks), SFC review (14 days), pricing, and listing (T+0).",
+      "subsection": "02.08",
+      "subtopic": "Timeline",
+      "section": "02",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "tranche_structure",
+      "type": "legal_issue",
+      "label": "Tranche Structure and Clawback (Detailed)",
+      "summary": "Hong Kong IPOs are typically split into an Institutional Tranche (Placing) and a Retail Tranche (Hong Kong Public Offer), with default split of 90% Institutional / 10% Retail. Clawback Mechanism (Practice Note 18): retail increased to 30% at 15x oversubscription, 40% at 50x, 50% at 100x. Institutional tranche may be increased if retail undersubscribed.",
+      "subsection": "02.01",
+      "subtopic": "Tranche Structure",
+      "section": "02",
+      "listing_rule_refs": ["mbl_pn18"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "pre_ipo_timing",
+      "type": "legal_issue",
+      "label": "Pre-IPO Investment Timing Restrictions",
+      "summary": "Pre-IPO investments must be completed at least 28 clear days before filing the listing application (Form A1) or 180 clear days before trading commences (LR 2.03, 3.08). Special rights - veto rights, negative pledges, guaranteed rates of return, price resets on convertibles - are generally not allowed to survive post-IPO. Detailed disclosure in prospectus of investment terms, conversion prices, and dilution effects.",
+      "subsection": "02.02",
+      "subtopic": "Pre-IPO Timing",
+      "section": "02",
+      "listing_rule_refs": ["mbl_2_03", "mbl_3_08"],
+      "guidance_refs": ["gl43_12"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "ld59_1_to_6",
+      "type": "sehk_decision_seed",
+      "label": "SEHK Listing Decisions LD59-1 to LD59-6 — Pre-IPO Investments",
+      "summary": "SEHK guidance on pre-IPO investments, including acceptable and prohibited features. Covers timing restrictions, special rights, and disclosure requirements.",
+      "section": "02",
+      "authority_status": "unverified_sehk_decision",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "reverse_takeover_detailed",
+      "type": "legal_issue",
+      "label": "Reverse Takeovers — Bright-Line Test (Detailed)",
+      "summary": "Bright-line test (LR 14.06(6)): A proposed acquisition is a reverse takeover if it constitutes a Very Substantial Acquisition (size ratios >=100%) AND there is a change in control (as defined in the Takeovers Code) within 24 months before or after the acquisition. Consequence: acquired business must satisfy all Chapter 8 listing requirements. The Exchange may aggregate a series of transactions over a period.",
+      "subsection": "02.03",
+      "subtopic": "RTO Bright-Line Test",
+      "section": "02",
+      "listing_rule_refs": ["mbl_14_06b"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "ipo_flow_start",
+      "type": "flow_step",
+      "label": "Sponsor Appointment and Due Diligence",
+      "summary": "Step 1: Appoint sponsor, commence due diligence, prepare listing document draft.",
+      "section": "02"
+    },
+    {
+      "id": "ipo_flow_step2",
+      "type": "flow_step",
+      "label": "A1 Filing",
+      "summary": "Step 2: Submit A1 application form and draft listing document to HKEX.",
+      "section": "02"
+    },
+    {
+      "id": "ipo_flow_step3",
+      "type": "flow_step",
+      "label": "HKEX Vetting and SFC Review",
+      "summary": "Step 3: HKEX reviews the application, SFC dual filing review period begins.",
+      "section": "02"
+    },
+    {
+      "id": "ipo_flow_step4",
+      "type": "flow_step",
+      "label": "Pricing and Allocation",
+      "summary": "Step 4: Bookbuilding, pricing, allocation, and underwriting finalisation.",
+      "section": "02"
+    },
+    {
+      "id": "ipo_flow_step5",
+      "type": "flow_step",
+      "label": "Listing and Commencement of Trading",
+      "summary": "Step 5: Listing approval granted, trading commences on the Exchange.",
+      "section": "02"
+    },
+    {
+      "id": "pre_ipo_restructuring",
+      "type": "flow_step",
+      "label": "Pre-IPO Restructuring",
+      "summary": "Step 1: Corporate restructuring prior to IPO to establish the listing entity structure.",
+      "section": "02"
+    },
+    {
+      "id": "financial_test_selection",
+      "type": "flow_step",
+      "label": "Financial Test Selection",
+      "summary": "Step 2: Determine which financial test (profit, market cap/revenue, or market cap/revenue/cash flow) applies.",
+      "section": "02"
+    },
+    {
+      "id": "track_record_check",
+      "type": "flow_step",
+      "label": "Track Record Check",
+      "summary": "Step 3: Verify 3-year trading record period, management continuity, and ownership continuity.",
+      "section": "02"
+    },
+    {
+      "id": "sponsor_appointment",
+      "type": "flow_step",
+      "label": "Sponsor Appointment",
+      "summary": "Step 4: Appoint sponsor at least 2 months before A1 filing; commence due diligence.",
+      "section": "02"
+    },
+    {
+      "id": "filing_Form_A1",
+      "type": "flow_step",
+      "label": "Filing Form A1",
+      "summary": "Step 5: Submit A1 application form and draft listing document to HKEX.",
+      "section": "02"
+    },
+    {
+      "id": "sehk_vetting",
+      "type": "flow_step",
+      "label": "SEHK Vetting",
+      "summary": "Step 6: HKEX reviews the application for compliance with Listing Rules.",
+      "section": "02"
+    },
+    {
+      "id": "prospectus_registration",
+      "type": "flow_step",
+      "label": "Prospectus Registration",
+      "summary": "Step 7: Register prospectus with Companies Registry and file with SFC.",
+      "section": "02"
+    },
+    {
+      "id": "offering_structure_public_offer_placement",
+      "type": "flow_step",
+      "label": "Offering Structure (Public Offer / Placing)",
+      "summary": "Step 8: Structure the offering with retail tranche and institutional placing.",
+      "section": "02"
+    },
+    {
+      "id": "pricing_and_allocation",
+      "type": "flow_step",
+      "label": "Pricing and Allocation",
+      "summary": "Step 9: Bookbuilding, pricing, allocation, and underwriting finalisation.",
+      "section": "02"
+    },
+    {
+      "id": "listing_and_commencement_of_trading",
+      "type": "flow_step",
+      "label": "Listing and Commencement of Trading",
+      "summary": "Step 10: Listing approval granted, trading commences on the Exchange.",
+      "section": "02"
+    }
+  ]
+}
