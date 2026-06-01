@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HK Criminal Procedure — GraphRAG Map</title>
+  <title>HK Criminal Procedure — Doctrine Tree Map</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,49 +11,81 @@
     <div id="header-title">
       <span class="domain-badge">not_product_answer_layer</span>
       <span class="domain-badge verification">needs_hklii_verification</span>
-      <h1>Hong Kong Criminal Procedure — GraphRAG Map</h1>
+      <h1>Hong Kong Criminal Procedure — Doctrine Tree</h1>
     </div>
     <div id="header-controls">
-      <input type="text" id="search-box" placeholder="Search nodes by keyword..." />
+      <input type="text" id="search-box" placeholder="Search by keyword, case, statute..." />
       <div id="legend">
-        <span class="legend-item"><span class="dot" style="background:#2266cc"></span>Legal Issue</span>
+        <span class="legend-item"><span class="dot" style="background:#2266cc"></span>Issue</span>
         <span class="legend-item"><span class="dot" style="background:#2d8a4e"></span>Statute</span>
-        <span class="legend-item"><span class="dot" style="background:#7b2d8e"></span>Case Seed</span>
-        <span class="legend-item"><span class="dot" style="background:#d97706"></span>Flow Step</span>
+        <span class="legend-item"><span class="dot" style="background:#7b2d8e"></span>Case</span>
+        <span class="legend-item"><span class="dot" style="background:#d97706"></span>Flow</span>
         <span class="legend-item"><span class="dot" style="background:#0e7490"></span>PD</span>
         <span class="legend-item"><span class="dot" style="background:#dc2626"></span>NSL</span>
-        <span class="legend-item"><span class="dot" style="background:#6b7280"></span>Section</span>
       </div>
     </div>
   </div>
 
   <div id="main">
-    <div id="sidebar">
-      <div id="flow-player">
+    <div id="side-panel">
+      <div id="disclaimer-box">
+        <strong>Seed-layer map.</strong> Not a product answer layer. Use verified paragraph proof before legal reliance.
+      </div>
+
+      <div id="filter-box">
+        <h3>Filters</h3>
+        <label><input type="checkbox" data-type="legal_issue" checked> Legal Issues</label>
+        <label><input type="checkbox" data-type="flow_step" checked> Flow Steps</label>
+        <label><input type="checkbox" data-type="statute" checked> Statutes</label>
+        <label><input type="checkbox" data-type="case_seed" checked> Case Seeds</label>
+        <label><input type="checkbox" data-type="practice_direction" checked> Practice Directions</label>
+        <label><input type="checkbox" data-type="restricted_nsl" checked> NSL</label>
+      </div>
+
+      <div id="depth-control">
+        <h3>Tree Depth</h3>
+        <div class="depth-buttons">
+          <button data-depth="0">L0</button>
+          <button data-depth="1">L1</button>
+          <button data-depth="2" class="active">L2</button>
+          <button data-depth="3">L3</button>
+          <button data-depth="4">L4</button>
+          <button data-depth="99">All</button>
+        </div>
+        <div class="depth-actions">
+          <button id="expand-all-btn">Expand All</button>
+          <button id="collapse-btn">Collapse</button>
+        </div>
+      </div>
+
+      <div id="flow-player-box">
         <h3>Flow Player</h3>
         <select id="flow-select">
           <option value="">— Select a flow —</option>
         </select>
         <div id="flow-controls">
-          <button id="flow-prev" disabled>&#9664; Prev</button>
+          <button id="flow-prev" disabled>&#9664;</button>
           <span id="flow-step-indicator">0 / 0</span>
-          <button id="flow-next" disabled>Next &#9654;</button>
+          <button id="flow-next" disabled>&#9654;</button>
           <button id="flow-play" disabled>&#9654; Play</button>
-          <button id="flow-reset" disabled>&#8634; Reset</button>
+          <button id="flow-reset" disabled>&#8634;</button>
         </div>
         <div id="flow-step-info"></div>
       </div>
-      <div id="section-tree">
+
+      <div id="section-list-box">
         <h3>Sections</h3>
         <ul id="section-list"></ul>
       </div>
     </div>
 
-    <div id="graph-container"></div>
+    <div id="tree-container">
+      <div id="tree-root"></div>
+    </div>
 
     <div id="detail-panel">
       <div id="detail-content">
-        <p class="hint">Click a node to see details</p>
+        <p class="hint">Click a node to inspect details</p>
       </div>
     </div>
   </div>
@@ -61,12 +93,15 @@
   <div id="status-bar">
     <span id="status-nodes">Nodes: 0</span>
     <span id="status-edges">Edges: 0</span>
-    <span id="status-verified">Verified: 0</span>
-    <span id="status-unverified">Unverified: 0</span>
+    <span id="status-sections">Sections: 12</span>
+    <span id="status-flows">Flows: 7</span>
     <span id="status-selected">Selected: —</span>
   </div>
 
-  <script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"></script>
+  <script>
+    const DATA_BASE = '../data/legal_domain_packs/demo_maps/criminal_procedure_hk/';
+    const CONSOLIDATED_PATH = DATA_BASE + 'consolidated.json';
+  </script>
   <script src="viewer.js"></script>
 </body>
 </html>

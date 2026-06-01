@@ -22,24 +22,36 @@ This is a **legal issue checklist / doctrine map / case map** for Hong Kong crim
 ## Structure
 
 ```
-data/legal_domain_packs/demo_maps/criminal_procedure_hk/
-├── domain.json              # Domain metadata and color scheme
-├── consolidated.json        # Manifest linking all section files
-├── nodes/                   # 12 section node files
-│   ├── 01_jurisdiction.json
-│   ├── 02_investigation_arrest_search_detention.json
-│   ├── 03_pre_trial_disposition.json
-│   ├── 04_bail.json
-│   ├── 05_indictments.json
-│   ├── 06_cfi_trial.json
-│   ├── 07_dc_transferred_cases.json
-│   ├── 08_vulnerable_witnesses.json
-│   ├── 09_appeals_reviews.json
-│   ├── 10_costs_compensation.json
-│   ├── 11_practice_directions.json
-│   └── 12_nsl_submap.json
-├── edges/                   # 12 edge files (mirroring nodes)
-└── flows.json               # 7 procedural flow chains
+hk-criminal-procedure-graphrag/
+├── README.md
+├── scripts/
+│   └── validate_tree_view_data.py   # Data integrity validator
+├── viewer/
+│   ├── index.html                   # Three-panel tree viewer
+│   ├── viewer.js                    # Tree model, renderer, flow player
+│   └── styles.css                   # Tree cards, branch rails, dark theme
+└── data/
+    ├── index.json
+    └── legal_domain_packs/
+        └── demo_maps/
+            └── criminal_procedure_hk/
+                ├── domain.json              # Domain metadata
+                ├── consolidated.json        # Manifest
+                ├── nodes/                   # 12 section node files
+                │   ├── 01_jurisdiction.json
+                │   ├── 02_investigation_arrest_search_detention.json
+                │   ├── 03_pre_trial_disposition.json
+                │   ├── 04_bail.json
+                │   ├── 05_indictments.json
+                │   ├── 06_cfi_trial.json
+                │   ├── 07_dc_transferred_cases.json
+                │   ├── 08_vulnerable_witnesses.json
+                │   ├── 09_appeals_reviews.json
+                │   ├── 10_costs_compensation.json
+                │   ├── 11_practice_directions.json
+                │   └── 12_nsl_submap.json
+                ├── edges/                   # 12 edge files
+                └── flows.json               # 6 procedural flow chains
 ```
 
 ## Sections
@@ -95,14 +107,81 @@ Then open http://localhost:8080/viewer/
 Open `viewer/index.html` in your browser.
 **Note:** Some browsers block `fetch()` from `file://` URLs. If the graph doesn't load, use Option 1.
 
+## Viewer Architecture
+
+The viewer uses a **tree-as-projection, graph-as-truth** model:
+
+- **Tree for navigation** — the default view is an expandable doctrine/procedure tree with branch rails and card-based nodes
+- **Graph for truth** — the underlying JSON data still preserves cross-links, statutory anchors, case seeds, flow transitions, and future authority/treatment edges
+
+The tree is rendered from the same flat node/edge files — nothing is deleted. The tree is a navigational projection of the graph.
+
+## Three-Panel Layout
+
+```
+┌─────────────────────────────────────────────────────┐
+│ Header: badges, search, node-type legend            │
+├─────────┬─────────────────────────┬─────────────────┤
+│ Left    │ Center                  │ Right           │
+│ Panel   │ Expandable Tree         │ Detail / Audit  │
+│         │                         │ Panel           │
+│ • Seed  │ L0: Domain root         │                 │
+│   layer │ L1: Section headers     │ • Type badge    │
+│   warn  │ L2: Legal issues        │ • Status flags  │
+│ • Type  │ L3: Sub-issues/flow     │ • Summary       │
+│   filters│ L4–L5: Expandable       │ • Statute refs  │
+│ • Depth │    (hidden by default)  │ • Case seeds    │
+│   control│                         │ • Practice dirs │
+│ • Flow  │ Branch rails +          │ • Cross-refs    │
+│   player│ elbow connectors        │ • Case audit    │
+│ • Section                         │ • Source proof  │
+│   list  │                         │   placeholder   │
+└─────────┴─────────────────────────┴─────────────────┘
+└────────────────── Status Bar ───────────────────────┘
+```
+
 ## Viewer Features
 
-- **Interactive graph** — force-directed layout, drag, zoom, click
-- **Section tree** — click a section to highlight its nodes
-- **Search** — filter nodes by keyword (label, summary, or ID)
-- **Flow player** — select a procedural flow and step through with play/pause/next/prev
-- **Detail panel** — click any node to see its metadata, statute refs, case seeds, verification status
-- **Status bar** — total nodes, edges, verified/unverified counts
+- **Expandable doctrine tree** — default view with card-based nodes, continuous branch rails, and elbow connectors
+- **3-panel layout** — left sidebar (filters/depth/flow/sections), center (tree), right (detail/audit panel)
+- **Search** — matches by label, summary, ID, statute refs, and case seeds; auto-expands ancestors
+- **Type filters** — toggle visibility of legal issues, flow steps, statutes, case seeds, PDs, NSL nodes
+- **Depth control** — show L0–L1 sections, L2 issues, or expand all to L3+
+- **Flow player** — select a procedural flow and step through with play/pause/next/prev; highlights corresponding tree cards
+- **Section navigation** — click a section in the left panel to expand and scroll to it
+- **Detail panel** — click any tree card to see full metadata, statute references, case seeds, practice direction refs, and a future-proof Case Audit / Source Proof area
+- **Safety badges** — every node shows its `not_product_answer_layer`, `needs_hklii_verification`, and `unverified_case_seed` status where applicable
+
+## Visibility Levels
+
+The tree supports 6 depth levels for future scalability:
+
+| Level | Content | Default |
+|-------|---------|---------|
+| L0 | Domain root (Hong Kong Criminal Procedure) | Always visible |
+| L1 | Major procedural sections (12 sections) | Always visible |
+| L2 | Core issues / procedural stages | Default expanded |
+| L3 | Sub-issues / tests / statutory branches | Hidden, expandable |
+| L4 | Case applications / factual scenarios | Hidden, expandable |
+| L5 | Paragraph proof / quote spans / treatment | Hidden, expandable |
+
+L4–L5 are not yet populated — they are reserved for future HKLII case mining and paragraph-level verification.
+
+## Validation
+
+Run the data validation script to ensure data integrity:
+
+```bash
+python3 scripts/validate_tree_view_data.py
+```
+
+Checks performed:
+- All node IDs are unique
+- All edge from/to IDs resolve to existing nodes
+- All statute_refs, case_seeds, and cross_refs resolve
+- Every section has a section_header node
+- No node loses its verification_status / authority_status / answer_layer_status
+- Flow chain steps reference valid node IDs
 
 ## Data Schema
 
@@ -133,19 +212,33 @@ Open `viewer/index.html` in your browser.
 }
 ```
 
+## Tree vs Graph Model
+
+This design uses **tree for navigation, graph for truth**:
+
+- The **visible default UI** is a clean expandable tree, not a scattered force-directed graph
+- The **underlying data** still preserves all cross-links, statutory anchors, case seeds, flow transitions, and future authority/treatment edges
+- **Statutes, case seeds, practice directions, and future source proofs** appear mainly in the detail/audit panel, not as random visible dots
+- The tree is a **navigational projection** of the underlying graph — no data is lost
+- Support-only nodes (statutes, cases, PDs) remain searchable and auditable
+
 ## Future Integration
 
-This map is designed for eventual merger into Casemap4:
+This map is designed for eventual merger into Casemap4/Casemap5:
 
 ```
-Layer 1: Flow graph     ← you are here
+Layer 1: Doctrine skeleton    ← you are here
   → issue map, legal checklist, statutes, case seeds, gaps
+  → stable textbook/legal structure
 
-Layer 2: Verification layer
-  → HKLII paragraphs, e-Legislation sections, authority status
+Layer 2: Proposition layer
+  → precise legal statements, each with scope and status
 
-Layer 3: Answer layer
-  → only uses verified nodes, cites exact paragraphs, warns on skeletons
+Layer 3: Authority layer
+  → cases, statutes, textbook sources, court level, treatment relationships
+
+Layer 4: Proof/audit layer
+  → exact paragraph/page anchors, quote spans, extraction log, verification history
 ```
 
 ## License
