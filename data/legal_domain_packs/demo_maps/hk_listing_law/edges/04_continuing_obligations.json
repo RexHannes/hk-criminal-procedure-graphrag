@@ -1,0 +1,25 @@
+{
+  "section_id": "04",
+  "domain_id": "hk_listing_law",
+  "edges": [
+    { "from": "continuing_obligations", "to": "periodic_financial_reporting", "relationship": "has_subtopic" },
+    { "from": "continuing_obligations", "to": "inside_information_disclosure", "relationship": "has_subtopic" },
+    { "from": "continuing_obligations", "to": "corporate_governance", "relationship": "has_subtopic" },
+    { "from": "continuing_obligations", "to": "notifiable_transaction_announcements", "relationship": "has_subtopic" },
+    { "from": "periodic_financial_reporting", "to": "mbl_13_45", "relationship": "statutory_anchor" },
+    { "from": "periodic_financial_reporting", "to": "mbl_13_46", "relationship": "statutory_anchor" },
+    { "from": "periodic_financial_reporting", "to": "mbl_13_48", "relationship": "statutory_anchor" },
+    { "from": "inside_information_disclosure", "to": "sfo_307a", "relationship": "statutory_anchor" },
+    { "from": "inside_information_disclosure", "to": "sfo_307b", "relationship": "statutory_anchor" },
+    { "from": "inside_information_disclosure", "to": "mbl_13_09", "relationship": "statutory_anchor" },
+    { "from": "inside_information_disclosure", "to": "mbl_13_10", "relationship": "statutory_anchor" },
+    { "from": "inside_information_disclosure", "to": "sfc_inside_info_gl", "relationship": "case_seed" },
+    { "from": "corporate_governance", "to": "mbl_app14", "relationship": "statutory_anchor" },
+    { "from": "corporate_governance", "to": "mbl_3_08", "relationship": "statutory_anchor" },
+    { "from": "notifiable_transaction_announcements", "to": "mbl_14_34", "relationship": "statutory_anchor" },
+    { "from": "notifiable_transaction_announcements", "to": "mbl_14_36", "relationship": "statutory_anchor" },
+    { "from": "continuing_obligations", "to": "obligations_flow_start", "relationship": "flow_transition" },
+    { "from": "obligations_flow_start", "to": "obligations_flow_step2", "relationship": "flow_transition" },
+    { "from": "obligations_flow_step2", "to": "obligations_flow_step3", "relationship": "flow_transition" }
+  ]
+}

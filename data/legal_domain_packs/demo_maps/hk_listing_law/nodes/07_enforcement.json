@@ -1,0 +1,207 @@
+{
+  "section_id": "07",
+  "section_title": "Enforcement",
+  "domain_id": "hk_listing_law",
+  "nodes": [
+    {
+      "id": "enforcement",
+      "type": "section_header",
+      "label": "Enforcement",
+      "summary": "The enforcement powers and disciplinary mechanisms available to the SFC, HKEX, and the Market Misconduct Tribunal for breaches of listing rules, securities laws, and market misconduct provisions.",
+      "section": "07"
+    },
+    {
+      "id": "sfc_enforcement",
+      "type": "legal_issue",
+      "label": "SFC Enforcement Powers",
+      "summary": "The SFC has broad investigatory and enforcement powers under the SFO, including the power to investigate, discipline licensed persons, suspend trading, and prosecute market misconduct.",
+      "subsection": "07.01",
+      "subtopic": "SFC Powers",
+      "section": "07",
+      "statute_refs": ["sfo_179", "sfo_182", "sfo_194", "sfo_195"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "sfo_179",
+      "type": "statute",
+      "label": "SFO s.179 — SFC Investigatory Powers",
+      "summary": "The SFC may require production of documents, attend for examination, and enter premises to investigate suspected breaches.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_182",
+      "type": "statute",
+      "label": "SFO s.182 — Disciplinary Powers over Licensed Persons",
+      "summary": "The SFC may reprimand, fine, suspend, or revoke licences of regulated persons for misconduct.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_194",
+      "type": "statute",
+      "label": "SFO s.194 — Power to Suspend Trading",
+      "summary": "The SFC may direct the Exchange to suspend trading in any listed securities if it considers it in the public interest.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_195",
+      "type": "statute",
+      "label": "SFO s.195 — Power to Restrain Proceedings",
+      "summary": "The SFC may apply to the court for injunctions or other orders to restrain breaches or preserve assets.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hkex_disciplinary",
+      "type": "legal_issue",
+      "label": "HKEX Disciplinary Powers",
+      "summary": "HKEX has contractual disciplinary powers under the Listing Rules, including the Listing Committee and Listing Review Committee, to impose sanctions on issuers and directors for Rule breaches.",
+      "subsection": "07.02",
+      "subtopic": "HKEX Disciplinary",
+      "section": "07",
+      "listing_rule_refs": ["mbl_2a_02", "mbl_2a_09", "mbl_2a_10"],
+      "case_seeds": ["hkex_disciplinary_hontex", "hkex_disciplinary_hcig"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_2a_02",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 2A.02 — Listing Committee Powers",
+      "summary": "The Listing Committee may investigate, hear, and determine disciplinary proceedings for Listing Rule breaches.",
+      "section": "07",
+      "rule_chapter": "2A",
+      "rule_number": "2A.02",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_2a_09",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 2A.09 — Sanctions",
+      "summary": "Sanctions available include public censure, fines (up to HK$30 million), suspension, cancellation of listing, and director unsuitability statements.",
+      "section": "07",
+      "rule_chapter": "2A",
+      "rule_number": "2A.09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_2a_10",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 2A.10 — Review of Listing Committee Decisions",
+      "summary": "The Listing Review Committee reviews decisions of the Listing Committee upon application.",
+      "section": "07",
+      "rule_chapter": "2A",
+      "rule_number": "2A.10",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hkex_disciplinary_hontex",
+      "type": "enforcement_seed",
+      "label": "HKEX v Hontex International Holdings Ltd (2012) — Listing Cancellation",
+      "summary": "HKEX suspended and cancelled Hontex's listing for materially false or misleading information in its prospectus; the first cancellation of its kind.",
+      "section": "07",
+      "authority_status": "unverified_seed",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hkex_disciplinary_hcig",
+      "type": "enforcement_seed",
+      "label": "HKEX v HCIG (2019) — Fine and Censure",
+      "summary": "Listco fined HK$27 million and directors publicly censured for failing to comply with connected transaction rules.",
+      "section": "07",
+      "authority_status": "unverified_seed",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "market_misconduct",
+      "type": "legal_issue",
+      "label": "Market Misconduct Regime",
+      "summary": "The SFO establishes a dual civil/criminal regime for market misconduct (insider dealing, false trading, price rigging, and market manipulation). The Market Misconduct Tribunal hears civil cases.",
+      "subsection": "07.03",
+      "subtopic": "Market Misconduct",
+      "section": "07",
+      "statute_refs": ["sfo_270", "sfo_277", "sfo_285", "sfo_298"],
+      "case_seeds": ["mmt_tiger_asia", "mmt_du_jun"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "sfo_270",
+      "type": "statute",
+      "label": "SFO s.270 — Insider Dealing",
+      "summary": "Prohibition on insider dealing; applies to listed securities, derivatives, and structured products.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_277",
+      "type": "statute",
+      "label": "SFO s.277 — Market Misconduct Tribunal",
+      "summary": "The Market Misconduct Tribunal may hear insider dealing and other market misconduct cases and impose civil sanctions.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_285",
+      "type": "statute",
+      "label": "SFO s.285 — MMT Sanctions",
+      "summary": "Sanctions include disqualification (up to 5 years), disgorgement of profits, fines (up to 3x profit), and cold shoulder orders.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mmt_tiger_asia",
+      "type": "case_seed",
+      "label": "MMT v Tiger Asia (2014) — Insider Dealing",
+      "summary": "Market Misconduct Tribunal found Tiger Asia engaged in insider dealing; fined and ordered disgorgement.",
+      "section": "07",
+      "neutral_citation": "[2014] HKMMT 1",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "mmt_du_jun",
+      "type": "case_seed",
+      "label": "MMT v Du Jun (2017) — Insider Dealing",
+      "summary": "Former UBS banker Du Jun convicted of insider dealing by MMT; ordered to disgorge HK$16.4 million and disqualified for 5 years.",
+      "section": "07",
+      "neutral_citation": "[2017] HKMMT 2",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "enforcement_flow_start",
+      "type": "flow_step",
+      "label": "Detection and Investigation",
+      "summary": "Step 1: SFC or HKEX detects potential breach via market surveillance, complaint, or referral.",
+      "section": "07"
+    },
+    {
+      "id": "enforcement_flow_step2",
+      "type": "flow_step",
+      "label": "Investigation Commenced",
+      "summary": "Step 2: Statutory investigation under SFO s.179 — document production, examination, premises search.",
+      "section": "07"
+    },
+    {
+      "id": "enforcement_flow_step3",
+      "type": "flow_step",
+      "label": "Disciplinary Referral or Court Action",
+      "summary": "Step 3: Matter referred to HKEX Listing Committee, MMT, or criminal prosecution depending on nature and severity.",
+      "section": "07"
+    },
+    {
+      "id": "enforcement_flow_step4",
+      "type": "flow_step",
+      "label": "Sanction and Remediation",
+      "summary": "Step 4: Sanctions imposed — fine, suspension, cancellation, disqualification, or criminal penalty.",
+      "section": "07"
+    }
+  ]
+}

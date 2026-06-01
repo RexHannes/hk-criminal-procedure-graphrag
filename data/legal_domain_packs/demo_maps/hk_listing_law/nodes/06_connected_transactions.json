@@ -1,0 +1,184 @@
+{
+  "section_id": "06",
+  "section_title": "Connected Transactions",
+  "domain_id": "hk_listing_law",
+  "nodes": [
+    {
+      "id": "connected_transactions",
+      "type": "section_header",
+      "label": "Connected Transactions",
+      "summary": "Rules governing transactions between a listed issuer and connected persons under MBL Chapter 14A, including definition, de minimis exemptions, and procedural requirements.",
+      "section": "06"
+    },
+    {
+      "id": "connected_person_definition",
+      "type": "legal_issue",
+      "label": "Definition of Connected Person",
+      "summary": "A connected person includes a director, chief executive, or substantial shareholder of the issuer (or any of its subsidiaries) and their associates, as defined in MBL Rule 14A.07.",
+      "subsection": "06.01",
+      "subtopic": "Connected Person",
+      "section": "06",
+      "listing_rule_refs": ["mbl_14a_07", "mbl_14a_11"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_14a_07",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14A.07 — Meaning of Connected Person",
+      "summary": "Defines connected persons to include directors, chief executives, substantial shareholders, and their associates.",
+      "section": "06",
+      "rule_chapter": "14A",
+      "rule_number": "14A.07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_14a_11",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14A.11 — Associates of Connected Persons",
+      "summary": "Defines associates, including family interests, controlled companies, and trustees.",
+      "section": "06",
+      "rule_chapter": "14A",
+      "rule_number": "14A.11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "de_minimis_exemptions",
+      "type": "legal_issue",
+      "label": "De Minimis Exemptions",
+      "summary": "Transactions below the de minimis thresholds (0.1% ratio, or 1% on an aggregated basis) are fully exempt. Transactions below 5% ratio are exempt from independent shareholder approval but require annual reporting.",
+      "subsection": "06.02",
+      "subtopic": "De Minimis Exemptions",
+      "section": "06",
+      "listing_rule_refs": ["mbl_14a_76", "mbl_14a_77"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_14a_76",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14A.76 — De Minimis Exemption",
+      "summary": "Transactions where all percentage ratios are below 0.1% are fully exempt; below 1% on an aggregated basis are also exempt.",
+      "section": "06",
+      "rule_chapter": "14A",
+      "rule_number": "14A.76",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_14a_77",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14A.77 — Reporting Exemption",
+      "summary": "Transactions below 5% ratio are exempt from independent shareholder approval but must be reported in the annual report.",
+      "section": "06",
+      "rule_chapter": "14A",
+      "rule_number": "14A.77",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "connected_procedures",
+      "type": "legal_issue",
+      "label": "Procedural Requirements — Announcement, Circular, Independent Approval",
+      "summary": "Connected transactions above the de minimis threshold require: (a) an announcement; (b) a circular with independent board committee recommendation; (c) independent shareholder approval (with connected persons abstaining); and (d) a fairness opinion or valuation.",
+      "subsection": "06.03",
+      "subtopic": "Procedural Requirements",
+      "section": "06",
+      "listing_rule_refs": ["mbl_14a_35", "mbl_14a_40", "mbl_14a_68"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_14a_35",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14A.35 — Announcement Requirement",
+      "summary": "A connected transaction must be announced as soon as possible after the terms are agreed.",
+      "section": "06",
+      "rule_chapter": "14A",
+      "rule_number": "14A.35",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_14a_40",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14A.40 — Independent Shareholder Approval",
+      "summary": "Connected transactions require approval by independent shareholders at a general meeting; the connected person and its associates must abstain.",
+      "section": "06",
+      "rule_chapter": "14A",
+      "rule_number": "14A.40",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_14a_68",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14A.68 — Independent Board Committee",
+      "summary": "An independent board committee comprising independent non-executive directors must be formed to advise shareholders on the connected transaction.",
+      "section": "06",
+      "rule_chapter": "14A",
+      "rule_number": "14A.68",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "continuing_connected_transactions",
+      "type": "legal_issue",
+      "label": "Continuing Connected Transactions",
+      "summary": "Recurring transactions in the ordinary course of business (e.g. lease payments, management fees) may be covered by an annual cap approved by independent shareholders, with quarterly reporting on cap utilisation.",
+      "subsection": "06.04",
+      "subtopic": "Continuing CCTs",
+      "section": "06",
+      "listing_rule_refs": ["mbl_14a_52", "mbl_14a_53"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_14a_52",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14A.52 — Annual Cap for Continuing CCTs",
+      "summary": "Continuing connected transactions must have an annual cap; if the cap is exceeded, the issuer must re-comply with chapter requirements.",
+      "section": "06",
+      "rule_chapter": "14A",
+      "rule_number": "14A.52",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_14a_53",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14A.53 — Quarterly Reporting of CCT Cap",
+      "summary": "Issuers must report quarterly on the utilisation of the annual cap for continuing connected transactions.",
+      "section": "06",
+      "rule_chapter": "14A",
+      "rule_number": "14A.53",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "connected_flow_start",
+      "type": "flow_step",
+      "label": "Identify Connected Person Involvement",
+      "summary": "Step 1: Determine if the counterparty or beneficiary is a connected person.",
+      "section": "06"
+    },
+    {
+      "id": "connected_flow_step2",
+      "type": "flow_step",
+      "label": "Calculate De Minimis Thresholds",
+      "summary": "Step 2: Calculate percentage ratios; if all below 0.1%, fully exempt; if below 5%, announcement + reporting only.",
+      "section": "06"
+    },
+    {
+      "id": "connected_flow_step3",
+      "type": "flow_step",
+      "label": "Obtain Independent Approvals",
+      "summary": "Step 3: Form independent board committee, obtain independent valuation or fairness opinion, convene shareholder meeting.",
+      "section": "06"
+    },
+    {
+      "id": "connected_flow_step4",
+      "type": "flow_step",
+      "label": "Announce and Dispatch Circular",
+      "summary": "Step 4: Publish announcement, dispatch circular, obtain independent shareholder approval at general meeting.",
+      "section": "06"
+    }
+  ]
+}

@@ -1,28 +1,56 @@
 (function() {
   'use strict';
 
-  const TYPE_COLORS = {
-    domain: '#1a1a2e',
+  const TYPE_COLORS_DEFAULT = {
+    domain: '#0b2245',
     section_header: '#475569',
-    legal_issue: '#2266cc',
-    statute: '#2d8a4e',
-    case_seed: '#7b2d8e',
+    legal_issue: '#2563eb',
+    statute: '#23844f',
+    case_seed: '#7c3aed',
     flow_step: '#d97706',
     flow_group: '#b45309',
-    practice_direction: '#0e7490',
+    practice_direction: '#0f766e',
     gap: '#6b7280',
     restricted_nsl: '#dc2626',
+    listing_rule_anchor: '#15803d',
+    sehk_decision_seed: '#7c3aed',
+    guidance_letter_seed: '#0891b2',
+    practice_note_anchor: '#0f766e',
+    textbook_seed: '#b45309',
+    enforcement_seed: '#dc2626',
+    cross_reference: '#9333ea',
   };
+
+  const REGULATORY_TYPES = new Set([
+    'listing_rule_anchor', 'sehk_decision_seed', 'guidance_letter_seed',
+    'practice_note_anchor', 'textbook_seed', 'enforcement_seed',
+  ]);
+
+  const SECTION_PALETTES = [
+    { accent: '#2563eb', soft: '#eff6ff', tint: '#dbeafe', ink: '#0f3b7a' },
+    { accent: '#23844f', soft: '#f0fdf4', tint: '#dcfce7', ink: '#14532d' },
+    { accent: '#d97706', soft: '#fff8eb', tint: '#fed7aa', ink: '#7c2d12' },
+    { accent: '#7c3aed', soft: '#f6f0ff', tint: '#ede9fe', ink: '#4c1d95' },
+    { accent: '#dc2626', soft: '#fff1f2', tint: '#fecdd3', ink: '#7f1d1d' },
+    { accent: '#0f766e', soft: '#ecfeff', tint: '#ccfbf1', ink: '#134e4a' },
+  ];
 
   const TYPE_ORDER = {
     section_header: 0,
     legal_issue: 1,
     restricted_nsl: 2,
     practice_direction: 3,
+    listing_rule_anchor: 3,
     flow_group: 4,
     flow_step: 5,
     statute: 3,
     case_seed: 4,
+    sehk_decision_seed: 4,
+    guidance_letter_seed: 4,
+    enforcement_seed: 4,
+    practice_note_anchor: 3,
+    textbook_seed: 5,
+    cross_reference: 6,
     gap: 7,
   };
 
@@ -43,26 +71,146 @@
   let selectedId = null;
   let flowInterval = null;
   let currentFlowStep = -1;
-  let activeFilters = new Set(['legal_issue', 'flow_step', 'statute', 'case_seed', 'practice_direction', 'restricted_nsl']);
+  let activeFilters = new Set();
   let currentDepth = 2;
   let searchQuery = '';
 
-  // ── Data Loading ──
+  let currentDomain = null;
+  let domainRegistry = null;
+  let typeColors = {};
+  let controlsBound = false;
 
   function loadJSON(path) { return fetch(path).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }); }
 
-  function loadAllData() {
-    return loadJSON(CONSOLIDATED_PATH).then(manifest => {
+  // ── Domain Registry ──
+
+  function loadDomainRegistry() {
+    return loadJSON(INDEX_PATH).then(registry => {
+      domainRegistry = registry;
+      return Promise.all(registry.domains.map(d =>
+        loadJSON(DATA_BASE + d.path).then(domainData => ({ ...d, domainData }))
+      ));
+    }).then(domains => {
+      const sel = document.getElementById('domain-select');
+      sel.innerHTML = '<option value="">Select a domain</option>';
+      domains.forEach(d => {
+        const opt = document.createElement('option');
+        opt.value = d.domain_id;
+        opt.textContent = d.title;
+        sel.appendChild(opt);
+      });
+      sel.addEventListener('change', function() {
+        const domain = domains.find(d => d.domain_id === this.value);
+        if (domain) switchDomain(domain);
+      });
+      if (domains.length > 0) {
+        sel.value = domains[0].domain_id;
+        switchDomain(domains[0]);
+      }
+    });
+  }
+
+  function switchDomain(domain) {
+    resetState();
+    currentDomain = domain;
+    const titleEl = document.getElementById('header-title-text');
+    titleEl.textContent = domain.title;
+
+    const badgeEl = document.getElementById('domain-badge-status');
+    const verBadge = document.getElementById('domain-badge-verification');
+    badgeEl.textContent = 'not_product_answer_layer';
+    verBadge.textContent = 'needs_verification';
+
+    typeColors = { ...TYPE_COLORS_DEFAULT, ...(domain.domainData.node_type_colors || {}) };
+    updateHeaderBadges(domain);
+    updateLegend(domain);
+
+    const consolidatedPath = DATA_BASE + domain.path.replace('domain.json', 'consolidated.json');
+    loadDomainData(consolidatedPath);
+  }
+
+  function updateHeaderBadges(domain) {
+    const status = domain.status || domain.domainData.status || {};
+    const badgeEl = document.getElementById('domain-badge-status');
+    const verBadge = document.getElementById('domain-badge-verification');
+    if (status.not_product_answer_layer) badgeEl.textContent = 'not_product_answer_layer';
+    if (status.needs_hklii_verification) verBadge.textContent = 'needs_hklii_verification';
+    else if (status.needs_official_source_verification) verBadge.textContent = 'needs_official_source_verification';
+
+    const disclaimer = document.getElementById('disclaimer-box');
+    const domainDisclaimer = domain.domainData.utterance_disclaimer;
+    if (domainDisclaimer) {
+      disclaimer.innerHTML = `<strong>Seed-layer map.</strong> ${domainDisclaimer}`;
+    } else {
+      disclaimer.innerHTML = '<strong>Seed-layer map.</strong> Not a product answer layer. Use verified paragraph proof before legal reliance.';
+    }
+  }
+
+  function updateLegend(domain) {
+    const legend = document.getElementById('legend');
+    legend.innerHTML = '';
+    const colors = domain.domainData.node_type_colors || {};
+    Object.entries(colors).forEach(([type, color]) => {
+      if (type === 'domain') return;
+      const item = document.createElement('span');
+      item.className = 'legend-item';
+      item.innerHTML = `<span class="dot" style="background:${color}"></span>${type.replace(/_/g, ' ')}`;
+      legend.appendChild(item);
+    });
+  }
+
+  function resetState() {
+    allNodes = [];
+    allEdges = [];
+    allFlows = [];
+    manifestSections = [];
+    nodeMap = {};
+    virtualNodeMap = {};
+    edgeFromMap = {};
+    primaryChildrenMap = {};
+    primaryParentMap = {};
+    supportParentMap = {};
+    treeParentMap = {};
+    renderedTreeIds = new Set();
+    treeModel = null;
+    expandedIds = new Set();
+    selectedId = null;
+    if (flowInterval) { clearInterval(flowInterval); flowInterval = null; }
+    currentFlowStep = -1;
+    searchQuery = '';
+    activeFilters.clear();
+
+    document.getElementById('tree-root').innerHTML = '';
+    document.getElementById('detail-content').innerHTML = getEmptyAuditMarkup();
+    document.getElementById('section-list').innerHTML = '';
+    document.getElementById('flow-select').innerHTML = '<option value="">— Select a flow —</option>';
+    document.getElementById('flow-step-indicator').textContent = '0 / 0';
+    document.getElementById('flow-step-info').textContent = '';
+    document.getElementById('flow-prev').disabled = true;
+    document.getElementById('flow-next').disabled = true;
+    document.getElementById('flow-play').disabled = true;
+    document.getElementById('flow-reset').disabled = true;
+    document.getElementById('search-box').value = '';
+    document.getElementById('filter-list').innerHTML = '';
+  }
+
+  // ── Data Loading ──
+
+  function loadDomainData(consolidatedPath) {
+    document.getElementById('status-selected').textContent = 'Loading...';
+    const dataBase = consolidatedPath.substring(0, consolidatedPath.lastIndexOf('/') + 1);
+
+    return loadJSON(consolidatedPath).then(manifest => {
       manifestSections = manifest.sections || [];
       const sectionPromises = manifest.sections.map(s => {
-        const nodeP = loadJSON(DATA_BASE + s.node_file).then(d => d.nodes || []);
-        const edgeP = loadJSON(DATA_BASE + s.edge_file).then(d => d.edges || []);
+        const nodeP = loadJSON(dataBase + s.node_file).then(d => d.nodes || []);
+        const edgeP = loadJSON(dataBase + s.edge_file).then(d => d.edges || []);
         return Promise.all([nodeP, edgeP]).then(([nodes, edges]) => {
           allNodes = allNodes.concat(nodes);
           allEdges = allEdges.concat(edges);
         });
       });
-      const flowP = loadJSON(DATA_BASE + manifest.flows_file).then(d => { allFlows = d.flows || []; });
+      const flowP = loadJSON(dataBase + manifest.flows_file).then(d => { allFlows = d.flows || []; });
       return Promise.all([Promise.all(sectionPromises), flowP]);
     }).then(() => {
       allNodes.forEach(n => { nodeMap[n.id] = n; });
@@ -78,6 +226,49 @@
           supportParentMap[e.to].push(e.from);
         }
       });
+      buildFilters();
+      buildTreeModel();
+      expandedIds.add(treeModel.id);
+      treeModel.children.forEach(c => expandedIds.add(c.id));
+      renderTree();
+      applyTypeFilters();
+      setupEventListeners();
+      document.getElementById('status-selected').textContent = 'Ready · Tree view';
+    }).catch(err => {
+      document.getElementById('status-selected').textContent = 'Error loading data';
+      document.getElementById('detail-content').innerHTML =
+        `<p style="color:#ef4444">Failed to load: ${err.message}<br>Try serving via HTTP:<br><code>python3 -m http.server 8080</code></p>`;
+    });
+  }
+
+  function buildFilters() {
+    const filterList = document.getElementById('filter-list');
+    filterList.innerHTML = '';
+
+    const seen = new Set();
+    const types = [];
+
+    allNodes.forEach(n => {
+      if (!seen.has(n.type) && n.type !== 'domain' && n.type !== 'section_header' && n.type !== 'flow_group') {
+        seen.add(n.type);
+        types.push(n.type);
+      }
+    });
+
+    types.sort();
+    activeFilters.clear();
+    types.forEach(t => activeFilters.add(t));
+
+    types.forEach(type => {
+      const label = document.createElement('label');
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.dataset.type = type;
+      cb.checked = true;
+      cb.addEventListener('change', handleFilterChange);
+      label.appendChild(cb);
+      label.appendChild(document.createTextNode(' ' + type.replace(/_/g, ' ')));
+      filterList.appendChild(label);
     });
   }
 
@@ -89,6 +280,8 @@
     virtualNodeMap = {};
     treeParentMap = {};
     renderedTreeIds = new Set();
+    const domainId = currentDomain.domain_id;
+    const domainTitle = currentDomain.title;
 
     allNodes.forEach(n => {
       if (n.type === 'section_header') {
@@ -122,24 +315,24 @@
         sectionChildren.push(makeNode(groupData, 2, sectionFlowSteps.map(step => makeNode(step, 3))));
       }
 
-      children.push(makeNode(header, 1, sectionChildren, 'criminal_procedure_hk_root'));
+      children.push(makeNode(header, 1, sectionChildren, `${domainId}_root`));
     });
 
     const rootData = {
-      id: 'criminal_procedure_hk_root',
-      label: 'Hong Kong Criminal Procedure',
+      id: `${domainId}_root`,
+      label: domainTitle,
       type: 'domain',
-      summary: 'Complete principle-flow map covering every procedural stage from jurisdiction to final appeal.',
+      summary: currentDomain.domainData.description || 'Legal doctrine tree map.',
       verification_status: 'not_product_answer_layer',
       answer_layer_status: 'not_product_answer_layer',
-      authority_status: 'unverified_case_seed',
+      authority_status: 'unverified_seed',
     };
     virtualNodeMap[rootData.id] = rootData;
     treeModel = {
       id: rootData.id,
       label: rootData.label,
       type: rootData.type,
-      color: '#1a1a2e',
+      color: typeColors['domain'] || '#0b2245',
       depth: 0,
       children: children,
       data: rootData,
@@ -190,7 +383,7 @@
       id: node.id,
       label: node.label,
       type: node.type,
-      color: TYPE_COLORS[node.type] || '#6b7280',
+      color: typeColors[node.type] || '#6b7280',
       depth: depth,
       children: children || [],
       data: node,
@@ -236,6 +429,12 @@
     container.className = 'tree-node';
     container.dataset.nodeId = tNode.id;
     container.dataset.depth = depth;
+    container.dataset.type = tNode.type;
+    const palette = getPaletteForNode(tNode);
+    container.style.setProperty('--branch-color', palette.accent);
+    container.style.setProperty('--branch-soft', palette.soft);
+    container.style.setProperty('--branch-tint', palette.tint);
+    container.style.setProperty('--branch-ink', palette.ink);
 
     const isExpandable = tNode.children && tNode.children.length > 0;
     const isExpanded = expandedIds.has(tNode.id);
@@ -261,6 +460,7 @@
 
     const card = document.createElement('div');
     card.className = 'tree-card';
+    card.dataset.type = tNode.type;
     if (tNode.id === selectedId) card.classList.add('selected');
     card.addEventListener('click', function() {
       selectedId = tNode.id;
@@ -282,7 +482,7 @@
     const tb = document.createElement('span');
     tb.className = 'type-badge';
     tb.style.background = tNode.color;
-    tb.textContent = tNode.type.replace('_', ' ');
+    tb.textContent = tNode.type.replace(/_/g, ' ');
     badges.appendChild(tb);
 
     const nd = tNode.data;
@@ -302,7 +502,7 @@
       badges.appendChild(nb);
     }
 
-    if (nd && nd.authority_status === 'unverified_case_seed') {
+    if (nd && nd.authority_status && nd.authority_status.startsWith('unverified')) {
       const ab = document.createElement('span');
       ab.className = 'status-badge unverified';
       ab.textContent = 'unverified';
@@ -319,12 +519,25 @@
     header.appendChild(badges);
     card.appendChild(header);
 
+    const body = document.createElement('div');
+    body.className = 'tree-card-body';
+
     if (nd && nd.summary) {
       const summary = document.createElement('div');
       summary.className = 'tree-card-summary';
-      summary.textContent = nd.summary;
-      card.appendChild(summary);
+      summary.innerHTML = `<strong>${tNode.type === 'flow_step' ? 'Step' : 'Principle'}:</strong> ${esc(nd.summary)}`;
+      body.appendChild(summary);
     }
+
+    const auditPreview = getAuditPreview(nd);
+    if (auditPreview) {
+      const audit = document.createElement('div');
+      audit.className = 'tree-card-audit';
+      audit.innerHTML = auditPreview;
+      body.appendChild(audit);
+    }
+
+    if (body.children.length) card.appendChild(body);
 
     container.appendChild(card);
 
@@ -338,11 +551,7 @@
         childContainer.appendChild(childEl);
       });
 
-      if (isRoot) {
-        container.appendChild(childContainer);
-      } else {
-        container.appendChild(childContainer);
-      }
+      container.appendChild(childContainer);
     }
 
     return container;
@@ -355,9 +564,49 @@
     if (childCount > 0) counts.push(childCount + ' items');
     if ((nd.statute_refs || []).length) counts.push(nd.statute_refs.length + ' statutes');
     if ((nd.case_seeds || []).length) counts.push(nd.case_seeds.length + ' cases');
+    if ((nd.listing_rule_refs || []).length) counts.push(nd.listing_rule_refs.length + ' rules');
+    if ((nd.guidance_refs || []).length) counts.push(nd.guidance_refs.length + ' guidance');
     if ((nd.practice_direction_refs || []).length) counts.push(nd.practice_direction_refs.length + ' PDs');
     if (nd.type === 'gap') counts.push('gap');
     return counts;
+  }
+
+  function getPaletteForNode(tNode) {
+    const section = (tNode.data && tNode.data.section) || inferSectionFromTree(tNode.id);
+    const sectionNum = parseInt(section || '1', 10);
+    if (!sectionNum || Number.isNaN(sectionNum)) return SECTION_PALETTES[0];
+    return SECTION_PALETTES[(sectionNum - 1) % SECTION_PALETTES.length];
+  }
+
+  function inferSectionFromTree(nodeId) {
+    let cursor = nodeId;
+    while (cursor) {
+      const node = nodeMap[cursor] || virtualNodeMap[cursor];
+      if (node && node.section) return node.section;
+      cursor = treeParentMap[cursor];
+    }
+    return null;
+  }
+
+  function getAuditPreview(nd) {
+    if (!nd) return '';
+    const chips = [];
+    const statuteCount = (nd.statute_refs || []).length;
+    const caseCount = (nd.case_seeds || []).length;
+    const listingRuleCount = (nd.listing_rule_refs || []).length;
+    const guidanceCount = (nd.guidance_refs || []).length;
+    const pdCount = (nd.practice_direction_refs || []).length;
+    const crossCount = (nd.cross_refs || []).length;
+    if (listingRuleCount) chips.push(`<span><b>${listingRuleCount}</b> Listing Rule${listingRuleCount > 1 ? 's' : ''}</span>`);
+    if (guidanceCount) chips.push(`<span><b>${guidanceCount}</b> guidance ref${guidanceCount > 1 ? 's' : ''}</span>`);
+    if (statuteCount) chips.push(`<span><b>${statuteCount}</b> statute${statuteCount > 1 ? 's' : ''}</span>`);
+    if (caseCount) chips.push(`<span><b>${caseCount}</b> case seed${caseCount > 1 ? 's' : ''}</span>`);
+    if (pdCount) chips.push(`<span><b>${pdCount}</b> PD ref${pdCount > 1 ? 's' : ''}</span>`);
+    if (crossCount) chips.push(`<span><b>${crossCount}</b> cross-ref${crossCount > 1 ? 's' : ''}</span>`);
+    if (!chips.length && nd.type === 'case_seed') chips.push('<span>case audit seed</span>');
+    if (!chips.length && nd.type === 'statute') chips.push('<span>statutory anchor</span>');
+    if (!chips.length && REGULATORY_TYPES.has(nd.type)) chips.push('<span>regulatory anchor</span>');
+    return chips.join('');
   }
 
   function toggleExpand(nodeId) {
@@ -426,19 +675,16 @@
     }
 
     const allRefs = collectNodeRefs(nodeId);
-    const colors = TYPE_COLORS;
-    const typeColor = colors[n.type] || '#6b7280';
+    const typeColor = typeColors[n.type] || '#6b7280';
 
     let html = '';
 
-    // Header
     html += '<div class="detail-header">';
     html += `<span class="type-badge" style="background:${typeColor}">${esc(n.type)}</span>`;
     html += `<h2>${esc(n.label)}</h2>`;
     if (n.neutral_citation) html += `<div class="subtitle">${esc(n.neutral_citation)}</div>`;
     html += '</div>';
 
-    // Status badges
     const statuses = [];
     if (n.verification_status) statuses.push({ label: n.verification_status, cls: n.verification_status === 'verified' ? 'success' : 'warn' });
     if (n.authority_status) statuses.push({ label: n.authority_status, cls: 'danger' });
@@ -451,20 +697,29 @@
       html += '</div></div>';
     }
 
-    // Summary
     if (n.summary) {
       html += `<div class="detail-section"><div class="detail-summary">${esc(n.summary)}</div></div>`;
     }
 
-    // Metadata
     html += '<div class="detail-section"><div class="detail-section-title">Metadata</div><div class="detail-meta">';
     html += `<div class="detail-meta-row"><span class="detail-meta-label">ID</span><span class="detail-meta-value">${esc(n.id)}</span></div>`;
     if (n.section) html += `<div class="detail-meta-row"><span class="detail-meta-label">Section</span><span class="detail-meta-value">${esc(n.section)}</span></div>`;
     if (n.subtopic) html += `<div class="detail-meta-row"><span class="detail-meta-label">Subtopic</span><span class="detail-meta-value">${esc(n.subtopic)}</span></div>`;
     if (n.subsection) html += `<div class="detail-meta-row"><span class="detail-meta-label">Subsection</span><span class="detail-meta-value">${esc(n.subsection)}</span></div>`;
+    if (n.rule_chapter) html += `<div class="detail-meta-row"><span class="detail-meta-label">Rule Chapter</span><span class="detail-meta-value">${esc(n.rule_chapter)}</span></div>`;
+    if (n.rule_number) html += `<div class="detail-meta-row"><span class="detail-meta-label">Rule Number</span><span class="detail-meta-value">${esc(n.rule_number)}</span></div>`;
+    if (n.effective_date) html += `<div class="detail-meta-row"><span class="detail-meta-label">Effective</span><span class="detail-meta-value">${esc(n.effective_date)}</span></div>`;
+    if (n.source_url) html += `<div class="detail-meta-row"><span class="detail-meta-label">Source</span><span class="detail-meta-value">${esc(n.source_url)}</span></div>`;
     html += '</div></div>';
 
-    // Statute Refs
+    if (allRefs.listingRules.length) {
+      html += '<div class="detail-section"><div class="detail-section-title">Listing Rules (' + allRefs.listingRules.length + ')</div><ul class="detail-ref-list">';
+      allRefs.listingRules.forEach(ref => {
+        html += `<li data-ref-id="${escAttr(ref.id)}"><span class="ref-label">${esc(ref.label)}</span><span class="ref-type">${esc(ref.rule_number || ref.id)}</span></li>`;
+      });
+      html += '</ul></div>';
+    }
+
     if (allRefs.statutes.length) {
       html += '<div class="detail-section"><div class="detail-section-title">Statute References (' + allRefs.statutes.length + ')</div><ul class="detail-ref-list">';
       allRefs.statutes.forEach(ref => {
@@ -473,7 +728,6 @@
       html += '</ul></div>';
     }
 
-    // Case Seeds
     if (allRefs.cases.length) {
       html += '<div class="detail-section"><div class="detail-section-title">Case Seeds (' + allRefs.cases.length + ')</div><ul class="detail-ref-list">';
       allRefs.cases.forEach(ref => {
@@ -482,7 +736,14 @@
       html += '</ul></div>';
     }
 
-    // Practice Directions
+    if (allRefs.guidance.length) {
+      html += '<div class="detail-section"><div class="detail-section-title">Guidance References (' + allRefs.guidance.length + ')</div><ul class="detail-ref-list">';
+      allRefs.guidance.forEach(ref => {
+        html += `<li data-ref-id="${escAttr(ref.id)}"><span class="ref-label">${esc(ref.label)}</span><span class="ref-type">${esc(ref.id)}</span></li>`;
+      });
+      html += '</ul></div>';
+    }
+
     if (allRefs.pds.length) {
       html += '<div class="detail-section"><div class="detail-section-title">Practice Directions (' + allRefs.pds.length + ')</div><ul class="detail-ref-list">';
       allRefs.pds.forEach(ref => {
@@ -491,7 +752,6 @@
       html += '</ul></div>';
     }
 
-    // Cross References
     if (allRefs.crossRefs.length) {
       html += '<div class="detail-section"><div class="detail-section-title">Cross-References (' + allRefs.crossRefs.length + ')</div><ul class="detail-ref-list">';
       allRefs.crossRefs.forEach(ref => {
@@ -500,7 +760,6 @@
       html += '</ul></div>';
     }
 
-    // Case Audit / Source Proof (future-proof placeholder)
     html += '<div class="detail-section"><div class="detail-section-title">Case Audit / Source Proof</div>';
     html += '<div class="detail-audit-box">';
     html += '<strong>No verified paragraph proof yet.</strong> This is a seed-layer node requiring HKLII / official-source verification.';
@@ -520,19 +779,21 @@
   }
 
   function collectNodeRefs(nodeId) {
-    const result = { statutes: [], cases: [], pds: [], crossRefs: [] };
+    const result = { listingRules: [], statutes: [], cases: [], guidance: [], pds: [], crossRefs: [] };
     const n = nodeMap[nodeId] || virtualNodeMap[nodeId];
     if (!n) return result;
 
     function resolveRefs(refs) {
       return (refs || []).map(ref => {
         const rn = nodeMap[ref];
-        return { id: ref, label: rn ? rn.label : ref, citation: rn ? rn.neutral_citation : null };
+        return { id: ref, label: rn ? rn.label : ref, citation: rn ? rn.neutral_citation : null, rule_number: rn ? rn.rule_number : null };
       });
     }
 
+    if (n.listing_rule_refs) result.listingRules = resolveRefs(n.listing_rule_refs);
     if (n.statute_refs) result.statutes = resolveRefs(n.statute_refs);
     if (n.case_seeds) result.cases = resolveRefs(n.case_seeds);
+    if (n.guidance_refs) result.guidance = resolveRefs(n.guidance_refs);
     if (n.practice_direction_refs) result.pds = resolveRefs(n.practice_direction_refs);
     if (n.cross_refs) result.crossRefs = resolveRefs(n.cross_refs);
 
@@ -561,6 +822,21 @@
 
   function escAttr(value) {
     return esc(value).replace(/`/g, '&#96;');
+  }
+
+  function getEmptyAuditMarkup() {
+    return [
+      '<div class="empty-audit">',
+      '<div class="empty-audit-icon">Audit</div>',
+      '<h2>Select a doctrine node</h2>',
+      '<p>Open a section, principle, flow step, case seed, or source anchor to inspect status, support links, and paragraph-proof readiness.</p>',
+      '<div class="empty-audit-tags">',
+      '<span>not_product_answer_layer</span>',
+      '<span>needs_hklii_verification</span>',
+      '<span>case audit pending</span>',
+      '</div>',
+      '</div>',
+    ].join('');
   }
 
   // ── Search ──
@@ -640,11 +916,15 @@
       n.subsection,
       n.subtopic,
       n.neutral_citation,
+      n.rule_number,
+      n.rule_chapter,
       n.verification_status,
       n.authority_status,
       n.answer_layer_status,
       ...(n.statute_refs || []),
       ...(n.case_seeds || []),
+      ...(n.listing_rule_refs || []),
+      ...(n.guidance_refs || []),
       ...(n.practice_direction_refs || []),
       ...(n.cross_refs || []),
     ];
@@ -676,6 +956,7 @@
       const card = document.createElement('div');
       card.className = 'tree-card search-result-card search-match';
       card.dataset.nodeId = n.id;
+      card.dataset.type = n.type;
       card.addEventListener('click', () => {
         selectedId = n.id;
         showNodeDetail(n.id);
@@ -694,8 +975,8 @@
       badges.className = 'tree-card-badges';
       const badge = document.createElement('span');
       badge.className = 'type-badge';
-      badge.style.background = TYPE_COLORS[n.type] || '#6b7280';
-      badge.textContent = n.type.replace('_', ' ');
+      badge.style.background = typeColors[n.type] || '#6b7280';
+      badge.textContent = n.type.replace(/_/g, ' ');
       badges.appendChild(badge);
       header.appendChild(badges);
       card.appendChild(header);
@@ -703,7 +984,7 @@
       const summary = document.createElement('div');
       summary.className = 'tree-card-summary';
       const linked = supportParentMap[n.id] || [];
-      summary.textContent = n.summary || (linked.length ? 'Linked from: ' + linked.map(id => (nodeMap[id] || {}).label || id).join('; ') : 'Support/audit node.');
+      summary.innerHTML = `<strong>Audit:</strong> ${esc(n.summary || (linked.length ? 'Linked from: ' + linked.map(id => (nodeMap[id] || {}).label || id).join('; ') : 'Support/audit node.'))}`;
       card.appendChild(summary);
       resultsEl.appendChild(card);
     });
@@ -719,7 +1000,7 @@
   // ── Filters ──
 
   function handleFilterChange() {
-    const checkboxes = document.querySelectorAll('#filter-box input[data-type]');
+    const checkboxes = document.querySelectorAll('#filter-list input[data-type]');
     activeFilters.clear();
     checkboxes.forEach(cb => {
       if (cb.checked) activeFilters.add(cb.dataset.type);
@@ -798,7 +1079,7 @@
   function populateFlows() {
     const sel = document.getElementById('flow-select');
     const selected = sel.value;
-    sel.innerHTML = '<option value="">— Select a flow —</option>';
+    sel.innerHTML = '<option value="">Select a flow</option>';
     allFlows.forEach(f => {
       const opt = document.createElement('option');
       opt.value = f.flow_id;
@@ -860,41 +1141,49 @@
     }
   }
 
-  document.getElementById('flow-select').addEventListener('change', function() {
-    resetFlow();
-    const flow = getCurrentFlow();
-    if (flow) {
-      document.getElementById('flow-next').disabled = false;
-      document.getElementById('flow-play').disabled = false;
-      document.getElementById('flow-reset').disabled = false;
-    }
-  });
+  // ── Event Listeners Setup ──
 
-  document.getElementById('flow-next').addEventListener('click', function() {
-    const flow = getCurrentFlow();
-    if (!flow) return;
-    if (currentFlowStep < flow.steps.length - 1) { currentFlowStep++; highlightFlowStep(currentFlowStep); }
-  });
-
-  document.getElementById('flow-prev').addEventListener('click', function() {
-    if (currentFlowStep > 0) { currentFlowStep--; highlightFlowStep(currentFlowStep); }
-  });
-
-  document.getElementById('flow-play').addEventListener('click', function() {
-    if (flowInterval) {
-      clearInterval(flowInterval); flowInterval = null;
-      this.textContent = '\u25b6 Play'; return;
-    }
-    const flow = getCurrentFlow();
-    if (!flow) return;
-    this.textContent = '\u23f8 Pause';
-    flowInterval = setInterval(() => {
+  function setupEventListeners() {
+    if (controlsBound) return;
+    controlsBound = true;
+    document.getElementById('expand-all-btn').addEventListener('click', expandAll);
+    document.getElementById('collapse-btn').addEventListener('click', collapseAll);
+    document.querySelectorAll('.depth-buttons button').forEach(btn => {
+      btn.addEventListener('click', function() { handleDepthChange(parseInt(this.dataset.depth)); });
+    });
+    document.getElementById('search-box').addEventListener('input', function() { handleSearch(this.value); });
+    document.getElementById('flow-select').addEventListener('change', function() {
+      resetFlow();
+      const flow = getCurrentFlow();
+      if (flow) {
+        document.getElementById('flow-next').disabled = false;
+        document.getElementById('flow-play').disabled = false;
+        document.getElementById('flow-reset').disabled = false;
+      }
+    });
+    document.getElementById('flow-next').addEventListener('click', function() {
+      const flow = getCurrentFlow();
+      if (!flow) return;
       if (currentFlowStep < flow.steps.length - 1) { currentFlowStep++; highlightFlowStep(currentFlowStep); }
-      else { clearInterval(flowInterval); flowInterval = null; document.getElementById('flow-play').textContent = '\u25b6 Play'; }
-    }, 2000);
-  });
-
-  document.getElementById('flow-reset').addEventListener('click', resetFlow);
+    });
+    document.getElementById('flow-prev').addEventListener('click', function() {
+      if (currentFlowStep > 0) { currentFlowStep--; highlightFlowStep(currentFlowStep); }
+    });
+    document.getElementById('flow-play').addEventListener('click', function() {
+      if (flowInterval) {
+        clearInterval(flowInterval); flowInterval = null;
+        this.textContent = '\u25b6 Play'; return;
+      }
+      const flow = getCurrentFlow();
+      if (!flow) return;
+      this.textContent = '\u23f8 Pause';
+      flowInterval = setInterval(() => {
+        if (currentFlowStep < flow.steps.length - 1) { currentFlowStep++; highlightFlowStep(currentFlowStep); }
+        else { clearInterval(flowInterval); flowInterval = null; document.getElementById('flow-play').textContent = '\u25b6 Play'; }
+      }, 2000);
+    });
+    document.getElementById('flow-reset').addEventListener('click', resetFlow);
+  }
 
   // ── Status Bar ──
 
@@ -908,32 +1197,11 @@
   // ── Init ──
 
   function init() {
-    document.getElementById('status-selected').textContent = 'Loading...';
-
-    loadAllData().then(() => {
-      buildTreeModel();
-
-      expandedIds.add(treeModel.id);
-      treeModel.children.forEach(c => expandedIds.add(c.id));
-
-      renderTree();
-      applyTypeFilters();
-
-      document.getElementById('expand-all-btn').addEventListener('click', expandAll);
-      document.getElementById('collapse-btn').addEventListener('click', collapseAll);
-      document.querySelectorAll('.depth-buttons button').forEach(btn => {
-        btn.addEventListener('click', function() { handleDepthChange(parseInt(this.dataset.depth)); });
-      });
-      document.querySelectorAll('#filter-box input[data-type]').forEach(cb => {
-        cb.addEventListener('change', handleFilterChange);
-      });
-      document.getElementById('search-box').addEventListener('input', function() { handleSearch(this.value); });
-
-      document.getElementById('status-selected').textContent = 'Ready · Tree view';
-    }).catch(err => {
-      document.getElementById('status-selected').textContent = 'Error loading data';
+    document.getElementById('status-selected').textContent = 'Loading registry...';
+    loadDomainRegistry().catch(err => {
+      document.getElementById('status-selected').textContent = 'Error loading registry';
       document.getElementById('detail-content').innerHTML =
-        `<p style="color:#ef4444">Failed to load map data.<br>Try serving via HTTP:<br><code>python3 -m http.server 8080</code></p>`;
+        `<p style="color:#ef4444">Failed to load domain registry.<br>Try serving via HTTP:<br><code>python3 -m http.server 8080</code></p>`;
     });
   }
 

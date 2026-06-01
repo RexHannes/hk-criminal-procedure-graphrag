@@ -1,0 +1,231 @@
+{
+  "section_id": "01",
+  "section_title": "Requirements for Listing",
+  "domain_id": "hk_listing_law",
+  "nodes": [
+    {
+      "id": "listing_requirements",
+      "type": "section_header",
+      "label": "Requirements for Listing",
+      "summary": "Qualitative and quantitative eligibility requirements for Main Board and GEM listing under the HK Listing Rules.",
+      "section": "01"
+    },
+    {
+      "id": "mbl_eligibility",
+      "type": "legal_issue",
+      "label": "Main Board Eligibility Requirements",
+      "summary": "An applicant must satisfy the Exchange that it is suitable for listing and meets the financial, management, and ownership requirements under MBL Rules Chapter 8.",
+      "subsection": "01.01",
+      "subtopic": "Main Board Eligibility",
+      "section": "01",
+      "listing_rule_refs": ["mbl_8_04", "mbl_8_05", "mbl_8_06", "mbl_8_07"],
+      "statute_refs": ["sfo_sch1_pt1"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_8_04",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 8.04 — General Conditions",
+      "summary": "An applicant must be duly incorporated and must be a going concern.",
+      "section": "01",
+      "rule_chapter": "8",
+      "rule_number": "8.04",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_8_05",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 8.05 — Financial Tests",
+      "summary": "Three financial eligibility tests: profit test, market cap/revenue test, and market cap/revenue/cash flow test.",
+      "section": "01",
+      "rule_chapter": "8",
+      "rule_number": "8.05",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_8_06",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 8.06 — Management Continuity",
+      "summary": "At least 3 consecutive financial years of management continuity under the profit test.",
+      "section": "01",
+      "rule_chapter": "8",
+      "rule_number": "8.06",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_8_07",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 8.07 — Ownership Continuity",
+      "summary": "At least 3 consecutive financial years of ownership continuity under the profit test.",
+      "section": "01",
+      "rule_chapter": "8",
+      "rule_number": "8.07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_profit_test",
+      "type": "legal_issue",
+      "label": "Profit Test (MBL 8.05(1))",
+      "summary": "Profit attributable to shareholders of at least HK$50 million in the most recent 3 financial years (HK$20m in most recent year, HK$20m in two preceding years).",
+      "subsection": "01.01",
+      "subtopic": "Financial Tests",
+      "section": "01",
+      "listing_rule_refs": ["mbl_8_05", "mbl_8_05A"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_8_05A",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 8.05A — Market Cap / Revenue Test",
+      "summary": "Market cap of at least HK$4 billion and revenue of at least HK$500 million in the most recent financial year.",
+      "section": "01",
+      "rule_chapter": "8",
+      "rule_number": "8.05A",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_suitability",
+      "type": "legal_issue",
+      "label": "Suitability for Listing",
+      "summary": "The Exchange must be satisfied that the applicant and its business are suitable for listing, considering fitness and propriety of directors, regulatory compliance, and business model.",
+      "subsection": "01.02",
+      "subtopic": "Suitability",
+      "section": "01",
+      "listing_rule_refs": ["mbl_8_04", "gl68_13A"],
+      "case_seeds": ["hkex_suitability_decision_1"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "gl68_13A",
+      "type": "guidance_letter_seed",
+      "label": "HKEX Guidance Letter GL68-13A — Suitability for Listing",
+      "summary": "Guidance on factors the Exchange considers when assessing suitability, including regulatory non-compliance, business model viability, and director integrity.",
+      "section": "01",
+      "effective_date": "2013-05-01",
+      "source_url": "https://www.hkex.com.hk/Listing/Rules-and-Guidance/Listing-Guidance",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "hkex_suitability_decision_1",
+      "type": "sehk_decision_seed",
+      "label": "HKEX Listing Decision LD-2018-01 — Suitability Assessment",
+      "summary": "Listing Committee considered whether past regulatory breaches rendered an applicant unsuitable; held that candour and remediation are relevant factors.",
+      "section": "01",
+      "authority_status": "unverified_seed",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "gem_eligibility",
+      "type": "legal_issue",
+      "label": "GEM Eligibility Requirements",
+      "summary": "GEM listing requirements are less onerous: a cash flow test of at least HK$30 million for the 2 preceding financial years, with management and ownership continuity of 2 financial years.",
+      "subsection": "01.03",
+      "subtopic": "GEM Eligibility",
+      "section": "01",
+      "listing_rule_refs": ["gem_11_06", "gem_11_10", "gem_11_12"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "gem_11_06",
+      "type": "listing_rule_anchor",
+      "label": "GEM Rule 11.06 — General Conditions",
+      "summary": "A GEM applicant must be duly incorporated as a going concern.",
+      "section": "01",
+      "rule_chapter": "11",
+      "rule_number": "11.06",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "gem_11_10",
+      "type": "listing_rule_anchor",
+      "label": "GEM Rule 11.10 — Cash Flow Test",
+      "summary": "Net cash flow from operating activities of at least HK$30 million for the 2 preceding financial years.",
+      "section": "01",
+      "rule_chapter": "11",
+      "rule_number": "11.10",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "gem_11_12",
+      "type": "listing_rule_anchor",
+      "label": "GEM Rule 11.12 — Management and Ownership Continuity",
+      "summary": "At least 2 consecutive financial years of management and ownership continuity.",
+      "section": "01",
+      "rule_chapter": "11",
+      "rule_number": "11.12",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_sch1_pt1",
+      "type": "statute",
+      "label": "SFO Schedule 1, Part 1 — Definitions",
+      "summary": "Defines 'listing rules' and 'recognised exchange company' for the purposes of the Securities and Futures Ordinance.",
+      "section": "01",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "listing_document_requirements",
+      "type": "legal_issue",
+      "label": "Listing Document Requirements",
+      "summary": "The listing document (prospectus) must contain all information necessary for investors to make an informed assessment of the applicant's business and prospects.",
+      "subsection": "01.04",
+      "subtopic": "Listing Document Requirements",
+      "section": "01",
+      "listing_rule_refs": ["mbl_11_07", "mbl_11_11"],
+      "statute_refs": ["cwo_38d"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_11_07",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 11.07 — Listing Document Contents",
+      "summary": "A listing document must contain particulars and information necessary for a reasonable investor to form a valid and comprehensive opinion of the applicant.",
+      "section": "01",
+      "rule_chapter": "11",
+      "rule_number": "11.07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_11_11",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 11.11 — Responsibility Statements",
+      "summary": "Each director must accept responsibility for the accuracy of the listing document.",
+      "section": "01",
+      "rule_chapter": "11",
+      "rule_number": "11.11",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cwo_38d",
+      "type": "statute",
+      "label": "Companies (WUMP) Ordinance s.38D — Prospectus Liability",
+      "summary": "Civil liability for misstatements in prospectuses; persons responsible include the issuer, directors, promoters, and experts.",
+      "section": "01",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "listing_requirements_flow_start",
+      "type": "flow_step",
+      "label": "Eligibility Assessment Flow",
+      "summary": "Step 1: Assess eligibility — determine which financial test applies and verify qualitative requirements.",
+      "section": "01"
+    },
+    {
+      "id": "listing_requirements_flow_step2",
+      "type": "flow_step",
+      "label": "Suitability and Document Preparation",
+      "summary": "Step 2: Prepare listing document, verify suitability, and engage sponsors.",
+      "section": "01"
+    }
+  ]
+}

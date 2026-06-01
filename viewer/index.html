@@ -3,26 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HK Criminal Procedure — Doctrine Tree Map</title>
+  <title>Legal Doctrine Tree Map</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="header">
     <div id="header-title">
-      <span class="domain-badge">not_product_answer_layer</span>
-      <span class="domain-badge verification">needs_hklii_verification</span>
-      <h1>Hong Kong Criminal Procedure — Doctrine Tree</h1>
+      <span id="domain-badge-status" class="domain-badge">not_product_answer_layer</span>
+      <span id="domain-badge-verification" class="domain-badge verification">needs_verification</span>
+      <h1 id="header-title-text">Legal Doctrine Tree</h1>
+      <select id="domain-select">
+        <option value="">Loading domains...</option>
+      </select>
     </div>
     <div id="header-controls">
       <input type="text" id="search-box" placeholder="Search by keyword, case, statute..." />
-      <div id="legend">
-        <span class="legend-item"><span class="dot" style="background:#2266cc"></span>Issue</span>
-        <span class="legend-item"><span class="dot" style="background:#2d8a4e"></span>Statute</span>
-        <span class="legend-item"><span class="dot" style="background:#7b2d8e"></span>Case</span>
-        <span class="legend-item"><span class="dot" style="background:#d97706"></span>Flow</span>
-        <span class="legend-item"><span class="dot" style="background:#0e7490"></span>PD</span>
-        <span class="legend-item"><span class="dot" style="background:#dc2626"></span>NSL</span>
-      </div>
+      <div id="legend"></div>
     </div>
   </div>
 
@@ -34,12 +30,7 @@
 
       <div id="filter-box">
         <h3>Filters</h3>
-        <label><input type="checkbox" data-type="legal_issue" checked> Legal Issues</label>
-        <label><input type="checkbox" data-type="flow_step" checked> Flow Steps</label>
-        <label><input type="checkbox" data-type="statute" checked> Statutes</label>
-        <label><input type="checkbox" data-type="case_seed" checked> Case Seeds</label>
-        <label><input type="checkbox" data-type="practice_direction" checked> Practice Directions</label>
-        <label><input type="checkbox" data-type="restricted_nsl" checked> NSL</label>
+        <div id="filter-list"></div>
       </div>
 
       <div id="depth-control">
@@ -85,7 +76,16 @@
 
     <div id="detail-panel">
       <div id="detail-content">
-        <p class="hint">Click a node to inspect details</p>
+        <div class="empty-audit">
+          <div class="empty-audit-icon">Audit</div>
+          <h2>Select a doctrine node</h2>
+          <p>Open a section, principle, flow step, case seed, or source anchor to inspect status, support links, and paragraph-proof readiness.</p>
+          <div class="empty-audit-tags">
+            <span>not_product_answer_layer</span>
+            <span>needs_hklii_verification</span>
+            <span>case audit pending</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -99,8 +99,8 @@
   </div>
 
   <script>
-    const DATA_BASE = '../data/legal_domain_packs/demo_maps/criminal_procedure_hk/';
-    const CONSOLIDATED_PATH = DATA_BASE + 'consolidated.json';
+    const INDEX_PATH = '../data/index.json';
+    const DATA_BASE = '../data/legal_domain_packs/demo_maps/';
   </script>
   <script src="viewer.js"></script>
 </body>

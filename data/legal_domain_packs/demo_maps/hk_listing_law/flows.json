@@ -1,0 +1,79 @@
+{
+  "domain_id": "hk_listing_law",
+  "flows": [
+    {
+      "flow_id": "listing_eligibility_flow",
+      "title": "Listing Eligibility Assessment Flow",
+      "description": "Stage-by-stage flow from identifying eligibility requirements through suitability assessment and document preparation.",
+      "steps": [
+        "listing_requirements_flow_start",
+        "listing_requirements_flow_step2"
+      ]
+    },
+    {
+      "flow_id": "ipo_process_flow",
+      "title": "IPO Process Flow",
+      "description": "Full IPO lifecycle from sponsor appointment through to listing and commencement of trading.",
+      "steps": [
+        "ipo_flow_start",
+        "ipo_flow_step2",
+        "ipo_flow_step3",
+        "ipo_flow_step4",
+        "ipo_flow_step5"
+      ]
+    },
+    {
+      "flow_id": "prospectus_flow",
+      "title": "Prospectus Registration and Vetting Flow",
+      "description": "Flow from draft prospectus preparation through registration, SFC dual filing, and objection period.",
+      "steps": [
+        "prospectus_flow_start",
+        "prospectus_flow_step2",
+        "prospectus_flow_step3"
+      ]
+    },
+    {
+      "flow_id": "continuing_obligations_flow",
+      "title": "Continuing Obligations Disclosure Flow",
+      "description": "Flow for identifying trigger events and fulfilling disclosure obligations under the Listing Rules.",
+      "steps": [
+        "obligations_flow_start",
+        "obligations_flow_step2",
+        "obligations_flow_step3"
+      ]
+    },
+    {
+      "flow_id": "notifiable_transaction_flow",
+      "title": "Notifiable Transaction Classification and Approval Flow",
+      "description": "Flow from calculating percentage ratios through classification, announcement, and shareholder approval.",
+      "steps": [
+        "notifiable_flow_start",
+        "notifiable_flow_step2",
+        "notifiable_flow_step3",
+        "notifiable_flow_step4"
+      ]
+    },
+    {
+      "flow_id": "connected_transaction_flow",
+      "title": "Connected Transaction Compliance Flow",
+      "description": "Flow for identifying connected persons, applying de minimis exemptions, and obtaining approvals.",
+      "steps": [
+        "connected_flow_start",
+        "connected_flow_step2",
+        "connected_flow_step3",
+        "connected_flow_step4"
+      ]
+    },
+    {
+      "flow_id": "enforcement_flow",
+      "title": "Enforcement and Disciplinary Flow",
+      "description": "Flow from detection and investigation through disciplinary referral and sanction imposition.",
+      "steps": [
+        "enforcement_flow_start",
+        "enforcement_flow_step2",
+        "enforcement_flow_step3",
+        "enforcement_flow_step4"
+      ]
+    }
+  ]
+}

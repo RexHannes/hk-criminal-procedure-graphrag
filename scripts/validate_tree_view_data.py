@@ -18,8 +18,18 @@ import json
 import os
 import sys
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), '..',
-    'data/legal_domain_packs/demo_maps/criminal_procedure_hk')
+DOMAIN_DIRS = [
+    'criminal_procedure_hk',
+    'hk_listing_law',
+]
+
+REGULATORY_TYPES = {'listing_rule_anchor', 'sehk_decision_seed', 'guidance_letter_seed',
+                    'practice_note_anchor', 'textbook_seed', 'enforcement_seed'}
+
+NAV_TYPES = {'section_header', 'legal_issue', 'restricted_nsl', 'practice_direction',
+             'flow_step', 'gap', 'cross_reference'}
+
+SUPPORT_TYPES = {'statute', 'case_seed'} | REGULATORY_TYPES
 
 errors = []
 warnings = []
@@ -36,70 +46,63 @@ def warn(msg):
     warnings.append(msg)
     print(f'  WARN: {msg}')
 
-def main():
-    print(f'Validating data in: {DATA_DIR}')
-    print()
+def validate_domain(domain_dir):
+    base_dir = os.path.join(os.path.dirname(__file__), '..', 'data/legal_domain_packs/demo_maps', domain_dir)
+    print(f'\n{"="*60}')
+    print(f'Validating domain: {domain_dir}')
+    print(f'Path: {base_dir}')
 
-    # Load consolidated manifest
-    consolidated_path = os.path.join(DATA_DIR, 'consolidated.json')
+    consolidated_path = os.path.join(base_dir, 'consolidated.json')
     if not os.path.exists(consolidated_path):
         error(f'consolidated.json not found at {consolidated_path}')
-        sys.exit(1)
+        return
 
     manifest = load_json(consolidated_path)
-    print(f'Loaded consolidated.json: {manifest.get("title", "unknown")}')
-    print(f'  Sections defined: {len(manifest.get("sections", []))}')
-    print(f'  Flow chains: {len(manifest.get("flow_chains", []))}')
+    print(f'Title: {manifest.get("title", "unknown")}')
+    print(f'Sections: {len(manifest.get("sections", []))}')
 
-    flows_path = os.path.join(DATA_DIR, manifest.get('flows_file', 'flows.json'))
+    flows_path = os.path.join(base_dir, manifest.get('flows_file', 'flows.json'))
     flows = []
     if os.path.exists(flows_path):
         flows_data = load_json(flows_path)
         flows = flows_data.get('flows', [])
-        print(f'Loaded flows.json: {len(flows)} flow(s)')
+        print(f'Flows: {len(flows)}')
     else:
         error(f'flows file not found: {flows_path}')
 
-    # Load domain.json
-    domain_path = os.path.join(DATA_DIR, 'domain.json')
+    domain_path = os.path.join(base_dir, 'domain.json')
     if os.path.exists(domain_path):
         domain = load_json(domain_path)
-        print(f'Loaded domain.json: {domain.get("domain_id", "unknown")}')
+        print(f'Domain ID: {domain.get("domain_id", "unknown")}')
         status = domain.get('status', {})
         if not status.get('not_product_answer_layer'):
             warn('domain.json missing not_product_answer_layer flag')
-        if not status.get('needs_hklii_verification'):
-            warn('domain.json missing needs_hklii_verification flag')
+        if not status.get('needs_hklii_verification') and not status.get('needs_official_source_verification'):
+            warn('domain.json missing needs_hklii_verification or needs_official_source_verification flag')
     else:
         warn('domain.json not found')
 
-    # Collect all nodes and edges from section files
     all_nodes = []
     all_edges = []
     node_by_id = {}
     node_ids = set()
-    seen_section_ids = set()
 
-    # First pass: load all nodes
     for section in manifest.get('sections', []):
         section_id = section.get('id')
-        seen_section_ids.add(section_id)
-
-        node_path = os.path.join(DATA_DIR, section.get('node_file', ''))
+        node_path = os.path.join(base_dir, section.get('node_file', ''))
         if os.path.exists(node_path):
             node_data = load_json(node_path)
             nodes = node_data.get('nodes', [])
             for n in nodes:
                 nid = n.get('id')
                 if nid in node_ids:
-                    error(f'Duplicate node ID: {nid} (section {section_id})')
+                    error(f'Duplicate node ID: {nid} (section {section_id}, domain {domain_dir})')
                 node_ids.add(nid)
                 node_by_id[nid] = n
             all_nodes.extend(nodes)
         else:
             error(f'Node file not found: {node_path}')
 
-    # Second pass: validate nodes
     for n in all_nodes:
         nid = n.get('id')
         if not n.get('type'):
@@ -109,12 +112,11 @@ def main():
         if n.get('answer_layer_status') == 'product_answer_layer':
             error(f'Node {nid} has product_answer_layer set (should be not_product_answer_layer)')
         if n.get('authority_status') == 'verified':
-            warn(f'Node {nid} claims verified authority — verify this is intentional')
+            warn(f'Node {nid} claims verified authority')
 
-    # Third pass: load and validate edges (all nodes already known)
     for section in manifest.get('sections', []):
         section_id = section.get('id')
-        edge_path = os.path.join(DATA_DIR, section.get('edge_file', ''))
+        edge_path = os.path.join(base_dir, section.get('edge_file', ''))
         if os.path.exists(edge_path):
             edge_data = load_json(edge_path)
             edges = edge_data.get('edges', [])
@@ -130,8 +132,7 @@ def main():
         else:
             error(f'Edge file not found: {edge_path}')
 
-    print(f'\nTotal nodes loaded: {len(all_nodes)}')
-    print(f'Total edges loaded: {len(all_edges)}')
+    print(f'Nodes: {len(all_nodes)}, Edges: {len(all_edges)}')
 
     primary_children = {}
     support_parents = {}
@@ -146,50 +147,32 @@ def main():
         elif rel in ('statutory_anchor', 'case_seed', 'practice_direction_ref', 'cross_reference'):
             support_parents.setdefault(to, []).append(frm)
 
-    # Check cross-references within nodes
     for n in all_nodes:
         nid = n.get('id')
-        # Check statute_refs
         for ref in n.get('statute_refs', []):
             if ref not in node_ids:
-                exists = any(other.get('id') == ref for other in all_nodes)
-                if not exists:
-                    warn(f'Node {nid}: statute_ref "{ref}" does not match any node ID')
-
-        # Check case_seeds
+                warn(f'Node {nid}: statute_ref "{ref}" does not match any node ID')
         for ref in n.get('case_seeds', []):
             if ref not in node_ids:
-                exists = any(other.get('id') == ref for other in all_nodes)
-                if not exists:
-                    warn(f'Node {nid}: case_seed "{ref}" does not match any node ID')
-
-        # Check cross_refs
+                warn(f'Node {nid}: case_seed "{ref}" does not match any node ID')
+        for ref in n.get('listing_rule_refs', []):
+            if ref not in node_ids:
+                warn(f'Node {nid}: listing_rule_ref "{ref}" does not match any node ID')
+        for ref in n.get('guidance_refs', []):
+            if ref not in node_ids:
+                warn(f'Node {nid}: guidance_ref "{ref}" does not match any node ID')
         for ref in n.get('cross_refs', []):
             if ref not in node_ids:
-                exists = any(other.get('id') == ref for other in all_nodes)
-                if not exists:
-                    warn(f'Node {nid}: cross_ref "{ref}" does not match any node ID')
+                warn(f'Node {nid}: cross_ref "{ref}" does not match any node ID')
 
-    # Check all sections in manifest have section_header nodes
     for section in manifest.get('sections', []):
         sid = section.get('id')
-        has_header = any(
-            n.get('section') == sid and n.get('type') == 'section_header'
-            for n in all_nodes
-        )
+        has_header = any(n.get('section') == sid and n.get('type') == 'section_header' for n in all_nodes)
         if not has_header:
             error(f'Section {sid} ({section.get("title")}) has no section_header node')
-
         has_nodes = any(n.get('section') == sid for n in all_nodes)
         if not has_nodes:
-            error(f'Section {sid} ({section.get("title")}) has no nodes at all')
-        has_issues = any(
-            n.get('section') == sid and n.get('type') == 'legal_issue'
-            for n in all_nodes
-        )
-        if not has_issues and has_nodes:
-            # OK — some sections have only PDs or NSL nodes
-            pass
+            error(f'Section {sid} ({section.get("title")}) has no nodes')
 
     def mark_primary_tree(node_id):
         if node_id in rendered_tree_ids:
@@ -200,39 +183,34 @@ def main():
 
     for section in manifest.get('sections', []):
         sid = section.get('id')
-        headers = [
-            n for n in all_nodes
-            if n.get('section') == sid and n.get('type') == 'section_header'
-        ]
+        headers = [n for n in all_nodes if n.get('section') == sid and n.get('type') == 'section_header']
         for header in headers:
             mark_primary_tree(header.get('id'))
 
-    # Flow steps are rendered under collapsible per-section flow groups.
     for n in all_nodes:
         if n.get('type') == 'flow_step':
             rendered_tree_ids.add(n.get('id'))
 
-    expected_nav_types = {'section_header', 'legal_issue', 'restricted_nsl', 'practice_direction', 'flow_step', 'gap'}
     for n in all_nodes:
         nid = n.get('id')
-        if n.get('type') in expected_nav_types and nid not in rendered_tree_ids:
+        if n.get('type') in NAV_TYPES and nid not in rendered_tree_ids:
             error(f'Navigational node is not renderable in tree: {nid} ({n.get("type")})')
 
-    support_types = {'statute', 'case_seed'}
     for n in all_nodes:
         nid = n.get('id')
-        if n.get('type') in support_types:
+        if n.get('type') in SUPPORT_TYPES:
             referenced_by_field = any(
                 nid in other.get('statute_refs', [])
                 or nid in other.get('case_seeds', [])
+                or nid in other.get('listing_rule_refs', [])
+                or nid in other.get('guidance_refs', [])
                 or nid in other.get('practice_direction_refs', [])
                 or nid in other.get('cross_refs', [])
                 for other in all_nodes
             )
             if nid not in support_parents and not referenced_by_field:
-                warn(f'Support/audit node has no incoming support relationship or node ref: {nid}')
+                warn(f'Support/audit node has no incoming relationship or ref: {nid}')
 
-    # Check flow chains resolve
     for flow in flows:
         flow_id = flow.get('flow_id')
         for step_id in flow.get('steps', []):
@@ -241,7 +219,6 @@ def main():
             elif node_by_id[step_id].get('type') != 'flow_step':
                 error(f'Flow {flow_id}: step "{step_id}" is not a flow_step node')
 
-    # Verify status fields preserved on all nodes
     for n in all_nodes:
         ntype = n.get('type')
         required_status_fields = []
@@ -251,15 +228,21 @@ def main():
             required_status_fields = ['verification_status', 'authority_status']
         elif ntype == 'statute':
             required_status_fields = ['verification_status']
+        elif ntype in REGULATORY_TYPES:
+            required_status_fields = ['verification_status']
         for field in required_status_fields:
             if field not in n:
                 error(f'Node {n.get("id")} missing required status field: {field}')
 
-    if len(rendered_tree_ids) + len([n for n in all_nodes if n.get('type') in support_types]) < len(all_nodes):
+    all_nav_and_support = rendered_tree_ids | {n.get('id') for n in all_nodes if n.get('type') in SUPPORT_TYPES}
+    if len(all_nav_and_support) < len(all_nodes):
         warn('Some nodes are neither renderable navigation nodes nor recognized support/audit nodes')
 
-    # Summary
-    print()
+def main():
+    for domain_dir in DOMAIN_DIRS:
+        validate_domain(domain_dir)
+
+    print(f'\n{"="*60}')
     if errors:
         print(f'FAILED — {len(errors)} error(s), {len(warnings)} warning(s)')
         for e in errors:
@@ -270,7 +253,7 @@ def main():
         for w in warnings:
             print(f'  WARN: {w}')
     else:
-        print('PASSED — all checks OK')
+        print('ALL DOMAINS PASSED — all checks OK')
 
 if __name__ == '__main__':
     main()

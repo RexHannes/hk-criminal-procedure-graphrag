@@ -17,6 +17,17 @@
         "needs_hklii_verification": true,
         "authority_status": "unverified_case_seed"
       }
+    },
+    {
+      "domain_id": "hk_listing_law",
+      "title": "Hong Kong Listing Law",
+      "path": "hk_listing_law/domain.json",
+      "status": {
+        "not_product_answer_layer": true,
+        "needs_hklii_verification": true,
+        "needs_official_source_verification": true,
+        "authority_status": "unverified_seed"
+      }
     }
   ]
 }

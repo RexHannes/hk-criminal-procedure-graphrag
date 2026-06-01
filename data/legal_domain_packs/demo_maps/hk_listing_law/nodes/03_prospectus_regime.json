@@ -1,0 +1,162 @@
+{
+  "section_id": "03",
+  "section_title": "Prospectus Regime",
+  "domain_id": "hk_listing_law",
+  "nodes": [
+    {
+      "id": "prospectus_regime",
+      "type": "section_header",
+      "label": "Prospectus Regime",
+      "summary": "The statutory and regulatory framework governing the content, registration, and liability of prospectuses for public offerings in Hong Kong.",
+      "section": "03"
+    },
+    {
+      "id": "prospectus_requirements",
+      "type": "legal_issue",
+      "label": "Prospectus Content Requirements",
+      "summary": "A prospectus must comply with the Companies (WUMP) Ordinance and the Listing Rules, containing all information necessary for investors to make an informed assessment.",
+      "subsection": "03.01",
+      "subtopic": "Content Requirements",
+      "section": "03",
+      "statute_refs": ["cwo_38d", "cwo_38b"],
+      "listing_rule_refs": ["mbl_11_07"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "cwo_38b",
+      "type": "statute",
+      "label": "Companies (WUMP) Ordinance s.38B — Prospectus Contents",
+      "summary": "A prospectus must contain the matters specified in Schedule 3 to the Ordinance, including financial statements, directors' interests, and expert reports.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "prospectus_exemptions",
+      "type": "legal_issue",
+      "label": "Prospectus Exemptions",
+      "summary": "Certain offers are exempt from the prospectus requirement, including offers to professional investors, offers to not more than 50 persons, and minimum consideration offers of at least HK$5 million.",
+      "subsection": "03.02",
+      "subtopic": "Exemptions",
+      "section": "03",
+      "statute_refs": ["cwo_38a", "cwo_38b_sch3"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "cwo_38a",
+      "type": "statute",
+      "label": "Companies (WUMP) Ordinance s.38A — Exemptions",
+      "summary": "Exemptions from the prospectus requirement for offers to professional investors, small offers, and minimum consideration offers.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cwo_38b_sch3",
+      "type": "statute",
+      "label": "Companies (WUMP) Ordinance Schedule 3 — Matters to Be Specified",
+      "summary": "Schedule 3 sets out the detailed content requirements for prospectuses, including auditors' reports, directors' biographies, and material contracts.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "prospectus_liability",
+      "type": "legal_issue",
+      "label": "Prospectus Civil Liability",
+      "summary": "Civil liability under s.38D(3) of the Companies (WUMP) Ordinance for misstatements or omissions in a prospectus. Liability extends to the issuer, directors, promoters, and experts.",
+      "subsection": "03.03",
+      "subtopic": "Civil Liability",
+      "section": "03",
+      "statute_refs": ["cwo_38d"],
+      "case_seeds": ["re_bank_of_china_prospectus", "re_hontex_prospectus"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "re_bank_of_china_prospectus",
+      "type": "case_seed",
+      "label": "Re Bank of China (Hong Kong) Ltd [2009] HKCFI 123",
+      "summary": "Court considered prospectus liability for failure to disclose contingent liabilities; held that the test is whether a reasonable investor would have attached importance to the omission.",
+      "section": "03",
+      "neutral_citation": "[2009] HKCFI 123",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "re_hontex_prospectus",
+      "type": "case_seed",
+      "label": "Re Hontex Listing [2012] HKCFI 134",
+      "summary": "HKEX successfully sought suspension and cancellation of Hontex's listing for materially false or misleading prospectus statements.",
+      "section": "03",
+      "neutral_citation": "[2012] HKCFI 134",
+      "authority_status": "unverified_case_seed",
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "id": "prospectus_criminal_liability",
+      "type": "legal_issue",
+      "label": "Prospectus Criminal Liability",
+      "summary": "Criminal liability for false or misleading statements in a prospectus under the Companies (WUMP) Ordinance and SFO provisions on market misconduct.",
+      "subsection": "03.04",
+      "subtopic": "Criminal Liability",
+      "section": "03",
+      "statute_refs": ["cwo_40", "sfo_298"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "cwo_40",
+      "type": "statute",
+      "label": "Companies (WUMP) Ordinance s.40 — Criminal Liability",
+      "summary": "Criminal liability for untrue statements in prospectuses; persons responsible may face fines and imprisonment.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "sfo_298",
+      "type": "statute",
+      "label": "SFO s.298 — False or Misleading Statements",
+      "summary": "Criminal offence for making false or misleading statements in connection with a prospectus or listing document.",
+      "section": "03",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "prospectus_registration",
+      "type": "legal_issue",
+      "label": "Prospectus Registration and SFC Vetting",
+      "summary": "A prospectus must be registered with the Registrar of Companies. The SFC vets the prospectus under the dual filing regime and may suspend or object.",
+      "subsection": "03.05",
+      "subtopic": "Registration",
+      "section": "03",
+      "statute_refs": ["cwo_38d", "sfo_105"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "prospectus_flow_start",
+      "type": "flow_step",
+      "label": "Draft Prospectus Preparation",
+      "summary": "Step 1: Prepare draft prospectus with sponsor, legal counsel, and auditors.",
+      "section": "03"
+    },
+    {
+      "id": "prospectus_flow_step2",
+      "type": "flow_step",
+      "label": "Registration and Dual Filing",
+      "summary": "Step 2: Register prospectus with Companies Registry and file with SFC.",
+      "section": "03"
+    },
+    {
+      "id": "prospectus_flow_step3",
+      "type": "flow_step",
+      "label": "SFC Objection Period",
+      "summary": "Step 3: 14-day SFC objection period; if no objection, prospectus becomes effective.",
+      "section": "03"
+    }
+  ]
+}
