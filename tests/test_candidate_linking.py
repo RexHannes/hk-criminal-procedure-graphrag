@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
-from deepseek_candidate_linker import generate_candidates  # noqa: E402
+from deepseek_candidate_linker import candidate_output_paths, generate_candidates  # noqa: E402
 from validate_candidate_links import (  # noqa: E402
     load_authority_lookup,
     load_doctrine_nodes,
@@ -191,6 +191,33 @@ class CandidateLinkingTests(unittest.TestCase):
         self.assertTrue(candidates)
         self.assertEqual(candidates[0]["verification_status"], "machine_candidate")
         self.assertEqual(candidates[0]["answer_layer_status"], "not_answer_safe")
+
+    def test_node_loader_rejects_missing_label(self) -> None:
+        bad_nodes = self.root / "bad_nodes"
+        write_json(bad_nodes / "bad.json", {"nodes": [{"id": "bad_node", "type": "legal_issue"}]})
+
+        with self.assertRaisesRegex(ValueError, "missing label"):
+            load_doctrine_nodes(bad_nodes)
+
+    def test_node_loader_rejects_missing_parent_reference(self) -> None:
+        bad_nodes = self.root / "bad_parent_nodes"
+        write_json(
+            bad_nodes / "bad.json",
+            {"nodes": [{"id": "child_node", "label": "Child", "parent_node_id": "missing_parent"}]},
+        )
+
+        with self.assertRaisesRegex(ValueError, "missing parent_node_id"):
+            load_doctrine_nodes(bad_nodes)
+
+    def test_candidate_output_paths_support_split_files(self) -> None:
+        paths = candidate_output_paths(
+            "artifacts/candidate_evidence/proposition_node_candidates.json",
+            "artifacts/candidate_evidence",
+        )
+
+        self.assertEqual(paths["raw"].name, "raw_candidates.json")
+        self.assertEqual(paths["validated"].name, "validated_candidates.json")
+        self.assertEqual(paths["rejected"].name, "rejected_candidates.json")
 
 
 if __name__ == "__main__":

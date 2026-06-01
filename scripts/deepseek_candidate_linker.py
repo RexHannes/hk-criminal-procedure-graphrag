@@ -168,6 +168,19 @@ def call_deepseek(payload: dict[str, Any], *, api_key: str, api_url: str) -> dic
     return json.loads(content)
 
 
+def candidate_output_paths(output: str, output_dir: str) -> dict[str, Path]:
+    if output_dir:
+        root = Path(output_dir).expanduser()
+    else:
+        root = Path(output).expanduser().parent
+    return {
+        "combined": Path(output).expanduser(),
+        "raw": root / "raw_candidates.json",
+        "validated": root / "validated_candidates.json",
+        "rejected": root / "rejected_candidates.json",
+    }
+
+
 def generate_candidates(
     *,
     doctrine_nodes: dict[str, dict[str, Any]],
@@ -206,7 +219,16 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Generate candidate doctrine links for Casemap4 propositions.")
     parser.add_argument("--authority-index", required=True)
     parser.add_argument("--nodes-root", required=True)
-    parser.add_argument("--output", default="artifacts/candidate_evidence/proposition_node_candidates.json")
+    parser.add_argument(
+        "--output",
+        default="artifacts/candidate_evidence/proposition_node_candidates.json",
+        help="Backward-compatible combined output path",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default="",
+        help="Directory for raw_candidates.json, validated_candidates.json, and rejected_candidates.json",
+    )
     parser.add_argument("--max-propositions", type=int, default=200)
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--api-url", default=DEFAULT_API_URL)
@@ -239,7 +261,35 @@ def main() -> int:
         "rejected": report["rejected"],
     }
     if not args.no_write:
-        write_json(args.output, output)
+        paths = candidate_output_paths(args.output, args.output_dir)
+        write_json(
+            paths["raw"],
+            {
+                "schema_version": "candidate-evidence-v1",
+                "generation_mode": output["generation_mode"],
+                "authority_index": output["authority_index"],
+                "nodes_root": output["nodes_root"],
+                "raw_candidate_count": len(raw_candidates),
+                "candidates": raw_candidates,
+            },
+        )
+        write_json(
+            paths["validated"],
+            {
+                "schema_version": "candidate-evidence-v1",
+                "accepted_count": report["accepted_count"],
+                "candidates": report["accepted"],
+            },
+        )
+        write_json(
+            paths["rejected"],
+            {
+                "schema_version": "candidate-evidence-v1",
+                "rejected_count": report["rejected_count"],
+                "rejected": report["rejected"],
+            },
+        )
+        write_json(paths["combined"], output)
     print(json.dumps({k: output[k] for k in ("schema_version", "generation_mode", "accepted_count", "rejected_count")}, indent=2))
     return 0
 

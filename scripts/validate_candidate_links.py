@@ -47,6 +47,8 @@ DOCTRINAL_ANCHORS = {
     "test",
 }
 
+NODE_ID_RE = re.compile(r"^[a-z0-9_]+$")
+
 
 @dataclass(slots=True)
 class AuthorityLookup:
@@ -77,15 +79,26 @@ def tokenize(text: str) -> set[str]:
 def load_doctrine_nodes(nodes_root: str | Path) -> dict[str, dict[str, Any]]:
     root = Path(nodes_root).expanduser()
     nodes: dict[str, dict[str, Any]] = {}
+    pending_parent_refs: list[tuple[str, str]] = []
     for path in sorted(root.rglob("*.json")):
         payload = read_json(path)
         for node in payload.get("nodes", []):
             node_id = str(node.get("id") or "").strip()
             if not node_id:
-                continue
+                raise ValueError(f"node missing id in {path}")
+            if not NODE_ID_RE.match(node_id):
+                raise ValueError(f"invalid doctrine node id format: {node_id}")
+            if not str(node.get("label") or "").strip():
+                raise ValueError(f"node {node_id} missing label")
             if node_id in nodes:
                 raise ValueError(f"duplicate doctrine node id: {node_id}")
+            parent_node_id = str(node.get("parent_node_id") or "").strip()
+            if parent_node_id:
+                pending_parent_refs.append((node_id, parent_node_id))
             nodes[node_id] = node
+    for node_id, parent_node_id in pending_parent_refs:
+        if parent_node_id not in nodes:
+            raise ValueError(f"node {node_id} references missing parent_node_id: {parent_node_id}")
     return nodes
 
 
