@@ -108,6 +108,29 @@ body {
 .tree-root { position: relative; padding-left: 0; }
 
 .tree-node { position: relative; }
+.tree-node[data-node-id="criminal_procedure_hk_root"] > .tree-card {
+  margin-left: 0; margin-bottom: 10px; padding: 12px 14px;
+  background: #0b1224; border-color: #45618f;
+}
+.tree-node[data-node-id="criminal_procedure_hk_root"] > .tree-card .tree-card-label {
+  font-size: 15px;
+}
+
+#search-results {
+  margin-bottom: 10px;
+}
+.search-results-title {
+  font-size: 10px; font-weight: 700; color: #fbbf24; text-transform: uppercase;
+  letter-spacing: 0.8px; margin: 0 0 6px 0;
+}
+.search-result-card {
+  margin-left: 0;
+  border-color: #92400e;
+  background: #1c1917;
+}
+.search-results-more {
+  font-size: 10px; color: #fbbf24; margin: 4px 0 10px 0;
+}
 
 /* Branch Rails */
 .tree-branch {
@@ -179,7 +202,7 @@ body {
   transition: max-height 0.25s ease;
   max-height: 0;
 }
-.tree-children.open { max-height: 3000px; }
+.tree-children.open { max-height: none; overflow: visible; }
 
 /* ── Depth Badge ── */
 .depth-badge {

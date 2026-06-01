@@ -86,7 +86,7 @@ hk-criminal-procedure-graphrag/
 
 ## Procedural Flows
 
-7 directional flow chains are defined in `flows.json`:
+6 directional flow chains are defined in `flows.json`:
 
 1. **Arrest/Detention Flow** (6 steps) — identify power → reasonable suspicion → arrest → inform grounds → detention → charge/release
 2. **Bail Flow** (7 steps) — arrest/charge → route → right to bail → refusal grounds → conditions → breach → variation/appeal
@@ -145,10 +145,11 @@ The tree is rendered from the same flat node/edge files — nothing is deleted. 
 - **Expandable doctrine tree** — default view with card-based nodes, continuous branch rails, and elbow connectors
 - **3-panel layout** — left sidebar (filters/depth/flow/sections), center (tree), right (detail/audit panel)
 - **Search** — matches by label, summary, ID, statute refs, and case seeds; auto-expands ancestors
+- **Support/audit search results** — statutes and case seeds stay out of the default visual tree, but remain searchable and clickable for audit-panel inspection
 - **Type filters** — toggle visibility of legal issues, flow steps, statutes, case seeds, PDs, NSL nodes
 - **Depth control** — show L0–L1 sections, L2 issues, or expand all to L3+
-- **Flow player** — select a procedural flow and step through with play/pause/next/prev; highlights corresponding tree cards
-- **Section navigation** — click a section in the left panel to expand and scroll to it
+- **Flow player** — select a procedural flow and step through with play/pause/next/prev; highlights corresponding flow-step cards in collapsible per-section flow branches
+- **Section navigation** — click a section in the left panel to expand and scroll to it using the section titles from `consolidated.json`
 - **Detail panel** — click any tree card to see full metadata, statute references, case seeds, practice direction refs, and a future-proof Case Audit / Source Proof area
 - **Safety badges** — every node shows its `not_product_answer_layer`, `needs_hklii_verification`, and `unverified_case_seed` status where applicable
 
@@ -182,6 +183,9 @@ Checks performed:
 - Every section has a section_header node
 - No node loses its verification_status / authority_status / answer_layer_status
 - Flow chain steps reference valid node IDs
+- Primary `has_subtopic` navigation nodes are renderable in the tree
+- Flow steps are renderable under section flow branches
+- Support-only statute/case nodes remain linked for search/audit use
 
 ## Data Schema
 

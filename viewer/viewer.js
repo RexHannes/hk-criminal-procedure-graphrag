@@ -8,6 +8,7 @@
     statute: '#2d8a4e',
     case_seed: '#7b2d8e',
     flow_step: '#d97706',
+    flow_group: '#b45309',
     practice_direction: '#0e7490',
     gap: '#6b7280',
     restricted_nsl: '#dc2626',
@@ -16,19 +17,27 @@
   const TYPE_ORDER = {
     section_header: 0,
     legal_issue: 1,
-    flow_step: 2,
+    restricted_nsl: 2,
+    practice_direction: 3,
+    flow_group: 4,
+    flow_step: 5,
     statute: 3,
     case_seed: 4,
-    practice_direction: 5,
-    restricted_nsl: 6,
     gap: 7,
   };
 
   let allNodes = [];
   let allEdges = [];
   let allFlows = [];
+  let manifestSections = [];
   let nodeMap = {};
+  let virtualNodeMap = {};
   let edgeFromMap = {};
+  let primaryChildrenMap = {};
+  let primaryParentMap = {};
+  let supportParentMap = {};
+  let treeParentMap = {};
+  let renderedTreeIds = new Set();
   let treeModel = null;
   let expandedIds = new Set();
   let selectedId = null;
@@ -44,6 +53,7 @@
 
   function loadAllData() {
     return loadJSON(CONSOLIDATED_PATH).then(manifest => {
+      manifestSections = manifest.sections || [];
       const sectionPromises = manifest.sections.map(s => {
         const nodeP = loadJSON(DATA_BASE + s.node_file).then(d => d.nodes || []);
         const edgeP = loadJSON(DATA_BASE + s.edge_file).then(d => d.edges || []);
@@ -59,6 +69,14 @@
       allEdges.forEach(e => {
         if (!edgeFromMap[e.from]) edgeFromMap[e.from] = [];
         edgeFromMap[e.from].push(e);
+        if (e.relationship === 'has_subtopic') {
+          if (!primaryChildrenMap[e.from]) primaryChildrenMap[e.from] = [];
+          primaryChildrenMap[e.from].push(e.to);
+          primaryParentMap[e.to] = e.from;
+        } else if (['statutory_anchor', 'case_seed', 'practice_direction_ref', 'cross_reference'].includes(e.relationship)) {
+          if (!supportParentMap[e.to]) supportParentMap[e.to] = [];
+          supportParentMap[e.to].push(e.from);
+        }
       });
     });
   }
@@ -66,17 +84,15 @@
   // ── Tree Model Builder ──
 
   function buildTreeModel() {
-    const sections = {};
     const sectionHeaders = {};
-    const legalIssues = {};
     const flowSteps = {};
+    virtualNodeMap = {};
+    treeParentMap = {};
+    renderedTreeIds = new Set();
 
     allNodes.forEach(n => {
       if (n.type === 'section_header') {
         sectionHeaders[n.section] = n;
-      } else if (n.type === 'legal_issue') {
-        if (!legalIssues[n.section]) legalIssues[n.section] = [];
-        legalIssues[n.section].push(n);
       } else if (n.type === 'flow_step') {
         if (!flowSteps[n.section]) flowSteps[n.section] = [];
         flowSteps[n.section].push(n);
@@ -84,54 +100,92 @@
     });
 
     const children = [];
-    const sectionIds = Object.keys(sectionHeaders).sort();
 
-    sectionIds.forEach(sid => {
+    manifestSections.forEach(section => {
+      const sid = section.id;
       const header = sectionHeaders[sid];
       if (!header) return;
 
-      const sectionChildren = [];
-      const issues = (legalIssues[sid] || []).sort((a, b) => (a.subtopic || a.label).localeCompare(b.subtopic || b.label));
-      const steps = (flowSteps[sid] || []).sort((a, b) => (a.subsection || a.label).localeCompare(b.subsection || b.label));
+      const sectionChildren = buildPrimaryChildren(header.id, 2, new Set([header.id]));
+      const sectionFlowSteps = getOrderedFlowStepsForSection(sid, flowSteps[sid] || []);
 
-      issues.forEach(issue => {
-        const issueChildren = [];
-
-        const relatedSteps = steps.filter(s => {
-          const edges = edgeFromMap[issue.id] || [];
-          return edges.some(e => e.to === s.id && e.relationship === 'flow_transition');
-        });
-        relatedSteps.forEach(step => {
-          issueChildren.push(makeNode(step, 3));
-        });
-
-        sectionChildren.push(makeNode(issue, 2, issueChildren));
-      });
-
-      if (steps.length > 0 && issues.length === 0) {
-        steps.forEach(step => {
-          sectionChildren.push(makeNode(step, 2));
-        });
+      if (sectionFlowSteps.length) {
+        const groupId = `flow_group_${sid}`;
+        const groupData = {
+          id: groupId,
+          label: 'Procedural Flow Steps',
+          type: 'flow_group',
+          section: sid,
+          summary: 'Collapsible branch for procedural flow steps. These are hidden by default and highlighted by the flow player.',
+        };
+        virtualNodeMap[groupId] = groupData;
+        sectionChildren.push(makeNode(groupData, 2, sectionFlowSteps.map(step => makeNode(step, 3))));
       }
 
-      children.push(makeNode(header, 1, sectionChildren));
+      children.push(makeNode(header, 1, sectionChildren, 'criminal_procedure_hk_root'));
     });
 
-    treeModel = {
+    const rootData = {
       id: 'criminal_procedure_hk_root',
       label: 'Hong Kong Criminal Procedure',
       type: 'domain',
+      summary: 'Complete principle-flow map covering every procedural stage from jurisdiction to final appeal.',
+      verification_status: 'not_product_answer_layer',
+      answer_layer_status: 'not_product_answer_layer',
+      authority_status: 'unverified_case_seed',
+    };
+    virtualNodeMap[rootData.id] = rootData;
+    treeModel = {
+      id: rootData.id,
+      label: rootData.label,
+      type: rootData.type,
       color: '#1a1a2e',
       depth: 0,
       children: children,
-      data: {
-        summary: 'Complete principle-flow map covering every procedural stage from jurisdiction to final appeal.',
-        verification_status: 'not_product_answer_layer',
-      }
+      data: rootData,
     };
+    collectRenderedIds(treeModel);
   }
 
-  function makeNode(node, depth, children) {
+  function buildPrimaryChildren(parentId, depth, seen) {
+    return (primaryChildrenMap[parentId] || [])
+      .map(childId => nodeMap[childId])
+      .filter(Boolean)
+      .sort(compareTreeNodes)
+      .map(child => {
+        if (seen.has(child.id)) return null;
+        const nextSeen = new Set(seen);
+        nextSeen.add(child.id);
+        return makeNode(child, depth, buildPrimaryChildren(child.id, depth + 1, nextSeen), parentId);
+      })
+      .filter(Boolean);
+  }
+
+  function getOrderedFlowStepsForSection(sectionId, steps) {
+    const byId = new Map(steps.map(step => [step.id, step]));
+    const orderedIds = [];
+    allFlows.forEach(flow => {
+      (flow.steps || []).forEach(stepId => {
+        const step = byId.get(stepId);
+        if (step && step.section === sectionId && !orderedIds.includes(stepId)) orderedIds.push(stepId);
+      });
+    });
+    steps
+      .map(step => step.id)
+      .filter(stepId => !orderedIds.includes(stepId))
+      .sort()
+      .forEach(stepId => orderedIds.push(stepId));
+    return orderedIds.map(stepId => byId.get(stepId)).filter(Boolean);
+  }
+
+  function compareTreeNodes(a, b) {
+    const typeDiff = (TYPE_ORDER[a.type] ?? 99) - (TYPE_ORDER[b.type] ?? 99);
+    if (typeDiff) return typeDiff;
+    return (a.subsection || a.subtopic || a.label || a.id).localeCompare(b.subsection || b.subtopic || b.label || b.id);
+  }
+
+  function makeNode(node, depth, children, parentId) {
+    if (parentId) treeParentMap[node.id] = parentId;
     return {
       id: node.id,
       label: node.label,
@@ -143,12 +197,24 @@
     };
   }
 
+  function collectRenderedIds(tNode) {
+    if (nodeMap[tNode.id]) renderedTreeIds.add(tNode.id);
+    (tNode.children || []).forEach(child => {
+      treeParentMap[child.id] = tNode.id;
+      collectRenderedIds(child);
+    });
+  }
+
   // ── Tree Renderer ──
 
   function renderTree() {
     const root = document.getElementById('tree-root');
     root.innerHTML = '';
     root.className = 'tree-root';
+
+    const resultsEl = document.createElement('div');
+    resultsEl.id = 'search-results';
+    root.appendChild(resultsEl);
 
     const rootEl = renderTreeNode(treeModel, 0, true);
     root.appendChild(rootEl);
@@ -243,13 +309,12 @@
       badges.appendChild(ab);
     }
 
-    const count = tNode.children ? tNode.children.length : 0;
-    if (count > 0) {
+    getCardCounts(tNode).forEach(item => {
       const cb = document.createElement('span');
       cb.className = 'depth-badge';
-      cb.textContent = count + ' items';
+      cb.textContent = item;
       badges.appendChild(cb);
-    }
+    });
 
     header.appendChild(badges);
     card.appendChild(header);
@@ -261,7 +326,7 @@
       card.appendChild(summary);
     }
 
-    if (!isRoot) container.appendChild(card);
+    container.appendChild(card);
 
     if (isExpandable) {
       const childContainer = document.createElement('div');
@@ -281,6 +346,18 @@
     }
 
     return container;
+  }
+
+  function getCardCounts(tNode) {
+    const nd = tNode.data || {};
+    const counts = [];
+    const childCount = tNode.children ? tNode.children.length : 0;
+    if (childCount > 0) counts.push(childCount + ' items');
+    if ((nd.statute_refs || []).length) counts.push(nd.statute_refs.length + ' statutes');
+    if ((nd.case_seeds || []).length) counts.push(nd.case_seeds.length + ' cases');
+    if ((nd.practice_direction_refs || []).length) counts.push(nd.practice_direction_refs.length + ' PDs');
+    if (nd.type === 'gap') counts.push('gap');
+    return counts;
   }
 
   function toggleExpand(nodeId) {
@@ -341,7 +418,7 @@
   // ── Detail Panel ──
 
   function showNodeDetail(nodeId) {
-    const n = nodeMap[nodeId];
+    const n = nodeMap[nodeId] || virtualNodeMap[nodeId];
     if (!n) {
       const el = document.getElementById('detail-content');
       el.innerHTML = '<p class="hint">Node data not found</p>';
@@ -356,9 +433,9 @@
 
     // Header
     html += '<div class="detail-header">';
-    html += `<span class="type-badge" style="background:${typeColor}">${n.type}</span>`;
-    html += `<h2>${n.label}</h2>`;
-    if (n.neutral_citation) html += `<div class="subtitle">${n.neutral_citation}</div>`;
+    html += `<span class="type-badge" style="background:${typeColor}">${esc(n.type)}</span>`;
+    html += `<h2>${esc(n.label)}</h2>`;
+    if (n.neutral_citation) html += `<div class="subtitle">${esc(n.neutral_citation)}</div>`;
     html += '</div>';
 
     // Status badges
@@ -369,29 +446,29 @@
     if (statuses.length) {
       html += '<div class="detail-section"><div class="detail-section-title">Status</div><div class="detail-meta">';
       statuses.forEach(s => {
-        html += `<div class="detail-meta-row"><span class="detail-meta-label">Status</span><span class="detail-meta-value ${s.cls}">${s.label}</span></div>`;
+        html += `<div class="detail-meta-row"><span class="detail-meta-label">Status</span><span class="detail-meta-value ${s.cls}">${esc(s.label)}</span></div>`;
       });
       html += '</div></div>';
     }
 
     // Summary
     if (n.summary) {
-      html += `<div class="detail-section"><div class="detail-summary">${n.summary}</div></div>`;
+      html += `<div class="detail-section"><div class="detail-summary">${esc(n.summary)}</div></div>`;
     }
 
     // Metadata
     html += '<div class="detail-section"><div class="detail-section-title">Metadata</div><div class="detail-meta">';
-    html += `<div class="detail-meta-row"><span class="detail-meta-label">ID</span><span class="detail-meta-value">${n.id}</span></div>`;
-    if (n.section) html += `<div class="detail-meta-row"><span class="detail-meta-label">Section</span><span class="detail-meta-value">${n.section}</span></div>`;
-    if (n.subtopic) html += `<div class="detail-meta-row"><span class="detail-meta-label">Subtopic</span><span class="detail-meta-value">${n.subtopic}</span></div>`;
-    if (n.subsection) html += `<div class="detail-meta-row"><span class="detail-meta-label">Subsection</span><span class="detail-meta-value">${n.subsection}</span></div>`;
+    html += `<div class="detail-meta-row"><span class="detail-meta-label">ID</span><span class="detail-meta-value">${esc(n.id)}</span></div>`;
+    if (n.section) html += `<div class="detail-meta-row"><span class="detail-meta-label">Section</span><span class="detail-meta-value">${esc(n.section)}</span></div>`;
+    if (n.subtopic) html += `<div class="detail-meta-row"><span class="detail-meta-label">Subtopic</span><span class="detail-meta-value">${esc(n.subtopic)}</span></div>`;
+    if (n.subsection) html += `<div class="detail-meta-row"><span class="detail-meta-label">Subsection</span><span class="detail-meta-value">${esc(n.subsection)}</span></div>`;
     html += '</div></div>';
 
     // Statute Refs
     if (allRefs.statutes.length) {
       html += '<div class="detail-section"><div class="detail-section-title">Statute References (' + allRefs.statutes.length + ')</div><ul class="detail-ref-list">';
       allRefs.statutes.forEach(ref => {
-        html += `<li><span class="ref-label">${ref.label}</span><span class="ref-type">${ref.id}</span></li>`;
+        html += `<li data-ref-id="${escAttr(ref.id)}"><span class="ref-label">${esc(ref.label)}</span><span class="ref-type">${esc(ref.id)}</span></li>`;
       });
       html += '</ul></div>';
     }
@@ -400,7 +477,7 @@
     if (allRefs.cases.length) {
       html += '<div class="detail-section"><div class="detail-section-title">Case Seeds (' + allRefs.cases.length + ')</div><ul class="detail-ref-list">';
       allRefs.cases.forEach(ref => {
-        html += `<li><span class="ref-label">${ref.label}</span><span class="ref-type">${ref.id}${ref.citation ? ' · ' + ref.citation : ''}</span></li>`;
+        html += `<li data-ref-id="${escAttr(ref.id)}"><span class="ref-label">${esc(ref.label)}</span><span class="ref-type">${esc(ref.id)}${ref.citation ? ' · ' + esc(ref.citation) : ''}</span></li>`;
       });
       html += '</ul></div>';
     }
@@ -409,7 +486,7 @@
     if (allRefs.pds.length) {
       html += '<div class="detail-section"><div class="detail-section-title">Practice Directions (' + allRefs.pds.length + ')</div><ul class="detail-ref-list">';
       allRefs.pds.forEach(ref => {
-        html += `<li><span class="ref-label">${ref.label}</span><span class="ref-type">${ref.id}</span></li>`;
+        html += `<li data-ref-id="${escAttr(ref.id)}"><span class="ref-label">${esc(ref.label)}</span><span class="ref-type">${esc(ref.id)}</span></li>`;
       });
       html += '</ul></div>';
     }
@@ -418,7 +495,7 @@
     if (allRefs.crossRefs.length) {
       html += '<div class="detail-section"><div class="detail-section-title">Cross-References (' + allRefs.crossRefs.length + ')</div><ul class="detail-ref-list">';
       allRefs.crossRefs.forEach(ref => {
-        html += `<li><span class="ref-label">${ref.label}</span><span class="ref-type">${ref.id}</span></li>`;
+        html += `<li data-ref-id="${escAttr(ref.id)}"><span class="ref-label">${esc(ref.label)}</span><span class="ref-type">${esc(ref.id)}</span></li>`;
       });
       html += '</ul></div>';
     }
@@ -431,12 +508,20 @@
     html += '</div></div>';
 
     document.getElementById('detail-content').innerHTML = html;
+    document.querySelectorAll('.detail-ref-list li[data-ref-id]').forEach(item => {
+      item.addEventListener('click', () => {
+        const refId = item.dataset.refId;
+        selectedId = refId;
+        showNodeDetail(refId);
+        highlightSelectedNode(refId);
+      });
+    });
     document.getElementById('status-selected').textContent = 'Selected: ' + n.id;
   }
 
   function collectNodeRefs(nodeId) {
     const result = { statutes: [], cases: [], pds: [], crossRefs: [] };
-    const n = nodeMap[nodeId];
+    const n = nodeMap[nodeId] || virtualNodeMap[nodeId];
     if (!n) return result;
 
     function resolveRefs(refs) {
@@ -454,62 +539,181 @@
     return result;
   }
 
+  function getAnyNode(nodeId) {
+    return nodeMap[nodeId] || virtualNodeMap[nodeId] || null;
+  }
+
+  function isTypeVisible(n) {
+    if (!n) return true;
+    if (['domain', 'section_header', 'flow_group'].includes(n.type)) return true;
+    return activeFilters.has(n.type);
+  }
+
+  function esc(value) {
+    return String(value ?? '').replace(/[&<>"']/g, ch => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    }[ch]));
+  }
+
+  function escAttr(value) {
+    return esc(value).replace(/`/g, '&#96;');
+  }
+
   // ── Search ──
 
   function handleSearch(query) {
     searchQuery = query.toLowerCase().trim();
-    applySearch();
+    renderTree();
   }
 
   function applySearch() {
     const q = searchQuery;
     const allCards = document.querySelectorAll('.tree-card');
-    const allNodes = document.querySelectorAll('.tree-node');
+    const treeEls = document.querySelectorAll('.tree-node');
 
     allCards.forEach(card => {
       card.classList.remove('search-match', 'search-ancestor');
     });
 
     if (!q) {
-      allNodes.forEach(el => el.style.display = '');
+      renderSearchResults([]);
+      treeEls.forEach(el => {
+        const node = getAnyNode(el.dataset.nodeId);
+        el.style.display = isTypeVisible(node) ? '' : 'none';
+      });
       return;
     }
 
-    const matchingIds = new Set();
-    allNodes.forEach(el => {
-      const nid = el.dataset.nodeId;
-      const n = nodeMap[nid];
-      if (!n) return;
-      const match = n.label.toLowerCase().includes(q) ||
-        (n.summary && n.summary.toLowerCase().includes(q)) ||
-        n.id.toLowerCase().includes(q) ||
-        (n.statute_refs && n.statute_refs.some(r => r.toLowerCase().includes(q))) ||
-        (n.case_seeds && n.case_seeds.some(r => r.toLowerCase().includes(q)));
-      if (match) matchingIds.add(nid);
-    });
+    const matchingIds = new Set(allNodes.filter(n => isSearchMatch(n, q) && isTypeVisible(n)).map(n => n.id));
+    const visibleTreeIds = new Set();
+    const searchResults = [];
 
-    allNodes.forEach(el => {
-      const nid = el.dataset.nodeId;
-      if (matchingIds.has(nid)) {
-        el.style.display = '';
-        const card = el.querySelector('.tree-card');
-        if (card) card.classList.add('search-match');
-        let parent = el.parentElement;
-        while (parent && parent.id && parent.id.startsWith('children-')) {
-          parent.classList.add('open');
-          parent = parent.parentElement;
-        }
+    matchingIds.forEach(id => {
+      if (renderedTreeIds.has(id)) {
+        addTreeMatchWithAncestors(id, visibleTreeIds);
       } else {
-        const hasMatch = el.querySelector('.search-match');
-        if (hasMatch) {
-          el.style.display = '';
-          const card = el.querySelector('.tree-card');
-          if (card) card.classList.add('search-ancestor');
-        } else {
-          el.style.display = 'none';
-        }
+        searchResults.push(nodeMap[id]);
+        (supportParentMap[id] || []).forEach(parentId => addTreeMatchWithAncestors(parentId, visibleTreeIds, true));
       }
     });
+
+    renderSearchResults(searchResults);
+
+    treeEls.forEach(el => {
+      const nid = el.dataset.nodeId;
+      const node = getAnyNode(nid);
+      const card = el.querySelector('.tree-card');
+      const show = visibleTreeIds.has(nid) && isTypeVisible(node);
+      el.style.display = show ? '' : 'none';
+      if (!card) return;
+      if (matchingIds.has(nid)) {
+        card.classList.add('search-match');
+      } else if (show) {
+        card.classList.add('search-ancestor');
+      }
+    });
+
+    visibleTreeIds.forEach(id => {
+      let parentId = treeParentMap[id];
+      while (parentId) {
+        expandedIds.add(parentId);
+        const childContainer = document.getElementById('children-' + parentId);
+        if (childContainer) childContainer.classList.add('open');
+        const toggleBtn = document.querySelector(`.tree-node[data-node-id="${parentId}"] .tree-toggle`);
+        if (toggleBtn && !toggleBtn.classList.contains('leaf')) toggleBtn.innerHTML = '−';
+        parentId = treeParentMap[parentId];
+      }
+    });
+  }
+
+  function isSearchMatch(n, q) {
+    const fields = [
+      n.id,
+      n.label,
+      n.summary,
+      n.type,
+      n.section,
+      n.subsection,
+      n.subtopic,
+      n.neutral_citation,
+      n.verification_status,
+      n.authority_status,
+      n.answer_layer_status,
+      ...(n.statute_refs || []),
+      ...(n.case_seeds || []),
+      ...(n.practice_direction_refs || []),
+      ...(n.cross_refs || []),
+    ];
+    return fields.some(field => String(field || '').toLowerCase().includes(q));
+  }
+
+  function addTreeMatchWithAncestors(id, visibleTreeIds) {
+    if (!id) return;
+    if (renderedTreeIds.has(id) || virtualNodeMap[id]) visibleTreeIds.add(id);
+    let parentId = treeParentMap[id] || primaryParentMap[id];
+    while (parentId) {
+      visibleTreeIds.add(parentId);
+      parentId = treeParentMap[parentId] || primaryParentMap[parentId];
+    }
+  }
+
+  function renderSearchResults(nodes) {
+    const resultsEl = document.getElementById('search-results');
+    if (!resultsEl) return;
+    resultsEl.innerHTML = '';
+    if (!searchQuery || nodes.length === 0) return;
+
+    const title = document.createElement('div');
+    title.className = 'search-results-title';
+    title.textContent = `Support/Audit Matches (${nodes.length})`;
+    resultsEl.appendChild(title);
+
+    nodes.slice(0, 40).forEach(n => {
+      const card = document.createElement('div');
+      card.className = 'tree-card search-result-card search-match';
+      card.dataset.nodeId = n.id;
+      card.addEventListener('click', () => {
+        selectedId = n.id;
+        showNodeDetail(n.id);
+        document.querySelectorAll('.tree-card.selected').forEach(el => el.classList.remove('selected'));
+        card.classList.add('selected');
+      });
+
+      const header = document.createElement('div');
+      header.className = 'tree-card-header';
+      const label = document.createElement('div');
+      label.className = 'tree-card-label';
+      label.textContent = n.label;
+      header.appendChild(label);
+
+      const badges = document.createElement('div');
+      badges.className = 'tree-card-badges';
+      const badge = document.createElement('span');
+      badge.className = 'type-badge';
+      badge.style.background = TYPE_COLORS[n.type] || '#6b7280';
+      badge.textContent = n.type.replace('_', ' ');
+      badges.appendChild(badge);
+      header.appendChild(badges);
+      card.appendChild(header);
+
+      const summary = document.createElement('div');
+      summary.className = 'tree-card-summary';
+      const linked = supportParentMap[n.id] || [];
+      summary.textContent = n.summary || (linked.length ? 'Linked from: ' + linked.map(id => (nodeMap[id] || {}).label || id).join('; ') : 'Support/audit node.');
+      card.appendChild(summary);
+      resultsEl.appendChild(card);
+    });
+
+    if (nodes.length > 40) {
+      const more = document.createElement('div');
+      more.className = 'search-results-more';
+      more.textContent = `${nodes.length - 40} more matches. Refine the search to narrow the audit list.`;
+      resultsEl.appendChild(more);
+    }
   }
 
   // ── Filters ──
@@ -521,18 +725,12 @@
       if (cb.checked) activeFilters.add(cb.dataset.type);
     });
     rerender();
-    setTimeout(applyTypeFilters, 0);
   }
 
   function applyTypeFilters() {
     document.querySelectorAll('.tree-node').forEach(el => {
-      const nid = el.dataset.nodeId;
-      const n = nodeMap[nid];
-      if (n && n.type !== 'section_header' && n.type !== 'domain') {
-        el.style.display = activeFilters.has(n.type) ? '' : 'none';
-      } else {
-        el.style.display = '';
-      }
+      const n = getAnyNode(el.dataset.nodeId);
+      el.style.display = isTypeVisible(n) ? '' : 'none';
     });
   }
 
@@ -555,6 +753,9 @@
     const list = document.getElementById('section-list');
     list.innerHTML = '';
     const sections = {};
+    manifestSections.forEach(section => {
+      sections[section.id] = { count: 0, title: section.title || ('Section ' + section.id) };
+    });
     allNodes.forEach(n => {
       if (!n.section) return;
       if (!sections[n.section]) sections[n.section] = { count: 0, title: n.section_title || ('Section ' + n.section) };
@@ -596,12 +797,15 @@
 
   function populateFlows() {
     const sel = document.getElementById('flow-select');
+    const selected = sel.value;
+    sel.innerHTML = '<option value="">— Select a flow —</option>';
     allFlows.forEach(f => {
       const opt = document.createElement('option');
       opt.value = f.flow_id;
       opt.textContent = f.title;
       sel.appendChild(opt);
     });
+    if (selected && allFlows.some(f => f.flow_id === selected)) sel.value = selected;
   }
 
   function getCurrentFlow() {
@@ -639,14 +843,14 @@
     document.querySelectorAll('.tree-card.flow-highlight').forEach(el => el.classList.remove('flow-highlight'));
     const card = document.querySelector(`.tree-node[data-node-id="${stepId}"] .tree-card`);
     if (card) {
-      card.classList.add('flow-highlight');
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
       let parent = card.closest('.tree-children');
       while (parent) {
         parent.classList.add('open');
+        if (parent.id && parent.id.startsWith('children-')) expandedIds.add(parent.id.replace('children-', ''));
         parent = parent.parentElement ? parent.parentElement.closest('.tree-children') : null;
       }
+      card.classList.add('flow-highlight');
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     if (n) {
       selectedId = stepId;
@@ -697,6 +901,8 @@
   function updateStatusBar() {
     document.getElementById('status-nodes').textContent = 'Nodes: ' + allNodes.length;
     document.getElementById('status-edges').textContent = 'Edges: ' + allEdges.length;
+    document.getElementById('status-sections').textContent = 'Sections: ' + manifestSections.length;
+    document.getElementById('status-flows').textContent = 'Flows: ' + allFlows.length;
   }
 
   // ── Init ──

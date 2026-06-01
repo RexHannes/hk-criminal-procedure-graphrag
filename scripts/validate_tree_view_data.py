@@ -51,6 +51,15 @@ def main():
     print(f'  Sections defined: {len(manifest.get("sections", []))}')
     print(f'  Flow chains: {len(manifest.get("flow_chains", []))}')
 
+    flows_path = os.path.join(DATA_DIR, manifest.get('flows_file', 'flows.json'))
+    flows = []
+    if os.path.exists(flows_path):
+        flows_data = load_json(flows_path)
+        flows = flows_data.get('flows', [])
+        print(f'Loaded flows.json: {len(flows)} flow(s)')
+    else:
+        error(f'flows file not found: {flows_path}')
+
     # Load domain.json
     domain_path = os.path.join(DATA_DIR, 'domain.json')
     if os.path.exists(domain_path):
@@ -67,6 +76,7 @@ def main():
     # Collect all nodes and edges from section files
     all_nodes = []
     all_edges = []
+    node_by_id = {}
     node_ids = set()
     seen_section_ids = set()
 
@@ -84,6 +94,7 @@ def main():
                 if nid in node_ids:
                     error(f'Duplicate node ID: {nid} (section {section_id})')
                 node_ids.add(nid)
+                node_by_id[nid] = n
             all_nodes.extend(nodes)
         else:
             error(f'Node file not found: {node_path}')
@@ -121,6 +132,19 @@ def main():
 
     print(f'\nTotal nodes loaded: {len(all_nodes)}')
     print(f'Total edges loaded: {len(all_edges)}')
+
+    primary_children = {}
+    support_parents = {}
+    rendered_tree_ids = set()
+
+    for e in all_edges:
+        rel = e.get('relationship')
+        frm = e.get('from')
+        to = e.get('to')
+        if rel == 'has_subtopic':
+            primary_children.setdefault(frm, []).append(to)
+        elif rel in ('statutory_anchor', 'case_seed', 'practice_direction_ref', 'cross_reference'):
+            support_parents.setdefault(to, []).append(frm)
 
     # Check cross-references within nodes
     for n in all_nodes:
@@ -167,19 +191,72 @@ def main():
             # OK — some sections have only PDs or NSL nodes
             pass
 
+    def mark_primary_tree(node_id):
+        if node_id in rendered_tree_ids:
+            return
+        rendered_tree_ids.add(node_id)
+        for child_id in primary_children.get(node_id, []):
+            mark_primary_tree(child_id)
+
+    for section in manifest.get('sections', []):
+        sid = section.get('id')
+        headers = [
+            n for n in all_nodes
+            if n.get('section') == sid and n.get('type') == 'section_header'
+        ]
+        for header in headers:
+            mark_primary_tree(header.get('id'))
+
+    # Flow steps are rendered under collapsible per-section flow groups.
+    for n in all_nodes:
+        if n.get('type') == 'flow_step':
+            rendered_tree_ids.add(n.get('id'))
+
+    expected_nav_types = {'section_header', 'legal_issue', 'restricted_nsl', 'practice_direction', 'flow_step', 'gap'}
+    for n in all_nodes:
+        nid = n.get('id')
+        if n.get('type') in expected_nav_types and nid not in rendered_tree_ids:
+            error(f'Navigational node is not renderable in tree: {nid} ({n.get("type")})')
+
+    support_types = {'statute', 'case_seed'}
+    for n in all_nodes:
+        nid = n.get('id')
+        if n.get('type') in support_types:
+            referenced_by_field = any(
+                nid in other.get('statute_refs', [])
+                or nid in other.get('case_seeds', [])
+                or nid in other.get('practice_direction_refs', [])
+                or nid in other.get('cross_refs', [])
+                for other in all_nodes
+            )
+            if nid not in support_parents and not referenced_by_field:
+                warn(f'Support/audit node has no incoming support relationship or node ref: {nid}')
+
     # Check flow chains resolve
-    for flow in manifest.get('flow_chains', []):
+    for flow in flows:
         flow_id = flow.get('flow_id')
         for step_id in flow.get('steps', []):
             if step_id not in node_ids:
-                warn(f'Flow {flow_id}: step "{step_id}" does not match any node ID')
+                error(f'Flow {flow_id}: step "{step_id}" does not match any node ID')
+            elif node_by_id[step_id].get('type') != 'flow_step':
+                error(f'Flow {flow_id}: step "{step_id}" is not a flow_step node')
 
     # Verify status fields preserved on all nodes
     for n in all_nodes:
-        for field in ['verification_status', 'authority_status', 'answer_layer_status']:
-            if field not in n and n.get('type') not in ('section_header', 'practice_direction', 'flow_step'):
-                # Not all types need all status fields
-                pass
+        ntype = n.get('type')
+        required_status_fields = []
+        if ntype in ('legal_issue', 'restricted_nsl'):
+            required_status_fields = ['verification_status', 'authority_status', 'answer_layer_status']
+        elif ntype == 'case_seed':
+            required_status_fields = ['verification_status', 'authority_status']
+        elif ntype == 'statute':
+            required_status_fields = ['verification_status']
+        for field in required_status_fields:
+            if field not in n:
+                error(f'Node {n.get("id")} missing required status field: {field}')
+
+    if len(rendered_tree_ids) + len([n for n in all_nodes if n.get('type') in support_types]) < len(all_nodes):
+        warn('Some nodes are neither renderable navigation nodes nor recognized support/audit nodes')
 
     # Summary
     print()
