@@ -96,6 +96,7 @@
   let domainRegistry = null;
   let typeColors = {};
   let controlsBound = false;
+  let loadToken = 0;
 
   function loadJSON(path) { return fetch(path).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }); }
 
@@ -143,7 +144,8 @@
     updateLegend(domain);
 
     const consolidatedPath = DATA_BASE + domain.path.replace('domain.json', 'consolidated.json');
-    loadDomainData(consolidatedPath);
+    const token = ++loadToken;
+    loadDomainData(consolidatedPath, token);
   }
 
   function updateHeaderBadges(domain) {
@@ -216,23 +218,30 @@
 
   // ── Data Loading ──
 
-  function loadDomainData(consolidatedPath) {
+  function loadDomainData(consolidatedPath, token) {
     document.getElementById('status-selected').textContent = 'Loading...';
     const dataBase = consolidatedPath.substring(0, consolidatedPath.lastIndexOf('/') + 1);
 
     return loadJSON(consolidatedPath).then(manifest => {
-      manifestSections = manifest.sections || [];
+      const nextNodes = [];
+      const nextEdges = [];
       const sectionPromises = manifest.sections.map(s => {
         const nodeP = loadJSON(dataBase + s.node_file).then(d => d.nodes || []);
         const edgeP = loadJSON(dataBase + s.edge_file).then(d => d.edges || []);
         return Promise.all([nodeP, edgeP]).then(([nodes, edges]) => {
-          allNodes = allNodes.concat(nodes);
-          allEdges = allEdges.concat(edges);
+          nextNodes.push(...nodes);
+          nextEdges.push(...edges);
         });
       });
-      const flowP = loadJSON(dataBase + manifest.flows_file).then(d => { allFlows = d.flows || []; });
-      return Promise.all([Promise.all(sectionPromises), flowP]);
-    }).then(() => {
+      const flowP = loadJSON(dataBase + manifest.flows_file).then(d => d.flows || []);
+      return Promise.all([Promise.all(sectionPromises), flowP])
+        .then(([, flows]) => ({ manifest, nodes: nextNodes, edges: nextEdges, flows }));
+    }).then(payload => {
+      if (token !== loadToken) return;
+      manifestSections = payload.manifest.sections || [];
+      allNodes = payload.nodes;
+      allEdges = payload.edges;
+      allFlows = payload.flows;
       allNodes.forEach(n => { nodeMap[n.id] = n; });
       allEdges.forEach(e => {
         if (!edgeFromMap[e.from]) edgeFromMap[e.from] = [];
