@@ -1,0 +1,524 @@
+{
+  "section_id": "02",
+  "section_title": "Offences Against the Person",
+  "domain_id": "criminal_law_hk",
+  "nodes": [
+    {
+      "id": "crim_offences_person",
+      "doctrine_node_id": "criminal_law_hk.offences_person",
+      "type": "section_header",
+      "label": "Offences Against the Person",
+      "summary": "Homicide, non-fatal offences against the person, and sexual offences.",
+      "section": "02",
+      "verification_status": "book_seed_needs_case_and_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "textbook_seed_only",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_murder",
+      "doctrine_node_id": "criminal_law_hk.murder",
+      "type": "legal_issue",
+      "label": "Murder",
+      "summary": "Unlawful killing with malice aforethought: intention to kill or cause grievous bodily harm.",
+      "section": "02",
+      "subsection": "02.01",
+      "subtopic": "Murder",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_li_defan",
+        "case_cunningham"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_intention",
+        "crim_causation"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.murder",
+        "expected_query_terms": [
+          "murder"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_manslaughter",
+      "doctrine_node_id": "criminal_law_hk.manslaughter",
+      "type": "legal_issue",
+      "label": "Manslaughter Overview",
+      "summary": "Voluntary and involuntary manslaughter, including partial defences and unlawful act/gross negligence forms.",
+      "section": "02",
+      "subsection": "02.02",
+      "subtopic": "Manslaughter",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.manslaughter",
+        "expected_query_terms": [
+          "manslaughter overview"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_voluntary_manslaughter",
+      "doctrine_node_id": "criminal_law_hk.voluntary.manslaughter",
+      "type": "legal_issue",
+      "label": "Voluntary Manslaughter",
+      "summary": "Partial defences may reduce murder to manslaughter, including provocation, diminished responsibility, and suicide pact.",
+      "section": "02",
+      "subsection": "02.02",
+      "subtopic": "Voluntary Manslaughter",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_lee_kwok_wah",
+        "case_cheung_kin_shing"
+      ],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.voluntary.manslaughter",
+        "expected_query_terms": [
+          "voluntary manslaughter"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_involuntary_manslaughter",
+      "doctrine_node_id": "criminal_law_hk.involuntary.manslaughter",
+      "type": "legal_issue",
+      "label": "Involuntary Manslaughter",
+      "summary": "Involuntary manslaughter includes unlawful act manslaughter and gross negligence manslaughter.",
+      "section": "02",
+      "subsection": "02.03",
+      "subtopic": "Involuntary Manslaughter",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.involuntary.manslaughter",
+        "expected_query_terms": [
+          "involuntary manslaughter"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_unlawful_act_manslaughter",
+      "doctrine_node_id": "criminal_law_hk.unlawful.act.manslaughter",
+      "type": "legal_issue",
+      "label": "Unlawful Act Manslaughter",
+      "summary": "Requires an intentional, unlawful and objectively dangerous act causing death.",
+      "section": "02",
+      "subsection": "02.03",
+      "subtopic": "Unlawful Act Manslaughter",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_church",
+        "case_lee_wai_yin"
+      ],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.unlawful.act.manslaughter",
+        "expected_query_terms": [
+          "unlawful act manslaughter"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_gross_negligence_manslaughter",
+      "doctrine_node_id": "criminal_law_hk.gross.negligence.manslaughter",
+      "type": "legal_issue",
+      "label": "Gross Negligence Manslaughter",
+      "summary": "Adomako test: duty, breach, obvious and serious risk of death, causation, and gross negligence.",
+      "section": "02",
+      "subsection": "02.03",
+      "subtopic": "Gross Negligence Manslaughter",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_adomako",
+        "case_lai_shui_yin",
+        "case_mak_wan_ling"
+      ],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.gross.negligence.manslaughter",
+        "expected_query_terms": [
+          "gross negligence manslaughter"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_assault_battery",
+      "doctrine_node_id": "criminal_law_hk.assault.battery",
+      "type": "legal_issue",
+      "label": "Common Assault and Battery",
+      "summary": "Common assault and battery under Hong Kong law; assault concerns apprehension of immediate unlawful force and battery concerns application of unlawful force.",
+      "section": "02",
+      "subsection": "02.04",
+      "subtopic": "Assault and Battery",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_fagan",
+        "case_collins_wilcock"
+      ],
+      "statute_refs": [
+        "cap200"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.assault.battery",
+        "expected_query_terms": [
+          "common assault and battery"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_abh",
+      "doctrine_node_id": "criminal_law_hk.abh",
+      "type": "legal_issue",
+      "label": "Assault Occasioning Actual Bodily Harm",
+      "summary": "ABH under OAPA 1861 s.39 / HK equivalent seed: injury interfering with health or comfort. Exact HK statutory source requires verification.",
+      "section": "02",
+      "subsection": "02.04",
+      "subtopic": "ABH",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [
+        "cap212_s39"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.abh",
+        "expected_query_terms": [
+          "assault occasioning actual bodily harm"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_wounding_gbh",
+      "doctrine_node_id": "criminal_law_hk.wounding.gbh",
+      "type": "legal_issue",
+      "label": "Wounding and Grievous Bodily Harm",
+      "summary": "Wounding involves breaking the skin; GBH means really serious harm.",
+      "section": "02",
+      "subsection": "02.04",
+      "subtopic": "Wounding and GBH",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_saunders"
+      ],
+      "statute_refs": [
+        "cap212_s17",
+        "cap212_s19"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.wounding.gbh",
+        "expected_query_terms": [
+          "wounding and grievous bodily harm"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_rape",
+      "doctrine_node_id": "criminal_law_hk.rape",
+      "type": "legal_issue",
+      "label": "Rape",
+      "summary": "Penetration without consent under Crimes Ordinance s.118. Reasonable grounds for belief in consent require source verification.",
+      "section": "02",
+      "subsection": "02.05",
+      "subtopic": "Rape",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_dpp_morgan",
+        "case_cheung_chi_wai"
+      ],
+      "statute_refs": [
+        "cap200_s118"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.rape",
+        "expected_query_terms": [
+          "rape"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_cunningham",
+      "type": "case_seed",
+      "label": "R v Cunningham [1982] AC 566",
+      "summary": "Malice aforethought includes intent to cause GBH.",
+      "section": "02",
+      "court": "HL",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1982] AC 566"
+    },
+    {
+      "id": "case_lee_kwok_wah",
+      "type": "case_seed",
+      "label": "HKSAR v Lee Kwok Wah",
+      "summary": "Seed HK voluntary manslaughter/provocation case.",
+      "section": "02",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_cheung_kin_shing",
+      "type": "case_seed",
+      "label": "HKSAR v Cheung Kin Shing",
+      "summary": "Seed HK diminished responsibility / homicide case.",
+      "section": "02",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_church",
+      "type": "case_seed",
+      "label": "R v Church [1966] 1 QB 59",
+      "summary": "Unlawful act manslaughter dangerousness.",
+      "section": "02",
+      "court": "CA",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1966] 1 QB 59"
+    },
+    {
+      "id": "case_lee_wai_yin",
+      "type": "case_seed",
+      "label": "HKSAR v Lee Wai Yin",
+      "summary": "Seed HK unlawful act manslaughter case.",
+      "section": "02",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_adomako",
+      "type": "case_seed",
+      "label": "R v Adomako [1995] 1 AC 171",
+      "summary": "Gross negligence manslaughter.",
+      "section": "02",
+      "court": "HL",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1995] 1 AC 171"
+    },
+    {
+      "id": "case_lai_shui_yin",
+      "type": "case_seed",
+      "label": "HKSAR v Lai Shui Yin",
+      "summary": "Seed HK gross negligence manslaughter case.",
+      "section": "02",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_mak_wan_ling",
+      "type": "case_seed",
+      "label": "HKSAR v Mak Wan Ling",
+      "summary": "Seed HK medical/gross negligence case.",
+      "section": "02",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_collins_wilcock",
+      "type": "case_seed",
+      "label": "Collins v Wilcock [1984] 1 WLR 1172",
+      "summary": "Battery and ordinary social contact.",
+      "section": "02",
+      "court": "DC",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1984] 1 WLR 1172"
+    },
+    {
+      "id": "case_saunders",
+      "type": "case_seed",
+      "label": "R v Saunders [1985] Crim LR 230",
+      "summary": "GBH meaning and harm.",
+      "section": "02",
+      "court": "CA",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_dpp_morgan",
+      "type": "case_seed",
+      "label": "DPP v Morgan [1976] AC 182",
+      "summary": "Mistaken belief in consent.",
+      "section": "02",
+      "court": "HL",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1976] AC 182"
+    },
+    {
+      "id": "case_cheung_chi_wai",
+      "type": "case_seed",
+      "label": "HKSAR v Cheung Chi Wai",
+      "summary": "Seed HK rape/consent case.",
+      "section": "02",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "gap_verify_homicide_section",
+      "type": "gap",
+      "label": "Gap: Verify homicide authorities",
+      "summary": "Verify all HK homicide, non-fatal offence, and sexual offence seeds against HKLII and official statutes.",
+      "section": "02",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "section_id": "06",
+  "section_title": "Complicity and Inchoate Offences",
+  "domain_id": "criminal_law_hk",
+  "nodes": [
+    {
+      "id": "crim_complicity_inchoate",
+      "doctrine_node_id": "criminal_law_hk.complicity_inchoate",
+      "type": "section_header",
+      "label": "Complicity and Inchoate Offences",
+      "summary": "Secondary liability, joint enterprise, conspiracy, attempt, and incitement.",
+      "section": "06",
+      "verification_status": "book_seed_needs_case_and_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "textbook_seed_only",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_secondary_liability",
+      "doctrine_node_id": "criminal_law_hk.secondary.liability",
+      "type": "legal_issue",
+      "label": "Secondary Liability",
+      "summary": "Aiding, abetting, counselling or procuring: intentional assistance or encouragement with knowledge of essential matters.",
+      "section": "06",
+      "subsection": "06.01",
+      "subtopic": "Secondary Liability",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.secondary.liability",
+        "expected_query_terms": [
+          "secondary liability"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_joint_enterprise",
+      "doctrine_node_id": "criminal_law_hk.joint.enterprise",
+      "type": "legal_issue",
+      "label": "Joint Enterprise",
+      "summary": "Chan Wing Siu foresight doctrine retained in Hong Kong; HKSAR v Chan Kam Shing rejected Jogee.",
+      "section": "06",
+      "subsection": "06.01",
+      "subtopic": "Joint Enterprise",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_chan_wing_siu",
+        "case_chan_kam_shing",
+        "case_jogee"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_murder"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.joint.enterprise",
+        "expected_query_terms": [
+          "joint enterprise"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_withdrawal_joint_enterprise",
+      "doctrine_node_id": "criminal_law_hk.withdrawal.joint.enterprise",
+      "type": "legal_issue",
+      "label": "Withdrawal from Joint Enterprise",
+      "summary": "Withdrawal requires timely and unequivocal communication and reasonable steps to prevent the offence.",
+      "section": "06",
+      "subsection": "06.01",
+      "subtopic": "Withdrawal",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.withdrawal.joint.enterprise",
+        "expected_query_terms": [
+          "withdrawal from joint enterprise"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_conspiracy",
+      "doctrine_node_id": "criminal_law_hk.conspiracy",
+      "type": "legal_issue",
+      "label": "Conspiracy",
+      "summary": "Agreement to commit an offence with intention to carry it out.",
+      "section": "06",
+      "subsection": "06.02",
+      "subtopic": "Conspiracy",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_lai_man_ling"
+      ],
+      "statute_refs": [
+        "cap200_s159a"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.conspiracy",
+        "expected_query_terms": [
+          "conspiracy"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_attempt",
+      "doctrine_node_id": "criminal_law_hk.attempt",
+      "type": "legal_issue",
+      "label": "Attempt",
+      "summary": "Act more than merely preparatory with intent to commit the full offence.",
+      "section": "06",
+      "subsection": "06.02",
+      "subtopic": "Attempt",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [
+        "cap200_s159g"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.attempt",
+        "expected_query_terms": [
+          "attempt"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_incitement",
+      "doctrine_node_id": "criminal_law_hk.incitement",
+      "type": "legal_issue",
+      "label": "Incitement",
+      "summary": "Encouraging or persuading another to commit an offence; common law and statutory treatment require verification.",
+      "section": "06",
+      "subsection": "06.02",
+      "subtopic": "Incitement",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.incitement",
+        "expected_query_terms": [
+          "incitement"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_chan_wing_siu",
+      "type": "case_seed",
+      "label": "Chan Wing Siu v R [1985] AC 168",
+      "summary": "Joint enterprise foresight doctrine.",
+      "section": "06",
+      "court": "PC",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1985] AC 168"
+    },
+    {
+      "id": "case_chan_kam_shing",
+      "type": "case_seed",
+      "label": "HKSAR v Chan Kam Shing (2016) 19 HKCFAR 640",
+      "summary": "HK CFA retained Chan Wing Siu and rejected Jogee.",
+      "section": "06",
+      "court": "CFA",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "(2016) 19 HKCFAR 640"
+    },
+    {
+      "id": "case_jogee",
+      "type": "case_seed",
+      "label": "R v Jogee [2016] UKSC 8",
+      "summary": "English law changed joint enterprise; not followed in HK.",
+      "section": "06",
+      "court": "UKSC",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[2016] UKSC 8"
+    },
+    {
+      "id": "case_lai_man_ling",
+      "type": "case_seed",
+      "label": "HKSAR v Lai Man Ling",
+      "summary": "Seed HK conspiracy case.",
+      "section": "06",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "gap_verify_joint_enterprise_hk",
+      "type": "gap",
+      "label": "Gap: Verify HK joint enterprise divergence",
+      "summary": "Verify current HK position retaining Chan Wing Siu after Jogee and Chan Kam Shing.",
+      "section": "06",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    }
+  ]
+}

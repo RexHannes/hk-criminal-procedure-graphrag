@@ -1,0 +1,220 @@
+{
+  "section_id": "05",
+  "section_title": "Anti-Money Laundering",
+  "domain_id": "criminal_law_hk",
+  "nodes": [
+    {
+      "id": "crim_aml",
+      "doctrine_node_id": "criminal_law_hk.aml",
+      "type": "section_header",
+      "label": "Anti-Money Laundering",
+      "summary": "OSCO s.25 money laundering and Cap 615 regulatory framework.",
+      "section": "05",
+      "verification_status": "book_seed_needs_case_and_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "textbook_seed_only",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_osco_s25",
+      "doctrine_node_id": "criminal_law_hk.osco.s25",
+      "type": "legal_issue",
+      "label": "OSCO s.25 Money Laundering",
+      "summary": "Dealing with property representing proceeds of an indictable offence, knowing or having reasonable grounds to believe.",
+      "section": "05",
+      "subsection": "05.01",
+      "subtopic": "OSCO s.25",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_pang_hung_fai",
+        "case_lam_hei_wai"
+      ],
+      "statute_refs": [
+        "cap455_s25"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.osco.s25",
+        "expected_query_terms": [
+          "osco s.25 money laundering"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_aml_reasonable_grounds",
+      "doctrine_node_id": "criminal_law_hk.aml.reasonable.grounds",
+      "type": "legal_issue",
+      "label": "Reasonable Grounds to Believe",
+      "summary": "Objective test examined through the defendant\u2019s own knowledge and subjective attributes such as education and intelligence.",
+      "section": "05",
+      "subsection": "05.01",
+      "subtopic": "Reasonable Grounds",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_pang_hung_fai"
+      ],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.aml.reasonable.grounds",
+        "expected_query_terms": [
+          "reasonable grounds to believe"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_aml_wilful_blindness",
+      "doctrine_node_id": "criminal_law_hk.aml.wilful.blindness",
+      "type": "legal_issue",
+      "label": "Knowledge and Wilful Blindness",
+      "summary": "Knowledge may include wilful blindness to the criminal source of funds.",
+      "section": "05",
+      "subsection": "05.01",
+      "subtopic": "Wilful Blindness",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_lam_hei_wai"
+      ],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.aml.wilful.blindness",
+        "expected_query_terms": [
+          "knowledge and wilful blindness"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_aml_statutory_defence",
+      "doctrine_node_id": "criminal_law_hk.aml.statutory.defence",
+      "type": "legal_issue",
+      "label": "OSCO s.25(2) Statutory Defence",
+      "summary": "Defence seed: intended disclosure to JFIU or reasonable excuse for non-disclosure.",
+      "section": "05",
+      "subsection": "05.02",
+      "subtopic": "Statutory Defence",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [
+        "cap455_s25_2"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.aml.statutory.defence",
+        "expected_query_terms": [
+          "osco s.25(2) statutory defence"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_cap615_framework",
+      "doctrine_node_id": "criminal_law_hk.cap615.framework",
+      "type": "legal_issue",
+      "label": "Cap 615 AML/CTF Framework",
+      "summary": "Regulatory AML/CTF obligations for specified institutions and DNFBPs, including CDD, record-keeping and suspicious transaction reporting.",
+      "section": "05",
+      "subsection": "05.03",
+      "subtopic": "Cap 615 Framework",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [
+        "cap615"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.cap615.framework",
+        "expected_query_terms": [
+          "cap 615 aml/ctf framework"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_pang_hung_fai",
+      "type": "case_seed",
+      "label": "Pang Hung Fai v HKSAR (2014) 17 HKCFAR 778",
+      "summary": "Reasonable grounds to believe under OSCO s.25.",
+      "section": "05",
+      "court": "CFA",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "(2014) 17 HKCFAR 778"
+    },
+    {
+      "id": "case_lam_hei_wai",
+      "type": "case_seed",
+      "label": "HKSAR v Lam Hei Wai",
+      "summary": "Seed OSCO/wilful blindness case.",
+      "section": "05",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "gap_verify_aml_predicate_offences",
+      "type": "gap",
+      "label": "Gap: Verify AML predicate offences",
+      "summary": "Verify treatment of predicate indictable offences and offshore offences for OSCO s.25.",
+      "section": "05",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    }
+  ]
+}

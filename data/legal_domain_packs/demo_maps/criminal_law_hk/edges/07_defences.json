@@ -1,0 +1,51 @@
+{
+  "section_id": "07",
+  "domain_id": "criminal_law_hk",
+  "edges": [
+    {
+      "from": "crim_defences",
+      "to": "crim_insanity",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_defences",
+      "to": "crim_automatism",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_defences",
+      "to": "crim_intoxication",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_intoxication",
+      "to": "case_majewski",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_intoxication",
+      "to": "crim_mens_rea",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_defences",
+      "to": "crim_self_defence",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_self_defence",
+      "to": "case_leung_kwok_hung",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_defences",
+      "to": "crim_duress",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_defences",
+      "to": "crim_mistake",
+      "relationship": "has_subtopic"
+    }
+  ]
+}

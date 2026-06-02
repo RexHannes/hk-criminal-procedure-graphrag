@@ -1,0 +1,599 @@
+{
+  "section_id": "01",
+  "section_title": "Fundamentals of Criminal Liability",
+  "domain_id": "criminal_law_hk",
+  "nodes": [
+    {
+      "id": "crim_law_fundamentals",
+      "doctrine_node_id": "criminal_law_hk.fundamentals",
+      "type": "section_header",
+      "label": "Fundamentals of Criminal Liability",
+      "summary": "Core elements of criminal liability: actus reus, mens rea, strict liability, and their interaction in Hong Kong law.",
+      "section": "01",
+      "verification_status": "book_seed_needs_case_and_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "textbook_seed_only",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_actus_reus",
+      "doctrine_node_id": "criminal_law_hk.actus.reus",
+      "type": "legal_issue",
+      "label": "Actus Reus",
+      "summary": "Every crime requires a voluntary act or omission where a legal duty exists that causes the prohibited result. The act must be the legal cause of harm.",
+      "section": "01",
+      "subsection": "01.01",
+      "subtopic": "Actus Reus",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_miller",
+        "case_thabo_meli",
+        "case_le_brun",
+        "case_cheshire",
+        "case_hughes",
+        "case_blaue",
+        "case_lam_chiu_yin"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_causation",
+        "crim_omissions"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.actus.reus",
+        "expected_query_terms": [
+          "actus reus"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_omissions",
+      "doctrine_node_id": "criminal_law_hk.omissions",
+      "type": "legal_issue",
+      "label": "Omissions and Duty to Act",
+      "summary": "No general duty to act. Liability for omissions arises only where a legal duty exists: statutory, contractual, relationship, assumption of care, or creation of danger.",
+      "section": "01",
+      "subsection": "01.01",
+      "subtopic": "Omissions",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_miller"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_actus_reus"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.omissions",
+        "expected_query_terms": [
+          "omissions and duty to act"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_causation",
+      "doctrine_node_id": "criminal_law_hk.causation",
+      "type": "legal_issue",
+      "label": "Causation",
+      "summary": "Factual causation uses the but-for test. Legal causation requires an operating and substantial cause. A novus actus breaks the chain only if sufficiently independent; thin skull rule applies.",
+      "section": "01",
+      "subsection": "01.01",
+      "subtopic": "Causation",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_cheshire",
+        "case_hughes",
+        "case_blaue",
+        "case_lam_chiu_yin"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_actus_reus",
+        "crim_murder"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.causation",
+        "expected_query_terms": [
+          "causation"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_single_transaction",
+      "doctrine_node_id": "criminal_law_hk.single.transaction",
+      "type": "legal_issue",
+      "label": "Single Transaction Rule",
+      "summary": "Where a series of acts forms an indivisible transaction, mens rea at any point may be imputed to the whole actus reus.",
+      "section": "01",
+      "subsection": "01.01",
+      "subtopic": "Single Transaction",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_thabo_meli",
+        "case_le_brun"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_actus_reus",
+        "crim_mens_rea"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.single.transaction",
+        "expected_query_terms": [
+          "single transaction rule"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_mens_rea",
+      "doctrine_node_id": "criminal_law_hk.mens.rea",
+      "type": "legal_issue",
+      "label": "Mens Rea",
+      "summary": "The mental element required by the offence definition. Main forms: intention, recklessness, negligence, and knowledge. Actus reus and mens rea must coincide.",
+      "section": "01",
+      "subsection": "01.02",
+      "subtopic": "Mens Rea",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_woollin",
+        "case_li_defan",
+        "case_rv_g",
+        "case_sin_kam_wah",
+        "case_fagan"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_intention",
+        "crim_recklessness",
+        "crim_transferred_malice"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.mens.rea",
+        "expected_query_terms": [
+          "mens rea"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_intention",
+      "doctrine_node_id": "criminal_law_hk.intention",
+      "type": "legal_issue",
+      "label": "Intention - Direct and Oblique",
+      "summary": "Direct intention is purpose. Oblique intention uses the Woollin virtual-certainty test, adopted in Hong Kong in Li Defan.",
+      "section": "01",
+      "subsection": "01.02",
+      "subtopic": "Intention",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_woollin",
+        "case_li_defan"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_mens_rea",
+        "crim_murder"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.intention",
+        "expected_query_terms": [
+          "intention - direct and oblique"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_recklessness",
+      "doctrine_node_id": "criminal_law_hk.recklessness",
+      "type": "legal_issue",
+      "label": "Recklessness - Subjective Test",
+      "summary": "Subjective recklessness requires foresight of risk and unreasonable taking of that risk. HK CFA affirmed R v G in Sin Kam Wah, rejecting Caldwell objective recklessness.",
+      "section": "01",
+      "subsection": "01.02",
+      "subtopic": "Recklessness",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_rv_g",
+        "case_sin_kam_wah"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_mens_rea"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.recklessness",
+        "expected_query_terms": [
+          "recklessness - subjective test"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_transferred_malice",
+      "doctrine_node_id": "criminal_law_hk.transferred.malice",
+      "type": "legal_issue",
+      "label": "Transferred Malice",
+      "summary": "If D intends to harm A but accidentally harms B, the mens rea can transfer to the actual victim.",
+      "section": "01",
+      "subsection": "01.02",
+      "subtopic": "Transferred Malice",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_latimer"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_mens_rea"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.transferred.malice",
+        "expected_query_terms": [
+          "transferred malice"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_strict_liability",
+      "doctrine_node_id": "criminal_law_hk.strict.liability",
+      "type": "legal_issue",
+      "label": "Strict and Absolute Liability",
+      "summary": "Presumption of mens rea. HK framework from Gammon, Hin Lin Yee and Kulemesin distinguishes absolute liability, strict liability with due diligence, full mens rea, partial mens rea, and half-way house offences.",
+      "section": "01",
+      "subsection": "01.03",
+      "subtopic": "Strict Liability",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_sweet_parsley",
+        "case_gammon",
+        "case_hin_lin_yee",
+        "case_kulemesin"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_mens_rea"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.strict.liability",
+        "expected_query_terms": [
+          "strict and absolute liability"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_miller",
+      "type": "case_seed",
+      "label": "R v Miller [1983] 2 AC 161",
+      "summary": "Duty to act after creating a dangerous situation.",
+      "section": "01",
+      "court": "HL",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1983] 2 AC 161"
+    },
+    {
+      "id": "case_thabo_meli",
+      "type": "case_seed",
+      "label": "Thabo Meli v R [1954] 1 WLR 228",
+      "summary": "Single transaction rule.",
+      "section": "01",
+      "court": "PC",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1954] 1 WLR 228"
+    },
+    {
+      "id": "case_le_brun",
+      "type": "case_seed",
+      "label": "R v Le Brun [1992] QB 61",
+      "summary": "Extended single transaction rule.",
+      "section": "01",
+      "court": "CA",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1992] QB 61"
+    },
+    {
+      "id": "case_cheshire",
+      "type": "case_seed",
+      "label": "R v Cheshire [1991] 1 WLR 844",
+      "summary": "Legal causation and medical intervention.",
+      "section": "01",
+      "court": "CA",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1991] 1 WLR 844"
+    },
+    {
+      "id": "case_hughes",
+      "type": "case_seed",
+      "label": "R v Hughes [2013] UKSC 56",
+      "summary": "Operating and substantial cause.",
+      "section": "01",
+      "court": "UKSC",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[2013] UKSC 56"
+    },
+    {
+      "id": "case_blaue",
+      "type": "case_seed",
+      "label": "R v Blaue [1975] 1 WLR 1411",
+      "summary": "Thin skull rule.",
+      "section": "01",
+      "court": "CA",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1975] 1 WLR 1411"
+    },
+    {
+      "id": "case_lam_chiu_yin",
+      "type": "case_seed",
+      "label": "HKSAR v Lam Chiu Yin (2002) 5 HKCFAR 416",
+      "summary": "HK causation in murder.",
+      "section": "01",
+      "court": "CFA",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "(2002) 5 HKCFAR 416"
+    },
+    {
+      "id": "case_woollin",
+      "type": "case_seed",
+      "label": "R v Woollin [1999] 1 AC 82",
+      "summary": "Oblique intent.",
+      "section": "01",
+      "court": "HL",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1999] 1 AC 82"
+    },
+    {
+      "id": "case_li_defan",
+      "type": "case_seed",
+      "label": "HKSAR v Li Defan (2002) 5 HKCFAR 320",
+      "summary": "HK CFA adopted Woollin.",
+      "section": "01",
+      "court": "CFA",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "(2002) 5 HKCFAR 320"
+    },
+    {
+      "id": "case_rv_g",
+      "type": "case_seed",
+      "label": "R v G [2003] UKHL 50",
+      "summary": "Subjective recklessness.",
+      "section": "01",
+      "court": "HL",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[2003] UKHL 50"
+    },
+    {
+      "id": "case_sin_kam_wah",
+      "type": "case_seed",
+      "label": "Sin Kam Wah v HKSAR (2005) 8 HKCFAR 192",
+      "summary": "HK subjective recklessness.",
+      "section": "01",
+      "court": "CFA",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "(2005) 8 HKCFAR 192"
+    },
+    {
+      "id": "case_latimer",
+      "type": "case_seed",
+      "label": "R v Latimer (1886) 17 QBD 359",
+      "summary": "Transferred malice.",
+      "section": "01",
+      "court": "QB",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "(1886) 17 QBD 359"
+    },
+    {
+      "id": "case_fagan",
+      "type": "case_seed",
+      "label": "Fagan v MPC [1969] 1 QB 439",
+      "summary": "Continuing act.",
+      "section": "01",
+      "court": "QB",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1969] 1 QB 439"
+    },
+    {
+      "id": "case_sweet_parsley",
+      "type": "case_seed",
+      "label": "Sweet v Parsley [1970] AC 132",
+      "summary": "Presumption of mens rea.",
+      "section": "01",
+      "court": "HL",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1970] AC 132"
+    },
+    {
+      "id": "case_gammon",
+      "type": "case_seed",
+      "label": "Gammon (HK) Ltd v AG [1985] AC 1",
+      "summary": "Strict liability in HK.",
+      "section": "01",
+      "court": "PC",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1985] AC 1"
+    },
+    {
+      "id": "case_hin_lin_yee",
+      "type": "case_seed",
+      "label": "Hin Lin Yee v HKSAR (2010) 13 HKCFAR 142",
+      "summary": "HK strict liability framework.",
+      "section": "01",
+      "court": "CFA",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "(2010) 13 HKCFAR 142"
+    },
+    {
+      "id": "case_kulemesin",
+      "type": "case_seed",
+      "label": "Kulemesin v HKSAR (2013) 16 HKCFAR 195",
+      "summary": "HK five-tier strict liability.",
+      "section": "01",
+      "court": "CFA",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "(2013) 16 HKCFAR 195"
+    },
+    {
+      "id": "gap_verify_all_fundamentals",
+      "type": "gap",
+      "label": "Gap: Verify all fundamentals cases on HKLII",
+      "summary": "All case seeds in section 01 need exact HKLII paragraph anchors. Priority: Lam Chiu Yin, Li Defan, Sin Kam Wah, Hin Lin Yee, Kulemesin.",
+      "section": "01",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    }
+  ]
+}

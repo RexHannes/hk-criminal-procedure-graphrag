@@ -1,0 +1,63 @@
+{
+  "domain_id": "criminal_law_hk",
+  "title": "Hong Kong Substantive Criminal Law",
+  "version": "0.1.0",
+  "last_updated": "2026-06-02",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "needs_official_source_verification": true,
+    "authority_status": "unverified_case_seed"
+  },
+  "sections": [
+    {
+      "id": "01",
+      "title": "Fundamentals of Criminal Liability",
+      "node_file": "nodes/01_fundamentals.json",
+      "edge_file": "edges/01_fundamentals.json"
+    },
+    {
+      "id": "02",
+      "title": "Offences Against the Person",
+      "node_file": "nodes/02_offences_against_person.json",
+      "edge_file": "edges/02_offences_against_person.json"
+    },
+    {
+      "id": "03",
+      "title": "Property and Dishonesty Offences",
+      "node_file": "nodes/03_property_dishonesty.json",
+      "edge_file": "edges/03_property_dishonesty.json"
+    },
+    {
+      "id": "04",
+      "title": "Bribery and Corruption",
+      "node_file": "nodes/04_bribery_corruption.json",
+      "edge_file": "edges/04_bribery_corruption.json"
+    },
+    {
+      "id": "05",
+      "title": "Anti-Money Laundering",
+      "node_file": "nodes/05_aml.json",
+      "edge_file": "edges/05_aml.json"
+    },
+    {
+      "id": "06",
+      "title": "Complicity and Inchoate Offences",
+      "node_file": "nodes/06_complicity_inchoate.json",
+      "edge_file": "edges/06_complicity_inchoate.json"
+    },
+    {
+      "id": "07",
+      "title": "General Defences",
+      "node_file": "nodes/07_defences.json",
+      "edge_file": "edges/07_defences.json"
+    },
+    {
+      "id": "08",
+      "title": "Statutes and Ordinances",
+      "node_file": "nodes/08_statutes.json",
+      "edge_file": "edges/08_statutes.json"
+    }
+  ],
+  "flows_file": "flows.json"
+}

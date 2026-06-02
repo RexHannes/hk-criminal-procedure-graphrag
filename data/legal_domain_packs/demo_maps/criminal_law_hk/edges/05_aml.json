@@ -1,0 +1,71 @@
+{
+  "section_id": "05",
+  "domain_id": "criminal_law_hk",
+  "edges": [
+    {
+      "from": "crim_aml",
+      "to": "crim_osco_s25",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_osco_s25",
+      "to": "case_pang_hung_fai",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_osco_s25",
+      "to": "case_lam_hei_wai",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_osco_s25",
+      "to": "cap455_s25",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_aml",
+      "to": "crim_aml_reasonable_grounds",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_aml_reasonable_grounds",
+      "to": "case_pang_hung_fai",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_aml",
+      "to": "crim_aml_wilful_blindness",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_aml_wilful_blindness",
+      "to": "case_lam_hei_wai",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_aml",
+      "to": "crim_aml_statutory_defence",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_aml_statutory_defence",
+      "to": "cap455_s25_2",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_aml",
+      "to": "crim_cap615_framework",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_cap615_framework",
+      "to": "cap615",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_aml",
+      "to": "gap_verify_aml_predicate_offences",
+      "relationship": "has_subtopic"
+    }
+  ]
+}

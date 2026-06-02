@@ -1,0 +1,111 @@
+{
+  "section_id": "08",
+  "domain_id": "criminal_law_hk",
+  "edges": [
+    {
+      "from": "crim_statutes",
+      "to": "cap200",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_statutes",
+      "to": "cap210",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_statutes",
+      "to": "cap210",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_statutes",
+      "to": "cap201",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_statutes",
+      "to": "cap201",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_statutes",
+      "to": "cap455",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_statutes",
+      "to": "cap455",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_statutes",
+      "to": "cap615",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap200",
+      "to": "cap200_s60",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap200",
+      "to": "cap200_s118",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap200",
+      "to": "cap200_s159a",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap200",
+      "to": "cap200_s159g",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap210",
+      "to": "cap210_s2",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap210",
+      "to": "cap210_s16a",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap201",
+      "to": "cap201_s3",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap201",
+      "to": "cap201_s4",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap201",
+      "to": "cap201_s5",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap201",
+      "to": "cap201_s9",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap201",
+      "to": "cap201_s10",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap455",
+      "to": "cap455_s25",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "cap455",
+      "to": "cap455_s25_2",
+      "relationship": "has_subtopic"
+    }
+  ]
+}

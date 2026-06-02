@@ -1,0 +1,166 @@
+{
+  "section_id": "02",
+  "domain_id": "criminal_law_hk",
+  "edges": [
+    {
+      "from": "crim_offences_person",
+      "to": "crim_murder",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_murder",
+      "to": "case_li_defan",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_murder",
+      "to": "case_cunningham",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_murder",
+      "to": "crim_intention",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_murder",
+      "to": "crim_causation",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_offences_person",
+      "to": "crim_manslaughter",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_offences_person",
+      "to": "crim_voluntary_manslaughter",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_voluntary_manslaughter",
+      "to": "case_lee_kwok_wah",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_voluntary_manslaughter",
+      "to": "case_cheung_kin_shing",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_offences_person",
+      "to": "crim_involuntary_manslaughter",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_offences_person",
+      "to": "crim_unlawful_act_manslaughter",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_unlawful_act_manslaughter",
+      "to": "case_church",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_unlawful_act_manslaughter",
+      "to": "case_lee_wai_yin",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_offences_person",
+      "to": "crim_gross_negligence_manslaughter",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_gross_negligence_manslaughter",
+      "to": "case_adomako",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_gross_negligence_manslaughter",
+      "to": "case_lai_shui_yin",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_gross_negligence_manslaughter",
+      "to": "case_mak_wan_ling",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_offences_person",
+      "to": "crim_assault_battery",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_assault_battery",
+      "to": "case_fagan",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_assault_battery",
+      "to": "case_collins_wilcock",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_assault_battery",
+      "to": "cap200",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_offences_person",
+      "to": "crim_abh",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_abh",
+      "to": "cap212_s39",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_offences_person",
+      "to": "crim_wounding_gbh",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_wounding_gbh",
+      "to": "case_saunders",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_wounding_gbh",
+      "to": "cap212_s17",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_wounding_gbh",
+      "to": "cap212_s19",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_offences_person",
+      "to": "crim_rape",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_rape",
+      "to": "case_dpp_morgan",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_rape",
+      "to": "case_cheung_chi_wai",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_rape",
+      "to": "cap200_s118",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_offences_person",
+      "to": "gap_verify_homicide_section",
+      "relationship": "has_subtopic"
+    }
+  ]
+}

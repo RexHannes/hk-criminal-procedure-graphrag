@@ -1,0 +1,295 @@
+{
+  "section_id": "03",
+  "section_title": "Property and Dishonesty Offences",
+  "domain_id": "criminal_law_hk",
+  "nodes": [
+    {
+      "id": "crim_property_dishonesty",
+      "doctrine_node_id": "criminal_law_hk.property_dishonesty",
+      "type": "section_header",
+      "label": "Property and Dishonesty Offences",
+      "summary": "Theft, fraud, dishonesty, and criminal damage.",
+      "section": "03",
+      "verification_status": "book_seed_needs_case_and_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "textbook_seed_only",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_theft",
+      "doctrine_node_id": "criminal_law_hk.theft",
+      "type": "legal_issue",
+      "label": "Theft",
+      "summary": "Theft Ordinance Cap 210 s.2 seed: dishonest appropriation of property belonging to another with intent permanently to deprive.",
+      "section": "03",
+      "subsection": "03.01",
+      "subtopic": "Theft",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [
+        "cap210_s2"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.theft",
+        "expected_query_terms": [
+          "theft"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_theft_appropriation",
+      "doctrine_node_id": "criminal_law_hk.theft.appropriation",
+      "type": "legal_issue",
+      "label": "Appropriation",
+      "summary": "Appropriation is any assumption of the rights of an owner.",
+      "section": "03",
+      "subsection": "03.01",
+      "subtopic": "Appropriation",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_morris"
+      ],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.theft.appropriation",
+        "expected_query_terms": [
+          "appropriation"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_theft_dishonesty",
+      "doctrine_node_id": "criminal_law_hk.theft.dishonesty",
+      "type": "legal_issue",
+      "label": "Dishonesty",
+      "summary": "Historical Ghosh test and current Ivey objective approach; HK position post-Lam Hin Fai requires verification.",
+      "section": "03",
+      "subsection": "03.01",
+      "subtopic": "Dishonesty",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_ghosh",
+        "case_ivey",
+        "case_lam_hin_fai"
+      ],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.theft.dishonesty",
+        "expected_query_terms": [
+          "dishonesty"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_theft_intent_deprive",
+      "doctrine_node_id": "criminal_law_hk.theft.intent.deprive",
+      "type": "legal_issue",
+      "label": "Intent Permanently to Deprive",
+      "summary": "Intent to treat property as one\u2019s own regardless of the owner\u2019s rights.",
+      "section": "03",
+      "subsection": "03.01",
+      "subtopic": "Intent to Deprive",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.theft.intent.deprive",
+        "expected_query_terms": [
+          "intent permanently to deprive"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_fraud",
+      "doctrine_node_id": "criminal_law_hk.fraud",
+      "type": "legal_issue",
+      "label": "Fraud",
+      "summary": "Theft Ordinance fraud provisions seed: false representation, failure to disclose, and abuse of position.",
+      "section": "03",
+      "subsection": "03.02",
+      "subtopic": "Fraud",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_chan_wai_lam"
+      ],
+      "statute_refs": [
+        "cap210_s16a"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.fraud",
+        "expected_query_terms": [
+          "fraud"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_criminal_damage",
+      "doctrine_node_id": "criminal_law_hk.criminal.damage",
+      "type": "legal_issue",
+      "label": "Criminal Damage",
+      "summary": "Crimes Ordinance ss.59-63 seed: intentionally or recklessly destroying or damaging property; aggravated form endangers life.",
+      "section": "03",
+      "subsection": "03.03",
+      "subtopic": "Criminal Damage",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_rv_g",
+        "case_sin_kam_wah"
+      ],
+      "statute_refs": [
+        "cap200_s60"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.criminal.damage",
+        "expected_query_terms": [
+          "criminal damage"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_morris",
+      "type": "case_seed",
+      "label": "R v Morris [1984] AC 320",
+      "summary": "Appropriation in theft.",
+      "section": "03",
+      "court": "HL",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1984] AC 320"
+    },
+    {
+      "id": "case_ghosh",
+      "type": "case_seed",
+      "label": "R v Ghosh [1982] QB 1053",
+      "summary": "Historical dishonesty test.",
+      "section": "03",
+      "court": "CA",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1982] QB 1053"
+    },
+    {
+      "id": "case_ivey",
+      "type": "case_seed",
+      "label": "Ivey v Genting Casinos [2017] UKSC 67",
+      "summary": "Current English objective dishonesty test.",
+      "section": "03",
+      "court": "UKSC",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[2017] UKSC 67"
+    },
+    {
+      "id": "case_lam_hin_fai",
+      "type": "case_seed",
+      "label": "HKSAR v Lam Hin Fai",
+      "summary": "Seed HK dishonesty/Ivey position case.",
+      "section": "03",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_chan_wai_lam",
+      "type": "case_seed",
+      "label": "HKSAR v Chan Wai Lam",
+      "summary": "Seed HK fraud case.",
+      "section": "03",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "gap_verify_dishonesty_hk_post_ivey",
+      "type": "gap",
+      "label": "Gap: Verify HK dishonesty post-Ivey",
+      "summary": "Verify HK position on Ivey after Lam Hin Fai before treating any dishonesty formulation as answer-safe.",
+      "section": "03",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    }
+  ]
+}

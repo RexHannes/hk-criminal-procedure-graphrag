@@ -20,6 +20,7 @@ import sys
 
 DOMAIN_DIRS = [
     'criminal_procedure_hk',
+    'criminal_law_hk',
     'hk_listing_and_listed_company_regulation',
     'tort_law_hk',
 ]
@@ -33,6 +34,7 @@ NAV_TYPES = {'section_header', 'legal_issue', 'restricted_nsl', 'practice_direct
              'defence', 'remedy'}
 
 SUPPORT_TYPES = {'statute', 'case_seed', 'statutory_scheme', 'candidate_evidence'} | REGULATORY_TYPES
+FLOW_NODE_TYPES = {'flow_step', 'legal_issue', 'statutory_scheme'}
 
 SUPPORT_RELATIONSHIPS = {
     'statutory_anchor',
@@ -234,8 +236,8 @@ def validate_domain(domain_dir):
         for step_id in flow.get('steps', []):
             if step_id not in node_ids:
                 error(f'Flow {flow_id}: step "{step_id}" does not match any node ID')
-            elif node_by_id[step_id].get('type') != 'flow_step':
-                error(f'Flow {flow_id}: step "{step_id}" is not a flow_step node')
+            elif node_by_id[step_id].get('type') not in FLOW_NODE_TYPES:
+                error(f'Flow {flow_id}: step "{step_id}" is not a flow-compatible node')
 
     for n in all_nodes:
         ntype = n.get('type')
