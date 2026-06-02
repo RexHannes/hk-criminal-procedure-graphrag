@@ -896,7 +896,8 @@
       if (renderedTreeIds.has(id)) {
         addTreeMatchWithAncestors(id, visibleTreeIds);
       } else {
-        searchResults.push(nodeMap[id]);
+        const supportNode = nodeMap[id];
+        if (supportNode) searchResults.push(supportNode);
         (supportParentMap[id] || []).forEach(parentId => addTreeMatchWithAncestors(parentId, visibleTreeIds, true));
       }
     });
@@ -969,14 +970,15 @@
     const resultsEl = document.getElementById('search-results');
     if (!resultsEl) return;
     resultsEl.innerHTML = '';
-    if (!searchQuery || nodes.length === 0) return;
+    const safeNodes = (nodes || []).filter(Boolean);
+    if (!searchQuery || safeNodes.length === 0) return;
 
     const title = document.createElement('div');
     title.className = 'search-results-title';
-    title.textContent = `Support/Audit Matches (${nodes.length})`;
+    title.textContent = `Support/Audit Matches (${safeNodes.length})`;
     resultsEl.appendChild(title);
 
-    nodes.slice(0, 40).forEach(n => {
+    safeNodes.slice(0, 40).forEach(n => {
       const card = document.createElement('div');
       card.className = 'tree-card search-result-card search-match';
       card.dataset.nodeId = n.id;
@@ -1013,10 +1015,10 @@
       resultsEl.appendChild(card);
     });
 
-    if (nodes.length > 40) {
+    if (safeNodes.length > 40) {
       const more = document.createElement('div');
       more.className = 'search-results-more';
-      more.textContent = `${nodes.length - 40} more matches. Refine the search to narrow the audit list.`;
+      more.textContent = `${safeNodes.length - 40} more matches. Refine the search to narrow the audit list.`;
       resultsEl.appendChild(more);
     }
   }

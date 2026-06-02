@@ -20,7 +20,7 @@
       "doctrine_node_id": "tort_law_hk.intentional_torts.person",
       "type": "legal_issue",
       "label": "Trespass to the Person Overview",
-      "summary": "Trespass to the person encompasses battery, assault, and false imprisonment. These are actionable per se (no proof of damage required). Intent or negligence must be proved.",
+      "summary": "Trespass to the person generally concerns direct and intentional interference: battery, assault, and false imprisonment. These are actionable per se. Any residual issue about negligent trespass should be separately verified against HK authority; negligent personal injury primarily belongs in negligence.",
       "section": "06",
       "subsection": "06.01",
       "subtopic": "Trespass to Person",

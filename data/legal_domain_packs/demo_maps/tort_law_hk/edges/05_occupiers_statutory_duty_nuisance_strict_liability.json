@@ -7,6 +7,8 @@
     { "from": "tort_occupiers_liability_overview", "to": "tort_occupiers_duty_to_invitee_licensee_trespasser", "relationship": "has_subtopic" },
     { "from": "tort_occupiers_liability_overview", "to": "tort_occupiers_child_entrants_special", "relationship": "has_subtopic" },
     { "from": "tort_occupiers_liability_overview", "to": "tort_occupiers_landlord_liability", "relationship": "has_subtopic" },
+    { "from": "tort_occupiers_liability_overview", "to": "cap314_occupiers_liability", "relationship": "statutory_anchor" },
+    { "from": "tort_occupiers_duty_to_invitee_licensee_trespasser", "to": "cap314_occupiers_liability", "relationship": "statutory_anchor" },
     { "from": "tort_occupiers_nuisance_strict", "to": "tort_breach_of_statutory_duty", "relationship": "has_subtopic" },
     { "from": "tort_occupiers_nuisance_strict", "to": "tort_nuisance_overview", "relationship": "has_subtopic" },
     { "from": "tort_nuisance_overview", "to": "tort_private_nuisance", "relationship": "has_subtopic" },
