@@ -21,6 +21,7 @@ import sys
 DOMAIN_DIRS = [
     'criminal_procedure_hk',
     'hk_listing_and_listed_company_regulation',
+    'tort_law_hk',
 ]
 
 REGULATORY_TYPES = {'listing_rule_anchor', 'sehk_decision_seed', 'guidance_letter_seed',
@@ -28,9 +29,10 @@ REGULATORY_TYPES = {'listing_rule_anchor', 'sehk_decision_seed', 'guidance_lette
                     'sfc_material_seed'}
 
 NAV_TYPES = {'section_header', 'legal_issue', 'restricted_nsl', 'practice_direction',
-             'flow_step', 'gap', 'gap_node', 'cross_reference'}
+             'flow_step', 'gap', 'gap_node', 'cross_reference',
+             'defence', 'remedy'}
 
-SUPPORT_TYPES = {'statute', 'case_seed'} | REGULATORY_TYPES
+SUPPORT_TYPES = {'statute', 'case_seed', 'statutory_scheme', 'candidate_evidence'} | REGULATORY_TYPES
 
 SUPPORT_RELATIONSHIPS = {
     'statutory_anchor',
@@ -43,6 +45,8 @@ SUPPORT_RELATIONSHIPS = {
     'practice_note_anchor',
     'enforcement_seed',
     'sfc_material_seed',
+    'flow_transition',
+    'gap',
 }
 
 errors = []

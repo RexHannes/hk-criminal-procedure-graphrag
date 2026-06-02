@@ -1,0 +1,19 @@
+{
+  "section_id": "08",
+  "domain_id": "tort_law_hk",
+  "edges": [
+    { "from": "tort_economic_torts", "to": "tort_economic_overview", "relationship": "has_subtopic" },
+    { "from": "tort_economic_torts", "to": "tort_inducing_breach_of_contract", "relationship": "has_subtopic" },
+    { "from": "tort_economic_torts", "to": "tort_conspiracy", "relationship": "has_subtopic" },
+    { "from": "tort_economic_torts", "to": "tort_intimidation", "relationship": "has_subtopic" },
+    { "from": "tort_economic_torts", "to": "tort_unlawful_interference_trade", "relationship": "has_subtopic" },
+    { "from": "tort_economic_torts", "to": "tort_passing_off_overview", "relationship": "has_subtopic" },
+    { "from": "tort_passing_off_overview", "to": "tort_passing_off_extended_forms", "relationship": "has_subtopic" },
+    { "from": "tort_economic_torts", "to": "tort_deceit", "relationship": "has_subtopic" },
+    { "from": "tort_economic_torts", "to": "tort_malicious_falsehood", "relationship": "has_subtopic" },
+    { "from": "tort_economic_torts", "to": "tort_economic_torts_defences", "relationship": "has_subtopic" },
+    { "from": "tort_economic_overview", "to": "tort_pure_economic_loss", "relationship": "cross_reference" },
+    { "from": "tort_economic_torts", "to": "gap_verify_hk_economic_tort_cases", "relationship": "has_subtopic" },
+    { "from": "tort_economic_torts", "to": "gap_verify_hk_passing_off_cases", "relationship": "has_subtopic" }
+  ]
+}

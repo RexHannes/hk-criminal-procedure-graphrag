@@ -28,6 +28,17 @@
         "needs_official_source_verification": true,
         "authority_status": "unverified_seed"
       }
+    },
+    {
+      "domain_id": "tort_law_hk",
+      "title": "Hong Kong Tort Law",
+      "path": "tort_law_hk/domain.json",
+      "status": {
+        "not_product_answer_layer": true,
+        "needs_hklii_verification": true,
+        "needs_official_source_verification": true,
+        "authority_status": "unverified_case_seed"
+      }
     }
   ]
 }

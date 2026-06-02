@@ -103,7 +103,6 @@
       "domain_id": "hk_listing_and_listed_company_regulation",
       "steps": [
         "pre_ipo_restructuring",
-        "pre_ipo_restructuring",
         "financial_test_selection",
         "track_record_check",
         "sponsor_appointment",

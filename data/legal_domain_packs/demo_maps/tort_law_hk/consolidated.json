@@ -1,0 +1,75 @@
+{
+  "domain_id": "tort_law_hk",
+  "title": "Hong Kong Tort Law",
+  "version": "0.1.0",
+  "last_updated": "2026-06-02",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "needs_official_source_verification": true,
+    "authority_status": "unverified_case_seed"
+  },
+  "sections": [
+    {
+      "id": "01",
+      "title": "Fundamentals, Classification and Limitation",
+      "node_file": "nodes/01_fundamentals_classification_limitation.json",
+      "edge_file": "edges/01_fundamentals_classification_limitation.json"
+    },
+    {
+      "id": "02",
+      "title": "Negligence Core",
+      "node_file": "nodes/02_negligence_core.json",
+      "edge_file": "edges/02_negligence_core.json"
+    },
+    {
+      "id": "03",
+      "title": "Special Duty Categories",
+      "node_file": "nodes/03_special_duty_categories.json",
+      "edge_file": "edges/03_special_duty_categories.json"
+    },
+    {
+      "id": "04",
+      "title": "Employer, Vicarious and Government Liability",
+      "node_file": "nodes/04_employer_vicarious_government_liability.json",
+      "edge_file": "edges/04_employer_vicarious_government_liability.json"
+    },
+    {
+      "id": "05",
+      "title": "Occupiers, Statutory Duty, Nuisance and Strict Liability",
+      "node_file": "nodes/05_occupiers_statutory_duty_nuisance_strict_liability.json",
+      "edge_file": "edges/05_occupiers_statutory_duty_nuisance_strict_liability.json"
+    },
+    {
+      "id": "06",
+      "title": "Intentional Torts to Person, Land and Goods",
+      "node_file": "nodes/06_intentional_torts_person_land_goods.json",
+      "edge_file": "edges/06_intentional_torts_person_land_goods.json"
+    },
+    {
+      "id": "07",
+      "title": "Defamation, Privacy and Confidence",
+      "node_file": "nodes/07_defamation_privacy_confidence.json",
+      "edge_file": "edges/07_defamation_privacy_confidence.json"
+    },
+    {
+      "id": "08",
+      "title": "Economic Torts, Passing Off and Deceit",
+      "node_file": "nodes/08_economic_torts_passing_off_deceit.json",
+      "edge_file": "edges/08_economic_torts_passing_off_deceit.json"
+    },
+    {
+      "id": "09",
+      "title": "Statutory Compensation, Harassment and Sexual Harassment",
+      "node_file": "nodes/09_statutory_compensation_harassment_sexual_harassment.json",
+      "edge_file": "edges/09_statutory_compensation_harassment_sexual_harassment.json"
+    },
+    {
+      "id": "10",
+      "title": "Remedies, Damages, Defences and Procedure",
+      "node_file": "nodes/10_remedies_damages_defences_procedure.json",
+      "edge_file": "edges/10_remedies_damages_defences_procedure.json"
+    }
+  ],
+  "flows_file": "flows.json"
+}
