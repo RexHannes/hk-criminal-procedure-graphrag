@@ -91,6 +91,7 @@
   let activeFilters = new Set();
   let currentDepth = 2;
   let searchQuery = '';
+  let evidenceFetchToken = 0;
 
   let currentDomain = null;
   let domainRegistry = null;
@@ -197,6 +198,7 @@
     treeModel = null;
     expandedIds = new Set();
     selectedId = null;
+    evidenceFetchToken++;
     if (flowInterval) { clearInterval(flowInterval); flowInterval = null; }
     currentFlowStep = -1;
     searchQuery = '';
@@ -789,13 +791,15 @@
       html += '</ul></div>';
     }
 
+    const doctrineNodeId = n.doctrine_node_id || n.id;
     html += '<div class="detail-section"><div class="detail-section-title">Case Audit / Source Proof</div>';
-    html += '<div class="detail-audit-box">';
-    html += '<strong>No verified paragraph proof yet.</strong> This is a seed-layer node requiring HKLII / official-source verification.';
-    html += '<div style="margin-top:6px;font-size:9px;color:#71717a">Fields pending: paragraph_anchors · source_proofs · treatment_edges · retrieval_hooks · human_review_status · expansion_status</div>';
+    html += `<div id="backend-evidence-panel" class="detail-audit-box loading" data-node-id="${escAttr(doctrineNodeId)}">`;
+    html += '<strong>Loading backend evidence...</strong>';
+    html += '<div class="audit-subline">Checking doctrine-linked case paragraphs and proposition cards.</div>';
     html += '</div></div>';
 
     document.getElementById('detail-content').innerHTML = html;
+    fetchBackendEvidence(doctrineNodeId);
     document.querySelectorAll('.detail-ref-list li[data-ref-id]').forEach(item => {
       item.addEventListener('click', () => {
         const refId = item.dataset.refId;
@@ -805,6 +809,105 @@
       });
     });
     document.getElementById('status-selected').textContent = 'Selected: ' + n.id;
+  }
+
+  function fetchBackendEvidence(doctrineNodeId) {
+    const panel = document.getElementById('backend-evidence-panel');
+    if (!panel || !doctrineNodeId) return;
+    const token = ++evidenceFetchToken;
+
+    fetch('/api/doctrine-evidence?node_id=' + encodeURIComponent(doctrineNodeId))
+      .then(async response => {
+        const payload = await response.json().catch(() => ({}));
+        if (token !== evidenceFetchToken) return;
+        if (response.status === 404) {
+          renderBackendEvidence({
+            doctrine_node_id: doctrineNodeId,
+            coverage_status: 'no_evidence',
+            warnings: ['doctrine_node_not_found', 'insufficient_authority'],
+            evidence: [],
+          });
+          return;
+        }
+        if (!response.ok) throw new Error(payload.error || 'backend_evidence_unavailable');
+        renderBackendEvidence(payload);
+      })
+      .catch(() => {
+        if (token !== evidenceFetchToken) return;
+        renderBackendEvidence({
+          doctrine_node_id: doctrineNodeId,
+          coverage_status: 'no_evidence',
+          warnings: ['backend_evidence_api_unavailable', 'insufficient_authority'],
+          evidence: [],
+        });
+      });
+  }
+
+  function renderBackendEvidence(payload) {
+    const panel = document.getElementById('backend-evidence-panel');
+    if (!panel) return;
+
+    const evidence = Array.isArray(payload.evidence) ? payload.evidence : [];
+    const warnings = Array.isArray(payload.warnings) ? payload.warnings : [];
+    const coverage = payload.coverage_status || (evidence.length ? 'candidate_only' : 'no_evidence');
+    const warningHtml = warnings.length
+      ? `<div class="audit-warning-list">${warnings.map(w => `<span class="audit-warning">${esc(w)}</span>`).join('')}</div>`
+      : '';
+
+    let html = '<div class="audit-topline">';
+    html += `<span class="coverage-badge ${escAttr(coverage)}">${esc(coverage)}</span>`;
+    html += `<span class="audit-node-id">${esc(payload.doctrine_node_id || '')}</span>`;
+    html += '</div>';
+    html += warningHtml;
+
+    if (!evidence.length) {
+      html += '<div class="audit-empty">';
+      html += '<strong>No verified paragraph proof yet.</strong>';
+      html += '<p>This node is still a seed-layer doctrine node. Exact cases and paragraphs will appear here only after a validated proposition-node link exists in the backend.</p>';
+      html += '</div>';
+      panel.className = 'detail-audit-box';
+      panel.innerHTML = html;
+      return;
+    }
+
+    const candidateCount = evidence.filter(item => item.answer_layer_status === 'candidate_only').length;
+    if (candidateCount) {
+      html += '<div class="audit-candidate-note">Candidate evidence only is not answer-safe and needs human review before legal reliance.</div>';
+    }
+
+    html += '<div class="evidence-list">';
+    evidence.forEach(item => { html += renderEvidenceItem(item); });
+    html += '</div>';
+
+    panel.className = 'detail-audit-box has-evidence';
+    panel.innerHTML = html;
+  }
+
+  function renderEvidenceItem(item) {
+    const status = item.answer_layer_status || item.verification_status || 'candidate_only';
+    const citation = [item.neutral_citation, item.court_level].filter(Boolean).join(' · ');
+    const paraLabel = item.para_no ? `Paragraph ${item.para_no}` : 'Paragraph proof';
+    let html = '<article class="evidence-card">';
+    html += '<div class="evidence-card-header">';
+    html += `<div><div class="evidence-case">${esc(item.case_name || item.case_id || 'Linked authority')}</div>`;
+    if (citation) html += `<div class="evidence-meta">${esc(citation)}</div>`;
+    html += '</div>';
+    html += `<span class="coverage-badge ${escAttr(status)}">${esc(status)}</span>`;
+    html += '</div>';
+    html += `<div class="evidence-meta">${esc(paraLabel)} · ${esc(item.link_type || item.authority_role || 'candidate')}</div>`;
+    if (item.proposition_text) {
+      html += `<div class="evidence-proposition"><strong>Proposition:</strong> ${esc(item.proposition_text)}</div>`;
+    }
+    if (item.supporting_quote) {
+      html += `<blockquote class="evidence-quote">${esc(item.supporting_quote)}</blockquote>`;
+    } else if (item.paragraph_text) {
+      html += `<blockquote class="evidence-quote">${esc(item.paragraph_text.slice(0, 360))}${item.paragraph_text.length > 360 ? '...' : ''}</blockquote>`;
+    }
+    if (item.source_url) {
+      html += `<a class="evidence-link" href="${escAttr(item.source_url)}" target="_blank" rel="noopener">Open source paragraph</a>`;
+    }
+    html += '</article>';
+    return html;
   }
 
   function collectNodeRefs(nodeId) {

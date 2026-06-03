@@ -275,6 +275,19 @@ Casemap4/Supabase = cases, paragraphs, proposition cards and source proof
 DeepSeek/LLM = candidate extractor only, never final verifier
 ```
 
+The Vercel viewer calls the server-side evidence route when a doctrine node is
+selected:
+
+```text
+GET /api/doctrine-evidence?node_id=<doctrine_node_id>
+```
+
+That route validates the node against the static domain packs, reads linked
+evidence from Supabase only on the server side, and returns `no_evidence` rather
+than failing when paragraph proof has not yet been synced. Case paragraphs should
+appear in the right audit panel only through explicit proposition-node links,
+not as extra nodes in the main tree.
+
 See `docs/casemap_doctrine_evidence_bridge.md` for the backend table contract,
 validation rules and Supabase safety notes.
 
