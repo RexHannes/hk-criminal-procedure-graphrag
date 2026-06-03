@@ -92,9 +92,12 @@
   let currentDepth = 2;
   let searchQuery = '';
   let evidenceFetchToken = 0;
+  let evidenceSearchToken = 0;
+  let pendingFocusId = null;
 
   let currentDomain = null;
   let domainRegistry = null;
+  let availableDomains = [];
   let typeColors = {};
   let controlsBound = false;
   let loadToken = 0;
@@ -110,6 +113,7 @@
         loadJSON(DATA_BASE + d.path).then(domainData => ({ ...d, domainData }))
       ));
     }).then(domains => {
+      availableDomains = domains;
       const sel = document.getElementById('domain-select');
       sel.innerHTML = '<option value="">Select a domain</option>';
       domains.forEach(d => {
@@ -199,6 +203,7 @@
     expandedIds = new Set();
     selectedId = null;
     evidenceFetchToken++;
+    evidenceSearchToken++;
     if (flowInterval) { clearInterval(flowInterval); flowInterval = null; }
     currentFlowStep = -1;
     searchQuery = '';
@@ -215,6 +220,8 @@
     document.getElementById('flow-play').disabled = true;
     document.getElementById('flow-reset').disabled = true;
     document.getElementById('search-box').value = '';
+    document.getElementById('ai-search-status').textContent = 'Type a question, then press Enter or Evidence Trail.';
+    document.getElementById('evidence-search-results').innerHTML = '';
     document.getElementById('filter-list').innerHTML = '';
   }
 
@@ -264,6 +271,11 @@
       renderTree();
       applyTypeFilters();
       setupEventListeners();
+      if (pendingFocusId && nodeMap[pendingFocusId]) {
+        const focusId = pendingFocusId;
+        pendingFocusId = null;
+        setTimeout(() => focusDoctrineNode(focusId), 40);
+      }
       document.getElementById('status-selected').textContent = 'Ready · Tree view';
     }).catch(err => {
       document.getElementById('status-selected').textContent = 'Error loading data';
@@ -691,6 +703,21 @@
       card.classList.add('selected');
       card.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+  }
+
+  function focusDoctrineNode(nodeId) {
+    if (!nodeId) return;
+    selectedId = nodeId;
+    let parentId = treeParentMap[nodeId] || primaryParentMap[nodeId];
+    while (parentId) {
+      expandedIds.add(parentId);
+      parentId = treeParentMap[parentId] || primaryParentMap[parentId];
+    }
+    renderTree();
+    applyTypeFilters();
+    showNodeDetail(nodeId);
+    highlightSelectedNode(nodeId);
+    document.getElementById('status-selected').textContent = 'Selected: ' + nodeId;
   }
 
   function rerender() { renderTree(); }
@@ -1204,6 +1231,102 @@
     }
   }
 
+  function runEvidenceSearch() {
+    const input = document.getElementById('search-box');
+    const statusEl = document.getElementById('ai-search-status');
+    const resultsEl = document.getElementById('evidence-search-results');
+    const query = (input.value || '').trim();
+    if (!query) {
+      statusEl.textContent = 'Enter a legal question or issue first.';
+      resultsEl.innerHTML = '';
+      return;
+    }
+    const token = ++evidenceSearchToken;
+    statusEl.textContent = 'Searching graph nodes and backend evidence...';
+    resultsEl.innerHTML = '<div class="evidence-search-loading">Building query → node → evidence trail...</div>';
+
+    fetch('/api/search-evidence?q=' + encodeURIComponent(query))
+      .then(async response => {
+        const payload = await response.json().catch(() => ({}));
+        if (token !== evidenceSearchToken) return;
+        if (!response.ok) throw new Error(payload.error || 'search_failed');
+        renderEvidenceSearchTrail(payload);
+      })
+      .catch(() => {
+        if (token !== evidenceSearchToken) return;
+        statusEl.textContent = 'Evidence search unavailable. Keyword tree search still works.';
+        resultsEl.innerHTML = '<div class="evidence-search-empty">Backend search route is unavailable. The tree above is still filtered by keyword.</div>';
+      });
+  }
+
+  function renderEvidenceSearchTrail(payload) {
+    const statusEl = document.getElementById('ai-search-status');
+    const resultsEl = document.getElementById('evidence-search-results');
+    const matches = Array.isArray(payload.matched_doctrine_nodes) ? payload.matched_doctrine_nodes : [];
+    const warnings = Array.isArray(payload.warnings) ? payload.warnings : [];
+    const aiLabel = payload.ai_status === 'used' ? 'AI-ranked' : 'Fallback ranked';
+    statusEl.textContent = `${aiLabel} · ${matches.length} node(s) · ${payload.evidence_count || 0} evidence item(s) · confidence: ${payload.answer_confidence || 'low'}`;
+
+    let html = '<div class="evidence-search-summary">';
+    html += `<span class="coverage-badge ${payload.ai_status === 'used' ? 'paragraph_verified' : 'candidate_only'}">${esc(aiLabel)}</span>`;
+    html += `<span class="coverage-badge ${escAttr(payload.backend_status || 'backend')}">${esc(payload.backend_status || 'backend')}</span>`;
+    html += '</div>';
+    if (warnings.length) {
+      html += `<div class="audit-warning-list">${warnings.map(w => `<span class="audit-warning">${esc(w)}</span>`).join('')}</div>`;
+    }
+    if (payload.answer_note) {
+      html += `<div class="evidence-search-note">${esc(payload.answer_note)}</div>`;
+    }
+    if (!matches.length) {
+      html += '<div class="evidence-search-empty">No doctrine node matched this query. Try a more specific legal issue, statute, case name, or procedural stage.</div>';
+      resultsEl.innerHTML = html;
+      return;
+    }
+
+    html += '<div class="evidence-search-list">';
+    matches.forEach(match => {
+      html += '<article class="evidence-search-card">';
+      html += '<div class="evidence-search-card-head">';
+      html += `<div><div class="evidence-search-title">${esc(match.title || match.doctrine_node_id)}</div>`;
+      html += `<div class="evidence-meta">${esc(match.domain_id || '')} · ${esc(match.node_type || '')} · score ${esc(match.match_score || '')}</div></div>`;
+      html += `<span class="coverage-badge ${escAttr(match.coverage_status || 'no_evidence')}">${esc(match.coverage_status || 'no_evidence')}</span>`;
+      html += '</div>';
+      if (match.summary) html += `<div class="evidence-search-summary-text">${esc(match.summary)}</div>`;
+      if (Array.isArray(match.matched_via) && match.matched_via.length) {
+        html += `<div class="evidence-meta">Matched via: ${esc(match.matched_via.map(v => v.label || v.id).join('; '))}</div>`;
+      }
+      html += `<button class="open-node-btn" type="button" data-domain-id="${escAttr(match.domain_id)}" data-node-id="${escAttr(match.source_node_id)}">Open node in tree</button>`;
+      const evidence = Array.isArray(match.evidence) ? match.evidence : [];
+      if (!evidence.length) {
+        html += '<div class="evidence-search-empty compact">No linked paragraph proof yet for this node.</div>';
+      } else {
+        html += '<div class="evidence-list">';
+        evidence.slice(0, 3).forEach(item => { html += renderEvidenceItem(item); });
+        html += '</div>';
+      }
+      html += '</article>';
+    });
+    html += '</div>';
+    resultsEl.innerHTML = html;
+    resultsEl.querySelectorAll('.open-node-btn').forEach(btn => {
+      btn.addEventListener('click', () => focusEvidenceSearchNode(btn.dataset.domainId, btn.dataset.nodeId));
+    });
+  }
+
+  function focusEvidenceSearchNode(domainId, nodeId) {
+    if (!nodeId) return;
+    if (currentDomain && currentDomain.domain_id === domainId && nodeMap[nodeId]) {
+      focusDoctrineNode(nodeId);
+      return;
+    }
+    const domain = availableDomains.find(d => d.domain_id === domainId);
+    if (!domain) return;
+    pendingFocusId = nodeId;
+    const sel = document.getElementById('domain-select');
+    sel.value = domainId;
+    switchDomain(domain);
+  }
+
   // ── Filters ──
 
   function handleFilterChange() {
@@ -1359,6 +1482,13 @@
       btn.addEventListener('click', function() { handleDepthChange(parseInt(this.dataset.depth)); });
     });
     document.getElementById('search-box').addEventListener('input', function() { handleSearch(this.value); });
+    document.getElementById('search-box').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        runEvidenceSearch();
+      }
+    });
+    document.getElementById('ai-search-btn').addEventListener('click', runEvidenceSearch);
     document.getElementById('flow-select').addEventListener('change', function() {
       resetFlow();
       const flow = getCurrentFlow();

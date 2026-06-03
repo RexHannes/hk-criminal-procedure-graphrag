@@ -17,7 +17,10 @@
       </select>
     </div>
     <div id="header-controls">
-      <input type="text" id="search-box" placeholder="Search by keyword, case, statute..." />
+      <div id="search-control">
+        <input type="text" id="search-box" placeholder="Search by keyword, case, statute, or legal question..." />
+        <button id="ai-search-btn" type="button">Evidence Trail</button>
+      </div>
       <div id="legend"></div>
     </div>
   </div>
@@ -26,6 +29,12 @@
     <div id="side-panel">
       <div id="disclaimer-box">
         <strong>Seed-layer map.</strong> Not a product answer layer. Use verified paragraph proof before legal reliance.
+      </div>
+
+      <div id="evidence-search-box">
+        <h3>Query Evidence Trail</h3>
+        <div id="ai-search-status">Type a question, then press Enter or Evidence Trail.</div>
+        <div id="evidence-search-results"></div>
       </div>
 
       <div id="filter-box">
