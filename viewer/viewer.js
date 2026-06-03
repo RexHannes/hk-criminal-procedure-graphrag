@@ -791,15 +791,15 @@
       html += '</ul></div>';
     }
 
-    const doctrineNodeId = n.doctrine_node_id || n.id;
+    const evidenceTarget = getEvidenceTargetForNode(nodeId);
     html += '<div class="detail-section"><div class="detail-section-title">Case Audit / Source Proof</div>';
-    html += `<div id="backend-evidence-panel" class="detail-audit-box loading" data-node-id="${escAttr(doctrineNodeId)}">`;
+    html += `<div id="backend-evidence-panel" class="detail-audit-box loading" data-node-id="${escAttr(evidenceTarget.doctrineNodeId)}">`;
     html += '<strong>Loading backend evidence...</strong>';
-    html += '<div class="audit-subline">Checking doctrine-linked case paragraphs and proposition cards.</div>';
+    html += `<div class="audit-subline">${esc(evidenceTarget.loadingText)}</div>`;
     html += '</div></div>';
 
     document.getElementById('detail-content').innerHTML = html;
-    fetchBackendEvidence(doctrineNodeId);
+    fetchBackendEvidence(evidenceTarget.doctrineNodeId, evidenceTarget);
     document.querySelectorAll('.detail-ref-list li[data-ref-id]').forEach(item => {
       item.addEventListener('click', () => {
         const refId = item.dataset.refId;
@@ -811,7 +811,41 @@
     document.getElementById('status-selected').textContent = 'Selected: ' + n.id;
   }
 
-  function fetchBackendEvidence(doctrineNodeId) {
+  function getEvidenceTargetForNode(nodeId) {
+    const n = nodeMap[nodeId] || virtualNodeMap[nodeId] || {};
+    const ownDoctrineNodeId = n.doctrine_node_id || n.id || nodeId;
+    const supportParents = supportParentMap[nodeId] || [];
+    const parentId = supportParents[0] || primaryParentMap[nodeId] || null;
+    const parent = parentId ? (nodeMap[parentId] || virtualNodeMap[parentId]) : null;
+    const parentDoctrineNodeId = parent ? (parent.doctrine_node_id || parent.id) : null;
+    const isSupportNode = SUPPORT_RELATIONSHIPS.has(n.type) || ['case_seed', 'statute', 'practice_direction', 'listing_rule'].includes(n.type);
+
+    if (isSupportNode && parentDoctrineNodeId) {
+      return {
+        doctrineNodeId: parentDoctrineNodeId,
+        selectedNodeId: nodeId,
+        selectedLabel: n.label || nodeId,
+        selectedCitation: n.neutral_citation || n.citation || '',
+        selectedType: n.type || '',
+        parentNodeId: parentId,
+        parentLabel: parent.label || parentId,
+        loadingText: `This is a ${String(n.type || 'support').replace(/_/g, ' ')} node. Checking paragraph evidence linked to parent doctrine node: ${parent.label || parentId}.`,
+      };
+    }
+
+    return {
+      doctrineNodeId: ownDoctrineNodeId,
+      selectedNodeId: nodeId,
+      selectedLabel: n.label || nodeId,
+      selectedCitation: n.neutral_citation || n.citation || '',
+      selectedType: n.type || '',
+      parentNodeId: null,
+      parentLabel: '',
+      loadingText: 'Checking doctrine-linked case paragraphs and proposition cards.',
+    };
+  }
+
+  function fetchBackendEvidence(doctrineNodeId, context) {
     const panel = document.getElementById('backend-evidence-panel');
     if (!panel || !doctrineNodeId) return;
     const token = ++evidenceFetchToken;
@@ -826,11 +860,11 @@
             coverage_status: 'no_evidence',
             warnings: ['doctrine_node_not_found', 'insufficient_authority'],
             evidence: [],
-          });
+          }, context);
           return;
         }
         if (!response.ok) throw new Error(payload.error || 'backend_evidence_unavailable');
-        renderBackendEvidence(payload);
+        renderBackendEvidence(payload, context);
       })
       .catch(() => {
         if (token !== evidenceFetchToken) return;
@@ -839,11 +873,11 @@
           coverage_status: 'no_evidence',
           warnings: ['backend_evidence_api_unavailable', 'insufficient_authority'],
           evidence: [],
-        });
+        }, context);
       });
   }
 
-  function renderBackendEvidence(payload) {
+  function renderBackendEvidence(payload, context) {
     const panel = document.getElementById('backend-evidence-panel');
     if (!panel) return;
 
@@ -858,6 +892,12 @@
     html += `<span class="coverage-badge ${escAttr(coverage)}">${esc(coverage)}</span>`;
     html += `<span class="audit-node-id">${esc(payload.doctrine_node_id || '')}</span>`;
     html += '</div>';
+    if (context && context.parentNodeId) {
+      html += '<div class="audit-context-note">';
+      html += `<strong>${esc(context.selectedType.replace(/_/g, ' ') || 'support node')} selected:</strong> ${esc(context.selectedLabel)}. `;
+      html += `Showing evidence linked to parent doctrine node <strong>${esc(context.parentLabel)}</strong>.`;
+      html += '</div>';
+    }
     html += warningHtml;
 
     if (!evidence.length) {
@@ -870,13 +910,17 @@
       return;
     }
 
+    const focusedEvidence = getFocusedEvidence(evidence, context);
+    if (context && context.parentNodeId && focusedEvidence.exactMatchCount === 0) {
+      html += '<div class="audit-candidate-note">No backend paragraph proof is linked to this exact case seed yet. Showing the available evidence trail for its parent doctrine node.</div>';
+    }
     const candidateCount = evidence.filter(item => item.answer_layer_status === 'candidate_only').length;
     if (candidateCount) {
       html += '<div class="audit-candidate-note">Candidate evidence only is not answer-safe and needs human review before legal reliance.</div>';
     }
 
     html += '<div class="evidence-list">';
-    evidence.forEach(item => { html += renderEvidenceItem(item); });
+    focusedEvidence.items.forEach(item => { html += renderEvidenceItem(item); });
     html += '</div>';
 
     panel.className = 'detail-audit-box has-evidence';
@@ -908,6 +952,31 @@
     }
     html += '</article>';
     return html;
+  }
+
+  function getFocusedEvidence(evidence, context) {
+    if (!context || context.selectedType !== 'case_seed') {
+      return { items: evidence, exactMatchCount: evidence.length };
+    }
+    const selectedTerms = [
+      context.selectedNodeId,
+      context.selectedLabel,
+      context.selectedCitation,
+    ].filter(Boolean).map(normalizeEvidenceText);
+    const matches = evidence.filter(item => {
+      const haystack = normalizeEvidenceText([
+        item.case_id,
+        item.case_name,
+        item.neutral_citation,
+        item.proposition_id,
+      ].filter(Boolean).join(' '));
+      return selectedTerms.some(term => term && (haystack.includes(term) || term.includes(haystack)));
+    });
+    return { items: matches.length ? matches : evidence, exactMatchCount: matches.length };
+  }
+
+  function normalizeEvidenceText(value) {
+    return String(value || '').toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]+/g, ' ').trim();
   }
 
   function collectNodeRefs(nodeId) {
