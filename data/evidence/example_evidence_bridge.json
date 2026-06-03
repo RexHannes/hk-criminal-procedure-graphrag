@@ -1,0 +1,56 @@
+{
+  "legal_cases": [
+    {
+      "case_id": "case_example_hksar_v_chan",
+      "case_name": "Example HK Case",
+      "neutral_citation": "[2026] HKEXAMPLE 1",
+      "court": "Court of Final Appeal",
+      "court_level": "CFA",
+      "judgment_date": "2026-01-01",
+      "source_url": "https://example.invalid/hklii/example",
+      "legal_domain": "criminal_law_hk",
+      "review_status": "fixture_only",
+      "good_law_flags": [],
+      "treatment_warnings": []
+    }
+  ],
+  "legal_paragraphs": [
+    {
+      "paragraph_id": "para_example_12",
+      "case_id": "case_example_hksar_v_chan",
+      "para_no": "12",
+      "text": "The court stated that dishonesty must be assessed by reference to the defendant's actual knowledge and the standards of ordinary honest people.",
+      "text_hash": "fixture_hash_only",
+      "source_url": "https://example.invalid/hklii/example#para12",
+      "role_label": "legal_test",
+      "review_status": "fixture_only"
+    }
+  ],
+  "proposition_cards": [
+    {
+      "proposition_id": "prop_example_dishonesty_12",
+      "case_id": "case_example_hksar_v_chan",
+      "paragraph_span": ["12"],
+      "supporting_quote": "dishonesty must be assessed by reference to the defendant's actual knowledge",
+      "candidate_proposition": "Dishonesty is assessed by reference to the defendant's actual knowledge and ordinary standards of honesty.",
+      "paragraph_role": "legal_test",
+      "verification_status": "paragraph_verified",
+      "answer_layer_status": "not_product_answer_layer",
+      "human_review_status": "unreviewed"
+    }
+  ],
+  "proposition_doctrine_links": [
+    {
+      "id": "link_example_dishonesty",
+      "proposition_id": "prop_example_dishonesty_12",
+      "doctrine_node_id": "criminal_law_hk.theft.dishonesty",
+      "link_type": "legal_test",
+      "authority_role": "candidate",
+      "confidence": 0.83,
+      "verification_status": "paragraph_verified",
+      "answer_layer_status": "not_product_answer_layer",
+      "human_review_status": "unreviewed",
+      "reason": "Fixture link for local bridge validation."
+    }
+  ]
+}

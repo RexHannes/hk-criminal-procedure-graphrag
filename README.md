@@ -245,6 +245,39 @@ Layer 4: Proof/audit layer
   → exact paragraph/page anchors, quote spans, extraction log, verification history
 ```
 
+## Doctrine/Evidence Bridge
+
+The repository now includes a first bridge milestone for connecting the static
+doctrine maps to a future Casemap4/Supabase evidence backend. This is still not
+an answer layer and it does not ingest all HK cases by itself.
+
+Bridge scripts:
+
+```bash
+# Export stable doctrine nodes from all domain packs
+python3 scripts/export_doctrine_nodes.py --dry-run
+
+# Validate paragraph-grounded proposition links
+python3 scripts/validate_evidence_links.py \
+  --evidence data/evidence/example_evidence_bridge.json
+
+# Return the safe query -> doctrine nodes -> evidence trace response shape
+python3 scripts/search_evidence_trace.py \
+  "dishonesty theft actual knowledge" \
+  --evidence data/evidence/example_evidence_bridge.json
+```
+
+The bridge intentionally keeps this split:
+
+```text
+static viewer = clean doctrine ontology browser
+Casemap4/Supabase = cases, paragraphs, proposition cards and source proof
+DeepSeek/LLM = candidate extractor only, never final verifier
+```
+
+See `docs/casemap_doctrine_evidence_bridge.md` for the backend table contract,
+validation rules and Supabase safety notes.
+
 ## License
 
 Data is provided for educational and reference purposes. All statutory references and case citations should be independently verified against official sources (HKLII, e-Legislation, Judiciary website).
