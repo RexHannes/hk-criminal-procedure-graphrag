@@ -1,0 +1,21 @@
+{
+  "section_id": "07",
+  "domain_id": "equity_trusts_hk",
+  "edges": [
+    { "from": "equity_beneficiary_rights", "to": "equity_saunders_vautier", "relationship": "has_subtopic" },
+    { "from": "equity_beneficiary_rights", "to": "equity_tracing_overview", "relationship": "has_subtopic" },
+    { "from": "equity_saunders_vautier", "to": "equity_saunders_exceptions", "relationship": "has_subtopic" },
+    { "from": "equity_tracing_overview", "to": "equity_tracing_common_law", "relationship": "has_subtopic" },
+    { "from": "equity_tracing_overview", "to": "equity_tracing_equitable", "relationship": "has_subtopic" },
+    { "from": "equity_tracing_overview", "to": "equity_tracing_mixed_funds", "relationship": "has_subtopic" },
+    { "from": "equity_tracing_overview", "to": "equity_tracing_innocent_volunteer", "relationship": "has_subtopic" },
+    { "from": "equity_tracing_overview", "to": "equity_tracing_lowest_balance", "relationship": "has_subtopic" },
+    { "from": "equity_tracing_overview", "to": "equity_tracing_profits", "relationship": "has_subtopic" },
+    { "from": "equity_tracing_mixed_funds", "to": "case_re_hallett", "relationship": "case_seed" },
+    { "from": "equity_tracing_mixed_funds", "to": "case_re_diplock", "relationship": "case_seed" },
+    { "from": "equity_tracing_innocent_volunteer", "to": "case_re_diplock", "relationship": "case_seed" },
+    { "from": "equity_tracing_profits", "to": "case_foskett", "relationship": "case_seed" },
+    { "from": "equity_tracing_innocent_volunteer", "to": "equity_change_of_position", "relationship": "cross_reference" },
+    { "from": "equity_beneficiary_rights", "to": "gap_verify_hk_tracing_cases", "relationship": "has_subtopic" }
+  ]
+}

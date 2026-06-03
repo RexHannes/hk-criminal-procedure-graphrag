@@ -1,0 +1,26 @@
+{
+  "section_id": "09",
+  "domain_id": "equity_trusts_hk",
+  "edges": [
+    { "from": "equity_statutes_authorities", "to": "equity_cap29_overview", "relationship": "has_subtopic" },
+    { "from": "equity_statutes_authorities", "to": "equity_cap2_perpetuities", "relationship": "has_subtopic" },
+    { "from": "equity_statutes_authorities", "to": "equity_cap219_formalities", "relationship": "has_subtopic" },
+    { "from": "equity_statutes_authorities", "to": "equity_charities_regulation", "relationship": "has_subtopic" },
+    { "from": "equity_cap29_overview", "to": "equity_cap29_trustee_powers", "relationship": "has_subtopic" },
+    { "from": "equity_cap29_overview", "to": "equity_cap29_investment", "relationship": "has_subtopic" },
+    { "from": "equity_cap29_overview", "to": "equity_cap29_duty_care", "relationship": "has_subtopic" },
+    { "from": "equity_cap29_overview", "to": "equity_cap29_advancement", "relationship": "has_subtopic" },
+    { "from": "equity_cap29_overview", "to": "cap29_trustee_ordinance", "relationship": "statutory_anchor" },
+    { "from": "equity_cap29_trustee_powers", "to": "cap29_trustee_ordinance", "relationship": "statutory_anchor" },
+    { "from": "equity_cap29_investment", "to": "cap29_trustee_ordinance", "relationship": "statutory_anchor" },
+    { "from": "equity_cap29_duty_care", "to": "cap29_trustee_ordinance", "relationship": "statutory_anchor" },
+    { "from": "equity_cap29_advancement", "to": "cap29_trustee_ordinance", "relationship": "statutory_anchor" },
+    { "from": "equity_cap2_perpetuities", "to": "cap2_perpetuities", "relationship": "statutory_anchor" },
+    { "from": "equity_cap219_formalities", "to": "cap219_cpo", "relationship": "statutory_anchor" },
+    { "from": "equity_cap29_investment", "to": "equity_trustee_duty_invest", "relationship": "cross_reference" },
+    { "from": "equity_cap29_advancement", "to": "equity_trustee_powers_advancement", "relationship": "cross_reference" },
+    { "from": "equity_cap219_formalities", "to": "equity_formalities_writing", "relationship": "cross_reference" },
+    { "from": "equity_charities_regulation", "to": "equity_pemsel_heads", "relationship": "cross_reference" },
+    { "from": "equity_statutes_authorities", "to": "gap_verify_statutory_anchors", "relationship": "has_subtopic" }
+  ]
+}

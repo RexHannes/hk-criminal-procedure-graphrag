@@ -23,6 +23,7 @@ DOMAIN_DIRS = [
     'criminal_law_hk',
     'hk_listing_and_listed_company_regulation',
     'tort_law_hk',
+    'equity_trusts_hk',
 ]
 
 REGULATORY_TYPES = {'listing_rule_anchor', 'sehk_decision_seed', 'guidance_letter_seed',

@@ -1,0 +1,47 @@
+{
+  "domain_id": "equity_trusts_hk",
+  "flows": [
+    {
+      "flow_id": "express_trust_creation_flow",
+      "title": "Express Trust Creation Flow",
+      "description": "Flow from identifying a potential express trust through three certainties, formalities, constitution, sham/illusory check, to outcome determination.",
+      "steps": [
+        "equity_express_trust_creation_flow_start",
+        "equity_express_trust_creation_flow_step2",
+        "equity_express_trust_creation_flow_step3"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "resulting_trust_flow",
+      "title": "Resulting Trust Analysis Flow",
+      "description": "Flow from identifying a voluntary transfer or purchase-money contribution through presumptions, rebuttal, Quistclose check, to outcome determination.",
+      "steps": [
+        "equity_resulting_trust_flow_start",
+        "equity_resulting_trust_flow_step2",
+        "equity_resulting_trust_flow_step3"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "constructive_trust_flow",
+      "title": "Constructive Trust Assessment Flow",
+      "description": "Flow from identifying the type of constructive trust claim (CICT, bribe, or accessory) through element analysis to quantification and remedy.",
+      "steps": [
+        "equity_constructive_trust_flow_start",
+        "equity_constructive_trust_flow_step2"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "tracing_flow",
+      "title": "Equitable Tracing Flow",
+      "description": "Flow from identifying traceable trust property through fiduciary relationship, substitute/mixed fund analysis, to proprietary claim determination.",
+      "steps": [
+        "equity_tracing_flow_start",
+        "equity_tracing_flow_step2"
+      ],
+      "verification_status": "needs_hklii_verification"
+    }
+  ]
+}
