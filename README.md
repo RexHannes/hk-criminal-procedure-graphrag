@@ -295,11 +295,12 @@ GET /api/search-evidence?q=<legal question or issue>
 ```
 
 It maps a natural-language query to candidate doctrine nodes, optionally asks
-DeepSeek to rank those nodes when `DEEPSEEK_API_KEY` is configured server-side,
-then attaches linked Supabase paragraph evidence where explicit
-`proposition_node_links` exist. If DeepSeek is not configured, the endpoint
+OpenRouter/DeepSeek to rank those nodes and produce a constrained audit summary
+when `OPENROUTER_API_KEY` or `DEEPSEEK_API_KEY` is configured server-side, then
+attaches linked Supabase paragraph evidence where explicit
+`proposition_node_links` exist. If no AI provider is configured, the endpoint
 falls back to deterministic graph search and labels the response accordingly.
-This is an audit trail, not a legal answer generator.
+This is an audit trail, not an unconstrained legal answer generator.
 
 See `docs/casemap_doctrine_evidence_bridge.md` for the backend table contract,
 validation rules and Supabase safety notes.

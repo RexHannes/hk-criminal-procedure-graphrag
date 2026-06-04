@@ -178,10 +178,67 @@ function deterministicMatches(query, graph, limit = 12) {
     }));
 }
 
-async function askDeepSeekToRank(query, candidates) {
-  const apiKey = (process.env.DEEPSEEK_API_KEY || "").trim();
-  if (!apiKey || candidates.length === 0) {
-    return { status: apiKey ? "no_candidates" : "not_configured", ranked_ids: [], warnings: apiKey ? [] : ["deepseek_not_configured"] };
+function getAiProvider() {
+  const openRouterKey = (process.env.OPENROUTER_API_KEY || "").trim();
+  if (openRouterKey) {
+    return {
+      name: "openrouter",
+      apiKey: openRouterKey,
+      endpoint: "https://openrouter.ai/api/v1/chat/completions",
+      model: process.env.OPENROUTER_MODEL || "openrouter/auto",
+      headers: {
+        "HTTP-Referer": "https://hk-criminal-procedure-graphrag.vercel.app",
+        "X-Title": "HK Legal Doctrine Evidence Viewer",
+      },
+    };
+  }
+  const deepSeekKey = (process.env.DEEPSEEK_API_KEY || "").trim();
+  if (deepSeekKey) {
+    return {
+      name: "deepseek",
+      apiKey: deepSeekKey,
+      endpoint: "https://api.deepseek.com/chat/completions",
+      model: process.env.DEEPSEEK_MODEL || "deepseek-chat",
+      headers: {},
+    };
+  }
+  return null;
+}
+
+async function callAiJson(systemPrompt, userPrompt) {
+  const provider = getAiProvider();
+  if (!provider) return { provider: "none", status: "not_configured", json: null, warnings: ["ai_provider_not_configured"] };
+  try {
+    const response = await fetch(provider.endpoint, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${provider.apiKey}`,
+        "Content-Type": "application/json",
+        ...provider.headers,
+      },
+      body: JSON.stringify({
+        model: provider.model,
+        temperature: 0,
+        response_format: { type: "json_object" },
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt },
+        ],
+      }),
+    });
+    if (!response.ok) return { provider: provider.name, status: "failed", json: null, warnings: [`${provider.name}_request_failed`] };
+    const payload = await response.json();
+    const text = payload?.choices?.[0]?.message?.content || "{}";
+    return { provider: provider.name, status: "used", json: JSON.parse(text), warnings: [] };
+  } catch (error) {
+    return { provider: provider.name, status: "failed", json: null, warnings: [`${provider.name}_parse_or_network_failed`] };
+  }
+}
+
+async function askAiToRank(query, candidates) {
+  if (candidates.length === 0) {
+    const provider = getAiProvider();
+    return { provider: provider?.name || "none", status: "no_candidates", ranked_ids: [], warnings: [] };
   }
 
   const prompt = [
@@ -200,39 +257,93 @@ async function askDeepSeekToRank(query, candidates) {
     }))),
   ].join("\n");
 
+  const ai = await callAiJson(
+    "You are a cautious legal ontology router. You rank nodes only; you do not answer legal questions.",
+    prompt,
+  );
+  if (ai.status !== "used" || !ai.json) {
+    return { provider: ai.provider, status: ai.status, ranked_ids: [], warnings: ai.warnings };
+  }
   try {
-    const response = await fetch("https://api.deepseek.com/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: process.env.DEEPSEEK_MODEL || "deepseek-chat",
-        temperature: 0,
-        response_format: { type: "json_object" },
-        messages: [
-          { role: "system", content: "You are a cautious legal ontology router. You rank nodes only; you do not answer legal questions." },
-          { role: "user", content: prompt },
-        ],
-      }),
-    });
-    if (!response.ok) return { status: "failed", ranked_ids: [], warnings: ["deepseek_request_failed"] };
-    const payload = await response.json();
-    const text = payload?.choices?.[0]?.message?.content || "{}";
-    const parsed = JSON.parse(text);
+    const parsed = ai.json;
     const allowed = new Set(candidates.map(c => c.doctrine_node_id));
     const ranked = Array.isArray(parsed.ranked_ids) ? parsed.ranked_ids.filter(id => allowed.has(id)) : [];
     return {
       status: "used",
+      provider: ai.provider,
       ranked_ids: ranked,
       detected_domains: Array.isArray(parsed.detected_domains) ? parsed.detected_domains : [],
       query_focus: parsed.query_focus || "",
       warnings: Array.isArray(parsed.warnings) ? parsed.warnings : [],
     };
   } catch (error) {
-    return { status: "failed", ranked_ids: [], warnings: ["deepseek_parse_or_network_failed"] };
+    return { provider: ai.provider, status: "failed", ranked_ids: [], warnings: ["ai_rank_validation_failed"] };
   }
+}
+
+async function askAiToAnalyze(query, matches, evidenceCount) {
+  const evidenceBrief = matches.slice(0, 6).map(match => ({
+    doctrine_node_id: match.doctrine_node_id,
+    title: match.title,
+    domain_id: match.domain_id,
+    summary: match.summary,
+    coverage_status: match.coverage_status,
+    evidence: (match.evidence || []).slice(0, 4).map(item => ({
+      case_name: item.case_name,
+      neutral_citation: item.neutral_citation,
+      court_level: item.court_level,
+      para_no: item.para_no,
+      proposition_text: item.proposition_text,
+      paragraph_text: item.paragraph_text,
+      verification_status: item.verification_status,
+      answer_layer_status: item.answer_layer_status,
+    })),
+  }));
+
+  const prompt = [
+    "Analyze the user query using only the supplied doctrine nodes and linked evidence.",
+    "Return strict JSON only with this shape:",
+    "{\"summary\":\"...\",\"legal_position\":\"...\",\"application\":\"...\",\"node_references\":[{\"doctrine_node_id\":\"...\",\"title\":\"...\",\"role\":\"...\"}],\"case_references\":[{\"case_name\":\"...\",\"neutral_citation\":\"...\",\"para_no\":\"...\",\"status\":\"...\"}],\"warnings\":[],\"abstain\":false}",
+    "Rules:",
+    "- Do not invent authorities, paragraphs, citations, statutes, or facts.",
+    "- If evidence is absent or only candidate_only, state the limitation clearly.",
+    "- Do not call anything answer-safe unless supplied evidence says answer_safe or human_reviewed.",
+    "- Keep the analysis concise and audit-style, not legal advice.",
+    "User query:",
+    query,
+    "Evidence count:",
+    String(evidenceCount),
+    "Matched graph/evidence context:",
+    JSON.stringify(evidenceBrief),
+  ].join("\n");
+
+  const ai = await callAiJson(
+    "You are a cautious Hong Kong legal research assistant. You produce source-bounded audit summaries only.",
+    prompt,
+  );
+  if (ai.status !== "used" || !ai.json) {
+    return {
+      provider: ai.provider,
+      status: ai.status,
+      analysis: null,
+      warnings: ai.warnings,
+    };
+  }
+  const parsed = ai.json;
+  return {
+    provider: ai.provider,
+    status: "used",
+    analysis: {
+      summary: String(parsed.summary || ""),
+      legal_position: String(parsed.legal_position || ""),
+      application: String(parsed.application || ""),
+      node_references: Array.isArray(parsed.node_references) ? parsed.node_references : [],
+      case_references: Array.isArray(parsed.case_references) ? parsed.case_references : [],
+      warnings: Array.isArray(parsed.warnings) ? parsed.warnings : [],
+      abstain: Boolean(parsed.abstain),
+    },
+    warnings: [],
+  };
 }
 
 async function supabaseGet(baseUrl, serviceKey, table, query) {
@@ -344,7 +455,7 @@ module.exports = async function handler(req, res) {
 
   const graph = loadGraph();
   const deterministic = deterministicMatches(query, graph, 14);
-  const ai = await askDeepSeekToRank(query, deterministic);
+  const ai = await askAiToRank(query, deterministic);
   let matched = deterministic;
   if (ai.ranked_ids && ai.ranked_ids.length) {
     const byId = new Map(deterministic.map(item => [item.doctrine_node_id, item]));
@@ -377,9 +488,16 @@ module.exports = async function handler(req, res) {
   }
 
   const evidenceCount = matched.reduce((sum, item) => sum + (item.evidence || []).length, 0);
+  const inquiry = await askAiToAnalyze(query, matched, evidenceCount);
+  const aiWarnings = []
+    .concat(ai.warnings || [])
+    .concat(inquiry.warnings || [])
+    .concat(inquiry.analysis?.warnings || []);
   res.status(200).json({
     query,
     ai_status: ai.status,
+    ai_provider: ai.provider || inquiry.provider || "none",
+    analysis_status: inquiry.status,
     ai_query_focus: ai.query_focus || "",
     backend_status: backendStatus,
     detected_domains: ai.detected_domains && ai.detected_domains.length
@@ -390,7 +508,8 @@ module.exports = async function handler(req, res) {
     answer_confidence: evidenceCount > 0 && !matched.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))
       ? "medium"
       : "low",
-    warnings: warningsForResult(matched, ai.status, backendStatus).concat(ai.warnings || []),
-    answer_note: "This endpoint returns a graph/evidence trail only. It does not produce legal advice and does not treat candidate evidence as answer-safe.",
+    warnings: Array.from(new Set(warningsForResult(matched, ai.status, backendStatus).concat(aiWarnings))),
+    inquiry_analysis: inquiry.analysis,
+    answer_note: "This endpoint returns a source-bounded graph/evidence trail. It does not produce legal advice and does not treat candidate evidence as answer-safe.",
   });
 };

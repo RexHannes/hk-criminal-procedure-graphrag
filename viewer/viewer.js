@@ -1265,10 +1265,12 @@
     const matches = Array.isArray(payload.matched_doctrine_nodes) ? payload.matched_doctrine_nodes : [];
     const warnings = Array.isArray(payload.warnings) ? payload.warnings : [];
     const aiLabel = payload.ai_status === 'used' ? 'AI-ranked' : 'Fallback ranked';
-    statusEl.textContent = `${aiLabel} · ${matches.length} node(s) · ${payload.evidence_count || 0} evidence item(s) · confidence: ${payload.answer_confidence || 'low'}`;
+    const analysisLabel = payload.analysis_status === 'used' ? 'analysis on' : 'analysis off';
+    statusEl.textContent = `${aiLabel} · ${analysisLabel} · ${matches.length} node(s) · ${payload.evidence_count || 0} evidence item(s) · confidence: ${payload.answer_confidence || 'low'}`;
 
     let html = '<div class="evidence-search-summary">';
     html += `<span class="coverage-badge ${payload.ai_status === 'used' ? 'paragraph_verified' : 'candidate_only'}">${esc(aiLabel)}</span>`;
+    if (payload.ai_provider) html += `<span class="coverage-badge paragraph_verified">${esc(payload.ai_provider)}</span>`;
     html += `<span class="coverage-badge ${escAttr(payload.backend_status || 'backend')}">${esc(payload.backend_status || 'backend')}</span>`;
     html += '</div>';
     if (warnings.length) {
@@ -1276,6 +1278,9 @@
     }
     if (payload.answer_note) {
       html += `<div class="evidence-search-note">${esc(payload.answer_note)}</div>`;
+    }
+    if (payload.inquiry_analysis) {
+      html += renderInquiryAnalysis(payload.inquiry_analysis);
     }
     if (!matches.length) {
       html += '<div class="evidence-search-empty">No doctrine node matched this query. Try a more specific legal issue, statute, case name, or procedural stage.</div>';
@@ -1311,6 +1316,31 @@
     resultsEl.querySelectorAll('.open-node-btn').forEach(btn => {
       btn.addEventListener('click', () => focusEvidenceSearchNode(btn.dataset.domainId, btn.dataset.nodeId));
     });
+  }
+
+  function renderInquiryAnalysis(analysis) {
+    let html = '<section class="inquiry-analysis">';
+    html += '<div class="inquiry-analysis-title">AI Analysis / Audit Summary</div>';
+    if (analysis.abstain) html += '<div class="audit-candidate-note">The AI flagged this as insufficient for a reliable answer.</div>';
+    if (analysis.summary) html += `<p><strong>Summary:</strong> ${esc(analysis.summary)}</p>`;
+    if (analysis.legal_position) html += `<p><strong>Position:</strong> ${esc(analysis.legal_position)}</p>`;
+    if (analysis.application) html += `<p><strong>Application:</strong> ${esc(analysis.application)}</p>`;
+    if (Array.isArray(analysis.node_references) && analysis.node_references.length) {
+      html += '<div class="analysis-chip-row">';
+      analysis.node_references.slice(0, 6).forEach(ref => {
+        html += `<span>${esc(ref.title || ref.doctrine_node_id || 'node')}</span>`;
+      });
+      html += '</div>';
+    }
+    if (Array.isArray(analysis.case_references) && analysis.case_references.length) {
+      html += '<div class="analysis-case-list">';
+      analysis.case_references.slice(0, 5).forEach(ref => {
+        html += `<div>${esc([ref.case_name, ref.neutral_citation, ref.para_no, ref.status].filter(Boolean).join(' · '))}</div>`;
+      });
+      html += '</div>';
+    }
+    html += '</section>';
+    return html;
   }
 
   function focusEvidenceSearchNode(domainId, nodeId) {
