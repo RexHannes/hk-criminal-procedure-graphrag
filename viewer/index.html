@@ -3,99 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HK Criminal Procedure — Doctrine Tree Map</title>
+  <title>Legal Graph-SOP Workspace</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="header">
-    <div id="header-title">
-      <span class="domain-badge">not_product_answer_layer</span>
-      <span class="domain-badge verification">needs_hklii_verification</span>
-      <h1>Hong Kong Criminal Procedure — Doctrine Tree</h1>
-    </div>
-    <div id="header-controls">
-      <input type="text" id="search-box" placeholder="Search by keyword, case, statute..." />
-      <div id="legend">
-        <span class="legend-item"><span class="dot" style="background:#2266cc"></span>Issue</span>
-        <span class="legend-item"><span class="dot" style="background:#2d8a4e"></span>Statute</span>
-        <span class="legend-item"><span class="dot" style="background:#7b2d8e"></span>Case</span>
-        <span class="legend-item"><span class="dot" style="background:#d97706"></span>Flow</span>
-        <span class="legend-item"><span class="dot" style="background:#0e7490"></span>PD</span>
-        <span class="legend-item"><span class="dot" style="background:#dc2626"></span>NSL</span>
-      </div>
-    </div>
-  </div>
-
-  <div id="main">
-    <div id="side-panel">
-      <div id="disclaimer-box">
-        <strong>Seed-layer map.</strong> Not a product answer layer. Use verified paragraph proof before legal reliance.
-      </div>
-
-      <div id="filter-box">
-        <h3>Filters</h3>
-        <label><input type="checkbox" data-type="legal_issue" checked> Legal Issues</label>
-        <label><input type="checkbox" data-type="flow_step" checked> Flow Steps</label>
-        <label><input type="checkbox" data-type="statute" checked> Statutes</label>
-        <label><input type="checkbox" data-type="case_seed" checked> Case Seeds</label>
-        <label><input type="checkbox" data-type="practice_direction" checked> Practice Directions</label>
-        <label><input type="checkbox" data-type="restricted_nsl" checked> NSL</label>
-      </div>
-
-      <div id="depth-control">
-        <h3>Tree Depth</h3>
-        <div class="depth-buttons">
-          <button data-depth="0">L0</button>
-          <button data-depth="1">L1</button>
-          <button data-depth="2" class="active">L2</button>
-          <button data-depth="3">L3</button>
-          <button data-depth="4">L4</button>
-          <button data-depth="99">All</button>
-        </div>
-        <div class="depth-actions">
-          <button id="expand-all-btn">Expand All</button>
-          <button id="collapse-btn">Collapse</button>
+  <div id="app-shell">
+    <aside id="left-sidebar" aria-label="Workspace navigation">
+      <div class="brand-block">
+        <div class="brand-mark">CM</div>
+        <div>
+          <div class="brand-title">CaseMap</div>
+          <div class="brand-subtitle">Graph-SOP Workspace</div>
         </div>
       </div>
 
-      <div id="flow-player-box">
-        <h3>Flow Player</h3>
-        <select id="flow-select">
-          <option value="">— Select a flow —</option>
-        </select>
-        <div id="flow-controls">
-          <button id="flow-prev" disabled>&#9664;</button>
-          <span id="flow-step-indicator">0 / 0</span>
-          <button id="flow-next" disabled>&#9654;</button>
-          <button id="flow-play" disabled>&#9654; Play</button>
-          <button id="flow-reset" disabled>&#8634;</button>
+      <nav class="nav-section">
+        <button class="nav-item active" data-panel="flows"><span>⌘</span> Legal Flows</button>
+        <button class="nav-item" data-panel="sops"><span>◇</span> Firm SOPs</button>
+        <button class="nav-item" data-panel="templates"><span>□</span> Templates</button>
+        <button class="nav-item" data-panel="evidence"><span>◎</span> Evidence Trail</button>
+        <button class="nav-item" data-panel="tasks"><span>▶</span> Tasks</button>
+        <button class="nav-item" data-panel="sources"><span>◌</span> Sources / Audit</button>
+      </nav>
+
+      <div class="sidebar-card firm-card">
+        <div class="eyebrow">Firm profile</div>
+        <h3 id="firm-name">Demo Litigation Firm</h3>
+        <p id="firm-policy">Partner review required before external advice.</p>
+      </div>
+
+      <div class="sidebar-card status-card">
+        <div class="eyebrow">Safety posture</div>
+        <div class="status-stack">
+          <span class="badge warning">Research layer only</span>
+          <span class="badge warning">Verification pending</span>
+          <span class="badge neutral">Human in the loop</span>
         </div>
-        <div id="flow-step-info"></div>
+      </div>
+    </aside>
+
+    <main id="workspace">
+      <header id="workspace-header">
+        <div class="title-group">
+          <div class="eyebrow">Public legal graph + firm overlay</div>
+          <h1>Legal Graph-SOP Workspace</h1>
+          <p>Traceable AI workflows built from legal authorities, approved SOPs, templates, and review gates.</p>
+        </div>
+        <div class="header-actions">
+          <button id="propose-edit-btn" class="ghost-button">Propose edit</button>
+          <button id="run-flow-btn" class="primary-button">Run selected flow</button>
+        </div>
+      </header>
+
+      <section id="command-bar" aria-label="Command bar">
+        <div class="command-prefix">⌘K</div>
+        <input id="command-input" type="search" placeholder="Search authority, run a legal flow, or draft from firm SOP…">
+        <button id="command-search-btn">Evidence Trail</button>
+      </section>
+
+      <section id="concept-chain" aria-label="Traceability chain">
+        <div class="chain-node">Source law / case paragraph</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">Doctrine node</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">Legal flow step</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">Firm SOP</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">Template / task output</div>
+      </section>
+
+      <div id="workspace-grid">
+        <section id="center-panel">
+          <div class="panel-header">
+            <div>
+              <div class="eyebrow">Selected playbook</div>
+              <h2 id="selected-flow-title">Loading legal flows…</h2>
+            </div>
+            <div id="flow-version-pill" class="version-pill">v—</div>
+          </div>
+
+          <div id="flow-tabs" class="flow-tabs"></div>
+
+          <div id="search-results" class="search-results hidden"></div>
+
+          <div id="flow-workspace" class="flow-workspace"></div>
+        </section>
+
+        <aside id="right-inspector" aria-label="Evidence inspector">
+          <div class="panel-header compact">
+            <div>
+              <div class="eyebrow">Evidence inspector</div>
+              <h2 id="inspector-title">Select a step</h2>
+            </div>
+            <span id="inspector-status" class="badge neutral">Ready</span>
+          </div>
+          <div id="inspector-content" class="inspector-content"></div>
+        </aside>
       </div>
 
-      <div id="section-list-box">
-        <h3>Sections</h3>
-        <ul id="section-list"></ul>
-      </div>
-    </div>
-
-    <div id="tree-container">
-      <div id="tree-root"></div>
-    </div>
-
-    <div id="detail-panel">
-      <div id="detail-content">
-        <p class="hint">Click a node to inspect details</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="status-bar">
-    <span id="status-nodes">Nodes: 0</span>
-    <span id="status-edges">Edges: 0</span>
-    <span id="status-sections">Sections: 12</span>
-    <span id="status-flows">Flows: 7</span>
-    <span id="status-selected">Selected: —</span>
+      <section id="task-runner">
+        <div class="runner-main">
+          <div class="eyebrow">Matter task runner</div>
+          <h2 id="task-title">Draft preliminary advice from selected flow</h2>
+          <p id="task-description">No black-box answer: the trace shows the exact flow, authority bundle, firm SOP, template, and human review gate used.</p>
+        </div>
+        <div id="execution-trace" class="execution-trace"></div>
+      </section>
+    </main>
   </div>
 
   <script>
