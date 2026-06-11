@@ -1,0 +1,29 @@
+{
+  "section_id": "02",
+  "domain_id": "equity_trusts_hk",
+  "edges": [
+    { "from": "equity_express_trusts", "to": "equity_three_certainties", "relationship": "has_subtopic" },
+    { "from": "equity_express_trusts", "to": "equity_formalities_writing", "relationship": "has_subtopic" },
+    { "from": "equity_express_trusts", "to": "equity_sham_trusts", "relationship": "has_subtopic" },
+    { "from": "equity_express_trusts", "to": "equity_illusory_trusts", "relationship": "has_subtopic" },
+    { "from": "equity_express_trusts", "to": "equity_secret_trusts", "relationship": "has_subtopic" },
+    { "from": "equity_three_certainties", "to": "equity_certainty_intention", "relationship": "has_subtopic" },
+    { "from": "equity_three_certainties", "to": "equity_certainty_subject_matter", "relationship": "has_subtopic" },
+    { "from": "equity_three_certainties", "to": "equity_certainty_objects", "relationship": "has_subtopic" },
+    { "from": "equity_secret_trusts", "to": "equity_secret_fully_vs_half", "relationship": "has_subtopic" },
+    { "from": "equity_certainty_intention", "to": "case_hong_thai", "relationship": "case_seed" },
+    { "from": "equity_certainty_intention", "to": "case_fu_chuen_sang", "relationship": "case_seed" },
+    { "from": "equity_certainty_subject_matter", "to": "case_re_london_wine", "relationship": "case_seed" },
+    { "from": "equity_certainty_subject_matter", "to": "case_re_goldcorp", "relationship": "case_seed" },
+    { "from": "equity_certainty_subject_matter", "to": "case_hunter_moss", "relationship": "case_seed" },
+    { "from": "equity_certainty_subject_matter", "to": "case_re_ca_pacific", "relationship": "case_seed" },
+    { "from": "equity_certainty_objects", "to": "case_hong_thai", "relationship": "case_seed" },
+    { "from": "equity_sham_trusts", "to": "case_pugachev", "relationship": "case_seed" },
+    { "from": "equity_illusory_trusts", "to": "case_chu_wai_tung", "relationship": "case_seed" },
+    { "from": "equity_illusory_trusts", "to": "case_clayton", "relationship": "case_seed" },
+    { "from": "equity_illusory_trusts", "to": "case_webb", "relationship": "case_seed" },
+    { "from": "equity_secret_trusts", "to": "case_tsang_tat_hung", "relationship": "case_seed" },
+    { "from": "equity_formalities_writing", "to": "cap219_cpo", "relationship": "statutory_anchor" },
+    { "from": "equity_express_trusts", "to": "gap_verify_hk_secret_trust_cases", "relationship": "has_subtopic" }
+  ]
+}

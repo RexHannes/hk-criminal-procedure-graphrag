@@ -1,0 +1,27 @@
+{
+  "section_id": "06",
+  "domain_id": "equity_trusts_hk",
+  "edges": [
+    { "from": "equity_trustee_duties", "to": "equity_hastings_bass", "relationship": "has_subtopic" },
+    { "from": "equity_trustee_duties", "to": "equity_anti_bartlett", "relationship": "has_subtopic" },
+    { "from": "equity_trustee_duties", "to": "equity_exemption_clauses", "relationship": "has_subtopic" },
+    { "from": "equity_trustee_duties", "to": "equity_substratum_rule", "relationship": "has_subtopic" },
+    { "from": "equity_trustee_duties", "to": "equity_trustee_duty_invest", "relationship": "has_subtopic" },
+    { "from": "equity_trustee_duties", "to": "equity_trustee_duty_impartiality", "relationship": "has_subtopic" },
+    { "from": "equity_trustee_duties", "to": "equity_trustee_duty_account", "relationship": "has_subtopic" },
+    { "from": "equity_trustee_duties", "to": "equity_trustee_powers_advancement", "relationship": "has_subtopic" },
+    { "from": "equity_trustee_duties", "to": "equity_trustee_duty_pay_right_person", "relationship": "has_subtopic" },
+    { "from": "equity_hastings_bass", "to": "equity_mistake_rescission", "relationship": "has_subtopic" },
+    { "from": "equity_hastings_bass", "to": "case_pitt_holt", "relationship": "case_seed" },
+    { "from": "equity_mistake_rescission", "to": "case_pitt_holt", "relationship": "case_seed" },
+    { "from": "equity_anti_bartlett", "to": "case_zhang_hong_li", "relationship": "case_seed" },
+    { "from": "equity_exemption_clauses", "to": "case_armitage", "relationship": "case_seed" },
+    { "from": "equity_exemption_clauses", "to": "case_spread_trustee", "relationship": "case_seed" },
+    { "from": "equity_substratum_rule", "to": "case_grand_view", "relationship": "case_seed" },
+    { "from": "equity_exemption_clauses", "to": "cap29_trustee_ordinance", "relationship": "statutory_anchor" },
+    { "from": "equity_trustee_duty_invest", "to": "cap29_trustee_ordinance", "relationship": "statutory_anchor" },
+    { "from": "equity_trustee_powers_advancement", "to": "cap29_trustee_ordinance", "relationship": "statutory_anchor" },
+    { "from": "equity_hastings_bass", "to": "equity_mistake_rescission", "relationship": "cross_reference" },
+    { "from": "equity_trustee_duties", "to": "gap_verify_hk_trustee_duty_cases", "relationship": "has_subtopic" }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "section_id": "07",
+  "section_title": "General Defences",
+  "domain_id": "criminal_law_hk",
+  "nodes": [
+    {
+      "id": "crim_defences",
+      "doctrine_node_id": "criminal_law_hk.defences",
+      "type": "section_header",
+      "label": "General Defences",
+      "summary": "Insanity, automatism, intoxication, self-defence, duress, and mistake.",
+      "section": "07",
+      "verification_status": "book_seed_needs_case_and_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "textbook_seed_only",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_insanity",
+      "doctrine_node_id": "criminal_law_hk.insanity",
+      "type": "legal_issue",
+      "label": "Insanity",
+      "summary": "M Naghten rules: defect of reason from disease of mind; did not know nature/quality of act or that it was wrong.",
+      "section": "07",
+      "subsection": "07.01",
+      "subtopic": "Insanity",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.insanity",
+        "expected_query_terms": [
+          "insanity"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_automatism",
+      "doctrine_node_id": "criminal_law_hk.automatism",
+      "type": "legal_issue",
+      "label": "Automatism",
+      "summary": "Involuntary act caused by external factor; requires total loss of voluntary control.",
+      "section": "07",
+      "subsection": "07.01",
+      "subtopic": "Automatism",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.automatism",
+        "expected_query_terms": [
+          "automatism"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_intoxication",
+      "doctrine_node_id": "criminal_law_hk.intoxication",
+      "type": "legal_issue",
+      "label": "Intoxication",
+      "summary": "Voluntary intoxication may negate mens rea for specific intent offences, but generally not basic intent offences.",
+      "section": "07",
+      "subsection": "07.02",
+      "subtopic": "Intoxication",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_majewski"
+      ],
+      "statute_refs": [],
+      "cross_refs": [
+        "crim_mens_rea"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.intoxication",
+        "expected_query_terms": [
+          "intoxication"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_self_defence",
+      "doctrine_node_id": "criminal_law_hk.self.defence",
+      "type": "legal_issue",
+      "label": "Self-Defence",
+      "summary": "Genuine belief that force is necessary; honest belief may be mistaken, subject to proportionality/source verification.",
+      "section": "07",
+      "subsection": "07.03",
+      "subtopic": "Self-Defence",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_leung_kwok_hung"
+      ],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.self.defence",
+        "expected_query_terms": [
+          "self-defence"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_duress",
+      "doctrine_node_id": "criminal_law_hk.duress",
+      "type": "legal_issue",
+      "label": "Duress",
+      "summary": "Limited defence; not available for murder. Scope and availability in HK require verification.",
+      "section": "07",
+      "subsection": "07.04",
+      "subtopic": "Duress",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.duress",
+        "expected_query_terms": [
+          "duress"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_mistake",
+      "doctrine_node_id": "criminal_law_hk.mistake",
+      "type": "legal_issue",
+      "label": "Mistake",
+      "summary": "Mistake of fact may negate mens rea; mistake of law generally no defence.",
+      "section": "07",
+      "subsection": "07.05",
+      "subtopic": "Mistake",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.mistake",
+        "expected_query_terms": [
+          "mistake"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_majewski",
+      "type": "case_seed",
+      "label": "DPP v Majewski [1977] AC 443",
+      "summary": "Voluntary intoxication and basic/specific intent.",
+      "section": "07",
+      "court": "HL",
+      "jurisdiction": "UK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "[1977] AC 443"
+    },
+    {
+      "id": "case_leung_kwok_hung",
+      "type": "case_seed",
+      "label": "HKSAR v Leung Kwok Hung",
+      "summary": "Seed HK self-defence case.",
+      "section": "07",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    }
+  ]
+}

@@ -23,6 +23,10 @@
       <input type="text" id="command-bar" placeholder="Search authority, run a legal flow, or draft from firm SOP…" autocomplete="off" />
       <div id="command-results" class="command-results" hidden></div>
     </div>
+    <div class="domain-wrap">
+      <label for="domain-select">Domain</label>
+      <select id="domain-select" aria-label="Select legal domain"></select>
+    </div>
     <div class="masthead-badges">
       <span class="badge badge-research" title="This map is a research layer, not a product answer layer.">Research layer</span>
       <span class="badge badge-pending" title="Sources await HKLII paragraph verification.">Verification pending</span>
@@ -34,7 +38,8 @@
 
     <nav id="sidebar">
       <div class="nav-section-label">Workspace</div>
-      <button class="nav-item active" data-view="flows"><span class="nav-glyph">→</span>Legal Flows</button>
+      <button class="nav-item active" data-view="domains"><span class="nav-glyph">◇</span>Domains</button>
+      <button class="nav-item" data-view="flows"><span class="nav-glyph">→</span>Legal Flows</button>
       <button class="nav-item" data-view="doctrine"><span class="nav-glyph">§</span>Doctrine Map</button>
       <button class="nav-item" data-view="tasks"><span class="nav-glyph">▸</span>Tasks</button>
 
@@ -77,7 +82,9 @@
   </footer>
 
   <script>
-    window.DATA_BASE = '../data/legal_domain_packs/demo_maps/criminal_procedure_hk/';
+    window.DATA_INDEX = '../data/index.json';
+    window.DATA_ROOT = '../data/legal_domain_packs/demo_maps/';
+    window.DEFAULT_DOMAIN_ID = 'criminal_procedure_hk';
     window.FIRM_OVERLAY_PATH = '../data/firm_overlay/demo_firm.json';
   </script>
   <script src="app.js"></script>

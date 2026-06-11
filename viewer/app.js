@@ -10,8 +10,12 @@
   const S = {
     nodes: [], edges: [], flows: [],
     nodeMap: {}, edgesFrom: {}, edgesTo: {},
+    domains: [],
+    domainSummaries: {},
+    selectedDomainId: null,
+    domainInfo: null,
     firm: null,
-    view: 'flows',
+    view: 'domains',
     selectedFlowId: null,
     selectedEntity: null,   // {kind, id}
     lastTrace: null,        // execution trace of last task run
@@ -37,7 +41,16 @@
     legal_issue: 'Issue', statute: 'Statute', case_seed: 'Case seed',
     flow_step: 'Flow step', practice_direction: 'Practice direction',
     restricted_nsl: 'NSL', section_header: 'Section', gap: 'Gap',
+    listing_rule_anchor: 'Listing rule', guidance_letter_seed: 'Guidance letter',
+    listing_decision_seed: 'Listing decision', enforcement_seed: 'Enforcement seed',
+    sfc_material_seed: 'SFC material', source_anchor: 'Source anchor',
   };
+
+  const AUTHORITY_TYPES = new Set([
+    'statute', 'case_seed', 'practice_direction', 'restricted_nsl',
+    'listing_rule_anchor', 'guidance_letter_seed', 'listing_decision_seed',
+    'enforcement_seed', 'sfc_material_seed', 'source_anchor',
+  ]);
 
   function badge(key, extra) {
     const b = BADGE_MAP[key];
@@ -62,9 +75,68 @@
     return fetch(path).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status + ' for ' + path); return r.json(); });
   }
 
-  function loadAll() {
-    const base = window.DATA_BASE;
-    return loadJSON(base + 'consolidated.json').then(manifest => {
+  const DATA_INDEX = window.DATA_INDEX || '../data/index.json';
+  const DATA_ROOT = window.DATA_ROOT || '../data/legal_domain_packs/demo_maps/';
+  const DEFAULT_DOMAIN_ID = window.DEFAULT_DOMAIN_ID || 'criminal_procedure_hk';
+
+  function domainBase(domainId) {
+    return DATA_ROOT + domainId + '/';
+  }
+
+  function resetDomainData() {
+    S.nodes = [];
+    S.edges = [];
+    S.flows = [];
+    S.nodeMap = {};
+    S.edgesFrom = {};
+    S.edgesTo = {};
+    S.selectedFlowId = null;
+    S.selectedEntity = null;
+    S.lastTrace = null;
+    S.openSections = new Set();
+  }
+
+  function loadRegistry() {
+    return loadJSON(DATA_INDEX).then(registry => {
+      S.domains = registry.domains || [];
+      if (!S.domains.some(d => d.domain_id === DEFAULT_DOMAIN_ID) && S.domains[0]) {
+        S.selectedDomainId = S.domains[0].domain_id;
+      } else {
+        S.selectedDomainId = S.selectedDomainId || DEFAULT_DOMAIN_ID;
+      }
+      return Promise.all(S.domains.map(d => summarizeDomain(d).catch(() => null)));
+    });
+  }
+
+  function summarizeDomain(domain) {
+    const base = domainBase(domain.domain_id);
+    return Promise.all([
+      loadJSON(base + 'consolidated.json'),
+      loadJSON(base + 'flows.json').catch(() => ({ flows: [] })),
+      loadJSON(DATA_ROOT + domain.path).catch(() => null),
+    ]).then(([manifest, flowPack, info]) => {
+      S.domainSummaries[domain.domain_id] = {
+        id: domain.domain_id,
+        title: info?.title || manifest.title || domain.title,
+        description: info?.description || '',
+        sectionCount: (manifest.sections || []).length,
+        flowCount: (flowPack.flows || []).length,
+        status: domain.status || info?.status || manifest.status || {},
+      };
+    });
+  }
+
+  function loadDomain(domainId) {
+    const domain = S.domains.find(d => d.domain_id === domainId) || S.domains[0] || { domain_id: DEFAULT_DOMAIN_ID, title: 'Hong Kong Criminal Procedure', path: DEFAULT_DOMAIN_ID + '/domain.json' };
+    const base = domainBase(domain.domain_id);
+    resetDomainData();
+    S.selectedDomainId = domain.domain_id;
+    S.dataSource = 'live';
+    return Promise.all([
+      loadJSON(DATA_ROOT + domain.path).catch(() => null),
+      loadJSON(base + 'consolidated.json'),
+    ]).then(([domainInfo, manifest]) => {
+      S.domainInfo = domainInfo || { domain_id: domain.domain_id, title: manifest.title || domain.title };
       const sectionP = manifest.sections.map(s =>
         Promise.all([
           loadJSON(base + s.node_file).then(d => d.nodes || []),
@@ -73,6 +145,11 @@
       );
       const flowP = loadJSON(base + (manifest.flows_file || 'flows.json')).then(d => { S.flows = d.flows || []; });
       return Promise.all([...sectionP, flowP]);
+    }).then(() => {
+      indexData();
+      renderDomainSelect();
+      renderFirmCard();
+      renderStatus();
     });
   }
 
@@ -105,6 +182,9 @@
   }
 
   function indexData() {
+    S.nodeMap = {};
+    S.edgesFrom = {};
+    S.edgesTo = {};
     S.nodes.forEach(n => { S.nodeMap[n.id] = n; });
     S.edges.forEach(e => {
       (S.edgesFrom[e.from] = S.edgesFrom[e.from] || []).push(e);
@@ -113,16 +193,25 @@
   }
 
   // ── Graph helpers ──
+  function isAuthorityRelationship(rel = '') {
+    return rel.includes('anchor') || rel.includes('seed') || rel.includes('authority') || rel.includes('source');
+  }
+
   function authoritiesForNode(n) {
-    // statute_refs + outgoing/incoming statutory_anchor & case_seed edges
-    const ids = new Set(n.statute_refs || []);
+    const refFields = [
+      'statute_refs', 'case_seeds', 'practice_direction_refs',
+      'listing_rule_refs', 'guidance_refs', 'listing_decision_refs',
+      'enforcement_refs', 'sfc_refs', 'authority_refs', 'source_refs',
+    ];
+    const ids = new Set();
+    refFields.forEach(field => (n[field] || []).forEach(id => ids.add(id)));
     (S.edgesFrom[n.id] || []).forEach(e => {
-      if (e.relationship === 'statutory_anchor' || e.relationship === 'case_seed') ids.add(e.to);
+      if (isAuthorityRelationship(e.relationship)) ids.add(e.to);
     });
     (S.edgesTo[n.id] || []).forEach(e => {
-      if (e.relationship === 'statutory_anchor' || e.relationship === 'case_seed') ids.add(e.from);
+      if (isAuthorityRelationship(e.relationship)) ids.add(e.from);
     });
-    return [...ids].map(id => S.nodeMap[id]).filter(x => x && (x.type === 'statute' || x.type === 'case_seed' || x.type === 'practice_direction' || x.type === 'restricted_nsl'));
+    return [...ids].map(id => S.nodeMap[id]).filter(x => x && AUTHORITY_TYPES.has(x.type));
   }
 
   const STOPWORDS = new Set(['the', 'and', 'for', 'with', 'flow', 'step', 'whether', 'under', 'into', 'from', 'that', 'this', 'are', 'has', 'have', 'not', 'all', 'any']);
@@ -178,6 +267,27 @@
     return (S.firm.sops || []).filter(s => (s.linked_flows || []).includes(flowId));
   }
 
+  function currentFlowIds() {
+    return new Set(S.flows.map(f => f.flow_id));
+  }
+
+  function currentDomainSops() {
+    const ids = currentFlowIds();
+    return (S.firm.sops || []).filter(s => (s.linked_flows || []).some(fid => ids.has(fid)));
+  }
+
+  function currentDomainTasks() {
+    const ids = currentFlowIds();
+    return (S.firm.demo_tasks || []).filter(t => ids.has(t.flow_id));
+  }
+
+  function currentDomainTemplates() {
+    const templateIds = new Set();
+    currentDomainSops().forEach(s => (s.linked_templates || []).forEach(id => templateIds.add(id)));
+    currentDomainTasks().forEach(t => { if (t.template_id) templateIds.add(t.template_id); });
+    return (S.firm.templates || []).filter(t => templateIds.has(t.template_id));
+  }
+
   // ── Selection / inspector ──
   function select(kind, id) {
     S.selectedEntity = { kind, id };
@@ -207,7 +317,7 @@
       const auths = n.type === 'flow_step' ? authoritiesForStep(n.id) : authoritiesForNode(n);
       const sopBlocks = n.type === 'flow_step' ? sopBlocksForStep(n.id) : [];
       const used = usedInLastTrace(n.id);
-      const relatedFlows = S.flows.filter(f => f.steps.includes(n.id));
+      const relatedFlows = S.flows.filter(f => (f.steps || []).includes(n.id));
 
       body.innerHTML = `
         <div class="insp-title">${esc(n.label)}</div>
@@ -287,11 +397,39 @@
   const root = () => $('#view-root');
 
   function renderView() {
-    ({ flows: viewFlows, doctrine: viewDoctrine, tasks: viewTasks, playbooks: viewPlaybooks, templates: viewTemplates, audit: viewAudit }[S.view] || viewFlows)();
+    ({ domains: viewDomains, flows: viewFlows, doctrine: viewDoctrine, tasks: viewTasks, playbooks: viewPlaybooks, templates: viewTemplates, audit: viewAudit }[S.view] || viewFlows)();
   }
 
   function viewHeader(eyebrow, title, lede) {
     return `<div class="view-eyebrow">${eyebrow}</div><div class="view-title">${title}</div><p class="view-lede">${lede}</p>`;
+  }
+
+  // — Domains —
+  function viewDomains() {
+    root().innerHTML = `
+      ${viewHeader('Domain registry', 'Legal domains', 'Choose a restored domain pack. Each pack has its own doctrine map, legal flows, source audit queue, and any firm overlay that applies to those flow IDs.')}
+      <div class="domain-grid">
+        ${S.domains.map(domain => {
+          const summary = S.domainSummaries[domain.domain_id] || {};
+          const active = domain.domain_id === S.selectedDomainId;
+          return `<button class="domain-card ${active ? 'active' : ''}" data-domain-card="${esc(domain.domain_id)}">
+            <div class="domain-card-top">
+              <span class="domain-card-title">${esc(summary.title || domain.title)}</span>
+              ${active ? '<span class="badge badge-approved">Active</span>' : ''}
+            </div>
+            <p>${esc(summary.description || 'Restored Casemap4 legal domain pack.')}</p>
+            <div class="domain-card-meta">
+              <span>${summary.sectionCount || 0} sections</span>
+              <span>${summary.flowCount || 0} flows</span>
+              <span>${esc(domain.domain_id)}</span>
+            </div>
+          </button>`;
+        }).join('')}
+      </div>
+    `;
+    root().querySelectorAll('[data-domain-card]').forEach(card => {
+      card.addEventListener('click', () => switchDomain(card.dataset.domainCard, 'flows'));
+    });
   }
 
   // — Legal Flows —
@@ -302,7 +440,7 @@
     const linkedSops = sopsForFlow(flow.flow_id);
 
     root().innerHTML = `
-      ${viewHeader('Legal flows', 'Procedural flows', 'Fixed, reusable procedural flows extracted from the doctrine graph. Each step shows its linked authority, verification status, and any firm SOP instruction layered on top.')}
+      ${viewHeader('Legal flows', S.domainInfo?.title || 'Procedural flows', 'Fixed, reusable procedural flows extracted from the selected doctrine graph. Each step shows its linked authority, verification status, and any firm SOP instruction layered on top.')}
       <div class="chip-row">${S.flows.map(f => `<button class="chip ${f.flow_id === flow.flow_id ? 'active' : ''}" data-flow="${f.flow_id}">${esc(f.title)}</button>`).join('')}</div>
       <div class="card" style="background:var(--parchment);border-style:dashed;">
         <div class="card-top"><span class="card-title">${esc(flow.title)}</span>${versionBadge('1.0')}
@@ -310,7 +448,7 @@
         </div>
         <div class="card-body">${esc(flow.description || '')}</div>
       </div>
-      ${flow.steps.map((sid, i) => renderStepCard(sid, i + 1)).join('')}
+      ${(flow.steps || []).map((sid, i) => renderStepCard(sid, i + 1)).join('')}
     `;
     root().querySelectorAll('[data-flow]').forEach(b => b.addEventListener('click', () => { S.selectedFlowId = b.dataset.flow; renderView(); }));
     wireCards();
@@ -327,7 +465,7 @@
       <div class="card selectable" data-sel="node:${stepId}" data-card="node:${stepId}">
         <div class="card-top">
           <span class="card-num">${num}</span>
-          <span class="card-title">${esc(n.label.replace(/^.*?Flow:\s*/, ''))}</span>
+          <span class="card-title">${esc((n.label || n.id).replace(/^.*?Flow:\s*/, ''))}</span>
           <span class="card-badges">
             ${used ? '<span class="badge badge-verified">In current trace</span>' : ''}
             ${n.verification_status ? badge(n.verification_status) : ''}
@@ -346,7 +484,7 @@
   function viewDoctrine() {
     const sections = S.nodes.filter(n => n.type === 'section_header').sort((a, b) => (a.section || '').localeCompare(b.section || ''));
     root().innerHTML = `
-      ${viewHeader('Doctrine map', 'Doctrine by section', 'The base legal graph: issues, statutes, case seeds, and practice directions grouped by procedural section. Click any item to inspect its extracted principle and source trail.')}
+      ${viewHeader('Doctrine map', S.domainInfo?.title || 'Doctrine by section', 'The base legal graph: issues, statutes, case seeds, and practice directions grouped by section. Click any item to inspect its extracted principle and source trail.')}
       ${sections.map(sec => {
         const issues = S.nodes.filter(n => n.type === 'legal_issue' && n.section === sec.section)
           .sort((a, b) => (a.subsection || '').localeCompare(b.subsection || ''));
@@ -378,7 +516,7 @@
 
   // — Tasks —
   function viewTasks() {
-    const tasks = S.firm.demo_tasks || [];
+    const tasks = currentDomainTasks();
     root().innerHTML = `
       ${viewHeader('Task runner', 'Matter tasks', 'Run an AI task only through an approved flow, firm SOP, and template. The execution trace records exactly which authority, SOP block, and clause each output relied on — and where human review is required.')}
       ${tasks.length ? tasks.map(t => {
@@ -396,7 +534,7 @@
           </div>
           <div style="margin-top:12px"><button class="run-btn" data-run="${esc(t.task_id)}">Run task (demo)</button></div>
         </div>`;
-      }).join('') : emptyState('No firm tasks configured', 'Connect the firm overlay to define matter tasks bound to approved flows and SOPs.')}
+      }).join('') : emptyState('No firm tasks configured for this domain', 'The restored public domain pack is available. Add a firm overlay to define matter tasks bound to its flows, SOPs, and templates.')}
       <div id="trace-root"></div>
     `;
     root().querySelectorAll('[data-run]').forEach(b => b.addEventListener('click', () => runTask(b.dataset.run)));
@@ -412,13 +550,13 @@
 
     const usedIds = new Set();
     const rail = [];
-    (flow ? flow.steps : []).forEach(sid => {
+    (flow ? (flow.steps || []) : []).forEach(sid => {
       const n = S.nodeMap[sid]; if (!n) return;
       usedIds.add(sid);
       const auths = authoritiesForStep(sid);
       auths.forEach(a => usedIds.add(a.id));
       rail.push({
-        kind: 'Flow step', label: n.label.replace(/^.*?Flow:\s*/, ''),
+        kind: 'Flow step', label: (n.label || n.id).replace(/^.*?Flow:\s*/, ''),
         detail: auths.length ? 'Authority: ' + auths.map(a => a.label).join('; ') : 'No direct authority at this step',
         id: sid,
       });
@@ -469,7 +607,7 @@
 
   // — Firm playbooks —
   function viewPlaybooks() {
-    const sops = S.firm.sops || [];
+    const sops = currentDomainSops();
     root().innerHTML = `
       ${viewHeader('Firm overlay', 'Firm playbooks', 'Your firm’s private layer on top of the public legal graph: versioned SOPs, preferred authorities, review gates. Editable and reviewable — AI tasks run only against approved versions.')}
       ${sops.length ? sops.map(s => `
@@ -484,14 +622,14 @@
             ${(s.linked_templates || []).map(tid => { const t = (S.firm.templates || []).find(x => x.template_id === tid); return t ? `<span class="link-pill"><span class="lp-kind">template</span>${esc(t.title)}</span>` : ''; }).join('')}
             ${(s.review_gates || []).map(g => `<span class="link-pill"><span class="lp-kind">gate</span>${esc(g.label)}</span>`).join('')}
           </div>
-        </div>`).join('') : emptyState('No firm SOPs yet', 'Add your first playbook: start from a public legal flow, then layer your firm’s checklist, preferred authorities, templates and review gates on top.')}
+        </div>`).join('') : emptyState('No firm SOPs configured for this domain', 'The public doctrine and flows are restored. Add domain-specific playbooks when the firm overlay for this practice area is ready.')}
     `;
     wireCards();
   }
 
   // — Templates —
   function viewTemplates() {
-    const tpls = S.firm.templates || [];
+    const tpls = currentDomainTemplates();
     root().innerHTML = `
       ${viewHeader('Firm overlay', 'Templates', 'Firm-approved drafting blocks. AI drafts pull clauses from here instead of inventing structure, so every output already speaks in the firm’s voice.')}
       ${tpls.length ? tpls.map(t => `
@@ -500,7 +638,7 @@
             <span class="card-badges">${badge(t.status)} ${versionBadge(t.version)}</span></div>
           <div class="card-body" style="color:var(--faded)">updated ${esc(t.last_updated)} · ${t.clauses.length} clauses</div>
           <div class="card-links">${t.clauses.map(c => `<span class="link-pill"><span class="lp-kind">clause</span>${esc(c.title)}</span>`).join('')}</div>
-        </div>`).join('') : emptyState('No templates yet', 'Upload or draft firm templates so AI tasks can pull approved clauses directly.')}
+        </div>`).join('') : emptyState('No templates configured for this domain', 'The restored flows can still be inspected. Add templates when you want AI task runs for this practice area.')}
     `;
     wireCards();
   }
@@ -520,7 +658,7 @@
             <td>${k === 'case_seed' ? badge('unverified_case_seed') : k === 'statute' ? badge('needs_official_source_verification') : badge('not_product_answer_layer')}</td>
           </tr>`).join('')}
           <tr><td>Edges</td><td class="mono">${S.edges.length}</td><td>${badge('not_product_answer_layer')}</td></tr>
-          <tr><td>Firm SOPs</td><td class="mono">${(S.firm.sops || []).length}</td><td>${badge('approved', 'where marked')}</td></tr>
+          <tr><td>Firm SOPs</td><td class="mono">${currentDomainSops().length}</td><td>${badge('approved', 'where marked')}</td></tr>
         </tbody>
       </table>
       <div class="view-eyebrow" style="margin-bottom:10px">Case seeds awaiting HKLII audit</div>
@@ -562,14 +700,20 @@
         const hay = (n.label + ' ' + (n.summary || '') + ' ' + n.id).toLowerCase();
         if (hay.includes(q)) items.push({ kind: 'node', id: n.id, type: TYPE_LABEL[n.type] || n.type, label: n.label, sum: n.summary || '' });
       });
-      (S.firm.sops || []).forEach(s => {
+      currentDomainSops().forEach(s => {
         if ((s.title + ' ' + s.description).toLowerCase().includes(q)) items.push({ kind: 'sop', id: s.sop_id, type: 'Firm SOP', label: s.title, sum: s.description });
       });
-      (S.firm.templates || []).forEach(t => {
+      currentDomainTemplates().forEach(t => {
         if (t.title.toLowerCase().includes(q)) items.push({ kind: 'template', id: t.template_id, type: 'Template', label: t.title, sum: '' });
       });
       S.flows.forEach(f => {
         if ((f.title + ' ' + (f.description || '')).toLowerCase().includes(q)) items.push({ kind: 'flow', id: f.flow_id, type: 'Flow', label: f.title, sum: f.description || '' });
+      });
+      S.domains.forEach(d => {
+        const summary = S.domainSummaries[d.domain_id] || d;
+        if ((summary.title + ' ' + d.domain_id + ' ' + (summary.description || '')).toLowerCase().includes(q)) {
+          items.push({ kind: 'domain', id: d.domain_id, type: 'Domain', label: summary.title || d.title, sum: summary.description || d.domain_id });
+        }
       });
       items = items.slice(0, 12);
       results.innerHTML = items.length
@@ -583,7 +727,8 @@
       results.querySelectorAll('[data-i]').forEach(b => b.addEventListener('click', () => {
         const it = items[+b.dataset.i];
         results.hidden = true; input.value = '';
-        if (it.kind === 'flow') { S.view = 'flows'; S.selectedFlowId = it.id; renderView(); setActiveNav(); }
+        if (it.kind === 'domain') switchDomain(it.id, 'flows');
+        else if (it.kind === 'flow') { S.view = 'flows'; S.selectedFlowId = it.id; renderView(); setActiveNav(); }
         else if (it.kind === 'sop') { S.view = 'playbooks'; renderView(); setActiveNav(); select('sop', it.id); }
         else if (it.kind === 'template') { S.view = 'templates'; renderView(); setActiveNav(); select('template', it.id); }
         else select('node', it.id);
@@ -595,6 +740,43 @@
     input.addEventListener('keydown', (e) => { if (e.key === 'Escape') { results.hidden = true; input.blur(); } });
     document.addEventListener('keydown', (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); input.focus(); }
+    });
+  }
+
+  // ── Domains ──
+  function renderDomainSelect() {
+    const select = $('#domain-select');
+    if (!select) return;
+    select.innerHTML = S.domains.map(d => {
+      const summary = S.domainSummaries[d.domain_id] || d;
+      return `<option value="${esc(d.domain_id)}">${esc(summary.title || d.title)}</option>`;
+    }).join('');
+    select.value = S.selectedDomainId || '';
+  }
+
+  function setupDomainSelect() {
+    const select = $('#domain-select');
+    if (!select) return;
+    select.addEventListener('change', () => switchDomain(select.value, 'flows'));
+  }
+
+  function switchDomain(domainId, nextView) {
+    if (!domainId || domainId === S.selectedDomainId && S.nodes.length) {
+      if (nextView) { S.view = nextView; setActiveNav(); renderView(); }
+      return;
+    }
+    root().innerHTML = emptyState('Loading domain', 'Fetching the restored graph pack and flow registry.');
+    loadDomain(domainId).then(() => {
+      S.view = nextView || S.view || 'flows';
+      setActiveNav();
+      renderView();
+      renderInspector();
+    }).catch(err => {
+      console.error(err);
+      fallbackData();
+      indexData();
+      renderStatus();
+      root().innerHTML = emptyState('Could not load domain', err.message || 'The selected graph pack is unreachable.');
     });
   }
 
@@ -617,23 +799,46 @@
   function renderFirmCard() {
     const p = S.firm.firm_profile || {};
     $('#firm-name').textContent = p.name || '—';
-    $('#firm-meta').innerHTML = esc((p.practice_areas || []).join(' · ')) + (p.review_policy ? `<br>${esc(p.review_policy)}` : '') + (p.overlay_version ? `<br>Overlay v${esc(p.overlay_version)}` : '');
+    $('#firm-meta').innerHTML =
+      `<strong>${esc(S.domainInfo?.title || 'Selected domain')}</strong>` +
+      `<br>${currentDomainSops().length} SOPs · ${currentDomainTemplates().length} templates in this domain` +
+      (p.review_policy ? `<br>${esc(p.review_policy)}` : '') +
+      (p.overlay_version ? `<br>Overlay v${esc(p.overlay_version)}` : '');
   }
 
   function renderStatus() {
-    $('#status-data').textContent = S.dataSource === 'live' ? 'Data: live domain pack' : 'Data: demo fallback (pack unreachable)';
-    $('#status-counts').textContent = `${S.nodes.length} nodes · ${S.edges.length} edges · ${S.flows.length} flows · ${(S.firm.sops || []).length} SOPs · ${(S.firm.templates || []).length} templates`;
+    $('#status-data').textContent = S.dataSource === 'live' ? `Data: ${S.domainInfo?.title || 'live domain pack'}` : 'Data: demo fallback (pack unreachable)';
+    $('#status-counts').textContent = `${S.nodes.length} nodes · ${S.edges.length} edges · ${S.flows.length} flows · ${currentDomainSops().length} SOPs · ${currentDomainTemplates().length} templates`;
   }
 
   // ── Boot ──
-  Promise.allSettled([loadAll(), loadFirm()]).then(([dataRes, firmRes]) => {
-    if (dataRes.status === 'rejected' || !S.nodes.length) fallbackData();
+  Promise.allSettled([loadRegistry(), loadFirm()]).then(([registryRes, firmRes]) => {
     if (firmRes.status === 'rejected' || !S.firm) fallbackFirm();
+    if (registryRes.status === 'rejected' || !S.domains.length) {
+      S.domains = [{ domain_id: DEFAULT_DOMAIN_ID, title: 'Hong Kong Criminal Procedure', path: DEFAULT_DOMAIN_ID + '/domain.json' }];
+      S.selectedDomainId = DEFAULT_DOMAIN_ID;
+    }
+    setupNav();
+    setupSearch();
+    setupDomainSelect();
+    renderDomainSelect();
+    return loadDomain(S.selectedDomainId || DEFAULT_DOMAIN_ID);
+  }).then(() => {
+    if (!S.nodes.length) fallbackData();
     indexData();
     renderFirmCard();
     renderStatus();
+    renderView();
+  }).catch(err => {
+    console.error(err);
+    fallbackData();
+    fallbackFirm();
+    indexData();
     setupNav();
     setupSearch();
+    setupDomainSelect();
+    renderFirmCard();
+    renderStatus();
     renderView();
   });
 

@@ -1,0 +1,17 @@
+{
+  "section_id": "03",
+  "domain_id": "equity_trusts_hk",
+  "edges": [
+    { "from": "equity_charitable_trusts", "to": "equity_pemsel_heads", "relationship": "has_subtopic" },
+    { "from": "equity_charitable_trusts", "to": "equity_cy_pres", "relationship": "has_subtopic" },
+    { "from": "equity_charitable_trusts", "to": "equity_parens_patriae", "relationship": "has_subtopic" },
+    { "from": "equity_pemsel_heads", "to": "equity_public_benefit", "relationship": "has_subtopic" },
+    { "from": "equity_pemsel_heads", "to": "equity_exclusive_charitability", "relationship": "has_subtopic" },
+    { "from": "equity_public_benefit", "to": "case_gilmour", "relationship": "case_seed" },
+    { "from": "equity_public_benefit", "to": "case_dingle", "relationship": "case_seed" },
+    { "from": "equity_exclusive_charitability", "to": "case_to_kan_chi", "relationship": "case_seed" },
+    { "from": "equity_cy_pres", "to": "case_sj_joseph_lo", "relationship": "case_seed" },
+    { "from": "equity_parens_patriae", "to": "case_sj_joseph_lo", "relationship": "case_seed" },
+    { "from": "equity_charitable_trusts", "to": "gap_verify_hk_charitable_cases", "relationship": "has_subtopic" }
+  ]
+}

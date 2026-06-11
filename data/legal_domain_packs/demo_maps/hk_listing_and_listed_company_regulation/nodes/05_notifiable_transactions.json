@@ -1,0 +1,207 @@
+{
+  "section_id": "05",
+  "section_title": "Notifiable Transactions",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "nodes": [
+    {
+      "id": "notifiable_transactions",
+      "type": "section_header",
+      "label": "Notifiable Transactions",
+      "summary": "Classification and requirements for notifiable transactions under MBL Chapter 14, including the percentage ratio tests and corresponding disclosure and approval obligations.",
+      "section": "05"
+    },
+    {
+      "id": "transaction_classification",
+      "type": "legal_issue",
+      "label": "Transaction Classification Framework",
+      "summary": "Transactions are classified by percentage ratios: discloseable (5-25%), major (25-100%), and very substantial (100%+). Each classification triggers different announcement, circular, and shareholder approval requirements.",
+      "subsection": "05.01",
+      "subtopic": "Classification",
+      "section": "05",
+      "listing_rule_refs": ["mbl_14_06", "mbl_14_07", "mbl_14_08", "mbl_14_22"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_14_06",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14.06 — Discloseable Transaction",
+      "summary": "A transaction where one or more percentage ratios exceed 5% but are less than 25%. Requires an announcement, but no shareholder approval.",
+      "section": "05",
+      "rule_chapter": "14",
+      "rule_number": "14.06",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_14_07",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14.07 — Major Transaction",
+      "summary": "A transaction where any percentage ratio exceeds 25% but is less than 100%. Requires announcement, circular, and shareholder approval.",
+      "section": "05",
+      "rule_chapter": "14",
+      "rule_number": "14.07",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_14_08",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14.08 — Very Substantial Transaction",
+      "summary": "A transaction where any percentage ratio is 100% or more. Requires announcement, circular, and shareholder approval; effectively a reverse takeover may be treated as a new listing.",
+      "section": "05",
+      "rule_chapter": "14",
+      "rule_number": "14.08",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_14_22",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14.22 — Aggregation of Transactions",
+      "summary": "Transactions completed within 12 months with the same counterparty or involving the same asset must be aggregated for classification purposes.",
+      "section": "05",
+      "rule_chapter": "14",
+      "rule_number": "14.22",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "percentage_ratios",
+      "type": "legal_issue",
+      "label": "Percentage Ratio Tests",
+      "summary": "The five percentage ratios used for classification: assets ratio, profits ratio, revenue ratio, consideration ratio, and equity capital ratio (MBL Rule 14.04(9)).",
+      "subsection": "05.02",
+      "subtopic": "Percentage Ratios",
+      "section": "05",
+      "listing_rule_refs": ["mbl_14_04"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_14_04",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14.04(9) — Percentage Ratios Definition",
+      "summary": "Defines the five percentage ratio tests: assets, profits, revenue, consideration, and equity capital.",
+      "section": "05",
+      "rule_chapter": "14",
+      "rule_number": "14.04(9)",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "shareholder_approval",
+      "type": "legal_issue",
+      "label": "Shareholder Approval Requirements",
+      "summary": "Major and very substantial transactions require shareholder approval. Interested parties (including controlling shareholders and their associates) must abstain from voting.",
+      "subsection": "05.03",
+      "subtopic": "Shareholder Approval",
+      "section": "05",
+      "listing_rule_refs": ["mbl_14_40", "mbl_14_42"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_14_40",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14.40 — Voting Requirements",
+      "summary": "Shareholder approval must be obtained at a general meeting; any controlling shareholder and its associates must abstain.",
+      "section": "05",
+      "rule_chapter": "14",
+      "rule_number": "14.40",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_14_42",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14.42 — Financial Information",
+      "summary": "A circular for a major or very substantial transaction must include accountants' reports and pro forma financial information.",
+      "section": "05",
+      "rule_chapter": "14",
+      "rule_number": "14.42",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "notifiable_flow_start",
+      "type": "flow_step",
+      "label": "Calculate Percentage Ratios",
+      "summary": "Step 1: Calculate all five percentage ratios to determine transaction classification.",
+      "section": "05"
+    },
+    {
+      "id": "notifiable_flow_step2",
+      "type": "flow_step",
+      "label": "Classify and Determine Requirements",
+      "summary": "Step 2: Classify the transaction; determine whether announcement only, or announcement + circular + shareholder approval is required.",
+      "section": "05"
+    },
+    {
+      "id": "notifiable_flow_step3",
+      "type": "flow_step",
+      "label": "Draft and Publish Announcement",
+      "summary": "Step 3: Draft announcement with prescribed disclosures, publish via HKEX.",
+      "section": "05"
+    },
+    {
+      "id": "notifiable_flow_step4",
+      "type": "flow_step",
+      "label": "Circular and Shareholder Meeting (if applicable)",
+      "summary": "Step 4: For major/very substantial transactions, dispatch circular, convene general meeting, and obtain approval.",
+      "section": "05"
+    },
+    {
+      "id": "determine_transaction_type",
+      "type": "flow_step",
+      "label": "Determine Transaction Type",
+      "summary": "Step 1: Identify the nature of the transaction (acquisition, disposal, very substantial disposal, very substantial acquisition).",
+      "section": "05"
+    },
+    {
+      "id": "calculate_size_tests",
+      "type": "flow_step",
+      "label": "Calculate Size Tests",
+      "summary": "Step 2: Calculate all five percentage ratios (assets, profits, revenue, consideration, equity capital).",
+      "section": "05"
+    },
+    {
+      "id": "classify_transaction",
+      "type": "flow_step",
+      "label": "Classify Transaction",
+      "summary": "Step 3: Classify based on highest percentage ratio: share transaction (<5%), discloseable (5-25%), major (25-100%), or very substantial (>=100%).",
+      "section": "05"
+    },
+    {
+      "id": "check_aggregation_requirements",
+      "type": "flow_step",
+      "label": "Check Aggregation Requirements",
+      "summary": "Step 4: Check whether transactions within 12 months with same counterparty must be aggregated (LR 14.22-14.23).",
+      "section": "05"
+    },
+    {
+      "id": "apply_disclosure_and_approval_rules",
+      "type": "flow_step",
+      "label": "Apply Disclosure and Approval Rules",
+      "summary": "Step 5: Apply appropriate disclosure and approval requirements based on classification.",
+      "section": "05"
+    },
+    {
+      "id": "prepare_announcement_or_circular",
+      "type": "flow_step",
+      "label": "Prepare Announcement or Circular",
+      "summary": "Step 6: Draft and publish announcement; for major/very substantial transactions, prepare circular.",
+      "section": "05"
+    },
+    {
+      "id": "convene_shareholder_meeting_if_required",
+      "type": "flow_step",
+      "label": "Convene Shareholder Meeting (if required)",
+      "summary": "Step 7: For major/very substantial transactions, convene general meeting and obtain shareholder approval.",
+      "section": "05"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "section_id": "08",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "edges": [
+    { "from": "financial_reporting", "to": "annual_reporting", "relationship": "has_subtopic" },
+    { "from": "financial_reporting", "to": "preliminary_results", "relationship": "has_subtopic" },
+    { "from": "financial_reporting", "to": "audit_committee", "relationship": "has_subtopic" },
+    { "from": "financial_reporting", "to": "shareholder_meetings", "relationship": "has_subtopic" },
+    { "from": "financial_reporting", "to": "annual_report_dispatch", "relationship": "has_subtopic" },
+    { "from": "financial_reporting", "to": "financial_reporting_profit_warning", "relationship": "has_subtopic" },
+    { "from": "annual_reporting", "to": "mbl_13_40", "relationship": "listing_rule_anchor" },
+    { "from": "annual_reporting", "to": "mbl_13_41", "relationship": "listing_rule_anchor" },
+    { "from": "annual_reporting", "to": "co_s359", "relationship": "statutory_anchor" },
+    { "from": "preliminary_results", "to": "mbl_13_49", "relationship": "listing_rule_anchor" },
+    { "from": "audit_committee", "to": "mbl_3_23", "relationship": "listing_rule_anchor" },
+    { "from": "audit_committee", "to": "mbl_3_24", "relationship": "listing_rule_anchor" },
+    { "from": "shareholder_meetings", "to": "mbl_13_39", "relationship": "listing_rule_anchor" },
+    { "from": "shareholder_meetings", "to": "co_s584", "relationship": "statutory_anchor" },
+    { "from": "annual_report_dispatch", "to": "mbl_13_44", "relationship": "listing_rule_anchor" },
+    { "from": "annual_report_dispatch", "to": "mbl_13_45", "relationship": "listing_rule_anchor" },
+    { "from": "financial_reporting_profit_warning", "to": "mbl_13_09_profit_warning", "relationship": "listing_rule_anchor" }
+  ]
+}

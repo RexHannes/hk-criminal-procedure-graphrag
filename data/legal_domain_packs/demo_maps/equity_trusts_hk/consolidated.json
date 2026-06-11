@@ -1,0 +1,75 @@
+{
+  "domain_id": "equity_trusts_hk",
+  "title": "Hong Kong Law of Equity and Trusts",
+  "version": "0.1.0",
+  "last_updated": "2026-06-03",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "needs_official_source_verification": true,
+    "authority_status": "unverified_case_seed"
+  },
+  "sections": [
+    {
+      "id": "01",
+      "title": "Fundamentals and Maxims of Equity",
+      "node_file": "nodes/01_fundamentals_maxims.json",
+      "edge_file": "edges/01_fundamentals_maxims.json"
+    },
+    {
+      "id": "02",
+      "title": "Express Trusts and Their Creation",
+      "node_file": "nodes/02_express_trusts.json",
+      "edge_file": "edges/02_express_trusts.json"
+    },
+    {
+      "id": "03",
+      "title": "Charitable Trusts",
+      "node_file": "nodes/03_charitable_trusts.json",
+      "edge_file": "edges/03_charitable_trusts.json"
+    },
+    {
+      "id": "04",
+      "title": "Resulting Trusts",
+      "node_file": "nodes/04_resulting_trusts.json",
+      "edge_file": "edges/04_resulting_trusts.json"
+    },
+    {
+      "id": "05",
+      "title": "Constructive Trusts",
+      "node_file": "nodes/05_constructive_trusts.json",
+      "edge_file": "edges/05_constructive_trusts.json"
+    },
+    {
+      "id": "06",
+      "title": "Trustee Duties, Powers and Liabilities",
+      "node_file": "nodes/06_trustee_duties.json",
+      "edge_file": "edges/06_trustee_duties.json"
+    },
+    {
+      "id": "07",
+      "title": "Beneficiary Rights and Tracing",
+      "node_file": "nodes/07_beneficiary_rights_tracing.json",
+      "edge_file": "edges/07_beneficiary_rights_tracing.json"
+    },
+    {
+      "id": "08",
+      "title": "Equitable Defences, Remedies and Procedure",
+      "node_file": "nodes/08_defences_remedies.json",
+      "edge_file": "edges/08_defences_remedies.json"
+    },
+    {
+      "id": "09",
+      "title": "Statutes, Authorities and Statutory Framework",
+      "node_file": "nodes/09_statutes_authorities.json",
+      "edge_file": "edges/09_statutes_authorities.json"
+    },
+    {
+      "id": "10",
+      "title": "Flows, Gaps and Audit Trail",
+      "node_file": "nodes/10_flows_gaps.json",
+      "edge_file": "edges/10_flows_gaps.json"
+    }
+  ],
+  "flows_file": "flows.json"
+}

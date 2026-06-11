@@ -1,0 +1,215 @@
+{
+  "section_id": "08",
+  "section_title": "Financial Reporting, Audit & Shareholder Communications",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "nodes": [
+    {
+      "id": "financial_reporting",
+      "type": "section_header",
+      "label": "Financial Reporting, Audit & Shareholder Communications",
+      "summary": "Financial reporting obligations, audit requirements, preliminary results announcements, annual and interim reports, shareholder meetings, and communication requirements.",
+      "section": "08"
+    },
+    {
+      "id": "annual_reporting",
+      "type": "legal_issue",
+      "label": "Annual and Interim Reporting",
+      "summary": "Listed companies must publish annual and interim financial reports within prescribed timeframes. Annual reports must be dispatched within 4 months of financial year-end.",
+      "subsection": "08.01",
+      "subtopic": "Reporting Timelines",
+      "section": "08",
+      "listing_rule_refs": ["mbl_13_40", "mbl_13_41"],
+      "statute_refs": ["co_s359"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_13_40",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 13.40 — Annual Report Deadline",
+      "summary": "Annual report must be dispatched within 4 months of the end of the financial year.",
+      "section": "08",
+      "rule_chapter": "13",
+      "rule_number": "13.40",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_13_41",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 13.41 — Interim Report Deadline",
+      "summary": "Interim report must be published within 2 months of the end of the interim period.",
+      "section": "08",
+      "rule_chapter": "13",
+      "rule_number": "13.41",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s359",
+      "type": "statute",
+      "label": "Companies Ordinance s.359 — Financial Reporting",
+      "summary": "Companies must prepare annual financial statements in accordance with accounting standards.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "preliminary_results",
+      "type": "legal_issue",
+      "label": "Preliminary Results Announcement",
+      "summary": "Listed companies must publish preliminary results announcements before publishing the full annual report. The announcement must contain sufficient information for investors.",
+      "subsection": "08.02",
+      "subtopic": "Preliminary Results",
+      "section": "08",
+      "listing_rule_refs": ["mbl_13_49"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_13_49",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 13.49 — Preliminary Announcement",
+      "summary": "Preliminary results announcement must be published as soon as reasonably practicable after the board approves the financial statements.",
+      "section": "08",
+      "rule_chapter": "13",
+      "rule_number": "13.49",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "audit_committee",
+      "type": "legal_issue",
+      "label": "Audit Committee Responsibilities",
+      "summary": "The audit committee must oversee the relationship with external auditors, review financial statements, and monitor internal controls and risk management.",
+      "subsection": "08.03",
+      "subtopic": "Audit Committee",
+      "section": "08",
+      "listing_rule_refs": ["mbl_3_23", "mbl_3_24"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "shareholder_meetings",
+      "type": "legal_issue",
+      "label": "AGM / EGM / Voting / Poll",
+      "summary": "Listed companies must hold an AGM within 6 months of the financial year-end. EGMs may be convened as needed. Poll voting is required for certain resolutions.",
+      "subsection": "08.04",
+      "subtopic": "Shareholder Meetings",
+      "section": "08",
+      "listing_rule_refs": ["mbl_13_39"],
+      "statute_refs": ["co_s584"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_13_39",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 13.39 — AGM Requirements",
+      "summary": "AGM must be held within 6 months of the end of the financial year.",
+      "section": "08",
+      "rule_chapter": "13",
+      "rule_number": "13.39",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s584",
+      "type": "statute",
+      "label": "Companies Ordinance s.584 — AGM Requirements",
+      "summary": "Companies must hold an AGM within 6 months of the end of the financial year.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "annual_report_dispatch",
+      "type": "legal_issue",
+      "label": "Annual Report Dispatch and Shareholder Communication",
+      "summary": "Listed companies must dispatch annual and interim reports to shareholders. The reports must be available on the company's website and the HKEX website.",
+      "subsection": "08.05",
+      "subtopic": "Report Dispatch",
+      "section": "08",
+      "listing_rule_refs": ["mbl_13_44", "mbl_13_45"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_13_44",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 13.44 — Report Dispatch",
+      "summary": "Annual and interim reports must be dispatched to shareholders at least 21 days before the AGM or EGM.",
+      "section": "08",
+      "rule_chapter": "13",
+      "rule_number": "13.44",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_13_45",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 13.45 — Website Publication",
+      "summary": "Annual and interim reports must be published on the company's website and the HKEX website.",
+      "section": "08",
+      "rule_chapter": "13",
+      "rule_number": "13.45",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "financial_reporting_profit_warning",
+      "type": "legal_issue",
+      "label": "Profit Warning",
+      "summary": "Listed companies must issue a profit warning if there is a reasonable possibility of a significant change in profit compared to the previous period. The warning must be issued as soon as practicable.",
+      "subsection": "08.06",
+      "subtopic": "Profit Warning",
+      "section": "08",
+      "listing_rule_refs": ["mbl_13_09_profit_warning"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_13_09_profit_warning",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 13.09 — Profit Warning",
+      "summary": "A listed company must issue a profit warning if there is a reasonable possibility of a significant change in profit.",
+      "section": "08",
+      "rule_chapter": "13",
+      "rule_number": "13.09",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "reporting_flow_start",
+      "type": "flow_step",
+      "label": "Preliminary Results Announcement",
+      "summary": "Step 1: Prepare and publish preliminary annual or interim results announcement within the applicable Listing Rule timetable.",
+      "section": "08"
+    },
+    {
+      "id": "reporting_flow_step2",
+      "type": "flow_step",
+      "label": "Audit and Board Approval",
+      "summary": "Step 2: Complete audit committee review, board approval, and audit sign-off where required.",
+      "section": "08"
+    },
+    {
+      "id": "reporting_flow_step3",
+      "type": "flow_step",
+      "label": "Dispatch Annual or Interim Report",
+      "summary": "Step 3: Dispatch reports and publish them on the issuer and HKEX websites.",
+      "section": "08"
+    },
+    {
+      "id": "reporting_flow_step4",
+      "type": "flow_step",
+      "label": "AGM and Shareholder Communication",
+      "summary": "Step 4: Convene AGM or relevant shareholder meeting and maintain ongoing shareholder communications.",
+      "section": "08"
+    }
+  ]
+}

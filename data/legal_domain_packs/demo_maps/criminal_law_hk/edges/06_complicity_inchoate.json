@@ -1,0 +1,76 @@
+{
+  "section_id": "06",
+  "domain_id": "criminal_law_hk",
+  "edges": [
+    {
+      "from": "crim_complicity_inchoate",
+      "to": "crim_secondary_liability",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_complicity_inchoate",
+      "to": "crim_joint_enterprise",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_joint_enterprise",
+      "to": "case_chan_wing_siu",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_joint_enterprise",
+      "to": "case_chan_kam_shing",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_joint_enterprise",
+      "to": "case_jogee",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_joint_enterprise",
+      "to": "crim_murder",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_complicity_inchoate",
+      "to": "crim_withdrawal_joint_enterprise",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_complicity_inchoate",
+      "to": "crim_conspiracy",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_conspiracy",
+      "to": "case_lai_man_ling",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_conspiracy",
+      "to": "cap200_s159a",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_complicity_inchoate",
+      "to": "crim_attempt",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_attempt",
+      "to": "cap200_s159g",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_complicity_inchoate",
+      "to": "crim_incitement",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_complicity_inchoate",
+      "to": "gap_verify_joint_enterprise_hk",
+      "relationship": "has_subtopic"
+    }
+  ]
+}

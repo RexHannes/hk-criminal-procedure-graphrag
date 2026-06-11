@@ -1,0 +1,224 @@
+{
+  "section_id": "09",
+  "section_title": "Capital Management & Corporate Actions",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "nodes": [
+    {
+      "id": "capital_management",
+      "type": "section_header",
+      "label": "Capital Management & Corporate Actions",
+      "summary": "Capital management activities including share buybacks, dividends, capital reduction, financial assistance, schemes of arrangement, and corporate actions requiring shareholder approval.",
+      "section": "09"
+    },
+    {
+      "id": "share_buybacks",
+      "type": "legal_issue",
+      "label": "Share Buybacks",
+      "summary": "Listed companies may repurchase their own shares subject to Listing Rules requirements, including general mandate, announcement, and disclosure obligations.",
+      "subsection": "09.01",
+      "subtopic": "Share Buybacks",
+      "section": "09",
+      "listing_rule_refs": ["mbl_10_06", "mbl_10_07"],
+      "statute_refs": ["co_s114"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_10_06",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 10.06 — Share Buyback Requirements",
+      "summary": "Share buybacks must be approved by shareholders and comply with the general mandate provisions.",
+      "section": "09",
+      "rule_chapter": "10",
+      "rule_number": "10.06",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_10_07",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 10.07 — Buyback Disclosure",
+      "summary": "Listed companies must announce share buybacks within the prescribed timeframes.",
+      "section": "09",
+      "rule_chapter": "10",
+      "rule_number": "10.07",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s114",
+      "type": "statute",
+      "label": "Companies Ordinance s.114 — Share Buybacks",
+      "summary": "Companies may repurchase their own shares with shareholder approval.",
+      "section": "09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "dividends",
+      "type": "legal_issue",
+      "label": "Dividends",
+      "summary": "Dividends must be declared by the board and approved by shareholders. Interim and final dividends are subject to Listing Rules requirements.",
+      "subsection": "09.02",
+      "subtopic": "Dividends",
+      "section": "09",
+      "listing_rule_refs": ["mbl_13_36"],
+      "statute_refs": ["co_s120"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_13_36",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 13.36 — Dividend Requirements",
+      "summary": "Dividends must be declared by the board and approved by shareholders at a general meeting.",
+      "section": "09",
+      "rule_chapter": "13",
+      "rule_number": "13.36",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s120",
+      "type": "statute",
+      "label": "Companies Ordinance s.120 — Dividend Distributions",
+      "summary": "Companies may only distribute dividends out of profits.",
+      "section": "09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "capital_reduction",
+      "type": "legal_issue",
+      "label": "Capital Reduction",
+      "summary": "Capital reduction requires special resolution and court confirmation. The reduction must not be prejudicial to creditors.",
+      "subsection": "09.03",
+      "subtopic": "Capital Reduction",
+      "section": "09",
+      "statute_refs": ["co_s141"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "co_s141",
+      "type": "statute",
+      "label": "Companies Ordinance s.141 — Capital Reduction",
+      "summary": "Capital reduction requires special resolution and court confirmation.",
+      "section": "09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "financial_assistance",
+      "type": "legal_issue",
+      "label": "Financial Assistance",
+      "summary": "Listed companies must comply with restrictions on providing financial assistance for the purchase of their own shares.",
+      "subsection": "09.04",
+      "subtopic": "Financial Assistance",
+      "section": "09",
+      "listing_rule_refs": ["mbl_10_08"],
+      "statute_refs": ["co_s275"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_10_08",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 10.08 — Financial Assistance Restrictions",
+      "summary": "Listed companies must not provide financial assistance for the purchase of their own shares without shareholder approval.",
+      "section": "09",
+      "rule_chapter": "10",
+      "rule_number": "10.08",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s275",
+      "type": "statute",
+      "label": "Companies Ordinance s.275 — Financial Assistance Restrictions",
+      "summary": "Companies must not provide financial assistance for the purchase of their own shares without shareholder approval.",
+      "section": "09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "schemes_of_arrangement",
+      "type": "legal_issue",
+      "label": "Schemes of Arrangement",
+      "summary": "Schemes of arrangement require court order and shareholder approval. The scheme must be approved by a majority in number representing 75% in value.",
+      "subsection": "09.05",
+      "subtopic": "Schemes of Arrangement",
+      "section": "09",
+      "listing_rule_refs": ["mbl_14_81"],
+      "statute_refs": ["co_s673"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_14_81",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 14.81 — Schemes of Arrangement",
+      "summary": "Schemes of arrangement require court order and shareholder approval at a meeting.",
+      "section": "09",
+      "rule_chapter": "14",
+      "rule_number": "14.81",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s673",
+      "type": "statute",
+      "label": "Companies Ordinance s.673 — Schemes of Arrangement",
+      "summary": "Schemes of arrangement require court order and approval by a majority in number representing 75% in value.",
+      "section": "09",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "rights_issues",
+      "type": "legal_issue",
+      "label": "Rights Issues / Placings / Open Offers",
+      "summary": "Capital raisings by way of rights issue, placing, or open offer require shareholder approval and compliance with Listing Rules.",
+      "subsection": "09.06",
+      "subtopic": "Capital Raisings",
+      "section": "09",
+      "listing_rule_refs": ["mbl_7_08", "mbl_7_12", "mbl_7_19"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_7_08",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 7.08 — Rights Issues",
+      "summary": "Rights issues must be offered to existing shareholders on a pro-rata basis.",
+      "section": "09",
+      "rule_chapter": "7",
+      "rule_number": "7.08",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_7_12",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 7.12 — Placings",
+      "summary": "Placings must comply with the requirements for non-rights issues.",
+      "section": "09",
+      "rule_chapter": "7",
+      "rule_number": "7.12",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_7_19",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 7.19 — Open Offers",
+      "summary": "Open offers must be offered to existing shareholders on a pro-rata basis.",
+      "section": "09",
+      "rule_chapter": "7",
+      "rule_number": "7.19",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    }
+  ]
+}

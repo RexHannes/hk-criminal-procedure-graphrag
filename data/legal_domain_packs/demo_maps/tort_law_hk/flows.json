@@ -1,0 +1,84 @@
+{
+  "domain_id": "tort_law_hk",
+  "flows": [
+    {
+      "flow_id": "negligence_claim_flow",
+      "title": "Negligence Claim Flow",
+      "description": "Flow from identifying a potential negligence claim through duty/breach/causation/remoteness analysis to defences and quantum.",
+      "steps": [
+        "negligence_flow_start",
+        "negligence_flow_step2",
+        "negligence_flow_step3",
+        "negligence_flow_step4"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "defamation_claim_flow",
+      "title": "Defamation Claim Flow",
+      "description": "Flow from identifying a defamatory statement through establishing elements and defences to remedies and trial.",
+      "steps": [
+        "defamation_flow_start",
+        "defamation_flow_step2",
+        "defamation_flow_step3"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "vicarious_liability_flow",
+      "title": "Vicarious Liability Assessment Flow",
+      "description": "Flow from identifying the tortfeasor through employment relationship and course of employment analysis to employer defences and indemnity.",
+      "steps": [
+        "vicarious_liability_flow_start",
+        "vicarious_liability_flow_step2",
+        "vicarious_liability_flow_step3",
+        "vicarious_liability_flow_step4"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "occupiers_liability_flow",
+      "title": "Occupiers' Liability Claim Flow",
+      "description": "Flow from identifying the occupier and entrant category through breach and damage analysis to defences.",
+      "steps": [
+        "occupiers_liability_flow_start",
+        "occupiers_liability_flow_step2",
+        "occupiers_liability_flow_step3"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "nuisance_rylands_flow",
+      "title": "Nuisance and Rylands v Fletcher Claim Flow",
+      "description": "Flow from identifying the type of interference through establishing elements to defences and remedies.",
+      "steps": [
+        "nuisance_rylands_flow_start",
+        "nuisance_rylands_flow_step2",
+        "nuisance_rylands_flow_step3"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "economic_torts_flow",
+      "title": "Economic Torts Claim Flow",
+      "description": "Flow from identifying economic harm through analysing each tort's elements to defences and available remedies.",
+      "steps": [
+        "economic_torts_flow_start",
+        "economic_torts_flow_step2",
+        "economic_torts_flow_step3"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "limitation_check_flow",
+      "title": "Limitation Period Check Flow",
+      "description": "Flow from identifying the applicable limitation period through accrual date and extension analysis to outcome determination.",
+      "steps": [
+        "limitation_flow_start",
+        "limitation_flow_step2",
+        "limitation_flow_step3"
+      ],
+      "verification_status": "needs_hklii_verification"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "domain_id": "criminal_law_hk",
+  "title": "Hong Kong Substantive Criminal Law",
+  "description": "Principle-flow map for Hong Kong substantive criminal law, covering criminal liability fundamentals, offences against the person, property and dishonesty offences, bribery and corruption, anti-money laundering, complicity, inchoate offences, and general defences.",
+  "legal_family": "common_law_criminal",
+  "sub_family": "substantive_criminal_law",
+  "source_priority": "hk_authorities_first_then_persuasive_common_law",
+  "intended_use": "Structured legal knowledge graph for HK substantive criminal law. Designed as a visual checklist, doctrine map, and issue navigator for students, practitioners, and AI retrieval. Not a legal advice or answer layer.",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "needs_official_source_verification": true,
+    "authority_status": "unverified_case_seed"
+  },
+  "utterance_disclaimer": "This map is a knowledge skeleton for verification and RAG use. It does not constitute legal advice. All case seeds require HKLII or official source verification before reliance.",
+  "node_type_colors": {
+    "domain": "#1a1a2e",
+    "section_header": "#2d4059",
+    "legal_issue": "#2266cc",
+    "statute": "#2d8a4e",
+    "case_seed": "#7b2d8e",
+    "flow_step": "#d97706",
+    "practice_direction": "#0e7490",
+    "gap": "#6b7280",
+    "cross_reference": "#9333ea",
+    "defence": "#b45309",
+    "remedy": "#be123c",
+    "statutory_scheme": "#047857",
+    "candidate_evidence": "#64748b"
+  },
+  "sections": [
+    {
+      "id": "01",
+      "title": "Fundamentals of Criminal Liability",
+      "file": "nodes/01_fundamentals.json"
+    },
+    {
+      "id": "02",
+      "title": "Offences Against the Person",
+      "file": "nodes/02_offences_against_person.json"
+    },
+    {
+      "id": "03",
+      "title": "Property and Dishonesty Offences",
+      "file": "nodes/03_property_dishonesty.json"
+    },
+    {
+      "id": "04",
+      "title": "Bribery and Corruption",
+      "file": "nodes/04_bribery_corruption.json"
+    },
+    {
+      "id": "05",
+      "title": "Anti-Money Laundering",
+      "file": "nodes/05_aml.json"
+    },
+    {
+      "id": "06",
+      "title": "Complicity and Inchoate Offences",
+      "file": "nodes/06_complicity_inchoate.json"
+    },
+    {
+      "id": "07",
+      "title": "General Defences",
+      "file": "nodes/07_defences.json"
+    },
+    {
+      "id": "08",
+      "title": "Statutes and Ordinances",
+      "file": "nodes/08_statutes.json"
+    }
+  ]
+}

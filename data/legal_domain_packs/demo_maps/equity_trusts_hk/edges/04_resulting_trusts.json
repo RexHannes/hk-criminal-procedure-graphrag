@@ -1,0 +1,20 @@
+{
+  "section_id": "04",
+  "domain_id": "equity_trusts_hk",
+  "edges": [
+    { "from": "equity_resulting_trusts", "to": "equity_resulting_nature", "relationship": "has_subtopic" },
+    { "from": "equity_resulting_trusts", "to": "equity_presumption_resulting", "relationship": "has_subtopic" },
+    { "from": "equity_resulting_trusts", "to": "equity_quistclose_trusts", "relationship": "has_subtopic" },
+    { "from": "equity_resulting_trusts", "to": "equity_hancock_watson", "relationship": "has_subtopic" },
+    { "from": "equity_presumption_resulting", "to": "equity_presumption_advancement", "relationship": "has_subtopic" },
+    { "from": "equity_presumption_resulting", "to": "equity_rebutting_presumptions", "relationship": "has_subtopic" },
+    { "from": "equity_resulting_nature", "to": "case_westdeutsche", "relationship": "case_seed" },
+    { "from": "equity_presumption_resulting", "to": "case_cheung_yuk_ying", "relationship": "case_seed" },
+    { "from": "equity_presumption_advancement", "to": "case_yau_kwong_chiu", "relationship": "case_seed" },
+    { "from": "equity_rebutting_presumptions", "to": "case_cheung_yuk_ying", "relationship": "case_seed" },
+    { "from": "equity_quistclose_trusts", "to": "case_twinsectra", "relationship": "case_seed" },
+    { "from": "equity_quistclose_trusts", "to": "case_prickly_bay", "relationship": "case_seed" },
+    { "from": "equity_hancock_watson", "to": "case_hancock", "relationship": "case_seed" },
+    { "from": "equity_resulting_trusts", "to": "gap_verify_hk_quistclose_cases", "relationship": "has_subtopic" }
+  ]
+}

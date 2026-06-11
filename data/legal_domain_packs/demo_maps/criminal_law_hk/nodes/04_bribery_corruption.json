@@ -1,0 +1,281 @@
+{
+  "section_id": "04",
+  "section_title": "Bribery and Corruption",
+  "domain_id": "criminal_law_hk",
+  "nodes": [
+    {
+      "id": "crim_bribery_corruption",
+      "doctrine_node_id": "criminal_law_hk.bribery_corruption",
+      "type": "section_header",
+      "label": "Bribery and Corruption",
+      "summary": "Prevention of Bribery Ordinance offences and misconduct in public office.",
+      "section": "04",
+      "verification_status": "book_seed_needs_case_and_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "textbook_seed_only",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_pobo_s3",
+      "doctrine_node_id": "criminal_law_hk.pobo.s3",
+      "type": "legal_issue",
+      "label": "POBO s.3 - Prescribed Officer Accepting Advantage",
+      "summary": "Public sector bribery seed: prescribed officer soliciting or accepting advantage without Chief Executive permission.",
+      "section": "04",
+      "subsection": "04.01",
+      "subtopic": "POBO s.3",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_ng_po_on"
+      ],
+      "statute_refs": [
+        "cap201_s3"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.pobo.s3",
+        "expected_query_terms": [
+          "pobo s.3 - prescribed officer accepting advantage"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_pobo_s4_s5",
+      "doctrine_node_id": "criminal_law_hk.pobo.s4.s5",
+      "type": "legal_issue",
+      "label": "POBO ss.4 and 5 - Public Servant Bribery",
+      "summary": "Bribery of public servant and bribery for official transactions.",
+      "section": "04",
+      "subsection": "04.01",
+      "subtopic": "POBO ss.4-5",
+      "source_basis": "book_seed",
+      "case_seeds": [],
+      "statute_refs": [
+        "cap201_s4",
+        "cap201_s5"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.pobo.s4.s5",
+        "expected_query_terms": [
+          "pobo ss.4 and 5 - public servant bribery"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_pobo_s10",
+      "doctrine_node_id": "criminal_law_hk.pobo.s10",
+      "type": "legal_issue",
+      "label": "POBO s.10 - Unexplained Wealth",
+      "summary": "Standard of living or control of resources disproportionate to official emoluments; reverse onus requires constitutional/source verification.",
+      "section": "04",
+      "subsection": "04.02",
+      "subtopic": "Unexplained Wealth",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_hui_kin_hong"
+      ],
+      "statute_refs": [
+        "cap201_s10"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.pobo.s10",
+        "expected_query_terms": [
+          "pobo s.10 - unexplained wealth"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_pobo_s9",
+      "doctrine_node_id": "criminal_law_hk.pobo.s9",
+      "type": "legal_issue",
+      "label": "POBO s.9 - Private Sector Corruption",
+      "summary": "Agent accepting advantages in relation to principal\u2019s affairs without permission.",
+      "section": "04",
+      "subsection": "04.03",
+      "subtopic": "Private Sector Corruption",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_chan_chi_wan",
+        "case_chan_kwok_keung"
+      ],
+      "statute_refs": [
+        "cap201_s9"
+      ],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.pobo.s9",
+        "expected_query_terms": [
+          "pobo s.9 - private sector corruption"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_misconduct_public_office",
+      "doctrine_node_id": "criminal_law_hk.misconduct.public.office",
+      "type": "legal_issue",
+      "label": "Misconduct in Public Office",
+      "summary": "Common law offence: public officer, wilful misconduct, serious abuse of public trust, no reasonable excuse.",
+      "section": "04",
+      "subsection": "04.04",
+      "subtopic": "Misconduct in Public Office",
+      "source_basis": "book_seed",
+      "case_seeds": [
+        "case_shum_kwok_sher",
+        "case_hui_rafael",
+        "case_tsang_yam_kuen"
+      ],
+      "statute_refs": [],
+      "cross_refs": [],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.misconduct.public.office",
+        "expected_query_terms": [
+          "misconduct in public office"
+        ],
+        "expected_authority_types": [
+          "HK_CFA",
+          "HK_CA",
+          "persuasive_common_law"
+        ]
+      },
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_ng_po_on",
+      "type": "case_seed",
+      "label": "HKSAR v Ng Po On",
+      "summary": "Seed POBO s.3 case.",
+      "section": "04",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_hui_kin_hong",
+      "type": "case_seed",
+      "label": "HKSAR v Hui Kin Hong",
+      "summary": "Seed POBO s.10 unexplained wealth case.",
+      "section": "04",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_chan_chi_wan",
+      "type": "case_seed",
+      "label": "HKSAR v Chan Chi Wan",
+      "summary": "Seed POBO s.9 case.",
+      "section": "04",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_chan_kwok_keung",
+      "type": "case_seed",
+      "label": "HKSAR v Chan Kwok Keung",
+      "summary": "Seed private sector corruption case.",
+      "section": "04",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_shum_kwok_sher",
+      "type": "case_seed",
+      "label": "Shum Kwok Sher v HKSAR (2002) 5 HKCFAR 381",
+      "summary": "Misconduct in public office elements.",
+      "section": "04",
+      "court": "CFA",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed",
+      "neutral_citation": "(2002) 5 HKCFAR 381"
+    },
+    {
+      "id": "case_hui_rafael",
+      "type": "case_seed",
+      "label": "HKSAR v Hui Rafael",
+      "summary": "Seed misconduct in public office case.",
+      "section": "04",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "case_tsang_yam_kuen",
+      "type": "case_seed",
+      "label": "HKSAR v Tsang Yam Kuen",
+      "summary": "Seed misconduct in public office case.",
+      "section": "04",
+      "court": "HK",
+      "jurisdiction": "HK",
+      "verification_status": "needs_hklii_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_case_seed",
+      "human_review_status": "unreviewed"
+    }
+  ]
+}

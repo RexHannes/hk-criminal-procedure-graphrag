@@ -1,0 +1,91 @@
+{
+  "section_id": "03",
+  "domain_id": "criminal_law_hk",
+  "edges": [
+    {
+      "from": "crim_property_dishonesty",
+      "to": "crim_theft",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_theft",
+      "to": "cap210_s2",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_property_dishonesty",
+      "to": "crim_theft_appropriation",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_theft_appropriation",
+      "to": "case_morris",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_property_dishonesty",
+      "to": "crim_theft_dishonesty",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_theft_dishonesty",
+      "to": "case_ghosh",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_theft_dishonesty",
+      "to": "case_ivey",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_theft_dishonesty",
+      "to": "case_lam_hin_fai",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_property_dishonesty",
+      "to": "crim_theft_intent_deprive",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_property_dishonesty",
+      "to": "crim_fraud",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_fraud",
+      "to": "case_chan_wai_lam",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_fraud",
+      "to": "cap210_s16a",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_property_dishonesty",
+      "to": "crim_criminal_damage",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_criminal_damage",
+      "to": "case_rv_g",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_criminal_damage",
+      "to": "case_sin_kam_wah",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_criminal_damage",
+      "to": "cap200_s60",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_property_dishonesty",
+      "to": "gap_verify_dishonesty_hk_post_ivey",
+      "relationship": "has_subtopic"
+    }
+  ]
+}

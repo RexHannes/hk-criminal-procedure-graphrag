@@ -1,0 +1,301 @@
+{
+  "section_id": "01",
+  "domain_id": "criminal_law_hk",
+  "edges": [
+    {
+      "from": "crim_law_fundamentals",
+      "to": "crim_actus_reus",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "case_miller",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "case_thabo_meli",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "case_le_brun",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "case_cheshire",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "case_hughes",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "case_blaue",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "case_lam_chiu_yin",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "crim_causation",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "crim_omissions",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_law_fundamentals",
+      "to": "crim_omissions",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_omissions",
+      "to": "case_miller",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_omissions",
+      "to": "crim_actus_reus",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_law_fundamentals",
+      "to": "crim_causation",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_causation",
+      "to": "case_cheshire",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_causation",
+      "to": "case_hughes",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_causation",
+      "to": "case_blaue",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_causation",
+      "to": "case_lam_chiu_yin",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_causation",
+      "to": "crim_actus_reus",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_causation",
+      "to": "crim_murder",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_law_fundamentals",
+      "to": "crim_single_transaction",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_single_transaction",
+      "to": "case_thabo_meli",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_single_transaction",
+      "to": "case_le_brun",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_single_transaction",
+      "to": "crim_actus_reus",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_single_transaction",
+      "to": "crim_mens_rea",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_law_fundamentals",
+      "to": "crim_mens_rea",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "case_woollin",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "case_li_defan",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "case_rv_g",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "case_sin_kam_wah",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "case_fagan",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "crim_intention",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "crim_recklessness",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "crim_transferred_malice",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_law_fundamentals",
+      "to": "crim_intention",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_intention",
+      "to": "case_woollin",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_intention",
+      "to": "case_li_defan",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_intention",
+      "to": "crim_mens_rea",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_intention",
+      "to": "crim_murder",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_law_fundamentals",
+      "to": "crim_recklessness",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_recklessness",
+      "to": "case_rv_g",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_recklessness",
+      "to": "case_sin_kam_wah",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_recklessness",
+      "to": "crim_mens_rea",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_law_fundamentals",
+      "to": "crim_transferred_malice",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_transferred_malice",
+      "to": "case_latimer",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_transferred_malice",
+      "to": "crim_mens_rea",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_law_fundamentals",
+      "to": "crim_strict_liability",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_strict_liability",
+      "to": "case_sweet_parsley",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_strict_liability",
+      "to": "case_gammon",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_strict_liability",
+      "to": "case_hin_lin_yee",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_strict_liability",
+      "to": "case_kulemesin",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_strict_liability",
+      "to": "crim_mens_rea",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "crim_law_fundamentals",
+      "to": "gap_verify_all_fundamentals",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "crim_omissions",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "crim_causation",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_actus_reus",
+      "to": "crim_single_transaction",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "crim_intention",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "crim_recklessness",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_mens_rea",
+      "to": "crim_transferred_malice",
+      "relationship": "has_subtopic"
+    }
+  ]
+}
