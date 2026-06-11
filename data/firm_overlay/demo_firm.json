@@ -1,0 +1,246 @@
+{
+  "firm_profile": {
+    "firm_id": "demo_litigation_firm",
+    "name": "Demo Litigation Firm",
+    "jurisdiction": "Hong Kong SAR",
+    "practice_areas": ["Criminal Procedure", "Employment", "Civil Litigation"],
+    "review_policy": "Partner review required before any external advice is issued.",
+    "overlay_version": "0.4.0",
+    "last_updated": "2026-06-10"
+  },
+  "sops": [
+    {
+      "sop_id": "sop_bail_application",
+      "title": "Criminal Bail Application SOP",
+      "practice_area": "Criminal Procedure",
+      "version": "1.2",
+      "status": "approved",
+      "approved_by": "Partner (Criminal)",
+      "last_updated": "2026-06-02",
+      "linked_flows": ["crim_proc_bail_flow"],
+      "linked_templates": ["tpl_bail_skeleton", "tpl_advice_memo"],
+      "description": "Firm-approved method for assessing and drafting bail applications and preliminary bail advice.",
+      "review_gates": [
+        {
+          "gate_id": "gate_bail_partner",
+          "label": "Partner review before filing or sending advice",
+          "trigger": "always",
+          "required": true
+        },
+        {
+          "gate_id": "gate_nsl_screen",
+          "label": "Senior partner sign-off where NSL Art.42 is engaged",
+          "trigger": "nsl_flag",
+          "required": true
+        }
+      ],
+      "blocks": [
+        {
+          "block_id": "blk_posture_first",
+          "title": "Procedural posture first",
+          "instruction": "Always identify the client's procedural posture (police bail, court bail, variation, revocation, bail pending appeal) before applying any bail principles. If facts are incomplete, produce an assumptions list and mark the advice as preliminary.",
+          "applies_to_steps": ["bail_flow_start"],
+          "version": "1.1"
+        },
+        {
+          "block_id": "blk_nsl_screen",
+          "title": "NSL screening",
+          "instruction": "Screen every bail matter for national security elements at intake. If NSL Art.42 may be engaged, flag the matter, apply the stricter threshold, and route through the senior partner gate before any client communication.",
+          "applies_to_steps": ["bail_flow_step2"],
+          "version": "1.0"
+        },
+        {
+          "block_id": "blk_preferred_authorities",
+          "title": "Preferred authority bundle",
+          "instruction": "Use the firm's verified bail authority bundle in this order: Cap 221 s.9D, s.9G factors, then leading CFA authority on NSL bail where applicable. Do not cite any case marked 'authority unverified' in client-facing documents.",
+          "applies_to_steps": ["bail_flow_step3", "bail_flow_step4"],
+          "version": "1.2"
+        },
+        {
+          "block_id": "blk_conditions_menu",
+          "title": "Conditions menu",
+          "instruction": "When proposing conditions, start from the firm's standard menu (cash/surety, travel documents, reporting, residence, non-contact) and record which conditions were offered and why.",
+          "applies_to_steps": ["bail_flow_step5"],
+          "version": "1.0"
+        },
+        {
+          "block_id": "blk_preliminary_marking",
+          "title": "Preliminary advice marking",
+          "instruction": "All first-pass advice produced through this flow is marked 'Preliminary — subject to partner review and source verification'. Never present a research-layer extraction as a final answer.",
+          "applies_to_steps": ["bail_flow_step6", "bail_flow_step7"],
+          "version": "1.1"
+        }
+      ],
+      "changelog": [
+        { "version": "1.2", "date": "2026-06-02", "by": "Partner (Criminal)", "note": "Tightened preferred authority ordering; unverified case seeds barred from client documents." },
+        { "version": "1.1", "date": "2026-05-18", "by": "Senior Associate", "note": "Added assumptions-list requirement and preliminary marking." },
+        { "version": "1.0", "date": "2026-05-02", "by": "Partner (Criminal)", "note": "Initial approved version." }
+      ]
+    },
+    {
+      "sop_id": "sop_indictment_review",
+      "title": "Indictment Review Checklist",
+      "practice_area": "Criminal Procedure",
+      "version": "0.9",
+      "status": "needs_review",
+      "approved_by": null,
+      "last_updated": "2026-06-08",
+      "linked_flows": ["crim_proc_indictment_flow"],
+      "linked_templates": [],
+      "description": "Draft checklist for reviewing indictments and charge sheets: duplicity, joinder, amendment, particulars.",
+      "review_gates": [
+        {
+          "gate_id": "gate_indictment_partner",
+          "label": "Partner approval of this SOP pending",
+          "trigger": "always",
+          "required": true
+        }
+      ],
+      "blocks": [
+        {
+          "block_id": "blk_duplicity_check",
+          "title": "Duplicity and joinder check",
+          "instruction": "Run the duplicity and joinder checks before drafting any objection. Record the rule relied on and the paragraph of authority for each objection raised.",
+          "applies_to_steps": [],
+          "version": "0.9"
+        }
+      ],
+      "changelog": [
+        { "version": "0.9", "date": "2026-06-08", "by": "Associate", "note": "Drafted from indictment flow; awaiting partner review." }
+      ]
+    },
+    {
+      "sop_id": "sop_advice_memo",
+      "title": "Advice Memo Drafting SOP",
+      "practice_area": "General",
+      "version": "2.1",
+      "status": "approved",
+      "approved_by": "Managing Partner",
+      "last_updated": "2026-05-25",
+      "linked_flows": [],
+      "linked_templates": ["tpl_advice_memo"],
+      "description": "House style for advice memos: structure, tone, scope statements, and how extracted authority is presented.",
+      "review_gates": [
+        {
+          "gate_id": "gate_memo_partner",
+          "label": "Partner review before external release",
+          "trigger": "always",
+          "required": true
+        }
+      ],
+      "blocks": [
+        {
+          "block_id": "blk_memo_structure",
+          "title": "Memo structure",
+          "instruction": "Every memo follows: heading block, scope and assumptions, executive answer, analysis with pinpoint sources, risk table, next steps. The executive answer never exceeds half a page.",
+          "applies_to_steps": [],
+          "version": "2.1"
+        },
+        {
+          "block_id": "blk_source_presentation",
+          "title": "Source presentation",
+          "instruction": "Every legal proposition in the analysis section carries a pinpoint anchor (section or paragraph). Propositions whose source is still verification-pending are shaded and listed in the risk table.",
+          "applies_to_steps": [],
+          "version": "2.0"
+        }
+      ],
+      "changelog": [
+        { "version": "2.1", "date": "2026-05-25", "by": "Managing Partner", "note": "Executive answer length cap; risk table mandatory." },
+        { "version": "2.0", "date": "2026-04-30", "by": "Managing Partner", "note": "Pinpoint anchoring made mandatory." }
+      ]
+    },
+    {
+      "sop_id": "sop_case_verification",
+      "title": "Case Law Verification SOP",
+      "practice_area": "General",
+      "version": "1.0",
+      "status": "approved",
+      "approved_by": "Knowledge Partner",
+      "last_updated": "2026-05-12",
+      "linked_flows": [],
+      "linked_templates": [],
+      "description": "Every case seed must be verified against HKLII (citation, holding, paragraph) before it may be cited externally.",
+      "review_gates": [],
+      "blocks": [
+        {
+          "block_id": "blk_hklii_verify",
+          "title": "HKLII verification rule",
+          "instruction": "A case in the research layer is a seed, not an authority. Before external citation: confirm the neutral citation on HKLII, confirm the proposition against the actual paragraph, and record the paragraph anchor. Until then the item stays marked 'Case audit required'.",
+          "applies_to_steps": [],
+          "version": "1.0"
+        }
+      ],
+      "changelog": [
+        { "version": "1.0", "date": "2026-05-12", "by": "Knowledge Partner", "note": "Initial approved version." }
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "template_id": "tpl_advice_memo",
+      "title": "Advice Memo Template",
+      "version": "2.1",
+      "status": "approved",
+      "last_updated": "2026-05-25",
+      "clauses": [
+        { "clause_id": "cl_heading", "title": "Heading block", "text": "Privileged & confidential. Prepared for [client] re [matter]. Preliminary — subject to partner review and source verification." },
+        { "clause_id": "cl_scope", "title": "Scope and assumptions", "text": "This memo addresses [question] only, on the facts summarised below. Assumptions made where instructions are incomplete are listed and flagged." },
+        { "clause_id": "cl_exec", "title": "Executive answer", "text": "[Direct answer in plain language, max half page, with confidence level and the controlling provision.]" },
+        { "clause_id": "cl_analysis", "title": "Analysis", "text": "[Issue-by-issue analysis. Every proposition carries a pinpoint anchor. Verification-pending sources shaded.]" },
+        { "clause_id": "cl_risk", "title": "Risk table", "text": "[Each open risk: source status, factual gap, adverse authority, procedural deadline.]" },
+        { "clause_id": "cl_next", "title": "Next steps", "text": "[Concrete actions, owner, and date. Partner review gate recorded here.]" }
+      ]
+    },
+    {
+      "template_id": "tpl_bail_skeleton",
+      "title": "Bail Application Skeleton",
+      "version": "1.0",
+      "status": "approved",
+      "last_updated": "2026-05-20",
+      "clauses": [
+        { "clause_id": "cl_bail_posture", "title": "Procedural posture", "text": "[Court, charge, custody status, prior bail history.]" },
+        { "clause_id": "cl_bail_grounds", "title": "Grounds", "text": "[s.9D presumption; address each s.9D(2) exception raised by prosecution with facts and authority.]" },
+        { "clause_id": "cl_bail_conditions", "title": "Proposed conditions", "text": "[From the firm conditions menu, with rationale for each.]" }
+      ]
+    },
+    {
+      "template_id": "tpl_client_care",
+      "title": "Client Care Letter",
+      "version": "1.3",
+      "status": "needs_review",
+      "last_updated": "2026-06-05",
+      "clauses": [
+        { "clause_id": "cl_cc_scope", "title": "Scope of engagement", "text": "[Matter scope, team, supervision, fee basis.]" }
+      ]
+    }
+  ],
+  "demo_tasks": [
+    {
+      "task_id": "task_bail_advice",
+      "title": "Draft preliminary bail advice",
+      "description": "Produce a preliminary advice memo on prospects of court bail for a defendant charged in the Magistrates' Court, using the firm's approved bail flow, SOP, and memo template.",
+      "flow_id": "crim_proc_bail_flow",
+      "sop_id": "sop_bail_application",
+      "template_id": "tpl_advice_memo",
+      "review_gate": "Partner review required before release"
+    },
+    {
+      "task_id": "task_indictment_check",
+      "title": "Review draft indictment for defects",
+      "description": "Run the indictment flow and the firm checklist against a draft indictment; produce an objections list with pinpoint authority.",
+      "flow_id": "crim_proc_indictment_flow",
+      "sop_id": "sop_indictment_review",
+      "template_id": null,
+      "review_gate": "SOP itself pending partner approval — output marked draft"
+    },
+    {
+      "task_id": "task_appeal_scan",
+      "title": "Scan conviction appeal grounds",
+      "description": "Walk the appeal-against-conviction flow to identify arguable grounds and the verification status of each supporting authority.",
+      "flow_id": "crim_proc_appeal_conviction_flow",
+      "sop_id": "sop_case_verification",
+      "template_id": "tpl_advice_memo",
+      "review_gate": "Partner review required before release"
+    }
+  ]
+}
