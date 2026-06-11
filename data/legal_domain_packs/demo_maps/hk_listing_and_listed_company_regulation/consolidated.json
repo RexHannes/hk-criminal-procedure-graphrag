@@ -1,0 +1,81 @@
+{
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "title": "Hong Kong Listing & Listed Company Regulation",
+  "version": "1.0.0",
+  "last_updated": "2026-06-02",
+  "legal_family": "statutory_regulatory",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_official_source_verification": true,
+    "authority_status": "unverified_seed"
+  },
+  "sections": [
+    {
+      "id": "01",
+      "title": "Listing Eligibility & Suitability",
+      "node_file": "nodes/01_listing_eligibility_suitability.json",
+      "edge_file": "edges/01_listing_eligibility_suitability.json"
+    },
+    {
+      "id": "02",
+      "title": "IPO Mechanics & Pre-IPO Structuring",
+      "node_file": "nodes/02_ipo_mechanics_pre_ipo_structuring.json",
+      "edge_file": "edges/02_ipo_mechanics_pre_ipo_structuring.json"
+    },
+    {
+      "id": "03",
+      "title": "Prospectus Regime & Liability",
+      "node_file": "nodes/03_prospectus_regime_liability.json",
+      "edge_file": "edges/03_prospectus_regime_liability.json"
+    },
+    {
+      "id": "04",
+      "title": "Continuing Disclosure & Inside Information",
+      "node_file": "nodes/04_continuing_disclosure.json",
+      "edge_file": "edges/04_continuing_disclosure.json"
+    },
+    {
+      "id": "05",
+      "title": "Notifiable Transactions",
+      "node_file": "nodes/05_notifiable_transactions.json",
+      "edge_file": "edges/05_notifiable_transactions.json"
+    },
+    {
+      "id": "06",
+      "title": "Connected Transactions",
+      "node_file": "nodes/06_connected_transactions.json",
+      "edge_file": "edges/06_connected_transactions.json"
+    },
+    {
+      "id": "07",
+      "title": "Board, Directors & Corporate Governance",
+      "node_file": "nodes/07_board_directors_cg.json",
+      "edge_file": "edges/07_board_directors_cg.json"
+    },
+    {
+      "id": "08",
+      "title": "Financial Reporting, Audit & Shareholder Communications",
+      "node_file": "nodes/08_financial_reporting_audit.json",
+      "edge_file": "edges/08_financial_reporting_audit.json"
+    },
+    {
+      "id": "09",
+      "title": "Capital Management & Corporate Actions",
+      "node_file": "nodes/09_capital_management.json",
+      "edge_file": "edges/09_capital_management.json"
+    },
+    {
+      "id": "10",
+      "title": "ESG, Sustainability & Climate Disclosure",
+      "node_file": "nodes/10_esg_sustainability.json",
+      "edge_file": "edges/10_esg_sustainability.json"
+    },
+    {
+      "id": "11",
+      "title": "Compliance, Waivers, Enforcement & Sanctions",
+      "node_file": "nodes/11_compliance_waivers_enforcement.json",
+      "edge_file": "edges/11_compliance_waivers_enforcement.json"
+    }
+  ],
+  "flows_file": "flows.json"
+}

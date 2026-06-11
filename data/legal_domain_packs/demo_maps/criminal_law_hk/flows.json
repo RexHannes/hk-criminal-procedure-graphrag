@@ -1,0 +1,88 @@
+{
+  "domain_id": "criminal_law_hk",
+  "flows": [
+    {
+      "flow_id": "crim_liability_flow",
+      "title": "Criminal Liability Flow",
+      "description": "General issue-spotting sequence for any criminal charge.",
+      "steps": [
+        "crim_actus_reus",
+        "crim_omissions",
+        "crim_causation",
+        "crim_mens_rea",
+        "crim_intention",
+        "crim_recklessness",
+        "crim_strict_liability",
+        "crim_single_transaction",
+        "crim_insanity"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "homicide_flow",
+      "title": "Homicide Flow",
+      "description": "Issue-spotting sequence for murder and manslaughter.",
+      "steps": [
+        "crim_murder",
+        "crim_causation",
+        "crim_intention",
+        "crim_voluntary_manslaughter",
+        "crim_involuntary_manslaughter",
+        "crim_unlawful_act_manslaughter",
+        "crim_gross_negligence_manslaughter"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "bribery_flow",
+      "title": "Bribery and Corruption Flow",
+      "description": "Issue-spotting sequence for POBO offences.",
+      "steps": [
+        "crim_pobo_s3",
+        "crim_pobo_s4_s5",
+        "crim_pobo_s9",
+        "crim_pobo_s10",
+        "crim_misconduct_public_office"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "money_laundering_flow",
+      "title": "Money Laundering Flow",
+      "description": "Issue-spotting sequence for OSCO s.25 and Cap 615.",
+      "steps": [
+        "crim_osco_s25",
+        "crim_aml_reasonable_grounds",
+        "crim_aml_wilful_blindness",
+        "crim_aml_statutory_defence",
+        "crim_cap615_framework"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "complicity_flow",
+      "title": "Complicity and Joint Enterprise Flow",
+      "description": "Issue-spotting sequence for secondary liability.",
+      "steps": [
+        "crim_secondary_liability",
+        "crim_joint_enterprise",
+        "crim_withdrawal_joint_enterprise"
+      ],
+      "verification_status": "needs_hklii_verification"
+    },
+    {
+      "flow_id": "defences_flow",
+      "title": "General Defences Flow",
+      "description": "Issue-spotting sequence for defences.",
+      "steps": [
+        "crim_insanity",
+        "crim_automatism",
+        "crim_intoxication",
+        "crim_self_defence",
+        "crim_duress",
+        "crim_mistake"
+      ],
+      "verification_status": "needs_hklii_verification"
+    }
+  ]
+}

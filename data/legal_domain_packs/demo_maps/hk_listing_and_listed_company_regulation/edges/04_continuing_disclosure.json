@@ -1,0 +1,19 @@
+{
+  "section_id": "04",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "edges": [
+    { "from": "continuing_obligations", "to": "inside_information_disclosure", "relationship": "has_subtopic" },
+    { "from": "continuing_obligations", "to": "inside_info_definition", "relationship": "has_subtopic" },
+    { "from": "continuing_obligations", "to": "disclosure_safe_harbours", "relationship": "has_subtopic" },
+    { "from": "continuing_obligations", "to": "profit_warning", "relationship": "has_subtopic" },
+    { "from": "continuing_obligations", "to": "sfc_mmt_enforcement_disclosure", "relationship": "has_subtopic" },
+    { "from": "inside_information_disclosure", "to": "sfo_307a", "relationship": "statutory_anchor" },
+    { "from": "inside_information_disclosure", "to": "sfo_307b", "relationship": "statutory_anchor" },
+    { "from": "inside_info_definition", "to": "sfo_307a", "relationship": "statutory_anchor" },
+    { "from": "disclosure_safe_harbours", "to": "sfo_307b", "relationship": "statutory_anchor" },
+    { "from": "profit_warning", "to": "mbl_13_09", "relationship": "listing_rule_anchor" },
+    { "from": "sfc_mmt_enforcement_disclosure", "to": "sfo_307a", "relationship": "statutory_anchor" },
+    { "from": "sfc_mmt_enforcement_disclosure", "to": "sfo_285", "relationship": "statutory_anchor" },
+    { "from": "sfc_mmt_enforcement_disclosure", "to": "mmt_tiger_asia", "relationship": "case_seed" }
+  ]
+}

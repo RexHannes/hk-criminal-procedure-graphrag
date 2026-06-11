@@ -1,0 +1,240 @@
+{
+  "section_id": "07",
+  "section_title": "Board, Directors & Corporate Governance",
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "nodes": [
+    {
+      "id": "board_directors_cg",
+      "type": "section_header",
+      "label": "Board, Directors & Corporate Governance",
+      "summary": "Corporate governance requirements for listed companies including board composition, directors' duties, INED requirements, board committees, CG Code compliance, company secretary, and internal controls.",
+      "section": "07"
+    },
+    {
+      "id": "directors_duties",
+      "type": "legal_issue",
+      "label": "Directors' Duties and Responsibilities",
+      "summary": "Directors owe fiduciary duties to the company including duty of care, skill, and diligence; duty to act in good faith; duty to avoid conflicts of interest; and duty to act within powers.",
+      "subsection": "07.01",
+      "subtopic": "Directors' Duties",
+      "section": "07",
+      "statute_refs": ["co_s465", "co_s468"],
+      "listing_rule_refs": ["mbl_3_08", "mbl_3_09"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "co_s465",
+      "type": "statute",
+      "label": "Companies Ordinance s.465 — Directors' Duties",
+      "summary": "Directors must act honestly and in good faith in the interests of the company as a whole, and exercise the care, skill, and diligence that a reasonably prudent person would exercise.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s468",
+      "type": "statute",
+      "label": "Companies Ordinance s.468 — Duty to Avoid Conflicts",
+      "summary": "Directors must avoid situations where they have a direct or indirect interest that conflicts with the company's interests.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_3_08",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3.08 — Directors' Responsibilities",
+      "summary": "Directors are responsible for the overall management of the listed company and must ensure compliance with the Listing Rules.",
+      "section": "07",
+      "rule_chapter": "3",
+      "rule_number": "3.08",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_3_09",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3.09 — Directors' Securities Transactions",
+      "summary": "Directors must comply with Model Code for Securities Transactions by Directors.",
+      "section": "07",
+      "rule_chapter": "3",
+      "rule_number": "3.09",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "ined_requirements",
+      "type": "legal_issue",
+      "label": "Independent Non-Executive Director (INED) Requirements",
+      "summary": "Listed companies must have at least 3 INEDs, comprising at least one-third of the board. INEDs must meet independence criteria under CG Code and Listing Rules.",
+      "subsection": "07.02",
+      "subtopic": "INED Requirements",
+      "section": "07",
+      "listing_rule_refs": ["mbl_3_10", "mbl_3_11"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_3_10",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3.10 — INED Requirements",
+      "summary": "At least 3 INEDs must be appointed, comprising at least one-third of the board.",
+      "section": "07",
+      "rule_chapter": "3",
+      "rule_number": "3.10",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_3_11",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3.11 — INED Independence Criteria",
+      "summary": "INEDs must meet independence criteria including no material business relationship, no family relationship with executives, and not being a former executive within 3 years.",
+      "section": "07",
+      "rule_chapter": "3",
+      "rule_number": "3.11",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "board_committees",
+      "type": "legal_issue",
+      "label": "Board Committees",
+      "summary": "Listed companies must establish audit committee, remuneration committee, and nomination committee. Each committee must have written terms of reference.",
+      "subsection": "07.03",
+      "subtopic": "Board Committees",
+      "section": "07",
+      "listing_rule_refs": ["mbl_3_23", "mbl_3_25", "mbl_3_27"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_3_23",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3.23 — Audit Committee",
+      "summary": "Audit committee must have at least 3 members, all INEDs, with at least one having financial expertise.",
+      "section": "07",
+      "rule_chapter": "3",
+      "rule_number": "3.23",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_3_25",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3.25 — Remuneration Committee",
+      "summary": "Remuneration committee must have at least 3 members, majority INEDs.",
+      "section": "07",
+      "rule_chapter": "3",
+      "rule_number": "3.25",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "mbl_3_27",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3.27 — Nomination Committee",
+      "summary": "Nomination committee must have at least 3 members, majority INEDs.",
+      "section": "07",
+      "rule_chapter": "3",
+      "rule_number": "3.27",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cg_code",
+      "type": "legal_issue",
+      "label": "Corporate Governance Code",
+      "summary": "Appendix C2 to the Listing Rules sets out the Corporate Governance Code with 4 principles, code provisions, and disclosure requirements. Listed companies must report on CG compliance.",
+      "subsection": "07.04",
+      "subtopic": "CG Code",
+      "section": "07",
+      "listing_rule_refs": ["mbl_app_c2"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_app_c2",
+      "type": "listing_rule_anchor",
+      "label": "MBL Appendix C2 — Corporate Governance Code",
+      "summary": "Sets out 4 CG principles: (1) leadership and structure, (2) strategy and performance, (3) responsibilities and accountability, (4) disclosure and transparency.",
+      "section": "07",
+      "rule_chapter": "Appendix C2",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "company_secretary",
+      "type": "legal_issue",
+      "label": "Company Secretary",
+      "summary": "Listed companies must appoint a company secretary who is a qualified solicitor or accountant with sufficient experience. The secretary is responsible for regulatory compliance.",
+      "subsection": "07.05",
+      "subtopic": "Company Secretary",
+      "section": "07",
+      "listing_rule_refs": ["mbl_3_29"],
+      "statute_refs": ["co_s470"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_3_29",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3.29 — Company Secretary Qualifications",
+      "summary": "Company secretary must be a qualified solicitor or accountant with at least 3 years' relevant experience.",
+      "section": "07",
+      "rule_chapter": "3",
+      "rule_number": "3.29",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "co_s470",
+      "type": "statute",
+      "label": "Companies Ordinance s.470 — Company Secretary Duties",
+      "summary": "Company secretary must ensure the company complies with the Companies Ordinance and maintains proper registers.",
+      "section": "07",
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "internal_controls",
+      "type": "legal_issue",
+      "label": "Internal Controls and Risk Management",
+      "summary": "The board must maintain adequate internal controls and risk management systems. The audit committee must review internal controls at least annually.",
+      "subsection": "07.06",
+      "subtopic": "Internal Controls",
+      "section": "07",
+      "listing_rule_refs": ["mbl_3_23", "mbl_3_24"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    },
+    {
+      "id": "mbl_3_24",
+      "type": "listing_rule_anchor",
+      "label": "MBL Rule 3.24 — Internal Controls Review",
+      "summary": "Audit committee must review internal controls at least annually and report to the board.",
+      "section": "07",
+      "rule_chapter": "3",
+      "rule_number": "3.24",
+      "official_source_required": true,
+      "verification_status": "needs_official_source_verification"
+    },
+    {
+      "id": "cg_report",
+      "type": "legal_issue",
+      "label": "Corporate Governance Report",
+      "summary": "Listed companies must include a Corporate Governance Report in their annual report, detailing CG practices, board committee activities, and compliance with CG Code provisions.",
+      "subsection": "07.07",
+      "subtopic": "CG Report",
+      "section": "07",
+      "listing_rule_refs": ["mbl_app_c2"],
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_seed"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+const fs = require("fs");
+const path = require("path");
+
+const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
+const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
+
+const SAFE_STATUSES = new Set(["human_reviewed", "answer_safe"]);
+const VERIFIED_STATUSES = new Set(["paragraph_verified", "source_verified", "human_reviewed", "answer_safe"]);
+
+function readJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+function doctrineNodeIdFor(node, domainId) {
+  if (node.doctrine_node_id) return node.doctrine_node_id;
+  if (node.id && node.id.startsWith(`${domainId}.`)) return node.id;
+  return `${domainId}.${node.id}`;
+}
+
+function findStaticNode(nodeId) {
+  const registry = readJson(INDEX_PATH);
+  for (const domain of registry.domains || []) {
+    const domainId = domain.domain_id;
+    const domainDir = path.join(DATA_ROOT, domain.path.replace(/\/?domain\.json$/, ""));
+    const manifestPath = path.join(domainDir, "consolidated.json");
+    if (!fs.existsSync(manifestPath)) continue;
+    const manifest = readJson(manifestPath);
+    for (const section of manifest.sections || []) {
+      const nodeFile = path.join(domainDir, section.node_file);
+      if (!fs.existsSync(nodeFile)) continue;
+      const payload = readJson(nodeFile);
+      for (const node of payload.nodes || []) {
+        const doctrineNodeId = doctrineNodeIdFor(node, domainId);
+        if (node.id === nodeId || doctrineNodeId === nodeId) {
+          return {
+            domain_id: domainId,
+            doctrine_node_id: doctrineNodeId,
+            source_node_id: node.id,
+            title: node.label || node.id,
+            node_type: node.type || "unknown",
+            summary: node.summary || "",
+            verification_status: node.verification_status || "needs_hklii_verification",
+            answer_layer_status: node.answer_layer_status || "not_product_answer_layer",
+            authority_status: node.authority_status || "unverified_case_seed",
+          };
+        }
+      }
+    }
+  }
+  return null;
+}
+
+function noEvidencePayload(node, extraWarnings = []) {
+  return {
+    doctrine_node_id: node.doctrine_node_id,
+    source_node_id: node.source_node_id,
+    title: node.title,
+    node_type: node.node_type,
+    domain_id: node.domain_id,
+    coverage_status: "no_evidence",
+    warnings: Array.from(new Set(["insufficient_authority", "no_verified_paragraph_proof", ...extraWarnings])),
+    evidence: [],
+    candidate_evidence: [],
+    verified_evidence: [],
+    answer_safe_evidence: [],
+  };
+}
+
+async function supabaseGet(baseUrl, serviceKey, table, query) {
+  const url = new URL(`/rest/v1/${table}`, baseUrl);
+  Object.entries(query).forEach(([key, value]) => url.searchParams.set(key, value));
+  const response = await fetch(url, {
+    headers: {
+      apikey: serviceKey,
+      Authorization: `Bearer ${serviceKey}`,
+      Accept: "application/json",
+    },
+  });
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Supabase ${table} HTTP ${response.status}: ${text.slice(0, 300)}`);
+  }
+  return response.json();
+}
+
+async function firstSupabaseRow(baseUrl, serviceKey, table, query) {
+  const rows = await supabaseGet(baseUrl, serviceKey, table, { ...query, limit: "1" });
+  return Array.isArray(rows) && rows.length ? rows[0] : null;
+}
+
+function cleanEvidenceItem({ link, proposition, paragraph, legalCase }) {
+  const reviewStatus = link.review_status || proposition.review_status || "machine_candidate";
+  const quote = proposition.supporting_quote || "";
+  return {
+    case_name: legalCase?.title_en || legalCase?.case_name || "",
+    neutral_citation: legalCase?.neutral_citation || "",
+    court_level: legalCase?.court_level || "",
+    case_id: legalCase?.id || proposition.case_id || "",
+    paragraph_id: paragraph?.id || proposition.canonical_para_id || "",
+    para_no: paragraph?.para_no || "",
+    proposition_id: proposition.id || link.proposition_id || "",
+    proposition_text: proposition.proposition_text || proposition.candidate_proposition || "",
+    supporting_quote: quote,
+    paragraph_text: paragraph?.text || "",
+    source_url: paragraph?.source_url || legalCase?.source_url || "",
+    link_type: link.link_type || "candidate",
+    authority_role: link.link_type || "candidate",
+    verification_status: reviewStatus,
+    answer_layer_status: SAFE_STATUSES.has(reviewStatus)
+      ? "answer_safe"
+      : VERIFIED_STATUSES.has(reviewStatus)
+        ? "paragraph_verified"
+        : "candidate_only",
+    human_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
+    validator_flags: [],
+  };
+}
+
+function splitEvidence(items) {
+  const candidate = [];
+  const verified = [];
+  const answerSafe = [];
+  for (const item of items) {
+    if (item.answer_layer_status === "answer_safe") answerSafe.push(item);
+    else if (item.answer_layer_status === "paragraph_verified") verified.push(item);
+    else candidate.push(item);
+  }
+  let coverage = "no_evidence";
+  if (answerSafe.length) coverage = "answer_safe";
+  else if (verified.length) coverage = "paragraph_verified";
+  else if (candidate.length) coverage = "candidate_only";
+  const warnings = [];
+  if (!items.length) warnings.push("insufficient_authority", "no_verified_paragraph_proof");
+  if (candidate.length && !verified.length && !answerSafe.length) warnings.push("candidate_only", "needs_human_review");
+  return { coverage, candidate, verified, answerSafe, warnings };
+}
+
+module.exports = async function handler(req, res) {
+  if (req.method !== "GET") {
+    res.status(405).json({ error: "method_not_allowed" });
+    return;
+  }
+
+  const nodeId = String(req.query.node_id || "").trim();
+  if (!nodeId) {
+    res.status(400).json({ error: "missing_node_id" });
+    return;
+  }
+
+  const node = findStaticNode(nodeId);
+  if (!node) {
+    res.status(404).json({ error: "doctrine_node_not_found", doctrine_node_id: nodeId });
+    return;
+  }
+
+  const supabaseUrl = (process.env.SUPABASE_URL || "").trim().replace(/\/$/, "");
+  const serviceKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
+  if (!supabaseUrl || !serviceKey) {
+    res.status(200).json(noEvidencePayload(node, ["backend_not_configured"]));
+    return;
+  }
+
+  try {
+    const links = await supabaseGet(supabaseUrl, serviceKey, "proposition_node_links", {
+      doctrine_node_id: `eq.${node.doctrine_node_id}`,
+      select: "id,proposition_id,link_type,confidence,review_status,linking_method",
+      order: "confidence.desc",
+      limit: "25",
+    });
+
+    if (!Array.isArray(links) || links.length === 0) {
+      res.status(200).json(noEvidencePayload(node));
+      return;
+    }
+
+    const evidence = [];
+    for (const link of links) {
+      const proposition = await firstSupabaseRow(supabaseUrl, serviceKey, "proposition_cards", {
+        id: `eq.${link.proposition_id}`,
+        select: "id,case_id,canonical_para_id,proposition_text,proposition_type,issue_tags,doctrine_tags,review_status,confidence",
+      });
+      if (!proposition) continue;
+
+      const [paragraph, legalCase] = await Promise.all([
+        proposition.canonical_para_id
+          ? firstSupabaseRow(supabaseUrl, serviceKey, "legal_paragraphs", {
+              id: `eq.${proposition.canonical_para_id}`,
+              select: "id,case_id,para_no,text,role_label,source_url,review_status",
+            })
+          : Promise.resolve(null),
+        proposition.case_id
+          ? firstSupabaseRow(supabaseUrl, serviceKey, "legal_cases", {
+              id: `eq.${proposition.case_id}`,
+              select: "id,title_en,neutral_citation,court_level,court,judgment_date,source_url",
+            })
+          : Promise.resolve(null),
+      ]);
+
+      evidence.push(cleanEvidenceItem({ link, proposition, paragraph, legalCase }));
+    }
+
+    const split = splitEvidence(evidence);
+    res.status(200).json({
+      doctrine_node_id: node.doctrine_node_id,
+      source_node_id: node.source_node_id,
+      title: node.title,
+      node_type: node.node_type,
+      domain_id: node.domain_id,
+      coverage_status: split.coverage,
+      warnings: split.warnings,
+      evidence,
+      candidate_evidence: split.candidate,
+      verified_evidence: split.verified,
+      answer_safe_evidence: split.answerSafe,
+    });
+  } catch (error) {
+    res.status(200).json(noEvidencePayload(node, ["backend_query_failed"]));
+  }
+};

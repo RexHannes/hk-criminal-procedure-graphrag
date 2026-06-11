@@ -86,7 +86,7 @@ hk-criminal-procedure-graphrag/
 
 ## Procedural Flows
 
-7 directional flow chains are defined in `flows.json`:
+6 directional flow chains are defined in `flows.json`:
 
 1. **Arrest/Detention Flow** (6 steps) — identify power → reasonable suspicion → arrest → inform grounds → detention → charge/release
 2. **Bail Flow** (7 steps) — arrest/charge → route → right to bail → refusal grounds → conditions → breach → variation/appeal
@@ -145,10 +145,11 @@ The tree is rendered from the same flat node/edge files — nothing is deleted. 
 - **Expandable doctrine tree** — default view with card-based nodes, continuous branch rails, and elbow connectors
 - **3-panel layout** — left sidebar (filters/depth/flow/sections), center (tree), right (detail/audit panel)
 - **Search** — matches by label, summary, ID, statute refs, and case seeds; auto-expands ancestors
+- **Support/audit search results** — statutes and case seeds stay out of the default visual tree, but remain searchable and clickable for audit-panel inspection
 - **Type filters** — toggle visibility of legal issues, flow steps, statutes, case seeds, PDs, NSL nodes
 - **Depth control** — show L0–L1 sections, L2 issues, or expand all to L3+
-- **Flow player** — select a procedural flow and step through with play/pause/next/prev; highlights corresponding tree cards
-- **Section navigation** — click a section in the left panel to expand and scroll to it
+- **Flow player** — select a procedural flow and step through with play/pause/next/prev; highlights corresponding flow-step cards in collapsible per-section flow branches
+- **Section navigation** — click a section in the left panel to expand and scroll to it using the section titles from `consolidated.json`
 - **Detail panel** — click any tree card to see full metadata, statute references, case seeds, practice direction refs, and a future-proof Case Audit / Source Proof area
 - **Safety badges** — every node shows its `not_product_answer_layer`, `needs_hklii_verification`, and `unverified_case_seed` status where applicable
 
@@ -182,6 +183,9 @@ Checks performed:
 - Every section has a section_header node
 - No node loses its verification_status / authority_status / answer_layer_status
 - Flow chain steps reference valid node IDs
+- Primary `has_subtopic` navigation nodes are renderable in the tree
+- Flow steps are renderable under section flow branches
+- Support-only statute/case nodes remain linked for search/audit use
 
 ## Data Schema
 
@@ -240,6 +244,66 @@ Layer 3: Authority layer
 Layer 4: Proof/audit layer
   → exact paragraph/page anchors, quote spans, extraction log, verification history
 ```
+
+## Doctrine/Evidence Bridge
+
+The repository now includes a first bridge milestone for connecting the static
+doctrine maps to a future Casemap4/Supabase evidence backend. This is still not
+an answer layer and it does not ingest all HK cases by itself.
+
+Bridge scripts:
+
+```bash
+# Export stable doctrine nodes from all domain packs
+python3 scripts/export_doctrine_nodes.py --dry-run
+
+# Validate paragraph-grounded proposition links
+python3 scripts/validate_evidence_links.py \
+  --evidence data/evidence/example_evidence_bridge.json
+
+# Return the safe query -> doctrine nodes -> evidence trace response shape
+python3 scripts/search_evidence_trace.py \
+  "dishonesty theft actual knowledge" \
+  --evidence data/evidence/example_evidence_bridge.json
+```
+
+The bridge intentionally keeps this split:
+
+```text
+static viewer = clean doctrine ontology browser
+Casemap4/Supabase = cases, paragraphs, proposition cards and source proof
+DeepSeek/LLM = candidate extractor only, never final verifier
+```
+
+The Vercel viewer calls the server-side evidence route when a doctrine node is
+selected:
+
+```text
+GET /api/doctrine-evidence?node_id=<doctrine_node_id>
+```
+
+That route validates the node against the static domain packs, reads linked
+evidence from Supabase only on the server side, and returns `no_evidence` rather
+than failing when paragraph proof has not yet been synced. Case paragraphs should
+appear in the right audit panel only through explicit proposition-node links,
+not as extra nodes in the main tree.
+
+The viewer also includes a first query-to-evidence trail route:
+
+```text
+GET /api/search-evidence?q=<legal question or issue>
+```
+
+It maps a natural-language query to candidate doctrine nodes, optionally asks
+OpenRouter/DeepSeek to rank those nodes and produce a constrained audit summary
+when `OPENROUTER_API_KEY` or `DEEPSEEK_API_KEY` is configured server-side, then
+attaches linked Supabase paragraph evidence where explicit
+`proposition_node_links` exist. If no AI provider is configured, the endpoint
+falls back to deterministic graph search and labels the response accordingly.
+This is an audit trail, not an unconstrained legal answer generator.
+
+See `docs/casemap_doctrine_evidence_bridge.md` for the backend table contract,
+validation rules and Supabase safety notes.
 
 ## License
 

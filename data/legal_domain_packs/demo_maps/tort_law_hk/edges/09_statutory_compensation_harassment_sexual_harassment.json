@@ -1,0 +1,31 @@
+{
+  "section_id": "09",
+  "domain_id": "tort_law_hk",
+  "edges": [
+    { "from": "tort_statutory_harassment", "to": "tort_employees_compensation_scheme", "relationship": "has_subtopic" },
+    { "from": "tort_statutory_harassment", "to": "tort_eco_occupational_disease", "relationship": "has_subtopic" },
+    { "from": "tort_statutory_harassment", "to": "tort_sex_discrimination", "relationship": "has_subtopic" },
+    { "from": "tort_statutory_harassment", "to": "tort_disability_discrimination", "relationship": "has_subtopic" },
+    { "from": "tort_statutory_harassment", "to": "tort_family_status_race_discrimination", "relationship": "has_subtopic" },
+    { "from": "tort_statutory_harassment", "to": "tort_sexual_harassment_overview", "relationship": "has_subtopic" },
+    { "from": "tort_statutory_harassment", "to": "tort_harassment_common_law", "relationship": "has_subtopic" },
+    { "from": "tort_statutory_harassment", "to": "gap_verify_standalone_harassment_statute", "relationship": "has_subtopic" },
+    { "from": "tort_statutory_harassment", "to": "tort_eoc_remedies_discrimination", "relationship": "has_subtopic" },
+    { "from": "tort_statutory_harassment", "to": "tort_criminal_injury_compensation", "relationship": "has_subtopic" },
+    { "from": "tort_employees_compensation_scheme", "to": "cap282_employees_compensation", "relationship": "statutory_anchor" },
+    { "from": "tort_employees_compensation_scheme", "to": "tort_employees_compensation_overview", "relationship": "cross_reference" },
+    { "from": "tort_eco_occupational_disease", "to": "cap282_employees_compensation", "relationship": "statutory_anchor" },
+    { "from": "tort_sex_discrimination", "to": "cap480_sdo", "relationship": "statutory_anchor" },
+    { "from": "tort_disability_discrimination", "to": "cap487_ddo", "relationship": "statutory_anchor" },
+    { "from": "tort_family_status_race_discrimination", "to": "cap480_sdo", "relationship": "statutory_anchor" },
+    { "from": "tort_family_status_race_discrimination", "to": "cap602_rdo", "relationship": "statutory_anchor" },
+    { "from": "tort_sexual_harassment_overview", "to": "cap480_sdo", "relationship": "statutory_anchor" },
+    { "from": "tort_eoc_remedies_discrimination", "to": "cap480_sdo", "relationship": "statutory_anchor" },
+    { "from": "tort_eoc_remedies_discrimination", "to": "cap487_ddo", "relationship": "statutory_anchor" },
+    { "from": "tort_eoc_remedies_discrimination", "to": "cap602_rdo", "relationship": "statutory_anchor" },
+    { "from": "tort_harassment_common_law", "to": "tort_battery", "relationship": "cross_reference" },
+    { "from": "tort_harassment_common_law", "to": "tort_assault", "relationship": "cross_reference" },
+    { "from": "tort_harassment_common_law", "to": "tort_intentional_defences_overview", "relationship": "cross_reference" },
+    { "from": "tort_statutory_harassment", "to": "gap_verify_hk_discrimination_cases", "relationship": "has_subtopic" }
+  ]
+}

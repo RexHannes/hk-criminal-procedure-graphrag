@@ -1,0 +1,48 @@
+{
+  "domain_id": "hk_listing_and_listed_company_regulation",
+  "title": "Hong Kong Listing & Listed Company Regulation",
+  "description": "Comprehensive regulatory lifecycle map covering HK listing eligibility, IPO mechanics, prospectus regime, continuing disclosure, transactions, corporate governance, financial reporting, capital management, ESG, and enforcement.",
+  "legal_family": "statutory_regulatory",
+  "sub_family": "capital_markets_listing_regulation",
+  "common_law_branch": false,
+  "source_priority": "official_rules_first",
+  "intended_use": "Structured regulatory knowledge graph for HK listing and listed company regulation. Designed as a visual navigator for practitioners, compliance officers, and AI retrieval.",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": false,
+    "needs_official_source_verification": true,
+    "authority_status": "unverified_seed"
+  },
+  "utterance_disclaimer": "Seed-layer regulatory map. Not a product answer layer. All thresholds, rule numbers, and section references require official HKEX / SFC / e-Legislation / HKLII verification before reliance. This is a fast-changing regulatory framework — do not treat as static common law.",
+  "node_type_colors": {
+    "domain": "#0b1a33",
+    "section_header": "#2d4059",
+    "legal_issue": "#2563eb",
+    "listing_rule_anchor": "#15803d",
+    "statutory_anchor": "#23844f",
+    "sehk_decision_seed": "#7c3aed",
+    "guidance_letter_seed": "#0891b2",
+    "practice_note_anchor": "#0f766e",
+    "sfc_material_seed": "#dc2626",
+    "textbook_seed": "#b45309",
+    "enforcement_seed": "#dc2626",
+    "case_seed": "#7c3aed",
+    "statute": "#23844f",
+    "flow_step": "#d97706",
+    "cross_reference": "#9333ea",
+    "gap_node": "#6b7280"
+  },
+  "sections": [
+    { "id": "01", "title": "Listing Eligibility & Suitability", "file": "nodes/01_listing_eligibility_suitability.json" },
+    { "id": "02", "title": "IPO Mechanics & Pre-IPO Structuring", "file": "nodes/02_ipo_mechanics_pre_ipo_structuring.json" },
+    { "id": "03", "title": "Prospectus Regime & Liability", "file": "nodes/03_prospectus_regime_liability.json" },
+    { "id": "04", "title": "Continuing Disclosure & Inside Information", "file": "nodes/04_continuing_disclosure.json" },
+    { "id": "05", "title": "Notifiable Transactions", "file": "nodes/05_notifiable_transactions.json" },
+    { "id": "06", "title": "Connected Transactions", "file": "nodes/06_connected_transactions.json" },
+    { "id": "07", "title": "Board, Directors & Corporate Governance", "file": "nodes/07_board_directors_cg.json" },
+    { "id": "08", "title": "Financial Reporting, Audit & Shareholder Communications", "file": "nodes/08_financial_reporting_audit.json" },
+    { "id": "09", "title": "Capital Management & Corporate Actions", "file": "nodes/09_capital_management.json" },
+    { "id": "10", "title": "ESG, Sustainability & Climate Disclosure", "file": "nodes/10_esg_sustainability.json" },
+    { "id": "11", "title": "Compliance, Waivers, Enforcement & Sanctions", "file": "nodes/11_compliance_waivers_enforcement.json" }
+  ]
+}

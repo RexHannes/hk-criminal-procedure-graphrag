@@ -1,0 +1,250 @@
+{
+  "section_id": "08",
+  "section_title": "Statutes and Ordinances",
+  "domain_id": "criminal_law_hk",
+  "nodes": [
+    {
+      "id": "crim_statutes",
+      "doctrine_node_id": "criminal_law_hk.statutes",
+      "type": "section_header",
+      "label": "Statutes and Ordinances",
+      "summary": "Index of statutory anchors for Hong Kong substantive criminal law.",
+      "section": "08",
+      "verification_status": "book_seed_needs_case_and_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "textbook_seed_only",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap200",
+      "type": "statute",
+      "label": "Crimes Ordinance (Cap 200)",
+      "summary": "General criminal offences ordinance.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap200_s60",
+      "type": "statute",
+      "label": "Crimes Ordinance s.60 - Criminal Damage",
+      "summary": "Criminal damage provision seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap200_s118",
+      "type": "statute",
+      "label": "Crimes Ordinance s.118 - Rape",
+      "summary": "Rape provision seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap200_s159a",
+      "type": "statute",
+      "label": "Crimes Ordinance s.159A - Conspiracy",
+      "summary": "Conspiracy provision seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap200_s159g",
+      "type": "statute",
+      "label": "Crimes Ordinance s.159G - Attempt",
+      "summary": "Attempt provision seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap210",
+      "type": "statute",
+      "label": "Theft Ordinance (Cap 210)",
+      "summary": "Theft and fraud ordinance seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap210_s2",
+      "type": "statute",
+      "label": "Theft Ordinance s.2 - Theft",
+      "summary": "Theft definition seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap210_s16a",
+      "type": "statute",
+      "label": "Theft Ordinance s.16A - Fraud",
+      "summary": "Fraud provision seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap201",
+      "type": "statute",
+      "label": "Prevention of Bribery Ordinance (Cap 201)",
+      "summary": "POBO seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap201_s3",
+      "type": "statute",
+      "label": "POBO s.3 - Prescribed Officer Accepting Advantage",
+      "summary": "POBO s.3 seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap201_s4",
+      "type": "statute",
+      "label": "POBO s.4 - Bribery of Public Servant",
+      "summary": "POBO s.4 seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap201_s5",
+      "type": "statute",
+      "label": "POBO s.5 - Bribery for Official Transactions",
+      "summary": "POBO s.5 seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap201_s9",
+      "type": "statute",
+      "label": "POBO s.9 - Agent/Principal Corruption",
+      "summary": "POBO s.9 seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap201_s10",
+      "type": "statute",
+      "label": "POBO s.10 - Unexplained Wealth",
+      "summary": "POBO s.10 seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap455",
+      "type": "statute",
+      "label": "Organized and Serious Crimes Ordinance (Cap 455)",
+      "summary": "OSCO seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap455_s25",
+      "type": "statute",
+      "label": "OSCO s.25 - Money Laundering",
+      "summary": "Money laundering offence seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap455_s25_2",
+      "type": "statute",
+      "label": "OSCO s.25(2) - Disclosure Defence",
+      "summary": "Disclosure defence seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap615",
+      "type": "statute",
+      "label": "Anti-Money Laundering and Counter-Terrorist Financing Ordinance (Cap 615)",
+      "summary": "AML/CTF regulatory framework seed.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap212_s17",
+      "type": "statute",
+      "label": "Offences Against the Person Ordinance s.17",
+      "summary": "Wounding/GBH provision seed requiring official source verification.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap212_s19",
+      "type": "statute",
+      "label": "Offences Against the Person Ordinance s.19",
+      "summary": "Wounding/GBH provision seed requiring official source verification.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap212_s39",
+      "type": "statute",
+      "label": "Offences Against the Person Ordinance s.39",
+      "summary": "ABH provision seed requiring official source verification.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    }
+  ]
+}

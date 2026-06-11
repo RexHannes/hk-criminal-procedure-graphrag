@@ -1,0 +1,91 @@
+{
+  "section_id": "04",
+  "domain_id": "criminal_law_hk",
+  "edges": [
+    {
+      "from": "crim_bribery_corruption",
+      "to": "crim_pobo_s3",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_pobo_s3",
+      "to": "case_ng_po_on",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_pobo_s3",
+      "to": "cap201_s3",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_bribery_corruption",
+      "to": "crim_pobo_s4_s5",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_pobo_s4_s5",
+      "to": "cap201_s4",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_pobo_s4_s5",
+      "to": "cap201_s5",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_bribery_corruption",
+      "to": "crim_pobo_s10",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_pobo_s10",
+      "to": "case_hui_kin_hong",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_pobo_s10",
+      "to": "cap201_s10",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_bribery_corruption",
+      "to": "crim_pobo_s9",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_pobo_s9",
+      "to": "case_chan_chi_wan",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_pobo_s9",
+      "to": "case_chan_kwok_keung",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_pobo_s9",
+      "to": "cap201_s9",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_bribery_corruption",
+      "to": "crim_misconduct_public_office",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_misconduct_public_office",
+      "to": "case_shum_kwok_sher",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_misconduct_public_office",
+      "to": "case_hui_rafael",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_misconduct_public_office",
+      "to": "case_tsang_yam_kuen",
+      "relationship": "case_seed"
+    }
+  ]
+}

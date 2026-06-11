@@ -1,0 +1,23 @@
+{
+  "section_id": "05",
+  "domain_id": "equity_trusts_hk",
+  "edges": [
+    { "from": "equity_constructive_trusts", "to": "equity_ct_institutional_vs_remedial", "relationship": "has_subtopic" },
+    { "from": "equity_constructive_trusts", "to": "equity_cict_overview", "relationship": "has_subtopic" },
+    { "from": "equity_constructive_trusts", "to": "equity_bribes_secret_commissions", "relationship": "has_subtopic" },
+    { "from": "equity_constructive_trusts", "to": "equity_barnes_addy_knowing_receipt", "relationship": "has_subtopic" },
+    { "from": "equity_constructive_trusts", "to": "equity_barnes_addy_dishonest_assistance", "relationship": "has_subtopic" },
+    { "from": "equity_cict_overview", "to": "equity_cict_common_intention", "relationship": "has_subtopic" },
+    { "from": "equity_cict_overview", "to": "equity_cict_detrimental_reliance", "relationship": "has_subtopic" },
+    { "from": "equity_cict_overview", "to": "equity_cict_quantification", "relationship": "has_subtopic" },
+    { "from": "equity_ct_institutional_vs_remedial", "to": "case_muschinski", "relationship": "case_seed" },
+    { "from": "equity_ct_institutional_vs_remedial", "to": "case_baumgartner", "relationship": "case_seed" },
+    { "from": "equity_ct_institutional_vs_remedial", "to": "case_luo_xing_juan", "relationship": "case_seed" },
+    { "from": "equity_cict_overview", "to": "case_luo_xing_juan", "relationship": "case_seed" },
+    { "from": "equity_cict_overview", "to": "case_lai_hon_tim", "relationship": "case_seed" },
+    { "from": "equity_bribes_secret_commissions", "to": "case_ag_v_reid", "relationship": "case_seed" },
+    { "from": "equity_bribes_secret_commissions", "to": "case_fhr", "relationship": "case_seed" },
+    { "from": "equity_barnes_addy_dishonest_assistance", "to": "case_thanakorn", "relationship": "case_seed" },
+    { "from": "equity_constructive_trusts", "to": "gap_verify_hk_constructive_trust_cases", "relationship": "has_subtopic" }
+  ]
+}
