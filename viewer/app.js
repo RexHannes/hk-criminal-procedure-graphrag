@@ -397,7 +397,7 @@
   const root = () => $('#view-root');
 
   function renderView() {
-    ({ domains: viewDomains, flows: viewFlows, doctrine: viewDoctrine, tasks: viewTasks, playbooks: viewPlaybooks, templates: viewTemplates, audit: viewAudit }[S.view] || viewFlows)();
+    ({ domains: viewDomains, flows: viewFlows, doctrine: viewDoctrine, inquiry: viewInquiry, tasks: viewTasks, playbooks: viewPlaybooks, templates: viewTemplates, audit: viewAudit }[S.view] || viewFlows)();
   }
 
   function viewHeader(eyebrow, title, lede) {
@@ -674,6 +674,144 @@
 
   function emptyState(title, text) {
     return `<div class="empty-state"><h3>${esc(title)}</h3><p>${esc(text)}</p></div>`;
+  }
+
+  // — AI Inquiry: graph-grounded fact-pattern analysis —
+  // Calls /api/search-evidence (deterministic retrieval over all domain packs,
+  // whitelist-validated AI rerank, Supabase paragraph evidence). Falls back to a
+  // clearly-labelled lexical search over the loaded domain when the API is absent.
+  const INQ = { query: '', loading: false, result: null, mode: null };
+
+  const COVERAGE_BADGE = {
+    answer_safe: '<span class="badge badge-approved">Answer-safe (human reviewed)</span>',
+    paragraph_verified: '<span class="badge badge-verified">Paragraph verified</span>',
+    candidate_only: '<span class="badge badge-review">Candidate only — needs review</span>',
+    no_evidence: '<span class="badge badge-pending">No paragraph evidence yet</span>',
+  };
+
+  function localInquiryMatches(query, limit = 8) {
+    const terms = query.toLowerCase().split(/[^a-z0-9一-鿿]+/).filter(w => w.length > 2);
+    const scored = [];
+    S.nodes.forEach(n => {
+      if (n.type === 'section_header') return;
+      const hay = `${n.id} ${n.label || ''} ${n.summary || ''} ${(n.statute_refs || []).join(' ')} ${(n.case_seeds || []).join(' ')}`.toLowerCase();
+      let score = 0;
+      terms.forEach(t => {
+        if (hay.includes(t)) score += 1;
+        if ((n.label || '').toLowerCase().includes(t)) score += 3;
+      });
+      if (score) scored.push({ n, score });
+    });
+    return scored.sort((a, b) => b.score - a.score).slice(0, limit).map(({ n, score }) => ({
+      doctrine_node_id: n.id,
+      source_node_id: n.id,
+      title: n.label || n.id,
+      node_type: n.type || 'unknown',
+      domain_id: S.selectedDomainId,
+      summary: n.summary || '',
+      match_score: score,
+      evidence: [],
+      coverage_status: 'no_evidence',
+    }));
+  }
+
+  function sopsForNodeId(nodeId) {
+    const flowIds = S.flows.filter(f => (f.steps || []).includes(nodeId)).map(f => f.flow_id);
+    return (S.firm?.sops || []).filter(s => (s.linked_flows || []).some(id => flowIds.includes(id)));
+  }
+
+  function runInquiry(query) {
+    INQ.query = query;
+    INQ.loading = true;
+    INQ.result = null;
+    viewInquiry();
+    fetch('/api/search-evidence', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query }),
+    }).then(r => {
+      if (!r.ok) throw new Error('API ' + r.status);
+      return r.json();
+    }).then(result => {
+      INQ.result = result;
+      INQ.mode = 'api';
+    }).catch(() => {
+      INQ.mode = 'local';
+      INQ.result = {
+        matched_doctrine_nodes: localInquiryMatches(query),
+        warnings: ['ai_not_configured_fallback_search', 'backend_evidence_unavailable', 'local_lexical_only_current_domain'],
+        inquiry_analysis: null,
+        ai_provider: 'none',
+        evidence_count: 0,
+      };
+    }).finally(() => {
+      INQ.loading = false;
+      if (S.view === 'inquiry') viewInquiry();
+    });
+  }
+
+  function inquiryResultHTML() {
+    const r = INQ.result;
+    if (!r) return '';
+    const analysis = r.inquiry_analysis;
+    const warnings = (r.warnings || []).map(w => `<span class="badge badge-pending">${esc(String(w).replace(/_/g, ' '))}</span>`).join(' ');
+    const cards = (r.matched_doctrine_nodes || []).map(m => {
+      const localId = m.source_node_id || m.doctrine_node_id;
+      const inGraph = !!S.nodeMap[localId];
+      const sops = sopsForNodeId(localId);
+      const evidence = (m.evidence || []).map(e => `
+        <div class="inq-evidence">
+          <div><strong>${esc(e.case_name || 'Unnamed case')}</strong> <span class="inq-cite">${esc(e.neutral_citation || '')}${e.para_no ? ' · ¶' + esc(e.para_no) : ''}</span></div>
+          <p>${esc((e.proposition_text || e.paragraph_text || '').slice(0, 260))}</p>
+          ${COVERAGE_BADGE[e.answer_layer_status] || ''}
+        </div>`).join('');
+      return `
+        <div class="card ${inGraph ? 'selectable' : ''}" ${inGraph ? `data-sel="node:${esc(localId)}" data-card="node:${esc(localId)}"` : ''}>
+          <div class="card-top">
+            <span class="card-title">${esc(m.title)}</span>
+            <span class="card-badges">${COVERAGE_BADGE[m.coverage_status] || ''}</span>
+          </div>
+          <div class="card-body">
+            <span class="inq-meta">${esc(m.doctrine_node_id)} · ${esc(m.domain_id || '')} · ${esc(TYPE_LABEL[m.node_type] || m.node_type || '')}</span>
+            <p>${esc((m.summary || '').slice(0, 280))}</p>
+          </div>
+          ${evidence ? `<div class="inq-evidence-list"><span class="sn-label">Paragraph evidence trail</span>${evidence}</div>` : ''}
+          ${sops.map(s => `<div class="sop-note"><span class="sn-label">Firm SOP applies · ${esc(s.title)} ${versionBadge(s.version)}</span>${esc(s.description || '')}</div>`).join('')}
+        </div>`;
+    }).join('');
+
+    return `
+      ${analysis ? `<div class="card" style="background:var(--parchment);">
+        <div class="card-top"><span class="card-title">Source-bounded analysis${r.ai_provider && r.ai_provider !== 'none' ? ' · via ' + esc(r.ai_provider) : ''}</span>
+          ${analysis.abstain ? '<span class="badge badge-audit">Abstained — insufficient verified evidence</span>' : ''}</div>
+        <div class="card-body">
+          <p>${esc(analysis.summary || '')}</p>
+          ${analysis.legal_position ? `<p><em>Legal position:</em> ${esc(analysis.legal_position)}</p>` : ''}
+          ${analysis.application ? `<p><em>Application to facts:</em> ${esc(analysis.application)}</p>` : ''}
+        </div>
+      </div>` : ''}
+      ${warnings ? `<div class="inq-warnings">${warnings}</div>` : ''}
+      ${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}
+      <p class="inq-note">Source-bounded research trail — not legal advice. Every node and citation above exists in the maintained doctrine graph${INQ.mode === 'api' ? ' and Supabase evidence store' : ''}; nothing is generated outside it. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;
+  }
+
+  function viewInquiry() {
+    root().innerHTML = `
+      ${viewHeader('AI inquiry', 'Graph-grounded inquiry', 'Describe a fact pattern (e.g. "I was hit by a car and injured"). The system retrieves matching doctrine nodes and paragraph evidence from the maintained graph only — the AI ranks and summarises but cannot cite anything outside it.')}
+      <div class="card">
+        <textarea id="inquiry-input" class="inq-input" rows="3" placeholder="Describe the facts or legal question…">${esc(INQ.query)}</textarea>
+        <div class="inq-actions">
+          <button id="inquiry-run" class="inq-button" ${INQ.loading ? 'disabled' : ''}>${INQ.loading ? 'Analysing…' : 'Analyse against graph'}</button>
+          <span class="inq-hint">Uses /api/search-evidence (OpenRouter/DeepSeek rank + Supabase evidence) with deterministic fallback.</span>
+        </div>
+      </div>
+      <div id="inquiry-results">${INQ.loading ? '<p class="inq-hint">Retrieving doctrine nodes and evidence…</p>' : inquiryResultHTML()}</div>`;
+    const btn = root().querySelector('#inquiry-run');
+    if (btn) btn.addEventListener('click', () => {
+      const q = root().querySelector('#inquiry-input').value.trim();
+      if (q) runInquiry(q);
+    });
+    wireCards();
   }
 
   function wireCards() {
