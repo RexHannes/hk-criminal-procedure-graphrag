@@ -35,6 +35,25 @@ const STOPWORDS = new Set([
   "of", "on", "or", "the", "to", "what", "when", "where", "which", "who", "why", "with", "does", "do",
   "there", "under", "law", "hk", "hong", "kong",
 ]);
+const VERIFIED_COVERAGE_STATUSES = new Set(["paragraph_verified", "answer_safe"]);
+
+const QUERY_EXPANSIONS = [
+  {
+    pattern: /\b(hit|crash|crashed|collision|collided|knocked|struck|accident|injur(?:y|ed|ies))\b.*\b(car|vehicle|taxi|bus|lorry|truck|driver|road|traffic|motor)\b|\b(car|vehicle|taxi|bus|lorry|truck|driver|road|traffic|motor)\b.*\b(hit|crash|crashed|collision|collided|knocked|struck|accident|injur(?:y|ed|ies))\b/i,
+    terms: ["negligence", "duty of care", "breach", "causation", "damage", "personal injury", "road user", "driver", "traffic accident"],
+    preferred_domains: ["tort_law_hk"]
+  },
+  {
+    pattern: /\b(work|worker|employee|employer|workplace|site)\b.*\b(injur(?:y|ed|ies)|accident|unsafe|fall|fell)\b|\b(injur(?:y|ed|ies)|accident|unsafe|fall|fell)\b.*\b(work|worker|employee|employer|workplace|site)\b/i,
+    terms: ["employer duty", "vicarious liability", "safe system of work", "personal injury", "negligence", "breach"],
+    preferred_domains: ["tort_law_hk"]
+  },
+  {
+    pattern: /\b(slip|slipped|trip|tripped|fall|fell)\b.*\b(shop|mall|premises|building|restaurant|office|stairs|floor)\b|\b(shop|mall|premises|building|restaurant|office|stairs|floor)\b.*\b(slip|slipped|trip|tripped|fall|fell)\b/i,
+    terms: ["occupiers liability", "premises", "negligence", "duty of care", "breach", "personal injury"],
+    preferred_domains: ["tort_law_hk"]
+  }
+];
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -102,6 +121,24 @@ function tokenize(text) {
     .filter(token => token.length > 1 && !STOPWORDS.has(token));
 }
 
+function expandQueryText(query) {
+  const expansions = [];
+  for (const item of QUERY_EXPANSIONS) {
+    if (item.pattern.test(query)) expansions.push(...item.terms);
+  }
+  return [query, ...expansions].join(" ");
+}
+
+function queryDomainPreferences(query) {
+  const domains = new Set();
+  for (const item of QUERY_EXPANSIONS) {
+    if (item.pattern.test(query)) {
+      (item.preferred_domains || []).forEach(domainId => domains.add(domainId));
+    }
+  }
+  return domains;
+}
+
 function nodeSearchText(node) {
   return [
     node.doctrine_node_id,
@@ -134,7 +171,8 @@ function displayNodeForSearch(node, graph) {
 }
 
 function deterministicMatches(query, graph, limit = 12) {
-  const terms = tokenize(query);
+  const terms = tokenize(expandQueryText(query));
+  const preferredDomains = queryDomainPreferences(query);
   const seen = new Map();
   for (const node of graph.nodes) {
     const text = nodeSearchText(node);
@@ -145,8 +183,12 @@ function deterministicMatches(query, graph, limit = 12) {
       if (String(node.id || "").toLowerCase().includes(term)) score += 2;
       if ((node.case_seeds || []).some(ref => String(ref).toLowerCase().includes(term))) score += 2;
     }
+    if (preferredDomains.size) {
+      if (preferredDomains.has(node.domain_id)) score += 2;
+      else score -= 4;
+    }
     if (!terms.length && node.domain_id === "criminal_procedure_hk") score = 1;
-    if (!score) continue;
+    if (score <= 0) continue;
 
     const displayNode = displayNodeForSearch(node, graph);
     if (SUPPORT_TYPES.has(displayNode.type)) continue;
@@ -306,6 +348,8 @@ async function askAiToAnalyze(query, matches, evidenceCount) {
     "{\"summary\":\"...\",\"legal_position\":\"...\",\"application\":\"...\",\"node_references\":[{\"doctrine_node_id\":\"...\",\"title\":\"...\",\"role\":\"...\"}],\"case_references\":[{\"case_name\":\"...\",\"neutral_citation\":\"...\",\"para_no\":\"...\",\"status\":\"...\"}],\"warnings\":[],\"abstain\":false}",
     "Rules:",
     "- Do not invent authorities, paragraphs, citations, statutes, or facts.",
+    "- node_references must copy doctrine_node_id values from the supplied context exactly.",
+    "- case_references must copy case_name, neutral_citation, and para_no from the supplied evidence exactly.",
     "- If evidence is absent or only candidate_only, state the limitation clearly.",
     "- Do not call anything answer-safe unless supplied evidence says answer_safe or human_reviewed.",
     "- Keep the analysis concise and audit-style, not legal advice.",
@@ -330,19 +374,92 @@ async function askAiToAnalyze(query, matches, evidenceCount) {
     };
   }
   const parsed = ai.json;
+  const validation = validateAiAnalysis(parsed, matches);
   return {
     provider: ai.provider,
     status: "used",
+    analysis: validation.analysis,
+    warnings: validation.warnings,
+  };
+}
+
+function normalizedRef(value) {
+  return String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function evidenceMatchesReference(ref, item) {
+  const refCitation = normalizedRef(ref.neutral_citation || ref.citation);
+  const refCase = normalizedRef(ref.case_name || ref.title);
+  const refPara = normalizedRef(ref.para_no || ref.paragraph || ref.paragraph_no);
+  const citationOk = refCitation && refCitation === normalizedRef(item.neutral_citation);
+  const caseOk = refCase && refCase === normalizedRef(item.case_name);
+  const paraOk = !refPara || refPara === normalizedRef(item.para_no);
+  return (citationOk || caseOk) && paraOk;
+}
+
+function validateAiAnalysis(parsed, matches) {
+  const warnings = [];
+  const allowedNodes = new Map(matches.map(match => [match.doctrine_node_id, match]));
+  const nodeReferences = [];
+
+  for (const ref of Array.isArray(parsed.node_references) ? parsed.node_references : []) {
+    const id = String(ref?.doctrine_node_id || "").trim();
+    const match = allowedNodes.get(id);
+    if (!match) {
+      warnings.push("analysis_node_reference_dropped");
+      continue;
+    }
+    nodeReferences.push({
+      doctrine_node_id: match.doctrine_node_id,
+      title: match.title,
+      role: String(ref.role || "matched_node"),
+      coverage_status: match.coverage_status || "no_evidence",
+    });
+  }
+
+  const evidenceItems = matches.flatMap(match =>
+    (match.evidence || []).map(item => ({ ...item, doctrine_node_id: match.doctrine_node_id }))
+  );
+  const caseReferences = [];
+  for (const ref of Array.isArray(parsed.case_references) ? parsed.case_references : []) {
+    const item = evidenceItems.find(candidate => evidenceMatchesReference(ref, candidate));
+    if (!item) {
+      warnings.push("analysis_case_reference_dropped");
+      continue;
+    }
+    caseReferences.push({
+      case_name: item.case_name,
+      neutral_citation: item.neutral_citation,
+      para_no: item.para_no,
+      status: item.answer_layer_status,
+      verification_status: item.verification_status,
+      doctrine_node_id: item.doctrine_node_id,
+    });
+  }
+
+  const evidenceCount = evidenceItems.length;
+  const verifiedEvidenceCount = evidenceItems.filter(item => VERIFIED_COVERAGE_STATUSES.has(item.answer_layer_status)).length;
+  let abstain = Boolean(parsed.abstain);
+  if (!evidenceCount) {
+    warnings.push("analysis_has_no_paragraph_evidence");
+    abstain = true;
+  } else if (!verifiedEvidenceCount) {
+    warnings.push("analysis_has_candidate_only_evidence");
+    abstain = true;
+  }
+
+  const modelWarnings = Array.isArray(parsed.warnings) ? parsed.warnings.map(item => String(item)) : [];
+  return {
     analysis: {
       summary: String(parsed.summary || ""),
       legal_position: String(parsed.legal_position || ""),
       application: String(parsed.application || ""),
-      node_references: Array.isArray(parsed.node_references) ? parsed.node_references : [],
-      case_references: Array.isArray(parsed.case_references) ? parsed.case_references : [],
-      warnings: Array.isArray(parsed.warnings) ? parsed.warnings : [],
-      abstain: Boolean(parsed.abstain),
+      node_references: nodeReferences,
+      case_references: caseReferences,
+      warnings: Array.from(new Set(modelWarnings.concat(warnings))),
+      abstain,
     },
-    warnings: [],
+    warnings: Array.from(new Set(warnings)),
   };
 }
 

@@ -36,7 +36,7 @@ user fact pattern ("I was hit by a car and injured…")
 | [1] Deterministic retrieval | `api/search-evidence.js` (`deterministicMatches`) | Tokenised lexical scoring across all 5 domain packs; support nodes (case seeds, statutes) roll up to their parent doctrine node via edges. |
 | [2] AI rerank | `api/search-evidence.js` (`askAiToRank`) | OpenRouter first, DeepSeek fallback. **Ranked IDs are filtered against the candidate whitelist** — the model cannot introduce a node it wasn't given. |
 | [3] Evidence join | `api/search-evidence.js` (`evidenceForNode`) | Supabase REST chain: `proposition_node_links` → `proposition_cards` → `legal_paragraphs` → `legal_cases`. Each item carries `verification_status` and a derived `answer_layer_status` (`answer_safe` / `paragraph_verified` / `candidate_only`). |
-| [4] Grounded analysis | `api/search-evidence.js` (`askAiToAnalyze`) | Temperature 0, JSON-only, explicit abstain flag, rules forbidding invented authorities. Warnings are surfaced, never swallowed. |
+| [4] Grounded analysis | `api/search-evidence.js` (`askAiToAnalyze`) | Temperature 0, JSON-only, explicit abstain flag, rules forbidding invented authorities. Post-validation now strips node/case references that do not match the supplied graph/evidence rows. Warnings are surfaced, never swallowed. |
 | [5] UI | `viewer/app.js` ("AI Inquiry" view) | Fact-pattern textarea → calls the API → renders analysis, warnings, matched nodes (clickable into the Inspector), per-paragraph evidence with badges, and the firm SOP that applies wherever a matched node sits inside a flow with a linked SOP. Falls back to client-side lexical search (clearly labelled) when the API isn't deployed. |
 | Single-node evidence lookup | `api/doctrine-evidence.js` | Same evidence chain for one `doctrine_node_id` (used for inspector drill-down). |
 | Validation scripts | `scripts/validate_evidence_links.py`, `scripts/search_evidence_trace.py`, `scripts/export_doctrine_nodes.py` | CLI checks of the link integrity and trail. |
@@ -48,20 +48,19 @@ What is **structurally guaranteed** (code-enforced, not prompt-hoped):
 - Matched node IDs always exist in the graph (whitelist filter after rerank).
 - Evidence rows always come from Supabase rows, never model output.
 - Coverage status is computed from stored `review_status`, not by the model.
+- LLM `inquiry_analysis.node_references[]` and `case_references[]` are
+  post-validated against the matched graph nodes and supplied evidence rows;
+  unsupported references are dropped and returned as warnings.
 - If Supabase or the AI is unavailable, the response degrades with explicit
   warnings (`backend_evidence_unavailable`, `ai_not_configured_fallback_search`)
   instead of silently pretending.
 
 What is **prompt-enforced only** (i.e. could still drift — keep human review):
 - The free-text `summary` / `legal_position` / `application` strings in
-  `inquiry_analysis`. The prompt forbids invention and demands abstention, and
-  `case_references` can be cross-checked against the supplied evidence, but the
-  prose itself is LLM output. **Treat it as a drafting aid, never as the audit
-  record.** The audit record is the node + paragraph trail.
-- Recommended hardening (small task): post-validate
-  `inquiry_analysis.case_references[]` and `node_references[]` against the
-  supplied evidence/candidates and strip/flag anything unmatched, same as the
-  rerank whitelist. (~20 lines in `search-evidence.js`.)
+  `inquiry_analysis.summary`, `legal_position`, and `application`. The prompt
+  forbids invention and demands abstention, but the prose itself is LLM output.
+  **Treat it as a drafting aid, never as the audit record.** The audit record is
+  the node + paragraph trail plus the post-validated references.
 
 ## What is NOT yet implemented (action items)
 
@@ -81,24 +80,12 @@ Schema lives in **Casemap4** (`supabase/migrations/`):
 - `20260212120000_case_chunks_retrieval_scale.sql`: pgvector (384-dim,
   MiniLM-L6-v2) + FTS + HNSW index + hybrid-retrieval RPC on `case_chunks`.
 
-**GAP 1 (blocking):** `api/search-evidence.js` queries a table
+**GAP 1 (blocking):** `api/search-evidence.js` queries
 `proposition_node_links` (doctrine_node_id ↔ proposition_id, link_type,
-confidence, review_status, linking_method) — **no migration creates this table**.
-Add it to Casemap4 migrations, e.g.:
-
-```sql
-CREATE TABLE IF NOT EXISTS public.proposition_node_links (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  proposition_id uuid NOT NULL REFERENCES public.proposition_cards(id),
-  doctrine_node_id text NOT NULL,          -- e.g. 'tort_law_hk.neg_duty_of_care'
-  link_type text NOT NULL DEFAULT 'candidate',  -- candidate|supports|qualifies|distinguishes
-  confidence numeric,
-  linking_method text,                     -- deepseek_v1|manual|heuristic
-  review_status text NOT NULL DEFAULT 'machine_candidate',
-  created_at timestamptz DEFAULT now()
-);
-CREATE INDEX ON public.proposition_node_links (doctrine_node_id, confidence DESC);
-```
+confidence, review_status, linking_method). This repo now includes a migration
+artifact at `supabase/migrations/20260612000000_create_proposition_node_links.sql`.
+If Casemap4 remains the canonical Supabase project, copy/apply that migration
+there and run the Supabase advisors before production.
 
 **GAP 2:** Vercel env vars must be set for the API to leave fallback mode:
 `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (server-side only — never expose to
@@ -114,9 +101,12 @@ migration.
 ### B. DeepSeek citation miner (your step 3) — partially built, unmerged
 
 Branch `codex/deepseek-candidate-linking` in THIS repo contains a "DeepSeek
-candidate doctrine linker" (commits `2546f1d`, `9ab5469`) that was never merged
-to main. Casemap4 also has `extraction_runs` / `ingestion_jobs` tables and
-batch scripts (`scripts/targeted_authority_batch.py`). The intended flow:
+candidate doctrine linker" (commits `2546f1d`, `9ab5469`), but it is based on
+an older tree and cannot be merged wholesale without deleting PR #3's restored
+domain packs/API/viewer. Cherry-pick only its linker/validator/test files after
+the `proposition_node_links` table exists. Casemap4 also has `extraction_runs`
+/ `ingestion_jobs` tables and batch scripts (`scripts/targeted_authority_batch.py`).
+The intended flow:
 
 1. For each doctrine node, take its `case_seeds` / `statute_refs` (from the
    books/workflow-derived graph) as anchors.
@@ -126,8 +116,9 @@ batch scripts (`scripts/targeted_authority_batch.py`). The intended flow:
 3. Nothing machine-made is ever `answer_safe`; promotion happens only through
    `human_review_items`.
 
-**Action:** review + merge `codex/deepseek-candidate-linking`, point it at the
-`proposition_node_links` table from GAP 1.
+**Action:** port/cherry-pick the DeepSeek linker onto the PR #3 codebase, point
+it at the `proposition_node_links` table from GAP 1, and keep all generated
+links at `review_status='machine_candidate'` until human review.
 
 ### C. 200k-case miner (your step 4) — designed, not built
 

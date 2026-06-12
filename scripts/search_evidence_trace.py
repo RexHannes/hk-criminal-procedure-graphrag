@@ -17,10 +17,50 @@ from validate_evidence_links import SAFE_STATUSES, load_json, validate_evidence
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+SUPPORT_NODE_TYPES = {"case_seed", "statute", "practice_direction", "source_anchor"}
+QUERY_EXPANSIONS = [
+    (
+        re.compile(
+            r"\b(hit|crash|crashed|collision|collided|knocked|struck|accident|injur(?:y|ed|ies))\b.*\b(car|vehicle|taxi|bus|lorry|truck|driver|road|traffic|motor)\b"
+            r"|\b(car|vehicle|taxi|bus|lorry|truck|driver|road|traffic|motor)\b.*\b(hit|crash|crashed|collision|collided|knocked|struck|accident|injur(?:y|ed|ies))\b",
+            re.I,
+        ),
+        "negligence duty of care breach causation damage personal injury road user driver traffic accident",
+        {"tort_law_hk"},
+    ),
+    (
+        re.compile(
+            r"\b(work|worker|employee|employer|workplace|site)\b.*\b(injur(?:y|ed|ies)|accident|unsafe|fall|fell)\b"
+            r"|\b(injur(?:y|ed|ies)|accident|unsafe|fall|fell)\b.*\b(work|worker|employee|employer|workplace|site)\b",
+            re.I,
+        ),
+        "employer duty vicarious liability safe system of work personal injury negligence breach",
+        {"tort_law_hk"},
+    ),
+    (
+        re.compile(
+            r"\b(slip|slipped|trip|tripped|fall|fell)\b.*\b(shop|mall|premises|building|restaurant|office|stairs|floor)\b"
+            r"|\b(shop|mall|premises|building|restaurant|office|stairs|floor)\b.*\b(slip|slipped|trip|tripped|fall|fell)\b",
+            re.I,
+        ),
+        "occupiers liability premises negligence duty of care breach personal injury",
+        {"tort_law_hk"},
+    ),
+]
 
 
 def tokens(text: str) -> set[str]:
     return {t for t in re.findall(r"[a-z0-9]+", (text or "").lower()) if len(t) > 2}
+
+
+def expand_query(query: str) -> tuple[str, set[str]]:
+    expanded = [query]
+    preferred_domains: set[str] = set()
+    for pattern, extra, domains in QUERY_EXPANSIONS:
+        if pattern.search(query):
+            expanded.append(extra)
+            preferred_domains.update(domains)
+    return " ".join(expanded), preferred_domains
 
 
 def load_doctrine_nodes() -> list[dict]:
@@ -33,17 +73,35 @@ def load_doctrine_nodes() -> list[dict]:
     return nodes
 
 
-def score_node(query_tokens: set[str], node: dict) -> int:
+def score_node(query_tokens: set[str], preferred_domains: set[str], node: dict) -> int:
+    title = node.get("title", "") or ""
+    node_id = node.get("doctrine_node_id", "") or ""
     haystack = " ".join(
         [
-            node.get("doctrine_node_id", ""),
+            node_id,
             node.get("title", ""),
             node.get("topic", "") or "",
             node.get("issue", "") or "",
             node.get("summary", ""),
         ]
     )
-    return len(query_tokens & tokens(haystack))
+    haystack_tokens = tokens(haystack)
+    title_tokens = tokens(title)
+    id_tokens = tokens(node_id)
+    score = 0
+    for token in query_tokens:
+        if token in haystack_tokens:
+            score += 1
+        if token in title_tokens:
+            score += 3
+        if token in id_tokens:
+            score += 2
+    if preferred_domains:
+        if node.get("domain_id") in preferred_domains:
+            score += 2
+        else:
+            score -= 4
+    return score
 
 
 def build_evidence_maps(evidence: dict) -> tuple[dict, dict, dict]:
@@ -60,9 +118,14 @@ def build_evidence_maps(evidence: dict) -> tuple[dict, dict, dict]:
 def answer_query(query: str, evidence: dict | None = None, max_nodes: int = 6) -> dict:
     doctrine_nodes = load_doctrine_nodes()
     doctrine_ids = {node["doctrine_node_id"] for node in doctrine_nodes}
-    query_tokens = tokens(query)
+    expanded_query, preferred_domains = expand_query(query)
+    query_tokens = tokens(expanded_query)
 
-    scored = [(score_node(query_tokens, node), node) for node in doctrine_nodes]
+    searchable_nodes = [
+        node for node in doctrine_nodes
+        if node.get("node_type") != "section_header" and node.get("node_type") not in SUPPORT_NODE_TYPES
+    ]
+    scored = [(score_node(query_tokens, preferred_domains, node), node) for node in searchable_nodes]
     matched = [node for score, node in sorted(scored, key=lambda item: item[0], reverse=True) if score > 0][:max_nodes]
     detected_domains = sorted({node["domain_id"] for node in matched})
 
