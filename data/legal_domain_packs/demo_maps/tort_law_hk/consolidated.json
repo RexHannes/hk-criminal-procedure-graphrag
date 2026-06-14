@@ -94,6 +94,18 @@
   "form_substance_maps": [
     "pi_form_substance_map.json"
   ],
+  "form_inventories": [
+    "pi_form_inventory.json"
+  ],
+  "form_field_schemas": [
+    "pi_form_field_schemas.json"
+  ],
+  "template_vault_schemas": [
+    "pi_template_vault_schema.json"
+  ],
+  "rag_indexes": [
+    "pi_rag_index.json"
+  ],
   "answer_parts": [
     {
       "id": "principles",

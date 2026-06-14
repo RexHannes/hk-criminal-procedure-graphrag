@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-06-14T15:04:51.365725+00:00",
+  "status": "passed",
+  "form_count": 103,
+  "family_counts": {
+    "accident_specific_particulars": 15,
+    "child_school_particulars": 5,
+    "defence": 24,
+    "fatal_particulars": 3,
+    "litigation_procedure_reference": 1,
+    "principles_reference": 1,
+    "psychiatric_particulars": 2,
+    "quantum_reference": 1,
+    "reply": 3,
+    "rta_particulars": 19,
+    "settlement_protected_party": 1,
+    "summons_order": 17,
+    "workplace_particulars": 11
+  },
+  "errors": [],
+  "warnings": [
+    "Machine-extracted metadata only; lawyer review required before drafting use.",
+    "No full DOCX body text or precedent wording is emitted."
+  ]
+}

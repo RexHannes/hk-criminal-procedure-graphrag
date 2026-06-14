@@ -8,6 +8,9 @@
     forms: '../../data/pi_ontology/pi_form_registry.json',
     cards: '../../data/pi_ontology/pi_demo_source_cards.json',
     firm: '../../data/firm_overlay/pi_demo_firm_overlay.json',
+    inventory: '../../data/legal_domain_packs/demo_maps/tort_law_hk/pi_form_inventory.json',
+    fieldSchemas: '../../data/legal_domain_packs/demo_maps/tort_law_hk/pi_form_field_schemas.json',
+    ragIndex: '../../data/legal_domain_packs/demo_maps/tort_law_hk/pi_rag_index.json',
   };
 
   const S = {
@@ -18,6 +21,9 @@
     forms: [],
     cards: {},
     firm: null,
+    formInventory: [],
+    fieldSchemas: [],
+    ragChunks: [],
     facts: '',
     expanded: new Set(),
     selectedId: null,
@@ -40,6 +46,46 @@
   function includesAny(text, terms) {
     const hay = norm(text);
     return terms.some(t => hay.includes(t));
+  }
+
+  function queryTerms(text) {
+    return norm(text).split(/[^a-z0-9]+/).filter(w => w.length >= 2);
+  }
+
+  function scoreChunk(terms, chunk) {
+    const tokens = chunk.tokens || {};
+    return terms.reduce((sum, term) => sum + (tokens[term] ? 1 + Math.log1p(tokens[term]) : 0), 0);
+  }
+
+  function ragMatches(limit = 12, minScore = 2) {
+    const terms = queryTerms(S.facts);
+    if (!terms.length) return [];
+    return (S.ragChunks || [])
+      .map(chunk => ({ ...chunk, score: scoreChunk(terms, chunk) }))
+      .filter(chunk => chunk.score >= minScore)
+      .sort((a, b) => b.score - a.score || String(a.title).localeCompare(String(b.title)))
+      .slice(0, limit);
+  }
+
+  function formInventoryMatches(limit = 8) {
+    const terms = queryTerms(S.facts);
+    if (!terms.length) return [];
+    return (S.formInventory || [])
+      .map(form => {
+        const hay = [
+          form.title,
+          form.form_family,
+          form.document_type,
+          ...(form.trigger_conditions || []),
+          ...(form.required_facts || []),
+          ...(form.structural_summary?.structural_headings || []),
+        ].join(' ').toLowerCase();
+        const score = terms.reduce((sum, term) => sum + (hay.includes(term) ? 1 : 0), 0);
+        return { ...form, score };
+      })
+      .filter(form => form.score > 0)
+      .sort((a, b) => b.score - a.score || String(a.title).localeCompare(String(b.title)))
+      .slice(0, limit);
   }
 
   function classifyFacts(facts) {
@@ -215,6 +261,87 @@
       </div>`;
   }
 
+  function renderRagChunk(chunk) {
+    const facts = chunk.metadata?.required_facts || chunk.metadata?.required_facts_inferred || chunk.metadata?.required_facts_for_form || [];
+    return `
+      <div class="pi-rag-card">
+        <div class="pi-rag-card-head">
+          <strong>${esc(chunk.title)}</strong>
+          <span class="pi-score">score ${esc(chunk.score.toFixed(2))}</span>
+        </div>
+        <div class="pi-meta">${esc(chunk.source_file)} · ${esc(chunk.citation || 'metadata citation')} · ${esc(chunk.pinpoint || chunk.chunk_id)}</div>
+        <div class="pi-rag-quote">${esc(chunk.quote || chunk.text || 'Metadata-only source chunk.')}</div>
+        ${facts.length ? `<div class="pi-meta">required facts: ${esc(facts.slice(0, 8).join(', '))}</div>` : ''}
+        <div class="pi-node-badges">
+          <span class="badge badge-research">${esc(chunk.answer_layer_status || 'research_only')}</span>
+          <span class="badge badge-review">${esc(chunk.review_status || chunk.output_mode || 'lawyer_review_required')}</span>
+        </div>
+      </div>`;
+  }
+
+  function renderRagEvidence() {
+    const matches = ragMatches();
+    const principleMatches = matches.filter(m => m.layer === 'principles');
+    const procedureMatches = matches.filter(m => m.layer === 'procedures_forms');
+    const unsupported = S.facts.trim() && !matches.length;
+    return `
+      <section class="pi-rag-panel">
+        <div class="pi-rag-header">
+          <div>
+            <div class="view-eyebrow">Retrieval-first PI RAG</div>
+            <h2>Source-gated evidence split</h2>
+          </div>
+          <div class="pi-node-badges">
+            <span class="badge badge-research">No source, no answer</span>
+            <span class="badge badge-review">Metadata only</span>
+            <span class="badge badge-review">Lawyer review required</span>
+          </div>
+        </div>
+        ${unsupported ? '<div class="pi-abstain">I cannot verify this from the current PI metadata/source index. Add sources or narrow the facts before generating a legal/procedural output.</div>' : ''}
+        <div class="pi-rag-grid">
+          <div>
+            <h3>Principles</h3>
+            ${principleMatches.length ? principleMatches.map(renderRagChunk).join('') : '<div class="pi-muted-box">No principle chunk meets the retrieval threshold for the current facts.</div>'}
+          </div>
+          <div>
+            <h3>Procedures / Forms</h3>
+            ${procedureMatches.length ? procedureMatches.map(renderRagChunk).join('') : '<div class="pi-muted-box">No procedure or form chunk meets the retrieval threshold for the current facts.</div>'}
+          </div>
+        </div>
+      </section>`;
+  }
+
+  function renderFormInventory() {
+    const byFamily = {};
+    (S.formInventory || []).forEach(form => { byFamily[form.form_family] = (byFamily[form.form_family] || 0) + 1; });
+    const familyRows = Object.entries(byFamily).sort((a, b) => b[1] - a[1]);
+    const matches = formInventoryMatches();
+    return `
+      <section class="pi-rag-panel pi-inventory-panel">
+        <div class="pi-rag-header">
+          <div>
+            <div class="view-eyebrow">Private form bank digestion</div>
+            <h2>${S.formInventory.length} metadata-only form records</h2>
+          </div>
+          <span class="badge badge-review">No proprietary DOCX text exposed</span>
+        </div>
+        <div class="pi-family-grid">
+          ${familyRows.map(([family, count]) => `<div class="pi-family-pill"><span>${esc(family.replaceAll('_', ' '))}</span><strong>${count}</strong></div>`).join('')}
+        </div>
+        ${matches.length ? `
+          <div class="view-eyebrow" style="margin-top:14px">Fact-pattern form matches</div>
+          <div class="pi-inventory-list">
+            ${matches.map(form => `
+              <div class="pi-source-card">
+                <strong>${esc(form.title)}</strong>
+                <div class="pi-meta">${esc(form.form_family)} · ${esc(form.source_filename)} · ${esc(form.review_status)}</div>
+                <div class="pi-meta">required facts: ${esc((form.required_facts || []).join(', '))}</div>
+                <div class="pi-meta">hash: ${esc(String(form.source_hash || '').slice(0, 16))}...</div>
+              </div>`).join('')}
+          </div>` : '<div class="pi-muted-box">Enter a fact pattern to surface matching digested form metadata.</div>'}
+      </section>`;
+  }
+
   function render() {
     const c = chooseExpanded();
     const relevantIds = new Set([...c.relevant, ...c.procedural]);
@@ -235,12 +362,14 @@
           ${(proceduralFlow?.sections || []).map(section => renderSection(proceduralFlow, section, c.procedural)).join('')}
         </div>
       </div>
+      ${renderRagEvidence()}
       ${renderInspector()}
+      ${renderFormInventory()}
       ${renderPreviews()}
     `;
     wire();
     $('#status-data').textContent = 'Data: HK PI ontology demo';
-    $('#status-counts').textContent = `${S.legalNodes.length} legal nodes · ${S.proceduralNodes.length} procedural nodes · ${S.forms.length} forms · ${Object.keys(S.cards).length} source cards`;
+    $('#status-counts').textContent = `${S.legalNodes.length} legal nodes · ${S.proceduralNodes.length} procedural nodes · ${S.forms.length} forms · ${S.formInventory.length} ingested form records · ${S.ragChunks.length} RAG chunks`;
   }
 
   function wire() {
@@ -269,7 +398,10 @@
       loadJSON(PATHS.forms),
       loadJSON(PATHS.cards),
       loadJSON(PATHS.firm),
-    ]).then(([nodes, flows, forms, cards, firm]) => {
+      loadJSON(PATHS.inventory).catch(() => ({ forms: [] })),
+      loadJSON(PATHS.fieldSchemas).catch(() => ({ field_schemas: [] })),
+      loadJSON(PATHS.ragIndex).catch(() => ({ chunks: [] })),
+    ]).then(([nodes, flows, forms, cards, firm, inventory, fieldSchemas, ragIndex]) => {
       S.legalNodes = nodes.legal_nodes || [];
       S.proceduralNodes = nodes.procedural_nodes || [];
       [...S.legalNodes, ...S.proceduralNodes].forEach(n => { S.nodes[n.node_id] = n; });
@@ -278,6 +410,9 @@
       S.forms = forms.forms || [];
       (cards.source_cards || []).forEach(c => { S.cards[c.source_card_id] = c; });
       S.firm = firm;
+      S.formInventory = inventory.forms || [];
+      S.fieldSchemas = fieldSchemas.field_schemas || [];
+      S.ragChunks = ragIndex.chunks || [];
       render();
     }).catch(err => {
       $('#view-root').innerHTML = `<div class="empty-state"><h3>Could not load PI workflow</h3><p>${esc(err.message)}</p></div>`;

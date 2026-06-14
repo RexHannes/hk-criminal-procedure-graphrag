@@ -1,0 +1,70 @@
+{
+  "domain_id": "tort_law_hk",
+  "schema_id": "pi_template_vault_schema",
+  "title": "PI Private Template Vault Schema",
+  "version": "0.1.0",
+  "last_updated": "2026-06-14",
+  "purpose": "Defines the private storage model for firm-owned or licensed PI DOCX templates. Public GitHub stores metadata and field schemas only; actual DOCX templates must remain in a private vault.",
+  "copyright_policy": "no_proprietary_template_text_or_docx_binaries_in_public_repo",
+  "policies": [
+    "private_storage_required",
+    "firm_permission_required",
+    "lawyer_review_required",
+    "version_history_required",
+    "no_client_facing_output_without_review"
+  ],
+  "required_fields": [
+    "template_id",
+    "firm_id",
+    "source_hash",
+    "source_filename",
+    "storage_uri",
+    "storage_provider",
+    "visibility",
+    "source_status",
+    "copyright_status",
+    "placeholder_schema_id",
+    "linked_form_id",
+    "linked_principle_nodes",
+    "linked_procedure_nodes",
+    "approved_by",
+    "approved_at",
+    "version",
+    "review_status",
+    "docx_output_policy"
+  ],
+  "allowed_statuses": {
+    "source_status": [
+      "firm_private_template",
+      "licensed_template",
+      "metadata_only"
+    ],
+    "copyright_status": [
+      "private_firm_use_only",
+      "licensed_for_internal_use",
+      "metadata_only_no_text"
+    ],
+    "visibility": [
+      "firm_private",
+      "matter_private",
+      "admin_only"
+    ],
+    "review_status": [
+      "machine_extracted_candidate",
+      "lawyer_schema_reviewed",
+      "firm_private_template_approved",
+      "retired"
+    ],
+    "docx_output_policy": [
+      "draft_only_lawyer_review_required",
+      "internal_only",
+      "blocked_until_review"
+    ]
+  },
+  "audit_requirements": [
+    "Every generated paragraph must trace to a template_id, field value, or source-backed principle node.",
+    "Missing facts must remain visible in draft previews.",
+    "Template approval must be versioned and reviewer-attributed.",
+    "No template body text is stored in public metadata outputs."
+  ]
+}

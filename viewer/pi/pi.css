@@ -193,6 +193,118 @@
   margin-top: 18px;
 }
 
+.pi-rag-panel {
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: var(--panel);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  margin-top: 18px;
+}
+
+.pi-rag-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.pi-rag-header h2,
+.pi-rag-grid h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+}
+
+.pi-rag-header h2 {
+  font-size: 21px;
+}
+
+.pi-rag-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+}
+
+.pi-rag-grid h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.pi-rag-card {
+  border: 1px solid var(--hairline-soft);
+  border-radius: 6px;
+  background: var(--ivory);
+  padding: 10px;
+  margin-bottom: 8px;
+}
+
+.pi-rag-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.pi-score {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faded);
+  white-space: nowrap;
+}
+
+.pi-rag-quote {
+  color: var(--umber);
+  font-size: 12.5px;
+  line-height: 1.45;
+  margin-top: 7px;
+}
+
+.pi-muted-box {
+  color: var(--faded);
+  background: var(--ivory);
+  border: 1px dashed var(--hairline);
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 12.5px;
+}
+
+.pi-family-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.pi-family-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid var(--hairline-soft);
+  border-radius: 6px;
+  background: var(--ivory);
+  padding: 8px 10px;
+  min-width: 0;
+}
+
+.pi-family-pill span {
+  color: var(--umber);
+  font-size: 12px;
+  min-width: 0;
+}
+
+.pi-family-pill strong {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.pi-inventory-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
 .pi-preview {
   border: 1px solid var(--hairline);
   border-radius: 8px;
@@ -245,6 +357,9 @@
 @media (max-width: 980px) {
   .pi-shell,
   .pi-inspector,
+  .pi-rag-grid,
+  .pi-family-grid,
+  .pi-inventory-list,
   .pi-preview-grid {
     grid-template-columns: 1fr;
   }
