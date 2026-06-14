@@ -1,0 +1,1263 @@
+{
+  "section_id": "11",
+  "section_title": "Personal Injury Principles",
+  "domain_id": "tort_law_hk",
+  "nodes": [
+    {
+      "id": "tort_pi_principles",
+      "doctrine_node_id": "tort_law_hk.pi",
+      "type": "section_header",
+      "label": "Personal Injury Principles",
+      "summary": "Personal injury specialist overlay: PI claim routing, negligence application, occupiers, employer/workplace injury, road traffic, psychiatric injury, fatal accident and quantum heads. All nodes are practice seeds pending source-card verification.",
+      "section": "11",
+      "pi_answer_part": "principles",
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "tort_pi_claim_router",
+      "doctrine_node_id": "tort_law_hk.pi.claim_router",
+      "type": "legal_issue",
+      "label": "Personal Injury Claim Router",
+      "summary": "Classifies the injury fact pattern into negligence, occupiers' liability, employer/workplace injury, road traffic, product/dangerous thing, psychiatric injury, fatal accident or statutory compensation overlap.",
+      "section": "11",
+      "subsection": "11.01",
+      "subtopic": "PI Claim Architecture",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "claim_router",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence",
+        "tort_law_hk.occupiers_nuisance_strict.occupiers",
+        "tort_law_hk.employer_vicarious.employer_duty"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.intake",
+        "pi_procedure.form_selection"
+      ],
+      "required_facts": [
+        "accident type",
+        "injury type",
+        "location",
+        "defendant role",
+        "employment context",
+        "road traffic context"
+      ],
+      "search_terms": [
+        "injury",
+        "accident",
+        "personal injury",
+        "cause of action",
+        "claim type"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_negligence_application",
+      "doctrine_node_id": "tort_law_hk.pi.negligence.application",
+      "type": "legal_issue",
+      "label": "Negligence Application in PI",
+      "summary": "Applies negligence to PI facts through duty, breach, causation, remoteness and damage, with missing facts separated from supported propositions.",
+      "section": "11",
+      "subsection": "11.02",
+      "subtopic": "Negligence Application",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "negligence",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence.duty_of_care",
+        "tort_law_hk.negligence.breach",
+        "tort_law_hk.negligence.causation.but_for",
+        "tort_law_hk.negligence.remoteness"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.statement_of_claim",
+        "pi_procedure.particulars_of_claim"
+      ],
+      "required_facts": [
+        "duty facts",
+        "breach facts",
+        "causal link",
+        "injury/loss"
+      ],
+      "search_terms": [
+        "negligence",
+        "duty",
+        "breach",
+        "causation",
+        "remoteness",
+        "damage"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_duty_foreseeability",
+      "doctrine_node_id": "tort_law_hk.pi.negligence.duty.foreseeability",
+      "type": "legal_issue",
+      "label": "Foreseeability in PI Duty",
+      "summary": "Checks whether injury to a person in the claimant's position was reasonably foreseeable on the known facts.",
+      "section": "11",
+      "subsection": "11.02",
+      "subtopic": "Duty: Foreseeability",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "negligence",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence.duty_of_care"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.evidence_preservation"
+      ],
+      "required_facts": [
+        "hazard",
+        "prior incidents",
+        "defendant knowledge"
+      ],
+      "search_terms": [
+        "foreseeability",
+        "risk",
+        "accident",
+        "injury"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_duty_proximity",
+      "doctrine_node_id": "tort_law_hk.pi.negligence.duty.proximity",
+      "type": "legal_issue",
+      "label": "Proximity in PI Duty",
+      "summary": "Checks physical, relational or assumption-of-responsibility proximity between defendant and claimant, especially for occupiers, employers, drivers, professionals and public bodies.",
+      "section": "11",
+      "subsection": "11.02",
+      "subtopic": "Duty: Proximity",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "negligence",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence.duty_of_care"
+      ],
+      "linked_procedure_nodes": [],
+      "required_facts": [
+        "defendant relationship",
+        "control over risk",
+        "claimant class"
+      ],
+      "search_terms": [
+        "proximity",
+        "relationship",
+        "control",
+        "assumption of responsibility"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_duty_fair_just_reasonable",
+      "doctrine_node_id": "tort_law_hk.pi.negligence.duty.fair_just_reasonable",
+      "type": "legal_issue",
+      "label": "Fair, Just and Reasonable / Policy",
+      "summary": "Flags policy-sensitive duty issues, omissions, public authority or novel claims requiring human review and authority verification.",
+      "section": "11",
+      "subsection": "11.02",
+      "subtopic": "Duty: Fair Just Reasonable",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "negligence",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence.duty_of_care"
+      ],
+      "linked_procedure_nodes": [],
+      "required_facts": [
+        "public authority",
+        "omission",
+        "policy-sensitive facts"
+      ],
+      "search_terms": [
+        "fair just reasonable",
+        "policy",
+        "novel duty",
+        "omission"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_breach_risk_precautions",
+      "doctrine_node_id": "tort_law_hk.pi.negligence.breach.risk_precautions",
+      "type": "legal_issue",
+      "label": "Breach: Risk and Precautions",
+      "summary": "Evaluates breach by risk probability, seriousness of harm, practicality/cost of precautions, warnings, training, inspection and common practice.",
+      "section": "11",
+      "subsection": "11.03",
+      "subtopic": "Breach",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "negligence",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence.breach"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.evidence_preservation"
+      ],
+      "required_facts": [
+        "risk likelihood",
+        "seriousness",
+        "available precautions",
+        "industry/common practice"
+      ],
+      "search_terms": [
+        "breach",
+        "standard of care",
+        "precautions",
+        "warning",
+        "inspection",
+        "training"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_causation_and_remoteness",
+      "doctrine_node_id": "tort_law_hk.pi.negligence.causation_remoteness",
+      "type": "legal_issue",
+      "label": "Causation and Remoteness in PI",
+      "summary": "Applies but-for causation, material contribution only where support exists, intervening acts, remoteness and thin-skull analysis.",
+      "section": "11",
+      "subsection": "11.04",
+      "subtopic": "Causation and Remoteness",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "negligence",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence.causation.but_for",
+        "tort_law_hk.negligence.causation.material_contribution",
+        "tort_law_hk.negligence.causation.novus_actus",
+        "tort_law_hk.negligence.remoteness",
+        "tort_law_hk.negligence.thin_skull"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.medical_evidence"
+      ],
+      "required_facts": [
+        "medical causation",
+        "timeline",
+        "pre-existing condition",
+        "intervening events"
+      ],
+      "search_terms": [
+        "causation",
+        "but for",
+        "material contribution",
+        "novus actus",
+        "remoteness",
+        "thin skull"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_occupiers_liability_application",
+      "doctrine_node_id": "tort_law_hk.pi.occupiers.application",
+      "type": "legal_issue",
+      "label": "Occupiers' Liability Application",
+      "summary": "Routes premises injury claims through occupier/control, visitor status, common duty, warnings, cleaning/inspection systems, independent contractor and act-of-stranger defences.",
+      "section": "11",
+      "subsection": "11.05",
+      "subtopic": "Occupiers' Liability",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "occupiers",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.occupiers_nuisance_strict.occupiers",
+        "tort_law_hk.occupiers_nuisance_strict.definition_occupier",
+        "tort_law_hk.occupiers_nuisance_strict.duty_categories"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.particulars_of_claim",
+        "pi_procedure.evidence_preservation"
+      ],
+      "required_facts": [
+        "premises location",
+        "occupier/control",
+        "visitor status",
+        "hazard",
+        "warning signs",
+        "inspection/cleaning system"
+      ],
+      "search_terms": [
+        "occupiers liability",
+        "premises",
+        "mall",
+        "floor",
+        "stairs",
+        "restaurant",
+        "common area"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_occupiers_control",
+      "doctrine_node_id": "tort_law_hk.pi.occupiers.control",
+      "type": "legal_issue",
+      "label": "Occupier / Control of Premises",
+      "summary": "Identifies who controlled the premises or common area at the material time, including owner, tenant, management company, contractor or school authority.",
+      "section": "11",
+      "subsection": "11.05",
+      "subtopic": "Occupier / Control",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "occupiers",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.occupiers_nuisance_strict.definition_occupier"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.discovery"
+      ],
+      "required_facts": [
+        "owner",
+        "tenant",
+        "management company",
+        "contractor control"
+      ],
+      "search_terms": [
+        "control",
+        "occupier",
+        "management company",
+        "common parts",
+        "landlord"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_occupiers_warning_inspection",
+      "doctrine_node_id": "tort_law_hk.pi.occupiers.warning_inspection",
+      "type": "legal_issue",
+      "label": "Warnings, Cleaning and Inspection Systems",
+      "summary": "Checks warning signs, cleaning logs, CCTV, inspection frequency and whether the hazard was caused by the occupier, staff, contractor or stranger.",
+      "section": "11",
+      "subsection": "11.05",
+      "subtopic": "Warning / Inspection",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "occupiers",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.occupiers_nuisance_strict.occupiers"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.evidence_preservation",
+        "pi_procedure.pre_action_letter"
+      ],
+      "required_facts": [
+        "warning signs",
+        "cleaning logs",
+        "CCTV",
+        "incident report",
+        "maintenance records"
+      ],
+      "search_terms": [
+        "warning sign",
+        "cleaning log",
+        "CCTV",
+        "inspection",
+        "spillage",
+        "wet floor"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_occupiers_independent_contractor",
+      "doctrine_node_id": "tort_law_hk.pi.occupiers.independent_contractor",
+      "type": "legal_issue",
+      "label": "Independent Contractor Defence in Premises Claims",
+      "summary": "Flags the occupier's possible defence that a competent independent contractor was engaged, requiring proof of selection, competence and reasonable supervision/inspection.",
+      "section": "11",
+      "subsection": "11.05",
+      "subtopic": "Independent Contractor Defence",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "occupiers",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.occupiers_nuisance_strict.occupiers"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.defence"
+      ],
+      "required_facts": [
+        "contractor identity",
+        "contract scope",
+        "supervision",
+        "inspection"
+      ],
+      "search_terms": [
+        "independent contractor",
+        "contractor defence",
+        "competent contractor"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_occupiers_children_allurement",
+      "doctrine_node_id": "tort_law_hk.pi.occupiers.children_allurement",
+      "type": "legal_issue",
+      "label": "Child Entrants and Allurement",
+      "summary": "Applies special child-entrant issues such as playground equipment, school supervision, allurement/trap and children's appreciation of risk.",
+      "section": "11",
+      "subsection": "11.05",
+      "subtopic": "Children / Allurement",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "occupiers",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.occupiers_nuisance_strict.children"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.medical_evidence"
+      ],
+      "required_facts": [
+        "child age",
+        "school/occupier role",
+        "equipment",
+        "supervision level"
+      ],
+      "search_terms": [
+        "child",
+        "school",
+        "playground",
+        "allurement",
+        "supervision"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_employer_workplace_router",
+      "doctrine_node_id": "tort_law_hk.pi.employer.workplace_router",
+      "type": "legal_issue",
+      "label": "Workplace Injury Router",
+      "summary": "Routes work injury facts to employer primary duty, safe system, safe plant/equipment, competent staff, supervision, PPE, statutory duties and Employees' Compensation overlap.",
+      "section": "11",
+      "subsection": "11.06",
+      "subtopic": "Workplace Injury",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "employer",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.employer_vicarious.employer_duty",
+        "tort_law_hk.employer_vicarious.safe_system",
+        "tort_law_hk.employer_vicarious.eco"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.work_injury_writ",
+        "pi_procedure.evidence_preservation"
+      ],
+      "required_facts": [
+        "employment status",
+        "work task",
+        "equipment",
+        "training",
+        "supervision",
+        "PPE",
+        "EC claim status"
+      ],
+      "search_terms": [
+        "work injury",
+        "employee",
+        "employer",
+        "workplace",
+        "site",
+        "industrial accident"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_employer_safe_system",
+      "doctrine_node_id": "tort_law_hk.pi.employer.safe_system",
+      "type": "legal_issue",
+      "label": "Safe System of Work",
+      "summary": "Checks whether the employer devised, implemented and enforced a safe system, including risk assessment, training, supervision, PPE and adequate instructions.",
+      "section": "11",
+      "subsection": "11.06",
+      "subtopic": "Safe System",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "employer",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.employer_vicarious.safe_system"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.discovery"
+      ],
+      "required_facts": [
+        "risk assessment",
+        "method statement",
+        "training records",
+        "supervision"
+      ],
+      "search_terms": [
+        "safe system",
+        "risk assessment",
+        "training",
+        "supervision",
+        "PPE"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_employer_safe_plant_equipment",
+      "doctrine_node_id": "tort_law_hk.pi.employer.safe_plant_equipment",
+      "type": "legal_issue",
+      "label": "Safe Plant and Equipment",
+      "summary": "Applies to defective machinery, lifting appliances, scaffolds, ladders, dangerous substances, dermatitis/deafness exposure and equipment-related injuries.",
+      "section": "11",
+      "subsection": "11.06",
+      "subtopic": "Safe Plant / Equipment",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "employer",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.employer_vicarious.employer_duty"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.expert_evidence"
+      ],
+      "required_facts": [
+        "equipment type",
+        "maintenance",
+        "guarding",
+        "inspection",
+        "exposure history"
+      ],
+      "search_terms": [
+        "scaffold",
+        "machinery",
+        "lifting appliance",
+        "dangerous substances",
+        "dermatitis",
+        "deafness",
+        "electrocution"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_employees_compensation_overlap",
+      "doctrine_node_id": "tort_law_hk.pi.employer.eco_common_law_overlap",
+      "type": "legal_issue",
+      "label": "Employees' Compensation and Common-Law Claim Overlap",
+      "summary": "Tracks parallel Employees' Compensation and common-law personal injury routes, avoiding double recovery and preserving limitation/procedural deadlines.",
+      "section": "11",
+      "subsection": "11.06",
+      "subtopic": "Employees' Compensation Overlap",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "employer",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.employer_vicarious.eco"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.limitation_check"
+      ],
+      "required_facts": [
+        "employment status",
+        "accident at work",
+        "EC proceedings",
+        "common law proceedings"
+      ],
+      "search_terms": [
+        "employees compensation",
+        "ECO",
+        "work injury compensation",
+        "common law claim"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_rta_router",
+      "doctrine_node_id": "tort_law_hk.pi.rta.router",
+      "type": "legal_issue",
+      "label": "Road Traffic Accident Router",
+      "summary": "Routes vehicle injury facts to driver duty, pedestrian/passenger/child claims, junction/crossing cases, rear-end/head-on/reversing/opening-door scenarios and MIB/insurance issues.",
+      "section": "11",
+      "subsection": "11.07",
+      "subtopic": "Road Traffic Accident",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "road_traffic",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence.duty_of_care",
+        "tort_law_hk.negligence.breach"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.rta_writ",
+        "pi_procedure.evidence_preservation"
+      ],
+      "required_facts": [
+        "vehicle roles",
+        "road layout",
+        "traffic signals",
+        "police report",
+        "insurance/MIB"
+      ],
+      "search_terms": [
+        "road traffic",
+        "car accident",
+        "driver",
+        "pedestrian",
+        "passenger",
+        "motorcycle",
+        "bus",
+        "taxi"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_rta_driver_duty",
+      "doctrine_node_id": "tort_law_hk.pi.rta.driver_duty",
+      "type": "legal_issue",
+      "label": "Driver's Duty to Road Users",
+      "summary": "Applies reasonable-driver duties to pedestrians, passengers, other vehicles, cyclists and motorcyclists, including lookout, speed, control, signals and safe manoeuvres.",
+      "section": "11",
+      "subsection": "11.07",
+      "subtopic": "Driver Duty",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "road_traffic",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence.breach"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.evidence_preservation"
+      ],
+      "required_facts": [
+        "speed",
+        "lookout",
+        "road conditions",
+        "traffic signals"
+      ],
+      "search_terms": [
+        "driver duty",
+        "lookout",
+        "speed",
+        "control",
+        "signals"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_rta_contributory_negligence",
+      "doctrine_node_id": "tort_law_hk.pi.rta.contributory_negligence",
+      "type": "legal_issue",
+      "label": "Road Traffic Contributory Negligence",
+      "summary": "Flags pedestrian jaywalking, failure to look, crossing against lights, passenger seatbelt issues and other conduct reducing damages.",
+      "section": "11",
+      "subsection": "11.07",
+      "subtopic": "RTA Contributory Negligence",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "road_traffic",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence.defences.contributory_negligence"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.defence"
+      ],
+      "required_facts": [
+        "claimant conduct",
+        "seatbelt status",
+        "traffic light status",
+        "crossing place"
+      ],
+      "search_terms": [
+        "jaywalking",
+        "seatbelt",
+        "contributory negligence",
+        "pedestrian"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_psychiatric_injury_router",
+      "doctrine_node_id": "tort_law_hk.pi.psychiatric_injury.router",
+      "type": "legal_issue",
+      "label": "Psychiatric Injury / Nervous Shock Router",
+      "summary": "Classifies primary and secondary victim psychiatric injury, recognised illness, close tie, proximity, direct perception and causation requirements.",
+      "section": "11",
+      "subsection": "11.08",
+      "subtopic": "Psychiatric Injury",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "psychiatric",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.psychiatric_injury"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.medical_evidence"
+      ],
+      "required_facts": [
+        "relationship",
+        "perception of accident/aftermath",
+        "psychiatric diagnosis",
+        "timing/proximity"
+      ],
+      "search_terms": [
+        "nervous shock",
+        "psychiatric injury",
+        "secondary victim",
+        "primary victim",
+        "aftermath"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_psychiatric_secondary_victim",
+      "doctrine_node_id": "tort_law_hk.pi.psychiatric_injury.secondary_victim",
+      "type": "legal_issue",
+      "label": "Secondary Victim Control Factors",
+      "summary": "Checks close tie of love and affection, proximity in time/space, direct perception, recognised psychiatric illness and foreseeability of psychiatric harm.",
+      "section": "11",
+      "subsection": "11.08",
+      "subtopic": "Secondary Victim",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "psychiatric",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.psychiatric_injury"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.medical_evidence"
+      ],
+      "required_facts": [
+        "relationship",
+        "how accident/aftermath perceived",
+        "diagnosis"
+      ],
+      "search_terms": [
+        "secondary victim",
+        "close tie",
+        "direct perception",
+        "aftermath"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_fatal_accident_router",
+      "doctrine_node_id": "tort_law_hk.pi.fatal_accident.router",
+      "type": "legal_issue",
+      "label": "Fatal Accident / Estate / Dependency Router",
+      "summary": "Routes fatal injury claims between estate claim, dependency claim, bereavement, funeral expenses, loss of services and letters of administration/probate requirements.",
+      "section": "11",
+      "subsection": "11.09",
+      "subtopic": "Fatal Accident",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "fatal",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.remedies.damages"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.fatal_claim"
+      ],
+      "required_facts": [
+        "deceased identity",
+        "death circumstances",
+        "dependants",
+        "estate representative",
+        "funeral expenses"
+      ],
+      "search_terms": [
+        "fatal accident",
+        "estate",
+        "dependency",
+        "widow",
+        "dependant",
+        "administrator"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_fatal_dependency",
+      "doctrine_node_id": "tort_law_hk.pi.fatal_accident.dependency",
+      "type": "legal_issue",
+      "label": "Dependency and Estate Heads",
+      "summary": "Separates estate loss, dependency, bereavement/funeral expenses and services claims, with calculation and proof requirements flagged for human review.",
+      "section": "11",
+      "subsection": "11.09",
+      "subtopic": "Dependency / Estate",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "fatal",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.remedies.damages.pecuniary"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.statement_of_damages"
+      ],
+      "required_facts": [
+        "income of deceased",
+        "dependants",
+        "services",
+        "letters of administration"
+      ],
+      "search_terms": [
+        "dependency",
+        "estate claim",
+        "bereavement",
+        "funeral expenses"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_quantum_router",
+      "doctrine_node_id": "tort_law_hk.pi.quantum.router",
+      "type": "legal_issue",
+      "label": "PI Quantum Router",
+      "summary": "Routes injury facts to PSLA/general damages, special damages, loss of earnings, future loss, care, medical expenses, aids/equipment, housing, interest and provisional/interim damages.",
+      "section": "11",
+      "subsection": "11.10",
+      "subtopic": "Quantum Router",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "quantum",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.remedies.damages",
+        "tort_law_hk.remedies.damages.compensatory"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.statement_of_damages"
+      ],
+      "required_facts": [
+        "injury type",
+        "medical report",
+        "wage proof",
+        "expenses",
+        "future prognosis"
+      ],
+      "search_terms": [
+        "quantum",
+        "damages",
+        "injury calculation",
+        "schedule of damages"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_quantum_psla",
+      "doctrine_node_id": "tort_law_hk.pi.quantum.psla",
+      "type": "legal_issue",
+      "label": "PSLA / General Damages",
+      "summary": "Covers pain, suffering and loss of amenity; should be supported by medical evidence, injury severity, prognosis and verified comparable cases/ranges before any figure is proposed.",
+      "section": "11",
+      "subsection": "11.10",
+      "subtopic": "PSLA",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "quantum",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.remedies.damages.non_pecuniary"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.medical_evidence",
+        "pi_procedure.statement_of_damages"
+      ],
+      "required_facts": [
+        "injury diagnosis",
+        "severity",
+        "prognosis",
+        "residual disability",
+        "comparable cases"
+      ],
+      "search_terms": [
+        "PSLA",
+        "general damages",
+        "pain suffering loss of amenity",
+        "injury valuation"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_quantum_special_damages",
+      "doctrine_node_id": "tort_law_hk.pi.quantum.special_damages",
+      "type": "legal_issue",
+      "label": "Special Damages",
+      "summary": "Covers pre-trial quantified losses: medical expenses, transport, care, loss of earnings, repair/property loss and other out-of-pocket expenses requiring documentary proof.",
+      "section": "11",
+      "subsection": "11.10",
+      "subtopic": "Special Damages",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "quantum",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.remedies.damages.pecuniary"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.statement_of_damages"
+      ],
+      "required_facts": [
+        "receipts",
+        "medical bills",
+        "transport costs",
+        "care records"
+      ],
+      "search_terms": [
+        "special damages",
+        "expenses",
+        "receipts",
+        "medical bills",
+        "transport"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_quantum_loss_of_earnings",
+      "doctrine_node_id": "tort_law_hk.pi.quantum.loss_of_earnings",
+      "type": "legal_issue",
+      "label": "Loss of Earnings and Earning Capacity",
+      "summary": "Covers pre-trial loss, future loss, residual earning capacity, promotion prospects, tax/deductions and evidence from employment/wage records.",
+      "section": "11",
+      "subsection": "11.10",
+      "subtopic": "Loss of Earnings",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "quantum",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.remedies.damages.pecuniary"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.statement_of_damages"
+      ],
+      "required_facts": [
+        "income proof",
+        "sick leave",
+        "employment records",
+        "future work capacity"
+      ],
+      "search_terms": [
+        "loss of earnings",
+        "future loss",
+        "earning capacity",
+        "promotion",
+        "tax"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_quantum_future_loss_multiplier",
+      "doctrine_node_id": "tort_law_hk.pi.quantum.future_loss_multiplier",
+      "type": "legal_issue",
+      "label": "Future Loss / Multiplier Method",
+      "summary": "Flags future loss calculations requiring multiplicand, multiplier, contingency factors, discount assumptions and source-verified methodology.",
+      "section": "11",
+      "subsection": "11.10",
+      "subtopic": "Future Loss / Multipliers",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "quantum",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.remedies.damages.pecuniary"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.statement_of_damages"
+      ],
+      "required_facts": [
+        "multiplicand",
+        "age",
+        "retirement age",
+        "prognosis",
+        "discount assumptions"
+      ],
+      "search_terms": [
+        "future loss",
+        "multiplier",
+        "multiplicand",
+        "discount rate"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_quantum_care_aids_housing",
+      "doctrine_node_id": "tort_law_hk.pi.quantum.care_aids_housing",
+      "type": "legal_issue",
+      "label": "Care, Aids, Equipment and Housing",
+      "summary": "Covers gratuitous/professional care, aids/equipment, accommodation/housing adaptation and future medical or rehabilitation expenses.",
+      "section": "11",
+      "subsection": "11.10",
+      "subtopic": "Care / Aids / Housing",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "quantum",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.remedies.damages.pecuniary"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.expert_evidence"
+      ],
+      "required_facts": [
+        "care evidence",
+        "occupational therapy report",
+        "equipment quote",
+        "housing needs"
+      ],
+      "search_terms": [
+        "care",
+        "aids",
+        "equipment",
+        "housing",
+        "rehabilitation"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_quantum_interest_interim_provisional",
+      "doctrine_node_id": "tort_law_hk.pi.quantum.interest_interim_provisional",
+      "type": "legal_issue",
+      "label": "Interest, Interim Payments and Provisional Damages",
+      "summary": "Routes claims for interest, interim payment and provisional damages where deterioration/future disease risk or immediate financial need is supported.",
+      "section": "11",
+      "subsection": "11.10",
+      "subtopic": "Interest / Interim / Provisional",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "quantum",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.remedies.damages.provisional"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.interim_payment"
+      ],
+      "required_facts": [
+        "settled liability",
+        "financial need",
+        "future deterioration risk"
+      ],
+      "search_terms": [
+        "interest",
+        "interim payment",
+        "provisional damages"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_defence_router",
+      "doctrine_node_id": "tort_law_hk.pi.defences.router",
+      "type": "legal_issue",
+      "label": "PI Defence Router",
+      "summary": "Routes PI defences including contributory negligence, volenti, inevitable accident, latent defect, competent independent contractor, act of stranger, limitation, mitigation and exaggeration/fraud flags.",
+      "section": "11",
+      "subsection": "11.11",
+      "subtopic": "Defences",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "defences",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.negligence.defences",
+        "tort_law_hk.remedies.defences"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.defence"
+      ],
+      "required_facts": [
+        "claimant conduct",
+        "warnings",
+        "limitation dates",
+        "alternative cause"
+      ],
+      "search_terms": [
+        "defence",
+        "contributory negligence",
+        "volenti",
+        "limitation",
+        "mitigation"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "tort_pi_defence_mitigation_exaggeration",
+      "doctrine_node_id": "tort_law_hk.pi.defences.mitigation_exaggeration",
+      "type": "legal_issue",
+      "label": "Mitigation / Exaggeration / Fraud Flags",
+      "summary": "Flags failure to mitigate, unsupported quantum, exaggeration or fraud indicators, requiring cautious treatment and lawyer review.",
+      "section": "11",
+      "subsection": "11.11",
+      "subtopic": "Mitigation / Exaggeration",
+      "pi_answer_part": "principles",
+      "pi_principle_group": "defences",
+      "source_basis": "practice_seed",
+      "source_card_ids": [],
+      "linked_existing_tort_nodes": [
+        "tort_law_hk.remedies.defences"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.defence"
+      ],
+      "required_facts": [
+        "treatment compliance",
+        "surveillance",
+        "medical consistency",
+        "work capacity"
+      ],
+      "search_terms": [
+        "mitigation",
+        "exaggeration",
+        "fraud",
+        "surveillance",
+        "inconsistent medical evidence"
+      ],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    }
+  ]
+}
