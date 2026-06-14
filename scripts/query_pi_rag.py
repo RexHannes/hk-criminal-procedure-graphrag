@@ -39,6 +39,8 @@ def detect_routes(query: str) -> set[str]:
     routes: set[str] = set()
     if any(term in q for term in ["form", "writ", "draft", "fill", "template", "statement of claim", "schedule of damages"]):
         routes.add("forms")
+    if any(term in q for term in ["precedent", "old statement", "old pleading", "firm style", "drafting style"]):
+        routes.add("precedent")
     if any(term in q for term in ["procedure", "steps", "sop", "checklist", "cmc", "ptr", "pre-action", "discovery"]):
         routes.add("procedure")
     if any(term in q for term in ["law", "test", "element", "defence", "duty", "breach", "causation", "quantum", "damages", "limitation"]):
@@ -70,12 +72,22 @@ def route_adjustment(chunk: dict, routes: set[str], query: str) -> float:
         boost += 1.5
     if "forms" in routes and ("form" in blob or "writ" in blob or "template" in blob):
         boost += 2.5
+    if "precedent" in routes and any(term in blob for term in ["precedent", "authority_vs_precedent", "firm_precedents_private", "precedent_not_authority"]):
+        boost += 10.0
     if "workplace" in routes and any(term in blob for term in ["workplace", "employer", "employee", "eco_form", "employees' compensation", "occupational"]):
         boost += 4.0
     if "workplace" in routes and ("eco_form" in blob or "employees' compensation" in blob):
         boost += 8.0
     if "limitation" in routes and "limitation" in blob:
-        boost += 5.0
+        boost += 10.0
+    if "limitation" in routes and any(term in blob for term in ["limitation_warning", "date of knowledge", "claimant age", "disability", "minor"]):
+        boost += 12.0
+    if "procedure" in routes and any(term in blob for term in ["pd18_1", "letter before action", "checklist review", "pre-trial review", "ptr", "cmc", "expert reports", "statement_of_damages"]):
+        boost += 6.0
+    if "procedure" in routes and chunk.get("source_file") == "pi_rag_governance.json" and "pd18_1" in blob:
+        boost += 12.0
+    if "procedure" in routes and chunk.get("source_file") == "pi_form_inventory.json":
+        boost -= 4.0
     if "court_band" in routes:
         if any(term in blob for term in ["forum_jurisdiction", "court_band", "district court", "cfi", "small claims", "dc_writ", "cfi_writ"]):
             boost += 8.0

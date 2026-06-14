@@ -26,6 +26,26 @@
       "status": "source_verified_metadata_only"
     },
     {
+      "source_id": "judiciary_cfi_forms",
+      "title": "Hong Kong Judiciary - Court of First Instance Forms",
+      "source_type": "official_reference",
+      "trust_level": "high",
+      "url": "https://www.judiciary.hk/en/court_services_facilities/hcf_cfi.html",
+      "use_for": ["cfi_form_registry", "writ", "acknowledgment_of_service", "admission", "list_of_documents"],
+      "warning": "Official form metadata only; verify the current form and legislation before production filing.",
+      "status": "source_verified_metadata_only"
+    },
+    {
+      "source_id": "judiciary_dc_forms",
+      "title": "Hong Kong Judiciary - District Court Forms",
+      "source_type": "official_reference",
+      "trust_level": "high",
+      "url": "https://www.judiciary.hk/en/court_services_facilities/dcf.html",
+      "use_for": ["district_court_form_registry", "writ", "acknowledgment_of_service", "admission", "list_of_documents"],
+      "warning": "Official form metadata only; verify the current form and legislation before production filing.",
+      "status": "source_verified_metadata_only"
+    },
+    {
       "source_id": "judiciary_district_court_civil",
       "title": "Hong Kong Judiciary - District Court civil jurisdiction",
       "source_type": "official_reference",
@@ -91,6 +111,16 @@
       "use_for": ["drafting_style", "precedent_adaptation", "template_vault"],
       "warning": "Precedent is not legal authority and must not override current law.",
       "status": "firm_private_metadata_only"
+    },
+    {
+      "source_id": "govhk_work_injury",
+      "title": "GovHK - How to Handle Compensation Claims after Work Injury",
+      "source_type": "official_public_information",
+      "trust_level": "medium",
+      "url": "https://www.gov.hk/en/residents/employment/employee/workinjury.htm",
+      "use_for": ["employee_compensation_overlay", "form_2", "form_2a", "form_2b", "notification_warning"],
+      "warning": "Use for employee-compensation overlay only; common-law PI claim and Employees' Compensation routes must remain distinct.",
+      "status": "metadata_seed_needs_current_copy_check"
     }
   ],
   "rag_modules": [
@@ -202,7 +232,7 @@
     {
       "gate_id": "court_band_warning",
       "label": "Court band warning",
-      "rule": "Court/forum output is preliminary routing only and requires current jurisdiction verification before filing."
+      "rule": "Court/forum output is preliminary routing only; verify current jurisdiction before filing."
     },
     {
       "gate_id": "contradiction_handling",
@@ -234,6 +264,84 @@
       "trigger_conditions": ["District Court", "writ", "personal injury", "claim under district court limit"],
       "required_facts": ["court heading", "plaintiff", "defendant", "indorsement", "solicitor details", "date"],
       "linked_procedure_nodes": ["pi_procedure.forum_jurisdiction", "pi_procedure.statement_of_claim"],
+      "output_mode": "draft_only_lawyer_review_required",
+      "verification_status": "needs_latest_form_check"
+    },
+    {
+      "form_id": "cfi_aos_writ_form_14",
+      "title": "Court of First Instance Acknowledgment of Service of Writ of Summons - Form 14",
+      "court": "Court of First Instance",
+      "form_no": "Form 14",
+      "cap": "Cap 4A",
+      "source_id": "judiciary_cfi_forms",
+      "trigger_conditions": ["CFI", "High Court", "acknowledgment of service", "writ", "defence tracking"],
+      "required_facts": ["court heading", "action number", "plaintiff", "defendant", "service date", "intention to defend"],
+      "linked_procedure_nodes": ["pi_procedure.defence"],
+      "output_mode": "draft_only_lawyer_review_required",
+      "verification_status": "needs_latest_form_check"
+    },
+    {
+      "form_id": "dc_aos_writ_form_14",
+      "title": "District Court Acknowledgment of Service of Writ of Summons - Form 14",
+      "court": "District Court",
+      "form_no": "Form 14",
+      "cap": "Cap 336H",
+      "source_id": "judiciary_dc_forms",
+      "trigger_conditions": ["District Court", "acknowledgment of service", "writ", "defence tracking"],
+      "required_facts": ["court heading", "action number", "plaintiff", "defendant", "service date", "intention to defend"],
+      "linked_procedure_nodes": ["pi_procedure.defence"],
+      "output_mode": "draft_only_lawyer_review_required",
+      "verification_status": "needs_latest_form_check"
+    },
+    {
+      "form_id": "cfi_admission_unliquidated_form_16c",
+      "title": "Court of First Instance Admission - Unliquidated Amount - Form 16C",
+      "court": "Court of First Instance",
+      "form_no": "Form 16C",
+      "cap": "Cap 4A",
+      "source_id": "judiciary_cfi_forms",
+      "trigger_conditions": ["CFI", "admission", "unliquidated amount", "damages", "settlement"],
+      "required_facts": ["court heading", "parties", "admission scope", "amount/terms if any", "signature/date"],
+      "linked_procedure_nodes": ["pi_procedure.settlement_offer", "pi_procedure.statement_of_damages"],
+      "output_mode": "draft_only_lawyer_review_required",
+      "verification_status": "needs_latest_form_check"
+    },
+    {
+      "form_id": "dc_admission_unliquidated_form_16c",
+      "title": "District Court Admission - Unliquidated Amount - Form 16C",
+      "court": "District Court",
+      "form_no": "Form 16C",
+      "cap": "Cap 336H",
+      "source_id": "judiciary_dc_forms",
+      "trigger_conditions": ["District Court", "admission", "unliquidated amount", "damages", "settlement"],
+      "required_facts": ["court heading", "parties", "admission scope", "amount/terms if any", "signature/date"],
+      "linked_procedure_nodes": ["pi_procedure.settlement_offer", "pi_procedure.statement_of_damages"],
+      "output_mode": "draft_only_lawyer_review_required",
+      "verification_status": "needs_latest_form_check"
+    },
+    {
+      "form_id": "cfi_list_of_documents_form_26",
+      "title": "Court of First Instance List of Documents - Form 26",
+      "court": "Court of First Instance",
+      "form_no": "Form 26",
+      "cap": "Cap 4A",
+      "source_id": "judiciary_cfi_forms",
+      "trigger_conditions": ["CFI", "list of documents", "discovery", "disclosure"],
+      "required_facts": ["court heading", "parties", "document categories", "privilege claims", "verification/signature"],
+      "linked_procedure_nodes": ["pi_procedure.discovery"],
+      "output_mode": "draft_only_lawyer_review_required",
+      "verification_status": "needs_latest_form_check"
+    },
+    {
+      "form_id": "dc_list_of_documents_form_26",
+      "title": "District Court List of Documents - Form 26",
+      "court": "District Court",
+      "form_no": "Form 26",
+      "cap": "Cap 336H",
+      "source_id": "judiciary_dc_forms",
+      "trigger_conditions": ["District Court", "list of documents", "discovery", "disclosure"],
+      "required_facts": ["court heading", "parties", "document categories", "privilege claims", "verification/signature"],
+      "linked_procedure_nodes": ["pi_procedure.discovery"],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -274,6 +382,18 @@
       "verification_status": "needs_current_pd_check"
     },
     {
+      "form_id": "pd18_1_annex_d_notice_checklist_review",
+      "title": "PD18.1 Annex D - Notice of Check List Review",
+      "court": "PI List",
+      "form_no": "Annex D",
+      "source_id": "pd18_1_personal_injuries_list",
+      "trigger_conditions": ["checklist review", "notice", "PI List directions"],
+      "required_facts": ["action number", "parties", "review date", "outstanding directions", "solicitor details"],
+      "linked_procedure_nodes": ["pi_procedure.discovery", "pi_procedure.expert_evidence", "pi_procedure.trial_preparation"],
+      "output_mode": "draft_only_lawyer_review_required",
+      "verification_status": "needs_current_pd_check"
+    },
+    {
       "form_id": "pd18_1_annex_e_checklist",
       "title": "PD18.1 Annex E - Check-List",
       "court": "PI List",
@@ -281,6 +401,30 @@
       "source_id": "pd18_1_personal_injuries_list",
       "trigger_conditions": ["checklist review", "directions", "PI List"],
       "required_facts": ["pleadings status", "discovery", "medical reports", "expert evidence", "trial estimate"],
+      "linked_procedure_nodes": ["pi_procedure.discovery", "pi_procedure.expert_evidence", "pi_procedure.trial_preparation"],
+      "output_mode": "draft_only_lawyer_review_required",
+      "verification_status": "needs_current_pd_check"
+    },
+    {
+      "form_id": "pd18_1_annex_f_ptr_notice",
+      "title": "PD18.1 Annex F - Pre-Trial Review Notice",
+      "court": "PI List",
+      "form_no": "Annex F",
+      "source_id": "pd18_1_personal_injuries_list",
+      "trigger_conditions": ["pre-trial review", "PTR", "trial preparation", "PI List"],
+      "required_facts": ["action number", "parties", "PTR date", "trial readiness", "bundle/witness/expert status"],
+      "linked_procedure_nodes": ["pi_procedure.trial_preparation"],
+      "output_mode": "draft_only_lawyer_review_required",
+      "verification_status": "needs_current_pd_check"
+    },
+    {
+      "form_id": "pd18_1_annex_g_specimen_order",
+      "title": "PD18.1 Annex G - Specimen Order on Check List Review / Pre-Trial Review",
+      "court": "PI List",
+      "form_no": "Annex G",
+      "source_id": "pd18_1_personal_injuries_list",
+      "trigger_conditions": ["checklist review", "pre-trial review", "PTR", "directions order", "PI List"],
+      "required_facts": ["directions sought", "outstanding pleadings/discovery/expert steps", "trial estimate", "costs/reservation"],
       "linked_procedure_nodes": ["pi_procedure.discovery", "pi_procedure.expert_evidence", "pi_procedure.trial_preparation"],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_current_pd_check"

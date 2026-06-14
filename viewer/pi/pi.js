@@ -56,6 +56,7 @@
     const q = norm(text);
     const routes = new Set();
     if (includesAny(q, ['form', 'writ', 'draft', 'fill', 'template', 'statement of claim', 'schedule of damages'])) routes.add('forms');
+    if (includesAny(q, ['precedent', 'old statement', 'old pleading', 'firm style', 'drafting style'])) routes.add('precedent');
     if (includesAny(q, ['procedure', 'steps', 'sop', 'checklist', 'cmc', 'ptr', 'pre-action', 'discovery'])) routes.add('procedure');
     if (includesAny(q, ['law', 'test', 'element', 'defence', 'duty', 'breach', 'causation', 'quantum', 'damages', 'limitation'])) routes.add('principles');
     if (includesAny(q, ['workplace', 'employee', 'employer', 'work injury', 'work accident', 'injured at work', 'at work', 'industrial', 'occupational disease'])) routes.add('workplace');
@@ -80,9 +81,14 @@
     if (routes.has('principles') && chunk.layer === 'principles') boost += 2;
     if (routes.has('procedure') && chunk.layer === 'procedures_forms') boost += 1.5;
     if (routes.has('forms') && (blob.includes('form') || blob.includes('writ') || blob.includes('template'))) boost += 2.5;
+    if (routes.has('precedent') && ['precedent', 'authority_vs_precedent', 'firm_precedents_private', 'precedent_not_authority'].some(term => blob.includes(term))) boost += 10;
     if (routes.has('workplace') && ['workplace', 'employer', 'employee', 'eco_form', 'employees\' compensation', 'occupational'].some(term => blob.includes(term))) boost += 4;
     if (routes.has('workplace') && (blob.includes('eco_form') || blob.includes('employees\' compensation'))) boost += 8;
-    if (routes.has('limitation') && blob.includes('limitation')) boost += 5;
+    if (routes.has('limitation') && blob.includes('limitation')) boost += 10;
+    if (routes.has('limitation') && ['limitation_warning', 'date of knowledge', 'claimant age', 'disability', 'minor'].some(term => blob.includes(term))) boost += 12;
+    if (routes.has('procedure') && ['pd18_1', 'letter before action', 'checklist review', 'pre-trial review', 'ptr', 'cmc', 'expert reports', 'statement_of_damages'].some(term => blob.includes(term))) boost += 6;
+    if (routes.has('procedure') && chunk.source_file === 'pi_rag_governance.json' && blob.includes('pd18_1')) boost += 12;
+    if (routes.has('procedure') && chunk.source_file === 'pi_form_inventory.json') boost -= 4;
     if (routes.has('court_band')) {
       if (['forum_jurisdiction', 'court_band', 'district court', 'cfi', 'small claims', 'dc_writ', 'cfi_writ'].some(term => blob.includes(term))) boost += 8;
       if (chunk.source_file === 'pi_form_inventory.json' && !['writ', 'court', 'district', 'cfi'].some(term => blob.includes(term))) boost -= 6;
