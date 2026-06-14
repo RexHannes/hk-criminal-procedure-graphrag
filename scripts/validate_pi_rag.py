@@ -33,9 +33,14 @@ def main() -> int:
     if not chunks:
         errors.append("No chunks in PI RAG index.")
     layers = {c.get("layer") for c in chunks}
-    for expected in {"principles", "procedures_forms"}:
+    for expected in {"principles", "procedures_forms", "governance"}:
         if expected not in layers:
             errors.append(f"Missing layer: {expected}")
+    policy = index.get("retrieval_policy", {})
+    if "legislation" not in policy.get("source_hierarchy", []):
+        errors.append("Retrieval policy missing source_hierarchy with legislation first.")
+    if policy.get("governance_layer") != "governance":
+        errors.append("Retrieval policy missing governance_layer=governance.")
     for chunk in chunks:
         for field in ["chunk_id", "layer", "title", "source_file", "citation", "pinpoint", "quote", "tokens"]:
             if not chunk.get(field):

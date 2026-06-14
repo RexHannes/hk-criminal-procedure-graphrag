@@ -106,6 +106,9 @@
   "rag_indexes": [
     "pi_rag_index.json"
   ],
+  "rag_governance": [
+    "pi_rag_governance.json"
+  ],
   "answer_parts": [
     {
       "id": "principles",

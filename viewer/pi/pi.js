@@ -52,16 +52,51 @@
     return norm(text).split(/[^a-z0-9]+/).filter(w => w.length >= 2);
   }
 
+  function detectRoutes(text) {
+    const q = norm(text);
+    const routes = new Set();
+    if (includesAny(q, ['form', 'writ', 'draft', 'fill', 'template', 'statement of claim', 'schedule of damages'])) routes.add('forms');
+    if (includesAny(q, ['procedure', 'steps', 'sop', 'checklist', 'cmc', 'ptr', 'pre-action', 'discovery'])) routes.add('procedure');
+    if (includesAny(q, ['law', 'test', 'element', 'defence', 'duty', 'breach', 'causation', 'quantum', 'damages', 'limitation'])) routes.add('principles');
+    if (includesAny(q, ['workplace', 'employee', 'employer', 'work injury', 'work accident', 'injured at work', 'at work', 'industrial', 'occupational disease'])) routes.add('workplace');
+    if (includesAny(q, ['court', 'forum', 'jurisdiction', 'cfi', 'district court', 'small claims', 'claim value', 'hk$', 'hk $', '75000', '75,000', '3m', '3 million'])) routes.add('court_band');
+    if (includesAny(q, ['limitation', 'deadline', 'time limit', 'out of time'])) routes.add('limitation');
+    return routes;
+  }
+
   function scoreChunk(terms, chunk) {
     const tokens = chunk.tokens || {};
     return terms.reduce((sum, term) => sum + (tokens[term] ? 1 + Math.log1p(tokens[term]) : 0), 0);
   }
 
+  function routeAdjustment(chunk, routes) {
+    const meta = chunk.metadata || {};
+    const blob = [
+      chunk.chunk_id, chunk.layer, chunk.title, chunk.source_file, chunk.citation, chunk.pinpoint,
+      ...(meta.trigger_conditions || []),
+      ...(meta.linked_procedure_nodes || []),
+    ].join(' ').toLowerCase();
+    let boost = 0;
+    if (routes.has('principles') && chunk.layer === 'principles') boost += 2;
+    if (routes.has('procedure') && chunk.layer === 'procedures_forms') boost += 1.5;
+    if (routes.has('forms') && (blob.includes('form') || blob.includes('writ') || blob.includes('template'))) boost += 2.5;
+    if (routes.has('workplace') && ['workplace', 'employer', 'employee', 'eco_form', 'employees\' compensation', 'occupational'].some(term => blob.includes(term))) boost += 4;
+    if (routes.has('workplace') && (blob.includes('eco_form') || blob.includes('employees\' compensation'))) boost += 8;
+    if (routes.has('limitation') && blob.includes('limitation')) boost += 5;
+    if (routes.has('court_band')) {
+      if (['forum_jurisdiction', 'court_band', 'district court', 'cfi', 'small claims', 'dc_writ', 'cfi_writ'].some(term => blob.includes(term))) boost += 8;
+      if (chunk.source_file === 'pi_form_inventory.json' && !['writ', 'court', 'district', 'cfi'].some(term => blob.includes(term))) boost -= 6;
+    }
+    if (norm(S.facts).includes('district court') && (blob.includes('dc_writ') || blob.includes('district court'))) boost += 8;
+    return boost;
+  }
+
   function ragMatches(limit = 12, minScore = 2) {
     const terms = queryTerms(S.facts);
+    const routes = detectRoutes(S.facts);
     if (!terms.length) return [];
     return (S.ragChunks || [])
-      .map(chunk => ({ ...chunk, score: scoreChunk(terms, chunk) }))
+      .map(chunk => ({ ...chunk, score: scoreChunk(terms, chunk) + routeAdjustment(chunk, routes) }))
       .filter(chunk => chunk.score >= minScore)
       .sort((a, b) => b.score - a.score || String(a.title).localeCompare(String(b.title)))
       .slice(0, limit);
@@ -283,6 +318,7 @@
     const matches = ragMatches();
     const principleMatches = matches.filter(m => m.layer === 'principles');
     const procedureMatches = matches.filter(m => m.layer === 'procedures_forms');
+    const governanceMatches = matches.filter(m => m.layer === 'governance');
     const unsupported = S.facts.trim() && !matches.length;
     return `
       <section class="pi-rag-panel">
@@ -308,6 +344,10 @@
             ${procedureMatches.length ? procedureMatches.map(renderRagChunk).join('') : '<div class="pi-muted-box">No procedure or form chunk meets the retrieval threshold for the current facts.</div>'}
           </div>
         </div>
+        ${governanceMatches.length ? `<div class="pi-governance-strip">
+          <h3>Verification / Source Hierarchy</h3>
+          ${governanceMatches.slice(0, 4).map(renderRagChunk).join('')}
+        </div>` : ''}
       </section>`;
   }
 

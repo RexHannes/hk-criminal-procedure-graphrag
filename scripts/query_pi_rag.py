@@ -34,11 +34,64 @@ def score_chunk(query_terms: list[str], chunk: dict) -> float:
     return score
 
 
+def detect_routes(query: str) -> set[str]:
+    q = query.lower()
+    routes: set[str] = set()
+    if any(term in q for term in ["form", "writ", "draft", "fill", "template", "statement of claim", "schedule of damages"]):
+        routes.add("forms")
+    if any(term in q for term in ["procedure", "steps", "sop", "checklist", "cmc", "ptr", "pre-action", "discovery"]):
+        routes.add("procedure")
+    if any(term in q for term in ["law", "test", "element", "defence", "duty", "breach", "causation", "quantum", "damages", "limitation"]):
+        routes.add("principles")
+    if any(term in q for term in ["workplace", "employee", "employer", "work injury", "work accident", "injured at work", "at work", "industrial", "occupational disease"]):
+        routes.add("workplace")
+    if any(term in q for term in ["court", "forum", "jurisdiction", "cfi", "district court", "small claims", "claim value", "hk$", "hk $", "75000", "75,000", "3m", "3 million"]):
+        routes.add("court_band")
+    if any(term in q for term in ["limitation", "deadline", "time limit", "out of time"]):
+        routes.add("limitation")
+    return routes
+
+
+def route_adjustment(chunk: dict, routes: set[str], query: str) -> float:
+    blob = " ".join([
+        str(chunk.get("chunk_id", "")),
+        str(chunk.get("layer", "")),
+        str(chunk.get("title", "")),
+        str(chunk.get("source_file", "")),
+        str(chunk.get("citation", "")),
+        str(chunk.get("pinpoint", "")),
+        " ".join(str(x) for x in chunk.get("metadata", {}).get("trigger_conditions", []) or []),
+        " ".join(str(x) for x in chunk.get("metadata", {}).get("linked_procedure_nodes", []) or []),
+    ]).lower()
+    boost = 0.0
+    if "principles" in routes and chunk.get("layer") == "principles":
+        boost += 2.0
+    if "procedure" in routes and chunk.get("layer") == "procedures_forms":
+        boost += 1.5
+    if "forms" in routes and ("form" in blob or "writ" in blob or "template" in blob):
+        boost += 2.5
+    if "workplace" in routes and any(term in blob for term in ["workplace", "employer", "employee", "eco_form", "employees' compensation", "occupational"]):
+        boost += 4.0
+    if "workplace" in routes and ("eco_form" in blob or "employees' compensation" in blob):
+        boost += 8.0
+    if "limitation" in routes and "limitation" in blob:
+        boost += 5.0
+    if "court_band" in routes:
+        if any(term in blob for term in ["forum_jurisdiction", "court_band", "district court", "cfi", "small claims", "dc_writ", "cfi_writ"]):
+            boost += 8.0
+        if chunk.get("source_file") == "pi_form_inventory.json" and not any(term in blob for term in ["writ", "court", "district", "cfi"]):
+            boost -= 6.0
+    if "district court" in query.lower() and any(term in blob for term in ["dc_writ", "district court"]):
+        boost += 8.0
+    return boost
+
+
 def retrieve(index: dict, query: str, limit: int, min_score: float) -> list[dict]:
     terms = tokenize(query)
+    routes = detect_routes(query)
     scored = []
     for chunk in index.get("chunks", []):
-        score = score_chunk(terms, chunk)
+        score = score_chunk(terms, chunk) + route_adjustment(chunk, routes, query)
         if score >= min_score:
             scored.append({**chunk, "score": round(score, 3)})
     scored.sort(key=lambda c: (-c["score"], c["layer"], c["title"]))
@@ -49,6 +102,7 @@ def grouped(chunks: list[dict]) -> dict[str, list[dict]]:
     return {
         "principles": [c for c in chunks if c.get("layer") == "principles"],
         "procedures_forms": [c for c in chunks if c.get("layer") == "procedures_forms"],
+        "governance": [c for c in chunks if c.get("layer") == "governance"],
     }
 
 
@@ -57,19 +111,23 @@ def build_fail_closed_answer(query: str, chunks: list[dict]) -> dict:
     if not chunks:
         return {
             "query": query,
+            "routes": sorted(detect_routes(query)),
             "abstain": True,
             "answer": "I cannot verify this from the current PI metadata/source index.",
             "principles": [],
             "procedures_forms": [],
+            "verification": [],
             "missing_information": ["No retrieved source chunk met the minimum evidence threshold."],
             "review_status": "source_missing_lawyer_review_required",
         }
     return {
         "query": query,
+        "routes": sorted(detect_routes(query)),
         "abstain": False,
         "answer": "Retrieved source-backed PI workflow candidates. This is a research layer only; lawyer review is required before advice or drafting.",
         "principles": summarize_group(groups["principles"]),
         "procedures_forms": summarize_group(groups["procedures_forms"]),
+        "verification": summarize_group(groups["governance"])[:5],
         "missing_information": infer_missing(chunks),
         "review_status": "draft_only_lawyer_review_required",
     }

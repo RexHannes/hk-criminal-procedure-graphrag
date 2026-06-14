@@ -77,6 +77,7 @@ def main() -> int:
     substance = load(TORT_DIR / "pi_form_substance_map.json")
     inventory = load(TORT_DIR / "pi_form_inventory.json")
     field_schemas = load(TORT_DIR / "pi_form_field_schemas.json")
+    governance = load(TORT_DIR / "pi_rag_governance.json")
 
     for node in principles.get("nodes", []):
         add_chunk(
@@ -213,6 +214,98 @@ def main() -> int:
             },
         )
 
+    for source in governance.get("source_registry", []):
+        add_chunk(
+            chunks,
+            chunk_id="source_registry:" + source["source_id"],
+            layer="governance",
+            title=source.get("title", source["source_id"]),
+            source_file="pi_rag_governance.json",
+            citation=source["source_id"],
+            quote=source.get("warning", source.get("title", "")),
+            text=chunk_text([
+                source.get("title", ""),
+                source.get("source_type", ""),
+                source.get("trust_level", ""),
+                " ".join(source.get("use_for", [])),
+                source.get("warning", ""),
+            ]),
+            metadata={**source, "output_mode": "internal_only", "review_status": source.get("status", "metadata_seed")},
+        )
+
+    for rule in governance.get("routing_rules", []):
+        add_chunk(
+            chunks,
+            chunk_id="routing_rule:" + rule["rule_id"],
+            layer="governance",
+            title=rule.get("rule_id", "Routing rule").replace("_", " ").title(),
+            source_file="pi_rag_governance.json",
+            citation=rule["rule_id"],
+            quote=source_quote(rule.get("rule_id", ""), rule.get("required_facts"), rule.get("if_query_mentions")),
+            text=chunk_text([
+                " ".join(rule.get("if_query_mentions", [])),
+                " ".join(rule.get("route_to", [])),
+                rule.get("gate", ""),
+                rule.get("warning", ""),
+                rule.get("must_not", ""),
+            ]),
+            metadata={**rule, "output_mode": "internal_only", "review_status": "governance_seed"},
+        )
+
+    for gate in governance.get("verification_gates", []):
+        add_chunk(
+            chunks,
+            chunk_id="verification_gate:" + gate["gate_id"],
+            layer="governance",
+            title=gate.get("label", gate["gate_id"]),
+            source_file="pi_rag_governance.json",
+            citation=gate["gate_id"],
+            quote=gate.get("rule", ""),
+            text=chunk_text([gate.get("label", ""), gate.get("rule", "")]),
+            metadata={**gate, "output_mode": "internal_only", "review_status": "governance_seed"},
+        )
+
+    for form in governance.get("official_form_seeds", []):
+        add_chunk(
+            chunks,
+            chunk_id="official_form_seed:" + form["form_id"],
+            layer="procedures_forms",
+            title=form.get("title", form["form_id"]),
+            source_file="pi_rag_governance.json",
+            citation=form["form_id"],
+            quote=source_quote(form.get("title", ""), form.get("required_facts"), form.get("trigger_conditions")),
+            text=chunk_text([
+                form.get("title", ""),
+                form.get("court", ""),
+                form.get("form_no", ""),
+                form.get("cap", ""),
+                form.get("source_id", ""),
+                " ".join(form.get("trigger_conditions", [])),
+                " ".join(form.get("required_facts", [])),
+                " ".join(form.get("linked_procedure_nodes", [])),
+            ]),
+            metadata=form,
+        )
+
+    court_band = governance.get("court_band_seed", {})
+    if court_band:
+        add_chunk(
+            chunks,
+            chunk_id="governance:court_band_seed",
+            layer="governance",
+            title=court_band.get("title", "Preliminary court band guidance"),
+            source_file="pi_rag_governance.json",
+            citation=court_band.get("source_id", "court_band_seed"),
+            quote=source_quote(court_band.get("title", ""), court_band.get("required_facts"), court_band.get("trigger_conditions")),
+            text=chunk_text([
+                court_band.get("summary", ""),
+                " ".join(court_band.get("trigger_conditions", [])),
+                " ".join(court_band.get("required_facts", [])),
+                court_band.get("warning", ""),
+            ]),
+            metadata={**court_band, "output_mode": "internal_only", "review_status": "governance_seed"},
+        )
+
     index = {
         "index_id": "pi_rag_index",
         "domain_id": "tort_law_hk",
@@ -223,6 +316,8 @@ def main() -> int:
             "metadata_only": True,
             "no_proprietary_form_text": True,
             "answer_sections": ["principles", "procedures_forms"],
+            "governance_layer": "governance",
+            "source_hierarchy": governance.get("source_hierarchy", []),
             "minimum_score_default": 2.0,
             "review_gate": "draft_only_lawyer_review_required"
         },

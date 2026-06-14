@@ -231,6 +231,19 @@
   margin-bottom: 8px;
 }
 
+.pi-governance-strip {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+.pi-governance-strip h3 {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
 .pi-rag-card {
   border: 1px solid var(--hairline-soft);
   border-radius: 6px;
