@@ -1,8 +1,8 @@
 {
   "domain_id": "tort_law_hk",
   "title": "Hong Kong Tort Law",
-  "version": "0.1.0",
-  "last_updated": "2026-06-02",
+  "version": "0.2.0",
+  "last_updated": "2026-06-14",
   "status": {
     "not_product_answer_layer": true,
     "needs_hklii_verification": true,
@@ -69,7 +69,37 @@
       "title": "Remedies, Damages, Defences and Procedure",
       "node_file": "nodes/10_remedies_damages_defences_procedure.json",
       "edge_file": "edges/10_remedies_damages_defences_procedure.json"
+    },
+    {
+      "id": "11",
+      "title": "Personal Injury Principles",
+      "node_file": "nodes/11_personal_injury_principles.json",
+      "edge_file": "edges/11_personal_injury_principles.json"
+    },
+    {
+      "id": "12",
+      "title": "Personal Injury Procedures and Forms",
+      "node_file": "nodes/12_personal_injury_procedures.json",
+      "edge_file": "edges/12_personal_injury_procedures.json"
     }
   ],
-  "flows_file": "flows.json"
+  "flows_file": "flows.json",
+  "specialist_flows": [
+    "pi_procedure_flows.json"
+  ],
+  "form_registries": [
+    "pi_form_registry.json"
+  ],
+  "answer_parts": [
+    {
+      "id": "principles",
+      "label": "Principles",
+      "source": "nodes/11_personal_injury_principles.json"
+    },
+    {
+      "id": "procedures",
+      "label": "Procedures / Forms",
+      "source": "nodes/12_personal_injury_procedures.json"
+    }
+  ]
 }
