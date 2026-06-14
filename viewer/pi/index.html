@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HK PI Source-Card Workflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="pi.css?v=20260614a">
+</head>
+<body>
+  <header id="masthead">
+    <div class="masthead-brand">
+      <div class="brand-mark">PI</div>
+      <div class="brand-text">
+        <h1>Hong Kong Personal Injury</h1>
+        <span class="brand-sub">Fail-closed source-card workflow</span>
+      </div>
+    </div>
+    <div class="command-wrap">
+      <input type="text" id="pi-facts" value="My client slipped on a wet mall corridor, no warning sign, fractured wrist, 2 months off work." autocomplete="off" />
+    </div>
+    <div class="masthead-badges">
+      <span class="badge badge-research">Research layer</span>
+      <span class="badge badge-review">Lawyer review required</span>
+    </div>
+  </header>
+  <div class="masthead-rule"></div>
+
+  <div id="pi-workspace">
+    <main id="center">
+      <div id="view-root"></div>
+    </main>
+  </div>
+
+  <footer id="status-bar">
+    <span id="status-data">Loading PI workflow...</span>
+    <span class="status-sep"></span>
+    <span id="status-counts"></span>
+    <span class="status-spacer"></span>
+    <a href="../" class="status-link">Back to main workspace</a>
+  </footer>
+
+  <script src="pi.js?v=20260614a"></script>
+</body>
+</html>

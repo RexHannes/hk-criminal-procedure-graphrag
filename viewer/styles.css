@@ -43,6 +43,7 @@ body {
 }
 
 button { font-family: inherit; font-size: inherit; cursor: pointer; }
+a { color: inherit; }
 
 /* ── Masthead ── */
 
@@ -234,6 +235,7 @@ button { font-family: inherit; font-size: inherit; cursor: pointer; }
   font-weight: 500;
   font-size: 13px;
   transition: background .12s;
+  text-decoration: none;
 }
 .nav-item:hover { background: rgba(154,113,66,.08); }
 .nav-item.active { background: var(--panel); color: var(--ink); box-shadow: var(--shadow); }

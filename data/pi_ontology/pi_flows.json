@@ -1,0 +1,174 @@
+{
+  "version": "0.1.0",
+  "ontology_id": "hk_personal_injury_workflow",
+  "flows": [
+    {
+      "flow_id": "pi_legal_analysis_flow",
+      "title": "Personal Injury Legal Analysis Flow",
+      "description": "Research-layer issue map for PI facts. Nodes expand only when triggered by facts or by a damages-only focus; source-missing nodes abstain.",
+      "rail": "legal_analysis",
+      "sections": [
+        {
+          "section_id": "pi_cause_of_action",
+          "title": "Cause of action",
+          "nodes": ["pi_negligence_overview", "pi_occupiers_liability", "pi_employers_liability", "pi_road_traffic_accident", "pi_psychiatric_injury"]
+        },
+        {
+          "section_id": "pi_duty",
+          "title": "Duty of care",
+          "nodes": ["pi_duty_of_care", "pi_foreseeability", "pi_proximity", "pi_fair_just_reasonable"]
+        },
+        {
+          "section_id": "pi_breach",
+          "title": "Breach",
+          "nodes": ["pi_breach", "pi_res_ipsa"]
+        },
+        {
+          "section_id": "pi_causation",
+          "title": "Causation",
+          "nodes": ["pi_causation", "pi_remoteness"]
+        },
+        {
+          "section_id": "pi_defences",
+          "title": "Defences",
+          "nodes": ["pi_contributory_negligence", "pi_volenti", "pi_illegality", "pi_limitation"]
+        },
+        {
+          "section_id": "pi_damages",
+          "title": "Damages",
+          "nodes": ["pi_general_damages", "pi_special_damages", "pi_loss_of_earnings", "pi_future_loss", "pi_care", "pi_medical_expenses", "pi_aids_equipment", "pi_interest"]
+        },
+        {
+          "section_id": "pi_evidence_governance",
+          "title": "Evidence and governance",
+          "nodes": ["pi_evidence_checklist", "pi_source_missing"]
+        }
+      ]
+    },
+    {
+      "flow_id": "pi_procedural_forms_flow",
+      "title": "Personal Injury Procedural / Forms Flow",
+      "description": "Action map for PI matters, from intake and limitation to pleadings, evidence, settlement, trial, costs, and review gates.",
+      "rail": "procedural_forms",
+      "sections": [
+        {
+          "section_id": "pi_proc_intake",
+          "title": "Intake",
+          "nodes": ["pi_procedure_intake", "pi_procedure_limitation_check"]
+        },
+        {
+          "section_id": "pi_proc_pre_action",
+          "title": "Pre-action",
+          "nodes": ["pi_procedure_evidence_preservation", "pi_procedure_medical_evidence", "pi_procedure_pre_action_letter"]
+        },
+        {
+          "section_id": "pi_proc_commencement",
+          "title": "Commencement",
+          "nodes": ["pi_procedure_claim_commencement", "pi_procedure_statement_of_claim", "pi_procedure_schedule_of_damages"]
+        },
+        {
+          "section_id": "pi_proc_post_commencement",
+          "title": "Post-commencement",
+          "nodes": ["pi_procedure_defence", "pi_procedure_reply", "pi_procedure_discovery", "pi_procedure_expert_evidence"]
+        },
+        {
+          "section_id": "pi_proc_settlement_trial",
+          "title": "Settlement / trial",
+          "nodes": ["pi_procedure_interim_payment", "pi_procedure_settlement_offer", "pi_procedure_trial_preparation", "pi_procedure_costs_enforcement"]
+        },
+        {
+          "section_id": "pi_proc_governance",
+          "title": "Governance",
+          "nodes": ["pi_procedure_partner_review"]
+        }
+      ]
+    }
+  ],
+  "document_previews": [
+    {
+      "preview_id": "pi_preview_statement_of_claim",
+      "title": "Statement of Claim draft outline",
+      "form_id": "pi_statement_of_claim_outline",
+      "paragraphs": [
+        {
+          "paragraph_id": "soc_parties",
+          "title": "Parties and jurisdiction",
+          "template_text": "[Plaintiff] claims against [Defendant] arising from [accident date] at [accident location].",
+          "required_facts": ["plaintiff identity", "defendant identity", "accident date", "accident location"],
+          "source_card_ids": ["sc_pi_forms_judiciary_disclaimer"],
+          "firm_template_clause_ids": []
+        },
+        {
+          "paragraph_id": "soc_duty_breach",
+          "title": "Duty and breach particulars",
+          "template_text": "Research draft: plead duty, breach particulars, warning/precaution failures, and source status; do not finalise without verified authority.",
+          "required_facts": ["duty facts", "breach facts", "hazard", "warning/precaution evidence"],
+          "source_card_ids": ["sc_pi_duty_research_note", "sc_pi_breach_research_note"],
+          "firm_template_clause_ids": ["pi_clause_breach_mall_slip"]
+        },
+        {
+          "paragraph_id": "soc_causation_loss",
+          "title": "Causation and loss",
+          "template_text": "Research draft: link accident to injury and pleaded loss heads; mark medical and quantum evidence gaps.",
+          "required_facts": ["injury description", "medical report", "loss and damage"],
+          "source_card_ids": ["sc_pi_causation_research_note", "sc_pi_damages_research_note"],
+          "firm_template_clause_ids": []
+        }
+      ]
+    },
+    {
+      "preview_id": "pi_preview_schedule_of_damages",
+      "title": "Schedule of Damages outline",
+      "form_id": "pi_schedule_of_damages_outline",
+      "paragraphs": [
+        {
+          "paragraph_id": "sod_general",
+          "title": "General damages",
+          "template_text": "List injury, pain and suffering, loss of amenity, prognosis, and valuation status; lawyer review required.",
+          "required_facts": ["medical report", "diagnosis", "prognosis"],
+          "source_card_ids": ["sc_pi_damages_research_note"],
+          "firm_template_clause_ids": ["pi_clause_schedule_house_style"]
+        },
+        {
+          "paragraph_id": "sod_special",
+          "title": "Special damages",
+          "template_text": "Table past expenses with date, payee, amount, receipt status, and causation note.",
+          "required_facts": ["receipts", "medical expenses", "transport", "care records"],
+          "source_card_ids": ["sc_pi_damages_research_note"],
+          "firm_template_clause_ids": ["pi_clause_schedule_house_style"]
+        },
+        {
+          "paragraph_id": "sod_earnings",
+          "title": "Earnings loss and future loss",
+          "template_text": "Draft only when salary, absence, prognosis, and assumptions are recorded.",
+          "required_facts": ["income proof", "absence period", "future work capacity"],
+          "source_card_ids": ["sc_pi_damages_research_note"],
+          "firm_template_clause_ids": []
+        }
+      ]
+    },
+    {
+      "preview_id": "pi_preview_pre_action_letter",
+      "title": "Letter before action outline",
+      "form_id": "pi_pre_action_letter_outline",
+      "paragraphs": [
+        {
+          "paragraph_id": "lba_facts",
+          "title": "Facts and preservation request",
+          "template_text": "Set out accident facts and request preservation of CCTV, incident reports, cleaning logs, and witness details.",
+          "required_facts": ["accident narrative", "defendant identity", "CCTV location", "incident report"],
+          "source_card_ids": ["sc_pi_breach_research_note"],
+          "firm_template_clause_ids": ["pi_clause_cctv_preservation"]
+        },
+        {
+          "paragraph_id": "lba_liability_quantum",
+          "title": "Liability and preliminary quantum",
+          "template_text": "State research-layer basis only; identify missing source verification and missing quantum proof.",
+          "required_facts": ["breach facts", "injury", "losses"],
+          "source_card_ids": ["sc_pi_duty_research_note", "sc_pi_breach_research_note", "sc_pi_damages_research_note"],
+          "firm_template_clause_ids": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "firm_profile": {
+    "firm_id": "demo_litigation_firm",
+    "name": "Demo Litigation Firm",
+    "jurisdiction": "Hong Kong SAR",
+    "practice_areas": ["Personal Injury", "Tort", "Civil Litigation"],
+    "review_policy": "Partner review required before external advice, filing, service, or final form recommendation.",
+    "overlay_version": "0.1.0-pi-demo",
+    "last_updated": "2026-06-14"
+  },
+  "sops": [
+    {
+      "sop_id": "pi_sop_source_backed_drafting",
+      "title": "PI Source-Backed Drafting SOP",
+      "practice_area": "Personal Injury",
+      "version": "0.1",
+      "status": "needs_review",
+      "approved_by": null,
+      "last_updated": "2026-06-14",
+      "linked_flows": ["pi_legal_analysis_flow", "pi_procedural_forms_flow"],
+      "linked_templates": ["pi_statement_of_claim_outline", "pi_schedule_of_damages_outline", "pi_pre_action_letter_outline"],
+      "description": "Drafting runs fail closed: every legal proposition and draft paragraph must point to a source card or firm-private clause, and every output stays research-only until partner review.",
+      "review_gates": [
+        {
+          "gate_id": "pi_gate_partner_review",
+          "label": "Partner review before client-facing output or court filing",
+          "trigger": "always",
+          "required": true
+        },
+        {
+          "gate_id": "pi_gate_latest_form_check",
+          "label": "Latest official form / legislation check before filing",
+          "trigger": "court_form_or_pleading",
+          "required": true
+        }
+      ],
+      "blocks": [
+        {
+          "block_id": "pi_clause_breach_mall_slip",
+          "title": "Mall slip-and-fall breach wording",
+          "instruction": "For mall slip-and-fall matters, preserve and plead the specific hazard, warning signage, cleaning/inspection system, CCTV, incident report, and witness trail before expressing any breach view.",
+          "applies_to_nodes": ["pi_occupiers_liability", "pi_breach", "pi_evidence_checklist"],
+          "applies_to_steps": ["pi_procedure_evidence_preservation", "pi_procedure_pre_action_letter", "pi_procedure_statement_of_claim"],
+          "source_card_ids": ["sc_pi_breach_research_note"],
+          "version": "0.1",
+          "status": "needs_review"
+        },
+        {
+          "block_id": "pi_clause_cctv_preservation",
+          "title": "CCTV preservation wording",
+          "instruction": "Request immediate preservation of CCTV, incident reports, cleaning logs, inspection records, staff rosters, contractor records, and photographs for the relevant time window.",
+          "applies_to_nodes": ["pi_evidence_checklist"],
+          "applies_to_steps": ["pi_procedure_evidence_preservation", "pi_procedure_pre_action_letter", "pi_procedure_discovery"],
+          "source_card_ids": ["sc_pi_breach_research_note"],
+          "version": "0.1",
+          "status": "needs_review"
+        },
+        {
+          "block_id": "pi_clause_schedule_house_style",
+          "title": "Schedule of damages house style",
+          "instruction": "Separate general damages, special damages, earnings loss, future loss, care, medical expenses, equipment/accommodation, interest, deductions and missing proof. Each line item carries evidence status.",
+          "applies_to_nodes": ["pi_general_damages", "pi_special_damages", "pi_loss_of_earnings", "pi_future_loss", "pi_care", "pi_medical_expenses", "pi_aids_equipment", "pi_interest"],
+          "applies_to_steps": ["pi_procedure_schedule_of_damages", "pi_procedure_settlement_offer"],
+          "source_card_ids": ["sc_pi_damages_research_note"],
+          "version": "0.1",
+          "status": "needs_review"
+        },
+        {
+          "block_id": "pi_clause_medical_evidence_checklist",
+          "title": "Medical evidence checklist",
+          "instruction": "Before quantum drafting, check diagnosis, treatment, prognosis, incapacity period, pre-existing conditions, future care/treatment need and whether an expert report is required.",
+          "applies_to_nodes": ["pi_causation", "pi_general_damages", "pi_future_loss", "pi_medical_expenses"],
+          "applies_to_steps": ["pi_procedure_medical_evidence", "pi_procedure_expert_evidence"],
+          "source_card_ids": ["sc_pi_causation_research_note", "sc_pi_damages_research_note"],
+          "version": "0.1",
+          "status": "needs_review"
+        }
+      ],
+      "changelog": [
+        {
+          "version": "0.1",
+          "date": "2026-06-14",
+          "by": "Cursor implementation",
+          "note": "Initial PI fail-closed demo overlay; not yet partner-approved."
+        }
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "template_id": "pi_statement_of_claim_outline",
+      "title": "PI Statement of Claim Outline",
+      "version": "0.1",
+      "status": "needs_review",
+      "last_updated": "2026-06-14",
+      "clauses": [
+        {
+          "clause_id": "pi_soc_parties",
+          "title": "Parties and accident facts",
+          "text": "[Plaintiff] alleges injury arising from [accident] at [location] on [date]. Missing facts remain bracketed and must not be inferred."
+        },
+        {
+          "clause_id": "pi_soc_breach",
+          "title": "Duty / breach particulars",
+          "text": "[Research-only breach particulars tied to source cards and firm SOP blocks. No verified legal conclusion until authority and partner review are recorded.]"
+        },
+        {
+          "clause_id": "pi_soc_loss",
+          "title": "Injury, causation and loss",
+          "text": "[Medical evidence, causation, loss heads and schedule references. Missing proof must remain visible.]"
+        }
+      ]
+    },
+    {
+      "template_id": "pi_schedule_of_damages_outline",
+      "title": "PI Schedule of Damages Outline",
+      "version": "0.1",
+      "status": "needs_review",
+      "last_updated": "2026-06-14",
+      "clauses": [
+        {
+          "clause_id": "pi_sod_general",
+          "title": "General damages",
+          "text": "[Injury, pain/suffering/loss of amenity, medical report, prognosis, valuation source status.]"
+        },
+        {
+          "clause_id": "pi_sod_special",
+          "title": "Special damages table",
+          "text": "[Date, item, amount, receipt/proof, causation note, evidence status.]"
+        },
+        {
+          "clause_id": "pi_sod_future",
+          "title": "Future loss",
+          "text": "[Assumptions, expert proof, calculation basis, review status.]"
+        }
+      ]
+    },
+    {
+      "template_id": "pi_pre_action_letter_outline",
+      "title": "PI Pre-Action Letter Outline",
+      "version": "0.1",
+      "status": "needs_review",
+      "last_updated": "2026-06-14",
+      "clauses": [
+        {
+          "clause_id": "pi_lba_preserve",
+          "title": "Preservation request",
+          "text": "[Preserve CCTV, incident reports, cleaning/inspection logs, photographs, staff rosters and relevant correspondence.]"
+        },
+        {
+          "clause_id": "pi_lba_liability",
+          "title": "Preliminary liability basis",
+          "text": "[Research-layer summary only; source verification and partner review required.]"
+        }
+      ]
+    }
+  ]
+}
