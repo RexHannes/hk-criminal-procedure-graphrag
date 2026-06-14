@@ -577,14 +577,14 @@ function detectPiRoutes(query) {
   const q = String(query || "").toLowerCase();
   const routes = new Set();
   const hasAny = terms => terms.some(term => q.includes(term));
-  if (hasAny(["personal injury", "injury", "injured", "slip", "slipped", "trip", "fall", "fell", "restaurant", "mall", "premises", "wet floor", "water", "cctv", "mopped", "workplace", "road traffic", "vehicle", "driver", "fatal accident", "dependency", "deceased"])) routes.add("pi");
+  if (hasAny(["personal injury", "injury", "injured", "slip", "slipped", "trip", "fall", "fell", "restaurant", "mall", "premises", "wet floor", "water", "cctv", "mopped", "workplace", "road traffic", "vehicle", "driver", "fatal accident", "dependency", "deceased", "car", "crash", "crashed", "hit by car", "knocked down", "road", "street", "pedestrian", "crossing", "zebra", "traffic light", "red light", "green light", "no white lines", "no zebra crossing"])) routes.add("pi");
   if (hasAny(["restaurant", "mall", "premises", "shop", "wet floor", "water", "mopped", "slip", "slipped", "trip", "fall", "fell"])) routes.add("premises");
   if (hasAny(["form", "writ", "draft", "template", "statement of claim", "schedule of damages"])) routes.add("forms");
-  if (hasAny(["procedure", "steps", "sop", "checklist", "pre-action", "discovery", "settlement", "offer", "trial"])) routes.add("procedure");
+  if (hasAny(["procedure", "steps", "sop", "checklist", "pre-action", "discovery", "settlement", "offer", "trial", "what should i do", "consecutively", "next steps", "step by step", "after accident"])) routes.add("procedure");
   if (hasAny(["law", "test", "element", "defence", "duty", "breach", "causation", "quantum", "damages", "compensation", "limitation"])) routes.add("principles");
   if (hasAny(["workplace", "employee", "employer", "work injury", "work accident", "injured at work", "at work", "industrial", "occupational disease"])) routes.add("workplace");
   if (hasAny(["court", "forum", "jurisdiction", "cfi", "district court", "small claims", "claim value", "hk$", "3m", "3 million"])) routes.add("court_band");
-  if (hasAny(["car", "vehicle", "driver", "bus", "taxi", "lorry", "road", "traffic", "collision", "pedestrian", "passenger"])) routes.add("traffic");
+  if (hasAny(["car", "vehicle", "driver", "bus", "taxi", "lorry", "road", "street", "traffic", "collision", "crash", "crashed", "hit by car", "knocked down", "pedestrian", "passenger", "crossing", "zebra", "traffic light", "red light", "green light", "no white lines", "no zebra crossing"])) routes.add("traffic");
   return routes;
 }
 

@@ -3,9 +3,12 @@ function classifyPiMatter(query, routes) {
   const owner = /\b(owner|restaurant owner|my restaurant|our restaurant|occupier|defendant|insurer)\b/.test(q);
   const asksLetter = /\b(lawyer|solicitor|letter|claim letter|wait|ignore|respond)\b/.test(q);
   const asksQuantum = /\b(how much|compensation|damages|quantum|settlement|pay)\b/.test(q);
-  const claimant = /\b(i was|i am injured|my client|claimant|plaintiff|customer|passenger|worker|employee)\b/.test(q);
+  const pedestrian = /\b(pedestrian|walking|walked|crossing|zebra|traffic light|red light|green light|no white lines|no zebra|hit by car|knocked down|crashed by a car)\b/.test(q);
+  const claimant = /\b(i was|i am|i got|got hit|got crashed|i am injured|my client|claimant|plaintiff|customer|passenger|worker|employee|pedestrian)\b/.test(q);
+  const stepByStep = /\b(what should i do|consecutively|next steps|step by step|after accident)\b/.test(q);
   let scenario = "personal_injury_general";
   if (/\b(fatal|death|deceased|dependency|estate)\b/.test(q)) scenario = "fatal_accident_dependency";
+  else if (routes.has("traffic") && pedestrian) scenario = "pedestrian_road_traffic_collision_uncontrolled_crossing";
   else if (routes.has("traffic") && /\b(passenger|taxi|bus|vehicle|car|driver|collision|road traffic|rta)\b/.test(q)) scenario = "road_traffic_passenger_or_road_user";
   else if (routes.has("workplace") && /\b(scaffold|height|site|worker|employee|workplace|fall|fell|industrial)\b/.test(q)) scenario = "workplace_fall_or_site_injury";
   else if (routes.has("premises") && /\b(restaurant|wet floor|water|mop|mopped|slip|slipped)\b/.test(q)) scenario = "premises_wet_floor_slip";
@@ -15,20 +18,25 @@ function classifyPiMatter(query, routes) {
   return {
     matter_type: "personal_injury",
     scenario,
-    user_perspective: owner ? "defendant_occupier" : (claimant ? "claimant_or_injured_party" : "claimant_or_unspecified"),
-    procedural_posture: asksLetter ? "pre_action_or_letter_expected" : "early_triage",
+    user_perspective: owner ? "defendant_occupier" : (pedestrian ? "claimant_pedestrian" : (claimant ? "claimant_or_injured_party" : "claimant_or_unspecified")),
+    procedural_posture: asksLetter ? "pre_action_or_letter_expected" : (stepByStep ? "post_accident_early_triage" : "early_triage"),
     included_groups: [
       "occupiers_liability",
       "wet_floor_warning_inspection_cleaning_system",
+      routes.has("traffic") && "driver_duty",
+      routes.has("traffic") && "pedestrian_contributory_negligence",
       "causation_and_injury_proof",
       "contributory_negligence_or_warning_defence",
+      routes.has("traffic") && "police_report",
+      routes.has("traffic") && "insurance_or_mib",
       "quantum_evidence",
       "evidence_preservation",
       "insurer_and_pre_action_response",
-    ].filter(group => routes.has("premises") || !group.includes("wet_floor")),
+    ].filter(Boolean).filter(group => routes.has("premises") || !group.includes("wet_floor")),
     excluded_groups: [
       !routes.has("traffic") && "road_traffic",
       !routes.has("workplace") && "workplace_employers_liability",
+      !routes.has("premises") && "restaurant_premises",
       !/\b(fatal|death|deceased)\b/i.test(q) && "fatal_accident",
       !/\b(psychiatric|shock|ptsd|secondary victim)\b/i.test(q) && "psychiatric_injury",
       !routes.has("court_band") && "court_forum_first_line",
@@ -224,6 +232,79 @@ function roadTrafficTriage() {
   };
 }
 
+function pedestrianRoadTrafficTriage() {
+  return {
+    title: "Applied Triage - Pedestrian Road Traffic Accident",
+    short_answer: "Get medical help and preserve evidence first. The absence of zebra lines or traffic lights does not automatically defeat a claim, but it makes the exact crossing facts important because the driver’s conduct and the pedestrian’s own care may both be disputed.",
+    sections: [
+      {
+        heading: "Immediate Steps",
+        items: [
+          "Seek medical treatment first and keep the diagnosis, treatment records, sick leave and receipts.",
+          "Report or confirm the police/traffic accident record if this has not already been done.",
+          "Preserve the driver and vehicle details, insurance information, registration number, photos, CCTV, dashcam footage and witness contacts.",
+          "Write down the sequence while fresh: where you crossed, lighting, visibility, traffic direction, vehicle speed as perceived, and where the impact occurred.",
+          "Do not settle quickly or sign a release before medical prognosis and loss evidence are reviewed.",
+        ],
+      },
+      {
+        heading: "Liability / Driver Duty",
+        items: [
+          "This is a road traffic personal injury scenario.",
+          "Relevant driver issues include lookout, speed, control, reaction time, road conditions and whether the driver should have seen the pedestrian.",
+          "The fact that there was no zebra crossing or traffic light is important, but it does not by itself answer liability.",
+          "Causation still matters: the evidence must link the collision to the injury and claimed losses.",
+        ],
+      },
+      {
+        heading: "Pedestrian Conduct / Contributory Negligence",
+        items: [
+          "Expect questions about where you crossed, whether a safer crossing was nearby, whether you looked both ways, lighting, obstruction, traffic speed and visibility.",
+          "If the pedestrian failed to take reasonable care, the claim may still exist but damages may be reduced.",
+          "If the driver was speeding, distracted, failed to keep proper lookout or had time to react, that may support liability despite the uncontrolled crossing.",
+        ],
+      },
+      {
+        heading: "Evidence To Preserve",
+        items: [
+          "Police report/reference number and any traffic accident investigation material.",
+          "CCTV/dashcam from nearby shops, buses, taxis, buildings or road cameras where available.",
+          "Photos or sketch of the road, crossing point, lighting, traffic direction, sight lines and vehicle damage.",
+          "Witness names, driver details, insurer details and any ambulance/A&E records.",
+        ],
+      },
+      {
+        heading: "Medical Evidence / Quantum",
+        items: [
+          "No sensible compensation estimate can be given without injury evidence.",
+          "You need medical diagnosis, treatment, prognosis, sick leave, income loss, receipts, future symptoms and care/transport evidence.",
+          "Compensation analysis should separate general damages, expenses, loss of earnings, future loss and any care or rehabilitation needs.",
+        ],
+      },
+      {
+        heading: "If Insurer or Solicitor Gets Involved",
+        items: [
+          "Do not ignore correspondence from an insurer or solicitor.",
+          "Respond through solicitor/insurer channels where possible and keep copies of all communications.",
+          "Ask for or provide documents in a controlled way; avoid informal admissions or early settlement figures before evidence is reviewed.",
+        ],
+      },
+      {
+        heading: "Relevant Internal Templates",
+        items: [
+          "RTA incident checklist.",
+          "Police / traffic accident report request.",
+          "CCTV and dashcam preservation request.",
+          "Medical evidence checklist.",
+          "Pre-action letter candidate.",
+          "Particulars of claim - pedestrian crossing / uncontrolled road candidate.",
+          "Schedule of damages candidate.",
+        ],
+      },
+    ],
+  };
+}
+
 function fatalAccidentTriage() {
   return {
     title: "Applied Triage - Fatal Accident / Dependency",
@@ -263,6 +344,7 @@ function buildAppliedTriage(query, routes, classification) {
   if (premisesOwner) return restaurantWetFloorDefendantTriage(query, routes, classification);
   if (classification.scenario === "premises_wet_floor_slip" || classification.scenario === "premises_slip_trip") return premisesSlipClaimantTriage(query, routes, classification);
   if (classification.scenario === "workplace_fall_or_site_injury" || classification.scenario === "workplace_injury") return workplaceInjuryTriage(query, routes, classification);
+  if (classification.scenario === "pedestrian_road_traffic_collision_uncontrolled_crossing") return pedestrianRoadTrafficTriage(query, routes, classification);
   if (classification.scenario === "road_traffic_passenger_or_road_user" || classification.scenario === "road_traffic_injury") return roadTrafficTriage(query, routes, classification);
   if (classification.scenario === "fatal_accident_dependency") return fatalAccidentTriage(query, routes, classification);
   return genericPiTriage(query, routes, classification);
