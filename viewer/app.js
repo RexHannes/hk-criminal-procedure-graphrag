@@ -885,8 +885,10 @@
         </div>`;
     }).join('');
 
+    const hasAppliedAnswer = !!(r.pi_workflow || r.applied_answer);
     return `
       ${renderPiWorkflow(r.pi_workflow)}
+      ${!r.pi_workflow ? renderAppliedTriage(r.applied_answer) : ''}
       ${analysis ? `<div class="card" style="background:var(--parchment);">
         <div class="card-top"><span class="card-title">Source-bounded analysis${r.ai_provider && r.ai_provider !== 'none' ? ' · via ' + esc(r.ai_provider) : ''}</span>
           ${analysis.abstain ? '<span class="badge badge-audit">Abstained — insufficient verified evidence</span>' : ''}</div>
@@ -897,7 +899,7 @@
         </div>
       </div>` : ''}
       ${warnings ? `<div class="inq-warnings">${warnings}</div>` : ''}
-      ${r.pi_workflow ? `<details class="piw-audit"><summary>Underlying graph matches</summary>${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}</details>` : (cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.'))}
+      ${hasAppliedAnswer ? `<details class="piw-audit"><summary>Underlying graph matches</summary>${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}</details>` : (cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.'))}
       <p class="inq-note">Source-bounded research trail — not legal advice. Every node and citation above exists in the maintained doctrine graph${INQ.mode === 'api' ? ' and Supabase evidence store' : ''}; nothing is generated outside it. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;
   }
 

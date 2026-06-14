@@ -577,7 +577,7 @@ function detectPiRoutes(query) {
   const q = String(query || "").toLowerCase();
   const routes = new Set();
   const hasAny = terms => terms.some(term => q.includes(term));
-  if (hasAny(["personal injury", "injury", "injured", "slip", "slipped", "trip", "fall", "fell", "restaurant", "mall", "premises", "wet floor", "water", "cctv", "mopped", "workplace", "road traffic", "vehicle", "driver"])) routes.add("pi");
+  if (hasAny(["personal injury", "injury", "injured", "slip", "slipped", "trip", "fall", "fell", "restaurant", "mall", "premises", "wet floor", "water", "cctv", "mopped", "workplace", "road traffic", "vehicle", "driver", "fatal accident", "dependency", "deceased"])) routes.add("pi");
   if (hasAny(["restaurant", "mall", "premises", "shop", "wet floor", "water", "mopped", "slip", "slipped", "trip", "fall", "fell"])) routes.add("premises");
   if (hasAny(["form", "writ", "draft", "template", "statement of claim", "schedule of damages"])) routes.add("forms");
   if (hasAny(["procedure", "steps", "sop", "checklist", "pre-action", "discovery", "settlement", "offer", "trial"])) routes.add("procedure");
@@ -586,6 +586,21 @@ function detectPiRoutes(query) {
   if (hasAny(["court", "forum", "jurisdiction", "cfi", "district court", "small claims", "claim value", "hk$", "3m", "3 million"])) routes.add("court_band");
   if (hasAny(["car", "vehicle", "driver", "bus", "taxi", "lorry", "road", "traffic", "collision", "pedestrian", "passenger"])) routes.add("traffic");
   return routes;
+}
+
+function composerDomainForQuery(query, matched, piWorkflow) {
+  if (piWorkflow) return "personal_injury";
+  const q = String(query || "").toLowerCase();
+  const domains = new Set((matched || []).map(item => item.domain_id).filter(Boolean));
+  if (
+    /\b(company|listing|listed|sehk|sfc|winding[- ]?up|statutory demand|petition|insolvency|incorporation|director|shareholder|board|form|filing)\b/.test(q) ||
+    domains.has("hk_listing_and_listed_company_regulation")
+  ) return "company_forms";
+  if (
+    domains.has("criminal_procedure_hk") ||
+    /\b(arrest|bail|charge|plea|mention|search warrant|seizure|police|magistrate|appeal|review)\b/.test(q)
+  ) return "criminal_procedure";
+  return "generic";
 }
 
 function scorePiChunk(terms, chunk) {
@@ -810,6 +825,13 @@ module.exports = async function handler(req, res) {
     .concat(ai.warnings || [])
     .concat(inquiry.warnings || [])
     .concat(inquiry.analysis?.warnings || []);
+  const applied = piWorkflow
+    ? {
+        applied_answer: piWorkflow.applied_answer,
+        classification: piWorkflow.classification,
+        source_audit: piWorkflow.source_audit,
+      }
+    : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched });
   res.status(200).json({
     query,
     ai_status: ai.status,
@@ -820,6 +842,9 @@ module.exports = async function handler(req, res) {
     detected_domains: ai.detected_domains && ai.detected_domains.length
       ? ai.detected_domains
       : Array.from(new Set(matched.map(item => item.domain_id))),
+    applied_answer: applied.applied_answer,
+    classification: applied.classification,
+    source_audit: applied.source_audit,
     pi_workflow: piWorkflow,
     matched_doctrine_nodes: matched,
     evidence_count: evidenceCount,
