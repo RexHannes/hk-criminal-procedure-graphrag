@@ -3,6 +3,7 @@ const path = require("path");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
+const PI_RAG_PATH = path.join(DATA_ROOT, "tort_law_hk", "pi_rag_index.json");
 
 const SUPPORT_RELATIONSHIPS = new Set([
   "statutory_anchor",
@@ -558,6 +559,184 @@ function warningsForResult(matches, aiStatus, backendStatus) {
   return Array.from(new Set(warnings));
 }
 
+function piRagIndex() {
+  if (!fs.existsSync(PI_RAG_PATH)) return null;
+  try {
+    return readJson(PI_RAG_PATH);
+  } catch (error) {
+    return null;
+  }
+}
+
+function piTokens(text) {
+  return String(text || "").toLowerCase().split(/[^a-z0-9]+/).filter(token => token.length >= 2);
+}
+
+function detectPiRoutes(query) {
+  const q = String(query || "").toLowerCase();
+  const routes = new Set();
+  const hasAny = terms => terms.some(term => q.includes(term));
+  if (hasAny(["personal injury", "injury", "injured", "slip", "slipped", "trip", "fall", "fell", "restaurant", "mall", "premises", "wet floor", "water", "cctv", "mopped", "workplace", "road traffic", "vehicle", "driver"])) routes.add("pi");
+  if (hasAny(["restaurant", "mall", "premises", "shop", "wet floor", "water", "mopped", "slip", "slipped", "trip", "fall", "fell"])) routes.add("premises");
+  if (hasAny(["form", "writ", "draft", "template", "statement of claim", "schedule of damages"])) routes.add("forms");
+  if (hasAny(["procedure", "steps", "sop", "checklist", "pre-action", "discovery", "settlement", "offer", "trial"])) routes.add("procedure");
+  if (hasAny(["law", "test", "element", "defence", "duty", "breach", "causation", "quantum", "damages", "compensation", "limitation"])) routes.add("principles");
+  if (hasAny(["workplace", "employee", "employer", "work injury", "work accident", "injured at work", "at work", "industrial", "occupational disease"])) routes.add("workplace");
+  if (hasAny(["court", "forum", "jurisdiction", "cfi", "district court", "small claims", "claim value", "hk$", "3m", "3 million"])) routes.add("court_band");
+  if (hasAny(["car", "vehicle", "driver", "bus", "taxi", "lorry", "road", "traffic", "collision", "pedestrian", "passenger"])) routes.add("traffic");
+  return routes;
+}
+
+function scorePiChunk(terms, chunk) {
+  const counts = chunk.tokens || {};
+  return terms.reduce((sum, term) => sum + (counts[term] ? 1 + Math.log1p(counts[term]) : 0), 0);
+}
+
+function piRouteAdjustment(chunk, routes, query) {
+  const meta = chunk.metadata || {};
+  const blob = [
+    chunk.chunk_id, chunk.layer, chunk.title, chunk.source_file, chunk.citation, chunk.pinpoint,
+    ...(meta.trigger_conditions || []),
+    ...(meta.linked_procedure_nodes || []),
+    ...(meta.required_facts || []),
+  ].join(" ").toLowerCase();
+  let boost = 0;
+  if (routes.has("principles") && chunk.layer === "principles") boost += 2;
+  if (routes.has("procedure") && chunk.layer === "procedures_forms") boost += 2;
+  if (routes.has("forms") && /form|writ|template|statement of claim|schedule/.test(blob)) boost += 3;
+  if (routes.has("premises") && /occupier|occupiers|premises|restaurant|mall|wet floor|slip|warning|cleaning|inspection|cctv|water/.test(blob)) boost += 8;
+  if (routes.has("premises") && !/\b(hot|scald|burn)\b/i.test(query) && /hot water|scald|burn/.test(blob)) boost -= 12;
+  if (routes.has("premises") && !/\b(child|minor|student|school|allurement)\b/i.test(query) && /child|minor|school|allurement|supervision/.test(blob)) boost -= 8;
+  if (routes.has("workplace") && /workplace|employer|employee|eco_form|employees' compensation|occupational/.test(blob)) boost += 8;
+  if (routes.has("traffic") && /road|traffic|rta|driver|vehicle|pedestrian|passenger/.test(blob)) boost += 6;
+  if (!routes.has("traffic") && /road traffic|rta|driver duty|pedestrian|seatbelt/.test(blob)) boost -= 10;
+  if (routes.has("court_band") && /forum_jurisdiction|court_band|district court|cfi|small claims|dc_writ|cfi_writ/.test(blob)) boost += 8;
+  if (String(query || "").toLowerCase().includes("district court") && /dc_writ|district court/.test(blob)) boost += 8;
+  return boost;
+}
+
+function summarizePiChunk(chunk) {
+  const meta = chunk.metadata || {};
+  return {
+    title: chunk.title,
+    source: chunk.source_file,
+    citation: chunk.citation,
+    pinpoint: chunk.pinpoint,
+    quote: chunk.quote,
+    required_facts: meta.required_facts || [],
+    trigger_conditions: meta.trigger_conditions || [],
+    review_status: chunk.review_status || meta.review_status || meta.human_review_status || "unreviewed",
+    output_mode: chunk.output_mode || meta.output_mode || "draft_only_lawyer_review_required",
+    score: Number(chunk.score || 0),
+  };
+}
+
+function retrievePiRag(query, limit = 24, minScore = 2) {
+  const index = piRagIndex();
+  const routes = detectPiRoutes(query);
+  if (!index || !routes.has("pi")) return null;
+  const terms = piTokens(query);
+  const chunks = (index.chunks || [])
+    .map(chunk => ({ ...chunk, score: scorePiChunk(terms, chunk) + piRouteAdjustment(chunk, routes, query) }))
+    .filter(chunk => chunk.score >= minScore)
+    .sort((a, b) => b.score - a.score || String(a.title).localeCompare(String(b.title)))
+    .slice(0, limit);
+  return { index, routes, chunks };
+}
+
+function inferredMissingFacts(query, chunks) {
+  const q = String(query || "").toLowerCase();
+  const seen = new Set();
+  const out = [];
+  const add = fact => {
+    if (!fact || seen.has(fact)) return;
+    seen.add(fact);
+    out.push(fact);
+  };
+  chunks.slice(0, 10).forEach(chunk => (chunk.metadata?.required_facts || []).forEach(add));
+  [
+    "whether the customer was injured",
+    "medical report / diagnosis",
+    "incident report",
+    "CCTV preservation and timestamp",
+    "when the floor was mopped",
+    "whether warning signs or barriers were used",
+    "cleaning / inspection log",
+    "staff and customer witness details",
+    "insurance notification / policy details",
+    "losses claimed by the customer",
+  ].forEach(fact => {
+    const keywords = fact.split(/[^a-z0-9]+/i).filter(word => word.length > 4);
+    if (!keywords.some(word => q.includes(word.toLowerCase()))) add(fact);
+  });
+  return out.slice(0, 14);
+}
+
+function buildPiWorkflow(query) {
+  const result = retrievePiRag(query);
+  if (!result) return null;
+  const { routes, chunks } = result;
+  const principles = chunks.filter(chunk => chunk.layer === "principles").slice(0, 6).map(summarizePiChunk);
+  const proceduresForms = chunks.filter(chunk => chunk.layer === "procedures_forms").slice(0, 8).map(summarizePiChunk);
+  const verification = chunks.filter(chunk => chunk.layer === "governance").slice(0, 5).map(summarizePiChunk);
+  const missing = inferredMissingFacts(query, chunks);
+  const premises = routes.has("premises");
+  const owner = /\b(owner|restaurant owner|occupier|defendant|insurer)\b/i.test(query);
+  return {
+    enabled: true,
+    status: chunks.length ? "retrieved" : "abstain_no_pi_source_match",
+    routes: Array.from(routes).sort(),
+    matter_view: owner ? "potential occupier / defendant-side triage" : "personal injury triage",
+    answer_note: "PI workflow output is metadata/source-gated. It is research-only, not legal advice, and stays draft-only until source verification and lawyer review.",
+    principles,
+    procedures_forms: proceduresForms,
+    evidence_plan: [
+      "Preserve CCTV, incident report, cleaning/mopping logs, inspection records, warning-sign/barrier evidence, photos, staff roster and witness details.",
+      "Record timing: when the spill/water appeared, when mopping occurred, when the customer slipped, and what warnings were visible.",
+      "Confirm injury and causation evidence: medical report, diagnosis, treatment, sick leave, receipts and any pre-existing condition.",
+      "If acting for the restaurant/occupier, notify insurer early and keep privilege/review controls over internal incident notes.",
+    ],
+    quantum_and_consequences: [
+      "No compensation range can be given from the current facts. Quantum depends on injury proof, PSLA/general damages, medical expenses, earnings loss, care, future loss and receipts.",
+      "If no injury or loss is proved, the damages pathway may not progress, but evidence preservation and insurer notification still matter.",
+      "Settlement/offers should wait for liability evidence, medical evidence and quantum documents, and remain lawyer-review-required.",
+    ],
+    next_procedure_steps: premises
+      ? ["intake and limitation screen", "evidence preservation", "medical/injury proof request", "insurance notification", "pre-action response/letter", "pleadings only if proceedings are pursued", "settlement/offer assessment after evidence"]
+      : ["intake", "evidence preservation", "medical evidence", "pre-action", "pleadings", "settlement/trial review"],
+    missing_information: missing,
+    verification,
+    raw_chunk_count: chunks.length,
+    review_status: "draft_only_lawyer_review_required",
+  };
+}
+
+function postFilterMatchesForQuery(query, matches) {
+  const routes = detectPiRoutes(query);
+  if (!routes.has("pi")) return matches;
+  let filtered = matches;
+  if (!routes.has("traffic")) {
+    filtered = filtered.filter(match => {
+      const blob = [match.doctrine_node_id, match.title, match.summary].join(" ").toLowerCase();
+      return !/\.rta\.|road traffic|driver duty|pedestrian|seatbelt/.test(blob);
+    });
+  }
+  if (routes.has("premises") && !/\b(nuisance|rylands|statutory duty|escape|dangerous thing)\b/i.test(query)) {
+    filtered = filtered.filter(match => {
+      const blob = [match.doctrine_node_id, match.title, match.summary].join(" ").toLowerCase();
+      return !/rylands|nuisance|breach of statutory duty as tort|strict liability/.test(blob);
+    });
+  }
+  const issueLike = filtered.filter(match => ["legal_issue", "pi_principle"].includes(match.node_type));
+  if (issueLike.length >= 3) filtered = issueLike;
+  else {
+    const nonFlow = filtered.filter(match => match.node_type !== "flow_step" && match.node_type !== "section_header");
+    if (nonFlow.length >= 4) filtered = nonFlow;
+  }
+  if (!filtered.length) filtered = matches;
+  return filtered.slice(0, 6);
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "GET" && req.method !== "POST") {
     res.status(405).json({ error: "method_not_allowed" });
@@ -579,7 +758,8 @@ module.exports = async function handler(req, res) {
     matched = ai.ranked_ids.map(id => byId.get(id)).filter(Boolean);
     deterministic.forEach(item => { if (!ai.ranked_ids.includes(item.doctrine_node_id)) matched.push(item); });
   }
-  matched = matched.slice(0, 8);
+  const piWorkflow = buildPiWorkflow(query);
+  matched = postFilterMatchesForQuery(query, matched).slice(0, 8);
 
   const supabaseUrl = (process.env.SUPABASE_URL || "").trim().replace(/\/$/, "");
   const serviceKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
@@ -605,7 +785,14 @@ module.exports = async function handler(req, res) {
   }
 
   const evidenceCount = matched.reduce((sum, item) => sum + (item.evidence || []).length, 0);
-  const inquiry = await askAiToAnalyze(query, matched, evidenceCount);
+  const inquiry = piWorkflow && evidenceCount === 0
+    ? {
+        provider: ai.provider || getAiProvider()?.name || "none",
+        status: "skipped_pi_workflow",
+        analysis: null,
+        warnings: ["pi_workflow_used_no_freeform_analysis"],
+      }
+    : await askAiToAnalyze(query, matched, evidenceCount);
   const aiWarnings = []
     .concat(ai.warnings || [])
     .concat(inquiry.warnings || [])
@@ -620,6 +807,7 @@ module.exports = async function handler(req, res) {
     detected_domains: ai.detected_domains && ai.detected_domains.length
       ? ai.detected_domains
       : Array.from(new Set(matched.map(item => item.domain_id))),
+    pi_workflow: piWorkflow,
     matched_doctrine_nodes: matched,
     evidence_count: evidenceCount,
     answer_confidence: evidenceCount > 0 && !matched.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))

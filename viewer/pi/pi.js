@@ -56,6 +56,7 @@
     const q = norm(text);
     const routes = new Set();
     if (includesAny(q, ['form', 'writ', 'draft', 'fill', 'template', 'statement of claim', 'schedule of damages'])) routes.add('forms');
+    if (includesAny(q, ['restaurant', 'mall', 'premises', 'shop', 'wet floor', 'water', 'mopped', 'slip', 'slipped', 'trip', 'fall', 'fell'])) routes.add('premises');
     if (includesAny(q, ['precedent', 'old statement', 'old pleading', 'firm style', 'drafting style'])) routes.add('precedent');
     if (includesAny(q, ['procedure', 'steps', 'sop', 'checklist', 'cmc', 'ptr', 'pre-action', 'discovery'])) routes.add('procedure');
     if (includesAny(q, ['law', 'test', 'element', 'defence', 'duty', 'breach', 'causation', 'quantum', 'damages', 'limitation'])) routes.add('principles');
@@ -84,6 +85,8 @@
     if (routes.has('precedent') && ['precedent', 'authority_vs_precedent', 'firm_precedents_private', 'precedent_not_authority'].some(term => blob.includes(term))) boost += 10;
     if (routes.has('workplace') && ['workplace', 'employer', 'employee', 'eco_form', 'employees\' compensation', 'occupational'].some(term => blob.includes(term))) boost += 4;
     if (routes.has('workplace') && (blob.includes('eco_form') || blob.includes('employees\' compensation'))) boost += 8;
+    if (routes.has('premises') && !['hot', 'scald', 'burn'].some(term => norm(S.facts).includes(term)) && ['hot water', 'scald', 'burn'].some(term => blob.includes(term))) boost -= 12;
+    if (routes.has('premises') && !['child', 'minor', 'student', 'school', 'allurement'].some(term => norm(S.facts).includes(term)) && ['child', 'minor', 'school', 'allurement', 'supervision'].some(term => blob.includes(term))) boost -= 8;
     if (routes.has('limitation') && blob.includes('limitation')) boost += 10;
     if (routes.has('limitation') && ['limitation_warning', 'date of knowledge', 'claimant age', 'disability', 'minor'].some(term => blob.includes(term))) boost += 12;
     if (routes.has('procedure') && ['pd18_1', 'letter before action', 'checklist review', 'pre-trial review', 'ptr', 'cmc', 'expert reports', 'statement_of_damages'].some(term => blob.includes(term))) boost += 6;

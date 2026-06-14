@@ -39,6 +39,8 @@ def detect_routes(query: str) -> set[str]:
     routes: set[str] = set()
     if any(term in q for term in ["form", "writ", "draft", "fill", "template", "statement of claim", "schedule of damages"]):
         routes.add("forms")
+    if any(term in q for term in ["restaurant", "mall", "premises", "shop", "wet floor", "water", "mopped", "slip", "slipped", "trip", "fall", "fell"]):
+        routes.add("premises")
     if any(term in q for term in ["precedent", "old statement", "old pleading", "firm style", "drafting style"]):
         routes.add("precedent")
     if any(term in q for term in ["procedure", "steps", "sop", "checklist", "cmc", "ptr", "pre-action", "discovery"]):
@@ -78,6 +80,12 @@ def route_adjustment(chunk: dict, routes: set[str], query: str) -> float:
         boost += 4.0
     if "workplace" in routes and ("eco_form" in blob or "employees' compensation" in blob):
         boost += 8.0
+    if "premises" in routes and any(term in blob for term in ["occupier", "occupiers", "premises", "restaurant", "mall", "wet floor", "slip", "warning", "cleaning", "inspection", "cctv", "water"]):
+        boost += 8.0
+    if "premises" in routes and not any(term in query.lower() for term in ["hot", "scald", "burn"]) and any(term in blob for term in ["hot water", "scald", "burn"]):
+        boost -= 12.0
+    if "premises" in routes and not any(term in query.lower() for term in ["child", "minor", "student", "school", "allurement"]) and any(term in blob for term in ["child", "minor", "school", "allurement", "supervision"]):
+        boost -= 8.0
     if "limitation" in routes and "limitation" in blob:
         boost += 10.0
     if "limitation" in routes and any(term in blob for term in ["limitation_warning", "date of knowledge", "claimant age", "disability", "minor"]):

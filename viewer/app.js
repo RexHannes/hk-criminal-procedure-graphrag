@@ -720,6 +720,69 @@
     return (S.firm?.sops || []).filter(s => (s.linked_flows || []).some(id => flowIds.includes(id)));
   }
 
+  function renderWorkflowItems(items, emptyText) {
+    if (!items || !items.length) return `<div class="piw-empty">${esc(emptyText)}</div>`;
+    return items.map(item => `
+      <div class="piw-item">
+        <div class="piw-item-head">
+          <strong>${esc(item.title || item)}</strong>
+          ${item.score ? `<span class="piw-score">score ${esc(Number(item.score).toFixed(1))}</span>` : ''}
+        </div>
+        ${item.quote ? `<div class="piw-quote">${esc(item.quote)}</div>` : ''}
+        ${item.citation ? `<div class="piw-meta">${esc(item.source || '')} · ${esc(item.citation)} · ${esc(item.pinpoint || '')}</div>` : ''}
+        ${item.required_facts && item.required_facts.length ? `<div class="piw-meta">required facts: ${esc(item.required_facts.slice(0, 8).join(', '))}</div>` : ''}
+        ${item.review_status || item.output_mode ? `<div class="piw-badges"><span class="badge badge-review">${esc(item.review_status || 'review required')}</span><span class="badge badge-draft">${esc(item.output_mode || 'draft only')}</span></div>` : ''}
+      </div>
+    `).join('');
+  }
+
+  function renderPiWorkflow(workflow) {
+    if (!workflow) return '';
+    return `
+      <div class="piw-panel">
+        <div class="card-top">
+          <span class="card-title">PI staged workflow · ${esc(workflow.matter_view || 'triage')}</span>
+          <span class="card-badges"><span class="badge badge-research">Research layer</span><span class="badge badge-review">Lawyer review required</span></span>
+        </div>
+        <div class="card-body">${esc(workflow.answer_note || '')}</div>
+        <div class="piw-grid">
+          <section>
+            <h3>1. Principles</h3>
+            ${renderWorkflowItems(workflow.principles, 'No principle source chunk met the PI retrieval threshold.')}
+          </section>
+          <section>
+            <h3>2. Procedure / Forms</h3>
+            ${renderWorkflowItems(workflow.procedures_forms, 'No procedure/form source chunk met the PI retrieval threshold.')}
+          </section>
+        </div>
+        <div class="piw-grid">
+          <section>
+            <h3>3. Evidence To Preserve</h3>
+            <ul class="piw-list">${(workflow.evidence_plan || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+          </section>
+          <section>
+            <h3>4. Quantum / Settlement Consequences</h3>
+            <ul class="piw-list">${(workflow.quantum_and_consequences || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+          </section>
+        </div>
+        <div class="piw-grid">
+          <section>
+            <h3>5. Next Procedural Steps</h3>
+            <ol class="piw-list">${(workflow.next_procedure_steps || []).map(x => `<li>${esc(x)}</li>`).join('')}</ol>
+          </section>
+          <section>
+            <h3>6. Missing Facts / Review Gates</h3>
+            <ul class="piw-list">${(workflow.missing_information || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+          </section>
+        </div>
+        ${workflow.verification && workflow.verification.length ? `<section class="piw-governance">
+          <h3>Verification / Source Hierarchy</h3>
+          ${renderWorkflowItems(workflow.verification, 'No governance chunk matched.')}
+        </section>` : ''}
+      </div>
+    `;
+  }
+
   function runInquiry(query) {
     INQ.query = query;
     INQ.loading = true;
@@ -781,6 +844,7 @@
     }).join('');
 
     return `
+      ${renderPiWorkflow(r.pi_workflow)}
       ${analysis ? `<div class="card" style="background:var(--parchment);">
         <div class="card-top"><span class="card-title">Source-bounded analysis${r.ai_provider && r.ai_provider !== 'none' ? ' · via ' + esc(r.ai_provider) : ''}</span>
           ${analysis.abstain ? '<span class="badge badge-audit">Abstained — insufficient verified evidence</span>' : ''}</div>
@@ -791,6 +855,7 @@
         </div>
       </div>` : ''}
       ${warnings ? `<div class="inq-warnings">${warnings}</div>` : ''}
+      ${r.pi_workflow ? '<div class="view-eyebrow" style="margin:16px 0 8px">Underlying graph matches</div>' : ''}
       ${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}
       <p class="inq-note">Source-bounded research trail — not legal advice. Every node and citation above exists in the maintained doctrine graph${INQ.mode === 'api' ? ' and Supabase evidence store' : ''}; nothing is generated outside it. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;
   }
