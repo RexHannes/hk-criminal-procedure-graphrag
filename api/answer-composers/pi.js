@@ -46,6 +46,100 @@ function classifyPiMatter(query, routes) {
   };
 }
 
+function buildPiAnswerContract(query, routes, classification, appliedAnswer) {
+  const q = String(query || "").toLowerCase();
+  const asksCourtOrFiling = /\b(court|forum|jurisdiction|cfi|district court|small claims|writ|issue proceedings|file|filing|claim amount|claim value|admission)\b/.test(q);
+  const asksDefence = /\b(defence|defense|defend|deny|denying|liability response|respond|sued|claim letter|solicitor'?s letter)\b/.test(q);
+  const asksClaimDraft = /\b(statement of claim|particulars of claim|pleading|draft claim|writ)\b/.test(q);
+  let scenarioFamily = "personal_injury_general";
+  if (classification.scenario.includes("road_traffic") || classification.scenario.includes("pedestrian")) scenarioFamily = "road_traffic";
+  else if (classification.scenario.includes("workplace")) scenarioFamily = "workplace_injury";
+  else if (classification.scenario.includes("fatal")) scenarioFamily = "fatal_accident";
+  else if (classification.scenario.includes("premises") || classification.scenario.includes("wet_floor")) scenarioFamily = "premises_liability";
+
+  const forbidden = [
+    !routes.has("workplace") && "workplace_or_employer_family",
+    !routes.has("premises") && "restaurant_or_premises_family",
+    !routes.has("traffic") && "road_traffic_family",
+    !/\b(fatal|death|deceased|dependency|estate)\b/.test(q) && "fatal_accident_family",
+    !/\b(psychiatric|shock|ptsd|secondary victim)\b/.test(q) && "psychiatric_injury_family",
+    !asksCourtOrFiling && "court_forum_or_admission_forms",
+    classification.user_perspective.includes("claimant") && !asksDefence && "defence_first_forms",
+    classification.user_perspective.includes("defendant") && !asksClaimDraft && "claimant_particulars_first_forms",
+  ].filter(Boolean);
+
+  const primaryIssuesByFamily = {
+    premises_liability: ["occupier_control", "hazard_warning_inspection", "causation", "contributory_negligence", "medical_quantum"],
+    workplace_injury: ["safe_system", "safe_place", "training_supervision", "employees_compensation_overlap", "medical_quantum"],
+    road_traffic: ["driver_duty", "pedestrian_or_passenger_conduct", "police_report", "insurance_or_mib", "medical_quantum"],
+    fatal_accident: ["authority_to_act", "dependency", "estate_or_dependant_loss", "minor_or_protected_party_review", "liability_evidence"],
+    personal_injury_general: ["liability_route", "causation", "medical_quantum", "evidence_preservation", "review_gate"],
+  };
+
+  return {
+    domain: "personal_injury",
+    scenario_family: scenarioFamily,
+    scenario_subtype: classification.scenario,
+    user_perspective: classification.user_perspective,
+    procedural_posture: classification.procedural_posture,
+    primary_issues: primaryIssuesByFamily[scenarioFamily] || primaryIssuesByFamily.personal_injury_general,
+    excluded_issues: classification.excluded_groups || [],
+    answer_sections: (appliedAnswer?.sections || []).map(section => section.heading),
+    forbidden_terms_or_families: forbidden,
+    required_next_steps: [
+      "preserve_evidence",
+      "collect_medical_and_loss_material",
+      "identify_parties_and_insurance",
+      "lawyer_review_before_final_position",
+    ],
+    required_missing_facts: [
+      "accident date/time/location",
+      "injury diagnosis and prognosis",
+      "causation evidence",
+      "income loss and receipts",
+      "insurance / opposing party details",
+    ],
+  };
+}
+
+function chunkText(chunk) {
+  const meta = chunk.metadata || {};
+  return [
+    chunk.chunk_id,
+    chunk.layer,
+    chunk.title,
+    chunk.source_file,
+    chunk.citation,
+    chunk.pinpoint,
+    chunk.quote,
+    ...(meta.trigger_conditions || []),
+    ...(meta.linked_procedure_nodes || []),
+    ...(meta.linked_principle_nodes || []),
+    ...(meta.required_facts || []),
+  ].join(" ").toLowerCase();
+}
+
+function isForbiddenByContract(chunk, contract) {
+  const blob = chunkText(chunk);
+  const title = String(chunk.title || "").toLowerCase();
+  const forbidden = new Set(contract?.forbidden_terms_or_families || []);
+  if (forbidden.has("workplace_or_employer_family") && /safe plant|workplace|work injury|employer|employee|employees' compensation|eco_form|occupational|industrial|scaffold|machinery|lifting appliance|dangerous substances|dermatitis|deafness|electrocution|unguarded/.test(blob)) return true;
+  if (forbidden.has("restaurant_or_premises_family") && /restaurant|wet floor|mop|mopped|spillage|cleaning|inspection|occupier|occupiers|premises|common area|mall|warning sign/.test(blob)) return true;
+  if (forbidden.has("road_traffic_family") && /road traffic|rta|driver duty|pedestrian|passenger|vehicle|seatbelt|taxi|collision|traffic light|zebra/.test(blob)) return true;
+  if (forbidden.has("fatal_accident_family") && /fatal|death|deceased|dependency|estate claim|dependant/.test(blob)) return true;
+  if (forbidden.has("psychiatric_injury_family") && /psychiatric|secondary victim|nervous shock|ptsd/.test(blob)) return true;
+  if (forbidden.has("court_forum_or_admission_forms") && /forum \/ jurisdiction|forum_jurisdiction|mode of commencement|court limits|small claims|court of first instance admission|district court admission|form 16c|admission - unliquidated|unliquidated amount|cfi_admission|dc_admission/.test(blob)) return true;
+  if (forbidden.has("defence_first_forms") && (/^defen[cs]e\b/.test(title) || /\bdefen[cs]e\b/.test(blob))) return true;
+  if (forbidden.has("claimant_particulars_first_forms") && /particulars of claim|statement of claim|claimant particulars|plaintiff particulars/.test(blob)) return true;
+  return false;
+}
+
+function filterPiChunksByContract(chunks, contract) {
+  if (!contract) return chunks || [];
+  const filtered = (chunks || []).filter(chunk => !isForbiddenByContract(chunk, contract));
+  return filtered.length ? filtered : [];
+}
+
 function genericPiTriage() {
   return {
     title: "Applied PI Triage",
@@ -353,8 +447,10 @@ function buildAppliedTriage(query, routes, classification) {
 function composePiAnswer({ query, routes }) {
   const classification = classifyPiMatter(query, routes);
   const appliedAnswer = buildAppliedTriage(query, routes, classification);
+  const answerContract = buildPiAnswerContract(query, routes, classification, appliedAnswer);
   return {
     applied_answer: appliedAnswer,
+    answer_contract: answerContract,
     classification,
     source_audit: {
       display: "collapsed",
@@ -365,6 +461,8 @@ function composePiAnswer({ query, routes }) {
 
 module.exports = {
   buildAppliedTriage,
+  buildPiAnswerContract,
   classifyPiMatter,
   composePiAnswer,
+  filterPiChunksByContract,
 };

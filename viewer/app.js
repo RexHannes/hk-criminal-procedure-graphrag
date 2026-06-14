@@ -726,7 +726,6 @@
       <div class="piw-item">
         <div class="piw-item-head">
           <strong>${esc(item.title || item)}</strong>
-          ${item.score ? `<span class="piw-score">score ${esc(Number(item.score).toFixed(1))}</span>` : ''}
         </div>
         ${item.quote ? `<div class="piw-quote">${esc(item.quote)}</div>` : ''}
         ${item.citation ? `<div class="piw-meta">${esc(item.source || '')} · ${esc(item.citation)} · ${esc(item.pinpoint || '')}</div>` : ''}

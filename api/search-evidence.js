@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { composeAnswer } = require("./answer-composers");
+const { filterPiChunksByContract } = require("./answer-composers/pi");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -577,12 +578,12 @@ function detectPiRoutes(query) {
   const q = String(query || "").toLowerCase();
   const routes = new Set();
   const hasAny = terms => terms.some(term => q.includes(term));
-  if (hasAny(["personal injury", "injury", "injured", "slip", "slipped", "trip", "fall", "fell", "restaurant", "mall", "premises", "wet floor", "water", "cctv", "mopped", "workplace", "road traffic", "vehicle", "driver", "fatal accident", "dependency", "deceased", "car", "crash", "crashed", "hit by car", "knocked down", "road", "street", "pedestrian", "crossing", "zebra", "traffic light", "red light", "green light", "no white lines", "no zebra crossing"])) routes.add("pi");
+  if (hasAny(["personal injury", "injury", "injured", "slip", "slipped", "trip", "fall", "fell", "restaurant", "mall", "premises", "wet floor", "water", "cctv", "mopped", "workplace", "worker", "construction site", "scaffold", "stacked materials", "road traffic", "vehicle", "driver", "fatal accident", "dependency", "deceased", "car", "crash", "crashed", "hit by car", "knocked down", "road", "street", "pedestrian", "crossing", "zebra", "traffic light", "red light", "green light", "no white lines", "no zebra crossing"])) routes.add("pi");
   if (hasAny(["restaurant", "mall", "premises", "shop", "wet floor", "water", "mopped", "slip", "slipped", "trip", "fall", "fell"])) routes.add("premises");
   if (hasAny(["form", "writ", "draft", "template", "statement of claim", "schedule of damages"])) routes.add("forms");
   if (hasAny(["procedure", "steps", "sop", "checklist", "pre-action", "discovery", "settlement", "offer", "trial", "what should i do", "consecutively", "next steps", "step by step", "after accident"])) routes.add("procedure");
   if (hasAny(["law", "test", "element", "defence", "duty", "breach", "causation", "quantum", "damages", "compensation", "limitation"])) routes.add("principles");
-  if (hasAny(["workplace", "employee", "employer", "work injury", "work accident", "injured at work", "at work", "industrial", "occupational disease"])) routes.add("workplace");
+  if (hasAny(["workplace", "worker", "employee", "employer", "work injury", "work accident", "injured at work", "at work", "construction site", "site", "scaffold", "stacked materials", "industrial", "occupational disease"])) routes.add("workplace");
   if (hasAny(["court", "forum", "jurisdiction", "cfi", "district court", "small claims", "claim value", "hk$", "3m", "3 million"])) routes.add("court_band");
   if (hasAny(["car", "vehicle", "driver", "bus", "taxi", "lorry", "road", "street", "traffic", "collision", "crash", "crashed", "hit by car", "knocked down", "pedestrian", "passenger", "crossing", "zebra", "traffic light", "red light", "green light", "no white lines", "no zebra crossing"])) routes.add("traffic");
   return routes;
@@ -696,15 +697,17 @@ function buildPiWorkflow(query) {
   const result = retrievePiRag(query);
   if (!result) return null;
   const { routes, chunks } = result;
-  const principles = chunks.filter(chunk => chunk.layer === "principles").slice(0, 6).map(summarizePiChunk);
-  const proceduresForms = chunks.filter(chunk => chunk.layer === "procedures_forms").slice(0, 8).map(summarizePiChunk);
-  const verification = chunks.filter(chunk => chunk.layer === "governance").slice(0, 5).map(summarizePiChunk);
-  const missing = inferredMissingFacts(query, chunks);
   const premises = routes.has("premises");
   const owner = /\b(owner|restaurant owner|occupier|defendant|insurer)\b/i.test(query);
   const composed = composeAnswer({ domain: "personal_injury", query, routes });
   const classification = composed.classification;
   const appliedTriage = composed.applied_answer;
+  const answerContract = composed.answer_contract;
+  const contractChunks = filterPiChunksByContract(chunks, answerContract);
+  const principles = contractChunks.filter(chunk => chunk.layer === "principles").slice(0, 6).map(summarizePiChunk);
+  const proceduresForms = contractChunks.filter(chunk => chunk.layer === "procedures_forms").slice(0, 8).map(summarizePiChunk);
+  const verification = contractChunks.filter(chunk => chunk.layer === "governance").slice(0, 5).map(summarizePiChunk);
+  const missing = inferredMissingFacts(query, contractChunks);
   return {
     enabled: true,
     status: chunks.length ? "retrieved" : "abstain_no_pi_source_match",
@@ -712,6 +715,7 @@ function buildPiWorkflow(query) {
     matter_view: owner ? "potential occupier / defendant-side triage" : "personal injury triage",
     answer_note: "PI workflow output is metadata/source-gated. It is research-only, not legal advice, and stays draft-only until source verification and lawyer review.",
     classification,
+    answer_contract: answerContract,
     applied_answer: appliedTriage,
     applied_triage: appliedTriage,
     source_audit: composed.source_audit,
@@ -735,6 +739,7 @@ function buildPiWorkflow(query) {
     excluded_as_irrelevant: classification.excluded_groups,
     verification,
     raw_chunk_count: chunks.length,
+    contract_chunk_count: contractChunks.length,
     review_status: "draft_only_lawyer_review_required",
   };
 }
