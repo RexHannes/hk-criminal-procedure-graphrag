@@ -1,0 +1,202 @@
+{
+  "domain_id": "tort_law_hk",
+  "map_id": "pi_form_substance_map",
+  "title": "Personal Injury Form Substance Map",
+  "version": "0.1.0",
+  "last_updated": "2026-06-14",
+  "copyright_policy": "schema_and_issue_mapping_only_no_proprietary_precedent_text",
+  "purpose": "Defines the substance each form family should collect and display. This is for routing, validation and lawyer-reviewed drafting; it does not reproduce court or precedent wording.",
+  "common_substance_blocks": [
+    {
+      "block_id": "pi_common_parties_capacity",
+      "label": "Parties, capacity and standing",
+      "required_facts": ["plaintiff identity", "defendant identity", "capacity/representative status", "minor/protected party status", "estate/dependency status where applicable"],
+      "verification_status": "needs_source_card_verification"
+    },
+    {
+      "block_id": "pi_common_accident_core",
+      "label": "Accident core facts",
+      "required_facts": ["date", "time", "place", "mechanism", "witnesses", "photos/CCTV", "incident report"],
+      "verification_status": "needs_source_card_verification"
+    },
+    {
+      "block_id": "pi_common_liability_elements",
+      "label": "Liability elements",
+      "required_facts": ["duty basis", "breach particulars", "causation", "remoteness", "defence risks"],
+      "linked_principle_nodes": ["tort_law_hk.pi.negligence.application"],
+      "verification_status": "needs_source_card_verification"
+    },
+    {
+      "block_id": "pi_common_injury_quantum",
+      "label": "Injury and quantum facts",
+      "required_facts": ["diagnosis", "treatment", "sick leave", "prognosis", "PSLA support", "special damages", "loss of earnings", "future loss"],
+      "linked_principle_nodes": ["tort_law_hk.pi.quantum.router"],
+      "verification_status": "needs_source_card_verification"
+    },
+    {
+      "block_id": "pi_common_review_gate",
+      "label": "Review gate",
+      "required_facts": ["source status", "missing facts", "firm SOP status", "partner approval status"],
+      "output_mode": "draft_only_lawyer_review_required",
+      "verification_status": "needs_form_review"
+    }
+  ],
+  "form_family_substance": [
+    {
+      "family_id": "accident_specific_particulars",
+      "label": "Accident-specific Particulars of Claim",
+      "applies_to_forms": ["pi_form_particulars_slip_trip", "pi_form_particulars_fall_on_staircase", "pi_form_particulars_mall_common_area_slip", "pi_form_particulars_private_premises_ticketed_entry", "pi_form_particulars_restaurant_scalding", "pi_form_particulars_dog_bite", "pi_form_particulars_falling_canopy_scaffold"],
+      "substance_order": ["pi_common_parties_capacity", "pi_common_accident_core", "occupiers_or_general_duty", "breach_particulars", "causation", "pi_common_injury_quantum", "pi_common_review_gate"],
+      "specific_blocks": [
+        {
+          "block_id": "occupiers_or_general_duty",
+          "label": "Occupiers / general duty basis",
+          "required_facts": ["control of premises", "visitor status", "hazard", "warning", "inspection/cleaning/maintenance system"],
+          "linked_principle_nodes": ["tort_law_hk.pi.occupiers.application"]
+        },
+        {
+          "block_id": "breach_particulars",
+          "label": "Breach particulars",
+          "required_facts": ["failure to inspect", "failure to clean", "failure to warn", "unsafe condition", "contractor/stranger issue if raised"],
+          "linked_principle_nodes": ["tort_law_hk.pi.breach.risk_precautions", "tort_law_hk.pi.occupiers.warning_inspection"]
+        }
+      ],
+      "output_mode": "draft_only_lawyer_review_required"
+    },
+    {
+      "family_id": "rta_particulars",
+      "label": "Road Traffic Accident Particulars",
+      "applies_to_forms": ["pi_form_particulars_rta", "pi_form_particulars_rta_reversing_vehicle", "pi_form_particulars_rta_rear_end_collision", "pi_form_particulars_rta_opening_vehicle_door", "pi_form_particulars_rta_head_on_oncoming_collision", "pi_form_particulars_rta_pedestrian_crossing", "pi_form_particulars_rta_passenger_against_driver", "pi_form_particulars_rta_u_turn_emerging_vehicle"],
+      "substance_order": ["pi_common_parties_capacity", "rta_scene_and_manoeuvre", "rta_driver_duty_breach", "rta_contributory_negligence_screen", "causation", "pi_common_injury_quantum", "pi_common_review_gate"],
+      "specific_blocks": [
+        {
+          "block_id": "rta_scene_and_manoeuvre",
+          "label": "Scene and manoeuvre",
+          "required_facts": ["road layout", "traffic lights/signs", "lane position", "speed", "lookout", "vehicle path", "police report", "insurance/MIB"],
+          "linked_principle_nodes": ["tort_law_hk.pi.rta.router"]
+        },
+        {
+          "block_id": "rta_driver_duty_breach",
+          "label": "Driver duty and breach",
+          "required_facts": ["lookout", "speed/control", "safe distance", "signals", "right of way", "visibility"],
+          "linked_principle_nodes": ["tort_law_hk.pi.rta.driver_duty"]
+        },
+        {
+          "block_id": "rta_contributory_negligence_screen",
+          "label": "Contributory negligence screen",
+          "required_facts": ["seatbelt/helmet", "pedestrian crossing behaviour", "traffic light status", "passenger conduct"],
+          "linked_principle_nodes": ["tort_law_hk.pi.rta.contributory_negligence"]
+        }
+      ],
+      "output_mode": "draft_only_lawyer_review_required"
+    },
+    {
+      "family_id": "workplace_particulars",
+      "label": "Workplace Injury Particulars",
+      "applies_to_forms": ["pi_form_particulars_workplace", "pi_form_particulars_dangerous_substances", "pi_form_particulars_dermatitis_deafness_industrial_disease", "pi_form_particulars_electrocution", "pi_form_particulars_unguarded_machinery_lifting_appliance", "pi_form_particulars_scaffold_ladder_height_work"],
+      "substance_order": ["pi_common_parties_capacity", "workplace_status_and_task", "employer_primary_duty", "statutory_or_safety_system", "causation", "pi_common_injury_quantum", "pi_common_review_gate"],
+      "specific_blocks": [
+        {
+          "block_id": "workplace_status_and_task",
+          "label": "Employment status and work task",
+          "required_facts": ["employee/contractor status", "worksite", "task", "supervisor", "equipment", "training/PPE"],
+          "linked_principle_nodes": ["tort_law_hk.pi.employer.workplace_router"]
+        },
+        {
+          "block_id": "employer_primary_duty",
+          "label": "Employer primary duty",
+          "required_facts": ["safe place", "safe plant/equipment", "safe system", "competent staff", "supervision"],
+          "linked_principle_nodes": ["tort_law_hk.pi.employer.safe_system", "tort_law_hk.pi.employer.safe_plant_equipment"]
+        },
+        {
+          "block_id": "statutory_or_safety_system",
+          "label": "Safety system / statutory-duty material",
+          "required_facts": ["risk assessment", "method statement", "guarding", "maintenance", "safety data", "inspection records"],
+          "linked_procedure_nodes": ["pi_procedure.discovery", "pi_procedure.expert_evidence"]
+        }
+      ],
+      "output_mode": "draft_only_lawyer_review_required"
+    },
+    {
+      "family_id": "defence",
+      "label": "PI Defences",
+      "applies_to_forms": ["pi_form_defence_general", "pi_form_defence_occupiers", "pi_form_defence_rta", "pi_form_defence_workplace", "pi_form_defence_contributory_negligence_general", "pi_form_defence_seatbelt_or_helmet", "pi_form_defence_volenti", "pi_form_defence_pure_accident_inevitable_latent_defect", "pi_form_defence_independent_contractor_act_of_stranger", "pi_form_defence_not_occupier_trespasser_warning", "pi_form_defence_no_dependency_or_letters_admin", "pi_form_defence_psychiatric_secondary_victim"],
+      "substance_order": ["defence_admissions_denials", "positive_defences", "causation_and_quantum_denials", "proof_requirements", "pi_common_review_gate"],
+      "specific_blocks": [
+        {
+          "block_id": "defence_admissions_denials",
+          "label": "Admissions and denials",
+          "required_facts": ["admitted facts", "denied facts", "non-admissions", "alternative version"],
+          "linked_procedure_nodes": ["pi_procedure.defence"]
+        },
+        {
+          "block_id": "positive_defences",
+          "label": "Positive defences",
+          "required_facts": ["contributory negligence", "volenti", "limitation", "independent contractor", "act of stranger", "latent defect", "failure to mitigate"],
+          "linked_principle_nodes": ["tort_law_hk.pi.defences.router"]
+        },
+        {
+          "block_id": "causation_and_quantum_denials",
+          "label": "Causation and quantum denials",
+          "required_facts": ["alternative cause", "pre-existing condition", "exaggeration", "medical dispute", "dependency/estate dispute"],
+          "linked_principle_nodes": ["tort_law_hk.pi.causation_remoteness", "tort_law_hk.pi.quantum.router"]
+        }
+      ],
+      "output_mode": "draft_only_lawyer_review_required"
+    },
+    {
+      "family_id": "quantum_schedule",
+      "label": "PI Quantum Schedules",
+      "applies_to_forms": ["pi_form_schedule_of_damages", "pi_form_schedule_psla_comparison", "pi_form_schedule_loss_earnings_future_loss", "pi_form_schedule_care_aids_housing", "pi_form_schedule_fatal_dependency"],
+      "substance_order": ["medical_basis", "psla", "special_damages", "loss_of_earnings", "future_loss", "care_aids_housing", "interest_or_provisional", "pi_common_review_gate"],
+      "specific_blocks": [
+        {
+          "block_id": "medical_basis",
+          "label": "Medical basis",
+          "required_facts": ["diagnosis", "prognosis", "disability", "causation opinion", "future treatment"],
+          "linked_procedure_nodes": ["pi_procedure.medical_evidence"]
+        },
+        {
+          "block_id": "psla",
+          "label": "PSLA / general damages",
+          "required_facts": ["injury category", "severity", "comparable cases/ranges", "residual symptoms"],
+          "linked_principle_nodes": ["tort_law_hk.pi.quantum.psla"]
+        },
+        {
+          "block_id": "loss_of_earnings",
+          "label": "Loss of earnings",
+          "required_facts": ["income", "sick leave", "tax/deductions", "work capacity", "future loss assumptions"],
+          "linked_principle_nodes": ["tort_law_hk.pi.quantum.loss_of_earnings", "tort_law_hk.pi.quantum.future_loss_multiplier"]
+        },
+        {
+          "block_id": "care_aids_housing",
+          "label": "Care, aids and housing",
+          "required_facts": ["care hours", "equipment quotes", "OT evidence", "housing adaptation"],
+          "linked_principle_nodes": ["tort_law_hk.pi.quantum.care_aids_housing"]
+        }
+      ],
+      "output_mode": "draft_only_lawyer_review_required"
+    },
+    {
+      "family_id": "summons_order",
+      "label": "Summonses, Orders and Interlocutory Applications",
+      "applies_to_forms": ["pi_form_common_summons", "pi_form_summons_amend_pleading", "pi_form_summons_add_mib_or_party", "pi_form_witness_examination_letter_request", "pi_form_application_default_summary_strikeout_security"],
+      "substance_order": ["application_relief", "grounds", "supporting_evidence", "draft_order", "costs", "pi_common_review_gate"],
+      "specific_blocks": [
+        {
+          "block_id": "application_relief",
+          "label": "Relief sought",
+          "required_facts": ["type of application", "order sought", "affected parties", "timetable"],
+          "linked_procedure_nodes": ["pi_procedure.trial_preparation"]
+        },
+        {
+          "block_id": "supporting_evidence",
+          "label": "Supporting evidence",
+          "required_facts": ["affirmation/affidavit facts", "exhibits", "procedural history", "draft order"],
+          "linked_procedure_nodes": ["pi_procedure.trial_preparation"]
+        }
+      ],
+      "output_mode": "draft_only_lawyer_review_required"
+    }
+  ]
+}
