@@ -697,17 +697,19 @@ function buildPiWorkflow(query) {
   const result = retrievePiRag(query);
   if (!result) return null;
   const { routes, chunks } = result;
-  const premises = routes.has("premises");
   const owner = /\b(owner|restaurant owner|occupier|defendant|insurer)\b/i.test(query);
   const composed = composeAnswer({ domain: "personal_injury", query, routes });
   const classification = composed.classification;
   const appliedTriage = composed.applied_answer;
   const answerContract = composed.answer_contract;
-  const contractChunks = filterPiChunksByContract(chunks, answerContract);
+  const filterContract = composed.filter_contract || composed.answer_contract;
+  const workflowSupport = composed.workflow_support || {};
+  const contractChunks = filterPiChunksByContract(chunks, filterContract);
   const principles = contractChunks.filter(chunk => chunk.layer === "principles").slice(0, 6).map(summarizePiChunk);
   const proceduresForms = contractChunks.filter(chunk => chunk.layer === "procedures_forms").slice(0, 8).map(summarizePiChunk);
   const verification = contractChunks.filter(chunk => chunk.layer === "governance").slice(0, 5).map(summarizePiChunk);
-  const missing = inferredMissingFacts(query, contractChunks);
+  const missing = workflowSupport.missing_information || inferredMissingFacts(query, contractChunks);
+  const neutralExcluded = answerContract?.excluded_issues || [];
   return {
     enabled: true,
     status: chunks.length ? "retrieved" : "abstain_no_pi_source_match",
@@ -721,22 +723,11 @@ function buildPiWorkflow(query) {
     source_audit: composed.source_audit,
     principles,
     procedures_forms: proceduresForms,
-    evidence_plan: [
-      "Preserve CCTV, incident report, cleaning/mopping logs, inspection records, warning-sign/barrier evidence, photos, staff roster and witness details.",
-      "Record timing: when the spill/water appeared, when mopping occurred, when the customer slipped, and what warnings were visible.",
-      "Confirm injury and causation evidence: medical report, diagnosis, treatment, sick leave, receipts and any pre-existing condition.",
-      "If acting for the restaurant/occupier, notify insurer early and keep privilege/review controls over internal incident notes.",
-    ],
-    quantum_and_consequences: [
-      "No compensation range can be given from the current facts. Quantum depends on injury proof, PSLA/general damages, medical expenses, earnings loss, care, future loss and receipts.",
-      "If no injury or loss is proved, the damages pathway may not progress, but evidence preservation and insurer notification still matter.",
-      "Settlement/offers should wait for liability evidence, medical evidence and quantum documents, and remain lawyer-review-required.",
-    ],
-    next_procedure_steps: premises
-      ? ["intake and limitation screen", "evidence preservation", "medical/injury proof request", "insurance notification", "pre-action response/letter", "pleadings only if proceedings are pursued", "settlement/offer assessment after evidence"]
-      : ["intake", "evidence preservation", "medical evidence", "pre-action", "pleadings", "settlement/trial review"],
+    evidence_plan: workflowSupport.evidence_plan || [],
+    quantum_and_consequences: workflowSupport.quantum_and_consequences || [],
+    next_procedure_steps: workflowSupport.next_procedure_steps || [],
     missing_information: missing,
-    excluded_as_irrelevant: classification.excluded_groups,
+    excluded_as_irrelevant: neutralExcluded,
     verification,
     raw_chunk_count: chunks.length,
     contract_chunk_count: contractChunks.length,

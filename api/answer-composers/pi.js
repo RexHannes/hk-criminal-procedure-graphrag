@@ -140,6 +140,285 @@ function filterPiChunksByContract(chunks, contract) {
   return filtered.length ? filtered : [];
 }
 
+function publicPiAnswerContract(contract) {
+  const labelFor = {
+    workplace_or_employer_family: "non-matching injury pathway",
+    restaurant_or_premises_family: "non-matching premises pathway",
+    road_traffic_family: "non-matching traffic pathway",
+    fatal_accident_family: "non-matching dependency pathway",
+    psychiatric_injury_family: "non-matching mental harm pathway",
+    court_forum_or_admission_forms: "court / filing route not first-line",
+    defence_first_forms: "defence route not first-line",
+    claimant_particulars_first_forms: "claimant pleading route not first-line",
+  };
+  return {
+    ...contract,
+    excluded_issues: (contract?.forbidden_terms_or_families || []).map(item => labelFor[item] || "non-matching issue family"),
+    forbidden_terms_or_families: (contract?.forbidden_terms_or_families || []).map(item => labelFor[item] || "non-matching issue family"),
+  };
+}
+
+function defaultWorkflowSupport() {
+  return {
+    evidence_plan: [
+      "Preserve accident evidence, photos, contemporaneous notes, witness details and any available CCTV or document trail.",
+      "Collect medical records, diagnosis, treatment notes, sick leave and receipts.",
+      "Identify all potentially responsible parties and any insurer or claims handler.",
+      "Keep the workflow draft-only until source verification and lawyer review are complete.",
+    ],
+    quantum_and_consequences: [
+      "No compensation range should be given without injury, causation and loss evidence.",
+      "Quantum depends on medical diagnosis, prognosis, expenses, income loss, future loss, care and rehabilitation evidence.",
+      "Any settlement or offer should remain lawyer-review-required until liability and quantum evidence are reviewed.",
+    ],
+    next_procedure_steps: [
+      "intake and limitation screen",
+      "evidence preservation",
+      "medical and loss evidence collection",
+      "party / insurance identification",
+      "pre-action review",
+      "lawyer review before pleadings or settlement",
+    ],
+    missing_information: [
+      "accident date, time and exact location",
+      "injury diagnosis and prognosis",
+      "causation evidence",
+      "income loss, expenses and receipts",
+      "opposing party / insurer details",
+    ],
+  };
+}
+
+function restaurantWetFloorWorkflowSupport() {
+  return {
+    evidence_plan: [
+      "Preserve CCTV before, during and after the incident, including the period when the floor was mopped and when the customer slipped.",
+      "Keep cleaning/mopping logs, inspection records, incident report, staff roster and witness details.",
+      "Preserve photos or records showing warning signs, cones, barriers, drying steps and the layout of the area.",
+      "Record who mopped, when they mopped, whether the area was dried, and who checked it afterwards.",
+      "Notify the insurer according to policy requirements while avoiding informal admissions of liability.",
+    ],
+    quantum_and_consequences: [
+      "No sensible compensation estimate can be given from the current facts.",
+      "Quantum depends on medical report, diagnosis, treatment, prognosis, sick leave, income loss, expenses, receipts and any long-term effect.",
+      "If no injury or loss is proved, quantum may be minimal or may not progress.",
+      "Settlement/offers should wait for liability evidence, medical evidence and quantum documents, and remain lawyer-review-required.",
+    ],
+    next_procedure_steps: [
+      "incident intake and limitation screen",
+      "CCTV / cleaning-log preservation",
+      "insurer notification without admission",
+      "medical/injury proof request",
+      "pre-action response / letter handling",
+      "liability and quantum review",
+      "settlement or pleadings only after evidence review",
+    ],
+    missing_information: [
+      "whether the customer was injured",
+      "medical report / diagnosis",
+      "incident report",
+      "CCTV preservation and timestamp",
+      "when the floor was mopped",
+      "whether warning signs or barriers were used",
+      "cleaning / inspection log",
+      "staff and customer witness details",
+      "insurance notification / policy details",
+      "losses claimed by the customer",
+    ],
+  };
+}
+
+function premisesClaimantWorkflowSupport() {
+  return {
+    evidence_plan: [
+      "Preserve photos of the premises, hazard, lighting, warning signs and injury.",
+      "Request CCTV and incident records quickly before routine deletion.",
+      "Record witness details and staff/management company contacts.",
+      "Keep medical records, sick leave, receipts and income-loss documents.",
+    ],
+    quantum_and_consequences: [
+      "No compensation estimate should be given without diagnosis, prognosis and loss documents.",
+      "Quantum turns on injury severity, treatment, recovery, earnings loss, expenses, future symptoms and care needs.",
+      "Contributory negligence and causation may affect liability and settlement value.",
+    ],
+    next_procedure_steps: [
+      "intake and limitation screen",
+      "premises control / occupier identification",
+      "CCTV and incident-record preservation request",
+      "medical and loss evidence collection",
+      "pre-action letter candidate review",
+      "particulars / schedule only after source and template review",
+    ],
+    missing_information: [
+      "accident date and exact location",
+      "who controlled or operated the area",
+      "hazard description",
+      "warning signs / inspection system",
+      "medical diagnosis and prognosis",
+      "income loss and expenses",
+    ],
+  };
+}
+
+function workplaceWorkflowSupport() {
+  return {
+    evidence_plan: [
+      "Preserve accident report, Labour Department or internal report, site photos, CCTV and witness details.",
+      "Preserve work platform/access evidence, stacking or storage method, permits and site layout records.",
+      "Collect risk assessments, method statements, toolbox talks, training records, supervision records and inspection records.",
+      "Preserve PPE, harness, guardrail, scaffold, machinery or equipment records where relevant.",
+      "Identify employer, main contractor, subcontractor, occupier/site controller and any insurer.",
+      "Collect medical reports, wage records, sick leave and expenses for the common-law and Employees' Compensation routes.",
+    ],
+    quantum_and_consequences: [
+      "No compensation estimate should be given without medical, wage-loss and prognosis evidence.",
+      "Quantum depends on injury severity, recovery, past and future earnings loss, medical expenses, care, rehabilitation and any long-term impairment.",
+      "Employees' Compensation and common-law personal injury routes should be tracked separately and lawyer-reviewed.",
+    ],
+    next_procedure_steps: [
+      "intake and limitation / EC deadline screen",
+      "worksite evidence preservation",
+      "employer / contractor / site-controller identification",
+      "Labour Department / internal report collection",
+      "medical and wage-loss evidence collection",
+      "Employees' Compensation overlay review",
+      "pre-action or pleading review after liability evidence",
+    ],
+    missing_information: [
+      "employment status and employer identity",
+      "work task and accident mechanism",
+      "platform/access/stacking/storage method",
+      "training, supervision and safety system records",
+      "PPE / harness / guardrail / equipment records where relevant",
+      "main contractor, subcontractor and site-controller identities",
+      "medical diagnosis, prognosis and wage-loss evidence",
+      "Employees' Compensation status",
+    ],
+  };
+}
+
+function pedestrianRtaWorkflowSupport() {
+  return {
+    evidence_plan: [
+      "Preserve police report/reference number and traffic accident investigation material.",
+      "Collect driver, vehicle, registration and insurance details.",
+      "Preserve CCTV/dashcam from nearby shops, buses, taxis, buildings or road cameras where available.",
+      "Record road layout, visibility, lighting, traffic direction, crossing point and impact location.",
+      "Keep medical report, treatment records, sick leave, receipts and income-loss material.",
+    ],
+    quantum_and_consequences: [
+      "No sensible compensation estimate can be given without injury evidence.",
+      "Quantum depends on diagnosis, treatment, prognosis, sick leave, income loss, expenses, future symptoms and care/transport evidence.",
+      "Pedestrian conduct and driver conduct may affect liability and any reduction for contributory negligence.",
+    ],
+    next_procedure_steps: [
+      "medical treatment and police/traffic report confirmation",
+      "driver / vehicle / insurer identification",
+      "CCTV / dashcam preservation",
+      "road layout and witness evidence collection",
+      "medical and income-loss evidence collection",
+      "pre-action / insurer correspondence review",
+      "settlement or pleadings only after evidence review",
+    ],
+    missing_information: [
+      "accident date/time and exact road location",
+      "driver, vehicle and insurer details",
+      "police report/reference number",
+      "road layout, lighting and visibility",
+      "where the pedestrian crossed and impact point",
+      "CCTV/dashcam/witness availability",
+      "medical diagnosis, prognosis and income loss",
+    ],
+  };
+}
+
+function roadTrafficWorkflowSupport() {
+  return {
+    evidence_plan: [
+      "Preserve police report/reference number, vehicle details, insurer details, photos and witness contacts.",
+      "Collect dashcam/CCTV, scene photos, vehicle damage records and any repair/traffic investigation material.",
+      "Keep medical reports, treatment records, sick leave, receipts and income-loss documents.",
+      "Record claimant role: passenger, pedestrian, driver, motorcyclist or cyclist.",
+    ],
+    quantum_and_consequences: [
+      "No compensation estimate should be given without medical and loss evidence.",
+      "Quantum depends on injury severity, treatment, recovery, earnings loss, expenses, future loss and care needs.",
+      "Seatbelt, speed, lookout, traffic signals, causation and contributory negligence may affect liability/value.",
+    ],
+    next_procedure_steps: [
+      "intake and limitation screen",
+      "police / traffic evidence collection",
+      "driver / owner / insurer identification",
+      "medical and loss evidence collection",
+      "pre-action letter candidate review",
+      "particulars / schedule only after source and template review",
+    ],
+    missing_information: [
+      "accident date/time/location",
+      "claimant role",
+      "driver, owner and insurer details",
+      "police reference and scene evidence",
+      "medical diagnosis and prognosis",
+      "income loss and expenses",
+    ],
+  };
+}
+
+function fatalWorkflowSupport() {
+  return {
+    evidence_plan: [
+      "Preserve accident evidence, police/official reports, death/medical records and witness details.",
+      "Collect authority-to-act, estate, dependant and relationship documents.",
+      "Collect dependency, income, support, funeral/expense and household evidence.",
+      "Identify any minors or protected parties and flag settlement approval requirements.",
+    ],
+    quantum_and_consequences: [
+      "No valuation should be given without dependency, estate, income and expense evidence.",
+      "Dependency, estate, funeral/expense and minor/protected-party issues must be separated and lawyer-reviewed.",
+      "Settlement should remain draft-only/lawyer-review-required, especially where minors or protected parties are involved.",
+    ],
+    next_procedure_steps: [
+      "authority-to-act and limitation screen",
+      "accident / liability evidence preservation",
+      "death and medical evidence collection",
+      "dependant / estate evidence collection",
+      "minor or protected-party review",
+      "pre-action or pleading review after evidence",
+    ],
+    missing_information: [
+      "date and cause of death",
+      "authority to act",
+      "dependants and relationship evidence",
+      "income/support/dependency evidence",
+      "estate and funeral/expense evidence",
+      "minor or protected-party status",
+    ],
+  };
+}
+
+function workflowSupportForPi(classification) {
+  switch (classification.scenario) {
+    case "premises_wet_floor_slip":
+      return classification.user_perspective === "defendant_occupier"
+        ? restaurantWetFloorWorkflowSupport()
+        : premisesClaimantWorkflowSupport();
+    case "premises_slip_trip":
+      return premisesClaimantWorkflowSupport();
+    case "workplace_fall_or_site_injury":
+    case "workplace_injury":
+      return workplaceWorkflowSupport();
+    case "pedestrian_road_traffic_collision_uncontrolled_crossing":
+      return pedestrianRtaWorkflowSupport();
+    case "road_traffic_passenger_or_road_user":
+    case "road_traffic_injury":
+      return roadTrafficWorkflowSupport();
+    case "fatal_accident_dependency":
+      return fatalWorkflowSupport();
+    default:
+      return defaultWorkflowSupport();
+  }
+}
+
 function genericPiTriage() {
   return {
     title: "Applied PI Triage",
@@ -448,10 +727,17 @@ function composePiAnswer({ query, routes }) {
   const classification = classifyPiMatter(query, routes);
   const appliedAnswer = buildAppliedTriage(query, routes, classification);
   const answerContract = buildPiAnswerContract(query, routes, classification, appliedAnswer);
+  const publicContract = publicPiAnswerContract(answerContract);
+  const workflowSupport = workflowSupportForPi(classification);
   return {
     applied_answer: appliedAnswer,
-    answer_contract: answerContract,
-    classification,
+    answer_contract: publicContract,
+    filter_contract: answerContract,
+    classification: {
+      ...classification,
+      excluded_groups: publicContract.excluded_issues,
+    },
+    workflow_support: workflowSupport,
     source_audit: {
       display: "collapsed",
       note: "Raw retrieved source chunks should remain in the audit trail, not the main lawyer-facing answer.",
@@ -465,4 +751,6 @@ module.exports = {
   classifyPiMatter,
   composePiAnswer,
   filterPiChunksByContract,
+  publicPiAnswerContract,
+  workflowSupportForPi,
 };

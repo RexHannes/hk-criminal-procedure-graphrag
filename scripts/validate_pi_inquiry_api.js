@@ -46,8 +46,8 @@ function assert(condition, message, errors) {
   assert((workflow?.evidence_plan || []).length >= 4, "insufficient evidence plan", errors);
   assert((workflow?.quantum_and_consequences || []).length >= 3, "insufficient quantum section", errors);
   assert((workflow?.next_procedure_steps || []).length >= 5, "insufficient next steps", errors);
-  assert((workflow?.excluded_as_irrelevant || []).includes("road_traffic"), "road traffic not excluded", errors);
-  assert((workflow?.excluded_as_irrelevant || []).includes("workplace_employers_liability"), "workplace not excluded", errors);
+  assert((workflow?.answer_contract?.forbidden_terms_or_families || []).includes("non-matching traffic pathway"), "traffic pathway not excluded", errors);
+  assert((workflow?.answer_contract?.forbidden_terms_or_families || []).includes("non-matching injury pathway"), "injury pathway not excluded", errors);
   const rawTitles = [
     ...(workflow?.principles || []),
     ...(workflow?.procedures_forms || []),

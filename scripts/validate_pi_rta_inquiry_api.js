@@ -56,10 +56,10 @@ function assert(condition, message, errors) {
   assert(blob(triage).includes("absence of zebra lines or traffic lights does not automatically defeat a claim"), "missing no-zebra/no-light caveat", errors);
   assert(blob(triage).includes("police"), "missing police report guidance", errors);
   assert(blob(triage).includes("no sensible compensation estimate"), "missing quantum caveat", errors);
-  assert((workflow?.excluded_as_irrelevant || []).includes("restaurant_premises"), "restaurant premises should be excluded", errors);
-  assert((workflow?.excluded_as_irrelevant || []).includes("workplace_employers_liability"), "workplace should be excluded", errors);
-  assert((workflow?.excluded_as_irrelevant || []).includes("fatal_accident"), "fatal accident should be excluded", errors);
-  assert((workflow?.excluded_as_irrelevant || []).includes("psychiatric_injury"), "psychiatric injury should be excluded", errors);
+  assert((workflow?.answer_contract?.forbidden_terms_or_families || []).includes("non-matching premises pathway"), "premises pathway should be excluded", errors);
+  assert((workflow?.answer_contract?.forbidden_terms_or_families || []).includes("non-matching injury pathway"), "injury pathway should be excluded", errors);
+  assert((workflow?.answer_contract?.forbidden_terms_or_families || []).includes("non-matching dependency pathway"), "dependency pathway should be excluded", errors);
+  assert((workflow?.answer_contract?.forbidden_terms_or_families || []).includes("non-matching mental harm pathway"), "mental harm pathway should be excluded", errors);
 
   if (errors.length) {
     console.error("PI RTA inquiry validation failed:");
