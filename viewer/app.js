@@ -736,6 +736,29 @@
     `).join('');
   }
 
+  function renderAppliedTriage(triage) {
+    if (!triage) return '';
+    return `
+      <section class="piw-applied">
+        <div class="piw-applied-head">
+          <div>
+            <div class="view-eyebrow">Applied triage</div>
+            <h2>${esc(triage.title || 'Applied PI Triage')}</h2>
+          </div>
+          <span class="badge badge-review">Not legal advice</span>
+        </div>
+        <p class="piw-short">${esc(triage.short_answer || '')}</p>
+        <div class="piw-applied-grid">
+          ${(triage.sections || []).map(section => `
+            <section class="piw-applied-section">
+              <h3>${esc(section.heading)}</h3>
+              <ul class="piw-list">${(section.items || []).map(item => `<li>${esc(item)}</li>`).join('')}</ul>
+            </section>
+          `).join('')}
+        </div>
+      </section>`;
+  }
+
   function renderPiWorkflow(workflow) {
     if (!workflow) return '';
     return `
@@ -745,40 +768,59 @@
           <span class="card-badges"><span class="badge badge-research">Research layer</span><span class="badge badge-review">Lawyer review required</span></span>
         </div>
         <div class="card-body">${esc(workflow.answer_note || '')}</div>
+        ${renderAppliedTriage(workflow.applied_triage)}
         <div class="piw-grid">
-          <section>
-            <h3>1. Principles</h3>
-            ${renderWorkflowItems(workflow.principles, 'No principle source chunk met the PI retrieval threshold.')}
+          <section class="piw-main-section">
+            <h3>Classification</h3>
+            <ul class="piw-list">
+              <li>Matter type: ${esc(workflow.classification?.matter_type || 'personal_injury')}</li>
+              <li>Scenario: ${esc(String(workflow.classification?.scenario || 'unclassified').replace(/_/g, ' '))}</li>
+              <li>Perspective: ${esc(String(workflow.classification?.user_perspective || 'unspecified').replace(/_/g, ' '))}</li>
+              <li>Posture: ${esc(String(workflow.classification?.procedural_posture || 'early triage').replace(/_/g, ' '))}</li>
+            </ul>
           </section>
-          <section>
-            <h3>2. Procedure / Forms</h3>
-            ${renderWorkflowItems(workflow.procedures_forms, 'No procedure/form source chunk met the PI retrieval threshold.')}
+          <section class="piw-main-section">
+            <h3>Collapsed / Excluded Issues</h3>
+            <ul class="piw-list">${(workflow.excluded_as_irrelevant || []).map(x => `<li>${esc(String(x).replace(/_/g, ' '))}</li>`).join('') || '<li>No automatic exclusions recorded.</li>'}</ul>
           </section>
         </div>
         <div class="piw-grid">
-          <section>
-            <h3>3. Evidence To Preserve</h3>
+          <section class="piw-main-section">
+            <h3>Evidence To Preserve</h3>
             <ul class="piw-list">${(workflow.evidence_plan || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
           </section>
-          <section>
-            <h3>4. Quantum / Settlement Consequences</h3>
+          <section class="piw-main-section">
+            <h3>Quantum / Settlement Consequences</h3>
             <ul class="piw-list">${(workflow.quantum_and_consequences || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
           </section>
         </div>
         <div class="piw-grid">
-          <section>
-            <h3>5. Next Procedural Steps</h3>
+          <section class="piw-main-section">
+            <h3>Next Procedural Steps</h3>
             <ol class="piw-list">${(workflow.next_procedure_steps || []).map(x => `<li>${esc(x)}</li>`).join('')}</ol>
           </section>
-          <section>
-            <h3>6. Missing Facts / Review Gates</h3>
+          <section class="piw-main-section">
+            <h3>Missing Facts / Review Gates</h3>
             <ul class="piw-list">${(workflow.missing_information || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
           </section>
         </div>
-        ${workflow.verification && workflow.verification.length ? `<section class="piw-governance">
-          <h3>Verification / Source Hierarchy</h3>
-          ${renderWorkflowItems(workflow.verification, 'No governance chunk matched.')}
-        </section>` : ''}
+        <details class="piw-audit">
+          <summary>Source / audit trail</summary>
+          <div class="piw-grid">
+            <section>
+              <h3>Principle Source Chunks</h3>
+              ${renderWorkflowItems(workflow.principles, 'No principle source chunk met the PI retrieval threshold.')}
+            </section>
+            <section>
+              <h3>Procedure / Form Source Chunks</h3>
+              ${renderWorkflowItems(workflow.procedures_forms, 'No procedure/form source chunk met the PI retrieval threshold.')}
+            </section>
+          </div>
+          ${workflow.verification && workflow.verification.length ? `<section class="piw-governance">
+            <h3>Verification / Source Hierarchy</h3>
+            ${renderWorkflowItems(workflow.verification, 'No governance chunk matched.')}
+          </section>` : ''}
+        </details>
       </div>
     `;
   }
@@ -855,8 +897,7 @@
         </div>
       </div>` : ''}
       ${warnings ? `<div class="inq-warnings">${warnings}</div>` : ''}
-      ${r.pi_workflow ? '<div class="view-eyebrow" style="margin:16px 0 8px">Underlying graph matches</div>' : ''}
-      ${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}
+      ${r.pi_workflow ? `<details class="piw-audit"><summary>Underlying graph matches</summary>${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}</details>` : (cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.'))}
       <p class="inq-note">Source-bounded research trail — not legal advice. Every node and citation above exists in the maintained doctrine graph${INQ.mode === 'api' ? ' and Supabase evidence store' : ''}; nothing is generated outside it. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;
   }
 
