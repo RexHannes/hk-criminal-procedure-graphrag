@@ -1,0 +1,170 @@
+{
+  "domain_id": "tort_law_hk",
+  "flow_pack_id": "pi_procedure_flows",
+  "title": "Personal Injury Principles and Procedures",
+  "version": "0.1.0",
+  "last_updated": "2026-06-14",
+  "description": "Separate but linked PI principles and procedures flows. Answers should render Principles and Procedures/Forms as distinct parts.",
+  "answer_parts": [
+    {
+      "id": "principles",
+      "label": "Principles",
+      "description": "Legal analysis: cause of action, duty, breach, causation, defences and quantum."
+    },
+    {
+      "id": "procedures",
+      "label": "Procedures / Forms",
+      "description": "Action layer: intake, evidence, pleadings, forms, settlement and trial steps."
+    }
+  ],
+  "flows": [
+    {
+      "flow_id": "pi_principles_flow",
+      "answer_part": "principles",
+      "title": "PI Principles Flow",
+      "description": "Source-backed PI legal analysis flow.",
+      "steps": [
+        "tort_pi_claim_router",
+        "tort_pi_negligence_application",
+        "tort_pi_duty_foreseeability",
+        "tort_pi_duty_proximity",
+        "tort_pi_duty_fair_just_reasonable",
+        "tort_pi_breach_risk_precautions",
+        "tort_pi_causation_and_remoteness",
+        "tort_pi_defence_router",
+        "tort_pi_quantum_router"
+      ]
+    },
+    {
+      "flow_id": "pi_liability_flow",
+      "answer_part": "principles",
+      "title": "PI Liability Flow",
+      "description": "Cause of action and liability analysis.",
+      "steps": [
+        "tort_pi_claim_router",
+        "tort_pi_negligence_application",
+        "tort_pi_occupiers_liability_application",
+        "tort_pi_employer_workplace_router",
+        "tort_pi_rta_router",
+        "tort_pi_psychiatric_injury_router",
+        "tort_pi_fatal_accident_router",
+        "tort_pi_defence_router"
+      ]
+    },
+    {
+      "flow_id": "pi_quantum_flow",
+      "answer_part": "principles",
+      "title": "PI Quantum / Damages Flow",
+      "description": "Injury and damages heads for calculation and evidence mapping.",
+      "steps": [
+        "tort_pi_quantum_router",
+        "tort_pi_quantum_psla",
+        "tort_pi_quantum_special_damages",
+        "tort_pi_quantum_loss_of_earnings",
+        "tort_pi_quantum_future_loss_multiplier",
+        "tort_pi_quantum_care_aids_housing",
+        "tort_pi_quantum_interest_interim_provisional",
+        "tort_pi_fatal_dependency"
+      ]
+    },
+    {
+      "flow_id": "pi_procedure_flow",
+      "answer_part": "procedures",
+      "title": "PI Procedures / Forms Flow",
+      "description": "Action layer from intake through pleadings, disclosure, settlement and trial.",
+      "steps": [
+        "pi_procedure.intake",
+        "pi_procedure.limitation_check",
+        "pi_procedure.evidence_preservation",
+        "pi_procedure.medical_evidence",
+        "pi_procedure.pre_action_letter",
+        "pi_procedure.forum_jurisdiction",
+        "pi_procedure.statement_of_claim",
+        "pi_procedure.particulars_of_claim",
+        "pi_procedure.statement_of_damages",
+        "pi_procedure.defence",
+        "pi_procedure.reply",
+        "pi_procedure.discovery",
+        "pi_procedure.expert_evidence",
+        "pi_procedure.interim_payment",
+        "pi_procedure.settlement_offer",
+        "pi_procedure.trial_preparation"
+      ]
+    },
+    {
+      "flow_id": "pi_slip_trip_flow",
+      "answer_part": "principles_and_procedures",
+      "title": "Slip / Trip / Premises Injury Flow",
+      "description": "Combined example: expand occupiers and breach/quantum while linking to pre-action, pleadings and damages forms.",
+      "principle_steps": [
+        "tort_pi_claim_router",
+        "tort_pi_occupiers_liability_application",
+        "tort_pi_occupiers_control",
+        "tort_pi_occupiers_warning_inspection",
+        "tort_pi_breach_risk_precautions",
+        "tort_pi_causation_and_remoteness",
+        "tort_pi_quantum_router",
+        "tort_pi_defence_router"
+      ],
+      "procedure_steps": [
+        "pi_procedure.intake",
+        "pi_procedure.evidence_preservation",
+        "pi_procedure.medical_evidence",
+        "pi_procedure.pre_action_letter",
+        "pi_procedure.statement_of_claim",
+        "pi_procedure.particulars_of_claim",
+        "pi_procedure.statement_of_damages",
+        "pi_procedure.settlement_offer"
+      ]
+    },
+    {
+      "flow_id": "pi_rta_flow",
+      "answer_part": "principles_and_procedures",
+      "title": "Road Traffic Accident Injury Flow",
+      "description": "Combined example: driver duty, RTA contributory negligence and road traffic forms.",
+      "principle_steps": [
+        "tort_pi_claim_router",
+        "tort_pi_rta_router",
+        "tort_pi_rta_driver_duty",
+        "tort_pi_causation_and_remoteness",
+        "tort_pi_rta_contributory_negligence",
+        "tort_pi_quantum_router"
+      ],
+      "procedure_steps": [
+        "pi_procedure.intake",
+        "pi_procedure.evidence_preservation",
+        "pi_procedure.medical_evidence",
+        "pi_procedure.pre_action_letter",
+        "pi_procedure.statement_of_claim",
+        "pi_procedure.particulars_of_claim",
+        "pi_procedure.statement_of_damages"
+      ]
+    },
+    {
+      "flow_id": "pi_workplace_flow",
+      "answer_part": "principles_and_procedures",
+      "title": "Workplace Injury Flow",
+      "description": "Combined example: employer primary duty, safe system/equipment, EC overlap and workplace pleadings.",
+      "principle_steps": [
+        "tort_pi_claim_router",
+        "tort_pi_employer_workplace_router",
+        "tort_pi_employer_safe_system",
+        "tort_pi_employer_safe_plant_equipment",
+        "tort_pi_employees_compensation_overlap",
+        "tort_pi_quantum_router",
+        "tort_pi_defence_router"
+      ],
+      "procedure_steps": [
+        "pi_procedure.intake",
+        "pi_procedure.limitation_check",
+        "pi_procedure.evidence_preservation",
+        "pi_procedure.medical_evidence",
+        "pi_procedure.statement_of_claim",
+        "pi_procedure.particulars_of_claim",
+        "pi_procedure.discovery",
+        "pi_procedure.expert_evidence",
+        "pi_procedure.statement_of_damages"
+      ]
+    }
+  ]
+}
