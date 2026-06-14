@@ -1,7 +1,7 @@
 {
   "domain_id": "tort_law_hk",
   "title": "Hong Kong Tort Law",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "last_updated": "2026-06-14",
   "status": {
     "not_product_answer_layer": true,
@@ -88,7 +88,11 @@
     "pi_procedure_flows.json"
   ],
   "form_registries": [
-    "pi_form_registry.json"
+    "pi_form_registry.json",
+    "pi_form_registry_expanded.json"
+  ],
+  "form_substance_maps": [
+    "pi_form_substance_map.json"
   ],
   "answer_parts": [
     {
