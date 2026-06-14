@@ -768,7 +768,7 @@
           <span class="card-badges"><span class="badge badge-research">Research layer</span><span class="badge badge-review">Lawyer review required</span></span>
         </div>
         <div class="card-body">${esc(workflow.answer_note || '')}</div>
-        ${renderAppliedTriage(workflow.applied_triage)}
+        ${renderAppliedTriage(workflow.applied_answer || workflow.applied_triage)}
         <div class="piw-grid">
           <section class="piw-main-section">
             <h3>Classification</h3>

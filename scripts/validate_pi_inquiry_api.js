@@ -36,7 +36,9 @@ function assert(condition, message, errors) {
   assert(!!workflow, "missing pi_workflow", errors);
   assert(workflow?.classification?.scenario === "premises_wet_floor_slip", "wrong scenario classification", errors);
   assert(workflow?.classification?.user_perspective === "defendant_occupier", "wrong user perspective", errors);
+  assert(!!workflow?.applied_answer?.short_answer, "missing normalized applied_answer", errors);
   assert(!!workflow?.applied_triage?.short_answer, "missing applied triage short answer", errors);
+  assert(workflow?.source_audit?.display === "collapsed", "source audit should be collapsed", errors);
   assert(blob(workflow?.applied_triage).includes("do not simply wait"), "short answer does not address waiting for solicitor letter", errors);
   assert(blob(workflow?.applied_triage).includes("notify your insurer"), "missing insurer notification guidance", errors);
   assert(blob(workflow?.applied_triage).includes("warning"), "missing warning/sign analysis", errors);
