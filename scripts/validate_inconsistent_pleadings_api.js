@@ -47,6 +47,11 @@ function assert(condition, message, errors) {
     assert(rule.paragraph_card_id, "source-backed rule missing paragraph_card_id", errors);
     assert(rule.answer_layer_status === "research_only", "source-backed rules should remain research_only", errors);
   });
+  assert(
+    rules.some(rule => rule.proposition_card_id === "prop_abuse_estoppel_lancom_p43" && String(rule.citation || "").includes("[2022] HKCFI 381")),
+    "estoppel/abuse rule should map to Lancom proposition card",
+    errors
+  );
   [
     "abuse of process",
     "estoppel",

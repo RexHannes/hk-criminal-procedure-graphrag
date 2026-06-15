@@ -22,13 +22,17 @@ function firstCard(bundle, issue) {
   return cardsByIssue(bundle, issue)[0] || null;
 }
 
+function cardById(bundle, propositionId) {
+  return (bundle?.proposition_cards || []).find(card => card.proposition_id === propositionId) || null;
+}
+
 function professionalInconsistentPleadingsAnswer(query, legalIngestBundle = null) {
-  const abuseCard = firstCard(legalIngestBundle, "abuse_of_process");
-  const estoppelCard = firstCard(legalIngestBundle, "estoppel");
-  const diametricCard = firstCard(legalIngestBundle, "diametrically_opposed_positions");
-  const alternativeCard = firstCard(legalIngestBundle, "alternative_pleading");
-  const summaryJudgmentCard = firstCard(legalIngestBundle, "summary_judgment");
-  const hendersonCard = firstCard(legalIngestBundle, "henderson_abuse");
+  const abuseCard = cardById(legalIngestBundle, "prop_inconsistent_positions_scope_minloy_p31") || firstCard(legalIngestBundle, "abuse_of_process");
+  const estoppelCard = cardById(legalIngestBundle, "prop_abuse_estoppel_lancom_p43") || firstCard(legalIngestBundle, "estoppel");
+  const diametricCard = cardById(legalIngestBundle, "prop_diametrically_opposed_integrity_vasily_p39") || firstCard(legalIngestBundle, "diametrically_opposed_positions");
+  const alternativeCard = cardById(legalIngestBundle, "prop_alternative_pleading_within_knowledge_liu_p16") || firstCard(legalIngestBundle, "alternative_pleading");
+  const summaryJudgmentCard = cardById(legalIngestBundle, "prop_summary_judgment_material_deviation_shinyei_p19") || firstCard(legalIngestBundle, "summary_judgment");
+  const hendersonCard = cardById(legalIngestBundle, "prop_henderson_abuse_dp_world_pending") || firstCard(legalIngestBundle, "henderson_abuse");
   const sourceBackedRules = [
     abuseCard && {
       proposition_card_id: abuseCard.proposition_id,
