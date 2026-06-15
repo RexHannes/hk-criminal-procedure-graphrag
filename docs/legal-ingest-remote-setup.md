@@ -6,6 +6,14 @@ This is the safe order for turning the local legal-ingest scaffold into remote p
 
 Apply every SQL file in `supabase/migrations/` to the remote Supabase database before seeding source cards.
 
+First confirm the target project:
+
+```bash
+node scripts/setup_supabase_legal_ingest.js --target
+```
+
+This prints the Supabase URL/project ref and whether the local environment has a service-role key and database URL. It does not print secrets.
+
 If `psql` and `SUPABASE_DB_URL` are available, run:
 
 ```bash
@@ -13,6 +21,15 @@ node scripts/setup_supabase_legal_ingest.js --apply-migrations
 ```
 
 Otherwise, apply the same migration SQL files through the Supabase SQL editor or your usual deployment pipeline.
+
+If the live review endpoint reports:
+
+```text
+Could not find the table 'public.human_review_queue'
+Perhaps you meant the table 'public.human_review_items'
+```
+
+then Vercel is pointing at the right Supabase project, but that project is still on an older legal-ingest schema. Apply the committed migrations below to that same project.
 
 The required tables are:
 

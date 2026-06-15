@@ -43,6 +43,10 @@ const MIGRATION_FILES = [
   "20260615000000_create_legal_rag_pipeline_tables.sql",
 ];
 
+function cleanEnvValue(value) {
+  return String(value || "").trim().replace(/^['"]|['"]$/g, "");
+}
+
 function parseEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return {};
   const env = {};
@@ -65,9 +69,35 @@ function loadEnv() {
 }
 
 function requiredEnv(env, key) {
-  const value = String(env[key] || "").trim().replace(/\/$/, "");
+  const value = cleanEnvValue(env[key]).replace(/\/$/, "");
   if (!value) throw new Error(`Missing ${key}. Fill .env.local or export it before running this setup.`);
   return value;
+}
+
+function optionalEnv(env, key) {
+  return cleanEnvValue(env[key]).replace(/\/$/, "");
+}
+
+function projectRefFromUrl(supabaseUrl) {
+  try {
+    const host = new URL(supabaseUrl).host;
+    return host.endsWith(".supabase.co") ? host.split(".")[0] : host;
+  } catch {
+    return "unknown";
+  }
+}
+
+function printTarget(env) {
+  const supabaseUrl = optionalEnv(env, "SUPABASE_URL");
+  console.log("Supabase target");
+  if (!supabaseUrl) {
+    console.log("- SUPABASE_URL: missing");
+    return;
+  }
+  console.log(`- url: ${supabaseUrl}`);
+  console.log(`- project_ref: ${projectRefFromUrl(supabaseUrl)}`);
+  console.log(`- service_role_key: ${optionalEnv(env, "SUPABASE_SERVICE_ROLE_KEY") ? "present" : "missing"}`);
+  console.log(`- db_url: ${optionalEnv(env, "SUPABASE_DB_URL") || optionalEnv(env, "DATABASE_URL") ? "present" : "missing"}`);
 }
 
 function migrationPaths() {
@@ -75,9 +105,13 @@ function migrationPaths() {
 }
 
 function applyMigrations(env) {
-  const dbUrl = String(env.SUPABASE_DB_URL || env.DATABASE_URL || "").trim().replace(/^['"]|['"]$/g, "");
+  const dbUrl = cleanEnvValue(env.SUPABASE_DB_URL || env.DATABASE_URL);
   if (!dbUrl) {
-    throw new Error("Missing SUPABASE_DB_URL or DATABASE_URL for --apply-migrations.");
+    throw new Error(
+      "Missing SUPABASE_DB_URL or DATABASE_URL for --apply-migrations. " +
+      "Use the Supabase dashboard database connection string for the target project, " +
+      "or apply the SQL files in supabase/migrations through the Supabase SQL editor."
+    );
   }
   for (const filePath of migrationPaths()) {
     if (!fs.existsSync(filePath)) throw new Error(`Missing migration file: ${filePath}`);
@@ -163,6 +197,9 @@ async function checkTable(ctx, table) {
       status: "missing_or_inaccessible",
       error: error.message,
       details: error.payload,
+      hint: table === "human_review_queue"
+        ? "If Supabase mentions public.human_review_items, the remote database is on an older schema. Apply the committed legal-ingest migrations."
+        : undefined,
     };
   }
 }
@@ -225,9 +262,13 @@ async function main() {
   const env = loadEnv();
   const shouldApplyMigrations = process.argv.includes("--apply-migrations");
   const shouldSeed = process.argv.includes("--seed-inconsistent");
+  const shouldTargetOnly = process.argv.includes("--target");
+
+  printTarget(env);
+  if (shouldTargetOnly) return;
 
   if (shouldApplyMigrations) {
-    console.log("0. Applying Supabase migrations");
+    console.log("\n0. Applying Supabase migrations");
     applyMigrations(env);
   }
 
