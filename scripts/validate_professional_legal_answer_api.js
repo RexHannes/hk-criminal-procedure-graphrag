@@ -55,7 +55,13 @@ function assert(condition, message, errors) {
   assert(text.includes("paragraph pinpoints"), "missing source/pinpoint caveat", errors);
   assert(!text.includes("fundraiser") && !text.includes("theft"), "irrelevant contamination leaked into professional answer", errors);
   assert(payload.source_audit?.display === "collapsed", "source audit should be collapsed", errors);
-  assert(payload.source_audit?.verification_status === "candidate_authorities_require_paragraph_check", "candidate authority warning missing", errors);
+  assert(
+    ["candidate_authorities_require_paragraph_check", "quote_verified_research_only_human_review_required"].includes(payload.source_audit?.verification_status),
+    "candidate/source-card verification warning missing",
+    errors
+  );
+  assert((payload.source_backed_rules || []).length >= 5, "source-backed rules missing from professional vertical", errors);
+  assert((payload.form_candidates || []).some(form => form.form_id === "form_pleading_inconsistency_matrix"), "inconsistency matrix form candidate missing", errors);
 
   if (errors.length) {
     console.error("Professional legal answer validation failed:");

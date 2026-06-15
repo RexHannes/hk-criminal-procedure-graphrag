@@ -6,6 +6,7 @@ const { filterPiChunksByContract } = require("./answer-composers/pi");
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
 const PI_RAG_PATH = path.join(DATA_ROOT, "tort_law_hk", "pi_rag_index.json");
+const INCONSISTENT_PLEADINGS_VERTICAL_PATH = path.join(process.cwd(), "data", "legal_ingest", "verticals", "inconsistent_pleadings.json");
 
 const SUPPORT_RELATIONSHIPS = new Set([
   "statutory_anchor",
@@ -60,6 +61,25 @@ const QUERY_EXPANSIONS = [
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+function detectsInconsistentPleadingsQuery(query) {
+  const q = String(query || "").toLowerCase();
+  return (
+    /\b(abuse of process|estoppel|collateral attack|res judicata|henderson)\b/.test(q) ||
+    (/\b(inconsistent|contradictory|diametrically opposed|opposite|different version|different versions)\b/.test(q) &&
+      /\b(pleading|pleadings|statement|statements|affidavit|affirmation|proceeding|proceedings|case|cases|action|actions)\b/.test(q))
+  );
+}
+
+function loadInconsistentPleadingsVertical(query) {
+  if (!detectsInconsistentPleadingsQuery(query)) return null;
+  if (!fs.existsSync(INCONSISTENT_PLEADINGS_VERTICAL_PATH)) return null;
+  try {
+    return readJson(INCONSISTENT_PLEADINGS_VERTICAL_PATH);
+  } catch (error) {
+    return null;
+  }
 }
 
 function doctrineNodeIdFor(node, domainId) {
@@ -593,11 +613,7 @@ function composerDomainForQuery(query, matched, piWorkflow) {
   if (piWorkflow) return "personal_injury";
   const q = String(query || "").toLowerCase();
   const domains = new Set((matched || []).map(item => item.domain_id).filter(Boolean));
-  if (
-    /\b(abuse of process|estoppel|collateral attack|res judicata|henderson)\b/.test(q) ||
-    (/\b(inconsistent|contradictory|diametrically opposed|opposite|different version|different versions)\b/.test(q) &&
-      /\b(pleading|pleadings|statement|statements|affidavit|affirmation|proceeding|proceedings|case|cases|action|actions)\b/.test(q))
-  ) return "generic";
+  if (detectsInconsistentPleadingsQuery(q)) return "generic";
   if (
     /\b(company|listing|listed|sehk|sfc|winding[- ]?up|statutory demand|petition|insolvency|incorporation|director|shareholder|board|form|filing)\b/.test(q) ||
     domains.has("hk_listing_and_listed_company_regulation")
@@ -788,6 +804,7 @@ module.exports = async function handler(req, res) {
     deterministic.forEach(item => { if (!ai.ranked_ids.includes(item.doctrine_node_id)) matched.push(item); });
   }
   const piWorkflow = buildPiWorkflow(query);
+  const legalIngestBundle = loadInconsistentPleadingsVertical(query);
   matched = postFilterMatchesForQuery(query, matched).slice(0, 8);
 
   const supabaseUrl = (process.env.SUPABASE_URL || "").trim().replace(/\/$/, "");
@@ -833,7 +850,7 @@ module.exports = async function handler(req, res) {
         classification: piWorkflow.classification,
         source_audit: piWorkflow.source_audit,
       }
-    : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched });
+    : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched, legalIngestBundle });
   res.status(200).json({
     query,
     ai_status: ai.status,
@@ -847,7 +864,17 @@ module.exports = async function handler(req, res) {
     applied_answer: applied.applied_answer,
     answer_contract: applied.answer_contract,
     classification: applied.classification,
+    source_backed_rules: applied.source_backed_rules || [],
+    form_candidates: applied.form_candidates || [],
+    unsupported_claims: applied.unsupported_claims || [],
     source_audit: applied.source_audit,
+    legal_ingest_vertical: legalIngestBundle ? {
+      vertical_id: legalIngestBundle.vertical_id,
+      status: legalIngestBundle.status,
+      source_count: (legalIngestBundle.source_registry || []).length,
+      proposition_count: (legalIngestBundle.proposition_cards || []).length,
+      form_count: (legalIngestBundle.form_metadata || []).length,
+    } : null,
     pi_workflow: piWorkflow,
     matched_doctrine_nodes: matched,
     evidence_count: evidenceCount,

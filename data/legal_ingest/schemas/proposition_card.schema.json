@@ -38,7 +38,8 @@
         "procedural_history",
         "legislative_text",
         "form_metadata",
-        "secondary_commentary"
+        "secondary_commentary",
+        "secondary_check_required"
       ]
     },
     "confidence": { "type": "string", "enum": ["high", "medium", "low"] },

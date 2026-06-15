@@ -6,7 +6,80 @@ function detectsInconsistentPleadings(query) {
   ) || /\b(abuse of process|estoppel|collateral attack|res judicata|henderson)\b/.test(q);
 }
 
-function professionalInconsistentPleadingsAnswer(query) {
+function sourceLabel(card) {
+  return [card.citation, card.pinpoint, card.proposition_id].filter(Boolean).join(" · ");
+}
+
+function formLabel(form) {
+  return `${form.title} (${form.form_id})`;
+}
+
+function cardsByIssue(bundle, issue) {
+  return (bundle?.proposition_cards || []).filter(card => (card.issue_tags || []).includes(issue));
+}
+
+function firstCard(bundle, issue) {
+  return cardsByIssue(bundle, issue)[0] || null;
+}
+
+function professionalInconsistentPleadingsAnswer(query, legalIngestBundle = null) {
+  const abuseCard = firstCard(legalIngestBundle, "abuse_of_process");
+  const estoppelCard = firstCard(legalIngestBundle, "estoppel");
+  const diametricCard = firstCard(legalIngestBundle, "diametrically_opposed_positions");
+  const alternativeCard = firstCard(legalIngestBundle, "alternative_pleading");
+  const summaryJudgmentCard = firstCard(legalIngestBundle, "summary_judgment");
+  const hendersonCard = firstCard(legalIngestBundle, "henderson_abuse");
+  const sourceBackedRules = [
+    abuseCard && {
+      proposition_card_id: abuseCard.proposition_id,
+      paragraph_card_id: abuseCard.paragraph_id,
+      rule_text: "The inconsistent-positions principle may extend beyond factual allegations to inconsistent positions or assumptions in different proceedings.",
+      citation: sourceLabel(abuseCard),
+      verification_status: abuseCard.verification_status,
+      answer_layer_status: abuseCard.answer_layer_status,
+    },
+    estoppelCard && {
+      proposition_card_id: estoppelCard.proposition_id,
+      paragraph_card_id: estoppelCard.paragraph_id,
+      rule_text: "A party adopting an inconsistent and incompatible position may face abuse-of-process and estoppel objections.",
+      citation: sourceLabel(estoppelCard),
+      verification_status: estoppelCard.verification_status,
+      answer_layer_status: estoppelCard.answer_layer_status,
+    },
+    diametricCard && {
+      proposition_card_id: diametricCard.proposition_id,
+      paragraph_card_id: diametricCard.paragraph_id,
+      rule_text: "A diametrically opposed later position taken with knowledge of the facts is especially serious because of the integrity-of-justice concern.",
+      citation: sourceLabel(diametricCard),
+      verification_status: diametricCard.verification_status,
+      answer_layer_status: diametricCard.answer_layer_status,
+    },
+    alternativeCard && {
+      proposition_card_id: alternativeCard.proposition_id,
+      paragraph_card_id: alternativeCard.paragraph_id,
+      rule_text: "Alternative factual pleading is more vulnerable where the true facts are plainly within the party's own knowledge.",
+      citation: sourceLabel(alternativeCard),
+      verification_status: alternativeCard.verification_status,
+      answer_layer_status: alternativeCard.answer_layer_status,
+    },
+    summaryJudgmentCard && {
+      proposition_card_id: summaryJudgmentCard.proposition_id,
+      paragraph_card_id: summaryJudgmentCard.paragraph_id,
+      rule_text: "A material deviation between verification evidence and the pleaded case can undermine summary judgment.",
+      citation: sourceLabel(summaryJudgmentCard),
+      verification_status: summaryJudgmentCard.verification_status,
+      answer_layer_status: summaryJudgmentCard.answer_layer_status,
+    },
+    hendersonCard && {
+      proposition_card_id: hendersonCard.proposition_id,
+      paragraph_card_id: hendersonCard.paragraph_id,
+      rule_text: "Henderson-type abuse is flagged as relevant, but this card still requires full pinpoint verification before final use.",
+      citation: sourceLabel(hendersonCard),
+      verification_status: hendersonCard.verification_status,
+      answer_layer_status: hendersonCard.answer_layer_status,
+    },
+  ].filter(Boolean);
+  const formCandidates = legalIngestBundle?.form_metadata || [];
   const answerSections = [
     "Legal Issues",
     "Source-Backed Rules",
@@ -34,12 +107,8 @@ function professionalInconsistentPleadingsAnswer(query) {
         },
         {
           heading: "Source-Backed Rules",
-          items: [
-            "Abuse of process: a court may object where a party advances a current position that is fundamentally inconsistent with a significant position or assumption adopted in another proceeding, especially where the facts were within that party's knowledge. Candidate authority cards should be verified before use.",
-            "Estoppel / res judicata: if the earlier proceeding finally determined the same cause of action or issue between the same parties or privies, the later inconsistent position may be barred rather than merely criticised.",
-            "Henderson-type abuse: even without strict estoppel, a party may be prevented from raising matters that could and should have been raised earlier, depending on overlap, timing, explanation and fairness.",
-            "Collateral attack: a later proceeding should not be used indirectly to impeach a prior judgment/order/award where the proper route was appeal, review, setting aside or other direct challenge.",
-            "Alternative pleading caveat: inconsistent allegations in the same pleading may be permissible where there are reasonable grounds and they are pleaded in the alternative; this is different from taking irreconcilable factual positions across separate proceedings.",
+          items: sourceBackedRules.length ? sourceBackedRules.map(rule => `${rule.rule_text} [${rule.citation}]`) : [
+            "No paragraph-backed proposition card has been loaded for this vertical yet; keep all rules at source-verification-required status.",
           ],
         },
         {
@@ -57,7 +126,7 @@ function professionalInconsistentPleadingsAnswer(query) {
           items: [
             "Strike-out or stay application for abuse of process where the inconsistency is clear, material and unexplained.",
             "Estoppel / res judicata objection if the earlier proceeding finally determined the relevant cause of action or issue.",
-            "Collateral-attack objection if the later pleading seeks indirectly to undermine an earlier judgment/order/award.",
+            "Collateral-attack objection if the later pleading seeks indirectly to undermine an earlier judgment/order/award; this point remains source-verification-required until a paragraph-backed collateral-attack card is added.",
             "Use in cross-examination and submissions on credibility, reliability and inherent probability.",
             "Resistance to summary judgment if the plaintiff's verifying affirmation materially departs from the pleaded case.",
             "Costs consequences, including adverse or indemnity costs in sufficiently serious cases.",
@@ -65,7 +134,10 @@ function professionalInconsistentPleadingsAnswer(query) {
         },
         {
           heading: "Documents / Forms",
-          items: [
+          items: formCandidates.length ? formCandidates.map(form => {
+            const facts = (form.required_facts || []).slice(0, 4).join(", ");
+            return `${formLabel(form)} — required facts: ${facts}.`;
+          }) : [
             "Pleading inconsistency matrix comparing proceeding A and proceeding B by paragraph, date, maker and verification status.",
             "Affirmation or witness statement exhibiting the inconsistent pleadings, affidavits, orders and procedural history.",
             "Summons/application notice for strike-out, stay, abuse-of-process relief or case-management directions, depending on the procedural stage.",
@@ -112,17 +184,37 @@ function professionalInconsistentPleadingsAnswer(query) {
       answer_sections: answerSections,
       verification_rule: "No paragraph citation means research-only, source-verification-required output.",
       forbidden_output: ["unsupported final legal proposition", "raw retrieval score in main answer", "irrelevant retrieved narrative contamination"],
+      source_card_policy: "Visible legal propositions in Source-Backed Rules must map to source_backed_rules[].proposition_card_id or be expressly marked source-verification-required.",
     },
+    source_backed_rules: sourceBackedRules,
+    form_candidates: formCandidates.map(form => ({
+      form_id: form.form_id,
+      title: form.title,
+      document_type: form.document_type,
+      trigger_conditions: form.trigger_conditions || [],
+      required_facts: form.required_facts || [],
+      review_status: form.review_status,
+      output_mode: form.output_mode,
+    })),
+    unsupported_claims: [
+      {
+        claim: "Collateral attack may be relevant where the later case indirectly attacks an earlier judgment/order/award.",
+        status: "source_verification_required",
+        reason: "No paragraph-verified collateral-attack proposition card is included in this vertical yet.",
+      },
+      {
+        claim: "Costs consequences may include adverse or indemnity costs.",
+        status: "source_verification_required",
+        reason: "A costs-specific source card should be added before treating this as a final proposition.",
+      },
+    ],
     source_audit: {
       display: "collapsed",
-      candidate_authority_cards: [
-        "Re Minloy Ltd and others - inconsistent positions / assumptions across proceedings",
-        "Lancom Ltd v Capxon International Electronic Co Ltd - abuse/estoppel framing",
-        "Chan Chun Chuen v Kao, Lee & Yip - diametrically opposed positions / integrity of justice",
-        "Liu Hao Tsing Education Foundation Ltd v Liu Tieh Ching Brandon - inconsistent alternatives within knowledge",
-        "Shinyei (Shanghai) Trading Co Ltd v Jenus Top Ltd - material deviation from pleaded case and summary judgment",
-      ],
-      verification_status: "candidate_authorities_require_paragraph_check",
+      source_registry: legalIngestBundle?.source_registry || [],
+      paragraph_cards: legalIngestBundle?.legal_paragraphs || [],
+      proposition_cards: legalIngestBundle?.proposition_cards || [],
+      form_metadata: formCandidates,
+      verification_status: legalIngestBundle ? "quote_verified_research_only_human_review_required" : "candidate_authorities_require_paragraph_check",
     },
   };
 }
@@ -234,8 +326,8 @@ function professionalGenericLegalAnswer(query, matched) {
   };
 }
 
-function composeGenericAnswer({ query, matched = [] }) {
-  if (detectsInconsistentPleadings(query)) return professionalInconsistentPleadingsAnswer(query);
+function composeGenericAnswer({ query, matched = [], legalIngestBundle = null }) {
+  if (detectsInconsistentPleadings(query)) return professionalInconsistentPleadingsAnswer(query, legalIngestBundle);
   return professionalGenericLegalAnswer(query, matched);
 }
 
