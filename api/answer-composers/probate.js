@@ -39,22 +39,18 @@ function classifyProbate(query) {
   };
 }
 
-function selectForms(forms, scenario) {
-  const needles = {
-    common_form_probate_grant: ["grant_probate_testate", "assets_liabilities_schedule", "will_identity_execution_evidence"],
-    intestate_administration: ["letters_administration_intestate", "renunciation", "additional_administrator", "assets_liabilities_schedule"],
-    caveat_warning_contentious_gateway: ["caveat_warning", "citation", "probate_action", "bring_in_testamentary_document", "general_summons"],
-    foreign_grant_resealing: ["foreign_resealing", "assets_liabilities_schedule"],
-    special_probate_application: ["special_grant", "lost_will", "leave_swear_death", "nuncupative_privileged_will", "rectification_will"],
-    post_grant_administration: ["post_grant_administration", "inventory_account", "amend_revocation_grant", "grant_extraction"],
-    probate_general: ["intake", "grant_probate_testate", "letters_administration_intestate", "general_summons"],
-  }[scenario] || [];
+function normaliseFormNumber(value) {
+  return String(value || "").toUpperCase().replace(/\s+/g, "").replace(/^FORMNO\.?/, "");
+}
+
+function formsByNumber(forms, numbers, role, conditionNote) {
+  const wanted = new Set(numbers.map(normaliseFormNumber));
   return (forms || [])
-    .filter(form => needles.includes(form.form_family))
-    .slice(0, 10)
+    .filter(form => wanted.has(normaliseFormNumber(form.form_number)))
     .map(form => ({
       form_id: form.form_id,
       title: form.title,
+      form_number: form.form_number,
       form_family: form.form_family,
       document_type: form.document_type,
       procedural_stage: form.procedural_stage,
@@ -62,7 +58,106 @@ function selectForms(forms, scenario) {
       required_facts: form.required_facts || [],
       review_status: form.review_status,
       output_mode: form.output_mode,
+      recommendation_role: role,
+      condition_note: conditionNote,
     }));
+}
+
+function selectForms(forms, scenario) {
+  if (scenario === "common_form_probate_grant") {
+    return [
+      ...formsByNumber(forms, ["W1.1A", "W1.1B"], "primary_candidate", "Ordinary application by named executor/executrix. Choose the correct suffix/form according to the current official specified form, death-date/estate-duty context and Registry requirements."),
+      ...formsByNumber(forms, ["N2.1", "N4.1"], "primary_candidate", "Assets and liabilities material for an ordinary grant: affidavit/affirmation verifying the schedule plus the schedule itself."),
+      ...formsByNumber(forms, ["W2.1", "W2.2"], "conditional_candidate", "Use only if an executor renounces or a renunciation issue arises."),
+      ...formsByNumber(forms, ["W1.2A", "W1.2B"], "conditional_candidate", "Use only where an attorney of the sole executor applies for administration with the will annexed."),
+      ...formsByNumber(forms, ["W1.3A", "W1.3B"], "conditional_candidate", "Use only where the sole executor has died or renounced and an administrator with will annexed applies."),
+      ...formsByNumber(forms, ["W1.4A", "W1.4B"], "conditional_candidate", "Use only where the will appoints no executor and an administrator with will annexed applies."),
+      ...formsByNumber(forms, ["W3.1", "W3.2", "W3.3", "W3.4"], "conditional_evidence_candidate", "Use only if the Registry requires evidence on due execution, handwriting, plight/condition or alterations."),
+      ...formsByNumber(forms, ["N2.2", "N2.3", "N4.2"], "conditional_correction_candidate", "Use only for corrective or additional assets/liabilities schedules before or after grant."),
+    ];
+  }
+  if (scenario === "intestate_administration") {
+    return [
+      ...formsByNumber(forms, ["L1.1A", "L1.1B", "L1.2A", "L1.2B", "L1.3A", "L1.3B", "L1.4A", "L1.4B", "L1.5A", "L1.5B", "L1.6A", "L1.6B"], "route_candidate", "Letters of administration form family. Select the correct L1 variant by relationship/priority and estate context."),
+      ...formsByNumber(forms, ["N2.1", "N4.1"], "primary_candidate", "Assets and liabilities schedule material for grant."),
+      ...formsByNumber(forms, ["L2.1"], "conditional_candidate", "Use where a person entitled to administration renounces."),
+      ...formsByNumber(forms, ["L3.1", "L3.2", "L3.3"], "conditional_candidate", "Use where nomination, power of attorney or guardian/co-administrator route is relevant."),
+      ...formsByNumber(forms, ["N2.2", "N2.3", "N4.2"], "conditional_correction_candidate", "Use only for corrective or additional assets/liabilities schedules."),
+    ];
+  }
+  if (scenario === "foreign_grant_resealing") {
+    return [
+      ...formsByNumber(forms, ["N3.1", "N4.1"], "primary_candidate", "Assets/liabilities affidavit and schedule for sealing/resealing of foreign grant."),
+      ...formsByNumber(forms, ["N3.2", "N3.3", "N4.2"], "conditional_correction_candidate", "Use only where a corrective/additional schedule is needed before or after sealing."),
+      ...formsByNumber(forms, ["1"], "conditional_candidate", "General summons only if leave/order/direction is needed, e.g. limited grant or unusual resealing issue."),
+    ];
+  }
+  if (scenario === "special_probate_application") {
+    return [
+      ...formsByNumber(forms, ["S1.1A", "S1.1B", "S1.2A", "S1.2B", "S2.1A", "S2.1B", "S2.2A", "S3.1A", "S3.1B", "S3.2A", "S3.2B"], "special_grant_candidate", "Special/limited grant family. Select only after identifying the exact special route."),
+      ...formsByNumber(forms, ["M1.1", "M2.1", "M4.1", "M4.2"], "special_evidence_candidate", "Use for identity/death/special evidence only where triggered."),
+      ...formsByNumber(forms, ["1"], "summons_candidate", "General summons for order/leave where required."),
+    ];
+  }
+  if (scenario === "post_grant_administration") {
+    return [
+      ...formsByNumber(forms, ["N2.3", "N4.2"], "post_grant_correction_candidate", "Corrective/additional schedule after grant where assets/liabilities were inaccurate or omitted."),
+      ...formsByNumber(forms, ["1"], "summons_candidate", "General summons if court directions, inventory/account, revocation/amendment or administration relief is required."),
+    ];
+  }
+  if (scenario === "caveat_warning_contentious_gateway") {
+    return [
+      ...formsByNumber(forms, ["1"], "summons_candidate", "General summons/order route where Registry or court direction is needed."),
+    ];
+  }
+  return [
+    ...formsByNumber(forms, ["W1.1A", "W1.1B", "L1.1A", "L1.1B", "N2.1", "N4.1"], "triage_candidate", "Initial triage only. Classify testate/intestate and applicant entitlement before selecting final form."),
+  ];
+}
+
+function formGuidanceItems(scenario, formCandidates) {
+  const nums = new Set((formCandidates || []).map(form => normaliseFormNumber(form.form_number)));
+  const has = n => nums.has(normaliseFormNumber(n));
+  if (scenario === "common_form_probate_grant") {
+    return [
+      "Do not file every W1 variant. First choose the grant route. If a named executor/executrix is applying in an ordinary will case, the relevant executor affidavit/affirmation family is W1.1a/W1.1b; choose the exact suffix against the current official specified form and Registry requirements.",
+      "If the applicant is not the named executor, move away from W1.1: W1.2 is for attorney of sole executor, W1.3 for sole executor died/renounced, and W1.4 for no executor appointed. These are conditional variants, not simultaneous forms.",
+      "For the assets/liabilities stage of an ordinary grant, use the grant schedule route: N2.1 affidavit/affirmation verifying the Schedule of Assets and Liabilities, together with N4.1 Schedule of Assets and Liabilities. N1.1 is for summary administration, not the ordinary executor grant route.",
+      "Use N2.2/N2.3 and N4.2 only if a corrective or additional assets/liabilities schedule is needed before or after the grant.",
+      "Use W2.1/W2.2 only if executor renunciation is involved; use W3 evidence forms only if the Registrar requires due execution, handwriting, plight/condition or alteration evidence.",
+      `Current metadata candidates found: ${["W1.1A", "W1.1B", "N2.1", "N4.1"].filter(has).join(", ") || "none verified in metadata"}.`,
+    ];
+  }
+  if (scenario === "intestate_administration") {
+    return [
+      "For no-will/intestacy matters, do not use W1 probate-to-executor forms. Select the correct L1 letters-of-administration variant by entitlement/relationship/priority.",
+      "Assets/liabilities material should use the grant schedule route: N2.1 and N4.1, with N2.2/N2.3/N4.2 only for correction/addition.",
+      "Use L2 only for renunciation, and L3 forms only for nomination/power/guardian/co-administrator issues.",
+    ];
+  }
+  if (scenario === "foreign_grant_resealing") {
+    return [
+      "For resealing, start with the foreign grant route and Hong Kong assets. Do not use a local original grant W1/L1 route unless resealing is unavailable or inappropriate.",
+      "Use N3.1 and N4.1 for the sealing/resealing assets/liabilities schedule route. N3.2/N3.3/N4.2 are corrective/additional schedule forms only.",
+      "A general summons is only a conditional candidate if leave, unusual directions or a limited-grant issue arises.",
+    ];
+  }
+  if (scenario === "special_probate_application") {
+    return [
+      "Classify the special application first: lost/copy will, nuncupative/privileged will, leave to swear death, rectification, ad colligenda bona, grant pending suit, de bonis non or other limited grant.",
+      "Use S/M/general summons forms only after identifying the exact special route and evidence gap. These are not routine common-form grant forms.",
+      "The output remains metadata-only until official source cards and private-vault template review are complete.",
+    ];
+  }
+  if (scenario === "post_grant_administration") {
+    return [
+      "For post-grant administration, the key documents are accounts, inventory, correspondence, asset/liability updates and any application for directions/amendment/revocation. Do not start with grant application forms unless a fresh grant issue arises.",
+      "Use N2.3/N4.2 where a grant has issued and assets/liabilities need correction or addition. Use general summons only where court directions or relief are required.",
+    ];
+  }
+  return formCandidates.length
+    ? formCandidates.map(form => `${form.title} — ${form.condition_note || "metadata-only candidate; verify current form and route."}`)
+    : ["No exact Probate form candidate is answer-safe yet; use metadata-only registry and lawyer review."];
 }
 
 function supportForScenario(scenario) {
@@ -139,22 +234,41 @@ function supportForScenario(scenario) {
       ],
     };
   }
+  const intestate = scenario === "intestate_administration";
   return {
-    title: scenario === "intestate_administration"
+    title: intestate
       ? "Applied Probate Triage - Intestate Administration"
       : "Applied Probate Triage - Common Form Grant",
-    short_answer: scenario === "intestate_administration"
-      ? "If there is no valid will, the key first step is entitlement/priority for letters of administration, not executor probate. Collect death, domicile, family relationship, consents/renunciations and asset/liability information."
-      : "For an ordinary will/executor case, first classify the grant, confirm the executor's entitlement and collect death, will, execution, assets/liabilities and registry evidence before choosing forms.",
+    short_answer: intestate
+      ? "If there is no valid will, the first question is who is entitled to letters of administration. Do not use executor-probate forms unless a valid will and executor route is confirmed."
+      : "For a death with a will, the ordinary route is not simply 'all W1 forms'. First confirm whether a named executor is applying. If yes, use the ordinary executor probate route; if not, choose the correct administration-with-will-annexed variant.",
     sections: [
-      ["Applied Analysis", [
-        "Classify whether the route is probate to executor, administration with will annexed, or intestate letters of administration.",
-        "Check whether any caveat, warning, competing entitlement, lost will, foreign element or special grant issue makes the case non-routine.",
-        "Treat all form recommendations as metadata-only until official/source-card verification and lawyer review.",
+      ["Applied Analysis", intestate ? [
+        "Classify the matter as intestacy/no-valid-will before choosing any form.",
+        "Identify the person entitled in priority, relationship evidence, any renunciation/nomination and whether a co-administrator or guardian route is needed.",
+        "Treat form recommendations as metadata-only until official/source-card verification and lawyer review.",
+      ] : [
+        "Classify whether the route is probate to a named executor, administration with will annexed, or a non-routine/special route.",
+        "For a straightforward will where the named executor applies, W1.1 is the relevant form family; W1.2/W1.3/W1.4 are conditional alternatives, not additional ordinary filings.",
+        "Screen for caveat, warning, competing entitlement, lost will, foreign grant, renunciation, no executor, death of executor, minor/life interest and registry requisition issues.",
+      ]],
+      ["Step-by-Step Process", intestate ? [
+        "1. Confirm there is no valid will and identify the person entitled to apply.",
+        "2. Collect death, domicile/identity, relationship and entitlement evidence.",
+        "3. Prepare the correct L1 administration form route and assets/liabilities schedule.",
+        "4. File with Probate Registry and answer requisitions with evidence.",
+        "5. Extract the grant, collect assets, pay liabilities and administer/distribute subject to review gates.",
+      ] : [
+        "1. Confirm death, domicile/identity and locate the original will/codicils.",
+        "2. Confirm executor entitlement: named executor alive, willing and able to act; note any power reserved, renunciation or death of executor.",
+        "3. Choose the correct grant route: ordinary executor probate, attorney of executor, executor died/renounced, no executor, or special application.",
+        "4. Prepare the assets/liabilities schedule for grant and supporting affidavit/affirmation material.",
+        "5. File the selected grant application with the Probate Registry and respond to requisitions with source evidence.",
+        "6. After grant, collect estate assets, pay debts/expenses, keep accounts and distribute only when safe to do so.",
       ]],
       ["Practical Steps", [
         "Collect death certificate, domicile/identity evidence, original will/codicils if any, and relationship/entitlement evidence.",
-        "Prepare assets and liabilities schedule information.",
+        "Prepare Hong Kong assets and liabilities schedule information and keep supporting documents.",
         "Respond to any Probate Registry requisition with evidence, not model memory.",
       ]],
     ],
@@ -167,21 +281,20 @@ function composeProbateAnswer({ query }) {
   const contracts = loadProbateJson("probate_answer_contracts.json", { answer_contracts: [] });
   const scenarioSupport = supportForScenario(classification.scenario);
   const formCandidates = selectForms(registry.forms, classification.scenario);
+  const formGuidance = formGuidanceItems(classification.scenario, formCandidates);
   const sections = [
     ...scenarioSupport.sections.map(([heading, items]) => ({ heading, items })),
     {
       heading: "Documents / Forms",
-      items: formCandidates.length
-        ? formCandidates.map(form => `${form.title} — required facts: ${(form.required_facts || []).slice(0, 4).join(", ")}.`)
-        : ["No exact Probate form candidate is answer-safe yet; use metadata-only registry and lawyer review."],
+      items: formGuidance,
     },
     {
       heading: "Missing Facts",
       items: [
         "Deceased identity, date of death and domicile.",
         "Will/codicil status and location of originals.",
-        "Executor/administrator entitlement and any renunciations or consents.",
-        "Hong Kong assets and liabilities.",
+        "Executor/administrator entitlement and any renunciations, consents, deaths of executor, attorney route, minority/life interest or no-executor issue.",
+        "Hong Kong assets and liabilities, including whether the ordinary grant schedule, corrective schedule or resealing schedule route is needed.",
         "Whether caveat, citation, warning, requisition, foreign grant or dispute exists.",
       ],
     },
