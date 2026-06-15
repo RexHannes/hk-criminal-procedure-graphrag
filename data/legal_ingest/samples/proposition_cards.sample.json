@@ -1,0 +1,21 @@
+{
+  "proposition_cards": [
+    {
+      "proposition_id": "prop_abuse_inconsistent_positions_001",
+      "source_id": "hk_case_2020_minloy",
+      "paragraph_id": "hk_case_2020_minloy_p31",
+      "citation": "[2020] HKCFI 2215",
+      "pinpoint": "para 31",
+      "proposition_text": "A party may abuse the court process by adopting inconsistent positions or assumptions across different proceedings.",
+      "supporting_quote": "inconsistent positions or assumptions across different proceedings",
+      "issue_tags": ["abuse_of_process", "inconsistent_pleadings", "estoppel"],
+      "jurisdiction": "Hong Kong",
+      "authority_role": "applied_principle",
+      "confidence": "low",
+      "verification_status": "machine_candidate",
+      "answer_layer_status": "research_only",
+      "review_status": "unreviewed",
+      "source_license_status": "public_judgment"
+    }
+  ]
+}

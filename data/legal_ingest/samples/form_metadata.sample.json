@@ -1,0 +1,41 @@
+{
+  "forms": [
+    {
+      "form_id": "form_inconsistent_pleading_strikeout_summons",
+      "title": "Strike-Out / Stay Application - Inconsistent Pleadings",
+      "form_family": "civil_interlocutory_application",
+      "document_type": "summons_or_application",
+      "court": "High Court / District Court",
+      "procedural_stage": "interlocutory",
+      "source_status": "metadata_only_or_firm_private_template",
+      "copyright_status": "metadata_only_no_full_text_reproduced",
+      "trigger_conditions": [
+        "inconsistent pleadings across proceedings",
+        "abuse of process",
+        "strike out",
+        "stay"
+      ],
+      "required_facts": [
+        "case 1 pleading",
+        "case 2 pleading",
+        "same plaintiff or privy",
+        "same issue or material fact",
+        "inconsistency table",
+        "knowledge of facts",
+        "explanation for inconsistency",
+        "relief sought"
+      ],
+      "linked_issues": ["abuse_of_process", "estoppel", "collateral_attack"],
+      "linked_procedure_steps": ["civil_procedure.interlocutory_application", "civil_procedure.strike_out"],
+      "field_schema": [
+        { "field_id": "prior_proceeding_id", "label": "Prior proceeding identifier", "required": true, "source": "machine_candidate" },
+        { "field_id": "current_proceeding_id", "label": "Current proceeding identifier", "required": true, "source": "machine_candidate" },
+        { "field_id": "inconsistency_matrix", "label": "Paragraph-by-paragraph inconsistency matrix", "required": true, "source": "machine_candidate" },
+        { "field_id": "relief_sought", "label": "Strike-out, stay, directions or costs relief sought", "required": true, "source": "machine_candidate" }
+      ],
+      "template_vault_ref": "private://firm/templates/strikeout_summons_v1.docx",
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hk-legal-graphrag.local/schemas/answer_contract.schema.json",
+  "title": "Legal Answer Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "domain",
+    "scenario_family",
+    "scenario_subtype",
+    "user_perspective",
+    "procedural_posture",
+    "answer_sections",
+    "required_missing_facts",
+    "verification_rule",
+    "source_audit_policy"
+  ],
+  "properties": {
+    "domain": { "type": "string", "minLength": 1 },
+    "practice_area": { "type": "string" },
+    "scenario_family": { "type": "string", "minLength": 1 },
+    "scenario_subtype": { "type": "string", "minLength": 1 },
+    "user_perspective": { "type": "string", "minLength": 1 },
+    "procedural_posture": { "type": "string", "minLength": 1 },
+    "primary_issues": { "type": "array", "items": { "type": "string" } },
+    "excluded_issues": { "type": "array", "items": { "type": "string" } },
+    "forbidden_terms_or_families": { "type": "array", "items": { "type": "string" } },
+    "answer_sections": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "required_next_steps": { "type": "array", "items": { "type": "string" } },
+    "required_missing_facts": { "type": "array", "items": { "type": "string" } },
+    "verification_rule": { "type": "string", "minLength": 1 },
+    "source_audit_policy": {
+      "type": "string",
+      "enum": ["collapsed_by_default", "expanded_for_review_only"]
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["research_only", "lawyer_review_required", "approved"]
+    }
+  }
+}

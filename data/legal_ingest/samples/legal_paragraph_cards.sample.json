@@ -1,0 +1,17 @@
+{
+  "paragraph_cards": [
+    {
+      "paragraph_id": "hk_case_2020_minloy_p31",
+      "source_id": "hk_case_2020_minloy",
+      "para_no": "31",
+      "citation": "[2020] HKCFI 2215",
+      "court": "CFI",
+      "jurisdiction": "Hong Kong",
+      "issue_tags": ["abuse_of_process", "inconsistent_positions"],
+      "visibility": "public_source",
+      "verification_status": "machine_candidate",
+      "answer_layer_status": "research_only",
+      "paragraph_text": "Sample public-judgment paragraph placeholder for validator only. Replace with verified HKLII paragraph text during real ingestion."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hk-legal-graphrag.local/schemas/proposition_card.schema.json",
+  "title": "Candidate Legal Proposition Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "proposition_id",
+    "source_id",
+    "proposition_text",
+    "supporting_quote",
+    "issue_tags",
+    "jurisdiction",
+    "authority_role",
+    "verification_status",
+    "answer_layer_status",
+    "review_status"
+  ],
+  "properties": {
+    "proposition_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_:-]*$" },
+    "source_id": { "type": "string", "minLength": 1 },
+    "paragraph_id": { "type": "string" },
+    "section_id": { "type": "string" },
+    "citation": { "type": "string" },
+    "pinpoint": { "type": "string" },
+    "proposition_text": { "type": "string", "minLength": 1 },
+    "supporting_quote": { "type": "string", "minLength": 1, "maxLength": 1200 },
+    "issue_tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "jurisdiction": { "type": "string", "minLength": 1 },
+    "authority_role": {
+      "type": "string",
+      "enum": [
+        "holding",
+        "applied_principle",
+        "obiter",
+        "party_argument",
+        "factual_background",
+        "procedural_history",
+        "legislative_text",
+        "form_metadata",
+        "secondary_commentary"
+      ]
+    },
+    "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "machine_candidate",
+        "quote_verified",
+        "candidate_pending_review",
+        "source_verified",
+        "rejected",
+        "verified"
+      ]
+    },
+    "answer_layer_status": {
+      "type": "string",
+      "enum": ["research_only", "not_product_answer_layer", "answer_safe"]
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["unreviewed", "lawyer_review_required", "approved", "rejected"]
+    },
+    "source_license_status": { "type": "string" },
+    "created_at": { "type": "string" }
+  }
+}

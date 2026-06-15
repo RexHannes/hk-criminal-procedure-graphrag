@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hk-legal-graphrag.local/schemas/source_registry.schema.json",
+  "title": "Legal Source Registry Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_id",
+    "source_type",
+    "title",
+    "jurisdiction",
+    "license_status",
+    "storage_policy",
+    "checksum",
+    "ingest_status",
+    "review_status"
+  ],
+  "properties": {
+    "source_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_:-]*$" },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "case",
+        "legislation",
+        "practice_direction",
+        "court_form",
+        "firm_precedent",
+        "licensed_book",
+        "private_doctrine_note"
+      ]
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "jurisdiction": { "type": "string", "minLength": 1 },
+    "court": { "type": "string" },
+    "citation": { "type": "string" },
+    "source_url": { "type": "string" },
+    "raw_file_uri": { "type": "string" },
+    "license_status": {
+      "type": "string",
+      "enum": [
+        "public_judgment",
+        "public_legislation",
+        "official_reference",
+        "firm_private",
+        "licensed_private",
+        "metadata_only",
+        "prohibited",
+        "unknown"
+      ]
+    },
+    "storage_policy": {
+      "type": "string",
+      "enum": [
+        "public_metadata_public_raw",
+        "public_metadata_private_raw",
+        "private_vault_only",
+        "metadata_only_no_raw",
+        "do_not_index"
+      ]
+    },
+    "checksum": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "ingest_status": {
+      "type": "string",
+      "enum": [
+        "registered",
+        "uploaded",
+        "parsed",
+        "validated",
+        "indexed",
+        "blocked",
+        "failed"
+      ]
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "unreviewed",
+        "machine_checked",
+        "lawyer_review_required",
+        "approved",
+        "rejected"
+      ]
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public_source", "public_metadata", "firm_private", "licensed_private", "blocked"]
+    },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "notes": { "type": "string" }
+  }
+}

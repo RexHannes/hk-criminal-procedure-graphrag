@@ -1,0 +1,60 @@
+{
+  "workflows": [
+    {
+      "event": "legal/source.uploaded",
+      "steps": [
+        "load_source_registry_record",
+        "verify_license_and_storage_policy",
+        "parse_document_structure",
+        "emit_legal_source_parsed"
+      ],
+      "concurrency_key": "firm_id_or_public_source",
+      "retry_policy": "retry_transient_parser_failures_only"
+    },
+    {
+      "event": "legal/source.parsed",
+      "steps": [
+        "legal_unit_chunking",
+        "candidate_proposition_extraction",
+        "quote_exact_validation",
+        "emit_legal_propositions_extracted"
+      ],
+      "concurrency_key": "source_id",
+      "retry_policy": "retry_llm_or_parser_timeout"
+    },
+    {
+      "event": "legal/propositions.extracted",
+      "steps": [
+        "validate_source_ids",
+        "validate_quotes",
+        "validate_authority_roles",
+        "write_human_review_queue",
+        "emit_legal_propositions_validated"
+      ],
+      "concurrency_key": "source_id",
+      "retry_policy": "no_retry_for_validation_rejections"
+    },
+    {
+      "event": "legal/propositions.validated",
+      "steps": [
+        "write_canonical_sql_records",
+        "build_qdrant_payloads",
+        "index_allowed_vectors",
+        "emit_legal_index_updated"
+      ],
+      "concurrency_key": "practice_area",
+      "retry_policy": "retry_indexer_failures"
+    },
+    {
+      "event": "legal/eval.run",
+      "steps": [
+        "load_golden_queries",
+        "run_retrieval_bundle_checks",
+        "run_answer_contract_checks",
+        "write_eval_report"
+      ],
+      "concurrency_key": "eval_suite",
+      "retry_policy": "no_retry_for_assertion_failures"
+    }
+  ]
+}

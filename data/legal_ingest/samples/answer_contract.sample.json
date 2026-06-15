@@ -1,0 +1,38 @@
+{
+  "answer_contracts": [
+    {
+      "domain": "general_legal_research",
+      "practice_area": "civil_litigation",
+      "scenario_family": "abuse_estoppel_collateral_attack",
+      "scenario_subtype": "inconsistent_positions_across_proceedings",
+      "user_perspective": "litigant_or_adviser",
+      "procedural_posture": "professional_research_triage",
+      "primary_issues": ["abuse_of_process", "estoppel", "collateral_attack", "strike_out", "costs"],
+      "excluded_issues": ["personal_injury", "restaurant", "workplace", "road_traffic"],
+      "forbidden_terms_or_families": ["raw_retrieval_score", "unsupported_final_legal_proposition"],
+      "answer_sections": [
+        "Legal Issues",
+        "Source-Backed Rules",
+        "Application To Facts",
+        "Procedural Consequences",
+        "Documents / Forms",
+        "Missing Facts",
+        "Risks / Caveats"
+      ],
+      "required_next_steps": [
+        "compare pleadings side by side",
+        "identify final orders or determinations",
+        "verify candidate authorities by paragraph"
+      ],
+      "required_missing_facts": [
+        "exact inconsistent text",
+        "procedural status of each case",
+        "whether facts were within party knowledge",
+        "relief sought"
+      ],
+      "verification_rule": "No paragraph citation means research-only, source-verification-required output.",
+      "source_audit_policy": "collapsed_by_default",
+      "review_status": "research_only"
+    }
+  ]
+}

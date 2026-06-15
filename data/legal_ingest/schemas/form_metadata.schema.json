@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hk-legal-graphrag.local/schemas/form_metadata.schema.json",
+  "title": "Metadata-Only Legal Form Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "form_id",
+    "title",
+    "form_family",
+    "document_type",
+    "source_status",
+    "copyright_status",
+    "trigger_conditions",
+    "required_facts",
+    "linked_issues",
+    "linked_procedure_steps",
+    "review_status",
+    "output_mode"
+  ],
+  "properties": {
+    "form_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_:-]*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "form_family": { "type": "string", "minLength": 1 },
+    "document_type": { "type": "string", "minLength": 1 },
+    "court": { "type": "string" },
+    "procedural_stage": { "type": "string" },
+    "source_status": {
+      "type": "string",
+      "enum": [
+        "official_form_metadata",
+        "metadata_only",
+        "metadata_only_or_firm_private_template",
+        "firm_private_template",
+        "licensed_template"
+      ]
+    },
+    "copyright_status": {
+      "type": "string",
+      "enum": [
+        "public_official",
+        "metadata_only_no_full_text_reproduced",
+        "private_firm_use_only",
+        "licensed_private",
+        "unknown_needs_review"
+      ]
+    },
+    "trigger_conditions": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "required_facts": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "linked_issues": { "type": "array", "items": { "type": "string" } },
+    "linked_procedure_steps": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "field_schema": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field_id", "label", "required"],
+        "properties": {
+          "field_id": { "type": "string" },
+          "label": { "type": "string" },
+          "required": { "type": "boolean" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "template_vault_ref": { "type": "string" },
+    "review_status": {
+      "type": "string",
+      "enum": ["machine_extracted_candidate", "lawyer_review_required", "approved", "rejected"]
+    },
+    "output_mode": {
+      "type": "string",
+      "enum": ["metadata_only", "draft_only_lawyer_review_required", "approved_template_lawyer_review_required"]
+    }
+  }
+}

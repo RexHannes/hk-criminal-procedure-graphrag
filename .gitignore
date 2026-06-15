@@ -5,3 +5,9 @@ __pycache__/
 .env.*
 !.env.example
 .vercel/
+
+# Legal ingestion private vault outputs must never be committed.
+private_vault/
+legal-ingest-service/private_vault/
+legal-ingest-service/storage/
+data/legal_ingest/private/

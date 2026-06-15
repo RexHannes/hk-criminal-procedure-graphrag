@@ -1,0 +1,46 @@
+{
+  "sources": [
+    {
+      "source_id": "hk_case_2020_minloy",
+      "source_type": "case",
+      "title": "Re Minloy Ltd and others",
+      "jurisdiction": "Hong Kong",
+      "court": "CFI",
+      "citation": "[2020] HKCFI 2215",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2020/2215",
+      "license_status": "public_judgment",
+      "storage_policy": "public_metadata_public_raw",
+      "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "ingest_status": "parsed",
+      "review_status": "unreviewed",
+      "visibility": "public_source",
+      "notes": "Sample metadata only. Paragraph text must be fetched/verified from source before answer-safe use."
+    },
+    {
+      "source_id": "firm_form_bank_pi_private_001",
+      "source_type": "firm_precedent",
+      "title": "Private PI Form Bank",
+      "jurisdiction": "Hong Kong",
+      "license_status": "firm_private",
+      "storage_policy": "private_vault_only",
+      "checksum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "ingest_status": "registered",
+      "review_status": "lawyer_review_required",
+      "visibility": "firm_private",
+      "notes": "Raw DOCX stays in private vault. Public repo may store metadata/field schema only."
+    },
+    {
+      "source_id": "licensed_book_tort_hk_private_001",
+      "source_type": "licensed_book",
+      "title": "Licensed Hong Kong Tort Textbook",
+      "jurisdiction": "Hong Kong",
+      "license_status": "licensed_private",
+      "storage_policy": "private_vault_only",
+      "checksum": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "ingest_status": "registered",
+      "review_status": "lawyer_review_required",
+      "visibility": "licensed_private",
+      "notes": "Book source is registered only. No raw text or chunks are public."
+    }
+  ]
+}

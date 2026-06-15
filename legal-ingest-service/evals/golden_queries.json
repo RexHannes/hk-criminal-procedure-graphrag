@@ -1,0 +1,26 @@
+{
+  "golden_queries": [
+    {
+      "query": "What is the consequence of inconsistent factual pleadings for the same plaintiff across more than one case?",
+      "expected_domain": "civil_procedure",
+      "expected_issues": ["abuse_of_process", "estoppel", "strike_out", "credibility", "costs"],
+      "must_include_forms": ["inconsistency_matrix", "strike_out_summons_candidate", "affirmation_exhibiting_inconsistent_pleadings"],
+      "must_not_include": ["personal_injury", "restaurant", "workplace", "road_traffic"],
+      "requires_source_cards": true
+    },
+    {
+      "query": "Restaurant owner asks what to do after a customer slips on water after mopping.",
+      "expected_domain": "personal_injury",
+      "expected_issues": ["occupiers_liability", "warning_signs", "evidence_preservation", "insurer_notification"],
+      "must_not_include": ["road_traffic", "workplace", "fatal_accident"],
+      "requires_source_cards": false
+    },
+    {
+      "query": "Pedestrian hit by car while crossing where there is no zebra crossing or traffic light.",
+      "expected_domain": "personal_injury",
+      "expected_issues": ["road_traffic", "driver_duty", "pedestrian_contributory_negligence", "police_report"],
+      "must_not_include": ["restaurant", "workplace", "fatal_accident"],
+      "requires_source_cards": false
+    }
+  ]
+}
