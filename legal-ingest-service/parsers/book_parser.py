@@ -6,25 +6,44 @@ import hashlib
 from pathlib import Path
 from typing import Any
 
+try:
+    from validators.source_policy import apply_policy_to_source
+except ModuleNotFoundError:  # pragma: no cover - supports direct file imports in validators.
+    import importlib.util
 
-def register_book_metadata(path: Path, *, title: str, source_id: str, license_status: str) -> dict[str, Any]:
+    _policy_path = Path(__file__).resolve().parents[1] / "validators" / "source_policy.py"
+    _spec = importlib.util.spec_from_file_location("source_policy", _policy_path)
+    if _spec is None or _spec.loader is None:
+        raise
+    _module = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(_module)
+    apply_policy_to_source = _module.apply_policy_to_source
+
+
+def register_book_metadata(
+    path: Path,
+    *,
+    title: str,
+    source_id: str,
+    license_status: str,
+    firm_id: str | None = None,
+) -> dict[str, Any]:
     data = path.read_bytes()
-    storage_policy = "private_vault_only" if license_status in {"licensed_private", "firm_private"} else "metadata_only_no_raw"
-    return {
+    record = {
         "source_id": source_id,
         "source_type": "licensed_book",
         "title": title,
         "jurisdiction": "Hong Kong",
         "license_status": license_status,
-        "storage_policy": storage_policy,
         "checksum": hashlib.sha256(data).hexdigest(),
         "ingest_status": "registered",
-        "review_status": "lawyer_review_required",
-        "visibility": "licensed_private" if storage_policy == "private_vault_only" else "public_metadata",
         "public_output": {
             "metadata_only": True,
             "raw_text_emitted": False,
             "answer_layer_status": "research_only",
         },
     }
+    if firm_id:
+        record["firm_id"] = firm_id
+    return apply_policy_to_source(record, firm_id=firm_id)
 

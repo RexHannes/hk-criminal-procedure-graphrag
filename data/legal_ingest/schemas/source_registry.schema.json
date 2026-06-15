@@ -85,6 +85,9 @@
       "type": "string",
       "enum": ["public_source", "public_metadata", "firm_private", "licensed_private", "blocked"]
     },
+    "rag_policy": {
+      "type": "object"
+    },
     "created_at": { "type": "string" },
     "updated_at": { "type": "string" },
     "notes": { "type": "string" }

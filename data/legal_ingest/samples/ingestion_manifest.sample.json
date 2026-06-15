@@ -1,0 +1,58 @@
+{
+  "manifest_id": "manifest_inconsistent_pleadings_public_slice",
+  "pipeline_version": "legal_rag_pipeline_v1",
+  "source_policy": {
+    "public_judgments": "may_parse_and_index_research_only",
+    "licensed_books": "private_vault_only_no_public_text",
+    "firm_forms_precedents": "private_vault_only_metadata_public_if_approved",
+    "unknown_or_prohibited": "blocked_until_licence_review"
+  },
+  "chunks": [
+    {
+      "chunk_id": "hk_case_2020_minloy:paras:31-31:samplehash001",
+      "source_id": "hk_case_2020_minloy",
+      "citation": "[2020] HKCFI 2215",
+      "pinpoint": "para 31",
+      "para_start": "31",
+      "para_end": "31",
+      "char_count": 260,
+      "chunk_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "text_ref": "vault://legal-ingest/hk_case_2020_minloy/hk_case_2020_minloy:paras:31-31:samplehash001",
+      "visibility": "public_source",
+      "review_status": "lawyer_review_required",
+      "answer_layer_status": "research_only"
+    }
+  ],
+  "vector_points": [
+    {
+      "id": "hk_case_2020_minloy:paras:31-31:samplehash001",
+      "vector": {
+        "status": "embedding_required",
+        "text_ref": "vault://legal-ingest/hk_case_2020_minloy/hk_case_2020_minloy:paras:31-31:samplehash001"
+      },
+      "payload": {
+        "source_id": "hk_case_2020_minloy",
+        "source_type": "case",
+        "jurisdiction": "Hong Kong",
+        "citation": "[2020] HKCFI 2215",
+        "visibility": "public_source",
+        "vector_namespace": "public:hk-law",
+        "practice_area": "civil_litigation",
+        "issue_tags": ["abuse_of_process", "inconsistent_positions", "estoppel"],
+        "review_status": "lawyer_review_required",
+        "answer_layer_status": "research_only",
+        "chunk_id": "hk_case_2020_minloy:paras:31-31:samplehash001",
+        "chunk_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "pinpoint": "para 31",
+        "text_ref": "vault://legal-ingest/hk_case_2020_minloy/hk_case_2020_minloy:paras:31-31:samplehash001",
+        "embedding_model": "adapter-configured"
+      }
+    }
+  ],
+  "public_safety": {
+    "contains_raw_book_text": false,
+    "contains_template_wording": false,
+    "answer_safe_cards": 0,
+    "source_audit_default": "collapsed"
+  }
+}

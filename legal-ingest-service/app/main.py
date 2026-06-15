@@ -8,15 +8,23 @@ implementation dependency-light and public-safe.
 from __future__ import annotations
 
 import hashlib
-import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 
 SERVICE_ROOT = Path(__file__).resolve().parents[1]
-REGISTRY_PATH = SERVICE_ROOT / "storage" / "source_registry.local.json"
-VAULT_DIR = SERVICE_ROOT / "private_vault"
+if str(SERVICE_ROOT) not in sys.path:
+    sys.path.insert(0, str(SERVICE_ROOT))
+
+from storage_adapters.legal_storage import (  # noqa: E402
+    configured_backends,
+    safe_object_path,
+    storage_bucket_for_source,
+    storage_prefix_for_source,
+)
+from validators.source_policy import apply_policy_to_source  # noqa: E402
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -35,35 +43,23 @@ def source_record_for_upload(
     title: str,
     jurisdiction: str = "Hong Kong",
     license_status: str = "unknown",
+    raw_file_uri: str | None = None,
 ) -> dict[str, Any]:
     checksum = sha256_bytes(data)
     source_id = f"{source_type}:{checksum[:16]}"
-    storage_policy = "private_vault_only" if source_type in {"firm_precedent", "licensed_book"} else "public_metadata_private_raw"
-    return {
+    record = {
         "source_id": source_id,
         "source_type": source_type,
         "title": title or filename,
         "jurisdiction": jurisdiction,
-        "raw_file_uri": f"private://legal-ingest/{source_id}/{filename}",
+        "raw_file_uri": raw_file_uri or f"private://legal-ingest/{source_id}/{filename}",
         "license_status": license_status,
-        "storage_policy": storage_policy,
         "checksum": checksum,
         "ingest_status": "uploaded",
-        "review_status": "unreviewed",
-        "visibility": "firm_private" if storage_policy == "private_vault_only" else "public_metadata",
         "created_at": now_iso(),
         "updated_at": now_iso(),
     }
-
-
-def append_local_registry(record: dict[str, Any]) -> None:
-    REGISTRY_PATH.parent.mkdir(parents=True, exist_ok=True)
-    if REGISTRY_PATH.exists():
-        payload = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
-    else:
-        payload = {"sources": []}
-    payload.setdefault("sources", []).append(record)
-    REGISTRY_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    return apply_policy_to_source(record)
 
 
 try:
@@ -84,35 +80,51 @@ if FastAPI is not None:
         license_status: str = Form("unknown"),
     ) -> dict[str, Any]:
         data = await file.read()
+        storage, registry, backend_name = configured_backends()
+        filename = file.filename or "upload.bin"
+        checksum = sha256_bytes(data)
+        source_id = f"{source_type}:{checksum[:16]}"
+        bucket = storage_bucket_for_source(source_type, license_status)
+        object_path = safe_object_path(storage_prefix_for_source(source_type), source_id, filename)
         record = source_record_for_upload(
-            filename=file.filename or "upload.bin",
+            filename=filename,
             data=data,
             source_type=source_type,
-            title=title or file.filename or "Untitled source",
+            title=title or filename or "Untitled source",
             jurisdiction=jurisdiction,
             license_status=license_status,
         )
-        safe_dir = VAULT_DIR / record["source_id"].replace(":", "_")
-        safe_dir.mkdir(parents=True, exist_ok=True)
-        (safe_dir / (file.filename or "upload.bin")).write_bytes(data)
-        append_local_registry(record)
+        raw_file_uri = record["raw_file_uri"]
+        if record.get("rag_policy", {}).get("may_store_raw"):
+            raw_file_uri = storage.put_object(
+                bucket=bucket,
+                object_path=object_path,
+                data=data,
+                content_type=file.content_type or "application/octet-stream",
+            )
+            record["raw_file_uri"] = raw_file_uri
+        else:
+            record["ingest_status"] = "blocked"
+            record["raw_file_uri"] = ""
+            raw_file_uri = ""
+        registry.insert_source(record)
         return {
             "source_id": record["source_id"],
             "checksum": record["checksum"],
             "ingest_status": record["ingest_status"],
             "storage_policy": record["storage_policy"],
+            "visibility": record["visibility"],
+            "rag_policy": record["rag_policy"],
+            "storage_backend": backend_name,
+            "bucket": bucket,
+            "raw_file_uri": raw_file_uri,
             "next_event": "legal/source.uploaded",
         }
 
     @app.get("/sources/{source_id}/status")
     async def source_status(source_id: str) -> dict[str, Any]:
-        if not REGISTRY_PATH.exists():
-            return {"source_id": source_id, "status": "not_found"}
-        payload = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
-        for record in payload.get("sources", []):
-            if record.get("source_id") == source_id:
-                return record
-        return {"source_id": source_id, "status": "not_found"}
+        _, registry, backend_name = configured_backends()
+        record = registry.get_source(source_id)
+        return record or {"source_id": source_id, "status": "not_found", "storage_backend": backend_name}
 else:
     app = None
-

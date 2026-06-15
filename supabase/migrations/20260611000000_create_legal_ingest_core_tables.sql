@@ -21,6 +21,7 @@ create table if not exists public.source_registry (
   ingest_status text not null default 'registered',
   review_status text not null default 'unreviewed',
   visibility text not null default 'public_metadata',
+  rag_policy jsonb not null default '{}'::jsonb,
   notes text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
