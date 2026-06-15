@@ -594,6 +594,11 @@ function composerDomainForQuery(query, matched, piWorkflow) {
   const q = String(query || "").toLowerCase();
   const domains = new Set((matched || []).map(item => item.domain_id).filter(Boolean));
   if (
+    /\b(abuse of process|estoppel|collateral attack|res judicata|henderson)\b/.test(q) ||
+    (/\b(inconsistent|contradictory|diametrically opposed|opposite|different version|different versions)\b/.test(q) &&
+      /\b(pleading|pleadings|statement|statements|affidavit|affirmation|proceeding|proceedings|case|cases|action|actions)\b/.test(q))
+  ) return "generic";
+  if (
     /\b(company|listing|listed|sehk|sfc|winding[- ]?up|statutory demand|petition|insolvency|incorporation|director|shareholder|board|form|filing)\b/.test(q) ||
     domains.has("hk_listing_and_listed_company_regulation")
   ) return "company_forms";
@@ -824,6 +829,7 @@ module.exports = async function handler(req, res) {
   const applied = piWorkflow
     ? {
         applied_answer: piWorkflow.applied_answer,
+        answer_contract: piWorkflow.answer_contract,
         classification: piWorkflow.classification,
         source_audit: piWorkflow.source_audit,
       }
@@ -839,6 +845,7 @@ module.exports = async function handler(req, res) {
       ? ai.detected_domains
       : Array.from(new Set(matched.map(item => item.domain_id))),
     applied_answer: applied.applied_answer,
+    answer_contract: applied.answer_contract,
     classification: applied.classification,
     source_audit: applied.source_audit,
     pi_workflow: piWorkflow,

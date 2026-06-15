@@ -60,8 +60,27 @@ const generic = composeAnswer({
   query: "What should I do next?",
   matched: [{ title: "Example graph node" }],
 });
-assert(generic.applied_answer?.sections?.length >= 2, "Generic composer lacks sections", errors);
+assert(generic.applied_answer?.sections?.length >= 8, "Generic composer lacks professional section set", errors);
+assert(generic.classification?.answer_mode === "professional_source_gated", "Generic composer lacks professional mode", errors);
+assert(generic.answer_contract?.verification_rule?.includes("No paragraph citation"), "Generic composer lacks verification rule", errors);
 assert(generic.source_audit?.display === "collapsed", "Generic source audit is not collapsed", errors);
+
+const inconsistent = composeAnswer({
+  domain: "generic",
+  query: "What is the consequence for adducing inconsistent factual pleadings for the same plaintiff across more than one case? Please explain abuse of process, estoppel and collateral attack.",
+  matched: [],
+});
+assert(inconsistent.classification?.matter_type === "general_legal_research", "Inconsistent pleadings composer should be general legal research", errors);
+assert(inconsistent.classification?.scenario === "inconsistent_positions_across_proceedings", "Generic professional composer failed inconsistent pleadings scenario", errors);
+assert(inconsistent.classification?.answer_mode === "professional_source_gated", "Professional answer mode missing", errors);
+assert((inconsistent.applied_answer?.sections || []).length >= 7, "Professional answer lacks full section set", errors);
+assert(inconsistent.answer_contract?.domain === "general_legal_research", "Professional answer contract should be general", errors);
+assert(blob(inconsistent.applied_answer).includes("abuse of process"), "Professional answer lacks abuse of process", errors);
+assert(blob(inconsistent.applied_answer).includes("estoppel"), "Professional answer lacks estoppel", errors);
+assert(blob(inconsistent.applied_answer).includes("collateral attack"), "Professional answer lacks collateral attack", errors);
+assert(blob(inconsistent.applied_answer).includes("pleading inconsistency matrix"), "Professional answer lacks document workflow", errors);
+assert(blob(inconsistent.applied_answer).includes("not automatically more accurate"), "Professional answer lacks accuracy caveat", errors);
+assert(inconsistent.source_audit?.verification_status === "candidate_authorities_require_paragraph_check", "Professional source audit should require paragraph check", errors);
 
 const criminal = composeAnswer({ domain: "criminal_procedure", query: "My client was arrested and asks about bail." });
 assert(criminal.classification?.matter_type === "criminal_procedure", "Criminal composer scaffold not routed", errors);
