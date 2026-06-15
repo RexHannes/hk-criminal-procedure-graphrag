@@ -15,6 +15,7 @@ APP_MAIN = ROOT / "legal-ingest-service" / "app" / "main.py"
 REVIEW_QUEUE = ROOT / "api" / "legal-ingest" / "review-queue.js"
 APPROVE_ENDPOINT = ROOT / "api" / "legal-ingest" / "review" / "[card_id]" / "approve.js"
 BUCKET_MIGRATION = ROOT / "supabase" / "migrations" / "20260611001000_create_legal_storage_buckets.sql"
+REMOTE_SETUP_SCRIPT = ROOT / "scripts" / "setup_supabase_legal_ingest.js"
 
 
 def main() -> int:
@@ -73,6 +74,23 @@ def main() -> int:
             errors.append(f"bucket migration missing {bucket}")
     if "public, file_size_limit" not in migration or "false" not in migration:
         errors.append("bucket migration should create private buckets")
+
+    if not REMOTE_SETUP_SCRIPT.exists():
+        errors.append("missing remote Supabase setup script")
+    else:
+        setup = REMOTE_SETUP_SCRIPT.read_text(encoding="utf-8")
+        for token in [
+            "--apply-migrations",
+            "SUPABASE_DB_URL",
+            "psql",
+            "ensureBucket",
+            "REQUIRED_TABLES",
+            "assertQuoteValidation",
+            "--seed-inconsistent",
+            "answer_safe requires approved review",
+        ]:
+            if token not in setup:
+                errors.append(f"remote Supabase setup script missing {token}")
 
     if errors:
         print("Legal ingest storage validation failed:")
