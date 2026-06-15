@@ -1,0 +1,178 @@
+{
+  "domain_id": "probate_law_hk",
+  "answer_contracts": [
+    {
+      "contract_id": "probate_contract_common_form_grant",
+      "domain": "probate_law_hk",
+      "scenario_family": "common_form_grant",
+      "scenario_subtype": "probate_or_administration_application",
+      "user_perspective": "applicant_or_adviser",
+      "procedural_posture": "pre_grant",
+      "primary_issues": [
+        "grant_type",
+        "entitlement",
+        "will_or_intestacy",
+        "assets_liabilities",
+        "registry_requisition"
+      ],
+      "excluded_issues": [
+        "contentious_probate_unless_dispute",
+        "private_book_text"
+      ],
+      "answer_sections": [
+        "Short Answer",
+        "Applied Analysis",
+        "Practical Steps",
+        "Documents / Forms",
+        "Missing Facts",
+        "Source / Audit Trail"
+      ],
+      "required_next_steps": [
+        "classify grant",
+        "collect death/will/evidence",
+        "prepare metadata-only form candidates",
+        "lawyer review"
+      ],
+      "required_missing_facts": [
+        "deceased identity",
+        "date of death",
+        "will status",
+        "executor/next of kin",
+        "assets and liabilities"
+      ],
+      "verification_rule": "No source card means source-verification-required. Forms are metadata-only candidates.",
+      "source_audit_policy": "collapsed_by_default",
+      "review_status": "research_only"
+    },
+    {
+      "contract_id": "probate_contract_caveat_contentious_gateway",
+      "domain": "probate_law_hk",
+      "scenario_family": "caveat_warning_citation",
+      "scenario_subtype": "caveat_warning_appearance_or_citation",
+      "user_perspective": "caveator_applicant_or_adviser",
+      "procedural_posture": "contentious_gateway",
+      "primary_issues": [
+        "interest",
+        "caveat",
+        "warning",
+        "appearance",
+        "citation",
+        "probate_action_risk"
+      ],
+      "excluded_issues": [
+        "routine_common_form_only",
+        "private_book_text"
+      ],
+      "answer_sections": [
+        "Short Answer",
+        "Applied Analysis",
+        "Practical Steps",
+        "Documents / Forms",
+        "Missing Facts",
+        "Source / Audit Trail"
+      ],
+      "required_next_steps": [
+        "identify interest",
+        "check caveat/warning status",
+        "preserve testamentary scripts",
+        "consider probate action route"
+      ],
+      "required_missing_facts": [
+        "grant status",
+        "caveat date",
+        "warning/appearance status",
+        "interest claimed",
+        "will/grant disputed"
+      ],
+      "verification_rule": "Contentious route must stay research-only until rules/source cards are verified.",
+      "source_audit_policy": "collapsed_by_default",
+      "review_status": "research_only"
+    },
+    {
+      "contract_id": "probate_contract_resealing_foreign_grant",
+      "domain": "probate_law_hk",
+      "scenario_family": "foreign_grant_resealing",
+      "scenario_subtype": "resealing_or_foreign_estate",
+      "user_perspective": "foreign_personal_representative_or_adviser",
+      "procedural_posture": "pre_resealing",
+      "primary_issues": [
+        "foreign_grant",
+        "designated_place",
+        "Hong Kong assets",
+        "corrections",
+        "registry_documents"
+      ],
+      "excluded_issues": [
+        "Hong_Kong_original_grant_only",
+        "private_book_text"
+      ],
+      "answer_sections": [
+        "Short Answer",
+        "Applied Analysis",
+        "Practical Steps",
+        "Documents / Forms",
+        "Missing Facts",
+        "Source / Audit Trail"
+      ],
+      "required_next_steps": [
+        "identify foreign grant",
+        "check resealing route",
+        "collect Hong Kong asset evidence",
+        "prepare metadata form candidates"
+      ],
+      "required_missing_facts": [
+        "issuing jurisdiction",
+        "foreign grant",
+        "Hong Kong assets",
+        "domicile",
+        "translation/certification"
+      ],
+      "verification_rule": "Resealing must be verified against current ordinance/rules before answer-safe output.",
+      "source_audit_policy": "collapsed_by_default",
+      "review_status": "research_only"
+    },
+    {
+      "contract_id": "probate_contract_post_grant_administration",
+      "domain": "probate_law_hk",
+      "scenario_family": "post_grant_administration",
+      "scenario_subtype": "inventory_account_debts_distribution",
+      "user_perspective": "personal_representative_beneficiary_or_adviser",
+      "procedural_posture": "post_grant",
+      "primary_issues": [
+        "personal_representative_powers",
+        "fiduciary_duties",
+        "inventory_account",
+        "debts",
+        "distribution"
+      ],
+      "excluded_issues": [
+        "pre_grant_form_selection_only",
+        "private_book_text"
+      ],
+      "answer_sections": [
+        "Short Answer",
+        "Applied Analysis",
+        "Practical Steps",
+        "Documents / Forms",
+        "Missing Facts",
+        "Source / Audit Trail"
+      ],
+      "required_next_steps": [
+        "verify grant",
+        "collect estate account",
+        "identify debts/claims",
+        "review distribution timing"
+      ],
+      "required_missing_facts": [
+        "grant date",
+        "assets realised",
+        "debts/claims",
+        "beneficiaries",
+        "accounts"
+      ],
+      "verification_rule": "Post-grant duties require official/source-card verification before final legal propositions.",
+      "source_audit_policy": "collapsed_by_default",
+      "review_status": "research_only"
+    }
+  ]
+}

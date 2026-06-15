@@ -56,6 +56,11 @@ const QUERY_EXPANSIONS = [
     pattern: /\b(slip|slipped|trip|tripped|fall|fell)\b.*\b(shop|mall|premises|building|restaurant|office|stairs|floor)\b|\b(shop|mall|premises|building|restaurant|office|stairs|floor)\b.*\b(slip|slipped|trip|tripped|fall|fell)\b/i,
     terms: ["occupiers liability", "premises", "negligence", "duty of care", "breach", "personal injury"],
     preferred_domains: ["tort_law_hk"]
+  },
+  {
+    pattern: /\b(probate|letters of administration|intestate|executor|administrator|grant of representation|caveat|warning|citation|reseal|resealing|foreign grant|lost will|copy will|swear death|rectification of will|inventory|estate distribution)\b/i,
+    terms: ["probate", "grant", "executor", "administrator", "will", "estate", "probate registry", "common form", "contentious probate", "assets liabilities"],
+    preferred_domains: ["probate_law_hk"]
   }
 ];
 
@@ -614,6 +619,10 @@ function composerDomainForQuery(query, matched, piWorkflow) {
   const q = String(query || "").toLowerCase();
   const domains = new Set((matched || []).map(item => item.domain_id).filter(Boolean));
   if (detectsInconsistentPleadingsQuery(q)) return "generic";
+  if (
+    domains.has("probate_law_hk") ||
+    /\b(probate|letters of administration|intestate|executor|administrator|estate|will|codicil|caveat|warning|citation|reseal|resealing|foreign grant|grant of representation|inventory|grant pending suit|ad colligenda|lost will|swear death|rectification of will)\b/.test(q)
+  ) return "probate";
   if (
     /\b(company|listing|listed|sehk|sfc|winding[- ]?up|statutory demand|petition|insolvency|incorporation|director|shareholder|board|form|filing)\b/.test(q) ||
     domains.has("hk_listing_and_listed_company_regulation")
