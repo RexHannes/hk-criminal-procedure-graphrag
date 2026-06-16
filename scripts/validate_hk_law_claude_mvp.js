@@ -9,6 +9,9 @@ const MVP_PATH = path.join(ROOT, "data", "legal_ingest", "mvp", "hk_law_claude_m
 const DOC_PATH = path.join(ROOT, "docs", "hk-law-claude-mvp.md");
 const MEMORY_MIGRATION = path.join(ROOT, "supabase", "migrations", "20260616000000_create_legal_answer_memory_tables.sql");
 const CACHE_HELPER = path.join(ROOT, "legal-ingest-service", "cache", "retrieved_law_cache.py");
+const API_CACHE_HELPER = path.join(ROOT, "api", "legal-ingest", "cache.js");
+const SEARCH_EVIDENCE_API = path.join(ROOT, "api", "search-evidence.js");
+const QDRANT_INDEXER = path.join(ROOT, "scripts", "index_legal_ingest_qdrant.js");
 const PIPELINE_TABLES_MIGRATION = path.join(ROOT, "supabase", "migrations", "20260615000000_create_legal_rag_pipeline_tables.sql");
 
 function parseEnvFile(filePath) {
@@ -91,10 +94,29 @@ function staticScaffoldReport(errors) {
     "can_reuse_cached_answer",
     "build_sop_playbook_record",
   ], errors);
+  fileIncludes(API_CACHE_HELPER, [
+    "findCachedLegalAnswer",
+    "writeLegalAnswerCache",
+    "buildSopPlaybookRecord",
+    "legalIngestSourceFingerprint",
+  ], errors);
+  fileIncludes(SEARCH_EVIDENCE_API, [
+    "findCachedLegalAnswer",
+    "writeLegalAnswerCache",
+    "legal_answer_cache",
+  ], errors);
+  fileIncludes(QDRANT_INDEXER, [
+    "QDRANT_URL",
+    "hk_legal_paragraphs",
+    "hk_proposition_cards",
+    "hk_form_metadata",
+    "LEGAL_EMBEDDING_PROVIDER",
+  ], errors);
 }
 
 function runtimeReadiness(env) {
   return {
+    env,
     supabase: {
       configured: Boolean(env.SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY),
       url_present: Boolean(env.SUPABASE_URL),
@@ -118,8 +140,42 @@ function runtimeReadiness(env) {
   };
 }
 
+async function supabaseHasColumns(env, table, columns) {
+  const url = String(env.SUPABASE_URL || "").trim().replace(/\/$/, "");
+  const key = String(env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
+  if (!url || !key) return false;
+  try {
+    const response = await fetch(`${url}/rest/v1/${table}?select=${columns.map(encodeURIComponent).join(",")}&limit=1`, {
+      headers: {
+        apikey: key,
+        Authorization: `Bearer ${key}`,
+      },
+    });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function answerMemoryRemoteReadiness(env) {
+  const checks = await Promise.all([
+    supabaseHasColumns(env, "retrieval_bundles", ["bundle_id", "query_hash", "corpus_fingerprint", "retrieval_status"]),
+    supabaseHasColumns(env, "legal_answer_snapshots", ["answer_id", "bundle_id", "source_fingerprint", "answer_status"]),
+    supabaseHasColumns(env, "sop_playbooks", ["playbook_id", "domain", "source_fingerprint", "status"]),
+  ]);
+  return {
+    configured: checks.every(Boolean),
+    retrieval_bundles: checks[0],
+    legal_answer_snapshots: checks[1],
+    sop_playbooks: checks[2],
+  };
+}
+
 function deriveGateReadiness(mvp, runtime) {
   const byId = Object.fromEntries(mvp.gates.map(g => [g.gate_id, g]));
+  const answerMemoryStatus = runtime.answer_memory?.configured
+    ? "remote_schema_applied_api_cache_and_sop_wiring_present"
+    : "scaffold_added_needs_api_wiring_and_remote_migration";
   return [
     {
       gate_id: "corpus_input_and_licence_controls",
@@ -131,7 +187,9 @@ function deriveGateReadiness(mvp, runtime) {
     },
     {
       gate_id: "embedding_and_vector_storage",
-      status: runtime.qdrant.configured && runtime.embeddings.configured ? "config_present_needs_index_run" : "not_green_missing_qdrant_or_embedding_config",
+      status: runtime.qdrant.configured && runtime.embeddings.configured
+        ? "config_present_indexer_available_needs_index_run"
+        : "indexer_available_not_green_missing_qdrant_or_embedding_config",
     },
     {
       gate_id: "retrieval_and_reranking",
@@ -147,7 +205,7 @@ function deriveGateReadiness(mvp, runtime) {
     },
     {
       gate_id: "stored_retrieved_law_and_sop_cache",
-      status: "scaffold_added_needs_api_wiring_and_remote_migration",
+      status: answerMemoryStatus,
     },
     {
       gate_id: "private_source_access_controls",
@@ -156,12 +214,15 @@ function deriveGateReadiness(mvp, runtime) {
   ];
 }
 
-function main() {
+async function main() {
   const strictProduction = process.argv.includes("--strict-production");
   const errors = [];
   const mvp = validateMvpConfig(errors);
   staticScaffoldReport(errors);
-  const runtime = runtimeReadiness(loadEnv());
+  const env = loadEnv();
+  const runtime = runtimeReadiness(env);
+  runtime.answer_memory = await answerMemoryRemoteReadiness(env);
+  delete runtime.env;
   const gate_readiness = mvp ? deriveGateReadiness(mvp, runtime) : [];
   const report = {
     mvp_id: mvp?.mvp_id || "missing",
@@ -179,4 +240,7 @@ function main() {
   if (strictProduction && !report.production_green) process.exit(2);
 }
 
-main();
+main().catch(error => {
+  console.error(error.message);
+  process.exit(1);
+});

@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { composeAnswer } = require("./answer-composers");
 const { filterPiChunksByContract } = require("./answer-composers/pi");
+const { findCachedLegalAnswer, writeLegalAnswerCache } = require("./legal-ingest/cache");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -806,6 +807,9 @@ module.exports = async function handler(req, res) {
   }
   const piWorkflow = buildPiWorkflow(query);
   const legalIngestBundle = loadInconsistentPleadingsVertical(query);
+  const legalAnswerCache = legalIngestBundle
+    ? await findCachedLegalAnswer({ query, legalIngestBundle })
+    : { status: "skipped_no_legal_ingest_bundle" };
   matched = postFilterMatchesForQuery(query, matched).slice(0, 8);
 
   const supabaseUrl = (process.env.SUPABASE_URL || "").trim().replace(/\/$/, "");
@@ -860,8 +864,10 @@ module.exports = async function handler(req, res) {
         classification: piWorkflow.classification,
         source_audit: piWorkflow.source_audit,
       }
-    : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched, legalIngestBundle });
-  res.status(200).json({
+    : legalAnswerCache.status === "hit" && legalAnswerCache.answer_json
+      ? legalAnswerCache.answer_json
+      : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched, legalIngestBundle });
+  const responsePayload = {
     query,
     ai_status: ai.status,
     ai_provider: ai.provider || inquiry.provider || "none",
@@ -878,6 +884,14 @@ module.exports = async function handler(req, res) {
     form_candidates: applied.form_candidates || [],
     unsupported_claims: applied.unsupported_claims || [],
     source_audit: applied.source_audit,
+    legal_answer_cache: {
+      status: legalAnswerCache.status,
+      answer_id: legalAnswerCache.ids?.answerId,
+      bundle_id: legalAnswerCache.ids?.bundleId,
+      answer_status: legalAnswerCache.answer_status,
+      review_status: legalAnswerCache.review_status,
+      warning: legalAnswerCache.warning,
+    },
     legal_ingest_vertical: legalIngestBundle ? {
       vertical_id: legalIngestBundle.vertical_id,
       status: legalIngestBundle.status,
@@ -896,5 +910,20 @@ module.exports = async function handler(req, res) {
     warnings: Array.from(new Set(warningsForResult(matched, ai.status, backendStatus, legalSourceCardCount).concat(aiWarnings))),
     inquiry_analysis: inquiry.analysis,
     answer_note: "This endpoint returns a source-bounded graph/evidence trail. It does not produce legal advice and does not treat candidate evidence as answer-safe.",
-  });
+  };
+  if (legalIngestBundle) {
+    const cacheWrite = await writeLegalAnswerCache({ query, legalIngestBundle, applied, responsePayload });
+    responsePayload.legal_answer_cache = {
+      ...responsePayload.legal_answer_cache,
+      write_status: cacheWrite.status,
+      answer_id: cacheWrite.answer_id || responsePayload.legal_answer_cache.answer_id,
+      bundle_id: cacheWrite.bundle_id || responsePayload.legal_answer_cache.bundle_id,
+      playbook_id: cacheWrite.playbook_id || responsePayload.legal_answer_cache.playbook_id,
+      answer_status: cacheWrite.answer_status || responsePayload.legal_answer_cache.answer_status,
+      review_status: cacheWrite.review_status || responsePayload.legal_answer_cache.review_status,
+      write_warning: cacheWrite.warning,
+    };
+    if (cacheWrite.warning) responsePayload.warnings.push(`legal_answer_cache_${cacheWrite.status}`);
+  }
+  res.status(200).json(responsePayload);
 };

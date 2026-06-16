@@ -231,3 +231,52 @@ source registered
 -> answer contract
 -> answer cross-checker
 ```
+
+## 8. Qdrant indexing
+
+The Qdrant indexer is:
+
+```text
+scripts/index_legal_ingest_qdrant.js
+```
+
+Dry-run the current source-card vertical without requiring Qdrant:
+
+```bash
+node scripts/index_legal_ingest_qdrant.js --dry-run
+```
+
+To index into Qdrant, configure:
+
+```bash
+QDRANT_URL=...
+QDRANT_API_KEY=...                 # if your Qdrant instance requires it
+LEGAL_EMBEDDING_PROVIDER=local-hash # dev only
+LEGAL_EMBEDDING_DIM=384
+```
+
+For production embeddings, use a real embedding provider and keep the model
+dimension aligned with the Qdrant collections:
+
+```bash
+LEGAL_EMBEDDING_PROVIDER=openai
+OPENAI_API_KEY=...
+LEGAL_EMBEDDING_MODEL=text-embedding-3-small
+LEGAL_EMBEDDING_DIM=1536
+```
+
+Then run:
+
+```bash
+node scripts/index_legal_ingest_qdrant.js
+```
+
+The default collections are:
+
+- `hk_legal_paragraphs`
+- `hk_proposition_cards`
+- `hk_form_metadata`
+
+Every point includes legal metadata filters for jurisdiction, source type,
+practice area, issue tags, authority role, review status, answer-layer status,
+visibility and firm ID.
