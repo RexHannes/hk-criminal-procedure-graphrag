@@ -16,6 +16,7 @@ REVIEW_QUEUE = ROOT / "api" / "legal-ingest" / "review-queue.js"
 APPROVE_ENDPOINT = ROOT / "api" / "legal-ingest" / "review" / "[card_id]" / "approve.js"
 BUCKET_MIGRATION = ROOT / "supabase" / "migrations" / "20260611001000_create_legal_storage_buckets.sql"
 REMOTE_SETUP_SCRIPT = ROOT / "scripts" / "setup_supabase_legal_ingest.js"
+PIPELINE_RUNNER = ROOT / "scripts" / "run_legal_rag_pipeline.js"
 
 
 def main() -> int:
@@ -81,16 +82,43 @@ def main() -> int:
         setup = REMOTE_SETUP_SCRIPT.read_text(encoding="utf-8")
         for token in [
             "--apply-migrations",
+            "--target",
+            "--schema-report",
+            "--legacy-compatible-seed",
             "SUPABASE_DB_URL",
             "psql",
             "ensureBucket",
             "REQUIRED_TABLES",
+            "LEGACY_CASE_TABLES",
+            "legacy_case_schema",
             "assertQuoteValidation",
             "--seed-inconsistent",
             "answer_safe requires approved review",
         ]:
             if token not in setup:
                 errors.append(f"remote Supabase setup script missing {token}")
+    utils = (ROOT / "api" / "legal-ingest" / "_utils.js").read_text(encoding="utf-8")
+    if "normalizeLegacyReviewItem" not in utils or "isSchemaMismatchError" not in utils:
+        errors.append("legal ingest utils missing legacy Supabase schema helpers")
+    if "human_review_items" not in review_queue or "supabase_legacy" not in review_queue:
+        errors.append("review queue should support legacy human_review_items fallback")
+        if "approved_legacy_schema" not in approve or "human_review_items" not in approve:
+            errors.append("approval endpoint should support legacy review/proposition tables")
+
+    if not PIPELINE_RUNNER.exists():
+        errors.append("missing legal RAG pipeline runner")
+    else:
+        pipeline = PIPELINE_RUNNER.read_text(encoding="utf-8")
+        for token in [
+            "legal_rag_pipeline_inconsistent_pleadings_v1",
+            "--remote",
+            "--seed",
+            "schema_mode",
+            "row_counts",
+            "qdrant_indexing",
+        ]:
+            if token not in pipeline:
+                errors.append(f"legal RAG pipeline runner missing {token}")
 
     if errors:
         print("Legal ingest storage validation failed:")

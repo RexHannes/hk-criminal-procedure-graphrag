@@ -572,12 +572,13 @@ function coverageForEvidence(evidence) {
   return "no_evidence";
 }
 
-function warningsForResult(matches, aiStatus, backendStatus) {
+function warningsForResult(matches, aiStatus, backendStatus, legalSourceCardCount = 0) {
   const warnings = [];
   if (aiStatus !== "used") warnings.push(aiStatus === "not_configured" ? "ai_not_configured_fallback_search" : "ai_ranking_unavailable");
   if (backendStatus !== "connected") warnings.push("backend_evidence_unavailable");
-  if (!matches.some(m => m.evidence && m.evidence.length)) warnings.push("no_verified_paragraph_proof", "insufficient_authority");
+  if (!matches.some(m => m.evidence && m.evidence.length) && !legalSourceCardCount) warnings.push("no_verified_paragraph_proof", "insufficient_authority");
   if (matches.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))) warnings.push("candidate_only", "needs_human_review");
+  if (legalSourceCardCount) warnings.push("legal_ingest_source_cards_research_only", "needs_human_review");
   return Array.from(new Set(warnings));
 }
 
@@ -830,15 +831,24 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const evidenceCount = matched.reduce((sum, item) => sum + (item.evidence || []).length, 0);
-  const inquiry = piWorkflow && evidenceCount === 0
+  const graphEvidenceCount = matched.reduce((sum, item) => sum + (item.evidence || []).length, 0);
+  const legalSourceCardCount = legalIngestBundle ? (legalIngestBundle.proposition_cards || []).length : 0;
+  const totalEvidenceCount = graphEvidenceCount + legalSourceCardCount;
+  const inquiry = piWorkflow && graphEvidenceCount === 0
     ? {
         provider: ai.provider || getAiProvider()?.name || "none",
         status: "skipped_pi_workflow",
         analysis: null,
         warnings: ["pi_workflow_used_no_freeform_analysis"],
       }
-    : await askAiToAnalyze(query, matched, evidenceCount);
+    : legalSourceCardCount
+      ? {
+          provider: ai.provider || getAiProvider()?.name || "none",
+          status: "skipped_legal_ingest_professional_answer",
+          analysis: null,
+          warnings: ["legal_ingest_professional_answer_used_no_freeform_graph_analysis"],
+        }
+      : await askAiToAnalyze(query, matched, graphEvidenceCount);
   const aiWarnings = []
     .concat(ai.warnings || [])
     .concat(inquiry.warnings || [])
@@ -877,11 +887,13 @@ module.exports = async function handler(req, res) {
     } : null,
     pi_workflow: piWorkflow,
     matched_doctrine_nodes: matched,
-    evidence_count: evidenceCount,
-    answer_confidence: evidenceCount > 0 && !matched.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))
+    evidence_count: totalEvidenceCount,
+    graph_evidence_count: graphEvidenceCount,
+    legal_source_card_count: legalSourceCardCount,
+    answer_confidence: totalEvidenceCount > 0 && !matched.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))
       ? "medium"
       : "low",
-    warnings: Array.from(new Set(warningsForResult(matched, ai.status, backendStatus).concat(aiWarnings))),
+    warnings: Array.from(new Set(warningsForResult(matched, ai.status, backendStatus, legalSourceCardCount).concat(aiWarnings))),
     inquiry_analysis: inquiry.analysis,
     answer_note: "This endpoint returns a source-bounded graph/evidence trail. It does not produce legal advice and does not treat candidate evidence as answer-safe.",
   });

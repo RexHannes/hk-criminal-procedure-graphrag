@@ -41,6 +41,41 @@ async function supabaseRest(pathAndQuery, { method = "GET", body } = {}) {
   return payload;
 }
 
+function isMissingTableError(error, tableName) {
+  const payload = error?.payload || {};
+  const text = JSON.stringify(payload).toLowerCase();
+  return text.includes(`'public.${tableName}'`) ||
+    text.includes(`public.${tableName}`) ||
+    text.includes("schema cache") ||
+    text.includes("could not find the table");
+}
+
+function isSchemaMismatchError(error) {
+  const payload = error?.payload || {};
+  const text = JSON.stringify(payload).toLowerCase();
+  return text.includes("schema cache") ||
+    text.includes("could not find the table") ||
+    text.includes("could not find") && text.includes("column") ||
+    text.includes("column") && text.includes("does not exist");
+}
+
+function normalizeLegacyReviewItem(row) {
+  const payload = row.payload_json || {};
+  return {
+    review_item_id: payload.review_item_id || `legacy_review_${row.item_id || row.id}`,
+    item_type: row.item_type,
+    item_id: row.item_id,
+    priority: payload.priority || "normal",
+    reason: row.reason,
+    status: row.status,
+    notes: row.payload_json?.notes || "",
+    created_at: row.created_at,
+    reviewed_at: row.resolved_at || null,
+    vertical_id: payload.vertical_id,
+    backend: "supabase_legacy",
+  };
+}
+
 function loadLocalVerticals() {
   if (!fs.existsSync(VERTICALS_DIR)) return [];
   return fs.readdirSync(VERTICALS_DIR)
@@ -102,8 +137,11 @@ function assertReviewAdmin(req) {
 
 module.exports = {
   assertReviewAdmin,
+  isMissingTableError,
+  isSchemaMismatchError,
   json,
   localReviewQueue,
+  normalizeLegacyReviewItem,
   supabaseConfig,
   supabaseRest,
 };

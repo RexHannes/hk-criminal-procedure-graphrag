@@ -26,6 +26,14 @@ const REQUIRED_TABLES = [
   "retrieval_eval_cases",
 ];
 
+const LEGACY_CASE_TABLES = [
+  "source_documents",
+  "legal_cases",
+  "legal_paragraphs",
+  "proposition_cards",
+  "human_review_items",
+];
+
 const UPSERTS = [
   ["source_registry", "source_id", "source_registry"],
   ["legal_paragraphs", "paragraph_id", "legal_paragraphs"],
@@ -204,6 +212,67 @@ async function checkTable(ctx, table) {
   }
 }
 
+async function tableHasColumns(ctx, table, columns) {
+  try {
+    await request({
+      ...ctx,
+      pathAndQuery: `/rest/v1/${table}?select=${columns.map(encodeURIComponent).join(",")}&limit=1`,
+      ok: [200, 206],
+    });
+    return { table, columns, status: "ok" };
+  } catch (error) {
+    return {
+      table,
+      columns,
+      status: "missing_columns_or_inaccessible",
+      error: error.message,
+      details: error.payload,
+    };
+  }
+}
+
+async function detectRemoteSchema(ctx) {
+  const [
+    sourceCardParagraphs,
+    sourceCardPropositions,
+    sourceCardReviewQueue,
+    legacySources,
+    legacyCases,
+    legacyParagraphs,
+    legacyPropositions,
+    legacyReviewItems,
+  ] = await Promise.all([
+    tableHasColumns(ctx, "legal_paragraphs", ["paragraph_id", "source_id", "paragraph_text", "answer_layer_status"]),
+    tableHasColumns(ctx, "proposition_cards", ["proposition_id", "source_id", "paragraph_id", "supporting_quote", "answer_layer_status"]),
+    tableHasColumns(ctx, "human_review_queue", ["review_item_id", "item_id", "status"]),
+    tableHasColumns(ctx, "source_documents", ["id", "source_type", "source_url", "sha256"]),
+    tableHasColumns(ctx, "legal_cases", ["id", "title_en", "source_document_id"]),
+    tableHasColumns(ctx, "legal_paragraphs", ["id", "case_id", "para_no", "text"]),
+    tableHasColumns(ctx, "proposition_cards", ["id", "case_id", "canonical_para_id", "proposition_text"]),
+    tableHasColumns(ctx, "human_review_items", ["item_type", "item_id", "reason", "status"]),
+  ]);
+  const sourceCardReady = [sourceCardParagraphs, sourceCardPropositions, sourceCardReviewQueue].every(result => result.status === "ok");
+  const legacyReady = [legacySources, legacyCases, legacyParagraphs, legacyPropositions, legacyReviewItems].every(result => result.status === "ok");
+  return {
+    mode: sourceCardReady ? "source_card_v1" : legacyReady ? "legacy_case_schema" : "incompatible_or_missing",
+    source_card_v1: [sourceCardParagraphs, sourceCardPropositions, sourceCardReviewQueue],
+    legacy_case_schema: [legacySources, legacyCases, legacyParagraphs, legacyPropositions, legacyReviewItems],
+  };
+}
+
+function printSchemaReport(report) {
+  console.log("\nRemote schema compatibility");
+  console.log(`- mode: ${report.mode}`);
+  console.log("- source_card_v1:");
+  for (const result of report.source_card_v1) {
+    console.log(`  - ${result.table} [${result.columns.join(", ")}]: ${result.status}`);
+  }
+  console.log("- legacy_case_schema:");
+  for (const result of report.legacy_case_schema) {
+    console.log(`  - ${result.table} [${result.columns.join(", ")}]: ${result.status}`);
+  }
+}
+
 function loadVertical() {
   const verticalPath = path.join(ROOT, "data", "legal_ingest", "verticals", "inconsistent_pleadings.json");
   const vertical = JSON.parse(fs.readFileSync(verticalPath, "utf8"));
@@ -248,9 +317,169 @@ async function upsertRows(ctx, table, conflictKey, rows) {
   return { table, count: rows.length, status: "upserted" };
 }
 
-async function seedVertical(ctx) {
+async function optionalUpsertRows(ctx, table, conflictKey, rows) {
+  try {
+    return await upsertRows(ctx, table, conflictKey, rows);
+  } catch (error) {
+    return {
+      table,
+      count: 0,
+      status: "skipped_unavailable",
+      error: error.message,
+    };
+  }
+}
+
+async function patchOrInsertRows(ctx, table, filterColumn, rows) {
+  if (!rows || rows.length === 0) return { table, count: 0, status: "skipped_empty" };
+  let count = 0;
+  for (const row of rows) {
+    const value = row[filterColumn];
+    const filter = `${filterColumn}=eq.${encodeURIComponent(value)}`;
+    const existing = await request({
+      ...ctx,
+      pathAndQuery: `/rest/v1/${table}?${filter}&select=${encodeURIComponent(filterColumn)}&limit=1`,
+      ok: [200, 206],
+    });
+    if (Array.isArray(existing) && existing.length) {
+      await request({
+        ...ctx,
+        pathAndQuery: `/rest/v1/${table}?${filter}`,
+        method: "PATCH",
+        body: row,
+        ok: [200, 204],
+      });
+    } else {
+      await request({
+        ...ctx,
+        pathAndQuery: `/rest/v1/${table}`,
+        method: "POST",
+        ok: [200, 201],
+        body: row,
+      });
+    }
+    count += 1;
+  }
+  return { table, count, status: "patched_or_inserted" };
+}
+
+function confidenceNumber(value) {
+  if (typeof value === "number") return value;
+  if (value === "high") return 0.85;
+  if (value === "medium") return 0.65;
+  if (value === "low") return 0.35;
+  return 0.25;
+}
+
+function sourceById(vertical) {
+  return new Map((vertical.source_registry || []).map(source => [source.source_id, source]));
+}
+
+function legacyRows(vertical) {
+  const sources = sourceById(vertical);
+  return {
+    source_documents: (vertical.source_registry || []).map(source => ({
+      id: source.source_id,
+      source_type: source.source_type,
+      source_url: source.source_url || null,
+      sha256: source.checksum,
+      raw_text: null,
+      parse_status: "parsed",
+      rights_note: [
+        source.license_status,
+        source.storage_policy,
+        source.visibility,
+      ].filter(Boolean).join(" · "),
+    })),
+    legal_cases: (vertical.source_registry || []).map(source => ({
+      id: source.source_id,
+      neutral_citation: source.citation || null,
+      court: source.court || null,
+      court_code: source.court || null,
+      court_level: source.court || null,
+      title_en: source.title,
+      legal_domain: "hk",
+      source_url: source.source_url || null,
+      source_document_id: source.source_id,
+      review_status: source.review_status || "lawyer_review_required",
+      treatment_warnings: [],
+      good_law_flags: [],
+    })),
+    legal_paragraphs: (vertical.legal_paragraphs || []).map(paragraph => {
+      const source = sources.get(paragraph.source_id) || {};
+      return {
+        id: paragraph.paragraph_id,
+        case_id: paragraph.source_id,
+        para_no: paragraph.para_no || paragraph.pinpoint || "",
+        heading_path: [],
+        text: paragraph.paragraph_text,
+        role_label: "source_card_excerpt",
+        proposition_type: null,
+        source_url: source.source_url || null,
+        extractor_version: "legal_ingest_vertical_v1",
+        review_status: paragraph.verification_status || "quote_verified",
+        treatment_warnings: [],
+        good_law_flags: [],
+      };
+    }),
+    proposition_cards: (vertical.proposition_cards || []).map(card => ({
+      id: card.proposition_id,
+      case_id: card.source_id,
+      canonical_para_id: card.paragraph_id,
+      proposition_text: card.proposition_text,
+      proposition_type: card.authority_role || "applied_principle",
+      issue_tags: card.issue_tags || [],
+      doctrine_tags: card.issue_tags || [],
+      confidence: confidenceNumber(card.confidence),
+      extractor_version: "legal_ingest_vertical_v1",
+      review_status: card.review_status || "lawyer_review_required",
+      mentioned_cases: card.citation ? [card.citation] : [],
+      mentioned_statutes: [],
+    })),
+    human_review_items: (vertical.human_review_queue && vertical.human_review_queue.length
+      ? vertical.human_review_queue
+      : (vertical.proposition_cards || []).map(card => ({
+          item_type: "proposition_card",
+          item_id: card.proposition_id,
+          reason: `Review ${card.citation || "source"} ${card.pinpoint || ""}: ${card.proposition_text}`,
+          status: "open",
+          priority: card.verification_status === "quote_verified" ? "normal" : "high",
+        }))
+    ).map(item => ({
+      item_type: item.item_type || "proposition_card",
+      item_id: item.item_id,
+      reason: item.reason,
+      payload_json: {
+        vertical_id: vertical.vertical_id,
+        review_item_id: item.review_item_id || `review_${item.item_id}`,
+        priority: item.priority || "normal",
+      },
+      status: item.status || "open",
+    })),
+  };
+}
+
+async function seedLegacyVertical(ctx, vertical) {
+  const rows = legacyRows(vertical);
+  const results = [];
+  results.push(await optionalUpsertRows(ctx, "source_registry", "source_id", vertical.source_registry || []));
+  results.push(await patchOrInsertRows(ctx, "source_documents", "id", rows.source_documents));
+  results.push(await patchOrInsertRows(ctx, "legal_cases", "id", rows.legal_cases));
+  results.push(await patchOrInsertRows(ctx, "legal_paragraphs", "id", rows.legal_paragraphs));
+  results.push(await patchOrInsertRows(ctx, "proposition_cards", "id", rows.proposition_cards));
+  results.push(await optionalUpsertRows(ctx, "form_metadata", "form_id", vertical.form_metadata || []));
+  results.push(await optionalUpsertRows(ctx, "answer_contracts", "contract_id", vertical.answer_contracts || []));
+  results.push(await optionalUpsertRows(ctx, "eval_runs", "eval_id", vertical.eval_runs || []));
+  results.push(await patchOrInsertRows(ctx, "human_review_items", "item_id", rows.human_review_items));
+  return results;
+}
+
+async function seedVertical(ctx, mode = "source_card_v1") {
   const vertical = addDerivedIds(loadVertical());
   assertQuoteValidation(vertical);
+  if (mode === "legacy_case_schema") {
+    return seedLegacyVertical(ctx, vertical);
+  }
   const results = [];
   for (const [table, conflictKey, verticalKey] of UPSERTS) {
     results.push(await upsertRows(ctx, table, conflictKey, vertical[verticalKey] || []));
@@ -263,6 +492,8 @@ async function main() {
   const shouldApplyMigrations = process.argv.includes("--apply-migrations");
   const shouldSeed = process.argv.includes("--seed-inconsistent");
   const shouldTargetOnly = process.argv.includes("--target");
+  const shouldSchemaReportOnly = process.argv.includes("--schema-report");
+  const allowLegacySeed = process.argv.includes("--legacy-compatible-seed");
 
   printTarget(env);
   if (shouldTargetOnly) return;
@@ -291,10 +522,28 @@ async function main() {
     tableResults.push(result);
     console.log(`- ${table}: ${result.status}`);
   }
+  const schemaReport = await detectRemoteSchema(ctx);
+  printSchemaReport(schemaReport);
+  if (shouldSchemaReportOnly) return;
+
   const missing = tableResults.filter((result) => result.status !== "ok");
   if (missing.length) {
+    if (shouldSeed && allowLegacySeed && schemaReport.mode === "legacy_case_schema") {
+      console.log("\nRemote is using the older case/paragraph/proposition schema.");
+      console.log("Proceeding with --legacy-compatible-seed mapping for the inconsistent-pleadings vertical.");
+      const seedResults = await seedVertical(ctx, "legacy_case_schema");
+      for (const result of seedResults) {
+        console.log(`- ${result.table}: ${result.status} (${result.count})`);
+      }
+      console.log("\nDone. Legacy rows remain research_only / lawyer_review_required in product logic; no answer_safe promotion was performed.");
+      return;
+    }
     console.log("\nRemote migrations are not fully applied yet.");
     console.log("Apply the committed SQL files in supabase/migrations to the Supabase database, then rerun this script.");
+    if (schemaReport.mode === "legacy_case_schema") {
+      console.log("This project also supports the older case schema. To seed without changing that schema, rerun with:");
+      console.log("node scripts/setup_supabase_legal_ingest.js --seed-inconsistent --legacy-compatible-seed");
+    }
     process.exitCode = 2;
     return;
   }
@@ -305,7 +554,7 @@ async function main() {
   }
 
   console.log("\n3. Seeding inconsistent pleadings public-case vertical");
-  const seedResults = await seedVertical(ctx);
+  const seedResults = await seedVertical(ctx, schemaReport.mode);
   for (const result of seedResults) {
     console.log(`- ${result.table}: ${result.status} (${result.count})`);
   }

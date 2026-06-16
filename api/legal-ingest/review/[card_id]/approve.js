@@ -1,4 +1,4 @@
-const { assertReviewAdmin, json, supabaseConfig, supabaseRest } = require("../../_utils");
+const { assertReviewAdmin, isSchemaMismatchError, json, supabaseConfig, supabaseRest } = require("../../_utils");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
@@ -55,6 +55,44 @@ module.exports = async function handler(req, res) {
       proposition_rows: propositionRows || [],
     });
   } catch (error) {
+    if (isSchemaMismatchError(error)) {
+      try {
+        const encoded = encodeURIComponent(cardId);
+        const propositionRows = await supabaseRest(`proposition_cards?id=eq.${encoded}`, {
+          method: "PATCH",
+          body: { review_status: approveAsAnswerSafe ? "answer_safe" : "approved" },
+        });
+        await supabaseRest(`human_review_items?item_id=eq.${encoded}`, {
+          method: "PATCH",
+          body: {
+            status: "approved",
+            resolved_at: new Date().toISOString(),
+            payload_json: {
+              reviewed_by: reviewer,
+              promote_answer_safe: approveAsAnswerSafe,
+              legacy_schema: true,
+            },
+          },
+        });
+        json(res, 200, {
+          status: "approved_legacy_schema",
+          backend: "supabase_legacy",
+          card_id: cardId,
+          promote_answer_safe: approveAsAnswerSafe,
+          proposition_rows: propositionRows || [],
+          warnings: ["used_legacy_proposition_cards_and_human_review_items_tables"],
+        });
+        return;
+      } catch (legacyError) {
+        json(res, 502, {
+          status: "approval_failed_legacy_schema",
+          error: legacyError.message,
+          details: legacyError.payload || null,
+          original_error: error.payload || error.message,
+        });
+        return;
+      }
+    }
     json(res, 502, {
       status: "approval_failed",
       error: error.message,

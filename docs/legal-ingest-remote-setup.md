@@ -14,6 +14,18 @@ node scripts/setup_supabase_legal_ingest.js --target
 
 This prints the Supabase URL/project ref and whether the local environment has a service-role key and database URL. It does not print secrets.
 
+If a service-role key is configured, inspect the remote schema mode:
+
+```bash
+node scripts/setup_supabase_legal_ingest.js --schema-report
+```
+
+The runner distinguishes:
+
+- `source_card_v1`: the clean/new schema expected by the source-card setup runner.
+- `legacy_case_schema`: the older `Case` project shape using `source_documents`, `legal_cases`, `legal_paragraphs`, `proposition_cards`, and `human_review_items`.
+- `incompatible_or_missing`: neither supported shape is complete enough to seed safely.
+
 If `psql` and `SUPABASE_DB_URL` are available, run:
 
 ```bash
@@ -30,6 +42,14 @@ Perhaps you meant the table 'public.human_review_items'
 ```
 
 then Vercel is pointing at the right Supabase project, but that project is still on an older legal-ingest schema. Apply the committed migrations below to that same project.
+
+If you intentionally want to keep that older `Case` schema, do not force the fresh-schema seed into it. Use the compatibility seed path instead:
+
+```bash
+node scripts/setup_supabase_legal_ingest.js --seed-inconsistent --legacy-compatible-seed
+```
+
+That maps the inconsistent-pleadings vertical into the older case/paragraph/proposition/review tables. It does not create `answer_safe` cards and does not upload books or private forms.
 
 The required tables are:
 
@@ -89,6 +109,12 @@ Only after migrations and bucket checks pass, run:
 node scripts/setup_supabase_legal_ingest.js --seed-inconsistent
 ```
 
+For an older `legacy_case_schema` project, run:
+
+```bash
+node scripts/setup_supabase_legal_ingest.js --seed-inconsistent --legacy-compatible-seed
+```
+
 To apply migrations and seed in one run:
 
 ```bash
@@ -106,6 +132,29 @@ This upserts the inconsistent-pleadings vertical:
 - golden eval row.
 
 The cards remain `research_only` / `lawyer_review_required`. The script does not promote any card to `answer_safe`.
+
+For an end-to-end stage report, run:
+
+```bash
+node scripts/run_legal_rag_pipeline.js --remote
+```
+
+To seed and then verify in one pass:
+
+```bash
+node scripts/run_legal_rag_pipeline.js --remote --seed
+```
+
+The report covers:
+
+- source governance;
+- storage bucket availability;
+- paragraph/chunk objects;
+- quote-exact proposition validation;
+- form/document candidates;
+- review queue;
+- remote row counts;
+- Qdrant/vector status.
 
 ## 5. Review queue approval
 

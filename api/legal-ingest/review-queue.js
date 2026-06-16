@@ -1,4 +1,11 @@
-const { json, localReviewQueue, supabaseConfig, supabaseRest } = require("./_utils");
+const {
+  isMissingTableError,
+  json,
+  localReviewQueue,
+  normalizeLegacyReviewItem,
+  supabaseConfig,
+  supabaseRest,
+} = require("./_utils");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "GET") {
@@ -21,6 +28,29 @@ module.exports = async function handler(req, res) {
     const rows = await supabaseRest(`human_review_queue?status=eq.${status}&select=*&order=created_at.desc`);
     json(res, 200, { backend: "supabase", status: "ok", items: rows || [] });
   } catch (error) {
+    if (isMissingTableError(error, "human_review_queue")) {
+      try {
+        const status = encodeURIComponent(req.query.status || "open");
+        const rows = await supabaseRest(`human_review_items?status=eq.${status}&select=*&order=created_at.desc`);
+        json(res, 200, {
+          backend: "supabase_legacy",
+          status: "ok_legacy_schema",
+          items: (rows || []).map(normalizeLegacyReviewItem),
+          warnings: ["using_legacy_human_review_items_table"],
+        });
+        return;
+      } catch (legacyError) {
+        json(res, 200, {
+          backend: "local_json",
+          status: "supabase_legacy_query_failed_fallback_local",
+          items: localReviewQueue(),
+          error: legacyError.message,
+          details: legacyError.payload || null,
+          original_error: error.payload || error.message,
+        });
+        return;
+      }
+    }
     json(res, 200, {
       backend: "local_json",
       status: "supabase_query_failed_fallback_local",
