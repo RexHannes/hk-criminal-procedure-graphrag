@@ -174,6 +174,42 @@ async function verifyBuckets(ctx) {
   return result;
 }
 
+async function verifyQdrantCollections(env) {
+  const base = String(env.QDRANT_URL || "").trim().replace(/\/$/, "");
+  if (!base) return { configured: false, status: "manifest_only_no_qdrant_url", collections: [] };
+  const headers = {};
+  if (env.QDRANT_API_KEY) headers["api-key"] = env.QDRANT_API_KEY;
+  const names = [
+    env.QDRANT_COLLECTION_PARAGRAPHS || "hk_legal_paragraphs",
+    env.QDRANT_COLLECTION_PROPOSITIONS || "hk_proposition_cards",
+    env.QDRANT_COLLECTION_FORMS || "hk_form_metadata",
+  ];
+  const collections = [];
+  for (const name of names) {
+    try {
+      const response = await fetch(`${base}/collections/${encodeURIComponent(name)}`, { headers });
+      const payload = await response.json().catch(() => ({}));
+      const result = payload.result || {};
+      collections.push({
+        name,
+        ok: response.ok,
+        points_count: result.points_count || 0,
+        vector_size: result.config?.params?.vectors?.size,
+        distance: result.config?.params?.vectors?.distance,
+      });
+    } catch (error) {
+      collections.push({ name, ok: false, error: error.message });
+    }
+  }
+  const ready = collections.every(item => item.ok && item.points_count > 0);
+  return {
+    configured: true,
+    status: ready ? "indexed" : "configured_needs_index_run",
+    embedding_provider: env.LEGAL_EMBEDDING_PROVIDER || "not_set",
+    collections,
+  };
+}
+
 function runSeed(schemaMode) {
   const args = [SETUP_SCRIPT, "--seed-inconsistent"];
   if (schemaMode === "legacy_case_schema") args.push("--legacy-compatible-seed");
@@ -263,10 +299,7 @@ async function main() {
       seed,
       row_counts: await verifyRemoteRows(ctx, vertical, schemaMode),
       answer_memory_tables: await verifyAnswerMemoryTables(ctx),
-      qdrant_indexing: {
-        configured: Boolean(env.QDRANT_URL),
-        status: env.QDRANT_URL ? "ready_for_indexer_adapter" : "manifest_only_no_qdrant_url",
-      },
+      qdrant_indexing: await verifyQdrantCollections(env),
     };
     if (seed && !seed.ok) process.exitCode = seed.status || 1;
   }

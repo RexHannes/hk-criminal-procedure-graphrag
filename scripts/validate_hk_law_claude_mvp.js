@@ -12,6 +12,7 @@ const CACHE_HELPER = path.join(ROOT, "legal-ingest-service", "cache", "retrieved
 const API_CACHE_HELPER = path.join(ROOT, "api", "legal-ingest", "cache.js");
 const SEARCH_EVIDENCE_API = path.join(ROOT, "api", "search-evidence.js");
 const QDRANT_INDEXER = path.join(ROOT, "scripts", "index_legal_ingest_qdrant.js");
+const QDRANT_VALIDATOR = path.join(ROOT, "scripts", "validate_qdrant_legal_index.js");
 const PIPELINE_TABLES_MIGRATION = path.join(ROOT, "supabase", "migrations", "20260615000000_create_legal_rag_pipeline_tables.sql");
 
 function parseEnvFile(filePath) {
@@ -112,6 +113,13 @@ function staticScaffoldReport(errors) {
     "hk_form_metadata",
     "LEGAL_EMBEDDING_PROVIDER",
   ], errors);
+  fileIncludes(QDRANT_VALIDATOR, [
+    "QDRANT_URL",
+    "points_count",
+    "hk_legal_paragraphs",
+    "hk_proposition_cards",
+    "hk_form_metadata",
+  ], errors);
 }
 
 function runtimeReadiness(env) {
@@ -127,7 +135,8 @@ function runtimeReadiness(env) {
       url_present: Boolean(env.QDRANT_URL),
     },
     embeddings: {
-      configured: Boolean(env.OPENAI_API_KEY || env.EMBEDDING_API_KEY || env.DEEPSEEK_API_KEY),
+      configured: Boolean(env.LEGAL_EMBEDDING_PROVIDER || env.OPENAI_API_KEY || env.EMBEDDING_API_KEY || env.DEEPSEEK_API_KEY),
+      provider: env.LEGAL_EMBEDDING_PROVIDER || (env.OPENAI_API_KEY ? "openai" : env.DEEPSEEK_API_KEY ? "deepseek" : ""),
       openai_present: Boolean(env.OPENAI_API_KEY),
       generic_embedding_key_present: Boolean(env.EMBEDDING_API_KEY),
       deepseek_present: Boolean(env.DEEPSEEK_API_KEY),
@@ -171,11 +180,49 @@ async function answerMemoryRemoteReadiness(env) {
   };
 }
 
+async function qdrantRemoteReadiness(env) {
+  const base = String(env.QDRANT_URL || "").trim().replace(/\/$/, "");
+  if (!base) return { configured: false, collections_ready: false, collections: [] };
+  const headers = {};
+  if (env.QDRANT_API_KEY) headers["api-key"] = env.QDRANT_API_KEY;
+  const names = [
+    env.QDRANT_COLLECTION_PARAGRAPHS || "hk_legal_paragraphs",
+    env.QDRANT_COLLECTION_PROPOSITIONS || "hk_proposition_cards",
+    env.QDRANT_COLLECTION_FORMS || "hk_form_metadata",
+  ];
+  const collections = [];
+  for (const name of names) {
+    try {
+      const response = await fetch(`${base}/collections/${encodeURIComponent(name)}`, { headers });
+      const payload = await response.json().catch(() => ({}));
+      const result = payload.result || {};
+      collections.push({
+        name,
+        ok: response.ok,
+        points_count: result.points_count || 0,
+        vector_size: result.config?.params?.vectors?.size,
+      });
+    } catch (error) {
+      collections.push({ name, ok: false, error: error.message });
+    }
+  }
+  return {
+    configured: true,
+    collections_ready: collections.every(item => item.ok && item.points_count > 0),
+    collections,
+  };
+}
+
 function deriveGateReadiness(mvp, runtime) {
   const byId = Object.fromEntries(mvp.gates.map(g => [g.gate_id, g]));
   const answerMemoryStatus = runtime.answer_memory?.configured
     ? "remote_schema_applied_api_cache_and_sop_wiring_present"
     : "scaffold_added_needs_api_wiring_and_remote_migration";
+  const qdrantStatus = runtime.qdrant.configured && runtime.qdrant.collections_ready && runtime.embeddings.configured
+    ? (runtime.embeddings.provider === "local-hash" ? "local_dev_indexed_with_hash_embeddings" : "indexed_with_configured_embedding_provider")
+    : runtime.qdrant.configured && runtime.embeddings.configured
+      ? "config_present_indexer_available_needs_index_run"
+      : "indexer_available_not_green_missing_qdrant_or_embedding_config";
   return [
     {
       gate_id: "corpus_input_and_licence_controls",
@@ -187,9 +234,7 @@ function deriveGateReadiness(mvp, runtime) {
     },
     {
       gate_id: "embedding_and_vector_storage",
-      status: runtime.qdrant.configured && runtime.embeddings.configured
-        ? "config_present_indexer_available_needs_index_run"
-        : "indexer_available_not_green_missing_qdrant_or_embedding_config",
+      status: qdrantStatus,
     },
     {
       gate_id: "retrieval_and_reranking",
@@ -222,6 +267,7 @@ async function main() {
   const env = loadEnv();
   const runtime = runtimeReadiness(env);
   runtime.answer_memory = await answerMemoryRemoteReadiness(env);
+  runtime.qdrant = { ...runtime.qdrant, ...(await qdrantRemoteReadiness(env)) };
   delete runtime.env;
   const gate_readiness = mvp ? deriveGateReadiness(mvp, runtime) : [];
   const report = {

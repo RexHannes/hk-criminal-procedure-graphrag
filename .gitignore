@@ -11,3 +11,5 @@ private_vault/
 legal-ingest-service/private_vault/
 legal-ingest-service/storage/
 data/legal_ingest/private/
+qdrant_storage/
+.qdrant-initialized

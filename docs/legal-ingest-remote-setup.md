@@ -240,6 +240,20 @@ The Qdrant indexer is:
 scripts/index_legal_ingest_qdrant.js
 ```
 
+For local development on macOS ARM64 without Docker, start Qdrant with:
+
+```bash
+scripts/start_local_qdrant.sh
+```
+
+This downloads the official Qdrant macOS ARM64 binary to `/tmp/codex_qdrant`,
+stores local vector data under the ignored `qdrant_storage/` folder, and starts
+Qdrant at:
+
+```text
+http://127.0.0.1:6333
+```
+
 Dry-run the current source-card vertical without requiring Qdrant:
 
 ```bash
@@ -280,3 +294,9 @@ The default collections are:
 Every point includes legal metadata filters for jurisdiction, source type,
 practice area, issue tags, authority role, review status, answer-layer status,
 visibility and firm ID.
+
+Validate the local index with:
+
+```bash
+node scripts/validate_qdrant_legal_index.js
+```
