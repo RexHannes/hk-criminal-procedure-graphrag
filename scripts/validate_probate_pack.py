@@ -83,6 +83,47 @@ def main() -> int:
         if "precedent_text" in form or "body_text" in form:
             errors.append(f"{form['form_id']} appears to expose body text")
 
+    form_by_number = {form.get("form_number"): form for form in forms if form.get("form_number")}
+    expected_number_families = {
+        "W1.1A": "grant_probate_named_executor",
+        "W1.1B": "grant_probate_named_executor",
+        "W1.2A": "grant_probate_attorney_of_sole_executor",
+        "W1.2B": "grant_probate_attorney_of_sole_executor",
+        "W1.3A": "grant_probate_executor_died_or_renounced",
+        "W1.3B": "grant_probate_executor_died_or_renounced",
+        "W1.4A": "grant_probate_no_executor_appointed",
+        "W1.4B": "grant_probate_no_executor_appointed",
+        "W2.1": "renunciation_executor_probate",
+        "W2.2": "renunciation_executor_probate",
+        "N2.1": "ordinary_grant_assets_schedule",
+        "N4.1": "ordinary_grant_liabilities_schedule",
+        "N2.2": "corrective_or_additional_assets_schedule",
+        "N2.3": "corrective_or_additional_assets_schedule",
+        "N4.2": "corrective_or_additional_liabilities_schedule",
+        "W3.1": "will_execution_condition_alteration_evidence",
+        "W3.2": "will_execution_condition_alteration_evidence",
+        "W3.3": "will_execution_condition_alteration_evidence",
+        "W3.4": "will_execution_condition_alteration_evidence",
+    }
+    for form_number, expected_family in expected_number_families.items():
+        form = form_by_number.get(form_number)
+        if not form:
+            errors.append(f"missing expected Probate form number {form_number}")
+            continue
+        if form.get("form_family") != expected_family:
+            errors.append(f"{form_number} has family {form.get('form_family')}, expected {expected_family}")
+    alias_ids = {form["form_id"] for form in forms}
+    for alias_id in [
+        "probate_form_w1_1_named_executor_alias",
+        "probate_form_w1_2_attorney_sole_executor_alias",
+        "probate_form_w1_3_executor_died_or_renounced_alias",
+        "probate_form_w1_4_no_executor_alias",
+        "probate_form_n2_1_n4_1_ordinary_grant_schedule_alias",
+        "probate_form_n2_2_n2_3_n4_2_corrective_schedule_alias",
+    ]:
+        if alias_id not in alias_ids:
+            errors.append(f"missing expected Probate form-family alias {alias_id}")
+
     if rag.get("safety", {}).get("raw_book_text_committed") is not False:
         errors.append("rag safety raw_book_text_committed must be false")
     if rag.get("safety", {}).get("raw_form_text_committed") is not False:
