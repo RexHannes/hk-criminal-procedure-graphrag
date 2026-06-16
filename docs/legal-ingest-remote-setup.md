@@ -154,7 +154,23 @@ The report covers:
 - form/document candidates;
 - review queue;
 - remote row counts;
+- answer-memory table checks;
 - Qdrant/vector status.
+
+For the broader minimum "HK law Claude" readiness check, run:
+
+```bash
+node scripts/validate_hk_law_claude_mvp.js
+```
+
+Use the stricter mode only when you expect production infrastructure to be fully configured:
+
+```bash
+node scripts/validate_hk_law_claude_mvp.js --strict-production
+```
+
+The MVP gates are documented in `docs/hk-law-claude-mvp.md` and configured in
+`data/legal_ingest/mvp/hk_law_claude_mvp.json`.
 
 ## 5. Review queue approval
 
@@ -180,3 +196,38 @@ Only ingest them after:
 - at least one public-case vertical has been seeded and checked.
 
 Private books/forms should stay in `legal-private-vault` and enter the product as private doctrine notes, field schemas, candidate propositions, or approved firm templates depending on licence and review status.
+
+## 7. Stored retrieved law / SOP cache
+
+Apply this migration before enabling cache writes:
+
+```text
+supabase/migrations/20260616000000_create_legal_answer_memory_tables.sql
+```
+
+The cache tables are:
+
+- `retrieval_bundles`
+- `legal_answer_snapshots`
+- `sop_playbooks`
+
+They exist so a reviewed retrieved-law answer or SOP flow can be reused without regenerating from zero every time. A cached answer must be downgraded or recomputed if its source fingerprint changes, if a supporting source card is rejected/stale, or if the cached answer is only research-only.
+
+The helper functions live in:
+
+```text
+legal-ingest-service/cache/retrieved_law_cache.py
+```
+
+Private books/forms may be uploaded to the private vault once the buckets and registry are configured, but they should not influence product answers until they pass:
+
+```text
+source registered
+-> private raw storage
+-> parser/chunker
+-> quote/proposition validation
+-> review queue
+-> private vector namespace
+-> answer contract
+-> answer cross-checker
+```

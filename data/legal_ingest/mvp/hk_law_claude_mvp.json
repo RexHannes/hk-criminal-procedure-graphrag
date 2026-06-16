@@ -1,0 +1,208 @@
+{
+  "mvp_id": "hk_law_claude_minimum_v1",
+  "version": "0.1.0",
+  "purpose": "Minimum source-gated HK law assistant readiness gates before private books/forms may influence product answers.",
+  "overall_rule": "No source card means no final legal proposition. Private or licensed sources may be uploaded only into private storage and may not become answer-safe without source validation and lawyer review.",
+  "target_user_experience": {
+    "short_name": "Claude-like HK law answer with evidence",
+    "required_shape": [
+      "short_answer",
+      "legal_issues",
+      "source_backed_rules",
+      "application_to_facts",
+      "procedural_consequences",
+      "forms_or_documents",
+      "missing_facts",
+      "risks_and_caveats",
+      "collapsed_source_audit"
+    ],
+    "must_not_do": [
+      "show raw vector scores in main answer",
+      "present party submissions as holdings",
+      "quote or reproduce proprietary books/forms in public output",
+      "estimate legal outcome without missing-fact caveats",
+      "reuse cached answers after source cards become stale or rejected"
+    ]
+  },
+  "gates": [
+    {
+      "gate_id": "corpus_input_and_licence_controls",
+      "level": 1,
+      "label": "Corpus input and licence controls",
+      "required_components": [
+        "source_registry",
+        "private_vault_storage",
+        "public_source_storage",
+        "legal_parsed_artifacts_storage",
+        "source_checksum",
+        "licence_status",
+        "storage_policy",
+        "visibility",
+        "private_vector_namespace"
+      ],
+      "minimum_green_condition": "Every source is registered before parsing; private/licensed material is private_vault_only or metadata_only_no_raw.",
+      "current_repo_status": "partial",
+      "notes": "The registry and storage bucket scaffold exists. Large public case corpus and licensed-book ingestion are not complete."
+    },
+    {
+      "gate_id": "legal_processing_and_structured_objects",
+      "level": 2,
+      "label": "Legal processing and structured objects",
+      "required_components": [
+        "case_paragraph_parser",
+        "legislation_section_parser",
+        "form_metadata_parser",
+        "book_private_note_parser",
+        "legal_chunker",
+        "candidate_proposition_extractor",
+        "quote_exact_validator"
+      ],
+      "minimum_green_condition": "Cases become paragraph cards; forms become field metadata; propositions include exact supporting quotes found in source text.",
+      "current_repo_status": "partial",
+      "notes": "The inconsistent-pleadings vertical demonstrates this, but large-scale parsing is not yet production-complete."
+    },
+    {
+      "gate_id": "embedding_and_vector_storage",
+      "level": 3,
+      "label": "Embedding and vector storage",
+      "required_components": [
+        "qdrant_url",
+        "embedding_model",
+        "hk_legal_paragraphs_collection",
+        "hk_proposition_cards_collection",
+        "hk_form_metadata_collection",
+        "firm_private_templates_collection",
+        "metadata_payload_filters"
+      ],
+      "minimum_green_condition": "Structured legal objects are embedded into Qdrant with jurisdiction/source/review/visibility/firm filters.",
+      "current_repo_status": "not_green",
+      "notes": "Payload builders exist. Live Qdrant indexing requires QDRANT_URL and embedding settings."
+    },
+    {
+      "gate_id": "retrieval_and_reranking",
+      "level": 4,
+      "label": "Retrieval and reranking",
+      "required_components": [
+        "query_classifier",
+        "metadata_filters",
+        "keyword_retrieval",
+        "vector_retrieval",
+        "graph_router",
+        "legal_reranker",
+        "source_family_filter",
+        "collapsed_audit_trail"
+      ],
+      "minimum_green_condition": "Retrieval is hybrid and contract-filtered before the answer renderer sees results.",
+      "current_repo_status": "partial",
+      "notes": "A deterministic source-gated reranker exists. Production vector/cross-encoder reranking is still pending."
+    },
+    {
+      "gate_id": "authority_treatment_and_answer_contract",
+      "level": 5,
+      "label": "Authority treatment and source-gated answer",
+      "required_components": [
+        "authority_role",
+        "source_hierarchy",
+        "answer_contract",
+        "answer_composer",
+        "answer_cross_checker",
+        "missing_fact_extractor",
+        "form_candidate_router"
+      ],
+      "minimum_green_condition": "Every final legal proposition links to a source/proposition card and authority role.",
+      "current_repo_status": "partial",
+      "notes": "The first vertical has a professional composer. Broad HK law domains need more verified cards and cross-checking."
+    },
+    {
+      "gate_id": "review_promotion_and_evals",
+      "level": 6,
+      "label": "Review, promotion and evaluation",
+      "required_components": [
+        "human_review_queue",
+        "promotion_statuses",
+        "golden_queries",
+        "forbidden_issue_tests",
+        "source_card_quality_tests",
+        "raw_score_leakage_tests"
+      ],
+      "minimum_green_condition": "Machine candidates stay research-only until quote/source/lawyer review promotes them.",
+      "current_repo_status": "partial",
+      "notes": "Review queue and initial evals exist. Domain-wide legal answer quality evals are incomplete."
+    },
+    {
+      "gate_id": "stored_retrieved_law_and_sop_cache",
+      "level": 7,
+      "label": "Stored retrieved law and SOP cache",
+      "required_components": [
+        "retrieval_bundles",
+        "legal_answer_snapshots",
+        "sop_playbooks",
+        "query_hash",
+        "source_fingerprint",
+        "cache_staleness_policy",
+        "review_status_preservation"
+      ],
+      "minimum_green_condition": "Reviewed retrieval bundles and SOP answers can be reused until source fingerprints or review statuses change.",
+      "current_repo_status": "scaffold_added",
+      "notes": "Database tables and cache helpers exist. Query endpoint write/read integration is the next step."
+    },
+    {
+      "gate_id": "private_source_access_controls",
+      "level": 8,
+      "label": "Private source access controls",
+      "required_components": [
+        "firm_id",
+        "user_id",
+        "private_namespace_authorization",
+        "licensed_source_output_policy",
+        "no_public_raw_text"
+      ],
+      "minimum_green_condition": "Private books/forms can be retrieved only for authorized users and never leak full proprietary text into public output.",
+      "current_repo_status": "partial",
+      "notes": "Policy fields exist. Full tenant auth and namespace enforcement still need production wiring."
+    }
+  ],
+  "safe_book_form_upload_policy": {
+    "allowed_now": [
+      "register metadata",
+      "store raw file in private vault",
+      "compute checksum",
+      "parse into private artifacts",
+      "extract candidate private doctrine notes",
+      "queue review"
+    ],
+    "not_allowed_until_green": [
+      "treat book text as answer-safe law",
+      "publish full book/form text in repo",
+      "embed licensed material into public namespace",
+      "generate filing-ready forms without approved template and lawyer review"
+    ]
+  },
+  "scale_ladder": [
+    {
+      "stage": "pilot_vertical",
+      "target": "1 source-backed vertical",
+      "status": "implemented_for_inconsistent_pleadings"
+    },
+    {
+      "stage": "small_public_case_batch",
+      "target": "50-300 public cases",
+      "status": "pending_quality_gate"
+    },
+    {
+      "stage": "medium_public_case_batch",
+      "target": "1000-10000 public cases",
+      "status": "pending_qdrant_and_eval"
+    },
+    {
+      "stage": "large_public_case_corpus",
+      "target": "100k-200k public judgments where legally and technically available",
+      "status": "not_started"
+    },
+    {
+      "stage": "licensed_private_books_forms",
+      "target": "private-vault only, reviewed, tenant-authorized",
+      "status": "pending_private_access_controls"
+    }
+  ]
+}

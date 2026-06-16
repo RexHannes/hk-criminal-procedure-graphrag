@@ -148,6 +148,19 @@ async function verifyRemoteRows(ctx, vertical, schemaMode) {
   return {};
 }
 
+async function verifyAnswerMemoryTables(ctx) {
+  const checks = {
+    retrieval_bundles: ["bundle_id", "query_hash", "corpus_fingerprint", "retrieval_status"],
+    legal_answer_snapshots: ["answer_id", "bundle_id", "source_fingerprint", "answer_status"],
+    sop_playbooks: ["playbook_id", "domain", "source_fingerprint", "status"],
+  };
+  const result = {};
+  for (const [table, columns] of Object.entries(checks)) {
+    result[table] = await hasColumns(ctx, table, columns) ? "ok" : "missing_or_inaccessible";
+  }
+  return result;
+}
+
 async function verifyBuckets(ctx) {
   const result = {};
   for (const bucket of BUCKETS) {
@@ -203,6 +216,12 @@ function buildLocalStageReport(vertical) {
     review_queue: {
       review_items: (vertical.human_review_queue || []).length,
     },
+    answer_memory: {
+      retrieval_bundles: "schema_required",
+      legal_answer_snapshots: "schema_required",
+      sop_playbooks: "schema_required",
+      cache_policy: "reuse only while source fingerprint and review status remain valid",
+    },
     evaluation: {
       eval_rows: (vertical.eval_runs || []).length,
     },
@@ -243,6 +262,7 @@ async function main() {
       buckets,
       seed,
       row_counts: await verifyRemoteRows(ctx, vertical, schemaMode),
+      answer_memory_tables: await verifyAnswerMemoryTables(ctx),
       qdrant_indexing: {
         configured: Boolean(env.QDRANT_URL),
         status: env.QDRANT_URL ? "ready_for_indexer_adapter" : "manifest_only_no_qdrant_url",
