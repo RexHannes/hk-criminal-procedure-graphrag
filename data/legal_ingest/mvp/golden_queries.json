@@ -1,0 +1,96 @@
+{
+  "suite_id": "hk_legal_rag_v03_golden_queries",
+  "version": "0.1.0",
+  "queries": [
+    {
+      "id": "inconsistent_pleadings_core",
+      "query": "What is the consequence of inconsistent factual pleadings across more than one case?",
+      "mode": "principles",
+      "must_retrieve_any": ["prop_inconsistent_positions_scope_minloy_p31", "prop_abuse_estoppel_lancom_p43"],
+      "must_include_source_kind": ["proposition_card"],
+      "must_not_contain": ["fake case", "unsupported authority"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "abuse_estoppel_positions",
+      "query": "Explain abuse of process and estoppel where a party takes inconsistent positions in different proceedings.",
+      "mode": "principles",
+      "must_retrieve_any": ["prop_abuse_estoppel_lancom_p43", "prop_diametrically_opposed_integrity_vasily_p39"],
+      "must_include_source_kind": ["proposition_card"],
+      "must_not_contain": ["restaurant", "road traffic"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "diametrically_opposed_claim",
+      "query": "What if the later claim is diametrically opposed to the earlier proceeding?",
+      "mode": "principles",
+      "must_retrieve_any": ["prop_diametrically_opposed_integrity_vasily_p39"],
+      "must_include_source_kind": ["proposition_card"],
+      "must_not_contain": ["fake case"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "alternative_pleading_knowledge",
+      "query": "Can a party plead inconsistent alternatives if the facts are within its own knowledge?",
+      "mode": "principles",
+      "must_retrieve_any": ["prop_alternative_pleading_within_knowledge_liu_p16"],
+      "must_include_source_kind": ["proposition_card"],
+      "must_not_contain": ["unsupported authority"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "summary_judgment_deviation",
+      "query": "Does a material deviation from the pleaded case affect summary judgment?",
+      "mode": "procedure",
+      "must_retrieve_any": ["prop_summary_judgment_material_deviation_shinyei_p19"],
+      "must_include_source_kind": ["proposition_card"],
+      "must_not_contain": ["fake case"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "henderson_abuse_check",
+      "query": "What is Henderson abuse where matters could and should have been raised earlier?",
+      "mode": "principles",
+      "must_retrieve_any": ["prop_henderson_abuse_dp_world_pending"],
+      "must_include_source_kind": ["proposition_card"],
+      "must_not_contain": ["unsupported authority"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "collateral_attack_gap",
+      "query": "Explain collateral attack for inconsistent pleadings.",
+      "mode": "principles",
+      "must_retrieve_any": ["prop_inconsistent_positions_scope_minloy_p31", "prop_abuse_estoppel_lancom_p43"],
+      "must_include_source_kind": ["proposition_card"],
+      "must_not_contain": ["invented collateral attack case"],
+      "expected_behavior": "cannot_verify"
+    },
+    {
+      "id": "criminal_bail_gap",
+      "query": "What are the principles for bail in Hong Kong criminal procedure?",
+      "mode": "principles",
+      "must_retrieve_any": [],
+      "must_include_source_kind": [],
+      "must_not_contain": ["fake case", "unsupported authority"],
+      "expected_behavior": "cannot_verify"
+    },
+    {
+      "id": "criminal_search_warrant_gap",
+      "query": "What is the test for a Hong Kong search warrant?",
+      "mode": "principles",
+      "must_retrieve_any": [],
+      "must_include_source_kind": [],
+      "must_not_contain": ["fake case", "unsupported authority"],
+      "expected_behavior": "cannot_verify"
+    },
+    {
+      "id": "criminal_theft_gap",
+      "query": "What are the elements of theft in Hong Kong?",
+      "mode": "principles",
+      "must_retrieve_any": [],
+      "must_include_source_kind": [],
+      "must_not_contain": ["fake case", "unsupported authority"],
+      "expected_behavior": "cannot_verify"
+    }
+  ]
+}

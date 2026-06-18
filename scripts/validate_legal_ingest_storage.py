@@ -18,9 +18,15 @@ BUCKET_MIGRATION = ROOT / "supabase" / "migrations" / "20260611001000_create_leg
 REMOTE_SETUP_SCRIPT = ROOT / "scripts" / "setup_supabase_legal_ingest.js"
 PIPELINE_RUNNER = ROOT / "scripts" / "run_legal_rag_pipeline.js"
 QDRANT_QUERY = ROOT / "scripts" / "query_legal_qdrant.js"
+QDRANT_RETRIEVER = ROOT / "src" / "legal_answer" / "qdrant_retriever.js"
 QDRANT_RETRIEVAL_SMOKE = ROOT / "scripts" / "validate_qdrant_retrieval_smoke.js"
 STUDENT_PACK_MAP = ROOT / "data" / "legal_ingest" / "mvp" / "github_student_pack_services.json"
 STUDENT_PACK_VALIDATOR = ROOT / "scripts" / "validate_student_pack_services.js"
+SOURCE_GATED_DOC = ROOT / "docs" / "source-gated-legal-answer-engine.md"
+LEGAL_ANSWER_SCHEMA = ROOT / "src" / "legal_answer" / "schema.js"
+EVIDENCE_PACK_SMOKE = ROOT / "scripts" / "build_legal_evidence_pack_smoke.js"
+SOURCE_GATED_VALIDATOR = ROOT / "scripts" / "validate_source_gated_answer.js"
+GOLDEN_QUERY_VALIDATOR = ROOT / "scripts" / "validate_legal_golden_queries.js"
 
 
 def main() -> int:
@@ -41,6 +47,10 @@ def main() -> int:
         "LEGAL_REVIEW_ADMIN_TOKEN",
         "QDRANT_URL",
         "QDRANT_COLLECTION_PROPOSITIONS",
+        "LLM_PROVIDER",
+        "ANTHROPIC_API_KEY",
+        "OPENAI_API_KEY",
+        "LLM_LOCAL_ENDPOINT",
     ]:
         if f"{key}=" not in env:
             errors.append(f".env.example missing {key}")
@@ -126,24 +136,54 @@ def main() -> int:
 
     for path, label in [
         (QDRANT_QUERY, "Qdrant query script"),
+        (QDRANT_RETRIEVER, "shared Qdrant retriever"),
         (QDRANT_RETRIEVAL_SMOKE, "Qdrant retrieval smoke validator"),
         (STUDENT_PACK_MAP, "GitHub Student Pack service map"),
         (STUDENT_PACK_VALIDATOR, "GitHub Student Pack validator"),
+        (SOURCE_GATED_DOC, "source-gated legal answer docs"),
+        (LEGAL_ANSWER_SCHEMA, "legal answer schema"),
+        (EVIDENCE_PACK_SMOKE, "evidence pack smoke script"),
+        (SOURCE_GATED_VALIDATOR, "source-gated answer validator"),
+        (GOLDEN_QUERY_VALIDATOR, "golden query validator"),
     ]:
         if not path.exists():
             errors.append(f"missing {label}: {path}")
 
     if QDRANT_QUERY.exists():
         qdrant_query = QDRANT_QUERY.read_text(encoding="utf-8")
-        for token in ["points/search", "LEGAL_EMBEDDING_PROVIDER", "hk_proposition_cards"]:
+        for token in ["searchQdrant", "collectionName", "topK"]:
             if token not in qdrant_query:
                 errors.append(f"Qdrant query script missing {token}")
+
+    if QDRANT_RETRIEVER.exists():
+        retriever = QDRANT_RETRIEVER.read_text(encoding="utf-8")
+        for token in ["points/search", "LEGAL_EMBEDDING_PROVIDER", "hk_proposition_cards"]:
+            if token not in retriever:
+                errors.append(f"shared Qdrant retriever missing {token}")
 
     if STUDENT_PACK_MAP.exists():
         student_pack = STUDENT_PACK_MAP.read_text(encoding="utf-8")
         for token in ["DigitalOcean", "Clerk", "Doppler / 1Password", "production_qdrant_host"]:
             if token not in student_pack:
                 errors.append(f"Student Pack service map missing {token}")
+
+    if SOURCE_GATED_DOC.exists():
+        docs = SOURCE_GATED_DOC.read_text(encoding="utf-8")
+        for token in ["No-Source / No-Answer Rule", "Proposition Cards vs Authority", "LLM_PROVIDER=none"]:
+            if token not in docs:
+                errors.append(f"source-gated docs missing {token}")
+
+    if SOURCE_GATED_VALIDATOR.exists():
+        validator = SOURCE_GATED_VALIDATOR.read_text(encoding="utf-8")
+        for token in ["No-source/no-answer gate passed", "Invented citation detector passed", "private source"]:
+            if token not in validator:
+                errors.append(f"source-gated validator missing {token}")
+
+    if GOLDEN_QUERY_VALIDATOR.exists():
+        golden = GOLDEN_QUERY_VALIDATOR.read_text(encoding="utf-8")
+        for token in ["Golden query validation passed", "answer_with_citations", "cannot_verify"]:
+            if token not in golden:
+                errors.append(f"golden query validator missing {token}")
 
     if errors:
         print("Legal ingest storage validation failed:")

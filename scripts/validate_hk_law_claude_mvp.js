@@ -14,6 +14,15 @@ const SEARCH_EVIDENCE_API = path.join(ROOT, "api", "search-evidence.js");
 const QDRANT_INDEXER = path.join(ROOT, "scripts", "index_legal_ingest_qdrant.js");
 const QDRANT_VALIDATOR = path.join(ROOT, "scripts", "validate_qdrant_legal_index.js");
 const PIPELINE_TABLES_MIGRATION = path.join(ROOT, "supabase", "migrations", "20260615000000_create_legal_rag_pipeline_tables.sql");
+const SOURCE_GATED_DOC = path.join(ROOT, "docs", "source-gated-legal-answer-engine.md");
+const LEGAL_ANSWER_SCHEMA = path.join(ROOT, "src", "legal_answer", "schema.js");
+const EVIDENCE_PACK_BUILDER = path.join(ROOT, "src", "legal_answer", "build_evidence_pack.js");
+const SOURCE_GATED_GENERATOR = path.join(ROOT, "src", "legal_answer", "generate_source_gated_answer.js");
+const LEGAL_ANSWER_VERIFIER = path.join(ROOT, "src", "legal_answer", "verify_legal_answer.js");
+const LEGAL_ASSISTANT_CLI = path.join(ROOT, "scripts", "query_legal_assistant.js");
+const GOLDEN_QUERY_VALIDATOR = path.join(ROOT, "scripts", "validate_legal_golden_queries.js");
+const SOURCE_GATED_VALIDATOR = path.join(ROOT, "scripts", "validate_source_gated_answer.js");
+const GOLDEN_QUERIES = path.join(ROOT, "data", "legal_ingest", "mvp", "golden_queries.json");
 
 function parseEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return {};
@@ -119,6 +128,55 @@ function staticScaffoldReport(errors) {
     "hk_legal_paragraphs",
     "hk_proposition_cards",
     "hk_form_metadata",
+  ], errors);
+  fileIncludes(SOURCE_GATED_DOC, [
+    "No-Source / No-Answer Rule",
+    "Proposition Cards vs Authority",
+    "Optional LLM Adapter",
+  ], errors);
+  fileIncludes(LEGAL_ANSWER_SCHEMA, [
+    "legalSource",
+    "evidenceChunk",
+    "legalClaim",
+    "legalAnswer",
+    "retrievalTrace",
+    "verificationResult",
+  ], errors);
+  fileIncludes(EVIDENCE_PACK_BUILDER, [
+    "buildEvidencePack",
+    "proposition_families",
+    "retrieval_trace",
+  ], errors);
+  fileIncludes(SOURCE_GATED_GENERATOR, [
+    "generateSourceGatedAnswer",
+    "cannot_verify",
+    "retrieved_evidence_not_on_point",
+  ], errors);
+  fileIncludes(LEGAL_ANSWER_VERIFIER, [
+    "verifyLegalAnswer",
+    "invented citation-like string",
+    "private/licensed source used in public-demo mode",
+  ], errors);
+  fileIncludes(LEGAL_ASSISTANT_CLI, [
+    "query_legal_assistant",
+    "generateSourceGatedAnswer",
+    "verifyLegalAnswer",
+  ], errors);
+  fileIncludes(GOLDEN_QUERY_VALIDATOR, [
+    "Golden query validation passed",
+    "answer_with_citations",
+    "cannot_verify",
+  ], errors);
+  fileIncludes(SOURCE_GATED_VALIDATOR, [
+    "Source-gated answer smoke passed",
+    "No-source/no-answer gate passed",
+    "Invented citation detector passed",
+  ], errors);
+  fileIncludes(GOLDEN_QUERIES, [
+    "inconsistent_pleadings_core",
+    "criminal_bail_gap",
+    "answer_with_citations",
+    "cannot_verify",
   ], errors);
 }
 
