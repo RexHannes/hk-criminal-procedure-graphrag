@@ -17,6 +17,10 @@ APPROVE_ENDPOINT = ROOT / "api" / "legal-ingest" / "review" / "[card_id]" / "app
 BUCKET_MIGRATION = ROOT / "supabase" / "migrations" / "20260611001000_create_legal_storage_buckets.sql"
 REMOTE_SETUP_SCRIPT = ROOT / "scripts" / "setup_supabase_legal_ingest.js"
 PIPELINE_RUNNER = ROOT / "scripts" / "run_legal_rag_pipeline.js"
+QDRANT_QUERY = ROOT / "scripts" / "query_legal_qdrant.js"
+QDRANT_RETRIEVAL_SMOKE = ROOT / "scripts" / "validate_qdrant_retrieval_smoke.js"
+STUDENT_PACK_MAP = ROOT / "data" / "legal_ingest" / "mvp" / "github_student_pack_services.json"
+STUDENT_PACK_VALIDATOR = ROOT / "scripts" / "validate_student_pack_services.js"
 
 
 def main() -> int:
@@ -119,6 +123,27 @@ def main() -> int:
         ]:
             if token not in pipeline:
                 errors.append(f"legal RAG pipeline runner missing {token}")
+
+    for path, label in [
+        (QDRANT_QUERY, "Qdrant query script"),
+        (QDRANT_RETRIEVAL_SMOKE, "Qdrant retrieval smoke validator"),
+        (STUDENT_PACK_MAP, "GitHub Student Pack service map"),
+        (STUDENT_PACK_VALIDATOR, "GitHub Student Pack validator"),
+    ]:
+        if not path.exists():
+            errors.append(f"missing {label}: {path}")
+
+    if QDRANT_QUERY.exists():
+        qdrant_query = QDRANT_QUERY.read_text(encoding="utf-8")
+        for token in ["points/search", "LEGAL_EMBEDDING_PROVIDER", "hk_proposition_cards"]:
+            if token not in qdrant_query:
+                errors.append(f"Qdrant query script missing {token}")
+
+    if STUDENT_PACK_MAP.exists():
+        student_pack = STUDENT_PACK_MAP.read_text(encoding="utf-8")
+        for token in ["DigitalOcean", "Clerk", "Doppler / 1Password", "production_qdrant_host"]:
+            if token not in student_pack:
+                errors.append(f"Student Pack service map missing {token}")
 
     if errors:
         print("Legal ingest storage validation failed:")

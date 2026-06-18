@@ -1,0 +1,174 @@
+{
+  "pack_id": "github_student_developer_pack_legal_rag_mvp",
+  "version": "0.1.0",
+  "purpose": "Map GitHub Student Developer Pack benefits to the remaining Legal RAG MVP blockers without using them for confidential client data by default.",
+  "privacy_rule": "Use student/free cloud services for demos, public-law corpora, synthetic test documents, and portfolio infrastructure. Do not upload confidential client material, licensed treatises, or private firm precedents unless the service terms, tenancy model, and access controls are approved.",
+  "recommended_stack": [
+    {
+      "service": "DigitalOcean",
+      "priority": 1,
+      "use_for": [
+        "small production-like VM",
+        "Qdrant service",
+        "FastAPI legal-ingest sidecar",
+        "Postgres-compatible services where appropriate",
+        "portfolio/demo backend"
+      ],
+      "rag_blockers_helped": [
+        "production_qdrant_host",
+        "durable_backend_hosting",
+        "public_demo_runtime"
+      ],
+      "do_not_use_for": [
+        "GPU inference excluded by student credit terms",
+        "confidential/legal client documents without reviewed security controls"
+      ],
+      "repo_env_keys": [
+        "QDRANT_URL",
+        "QDRANT_API_KEY",
+        "LEGAL_INGEST_PUBLIC_BASE_URL"
+      ],
+      "status": "recommended_next"
+    },
+    {
+      "service": "GitHub Pro / Codespaces",
+      "priority": 2,
+      "use_for": [
+        "private repos",
+        "remote reproducible dev",
+        "portfolio README/docs",
+        "reviewable pull requests"
+      ],
+      "rag_blockers_helped": [
+        "developer_workflow",
+        "demo_reproducibility",
+        "safe_private_repo_iteration"
+      ],
+      "repo_env_keys": [],
+      "status": "available_to_use"
+    },
+    {
+      "service": "Clerk",
+      "priority": 3,
+      "use_for": [
+        "login",
+        "user accounts",
+        "firm/workspace identity",
+        "future B2B access control"
+      ],
+      "rag_blockers_helped": [
+        "tenant_access_controls",
+        "private_namespace_authorization"
+      ],
+      "repo_env_keys": [
+        "CLERK_SECRET_KEY",
+        "CLERK_PUBLISHABLE_KEY",
+        "CLERK_WEBHOOK_SECRET"
+      ],
+      "status": "optional_auth_path"
+    },
+    {
+      "service": "Appwrite",
+      "priority": 4,
+      "use_for": [
+        "alternative auth",
+        "file storage",
+        "database",
+        "serverless functions"
+      ],
+      "rag_blockers_helped": [
+        "beginner_friendly_backend",
+        "private_upload_prototype"
+      ],
+      "repo_env_keys": [
+        "APPWRITE_ENDPOINT",
+        "APPWRITE_PROJECT_ID",
+        "APPWRITE_API_KEY"
+      ],
+      "status": "alternative_to_clerk_supabase_path"
+    },
+    {
+      "service": "Doppler / 1Password",
+      "priority": 5,
+      "use_for": [
+        "API key storage",
+        "deployment secrets",
+        "rotation workflow"
+      ],
+      "rag_blockers_helped": [
+        "secret_management",
+        "deployment_safety"
+      ],
+      "repo_env_keys": [
+        "DOPPLER_PROJECT",
+        "DOPPLER_CONFIG"
+      ],
+      "status": "recommended_before_more_cloud_deployments"
+    },
+    {
+      "service": "Sentry / New Relic / Datadog",
+      "priority": 6,
+      "use_for": [
+        "runtime error tracking",
+        "API latency",
+        "ingestion job monitoring",
+        "retrieval failure alerts"
+      ],
+      "rag_blockers_helped": [
+        "observability",
+        "production_debugging"
+      ],
+      "repo_env_keys": [
+        "SENTRY_DSN",
+        "NEW_RELIC_LICENSE_KEY",
+        "DATADOG_API_KEY"
+      ],
+      "status": "later_after_public_demo"
+    },
+    {
+      "service": "Azure",
+      "priority": 7,
+      "use_for": [
+        "enterprise-signalling demo",
+        "App Service / Functions",
+        "document processing experiments"
+      ],
+      "rag_blockers_helped": [
+        "alternative_hosting",
+        "enterprise_cloud_familiarity"
+      ],
+      "repo_env_keys": [
+        "AZURE_STORAGE_CONNECTION_STRING",
+        "AZURE_OPENAI_ENDPOINT",
+        "AZURE_OPENAI_API_KEY"
+      ],
+      "status": "optional_after_digitalocean"
+    },
+    {
+      "service": "Notion / Microsoft 365",
+      "priority": 8,
+      "use_for": [
+        "source registry planning",
+        "SOP drafting",
+        "research notes",
+        "job/portfolio tracker"
+      ],
+      "rag_blockers_helped": [
+        "manual_review_workflow",
+        "documentation"
+      ],
+      "repo_env_keys": [],
+      "status": "workflow_support"
+    }
+  ],
+  "next_student_pack_action": {
+    "recommended": "Use DigitalOcean credit for a small Qdrant + legal-ingest sidecar VM once local retrieval smoke tests pass.",
+    "minimum_before_deploying_private_sources": [
+      "auth/tenant decision made",
+      "secret manager selected",
+      "private namespace policy enforced",
+      "no raw licensed text exposed by API",
+      "source-card review lifecycle active"
+    ]
+  }
+}

@@ -95,8 +95,18 @@ Required:
 Status:
 
 ```text
-Not green.
-Manifest/payload builders exist, but live Qdrant indexing is not configured unless `QDRANT_URL` and embedding settings are present.
+Local dev green, production not green.
+Qdrant local dev indexing works with local-hash embeddings. This proves plumbing,
+not legal semantic quality. Production needs hosted Qdrant and a real embedding
+provider/model.
+```
+
+Student Pack help:
+
+```text
+DigitalOcean credit can host a small Qdrant VM for public/demo source-card retrieval.
+Do not use it for confidential or licensed private sources until tenant and secret
+controls are ready.
 ```
 
 ### Gate 4 - Retrieval And Reranking
@@ -183,8 +193,17 @@ It should reuse reviewed legal maps and SOP flows, while still checking source f
 Status:
 
 ```text
-New MVP scaffold added.
-Database tables and cache helpers now exist, but production API read/write wiring still needs to be enabled.
+Implemented for the pilot vertical.
+Remote cache tables exist and the API writes/reuses retrieval bundles, legal answer
+snapshots and SOP playbooks for the source-card vertical.
+```
+
+Student Pack help:
+
+```text
+Doppler / 1Password should manage cache/API/Qdrant/Supabase secrets before more
+cloud deployment. Sentry/New Relic/Datadog can monitor cache misses, retrieval
+failures and ingestion errors later.
 ```
 
 ## What Is Still Missing For "Minimum Usable HK Law Claude"
@@ -192,13 +211,20 @@ Database tables and cache helpers now exist, but production API read/write wirin
 The minimum product is still missing:
 
 - large public judgment ingestion, ideally a staged ladder rather than jumping straight to 200k cases;
-- live Qdrant embeddings and vector search;
+- production semantic embeddings and hosted Qdrant/vector search;
 - production hybrid retrieval/reranking;
 - more verified source-card verticals;
 - admin UI for review/promotion;
 - source freshness and contradiction checks across domains;
 - tenant-aware private book/form upload and indexing;
-- answer snapshot/SOP cache integration in the query endpoint.
+- production auth/secrets/observability around private-source access.
+
+The GitHub Student Developer Pack infrastructure map is in:
+
+```text
+data/legal_ingest/mvp/github_student_pack_services.json
+docs/github-student-pack-legal-rag.md
+```
 
 ## Safe Upload Rule
 
@@ -216,4 +242,3 @@ source registered
 ```
 
 Public judgments may become paragraph/proposition cards. Licensed books and firm forms should become private doctrine notes, issue-spotting aids, metadata and approved template references only unless the licence expressly allows broader use.
-
