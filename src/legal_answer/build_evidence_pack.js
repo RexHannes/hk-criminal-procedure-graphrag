@@ -33,6 +33,8 @@ function sourceFromHit(hit, collectionName) {
     chunk_hash: sha256(`${collectionName}:${chunkId}:${payload.indexed_text_preview || ""}`),
     retrieval_score: hit.score,
     retrieval_stage: "qdrant",
+    source_visibility: payload.source_visibility || payload.visibility || "",
+    tenant_id: payload.tenant_id || payload.firm_id || "",
   });
 }
 
@@ -85,9 +87,12 @@ async function buildEvidencePack({
   collectionName,
   topK = 5,
   publicDemoMode = true,
+  sourceMode = "public_demo",
+  tenantId = "public",
+  includePrivate = false,
 } = {}) {
   if (!query) throw new Error("query required");
-  const result = await searchQdrant({ query, collectionName, topK });
+  const result = await searchQdrant({ query, collectionName, topK, sourceMode, tenantId, includePrivate });
   const chunks = result.hits.map(hit => chunkFromHit(hit, result.collection_name));
   const warnings = Array.from(new Set(chunks.flatMap(chunk => chunk.warnings || [])));
   if (!chunks.length) warnings.push("no_qdrant_hits");
@@ -114,6 +119,9 @@ async function buildEvidencePack({
     proposition_families: groupByPropositionFamily(chunks),
     sources: chunks.map(chunk => chunk.source),
     retrieval_trace: trace,
+    source_mode: result.source_mode,
+    tenant_id: result.tenant_id,
+    retrieval_filter: result.filter,
     warnings,
   };
 }

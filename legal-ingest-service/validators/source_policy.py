@@ -93,16 +93,24 @@ def policy_for_source(source_type: str, license_status: str, *, firm_id: str | N
 def apply_policy_to_source(record: dict[str, Any], *, firm_id: str | None = None) -> dict[str, Any]:
     """Normalize a source registry record with policy-derived safety fields."""
 
+    tenant_id = firm_id or record.get("firm_id") or record.get("tenant_id") or "public"
     policy = policy_for_source(
         str(record.get("source_type", "")),
         str(record.get("license_status", "unknown")),
-        firm_id=firm_id or record.get("firm_id"),
+        firm_id=None if tenant_id == "public" else str(tenant_id),
     )
+    source_visibility = "public_demo"
+    if policy.visibility in {"firm_private", "licensed_private"}:
+        source_visibility = "licensed_private" if policy.visibility == "licensed_private" else "private_tenant"
+    if policy.visibility == "blocked":
+        source_visibility = "blocked"
     normalized = dict(record)
     normalized.update(
         {
             "storage_policy": policy.storage_policy,
             "visibility": policy.visibility,
+            "source_visibility": source_visibility,
+            "tenant_id": "public" if source_visibility == "public_demo" else str(tenant_id),
             "review_status": policy.review_status,
             "ingest_status": "blocked" if policy.storage_policy == "do_not_index" else record.get("ingest_status", "registered"),
             "rag_policy": {

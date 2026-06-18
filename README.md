@@ -19,6 +19,17 @@ This is a **legal issue checklist / doctrine map / case map** for Hong Kong crim
 
 **This map does not constitute legal advice.**
 
+## Deployment / Private-Source Warning
+
+The hosted demo path is **public/demo-source only**.
+
+- Do not upload client documents.
+- Do not upload licensed textbooks, Atkin/forms, firm precedents, or private materials.
+- Private-source ingestion is disabled until Clerk tenant auth, source isolation, audit logs, and retrieval filters are verified.
+- Qdrant must not be exposed publicly; only the FastAPI reverse proxy should be internet-facing.
+- Every legal answer must remain source-gated: no source card means no final legal proposition.
+- SOP exports are draft/research artifacts and must remain modifiable and lawyer-review gated.
+
 ## Structure
 
 ```

@@ -17,6 +17,12 @@ def validate_source_registry_record(record: dict[str, Any]) -> list[str]:
             errors.append(f"source missing {field}")
     if record.get("source_type") in PRIVATE_SOURCE_TYPES and record.get("storage_policy") != "private_vault_only":
         errors.append(f"{record.get('source_id')}: private source must use private_vault_only")
+    if not record.get("source_visibility"):
+        errors.append(f"{record.get('source_id')}: source_visibility missing")
+    if not record.get("tenant_id"):
+        errors.append(f"{record.get('source_id')}: tenant_id missing")
+    if record.get("source_visibility") == "public_demo" and record.get("tenant_id") != "public":
+        errors.append(f"{record.get('source_id')}: public_demo source must use tenant_id=public")
     if record.get("license_status") in PROHIBITED_LICENSES and record.get("ingest_status") != "blocked":
         errors.append(f"{record.get('source_id')}: prohibited source must be blocked")
     return errors
@@ -37,4 +43,3 @@ def validate_proposition_against_source(proposition: dict[str, Any], source_text
     if proposition.get("verification_status") == "verified" and proposition.get("review_status") != "approved":
         errors.append(f"{proposition.get('proposition_id')}: verified requires approved review")
     return errors
-

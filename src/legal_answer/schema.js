@@ -34,6 +34,8 @@ function legalSource(input = {}) {
   return {
     source_id: cleanString(input.source_id),
     source_kind: sourceKind,
+    source_visibility: cleanString(input.source_visibility || "public_demo"),
+    tenant_id: cleanString(input.tenant_id || "public"),
     title: cleanString(input.title),
     jurisdiction: cleanString(input.jurisdiction || "HK"),
     court: cleanString(input.court),

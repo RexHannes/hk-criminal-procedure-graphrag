@@ -15,6 +15,8 @@ REQUIRED_PAYLOAD_FIELDS = [
     "review_status",
     "answer_layer_status",
     "visibility",
+    "source_visibility",
+    "tenant_id",
 ]
 
 
@@ -30,6 +32,8 @@ def proposition_payload(card: dict[str, Any], *, source_type: str, practice_area
         "review_status": card.get("review_status", "unreviewed"),
         "answer_layer_status": card.get("answer_layer_status", "research_only"),
         "visibility": visibility,
+        "source_visibility": card.get("source_visibility", "public_demo" if visibility in {"public_source", "public_metadata"} else "private_tenant"),
+        "tenant_id": card.get("tenant_id", "public" if visibility in {"public_source", "public_metadata"} else card.get("firm_id", "private_unassigned")),
         "firm_id": card.get("firm_id"),
         "proposition_id": card.get("proposition_id"),
         "paragraph_id": card.get("paragraph_id"),
@@ -38,4 +42,3 @@ def proposition_payload(card: dict[str, Any], *, source_type: str, practice_area
     if missing:
         raise ValueError(f"Qdrant payload missing metadata filters: {', '.join(missing)}")
     return payload
-

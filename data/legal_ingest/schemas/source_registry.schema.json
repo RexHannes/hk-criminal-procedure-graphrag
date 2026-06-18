@@ -13,7 +13,9 @@
     "storage_policy",
     "checksum",
     "ingest_status",
-    "review_status"
+    "review_status",
+    "source_visibility",
+    "tenant_id"
   ],
   "properties": {
     "source_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_:-]*$" },
@@ -85,6 +87,11 @@
       "type": "string",
       "enum": ["public_source", "public_metadata", "firm_private", "licensed_private", "blocked"]
     },
+    "source_visibility": {
+      "type": "string",
+      "enum": ["public_demo", "private_tenant", "licensed_private", "blocked"]
+    },
+    "tenant_id": { "type": "string", "minLength": 1 },
     "rag_policy": {
       "type": "object"
     },

@@ -17,7 +17,9 @@
       "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "ingest_status": "validated",
       "review_status": "lawyer_review_required",
-      "visibility": "public_source"
+      "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
     },
     {
       "source_id": "hk_case_2022_lancom_capxon",
@@ -32,7 +34,9 @@
       "checksum": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
       "ingest_status": "validated",
       "review_status": "lawyer_review_required",
-      "visibility": "public_source"
+      "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
     },
     {
       "source_id": "hk_case_2025_vasily_trubnikov",
@@ -47,7 +51,9 @@
       "checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
       "ingest_status": "validated",
       "review_status": "lawyer_review_required",
-      "visibility": "public_source"
+      "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
     },
     {
       "source_id": "hk_case_2023_liu_hao_tsing",
@@ -62,7 +68,9 @@
       "checksum": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
       "ingest_status": "validated",
       "review_status": "lawyer_review_required",
-      "visibility": "public_source"
+      "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
     },
     {
       "source_id": "hk_case_2019_shinyei_jenus",
@@ -77,7 +85,9 @@
       "checksum": "1111111111111111111111111111111111111111111111111111111111111111",
       "ingest_status": "validated",
       "review_status": "lawyer_review_required",
-      "visibility": "public_source"
+      "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
     },
     {
       "source_id": "hk_case_2025_dp_world_djibouti",
@@ -92,7 +102,9 @@
       "checksum": "2222222222222222222222222222222222222222222222222222222222222222",
       "ingest_status": "validated",
       "review_status": "lawyer_review_required",
-      "visibility": "public_source"
+      "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
     }
   ],
   "legal_paragraphs": [
@@ -106,6 +118,8 @@
       "jurisdiction": "Hong Kong",
       "issue_tags": ["abuse_of_process", "inconsistent_positions", "estoppel"],
       "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
       "verification_status": "quote_verified",
       "answer_layer_status": "research_only",
       "paragraph_text": "The principle is not confined to inconsistent factual allegations but applies to inconsistent positions or assumptions adopted by a party in different proceedings. The mischief to which the principle is directed is to prevent a litigant from adopting inconsistent positions on the same issue in different proceedings."
@@ -120,6 +134,8 @@
       "jurisdiction": "Hong Kong",
       "issue_tags": ["abuse_of_process", "estoppel", "inconsistent_positions"],
       "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
       "verification_status": "quote_verified",
       "answer_layer_status": "research_only",
       "paragraph_text": "It is an abuse of process for a party to adopt a position which is inconsistent and incompatible with the position he adopted in previous proceedings, and the party would be estopped from doing so."
@@ -134,6 +150,8 @@
       "jurisdiction": "Hong Kong",
       "issue_tags": ["abuse_of_process", "diametrically_opposed_positions", "integrity_of_justice"],
       "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
       "verification_status": "quote_verified",
       "answer_layer_status": "research_only",
       "paragraph_text": "It may be an abuse of process for a party, with full knowledge of the facts, to advance a claim that is diametrically opposed to its position taken in an earlier set of proceedings. The abuse lies in its effect on the integrity of the administration of justice."
@@ -148,6 +166,8 @@
       "jurisdiction": "Hong Kong",
       "issue_tags": ["alternative_pleading", "party_knowledge", "inconsistent_cases"],
       "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
       "verification_status": "quote_verified",
       "answer_layer_status": "research_only",
       "paragraph_text": "If the matters pleaded are matters which are plainly within that party's knowledge, so that he must know which of the inconsistent alternatives is the correct one, then the pleading of inconsistent alternative cases is not permissible."
@@ -162,6 +182,8 @@
       "jurisdiction": "Hong Kong",
       "issue_tags": ["summary_judgment", "pleaded_case", "material_deviation"],
       "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
       "verification_status": "quote_verified",
       "answer_layer_status": "research_only",
       "paragraph_text": "Where the assertions in the plaintiff's affirmation constitute a material deviation from the plaintiff's pleaded case, the plaintiff will have failed to verify his claim as pleaded, and summary judgment should not be granted."
@@ -176,6 +198,8 @@
       "jurisdiction": "Hong Kong",
       "issue_tags": ["henderson_abuse", "duplicative_litigation", "should_have_been_raised"],
       "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
       "verification_status": "machine_candidate",
       "answer_layer_status": "research_only",
       "paragraph_text": "Henderson-type abuse concerns matters which could and should have been raised in earlier proceedings. Pinpoint verification is required before this card may support a final legal proposition."

@@ -94,15 +94,65 @@ async function qdrantRequest(env, pathAndQuery, { method = "GET", body, ok = [20
   return payload;
 }
 
-async function searchQdrant({ query, collectionName, topK = 5, scoreThreshold = 0.01, env = loadEnv() }) {
+function matchValue(key, value) {
+  return {
+    key,
+    match: { value },
+  };
+}
+
+function publicDemoFilter() {
+  return {
+    must: [
+      matchValue("source_visibility", "public_demo"),
+      matchValue("tenant_id", "public"),
+    ],
+  };
+}
+
+function tenantRetrievalFilter({ tenantId, includePrivate = false, privateIngestionEnabled = false } = {}) {
+  if (!includePrivate || !privateIngestionEnabled || !tenantId) return publicDemoFilter();
+  return {
+    should: [
+      {
+        must: [
+          matchValue("source_visibility", "public_demo"),
+          matchValue("tenant_id", "public"),
+        ],
+      },
+      {
+        must: [
+          matchValue("source_visibility", "private_tenant"),
+          matchValue("tenant_id", tenantId),
+        ],
+      },
+    ],
+  };
+}
+
+async function searchQdrant({
+  query,
+  collectionName,
+  topK = 5,
+  scoreThreshold = 0.01,
+  env = loadEnv(),
+  sourceMode = "public_demo",
+  tenantId = "public",
+  includePrivate = false,
+} = {}) {
   const provider = env.LEGAL_EMBEDDING_PROVIDER || "local-hash";
   const dimension = Number(env.LEGAL_EMBEDDING_DIM || (provider === "openai" ? 1536 : 384));
   const collection = collectionName || env.QDRANT_COLLECTION_PROPOSITIONS || "hk_proposition_cards";
+  const privateIngestionEnabled = String(env.PRIVATE_SOURCE_INGESTION_ENABLED || "false").toLowerCase() === "true";
+  const filter = sourceMode === "private_tenant"
+    ? tenantRetrievalFilter({ tenantId, includePrivate, privateIngestionEnabled })
+    : publicDemoFilter();
   const vector = await embed(query, env, dimension);
   const payload = await qdrantRequest(env, `/collections/${encodeURIComponent(collection)}/points/search`, {
     method: "POST",
     body: {
       vector,
+      filter,
       limit: topK,
       with_payload: true,
       score_threshold: scoreThreshold,
@@ -115,6 +165,9 @@ async function searchQdrant({ query, collectionName, topK = 5, scoreThreshold = 
     returned_count: (payload.result || []).length,
     embedding_provider: provider,
     dimension,
+    source_mode: sourceMode,
+    tenant_id: sourceMode === "private_tenant" ? tenantId : "public",
+    filter,
     hits: payload.result || [],
   };
 }
@@ -123,6 +176,8 @@ module.exports = {
   embed,
   loadEnv,
   localHashEmbedding,
+  publicDemoFilter,
   qdrantRequest,
   searchQdrant,
+  tenantRetrievalFilter,
 };

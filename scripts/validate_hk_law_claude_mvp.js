@@ -23,6 +23,18 @@ const LEGAL_ASSISTANT_CLI = path.join(ROOT, "scripts", "query_legal_assistant.js
 const GOLDEN_QUERY_VALIDATOR = path.join(ROOT, "scripts", "validate_legal_golden_queries.js");
 const SOURCE_GATED_VALIDATOR = path.join(ROOT, "scripts", "validate_source_gated_answer.js");
 const GOLDEN_QUERIES = path.join(ROOT, "data", "legal_ingest", "mvp", "golden_queries.json");
+const DIGITALOCEAN_COMPOSE = path.join(ROOT, "infra", "digitalocean", "docker-compose.demo.yml");
+const DIGITALOCEAN_DOC = path.join(ROOT, "docs", "digitalocean-qdrant-fastapi-demo.md");
+const CLERK_DOC = path.join(ROOT, "docs", "clerk-tenant-auth.md");
+const SECRETS_DOC = path.join(ROOT, "docs", "secrets-doppler-1password.md");
+const FASTAPI_DOCKERFILE = path.join(ROOT, "Dockerfile.fastapi");
+const FASTAPI_MAIN = path.join(ROOT, "src", "api", "main.py");
+const FASTAPI_AUTH = path.join(ROOT, "src", "api", "auth.py");
+const TENANT_FILTER_VALIDATOR = path.join(ROOT, "scripts", "validate_tenant_filters.js");
+const CLERK_VALIDATOR = path.join(ROOT, "scripts", "validate_clerk_auth_config.js");
+const DEPLOYMENT_VALIDATOR = path.join(ROOT, "scripts", "validate_deployment_config.js");
+const NO_SECRETS_VALIDATOR = path.join(ROOT, "scripts", "validate_no_secrets_committed.js");
+const PRIVATE_INGEST_VALIDATOR = path.join(ROOT, "scripts", "validate_private_ingestion_blocked.js");
 
 function parseEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return {};
@@ -178,6 +190,44 @@ function staticScaffoldReport(errors) {
     "answer_with_citations",
     "cannot_verify",
   ], errors);
+  fileIncludes(DIGITALOCEAN_COMPOSE, [
+    "qdrant/qdrant:latest",
+    "QDRANT__SERVICE__API_KEY",
+    "QDRANT_URL: http://qdrant:6333",
+    "PRIVATE_SOURCE_INGESTION_ENABLED: \"false\"",
+  ], errors);
+  fileIncludes(DIGITALOCEAN_DOC, [
+    "do not expose 6333 publicly",
+    "Confirm private ingestion is blocked",
+  ], errors);
+  fileIncludes(CLERK_DOC, [
+    "must never trust `tenant_id`",
+    "CLERK_ENABLED=false",
+  ], errors);
+  fileIncludes(SECRETS_DOC, [
+    "Doppler",
+    "1Password",
+    "Do not commit runtime env files",
+  ], errors);
+  fileIncludes(FASTAPI_DOCKERFILE, [
+    "fastapi",
+    "uvicorn",
+    "src.api.main:app",
+  ], errors);
+  fileIncludes(FASTAPI_MAIN, [
+    "HK LegalTech Source-Gated RAG Demo",
+    "private ingestion is disabled by default",
+  ], errors);
+  fileIncludes(FASTAPI_AUTH, [
+    "AuthContext",
+    "require_private_auth",
+    "tenant_id = org_id or user_id",
+  ], errors);
+  fileIncludes(TENANT_FILTER_VALIDATOR, ["Tenant filter validation passed"], errors);
+  fileIncludes(CLERK_VALIDATOR, ["Clerk auth config validation passed"], errors);
+  fileIncludes(DEPLOYMENT_VALIDATOR, ["DigitalOcean deployment config validation passed"], errors);
+  fileIncludes(NO_SECRETS_VALIDATOR, ["No secrets committed"], errors);
+  fileIncludes(PRIVATE_INGEST_VALIDATOR, ["Private ingestion blocked by default"], errors);
 }
 
 function runtimeReadiness(env) {

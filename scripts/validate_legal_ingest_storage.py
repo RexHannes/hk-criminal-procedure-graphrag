@@ -27,6 +27,13 @@ LEGAL_ANSWER_SCHEMA = ROOT / "src" / "legal_answer" / "schema.js"
 EVIDENCE_PACK_SMOKE = ROOT / "scripts" / "build_legal_evidence_pack_smoke.js"
 SOURCE_GATED_VALIDATOR = ROOT / "scripts" / "validate_source_gated_answer.js"
 GOLDEN_QUERY_VALIDATOR = ROOT / "scripts" / "validate_legal_golden_queries.js"
+TENANT_FILTER_VALIDATOR = ROOT / "scripts" / "validate_tenant_filters.js"
+CLERK_VALIDATOR = ROOT / "scripts" / "validate_clerk_auth_config.js"
+DEPLOYMENT_VALIDATOR = ROOT / "scripts" / "validate_deployment_config.js"
+NO_SECRETS_VALIDATOR = ROOT / "scripts" / "validate_no_secrets_committed.js"
+PRIVATE_INGEST_VALIDATOR = ROOT / "scripts" / "validate_private_ingestion_blocked.js"
+DIGITALOCEAN_COMPOSE = ROOT / "infra" / "digitalocean" / "docker-compose.demo.yml"
+FASTAPI_MAIN = ROOT / "src" / "api" / "main.py"
 
 
 def main() -> int:
@@ -51,6 +58,13 @@ def main() -> int:
         "ANTHROPIC_API_KEY",
         "OPENAI_API_KEY",
         "LLM_LOCAL_ENDPOINT",
+        "CLERK_ENABLED",
+        "CLERK_JWT_KEY",
+        "CLERK_AUTHORIZED_PARTIES",
+        "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+        "PRIVATE_SOURCE_INGESTION_ENABLED",
+        "PUBLIC_DEMO_MODE",
+        "DEMO_DOMAIN",
     ]:
         if f"{key}=" not in env:
             errors.append(f".env.example missing {key}")
@@ -145,6 +159,13 @@ def main() -> int:
         (EVIDENCE_PACK_SMOKE, "evidence pack smoke script"),
         (SOURCE_GATED_VALIDATOR, "source-gated answer validator"),
         (GOLDEN_QUERY_VALIDATOR, "golden query validator"),
+        (TENANT_FILTER_VALIDATOR, "tenant filter validator"),
+        (CLERK_VALIDATOR, "Clerk auth config validator"),
+        (DEPLOYMENT_VALIDATOR, "deployment config validator"),
+        (NO_SECRETS_VALIDATOR, "no-secrets validator"),
+        (PRIVATE_INGEST_VALIDATOR, "private ingestion blocked validator"),
+        (DIGITALOCEAN_COMPOSE, "DigitalOcean Docker Compose"),
+        (FASTAPI_MAIN, "FastAPI demo app"),
     ]:
         if not path.exists():
             errors.append(f"missing {label}: {path}")
@@ -184,6 +205,19 @@ def main() -> int:
         for token in ["Golden query validation passed", "answer_with_citations", "cannot_verify"]:
             if token not in golden:
                 errors.append(f"golden query validator missing {token}")
+
+    if DIGITALOCEAN_COMPOSE.exists():
+        compose = DIGITALOCEAN_COMPOSE.read_text(encoding="utf-8")
+        for token in ["qdrant/qdrant:latest", "QDRANT__SERVICE__API_KEY", "QDRANT_URL: http://qdrant:6333", "PRIVATE_SOURCE_INGESTION_ENABLED: \"false\""]:
+            if token not in compose:
+                errors.append(f"DigitalOcean compose missing {token}")
+        if "\"6333:6333\"" in compose or "- 6333:6333" in compose:
+            errors.append("DigitalOcean compose must not publish Qdrant 6333")
+
+    if FASTAPI_MAIN.exists():
+        fastapi_main = FASTAPI_MAIN.read_text(encoding="utf-8")
+        if "private ingestion is disabled by default" not in fastapi_main:
+            errors.append("FastAPI demo app missing private-ingestion warning")
 
     if errors:
         print("Legal ingest storage validation failed:")

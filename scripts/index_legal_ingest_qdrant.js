@@ -116,7 +116,7 @@ async function ensureCollection(env, collectionName, dimension) {
         distance: "Cosine",
       },
     },
-    ok: [200, 201],
+    ok: [200, 201, 409],
   });
 }
 
@@ -134,6 +134,8 @@ function propositionPayload(card, sourceById, paragraphById) {
     review_status: card.review_status || "unreviewed",
     answer_layer_status: card.answer_layer_status || "research_only",
     visibility: source.visibility || paragraph.visibility || "public_source",
+    source_visibility: "public_demo",
+    tenant_id: "public",
     firm_id: null,
     proposition_id: card.proposition_id,
     paragraph_id: card.paragraph_id,
@@ -157,6 +159,8 @@ function paragraphPayload(paragraph, sourceById) {
     review_status: source.review_status || "lawyer_review_required",
     answer_layer_status: paragraph.answer_layer_status || "research_only",
     visibility: paragraph.visibility || source.visibility || "public_source",
+    source_visibility: "public_demo",
+    tenant_id: "public",
     firm_id: null,
     paragraph_id: paragraph.paragraph_id,
     citation: paragraph.citation,
@@ -177,6 +181,8 @@ function formPayload(form) {
     review_status: form.review_status || "machine_extracted_candidate",
     answer_layer_status: "research_only",
     visibility: "public_metadata",
+    source_visibility: "public_demo",
+    tenant_id: "public",
     firm_id: null,
     form_id: form.form_id,
     form_family: form.form_family,

@@ -14,6 +14,8 @@
       "ingest_status": "parsed",
       "review_status": "unreviewed",
       "visibility": "public_source",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
       "notes": "Sample metadata only. Paragraph text must be fetched/verified from source before answer-safe use."
     },
     {
@@ -27,6 +29,8 @@
       "ingest_status": "registered",
       "review_status": "lawyer_review_required",
       "visibility": "firm_private",
+      "source_visibility": "private_tenant",
+      "tenant_id": "firm_demo",
       "notes": "Raw DOCX stays in private vault. Public repo may store metadata/field schema only."
     },
     {
@@ -40,6 +44,8 @@
       "ingest_status": "registered",
       "review_status": "lawyer_review_required",
       "visibility": "licensed_private",
+      "source_visibility": "licensed_private",
+      "tenant_id": "firm_demo",
       "notes": "Book source is registered only. No raw text or chunks are public."
     }
   ]
