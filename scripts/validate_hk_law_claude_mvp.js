@@ -42,6 +42,24 @@ const PRIVATE_ACCESS_VALIDATOR = path.join(ROOT, "scripts", "validate_private_so
 const HARDENING_VALIDATOR = path.join(ROOT, "scripts", "validate_production_hardening_scaffolds.js");
 const READINESS_REPORT = path.join(ROOT, "scripts", "report_mvp_readiness.js");
 const HARDENING_DOC = path.join(ROOT, "docs", "production-hardening-roadmap.md");
+const PUBLIC_CORPUS_V1 = path.join(ROOT, "data", "legal_ingest", "public_corpus_v1", "corpus_manifest.json");
+const PUBLIC_CORPUS_V1_REGISTRY = path.join(ROOT, "data", "legal_ingest", "public_corpus_v1", "source_registry.json");
+const PUBLIC_CORPUS_V1_CHUNKS = path.join(ROOT, "data", "legal_ingest", "public_corpus_v1", "chunk_manifest.json");
+const PUBLIC_CORPUS_CONTRACT = path.join(ROOT, "docs", "public-corpus-ingestion-contract.md");
+const PUBLIC_CORPUS_V1_VALIDATOR = path.join(ROOT, "scripts", "validate_public_corpus_v1.js");
+const EMBEDDING_ADAPTER = path.join(ROOT, "src", "retrieval", "embedding_adapter.js");
+const RERANK_ADAPTER = path.join(ROOT, "src", "retrieval", "rerank_adapter.js");
+const EMBEDDING_RERANK_VALIDATOR = path.join(ROOT, "scripts", "validate_embedding_rerank_adapters.js");
+const RETRIEVAL_BENCHMARK = path.join(ROOT, "data", "legal_ingest", "mvp", "retrieval_benchmark_queries.json");
+const RETRIEVAL_BENCHMARK_RUNNER = path.join(ROOT, "scripts", "run_retrieval_benchmark.js");
+const RETRIEVAL_QUALITY_VALIDATOR = path.join(ROOT, "scripts", "validate_retrieval_quality_floor.js");
+const REVIEW_STORE = path.join(ROOT, "src", "review", "review_store.js");
+const REVIEW_PROMOTION_API = path.join(ROOT, "src", "review", "promotion_api.js");
+const REVIEW_PROMOTION_CLI = path.join(ROOT, "scripts", "review_promote_claim.js");
+const REVIEW_PROMOTION_WORKFLOW_VALIDATOR = path.join(ROOT, "scripts", "validate_review_promotion_workflow.js");
+const SOURCE_GATED_REVIEW_STATE_VALIDATOR = path.join(ROOT, "scripts", "validate_source_gated_review_state.js");
+const CRIMINAL_GOLDEN_QUERIES = path.join(ROOT, "data", "legal_ingest", "mvp", "golden_queries_criminal_v1.json");
+const CRIMINAL_GOLDEN_VALIDATOR = path.join(ROOT, "scripts", "validate_criminal_golden_queries_v1.js");
 
 function parseEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return {};
@@ -240,12 +258,68 @@ function staticScaffoldReport(errors) {
   fileIncludes(REVIEW_PROMOTION_VALIDATOR, ["Review promotion validation passed"], errors);
   fileIncludes(PRIVATE_ACCESS_VALIDATOR, ["Private source access validation passed"], errors);
   fileIncludes(HARDENING_VALIDATOR, ["Production hardening scaffold validation passed"], errors);
-  fileIncludes(READINESS_REPORT, ["estimated_overall_done_percent"], errors);
+  fileIncludes(READINESS_REPORT, ["estimated_overall_done_percent", "production_readiness_estimate", "key_remaining_blockers"], errors);
   fileIncludes(HARDENING_DOC, [
     "Production Hardening Roadmap",
     "machine_candidate -> quote_verified -> source_verified -> lawyer_reviewed -> answer_safe",
     "Do not upload private books/forms/client documents",
   ], errors);
+  fileIncludes(PUBLIC_CORPUS_V1, [
+    "hk_criminal_procedure_evidence_public_demo_v1",
+    "public_demo",
+    "answer_safe_chunk_count",
+  ], errors);
+  fileIncludes(PUBLIC_CORPUS_V1_REGISTRY, [
+    "hk_case_2020_minloy",
+    "cap_221_criminal_procedure_ordinance",
+    "public_or_demo_safe",
+  ], errors);
+  fileIncludes(PUBLIC_CORPUS_V1_CHUNKS, [
+    "prop_inconsistent_positions_scope_minloy_p31",
+    "source_visibility",
+    "embedding_status",
+  ], errors);
+  fileIncludes(PUBLIC_CORPUS_CONTRACT, [
+    "Public Corpus Ingestion Contract",
+    "private/licensed",
+    "Review and Promotion",
+  ], errors);
+  fileIncludes(PUBLIC_CORPUS_V1_VALIDATOR, ["Public corpus v1 validation passed"], errors);
+  fileIncludes(EMBEDDING_ADAPTER, [
+    "SUPPORTED_EMBEDDING_PROVIDERS",
+    "EMBEDDING_PROVIDER",
+    "openai",
+    "voyage",
+    "cohere",
+  ], errors);
+  fileIncludes(RERANK_ADAPTER, [
+    "SUPPORTED_RERANK_PROVIDERS",
+    "RERANK_PROVIDER",
+    "localRerank",
+  ], errors);
+  fileIncludes(EMBEDDING_RERANK_VALIDATOR, ["Embedding adapter validation passed", "Rerank adapter validation passed"], errors);
+  fileIncludes(RETRIEVAL_BENCHMARK, [
+    "hk_criminal_evidence_public_demo_retrieval_v1",
+    "expected_source_ids_any",
+    "quality_floor",
+  ], errors);
+  fileIncludes(RETRIEVAL_BENCHMARK_RUNNER, [
+    "runBenchmark",
+    "quality_status",
+    "private_source_leakage_report",
+  ], errors);
+  fileIncludes(RETRIEVAL_QUALITY_VALIDATOR, ["Retrieval benchmark completed"], errors);
+  fileIncludes(REVIEW_STORE, ["readReviewStore", "upsertReviewItem", "DEFAULT_STORE_PATH"], errors);
+  fileIncludes(REVIEW_PROMOTION_API, ["promoteReviewItem", "toStatus", "sourceText"], errors);
+  fileIncludes(REVIEW_PROMOTION_CLI, ["promoteReviewItem", "--to", "--source-text"], errors);
+  fileIncludes(REVIEW_PROMOTION_WORKFLOW_VALIDATOR, ["Review promotion workflow validation passed"], errors);
+  fileIncludes(SOURCE_GATED_REVIEW_STATE_VALIDATOR, ["Source-gated answer with review-state validation passed"], errors);
+  fileIncludes(CRIMINAL_GOLDEN_QUERIES, [
+    "hk_criminal_procedure_evidence_v05_golden_queries",
+    "burden_standard",
+    "right_to_silence",
+  ], errors);
+  fileIncludes(CRIMINAL_GOLDEN_VALIDATOR, ["Criminal golden query suite validation passed"], errors);
 }
 
 function runtimeReadiness(env) {
@@ -261,8 +335,8 @@ function runtimeReadiness(env) {
       url_present: Boolean(env.QDRANT_URL),
     },
     embeddings: {
-      configured: Boolean(env.LEGAL_EMBEDDING_PROVIDER || env.OPENAI_API_KEY || env.EMBEDDING_API_KEY || env.DEEPSEEK_API_KEY),
-      provider: env.LEGAL_EMBEDDING_PROVIDER || (env.OPENAI_API_KEY ? "openai" : env.DEEPSEEK_API_KEY ? "deepseek" : ""),
+      configured: Boolean(env.LEGAL_EMBEDDING_PROVIDER || env.EMBEDDING_PROVIDER || env.OPENAI_API_KEY || env.EMBEDDING_API_KEY || env.DEEPSEEK_API_KEY),
+      provider: env.LEGAL_EMBEDDING_PROVIDER || env.EMBEDDING_PROVIDER || (env.OPENAI_API_KEY ? "openai" : env.DEEPSEEK_API_KEY ? "deepseek" : ""),
       openai_present: Boolean(env.OPENAI_API_KEY),
       generic_embedding_key_present: Boolean(env.EMBEDDING_API_KEY),
       deepseek_present: Boolean(env.DEEPSEEK_API_KEY),

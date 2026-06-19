@@ -1,0 +1,23 @@
+{
+  "corpus_id": "hk_criminal_procedure_evidence_public_demo_v1",
+  "version": "0.5.0",
+  "scope": "HK criminal procedure / evidence public-demo corpus",
+  "status": "mixed_candidate_and_pilot_embedded",
+  "source_count": 32,
+  "chunk_count": 6,
+  "embedded_chunk_count": 6,
+  "answer_safe_chunk_count": 0,
+  "source_visibility": "public_demo",
+  "tenant_id": "public",
+  "notes": [
+    "Only public/demo-safe metadata is included.",
+    "No private, client, licensed textbook, Atkin, or firm precedent material is included.",
+    "Most criminal procedure/evidence sources are not_ingested candidates until official text is parsed and verified.",
+    "The current embedded chunks are the existing inconsistent-pleadings pilot cards."
+  ],
+  "quality_status": {
+    "structural_validation": "expected_pass",
+    "retrieval_quality_floor": "expected_insufficient_until_more_criminal_sources_ingested",
+    "production_answer_readiness": "not_green"
+  }
+}

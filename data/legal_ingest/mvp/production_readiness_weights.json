@@ -1,62 +1,93 @@
 {
-  "readiness_id": "hk_law_claude_production_readiness_v1",
+  "readiness_id": "hk_law_claude_production_readiness_v05",
   "description": "Weighted readiness estimate for a transparent, source-gated HK law assistant. Percentages are engineering/product-readiness estimates, not legal validation.",
-  "gates": [
+  "overall_warning": "This is a public-source demo readiness model. It must not be read as lawyer approval, corpus completeness, or private/licensed-source readiness.",
+  "sections": [
     {
-      "gate_id": "corpus_input_and_licence_controls",
+      "section_id": "architecture_readiness",
       "weight": 15,
-      "current_state": "partial",
-      "done_ratio": 0.45,
-      "remaining": "Scale public corpus and keep private/licensed sources out of public namespace."
+      "current_state": "strong_local_scaffold",
+      "done_ratio": 0.72,
+      "evidence": [
+        "source registry, public corpus manifest, storage schema, Qdrant index scripts, answer contracts, and source-gated answer schema exist",
+        "DigitalOcean/FastAPI/Qdrant demo scaffold exists with private ingestion disabled by default"
+      ],
+      "remaining": "Convert local/demo scaffolds into production services with durable orchestration, deployment secrets, and operational monitoring."
     },
     {
-      "gate_id": "legal_processing_and_structured_objects",
-      "weight": 15,
-      "current_state": "partial",
-      "done_ratio": 0.45,
-      "remaining": "Large-scale case/legislation parsing and proposition extraction."
+      "section_id": "corpus_readiness",
+      "weight": 25,
+      "current_state": "thin_public_demo_corpus",
+      "done_ratio": 0.22,
+      "evidence": [
+        "public corpus v1 registry defines 30+ public/demo-safe source candidates",
+        "only the small inconsistent-pleadings pilot has embedded chunk/proposition coverage"
+      ],
+      "remaining": "Ingest a large public HK cases/legislation corpus with paragraph/provision cards, citation normalization, deduplication, and no private source leakage."
     },
     {
-      "gate_id": "embedding_and_vector_storage",
-      "weight": 15,
-      "current_state": "local_dev_indexed_with_hash_embeddings",
-      "done_ratio": 0.5,
-      "remaining": "Production embedding provider, dimension migration, and reindex safeguards."
+      "section_id": "retrieval_quality_readiness",
+      "weight": 20,
+      "current_state": "smoke_retrieval_only",
+      "done_ratio": 0.30,
+      "evidence": [
+        "local Qdrant collections and deterministic dev embeddings prove the indexing/search path",
+        "retrieval benchmark suite exists and honestly reports insufficient quality until more corpus and real retrieval are configured"
+      ],
+      "remaining": "Replace local-hash vectors with real embeddings, add production reranking, run quality gates against golden HK criminal procedure/evidence queries, and scale only after source-hit quality passes."
     },
     {
-      "gate_id": "retrieval_and_reranking",
+      "section_id": "answer_safety_readiness",
       "weight": 15,
-      "current_state": "partial",
-      "done_ratio": 0.45,
-      "remaining": "Hybrid keyword/vector retrieval quality gate and optional reranker provider."
+      "current_state": "source_gated_claims_with_review_state",
+      "done_ratio": 0.58,
+      "evidence": [
+        "source-gated claims include review_state, answer_safe, and human_review_required",
+        "main answer path separates research-only machine candidates from answer-safe reviewed propositions"
+      ],
+      "remaining": "Run answer cross-checking across broader domains and prevent unsupported propositions from appearing as final law in all composers."
     },
     {
-      "gate_id": "authority_treatment_and_answer_contract",
-      "weight": 15,
-      "current_state": "partial",
-      "done_ratio": 0.55,
-      "remaining": "More verified source cards across domains and answer cross-checking at scale."
+      "section_id": "review_workflow_readiness",
+      "weight": 10,
+      "current_state": "local_review_promotion_workflow",
+      "done_ratio": 0.46,
+      "evidence": [
+        "machine_candidate -> quote_verified -> source_verified -> lawyer_reviewed -> answer_safe promotion rules exist",
+        "local review workflow validation records promotion audit history"
+      ],
+      "remaining": "Connect review workflow to real admin UI/API, Supabase-backed queues, reviewer identity, audit logs, and rejection/rollback paths."
     },
     {
-      "gate_id": "review_promotion_and_evals",
-      "weight": 15,
-      "current_state": "partial",
-      "done_ratio": 0.45,
-      "remaining": "Full review promotion UI/API, audit logs, and broad golden query suite."
+      "section_id": "auth_deployment_readiness",
+      "weight": 10,
+      "current_state": "safe_demo_scaffold",
+      "done_ratio": 0.36,
+      "evidence": [
+        "DigitalOcean demo scaffold, Clerk configuration docs, tenant-filter validators, and private-ingestion-disabled defaults exist"
+      ],
+      "remaining": "Deploy with real managed secrets, Clerk JWT verification, tenant namespaces, access logs, and private-source authorization before any private book/form ingestion."
     },
     {
-      "gate_id": "stored_retrieved_law_and_sop_cache",
+      "section_id": "sop_answer_memory_readiness",
       "weight": 5,
-      "current_state": "remote_schema_applied_api_cache_and_sop_wiring_present",
-      "done_ratio": 0.75,
-      "remaining": "Cache reuse policies across more domains and stale-source invalidation tests."
-    },
-    {
-      "gate_id": "private_source_access_controls",
-      "weight": 5,
-      "current_state": "partial",
-      "done_ratio": 0.4,
-      "remaining": "Real Clerk JWT verification, tenant audit logs, and private-source retrieval QA."
+      "current_state": "remote_schema_applied_cache_wiring_present",
+      "done_ratio": 0.68,
+      "evidence": [
+        "retrieval_bundles, legal_answer_snapshots, and sop_playbooks schema is present",
+        "API cache helpers exist"
+      ],
+      "remaining": "Add stale-source invalidation tests and broader SOP/playbook reuse policies."
     }
-  ]
+  ],
+  "legacy_gate_mapping": {
+    "corpus_input_and_licence_controls": "corpus_readiness",
+    "legal_processing_and_structured_objects": "corpus_readiness",
+    "embedding_and_vector_storage": "retrieval_quality_readiness",
+    "retrieval_and_reranking": "retrieval_quality_readiness",
+    "authority_treatment_and_answer_contract": "answer_safety_readiness",
+    "review_promotion_and_evals": "review_workflow_readiness",
+    "stored_retrieved_law_and_sop_cache": "sop_answer_memory_readiness",
+    "private_source_access_controls": "auth_deployment_readiness"
+  }
 }

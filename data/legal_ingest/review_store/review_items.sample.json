@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "item_id": "prop_inconsistent_positions_scope_minloy_p31",
+      "item_type": "proposition_card",
+      "review_state": "quote_verified",
+      "review_status": "lawyer_review_required",
+      "source_id": "hk_case_2020_minloy",
+      "citation": "[2020] HKCFI 2215",
+      "pinpoint": "para 31",
+      "authority_role": "applied_principle",
+      "supporting_quote": "not confined to inconsistent factual allegations but applies to inconsistent positions or assumptions",
+      "audit": []
+    }
+  ]
+}

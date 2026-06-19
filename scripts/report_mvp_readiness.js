@@ -11,28 +11,50 @@ function loadWeights() {
   return JSON.parse(fs.readFileSync(WEIGHTS_PATH, "utf8"));
 }
 
+function readinessItems(weights) {
+  return weights.sections || weights.gates || [];
+}
+
+function itemId(item) {
+  return item.section_id || item.gate_id;
+}
+
 function weightedReadiness(weights) {
-  const total = weights.gates.reduce((sum, gate) => sum + gate.weight, 0);
-  const done = weights.gates.reduce((sum, gate) => sum + gate.weight * gate.done_ratio, 0);
+  const items = readinessItems(weights);
+  const total = items.reduce((sum, item) => sum + item.weight, 0);
+  const done = items.reduce((sum, item) => sum + item.weight * item.done_ratio, 0);
   return Math.round((done / total) * 100);
 }
 
 function report() {
   const weights = loadWeights();
   const percent = weightedReadiness(weights);
-  const gates = weights.gates.map(gate => ({
-    gate_id: gate.gate_id,
-    weight: gate.weight,
-    current_state: gate.current_state,
-    estimated_done_percent: Math.round(gate.done_ratio * 100),
-    remaining: gate.remaining,
+  const sections = readinessItems(weights).map(item => ({
+    section_id: itemId(item),
+    weight: item.weight,
+    current_state: item.current_state,
+    estimated_done_percent: Math.round(item.done_ratio * 100),
+    evidence: item.evidence || [],
+    remaining: item.remaining,
   }));
   return {
     readiness_id: weights.readiness_id,
     estimated_overall_done_percent: percent,
     practical_status: percent >= 80 ? "public_demo_close" : "local_demo_plus_scaffold",
-    summary: "Local source-gated pilot is working; production HK-law Claude still needs corpus scale, real retrieval quality, review promotion, and private-source controls.",
-    gates,
+    production_readiness_estimate: percent >= 80 ? "near_public_demo_quality_gate" : "not_production_ready",
+    summary: "v0.5 has stronger public-corpus, retrieval-benchmark, review, and source-gated answer plumbing; production HK-law Claude still needs corpus scale, real embeddings/reranking, review promotion, and private-source access controls.",
+    warning: weights.overall_warning || "Readiness percentages are engineering estimates, not legal validation.",
+    sections,
+    gates: sections.map(section => ({
+      gate_id: section.section_id,
+      weight: section.weight,
+      current_state: section.current_state,
+      estimated_done_percent: section.estimated_done_percent,
+      remaining: section.remaining,
+    })),
+    key_remaining_blockers: sections
+      .filter(section => section.estimated_done_percent < 70)
+      .map(section => `${section.section_id}: ${section.remaining}`),
   };
 }
 

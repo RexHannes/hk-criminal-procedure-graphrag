@@ -1,0 +1,76 @@
+{
+  "chunks": [
+    {
+      "chunk_id": "prop_inconsistent_positions_scope_minloy_p31",
+      "source_id": "hk_case_2020_minloy",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "chunk_hash": "0b1f0f18b4a9bce7b1c9b57b54fbe4d6a84adfd48aa3fceeb29f1176869b5f76",
+      "citation": "[2020] HKCFI 2215",
+      "pinpoint": "para 31",
+      "review_state": "quote_verified",
+      "embedding_status": "embedded"
+    },
+    {
+      "chunk_id": "prop_abuse_estoppel_lancom_p43",
+      "source_id": "hk_case_2022_lancom_capxon",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "chunk_hash": "91bb7384ef8d935204b56c010a25ef41e99db71e7a4fc2697718624703703564",
+      "citation": "[2022] HKCFI 381",
+      "pinpoint": "para 43",
+      "review_state": "quote_verified",
+      "embedding_status": "embedded"
+    },
+    {
+      "chunk_id": "prop_diametrically_opposed_integrity_vasily_p39",
+      "source_id": "hk_case_2025_vasily_trubnikov",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "chunk_hash": "9f28f534a25343177e3669259b56b99600e177ced0f96d40fbf4bbdcb2451913",
+      "citation": "[2025] HKCFI 1576",
+      "pinpoint": "para 39",
+      "review_state": "quote_verified",
+      "embedding_status": "embedded"
+    },
+    {
+      "chunk_id": "prop_alternative_pleading_within_knowledge_liu_p16",
+      "source_id": "hk_case_2023_liu_hao_tsing",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "chunk_hash": "818914878fb73b933b488d28bedb96edaf338a390d34420ad1e5a175f1498247",
+      "citation": "[2023] HKCFI 1463",
+      "pinpoint": "para 16",
+      "review_state": "quote_verified",
+      "embedding_status": "embedded"
+    },
+    {
+      "chunk_id": "prop_summary_judgment_material_deviation_shinyei_p19",
+      "source_id": "hk_case_2019_shinyei_jenus",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "chunk_hash": "c53b958b824d3169b3d7a0fa2624906aca266db0c438930bda2df6a0488824e8",
+      "citation": "[2019] HKCFI 2377",
+      "pinpoint": "para 19",
+      "review_state": "quote_verified",
+      "embedding_status": "embedded"
+    },
+    {
+      "chunk_id": "prop_henderson_abuse_dp_world_pending",
+      "source_id": "hk_case_2025_dp_world_djibouti",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "chunk_hash": "7660bb35b7f3fccb191ff19e15cd528d4abec632af47fa6554f297feefed5c79",
+      "citation": "[2025] HKCFI 3861",
+      "pinpoint": "pinpoint pending full judgment check",
+      "review_state": "machine_candidate",
+      "embedding_status": "embedded"
+    }
+  ]
+}

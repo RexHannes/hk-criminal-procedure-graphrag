@@ -1,0 +1,234 @@
+{
+  "suite_id": "hk_criminal_evidence_public_demo_retrieval_v1",
+  "quality_floor": {
+    "min_hit_rate": 0.6,
+    "current_expected_status": "insufficient_until_criminal_corpus_ingested"
+  },
+  "queries": [
+    {
+      "id": "abuse_inconsistent_positions",
+      "query": "abuse of process inconsistent positions different proceedings",
+      "expected_source_ids_any": ["hk_case_2020_minloy", "hk_case_2022_lancom_capxon"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "diametrically_opposed_position",
+      "query": "diametrically opposed factual position earlier proceedings integrity of justice",
+      "expected_source_ids_any": ["hk_case_2025_vasily_trubnikov"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "alternative_pleading_knowledge",
+      "query": "inconsistent alternatives facts plainly within party knowledge",
+      "expected_source_ids_any": ["hk_case_2023_liu_hao_tsing"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "summary_judgment_deviation",
+      "query": "material deviation from pleaded case summary judgment affirmation",
+      "expected_source_ids_any": ["hk_case_2019_shinyei_jenus"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "henderson_could_should",
+      "query": "Henderson abuse could and should have been raised earlier",
+      "expected_source_ids_any": ["hk_case_2025_dp_world_djibouti"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "bail_refusal",
+      "query": "criminal bail refusal grounds Hong Kong",
+      "expected_source_ids_any": ["cap_221_criminal_procedure_ordinance", "criminal_procedure_hk_graph_bail_nodes"],
+      "expected_source_kind_any": ["ordinance", "proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "search_warrant",
+      "query": "search warrant test Hong Kong criminal procedure",
+      "expected_source_ids_any": ["cap_232_police_force_ordinance", "criminal_procedure_hk_graph_arrest_search_nodes"],
+      "expected_source_kind_any": ["ordinance", "proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "arrest_reasonable_suspicion",
+      "query": "reasonable suspicion arrest without warrant Hong Kong",
+      "expected_source_ids_any": ["cap_232_police_force_ordinance", "criminal_procedure_hk_graph_arrest_search_nodes"],
+      "expected_source_kind_any": ["ordinance", "proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "right_to_silence",
+      "query": "right to silence criminal interview Hong Kong",
+      "expected_source_ids_any": ["cap_383_hong_kong_bill_of_rights_ordinance", "basic_law_hksar"],
+      "expected_source_kind_any": ["ordinance"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "confession_admissibility",
+      "query": "confession admissibility evidence criminal trial",
+      "expected_source_ids_any": ["cap_8_evidence_ordinance"],
+      "expected_source_kind_any": ["ordinance"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "hearsay_criminal",
+      "query": "hearsay evidence criminal proceedings Hong Kong",
+      "expected_source_ids_any": ["cap_8_evidence_ordinance"],
+      "expected_source_kind_any": ["ordinance"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "identification_evidence",
+      "query": "identification evidence criminal trial warning",
+      "expected_source_ids_any": ["criminal_procedure_hk_graph_cfi_trial_nodes"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "similar_fact",
+      "query": "similar fact evidence criminal trial admissibility",
+      "expected_source_ids_any": ["cap_8_evidence_ordinance"],
+      "expected_source_kind_any": ["ordinance"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "burden_standard",
+      "query": "burden of proof standard of proof criminal case",
+      "expected_source_ids_any": ["criminal_law_hk_graph_fundamentals_nodes"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "indictment_defect",
+      "query": "defective indictment amendment criminal trial",
+      "expected_source_ids_any": ["criminal_procedure_hk_graph_indictment_nodes", "cap_221_criminal_procedure_ordinance"],
+      "expected_source_kind_any": ["proposition_card", "ordinance"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "no_case_submission",
+      "query": "no case submission criminal trial Hong Kong",
+      "expected_source_ids_any": ["criminal_procedure_hk_graph_cfi_trial_nodes"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "appeal_conviction",
+      "query": "appeal against conviction unsafe verdict Hong Kong",
+      "expected_source_ids_any": ["criminal_procedure_hk_graph_appeal_review_nodes"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "vulnerable_witness",
+      "query": "vulnerable witness live television link criminal proceedings",
+      "expected_source_ids_any": ["criminal_procedure_hk_graph_vulnerable_witness_nodes"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "practice_direction_criminal",
+      "query": "criminal practice direction appeal case management",
+      "expected_source_ids_any": ["judiciary_criminal_practice_directions_page", "criminal_procedure_hk_graph_practice_direction_nodes"],
+      "expected_source_kind_any": ["practice_direction"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "magistrates_procedure",
+      "query": "magistrates court criminal procedure summons complaint",
+      "expected_source_ids_any": ["cap_227_magistrates_ordinance"],
+      "expected_source_kind_any": ["ordinance"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "theft_elements",
+      "query": "theft elements dishonesty appropriation property belonging to another",
+      "expected_source_ids_any": ["criminal_law_hk_graph_property_dishonesty_nodes"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "defence_duress",
+      "query": "duress defence criminal law Hong Kong",
+      "expected_source_ids_any": ["criminal_law_hk_graph_defences_nodes"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "delay_abuse_process",
+      "query": "delay abuse of process criminal proceedings stay",
+      "expected_source_ids_any": ["criminal_procedure_hk_graph_pretrial_nodes"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "criminal_forms",
+      "query": "criminal court forms Hong Kong appeal notice",
+      "expected_source_ids_any": ["judiciary_court_services_criminal_forms"],
+      "expected_source_kind_any": ["public_guide"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "prosecution_code",
+      "query": "prosecution decision public interest evidential sufficiency Hong Kong",
+      "expected_source_ids_any": ["department_of_justice_prosecution_code_candidate"],
+      "expected_source_kind_any": ["public_guide"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    }
+  ]
+}

@@ -95,6 +95,7 @@ function legalCitation(input = {}) {
 }
 
 function legalClaim(input = {}) {
+  const reviewState = cleanString(input.review_state || input.review_status || input.answer_layer_status || "machine_candidate");
   return {
     claim_id: cleanString(input.claim_id),
     claim_text: cleanString(input.claim_text),
@@ -103,7 +104,9 @@ function legalClaim(input = {}) {
     supporting_excerpt_ids: Array.isArray(input.supporting_excerpt_ids) ? input.supporting_excerpt_ids.map(cleanString).filter(Boolean) : [],
     confidence: CONFIDENCE.has(input.confidence) ? input.confidence : "unverified",
     basis: cleanString(input.basis),
-    human_review_required: input.human_review_required !== false,
+    review_state: reviewState,
+    answer_safe: input.answer_safe === true || reviewState === "answer_safe",
+    human_review_required: input.human_review_required !== false && reviewState !== "answer_safe",
   };
 }
 

@@ -1,0 +1,24 @@
+{
+  "requirements": {
+    "case": ["case_name", "neutral_citation", "paragraph"],
+    "ordinance": ["cap", "section"],
+    "subsidiary_legislation": ["cap", "rule"],
+    "practice_direction": ["practice_direction_no", "effective_date"],
+    "public_guide": ["page_title", "retrieved_at"],
+    "proposition_card": ["source_card_ids", "review_state"]
+  },
+  "answer_generation_blocks": [
+    "missing_source_id",
+    "missing_source_visibility",
+    "tenant_id_not_public_for_public_demo",
+    "missing_citation_fields",
+    "private_or_licensed_source_in_public_corpus",
+    "missing_chunk_hash",
+    "missing_pinpoint_for_case_chunk"
+  ],
+  "promotion_blocks": [
+    "machine_candidate_without_exact_quote",
+    "source_verified_without_citation_pinpoint",
+    "answer_safe_without_lawyer_review"
+  ]
+}

@@ -41,6 +41,22 @@ READINESS_REPORT = ROOT / "scripts" / "report_mvp_readiness.js"
 HARDENING_DOC = ROOT / "docs" / "production-hardening-roadmap.md"
 DIGITALOCEAN_COMPOSE = ROOT / "infra" / "digitalocean" / "docker-compose.demo.yml"
 FASTAPI_MAIN = ROOT / "src" / "api" / "main.py"
+PUBLIC_CORPUS_V1 = ROOT / "data" / "legal_ingest" / "public_corpus_v1" / "corpus_manifest.json"
+PUBLIC_CORPUS_V1_REGISTRY = ROOT / "data" / "legal_ingest" / "public_corpus_v1" / "source_registry.json"
+PUBLIC_CORPUS_CONTRACT = ROOT / "docs" / "public-corpus-ingestion-contract.md"
+PUBLIC_CORPUS_V1_VALIDATOR = ROOT / "scripts" / "validate_public_corpus_v1.js"
+EMBEDDING_ADAPTER = ROOT / "src" / "retrieval" / "embedding_adapter.js"
+RERANK_ADAPTER = ROOT / "src" / "retrieval" / "rerank_adapter.js"
+EMBEDDING_RERANK_VALIDATOR = ROOT / "scripts" / "validate_embedding_rerank_adapters.js"
+RETRIEVAL_BENCHMARK = ROOT / "data" / "legal_ingest" / "mvp" / "retrieval_benchmark_queries.json"
+RETRIEVAL_BENCHMARK_RUNNER = ROOT / "scripts" / "run_retrieval_benchmark.js"
+RETRIEVAL_QUALITY_VALIDATOR = ROOT / "scripts" / "validate_retrieval_quality_floor.js"
+REVIEW_STORE = ROOT / "src" / "review" / "review_store.js"
+REVIEW_PROMOTION_API = ROOT / "src" / "review" / "promotion_api.js"
+REVIEW_PROMOTION_WORKFLOW_VALIDATOR = ROOT / "scripts" / "validate_review_promotion_workflow.js"
+SOURCE_GATED_REVIEW_STATE_VALIDATOR = ROOT / "scripts" / "validate_source_gated_review_state.js"
+CRIMINAL_GOLDEN_QUERIES = ROOT / "data" / "legal_ingest" / "mvp" / "golden_queries_criminal_v1.json"
+CRIMINAL_GOLDEN_VALIDATOR = ROOT / "scripts" / "validate_criminal_golden_queries_v1.js"
 
 
 def main() -> int:
@@ -72,6 +88,12 @@ def main() -> int:
         "PRIVATE_SOURCE_INGESTION_ENABLED",
         "PUBLIC_DEMO_MODE",
         "DEMO_DOMAIN",
+        "EMBEDDING_PROVIDER",
+        "EMBEDDING_MODEL",
+        "VOYAGE_API_KEY",
+        "COHERE_API_KEY",
+        "RERANK_PROVIDER",
+        "RERANK_MODEL",
     ]:
         if f"{key}=" not in env:
             errors.append(f".env.example missing {key}")
@@ -180,6 +202,22 @@ def main() -> int:
         (HARDENING_DOC, "production hardening roadmap docs"),
         (DIGITALOCEAN_COMPOSE, "DigitalOcean Docker Compose"),
         (FASTAPI_MAIN, "FastAPI demo app"),
+        (PUBLIC_CORPUS_V1, "public corpus v1 manifest"),
+        (PUBLIC_CORPUS_V1_REGISTRY, "public corpus v1 source registry"),
+        (PUBLIC_CORPUS_CONTRACT, "public corpus ingestion contract"),
+        (PUBLIC_CORPUS_V1_VALIDATOR, "public corpus v1 validator"),
+        (EMBEDDING_ADAPTER, "embedding adapter"),
+        (RERANK_ADAPTER, "rerank adapter"),
+        (EMBEDDING_RERANK_VALIDATOR, "embedding/rerank adapter validator"),
+        (RETRIEVAL_BENCHMARK, "retrieval benchmark queries"),
+        (RETRIEVAL_BENCHMARK_RUNNER, "retrieval benchmark runner"),
+        (RETRIEVAL_QUALITY_VALIDATOR, "retrieval quality floor validator"),
+        (REVIEW_STORE, "review store"),
+        (REVIEW_PROMOTION_API, "review promotion API"),
+        (REVIEW_PROMOTION_WORKFLOW_VALIDATOR, "review promotion workflow validator"),
+        (SOURCE_GATED_REVIEW_STATE_VALIDATOR, "source-gated review-state validator"),
+        (CRIMINAL_GOLDEN_QUERIES, "criminal/evidence golden query suite"),
+        (CRIMINAL_GOLDEN_VALIDATOR, "criminal/evidence golden query validator"),
     ]:
         if not path.exists():
             errors.append(f"missing {label}: {path}")
@@ -238,6 +276,60 @@ def main() -> int:
         for token in ["Production Hardening Roadmap", "machine_candidate -> quote_verified", "Do not upload private books/forms/client documents"]:
             if token not in hardening_doc:
                 errors.append(f"production hardening docs missing {token}")
+
+    if PUBLIC_CORPUS_V1.exists():
+        corpus = PUBLIC_CORPUS_V1.read_text(encoding="utf-8")
+        for token in ["hk_criminal_procedure_evidence_public_demo_v1", "public_demo", "answer_safe_chunk_count"]:
+            if token not in corpus:
+                errors.append(f"public corpus v1 manifest missing {token}")
+
+    if PUBLIC_CORPUS_V1_REGISTRY.exists():
+        registry = PUBLIC_CORPUS_V1_REGISTRY.read_text(encoding="utf-8")
+        for token in ["hk_case_2020_minloy", "cap_221_criminal_procedure_ordinance", "public_or_demo_safe"]:
+            if token not in registry:
+                errors.append(f"public corpus v1 source registry missing {token}")
+
+    if PUBLIC_CORPUS_CONTRACT.exists():
+        contract = PUBLIC_CORPUS_CONTRACT.read_text(encoding="utf-8")
+        for token in ["Public Corpus Ingestion Contract", "public-demo", "Review and Promotion"]:
+            if token not in contract:
+                errors.append(f"public corpus ingestion contract missing {token}")
+
+    if EMBEDDING_ADAPTER.exists():
+        adapter_js = EMBEDDING_ADAPTER.read_text(encoding="utf-8")
+        for token in ["SUPPORTED_EMBEDDING_PROVIDERS", "EMBEDDING_PROVIDER", "openai", "voyage", "cohere"]:
+            if token not in adapter_js:
+                errors.append(f"embedding adapter missing {token}")
+
+    if RERANK_ADAPTER.exists():
+        rerank_js = RERANK_ADAPTER.read_text(encoding="utf-8")
+        for token in ["SUPPORTED_RERANK_PROVIDERS", "RERANK_PROVIDER", "localRerank"]:
+            if token not in rerank_js:
+                errors.append(f"rerank adapter missing {token}")
+
+    if RETRIEVAL_BENCHMARK.exists():
+        benchmark = RETRIEVAL_BENCHMARK.read_text(encoding="utf-8")
+        for token in ["hk_criminal_evidence_public_demo_retrieval_v1", "expected_source_ids_any", "quality_floor"]:
+            if token not in benchmark:
+                errors.append(f"retrieval benchmark missing {token}")
+
+    if REVIEW_STORE.exists():
+        review_store = REVIEW_STORE.read_text(encoding="utf-8")
+        for token in ["readReviewStore", "upsertReviewItem", "DEFAULT_STORE_PATH"]:
+            if token not in review_store:
+                errors.append(f"review store missing {token}")
+
+    if REVIEW_PROMOTION_API.exists():
+        promotion_api = REVIEW_PROMOTION_API.read_text(encoding="utf-8")
+        for token in ["promoteReviewItem", "toStatus", "sourceText"]:
+            if token not in promotion_api:
+                errors.append(f"review promotion API missing {token}")
+
+    if CRIMINAL_GOLDEN_QUERIES.exists():
+        golden = CRIMINAL_GOLDEN_QUERIES.read_text(encoding="utf-8")
+        for token in ["hk_criminal_procedure_evidence_v05_golden_queries", "burden_standard", "right_to_silence"]:
+            if token not in golden:
+                errors.append(f"criminal/evidence golden queries missing {token}")
 
     if errors:
         print("Legal ingest storage validation failed:")

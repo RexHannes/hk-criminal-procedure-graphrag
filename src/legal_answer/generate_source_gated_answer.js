@@ -127,6 +127,15 @@ function basisForChunk(chunk) {
   return "retrieved source excerpt";
 }
 
+function reviewStateForChunk(chunk) {
+  if (chunk.answer_layer_status === "answer_safe") return "answer_safe";
+  if (chunk.answer_layer_status === "lawyer_reviewed") return "lawyer_reviewed";
+  if (chunk.review_status === "approved") return "lawyer_reviewed";
+  if (chunk.review_status === "source_verified" || chunk.answer_layer_status === "source_verified") return "source_verified";
+  if (chunk.review_status === "quote_verified" || chunk.answer_layer_status === "quote_verified" || chunk.authority_role === "applied_principle") return "quote_verified";
+  return "machine_candidate";
+}
+
 function claimTextForChunk(chunk) {
   const source = chunk.source || {};
   const citation = [source.neutral_citation, source.paragraph].filter(Boolean).join(" ");
@@ -142,6 +151,8 @@ function generateSourceGatedAnswer(evidencePack) {
   const relevance = evidenceOnPoint(evidencePack?.query || "", chunks);
   const usableChunks = relevance.on_point ? chunks : [];
   const legalClaims = usableChunks.map((chunk, index) => legalClaim({
+    review_state: reviewStateForChunk(chunk),
+    answer_safe: reviewStateForChunk(chunk) === "answer_safe",
     claim_id: `claim_${index + 1}`,
     claim_text: claimTextForChunk(chunk),
     claim_type: claimTypeForChunk(chunk),
@@ -149,7 +160,7 @@ function generateSourceGatedAnswer(evidencePack) {
     supporting_excerpt_ids: [chunk.excerpt_id],
     confidence: confidenceForChunk(chunk),
     basis: basisForChunk(chunk),
-    human_review_required: true,
+    human_review_required: reviewStateForChunk(chunk) !== "answer_safe",
   }));
   const cannotVerify = [];
   if (!chunks.length) {
@@ -169,7 +180,9 @@ function generateSourceGatedAnswer(evidencePack) {
     chunks.length && !relevance.on_point ? "retrieved_evidence_not_on_point" : "",
   ].filter(Boolean)));
   const summary = usableChunks.length
-    ? `Retrieved ${chunks.length} source-backed item(s). The answer below is extractive and source-gated; each legal claim cites retrieved evidence.`
+    ? legalClaims.every(claim => claim.review_state === "machine_candidate")
+      ? `Retrieved ${chunks.length} source-backed item(s). This is a machine-generated research draft, not reviewed.`
+      : `Retrieved ${chunks.length} source-backed item(s). The answer below is extractive and source-gated; each legal claim cites retrieved evidence and exposes review state.`
     : "No verified answer can be given from the current database.";
   return legalAnswer({
     answer_summary: summary,
@@ -185,4 +198,5 @@ module.exports = {
   citationFromChunk,
   evidenceOnPoint,
   generateSourceGatedAnswer,
+  reviewStateForChunk,
 };

@@ -18,8 +18,12 @@ function assert(condition, message, errors) {
 const errors = [];
 const readiness = report();
 
-assert(readiness.estimated_overall_done_percent >= 45, "readiness estimate should reflect current scaffold progress", errors);
+assert(readiness.estimated_overall_done_percent >= 40, "readiness estimate should reflect current scaffold progress", errors);
 assert(readiness.estimated_overall_done_percent < 80, "readiness estimate must not overclaim production readiness", errors);
+assert(readiness.production_readiness_estimate === "not_production_ready", "readiness report must keep production status honest", errors);
+for (const sectionId of ["architecture_readiness", "corpus_readiness", "retrieval_quality_readiness", "answer_safety_readiness", "review_workflow_readiness", "auth_deployment_readiness"]) {
+  assert((readiness.sections || []).some(section => section.section_id === sectionId), `readiness report missing ${sectionId}`, errors);
+}
 
 for (const file of [
   "data/legal_ingest/corpus/public_corpus_manifest.sample.json",
