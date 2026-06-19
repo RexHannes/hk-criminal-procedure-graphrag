@@ -75,6 +75,16 @@ CASE_GRAPH_TREE_VALIDATOR = ROOT / "scripts" / "validate_case_graph_tree_v1.js"
 CASE_GRAPH_SIGNIFICANCE_VALIDATOR = ROOT / "scripts" / "validate_case_graph_significance.js"
 CASE_GRAPH_REVIEW_QUEUE_VALIDATOR = ROOT / "scripts" / "validate_proposition_review_queue.js"
 CASE_GRAPH_BENCHMARK_RUNNER = ROOT / "scripts" / "run_case_graph_benchmark.js"
+CASE_FRUITS_PILOT_MANIFEST = CASE_GRAPH_BASE / "bail_pilot" / "pilot_manifest.json"
+CASE_FRUITS_NODE_MAPPING = CASE_GRAPH_BASE / "bail_pilot" / "node_mapping.json"
+CASE_FRUITS_LINKS = CASE_GRAPH_BASE / "bail_pilot" / "proposition_node_links.json"
+CASE_FRUITS_L4 = CASE_GRAPH_BASE / "bail_pilot" / "l4_case_applications.json"
+CASE_FRUITS_L5 = CASE_GRAPH_BASE / "bail_pilot" / "l5_paragraph_proof.json"
+CASE_FRUITS_DOC = ROOT / "docs" / "case-fruits-tree-enrichment-pilot.md"
+CASE_FRUITS_LINKER = ROOT / "src" / "case_graph" / "link_case_fruits_to_doctrine_tree.js"
+CASE_FRUITS_LOCAL_EVIDENCE = ROOT / "src" / "case_graph" / "local_case_fruit_evidence.js"
+CASE_FRUITS_VALIDATOR = ROOT / "scripts" / "validate_bail_case_fruits_pilot.js"
+CASE_FRUITS_API_VALIDATOR = ROOT / "scripts" / "validate_case_fruits_api_fallback.js"
 
 
 def main() -> int:
@@ -254,6 +264,16 @@ def main() -> int:
         (CASE_GRAPH_SIGNIFICANCE_VALIDATOR, "case graph significance validator"),
         (CASE_GRAPH_REVIEW_QUEUE_VALIDATOR, "case graph review queue validator"),
         (CASE_GRAPH_BENCHMARK_RUNNER, "case graph benchmark runner"),
+        (CASE_FRUITS_PILOT_MANIFEST, "case fruits bail pilot manifest"),
+        (CASE_FRUITS_NODE_MAPPING, "case fruits bail node mapping"),
+        (CASE_FRUITS_LINKS, "case fruits proposition node links"),
+        (CASE_FRUITS_L4, "case fruits L4 applications"),
+        (CASE_FRUITS_L5, "case fruits L5 paragraph proof"),
+        (CASE_FRUITS_DOC, "case fruits pilot doc"),
+        (CASE_FRUITS_LINKER, "case fruits linker"),
+        (CASE_FRUITS_LOCAL_EVIDENCE, "local case fruits evidence loader"),
+        (CASE_FRUITS_VALIDATOR, "case fruits pilot validator"),
+        (CASE_FRUITS_API_VALIDATOR, "case fruits API fallback validator"),
     ]:
         if not path.exists():
             errors.append(f"missing {label}: {path}")
@@ -396,6 +416,24 @@ def main() -> int:
         for token in ["buildCaseGraphEvidencePack", "case_graph_tree_first_v1"]:
             if token not in evidence_pack:
                 errors.append(f"case graph evidence pack missing {token}")
+
+    if CASE_FRUITS_PILOT_MANIFEST.exists():
+        pilot = CASE_FRUITS_PILOT_MANIFEST.read_text(encoding="utf-8")
+        for token in ["criminal_bail_case_fruits_pilot_v1", "bail_only", "L4", "L5"]:
+            if token not in pilot:
+                errors.append(f"case fruits pilot manifest missing {token}")
+
+    if CASE_FRUITS_NODE_MAPPING.exists():
+        mapping = CASE_FRUITS_NODE_MAPPING.read_text(encoding="utf-8")
+        for token in ["prop_demo_bail_conditions_001", "criminal_procedure_hk.bail_factors", "criminal_procedure_hk.bail_flow_step5"]:
+            if token not in mapping:
+                errors.append(f"case fruits node mapping missing {token}")
+
+    if CASE_FRUITS_LOCAL_EVIDENCE.exists():
+        local_evidence = CASE_FRUITS_LOCAL_EVIDENCE.read_text(encoding="utf-8")
+        for token in ["localCaseFruitEvidenceForNode", "not_real_authority", "candidate_only"]:
+            if token not in local_evidence:
+                errors.append(f"local case fruits evidence loader missing {token}")
 
     if errors:
         print("Legal ingest storage validation failed:")

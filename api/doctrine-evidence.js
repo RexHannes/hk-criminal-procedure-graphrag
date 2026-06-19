@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -51,6 +52,23 @@ function findStaticNode(nodeId) {
 }
 
 function noEvidencePayload(node, extraWarnings = []) {
+  const localEvidence = localCaseFruitEvidenceForNode(node.doctrine_node_id);
+  if (localEvidence.length) {
+    const split = splitEvidence(localEvidence);
+    return {
+      doctrine_node_id: node.doctrine_node_id,
+      source_node_id: node.source_node_id,
+      title: node.title,
+      node_type: node.node_type,
+      domain_id: node.domain_id,
+      coverage_status: split.coverage,
+      warnings: Array.from(new Set([...split.warnings, "local_case_fruits_fixture_fallback", ...extraWarnings])),
+      evidence: localEvidence,
+      candidate_evidence: split.candidate,
+      verified_evidence: split.verified,
+      answer_safe_evidence: split.answerSafe,
+    };
+  }
   return {
     doctrine_node_id: node.doctrine_node_id,
     source_node_id: node.source_node_id,

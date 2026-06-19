@@ -82,6 +82,17 @@ const CASE_GRAPH_TREE_VALIDATOR = path.join(ROOT, "scripts", "validate_case_grap
 const CASE_GRAPH_SIGNIFICANCE_VALIDATOR = path.join(ROOT, "scripts", "validate_case_graph_significance.js");
 const CASE_GRAPH_REVIEW_QUEUE_VALIDATOR = path.join(ROOT, "scripts", "validate_proposition_review_queue.js");
 const CASE_GRAPH_BENCHMARK_RUNNER = path.join(ROOT, "scripts", "run_case_graph_benchmark.js");
+const CASE_FRUITS_PILOT_MANIFEST = path.join(CASE_GRAPH_BASE, "bail_pilot", "pilot_manifest.json");
+const CASE_FRUITS_NODE_MAPPING = path.join(CASE_GRAPH_BASE, "bail_pilot", "node_mapping.json");
+const CASE_FRUITS_LINKS = path.join(CASE_GRAPH_BASE, "bail_pilot", "proposition_node_links.json");
+const CASE_FRUITS_L4 = path.join(CASE_GRAPH_BASE, "bail_pilot", "l4_case_applications.json");
+const CASE_FRUITS_L5 = path.join(CASE_GRAPH_BASE, "bail_pilot", "l5_paragraph_proof.json");
+const CASE_FRUITS_DOC = path.join(ROOT, "docs", "case-fruits-tree-enrichment-pilot.md");
+const CASE_FRUITS_LINKER = path.join(ROOT, "src", "case_graph", "link_case_fruits_to_doctrine_tree.js");
+const CASE_FRUITS_LOCAL_EVIDENCE = path.join(ROOT, "src", "case_graph", "local_case_fruit_evidence.js");
+const CASE_FRUITS_BUILD_SCRIPT = path.join(ROOT, "scripts", "build_bail_case_fruits_pilot.js");
+const CASE_FRUITS_VALIDATOR = path.join(ROOT, "scripts", "validate_bail_case_fruits_pilot.js");
+const CASE_FRUITS_API_VALIDATOR = path.join(ROOT, "scripts", "validate_case_fruits_api_fallback.js");
 
 function parseEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return {};
@@ -371,6 +382,19 @@ function staticScaffoldReport(errors) {
   fileIncludes(CASE_GRAPH_SIGNIFICANCE_VALIDATOR, ["Case graph significance validation passed"], errors);
   fileIncludes(CASE_GRAPH_REVIEW_QUEUE_VALIDATOR, ["Proposition review queue validation passed"], errors);
   fileIncludes(CASE_GRAPH_BENCHMARK_RUNNER, ["case_graph_fixture_quality_floor_satisfied"], errors);
+  fileIncludes(CASE_FRUITS_PILOT_MANIFEST, ["criminal_bail_case_fruits_pilot_v1", "bail_only", "L4", "L5"], errors);
+  fileIncludes(CASE_FRUITS_NODE_MAPPING, ["prop_demo_bail_conditions_001", "criminal_procedure_hk.bail_factors", "criminal_procedure_hk.bail_flow_step5"], errors);
+  fileIncludes(CASE_FRUITS_LINKS, ["proposition_node_links", "candidate_only", "machine_candidate"], errors);
+  fileIncludes(CASE_FRUITS_L4, ["l4_case_applications", "Bail conditions / surety / flight-risk management"], errors);
+  fileIncludes(CASE_FRUITS_L5, ["l5_paragraph_proof", "quote_verified_against_fixture"], errors);
+  fileIncludes(CASE_FRUITS_DOC, ["Case Fruits Tree Enrichment Pilot", "L4", "L5", "Not bulk case scraping"], errors);
+  fileIncludes(CASE_FRUITS_LINKER, ["buildBailCaseFruitLinks", "proposition_node_links", "l5_paragraph_proof"], errors);
+  fileIncludes(CASE_FRUITS_LOCAL_EVIDENCE, ["localCaseFruitEvidenceForNode", "not_real_authority", "candidate_only"], errors);
+  fileIncludes(CASE_FRUITS_BUILD_SCRIPT, ["Bail case fruits pilot built"], errors);
+  fileIncludes(CASE_FRUITS_VALIDATOR, ["Bail case fruits pilot validation passed"], errors);
+  fileIncludes(CASE_FRUITS_API_VALIDATOR, ["Case fruits API fallback validation passed"], errors);
+  fileIncludes(path.join(ROOT, "api", "doctrine-evidence.js"), ["localCaseFruitEvidenceForNode", "local_case_fruits_fixture_fallback"], errors);
+  fileIncludes(path.join(ROOT, "api", "search-evidence.js"), ["localCaseFruitEvidenceForNode", "localEvidenceFallbackForNode"], errors);
 }
 
 function runtimeReadiness(env) {

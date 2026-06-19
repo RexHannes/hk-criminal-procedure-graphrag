@@ -1,0 +1,87 @@
+{
+  "artifact_id": "criminal_bail_case_fruits_pilot_artifact_v1",
+  "generated_at": "2026-06-19T13:02:21.984Z",
+  "mapping_id": "criminal_bail_case_fruits_node_mapping_v1",
+  "domain_id": "criminal_procedure_hk",
+  "status": "fixture_only_candidate_links",
+  "proposition_node_links": [
+    {
+      "link_id": "prop_demo_bail_conditions_001__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_demo_bail_conditions_001",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.62,
+      "linking_method": "fixture_mapping_bail_pilot_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Demo fixture only. Illustrates bail conditions/surety/flight-risk factor attachment; not real authority.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_demo_bail_conditions_001__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_demo_bail_conditions_001",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.62,
+      "linking_method": "fixture_mapping_bail_pilot_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Demo fixture only. Illustrates bail conditions/surety/flight-risk factor attachment; not real authority.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    }
+  ],
+  "l4_case_applications": [
+    {
+      "l4_application_id": "l4_prop_demo_bail_conditions_001",
+      "proposition_id": "prop_demo_bail_conditions_001",
+      "case_id": "demo_case_bail_001",
+      "paragraph_id": "demo_case_bail_001_p7",
+      "scenario_label": "Bail conditions / surety / flight-risk management",
+      "application_summary": "Bail analysis may consider whether conditions can manage risks such as flight.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    }
+  ],
+  "l5_paragraph_proof": [
+    {
+      "l5_proof_id": "l5_prop_demo_bail_conditions_001",
+      "proposition_id": "prop_demo_bail_conditions_001",
+      "case_id": "demo_case_bail_001",
+      "paragraph_id": "demo_case_bail_001_p7",
+      "para_no": "7",
+      "exact_quote": "reporting conditions and a surety could manage the alleged flight risk",
+      "paragraph_text": "The court considered whether reporting conditions and a surety could manage the alleged flight risk.",
+      "chunk_hash": "b88ad0b9c4104a6bff4b5896a07f28f817bf121b5053f14450aa50747fb4922e",
+      "quote_verified_against_fixture": true,
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    }
+  ],
+  "errors": []
+}

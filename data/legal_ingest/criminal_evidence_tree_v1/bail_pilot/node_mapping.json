@@ -1,0 +1,25 @@
+{
+  "mapping_id": "criminal_bail_case_fruits_node_mapping_v1",
+  "version": "0.6.5",
+  "domain_id": "criminal_procedure_hk",
+  "source_proposition_artifact": "../fixtures/sample_proposition_cards.attached.json",
+  "mappings": [
+    {
+      "proposition_id": "prop_demo_bail_conditions_001",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "confidence": 0.62,
+      "linking_method": "fixture_mapping_bail_pilot_v1",
+      "review_status": "machine_candidate",
+      "notes": "Demo fixture only. Illustrates bail conditions/surety/flight-risk factor attachment; not real authority."
+    }
+  ]
+}

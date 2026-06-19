@@ -3,6 +3,7 @@ const path = require("path");
 const { composeAnswer } = require("./answer-composers");
 const { filterPiChunksByContract } = require("./answer-composers/pi");
 const { findCachedLegalAnswer, writeLegalAnswerCache } = require("./legal-ingest/cache");
+const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -573,6 +574,10 @@ function coverageForEvidence(evidence) {
   return "no_evidence";
 }
 
+function localEvidenceFallbackForNode(doctrineNodeId) {
+  return localCaseFruitEvidenceForNode(doctrineNodeId);
+}
+
 function warningsForResult(matches, aiStatus, backendStatus, legalSourceCardCount = 0) {
   const warnings = [];
   if (aiStatus !== "used") warnings.push(aiStatus === "not_configured" ? "ai_not_configured_fallback_search" : "ai_ranking_unavailable");
@@ -819,19 +824,20 @@ module.exports = async function handler(req, res) {
     try {
       for (const match of matched) {
         match.evidence = await evidenceForNode(supabaseUrl, serviceKey, match.doctrine_node_id);
+        if (!match.evidence.length) match.evidence = localEvidenceFallbackForNode(match.doctrine_node_id);
         match.coverage_status = coverageForEvidence(match.evidence);
       }
     } catch (error) {
       backendStatus = "query_failed";
       matched.forEach(match => {
-        match.evidence = [];
-        match.coverage_status = "no_evidence";
+        match.evidence = localEvidenceFallbackForNode(match.doctrine_node_id);
+        match.coverage_status = coverageForEvidence(match.evidence);
       });
     }
   } else {
     matched.forEach(match => {
-      match.evidence = [];
-      match.coverage_status = "no_evidence";
+      match.evidence = localEvidenceFallbackForNode(match.doctrine_node_id);
+      match.coverage_status = coverageForEvidence(match.evidence);
     });
   }
 

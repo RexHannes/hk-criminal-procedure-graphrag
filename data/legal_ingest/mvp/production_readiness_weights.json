@@ -138,6 +138,16 @@
         "20-query case graph benchmark validates confession, identification, hearsay, similar fact, proof, abuse, delay, bail, appeal, silence, and procedural fairness routing"
       ],
       "remaining": "Replace fixture benchmark with public-case benchmark and expected authority hits."
+    },
+    {
+      "section_id": "case_fruits_tree_enrichment_readiness",
+      "weight": 4,
+      "current_state": "bail_only_l4_l5_fixture_pilot",
+      "done_ratio": 0.32,
+      "evidence": [
+        "bail-only L4/L5 pilot links a demo case proposition to existing criminal_procedure_hk doctrine_node_id values as candidate-only evidence"
+      ],
+      "remaining": "Replace fixture-only bail links with a reviewed small public-case bail batch, then expand section by section."
     }
   ],
   "legacy_gate_mapping": {

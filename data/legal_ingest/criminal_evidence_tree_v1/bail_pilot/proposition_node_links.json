@@ -1,0 +1,44 @@
+{
+  "proposition_node_links": [
+    {
+      "link_id": "prop_demo_bail_conditions_001__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_demo_bail_conditions_001",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.62,
+      "linking_method": "fixture_mapping_bail_pilot_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Demo fixture only. Illustrates bail conditions/surety/flight-risk factor attachment; not real authority.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_demo_bail_conditions_001__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_demo_bail_conditions_001",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.62,
+      "linking_method": "fixture_mapping_bail_pilot_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Demo fixture only. Illustrates bail conditions/surety/flight-risk factor attachment; not real authority.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    }
+  ]
+}

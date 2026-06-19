@@ -1,0 +1,19 @@
+{
+  "l5_paragraph_proof": [
+    {
+      "l5_proof_id": "l5_prop_demo_bail_conditions_001",
+      "proposition_id": "prop_demo_bail_conditions_001",
+      "case_id": "demo_case_bail_001",
+      "paragraph_id": "demo_case_bail_001_p7",
+      "para_no": "7",
+      "exact_quote": "reporting conditions and a surety could manage the alleged flight risk",
+      "paragraph_text": "The court considered whether reporting conditions and a surety could manage the alleged flight risk.",
+      "chunk_hash": "b88ad0b9c4104a6bff4b5896a07f28f817bf121b5053f14450aa50747fb4922e",
+      "quote_verified_against_fixture": true,
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    }
+  ]
+}

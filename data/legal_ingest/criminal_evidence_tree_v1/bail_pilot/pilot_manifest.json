@@ -1,0 +1,24 @@
+{
+  "pilot_id": "criminal_bail_case_fruits_pilot_v1",
+  "version": "0.6.5",
+  "domain_id": "criminal_procedure_hk",
+  "scope": "bail_only",
+  "status": "fixture_only_candidate_links",
+  "source_policy": {
+    "public_demo_only": true,
+    "private_or_licensed_sources_allowed": false,
+    "book_text_answer_safe": false,
+    "bulk_auto_attach_allowed": false
+  },
+  "purpose": "Attach a small case-graph fixture proposition to existing criminal procedure bail doctrine nodes as L4/L5 candidate evidence without rewriting the book tree.",
+  "target_doctrine_node_ids": [
+    "criminal_procedure_hk.bail_factors",
+    "criminal_procedure_hk.bail_flow_step5"
+  ],
+  "layer_policy": {
+    "L0_L3": "Existing book/tree doctrine and procedure nodes remain authoritative structure.",
+    "L4": "Case applications/scenarios are candidate enrichment only.",
+    "L5": "Paragraph proof/quote spans are candidate evidence only.",
+    "promotion": "machine_candidate links require quote/source/lawyer review before answer_safe use."
+  }
+}
