@@ -42,7 +42,7 @@ function report() {
     estimated_overall_done_percent: percent,
     practical_status: percent >= 80 ? "public_demo_close" : "local_demo_plus_scaffold",
     production_readiness_estimate: percent >= 80 ? "near_public_demo_quality_gate" : "not_production_ready",
-    summary: "v0.5 has stronger public-corpus, retrieval-benchmark, review, and source-gated answer plumbing; production HK-law Claude still needs corpus scale, real embeddings/reranking, review promotion, and private-source access controls.",
+    summary: "v0.6 adds a case-to-proposition graph builder for the HK criminal procedure/evidence vertical; production HK-law Claude still needs real public-case corpus scale, real embeddings/reranking, review promotion, and private-source access controls.",
     warning: weights.overall_warning || "Readiness percentages are engineering estimates, not legal validation.",
     sections,
     gates: sections.map(section => ({

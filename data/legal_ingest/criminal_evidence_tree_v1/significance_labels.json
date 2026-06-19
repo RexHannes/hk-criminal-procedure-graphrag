@@ -1,0 +1,60 @@
+{
+  "label_set_id": "case_graph_significance_labels_v1",
+  "version": "0.6.0",
+  "labels": [
+    {
+      "label": "states_rule",
+      "description": "The paragraph states a legal rule, test, principle, or requirement."
+    },
+    {
+      "label": "applies_rule",
+      "description": "The paragraph applies a rule to facts."
+    },
+    {
+      "label": "distinguishes_rule",
+      "description": "The paragraph distinguishes an authority, rule, or fact pattern."
+    },
+    {
+      "label": "limits_rule",
+      "description": "The paragraph limits or qualifies a rule."
+    },
+    {
+      "label": "sets_out_test",
+      "description": "The paragraph sets out a multi-part legal test or threshold."
+    },
+    {
+      "label": "illustrates_fact_pattern",
+      "description": "The paragraph is mainly useful as a fact-pattern illustration."
+    },
+    {
+      "label": "explains_procedure",
+      "description": "The paragraph explains procedure, sequencing, or procedural consequences."
+    },
+    {
+      "label": "not_authority_party_argument",
+      "description": "The paragraph records a party argument or submission and must not be treated as the court's holding."
+    },
+    {
+      "label": "procedural_history_only",
+      "description": "The paragraph is procedural background only."
+    },
+    {
+      "label": "irrelevant",
+      "description": "The paragraph is not relevant to the criminal/evidence tree."
+    }
+  ],
+  "forbidden_promotions": [
+    {
+      "if_label": "not_authority_party_argument",
+      "forbidden_as": ["states_rule", "sets_out_test", "answer_safe"]
+    },
+    {
+      "if_label": "procedural_history_only",
+      "forbidden_as": ["states_rule", "answer_safe"]
+    },
+    {
+      "if_label": "irrelevant",
+      "forbidden_as": ["states_rule", "applies_rule", "answer_safe"]
+    }
+  ]
+}

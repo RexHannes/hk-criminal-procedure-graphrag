@@ -1,0 +1,82 @@
+{
+  "tree_id": "hk_criminal_evidence_procedure_tree_v1",
+  "version": "0.6.0",
+  "jurisdiction": "HK",
+  "source_visibility": "public_demo",
+  "tenant_id": "public",
+  "description": "Initial procedure tree for routing criminal procedure/evidence questions to procedural stages.",
+  "nodes": [
+    {
+      "node_id": "criminal_procedure.root",
+      "label": "Criminal Procedure",
+      "parent_id": null,
+      "description": "Root node for criminal procedure steps.",
+      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "review_required": true
+    },
+    {
+      "node_id": "criminal_procedure.investigation_arrest",
+      "label": "Investigation / Arrest",
+      "parent_id": "criminal_procedure.root",
+      "description": "Police powers, arrest, search, seizure, interview, caution, and investigation fairness.",
+      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "review_required": true
+    },
+    {
+      "node_id": "criminal_procedure.bail",
+      "label": "Bail Procedure",
+      "parent_id": "criminal_procedure.root",
+      "description": "Bail application, bail review, conditions, sureties, and remand issues.",
+      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "review_required": true
+    },
+    {
+      "node_id": "criminal_procedure.plea_mention",
+      "label": "Plea / Mention",
+      "parent_id": "criminal_procedure.root",
+      "description": "Mention hearings, plea, directions, transfer, and listing.",
+      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "review_required": true
+    },
+    {
+      "node_id": "criminal_procedure.pretrial_admissibility",
+      "label": "Pre-Trial Admissibility",
+      "parent_id": "criminal_procedure.root",
+      "description": "Voir dire, exclusion applications, disclosure, and evidence admissibility disputes.",
+      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "review_required": true
+    },
+    {
+      "node_id": "criminal_procedure.trial",
+      "label": "Trial",
+      "parent_id": "criminal_procedure.root",
+      "description": "Trial management, evidence, submissions, directions, and verdict.",
+      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "review_required": true
+    },
+    {
+      "node_id": "criminal_procedure.stay_abuse",
+      "label": "Stay / Abuse Of Process Application",
+      "parent_id": "criminal_procedure.root",
+      "description": "Application to stay proceedings for abuse of process or unfairness.",
+      "allowed_source_kinds": ["case", "practice_direction", "proposition_card"],
+      "review_required": true
+    },
+    {
+      "node_id": "criminal_procedure.sentence",
+      "label": "Sentence",
+      "parent_id": "criminal_procedure.root",
+      "description": "Sentence procedure, mitigation, sentence indications, and sentencing evidence.",
+      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "review_required": true
+    },
+    {
+      "node_id": "criminal_procedure.appeal_review",
+      "label": "Appeal / Review",
+      "parent_id": "criminal_procedure.root",
+      "description": "Appeal procedure, leave, review, fresh evidence, and miscarriage issues.",
+      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "review_required": true
+    }
+  ]
+}

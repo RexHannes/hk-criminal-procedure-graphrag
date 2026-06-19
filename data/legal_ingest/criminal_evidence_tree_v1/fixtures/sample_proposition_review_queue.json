@@ -1,0 +1,235 @@
+{
+  "queue_id": "criminal_evidence_proposition_review_queue_v1",
+  "generated_at": "2026-06-19T10:12:42.142Z",
+  "source_artifact_id": "criminal_evidence_tree_attached_propositions_v1",
+  "item_count": 10,
+  "items": [
+    {
+      "item_id": "review_prop_demo_confession_voir_dire_001",
+      "proposition_id": "prop_demo_confession_voir_dire_001",
+      "case_id": "demo_case_confession_001",
+      "tree_node_ids": [
+        "criminal_evidence.confession",
+        "criminal_evidence.voir_dire",
+        "criminal_procedure.pretrial_admissibility",
+        "criminal_evidence.admissibility",
+        "criminal_evidence.hearsay"
+      ],
+      "significance_label": "explains_procedure",
+      "authority_role": "unknown",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "human_review_required": true,
+      "priority": "normal_review",
+      "missing_metadata": [],
+      "group_keys": {
+        "by_tree_node": "criminal_evidence.confession",
+        "by_significance_label": "explains_procedure",
+        "by_confidence": "medium",
+        "by_case": "demo_case_confession_001"
+      }
+    },
+    {
+      "item_id": "review_prop_demo_confession_submission_001",
+      "proposition_id": "prop_demo_confession_submission_001",
+      "case_id": "demo_case_confession_001",
+      "tree_node_ids": [
+        "criminal_evidence.confession",
+        "criminal_evidence.voir_dire",
+        "criminal_evidence.right_to_silence"
+      ],
+      "significance_label": "not_authority_party_argument",
+      "authority_role": "party_submission",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "human_review_required": true,
+      "priority": "authority_role_check",
+      "missing_metadata": [],
+      "group_keys": {
+        "by_tree_node": "criminal_evidence.confession",
+        "by_significance_label": "not_authority_party_argument",
+        "by_confidence": "high",
+        "by_case": "demo_case_confession_001"
+      }
+    },
+    {
+      "item_id": "review_prop_demo_identification_warning_001",
+      "proposition_id": "prop_demo_identification_warning_001",
+      "case_id": "demo_case_identification_001",
+      "tree_node_ids": [
+        "criminal_evidence.identification_evidence",
+        "criminal_procedure.trial"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "human_review_required": true,
+      "priority": "normal_review",
+      "missing_metadata": [],
+      "group_keys": {
+        "by_tree_node": "criminal_evidence.identification_evidence",
+        "by_significance_label": "illustrates_fact_pattern",
+        "by_confidence": "medium",
+        "by_case": "demo_case_identification_001"
+      }
+    },
+    {
+      "item_id": "review_prop_demo_hearsay_gateway_001",
+      "proposition_id": "prop_demo_hearsay_gateway_001",
+      "case_id": "demo_case_hearsay_001",
+      "tree_node_ids": [
+        "criminal_evidence.hearsay",
+        "criminal_evidence.admissibility",
+        "criminal_procedure.pretrial_admissibility"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "unknown",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "human_review_required": true,
+      "priority": "normal_review",
+      "missing_metadata": [],
+      "group_keys": {
+        "by_tree_node": "criminal_evidence.hearsay",
+        "by_significance_label": "states_rule",
+        "by_confidence": "medium",
+        "by_case": "demo_case_hearsay_001"
+      }
+    },
+    {
+      "item_id": "review_prop_demo_similar_fact_balance_001",
+      "proposition_id": "prop_demo_similar_fact_balance_001",
+      "case_id": "demo_case_similar_fact_001",
+      "tree_node_ids": [
+        "criminal_evidence.similar_fact",
+        "criminal_evidence.judicial_discretion"
+      ],
+      "significance_label": "sets_out_test",
+      "authority_role": "unknown",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "human_review_required": true,
+      "priority": "normal_review",
+      "missing_metadata": [],
+      "group_keys": {
+        "by_tree_node": "criminal_evidence.similar_fact",
+        "by_significance_label": "sets_out_test",
+        "by_confidence": "medium",
+        "by_case": "demo_case_similar_fact_001"
+      }
+    },
+    {
+      "item_id": "review_prop_demo_burden_standard_001",
+      "proposition_id": "prop_demo_burden_standard_001",
+      "case_id": "demo_case_burden_001",
+      "tree_node_ids": [
+        "criminal_evidence.burden_of_proof",
+        "criminal_evidence.standard_of_proof"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "unknown",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "human_review_required": true,
+      "priority": "normal_review",
+      "missing_metadata": [],
+      "group_keys": {
+        "by_tree_node": "criminal_evidence.burden_of_proof",
+        "by_significance_label": "states_rule",
+        "by_confidence": "medium",
+        "by_case": "demo_case_burden_001"
+      }
+    },
+    {
+      "item_id": "review_prop_demo_abuse_delay_001",
+      "proposition_id": "prop_demo_abuse_delay_001",
+      "case_id": "demo_case_abuse_delay_001",
+      "tree_node_ids": [
+        "criminal_evidence.abuse_of_process",
+        "criminal_evidence.delay",
+        "criminal_procedure.stay_abuse",
+        "criminal_evidence.similar_fact"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "application",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "human_review_required": true,
+      "priority": "normal_review",
+      "missing_metadata": [],
+      "group_keys": {
+        "by_tree_node": "criminal_evidence.abuse_of_process",
+        "by_significance_label": "applies_rule",
+        "by_confidence": "medium",
+        "by_case": "demo_case_abuse_delay_001"
+      }
+    },
+    {
+      "item_id": "review_prop_demo_bail_conditions_001",
+      "proposition_id": "prop_demo_bail_conditions_001",
+      "case_id": "demo_case_bail_001",
+      "tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "human_review_required": true,
+      "priority": "normal_review",
+      "missing_metadata": [],
+      "group_keys": {
+        "by_tree_node": "criminal_evidence.bail",
+        "by_significance_label": "illustrates_fact_pattern",
+        "by_confidence": "medium",
+        "by_case": "demo_case_bail_001"
+      }
+    },
+    {
+      "item_id": "review_prop_demo_silence_submission_001",
+      "proposition_id": "prop_demo_silence_submission_001",
+      "case_id": "demo_case_appeal_silence_001",
+      "tree_node_ids": [
+        "criminal_evidence.right_to_silence",
+        "criminal_evidence.appeal_review"
+      ],
+      "significance_label": "not_authority_party_argument",
+      "authority_role": "party_submission",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "human_review_required": true,
+      "priority": "authority_role_check",
+      "missing_metadata": [],
+      "group_keys": {
+        "by_tree_node": "criminal_evidence.right_to_silence",
+        "by_significance_label": "not_authority_party_argument",
+        "by_confidence": "high",
+        "by_case": "demo_case_appeal_silence_001"
+      }
+    },
+    {
+      "item_id": "review_prop_demo_appeal_miscarriage_001",
+      "proposition_id": "prop_demo_appeal_miscarriage_001",
+      "case_id": "demo_case_appeal_silence_001",
+      "tree_node_ids": [
+        "criminal_evidence.appeal_review",
+        "criminal_procedure.appeal_review"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "application",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "human_review_required": true,
+      "priority": "normal_review",
+      "missing_metadata": [],
+      "group_keys": {
+        "by_tree_node": "criminal_evidence.appeal_review",
+        "by_significance_label": "applies_rule",
+        "by_confidence": "medium",
+        "by_case": "demo_case_appeal_silence_001"
+      }
+    }
+  ]
+}

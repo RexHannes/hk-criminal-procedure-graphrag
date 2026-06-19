@@ -1,5 +1,5 @@
 {
-  "readiness_id": "hk_law_claude_production_readiness_v05",
+  "readiness_id": "hk_law_claude_production_readiness_v06",
   "description": "Weighted readiness estimate for a transparent, source-gated HK law assistant. Percentages are engineering/product-readiness estimates, not legal validation.",
   "overall_warning": "This is a public-source demo readiness model. It must not be read as lawyer approval, corpus completeness, or private/licensed-source readiness.",
   "sections": [
@@ -78,6 +78,66 @@
         "API cache helpers exist"
       ],
       "remaining": "Add stale-source invalidation tests and broader SOP/playbook reuse policies."
+    },
+    {
+      "section_id": "case_graph_readiness",
+      "weight": 5,
+      "current_state": "fixture_case_to_proposition_builder",
+      "done_ratio": 0.46,
+      "evidence": [
+        "v0.6 case-to-proposition graph builder converts demo case fixtures into paragraph cards, proposition cards, tree attachments, review queue items, and source-gated evidence packs"
+      ],
+      "remaining": "Replace synthetic fixtures with public HK criminal/evidence case batches after the quality gate passes."
+    },
+    {
+      "section_id": "tree_coverage_readiness",
+      "weight": 4,
+      "current_state": "initial_criminal_evidence_tree",
+      "done_ratio": 0.42,
+      "evidence": [
+        "criminal/evidence doctrine and procedure trees cover pleadings, proof, admissibility, confession, voir dire, identification, hearsay, similar fact, silence, abuse, delay, bail, appeal, and discretion"
+      ],
+      "remaining": "Deepen nodes with real source-card anchors, exceptions, procedural consequences, and neighbouring-node edges."
+    },
+    {
+      "section_id": "proposition_extraction_readiness",
+      "weight": 4,
+      "current_state": "deterministic_fixture_extractor",
+      "done_ratio": 0.34,
+      "evidence": [
+        "candidate proposition extraction exists in deterministic CASE_GRAPH_LLM_PROVIDER=none mode"
+      ],
+      "remaining": "Add public-case extraction with quote-exact validation, party-submission detection, and no auto-answer-safe promotion."
+    },
+    {
+      "section_id": "tree_attachment_readiness",
+      "weight": 4,
+      "current_state": "taxonomy_keyword_attachment_scaffold",
+      "done_ratio": 0.36,
+      "evidence": [
+        "propositions attach to doctrine/procedure nodes by fixture metadata and taxonomy keywords"
+      ],
+      "remaining": "Add citation-aware, significance-aware attachment review for real public case paragraphs."
+    },
+    {
+      "section_id": "case_review_queue_readiness",
+      "weight": 4,
+      "current_state": "local_case_graph_review_queue",
+      "done_ratio": 0.38,
+      "evidence": [
+        "review queue groups proposition cards by tree node, significance label, confidence, case, and missing metadata"
+      ],
+      "remaining": "Connect queue to Supabase/admin UI and reviewer audit identity."
+    },
+    {
+      "section_id": "case_retrieval_benchmark_readiness",
+      "weight": 4,
+      "current_state": "fixture_benchmark_quality_gate",
+      "done_ratio": 0.40,
+      "evidence": [
+        "20-query case graph benchmark validates confession, identification, hearsay, similar fact, proof, abuse, delay, bail, appeal, silence, and procedural fairness routing"
+      ],
+      "remaining": "Replace fixture benchmark with public-case benchmark and expected authority hits."
     }
   ],
   "legacy_gate_mapping": {

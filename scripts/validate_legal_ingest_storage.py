@@ -57,6 +57,24 @@ REVIEW_PROMOTION_WORKFLOW_VALIDATOR = ROOT / "scripts" / "validate_review_promot
 SOURCE_GATED_REVIEW_STATE_VALIDATOR = ROOT / "scripts" / "validate_source_gated_review_state.js"
 CRIMINAL_GOLDEN_QUERIES = ROOT / "data" / "legal_ingest" / "mvp" / "golden_queries_criminal_v1.json"
 CRIMINAL_GOLDEN_VALIDATOR = ROOT / "scripts" / "validate_criminal_golden_queries_v1.js"
+CASE_GRAPH_BASE = ROOT / "data" / "legal_ingest" / "criminal_evidence_tree_v1"
+CASE_GRAPH_DOCTRINE_TREE = CASE_GRAPH_BASE / "doctrine_tree.json"
+CASE_GRAPH_PROCEDURE_TREE = CASE_GRAPH_BASE / "procedure_tree.json"
+CASE_GRAPH_TAXONOMY = CASE_GRAPH_BASE / "evidence_taxonomy.json"
+CASE_GRAPH_LABELS = CASE_GRAPH_BASE / "significance_labels.json"
+CASE_GRAPH_FIXTURE_CASES = CASE_GRAPH_BASE / "fixtures" / "sample_cases.json"
+CASE_GRAPH_FIXTURE_PARAGRAPHS = CASE_GRAPH_BASE / "fixtures" / "sample_paragraph_cards.json"
+CASE_GRAPH_FIXTURE_PROPOSITIONS = CASE_GRAPH_BASE / "fixtures" / "sample_proposition_cards.attached.json"
+CASE_GRAPH_REVIEW_QUEUE = CASE_GRAPH_BASE / "fixtures" / "sample_proposition_review_queue.json"
+CASE_GRAPH_BENCHMARK = CASE_GRAPH_BASE / "case_graph_benchmark_queries.json"
+CASE_CARD_SCHEMA = ROOT / "src" / "case_graph" / "case_card_schema.js"
+PROPOSITION_CARD_SCHEMA = ROOT / "src" / "case_graph" / "proposition_card_schema.js"
+CASE_GRAPH_RETRIEVE = ROOT / "src" / "case_graph" / "retrieve_case_graph.js"
+CASE_GRAPH_EVIDENCE_PACK = ROOT / "src" / "case_graph" / "build_case_graph_evidence_pack.js"
+CASE_GRAPH_TREE_VALIDATOR = ROOT / "scripts" / "validate_case_graph_tree_v1.js"
+CASE_GRAPH_SIGNIFICANCE_VALIDATOR = ROOT / "scripts" / "validate_case_graph_significance.js"
+CASE_GRAPH_REVIEW_QUEUE_VALIDATOR = ROOT / "scripts" / "validate_proposition_review_queue.js"
+CASE_GRAPH_BENCHMARK_RUNNER = ROOT / "scripts" / "run_case_graph_benchmark.js"
 
 
 def main() -> int:
@@ -94,6 +112,7 @@ def main() -> int:
         "COHERE_API_KEY",
         "RERANK_PROVIDER",
         "RERANK_MODEL",
+        "CASE_GRAPH_LLM_PROVIDER",
     ]:
         if f"{key}=" not in env:
             errors.append(f".env.example missing {key}")
@@ -218,6 +237,23 @@ def main() -> int:
         (SOURCE_GATED_REVIEW_STATE_VALIDATOR, "source-gated review-state validator"),
         (CRIMINAL_GOLDEN_QUERIES, "criminal/evidence golden query suite"),
         (CRIMINAL_GOLDEN_VALIDATOR, "criminal/evidence golden query validator"),
+        (CASE_GRAPH_DOCTRINE_TREE, "criminal/evidence doctrine tree"),
+        (CASE_GRAPH_PROCEDURE_TREE, "criminal/evidence procedure tree"),
+        (CASE_GRAPH_TAXONOMY, "criminal/evidence taxonomy"),
+        (CASE_GRAPH_LABELS, "case graph significance labels"),
+        (CASE_GRAPH_FIXTURE_CASES, "case graph sample cases"),
+        (CASE_GRAPH_FIXTURE_PARAGRAPHS, "case graph sample paragraph cards"),
+        (CASE_GRAPH_FIXTURE_PROPOSITIONS, "case graph sample proposition cards"),
+        (CASE_GRAPH_REVIEW_QUEUE, "case graph proposition review queue"),
+        (CASE_GRAPH_BENCHMARK, "case graph benchmark queries"),
+        (CASE_CARD_SCHEMA, "case card schema"),
+        (PROPOSITION_CARD_SCHEMA, "proposition card schema"),
+        (CASE_GRAPH_RETRIEVE, "case graph retriever"),
+        (CASE_GRAPH_EVIDENCE_PACK, "case graph evidence pack builder"),
+        (CASE_GRAPH_TREE_VALIDATOR, "case graph tree validator"),
+        (CASE_GRAPH_SIGNIFICANCE_VALIDATOR, "case graph significance validator"),
+        (CASE_GRAPH_REVIEW_QUEUE_VALIDATOR, "case graph review queue validator"),
+        (CASE_GRAPH_BENCHMARK_RUNNER, "case graph benchmark runner"),
     ]:
         if not path.exists():
             errors.append(f"missing {label}: {path}")
@@ -330,6 +366,36 @@ def main() -> int:
         for token in ["hk_criminal_procedure_evidence_v05_golden_queries", "burden_standard", "right_to_silence"]:
             if token not in golden:
                 errors.append(f"criminal/evidence golden queries missing {token}")
+
+    if CASE_GRAPH_DOCTRINE_TREE.exists():
+        tree = CASE_GRAPH_DOCTRINE_TREE.read_text(encoding="utf-8")
+        for token in ["hk_criminal_evidence_doctrine_tree_v1", "criminal_evidence.confession", "criminal_evidence.abuse_of_process"]:
+            if token not in tree:
+                errors.append(f"case graph doctrine tree missing {token}")
+
+    if CASE_GRAPH_FIXTURE_CASES.exists():
+        fixtures = CASE_GRAPH_FIXTURE_CASES.read_text(encoding="utf-8")
+        for token in ["demo_fixture", "not_real_authority", "candidate_propositions"]:
+            if token not in fixtures:
+                errors.append(f"case graph fixtures missing {token}")
+
+    if CASE_GRAPH_FIXTURE_PROPOSITIONS.exists():
+        propositions = CASE_GRAPH_FIXTURE_PROPOSITIONS.read_text(encoding="utf-8")
+        for token in ["criminal_evidence_tree_attached_propositions_v1", "tree_node_ids", "significance_label"]:
+            if token not in propositions:
+                errors.append(f"case graph attached propositions missing {token}")
+
+    if CASE_GRAPH_RETRIEVE.exists():
+        retriever = CASE_GRAPH_RETRIEVE.read_text(encoding="utf-8")
+        for token in ["retrieveCaseGraph", "significance_label", "review_state"]:
+            if token not in retriever:
+                errors.append(f"case graph retriever missing {token}")
+
+    if CASE_GRAPH_EVIDENCE_PACK.exists():
+        evidence_pack = CASE_GRAPH_EVIDENCE_PACK.read_text(encoding="utf-8")
+        for token in ["buildCaseGraphEvidencePack", "case_graph_tree_first_v1"]:
+            if token not in evidence_pack:
+                errors.append(f"case graph evidence pack missing {token}")
 
     if errors:
         print("Legal ingest storage validation failed:")

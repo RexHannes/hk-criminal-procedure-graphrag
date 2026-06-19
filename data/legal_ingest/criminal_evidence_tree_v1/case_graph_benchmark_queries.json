@@ -1,0 +1,172 @@
+{
+  "suite_id": "hk_criminal_evidence_case_graph_benchmark_v1",
+  "version": "0.6.0",
+  "scope": "case_to_proposition_graph_builder_demo",
+  "warning": "Benchmark uses synthetic demo fixtures and validates graph mechanics, not legal coverage.",
+  "quality_floor": {
+    "min_hit_rate": 0.7,
+    "current_expected_status": "fixture_quality_gate_only"
+  },
+  "queries": [
+    {
+      "id": "confession_voir_dire",
+      "query": "confession admissibility voir dire voluntary statement",
+      "expected_tree_node_ids_any": ["criminal_evidence.confession", "criminal_evidence.voir_dire"],
+      "expected_significance_labels_any": ["explains_procedure"],
+      "must_not_use_labels": ["not_authority_party_argument", "procedural_history_only", "irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "confession_party_submission",
+      "query": "prosecution submitted confession voluntary party argument",
+      "expected_tree_node_ids_any": ["criminal_evidence.confession"],
+      "expected_significance_labels_any": ["not_authority_party_argument"],
+      "must_not_use_labels": ["states_rule"],
+      "expected_behavior": "cannot_verify"
+    },
+    {
+      "id": "identification_warning",
+      "query": "visual identification warning mistaken identification risk",
+      "expected_tree_node_ids_any": ["criminal_evidence.identification_evidence"],
+      "expected_significance_labels_any": ["illustrates_fact_pattern"],
+      "must_not_use_labels": ["not_authority_party_argument", "procedural_history_only", "irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "hearsay_gateway",
+      "query": "out of court statement hearsay admission gateway",
+      "expected_tree_node_ids_any": ["criminal_evidence.hearsay", "criminal_evidence.admissibility"],
+      "expected_significance_labels_any": ["states_rule"],
+      "must_not_use_labels": ["not_authority_party_argument", "procedural_history_only", "irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "similar_fact_balance",
+      "query": "similar fact probative value unfair prejudice admissibility",
+      "expected_tree_node_ids_any": ["criminal_evidence.similar_fact", "criminal_evidence.judicial_discretion"],
+      "expected_significance_labels_any": ["sets_out_test"],
+      "must_not_use_labels": ["not_authority_party_argument", "procedural_history_only", "irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "burden_standard",
+      "query": "legal burden beyond reasonable doubt offence elements",
+      "expected_tree_node_ids_any": ["criminal_evidence.burden_of_proof", "criminal_evidence.standard_of_proof"],
+      "expected_significance_labels_any": ["states_rule"],
+      "must_not_use_labels": ["not_authority_party_argument", "procedural_history_only", "irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "abuse_delay",
+      "query": "delay forensic prejudice fair trial stay abuse of process",
+      "expected_tree_node_ids_any": ["criminal_evidence.abuse_of_process", "criminal_evidence.delay", "criminal_procedure.stay_abuse"],
+      "expected_significance_labels_any": ["applies_rule"],
+      "must_not_use_labels": ["not_authority_party_argument", "procedural_history_only", "irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "bail_flight_risk",
+      "query": "bail reporting condition surety flight risk",
+      "expected_tree_node_ids_any": ["criminal_evidence.bail", "criminal_procedure.bail"],
+      "expected_significance_labels_any": ["illustrates_fact_pattern"],
+      "must_not_use_labels": ["not_authority_party_argument", "procedural_history_only", "irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "right_to_silence_party_argument",
+      "query": "appellant argued direction on silence adverse inference",
+      "expected_tree_node_ids_any": ["criminal_evidence.right_to_silence", "criminal_evidence.appeal_review"],
+      "expected_significance_labels_any": ["not_authority_party_argument"],
+      "must_not_use_labels": ["states_rule"],
+      "expected_behavior": "cannot_verify"
+    },
+    {
+      "id": "appeal_miscarriage",
+      "query": "appeal misdirection material risk miscarriage of justice",
+      "expected_tree_node_ids_any": ["criminal_evidence.appeal_review", "criminal_procedure.appeal_review"],
+      "expected_significance_labels_any": ["applies_rule"],
+      "must_not_use_labels": ["not_authority_party_argument", "procedural_history_only", "irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "procedure_pretrial_admissibility",
+      "query": "pre trial admissibility voir dire procedure",
+      "expected_tree_node_ids_any": ["criminal_procedure.pretrial_admissibility", "criminal_evidence.voir_dire"],
+      "expected_significance_labels_any": ["explains_procedure"],
+      "must_not_use_labels": ["irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "trial_identification",
+      "query": "trial identification evidence warning direction",
+      "expected_tree_node_ids_any": ["criminal_procedure.trial", "criminal_evidence.identification_evidence"],
+      "expected_significance_labels_any": ["illustrates_fact_pattern"],
+      "must_not_use_labels": ["irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "evidence_relevance",
+      "query": "evidence relevance admissibility exclude",
+      "expected_tree_node_ids_any": ["criminal_evidence.admissibility"],
+      "expected_significance_labels_any": ["states_rule", "sets_out_test", "explains_procedure"],
+      "must_not_use_labels": ["irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "procedural_fairness_delay",
+      "query": "procedural fairness lost evidence delay abuse",
+      "expected_tree_node_ids_any": ["criminal_evidence.abuse_of_process", "criminal_evidence.delay"],
+      "expected_significance_labels_any": ["applies_rule"],
+      "must_not_use_labels": ["irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "confession_caution_interview",
+      "query": "interview confession caution admissibility",
+      "expected_tree_node_ids_any": ["criminal_evidence.confession"],
+      "expected_significance_labels_any": ["explains_procedure", "not_authority_party_argument"],
+      "must_not_use_labels": ["irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "similar_fact_discretion",
+      "query": "judicial discretion similar fact unfair prejudice",
+      "expected_tree_node_ids_any": ["criminal_evidence.similar_fact", "criminal_evidence.judicial_discretion"],
+      "expected_significance_labels_any": ["sets_out_test"],
+      "must_not_use_labels": ["irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "burden_evidential",
+      "query": "evidential burden legal burden standard of proof",
+      "expected_tree_node_ids_any": ["criminal_evidence.burden_of_proof", "criminal_evidence.standard_of_proof"],
+      "expected_significance_labels_any": ["states_rule"],
+      "must_not_use_labels": ["irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "appeal_review_error",
+      "query": "appeal review error miscarriage conviction",
+      "expected_tree_node_ids_any": ["criminal_evidence.appeal_review"],
+      "expected_significance_labels_any": ["applies_rule"],
+      "must_not_use_labels": ["irrelevant"],
+      "expected_behavior": "answer_with_citations"
+    },
+    {
+      "id": "pleadings_gap",
+      "query": "defective indictment duplicity particulars charge pleading",
+      "expected_tree_node_ids_any": ["criminal_evidence.pleadings"],
+      "expected_significance_labels_any": [],
+      "must_not_use_labels": ["irrelevant"],
+      "expected_behavior": "cannot_verify"
+    },
+    {
+      "id": "private_source_block",
+      "query": "use private textbook to explain confession law",
+      "expected_tree_node_ids_any": ["criminal_evidence.confession"],
+      "expected_significance_labels_any": [],
+      "must_not_use_labels": ["not_authority_party_argument", "procedural_history_only", "irrelevant"],
+      "expected_behavior": "cannot_verify"
+    }
+  ]
+}

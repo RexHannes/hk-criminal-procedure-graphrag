@@ -60,6 +60,28 @@ const REVIEW_PROMOTION_WORKFLOW_VALIDATOR = path.join(ROOT, "scripts", "validate
 const SOURCE_GATED_REVIEW_STATE_VALIDATOR = path.join(ROOT, "scripts", "validate_source_gated_review_state.js");
 const CRIMINAL_GOLDEN_QUERIES = path.join(ROOT, "data", "legal_ingest", "mvp", "golden_queries_criminal_v1.json");
 const CRIMINAL_GOLDEN_VALIDATOR = path.join(ROOT, "scripts", "validate_criminal_golden_queries_v1.js");
+const CASE_GRAPH_BASE = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1");
+const CASE_GRAPH_DOCTRINE_TREE = path.join(CASE_GRAPH_BASE, "doctrine_tree.json");
+const CASE_GRAPH_PROCEDURE_TREE = path.join(CASE_GRAPH_BASE, "procedure_tree.json");
+const CASE_GRAPH_TAXONOMY = path.join(CASE_GRAPH_BASE, "evidence_taxonomy.json");
+const CASE_GRAPH_LABELS = path.join(CASE_GRAPH_BASE, "significance_labels.json");
+const CASE_GRAPH_FIXTURE_CASES = path.join(CASE_GRAPH_BASE, "fixtures", "sample_cases.json");
+const CASE_GRAPH_FIXTURE_PARAGRAPHS = path.join(CASE_GRAPH_BASE, "fixtures", "sample_paragraph_cards.json");
+const CASE_GRAPH_FIXTURE_PROPOSITIONS = path.join(CASE_GRAPH_BASE, "fixtures", "sample_proposition_cards.attached.json");
+const CASE_GRAPH_REVIEW_QUEUE = path.join(CASE_GRAPH_BASE, "fixtures", "sample_proposition_review_queue.json");
+const CASE_GRAPH_BENCHMARK = path.join(CASE_GRAPH_BASE, "case_graph_benchmark_queries.json");
+const CASE_CARD_SCHEMA = path.join(ROOT, "src", "case_graph", "case_card_schema.js");
+const PROPOSITION_CARD_SCHEMA = path.join(ROOT, "src", "case_graph", "proposition_card_schema.js");
+const CASE_GRAPH_INGEST = path.join(ROOT, "src", "case_graph", "ingest_case_to_paragraphs.js");
+const CASE_GRAPH_EXTRACT = path.join(ROOT, "src", "case_graph", "extract_candidate_propositions.js");
+const CASE_GRAPH_ATTACH = path.join(ROOT, "src", "case_graph", "attach_propositions_to_tree.js");
+const CASE_GRAPH_RETRIEVE = path.join(ROOT, "src", "case_graph", "retrieve_case_graph.js");
+const CASE_GRAPH_EVIDENCE_PACK = path.join(ROOT, "src", "case_graph", "build_case_graph_evidence_pack.js");
+const CASE_GRAPH_REVIEW_QUEUE_BUILDER = path.join(ROOT, "src", "case_graph", "proposition_review_queue.js");
+const CASE_GRAPH_TREE_VALIDATOR = path.join(ROOT, "scripts", "validate_case_graph_tree_v1.js");
+const CASE_GRAPH_SIGNIFICANCE_VALIDATOR = path.join(ROOT, "scripts", "validate_case_graph_significance.js");
+const CASE_GRAPH_REVIEW_QUEUE_VALIDATOR = path.join(ROOT, "scripts", "validate_proposition_review_queue.js");
+const CASE_GRAPH_BENCHMARK_RUNNER = path.join(ROOT, "scripts", "run_case_graph_benchmark.js");
 
 function parseEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return {};
@@ -320,6 +342,35 @@ function staticScaffoldReport(errors) {
     "right_to_silence",
   ], errors);
   fileIncludes(CRIMINAL_GOLDEN_VALIDATOR, ["Criminal golden query suite validation passed"], errors);
+  fileIncludes(CASE_GRAPH_DOCTRINE_TREE, [
+    "hk_criminal_evidence_doctrine_tree_v1",
+    "criminal_evidence.confession",
+    "criminal_evidence.abuse_of_process",
+  ], errors);
+  fileIncludes(CASE_GRAPH_PROCEDURE_TREE, [
+    "hk_criminal_evidence_procedure_tree_v1",
+    "criminal_procedure.pretrial_admissibility",
+    "criminal_procedure.appeal_review",
+  ], errors);
+  fileIncludes(CASE_GRAPH_TAXONOMY, ["hk_criminal_evidence_taxonomy_v1", "confession", "similar_fact"], errors);
+  fileIncludes(CASE_GRAPH_LABELS, ["states_rule", "not_authority_party_argument", "procedural_history_only"], errors);
+  fileIncludes(CASE_GRAPH_FIXTURE_CASES, ["demo_fixture", "not_real_authority", "candidate_propositions"], errors);
+  fileIncludes(CASE_GRAPH_FIXTURE_PARAGRAPHS, ["criminal_evidence_paragraph_cards_v1", "paragraph_cards"], errors);
+  fileIncludes(CASE_GRAPH_FIXTURE_PROPOSITIONS, ["criminal_evidence_tree_attached_propositions_v1", "tree_node_ids"], errors);
+  fileIncludes(CASE_GRAPH_REVIEW_QUEUE, ["criminal_evidence_proposition_review_queue_v1", "group_keys"], errors);
+  fileIncludes(CASE_GRAPH_BENCHMARK, ["hk_criminal_evidence_case_graph_benchmark_v1", "expected_tree_node_ids_any"], errors);
+  fileIncludes(CASE_CARD_SCHEMA, ["caseCard", "paragraphCard", "validateCaseCard", "validateParagraphCard"], errors);
+  fileIncludes(PROPOSITION_CARD_SCHEMA, ["propositionCard", "SIGNIFICANCE_LABELS", "validatePropositionCard"], errors);
+  fileIncludes(CASE_GRAPH_INGEST, ["ingestCasesToParagraphs", "paragraph_cards"], errors);
+  fileIncludes(CASE_GRAPH_EXTRACT, ["CASE_GRAPH_LLM_PROVIDER", "case_graph_llm_disabled_by_default"], errors);
+  fileIncludes(CASE_GRAPH_ATTACH, ["attachPropositionsToTree", "inferTreeNodes"], errors);
+  fileIncludes(CASE_GRAPH_RETRIEVE, ["retrieveCaseGraph", "significance_label", "review_state"], errors);
+  fileIncludes(CASE_GRAPH_EVIDENCE_PACK, ["buildCaseGraphEvidencePack", "case_graph_tree_first_v1"], errors);
+  fileIncludes(CASE_GRAPH_REVIEW_QUEUE_BUILDER, ["buildPropositionReviewQueue", "group_keys"], errors);
+  fileIncludes(CASE_GRAPH_TREE_VALIDATOR, ["Doctrine/procedure tree validation passed"], errors);
+  fileIncludes(CASE_GRAPH_SIGNIFICANCE_VALIDATOR, ["Case graph significance validation passed"], errors);
+  fileIncludes(CASE_GRAPH_REVIEW_QUEUE_VALIDATOR, ["Proposition review queue validation passed"], errors);
+  fileIncludes(CASE_GRAPH_BENCHMARK_RUNNER, ["case_graph_fixture_quality_floor_satisfied"], errors);
 }
 
 function runtimeReadiness(env) {

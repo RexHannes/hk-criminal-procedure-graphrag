@@ -1,0 +1,309 @@
+{
+  "fixture_set_id": "criminal_evidence_case_graph_demo_fixtures_v1",
+  "version": "0.6.0",
+  "fixture_warning": "Synthetic demo fixtures only. These are not real cases and must not be cited as legal authority.",
+  "cases": [
+    {
+      "case_id": "demo_case_confession_001",
+      "case_name": "Demo Confession Voir Dire Case",
+      "neutral_citation": "[Demo] HKCFI 001",
+      "law_report_citation": "",
+      "court": "CFI",
+      "date": "2026-01-01",
+      "judges": ["Demo J"],
+      "source_url_or_path": "fixture://criminal_evidence/demo_case_confession_001",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "licence_status": "public_or_demo_safe",
+      "ingestion_status": "machine_candidate",
+      "fixture_status": "demo_fixture",
+      "authority_status": "not_real_authority",
+      "paragraphs": [
+        {
+          "paragraph_no": "12",
+          "text": "The court directed that the confession issue should be determined by voir dire before the statement was placed before the tribunal of fact.",
+          "candidate_propositions": [
+            {
+              "proposition_id": "prop_demo_confession_voir_dire_001",
+              "exact_quote": "confession issue should be determined by voir dire",
+              "proposition_text": "A disputed confession admissibility issue may require a voir dire before the statement is considered by the tribunal of fact.",
+              "tree_node_ids": ["criminal_evidence.confession", "criminal_evidence.voir_dire", "criminal_procedure.pretrial_admissibility"],
+              "significance_label": "explains_procedure",
+              "authority_role": "unknown",
+              "confidence": "medium"
+            }
+          ]
+        },
+        {
+          "paragraph_no": "18",
+          "text": "The prosecution submitted that the interview was voluntary, but this paragraph records a submission only and does not state the court's ruling.",
+          "candidate_propositions": [
+            {
+              "proposition_id": "prop_demo_confession_submission_001",
+              "exact_quote": "prosecution submitted that the interview was voluntary",
+              "proposition_text": "The prosecution argued that the interview was voluntary.",
+              "tree_node_ids": ["criminal_evidence.confession"],
+              "significance_label": "not_authority_party_argument",
+              "authority_role": "party_submission",
+              "confidence": "high"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "demo_case_identification_001",
+      "case_name": "Demo Identification Warning Case",
+      "neutral_citation": "[Demo] HKCA 002",
+      "law_report_citation": "",
+      "court": "CA",
+      "date": "2026-01-02",
+      "judges": ["Demo VP", "Demo JA"],
+      "source_url_or_path": "fixture://criminal_evidence/demo_case_identification_001",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "licence_status": "public_or_demo_safe",
+      "ingestion_status": "machine_candidate",
+      "fixture_status": "demo_fixture",
+      "authority_status": "not_real_authority",
+      "paragraphs": [
+        {
+          "paragraph_no": "24",
+          "text": "Where visual identification is central and contested, the trial judge considered whether a warning direction was necessary to address mistaken identification risk.",
+          "candidate_propositions": [
+            {
+              "proposition_id": "prop_demo_identification_warning_001",
+              "exact_quote": "warning direction was necessary to address mistaken identification risk",
+              "proposition_text": "Contested visual identification may require attention to mistaken identification risk and an appropriate warning direction.",
+              "tree_node_ids": ["criminal_evidence.identification_evidence", "criminal_procedure.trial"],
+              "significance_label": "illustrates_fact_pattern",
+              "authority_role": "application",
+              "confidence": "medium"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "demo_case_hearsay_001",
+      "case_name": "Demo Hearsay Gateway Case",
+      "neutral_citation": "[Demo] HKDC 003",
+      "law_report_citation": "",
+      "court": "DC",
+      "date": "2026-01-03",
+      "judges": ["Demo DJ"],
+      "source_url_or_path": "fixture://criminal_evidence/demo_case_hearsay_001",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "licence_status": "public_or_demo_safe",
+      "ingestion_status": "machine_candidate",
+      "fixture_status": "demo_fixture",
+      "authority_status": "not_real_authority",
+      "paragraphs": [
+        {
+          "paragraph_no": "31",
+          "text": "The paragraph treated the out of court statement as hearsay and asked whether a statutory or common law gateway could justify admission.",
+          "candidate_propositions": [
+            {
+              "proposition_id": "prop_demo_hearsay_gateway_001",
+              "exact_quote": "out of court statement as hearsay",
+              "proposition_text": "An out-of-court statement tendered for its truth raises a hearsay admissibility issue.",
+              "tree_node_ids": ["criminal_evidence.hearsay", "criminal_evidence.admissibility"],
+              "significance_label": "states_rule",
+              "authority_role": "unknown",
+              "confidence": "medium"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "demo_case_similar_fact_001",
+      "case_name": "Demo Similar Fact Balancing Case",
+      "neutral_citation": "[Demo] HKCFI 004",
+      "law_report_citation": "",
+      "court": "CFI",
+      "date": "2026-01-04",
+      "judges": ["Demo J"],
+      "source_url_or_path": "fixture://criminal_evidence/demo_case_similar_fact_001",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "licence_status": "public_or_demo_safe",
+      "ingestion_status": "machine_candidate",
+      "fixture_status": "demo_fixture",
+      "authority_status": "not_real_authority",
+      "paragraphs": [
+        {
+          "paragraph_no": "20",
+          "text": "The judge weighed the probative value of similar fact evidence against the risk of unfair prejudice before ruling on admissibility.",
+          "candidate_propositions": [
+            {
+              "proposition_id": "prop_demo_similar_fact_balance_001",
+              "exact_quote": "probative value of similar fact evidence against the risk of unfair prejudice",
+              "proposition_text": "Similar fact evidence raises a probative-value and unfair-prejudice balancing issue.",
+              "tree_node_ids": ["criminal_evidence.similar_fact", "criminal_evidence.judicial_discretion"],
+              "significance_label": "sets_out_test",
+              "authority_role": "unknown",
+              "confidence": "medium"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "demo_case_burden_001",
+      "case_name": "Demo Burden And Standard Case",
+      "neutral_citation": "[Demo] HKCA 005",
+      "law_report_citation": "",
+      "court": "CA",
+      "date": "2026-01-05",
+      "judges": ["Demo VP", "Demo JA"],
+      "source_url_or_path": "fixture://criminal_evidence/demo_case_burden_001",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "licence_status": "public_or_demo_safe",
+      "ingestion_status": "machine_candidate",
+      "fixture_status": "demo_fixture",
+      "authority_status": "not_real_authority",
+      "paragraphs": [
+        {
+          "paragraph_no": "9",
+          "text": "The prosecution retained the legal burden to prove the elements of the offence beyond reasonable doubt.",
+          "candidate_propositions": [
+            {
+              "proposition_id": "prop_demo_burden_standard_001",
+              "exact_quote": "legal burden to prove the elements of the offence beyond reasonable doubt",
+              "proposition_text": "The prosecution generally bears the legal burden to prove offence elements beyond reasonable doubt.",
+              "tree_node_ids": ["criminal_evidence.burden_of_proof", "criminal_evidence.standard_of_proof"],
+              "significance_label": "states_rule",
+              "authority_role": "unknown",
+              "confidence": "medium"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "demo_case_abuse_delay_001",
+      "case_name": "Demo Abuse And Delay Case",
+      "neutral_citation": "[Demo] HKCFI 006",
+      "law_report_citation": "",
+      "court": "CFI",
+      "date": "2026-01-06",
+      "judges": ["Demo J"],
+      "source_url_or_path": "fixture://criminal_evidence/demo_case_abuse_delay_001",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "licence_status": "public_or_demo_safe",
+      "ingestion_status": "machine_candidate",
+      "fixture_status": "demo_fixture",
+      "authority_status": "not_real_authority",
+      "paragraphs": [
+        {
+          "paragraph_no": "44",
+          "text": "The stay application focused on whether delay had caused forensic prejudice so serious that a fair trial was no longer possible.",
+          "candidate_propositions": [
+            {
+              "proposition_id": "prop_demo_abuse_delay_001",
+              "exact_quote": "delay had caused forensic prejudice so serious that a fair trial was no longer possible",
+              "proposition_text": "Delay may support an abuse/stay argument where it causes serious forensic prejudice affecting trial fairness.",
+              "tree_node_ids": ["criminal_evidence.abuse_of_process", "criminal_evidence.delay", "criminal_procedure.stay_abuse"],
+              "significance_label": "applies_rule",
+              "authority_role": "application",
+              "confidence": "medium"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "demo_case_bail_001",
+      "case_name": "Demo Bail Conditions Case",
+      "neutral_citation": "[Demo] HKMC 007",
+      "law_report_citation": "",
+      "court": "Magistrates' Court",
+      "date": "2026-01-07",
+      "judges": ["Demo Magistrate"],
+      "source_url_or_path": "fixture://criminal_evidence/demo_case_bail_001",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "licence_status": "public_or_demo_safe",
+      "ingestion_status": "machine_candidate",
+      "fixture_status": "demo_fixture",
+      "authority_status": "not_real_authority",
+      "paragraphs": [
+        {
+          "paragraph_no": "7",
+          "text": "The court considered whether reporting conditions and a surety could manage the alleged flight risk.",
+          "candidate_propositions": [
+            {
+              "proposition_id": "prop_demo_bail_conditions_001",
+              "exact_quote": "reporting conditions and a surety could manage the alleged flight risk",
+              "proposition_text": "Bail analysis may consider whether conditions can manage risks such as flight.",
+              "tree_node_ids": ["criminal_evidence.bail", "criminal_procedure.bail"],
+              "significance_label": "illustrates_fact_pattern",
+              "authority_role": "application",
+              "confidence": "medium"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "demo_case_appeal_silence_001",
+      "case_name": "Demo Appeal And Silence Case",
+      "neutral_citation": "[Demo] HKCA 008",
+      "law_report_citation": "",
+      "court": "CA",
+      "date": "2026-01-08",
+      "judges": ["Demo VP", "Demo JA"],
+      "source_url_or_path": "fixture://criminal_evidence/demo_case_appeal_silence_001",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case",
+      "licence_status": "public_or_demo_safe",
+      "ingestion_status": "machine_candidate",
+      "fixture_status": "demo_fixture",
+      "authority_status": "not_real_authority",
+      "paragraphs": [
+        {
+          "paragraph_no": "16",
+          "text": "The appellant argued that the trial direction on silence created a real risk of unfair adverse inference.",
+          "candidate_propositions": [
+            {
+              "proposition_id": "prop_demo_silence_submission_001",
+              "exact_quote": "appellant argued that the trial direction on silence",
+              "proposition_text": "The appellant argued that the direction on silence was unfair.",
+              "tree_node_ids": ["criminal_evidence.right_to_silence", "criminal_evidence.appeal_review"],
+              "significance_label": "not_authority_party_argument",
+              "authority_role": "party_submission",
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "paragraph_no": "27",
+          "text": "The appeal analysis asked whether the alleged misdirection created a material risk of miscarriage of justice.",
+          "candidate_propositions": [
+            {
+              "proposition_id": "prop_demo_appeal_miscarriage_001",
+              "exact_quote": "material risk of miscarriage of justice",
+              "proposition_text": "Appeal review may focus on whether an error created a material risk of miscarriage of justice.",
+              "tree_node_ids": ["criminal_evidence.appeal_review", "criminal_procedure.appeal_review"],
+              "significance_label": "applies_rule",
+              "authority_role": "application",
+              "confidence": "medium"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
