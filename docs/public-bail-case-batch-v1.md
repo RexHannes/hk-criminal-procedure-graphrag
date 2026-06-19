@@ -1,0 +1,64 @@
+# Public Bail Case Batch v1
+
+This batch is the first real-public-source extension of the criminal procedure case-fruits pilot.
+
+It is intentionally narrow:
+
+- domain: `criminal_procedure_hk`
+- topic: bail / NSL bail
+- source type: public Judiciary Legal Reference judgments only
+- output status: `machine_candidate` / `candidate_only`
+- review gate: human review required before answer-safe use
+
+## Files
+
+```text
+data/legal_ingest/criminal_evidence_tree_v1/bail_public_batch_v1/
+├─ source_manifest.json
+├─ extraction_rules.json
+├─ paragraph_cards.json
+├─ proposition_cards.json
+├─ proposition_node_links.json
+├─ l4_case_applications.json
+├─ l5_paragraph_proof.json
+├─ parse_report.json
+└─ case_fruits_artifact.json
+```
+
+## Commands
+
+Build from public sources:
+
+```bash
+node scripts/build_public_bail_batch.js
+```
+
+Validate the batch:
+
+```bash
+node scripts/validate_public_bail_batch.js
+node scripts/validate_case_fruits_api_fallback.js
+```
+
+## Safety Rules
+
+The builder only emits a proposition when:
+
+- the source is listed in `source_manifest.json`;
+- the paragraph number is found in the fetched public source;
+- the rule's `exact_quote` appears in the extracted paragraph text;
+- the target doctrine node exists;
+- the resulting proposition remains `machine_candidate`;
+- the resulting evidence remains `candidate_only`.
+
+The batch must not:
+
+- ingest private, textbook, firm, or licensed material;
+- write raw downloaded source files to the repo;
+- bulk-attach cases across criminal law;
+- mark any proposition as `answer_safe`;
+- rewrite L0-L3 doctrine nodes.
+
+## Lineage Note
+
+`Tong Ying Kit v HKSAR` is included only as an earlier public judgment candidate. `HKSAR v Lai Chee Ying` later corrected/limited Tong on the NSL Article 42(2) threshold, so answer composers and reviewers should prefer the CFA lineage when presenting the current source trail.

@@ -1,0 +1,172 @@
+{
+  "l4_case_applications": [
+    {
+      "l4_application_id": "l4_prop_lai_2021_nsl_art42_text_p52",
+      "proposition_id": "prop_lai_2021_nsl_art42_text_p52",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2021] HKCFA 3",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p52",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "NSL Article 42(2) sets a no-bail-unless threshold for national security bail applications.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFA statement of the statutory text used in construing NSL Article 42(2)."
+    },
+    {
+      "l4_application_id": "l4_prop_lai_2021_nsl_more_stringent_threshold_p53",
+      "proposition_id": "prop_lai_2021_nsl_more_stringent_threshold_p53",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2021] HKCFA 3",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p53",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "For NSL bail, Article 42(2) introduces a threshold materially more stringent than ordinary bail under the Criminal Procedure Ordinance.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "sets_out_test",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFA distinguishes the NSL Article 42 threshold from ordinary bail."
+    },
+    {
+      "l4_application_id": "l4_prop_lai_2021_nsl_exception_matrix_p54",
+      "proposition_id": "prop_lai_2021_nsl_exception_matrix_p54",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2021] HKCFA 3",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p54",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "NSL Article 42(2) operates as a specific exception within the existing bail regime, rather than replacing the whole bail regime.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFA frames NSL Article 42(2) as a special threshold within the wider bail system."
+    },
+    {
+      "l4_application_id": "l4_prop_lai_2021_bail_conditions_relevant_p57",
+      "proposition_id": "prop_lai_2021_bail_conditions_relevant_p57",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2021] HKCFA 3",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p57",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "When assessing NSL Article 42(2), the court may consider whether bail conditions affect the future risk assessment.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFA rejects a sealed-off first stage that excludes proposed bail conditions."
+    },
+    {
+      "l4_application_id": "l4_prop_lai_2021_bail_conditions_deterrent_p58",
+      "proposition_id": "prop_lai_2021_bail_conditions_deterrent_p58",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2021] HKCFA 3",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p58",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "Appropriate bail conditions may be relevant to the risk assessment because they can deter breach or further offending.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFA connects conditions to risk management and deterrence."
+    },
+    {
+      "l4_application_id": "l4_prop_lai_2021_nsl_summary_p70",
+      "proposition_id": "prop_lai_2021_nsl_summary_p70",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2021] HKCFA 3",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p70",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "The CFA summarised NSL Article 42(2) as a specific exception importing a stringent threshold for bail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "sets_out_test",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFA summary of conclusions."
+    },
+    {
+      "l4_application_id": "l4_prop_lai_2021_tong_limited_p72",
+      "proposition_id": "prop_lai_2021_tong_limited_p72",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2021] HKCFA 3",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p72",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "The CFA held that Tong (No 1) erred in a crucial respect by misapprehending the nature and effect of the NSL Article 42(2) threshold.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "limits_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Lineage marker showing Lai limiting/correcting Tong on NSL bail threshold."
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2020_article42_targets_risk_p50",
+      "proposition_id": "prop_tong_2020_article42_targets_risk_p50",
+      "case_id": "hk_cfi_2020_tong_ying_kit_hcal_1601_2020",
+      "case_name": "Tong Ying Kit v HKSAR",
+      "neutral_citation": "[2020] HKCFI 2133",
+      "paragraph_id": "hk_cfi_2020_tong_ying_kit_hcal_1601_2020_p50",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "Tong treated Article 42(2) as targeting the risk of offending while on bail in respect of national security offences.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Earlier CFI treatment; must be read with later CFA correction in Lai Chee Ying."
+    }
+  ]
+}

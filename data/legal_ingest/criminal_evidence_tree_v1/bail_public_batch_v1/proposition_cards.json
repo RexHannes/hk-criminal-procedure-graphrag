@@ -1,0 +1,232 @@
+{
+  "artifact_id": "criminal_bail_public_batch_v1_proposition_cards",
+  "generated_at": "2026-06-19T13:34:49.707Z",
+  "batch_id": "criminal_bail_public_batch_v1",
+  "proposition_count": 8,
+  "proposition_cards": [
+    {
+      "proposition_id": "prop_lai_2021_nsl_art42_text_p52",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p52",
+      "source_paragraph": "52",
+      "exact_quote": "No bail shall be granted to a criminal suspect or defendant unless the judge has sufficient grounds for believing that the criminal suspect or defendant will not continue to commit acts endangering national security.",
+      "proposition_text": "NSL Article 42(2) sets a no-bail-unless threshold for national security bail applications.",
+      "tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_batch",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": "CFA statement of the statutory text used in construing NSL Article 42(2)."
+    },
+    {
+      "proposition_id": "prop_lai_2021_nsl_more_stringent_threshold_p53",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p53",
+      "source_paragraph": "53",
+      "exact_quote": "Plainly, NSL 42(2) introduces a considerably more stringent threshold requirement.",
+      "proposition_text": "For NSL bail, Article 42(2) introduces a threshold materially more stringent than ordinary bail under the Criminal Procedure Ordinance.",
+      "tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "sets_out_test",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_batch",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": "CFA distinguishes the NSL Article 42 threshold from ordinary bail."
+    },
+    {
+      "proposition_id": "prop_lai_2021_nsl_exception_matrix_p54",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p54",
+      "source_paragraph": "54",
+      "exact_quote": "NSL 42(2) operates in the context or matrix of the existing bail regime and draws on its rules and principles insofar as they may be relevant, while introducing a new and more stringent threshold requirement for the grant of bail.",
+      "proposition_text": "NSL Article 42(2) operates as a specific exception within the existing bail regime, rather than replacing the whole bail regime.",
+      "tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_batch",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": "CFA frames NSL Article 42(2) as a special threshold within the wider bail system."
+    },
+    {
+      "proposition_id": "prop_lai_2021_bail_conditions_relevant_p57",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p57",
+      "source_paragraph": "57",
+      "exact_quote": "it makes no sense presumptively to exclude bail conditions from consideration.",
+      "proposition_text": "When assessing NSL Article 42(2), the court may consider whether bail conditions affect the future risk assessment.",
+      "tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_batch",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": "CFA rejects a sealed-off first stage that excludes proposed bail conditions."
+    },
+    {
+      "proposition_id": "prop_lai_2021_bail_conditions_deterrent_p58",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p58",
+      "source_paragraph": "58",
+      "exact_quote": "The imposition of appropriate conditions therefore possesses a deterrent value that may plainly be relevant to the risk assessment.",
+      "proposition_text": "Appropriate bail conditions may be relevant to the risk assessment because they can deter breach or further offending.",
+      "tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_batch",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": "CFA connects conditions to risk management and deterrence."
+    },
+    {
+      "proposition_id": "prop_lai_2021_nsl_summary_p70",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p70",
+      "source_paragraph": "70",
+      "exact_quote": "NSL 42(2) creates a specific exception to the HKSAR rules and principles governing the grant and refusal of bail, and imports a stringent threshold requirement for bail applications.",
+      "proposition_text": "The CFA summarised NSL Article 42(2) as a specific exception importing a stringent threshold for bail.",
+      "tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "sets_out_test",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_batch",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": "CFA summary of conclusions."
+    },
+    {
+      "proposition_id": "prop_lai_2021_tong_limited_p72",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p72",
+      "source_paragraph": "72",
+      "exact_quote": "that judgment unfortunately falls into error and is flawed in a crucial respect in that it misapprehends the nature and effect of the threshold requirement laid down by NSL 42(2).",
+      "proposition_text": "The CFA held that Tong (No 1) erred in a crucial respect by misapprehending the nature and effect of the NSL Article 42(2) threshold.",
+      "tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "limits_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_batch",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": "Lineage marker showing Lai limiting/correcting Tong on NSL bail threshold."
+    },
+    {
+      "proposition_id": "prop_tong_2020_article42_targets_risk_p50",
+      "case_id": "hk_cfi_2020_tong_ying_kit_hcal_1601_2020",
+      "paragraph_id": "hk_cfi_2020_tong_ying_kit_hcal_1601_2020_p50",
+      "source_paragraph": "50",
+      "exact_quote": "Article 42(2), in substance, targets such risk in respect of offences endangering national security.",
+      "proposition_text": "Tong treated Article 42(2) as targeting the risk of offending while on bail in respect of national security offences.",
+      "tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_batch",
+      "authority_status": "real_public_authority_candidate_later_considered_in_lai",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=130336&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": "Earlier CFI treatment; must be read with later CFA correction in Lai Chee Ying."
+    }
+  ]
+}

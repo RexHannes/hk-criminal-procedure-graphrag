@@ -1,0 +1,324 @@
+{
+  "proposition_node_links": [
+    {
+      "link_id": "prop_lai_2021_nsl_art42_text_p52__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_2021_nsl_art42_text_p52",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "states_rule",
+      "confidence": 0.88,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA statement of the statutory text used in construing NSL Article 42(2).",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_nsl_art42_text_p52__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_lai_2021_nsl_art42_text_p52",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "states_rule",
+      "confidence": 0.88,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA statement of the statutory text used in construing NSL Article 42(2).",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_nsl_more_stringent_threshold_p53__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_2021_nsl_more_stringent_threshold_p53",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "sets_out_test",
+      "confidence": 0.9,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA distinguishes the NSL Article 42 threshold from ordinary bail.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_nsl_more_stringent_threshold_p53__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_lai_2021_nsl_more_stringent_threshold_p53",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "sets_out_test",
+      "confidence": 0.9,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA distinguishes the NSL Article 42 threshold from ordinary bail.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_nsl_exception_matrix_p54__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_2021_nsl_exception_matrix_p54",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "states_rule",
+      "confidence": 0.86,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA frames NSL Article 42(2) as a special threshold within the wider bail system.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_nsl_exception_matrix_p54__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_lai_2021_nsl_exception_matrix_p54",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "states_rule",
+      "confidence": 0.86,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA frames NSL Article 42(2) as a special threshold within the wider bail system.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_bail_conditions_relevant_p57__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_lai_2021_bail_conditions_relevant_p57",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "applies_rule",
+      "confidence": 0.84,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA rejects a sealed-off first stage that excludes proposed bail conditions.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_bail_conditions_relevant_p57__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_lai_2021_bail_conditions_relevant_p57",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "applies_rule",
+      "confidence": 0.84,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA rejects a sealed-off first stage that excludes proposed bail conditions.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_bail_conditions_relevant_p57__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_2021_bail_conditions_relevant_p57",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "applies_rule",
+      "confidence": 0.84,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA rejects a sealed-off first stage that excludes proposed bail conditions.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_bail_conditions_deterrent_p58__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_lai_2021_bail_conditions_deterrent_p58",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "applies_rule",
+      "confidence": 0.82,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA connects conditions to risk management and deterrence.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_bail_conditions_deterrent_p58__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_lai_2021_bail_conditions_deterrent_p58",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "applies_rule",
+      "confidence": 0.82,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA connects conditions to risk management and deterrence.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_bail_conditions_deterrent_p58__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_2021_bail_conditions_deterrent_p58",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "applies_rule",
+      "confidence": 0.82,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA connects conditions to risk management and deterrence.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_nsl_summary_p70__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_2021_nsl_summary_p70",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "sets_out_test",
+      "confidence": 0.89,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA summary of conclusions.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_nsl_summary_p70__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_lai_2021_nsl_summary_p70",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "sets_out_test",
+      "confidence": 0.89,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFA summary of conclusions.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_2021_tong_limited_p72__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_2021_tong_limited_p72",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "ratio",
+      "significance_label": "limits_rule",
+      "confidence": 0.82,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Lineage marker showing Lai limiting/correcting Tong on NSL bail threshold.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_tong_2020_article42_targets_risk_p50__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_tong_2020_article42_targets_risk_p50",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.58,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Earlier CFI treatment; must be read with later CFA correction in Lai Chee Ying.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    }
+  ]
+}

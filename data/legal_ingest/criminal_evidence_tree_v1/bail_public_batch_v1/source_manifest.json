@@ -1,0 +1,63 @@
+{
+  "batch_id": "criminal_bail_public_batch_v1",
+  "version": "0.7.0",
+  "domain_id": "criminal_procedure_hk",
+  "scope": "bail_only",
+  "status": "public_source_candidate_batch",
+  "purpose": "Fetch public Hong Kong bail judgments, extract quote-verified proposition cards, and attach them to existing bail doctrine nodes as L4/L5 candidate evidence only.",
+  "source_policy": {
+    "public_sources_only": true,
+    "private_or_licensed_sources_allowed": false,
+    "raw_private_upload_allowed": false,
+    "bulk_auto_attach_allowed": false,
+    "answer_safe_by_default": false
+  },
+  "target_doctrine_node_ids": [
+    "criminal_procedure_hk.bail_right_to_bail",
+    "criminal_procedure_hk.bail_factors",
+    "criminal_procedure_hk.bail_flow_step5",
+    "criminal_procedure_hk.nsl_bail"
+  ],
+  "sources": [
+    {
+      "source_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2021] HKCFA 3",
+      "law_report_citation": "(2021) 24 HKCFAR 33",
+      "court": "Court of Final Appeal",
+      "court_level": "CFA",
+      "date": "2021-02-09",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=133491&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate",
+      "notes": "Full public judgment page from Judiciary Legal Reference System. Extracted propositions remain machine_candidate until reviewed."
+    },
+    {
+      "source_id": "hk_cfi_2020_tong_ying_kit_hcal_1601_2020",
+      "case_id": "hk_cfi_2020_tong_ying_kit_hcal_1601_2020",
+      "case_name": "Tong Ying Kit v HKSAR",
+      "neutral_citation": "[2020] HKCFI 2133",
+      "law_report_citation": "[2020] 4 HKLRD 382",
+      "court": "Court of First Instance",
+      "court_level": "CFI",
+      "date": "2020-08-21",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=130336&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=130336&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate_later_considered_in_lai",
+      "notes": "Earlier NSL bail judgment. Later treatment in HKSAR v Lai Chee Ying must be shown in lineage/audit trail."
+    }
+  ]
+}

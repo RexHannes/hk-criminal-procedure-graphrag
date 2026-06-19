@@ -1,0 +1,15 @@
+{
+  "artifact_id": "criminal_bail_public_batch_v1_artifact",
+  "generated_at": "2026-06-19T13:34:49.707Z",
+  "batch_id": "criminal_bail_public_batch_v1",
+  "domain_id": "criminal_procedure_hk",
+  "scope": "bail_only",
+  "status": "public_source_candidate_links",
+  "source_count": 2,
+  "paragraph_count": 8,
+  "proposition_count": 8,
+  "link_count": 16,
+  "rejected_count": 0,
+  "errors": [],
+  "rejected": []
+}

@@ -1,5 +1,5 @@
 {
-  "readiness_id": "hk_law_claude_production_readiness_v06",
+  "readiness_id": "hk_law_claude_production_readiness_v07",
   "description": "Weighted readiness estimate for a transparent, source-gated HK law assistant. Percentages are engineering/product-readiness estimates, not legal validation.",
   "overall_warning": "This is a public-source demo readiness model. It must not be read as lawyer approval, corpus completeness, or private/licensed-source readiness.",
   "sections": [
@@ -17,11 +17,12 @@
     {
       "section_id": "corpus_readiness",
       "weight": 25,
-      "current_state": "thin_public_demo_corpus",
-      "done_ratio": 0.22,
+      "current_state": "thin_public_demo_corpus_with_public_bail_batch",
+      "done_ratio": 0.24,
       "evidence": [
         "public corpus v1 registry defines 30+ public/demo-safe source candidates",
-        "only the small inconsistent-pleadings pilot has embedded chunk/proposition coverage"
+        "the small inconsistent-pleadings pilot has embedded chunk/proposition coverage",
+        "bail_public_batch_v1 adds two real public Judiciary case sources with quote-verified candidate paragraph/proposition cards"
       ],
       "remaining": "Ingest a large public HK cases/legislation corpus with paragraph/provision cards, citation normalization, deduplication, and no private source leakage."
     },
@@ -82,12 +83,13 @@
     {
       "section_id": "case_graph_readiness",
       "weight": 5,
-      "current_state": "fixture_case_to_proposition_builder",
-      "done_ratio": 0.46,
+      "current_state": "fixture_builder_plus_public_bail_batch",
+      "done_ratio": 0.52,
       "evidence": [
-        "v0.6 case-to-proposition graph builder converts demo case fixtures into paragraph cards, proposition cards, tree attachments, review queue items, and source-gated evidence packs"
+        "v0.6 case-to-proposition graph builder converts demo case fixtures into paragraph cards, proposition cards, tree attachments, review queue items, and source-gated evidence packs",
+        "v0.7 public bail batch fetches public Judiciary judgment text and creates quote-verified candidate proposition cards"
       ],
-      "remaining": "Replace synthetic fixtures with public HK criminal/evidence case batches after the quality gate passes."
+      "remaining": "Expand public-source batches section by section and connect generated cards to Supabase review queues and production retrieval."
     },
     {
       "section_id": "tree_coverage_readiness",
@@ -102,20 +104,22 @@
     {
       "section_id": "proposition_extraction_readiness",
       "weight": 4,
-      "current_state": "deterministic_fixture_extractor",
-      "done_ratio": 0.34,
+      "current_state": "deterministic_fixture_and_public_quote_extractor",
+      "done_ratio": 0.42,
       "evidence": [
-        "candidate proposition extraction exists in deterministic CASE_GRAPH_LLM_PROVIDER=none mode"
+        "candidate proposition extraction exists in deterministic CASE_GRAPH_LLM_PROVIDER=none mode",
+        "public bail batch requires exact quotes to be present in fetched public paragraph text before creating propositions"
       ],
-      "remaining": "Add public-case extraction with quote-exact validation, party-submission detection, and no auto-answer-safe promotion."
+      "remaining": "Generalize quote-exact public-case extraction beyond bail and add party-submission/procedural-history classifiers at scale."
     },
     {
       "section_id": "tree_attachment_readiness",
       "weight": 4,
-      "current_state": "taxonomy_keyword_attachment_scaffold",
-      "done_ratio": 0.36,
+      "current_state": "taxonomy_and_rule_based_public_attachment",
+      "done_ratio": 0.44,
       "evidence": [
-        "propositions attach to doctrine/procedure nodes by fixture metadata and taxonomy keywords"
+        "propositions attach to doctrine/procedure nodes by fixture metadata and taxonomy keywords",
+        "public bail batch attaches quote-verified propositions to stable criminal_procedure_hk doctrine_node_id values by audited extraction rules"
       ],
       "remaining": "Add citation-aware, significance-aware attachment review for real public case paragraphs."
     },
@@ -142,12 +146,13 @@
     {
       "section_id": "case_fruits_tree_enrichment_readiness",
       "weight": 4,
-      "current_state": "bail_only_l4_l5_fixture_pilot",
-      "done_ratio": 0.32,
+      "current_state": "bail_only_l4_l5_public_candidate_batch",
+      "done_ratio": 0.48,
       "evidence": [
-        "bail-only L4/L5 pilot links a demo case proposition to existing criminal_procedure_hk doctrine_node_id values as candidate-only evidence"
+        "bail-only L4/L5 pilot links a demo case proposition to existing criminal_procedure_hk doctrine_node_id values as candidate-only evidence",
+        "bail_public_batch_v1 adds 8 real public-source candidate propositions, 16 doctrine links, and L5 exact-quote proof cards from Lai Chee Ying and Tong Ying Kit"
       ],
-      "remaining": "Replace fixture-only bail links with a reviewed small public-case bail batch, then expand section by section."
+      "remaining": "Promote reviewed bail cards through Supabase review workflow, add more public bail cases, then expand section by section."
     }
   ],
   "legacy_gate_mapping": {
