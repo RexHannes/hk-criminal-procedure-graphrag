@@ -167,6 +167,220 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "lineage_note": "Earlier CFI treatment; must be read with later CFA correction in Lai Chee Ying."
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2020_article42_risk_weight_p14",
+      "proposition_id": "prop_tong_2020_article42_risk_weight_p14",
+      "case_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+      "case_name": "HKSAR v Tong Ying Kit",
+      "neutral_citation": "[2020] HKCFI 2196",
+      "paragraph_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020_p14",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "Tong treated NSL Article 42 as emphasizing the weight to be given to risk of reoffending in NSL bail applications.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Earlier CFI application on Article 42 risk weighting; answer composers must show later CFA treatment in Lai Chee Ying."
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2020_article42_not_absolute_bar_p16",
+      "proposition_id": "prop_tong_2020_article42_not_absolute_bar_p16",
+      "case_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+      "case_name": "HKSAR v Tong Ying Kit",
+      "neutral_citation": "[2020] HKCFI 2196",
+      "paragraph_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020_p16",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "Tong stated that Article 42 does not wholly shut out a defendant from applying for bail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Earlier CFI statement; read with the CFA's later framing of Article 42 as a stringent threshold."
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2020_future_risk_judgment_p17",
+      "proposition_id": "prop_tong_2020_future_risk_judgment_p17",
+      "case_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+      "case_name": "HKSAR v Tong Ying Kit",
+      "neutral_citation": "[2020] HKCFI 2196",
+      "paragraph_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020_p17",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "In NSL bail review, the court's future-risk assessment is a judgment on what the accused may or may not do in the future.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Useful candidate paragraph on the predictive nature of bail risk assessment."
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2020_refusal_flight_reoffending_p32",
+      "proposition_id": "prop_tong_2020_refusal_flight_reoffending_p32",
+      "case_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+      "case_name": "HKSAR v Tong Ying Kit",
+      "neutral_citation": "[2020] HKCFI 2196",
+      "paragraph_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020_p32",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "Tong refused bail on conventional grounds of flight risk and risk of reoffending.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Fact-sensitive CFI refusal illustration; not answer-safe without review."
+    },
+    {
+      "l4_application_id": "l4_prop_ma_2020_undertaking_possible_p32",
+      "proposition_id": "prop_ma_2020_undertaking_possible_p32",
+      "case_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+      "case_name": "HKSAR v Ma Chun Man",
+      "neutral_citation": "[2020] HKCFI 3132",
+      "paragraph_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020_p32",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "Ma treated an undertaking as a possible means, in an appropriate case, of satisfying the NSL Article 42(2) bail requirement.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFI candidate application on undertakings; must be compared with factual refusal at paragraph 33 and later CFA treatment."
+    },
+    {
+      "l4_application_id": "l4_prop_ma_2020_undertaking_not_accepted_p33",
+      "proposition_id": "prop_ma_2020_undertaking_not_accepted_p33",
+      "case_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+      "case_name": "HKSAR v Ma Chun Man",
+      "neutral_citation": "[2020] HKCFI 3132",
+      "paragraph_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020_p33",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "Ma illustrates that a proposed undertaking may fail to satisfy the bail court where the facts suggest the defendant may not abide by it.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Fact-sensitive refusal despite proposed undertaking; useful as contrast to Lai CFI paragraph 33."
+    },
+    {
+      "l4_application_id": "l4_prop_ma_2020_unjust_detention_reapply_p36",
+      "proposition_id": "prop_ma_2020_unjust_detention_reapply_p36",
+      "case_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+      "case_name": "HKSAR v Ma Chun Man",
+      "neutral_citation": "[2020] HKCFI 3132",
+      "paragraph_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020_p36",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "Ma recognises that prolonged pre-trial detention may eventually justify a renewed bail review depending on the later state of affairs.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_right_to_bail",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Candidate point on renewed review/new circumstances; not a general entitlement without factual review."
+    },
+    {
+      "l4_application_id": "l4_prop_lai_cfi_2020_nsl_not_no_bail_p30",
+      "proposition_id": "prop_lai_cfi_2020_nsl_not_no_bail_p30",
+      "case_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2020] HKCFI 3161",
+      "paragraph_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020_p30",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "The CFI in Lai treated NSL Article 42(2) as not being a categorical no-bail provision.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFI statement later considered by the CFA in the same litigation; show with CFA Article 42 threshold propositions."
+    },
+    {
+      "l4_application_id": "l4_prop_lai_cfi_2020_tailored_undertaking_sufficient_p33",
+      "proposition_id": "prop_lai_cfi_2020_tailored_undertaking_sufficient_p33",
+      "case_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2020] HKCFI 3161",
+      "paragraph_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020_p33",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "The CFI in Lai accepted a case-specific undertaking and residence confinement as sufficient on the facts before it for the Article 42 future-risk assessment.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFI bail-grant illustration later reviewed in CFA proceedings; candidate lineage only."
+    },
+    {
+      "l4_application_id": "l4_prop_lai_cfi_2020_bail_not_final_p37",
+      "proposition_id": "prop_lai_cfi_2020_bail_not_final_p37",
+      "case_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2020] HKCFI 3161",
+      "paragraph_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020_p37",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "The CFI in Lai stated that bail decisions are not final: bail can be revoked and refusal can be reopened on new circumstances.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_right_to_bail",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Candidate procedural point on bail review/revocation/new circumstances."
     }
   ]
 }

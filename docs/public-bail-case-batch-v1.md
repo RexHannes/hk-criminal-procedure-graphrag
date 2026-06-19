@@ -9,6 +9,8 @@ It is intentionally narrow:
 - source type: public Judiciary Legal Reference judgments only
 - output status: `machine_candidate` / `candidate_only`
 - review gate: human review required before answer-safe use
+- current scale rung: 5 public judgments / 18 quote-checked propositions
+- next scale rung: 20-50 public bail judgments only after review/eval gates pass
 
 ## Files
 
@@ -88,7 +90,9 @@ The batch must not:
 - bulk-attach cases across criminal law;
 - mark any proposition as `answer_safe`;
 - rewrite L0-L3 doctrine nodes.
+- exceed the manifest `scale_policy.max_sources_without_force` gate;
+- move to another criminal-law section until the bail review pass rate and golden-query tests are acceptable.
 
 ## Lineage Note
 
-`Tong Ying Kit v HKSAR` is included only as an earlier public judgment candidate. `HKSAR v Lai Chee Ying` later corrected/limited Tong on the NSL Article 42(2) threshold, so answer composers and reviewers should prefer the CFA lineage when presenting the current source trail.
+`Tong Ying Kit v HKSAR` and the CFI bail decisions in `HKSAR v Tong Ying Kit`, `HKSAR v Ma Chun Man`, and `HKSAR v Lai Chee Ying` are included as candidate public-source lineage. `HKSAR v Lai Chee Ying` in the CFA later corrected/limited the earlier Tong treatment on the NSL Article 42(2) threshold, so answer composers and reviewers should prefer the CFA lineage when presenting the current source trail.

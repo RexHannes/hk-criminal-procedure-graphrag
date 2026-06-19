@@ -12,6 +12,14 @@
     "bulk_auto_attach_allowed": false,
     "answer_safe_by_default": false
   },
+  "scale_policy": {
+    "current_rung": "5_case_nsl_bail_public_batch",
+    "next_rung": "20_to_50_public_bail_cases_after_review",
+    "max_sources_without_force": 50,
+    "large_cross_domain_crawl_allowed": false,
+    "requires_review_before_next_rung": true,
+    "notes": "This batch may grow within bail only. It must not be used as a precedent for 1000+ cross-domain auto-attachment until review/eval gates pass."
+  },
   "target_doctrine_node_ids": [
     "criminal_procedure_hk.bail_right_to_bail",
     "criminal_procedure_hk.bail_factors",
@@ -58,6 +66,66 @@
       "ingestion_status": "source_candidate",
       "authority_status": "real_public_authority_candidate_later_considered_in_lai",
       "notes": "Earlier NSL bail judgment. Later treatment in HKSAR v Lai Chee Ying must be shown in lineage/audit trail."
+    },
+    {
+      "source_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+      "case_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+      "case_name": "HKSAR v Tong Ying Kit",
+      "neutral_citation": "[2020] HKCFI 2196",
+      "law_report_citation": "[2020] 4 HKLRD 416",
+      "court": "Court of First Instance",
+      "court_level": "CFI",
+      "date": "2020-08-25",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=130396&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=130396&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate_later_considered_in_lai",
+      "notes": "CFI bail review decision refusing bail in the first NSL prosecution. Candidate propositions must be read with later CFA treatment in HKSAR v Lai Chee Ying."
+    },
+    {
+      "source_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+      "case_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+      "case_name": "HKSAR v Ma Chun Man",
+      "neutral_citation": "[2020] HKCFI 3132",
+      "law_report_citation": "",
+      "court": "Court of First Instance",
+      "court_level": "CFI",
+      "date": "2020-12-15",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=132658&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=132658&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate_later_considered_in_lai",
+      "notes": "CFI NSL bail review decision addressing undertakings, risk of reoffending, and renewed bail review if detention becomes unjust before trial."
+    },
+    {
+      "source_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+      "case_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "neutral_citation": "[2020] HKCFI 3161",
+      "law_report_citation": "",
+      "court": "Court of First Instance",
+      "court_level": "CFI",
+      "date": "2020-12-23",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=132659&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=132659&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate_later_reversed_or_corrected_by_cfa",
+      "notes": "CFI decision granting bail before the CFA decision in HKSAR v Lai Chee Ying. Included for lineage only; the later CFA treatment controls answer presentation."
     }
   ]
 }

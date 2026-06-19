@@ -36,6 +36,8 @@ async function main() {
       proposition_id: hit.payload?.proposition_id,
       paragraph_id: hit.payload?.paragraph_id,
       form_id: hit.payload?.form_id,
+      batch_id: hit.payload?.batch_id,
+      vector_scope: hit.payload?.vector_scope,
       title: hit.payload?.title,
       citation: hit.payload?.citation,
       pinpoint: hit.payload?.pinpoint,

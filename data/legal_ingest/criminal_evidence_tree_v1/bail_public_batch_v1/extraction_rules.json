@@ -176,6 +176,220 @@
       "confidence": "medium",
       "link_confidence": 0.58,
       "lineage_note": "Earlier CFI treatment; must be read with later CFA correction in Lai Chee Ying."
+    },
+    {
+      "rule_id": "tong_bail_article42_risk_weight_p14",
+      "source_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+      "paragraph_no": "14",
+      "exact_quote": "the effect of Article 42 is to emphasize the particular weight which the bail court ought to give to the “risk of re-offending” when dealing with offences under the NSL.",
+      "proposition_id": "prop_tong_2020_article42_risk_weight_p14",
+      "proposition_text": "Tong treated NSL Article 42 as emphasizing the weight to be given to risk of reoffending in NSL bail applications.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors"
+      ],
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.62,
+      "lineage_note": "Earlier CFI application on Article 42 risk weighting; answer composers must show later CFA treatment in Lai Chee Ying."
+    },
+    {
+      "rule_id": "tong_article42_not_absolute_bar_p16",
+      "source_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+      "paragraph_no": "16",
+      "exact_quote": "Article 42 does not shut out the accused from making a bail application.",
+      "proposition_id": "prop_tong_2020_article42_not_absolute_bar_p16",
+      "proposition_text": "Tong stated that Article 42 does not wholly shut out a defendant from applying for bail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.6,
+      "lineage_note": "Earlier CFI statement; read with the CFA's later framing of Article 42 as a stringent threshold."
+    },
+    {
+      "rule_id": "tong_bail_future_risk_judgment_p17",
+      "source_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+      "paragraph_no": "17",
+      "exact_quote": "The judge has to form a view on what the accused person may or may not do in the future.",
+      "proposition_id": "prop_tong_2020_future_risk_judgment_p17",
+      "proposition_text": "In NSL bail review, the court's future-risk assessment is a judgment on what the accused may or may not do in the future.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.64,
+      "lineage_note": "Useful candidate paragraph on the predictive nature of bail risk assessment."
+    },
+    {
+      "rule_id": "tong_bail_refusal_flight_reoffending_p32",
+      "source_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+      "paragraph_no": "32",
+      "exact_quote": "bail should be refused on either one of the two aforesaid conventional grounds, namely the “flight risk” and the “risk of re-offending”",
+      "proposition_id": "prop_tong_2020_refusal_flight_reoffending_p32",
+      "proposition_text": "Tong refused bail on conventional grounds of flight risk and risk of reoffending.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.58,
+      "lineage_note": "Fact-sensitive CFI refusal illustration; not answer-safe without review."
+    },
+    {
+      "rule_id": "ma_undertaking_possible_p32",
+      "source_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+      "paragraph_no": "32",
+      "exact_quote": "This court would not eliminate the giving of a similar undertaking as a means to satisfy the requirement of NSL 42(2) [38] for the granting of bail in an appropriate case.",
+      "proposition_id": "prop_ma_2020_undertaking_possible_p32",
+      "proposition_text": "Ma treated an undertaking as a possible means, in an appropriate case, of satisfying the NSL Article 42(2) bail requirement.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.63,
+      "lineage_note": "CFI candidate application on undertakings; must be compared with factual refusal at paragraph 33 and later CFA treatment."
+    },
+    {
+      "rule_id": "ma_undertaking_not_accepted_p33",
+      "source_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+      "paragraph_no": "33",
+      "exact_quote": "it is difficult for this court to accept that the Applicant would abide by his undertaking.",
+      "proposition_id": "prop_ma_2020_undertaking_not_accepted_p33",
+      "proposition_text": "Ma illustrates that a proposed undertaking may fail to satisfy the bail court where the facts suggest the defendant may not abide by it.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.61,
+      "lineage_note": "Fact-sensitive refusal despite proposed undertaking; useful as contrast to Lai CFI paragraph 33."
+    },
+    {
+      "rule_id": "ma_unjust_detention_reapply_p36",
+      "source_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+      "paragraph_no": "36",
+      "exact_quote": "it may eventually come to a stage when it could be unjust to detain the Applicant any longer before trial.",
+      "proposition_id": "prop_ma_2020_unjust_detention_reapply_p36",
+      "proposition_text": "Ma recognises that prolonged pre-trial detention may eventually justify a renewed bail review depending on the later state of affairs.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_right_to_bail",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.6,
+      "lineage_note": "Candidate point on renewed review/new circumstances; not a general entitlement without factual review."
+    },
+    {
+      "rule_id": "lai_cfi_nsl_not_no_bail_p30",
+      "source_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+      "paragraph_no": "30",
+      "exact_quote": "NSL 42(2) is not a “no-bail” provision.",
+      "proposition_id": "prop_lai_cfi_2020_nsl_not_no_bail_p30",
+      "proposition_text": "The CFI in Lai treated NSL Article 42(2) as not being a categorical no-bail provision.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.58,
+      "lineage_note": "CFI statement later considered by the CFA in the same litigation; show with CFA Article 42 threshold propositions."
+    },
+    {
+      "rule_id": "lai_cfi_tailored_undertaking_sufficient_p33",
+      "source_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+      "paragraph_no": "33",
+      "exact_quote": "I am satisfied that the above undertaking which is tailor-made to the present case, coupled with the Applicant’s agreement to be confined to his residence during the whole of the bail period, give this court sufficient grounds to believe that the accused will not commit acts endangering national security for the future if bail is granted.",
+      "proposition_id": "prop_lai_cfi_2020_tailored_undertaking_sufficient_p33",
+      "proposition_text": "The CFI in Lai accepted a case-specific undertaking and residence confinement as sufficient on the facts before it for the Article 42 future-risk assessment.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "illustrates_fact_pattern",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.56,
+      "lineage_note": "CFI bail-grant illustration later reviewed in CFA proceedings; candidate lineage only."
+    },
+    {
+      "rule_id": "lai_cfi_bail_decision_not_final_p37",
+      "source_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+      "paragraph_no": "37",
+      "exact_quote": "A decision to refuse or grant bail is not final. Bail granted can be revoked. The decision to refuse bail can be reopened on new circumstances being shown.",
+      "proposition_id": "prop_lai_cfi_2020_bail_not_final_p37",
+      "proposition_text": "The CFI in Lai stated that bail decisions are not final: bail can be revoked and refusal can be reopened on new circumstances.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_right_to_bail",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.64,
+      "lineage_note": "Candidate procedural point on bail review/revocation/new circumstances."
     }
   ]
 }
