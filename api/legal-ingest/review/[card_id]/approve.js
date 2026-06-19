@@ -58,6 +58,10 @@ module.exports = async function handler(req, res) {
     if (isSchemaMismatchError(error)) {
       try {
         const encoded = encodeURIComponent(cardId);
+        const existingReviewRows = await supabaseRest(`human_review_items?item_id=eq.${encoded}&select=item_id,payload_json&limit=1`).catch(() => []);
+        const existingPayload = Array.isArray(existingReviewRows) && existingReviewRows[0]?.payload_json
+          ? existingReviewRows[0].payload_json
+          : {};
         const propositionRows = await supabaseRest(`proposition_cards?id=eq.${encoded}`, {
           method: "PATCH",
           body: { review_status: approveAsAnswerSafe ? "answer_safe" : "approved" },
@@ -68,6 +72,7 @@ module.exports = async function handler(req, res) {
             status: "approved",
             resolved_at: new Date().toISOString(),
             payload_json: {
+              ...existingPayload,
               reviewed_by: reviewer,
               promote_answer_safe: approveAsAnswerSafe,
               legacy_schema: true,

@@ -106,9 +106,9 @@ async function firstSupabaseRow(baseUrl, serviceKey, table, query) {
   return Array.isArray(rows) && rows.length ? rows[0] : null;
 }
 
-function cleanEvidenceItem({ link, proposition, paragraph, legalCase }) {
+function cleanEvidenceItem({ link, proposition, paragraph, legalCase, reviewItem }) {
   const reviewStatus = link.review_status || proposition.review_status || "machine_candidate";
-  const quote = proposition.supporting_quote || "";
+  const quote = proposition.supporting_quote || reviewItem?.payload_json?.exact_quote || "";
   return {
     case_name: legalCase?.title_en || legalCase?.case_name || "",
     neutral_citation: legalCase?.neutral_citation || "",
@@ -213,8 +213,12 @@ module.exports = async function handler(req, res) {
             })
           : Promise.resolve(null),
       ]);
+      const reviewItem = await firstSupabaseRow(supabaseUrl, serviceKey, "human_review_items", {
+        item_id: `eq.${proposition.id}`,
+        select: "item_id,payload_json,status",
+      }).catch(() => null);
 
-      evidence.push(cleanEvidenceItem({ link, proposition, paragraph, legalCase }));
+      evidence.push(cleanEvidenceItem({ link, proposition, paragraph, legalCase, reviewItem }));
     }
 
     const split = splitEvidence(evidence);

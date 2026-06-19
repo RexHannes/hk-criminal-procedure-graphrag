@@ -40,6 +40,36 @@ node scripts/validate_public_bail_batch.js
 node scripts/validate_case_fruits_api_fallback.js
 ```
 
+Seed Supabase (legacy Case project schema; keeps `machine_candidate` / no answer-safe promotion):
+
+```bash
+node scripts/seed_public_bail_batch_supabase.js --dry-run
+node scripts/seed_public_bail_batch_supabase.js
+```
+
+Index precise paragraph/proposition vectors in local Qdrant:
+
+```bash
+node scripts/index_public_bail_batch_qdrant.js --dry-run
+node scripts/index_public_bail_batch_qdrant.js
+```
+
+Promote to answer-safe only through the review API after human quote/source review:
+
+```bash
+curl -X POST "$APP_BASE_URL/api/legal-ingest/review/<proposition_id>/approve" \
+  -H "Authorization: Bearer $LEGAL_REVIEW_ADMIN_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"promote_answer_safe": true, "reviewed_by": "lawyer_reviewer"}'
+```
+
+Verify backend storage and retrieval isolation:
+
+```bash
+node scripts/validate_public_bail_backend_storage.js
+node scripts/validate_public_bail_qdrant_retrieval.js
+```
+
 ## Safety Rules
 
 The builder only emits a proposition when:

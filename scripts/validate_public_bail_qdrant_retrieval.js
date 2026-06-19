@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+/* eslint-disable no-console */
+
+const { spawnSync } = require("child_process");
+const path = require("path");
+
+const ROOT = path.resolve(__dirname, "..");
+const QUERY = "NSL Article 42 bail stringent threshold bail conditions Lai Chee Ying";
+
+function assert(condition, message, errors) {
+  if (!condition) errors.push(message);
+}
+
+const result = spawnSync(process.execPath, [
+  path.join(ROOT, "scripts", "query_legal_qdrant.js"),
+  "--query",
+  QUERY,
+  "--collection",
+  "hk_proposition_cards",
+  "--top-k",
+  "8",
+], {
+  cwd: ROOT,
+  encoding: "utf8",
+  stdio: ["ignore", "pipe", "pipe"],
+});
+
+if (result.status !== 0) {
+  console.error(result.stdout);
+  console.error(result.stderr);
+  process.exit(result.status || 1);
+}
+
+const payload = JSON.parse(result.stdout);
+const errors = [];
+const hits = payload.hits || [];
+const topIds = hits.slice(0, 5).map(hit => hit.proposition_id);
+const allIds = hits.map(hit => hit.proposition_id);
+const blob = JSON.stringify(hits).toLowerCase();
+
+assert(hits.length >= 5, "expected at least five bail proposition hits", errors);
+assert(topIds.includes("prop_lai_2021_nsl_more_stringent_threshold_p53"), "expected Lai stringent-threshold proposition in top 5", errors);
+assert(topIds.includes("prop_lai_2021_nsl_summary_p70") || topIds.includes("prop_lai_2021_nsl_art42_text_p52"), "expected Lai Article 42 proposition in top 5", errors);
+assert(allIds.includes("prop_lai_2021_bail_conditions_relevant_p57"), "expected Lai bail-conditions relevance proposition", errors);
+assert(allIds.includes("prop_lai_2021_tong_limited_p72"), "expected Tong-limited lineage proposition in retrieved set", errors);
+assert(hits.every(hit => hit.citation && hit.pinpoint), "every bail hit should include citation and pinpoint", errors);
+assert(hits.every(hit => hit.answer_layer_status === "candidate_only"), "bail public batch hits must remain candidate_only", errors);
+assert(hits.every(hit => hit.review_status === "machine_candidate"), "bail public batch hits must remain machine_candidate", errors);
+assert(blob.includes("criminal_procedure_hk.nsl_bail"), "expected NSL bail doctrine tag", errors);
+assert(!blob.includes("personal_injury") && !blob.includes("restaurant") && !blob.includes("workplace"), "irrelevant PI/workplace terms leaked into bail retrieval", errors);
+
+if (errors.length) {
+  console.error("Public bail Qdrant retrieval validation failed:");
+  errors.forEach(error => console.error(`- ${error}`));
+  console.error(JSON.stringify(payload, null, 2));
+  process.exit(1);
+}
+
+console.log("Public bail Qdrant retrieval validation passed.");
