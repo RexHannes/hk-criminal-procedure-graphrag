@@ -35,6 +35,13 @@ const CLERK_VALIDATOR = path.join(ROOT, "scripts", "validate_clerk_auth_config.j
 const DEPLOYMENT_VALIDATOR = path.join(ROOT, "scripts", "validate_deployment_config.js");
 const NO_SECRETS_VALIDATOR = path.join(ROOT, "scripts", "validate_no_secrets_committed.js");
 const PRIVATE_INGEST_VALIDATOR = path.join(ROOT, "scripts", "validate_private_ingestion_blocked.js");
+const PUBLIC_CORPUS_VALIDATOR = path.join(ROOT, "scripts", "validate_public_corpus_manifest.js");
+const HYBRID_RETRIEVAL_VALIDATOR = path.join(ROOT, "scripts", "validate_hybrid_retrieval.js");
+const REVIEW_PROMOTION_VALIDATOR = path.join(ROOT, "scripts", "validate_review_promotion.js");
+const PRIVATE_ACCESS_VALIDATOR = path.join(ROOT, "scripts", "validate_private_source_access.js");
+const HARDENING_VALIDATOR = path.join(ROOT, "scripts", "validate_production_hardening_scaffolds.js");
+const READINESS_REPORT = path.join(ROOT, "scripts", "report_mvp_readiness.js");
+const HARDENING_DOC = path.join(ROOT, "docs", "production-hardening-roadmap.md");
 
 function parseEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return {};
@@ -228,6 +235,17 @@ function staticScaffoldReport(errors) {
   fileIncludes(DEPLOYMENT_VALIDATOR, ["DigitalOcean deployment config validation passed"], errors);
   fileIncludes(NO_SECRETS_VALIDATOR, ["No secrets committed"], errors);
   fileIncludes(PRIVATE_INGEST_VALIDATOR, ["Private ingestion blocked by default"], errors);
+  fileIncludes(PUBLIC_CORPUS_VALIDATOR, ["Public corpus manifest validation passed"], errors);
+  fileIncludes(HYBRID_RETRIEVAL_VALIDATOR, ["Hybrid retrieval validation passed"], errors);
+  fileIncludes(REVIEW_PROMOTION_VALIDATOR, ["Review promotion validation passed"], errors);
+  fileIncludes(PRIVATE_ACCESS_VALIDATOR, ["Private source access validation passed"], errors);
+  fileIncludes(HARDENING_VALIDATOR, ["Production hardening scaffold validation passed"], errors);
+  fileIncludes(READINESS_REPORT, ["estimated_overall_done_percent"], errors);
+  fileIncludes(HARDENING_DOC, [
+    "Production Hardening Roadmap",
+    "machine_candidate -> quote_verified -> source_verified -> lawyer_reviewed -> answer_safe",
+    "Do not upload private books/forms/client documents",
+  ], errors);
 }
 
 function runtimeReadiness(env) {

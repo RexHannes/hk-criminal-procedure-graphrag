@@ -32,6 +32,13 @@ CLERK_VALIDATOR = ROOT / "scripts" / "validate_clerk_auth_config.js"
 DEPLOYMENT_VALIDATOR = ROOT / "scripts" / "validate_deployment_config.js"
 NO_SECRETS_VALIDATOR = ROOT / "scripts" / "validate_no_secrets_committed.js"
 PRIVATE_INGEST_VALIDATOR = ROOT / "scripts" / "validate_private_ingestion_blocked.js"
+PUBLIC_CORPUS_VALIDATOR = ROOT / "scripts" / "validate_public_corpus_manifest.js"
+HYBRID_RETRIEVAL_VALIDATOR = ROOT / "scripts" / "validate_hybrid_retrieval.js"
+REVIEW_PROMOTION_VALIDATOR = ROOT / "scripts" / "validate_review_promotion.js"
+PRIVATE_ACCESS_VALIDATOR = ROOT / "scripts" / "validate_private_source_access.js"
+HARDENING_VALIDATOR = ROOT / "scripts" / "validate_production_hardening_scaffolds.js"
+READINESS_REPORT = ROOT / "scripts" / "report_mvp_readiness.js"
+HARDENING_DOC = ROOT / "docs" / "production-hardening-roadmap.md"
 DIGITALOCEAN_COMPOSE = ROOT / "infra" / "digitalocean" / "docker-compose.demo.yml"
 FASTAPI_MAIN = ROOT / "src" / "api" / "main.py"
 
@@ -164,6 +171,13 @@ def main() -> int:
         (DEPLOYMENT_VALIDATOR, "deployment config validator"),
         (NO_SECRETS_VALIDATOR, "no-secrets validator"),
         (PRIVATE_INGEST_VALIDATOR, "private ingestion blocked validator"),
+        (PUBLIC_CORPUS_VALIDATOR, "public corpus manifest validator"),
+        (HYBRID_RETRIEVAL_VALIDATOR, "hybrid retrieval validator"),
+        (REVIEW_PROMOTION_VALIDATOR, "review promotion validator"),
+        (PRIVATE_ACCESS_VALIDATOR, "private source access validator"),
+        (HARDENING_VALIDATOR, "production hardening scaffold validator"),
+        (READINESS_REPORT, "MVP readiness report script"),
+        (HARDENING_DOC, "production hardening roadmap docs"),
         (DIGITALOCEAN_COMPOSE, "DigitalOcean Docker Compose"),
         (FASTAPI_MAIN, "FastAPI demo app"),
     ]:
@@ -218,6 +232,12 @@ def main() -> int:
         fastapi_main = FASTAPI_MAIN.read_text(encoding="utf-8")
         if "private ingestion is disabled by default" not in fastapi_main:
             errors.append("FastAPI demo app missing private-ingestion warning")
+
+    if HARDENING_DOC.exists():
+        hardening_doc = HARDENING_DOC.read_text(encoding="utf-8")
+        for token in ["Production Hardening Roadmap", "machine_candidate -> quote_verified", "Do not upload private books/forms/client documents"]:
+            if token not in hardening_doc:
+                errors.append(f"production hardening docs missing {token}")
 
     if errors:
         print("Legal ingest storage validation failed:")

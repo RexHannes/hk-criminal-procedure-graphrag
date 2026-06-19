@@ -1,0 +1,36 @@
+{
+  "manifest_id": "hk_public_demo_corpus_manifest_v1",
+  "generated_at": "1970-01-01T00:00:00.000Z",
+  "scope": "public_demo_only",
+  "status": "pilot_not_production_corpus",
+  "source_counts": {
+    "sources": 6,
+    "cases": 6,
+    "legislation": 0,
+    "practice_directions": 0,
+    "legal_paragraphs": 6,
+    "proposition_cards": 6,
+    "form_metadata": 6,
+    "answer_safe_propositions": 0
+  },
+  "visibility_counts": {
+    "public_demo": 6,
+    "private_tenant": 0,
+    "licensed_private": 0
+  },
+  "review_counts": {
+    "machine_candidate": 1,
+    "quote_verified": 5,
+    "source_verified": 0,
+    "lawyer_reviewed": 0,
+    "answer_safe": 0
+  },
+  "corpus_gaps": [
+    "large_public_case_corpus_not_ingested",
+    "legislation_and_rules_not_ingested",
+    "practice_directions_not_ingested",
+    "answer_safe_review_not_complete",
+    "criminal_law_corpus_not_indexed"
+  ],
+  "private_source_policy": "private/client/licensed materials are excluded from this manifest"
+}

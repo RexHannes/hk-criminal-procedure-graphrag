@@ -1,0 +1,62 @@
+{
+  "readiness_id": "hk_law_claude_production_readiness_v1",
+  "description": "Weighted readiness estimate for a transparent, source-gated HK law assistant. Percentages are engineering/product-readiness estimates, not legal validation.",
+  "gates": [
+    {
+      "gate_id": "corpus_input_and_licence_controls",
+      "weight": 15,
+      "current_state": "partial",
+      "done_ratio": 0.45,
+      "remaining": "Scale public corpus and keep private/licensed sources out of public namespace."
+    },
+    {
+      "gate_id": "legal_processing_and_structured_objects",
+      "weight": 15,
+      "current_state": "partial",
+      "done_ratio": 0.45,
+      "remaining": "Large-scale case/legislation parsing and proposition extraction."
+    },
+    {
+      "gate_id": "embedding_and_vector_storage",
+      "weight": 15,
+      "current_state": "local_dev_indexed_with_hash_embeddings",
+      "done_ratio": 0.5,
+      "remaining": "Production embedding provider, dimension migration, and reindex safeguards."
+    },
+    {
+      "gate_id": "retrieval_and_reranking",
+      "weight": 15,
+      "current_state": "partial",
+      "done_ratio": 0.45,
+      "remaining": "Hybrid keyword/vector retrieval quality gate and optional reranker provider."
+    },
+    {
+      "gate_id": "authority_treatment_and_answer_contract",
+      "weight": 15,
+      "current_state": "partial",
+      "done_ratio": 0.55,
+      "remaining": "More verified source cards across domains and answer cross-checking at scale."
+    },
+    {
+      "gate_id": "review_promotion_and_evals",
+      "weight": 15,
+      "current_state": "partial",
+      "done_ratio": 0.45,
+      "remaining": "Full review promotion UI/API, audit logs, and broad golden query suite."
+    },
+    {
+      "gate_id": "stored_retrieved_law_and_sop_cache",
+      "weight": 5,
+      "current_state": "remote_schema_applied_api_cache_and_sop_wiring_present",
+      "done_ratio": 0.75,
+      "remaining": "Cache reuse policies across more domains and stale-source invalidation tests."
+    },
+    {
+      "gate_id": "private_source_access_controls",
+      "weight": 5,
+      "current_state": "partial",
+      "done_ratio": 0.4,
+      "remaining": "Real Clerk JWT verification, tenant audit logs, and private-source retrieval QA."
+    }
+  ]
+}
