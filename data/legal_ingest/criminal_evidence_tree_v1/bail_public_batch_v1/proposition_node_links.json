@@ -799,6 +799,806 @@
       "notes": "Candidate procedural point on bail review/revocation/new circumstances.",
       "source_visibility": "public_demo",
       "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_art42_text_p5__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_448_2021_art42_text_p5",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "states_rule",
+      "confidence": 0.7,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI post-CFA restatement of Article 42(2); pair with CFA ratio propositions for answer hierarchy.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_art42_text_p5__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_lai_448_2021_art42_text_p5",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "states_rule",
+      "confidence": 0.7,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI post-CFA restatement of Article 42(2); pair with CFA ratio propositions for answer hierarchy.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_cfa_threshold_p6__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_448_2021_cfa_threshold_p6",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.7,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI application of the CFA Article 42 threshold; CFA remains the controlling source.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_cfa_threshold_p6__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_lai_448_2021_cfa_threshold_p6",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.7,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI application of the CFA Article 42 threshold; CFA remains the controlling source.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_everything_relevant_p7__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_448_2021_everything_relevant_p7",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.72,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI post-CFA application of the factors/materials part of the Article 42 assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_everything_relevant_p7__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_lai_448_2021_everything_relevant_p7",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.72,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI post-CFA application of the factors/materials part of the Article 42 assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_everything_relevant_p7__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_lai_448_2021_everything_relevant_p7",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.72,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI post-CFA application of the factors/materials part of the Article 42 assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_future_risk_p13__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_lai_448_2021_future_risk_p13",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.68,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate application point on forward-looking bail risk assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_future_risk_p13__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_lai_448_2021_future_risk_p13",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.68,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate application point on forward-looking bail risk assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_future_risk_p13__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_448_2021_future_risk_p13",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.68,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate application point on forward-looking bail risk assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_prohibited_acts_scope_p20__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_448_2021_prohibited_acts_scope_p20",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.64,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive CFI application on scope of prohibited acts in future-risk assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_prohibited_acts_scope_p20__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_lai_448_2021_prohibited_acts_scope_p20",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.64,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive CFI application on scope of prohibited acts in future-risk assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_bail_refused_threshold_p24__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_lai_448_2021_bail_refused_threshold_p24",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.62,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive CFI refusal after applying the CFA Article 42 framework.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_lai_448_2021_bail_refused_threshold_p24__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_lai_448_2021_bail_refused_threshold_p24",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.62,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive CFI refusal after applying the CFA Article 42 framework.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_cfa_threshold_p4__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_chan_2021_cfa_threshold_p4",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.68,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI application of Lai CFA threshold in a later NSL bail review.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_cfa_threshold_p4__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_chan_2021_cfa_threshold_p4",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.68,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI application of Lai CFA threshold in a later NSL bail review.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_everything_relevant_p5__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_chan_2021_everything_relevant_p5",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.7,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI candidate application of the CFA factor/materials approach.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_everything_relevant_p5__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_chan_2021_everything_relevant_p5",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.7,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI candidate application of the CFA factor/materials approach.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_everything_relevant_p5__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_chan_2021_everything_relevant_p5",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "applies_rule",
+      "confidence": 0.7,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "CFI candidate application of the CFA factor/materials approach.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_individual_circumstances_p23__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_chan_2021_individual_circumstances_p23",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.66,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate application point on individualised bail assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_individual_circumstances_p23__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_chan_2021_individual_circumstances_p23",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.66,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate application point on individualised bail assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_individual_circumstances_p23__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_chan_2021_individual_circumstances_p23",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.66,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate application point on individualised bail assessment.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_public_record_conditions_p26__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_chan_2021_public_record_conditions_p26",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.63,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate illustration of facts considered in the predictive and evaluative exercise.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_public_record_conditions_p26__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_chan_2021_public_record_conditions_p26",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.63,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate illustration of facts considered in the predictive and evaluative exercise.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_public_record_conditions_p26__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_chan_2021_public_record_conditions_p26",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.63,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate illustration of facts considered in the predictive and evaluative exercise.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_conditions_satisfy_threshold_p27__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_chan_2021_conditions_satisfy_threshold_p27",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.61,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive grant illustration; not a general rule without review.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_conditions_satisfy_threshold_p27__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_chan_2021_conditions_satisfy_threshold_p27",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.61,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive grant illustration; not a general rule without review.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_conditions_satisfy_threshold_p27__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_chan_2021_conditions_satisfy_threshold_p27",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.61,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive grant illustration; not a general rule without review.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_conditions_surrender_p31__criminal_procedure_hk.bail_factors",
+      "proposition_id": "prop_chan_2021_conditions_surrender_p31",
+      "doctrine_node_id": "criminal_procedure_hk.bail_factors",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.6,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive ordinary bail-risk illustration within NSL bail review.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_chan_2021_conditions_surrender_p31__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_chan_2021_conditions_surrender_p31",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.6,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive ordinary bail-risk illustration within NSL bail review.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_fan_2022_first_threshold_p1__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_fan_2022_first_threshold_p1",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.6,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate second-bail-application source using Lai CFA threshold terminology.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_fan_2022_first_threshold_p1__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_fan_2022_first_threshold_p1",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.6,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate second-bail-application source using Lai CFA threshold terminology.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_fan_2022_delay_concern_p9__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_fan_2022_delay_concern_p9",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.58,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate delay/new-circumstances point for second bail applications.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_fan_2022_delay_concern_p9__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_fan_2022_delay_concern_p9",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.58,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate delay/new-circumstances point for second bail applications.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_fan_2022_case_management_delay_p10__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_fan_2022_case_management_delay_p10",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "states_rule",
+      "confidence": 0.62,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate pre-trial delay/case-management point; source quotes Ng Hau Yi Sidney through Fan.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_fan_2022_case_management_delay_p10__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_fan_2022_case_management_delay_p10",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "states_rule",
+      "confidence": 0.62,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate pre-trial delay/case-management point; source quotes Ng Hau Yi Sidney through Fan.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_fan_2022_delay_fairness_p18__criminal_procedure_hk.bail_right_to_bail",
+      "proposition_id": "prop_fan_2022_delay_fairness_p18",
+      "doctrine_node_id": "criminal_procedure_hk.bail_right_to_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.56,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate fairness/delay point; paragraph records submission and must be labelled carefully until reviewed.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_fan_2022_delay_fairness_p18__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_fan_2022_delay_fairness_p18",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "application",
+      "confidence": 0.56,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Candidate fairness/delay point; paragraph records submission and must be labelled carefully until reviewed.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_fan_2022_threshold_not_overcome_p19__criminal_procedure_hk.nsl_bail",
+      "proposition_id": "prop_fan_2022_threshold_not_overcome_p19",
+      "doctrine_node_id": "criminal_procedure_hk.nsl_bail",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.58,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive refusal on a second application; not a general rule.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
+    },
+    {
+      "link_id": "prop_fan_2022_threshold_not_overcome_p19__criminal_procedure_hk.bail_flow_step5",
+      "proposition_id": "prop_fan_2022_threshold_not_overcome_p19",
+      "doctrine_node_id": "criminal_procedure_hk.bail_flow_step5",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "link_type": "candidate",
+      "authority_role": "application",
+      "significance_label": "illustrates_fact_pattern",
+      "confidence": 0.58,
+      "linking_method": "public_bail_batch_exact_quote_rules_v1",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "human_review_required": true,
+      "notes": "Fact-sensitive refusal on a second application; not a general rule.",
+      "source_visibility": "public_demo",
+      "tenant_id": "public"
     }
   ]
 }

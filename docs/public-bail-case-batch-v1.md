@@ -9,7 +9,7 @@ It is intentionally narrow:
 - source type: public Judiciary Legal Reference judgments only
 - output status: `machine_candidate` / `candidate_only`
 - review gate: human review required before answer-safe use
-- current scale rung: 5 public judgments / 18 quote-checked propositions
+- current scale rung: 8 public judgments / 35 quote-checked propositions
 - next scale rung: 20-50 public bail judgments only after review/eval gates pass
 
 ## Files
