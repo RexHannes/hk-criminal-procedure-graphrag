@@ -51,6 +51,23 @@ node scripts/plan_case_scale_run.js \
 
 The plan includes deterministic shard boundaries, resume requirements and safeguards. It does not authorize execution unless readiness gates pass.
 
+Guard a shard before any worker touches sources:
+
+```bash
+node scripts/run_case_scale_shard.js \
+  --plan artifacts/case_scale_20000.json \
+  --shard-id shard_0001
+```
+
+Blocked plans exit non-zero. For CI/preflight reports without execution:
+
+```bash
+node scripts/run_case_scale_shard.js \
+  --plan artifacts/case_scale_20000.json \
+  --shard-id shard_0001 \
+  --preflight-only
+```
+
 ## Semi-Auto Extraction Contract
 
 LLMs, including DeepSeek, may propose candidate extraction rules only in this shape:
@@ -81,6 +98,53 @@ node scripts/validate_semiauto_rule_proposals.js --compile-rules --output artifa
 ```
 
 Compiled rules still remain `machine_candidate` only.
+
+Generate proposals with DeepSeek only when deliberately configured:
+
+```bash
+DEEPSEEK_API_KEY=... node scripts/propose_semiauto_rules_deepseek.js \
+  --source-id hk_cfi_2021_lai_chee_ying_hccp_738_2020 \
+  --paragraph-no 13 \
+  --html /path/to/legalref-body.html \
+  --allowed-nodes criminal_procedure_hk.bail_factors,criminal_procedure_hk.bail_flow_step5,criminal_procedure_hk.nsl_bail
+```
+
+The output is still passed through `validate_semiauto_rule_proposals.js`; DeepSeek never writes directly into the evidence batch.
+
+## Production Embeddings / Rerank
+
+The Qdrant index/search path now uses the shared embedding adapter.
+
+Supported embedding providers:
+
+```bash
+LEGAL_EMBEDDING_PROVIDER=openai
+OPENAI_API_KEY=...
+LEGAL_EMBEDDING_MODEL=text-embedding-3-small
+LEGAL_EMBEDDING_DIM=1536
+
+LEGAL_EMBEDDING_PROVIDER=voyage
+VOYAGE_API_KEY=...
+LEGAL_EMBEDDING_MODEL=voyage-3-large
+
+LEGAL_EMBEDDING_PROVIDER=cohere
+COHERE_API_KEY=...
+LEGAL_EMBEDDING_MODEL=embed-v4.0
+```
+
+Supported rerank providers:
+
+```bash
+LEGAL_RERANK_PROVIDER=cohere
+COHERE_API_KEY=...
+LEGAL_RERANK_MODEL=rerank-v3.5
+
+LEGAL_RERANK_PROVIDER=voyage
+VOYAGE_API_KEY=...
+LEGAL_RERANK_MODEL=rerank-2
+```
+
+Changing embedding dimensions requires a separate Qdrant collection or intentional reindex. The indexer refuses dimension mismatches.
 
 ## Current Blockers Before 20,000
 

@@ -13,6 +13,7 @@ function assert(condition, message, errors) {
   const noneEnv = { EMBEDDING_PROVIDER: "none", RERANK_PROVIDER: "none" };
   assert(assertEmbeddingConfig(noneEnv).status === "disabled_fixture_vectors_only", "embedding none should be fixture-only", errors);
   assert(assertRerankConfig(noneEnv).status === "disabled_local_ordering_only", "rerank none should be disabled", errors);
+  assert(assertEmbeddingConfig({ LEGAL_EMBEDDING_PROVIDER: "local-hash" }).status === "deterministic_local_test_vectors", "legal local-hash embedding should be deterministic", errors);
   const embedded = await embedText("abuse of process", { env: noneEnv, dimension: 12 });
   assert(embedded.vector.length === 12, "fixture embedding dimension mismatch", errors);
   const rankedNone = await rerank("abuse", [{ id: "a" }], { env: noneEnv });
@@ -31,6 +32,11 @@ function assert(condition, message, errors) {
   } catch (error) {
     assert(error.message.includes("missing_rerank_key"), "cohere missing key error expected", errors);
   }
+  assert(assertEmbeddingConfig({ EMBEDDING_PROVIDER: "openai", OPENAI_API_KEY: "test" }).key_name === "OPENAI_API_KEY", "openai embedding key config expected", errors);
+  assert(assertEmbeddingConfig({ EMBEDDING_PROVIDER: "voyage", VOYAGE_API_KEY: "test" }).key_name === "VOYAGE_API_KEY", "voyage embedding key config expected", errors);
+  assert(assertEmbeddingConfig({ EMBEDDING_PROVIDER: "cohere", COHERE_API_KEY: "test" }).key_name === "COHERE_API_KEY", "cohere embedding key config expected", errors);
+  assert(assertRerankConfig({ RERANK_PROVIDER: "cohere", COHERE_API_KEY: "test" }).key_name === "COHERE_API_KEY", "cohere rerank key config expected", errors);
+  assert(assertRerankConfig({ RERANK_PROVIDER: "voyage", VOYAGE_API_KEY: "test" }).key_name === "VOYAGE_API_KEY", "voyage rerank key config expected", errors);
   if (errors.length) {
     console.error("Embedding/rerank adapter validation failed:");
     errors.forEach(error => console.error(`- ${error}`));

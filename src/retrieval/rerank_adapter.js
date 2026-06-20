@@ -1,7 +1,7 @@
 const SUPPORTED_RERANK_PROVIDERS = new Set(["none", "local", "cohere", "voyage"]);
 
 function rerankProvider(env = process.env) {
-  return String(env.RERANK_PROVIDER || "none").trim().toLowerCase();
+  return String(env.LEGAL_RERANK_PROVIDER || env.RERANK_PROVIDER || "none").trim().toLowerCase();
 }
 
 function assertRerankConfig(env = process.env) {
@@ -35,6 +35,79 @@ function localRerank(query, candidates, { limit = 10 } = {}) {
     .slice(0, limit);
 }
 
+function candidateText(candidate) {
+  return [
+    candidate.text,
+    candidate.excerpt,
+    candidate.proposition_text,
+    candidate.supporting_quote,
+    candidate.preview,
+    candidate.source?.title,
+    candidate.source?.neutral_citation,
+    ...(candidate.issue_tags || []),
+  ].filter(Boolean).join("\n");
+}
+
+async function postJson(url, { headers = {}, body } = {}) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+    body: JSON.stringify(body),
+  });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) {
+    const error = new Error(`rerank_http_${response.status}`);
+    error.payload = payload;
+    throw error;
+  }
+  return payload;
+}
+
+async function cohereRerank(query, candidates, { env, limit }) {
+  const model = env.LEGAL_RERANK_MODEL || env.COHERE_RERANK_MODEL || "rerank-v3.5";
+  const documents = (candidates || []).map(candidateText);
+  const payload = await postJson("https://api.cohere.com/v2/rerank", {
+    headers: { Authorization: `Bearer ${env.COHERE_API_KEY}` },
+    body: {
+      model,
+      query,
+      documents,
+      top_n: Math.min(limit, documents.length),
+    },
+  });
+  const results = (payload.results || []).map(item => ({
+    ...(candidates[item.index] || {}),
+    rerank_score: Number(item.relevance_score || 0),
+    rerank_provider: "cohere",
+    rerank_model: model,
+  }));
+  return { provider: "cohere", status: "configured", model, results };
+}
+
+async function voyageRerank(query, candidates, { env, limit }) {
+  const model = env.LEGAL_RERANK_MODEL || env.VOYAGE_RERANK_MODEL || "rerank-2";
+  const documents = (candidates || []).map(candidateText);
+  const payload = await postJson("https://api.voyageai.com/v1/rerank", {
+    headers: { Authorization: `Bearer ${env.VOYAGE_API_KEY}` },
+    body: {
+      model,
+      query,
+      documents,
+      top_k: Math.min(limit, documents.length),
+    },
+  });
+  const results = (payload.data || []).map(item => ({
+    ...(candidates[item.index] || {}),
+    rerank_score: Number(item.relevance_score || 0),
+    rerank_provider: "voyage",
+    rerank_model: model,
+  }));
+  return { provider: "voyage", status: "configured", model, results };
+}
+
 async function rerank(query, candidates, { env = process.env, limit = 10 } = {}) {
   const config = assertRerankConfig(env);
   if (config.provider === "none") {
@@ -43,13 +116,17 @@ async function rerank(query, candidates, { env = process.env, limit = 10 } = {})
   if (config.provider === "local") {
     return { provider: "local", status: config.status, results: localRerank(query, candidates, { limit }) };
   }
-  throw new Error(`rerank_provider_interface_only:${config.provider}`);
+  if (config.provider === "cohere") return cohereRerank(query, candidates, { env, limit });
+  if (config.provider === "voyage") return voyageRerank(query, candidates, { env, limit });
+  throw new Error(`unsupported_rerank_provider:${config.provider}`);
 }
 
 module.exports = {
   SUPPORTED_RERANK_PROVIDERS,
   assertRerankConfig,
+  candidateText,
   localRerank,
+  postJson,
   rerank,
   rerankProvider,
 };

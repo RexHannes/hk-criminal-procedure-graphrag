@@ -99,6 +99,34 @@ function caseRecord(source) {
   };
 }
 
+function validateManifestScalePolicy(manifest) {
+  const errors = [];
+  const sourcePolicy = manifest.source_policy || {};
+  const scalePolicy = manifest.scale_policy || {};
+  if (sourcePolicy.public_sources_only !== true) errors.push("public_sources_only_required");
+  if (sourcePolicy.private_or_licensed_sources_allowed !== false) errors.push("private_or_licensed_sources_must_be_blocked");
+  if (sourcePolicy.raw_private_upload_allowed !== false) errors.push("raw_private_upload_must_be_blocked");
+  if (sourcePolicy.bulk_auto_attach_allowed !== false) errors.push("bulk_auto_attach_must_be_blocked");
+  if (sourcePolicy.answer_safe_by_default !== false) errors.push("answer_safe_by_default_must_be_false");
+  if (scalePolicy.large_cross_domain_crawl_allowed !== false) errors.push("large_cross_domain_crawl_must_be_blocked");
+  if ((manifest.sources || []).length > Number(scalePolicy.max_sources_without_force || 50)) {
+    errors.push("source_count_exceeds_scale_policy");
+  }
+  for (const source of manifest.sources || []) {
+    if (source.source_visibility !== "public_demo") errors.push(`${source.source_id}:source_visibility_must_be_public_demo`);
+    if (source.tenant_id !== "public") errors.push(`${source.source_id}:tenant_id_must_be_public`);
+    if (source.licence_status !== "public_judgment") errors.push(`${source.source_id}:licence_status_must_be_public_judgment`);
+    if (/private|licensed_book|firm/i.test(`${source.source_kind} ${source.licence_status} ${source.source_url_or_path}`)) {
+      errors.push(`${source.source_id}:private_or_licensed_marker_forbidden`);
+    }
+  }
+  if (errors.length) {
+    const error = new Error("manifest_scale_policy_validation_failed");
+    error.errors = errors;
+    throw error;
+  }
+}
+
 async function buildPublicBailBatch({
   manifestPath,
   rulesPath,
@@ -110,6 +138,7 @@ async function buildPublicBailBatch({
   if (!rulesPath) throw new Error("rulesPath required");
   if (!outputDir) throw new Error("outputDir required");
   const manifest = readJson(manifestPath);
+  validateManifestScalePolicy(manifest);
   const rulesPayload = readJson(rulesPath);
   const sourceById = new Map((manifest.sources || []).map(source => [source.source_id, source]));
   const htmlTextBySource = new Map();
@@ -317,4 +346,5 @@ module.exports = {
   collapseForQuote,
   extractNumberedParagraph,
   stripHtmlToText,
+  validateManifestScalePolicy,
 };

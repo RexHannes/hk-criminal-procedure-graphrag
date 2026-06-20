@@ -1,6 +1,7 @@
 const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
+const { embedText } = require("../retrieval/embedding_adapter");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 
@@ -41,28 +42,17 @@ function localHashEmbedding(text, dimension) {
   return vector.map(value => Number((value / norm).toFixed(8)));
 }
 
-async function openAiEmbedding(text, env) {
-  const apiKey = env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error("OPENAI_API_KEY required for LEGAL_EMBEDDING_PROVIDER=openai");
-  const model = env.LEGAL_EMBEDDING_MODEL || "text-embedding-3-small";
-  const response = await fetch("https://api.openai.com/v1/embeddings", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ model, input: text }),
-  });
-  if (!response.ok) throw new Error(`OpenAI embedding HTTP ${response.status}`);
-  const payload = await response.json();
-  return payload.data?.[0]?.embedding || [];
-}
-
 async function embed(text, env, dimension) {
   const provider = env.LEGAL_EMBEDDING_PROVIDER || "local-hash";
-  if (provider === "openai") return openAiEmbedding(text, env);
-  if (provider === "local-hash") return localHashEmbedding(text, dimension);
-  throw new Error(`Unsupported LEGAL_EMBEDDING_PROVIDER ${provider}`);
+  if (provider === "local-hash" && !env.EMBEDDING_PROVIDER) return localHashEmbedding(text, dimension);
+  const result = await embedText(text, {
+    env: {
+      ...env,
+      EMBEDDING_PROVIDER: provider === "local-hash" ? "local-hash" : provider,
+    },
+    dimension,
+  });
+  return result.vector;
 }
 
 function qdrantHeaders(env) {

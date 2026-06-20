@@ -1,4 +1,5 @@
 const { buildEvidencePack } = require("./build_evidence_pack");
+const { rerank } = require("../retrieval/rerank_adapter");
 
 function tokenize(value) {
   return String(value || "").toLowerCase().split(/[^a-z0-9\u4e00-\u9fff]+/).filter(token => token.length >= 3);
@@ -51,6 +52,7 @@ async function retrieveHybridEvidence({
   sourceMode = "public_demo",
   tenantId = "public",
   includePrivate = false,
+  env = process.env,
 } = {}) {
   const evidencePack = await buildEvidencePack({
     query,
@@ -59,7 +61,9 @@ async function retrieveHybridEvidence({
     tenantId,
     includePrivate,
   });
-  const reranked = mergeAndRerank({ query, evidenceChunks: evidencePack.evidence_chunks, limit: topK });
+  const locallyMerged = mergeAndRerank({ query, evidenceChunks: evidencePack.evidence_chunks, limit: Math.max(topK * 3, topK) });
+  const rerankedResult = await rerank(query, locallyMerged, { env, limit: topK });
+  const reranked = rerankedResult.results || locallyMerged.slice(0, topK);
   return {
     ...evidencePack,
     retrieval_mode: "hybrid_vector_lexical_metadata_v1",
@@ -67,7 +71,9 @@ async function retrieveHybridEvidence({
     hybrid_trace: {
       vector_collection: evidencePack.collection_name,
       lexical_stage: "local_token_overlap",
-      reranker_provider: "local_deterministic",
+      reranker_provider: rerankedResult.provider || "local",
+      reranker_status: rerankedResult.status || "configured",
+      reranker_model: rerankedResult.model || "",
       metadata_filters_preserved: Boolean(evidencePack.retrieval_filter),
       source_mode: evidencePack.source_mode,
       tenant_id: evidencePack.tenant_id,

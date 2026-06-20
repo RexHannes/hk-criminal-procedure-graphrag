@@ -1,9 +1,9 @@
 const crypto = require("crypto");
 
-const SUPPORTED_EMBEDDING_PROVIDERS = new Set(["none", "local", "openai", "voyage", "cohere"]);
+const SUPPORTED_EMBEDDING_PROVIDERS = new Set(["none", "local", "local-hash", "openai", "voyage", "cohere"]);
 
 function embeddingProvider(env = process.env) {
-  return String(env.EMBEDDING_PROVIDER || "none").trim().toLowerCase();
+  return String(env.LEGAL_EMBEDDING_PROVIDER || env.EMBEDDING_PROVIDER || "none").trim().toLowerCase();
 }
 
 function assertEmbeddingConfig(env = process.env) {
@@ -12,7 +12,7 @@ function assertEmbeddingConfig(env = process.env) {
     throw new Error(`unsupported_embedding_provider:${provider}`);
   }
   if (provider === "none") return { provider, status: "disabled_fixture_vectors_only" };
-  if (provider === "local") return { provider, status: "deterministic_local_test_vectors" };
+  if (provider === "local" || provider === "local-hash") return { provider, status: "deterministic_local_test_vectors" };
   const keyMap = {
     openai: "OPENAI_API_KEY",
     voyage: "VOYAGE_API_KEY",
@@ -38,9 +38,69 @@ function deterministicVector(text, dimension = 384) {
   return vector.map(value => Number((value / norm).toFixed(8)));
 }
 
+async function postJson(url, { headers = {}, body } = {}) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+    body: JSON.stringify(body),
+  });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) {
+    const error = new Error(`embedding_http_${response.status}`);
+    error.payload = payload;
+    throw error;
+  }
+  return payload;
+}
+
+async function openAiEmbedding(text, env) {
+  const model = env.LEGAL_EMBEDDING_MODEL || env.OPENAI_EMBEDDING_MODEL || "text-embedding-3-small";
+  const body = { model, input: text };
+  if (env.LEGAL_EMBEDDING_DIM && model.startsWith("text-embedding-3")) {
+    body.dimensions = Number(env.LEGAL_EMBEDDING_DIM);
+  }
+  const payload = await postJson("https://api.openai.com/v1/embeddings", {
+    headers: { Authorization: `Bearer ${env.OPENAI_API_KEY}` },
+    body,
+  });
+  const vector = payload.data?.[0]?.embedding;
+  if (!Array.isArray(vector)) throw new Error("openai_embedding_missing_vector");
+  return { provider: "openai", status: "configured", model, vector, dimension: vector.length };
+}
+
+async function voyageEmbedding(text, env) {
+  const model = env.LEGAL_EMBEDDING_MODEL || env.VOYAGE_EMBEDDING_MODEL || "voyage-3-large";
+  const payload = await postJson("https://api.voyageai.com/v1/embeddings", {
+    headers: { Authorization: `Bearer ${env.VOYAGE_API_KEY}` },
+    body: { model, input: [text] },
+  });
+  const vector = payload.data?.[0]?.embedding;
+  if (!Array.isArray(vector)) throw new Error("voyage_embedding_missing_vector");
+  return { provider: "voyage", status: "configured", model, vector, dimension: vector.length };
+}
+
+async function cohereEmbedding(text, env) {
+  const model = env.LEGAL_EMBEDDING_MODEL || env.COHERE_EMBEDDING_MODEL || "embed-v4.0";
+  const payload = await postJson("https://api.cohere.com/v2/embed", {
+    headers: { Authorization: `Bearer ${env.COHERE_API_KEY}` },
+    body: {
+      model,
+      texts: [text],
+      input_type: env.COHERE_EMBED_INPUT_TYPE || "search_document",
+      embedding_types: ["float"],
+    },
+  });
+  const vector = payload.embeddings?.float?.[0] || payload.embeddings?.[0];
+  if (!Array.isArray(vector)) throw new Error("cohere_embedding_missing_vector");
+  return { provider: "cohere", status: "configured", model, vector, dimension: vector.length };
+}
+
 async function embedText(text, { env = process.env, dimension = 384 } = {}) {
   const config = assertEmbeddingConfig(env);
-  if (config.provider === "none" || config.provider === "local") {
+  if (config.provider === "none" || config.provider === "local" || config.provider === "local-hash") {
     return {
       provider: config.provider,
       status: config.status,
@@ -48,7 +108,10 @@ async function embedText(text, { env = process.env, dimension = 384 } = {}) {
       dimension,
     };
   }
-  throw new Error(`embedding_provider_interface_only:${config.provider}`);
+  if (config.provider === "openai") return openAiEmbedding(text, env);
+  if (config.provider === "voyage") return voyageEmbedding(text, env);
+  if (config.provider === "cohere") return cohereEmbedding(text, env);
+  throw new Error(`unsupported_embedding_provider:${config.provider}`);
 }
 
 module.exports = {
@@ -57,4 +120,5 @@ module.exports = {
   deterministicVector,
   embedText,
   embeddingProvider,
+  postJson,
 };
