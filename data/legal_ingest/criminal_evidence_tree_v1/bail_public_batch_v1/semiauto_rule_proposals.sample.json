@@ -1,0 +1,48 @@
+{
+  "proposal_set_id": "bail_semiauto_rule_proposals_sample_v1",
+  "version": "0.1.0",
+  "generator": "human_seeded_sample_for_llm_or_deepseek_output_contract",
+  "scope": "bail_only",
+  "policy": {
+    "llm_may_propose": true,
+    "validator_must_verify_exact_quote": true,
+    "validator_must_verify_known_doctrine_node": true,
+    "outputs_remain_machine_candidate": true
+  },
+  "proposals": [
+    {
+      "proposal_id": "proposal_lai_448_future_risk_p13_sample",
+      "source_id": "hk_cfi_2021_lai_chee_ying_hccp_738_2020",
+      "paragraph_no": "13",
+      "exact_quote": "all bail decisions “involve a risk assessment looking to the future”.",
+      "proposition_text": "Bail decisions involve a future-looking risk assessment.",
+      "candidate_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "application",
+      "confidence": "medium",
+      "confidence_score": 0.68,
+      "review_state": "machine_candidate"
+    },
+    {
+      "proposal_id": "proposal_chan_individual_circumstances_p23_sample",
+      "source_id": "hk_cfi_2021_chan_chi_chuen_hccp_473_2021",
+      "paragraph_no": "23",
+      "exact_quote": "the court in considering bail, has to look at the individual circumstances of each particular applicant.",
+      "proposition_text": "Bail assessment requires consideration of the individual applicant's circumstances.",
+      "candidate_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "confidence_score": 0.66,
+      "review_state": "machine_candidate"
+    }
+  ]
+}

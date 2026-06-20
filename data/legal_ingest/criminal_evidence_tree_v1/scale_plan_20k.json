@@ -1,0 +1,138 @@
+{
+  "plan_id": "hk_criminal_case_scale_20k_v1",
+  "version": "0.1.0",
+  "purpose": "Prepare the criminal evidence tree for evidence-based scaling up to 20000 public cases without allowing unsafe bulk auto-attachment.",
+  "current_safe_scope": "bail_only",
+  "target_long_term_case_count": 20000,
+  "source_policy": {
+    "public_sources_only_for_scale_runs": true,
+    "private_or_licensed_sources_allowed_in_public_scale": false,
+    "raw_private_upload_allowed": false,
+    "bulk_auto_attach_allowed": false,
+    "answer_safe_by_default": false
+  },
+  "required_review_lifecycle": [
+    "machine_candidate",
+    "quote_verified",
+    "source_verified",
+    "lawyer_reviewed",
+    "answer_safe"
+  ],
+  "scale_ladder": [
+    {
+      "rung_id": "rung_0_current_bail_seed",
+      "scope": "bail_only",
+      "case_range": [8, 8],
+      "status": "current",
+      "required_before_next": [
+        "zero_rejected_quote_rules",
+        "supabase_and_qdrant_counts_match_artifacts",
+        "all_outputs_candidate_only"
+      ]
+    },
+    {
+      "rung_id": "rung_1_bail_20_to_50",
+      "scope": "bail_only",
+      "case_range": [20, 50],
+      "status": "next_allowed_after_review",
+      "required_before_next": [
+        "promote_3_to_5_cfa_bail_propositions_to_answer_safe",
+        "bail_golden_queries_pass",
+        "real_embedding_provider_configured",
+        "reranker_configured_or_explicitly_waived_for_public_demo"
+      ]
+    },
+    {
+      "rung_id": "rung_2_single_section_100",
+      "scope": "one_criminal_section_only",
+      "case_range": [51, 100],
+      "status": "blocked_until_rung_1_quality_passes",
+      "required_before_next": [
+        "section_specific_golden_queries",
+        "link_precision_sample_at_least_0_85",
+        "lineage_notes_for_later_treatment",
+        "review_queue_backlog_under_control"
+      ]
+    },
+    {
+      "rung_id": "rung_3_single_section_300",
+      "scope": "one_criminal_section_only",
+      "case_range": [101, 300],
+      "status": "blocked_until_rung_2_quality_passes",
+      "required_before_next": [
+        "durable_orchestration_enabled",
+        "idempotent_source_checksums",
+        "duplicate_case_detection",
+        "retrieval_quality_floor_satisfied"
+      ]
+    },
+    {
+      "rung_id": "rung_4_multi_section_1000",
+      "scope": "selected_criminal_sections",
+      "case_range": [301, 1000],
+      "status": "blocked_until_section_playbook_repeats",
+      "required_before_next": [
+        "per_section_eval_suites",
+        "per_section_review_gold_sets",
+        "hybrid_linker_precision_report",
+        "private_source_access_controls_complete"
+      ]
+    },
+    {
+      "rung_id": "rung_5_domain_5000",
+      "scope": "criminal_domain_public_cases",
+      "case_range": [1001, 5000],
+      "status": "blocked_until_operational_readiness",
+      "required_before_next": [
+        "inngest_or_equivalent_durable_jobs",
+        "retry_and_resume_manifests",
+        "source_staleness_and_treatment_refresh",
+        "human_review_sampling_protocol"
+      ]
+    },
+    {
+      "rung_id": "rung_6_domain_20000",
+      "scope": "criminal_domain_public_cases",
+      "case_range": [5001, 20000],
+      "status": "blocked_until_all_quality_and_ops_gates_green",
+      "required_before_next": [
+        "production_embeddings",
+        "production_reranker",
+        "durable_orchestration",
+        "retrieval_quality_floor_satisfied",
+        "review_promotion_gold_set",
+        "lineage_and_treatment_tracking",
+        "tenant_and_private_source_controls"
+      ]
+    }
+  ],
+  "shard_policy": {
+    "default_cases_per_shard": 100,
+    "max_cases_per_shard": 250,
+    "max_parallel_shards_without_orchestrator": 1,
+    "requires_checksum_dedup": true,
+    "requires_idempotent_upserts": true,
+    "requires_resume_manifest": true
+  },
+  "semi_auto_policy": {
+    "llm_may_propose": true,
+    "llm_may_promote_answer_safe": false,
+    "exact_quote_required": true,
+    "paragraph_required": true,
+    "known_doctrine_node_required": true,
+    "confidence_threshold_for_machine_candidate": 0.55,
+    "confidence_threshold_for_review_priority": 0.75,
+    "allowed_output_status": "machine_candidate",
+    "forbidden_output_statuses": ["lawyer_reviewed", "answer_safe", "approved"]
+  },
+  "production_blockers_to_clear_before_20000": [
+    "real_embedding_provider_configured",
+    "real_reranker_configured",
+    "durable_ingestion_orchestration_configured",
+    "bail_gold_review_set_exists",
+    "retrieval_quality_floor_satisfied",
+    "semi_auto_quote_validator_passes",
+    "hybrid_node_linker_precision_report_exists",
+    "private_source_access_controls_complete"
+  ]
+}
