@@ -198,6 +198,22 @@ node scripts/build_case_fruit_sop_bridge.js \
 The cache write remains conservative: candidate-only fruits produce draft /
 research-only SOP records, not final legal propositions.
 
+The same bridge is exposed as a read-only API:
+
+```text
+GET /api/case-fruit-sop?node_id=criminal_procedure_hk.bail_factors
+```
+
+Cache writes are admin-gated:
+
+```text
+POST /api/case-fruit-sop?node_id=criminal_procedure_hk.bail_factors&write_cache=1
+Authorization: Bearer $LEGAL_REVIEW_ADMIN_TOKEN
+```
+
+The API still returns draft / research-only SOP records unless the underlying
+case fruits have been human-reviewed and promoted.
+
 ## Scale Rule
 
 The loop may grow bail to 20-50 cases with warnings.

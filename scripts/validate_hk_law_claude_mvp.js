@@ -98,6 +98,8 @@ const CASE_FRUIT_GROWTH_LOOP_DOC = path.join(ROOT, "docs", "case-fruit-growth-lo
 const CASE_FRUIT_SOP_BRIDGE = path.join(ROOT, "src", "case_graph", "case_fruit_sop_bridge.js");
 const CASE_FRUIT_SOP_BRIDGE_SCRIPT = path.join(ROOT, "scripts", "build_case_fruit_sop_bridge.js");
 const CASE_FRUIT_SOP_BRIDGE_VALIDATOR = path.join(ROOT, "scripts", "validate_case_fruit_sop_bridge.js");
+const CASE_FRUIT_SOP_API = path.join(ROOT, "api", "case-fruit-sop.js");
+const CASE_FRUIT_SOP_API_VALIDATOR = path.join(ROOT, "scripts", "validate_case_fruit_sop_api.js");
 const CASE_FRUITS_LINKER = path.join(ROOT, "src", "case_graph", "link_case_fruits_to_doctrine_tree.js");
 const CASE_FRUITS_LOCAL_EVIDENCE = path.join(ROOT, "src", "case_graph", "local_case_fruit_evidence.js");
 const CASE_FRUITS_BUILD_SCRIPT = path.join(ROOT, "scripts", "build_bail_case_fruits_pilot.js");
@@ -445,6 +447,12 @@ function staticScaffoldReport(errors) {
     "buildCaseFruitSopBridge",
   ], errors);
   fileIncludes(CASE_FRUIT_SOP_BRIDGE_VALIDATOR, ["Case fruit SOP bridge validation passed"], errors);
+  fileIncludes(CASE_FRUIT_SOP_API, [
+    "buildCaseFruitSopBridge",
+    "writeCaseFruitSopBridgeCache",
+    "assertReviewAdmin",
+  ], errors);
+  fileIncludes(CASE_FRUIT_SOP_API_VALIDATOR, ["Case fruit SOP API validation passed"], errors);
   fileIncludes(CASE_FRUITS_LINKER, ["buildBailCaseFruitLinks", "proposition_node_links", "l5_paragraph_proof"], errors);
   fileIncludes(CASE_FRUITS_LOCAL_EVIDENCE, ["localCaseFruitEvidenceForNode", "not_real_authority", "candidate_only"], errors);
   fileIncludes(CASE_FRUITS_BUILD_SCRIPT, ["Bail case fruits pilot built"], errors);
