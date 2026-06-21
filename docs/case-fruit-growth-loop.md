@@ -170,6 +170,34 @@ sop_playbooks
 If the source fingerprint changes, if a proposition is rejected, or if the
 support remains research-only, the cached SOP must be recomputed or downgraded.
 
+Build a no-LLM SOP bridge from a recalled doctrine branch:
+
+```bash
+node scripts/build_case_fruit_sop_bridge.js \
+  --node-id criminal_procedure_hk.bail_factors
+```
+
+This creates:
+
+- a retrieval bundle record;
+- an answer snapshot record;
+- a draft SOP playbook record;
+- a source fingerprint tying the SOP to the recalled case fruits.
+
+It does not call DeepSeek or any LLM. It does not promote candidate case fruits
+to answer-safe.
+
+To write those records to the existing Supabase cache tables:
+
+```bash
+node scripts/build_case_fruit_sop_bridge.js \
+  --node-id criminal_procedure_hk.bail_factors \
+  --write-cache
+```
+
+The cache write remains conservative: candidate-only fruits produce draft /
+research-only SOP records, not final legal propositions.
+
 ## Scale Rule
 
 The loop may grow bail to 20-50 cases with warnings.

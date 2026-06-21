@@ -277,9 +277,13 @@ async function writeLegalAnswerCache({ query, legalIngestBundle, applied, respon
 }
 
 module.exports = {
+  buildAnswerSnapshotRecord,
+  buildRetrievalBundleRecord,
+  buildSopPlaybookRecord,
   cacheIds,
   findCachedLegalAnswer,
   legalIngestSourceFingerprint,
   normalizeQuery,
+  retrievalStatusForBundle,
   writeLegalAnswerCache,
 };
