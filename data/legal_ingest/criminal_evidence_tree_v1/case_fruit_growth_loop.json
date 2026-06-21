@@ -1,0 +1,233 @@
+{
+  "loop_id": "hk_criminal_case_fruit_growth_loop_v1",
+  "purpose": "A bounded loop for growing quote-verified public case fruits from doctrine-tree branches into paragraph cards, proposition cards, doctrine-node links, Qdrant vectors, Supabase review queues and source-gated SOP/answer recall.",
+  "default_scope": {
+    "domain": "criminal_procedure_hk",
+    "branch_id": "bail",
+    "target_case_rung": "20_to_50_public_bail_cases",
+    "target_cases": 50,
+    "allowed_doctrine_node_ids": [
+      "criminal_procedure_hk.nsl_bail",
+      "criminal_procedure_hk.bail_factors",
+      "criminal_procedure_hk.bail_flow_step5",
+      "criminal_procedure_hk.bail_right_to_bail"
+    ],
+    "blocked_scope": [
+      "cross_domain_criminal_20k",
+      "private_or_licensed_books",
+      "firm_forms",
+      "bulk_auto_attach",
+      "auto_answer_safe_promotion"
+    ]
+  },
+  "token_policy": {
+    "deepseek_optional": true,
+    "max_source_paragraph_chars": 7000,
+    "max_prompt_paragraphs_per_call": 1,
+    "max_candidate_proposals_per_paragraph": 3,
+    "temperature": 0,
+    "json_only": true,
+    "cache_key_fields": [
+      "source_id",
+      "paragraph_no",
+      "paragraph_hash",
+      "allowed_doctrine_node_ids",
+      "prompt_version"
+    ],
+    "token_saving_rules": [
+      "Send only one paragraph and minimal source metadata to DeepSeek.",
+      "Never send whole judgments or books to the proposal model.",
+      "Reuse validated proposals and retrieval bundles by source fingerprint.",
+      "Use local lexical doctrine linking before any LLM call.",
+      "Ask the LLM for candidate rules only, not final answers."
+    ]
+  },
+  "loop_stages": [
+    {
+      "stage_id": "0_preflight",
+      "goal": "Check local/public-source readiness, target rung and blocking gates before any source fetch or write.",
+      "required_commands": [
+        "node scripts/validate_production_setup_contract.js",
+        "node scripts/validate_case_scale_readiness.js --target-cases 50"
+      ],
+      "failure_policy": "stop"
+    },
+    {
+      "stage_id": "1_branch_select",
+      "goal": "Use stable doctrine_node_id branches as the target surface for case fruits.",
+      "inputs": [
+        "criminal procedure domain tree",
+        "allowed_doctrine_node_ids"
+      ],
+      "outputs": [
+        "branch_target_manifest"
+      ],
+      "failure_policy": "stop_if_any_node_missing"
+    },
+    {
+      "stage_id": "2_source_discovery",
+      "goal": "Discover public judgments for the selected branch only.",
+      "source_policy": {
+        "public_sources_only": true,
+        "legalref_or_public_judiciary_preferred": true,
+        "private_or_licensed_sources_allowed": false,
+        "max_cases_without_new_review_gate": 50
+      },
+      "outputs": [
+        "source_manifest"
+      ],
+      "failure_policy": "stop_if_private_or_unknown_source"
+    },
+    {
+      "stage_id": "3_parse_and_tokenize",
+      "goal": "Fetch and paragraphize judgments; compute hashes and token/preview metadata.",
+      "outputs": [
+        "case_records",
+        "paragraph_cards",
+        "parse_report"
+      ],
+      "failure_policy": "reject_source_or_paragraph"
+    },
+    {
+      "stage_id": "4_extract_candidate_propositions",
+      "goal": "Extract candidate propositions with exact supporting quotes.",
+      "modes": [
+        "rule_based",
+        "deepseek_proposal_then_validator"
+      ],
+      "hard_gates": [
+        "exact_quote_must_exist_in_paragraph",
+        "authority_role_required",
+        "review_state_machine_candidate_only",
+        "answer_safe_false"
+      ],
+      "outputs": [
+        "proposition_cards"
+      ],
+      "failure_policy": "reject_proposal_and_add_correction_item"
+    },
+    {
+      "stage_id": "5_attach_to_tree",
+      "goal": "Attach propositions to allowed doctrine branches only.",
+      "hard_gates": [
+        "doctrine_node_id_must_exist",
+        "node_must_be_in_allowed_branch",
+        "candidate_only_link",
+        "human_review_required"
+      ],
+      "outputs": [
+        "proposition_node_links",
+        "l4_case_applications",
+        "l5_paragraph_proof"
+      ],
+      "failure_policy": "move_to_unattached_correction_queue"
+    },
+    {
+      "stage_id": "6_mismatch_and_lineage_checks",
+      "goal": "Detect wrong branch links, quote mismatches, lineage/treatment issues and irrelevant branch leakage.",
+      "checks": [
+        "exact_quote_check",
+        "known_doctrine_node_check",
+        "allowed_branch_check",
+        "candidate_only_check",
+        "court_level_and_later_case_lineage_note",
+        "forbidden_issue_family_check",
+        "duplicate_case_or_paragraph_hash_check"
+      ],
+      "outputs": [
+        "validation_report",
+        "correction_queue"
+      ],
+      "failure_policy": "do_not_index_rejected_items"
+    },
+    {
+      "stage_id": "7_store_and_index",
+      "goal": "Store candidates in Supabase and index permitted cards in Qdrant with metadata filters.",
+      "hard_gates": [
+        "supabase_configured",
+        "qdrant_configured",
+        "no_private_source_leakage",
+        "metadata_filters_present"
+      ],
+      "outputs": [
+        "supabase_rows",
+        "qdrant_points",
+        "review_queue_items"
+      ],
+      "failure_policy": "idempotent_upsert_or_stop"
+    },
+    {
+      "stage_id": "8_recall_and_answer_contract",
+      "goal": "Retrieve from tree links, Qdrant and source cards; keep candidate material in audit/research-only output.",
+      "outputs": [
+        "retrieval_bundle",
+        "source_audit",
+        "answer_contract_trace"
+      ],
+      "failure_policy": "abstain_or_research_only"
+    },
+    {
+      "stage_id": "9_sop_memory",
+      "goal": "Cache reviewed retrieval bundles and SOP playbooks by source fingerprint; never upgrade research-only cache to answer-safe.",
+      "outputs": [
+        "retrieval_bundles",
+        "legal_answer_snapshots",
+        "sop_playbooks"
+      ],
+      "failure_policy": "recompute_or_downgrade_if_source_fingerprint_changes"
+    },
+    {
+      "stage_id": "10_review_and_promote",
+      "goal": "Human review promotes only verified propositions; promotion is never automatic.",
+      "minimum_gold_before_scale": {
+        "branch": "bail",
+        "answer_safe_propositions": 3
+      },
+      "outputs": [
+        "review_audit",
+        "answer_safe_gold_set"
+      ],
+      "failure_policy": "remain_machine_candidate"
+    }
+  ],
+  "correction_loop": {
+    "queue_id": "case_fruit_growth_correction_queue_v1",
+    "item_types": [
+      "quote_not_found",
+      "paragraph_not_found",
+      "unknown_doctrine_node",
+      "wrong_branch_candidate",
+      "forbidden_issue_family_leakage",
+      "party_argument_mislabelled_as_holding",
+      "lineage_or_later_case_missing",
+      "duplicate_or_stale_source",
+      "retrieval_miss_on_golden_query",
+      "unsupported_sop_step"
+    ],
+    "retry_policy": {
+      "max_machine_retries": 2,
+      "requires_human_after_retries": true,
+      "never_auto_promote_after_retry": true
+    }
+  },
+  "safe_commands": {
+    "report_only": [
+      "node scripts/validate_production_setup_contract.js",
+      "node scripts/validate_case_scale_readiness.js --target-cases 50",
+      "node scripts/validate_public_bail_batch.js",
+      "node scripts/validate_retrieval_quality_floor.js"
+    ],
+    "execute_safe_local": [
+      "node scripts/build_public_bail_batch.js",
+      "node scripts/validate_public_bail_batch.js",
+      "node scripts/validate_semiauto_rule_proposals.js",
+      "node scripts/validate_public_bail_qdrant_retrieval.js",
+      "node scripts/validate_hybrid_retrieval.js"
+    ],
+    "execute_safe_remote": [
+      "node scripts/seed_public_bail_batch_supabase.js",
+      "node scripts/index_public_bail_batch_qdrant.js",
+      "node scripts/validate_public_bail_backend_storage.js"
+    ]
+  }
+}

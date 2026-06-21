@@ -1,0 +1,167 @@
+# Case Fruit Growth Loop
+
+This loop is the operational bridge between the criminal procedure principle tree
+and recallable, source-gated case evidence.
+
+It is deliberately not a bulk scraper. It grows case "fruits" section by
+section:
+
+```text
+principle branch
+-> public case source manifest
+-> paragraph cards
+-> candidate proposition cards
+-> doctrine-node links
+-> L4 case applications / L5 paragraph proof
+-> Supabase review queue
+-> Qdrant vectors with legal metadata filters
+-> retrieval bundle
+-> source-gated answer / SOP cache
+-> human review and correction loop
+```
+
+## Why This Exists
+
+The previous pieces existed separately:
+
+- public bail batch builder;
+- DeepSeek proposal helper;
+- exact-quote proposal validator;
+- doctrine-node linker;
+- Qdrant indexer;
+- Supabase seed script;
+- scale-readiness gates;
+- answer/SOP cache.
+
+The growth loop ties them together and keeps the policy clear:
+
+```text
+DeepSeek may propose.
+Validators decide.
+Reviewers promote.
+The answer composer cites or abstains.
+```
+
+## Default Scope
+
+The default loop is bail-only:
+
+```text
+criminal_procedure_hk.nsl_bail
+criminal_procedure_hk.bail_factors
+criminal_procedure_hk.bail_flow_step5
+criminal_procedure_hk.bail_right_to_bail
+```
+
+It is capped at 50 public bail cases unless later gates are green.
+
+It blocks:
+
+- cross-domain 20k criminal crawl;
+- private/licensed books;
+- firm forms;
+- bulk auto-attach;
+- automatic answer-safe promotion.
+
+## Token-Saving DeepSeek Policy
+
+DeepSeek is optional and used only for candidate extraction-rule proposals.
+
+The prompt budget is intentionally small:
+
+```text
+one source paragraph per call
+max 7000 paragraph characters
+max 3 candidate proposals per paragraph
+JSON-only
+temperature 0
+```
+
+Never send full books or whole judgments. Send one paragraph, minimal source
+metadata and the allowed doctrine-node list. The proposal still has to pass:
+
+- exact quote appears in paragraph;
+- doctrine node exists;
+- doctrine node is in the allowed branch;
+- review state is `machine_candidate`;
+- answer-safe is false.
+
+## Run The Loop
+
+Report only:
+
+```bash
+node scripts/run_case_fruit_growth_loop.js
+```
+
+Safe local execution:
+
+```bash
+node scripts/run_case_fruit_growth_loop.js --execute-safe
+```
+
+Remote seed/index is intentionally a second explicit flag:
+
+```bash
+node scripts/run_case_fruit_growth_loop.js --execute-safe --include-remote
+```
+
+That can run the existing Supabase/Qdrant seed/index commands only if the
+preflight says the bail rung is allowed.
+
+Validate the loop itself:
+
+```bash
+node scripts/validate_case_fruit_growth_loop.js
+```
+
+## Correction Loop
+
+Rejected or suspicious items go to the correction queue categories:
+
+- `quote_not_found`
+- `paragraph_not_found`
+- `unknown_doctrine_node`
+- `wrong_branch_candidate`
+- `forbidden_issue_family_leakage`
+- `party_argument_mislabelled_as_holding`
+- `lineage_or_later_case_missing`
+- `duplicate_or_stale_source`
+- `retrieval_miss_on_golden_query`
+- `unsupported_sop_step`
+
+Machine retries are capped. Retried material still cannot become answer-safe
+without human review.
+
+## SOP Contribution
+
+A case fruit can contribute to SOP output only through a retrieval bundle and
+source fingerprint:
+
+```text
+retrieval_bundles
+legal_answer_snapshots
+sop_playbooks
+```
+
+If the source fingerprint changes, if a proposition is rejected, or if the
+support remains research-only, the cached SOP must be recomputed or downgraded.
+
+## Scale Rule
+
+The loop may grow bail to 20-50 cases with warnings.
+
+It may not run 20k until these gates are green:
+
+```text
+production_embeddings_configured
+production_reranker_configured
+durable_orchestration_configured
+bail_gold_review_set_exists
+retrieval quality floor
+lineage/treatment checks
+tenant/private-source controls
+```
+
+That is the whole point: grow the law tree by reviewed evidence, not by dumping
+raw cases into vectors.

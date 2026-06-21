@@ -90,6 +90,11 @@ const CASE_FRUITS_LINKS = path.join(CASE_GRAPH_BASE, "bail_pilot", "proposition_
 const CASE_FRUITS_L4 = path.join(CASE_GRAPH_BASE, "bail_pilot", "l4_case_applications.json");
 const CASE_FRUITS_L5 = path.join(CASE_GRAPH_BASE, "bail_pilot", "l5_paragraph_proof.json");
 const CASE_FRUITS_DOC = path.join(ROOT, "docs", "case-fruits-tree-enrichment-pilot.md");
+const CASE_FRUIT_GROWTH_LOOP_CONFIG = path.join(CASE_GRAPH_BASE, "case_fruit_growth_loop.json");
+const CASE_FRUIT_GROWTH_LOOP = path.join(ROOT, "src", "case_graph", "case_fruit_growth_loop.js");
+const CASE_FRUIT_GROWTH_LOOP_SCRIPT = path.join(ROOT, "scripts", "run_case_fruit_growth_loop.js");
+const CASE_FRUIT_GROWTH_LOOP_VALIDATOR = path.join(ROOT, "scripts", "validate_case_fruit_growth_loop.js");
+const CASE_FRUIT_GROWTH_LOOP_DOC = path.join(ROOT, "docs", "case-fruit-growth-loop.md");
 const CASE_FRUITS_LINKER = path.join(ROOT, "src", "case_graph", "link_case_fruits_to_doctrine_tree.js");
 const CASE_FRUITS_LOCAL_EVIDENCE = path.join(ROOT, "src", "case_graph", "local_case_fruit_evidence.js");
 const CASE_FRUITS_BUILD_SCRIPT = path.join(ROOT, "scripts", "build_bail_case_fruits_pilot.js");
@@ -402,6 +407,29 @@ function staticScaffoldReport(errors) {
   fileIncludes(CASE_FRUITS_L4, ["l4_case_applications", "Bail conditions / surety / flight-risk management"], errors);
   fileIncludes(CASE_FRUITS_L5, ["l5_paragraph_proof", "quote_verified_against_fixture"], errors);
   fileIncludes(CASE_FRUITS_DOC, ["Case Fruits Tree Enrichment Pilot", "L4", "L5", "Not bulk case scraping"], errors);
+  fileIncludes(CASE_FRUIT_GROWTH_LOOP_CONFIG, [
+    "hk_criminal_case_fruit_growth_loop_v1",
+    "max_prompt_paragraphs_per_call",
+    "quote_not_found",
+    "unsupported_sop_step",
+  ], errors);
+  fileIncludes(CASE_FRUIT_GROWTH_LOOP, [
+    "buildLoopReport",
+    "validateBatchAgainstLoop",
+    "wrong_branch_candidate",
+    "auto_promote_answer_safe: false",
+  ], errors);
+  fileIncludes(CASE_FRUIT_GROWTH_LOOP_SCRIPT, [
+    "--execute-safe",
+    "--include-remote",
+    "command_results",
+  ], errors);
+  fileIncludes(CASE_FRUIT_GROWTH_LOOP_VALIDATOR, ["Case fruit growth loop validation passed"], errors);
+  fileIncludes(CASE_FRUIT_GROWTH_LOOP_DOC, [
+    "DeepSeek may propose",
+    "SOP Contribution",
+    "It may not run 20k",
+  ], errors);
   fileIncludes(CASE_FRUITS_LINKER, ["buildBailCaseFruitLinks", "proposition_node_links", "l5_paragraph_proof"], errors);
   fileIncludes(CASE_FRUITS_LOCAL_EVIDENCE, ["localCaseFruitEvidenceForNode", "not_real_authority", "candidate_only"], errors);
   fileIncludes(CASE_FRUITS_BUILD_SCRIPT, ["Bail case fruits pilot built"], errors);
