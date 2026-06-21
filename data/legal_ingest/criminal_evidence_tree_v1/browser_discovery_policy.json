@@ -1,0 +1,88 @@
+{
+  "policy_id": "case_fruit_browser_guided_discovery_v1",
+  "purpose": "Targeted discovery of public HK cases for selected doctrine branches before case-fruit ingestion. Browser/search may discover and verify candidate public cases, but may not decide law, bypass access controls, or promote answer-safe material.",
+  "browser_mode": "allowlisted_discovery_only",
+  "allowed_domains": [
+    "hklii.hk",
+    "www.hklii.hk",
+    "judiciary.hk",
+    "www.judiciary.hk",
+    "legalref.judiciary.hk",
+    "doj.gov.hk",
+    "www.doj.gov.hk"
+  ],
+  "disallowed_behaviour": [
+    "captcha_bypass",
+    "paywall_bypass",
+    "login_required_private_sources",
+    "impersonating_human_browsing",
+    "bulk_unthrottled_scraping",
+    "robots_or_terms_evasion",
+    "private_book_ingestion",
+    "answer_safe_promotion"
+  ],
+  "rate_limits": {
+    "max_searches_per_run": 50,
+    "max_fetches_per_run": 100,
+    "delay_seconds_between_fetches": 5,
+    "max_cases_promoted_to_candidate_per_run": 25
+  },
+  "status_lifecycle": [
+    "llm_unverified_seed",
+    "book_derived_seed",
+    "tree_query_seed",
+    "search_result_candidate",
+    "verified_public_case",
+    "fetched_public_judgment",
+    "parsed_public_judgment",
+    "machine_candidate_proposition",
+    "quote_validated_candidate",
+    "reviewed",
+    "answer_safe",
+    "rejected"
+  ],
+  "verification_required": {
+    "case_title": true,
+    "neutral_citation_or_source_citation": true,
+    "court_or_source_court_hint": true,
+    "judgment_date_or_source_date_hint": true,
+    "source_url": true,
+    "source_checksum": true
+  },
+  "deepseek_case_seed_policy": {
+    "enabled_when_api_key_present": true,
+    "strict_json_only": true,
+    "max_candidate_cases_per_branch": 50,
+    "default_status": "llm_unverified_seed",
+    "allowed_output_fields": [
+      "case_name",
+      "possible_citation",
+      "reason_for_relevance",
+      "suggested_issue_tags"
+    ],
+    "never_trust_without_public_verification": true
+  },
+  "book_seed_policy": {
+    "private_book_text_may_inform_query_terms": true,
+    "private_book_text_must_not_enter_public_case_database": true,
+    "default_status": "book_derived_seed"
+  },
+  "lineage_policy": {
+    "llm_assertion_alone_is_insufficient": true,
+    "requires_judgment_text_evidence_or_human_review": true,
+    "relation_terms": [
+      "applied",
+      "approved",
+      "cited",
+      "considered",
+      "distinguished",
+      "followed",
+      "not followed",
+      "overruled",
+      "limited"
+    ]
+  },
+  "default_review_status": "machine_candidate",
+  "default_answer_layer_status": "research_only",
+  "answer_safe_promotion_allowed": false
+}

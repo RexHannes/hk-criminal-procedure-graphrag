@@ -3,6 +3,9 @@ const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 const { loadDoctrineNodeCandidates } = require("./hybrid_doctrine_linker");
+const {
+  loadBrowserDiscoveryPolicy,
+} = require("./browser_guided_discovery");
 const { evaluateScaleReadiness, loadEnv } = require("./scale_readiness");
 
 const ROOT = path.resolve(__dirname, "..", "..");
@@ -270,6 +273,9 @@ function buildLoopReport({
   useDeepSeek = false,
 } = {}) {
   const config = readJson(configPath);
+  const browserPolicy = config.browser_guided_discovery?.policy_file
+    ? loadBrowserDiscoveryPolicy(path.join(ROOT, config.browser_guided_discovery.policy_file))
+    : null;
   const env = loadEnv({ root: ROOT });
   const target = Number(targetCases || config.default_scope?.target_cases || 50);
   const branchReport = validateBranchTargets(config);
@@ -296,6 +302,16 @@ function buildLoopReport({
     requested_target_cases: target,
     branch: config.default_scope,
     token_policy: config.token_policy,
+    browser_guided_discovery: config.browser_guided_discovery ? {
+      enabled: config.browser_guided_discovery.enabled === true,
+      policy_id: browserPolicy?.policy_id || "",
+      browser_mode: browserPolicy?.browser_mode || "",
+      allowed_domains: browserPolicy?.allowed_domains || [],
+      max_searches_per_run: browserPolicy?.rate_limits?.max_searches_per_run || null,
+      max_fetches_per_run: browserPolicy?.rate_limits?.max_fetches_per_run || null,
+      answer_safe_promotion_allowed: browserPolicy?.answer_safe_promotion_allowed === true,
+      deepseek_default_status: browserPolicy?.deepseek_case_seed_policy?.default_status || "",
+    } : null,
     branch_report: branchReport,
     batch_report: batchReport,
     branch_backlog_summary: {

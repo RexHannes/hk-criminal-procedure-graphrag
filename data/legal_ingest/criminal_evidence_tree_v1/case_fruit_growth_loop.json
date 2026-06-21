@@ -42,6 +42,34 @@
       "Ask the LLM for candidate rules only, not final answers."
     ]
   },
+  "browser_guided_discovery": {
+    "enabled": true,
+    "policy_file": "data/legal_ingest/criminal_evidence_tree_v1/browser_discovery_policy.json",
+    "purpose": "Targeted public-case discovery before ingestion. Browser/search may verify public cases; DeepSeek/book seeds remain unverified leads until public source checks pass.",
+    "allowed_seed_sources": [
+      "tree",
+      "book",
+      "deepseek",
+      "search"
+    ],
+    "default_seed_statuses": {
+      "tree": "tree_query_seed",
+      "book": "book_derived_seed",
+      "deepseek": "llm_unverified_seed",
+      "search": "search_result_candidate"
+    },
+    "required_before_proposition_pipeline": [
+      "verified_public_case",
+      "fetched_public_judgment",
+      "parsed_public_judgment"
+    ],
+    "forbidden_shortcuts": [
+      "case_seed_to_proposition_without_paragraph_text",
+      "llm_case_name_to_verified_case_without_public_source",
+      "llm_lineage_assertion_to_lineage_edge_without_text_or_review",
+      "browser_discovery_to_answer_safe"
+    ]
+  },
   "loop_stages": [
     {
       "stage_id": "0_preflight",
@@ -66,14 +94,26 @@
     },
     {
       "stage_id": "2_source_discovery",
-      "goal": "Discover public judgments for the selected branch only.",
+      "goal": "Discover and verify public judgments for the selected branch only. Use targeted query seeds from the doctrine tree, private book-derived vocabulary, and optional DeepSeek case-name leads, but treat all non-public-source leads as unverified until allowlisted public verification succeeds.",
       "source_policy": {
         "public_sources_only": true,
         "legalref_or_public_judiciary_preferred": true,
         "private_or_licensed_sources_allowed": false,
         "max_cases_without_new_review_gate": 50
       },
+      "browser_policy": "allowlisted_discovery_only",
+      "seed_statuses": [
+        "tree_query_seed",
+        "book_derived_seed",
+        "llm_unverified_seed",
+        "search_result_candidate",
+        "verified_public_case",
+        "fetched_public_judgment",
+        "parsed_public_judgment"
+      ],
       "outputs": [
+        "case_seed_manifest",
+        "verified_public_case_registry",
         "source_manifest"
       ],
       "failure_policy": "stop_if_private_or_unknown_source"

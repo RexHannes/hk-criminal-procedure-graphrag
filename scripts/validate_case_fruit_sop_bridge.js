@@ -16,6 +16,7 @@ const bridge = buildCaseFruitSopBridge({
 });
 
 assert(bridge.evidence_count > 0, "bail_factors should recall case fruit evidence", errors);
+assert(bridge.legal_ingest_bundle.proposition_cards[0].proposition_id.includes("lai_2021") || bridge.cache_records.sop_playbook.steps[0]?.text?.includes("[2021] HKCFA 3"), "SOP bridge should lineage-rank current CFA material first where available", errors);
 assert(bridge.policy.no_llm_tokens_used === true, "SOP bridge should use no LLM tokens", errors);
 assert(bridge.policy.auto_promote_answer_safe === false, "SOP bridge must not auto-promote answer_safe", errors);
 assert(bridge.source_fingerprint, "source fingerprint missing", errors);

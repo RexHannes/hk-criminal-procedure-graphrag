@@ -1,5 +1,6 @@
 const path = require("path");
 const { localCaseFruitEvidenceForNode } = require("./local_case_fruit_evidence");
+const { lineageRankEvidence } = require("./case_fruit_lineage");
 const {
   buildAnswerSnapshotRecord,
   buildRetrievalBundleRecord,
@@ -134,7 +135,7 @@ function appliedSopFromEvidence({ doctrineNodeId, query, evidence }) {
 
 function buildCaseFruitSopBridge({ doctrineNodeId, query } = {}) {
   if (!doctrineNodeId) throw new Error("doctrineNodeId required");
-  const evidence = localCaseFruitEvidenceForNode(doctrineNodeId);
+  const evidence = lineageRankEvidence(localCaseFruitEvidenceForNode(doctrineNodeId));
   const normalizedQuery = query || `SOP from case fruits for ${doctrineNodeId}`;
   const legalIngestBundle = legalIngestBundleFromEvidence({ doctrineNodeId, evidence });
   const applied = appliedSopFromEvidence({ doctrineNodeId, query: normalizedQuery, evidence });

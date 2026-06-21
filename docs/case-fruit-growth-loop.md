@@ -86,6 +86,68 @@ metadata and the allowed doctrine-node list. The proposal still has to pass:
 - review state is `machine_candidate`;
 - answer-safe is false.
 
+## Browser-Guided Case Discovery
+
+Targeted search is allowed only as a discovery and verification stage. It is not
+a legal reasoning stage and it cannot promote anything to answer-safe.
+
+The loop uses:
+
+```text
+doctrine branch / book-derived vocabulary
+-> deterministic query seeds
+-> optional DeepSeek case-name leads
+-> allowlisted public-source search
+-> public case verification
+-> public judgment fetch
+-> paragraph parser
+-> exact-quote proposition validator
+```
+
+DeepSeek-proposed case names start as `llm_unverified_seed`. Book-derived case
+names start as `book_derived_seed`. Neither status can enter the proposition
+pipeline until a public source has verified the case and the fetched judgment
+has been paragraphized.
+
+The browser/search policy is governed by:
+
+```text
+data/legal_ingest/criminal_evidence_tree_v1/browser_discovery_policy.json
+```
+
+The policy is intentionally narrow:
+
+```text
+allowed public legal domains only
+slow per-run limits
+no CAPTCHA, paywall, login, robots/terms evasion
+no private book/form ingestion
+no answer-safe promotion
+```
+
+This is the safe targeted path:
+
+```text
+case seed -> verified public case -> fetched public judgment -> parsed paragraph
+```
+
+This is forbidden:
+
+```text
+DeepSeek says case exists -> database authority
+```
+
+Lineage edges also require text support or human review. An LLM assertion that
+one case follows, applies, distinguishes or overrules another is only a lead
+until the cited case and relation can be found in the judgment text, or a human
+reviewer confirms it.
+
+Validate this layer:
+
+```bash
+node scripts/validate_browser_guided_discovery.js
+```
+
 ## Run The Loop
 
 Report only:
@@ -183,6 +245,7 @@ This creates:
 - an answer snapshot record;
 - a draft SOP playbook record;
 - a source fingerprint tying the SOP to the recalled case fruits.
+- a lineage-ranked source trail that prefers higher courts/current treatment.
 
 It does not call DeepSeek or any LLM. It does not promote candidate case fruits
 to answer-safe.
@@ -197,6 +260,19 @@ node scripts/build_case_fruit_sop_bridge.js \
 
 The cache write remains conservative: candidate-only fruits produce draft /
 research-only SOP records, not final legal propositions.
+
+Lineage ranking is deterministic and local. It prefers:
+
+```text
+CFA / CA over CFI
+ratio / rule statements over background or party arguments
+public-source candidates over fixtures
+items without later-treatment warnings over limited/corrected items
+quote-verified paragraph proof over unsupported text
+```
+
+Sorting never changes review status. Candidate-only evidence remains
+candidate-only after ranking.
 
 The same bridge is exposed as a read-only API:
 

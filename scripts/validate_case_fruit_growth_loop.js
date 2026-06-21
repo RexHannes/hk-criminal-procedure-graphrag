@@ -32,6 +32,11 @@ assert((config.default_scope?.blocked_scope || []).includes("cross_domain_crimin
 assert((config.default_scope?.blocked_scope || []).includes("auto_answer_safe_promotion"), "auto answer-safe promotion must be blocked", errors);
 assert(config.token_policy?.max_prompt_paragraphs_per_call === 1, "DeepSeek prompt must use one paragraph per call", errors);
 assert(config.token_policy?.max_source_paragraph_chars <= 7000, "DeepSeek paragraph char budget too high", errors);
+assert(config.browser_guided_discovery?.enabled === true, "browser-guided discovery policy should be enabled", errors);
+assert(config.browser_guided_discovery?.policy_file?.includes("browser_discovery_policy.json"), "browser discovery policy file missing", errors);
+assert(config.browser_guided_discovery?.default_seed_statuses?.deepseek === "llm_unverified_seed", "DeepSeek case seeds must stay unverified", errors);
+assert((config.browser_guided_discovery?.required_before_proposition_pipeline || []).includes("verified_public_case"), "verified_public_case gate missing", errors);
+assert((config.browser_guided_discovery?.forbidden_shortcuts || []).includes("llm_case_name_to_verified_case_without_public_source"), "LLM-to-verified shortcut must be forbidden", errors);
 assert((config.correction_loop?.item_types || []).includes("quote_not_found"), "correction loop missing quote_not_found", errors);
 assert((config.correction_loop?.item_types || []).includes("wrong_branch_candidate"), "correction loop missing wrong_branch_candidate", errors);
 assert(config.correction_loop?.retry_policy?.never_auto_promote_after_retry === true, "correction retries must not auto-promote", errors);
@@ -45,6 +50,7 @@ for (const token of [
   "candidate_only_gate_failed",
   "auto_promote_answer_safe: false",
   "bulk_auto_attach: false",
+  "browser_guided_discovery",
 ]) {
   assert(source.includes(token), `case_fruit_growth_loop.js missing ${token}`, errors);
 }
@@ -56,6 +62,9 @@ assert(report.branch_backlog_summary.nodes_with_candidate_fruits === 4, "all fou
 assert(report.branch_backlog_summary.prompt_cache_entries >= 1, "prompt cache entries should be present", errors);
 assert(report.execution_policy.auto_promote_answer_safe === false, "loop must not auto-promote answer_safe", errors);
 assert(report.execution_policy.bulk_auto_attach === false, "loop must not bulk auto-attach", errors);
+assert(report.browser_guided_discovery?.enabled === true, "report should expose browser-guided discovery", errors);
+assert(report.browser_guided_discovery?.browser_mode === "allowlisted_discovery_only", "report should expose allowlisted browser mode", errors);
+assert(report.browser_guided_discovery?.deepseek_default_status === "llm_unverified_seed", "report should expose unverified DeepSeek seed status", errors);
 assert(report.commands.execute_safe_remote.length === 0, "remote commands must require explicit include-remote flag", errors);
 assert(report.token_policy?.max_prompt_paragraphs_per_call === 1, "report missing token policy", errors);
 

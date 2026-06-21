@@ -28,19 +28,26 @@ function localEvidenceFromDir(doctrineNodeId, config) {
   const linksPayload = readJsonIfExists(path.join(config.dir, "proposition_node_links.json"));
   const l4Payload = readJsonIfExists(path.join(config.dir, "l4_case_applications.json"));
   const l5Payload = readJsonIfExists(path.join(config.dir, "l5_paragraph_proof.json"));
+  const paragraphPayload = readJsonIfExists(path.join(config.dir, "paragraph_cards.json"));
   if (!linksPayload || !l4Payload || !l5Payload) return [];
 
   const l4ByProposition = new Map((l4Payload.l4_case_applications || []).map(item => [item.proposition_id, item]));
   const l5ByProposition = new Map((l5Payload.l5_paragraph_proof || []).map(item => [item.proposition_id, item]));
+  const caseById = new Map((paragraphPayload?.cases || []).map(item => [item.case_id, item]));
   return (linksPayload.proposition_node_links || [])
     .filter(link => link.doctrine_node_id === doctrineNodeId)
     .map(link => {
       const l4 = l4ByProposition.get(link.proposition_id) || {};
       const l5 = l5ByProposition.get(link.proposition_id) || {};
+      const caseRecord = caseById.get(l4.case_id || l5.case_id) || {};
       return {
         case_name: l4.case_name || l5.case_name || l4.case_id || config.fallbackCaseName,
         neutral_citation: l4.neutral_citation || l5.neutral_citation || config.fallbackCitation,
-        court_level: "",
+        law_report_citation: caseRecord.law_report_citation || "",
+        court: caseRecord.court || "",
+        court_level: caseRecord.court_level || "",
+        date: caseRecord.date || "",
+        authority_status: caseRecord.authority_status || "",
         case_id: l4.case_id || l5.case_id || "",
         paragraph_id: l5.paragraph_id || "",
         para_no: l5.para_no || "",
@@ -58,6 +65,7 @@ function localEvidenceFromDir(doctrineNodeId, config) {
         validator_flags: config.flags,
         l4_application_id: l4.l4_application_id || "",
         l5_proof_id: l5.l5_proof_id || "",
+        lineage_note: l4.lineage_note || link.notes || "",
       };
     });
 }

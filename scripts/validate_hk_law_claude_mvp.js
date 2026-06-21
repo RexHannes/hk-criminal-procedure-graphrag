@@ -98,6 +98,11 @@ const CASE_FRUIT_GROWTH_LOOP_DOC = path.join(ROOT, "docs", "case-fruit-growth-lo
 const CASE_FRUIT_SOP_BRIDGE = path.join(ROOT, "src", "case_graph", "case_fruit_sop_bridge.js");
 const CASE_FRUIT_SOP_BRIDGE_SCRIPT = path.join(ROOT, "scripts", "build_case_fruit_sop_bridge.js");
 const CASE_FRUIT_SOP_BRIDGE_VALIDATOR = path.join(ROOT, "scripts", "validate_case_fruit_sop_bridge.js");
+const CASE_FRUIT_LINEAGE = path.join(ROOT, "src", "case_graph", "case_fruit_lineage.js");
+const CASE_FRUIT_LINEAGE_VALIDATOR = path.join(ROOT, "scripts", "validate_case_fruit_lineage_sort.js");
+const CASE_FRUIT_BROWSER_POLICY = path.join(CASE_GRAPH_BASE, "browser_discovery_policy.json");
+const CASE_FRUIT_BROWSER_DISCOVERY = path.join(ROOT, "src", "case_graph", "browser_guided_discovery.js");
+const CASE_FRUIT_BROWSER_DISCOVERY_VALIDATOR = path.join(ROOT, "scripts", "validate_browser_guided_discovery.js");
 const CASE_FRUIT_SOP_API = path.join(ROOT, "api", "case-fruit-sop.js");
 const CASE_FRUIT_SOP_API_VALIDATOR = path.join(ROOT, "scripts", "validate_case_fruit_sop_api.js");
 const CASE_FRUITS_LINKER = path.join(ROOT, "src", "case_graph", "link_case_fruits_to_doctrine_tree.js");
@@ -447,6 +452,25 @@ function staticScaffoldReport(errors) {
     "buildCaseFruitSopBridge",
   ], errors);
   fileIncludes(CASE_FRUIT_SOP_BRIDGE_VALIDATOR, ["Case fruit SOP bridge validation passed"], errors);
+  fileIncludes(CASE_FRUIT_LINEAGE, [
+    "lineageRankEvidence",
+    "COURT_WEIGHT",
+    "later-treatment flag",
+  ], errors);
+  fileIncludes(CASE_FRUIT_LINEAGE_VALIDATOR, ["Case fruit lineage sort validation passed"], errors);
+  fileIncludes(CASE_FRUIT_BROWSER_POLICY, [
+    "case_fruit_browser_guided_discovery_v1",
+    "allowlisted_discovery_only",
+    "llm_unverified_seed",
+    "answer_safe_promotion_allowed",
+  ], errors);
+  fileIncludes(CASE_FRUIT_BROWSER_DISCOVERY, [
+    "isAllowedPublicSourceUrl",
+    "normalizeCaseSeed",
+    "verifyPublicCaseCandidate",
+    "validateLineageEvidence",
+  ], errors);
+  fileIncludes(CASE_FRUIT_BROWSER_DISCOVERY_VALIDATOR, ["Browser-guided discovery validation passed"], errors);
   fileIncludes(CASE_FRUIT_SOP_API, [
     "buildCaseFruitSopBridge",
     "writeCaseFruitSopBridgeCache",
