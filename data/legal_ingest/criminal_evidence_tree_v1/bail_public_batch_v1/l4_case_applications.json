@@ -744,6 +744,221 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "lineage_note": "Fact-sensitive refusal on a second application; not a general rule."
+    },
+    {
+      "l4_application_id": "l4_prop_sze_2021_cfa_stringent_threshold_p4",
+      "proposition_id": "prop_sze_2021_cfa_stringent_threshold_p4",
+      "case_id": "hk_cfi_2021_sze_tak_loy_hccp_115_2021",
+      "case_name": "Secretary for Justice v Sze Tak Loy",
+      "neutral_citation": "[2021] HKCFI 900",
+      "paragraph_id": "hk_cfi_2021_sze_tak_loy_hccp_115_2021_p4",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "The CFI applied Lai CFA as establishing that NSL Article 42(2) is a stringent threshold exception to ordinary bail principles.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFI application of Lai CFA threshold; candidate only and subordinate to CFA ratio."
+    },
+    {
+      "l4_application_id": "l4_prop_sze_2021_second_threshold_conditions_p10",
+      "proposition_id": "prop_sze_2021_second_threshold_conditions_p10",
+      "case_id": "hk_cfi_2021_sze_tak_loy_hccp_115_2021",
+      "case_name": "Secretary for Justice v Sze Tak Loy",
+      "neutral_citation": "[2021] HKCFI 900",
+      "paragraph_id": "hk_cfi_2021_sze_tak_loy_hccp_115_2021_p10",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "Bail conditions may satisfy the ordinary second-threshold concern of surrendering to custody.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Fact-sensitive CFI application on surrender-risk conditions."
+    },
+    {
+      "l4_application_id": "l4_prop_chui_2021_cfa_everything_relevant_p5",
+      "proposition_id": "prop_chui_2021_cfa_everything_relevant_p5",
+      "case_id": "hk_cfi_2021_chui_chi_kin_hccp_126_2021",
+      "case_name": "HKSAR v Chui Chi Kin",
+      "neutral_citation": "[2021] HKCFI 969",
+      "paragraph_id": "hk_cfi_2021_chui_chi_kin_hccp_126_2021_p5",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "In NSL bail applications, the CFI applied Lai CFA as permitting consideration of all relevant matters, including bail conditions and non-trial-admissible materials.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFI application of the CFA all-relevant-materials approach."
+    },
+    {
+      "l4_application_id": "l4_prop_chui_2021_predictive_assessment_refusal_p11",
+      "proposition_id": "prop_chui_2021_predictive_assessment_refusal_p11",
+      "case_id": "hk_cfi_2021_chui_chi_kin_hccp_126_2021",
+      "case_name": "HKSAR v Chui Chi Kin",
+      "neutral_citation": "[2021] HKCFI 969",
+      "paragraph_id": "hk_cfi_2021_chui_chi_kin_hccp_126_2021_p11",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "A predictive and evaluative assessment may lead to refusal where there are insufficient grounds to believe the applicant will not continue acts endangering national security.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Fact-sensitive CFI refusal applying the NSL bail threshold."
+    },
+    {
+      "l4_application_id": "l4_prop_wan_2021_predictive_exercise_p13",
+      "proposition_id": "prop_wan_2021_predictive_exercise_p13",
+      "case_id": "hk_cfi_2021_wan_siu_kin_andrew_hccp_141_2021",
+      "case_name": "HKSAR v Wan Siu Kin Andrew",
+      "neutral_citation": "[2021] HKCFI 1255",
+      "paragraph_id": "hk_cfi_2021_wan_siu_kin_andrew_hccp_141_2021_p13",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "The CFI characterised NSL bail assessment as a predictive and evaluative exercise on all materials before the court.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFI application of predictive/evaluative assessment terminology."
+    },
+    {
+      "l4_application_id": "l4_prop_wan_2021_refusal_no_sufficient_grounds_p14",
+      "proposition_id": "prop_wan_2021_refusal_no_sufficient_grounds_p14",
+      "case_id": "hk_cfi_2021_wan_siu_kin_andrew_hccp_141_2021",
+      "case_name": "HKSAR v Wan Siu Kin Andrew",
+      "neutral_citation": "[2021] HKCFI 1255",
+      "paragraph_id": "hk_cfi_2021_wan_siu_kin_andrew_hccp_141_2021_p14",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "On the facts, absence of sufficient grounds under the NSL threshold led to refusal of bail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Fact-sensitive CFI refusal; candidate only."
+    },
+    {
+      "l4_application_id": "l4_prop_mo_2021_predictive_refusal_p21",
+      "proposition_id": "prop_mo_2021_predictive_refusal_p21",
+      "case_id": "hk_cfi_2021_mo_man_ching_claudia_hccp_134_2021",
+      "case_name": "HKSAR v Mo Man Ching Claudia",
+      "neutral_citation": "[2021] HKCFI 1435",
+      "paragraph_id": "hk_cfi_2021_mo_man_ching_claudia_hccp_134_2021_p21",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "The CFI considered materials, submissions and proposed bail conditions in a predictive and evaluative NSL bail assessment, but refused bail where sufficient grounds were absent.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Fact-sensitive CFI refusal after considering proposed conditions."
+    },
+    {
+      "l4_application_id": "l4_prop_chow_2021_cfa_everything_relevant_p12",
+      "proposition_id": "prop_chow_2021_cfa_everything_relevant_p12",
+      "case_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021",
+      "case_name": "HKSAR v Chow Ka Shing",
+      "neutral_citation": "[2021] HKCFI 2075",
+      "paragraph_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021_p12",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "The CFI applied Lai CFA by considering all relevant matters, including possible bail conditions and materials not admissible at trial.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "CFI application of CFA all-relevant-materials approach."
+    },
+    {
+      "l4_application_id": "l4_prop_chow_2021_conditions_nsl_satisfied_p25",
+      "proposition_id": "prop_chow_2021_conditions_nsl_satisfied_p25",
+      "case_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021",
+      "case_name": "HKSAR v Chow Ka Shing",
+      "neutral_citation": "[2021] HKCFI 2075",
+      "paragraph_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021_p25",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "On the facts, imposed bail conditions satisfied the court that the applicant would not continue NSL offences if granted bail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Fact-sensitive CFI grant illustration; not a general rule without review."
+    },
+    {
+      "l4_application_id": "l4_prop_chow_2021_second_threshold_satisfied_p26",
+      "proposition_id": "prop_chow_2021_second_threshold_satisfied_p26",
+      "case_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021",
+      "case_name": "HKSAR v Chow Ka Shing",
+      "neutral_citation": "[2021] HKCFI 2075",
+      "paragraph_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021_p26",
+      "scenario_label": "Bail / NSL bail threshold and conditions",
+      "application_summary": "Bail conditions may satisfy ordinary s.9G concerns about surrendering to custody or committing an offence while on bail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Fact-sensitive CFI grant illustration on ordinary second threshold."
     }
   ]
 }
