@@ -2,10 +2,14 @@
 /* eslint-disable no-console */
 
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 const {
   DEFAULT_LOOP_CONFIG,
+  branchBacklog,
   buildLoopReport,
+  correctionQueue,
+  writeLoopState,
 } = require("../src/case_graph/case_fruit_growth_loop");
 
 const ROOT = path.resolve(__dirname, "..");
@@ -48,10 +52,25 @@ for (const token of [
 const report = buildLoopReport({ targetCases: 50 });
 assert(report.branch_report.ok, "branch report should pass for configured bail nodes", errors);
 assert(report.batch_report.ok, "batch report should pass for current bail artifacts", errors);
+assert(report.branch_backlog_summary.nodes_with_candidate_fruits === 4, "all four bail nodes should have candidate fruits", errors);
+assert(report.branch_backlog_summary.prompt_cache_entries >= 1, "prompt cache entries should be present", errors);
 assert(report.execution_policy.auto_promote_answer_safe === false, "loop must not auto-promote answer_safe", errors);
 assert(report.execution_policy.bulk_auto_attach === false, "loop must not bulk auto-attach", errors);
 assert(report.commands.execute_safe_remote.length === 0, "remote commands must require explicit include-remote flag", errors);
 assert(report.token_policy?.max_prompt_paragraphs_per_call === 1, "report missing token policy", errors);
+
+const backlog = branchBacklog(config);
+assert(backlog.token_cache.paragraph_prompt_cache.every(item => item.cache_key && item.deepseek_call_needed === false), "prompt cache should avoid unnecessary DeepSeek calls for current batch", errors);
+const corrections = correctionQueue(config, report.batch_report);
+assert(corrections.status === "empty", "current correction queue should be empty", errors);
+assert(corrections.retry_policy.never_auto_promote_after_retry === true, "correction queue must block auto-promotion after retry", errors);
+const tempState = fs.mkdtempSync(path.join(os.tmpdir(), "case-fruit-loop-"));
+const stateWrite = writeLoopState({ report, config, stateDir: tempState });
+for (const key of ["report", "branch_backlog", "correction_queue"]) {
+  assert(fs.existsSync(stateWrite.files[key]), `state file not written: ${key}`, errors);
+}
+const writtenQueue = readJson(stateWrite.files.correction_queue);
+assert(writtenQueue.queue_id === "case_fruit_growth_correction_queue_v1", "written correction queue id mismatch", errors);
 
 const blockedLarge = buildLoopReport({ targetCases: 20000 });
 assert(blockedLarge.scale_readiness.status === "blocked_for_large_scale", "20k loop must remain blocked", errors);

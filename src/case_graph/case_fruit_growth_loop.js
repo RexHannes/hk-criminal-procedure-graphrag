@@ -8,6 +8,7 @@ const { evaluateScaleReadiness, loadEnv } = require("./scale_readiness");
 const ROOT = path.resolve(__dirname, "..", "..");
 const DEFAULT_LOOP_CONFIG = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "case_fruit_growth_loop.json");
 const DEFAULT_BATCH_DIR = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "bail_public_batch_v1");
+const DEFAULT_STATE_DIR = path.join(ROOT, "data", "legal_ingest", "reports", "case_fruit_growth_loop");
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -144,6 +145,122 @@ function validateBatchAgainstLoop(config, batchDir = DEFAULT_BATCH_DIR) {
   };
 }
 
+function branchBacklog(config, batchDir = DEFAULT_BATCH_DIR) {
+  const artifacts = loadBatchArtifacts(batchDir);
+  const allowed = config.default_scope?.allowed_doctrine_node_ids || [];
+  const propositionById = new Map((artifacts.propositions.proposition_cards || []).map(card => [card.proposition_id, card]));
+  const paragraphById = new Map((artifacts.paragraphs.paragraph_cards || []).map(card => [card.paragraph_id, card]));
+  const byNode = new Map(allowed.map(nodeId => [nodeId, {
+    doctrine_node_id: nodeId,
+    proposition_ids: new Set(),
+    paragraph_ids: new Set(),
+    source_ids: new Set(),
+    lineage_notes: new Set(),
+  }]));
+
+  for (const link of artifacts.links.proposition_node_links || []) {
+    if (!byNode.has(link.doctrine_node_id)) continue;
+    const bucket = byNode.get(link.doctrine_node_id);
+    const proposition = propositionById.get(link.proposition_id);
+    if (proposition) {
+      bucket.proposition_ids.add(proposition.proposition_id);
+      bucket.paragraph_ids.add(proposition.paragraph_id);
+      bucket.source_ids.add(proposition.case_id);
+      if (proposition.lineage_note) bucket.lineage_notes.add(proposition.lineage_note);
+    }
+  }
+
+  const paragraphPromptCache = (artifacts.paragraphs.paragraph_cards || []).map(paragraph => ({
+    cache_key: sha256([
+      paragraph.case_id,
+      paragraph.paragraph_no,
+      paragraph.chunk_hash || sha256(paragraph.text),
+      (config.default_scope?.allowed_doctrine_node_ids || []).join("|"),
+      "deepseek_candidate_proposal_loop_v1",
+    ].join(":")),
+    source_id: paragraph.case_id,
+    paragraph_id: paragraph.paragraph_id,
+    paragraph_no: paragraph.paragraph_no,
+    paragraph_hash: paragraph.chunk_hash || sha256(paragraph.text),
+    prompt_char_budget: config.token_policy?.max_source_paragraph_chars || 7000,
+    paragraph_char_count: String(paragraph.text || "").length,
+    deepseek_call_needed: false,
+    reason: "current batch already has rule-based quote-verified proposition candidates",
+  }));
+
+  return {
+    backlog_id: "case_fruit_branch_backlog_v1",
+    loop_id: config.loop_id,
+    branch_id: config.default_scope?.branch_id,
+    target_case_rung: config.default_scope?.target_case_rung,
+    max_cases_without_new_review_gate: config.default_scope?.target_cases,
+    nodes: Array.from(byNode.values()).map(item => ({
+      doctrine_node_id: item.doctrine_node_id,
+      proposition_count: item.proposition_ids.size,
+      paragraph_count: item.paragraph_ids.size,
+      source_count: item.source_ids.size,
+      proposition_ids: Array.from(item.proposition_ids).sort(),
+      paragraph_ids: Array.from(item.paragraph_ids).sort(),
+      source_ids: Array.from(item.source_ids).sort(),
+      lineage_notes: Array.from(item.lineage_notes).sort(),
+      status: item.proposition_ids.size ? "has_candidate_fruits_needs_review" : "needs_public_case_fruits",
+      next_action: item.proposition_ids.size
+        ? "review_candidate_cards_then_promote_gold_subset"
+        : "discover_public_cases_for_this_branch",
+    })),
+    token_cache: {
+      policy: config.token_policy,
+      paragraph_prompt_cache: paragraphPromptCache,
+    },
+  };
+}
+
+function correctionQueue(config, batchReport) {
+  return {
+    queue_id: config.correction_loop?.queue_id || "case_fruit_growth_correction_queue_v1",
+    loop_id: config.loop_id,
+    retry_policy: config.correction_loop?.retry_policy || {},
+    status: batchReport.correction_queue.item_count ? "needs_review" : "empty",
+    item_count: batchReport.correction_queue.item_count,
+    items: (batchReport.correction_queue.items || []).map((item, index) => ({
+      correction_id: `case_fruit_correction_${String(index + 1).padStart(4, "0")}`,
+      review_state: "open",
+      retry_count: 0,
+      max_machine_retries: config.correction_loop?.retry_policy?.max_machine_retries ?? 2,
+      requires_human_after_retries: config.correction_loop?.retry_policy?.requires_human_after_retries !== false,
+      never_auto_promote_after_retry: true,
+      ...item,
+    })),
+  };
+}
+
+function writeLoopState({ report, config, stateDir = DEFAULT_STATE_DIR } = {}) {
+  const backlog = branchBacklog(config);
+  const corrections = correctionQueue(config, report.batch_report);
+  fs.mkdirSync(stateDir, { recursive: true });
+  const files = {
+    report: path.join(stateDir, "last_report.json"),
+    branch_backlog: path.join(stateDir, "branch_backlog.json"),
+    correction_queue: path.join(stateDir, "correction_queue.json"),
+  };
+  fs.writeFileSync(files.report, `${JSON.stringify(report, null, 2)}\n`);
+  fs.writeFileSync(files.branch_backlog, `${JSON.stringify(backlog, null, 2)}\n`);
+  fs.writeFileSync(files.correction_queue, `${JSON.stringify(corrections, null, 2)}\n`);
+  return {
+    state_dir: stateDir,
+    files,
+    branch_backlog_summary: {
+      node_count: backlog.nodes.length,
+      nodes_with_candidate_fruits: backlog.nodes.filter(node => node.proposition_count > 0).length,
+      prompt_cache_entries: backlog.token_cache.paragraph_prompt_cache.length,
+    },
+    correction_queue_summary: {
+      status: corrections.status,
+      item_count: corrections.item_count,
+    },
+  };
+}
+
 function buildLoopReport({
   configPath = DEFAULT_LOOP_CONFIG,
   targetCases,
@@ -157,6 +274,7 @@ function buildLoopReport({
   const target = Number(targetCases || config.default_scope?.target_cases || 50);
   const branchReport = validateBranchTargets(config);
   const batchReport = validateBatchAgainstLoop(config, batchDir);
+  const backlog = branchBacklog(config, batchDir);
   const scale = evaluateScaleReadiness({ targetCases: target, batchDir, env });
   const canRunSafeLocal = branchReport.ok
     && batchReport.ok
@@ -180,6 +298,11 @@ function buildLoopReport({
     token_policy: config.token_policy,
     branch_report: branchReport,
     batch_report: batchReport,
+    branch_backlog_summary: {
+      node_count: backlog.nodes.length,
+      nodes_with_candidate_fruits: backlog.nodes.filter(node => node.proposition_count > 0).length,
+      prompt_cache_entries: backlog.token_cache.paragraph_prompt_cache.length,
+    },
     scale_readiness: {
       status: scale.status,
       execution_allowed: scale.execution_allowed,
@@ -224,9 +347,13 @@ function executeLoop(report, config, { includeRemote = false } = {}) {
 module.exports = {
   DEFAULT_BATCH_DIR,
   DEFAULT_LOOP_CONFIG,
+  DEFAULT_STATE_DIR,
   buildLoopReport,
+  branchBacklog,
+  correctionQueue,
   executeLoop,
   loadBatchArtifacts,
   validateBatchAgainstLoop,
   validateBranchTargets,
+  writeLoopState,
 };

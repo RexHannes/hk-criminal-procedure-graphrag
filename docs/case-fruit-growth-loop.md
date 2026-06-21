@@ -100,6 +100,29 @@ Safe local execution:
 node scripts/run_case_fruit_growth_loop.js --execute-safe
 ```
 
+Write reusable loop state:
+
+```bash
+node scripts/run_case_fruit_growth_loop.js --write-state
+```
+
+This writes git-ignored operational files under:
+
+```text
+data/legal_ingest/reports/case_fruit_growth_loop/
+├─ last_report.json
+├─ branch_backlog.json
+└─ correction_queue.json
+```
+
+`branch_backlog.json` shows which doctrine nodes have candidate fruits, which
+paragraph prompt cache keys already exist, and whether another DeepSeek call is
+actually needed. This is the main token-saving loop memory.
+
+`correction_queue.json` stores quote mismatches, wrong-branch candidates,
+lineage issues and unsupported SOP steps for retry/review. Retried items still
+remain `machine_candidate`.
+
 Remote seed/index is intentionally a second explicit flag:
 
 ```bash

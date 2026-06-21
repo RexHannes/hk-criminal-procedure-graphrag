@@ -5,8 +5,10 @@ const fs = require("fs");
 const path = require("path");
 const {
   DEFAULT_LOOP_CONFIG,
+  DEFAULT_STATE_DIR,
   buildLoopReport,
   executeLoop,
+  writeLoopState,
 } = require("../src/case_graph/case_fruit_growth_loop");
 
 const ROOT = path.resolve(__dirname, "..");
@@ -18,6 +20,8 @@ function parseArgs(argv) {
     executeSafe: false,
     includeRemote: false,
     useDeepSeek: false,
+    writeState: false,
+    stateDir: DEFAULT_STATE_DIR,
     output: "",
   };
   for (let i = 2; i < argv.length; i += 1) {
@@ -27,6 +31,8 @@ function parseArgs(argv) {
     else if (arg === "--execute-safe") args.executeSafe = true;
     else if (arg === "--include-remote") args.includeRemote = true;
     else if (arg === "--use-deepseek") args.useDeepSeek = true;
+    else if (arg === "--write-state") args.writeState = true;
+    else if (arg === "--state-dir") args.stateDir = path.resolve(ROOT, argv[++i] || args.stateDir);
     else if (arg === "--output") args.output = path.resolve(ROOT, argv[++i] || "");
   }
   return args;
@@ -49,6 +55,11 @@ if (args.executeSafe) {
     failed: report.command_results.filter(item => !item.ok).length,
   };
   if (report.command_summary.failed) report.status = "executed_with_failures";
+}
+
+if (args.writeState) {
+  const config = JSON.parse(fs.readFileSync(args.config, "utf8"));
+  report.state_write = writeLoopState({ report, config, stateDir: args.stateDir });
 }
 
 if (args.output) {
