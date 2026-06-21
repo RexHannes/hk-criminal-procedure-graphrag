@@ -258,7 +258,7 @@
       "node scripts/validate_retrieval_quality_floor.js"
     ],
     "execute_safe_local": [
-      "node scripts/build_public_bail_batch.js",
+      "node scripts/build_public_bail_batch.js --preserve-generated-at",
       "node scripts/validate_public_bail_batch.js",
       "node scripts/validate_semiauto_rule_proposals.js",
       "node scripts/validate_public_bail_qdrant_retrieval.js",
