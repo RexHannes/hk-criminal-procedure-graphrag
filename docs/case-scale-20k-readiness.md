@@ -146,6 +146,22 @@ LEGAL_RERANK_MODEL=rerank-2
 
 Changing embedding dimensions requires a separate Qdrant collection or intentional reindex. The indexer refuses dimension mismatches.
 
+To check the whole setup ladder in one report:
+
+```bash
+node scripts/validate_production_setup_contract.js
+```
+
+That report distinguishes:
+
+- local smoke readiness;
+- bail-only 20-50 public-source scaling;
+- production retrieval readiness;
+- durable Inngest orchestration;
+- human-reviewed gold bail cards;
+- private-source ingestion controls;
+- 20k preflight gates.
+
 ## Current Blockers Before 20,000
 
 - production embeddings are not configured;

@@ -1,0 +1,167 @@
+{
+  "setup_id": "hk_law_claude_provider_setup_v1",
+  "purpose": "External service and environment contract for moving from local legal-RAG smoke tests to production-grade retrieval, reranking, durable ingestion, review promotion and private-source controls.",
+  "principle": "Local-hash vectors are allowed for dev smoke tests only. Production-scale retrieval requires a real embedding provider, a real reranker, durable orchestration, reviewed gold cards and tenant/private-source controls before private books/forms influence answers.",
+  "stages": [
+    {
+      "stage_id": "local_dev_smoke",
+      "label": "Local dev smoke",
+      "target": "Run public bail/inconsistent-pleadings pilots with local Qdrant and local-hash vectors.",
+      "required_env": [
+        "SUPABASE_URL",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "LEGAL_REVIEW_ADMIN_TOKEN",
+        "QDRANT_URL",
+        "LEGAL_EMBEDDING_PROVIDER"
+      ],
+      "allowed_dev_values": {
+        "LEGAL_EMBEDDING_PROVIDER": ["local-hash", "local"]
+      },
+      "must_remain_false_or_absent": [
+        "PRIVATE_SOURCE_INGESTION_ENABLED"
+      ],
+      "notes": [
+        "Good for smoke tests and quote-verified rule batches.",
+        "Not sufficient for semantic retrieval quality or 20k scale."
+      ]
+    },
+    {
+      "stage_id": "bail_next_rung_20_50",
+      "label": "Bail next rung, 20-50 cases",
+      "target": "Scale the bail-only public source batch while keeping outputs candidate-only.",
+      "required_env": [
+        "SUPABASE_URL",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "LEGAL_REVIEW_ADMIN_TOKEN",
+        "QDRANT_URL",
+        "LEGAL_EMBEDDING_PROVIDER"
+      ],
+      "recommended_optional_env": [
+        "DEEPSEEK_API_KEY"
+      ],
+      "gates": [
+        "current_batch_quote_rules_clean",
+        "current_batch_candidate_only",
+        "public_source_policy_enforced",
+        "bulk_auto_attach_blocked"
+      ],
+      "notes": [
+        "DeepSeek may propose extraction rules, but exact quote and doctrine-node validators decide what enters the batch.",
+        "No auto answer-safe promotion."
+      ]
+    },
+    {
+      "stage_id": "production_retrieval",
+      "label": "Production retrieval",
+      "target": "Use real vectors and reranking for meaningful legal retrieval.",
+      "required_env": [
+        "QDRANT_URL",
+        "LEGAL_EMBEDDING_PROVIDER",
+        "LEGAL_EMBEDDING_MODEL",
+        "LEGAL_EMBEDDING_DIM",
+        "LEGAL_RERANK_PROVIDER",
+        "LEGAL_RERANK_MODEL"
+      ],
+      "provider_key_groups": {
+        "embedding": {
+          "openai": ["OPENAI_API_KEY"],
+          "voyage": ["VOYAGE_API_KEY"],
+          "cohere": ["COHERE_API_KEY"]
+        },
+        "rerank": {
+          "cohere": ["COHERE_API_KEY"],
+          "voyage": ["VOYAGE_API_KEY"]
+        }
+      },
+      "forbidden_provider_values": {
+        "LEGAL_EMBEDDING_PROVIDER": ["", "none", "local", "local-hash"],
+        "LEGAL_RERANK_PROVIDER": ["", "none", "local"]
+      },
+      "notes": [
+        "Changing embedding provider or dimension requires recreating/reindexing Qdrant collections.",
+        "OpenAI is optional; Voyage/Cohere are supported."
+      ]
+    },
+    {
+      "stage_id": "durable_ingestion",
+      "label": "Durable ingestion",
+      "target": "Run retriable background ingestion jobs with observability.",
+      "required_one_of": [
+        ["INNGEST_DEV"],
+        ["INNGEST_EVENT_KEY", "INNGEST_SIGNING_KEY"]
+      ],
+      "notes": [
+        "Use INNGEST_DEV only for local development.",
+        "Use event/signing keys for hosted ingestion jobs."
+      ]
+    },
+    {
+      "stage_id": "gold_review_gate",
+      "label": "Gold review gate",
+      "target": "Promote a small reviewed bail authority set before larger scale.",
+      "required_artifact_conditions": [
+        {
+          "id": "bail_answer_safe_count",
+          "minimum": 3
+        }
+      ],
+      "notes": [
+        "Promotion must use the review API/CLI after human legal review.",
+        "No script should bulk promote machine_candidate cards."
+      ]
+    },
+    {
+      "stage_id": "private_source_ingestion",
+      "label": "Private source ingestion",
+      "target": "Allow licensed books/forms only in tenant-isolated private namespaces.",
+      "required_env": [
+        "LEGAL_STORAGE_BACKEND",
+        "LEGAL_PRIVATE_BUCKET",
+        "CLERK_ENABLED",
+        "CLERK_SECRET_KEY"
+      ],
+      "recommended_env": [
+        "CLERK_JWT_KEY",
+        "CLERK_WEBHOOK_SECRET",
+        "DOPPLER_PROJECT",
+        "DOPPLER_CONFIG"
+      ],
+      "must_equal": {
+        "LEGAL_STORAGE_BACKEND": "supabase",
+        "CLERK_ENABLED": "true"
+      },
+      "notes": [
+        "Do not enable private source ingestion merely because storage exists.",
+        "Private sources require tenant filters, access logs, review status and no raw text exposure."
+      ]
+    },
+    {
+      "stage_id": "large_scale_20k_preflight",
+      "label": "20k preflight",
+      "target": "Plan large-scale ingestion but keep execution blocked until all gates pass.",
+      "required_gates": [
+        "production_embeddings_configured",
+        "production_reranker_configured",
+        "durable_orchestration_configured",
+        "bail_gold_review_set_exists"
+      ],
+      "notes": [
+        "This remains preflight-only until the scale readiness report is green.",
+        "Scale section-by-section; do not bulk auto-attach across the whole criminal tree."
+      ]
+    }
+  ],
+  "recommended_non_openai_stack": {
+    "embedding": {
+      "LEGAL_EMBEDDING_PROVIDER": "voyage",
+      "LEGAL_EMBEDDING_MODEL": "voyage-3-large",
+      "LEGAL_EMBEDDING_DIM": "1024",
+      "required_secret": "VOYAGE_API_KEY"
+    },
+    "rerank": {
+      "LEGAL_RERANK_PROVIDER": "cohere",
+      "LEGAL_RERANK_MODEL": "rerank-v3.5",
+      "required_secret": "COHERE_API_KEY"
+    }
+  }
+}

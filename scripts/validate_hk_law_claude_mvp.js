@@ -50,6 +50,8 @@ const PUBLIC_CORPUS_V1_VALIDATOR = path.join(ROOT, "scripts", "validate_public_c
 const EMBEDDING_ADAPTER = path.join(ROOT, "src", "retrieval", "embedding_adapter.js");
 const RERANK_ADAPTER = path.join(ROOT, "src", "retrieval", "rerank_adapter.js");
 const EMBEDDING_RERANK_VALIDATOR = path.join(ROOT, "scripts", "validate_embedding_rerank_adapters.js");
+const PRODUCTION_SETUP_CONTRACT = path.join(ROOT, "data", "legal_ingest", "mvp", "production_provider_setup.json");
+const PRODUCTION_SETUP_VALIDATOR = path.join(ROOT, "scripts", "validate_production_setup_contract.js");
 const RETRIEVAL_BENCHMARK = path.join(ROOT, "data", "legal_ingest", "mvp", "retrieval_benchmark_queries.json");
 const RETRIEVAL_BENCHMARK_RUNNER = path.join(ROOT, "scripts", "run_retrieval_benchmark.js");
 const RETRIEVAL_QUALITY_VALIDATOR = path.join(ROOT, "scripts", "validate_retrieval_quality_floor.js");
@@ -331,6 +333,18 @@ function staticScaffoldReport(errors) {
     "localRerank",
   ], errors);
   fileIncludes(EMBEDDING_RERANK_VALIDATOR, ["Embedding adapter validation passed", "Rerank adapter validation passed"], errors);
+  fileIncludes(PRODUCTION_SETUP_CONTRACT, [
+    "local_dev_smoke",
+    "production_retrieval",
+    "private_source_ingestion",
+    "large_scale_20k_preflight",
+  ], errors);
+  fileIncludes(PRODUCTION_SETUP_VALIDATOR, [
+    "current_safe_action",
+    "production_embeddings_configured",
+    "production_reranker_configured",
+    "bail_gold_review_set_exists",
+  ], errors);
   fileIncludes(RETRIEVAL_BENCHMARK, [
     "hk_criminal_evidence_public_demo_retrieval_v1",
     "expected_source_ids_any",

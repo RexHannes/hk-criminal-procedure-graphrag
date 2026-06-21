@@ -172,6 +172,37 @@ node scripts/validate_hk_law_claude_mvp.js --strict-production
 The MVP gates are documented in `docs/hk-law-claude-mvp.md` and configured in
 `data/legal_ingest/mvp/hk_law_claude_mvp.json`.
 
+To see exactly which external accounts/keys are still missing for each setup
+rung, run:
+
+```bash
+node scripts/validate_production_setup_contract.js
+```
+
+This reads `.env`, `.env.local` and process env, but reports only whether each
+secret is present. It does not print secret values. The machine-readable setup
+contract is:
+
+```text
+data/legal_ingest/mvp/production_provider_setup.json
+```
+
+Current recommended order:
+
+```text
+local_dev_smoke
+-> bail_next_rung_20_50
+-> production_retrieval
+-> durable_ingestion
+-> gold_review_gate
+-> private_source_ingestion
+-> large_scale_20k_preflight
+```
+
+Do not interpret a green local-dev stage as production retrieval quality. A
+`local-hash` embedding provider proves plumbing only; production retrieval needs
+a real embedding provider and reranker, followed by reindexing.
+
 ## 5. Review queue approval
 
 Use:
