@@ -1,0 +1,12 @@
+{
+  "artifact_id": "sedition_public_expression_tree_gap_pilot_v1",
+  "generated_at": "2026-06-23T18:22:57.853Z",
+  "batch_id": "sedition_public_expression_tree_gap_pilot_v1",
+  "source_count": 1,
+  "paragraph_count": 8,
+  "proposition_count": 8,
+  "link_count": 11,
+  "rejected_count": 0,
+  "rejected": [],
+  "status": "built_quote_verified_candidate"
+}

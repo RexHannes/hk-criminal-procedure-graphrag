@@ -1,0 +1,66 @@
+{
+  "section_id": "09",
+  "domain_id": "criminal_law_hk",
+  "edges": [
+    {
+      "from": "crim_sedition_public_expression",
+      "to": "crim_seditious_intention",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_sedition_public_expression",
+      "to": "crim_sedition_section10_offences",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_sedition_public_expression",
+      "to": "crim_sedition_constitutionality",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_sedition_public_expression",
+      "to": "crim_sedition_meaning_context",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_sedition_public_expression",
+      "to": "crim_sedition_procedure_jurisdiction",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_sedition_public_expression",
+      "to": "crim_public_order_expression",
+      "relationship": "related_public_order_context"
+    },
+    {
+      "from": "crim_seditious_intention",
+      "to": "cap200_s9",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_sedition_section10_offences",
+      "to": "cap200_s10",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_sedition_procedure_jurisdiction",
+      "to": "cap200_s11",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_public_order_expression",
+      "to": "cap245_s17a",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_public_order_expression",
+      "to": "cap245_s17b",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_sedition_public_expression",
+      "to": "case_tam_tak_chi_hkca_2024",
+      "relationship": "case_seed"
+    }
+  ]
+}

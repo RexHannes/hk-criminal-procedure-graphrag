@@ -1,0 +1,282 @@
+{
+  "section_id": "09",
+  "section_title": "Sedition and Public Expression Offences",
+  "domain_id": "criminal_law_hk",
+  "source_basis": "notebooklm_tree_proposal_plus_public_case_gap_pilot",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "needs_official_source_verification": true,
+    "authority_status": "candidate_tree_seed"
+  },
+  "nodes": [
+    {
+      "id": "crim_sedition_public_expression",
+      "doctrine_node_id": "criminal_law_hk.sedition_public_expression",
+      "type": "section_header",
+      "label": "Sedition and Public Expression Offences",
+      "summary": "Candidate branch for Hong Kong sedition, seditious intention/publication, public-order expression offences, and related free-expression issues.",
+      "section": "09",
+      "source_basis": "notebooklm_tree_proposal_candidate",
+      "case_seeds": [
+        "case_tam_tak_chi_hkca_2024"
+      ],
+      "statute_refs": [
+        "cap200_s9",
+        "cap200_s10",
+        "cap245_s17a",
+        "cap245_s17b"
+      ],
+      "cross_refs": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.sedition_public_expression",
+        "expected_query_terms": [
+          "sedition",
+          "seditious intention",
+          "seditious words",
+          "public expression",
+          "freedom of speech",
+          "public order"
+        ],
+        "expected_authority_types": [
+          "HK_CA",
+          "HK_CFA",
+          "statute"
+        ]
+      },
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_seditious_intention",
+      "doctrine_node_id": "criminal_law_hk.sedition.seditious_intention",
+      "type": "legal_issue",
+      "label": "Seditious Intention",
+      "summary": "Candidate node for Crimes Ordinance Cap 200 s.9 seditious intention and statutory exceptions.",
+      "section": "09",
+      "subsection": "09.01",
+      "source_basis": "notebooklm_tree_proposal_candidate",
+      "case_seeds": [
+        "case_tam_tak_chi_hkca_2024"
+      ],
+      "statute_refs": [
+        "cap200_s9"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.sedition.seditious_intention",
+        "expected_query_terms": [
+          "seditious intention",
+          "section 9",
+          "hatred",
+          "contempt",
+          "disaffection",
+          "disobedience to law"
+        ],
+        "expected_authority_types": [
+          "HK_CA",
+          "statute"
+        ]
+      },
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_sedition_section10_offences",
+      "doctrine_node_id": "criminal_law_hk.sedition.section10_offences",
+      "type": "legal_issue",
+      "label": "Sedition Offences",
+      "summary": "Candidate node for Cap 200 s.10 offences, including uttering seditious words and publishing or possessing seditious publications.",
+      "section": "09",
+      "subsection": "09.02",
+      "source_basis": "notebooklm_tree_proposal_candidate",
+      "case_seeds": [
+        "case_tam_tak_chi_hkca_2024"
+      ],
+      "statute_refs": [
+        "cap200_s10"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.sedition.section10_offences",
+        "expected_query_terms": [
+          "section 10",
+          "seditious words",
+          "seditious publication",
+          "uttering seditious words"
+        ],
+        "expected_authority_types": [
+          "HK_CA",
+          "statute"
+        ]
+      },
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_sedition_constitutionality",
+      "doctrine_node_id": "criminal_law_hk.sedition.constitutionality_expression",
+      "type": "legal_issue",
+      "label": "Constitutionality and Freedom of Expression",
+      "summary": "Candidate node for prescribed-by-law, legal certainty, proportionality and free-expression challenges to sedition offences.",
+      "section": "09",
+      "subsection": "09.03",
+      "source_basis": "notebooklm_tree_proposal_candidate",
+      "case_seeds": [
+        "case_tam_tak_chi_hkca_2024"
+      ],
+      "statute_refs": [
+        "cap200_s9",
+        "cap200_s10",
+        "basic_law_free_expression",
+        "hkborr_free_expression"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.sedition.constitutionality_expression",
+        "expected_query_terms": [
+          "sedition constitutionality",
+          "freedom of expression",
+          "prescribed by law",
+          "legal certainty",
+          "proportionality",
+          "incitement to violence"
+        ],
+        "expected_authority_types": [
+          "HK_CA",
+          "HK_CFA",
+          "statute"
+        ]
+      },
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_sedition_meaning_context",
+      "doctrine_node_id": "criminal_law_hk.sedition.meaning_context",
+      "type": "legal_issue",
+      "label": "Meaning, Context and Audience",
+      "summary": "Candidate node for how courts assess the meaning of alleged seditious words, including context, audience and expert evidence.",
+      "section": "09",
+      "subsection": "09.04",
+      "source_basis": "notebooklm_tree_proposal_candidate",
+      "case_seeds": [
+        "case_tam_tak_chi_hkca_2024"
+      ],
+      "statute_refs": [
+        "cap200_s9",
+        "cap200_s10"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.sedition.meaning_context",
+        "expected_query_terms": [
+          "meaning of seditious words",
+          "audience",
+          "context",
+          "reasonable person",
+          "slogan",
+          "expert evidence"
+        ],
+        "expected_authority_types": [
+          "HK_CA"
+        ]
+      },
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_sedition_procedure_jurisdiction",
+      "doctrine_node_id": "criminal_law_hk.sedition.procedure_jurisdiction",
+      "type": "legal_issue",
+      "label": "Sedition Procedure and Jurisdiction",
+      "summary": "Candidate node for mode of trial, District Court jurisdiction, Secretary for Justice consent and NSL/procedure interaction for sedition offences.",
+      "section": "09",
+      "subsection": "09.05",
+      "source_basis": "notebooklm_tree_proposal_candidate",
+      "case_seeds": [
+        "case_tam_tak_chi_hkca_2024"
+      ],
+      "statute_refs": [
+        "cap200_s11",
+        "cap221_s14a",
+        "cap227_s88",
+        "nsl_art41"
+      ],
+      "cross_refs": [
+        "criminal_procedure_hk.jurisdiction",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.sedition.procedure_jurisdiction",
+        "expected_query_terms": [
+          "sedition jurisdiction",
+          "District Court",
+          "tried on indictment",
+          "Secretary for Justice consent",
+          "NSL Article 41"
+        ],
+        "expected_authority_types": [
+          "HK_CA",
+          "statute"
+        ]
+      },
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "crim_public_order_expression",
+      "doctrine_node_id": "criminal_law_hk.public_order.expression_offences",
+      "type": "legal_issue",
+      "label": "Public-Order Expression Offences",
+      "summary": "Candidate node for expression-related public-order offences, including unauthorized assemblies, disorderly conduct and public gathering speech contexts.",
+      "section": "09",
+      "subsection": "09.06",
+      "source_basis": "notebooklm_tree_proposal_candidate",
+      "case_seeds": [
+        "case_tam_tak_chi_hkca_2024"
+      ],
+      "statute_refs": [
+        "cap245_s17a",
+        "cap245_s17b",
+        "cap245_s26"
+      ],
+      "candidate_evidence_count": 0,
+      "retrieval_hooks": {
+        "casemap4_doctrine_node_id": "criminal_law_hk.public_order.expression_offences",
+        "expected_query_terms": [
+          "public order",
+          "unauthorized assembly",
+          "disorderly conduct",
+          "public gathering",
+          "speech at assembly"
+        ],
+        "expected_authority_types": [
+          "HK_CA",
+          "statute"
+        ]
+      },
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed"
+    }
+  ]
+}

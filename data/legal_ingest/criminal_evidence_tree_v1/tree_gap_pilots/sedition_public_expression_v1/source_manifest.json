@@ -1,0 +1,38 @@
+{
+  "batch_id": "sedition_public_expression_tree_gap_pilot_v1",
+  "domain_id": "criminal_law_hk",
+  "scope": "sedition_public_expression_candidate_branch",
+  "source_policy": {
+    "public_sources_only": true,
+    "private_or_licensed_sources_allowed": false,
+    "raw_private_upload_allowed": false,
+    "bulk_auto_attach_allowed": false,
+    "answer_safe_by_default": false
+  },
+  "sources": [
+    {
+      "source_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "case_name": "HKSAR v Tam Tak Chi",
+      "neutral_citation": "[2024] HKCA 231",
+      "court": "Court of Appeal",
+      "court_level": "CA",
+      "date": "2024-03-07",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=158600&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=158600&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    }
+  ],
+  "tree_gap_resolution": {
+    "existing_tree_match": "no_clean_existing_branch",
+    "tree_proposal_source": "notebooklm_logged_in_private_notebook",
+    "tree_proposal_status": "candidate_only",
+    "verification_gate": "legalref_exact_quote_case_fruits_only"
+  }
+}

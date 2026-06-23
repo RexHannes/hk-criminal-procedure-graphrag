@@ -1,0 +1,222 @@
+{
+  "artifact_id": "sedition_public_expression_proposition_cards",
+  "generated_at": "2026-06-23T18:22:57.853Z",
+  "batch_id": "sedition_public_expression_tree_gap_pilot_v1",
+  "proposition_count": 8,
+  "proposition_cards": [
+    {
+      "proposition_id": "prop_tam_tak_chi_2024_s9_seditious_intention_p47",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p47",
+      "source_paragraph": "47",
+      "exact_quote": "Section 9(1) of the CO provides that: “(1) A seditious intention is an intention",
+      "proposition_text": "The Court of Appeal set out Cap 200 s.9 seditious intention and the statutory non-seditious circumstances in s.9(2).",
+      "tree_node_ids": [
+        "criminal_law_hk.sedition.seditious_intention"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.seditious_intention"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=158600&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_tam_tak_chi_2024_s10_offences_p48",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p48",
+      "source_paragraph": "48",
+      "exact_quote": "Section 10 goes on to provide: “(1) Any person who",
+      "proposition_text": "The Court of Appeal set out the Cap 200 s.10 sedition offences, including uttering seditious words and seditious publications.",
+      "tree_node_ids": [
+        "criminal_law_hk.sedition.section10_offences"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.section10_offences"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=158600&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_tam_tak_chi_2024_nsl_jurisdiction_context_p55",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p55",
+      "source_paragraph": "55",
+      "exact_quote": "the Court identified the ‘offences of treason, incitement to disaffection or sedition under Parts I and II of [the CO]’ as instances of offences endangering national security",
+      "proposition_text": "The Court of Appeal recorded that sedition under Parts I and II of the Crimes Ordinance had been identified as an offence endangering national security for NSL procedural context.",
+      "tree_node_ids": [
+        "criminal_law_hk.sedition.procedure_jurisdiction",
+        "criminal_law_hk.sedition_public_expression"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.procedure_jurisdiction",
+        "criminal_law_hk.sedition_public_expression"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=158600&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": "Uses Ng Hau Yi Sidney / Lai Chee Ying line as recited by the CA."
+    },
+    {
+      "proposition_id": "prop_tam_tak_chi_2024_prescribed_by_law_p131",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p131",
+      "source_paragraph": "131",
+      "exact_quote": "we hold that section 9 of the CO and consequently section 10 as well satisfy the “prescribed by law” requirement",
+      "proposition_text": "The Court of Appeal held that Cap 200 ss.9 and 10 satisfy the prescribed-by-law requirement.",
+      "tree_node_ids": [
+        "criminal_law_hk.sedition.constitutionality_expression"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.constitutionality_expression"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=158600&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_tam_tak_chi_2024_violence_not_required_p140",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p140",
+      "source_paragraph": "140",
+      "exact_quote": "The mere absence of an intention to incite violence does not render the offence disproportionate",
+      "proposition_text": "The Court of Appeal held that the absence of an intention to incite violence does not by itself render the sedition offence disproportionate.",
+      "tree_node_ids": [
+        "criminal_law_hk.sedition.constitutionality_expression",
+        "criminal_law_hk.sedition.seditious_intention"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.constitutionality_expression",
+        "criminal_law_hk.sedition.seditious_intention"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=158600&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_tam_tak_chi_2024_sj_consent_safeguard_p141",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p141",
+      "source_paragraph": "141",
+      "exact_quote": "no prosecution of a section 10 offence shall be instituted without the written consent of the Secretary for Justice",
+      "proposition_text": "The Court of Appeal treated the Secretary for Justice written-consent requirement as a procedural safeguard for sedition prosecutions.",
+      "tree_node_ids": [
+        "criminal_law_hk.sedition.procedure_jurisdiction",
+        "criminal_law_hk.sedition.constitutionality_expression"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.procedure_jurisdiction",
+        "criminal_law_hk.sedition.constitutionality_expression"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=158600&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_tam_tak_chi_2024_meaning_context_p149",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p149",
+      "source_paragraph": "149",
+      "exact_quote": "It is a question of fact, entailing an objective assessment by the court as a reasonable person to ascertain the meaning of the words in the context in which they were uttered",
+      "proposition_text": "The Court of Appeal described the meaning of alleged seditious words as an objective contextual assessment by the court as a reasonable person.",
+      "tree_node_ids": [
+        "criminal_law_hk.sedition.meaning_context"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.meaning_context"
+      ],
+      "significance_label": "sets_out_test",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=158600&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_tam_tak_chi_2024_audience_context_p150",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p150",
+      "source_paragraph": "150",
+      "exact_quote": "The relevance of the audience’s understanding of the meaning of the words depends on the specific context",
+      "proposition_text": "The Court of Appeal held that audience understanding depends on context; ordinary public language is assessed by the court using its own reasonable-person judgment.",
+      "tree_node_ids": [
+        "criminal_law_hk.sedition.meaning_context"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.meaning_context"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=158600&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    }
+  ]
+}

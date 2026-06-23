@@ -1,0 +1,167 @@
+{
+  "l4_case_applications": [
+    {
+      "l4_application_id": "l4_prop_tam_tak_chi_2024_s9_seditious_intention_p47",
+      "proposition_id": "prop_tam_tak_chi_2024_s9_seditious_intention_p47",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "case_name": "HKSAR v Tam Tak Chi",
+      "neutral_citation": "[2024] HKCA 231",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p47",
+      "scenario_label": "Sedition / public expression tree gap pilot",
+      "application_summary": "The Court of Appeal set out Cap 200 s.9 seditious intention and the statutory non-seditious circumstances in s.9(2).",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.seditious_intention"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tam_tak_chi_2024_s10_offences_p48",
+      "proposition_id": "prop_tam_tak_chi_2024_s10_offences_p48",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "case_name": "HKSAR v Tam Tak Chi",
+      "neutral_citation": "[2024] HKCA 231",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p48",
+      "scenario_label": "Sedition / public expression tree gap pilot",
+      "application_summary": "The Court of Appeal set out the Cap 200 s.10 sedition offences, including uttering seditious words and seditious publications.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.section10_offences"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tam_tak_chi_2024_nsl_jurisdiction_context_p55",
+      "proposition_id": "prop_tam_tak_chi_2024_nsl_jurisdiction_context_p55",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "case_name": "HKSAR v Tam Tak Chi",
+      "neutral_citation": "[2024] HKCA 231",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p55",
+      "scenario_label": "Sedition / public expression tree gap pilot",
+      "application_summary": "The Court of Appeal recorded that sedition under Parts I and II of the Crimes Ordinance had been identified as an offence endangering national security for NSL procedural context.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.procedure_jurisdiction",
+        "criminal_law_hk.sedition_public_expression"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Uses Ng Hau Yi Sidney / Lai Chee Ying line as recited by the CA."
+    },
+    {
+      "l4_application_id": "l4_prop_tam_tak_chi_2024_prescribed_by_law_p131",
+      "proposition_id": "prop_tam_tak_chi_2024_prescribed_by_law_p131",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "case_name": "HKSAR v Tam Tak Chi",
+      "neutral_citation": "[2024] HKCA 231",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p131",
+      "scenario_label": "Sedition / public expression tree gap pilot",
+      "application_summary": "The Court of Appeal held that Cap 200 ss.9 and 10 satisfy the prescribed-by-law requirement.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.constitutionality_expression"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tam_tak_chi_2024_violence_not_required_p140",
+      "proposition_id": "prop_tam_tak_chi_2024_violence_not_required_p140",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "case_name": "HKSAR v Tam Tak Chi",
+      "neutral_citation": "[2024] HKCA 231",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p140",
+      "scenario_label": "Sedition / public expression tree gap pilot",
+      "application_summary": "The Court of Appeal held that the absence of an intention to incite violence does not by itself render the sedition offence disproportionate.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.constitutionality_expression",
+        "criminal_law_hk.sedition.seditious_intention"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tam_tak_chi_2024_sj_consent_safeguard_p141",
+      "proposition_id": "prop_tam_tak_chi_2024_sj_consent_safeguard_p141",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "case_name": "HKSAR v Tam Tak Chi",
+      "neutral_citation": "[2024] HKCA 231",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p141",
+      "scenario_label": "Sedition / public expression tree gap pilot",
+      "application_summary": "The Court of Appeal treated the Secretary for Justice written-consent requirement as a procedural safeguard for sedition prosecutions.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.procedure_jurisdiction",
+        "criminal_law_hk.sedition.constitutionality_expression"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tam_tak_chi_2024_meaning_context_p149",
+      "proposition_id": "prop_tam_tak_chi_2024_meaning_context_p149",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "case_name": "HKSAR v Tam Tak Chi",
+      "neutral_citation": "[2024] HKCA 231",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p149",
+      "scenario_label": "Sedition / public expression tree gap pilot",
+      "application_summary": "The Court of Appeal described the meaning of alleged seditious words as an objective contextual assessment by the court as a reasonable person.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.meaning_context"
+      ],
+      "significance_label": "sets_out_test",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tam_tak_chi_2024_audience_context_p150",
+      "proposition_id": "prop_tam_tak_chi_2024_audience_context_p150",
+      "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+      "case_name": "HKSAR v Tam Tak Chi",
+      "neutral_citation": "[2024] HKCA 231",
+      "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p150",
+      "scenario_label": "Sedition / public expression tree gap pilot",
+      "application_summary": "The Court of Appeal held that audience understanding depends on context; ordinary public language is assessed by the court using its own reasonable-person judgment.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.sedition.meaning_context"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    }
+  ]
+}

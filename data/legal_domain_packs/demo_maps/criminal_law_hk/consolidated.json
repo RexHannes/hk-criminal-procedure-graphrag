@@ -57,6 +57,12 @@
       "title": "Statutes and Ordinances",
       "node_file": "nodes/08_statutes.json",
       "edge_file": "edges/08_statutes.json"
+    },
+    {
+      "id": "09",
+      "title": "Sedition and Public Expression Offences",
+      "node_file": "nodes/09_sedition_public_expression.json",
+      "edge_file": "edges/09_sedition_public_expression.json"
     }
   ],
   "flows_file": "flows.json"

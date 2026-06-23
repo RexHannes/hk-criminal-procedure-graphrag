@@ -68,6 +68,11 @@
       "id": "08",
       "title": "Statutes and Ordinances",
       "file": "nodes/08_statutes.json"
+    },
+    {
+      "id": "09",
+      "title": "Sedition and Public Expression Offences",
+      "file": "nodes/09_sedition_public_expression.json"
     }
   ]
 }

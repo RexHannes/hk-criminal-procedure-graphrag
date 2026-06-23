@@ -1,0 +1,19 @@
+{
+  "proposal_id": "notebooklm_sedition_public_expression_tree_proposal_v1",
+  "source": "notebooklm_logged_in_private_notebook",
+  "proposal_status": "candidate_only_requires_public_source_verification",
+  "generated_from_prompt_at": "2026-06-24T02:16:00+08:00",
+  "domain_id": "criminal_law_hk",
+  "proposed_branch_id": "criminal_law_hk.sedition_public_expression",
+  "branch_label": "Sedition and Public Order Expression Offences",
+  "parent_candidates": [
+    "offences_against_the_crown",
+    "public_order_offences",
+    "national_security_offences"
+  ],
+  "notes": [
+    "NotebookLM output was used only to propose branch structure.",
+    "NotebookLM citations were not trusted; case fruits below are built from LegalRef exact-quote validation.",
+    "No node or proposition is answer-safe."
+  ]
+}
