@@ -133,6 +133,7 @@ async function buildPublicBailBatch({
   outputDir,
   fetchSources = true,
   now = new Date().toISOString(),
+  writePartialOnError = false,
 } = {}) {
   if (!manifestPath) throw new Error("manifestPath required");
   if (!rulesPath) throw new Error("rulesPath required");
@@ -310,6 +311,16 @@ async function buildPublicBailBatch({
     errors,
     rejected,
   };
+
+  if (!writePartialOnError && (errors.length || rejected.length)) {
+    const error = new Error("public_bail_batch_incomplete");
+    error.artifact = artifact;
+    error.errors = [
+      ...errors,
+      ...rejected.map(item => `${item.rule_id || item.source_id || "unknown"}:${item.reason || item.message || "rejected"}`),
+    ];
+    throw error;
+  }
 
   writeJson(path.join(outputDir, "paragraph_cards.json"), {
     artifact_id: "criminal_bail_public_batch_v1_paragraph_cards",

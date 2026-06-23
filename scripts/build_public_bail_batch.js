@@ -31,13 +31,17 @@ buildPublicBailBatch({
   outputDir: BATCH,
   now: args.preserveGeneratedAt ? existingGeneratedAt() || new Date().toISOString() : new Date().toISOString(),
 }).then(artifact => {
-  if (artifact.errors.length) {
-    console.error("Public bail batch built with fetch errors:");
-    artifact.errors.forEach(error => console.error(`- ${error}`));
-  }
   console.log(`Public bail batch built: ${artifact.source_count} sources, ${artifact.paragraph_count} paragraphs, ${artifact.proposition_count} propositions, ${artifact.link_count} links, ${artifact.rejected_count} rejected rules.`);
   if (artifact.proposition_count === 0) process.exit(1);
 }).catch(error => {
+  if (error.message === "public_bail_batch_incomplete") {
+    console.error("Public bail batch build failed closed; generated artifacts were not rewritten.");
+    if (error.artifact) {
+      console.error(`Partial result would have been: ${error.artifact.source_count} sources, ${error.artifact.paragraph_count} paragraphs, ${error.artifact.proposition_count} propositions, ${error.artifact.rejected_count} rejected rules.`);
+    }
+    for (const item of error.errors || []) console.error(`- ${item}`);
+    process.exit(1);
+  }
   console.error(`Public bail batch build failed: ${error.message}`);
   process.exit(1);
 });
