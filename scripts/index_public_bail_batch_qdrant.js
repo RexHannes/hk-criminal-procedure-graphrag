@@ -45,6 +45,13 @@ function uuidFromText(text) {
   return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 
+function embeddingModelFor(env, provider) {
+  if (provider === "openai") return env.LEGAL_EMBEDDING_MODEL || env.OPENAI_EMBEDDING_MODEL || "text-embedding-3-small";
+  if (provider === "voyage") return env.LEGAL_EMBEDDING_MODEL || env.VOYAGE_EMBEDDING_MODEL || "voyage-3-large";
+  if (provider === "cohere") return env.LEGAL_EMBEDDING_MODEL || env.COHERE_EMBEDDING_MODEL || "embed-v4.0";
+  return "local-hash-v1";
+}
+
 function qdrantHeaders(env) {
   const headers = { "Content-Type": "application/json" };
   if (env.QDRANT_API_KEY) headers["api-key"] = env.QDRANT_API_KEY;
@@ -161,19 +168,22 @@ async function main() {
   const env = loadEnv();
   const dryRun = process.argv.includes("--dry-run");
   const provider = env.LEGAL_EMBEDDING_PROVIDER || "local-hash";
-  const dimension = Number(env.LEGAL_EMBEDDING_DIM || (provider === "openai" ? 1536 : 384));
-  const embeddingModel = provider === "openai" ? (env.LEGAL_EMBEDDING_MODEL || "text-embedding-3-small") : "local-hash-v1";
+  const configuredDimension = Number(env.LEGAL_EMBEDDING_DIM || (provider === "openai" ? 1536 : 384));
+  const embeddingModel = embeddingModelFor(env, provider);
   const collections = {
     paragraphs: env.QDRANT_COLLECTION_PARAGRAPHS || "hk_legal_paragraphs",
     propositions: env.QDRANT_COLLECTION_PROPOSITIONS || "hk_proposition_cards",
   };
   const { manifest, paragraphs, propositions } = buildBatchRecords();
   const paragraphPoints = [];
+  let actualDimension = configuredDimension;
   for (const paragraph of paragraphs) {
     const textForEmbedding = `${paragraph.citation} ${paragraph.pinpoint}\n${paragraph.paragraph_text}\ncriminal_procedure bail`;
+    const vector = await embed(textForEmbedding, env, configuredDimension);
+    actualDimension = vector.length;
     paragraphPoints.push({
       id: uuidFromText(`bail_public_batch_v1:${paragraph.paragraph_id}`),
-      vector: await embed(textForEmbedding, env, dimension),
+      vector,
       payload: {
       batch_id: manifest.batch_id,
       vector_scope: "bail_public_batch_v1",
@@ -203,9 +213,13 @@ async function main() {
   const propositionPoints = [];
   for (const card of propositions) {
     const textForEmbedding = `${card.proposition_text}\n${card.supporting_quote}\n${(card.issue_tags || []).join(" ")}`;
+    const vector = await embed(textForEmbedding, env, actualDimension);
+    if (vector.length !== actualDimension) {
+      throw new Error(`Embedding dimension drift for ${card.proposition_id}: ${vector.length} != ${actualDimension}`);
+    }
     propositionPoints.push({
       id: uuidFromText(`bail_public_batch_v1:${card.proposition_id}`),
-      vector: await embed(textForEmbedding, env, dimension),
+      vector,
       payload: {
       batch_id: manifest.batch_id,
       vector_scope: "bail_public_batch_v1",
@@ -241,7 +255,7 @@ async function main() {
     qdrant_configured: Boolean(env.QDRANT_URL),
     embedding_provider: provider,
     embedding_model: embeddingModel,
-    dimension,
+    dimension: actualDimension,
     collections,
     point_counts: {
       paragraphs: paragraphPoints.length,
@@ -255,8 +269,8 @@ async function main() {
     return;
   }
   report.collection_status = [
-    await ensureCollection(env, collections.paragraphs, dimension),
-    await ensureCollection(env, collections.propositions, dimension),
+    await ensureCollection(env, collections.paragraphs, actualDimension),
+    await ensureCollection(env, collections.propositions, actualDimension),
   ];
   await upsertPoints(env, collections.paragraphs, paragraphPoints);
   await upsertPoints(env, collections.propositions, propositionPoints);

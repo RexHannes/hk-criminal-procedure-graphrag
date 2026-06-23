@@ -138,6 +138,7 @@ async function searchQdrant({
     ? tenantRetrievalFilter({ tenantId, includePrivate, privateIngestionEnabled })
     : publicDemoFilter();
   const vector = await embed(query, env, dimension);
+  const actualDimension = vector.length;
   const payload = await qdrantRequest(env, `/collections/${encodeURIComponent(collection)}/points/search`, {
     method: "POST",
     body: {
@@ -154,7 +155,7 @@ async function searchQdrant({
     top_k: topK,
     returned_count: (payload.result || []).length,
     embedding_provider: provider,
-    dimension,
+    dimension: actualDimension,
     source_mode: sourceMode,
     tenant_id: sourceMode === "private_tenant" ? tenantId : "public",
     filter,

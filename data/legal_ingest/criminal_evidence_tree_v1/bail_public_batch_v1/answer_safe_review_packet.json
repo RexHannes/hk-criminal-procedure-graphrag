@@ -1,0 +1,213 @@
+{
+  "packet_id": "bail_answer_safe_review_packet_v1",
+  "generated_at": "2026-06-23T15:53:42.227Z",
+  "batch_id": "criminal_bail_public_batch_v1",
+  "purpose": "Human/legal review packet for promoting the first bail gold-set propositions. This file does not approve or promote anything by itself.",
+  "review_policy": {
+    "auto_promotion_allowed": false,
+    "required_status_before_answer_safe": "lawyer_reviewed",
+    "minimum_gold_set_for_20k_gate": 3,
+    "suggested_order": "Start with CFA ratio propositions before CFI application propositions."
+  },
+  "candidates": [
+    {
+      "proposition_id": "prop_lai_2021_nsl_art42_text_p52",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "citation": "[2021] HKCFA 3",
+      "court_level": "CFA",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p52",
+      "paragraph_no": "52",
+      "proposition_text": "NSL Article 42(2) sets a no-bail-unless threshold for national security bail applications.",
+      "exact_quote": "No bail shall be granted to a criminal suspect or defendant unless the judge has sufficient grounds for believing that the criminal suspect or defendant will not continue to commit acts endangering national security.",
+      "paragraph_text": "52. It will be recalled that NSL 42(2) provides as follows: “No bail shall be granted to a criminal suspect or defendant unless the judge has sufficient grounds for believing that the criminal suspect or defendant will not continue to commit acts endangering national security.”",
+      "authority_role": "ratio",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "current_review_state": "machine_candidate",
+      "current_answer_safe": false,
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "required_human_checks": [
+        "Confirm the exact quote appears in the public judgment paragraph.",
+        "Confirm the proposition is a fair legal summary of the paragraph.",
+        "Confirm authority_role is correct and not merely party submission/factual background.",
+        "Confirm later treatment/lineage notes do not undermine the proposition.",
+        "Confirm the linked doctrine node IDs are appropriate."
+      ]
+    },
+    {
+      "proposition_id": "prop_lai_2021_nsl_more_stringent_threshold_p53",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "citation": "[2021] HKCFA 3",
+      "court_level": "CFA",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p53",
+      "paragraph_no": "53",
+      "proposition_text": "For NSL bail, Article 42(2) introduces a threshold materially more stringent than ordinary bail under the Criminal Procedure Ordinance.",
+      "exact_quote": "Plainly, NSL 42(2) introduces a considerably more stringent threshold requirement.",
+      "paragraph_text": "53. The following features are noteworthy: (a) The subject-matter of NSL 42(2) overlaps with the subject-matter of CPO 9G(1)(b) which makes the risk of committing an offence while on bail a basis for refusing bail. NSL 42(2) focusses on the risk of the accused committing “acts endangering national security” if bail is granted. (b) However, the starting-point of the inquiry is significantly different. Under CPO 9G(1), bail may be refused if it appears to the court that there are substantial grounds for believing that the accused person would fail to surrender to custody, commit an offence while on bail or interfere with witnesses or pervert or obstruct the course of justice. If such grounds are not positively made out, bail is granted. The rule embodies the presumption in favour of bail. Under NSL 42(2), that presumption is excluded in the first instance. The starting-point is that no bail shall be granted unless the judge has sufficient grounds for believing that the accused “will not continue to commit acts endangering national security”. Plainly, NSL 42(2) introduces a considerably more stringent threshold requirement. Under the CPO, the rule is “grant bail unless there are substantial grounds to believe violation will occur”, while under NSL 42(2) it is “no bail unless there are sufficient grounds to believe violation will not occur”. This is a distinction to which we will return in examining the decision of the learned Judge. (c) The final point of distinction is that NSL 42(2) does not refer to the risk of committing an offence but to a risk that the accused will “continue” to “commit acts endangering national security” if granted bail. Two aspects call for comment. (i) First, the word “continue” must obviously not be read as implying that the accused is somehow to be treated as guilty of having committed such acts before trial. To give it such a meaning would fly in the face of NSL 5’s adherence to the presumption of innocence. “Continuing” may best be understood to involve recognising that the defendant is alleged to have committed an offence or offences involving acts endangering national security and NSL 42(2) requires assurance that he will not commit acts of such a nature if bail is granted. (ii) Secondly, the appellant contends that the word “acts” includes acts which do not constitute of any offence. It is difficult to envisage the accused committing acts endangering national security which would not amount to offences either under the NSL or under HKSAR law. [40] Indeed, it is hard to see why NSL 42(2) would, by its “sufficient grounds” requirement, necessitate refusal of bail because the judge is not satisfied that the accused will not, if given bail, perform acts which would not constitute offences. The logic of the appellant’s construction is that the acts in question may be freely performed by anyone without breaking the law whereas such acts would necessitate refusal of bail. We would therefore construe “acts endangering national security” in the context of the NSL 42(2) requirement as referring to acts of that nature capable of constituting an offence under the NSL or the laws of the HKSAR safeguarding national security.",
+      "authority_role": "ratio",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "current_review_state": "machine_candidate",
+      "current_answer_safe": false,
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "required_human_checks": [
+        "Confirm the exact quote appears in the public judgment paragraph.",
+        "Confirm the proposition is a fair legal summary of the paragraph.",
+        "Confirm authority_role is correct and not merely party submission/factual background.",
+        "Confirm later treatment/lineage notes do not undermine the proposition.",
+        "Confirm the linked doctrine node IDs are appropriate."
+      ]
+    },
+    {
+      "proposition_id": "prop_lai_2021_nsl_exception_matrix_p54",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "citation": "[2021] HKCFA 3",
+      "court_level": "CFA",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p54",
+      "paragraph_no": "54",
+      "proposition_text": "NSL Article 42(2) operates as a specific exception within the existing bail regime, rather than replacing the whole bail regime.",
+      "exact_quote": "NSL 42(2) operates in the context or matrix of the existing bail regime and draws on its rules and principles insofar as they may be relevant, while introducing a new and more stringent threshold requirement for the grant of bail.",
+      "paragraph_text": "54. The aforesaid characteristics of NSL 42(2) define its limits as the specific exception carved out from the bail regime which is made otherwise applicable in relation to national security offences by NSL 4, 5, 41 and 42. NSL 42(2) operates in the context or matrix of the existing bail regime and draws on its rules and principles insofar as they may be relevant, while introducing a new and more stringent threshold requirement for the grant of bail. E.4 Two-stage approach and the relevance of bail conditions",
+      "authority_role": "ratio",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "current_review_state": "machine_candidate",
+      "current_answer_safe": false,
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "required_human_checks": [
+        "Confirm the exact quote appears in the public judgment paragraph.",
+        "Confirm the proposition is a fair legal summary of the paragraph.",
+        "Confirm authority_role is correct and not merely party submission/factual background.",
+        "Confirm later treatment/lineage notes do not undermine the proposition.",
+        "Confirm the linked doctrine node IDs are appropriate."
+      ]
+    },
+    {
+      "proposition_id": "prop_lai_2021_bail_conditions_relevant_p57",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "citation": "[2021] HKCFA 3",
+      "court_level": "CFA",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p57",
+      "paragraph_no": "57",
+      "proposition_text": "When assessing NSL Article 42(2), the court may consider whether bail conditions affect the future risk assessment.",
+      "exact_quote": "it makes no sense presumptively to exclude bail conditions from consideration.",
+      "paragraph_text": "57. We do not accept that argument. In the first place, it fails adequately to take account of the nature of bail itself. A person who is admitted to bail, as CPO 9C states, is released by the court from detention “on his undertaking that he shall surrender to custody on the day that the court may appoint”. All bail decisions therefore involve a risk assessment looking to the future: Can the accused’s undertaking to surrender to custody be accepted? Will he offend while on bail? Will he interfere with witnesses or the course of justice? It makes no sense to confine the court to looking only at the evidence available at the time of the bail hearing and to exclude consideration of matters which may have a bearing on the accused’s likely conduct pending the trial. Such matters include the potentially preventive effect of appropriate bail conditions which might be put in place. Of course in any given case, the judge, in answering the NSL 42(2) question, may decide that in all the circumstances, and having duly considered possible bail conditions, he or she does not have sufficient grounds for believing that the defendant will not continue to commit acts endangering national security and thus refuse bail. But it makes no sense presumptively to exclude bail conditions from consideration.",
+      "authority_role": "ratio",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "current_review_state": "machine_candidate",
+      "current_answer_safe": false,
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "required_human_checks": [
+        "Confirm the exact quote appears in the public judgment paragraph.",
+        "Confirm the proposition is a fair legal summary of the paragraph.",
+        "Confirm authority_role is correct and not merely party submission/factual background.",
+        "Confirm later treatment/lineage notes do not undermine the proposition.",
+        "Confirm the linked doctrine node IDs are appropriate."
+      ]
+    },
+    {
+      "proposition_id": "prop_lai_2021_bail_conditions_deterrent_p58",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "citation": "[2021] HKCFA 3",
+      "court_level": "CFA",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p58",
+      "paragraph_no": "58",
+      "proposition_text": "Appropriate bail conditions may be relevant to the risk assessment because they can deter breach or further offending.",
+      "exact_quote": "The imposition of appropriate conditions therefore possesses a deterrent value that may plainly be relevant to the risk assessment.",
+      "paragraph_text": "58. Secondly, the applicability of the general bail regime mandated by NSL 4, 5, 41 and 42, subject to the specific exception introduced by NSL 42(2), supports taking account of bail conditions. Thus, CPO 9D(2) provides for the imposition of bail conditions “to secure” that the person admitted to bail will duly surrender to custody and will not commit violations during the period of bail. There is in principle, no reason why the judge, in asking whether he or she has “sufficient grounds”, should not have regard to CPO 9D(2) and factor in any possible bail conditions aimed at securing that the accused will not commit acts endangering national security if granted bail. The defendant will be aware that bail will immediately be revoked if any bail condition is breached. The imposition of appropriate conditions therefore possesses a deterrent value that may plainly be relevant to the risk assessment.",
+      "authority_role": "ratio",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5",
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "current_review_state": "machine_candidate",
+      "current_answer_safe": false,
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "required_human_checks": [
+        "Confirm the exact quote appears in the public judgment paragraph.",
+        "Confirm the proposition is a fair legal summary of the paragraph.",
+        "Confirm authority_role is correct and not merely party submission/factual background.",
+        "Confirm later treatment/lineage notes do not undermine the proposition.",
+        "Confirm the linked doctrine node IDs are appropriate."
+      ]
+    },
+    {
+      "proposition_id": "prop_lai_2021_nsl_summary_p70",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "citation": "[2021] HKCFA 3",
+      "court_level": "CFA",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p70",
+      "paragraph_no": "70",
+      "proposition_text": "The CFA summarised NSL Article 42(2) as a specific exception importing a stringent threshold for bail.",
+      "exact_quote": "NSL 42(2) creates a specific exception to the HKSAR rules and principles governing the grant and refusal of bail, and imports a stringent threshold requirement for bail applications.",
+      "paragraph_text": "70. The conclusions we have so far reached may be summarised as follows. (a) The legislative acts of the NPC and NPCSC leading to the promulgation of the NSL as a law of the HKSAR in accordance with the provisions of the Basic Law and the procedure therein, are not subject to constitutional review by the Court on the basis of any alleged incompatibility as between the NSL and the Basic Law or the ICCPR as applied to Hong Kong. [58] (b) NSL 42(2) creates a specific exception to the HKSAR rules and principles governing the grant and refusal of bail, and imports a stringent threshold requirement for bail applications. [59] (c) NSL 42(2) is to be construed and applied with the guarantees of human rights and the rule of law values affirmed by NSL 4 and NSL 5, as well as with the general procedural rules made applicable by NSL 41 and NSL 42, read as a coherent whole. (d) In applying NSL 42(2) when dealing with bail applications in cases involving offences endangering national security, the judge must first decide whether he or she “has sufficient grounds for believing that the criminal suspect or defendant will not continue to commit acts endangering national security”. In doing so: (i) The judge should consider everything that appears to the court to be relevant to making that decision, including the possible imposition of appropriate bail conditions and materials which would not be admissible as evidence at the trial. It may in particular cases be helpful to have regard to factors such as those set out in CPO 9G(2) in connection with the “sufficient grounds” question. (ii) The judge should take the reference to “acts endangering national security” to mean acts of that nature capable of constituting an offence under the NSL or the laws of the HKSAR safeguarding national security. (iii) The judge should regard the NSL 42(2) “sufficient grounds” question as a matter for the court’s evaluation and judgment and not as involving the application of a burden of proof. (e) If, having taken into account all relevant material, the judge concludes that he or she does not have sufficient grounds for believing that the accused will not continue to commit acts endangering national security, bail must be refused. (f) If, on the other hand, the judge concludes that taking all relevant material into account, he or she does have such sufficient grounds, the court should proceed to consider all other matters relevant to the grant or refusal of bail, applying the presumption in favour of bail. This includes consideration of whether there are substantial grounds for believing that the accused would fail to surrender to custody, or commit an offence (not limited to national security offences) while on bail, or interfere with a witness or pervert or obstruct the course of justice. Consideration should also be given to whether conditions aimed at securing that such violations will not occur ought to be imposed. [60] G. The Judge’s decision",
+      "authority_role": "ratio",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "current_review_state": "machine_candidate",
+      "current_answer_safe": false,
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "required_human_checks": [
+        "Confirm the exact quote appears in the public judgment paragraph.",
+        "Confirm the proposition is a fair legal summary of the paragraph.",
+        "Confirm authority_role is correct and not merely party submission/factual background.",
+        "Confirm later treatment/lineage notes do not undermine the proposition.",
+        "Confirm the linked doctrine node IDs are appropriate."
+      ]
+    },
+    {
+      "proposition_id": "prop_lai_2021_tong_limited_p72",
+      "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+      "case_name": "HKSAR v Lai Chee Ying",
+      "citation": "[2021] HKCFA 3",
+      "court_level": "CFA",
+      "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p72",
+      "paragraph_no": "72",
+      "proposition_text": "The CFA held that Tong (No 1) erred in a crucial respect by misapprehending the nature and effect of the NSL Article 42(2) threshold.",
+      "exact_quote": "that judgment unfortunately falls into error and is flawed in a crucial respect in that it misapprehends the nature and effect of the threshold requirement laid down by NSL 42(2).",
+      "paragraph_text": "72. While much of what is said in Tong (No 1) is consistent with the foregoing analysis, that judgment unfortunately falls into error and is flawed in a crucial respect in that it misapprehends the nature and effect of the threshold requirement laid down by NSL 42(2). The Court held that: “The restriction against bail being granted under art.42 is a narrow one. Although the provision is couched in a double negative form, the substantive question which a judge has to ask, when considering the question of bail of a person charged with an offence endangering national security, is whether there are grounds, or reasons, to believe that the accused person will continue to commit ‘acts endangering national security’, ie offences under the National Security Law and not just any act which may in some way be said to endanger national security.” [64]",
+      "authority_role": "ratio",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail"
+      ],
+      "current_review_state": "machine_candidate",
+      "current_answer_safe": false,
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
+      "required_human_checks": [
+        "Confirm the exact quote appears in the public judgment paragraph.",
+        "Confirm the proposition is a fair legal summary of the paragraph.",
+        "Confirm authority_role is correct and not merely party submission/factual background.",
+        "Confirm later treatment/lineage notes do not undermine the proposition.",
+        "Confirm the linked doctrine node IDs are appropriate."
+      ]
+    }
+  ],
+  "suggested_review_api": {
+    "endpoint": "POST /api/legal-ingest/review/<proposition_id>/approve",
+    "auth": "Authorization: Bearer $LEGAL_REVIEW_ADMIN_TOKEN",
+    "body": {
+      "promote_answer_safe": true,
+      "reviewed_by": "lawyer_reviewer",
+      "note": "Human-reviewed against public judgment paragraph and approved for answer-safe pilot use."
+    }
+  }
+}

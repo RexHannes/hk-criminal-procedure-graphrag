@@ -3,6 +3,8 @@
 
 const { assertEmbeddingConfig, embedText } = require("../src/retrieval/embedding_adapter");
 const { assertRerankConfig, rerank } = require("../src/retrieval/rerank_adapter");
+const fs = require("fs");
+const path = require("path");
 
 function assert(condition, message, errors) {
   if (!condition) errors.push(message);
@@ -37,6 +39,13 @@ function assert(condition, message, errors) {
   assert(assertEmbeddingConfig({ EMBEDDING_PROVIDER: "cohere", COHERE_API_KEY: "test" }).key_name === "COHERE_API_KEY", "cohere embedding key config expected", errors);
   assert(assertRerankConfig({ RERANK_PROVIDER: "cohere", COHERE_API_KEY: "test" }).key_name === "COHERE_API_KEY", "cohere rerank key config expected", errors);
   assert(assertRerankConfig({ RERANK_PROVIDER: "voyage", VOYAGE_API_KEY: "test" }).key_name === "VOYAGE_API_KEY", "voyage rerank key config expected", errors);
+  const root = path.resolve(__dirname, "..");
+  const bailIndexer = fs.readFileSync(path.join(root, "scripts", "index_public_bail_batch_qdrant.js"), "utf8");
+  const qdrantRetriever = fs.readFileSync(path.join(root, "src", "legal_answer", "qdrant_retriever.js"), "utf8");
+  assert(bailIndexer.includes("embeddingModelFor"), "bail Qdrant indexer should resolve provider-specific embedding model names", errors);
+  assert(bailIndexer.includes("actualDimension"), "bail Qdrant indexer should use actual provider vector dimensions", errors);
+  assert(bailIndexer.includes("Embedding dimension drift"), "bail Qdrant indexer should fail on dimension drift", errors);
+  assert(qdrantRetriever.includes("actualDimension"), "Qdrant retriever should report actual query vector dimension", errors);
   if (errors.length) {
     console.error("Embedding/rerank adapter validation failed:");
     errors.forEach(error => console.error(`- ${error}`));
