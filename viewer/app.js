@@ -21,6 +21,7 @@
     lastTrace: null,        // execution trace of last task run
     dataSource: 'live',
     openSections: new Set(),
+    caseFruitCache: {},
   };
 
   const $ = (sel) => document.querySelector(sel);
@@ -78,6 +79,26 @@
   const DATA_INDEX = window.DATA_INDEX || '../data/index.json';
   const DATA_ROOT = window.DATA_ROOT || '../data/legal_domain_packs/demo_maps/';
   const DEFAULT_DOMAIN_ID = window.DEFAULT_DOMAIN_ID || 'criminal_procedure_hk';
+  const CASE_FRUIT_ARTIFACTS = window.CASE_FRUIT_ARTIFACTS || [
+    {
+      base: '../data/legal_ingest/criminal_evidence_tree_v1/bail_public_batch_v1',
+      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review'],
+      fallbackCaseName: 'Public bail source candidate',
+      fallbackCitation: '[Public source candidate]',
+    },
+    {
+      base: '../data/legal_ingest/criminal_evidence_tree_v1/tree_gap_pilots/sedition_public_expression_v1',
+      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'tree_gap_candidate'],
+      fallbackCaseName: 'Sedition/public-expression source candidate',
+      fallbackCitation: '[Public source candidate]',
+    },
+    {
+      base: '../data/legal_ingest/criminal_evidence_tree_v1/tree_gap_pilots/public_order_riot_v1',
+      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'tree_gap_candidate'],
+      fallbackCaseName: 'Public-order source candidate',
+      fallbackCitation: '[Public source candidate]',
+    },
+  ];
 
   function domainBase(domainId) {
     return DATA_ROOT + domainId + '/';
@@ -304,6 +325,177 @@
     return S.lastTrace.usedIds.has(id);
   }
 
+  function doctrineNodeId(n) {
+    if (!n) return '';
+    if (n.doctrine_node_id) return n.doctrine_node_id;
+    if (String(n.id || '').startsWith((S.selectedDomainId || '') + '.')) return n.id;
+    return `${S.selectedDomainId}.${n.id}`;
+  }
+
+  function caseFruitKey(nodeId) {
+    return `case-fruits-${String(nodeId).replace(/[^a-zA-Z0-9_-]/g, '-')}`;
+  }
+
+  function normalizeEvidencePayload(payload) {
+    const evidence = payload?.evidence || payload?.candidate_evidence || [];
+    return {
+      coverage_status: payload?.coverage_status || (evidence.length ? 'candidate_only' : 'no_evidence'),
+      evidence,
+      candidate_evidence: payload?.candidate_evidence || evidence.filter(e => (e.answer_layer_status || '') !== 'answer_safe'),
+      verified_evidence: payload?.verified_evidence || [],
+      answer_safe_evidence: payload?.answer_safe_evidence || [],
+      warnings: payload?.warnings || [],
+    };
+  }
+
+  function loadCaseFruitsForNode(n) {
+    const nodeId = doctrineNodeId(n);
+    const target = document.getElementById(caseFruitKey(nodeId));
+    if (!target) return;
+    target.innerHTML = '<div class="fruit-loading">Loading source-linked paragraph proof…</div>';
+    const cached = S.caseFruitCache[nodeId];
+    const request = cached
+      ? Promise.resolve(cached)
+      : loadJSON(`/api/doctrine-evidence?node_id=${encodeURIComponent(nodeId)}`)
+        .then(normalizeEvidencePayload)
+        .catch(() => loadLocalCaseFruitArtifacts(nodeId))
+        .then(payload => {
+          S.caseFruitCache[nodeId] = payload;
+          return payload;
+        });
+    request
+      .then(payload => renderCaseFruits(target, nodeId, payload))
+      .catch(err => {
+        target.innerHTML = `<div class="fruit-empty">No source-linked case fruits loaded for this node yet. <span>${esc(err.message || '')}</span></div>`;
+      });
+  }
+
+  function loadLocalCaseFruitArtifacts(nodeId) {
+    return Promise.all(CASE_FRUIT_ARTIFACTS.map(config => loadLocalCaseFruitArtifact(nodeId, config).catch(() => [])))
+      .then(groups => {
+        const evidence = groups.flat();
+        return normalizeEvidencePayload({
+          coverage_status: evidence.length ? 'candidate_only' : 'no_evidence',
+          evidence,
+          candidate_evidence: evidence,
+          warnings: evidence.length ? ['Loaded from local quote-proof artifacts. Human review still required.'] : [],
+        });
+      });
+  }
+
+  function loadLocalCaseFruitArtifact(nodeId, config) {
+    return Promise.all([
+      loadJSON(config.base + '/proposition_node_links.json'),
+      loadJSON(config.base + '/l4_case_applications.json'),
+      loadJSON(config.base + '/l5_paragraph_proof.json'),
+      loadJSON(config.base + '/paragraph_cards.json').catch(() => ({ cases: [], paragraph_cards: [] })),
+    ]).then(([linksPayload, l4Payload, l5Payload, paragraphPayload]) => {
+      const l4ByProp = new Map((l4Payload.l4_case_applications || []).map(item => [item.proposition_id, item]));
+      const l5ByProp = new Map((l5Payload.l5_paragraph_proof || []).map(item => [item.proposition_id, item]));
+      const caseById = new Map((paragraphPayload.cases || []).map(item => [item.case_id, item]));
+      return (linksPayload.proposition_node_links || [])
+        .filter(link => link.doctrine_node_id === nodeId)
+        .map(link => {
+          const l4 = l4ByProp.get(link.proposition_id) || {};
+          const l5 = l5ByProp.get(link.proposition_id) || {};
+          const caseRecord = caseById.get(l4.case_id || l5.case_id) || {};
+          return {
+            case_name: l4.case_name || l5.case_name || l4.case_id || config.fallbackCaseName,
+            neutral_citation: l4.neutral_citation || l5.neutral_citation || config.fallbackCitation,
+            law_report_citation: caseRecord.law_report_citation || '',
+            court: caseRecord.court || '',
+            court_level: caseRecord.court_level || '',
+            date: caseRecord.date || '',
+            case_id: l4.case_id || l5.case_id || '',
+            paragraph_id: l5.paragraph_id || '',
+            para_no: l5.para_no || '',
+            proposition_id: link.proposition_id,
+            proposition_text: l4.application_summary || '',
+            supporting_quote: l5.exact_quote || '',
+            paragraph_text: l5.paragraph_text || '',
+            source_url: l5.source_url || caseRecord.source_url || 'https://legalref.judiciary.hk/',
+            link_type: link.link_type || 'candidate',
+            authority_role: link.authority_role || 'application',
+            significance_label: link.significance_label || '',
+            verification_status: link.review_status || 'machine_candidate',
+            answer_layer_status: link.answer_layer_status || 'candidate_only',
+            human_review_status: 'unreviewed',
+            validator_flags: config.flags,
+            lineage_note: l4.lineage_note || link.notes || '',
+          };
+        });
+    });
+  }
+
+  function highlightQuote(paragraphText, quote) {
+    const text = String(paragraphText || '');
+    const q = String(quote || '').trim();
+    if (!text || !q) return esc(text || q || '—');
+    const idx = text.indexOf(q);
+    if (idx < 0) return esc(text);
+    return `${esc(text.slice(0, idx))}<mark>${esc(q)}</mark>${esc(text.slice(idx + q.length))}`;
+  }
+
+  function renderCaseFruits(target, nodeId, payload) {
+    const normalized = normalizeEvidencePayload(payload);
+    const evidence = normalized.evidence || [];
+    if (!evidence.length) {
+      target.innerHTML = '<div class="fruit-empty">No source-linked case fruits for this node yet. New case-miner runs can attach quote-proof L4/L5 fruits here after validation.</div>';
+      return;
+    }
+    const sorted = evidence.slice().sort((a, b) => {
+      const aSafe = a.answer_layer_status === 'answer_safe' ? 0 : 1;
+      const bSafe = b.answer_layer_status === 'answer_safe' ? 0 : 1;
+      return aSafe - bSafe || String(a.neutral_citation || '').localeCompare(String(b.neutral_citation || '')) || String(a.para_no || '').localeCompare(String(b.para_no || ''), undefined, { numeric: true });
+    });
+    target.innerHTML = `
+      <div class="fruit-summary">
+        <span class="badge badge-source-linked">Source-linked demo</span>
+        <span>${sorted.length} quote-proof case fruit${sorted.length === 1 ? '' : 's'} attached to <code>${esc(nodeId)}</code>.</span>
+      </div>
+      ${(normalized.warnings || []).length ? `<div class="fruit-warning">${normalized.warnings.map(esc).join(' ')}</div>` : ''}
+      <div class="fruit-list">
+        ${sorted.map(renderCaseFruitCard).join('')}
+      </div>
+    `;
+  }
+
+  function renderCaseFruitCard(e) {
+    const quote = e.supporting_quote || '';
+    const paragraph = e.paragraph_text || quote;
+    const statusBadge = e.answer_layer_status === 'answer_safe'
+      ? '<span class="badge badge-approved">Answer-safe</span>'
+      : '<span class="badge badge-review">Human review required</span>';
+    const sourceLink = e.source_url
+      ? `<a href="${esc(e.source_url)}" target="_blank" rel="noreferrer">Open public judgment</a>`
+      : '';
+    return `
+      <article class="fruit-card">
+        <div class="fruit-card-top">
+          <strong>${esc(e.case_name || 'Untitled case')}</strong>
+          <span>${esc(e.neutral_citation || '')}${e.para_no ? ' · para ' + esc(e.para_no) : ''}</span>
+        </div>
+        <div class="fruit-badges">
+          <span class="badge badge-source-linked">Quote verified</span>
+          ${statusBadge}
+          ${e.authority_role ? `<span class="badge badge-research">${esc(e.authority_role)}</span>` : ''}
+          ${e.significance_label ? `<span class="badge badge-draft">${esc(e.significance_label)}</span>` : ''}
+        </div>
+        ${e.proposition_text ? `<p class="fruit-proposition">${esc(e.proposition_text)}</p>` : ''}
+        ${quote ? `<blockquote class="fruit-quote">${esc(quote)}</blockquote>` : ''}
+        <details class="fruit-proof">
+          <summary>Paragraph proof / audit trail</summary>
+          <div class="fruit-paragraph">${highlightQuote(paragraph, quote)}</div>
+          <div class="fruit-meta">
+            <span>${esc(e.paragraph_id || e.proposition_id || '')}</span>
+            ${sourceLink}
+          </div>
+          ${e.lineage_note ? `<div class="fruit-lineage">${esc(e.lineage_note)}</div>` : ''}
+        </details>
+      </article>
+    `;
+  }
+
   function renderInspector() {
     const body = $('#inspector-body');
     const kindEl = $('#inspector-kind');
@@ -318,6 +510,7 @@
       const sopBlocks = n.type === 'flow_step' ? sopBlocksForStep(n.id) : [];
       const used = usedInLastTrace(n.id);
       const relatedFlows = S.flows.filter(f => (f.steps || []).includes(n.id));
+      const doctrineId = doctrineNodeId(n);
 
       body.innerHTML = `
         <div class="insp-title">${esc(n.label)}</div>
@@ -343,10 +536,17 @@
           `).join('')}
         </div>` : ''}
         <div class="insp-section">
+          <div class="insp-label">Case Fruits / Paragraph Proof</div>
+          <div class="fruit-panel" id="${caseFruitKey(doctrineId)}" data-node-id="${esc(doctrineId)}">
+            <div class="fruit-loading">Loading source-linked paragraph proof…</div>
+          </div>
+        </div>
+        <div class="insp-section">
           <div class="insp-label">Audit</div>
           <div class="insp-text">Every use of this item in a task run is recorded in the execution trace with flow, SOP and template versions.</div>
         </div>`;
       wireInspectorLinks(body);
+      loadCaseFruitsForNode(n);
       return;
     }
 

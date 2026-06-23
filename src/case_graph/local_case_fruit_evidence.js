@@ -17,6 +17,20 @@ const CASE_FRUIT_DIRS = [
     fallbackCaseName: "Public bail source candidate",
     fallbackCitation: "[Public source candidate]",
   },
+  {
+    dir: path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "tree_gap_pilots", "sedition_public_expression_v1"),
+    sourceUrl: "https://legalref.judiciary.hk/",
+    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "tree_gap_candidate"],
+    fallbackCaseName: "Sedition/public-expression source candidate",
+    fallbackCitation: "[Public source candidate]",
+  },
+  {
+    dir: path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "tree_gap_pilots", "public_order_riot_v1"),
+    sourceUrl: "https://legalref.judiciary.hk/",
+    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "tree_gap_candidate"],
+    fallbackCaseName: "Public-order source candidate",
+    fallbackCitation: "[Public source candidate]",
+  },
 ];
 
 function readJsonIfExists(filePath) {
