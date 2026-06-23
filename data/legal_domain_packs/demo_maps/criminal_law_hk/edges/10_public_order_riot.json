@@ -1,0 +1,54 @@
+{
+  "edges": [
+    {
+      "from": "criminal_law_hk.public_order.unlawful_assembly_riot",
+      "to": "criminal_law_hk.public_order.unlawful_assembly",
+      "relationship": "has_subprinciple"
+    },
+    {
+      "from": "criminal_law_hk.public_order.unlawful_assembly_riot",
+      "to": "criminal_law_hk.public_order.riot",
+      "relationship": "has_subprinciple"
+    },
+    {
+      "from": "criminal_law_hk.public_order.unlawful_assembly_riot",
+      "to": "criminal_law_hk.public_order.corporate_nature_common_purpose",
+      "relationship": "has_issue"
+    },
+    {
+      "from": "criminal_law_hk.public_order.unlawful_assembly_riot",
+      "to": "criminal_law_hk.public_order.joint_enterprise_accessory",
+      "relationship": "has_issue"
+    },
+    {
+      "from": "criminal_law_hk.public_order.unlawful_assembly_riot",
+      "to": "criminal_law_hk.public_order.presence_scene",
+      "relationship": "has_issue"
+    },
+    {
+      "from": "criminal_law_hk.public_order.unlawful_assembly_riot",
+      "to": "criminal_law_hk.public_order.rights_overcharging",
+      "relationship": "has_issue"
+    },
+    {
+      "from": "criminal_law_hk.public_order.joint_enterprise_accessory",
+      "to": "criminal_law_hk.joint.enterprise",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "criminal_law_hk.public_order.joint_enterprise_accessory",
+      "to": "criminal_law_hk.secondary.liability",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "criminal_law_hk.public_order.unlawful_assembly",
+      "to": "cap245",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "criminal_law_hk.public_order.riot",
+      "to": "cap245",
+      "relationship": "statutory_anchor"
+    }
+  ]
+}

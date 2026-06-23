@@ -245,6 +245,39 @@
       "answer_layer_status": "not_product_answer_layer",
       "authority_status": "unverified_statutory_anchor",
       "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap245",
+      "type": "statute",
+      "label": "Public Order Ordinance (Cap 245)",
+      "summary": "Public Order Ordinance seed requiring official source verification.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap245_s18",
+      "type": "statute",
+      "label": "Public Order Ordinance s.18 - Unlawful Assembly",
+      "summary": "Unlawful assembly provision seed requiring official source verification.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
+    },
+    {
+      "id": "cap245_s19",
+      "type": "statute",
+      "label": "Public Order Ordinance s.19 - Riot",
+      "summary": "Riot provision seed requiring official source verification.",
+      "section": "08",
+      "verification_status": "needs_official_source_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "unverified_statutory_anchor",
+      "human_review_status": "unreviewed"
     }
   ]
 }

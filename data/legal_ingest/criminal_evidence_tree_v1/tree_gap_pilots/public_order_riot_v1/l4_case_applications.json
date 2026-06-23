@@ -1,0 +1,299 @@
+{
+  "l4_case_applications": [
+    {
+      "l4_application_id": "l4_prop_tong_2021_joint_enterprise_all_offences_p3",
+      "proposition_id": "prop_tong_2021_joint_enterprise_all_offences_p3",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p3",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal stated that, as a common-law notion, joint enterprise applies to all offences unless expressly or impliedly excluded by statute.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.joint_enterprise_accessory",
+        "criminal_law_hk.joint.enterprise"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_applies_to_unlawful_riot_p3",
+      "proposition_id": "prop_tong_2021_applies_to_unlawful_riot_p3",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p3",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal held that, unless excluded, joint enterprise including liability without presence at the scene applies to unlawful assembly and riot.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.unlawful_assembly",
+        "criminal_law_hk.public_order.riot",
+        "criminal_law_hk.public_order.presence_scene"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_riot_elements_p19",
+      "proposition_id": "prop_tong_2021_riot_elements_p19",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p19",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal recorded the trial judge's summary that riot requires proof of unlawful assembly elements, breach of the peace, and participation.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.unlawful_assembly",
+        "criminal_law_hk.public_order.riot"
+      ],
+      "significance_label": "states_elements",
+      "authority_role": "procedural_history",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_secondary_same_offence_p29",
+      "proposition_id": "prop_tong_2021_secondary_same_offence_p29",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p29",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal described the fundamental principle that a secondary party is guilty of the same offence as the principal.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.joint_enterprise_accessory",
+        "criminal_law_hk.secondary.liability"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_joint_enterprise_independent_p30",
+      "proposition_id": "prop_tong_2021_joint_enterprise_independent_p30",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p30",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal distinguished derivative accessorial liability from independent joint-enterprise liability.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.joint_enterprise_accessory",
+        "criminal_law_hk.joint.enterprise"
+      ],
+      "significance_label": "distinguishes",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_presence_not_necessary_p34",
+      "proposition_id": "prop_tong_2021_presence_not_necessary_p34",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p34",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal stated that physical presence at the scene is not necessary for a party to a joint enterprise.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.presence_scene",
+        "criminal_law_hk.public_order.joint_enterprise_accessory"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_common_law_retained_overcharge_p44",
+      "proposition_id": "prop_tong_2021_common_law_retained_overcharge_p44",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p44",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal identified two interpretative factors: common-law principles were intended to be retained unless displaced, and overcharging should be avoided.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.joint_enterprise_accessory",
+        "criminal_law_hk.public_order.rights_overcharging"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_public_order_balance_p48",
+      "proposition_id": "prop_tong_2021_public_order_balance_p48",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p48",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal held that construction of public-order offences must recognize both effective maintenance of public order and avoidance of overcharging peaceful persons.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.rights_overcharging"
+      ],
+      "significance_label": "states_policy",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_gravamen_numbers_p50",
+      "proposition_id": "prop_tong_2021_gravamen_numbers_p50",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p50",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal described the gravamen of unlawful assembly and riot as participants acting in numbers and using those numbers to achieve their common purpose.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.corporate_nature_common_purpose"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_encourage_promote_participate_p51",
+      "proposition_id": "prop_tong_2021_encourage_promote_participate_p51",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p51",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal cited the common-law position that active encouragement, promotion, or participation can ground liability for unlawful assembly or riot.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.joint_enterprise_accessory",
+        "criminal_law_hk.public_order.unlawful_assembly",
+        "criminal_law_hk.public_order.riot"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_common_law_liability_principal_p54",
+      "proposition_id": "prop_tong_2021_common_law_liability_principal_p54",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p54",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal concluded that, for common-law unlawful assembly and riot, an accessory or party to joint enterprise is liable as principal.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.joint_enterprise_accessory",
+        "criminal_law_hk.public_order.unlawful_assembly",
+        "criminal_law_hk.public_order.riot"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_exclusion_lacuna_p57",
+      "proposition_id": "prop_tong_2021_exclusion_lacuna_p57",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p57",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal held that excluding joint enterprise from ss.18 and 19 would leave a significant lacuna and undermine public order.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.joint_enterprise_accessory",
+        "criminal_law_hk.public_order.rights_overcharging"
+      ],
+      "significance_label": "states_policy",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_principal_vs_secondary_p66",
+      "proposition_id": "prop_tong_2021_principal_vs_secondary_p66",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p66",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal distinguished provisions defining principal-offender liability from rules governing accessories and parties to joint enterprise.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.joint_enterprise_accessory",
+        "criminal_law_hk.public_order.presence_scene"
+      ],
+      "significance_label": "distinguishes",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_tong_2021_mere_presence_p80",
+      "proposition_id": "prop_tong_2021_mere_presence_p80",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p80",
+      "scenario_label": "Public order / unlawful assembly / riot tree-gap pilot",
+      "application_summary": "The Court of Appeal stated that mere presence as a peaceful demonstrator, bystander, or onlooker without more will not render a person liable.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.public_order.presence_scene",
+        "criminal_law_hk.public_order.rights_overcharging"
+      ],
+      "significance_label": "limits_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "batch_id": "public_order_riot_tree_gap_pilot_v1",
+  "domain_id": "criminal_law_hk",
+  "scope": "public_order_unlawful_assembly_riot_candidate_branch",
+  "source_policy": {
+    "public_sources_only": true,
+    "private_or_licensed_sources_allowed": false,
+    "raw_private_upload_allowed": false,
+    "bulk_auto_attach_allowed": false,
+    "answer_safe_by_default": false
+  },
+  "scale_policy": {
+    "current_rung": "single_public_case_tree_gap_pilot",
+    "next_rung": "10_to_20_public_order_cases_after_review",
+    "max_sources_without_force": 50,
+    "large_cross_domain_crawl_allowed": false,
+    "requires_review_before_next_rung": true
+  },
+  "sources": [
+    {
+      "source_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+      "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+      "neutral_citation": "[2021] HKCA 404",
+      "court": "Court of Appeal",
+      "court_level": "CA",
+      "date": "2021-03-25",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=134508&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    }
+  ],
+  "tree_gap_resolution": {
+    "existing_tree_match": "no_clean_existing_branch",
+    "tree_proposal_source": "deepseek_secondary_seed_pending_notebooklm_or_human_tree_confirmation",
+    "tree_proposal_status": "llm_unverified_seed_tree_candidate_only",
+    "primary_tree_policy": "NotebookLM or human review should confirm branch structure before relying on the branch as a product tree. Case fruits are accepted only because LegalRef exact quotes verified.",
+    "verification_gate": "legalref_exact_quote_case_fruits_only"
+  }
+}

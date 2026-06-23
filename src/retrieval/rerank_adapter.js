@@ -1,3 +1,5 @@
+const { exactJsonHeaders } = require("../api/json_content_type");
+
 const SUPPORTED_RERANK_PROVIDERS = new Set(["none", "local", "cohere", "voyage"]);
 
 function rerankProvider(env = process.env) {
@@ -51,10 +53,7 @@ function candidateText(candidate) {
 async function postJson(url, { headers = {}, body } = {}) {
   const response = await fetch(url, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
+    headers: exactJsonHeaders(headers),
     body: JSON.stringify(body),
   });
   const payload = await response.json().catch(() => null);

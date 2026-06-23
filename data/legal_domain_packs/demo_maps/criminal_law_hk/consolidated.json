@@ -63,6 +63,12 @@
       "title": "Sedition and Public Expression Offences",
       "node_file": "nodes/09_sedition_public_expression.json",
       "edge_file": "edges/09_sedition_public_expression.json"
+    },
+    {
+      "id": "10",
+      "title": "Public Order: Unlawful Assembly and Riot",
+      "node_file": "nodes/10_public_order_riot.json",
+      "edge_file": "edges/10_public_order_riot.json"
     }
   ],
   "flows_file": "flows.json"

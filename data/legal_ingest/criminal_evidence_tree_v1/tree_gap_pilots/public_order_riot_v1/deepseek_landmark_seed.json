@@ -1,0 +1,6 @@
+{
+  "seed_source": "deepseek",
+  "seed_status": "llm_unverified_seed",
+  "source_hash": "467d3f265dfd9601ac4d09ad79fc88f3417eb0ba000d254e4fe32e265717cefa",
+  "note": "DeepSeek suggested candidate branch/case seeds. Only Tong Wai Hung was accepted in this pilot because it was public-source fetched and exact-quote verified."
+}

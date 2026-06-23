@@ -7,7 +7,9 @@ const { evaluateScaleReadiness } = require("../src/case_graph/scale_readiness");
 
 const ROOT = path.resolve(__dirname, "..");
 const CRIM_NODES_DIR = path.join(ROOT, "data", "legal_domain_packs", "demo_maps", "criminal_procedure_hk", "nodes");
+const CRIM_LAW_NODES_DIR = path.join(ROOT, "data", "legal_domain_packs", "demo_maps", "criminal_law_hk", "nodes");
 const BAIL_BATCH_DIR = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "bail_public_batch_v1");
+const TREE_GAP_PILOTS_DIR = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "tree_gap_pilots");
 const BROWSER_POLICY = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "browser_discovery_policy.json");
 const QDRANT_COLLECTIONS = ["hk_legal_paragraphs", "hk_proposition_cards", "hk_form_metadata"];
 
@@ -52,11 +54,15 @@ function arrayFromPayload(payload, key) {
 }
 
 function countCriminalProcedureNodes() {
-  if (!fs.existsSync(CRIM_NODES_DIR)) return 0;
-  return fs.readdirSync(CRIM_NODES_DIR)
+  return countNodesInDir(CRIM_NODES_DIR);
+}
+
+function countNodesInDir(dirPath) {
+  if (!fs.existsSync(dirPath)) return 0;
+  return fs.readdirSync(dirPath)
     .filter(file => file.endsWith(".json"))
     .reduce((sum, file) => {
-      const payload = readJson(path.join(CRIM_NODES_DIR, file), {});
+      const payload = readJson(path.join(dirPath, file), {});
       return sum + arrayFromPayload(payload, "nodes").length;
     }, 0);
 }
@@ -76,6 +82,35 @@ function bailBatchStats() {
     answer_safe_count: propositions.filter(item => item.answer_layer_status === "answer_safe" || item.answer_safe === true).length,
     linked_doctrine_nodes: linkedNodes,
   };
+}
+
+function treeGapPilotStats() {
+  if (!fs.existsSync(TREE_GAP_PILOTS_DIR)) return [];
+  return fs.readdirSync(TREE_GAP_PILOTS_DIR)
+    .filter(name => fs.statSync(path.join(TREE_GAP_PILOTS_DIR, name)).isDirectory())
+    .map(name => {
+      const dir = path.join(TREE_GAP_PILOTS_DIR, name);
+      const manifest = readJson(path.join(dir, "source_manifest.json"), {});
+      const parseReport = readJson(path.join(dir, "parse_report.json"), {});
+      const paragraphs = arrayFromPayload(readJson(path.join(dir, "paragraph_cards.json"), {}), "paragraph_cards");
+      const propositions = arrayFromPayload(readJson(path.join(dir, "proposition_cards.json"), {}), "proposition_cards");
+      const links = arrayFromPayload(readJson(path.join(dir, "proposition_node_links.json"), {}), "proposition_node_links");
+      const linkedNodes = [...new Set(links.map(item => item.doctrine_node_id).filter(Boolean))].sort();
+      return {
+        pilot_id: name,
+        batch_id: manifest.batch_id || parseReport.batch_id || "",
+        status: parseReport.status || "unknown",
+        scope: parseReport.scope || manifest.scope || "",
+        source_count: parseReport.source_count || 0,
+        paragraph_count: paragraphs.length || parseReport.paragraph_count || 0,
+        proposition_count: propositions.length || parseReport.proposition_count || 0,
+        link_count: links.length || parseReport.link_count || 0,
+        rejected_count: parseReport.rejected_count || 0,
+        answer_safe_count: propositions.filter(item => item.answer_layer_status === "answer_safe" || item.answer_safe === true).length,
+        linked_doctrine_nodes: linkedNodes,
+      };
+    })
+    .sort((a, b) => a.pilot_id.localeCompare(b.pilot_id));
 }
 
 async function qdrantCollectionStats(env) {
@@ -133,11 +168,12 @@ function browserDiscoveryStatus() {
   };
 }
 
-function overallVerdict({ scale50, scale20000, bail, criminalProcedureNodes, providers }) {
+function overallVerdict({ scale50, scale20000, bail, treeGapPilots, criminalProcedureNodes, criminalLawNodes, providers }) {
   const implemented = [
     "criminal procedure L0-L3 tree exists",
     "bail case-fruit public batch exists",
     "quote/rejection gate is clean for current bail batch",
+    ...(treeGapPilots.length ? ["tree-gap candidate branch workflow exists"] : []),
     "SOP bridge and source audit path exist",
     "large-scale 20k run is blocked by readiness gates",
   ];
@@ -152,7 +188,12 @@ function overallVerdict({ scale50, scale20000, bail, criminalProcedureNodes, pro
   if (!providers.inngest_configured) missing.push("durable Inngest orchestration");
   if (bail.answer_safe_count < 3) missing.push("3+ answer-safe reviewed bail propositions");
   if (!scale20000.execution_allowed) missing.push("large-scale corpus execution clearance");
-  if (criminalProcedureNodes && bail.linked_doctrine_nodes.length < criminalProcedureNodes) missing.push("criminal-tree-wide L4/L5 case fruit coverage");
+  const linkedNodes = new Set([
+    ...bail.linked_doctrine_nodes,
+    ...treeGapPilots.flatMap(pilot => pilot.linked_doctrine_nodes),
+  ]);
+  const totalTreeNodes = Number(criminalProcedureNodes || 0) + Number(criminalLawNodes || 0);
+  if (totalTreeNodes && linkedNodes.size < totalTreeNodes) missing.push("criminal-tree-wide L4/L5 case fruit coverage");
   return {
     status: scale50.execution_allowed && !scale20000.execution_allowed
       ? "pilot_working_large_scale_blocked"
@@ -175,12 +216,20 @@ function renderMarkdown(report) {
   lines.push("## Counts");
   lines.push("");
   lines.push(`- Criminal procedure nodes: ${report.criminal_procedure_nodes}`);
+  lines.push(`- Criminal law nodes: ${report.criminal_law_nodes}`);
   lines.push(`- Bail source count: ${report.bail_batch.source_count}`);
   lines.push(`- Bail paragraph cards: ${report.bail_batch.paragraph_count}`);
   lines.push(`- Bail proposition cards: ${report.bail_batch.proposition_count}`);
   lines.push(`- Bail doctrine links: ${report.bail_batch.link_count}`);
   lines.push(`- Linked doctrine nodes: ${report.bail_batch.linked_doctrine_nodes.length}`);
   lines.push(`- Answer-safe bail cards: ${report.bail_batch.answer_safe_count}`);
+  if (report.tree_gap_pilots.length) {
+    lines.push("");
+    lines.push("### Tree-Gap Pilots");
+    report.tree_gap_pilots.forEach(pilot => {
+      lines.push(`- ${pilot.pilot_id}: ${pilot.source_count} sources, ${pilot.paragraph_count} paragraphs, ${pilot.proposition_count} propositions, ${pilot.link_count} links, ${pilot.linked_doctrine_nodes.length} linked nodes, answer-safe ${pilot.answer_safe_count}`);
+    });
+  }
   lines.push("");
   lines.push("## Providers");
   lines.push("");
@@ -217,7 +266,9 @@ async function main() {
   const args = parseArgs(process.argv);
   const env = loadEnv();
   const criminalProcedureNodes = countCriminalProcedureNodes();
+  const criminalLawNodes = countNodesInDir(CRIM_LAW_NODES_DIR);
   const bail = bailBatchStats();
+  const treeGapPilots = treeGapPilotStats();
   const providers = providerStatus(env);
   const qdrant = await qdrantCollectionStats(env);
   const browserDiscovery = browserDiscoveryStatus();
@@ -227,7 +278,9 @@ async function main() {
     audit_id: "hk_legal_rag_current_progress_audit_v1",
     generated_at: new Date().toISOString(),
     criminal_procedure_nodes: criminalProcedureNodes,
+    criminal_law_nodes: criminalLawNodes,
     bail_batch: bail,
+    tree_gap_pilots: treeGapPilots,
     providers,
     qdrant,
     browser_discovery: browserDiscovery,
@@ -248,7 +301,9 @@ async function main() {
     scale50,
     scale20000,
     bail,
+    treeGapPilots,
     criminalProcedureNodes,
+    criminalLawNodes,
     providers,
   });
 

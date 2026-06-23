@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { exactJsonHeaders } = require("../api/json_content_type");
 const {
   extractNumberedParagraph,
   stripHtmlToText,
@@ -13,10 +14,9 @@ async function deepseekChat({ env = process.env, messages, model } = {}) {
   if (!env.DEEPSEEK_API_KEY) throw new Error("DEEPSEEK_API_KEY required");
   const response = await fetch(env.DEEPSEEK_BASE_URL || "https://api.deepseek.com/chat/completions", {
     method: "POST",
-    headers: {
+    headers: exactJsonHeaders({
       Authorization: `Bearer ${env.DEEPSEEK_API_KEY}`,
-      "Content-Type": "application/json",
-    },
+    }),
     body: JSON.stringify({
       model: model || env.DEEPSEEK_MODEL || "deepseek-chat",
       temperature: 0,

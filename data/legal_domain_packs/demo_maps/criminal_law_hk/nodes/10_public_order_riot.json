@@ -1,0 +1,128 @@
+{
+  "nodes": [
+    {
+      "id": "public_order_unlawful_assembly_riot",
+      "doctrine_node_id": "criminal_law_hk.public_order.unlawful_assembly_riot",
+      "type": "criminal_law_principle",
+      "label": "Public Order: Unlawful Assembly and Riot",
+      "summary": "Candidate branch for unlawful assembly, riot, joint enterprise, physical presence, and public-order safeguards.",
+      "source_basis": "deepseek_secondary_seed_plus_legalref_exact_quote_public_case_fruits",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed",
+      "tree_review_status": "needs_notebooklm_or_human_tree_confirmation",
+      "notes": [
+        "DeepSeek was used only as a secondary candidate seed; branch structure and links remain candidate-only pending NotebookLM/human tree review and public-source verification."
+      ]
+    },
+    {
+      "id": "public_order_unlawful_assembly",
+      "doctrine_node_id": "criminal_law_hk.public_order.unlawful_assembly",
+      "type": "criminal_law_subprinciple",
+      "label": "Unlawful Assembly",
+      "summary": "Candidate node for Cap 245 s.18 unlawful assembly, common purpose, corporate nature, and breach-of-peace risk.",
+      "source_basis": "deepseek_secondary_seed_plus_legalref_exact_quote_public_case_fruits",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed",
+      "tree_review_status": "needs_notebooklm_or_human_tree_confirmation",
+      "notes": [
+        "DeepSeek was used only as a secondary candidate seed; branch structure and links remain candidate-only pending NotebookLM/human tree review and public-source verification."
+      ]
+    },
+    {
+      "id": "public_order_riot",
+      "doctrine_node_id": "criminal_law_hk.public_order.riot",
+      "type": "criminal_law_subprinciple",
+      "label": "Riot",
+      "summary": "Candidate node for Cap 245 s.19 riot, escalation from unlawful assembly, breach of the peace, and participation.",
+      "source_basis": "deepseek_secondary_seed_plus_legalref_exact_quote_public_case_fruits",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed",
+      "tree_review_status": "needs_notebooklm_or_human_tree_confirmation",
+      "notes": [
+        "DeepSeek was used only as a secondary candidate seed; branch structure and links remain candidate-only pending NotebookLM/human tree review and public-source verification."
+      ]
+    },
+    {
+      "id": "public_order_corporate_nature",
+      "doctrine_node_id": "criminal_law_hk.public_order.corporate_nature_common_purpose",
+      "type": "criminal_law_issue",
+      "label": "Corporate Nature and Common Purpose",
+      "summary": "Candidate node for the corporate nature/common purpose requirements in unlawful assembly and riot.",
+      "source_basis": "deepseek_secondary_seed_plus_legalref_exact_quote_public_case_fruits",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed",
+      "tree_review_status": "needs_notebooklm_or_human_tree_confirmation",
+      "notes": [
+        "DeepSeek was used only as a secondary candidate seed; branch structure and links remain candidate-only pending NotebookLM/human tree review and public-source verification."
+      ]
+    },
+    {
+      "id": "public_order_joint_enterprise_accessory",
+      "doctrine_node_id": "criminal_law_hk.public_order.joint_enterprise_accessory",
+      "type": "criminal_law_issue",
+      "label": "Accessory and Joint Enterprise Liability",
+      "summary": "Candidate node for whether accessory and joint-enterprise principles apply to unlawful assembly and riot.",
+      "linked_existing_tort_nodes": [],
+      "linked_existing_criminal_nodes": [
+        "criminal_law_hk.secondary.liability",
+        "criminal_law_hk.joint.enterprise"
+      ],
+      "source_basis": "deepseek_secondary_seed_plus_legalref_exact_quote_public_case_fruits",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed",
+      "tree_review_status": "needs_notebooklm_or_human_tree_confirmation",
+      "notes": [
+        "DeepSeek was used only as a secondary candidate seed; branch structure and links remain candidate-only pending NotebookLM/human tree review and public-source verification."
+      ]
+    },
+    {
+      "id": "public_order_presence_scene",
+      "doctrine_node_id": "criminal_law_hk.public_order.presence_scene",
+      "type": "criminal_law_issue",
+      "label": "Physical Presence at the Scene",
+      "summary": "Candidate node for whether physical presence at the scene is required or sufficient for liability.",
+      "source_basis": "deepseek_secondary_seed_plus_legalref_exact_quote_public_case_fruits",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed",
+      "tree_review_status": "needs_notebooklm_or_human_tree_confirmation",
+      "notes": [
+        "DeepSeek was used only as a secondary candidate seed; branch structure and links remain candidate-only pending NotebookLM/human tree review and public-source verification."
+      ]
+    },
+    {
+      "id": "public_order_rights_overcharging",
+      "doctrine_node_id": "criminal_law_hk.public_order.rights_overcharging",
+      "type": "criminal_law_issue",
+      "label": "Public Order, Peaceful Assembly and Overcharging",
+      "summary": "Candidate node for balancing public-order protection with the risk of overcharging peaceful demonstrators, bystanders, or onlookers.",
+      "source_basis": "deepseek_secondary_seed_plus_legalref_exact_quote_public_case_fruits",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "candidate_tree_seed",
+      "human_review_status": "unreviewed",
+      "tree_review_status": "needs_notebooklm_or_human_tree_confirmation",
+      "notes": [
+        "DeepSeek was used only as a secondary candidate seed; branch structure and links remain candidate-only pending NotebookLM/human tree review and public-source verification."
+      ]
+    }
+  ]
+}

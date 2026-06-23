@@ -1,0 +1,55 @@
+{
+  "policy_id": "hk_criminal_case_fruit_ai_seed_policy_v1",
+  "default_priority": [
+    "existing_tree",
+    "notebooklm_candidate_tree",
+    "deepseek_secondary_case_seed",
+    "public_source_verification",
+    "human_review"
+  ],
+  "notebooklm": {
+    "role": "primary_candidate_tree_and_lineage_proposer",
+    "use_for": [
+      "no-tree branch proposal",
+      "principle/sub-principle/issue/sub-issue structure",
+      "big-picture lineage",
+      "candidate landmark-case list",
+      "uncertainty notes"
+    ],
+    "default_status": "candidate_only_requires_public_source_verification",
+    "private_source_policy": "do_not_copy_private_book_passages_into_public_artifacts"
+  },
+  "deepseek": {
+    "role": "secondary_seed_and_extraction_assistant_only",
+    "use_for": [
+      "candidate landmark-case expansion",
+      "candidate paragraph/proposition extraction rule drafting",
+      "query expansion terms"
+    ],
+    "default_status": "llm_unverified_seed",
+    "not_authority": true,
+    "must_not": [
+      "create answer-safe law",
+      "bypass public-source lookup",
+      "bypass exact quote validation",
+      "write private/licensed source text into public artifacts"
+    ]
+  },
+  "acceptance_gate": {
+    "case_must_exist_on_public_allowlisted_source": true,
+    "paragraph_must_be_fetched_from_public_source": true,
+    "supporting_quote_must_exactly_match_paragraph": true,
+    "doctrine_node_id_must_exist": true,
+    "answer_safe_promotion_allowed": false,
+    "human_review_required": true
+  },
+  "output_statuses": {
+    "case_seed": "llm_unverified_seed",
+    "tree_node": "candidate_tree_seed",
+    "paragraph_card": "quote_verified",
+    "proposition_card": "machine_candidate",
+    "doctrine_link": "candidate_only",
+    "review_item": "open",
+    "answer_layer": "research_only"
+  }
+}

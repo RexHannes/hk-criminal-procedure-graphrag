@@ -1,0 +1,15 @@
+{
+  "artifact_id": "public_order_riot_tree_gap_pilot_v1",
+  "generated_at": "2026-06-23T20:49:08.336Z",
+  "batch_id": "public_order_riot_tree_gap_pilot_v1",
+  "domain_id": "criminal_law_hk",
+  "scope": "public_order_unlawful_assembly_riot_candidate_branch",
+  "status": "public_source_candidate_links",
+  "source_count": 1,
+  "paragraph_count": 13,
+  "proposition_count": 14,
+  "link_count": 29,
+  "rejected_count": 0,
+  "errors": [],
+  "rejected": []
+}

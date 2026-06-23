@@ -1,4 +1,5 @@
 const crypto = require("crypto");
+const { exactJsonHeaders } = require("../api/json_content_type");
 
 const SUPPORTED_EMBEDDING_PROVIDERS = new Set(["none", "local", "local-hash", "openai", "voyage", "cohere"]);
 
@@ -41,10 +42,7 @@ function deterministicVector(text, dimension = 384) {
 async function postJson(url, { headers = {}, body } = {}) {
   const response = await fetch(url, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
+    headers: exactJsonHeaders(headers),
     body: JSON.stringify(body),
   });
   const payload = await response.json().catch(() => null);

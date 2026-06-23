@@ -4,6 +4,7 @@ const { composeAnswer } = require("./answer-composers");
 const { filterPiChunksByContract } = require("./answer-composers/pi");
 const { findCachedLegalAnswer, writeLegalAnswerCache } = require("./legal-ingest/cache");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
+const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -278,11 +279,10 @@ async function callAiJson(systemPrompt, userPrompt) {
   try {
     const response = await fetch(provider.endpoint, {
       method: "POST",
-      headers: {
+      headers: exactJsonHeaders({
         Authorization: `Bearer ${provider.apiKey}`,
-        "Content-Type": "application/json",
         ...provider.headers,
-      },
+      }),
       body: JSON.stringify({
         model: provider.model,
         temperature: 0,
@@ -794,6 +794,7 @@ module.exports = async function handler(req, res) {
     res.status(405).json({ error: "method_not_allowed" });
     return;
   }
+  if (rejectUnsupportedJsonContentType(req, res)) return;
 
   const query = String(req.method === "POST" ? req.body?.query || "" : req.query.q || req.query.query || "").trim();
   if (!query) {
