@@ -968,6 +968,265 @@
       "confidence": "medium",
       "link_confidence": 0.68,
       "lineage_note": "Fact-sensitive CFI grant illustration on ordinary second threshold."
+    },
+    {
+      "rule_id": "wong_pik_wan_2021_cfa_threshold_p4",
+      "source_id": "hk_cfi_2021_wong_pik_wan_hccp_113_2021",
+      "paragraph_no": "4",
+      "exact_quote": "NSL 42(2) creates a specific exception to the HKSAR rules and principles governing the grant and refusal of bail, and imports a stringent threshold requirement for bail applications.",
+      "proposition_id": "prop_wong_pik_wan_2021_cfa_threshold_p4",
+      "proposition_text": "The CFI treated Lai CFA as establishing that NSL 42(2) creates a stringent threshold exception to ordinary bail principles.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail"
+      ],
+      "significance_label": "applies_binding_rule",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.74,
+      "lineage_note": "CFI application of Lai CFA threshold formulation.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "wong_pik_wan_2021_predictive_grant_p8",
+      "source_id": "hk_cfi_2021_wong_pik_wan_hccp_113_2021",
+      "paragraph_no": "8",
+      "exact_quote": "Having weighed all the materials before me, I am satisfied there are insufficient grounds for believing that the Respondent will continue to commit acts endangering national security if bail is granted to her.",
+      "proposition_id": "prop_wong_pik_wan_2021_predictive_grant_p8",
+      "proposition_text": "On the facts, the CFI refused a prosecution review after finding insufficient grounds to believe the respondent would continue NSL acts if bailed.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.69,
+      "lineage_note": "Fact-sensitive grant/continued-bail illustration following Lai CFA.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "or_yiu_lam_2021_sufficient_grounds_p8",
+      "source_id": "hk_cfi_2021_or_yiu_lam_ricky_hccp_119_2021",
+      "paragraph_no": "8",
+      "exact_quote": "sufficient grounds exist for believing that the Respondent “will not continue to commit acts endangering national security” if bail is granted to him.",
+      "proposition_id": "prop_or_yiu_lam_2021_sufficient_grounds_p8",
+      "proposition_text": "On the facts, the CFI found sufficient grounds under the NSL first threshold for the respondent not to continue NSL acts if granted bail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.69,
+      "lineage_note": "Fact-sensitive grant/continued-bail illustration following Lai CFA.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "or_yiu_lam_2021_grant_same_terms_p10",
+      "source_id": "hk_cfi_2021_or_yiu_lam_ricky_hccp_119_2021",
+      "paragraph_no": "10",
+      "exact_quote": "I consider that the Respondent should be granted bail on the same terms as that ordered by the learned Chief Magistrate.",
+      "proposition_id": "prop_or_yiu_lam_2021_grant_same_terms_p10",
+      "proposition_text": "Where both thresholds were satisfied on the facts, the CFI maintained bail on the Chief Magistrate’s terms.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.65,
+      "lineage_note": "Fact-sensitive CFI bail outcome; candidate only.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "leung_kwok_hung_2021_predictive_p14",
+      "source_id": "hk_cfi_2021_leung_kwok_hung_hccp_136_2021",
+      "paragraph_no": "14",
+      "exact_quote": "On all the materials which had been placed before me, including counsel’s submissions, both written and oral, including documents or materials which may not be admissible at trial, in order for me to make a predictive evaluation.",
+      "proposition_id": "prop_leung_kwok_hung_2021_predictive_p14",
+      "proposition_text": "The CFI considered all materials, submissions and even potentially inadmissible materials in making the predictive NSL bail evaluation.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.71,
+      "lineage_note": "CFI application of all-relevant-materials approach following Lai CFA.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "leung_kwok_hung_2021_refusal_p15",
+      "source_id": "hk_cfi_2021_leung_kwok_hung_hccp_136_2021",
+      "paragraph_no": "15",
+      "exact_quote": "I cannot find sufficient grounds for believing that the Applicant will not continue to commit acts endangering national security if granted bail.",
+      "proposition_id": "prop_leung_kwok_hung_2021_refusal_p15",
+      "proposition_text": "On the facts, the CFI refused bail because sufficient grounds under the NSL first threshold were absent.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.68,
+      "lineage_note": "Fact-sensitive CFI refusal; candidate only.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "tam_hoi_pong_2021_predictive_p19",
+      "source_id": "hk_cfi_2021_tam_hoi_pong_hccp_417_2021",
+      "paragraph_no": "19",
+      "exact_quote": "the court has to make “a predictive and evaluative exercise”.",
+      "proposition_id": "prop_tam_hoi_pong_2021_predictive_p19",
+      "proposition_text": "The CFI repeated that the NSL bail test requires a predictive and evaluative exercise.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.66,
+      "lineage_note": "CFI application of predictive/evaluative assessment terminology.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "tam_hoi_pong_2021_refusal_p20",
+      "source_id": "hk_cfi_2021_tam_hoi_pong_hccp_417_2021",
+      "paragraph_no": "20",
+      "exact_quote": "I am not satisfied that the Applicant will not continue to commit acts endangering NSL if granted bail.",
+      "proposition_id": "prop_tam_hoi_pong_2021_refusal_p20",
+      "proposition_text": "On the facts, the CFI was not satisfied that the applicant would not continue NSL-endangering acts if granted bail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.67,
+      "lineage_note": "Fact-sensitive CFI refusal; candidate only.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "wong_pak_yu_2021_predictive_p21",
+      "source_id": "hk_cfi_2021_wong_pak_yu_hccp_430_2021",
+      "paragraph_no": "21",
+      "exact_quote": "the judge on a bail application of this nature has to make a “predictive and evaluative” exercise",
+      "proposition_id": "prop_wong_pak_yu_2021_predictive_p21",
+      "proposition_text": "The CFI restated that this form of NSL bail application requires a predictive and evaluative exercise.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.66,
+      "lineage_note": "CFI application of predictive/evaluative assessment terminology.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "wong_pak_yu_2021_evidence_conditions_p22",
+      "source_id": "hk_cfi_2021_wong_pak_yu_hccp_430_2021",
+      "paragraph_no": "22",
+      "exact_quote": "consider all of them, together with the submissions, and also the possible, conditions of bail, whether the Applicant will continue to commit acts endangering national security if bail is granted.",
+      "proposition_id": "prop_wong_pak_yu_2021_evidence_conditions_p22",
+      "proposition_text": "The CFI considered the words used, circumstances, submissions and possible bail conditions in assessing future NSL risk.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_factors",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.69,
+      "lineage_note": "CFI application of all-relevant-materials and possible-conditions approach.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "fung_2022_first_then_second_threshold_p8",
+      "source_id": "hk_cfi_2022_fung_tat_chun_frankie_hccp_584_2021",
+      "paragraph_no": "8",
+      "exact_quote": "it is only if the Court concludes there were sufficient grounds then the Court would then proceed to consider the application applying the second threshold, which is under the Criminal Procedure Ordinance, Cap 221, section 9N.",
+      "proposition_id": "prop_fung_2022_first_then_second_threshold_p8",
+      "proposition_text": "The CFI described the sequence for NSL bail: first the Article 42 threshold, then the ordinary Criminal Procedure Ordinance threshold only if the first is satisfied.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_right_to_bail",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.7,
+      "lineage_note": "CFI application of sequential NSL then ordinary bail thresholds.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
+    },
+    {
+      "rule_id": "fung_2022_refusal_first_threshold_p29",
+      "source_id": "hk_cfi_2022_fung_tat_chun_frankie_hccp_584_2021",
+      "paragraph_no": "29",
+      "exact_quote": "I am not satisfied that the Applicant had overcome the first threshold. So, the application was refused.",
+      "proposition_id": "prop_fung_2022_refusal_first_threshold_p29",
+      "proposition_text": "On the facts, failure to overcome the first NSL threshold led to refusal of bail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.nsl_bail",
+        "criminal_procedure_hk.bail_flow_step5"
+      ],
+      "significance_label": "application",
+      "authority_role": "application",
+      "confidence": "medium",
+      "link_confidence": 0.66,
+      "lineage_note": "Fact-sensitive CFI refusal; candidate only.",
+      "source_tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ]
     }
   ]
 }

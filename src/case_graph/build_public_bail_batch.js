@@ -47,12 +47,16 @@ function collapseForQuote(value) {
   return normalizeWhitespace(value).replace(/\s+/g, " ");
 }
 
-function fetchUrl(url, { insecureTls = true } = {}) {
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function fetchUrlOnce(url, { insecureTls = true, timeoutMs = 45000 } = {}) {
   return new Promise((resolve, reject) => {
     const request = https.get(url, { rejectUnauthorized: !insecureTls }, response => {
       if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
         response.resume();
-        fetchUrl(new URL(response.headers.location, url).toString(), { insecureTls }).then(resolve, reject);
+        fetchUrlOnce(new URL(response.headers.location, url).toString(), { insecureTls, timeoutMs }).then(resolve, reject);
         return;
       }
       if (response.statusCode !== 200) {
@@ -65,10 +69,23 @@ function fetchUrl(url, { insecureTls = true } = {}) {
       response.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
     });
     request.on("error", reject);
-    request.setTimeout(30000, () => {
+    request.setTimeout(timeoutMs, () => {
       request.destroy(new Error(`Timeout fetching ${url}`));
     });
   });
+}
+
+async function fetchUrl(url, { insecureTls = true, retries = 2, timeoutMs = 45000, retryDelayMs = 1500 } = {}) {
+  let lastError = null;
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    try {
+      return await fetchUrlOnce(url, { insecureTls, timeoutMs });
+    } catch (error) {
+      lastError = error;
+      if (attempt < retries) await wait(retryDelayMs * (attempt + 1));
+    }
+  }
+  throw lastError;
 }
 
 function extractNumberedParagraph(text, paragraphNo) {

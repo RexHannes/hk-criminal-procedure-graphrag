@@ -43,17 +43,29 @@ function sha256(value) {
   return crypto.createHash("sha256").update(String(value || ""), "utf8").digest("hex");
 }
 
-async function request(ctx, { pathAndQuery, method = "GET", body, ok = [200, 201, 204, 206] }) {
-  const response = await fetch(`${ctx.supabaseUrl}/rest/v1/${pathAndQuery}`, {
-    method,
-    headers: {
-      apikey: ctx.serviceRoleKey,
-      Authorization: `Bearer ${ctx.serviceRoleKey}`,
-      "Content-Type": "application/json",
-      Prefer: method === "POST" ? "resolution=merge-duplicates,return=minimal" : "return=minimal",
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function requestOnce(ctx, { pathAndQuery, method = "GET", body, ok = [200, 201, 204, 206], timeoutMs = 20000 }) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(new Error(`Supabase request timeout: ${method} ${pathAndQuery}`)), timeoutMs);
+  let response;
+  try {
+    response = await fetch(`${ctx.supabaseUrl}/rest/v1/${pathAndQuery}`, {
+      method,
+      headers: {
+        apikey: ctx.serviceRoleKey,
+        Authorization: `Bearer ${ctx.serviceRoleKey}`,
+        "Content-Type": "application/json",
+        Prefer: method === "POST" ? "resolution=merge-duplicates,return=minimal" : "return=minimal",
+      },
+      body: body ? JSON.stringify(body) : undefined,
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timer);
+  }
   const text = await response.text();
   let payload = null;
   try {
@@ -67,6 +79,20 @@ async function request(ctx, { pathAndQuery, method = "GET", body, ok = [200, 201
     throw err;
   }
   return payload;
+}
+
+async function request(ctx, options) {
+  let lastError = null;
+  const retries = Number(ctx.retries ?? 2);
+  for (let attempt = 0; attempt <= retries; attempt += 1) {
+    try {
+      return await requestOnce(ctx, options);
+    } catch (error) {
+      lastError = error;
+      if (attempt < retries) await wait(1000 * (attempt + 1));
+    }
+  }
+  throw lastError;
 }
 
 async function patchOrInsert(ctx, table, filterColumn, row) {
@@ -274,29 +300,40 @@ async function seedBatch(ctx, { dryRun = false } = {}) {
   }
 
   const results = {};
-  for (const row of rows.sourceRegistry) {
+  async function runRows(label, rowsForTable, fn) {
+    console.error(`Seeding ${label}: ${rowsForTable.length} rows`);
+    let index = 0;
+    for (const row of rowsForTable) {
+      index += 1;
+      await fn(row);
+      if (index === rowsForTable.length || index % 25 === 0) {
+        console.error(`  ${label}: ${index}/${rowsForTable.length}`);
+      }
+    }
+  }
+  await runRows("source_registry", rows.sourceRegistry, async row => {
     try {
       results[`source_registry:${row.source_id}`] = await patchOrInsert(ctx, "source_registry", "source_id", row);
     } catch (error) {
       results[`source_registry:${row.source_id}`] = `skipped:${error.message}`;
     }
-  }
-  for (const row of rows.sourceDocuments) {
+  });
+  await runRows("source_documents", rows.sourceDocuments, async row => {
     results[`source_documents:${row.id}`] = await patchOrInsert(ctx, "source_documents", "id", row);
-  }
-  for (const row of rows.legalCases) {
+  });
+  await runRows("legal_cases", rows.legalCases, async row => {
     results[`legal_cases:${row.id}`] = await patchOrInsert(ctx, "legal_cases", "id", row);
-  }
-  for (const row of rows.legalParagraphs) {
+  });
+  await runRows("legal_paragraphs", rows.legalParagraphs, async row => {
     results[`legal_paragraphs:${row.id}`] = await patchOrInsert(ctx, "legal_paragraphs", "id", row);
-  }
-  for (const row of rows.propositionCards) {
+  });
+  await runRows("proposition_cards", rows.propositionCards, async row => {
     results[`proposition_cards:${row.id}`] = await patchOrInsert(ctx, "proposition_cards", "id", row);
-  }
-  for (const row of rows.humanReviewItems) {
+  });
+  await runRows("human_review_items", rows.humanReviewItems, async row => {
     results[`human_review_items:${row.item_id}`] = await patchOrInsert(ctx, "human_review_items", "item_id", row);
-  }
-  for (const row of rows.propositionNodeLinks) {
+  });
+  await runRows("proposition_node_links", rows.propositionNodeLinks, async row => {
     const filter = [
       `proposition_id=eq.${encodeURIComponent(row.proposition_id)}`,
       `doctrine_node_id=eq.${encodeURIComponent(row.doctrine_node_id)}`,
@@ -321,7 +358,7 @@ async function seedBatch(ctx, { dryRun = false } = {}) {
       });
       results[`proposition_node_links:${row.proposition_id}:${row.doctrine_node_id}`] = "inserted";
     }
-  }
+  });
 
   report.status = "seeded";
   report.results = results;
@@ -337,7 +374,7 @@ async function main() {
   if (!supabaseUrl || !serviceRoleKey) {
     throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in .env.local");
   }
-  await seedBatch({ supabaseUrl, serviceRoleKey }, { dryRun });
+  await seedBatch({ supabaseUrl, serviceRoleKey, retries: 2 }, { dryRun });
 }
 
 main().catch(error => {

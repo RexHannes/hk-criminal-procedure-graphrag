@@ -40,6 +40,10 @@ assert((config.browser_guided_discovery?.forbidden_shortcuts || []).includes("ll
 assert((config.correction_loop?.item_types || []).includes("quote_not_found"), "correction loop missing quote_not_found", errors);
 assert((config.correction_loop?.item_types || []).includes("wrong_branch_candidate"), "correction loop missing wrong_branch_candidate", errors);
 assert(config.correction_loop?.retry_policy?.never_auto_promote_after_retry === true, "correction retries must not auto-promote", errors);
+assert((config.loop_stages || []).some(stage => (stage.checks || []).includes("duplicate_legalref_dis_check")), "loop missing duplicate LegalRef DIS check", errors);
+assert((config.loop_stages || []).some(stage => (stage.checks || []).includes("duplicate_neutral_citation_check")), "loop missing duplicate neutral citation check", errors);
+assert((config.safe_commands?.report_only || []).includes("node scripts/validate_bail_source_dedupe.js"), "report_only must run bail source dedupe validation", errors);
+assert((config.safe_commands?.execute_safe_local || []).includes("node scripts/validate_bail_source_dedupe.js"), "execute_safe_local must run bail source dedupe validation", errors);
 
 const source = fs.readFileSync(path.join(ROOT, "src", "case_graph", "case_fruit_growth_loop.js"), "utf8");
 for (const token of [

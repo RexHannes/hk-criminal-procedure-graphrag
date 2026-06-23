@@ -172,7 +172,9 @@
         "candidate_only_check",
         "court_level_and_later_case_lineage_note",
         "forbidden_issue_family_check",
-        "duplicate_case_or_paragraph_hash_check"
+        "duplicate_case_or_paragraph_hash_check",
+        "duplicate_legalref_dis_check",
+        "duplicate_neutral_citation_check"
       ],
       "outputs": [
         "validation_report",
@@ -254,10 +256,12 @@
     "report_only": [
       "node scripts/validate_production_setup_contract.js",
       "node scripts/validate_case_scale_readiness.js --target-cases 50",
+      "node scripts/validate_bail_source_dedupe.js",
       "node scripts/validate_public_bail_batch.js",
       "node scripts/validate_retrieval_quality_floor.js"
     ],
     "execute_safe_local": [
+      "node scripts/validate_bail_source_dedupe.js",
       "node scripts/build_public_bail_batch.js --preserve-generated-at",
       "node scripts/validate_public_bail_batch.js",
       "node scripts/validate_semiauto_rule_proposals.js",
