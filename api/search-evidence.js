@@ -100,8 +100,10 @@ function detectsPersonalInjuryPurpose(query) {
 }
 
 function detectsCriminalLawPriority(query) {
-  const q = String(query || "").toLowerCase();
-  return detectsCriminalPublicOrderQuery(q) && !detectsPersonalInjuryPurpose(q);
+  if (detectsPersonalInjuryPurpose(query)) return false;
+  if (detectsCriminalPublicOrderQuery(query)) return true;
+  const classification = classifyCriminalLaw(query);
+  return classification.scenario !== "criminal_law_general";
 }
 
 function loadInconsistentPleadingsVertical(query) {
