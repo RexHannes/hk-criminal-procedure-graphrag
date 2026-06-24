@@ -1,0 +1,35 @@
+{
+  "domain_id": "probate_law_hk",
+  "title": "Hong Kong Probate Law",
+  "description": "Metadata-only Hong Kong Probate map covering common-form grants, contentious probate gateways, resealing, special grants, personal representative powers and post-grant administration.",
+  "legal_family": "common_law_private_law",
+  "sub_family": "probate_estates_administration",
+  "source_priority": "ordinance_rules_judiciary_registry_first_then_private_licensed_material",
+  "intended_use": "Structured Probate knowledge graph and form-routing seed. Not legal advice and not an answer-safe law layer.",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "needs_official_source_verification": true,
+    "authority_status": "licensed_private_metadata_seed"
+  },
+  "utterance_disclaimer": "This Probate pack is a metadata/practice seed. It does not reproduce Butterworths text or private precedent wording. Verify all propositions against official source cards before reliance.",
+  "node_type_colors": {
+    "domain": "#1a1a2e",
+    "section_header": "#2d4059",
+    "legal_issue": "#2266cc",
+    "flow_step": "#d97706",
+    "candidate_evidence": "#64748b"
+  },
+  "sections": [
+    {
+      "id": "01",
+      "title": "Probate Principles",
+      "file": "nodes/01_probate_principles.json"
+    },
+    {
+      "id": "02",
+      "title": "Probate Procedures and Forms",
+      "file": "nodes/02_probate_procedures.json"
+    }
+  ]
+}

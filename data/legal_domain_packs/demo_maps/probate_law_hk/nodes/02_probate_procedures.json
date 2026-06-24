@@ -1,0 +1,876 @@
+{
+  "section_id": "02",
+  "section_title": "Probate Procedures and Forms",
+  "domain_id": "probate_law_hk",
+  "nodes": [
+    {
+      "id": "probate_procedure_root",
+      "doctrine_node_id": "probate_law_hk.procedure",
+      "type": "section_header",
+      "label": "Probate Procedures and Forms",
+      "summary": "Action layer for common-form grants, caveats, citations, resealing, special applications and post-grant administration. Form links are metadata-only.",
+      "section": "02",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.intake",
+      "doctrine_node_id": "probate_law_hk.procedure.intake",
+      "type": "flow_step",
+      "label": "Probate Intake and Matter Classification",
+      "summary": "Probate Intake and Matter Classification step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.01",
+      "procedure_stage": "intake",
+      "trigger_conditions": [
+        "death",
+        "estate",
+        "probate",
+        "administration"
+      ],
+      "required_facts": [
+        "deceased identity",
+        "date of death",
+        "domicile",
+        "will status",
+        "assets in Hong Kong"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.jurisdiction_business.common_form",
+        "probate_law_hk.grant_entitlement.probate_executor"
+      ],
+      "linked_forms": [
+        "probate_form_intake_checklist"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.death_domicile_capacity_check",
+      "doctrine_node_id": "probate_law_hk.procedure.death_domicile_capacity_check",
+      "type": "flow_step",
+      "label": "Death, Domicile and Capacity Check",
+      "summary": "Death, Domicile and Capacity Check step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.02",
+      "procedure_stage": "intake",
+      "trigger_conditions": [
+        "death evidence",
+        "domicile",
+        "identity"
+      ],
+      "required_facts": [
+        "death certificate",
+        "domicile",
+        "identity documents"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.will_validity_evidence.identity_handwriting_death"
+      ],
+      "linked_forms": [
+        "probate_form_m_identity_death_evidence_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.will_status_review",
+      "doctrine_node_id": "probate_law_hk.procedure.will_status_review",
+      "type": "flow_step",
+      "label": "Will Status and Testamentary Script Review",
+      "summary": "Will Status and Testamentary Script Review step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.03",
+      "procedure_stage": "intake",
+      "trigger_conditions": [
+        "will",
+        "codicil",
+        "testamentary script"
+      ],
+      "required_facts": [
+        "original will",
+        "codicils",
+        "condition",
+        "custody history"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.will_validity_evidence.due_execution",
+        "probate_law_hk.probate_action.testamentary_scripts"
+      ],
+      "linked_forms": [
+        "probate_form_w3_will_evidence_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.grant_type_selection",
+      "doctrine_node_id": "probate_law_hk.procedure.grant_type_selection",
+      "type": "flow_step",
+      "label": "Grant Type Selection",
+      "summary": "Grant Type Selection step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.04",
+      "procedure_stage": "pre_application",
+      "trigger_conditions": [
+        "probate",
+        "letters of administration",
+        "will annexed",
+        "intestacy"
+      ],
+      "required_facts": [
+        "executor position",
+        "beneficiaries",
+        "next of kin",
+        "renunciations"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.grant_entitlement.probate_executor",
+        "probate_law_hk.grant_entitlement.intestate_administration"
+      ],
+      "linked_forms": [
+        "probate_form_w1_probate_alias",
+        "probate_form_l1_intestacy_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.entitlement_priority_check",
+      "doctrine_node_id": "probate_law_hk.procedure.entitlement_priority_check",
+      "type": "flow_step",
+      "label": "Entitlement and Priority Check",
+      "summary": "Entitlement and Priority Check step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.05",
+      "procedure_stage": "pre_application",
+      "trigger_conditions": [
+        "entitled",
+        "priority",
+        "administrator"
+      ],
+      "required_facts": [
+        "relationship",
+        "priority class",
+        "consents",
+        "disputes"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.grant_entitlement.intestate_administration",
+        "probate_law_hk.grant_entitlement.additional_administrator"
+      ],
+      "linked_forms": [
+        "probate_form_l3_nomination_coadmin_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.renunciation_or_consent",
+      "doctrine_node_id": "probate_law_hk.procedure.renunciation_or_consent",
+      "type": "flow_step",
+      "label": "Renunciation / Consent Handling",
+      "summary": "Renunciation / Consent Handling step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.06",
+      "procedure_stage": "pre_application",
+      "trigger_conditions": [
+        "renunciation",
+        "consent",
+        "retraction"
+      ],
+      "required_facts": [
+        "renouncing person",
+        "grant type",
+        "consent status"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.grant_entitlement.renunciation_retraction"
+      ],
+      "linked_forms": [
+        "probate_form_w2_renunciation_alias",
+        "probate_form_l2_renunciation_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.assets_liabilities_schedule",
+      "doctrine_node_id": "probate_law_hk.procedure.assets_liabilities_schedule",
+      "type": "flow_step",
+      "label": "Assets and Liabilities Schedule",
+      "summary": "Assets and Liabilities Schedule step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.07",
+      "procedure_stage": "pre_application",
+      "trigger_conditions": [
+        "assets",
+        "liabilities",
+        "schedule"
+      ],
+      "required_facts": [
+        "asset list",
+        "liability list",
+        "valuation",
+        "Hong Kong assets"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.assets_liabilities.schedule_assets_liabilities"
+      ],
+      "linked_forms": [
+        "probate_form_n_schedule_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.surety_security_review",
+      "doctrine_node_id": "probate_law_hk.procedure.surety_security_review",
+      "type": "flow_step",
+      "label": "Surety / Security Review",
+      "summary": "Surety / Security Review step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.08",
+      "procedure_stage": "pre_application",
+      "trigger_conditions": [
+        "surety",
+        "guarantee",
+        "minor",
+        "administrator"
+      ],
+      "required_facts": [
+        "grant type",
+        "administrator identity",
+        "minor/incapacity issue"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.sureties_guarantees.surety_required"
+      ],
+      "linked_forms": [
+        "probate_form_surety_review_note"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.common_form_lodgement",
+      "doctrine_node_id": "probate_law_hk.procedure.common_form_lodgement",
+      "type": "flow_step",
+      "label": "Common-Form Grant Lodgement",
+      "summary": "Common-Form Grant Lodgement step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.09",
+      "procedure_stage": "application",
+      "trigger_conditions": [
+        "probate application",
+        "letters of administration"
+      ],
+      "required_facts": [
+        "application form",
+        "supporting affidavit",
+        "will/death evidence",
+        "schedule"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.jurisdiction_business.common_form"
+      ],
+      "linked_forms": [
+        "probate_form_w1_probate_alias",
+        "probate_form_l1_intestacy_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.registrar_requisition_response",
+      "doctrine_node_id": "probate_law_hk.procedure.registrar_requisition_response",
+      "type": "flow_step",
+      "label": "Registrar Requisition Response",
+      "summary": "Registrar Requisition Response step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.10",
+      "procedure_stage": "application",
+      "trigger_conditions": [
+        "requisition",
+        "further evidence",
+        "registry"
+      ],
+      "required_facts": [
+        "requisition text",
+        "missing evidence",
+        "deadline"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.registry_documents.registry_requisitions"
+      ],
+      "linked_forms": [
+        "probate_form_requisition_reply_note"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.summons_or_judge_route",
+      "doctrine_node_id": "probate_law_hk.procedure.summons_or_judge_route",
+      "type": "flow_step",
+      "label": "Summons / Judge Route",
+      "summary": "Summons / Judge Route step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.11",
+      "procedure_stage": "application",
+      "trigger_conditions": [
+        "summons",
+        "judge",
+        "Registrar direction"
+      ],
+      "required_facts": [
+        "order sought",
+        "supporting affidavit",
+        "service directions"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.jurisdiction_business.judge_route"
+      ],
+      "linked_forms": [
+        "probate_form_general_summons"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.caveat_entry_warning",
+      "doctrine_node_id": "probate_law_hk.procedure.caveat_entry_warning",
+      "type": "flow_step",
+      "label": "Caveat Entry and Warning",
+      "summary": "Caveat Entry and Warning step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.12",
+      "procedure_stage": "contentious_gateway",
+      "trigger_conditions": [
+        "caveat",
+        "warning"
+      ],
+      "required_facts": [
+        "caveator interest",
+        "warning",
+        "service"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.caveats_citations.caveat_entry",
+        "probate_law_hk.caveats_citations.warning_appearance"
+      ],
+      "linked_forms": [
+        "probate_form_caveat_warning_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.appearance_to_warning",
+      "doctrine_node_id": "probate_law_hk.procedure.appearance_to_warning",
+      "type": "flow_step",
+      "label": "Appearance to Warning",
+      "summary": "Appearance to Warning step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.13",
+      "procedure_stage": "contentious_gateway",
+      "trigger_conditions": [
+        "appearance",
+        "warning"
+      ],
+      "required_facts": [
+        "appearance",
+        "interest",
+        "time limit"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.caveats_citations.warning_appearance"
+      ],
+      "linked_forms": [
+        "probate_form_appearance_warning_note"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.citation_route",
+      "doctrine_node_id": "probate_law_hk.procedure.citation_route",
+      "type": "flow_step",
+      "label": "Citation Route",
+      "summary": "Citation Route step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.14",
+      "procedure_stage": "contentious_gateway",
+      "trigger_conditions": [
+        "citation",
+        "propound",
+        "take grant"
+      ],
+      "required_facts": [
+        "person cited",
+        "interest",
+        "script/grant issue"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.caveats_citations.citation_accept_refuse_take_grant",
+        "probate_law_hk.caveats_citations.citation_propound_will"
+      ],
+      "linked_forms": [
+        "probate_form_citation_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.probate_action_commencement",
+      "doctrine_node_id": "probate_law_hk.procedure.probate_action_commencement",
+      "type": "flow_step",
+      "label": "Probate Action Commencement",
+      "summary": "Probate Action Commencement step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.15",
+      "procedure_stage": "contentious",
+      "trigger_conditions": [
+        "probate action",
+        "solemn form",
+        "writ"
+      ],
+      "required_facts": [
+        "claimant interest",
+        "defendants",
+        "will/grant issue"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.probate_action.parties_interest",
+        "probate_law_hk.probate_action.solemn_form_proof"
+      ],
+      "linked_forms": [
+        "probate_form_probate_action_note"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.resealing_foreign_grant",
+      "doctrine_node_id": "probate_law_hk.procedure.resealing_foreign_grant",
+      "type": "flow_step",
+      "label": "Foreign Grant Resealing",
+      "summary": "Foreign Grant Resealing step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.16",
+      "procedure_stage": "resealing",
+      "trigger_conditions": [
+        "foreign grant",
+        "reseal",
+        "domicile out of Hong Kong"
+      ],
+      "required_facts": [
+        "foreign grant",
+        "country/place",
+        "Hong Kong assets"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.foreign_resealing.designated_route",
+        "probate_law_hk.foreign_resealing.resealing_documents"
+      ],
+      "linked_forms": [
+        "probate_form_resealing_checklist"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.special_grant_application",
+      "doctrine_node_id": "probate_law_hk.procedure.special_grant_application",
+      "type": "flow_step",
+      "label": "Special Grant Application",
+      "summary": "Special Grant Application step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.17",
+      "procedure_stage": "special_application",
+      "trigger_conditions": [
+        "pending suit",
+        "ad colligenda bona",
+        "de bonis non",
+        "minor"
+      ],
+      "required_facts": [
+        "special grant type",
+        "urgency",
+        "estate need"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.special_grants.pending_suit",
+        "probate_law_hk.special_grants.ad_colligenda_bona"
+      ],
+      "linked_forms": [
+        "probate_form_s_special_grant_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.lost_will_or_copy_will",
+      "doctrine_node_id": "probate_law_hk.procedure.lost_will_or_copy_will",
+      "type": "flow_step",
+      "label": "Lost / Copy / Reconstructed Will Application",
+      "summary": "Lost / Copy / Reconstructed Will Application step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.18",
+      "procedure_stage": "special_application",
+      "trigger_conditions": [
+        "lost will",
+        "copy will",
+        "reconstructed will"
+      ],
+      "required_facts": [
+        "searches",
+        "copy",
+        "last custody",
+        "consents"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.will_validity_evidence.lost_copy_reconstructed"
+      ],
+      "linked_forms": [
+        "probate_form_lost_will_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.leave_to_swear_death",
+      "doctrine_node_id": "probate_law_hk.procedure.leave_to_swear_death",
+      "type": "flow_step",
+      "label": "Leave to Swear Death",
+      "summary": "Leave to Swear Death step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.19",
+      "procedure_stage": "special_application",
+      "trigger_conditions": [
+        "leave to swear death",
+        "accident",
+        "ship",
+        "aircraft"
+      ],
+      "required_facts": [
+        "circumstances",
+        "corroboration",
+        "foreign order"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.will_validity_evidence.identity_handwriting_death"
+      ],
+      "linked_forms": [
+        "probate_form_leave_swear_death_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.grant_issue_and_extraction",
+      "doctrine_node_id": "probate_law_hk.procedure.grant_issue_and_extraction",
+      "type": "flow_step",
+      "label": "Grant Issue and Extraction",
+      "summary": "Grant Issue and Extraction step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.20",
+      "procedure_stage": "grant",
+      "trigger_conditions": [
+        "grant issued",
+        "extract grant"
+      ],
+      "required_facts": [
+        "grant type",
+        "sealed grant",
+        "conditions"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.jurisdiction_business.common_form"
+      ],
+      "linked_forms": [
+        "probate_form_grant_extraction_note"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.amendment_or_revocation",
+      "doctrine_node_id": "probate_law_hk.procedure.amendment_or_revocation",
+      "type": "flow_step",
+      "label": "Amendment or Revocation of Grant",
+      "summary": "Amendment or Revocation of Grant step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.21",
+      "procedure_stage": "post_grant",
+      "trigger_conditions": [
+        "amend grant",
+        "revoke grant",
+        "later will"
+      ],
+      "required_facts": [
+        "existing grant",
+        "error/new will",
+        "consents",
+        "order sought"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.grant_entitlement.renunciation_retraction"
+      ],
+      "linked_forms": [
+        "probate_form_amend_revocation_alias"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.post_grant_administration",
+      "doctrine_node_id": "probate_law_hk.procedure.post_grant_administration",
+      "type": "flow_step",
+      "label": "Post-Grant Administration",
+      "summary": "Post-Grant Administration step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.22",
+      "procedure_stage": "post_grant",
+      "trigger_conditions": [
+        "administer estate",
+        "debts",
+        "distribution"
+      ],
+      "required_facts": [
+        "assets",
+        "debts",
+        "beneficiaries",
+        "claims"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.debts_distribution.debts_creditors",
+        "probate_law_hk.debts_distribution.executor_year_distribution"
+      ],
+      "linked_forms": [
+        "probate_form_post_grant_admin_note"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    },
+    {
+      "id": "probate_procedure.inventory_account_distribution",
+      "doctrine_node_id": "probate_law_hk.procedure.inventory_account_distribution",
+      "type": "flow_step",
+      "label": "Inventory, Account and Distribution Review",
+      "summary": "Inventory, Account and Distribution Review step for Probate workflow. Output remains draft-only and lawyer-review-required.",
+      "section": "02",
+      "subsection": "02.23",
+      "procedure_stage": "post_grant",
+      "trigger_conditions": [
+        "inventory",
+        "account",
+        "distribution"
+      ],
+      "required_facts": [
+        "inventory",
+        "accounts",
+        "beneficiary approvals",
+        "claims"
+      ],
+      "linked_principle_nodes": [
+        "probate_law_hk.inventory_account_liability.inventory_account",
+        "probate_law_hk.debts_distribution.residuary_accounts"
+      ],
+      "linked_forms": [
+        "probate_form_inventory_account_note"
+      ],
+      "next_steps": [],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required",
+      "source_basis": "licensed_private_metadata_seed",
+      "source_card_ids": [],
+      "verification_status": "needs_source_card_verification",
+      "answer_layer_status": "not_product_answer_layer",
+      "authority_status": "practice_seed_needs_authority",
+      "human_review_status": "unreviewed",
+      "candidate_evidence_count": 0
+    }
+  ]
+}

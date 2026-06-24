@@ -1,0 +1,83 @@
+{
+  "domain_id": "probate_law_hk",
+  "flows": [
+    {
+      "flow_id": "probate_common_form_grant_flow",
+      "title": "Common Form Grant Flow",
+      "description": "Common Form Grant Flow for Hong Kong Probate. Metadata-only, draft-only and lawyer-review-required.",
+      "steps": [
+        "probate_procedure.intake",
+        "probate_procedure.death_domicile_capacity_check",
+        "probate_procedure.will_status_review",
+        "probate_procedure.grant_type_selection",
+        "probate_procedure.entitlement_priority_check",
+        "probate_procedure.renunciation_or_consent",
+        "probate_procedure.assets_liabilities_schedule",
+        "probate_procedure.surety_security_review",
+        "probate_procedure.common_form_lodgement",
+        "probate_procedure.registrar_requisition_response",
+        "probate_procedure.grant_issue_and_extraction"
+      ],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required"
+    },
+    {
+      "flow_id": "probate_caveat_warning_appearance_flow",
+      "title": "Caveat / Warning / Appearance Flow",
+      "description": "Caveat / Warning / Appearance Flow for Hong Kong Probate. Metadata-only, draft-only and lawyer-review-required.",
+      "steps": [
+        "probate_procedure.intake",
+        "probate_procedure.caveat_entry_warning",
+        "probate_procedure.appearance_to_warning",
+        "probate_procedure.citation_route",
+        "probate_procedure.probate_action_commencement"
+      ],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required"
+    },
+    {
+      "flow_id": "probate_foreign_grant_resealing_flow",
+      "title": "Foreign Grant Resealing Flow",
+      "description": "Foreign Grant Resealing Flow for Hong Kong Probate. Metadata-only, draft-only and lawyer-review-required.",
+      "steps": [
+        "probate_procedure.intake",
+        "probate_procedure.death_domicile_capacity_check",
+        "probate_procedure.resealing_foreign_grant",
+        "probate_procedure.assets_liabilities_schedule",
+        "probate_procedure.common_form_lodgement",
+        "probate_procedure.registrar_requisition_response",
+        "probate_procedure.grant_issue_and_extraction"
+      ],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required"
+    },
+    {
+      "flow_id": "probate_special_applications_flow",
+      "title": "Special Probate Applications Flow",
+      "description": "Special Probate Applications Flow for Hong Kong Probate. Metadata-only, draft-only and lawyer-review-required.",
+      "steps": [
+        "probate_procedure.intake",
+        "probate_procedure.summons_or_judge_route",
+        "probate_procedure.special_grant_application",
+        "probate_procedure.lost_will_or_copy_will",
+        "probate_procedure.leave_to_swear_death",
+        "probate_procedure.grant_issue_and_extraction"
+      ],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required"
+    },
+    {
+      "flow_id": "probate_post_grant_administration_flow",
+      "title": "Post-Grant Administration Flow",
+      "description": "Post-Grant Administration Flow for Hong Kong Probate. Metadata-only, draft-only and lawyer-review-required.",
+      "steps": [
+        "probate_procedure.grant_issue_and_extraction",
+        "probate_procedure.amendment_or_revocation",
+        "probate_procedure.post_grant_administration",
+        "probate_procedure.inventory_account_distribution"
+      ],
+      "review_status": "machine_extracted_candidate",
+      "output_mode": "draft_only_lawyer_review_required"
+    }
+  ]
+}

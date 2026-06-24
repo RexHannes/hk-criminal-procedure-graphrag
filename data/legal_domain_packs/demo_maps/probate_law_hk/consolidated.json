@@ -1,0 +1,61 @@
+{
+  "domain_id": "probate_law_hk",
+  "title": "Hong Kong Probate Law",
+  "version": "0.1.0",
+  "last_updated": "2026-06-16",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "needs_official_source_verification": true,
+    "authority_status": "licensed_private_metadata_seed"
+  },
+  "sections": [
+    {
+      "id": "01",
+      "title": "Probate Principles",
+      "node_file": "nodes/01_probate_principles.json",
+      "edge_file": "edges/01_probate_edges.json"
+    },
+    {
+      "id": "02",
+      "title": "Probate Procedures and Forms",
+      "node_file": "nodes/02_probate_procedures.json",
+      "edge_file": "edges/02_probate_procedure_edges.json"
+    }
+  ],
+  "flows_file": "flows.json",
+  "specialist_flows": [
+    "probate_procedure_flows.json"
+  ],
+  "form_registries": [
+    "probate_form_registry.json"
+  ],
+  "answer_contracts": [
+    "probate_answer_contracts.json"
+  ],
+  "source_registries": [
+    "probate_source_registry.json"
+  ],
+  "rag_indexes": [
+    "probate_rag_index.json"
+  ],
+  "answer_parts": [
+    {
+      "id": "principles",
+      "label": "Principles",
+      "source": "nodes/01_probate_principles.json"
+    },
+    {
+      "id": "procedures",
+      "label": "Procedures / Forms",
+      "source": "nodes/02_probate_procedures.json"
+    }
+  ],
+  "counts": {
+    "principle_nodes": 66,
+    "procedure_nodes": 24,
+    "forms": 124,
+    "edges": 116,
+    "flows": 5
+  }
+}

@@ -3,6 +3,7 @@ const { composeCriminalLawAnswer } = require("./criminal_law");
 const { composeCriminalProcedureAnswer } = require("./criminal_procedure");
 const { composeGenericAnswer } = require("./generic");
 const { composePiAnswer } = require("./pi");
+const { composeProbateAnswer } = require("./probate");
 
 function composeAnswer(context) {
   const domain = context?.domain || "generic";
@@ -10,6 +11,7 @@ function composeAnswer(context) {
   if (domain === "criminal_law") return composeCriminalLawAnswer(context);
   if (domain === "criminal_procedure") return composeCriminalProcedureAnswer(context);
   if (domain === "company_forms") return composeCompanyFormsAnswer(context);
+  if (domain === "probate") return composeProbateAnswer(context);
   return composeGenericAnswer(context);
 }
 
@@ -20,4 +22,5 @@ module.exports = {
   composeCriminalProcedureAnswer,
   composeGenericAnswer,
   composePiAnswer,
+  composeProbateAnswer,
 };

@@ -1,0 +1,53 @@
+{
+  "domain_id": "probate_law_hk",
+  "source_registry": [
+    {
+      "source_id": "probate_private_butterworths_pat_p252_502",
+      "source_type": "licensed_book",
+      "title": "Butterworths Hong Kong Probate, Administration & Trustee excerpt p252-502",
+      "source_filename": "Butterworths Hong Kong Probate, Administration &amp_ Trustee(2)_p252-502.pdf",
+      "source_hash": "7008c3f318ad952b86a66d94e47116a49ebccc2b52c5eb1d5c42baec44be0aaf",
+      "license_status": "licensed_private",
+      "storage_policy": "private_vault_only",
+      "visibility": "licensed_private",
+      "review_status": "lawyer_review_required",
+      "answer_layer_status": "research_only",
+      "public_output": {
+        "metadata_only": true,
+        "raw_text_emitted": false
+      }
+    },
+    {
+      "source_id": "probate_private_forms_zip",
+      "source_type": "firm_precedent",
+      "title": "Uploaded Probate form bank",
+      "source_filename": "Probate forms.ZIP",
+      "source_hash": "88ac45444ec0dd1b287c680e950ec6008813c5905f3ba4fba9cb121c2fca86c0",
+      "license_status": "firm_private",
+      "storage_policy": "private_vault_only",
+      "visibility": "firm_private",
+      "review_status": "lawyer_review_required",
+      "answer_layer_status": "research_only",
+      "public_output": {
+        "metadata_only": true,
+        "raw_text_emitted": false
+      }
+    },
+    {
+      "source_id": "probate_private_practice_zip",
+      "source_type": "licensed_book",
+      "title": "Uploaded Probate practice notes ZIP",
+      "source_filename": "probate 1.ZIP",
+      "source_hash": "8c78890a1b042e7ff89f4c5fdfcc57882a8e686179b172d60fccdf372e78292c",
+      "license_status": "licensed_private",
+      "storage_policy": "private_vault_only",
+      "visibility": "licensed_private",
+      "review_status": "lawyer_review_required",
+      "answer_layer_status": "research_only",
+      "public_output": {
+        "metadata_only": true,
+        "raw_text_emitted": false
+      }
+    }
+  ]
+}

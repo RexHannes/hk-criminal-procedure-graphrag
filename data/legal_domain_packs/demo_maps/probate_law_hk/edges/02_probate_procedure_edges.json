@@ -1,0 +1,260 @@
+{
+  "domain_id": "probate_law_hk",
+  "edges": [
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.intake",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.death_domicile_capacity_check",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.will_status_review",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.grant_type_selection",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.entitlement_priority_check",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.renunciation_or_consent",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.assets_liabilities_schedule",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.surety_security_review",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.common_form_lodgement",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.registrar_requisition_response",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.summons_or_judge_route",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.caveat_entry_warning",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.appearance_to_warning",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.citation_route",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.probate_action_commencement",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.resealing_foreign_grant",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.special_grant_application",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.lost_will_or_copy_will",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.leave_to_swear_death",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.grant_issue_and_extraction",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.amendment_or_revocation",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.post_grant_administration",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure_root",
+      "to": "probate_procedure.inventory_account_distribution",
+      "relationship": "procedure_step"
+    },
+    {
+      "from": "probate_procedure.intake",
+      "to": "probate_procedure.death_domicile_capacity_check",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.death_domicile_capacity_check",
+      "to": "probate_procedure.will_status_review",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.will_status_review",
+      "to": "probate_procedure.grant_type_selection",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.grant_type_selection",
+      "to": "probate_procedure.entitlement_priority_check",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.entitlement_priority_check",
+      "to": "probate_procedure.renunciation_or_consent",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.renunciation_or_consent",
+      "to": "probate_procedure.assets_liabilities_schedule",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.assets_liabilities_schedule",
+      "to": "probate_procedure.surety_security_review",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.surety_security_review",
+      "to": "probate_procedure.common_form_lodgement",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.common_form_lodgement",
+      "to": "probate_procedure.registrar_requisition_response",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.registrar_requisition_response",
+      "to": "probate_procedure.grant_issue_and_extraction",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.intake",
+      "to": "probate_procedure.caveat_entry_warning",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.caveat_entry_warning",
+      "to": "probate_procedure.appearance_to_warning",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.appearance_to_warning",
+      "to": "probate_procedure.citation_route",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.citation_route",
+      "to": "probate_procedure.probate_action_commencement",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.intake",
+      "to": "probate_procedure.death_domicile_capacity_check",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.death_domicile_capacity_check",
+      "to": "probate_procedure.resealing_foreign_grant",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.resealing_foreign_grant",
+      "to": "probate_procedure.assets_liabilities_schedule",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.assets_liabilities_schedule",
+      "to": "probate_procedure.common_form_lodgement",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.common_form_lodgement",
+      "to": "probate_procedure.registrar_requisition_response",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.registrar_requisition_response",
+      "to": "probate_procedure.grant_issue_and_extraction",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.intake",
+      "to": "probate_procedure.summons_or_judge_route",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.summons_or_judge_route",
+      "to": "probate_procedure.special_grant_application",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.special_grant_application",
+      "to": "probate_procedure.lost_will_or_copy_will",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.lost_will_or_copy_will",
+      "to": "probate_procedure.leave_to_swear_death",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.leave_to_swear_death",
+      "to": "probate_procedure.grant_issue_and_extraction",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.grant_issue_and_extraction",
+      "to": "probate_procedure.amendment_or_revocation",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.amendment_or_revocation",
+      "to": "probate_procedure.post_grant_administration",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "probate_procedure.post_grant_administration",
+      "to": "probate_procedure.inventory_account_distribution",
+      "relationship": "flow_transition"
+    }
+  ]
+}

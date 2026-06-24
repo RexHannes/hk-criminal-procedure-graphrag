@@ -65,6 +65,11 @@ const QUERY_EXPANSIONS = [
     pattern: /\b(unlawful assembly|riot|rioting|public order|protest|protestor|protester|harcourt road|black bloc|black clothing|conceal(?:ed|ment)?|masked|hand(?:ed|ing)? water|water to protest|2019)\b/i,
     terms: ["unlawful assembly", "riot", "public order", "joint enterprise", "accessory", "presence", "common purpose", "breach of the peace", "criminal law"],
     preferred_domains: ["criminal_law_hk", "criminal_procedure_hk"]
+  },
+  {
+    pattern: /\b(probate|letters of administration|intestate|executor|administrator|grant of representation|caveat|warning|citation|reseal|resealing|foreign grant|lost will|copy will|swear death|rectification of will|inventory|estate distribution)\b/i,
+    terms: ["probate", "grant", "executor", "administrator", "will", "estate", "probate registry", "common form", "contentious probate", "assets liabilities"],
+    preferred_domains: ["probate_law_hk"]
   }
 ];
 
@@ -662,6 +667,10 @@ function composerDomainForQuery(query, matched, piWorkflow) {
     return "criminal_law";
   }
   if (detectsCriminalLawQuery(q) || domains.has("criminal_law_hk")) return "criminal_law";
+  if (
+    domains.has("probate_law_hk") ||
+    /\b(probate|letters of administration|intestate|executor|administrator|estate|will|codicil|caveat|warning|citation|reseal|resealing|foreign grant|grant of representation|inventory|grant pending suit|ad colligenda|lost will|swear death|rectification of will)\b/.test(q)
+  ) return "probate";
   if (
     /\b(company|listing|listed|sehk|sfc|winding[- ]?up|statutory demand|petition|insolvency|incorporation|director|shareholder|board|form|filing)\b/.test(q) ||
     domains.has("hk_listing_and_listed_company_regulation")

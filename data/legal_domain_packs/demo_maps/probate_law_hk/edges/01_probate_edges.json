@@ -1,0 +1,330 @@
+{
+  "domain_id": "probate_law_hk",
+  "edges": [
+    {
+      "from": "probate_principles_root",
+      "to": "probate_jurisdiction_business",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_jurisdiction_business",
+      "to": "probate_jurisdiction_business_common_form",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_jurisdiction_business",
+      "to": "probate_jurisdiction_business_solemn_form",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_jurisdiction_business",
+      "to": "probate_jurisdiction_business_registrar_jurisdiction",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_jurisdiction_business",
+      "to": "probate_jurisdiction_business_judge_route",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_jurisdiction_business",
+      "to": "probate_jurisdiction_business_personal_vs_solicitor",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_grant_entitlement",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_grant_entitlement",
+      "to": "probate_grant_entitlement_probate_executor",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_grant_entitlement",
+      "to": "probate_grant_entitlement_admin_with_will_annexed",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_grant_entitlement",
+      "to": "probate_grant_entitlement_intestate_administration",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_grant_entitlement",
+      "to": "probate_grant_entitlement_renunciation_retraction",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_grant_entitlement",
+      "to": "probate_grant_entitlement_additional_administrator",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_will_validity_evidence",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_will_validity_evidence",
+      "to": "probate_will_validity_evidence_due_execution",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_will_validity_evidence",
+      "to": "probate_will_validity_evidence_identity_handwriting_death",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_will_validity_evidence",
+      "to": "probate_will_validity_evidence_plight_condition_alterations",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_will_validity_evidence",
+      "to": "probate_will_validity_evidence_lost_copy_reconstructed",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_will_validity_evidence",
+      "to": "probate_will_validity_evidence_nuncupative_privileged",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_will_validity_evidence",
+      "to": "probate_will_validity_evidence_rectification",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_assets_liabilities",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_assets_liabilities",
+      "to": "probate_assets_liabilities_schedule_assets_liabilities",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_assets_liabilities",
+      "to": "probate_assets_liabilities_corrective_additional_schedule",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_assets_liabilities",
+      "to": "probate_assets_liabilities_small_estate_bank_release",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_sureties_guarantees",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_sureties_guarantees",
+      "to": "probate_sureties_guarantees_surety_required",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_sureties_guarantees",
+      "to": "probate_sureties_guarantees_guarantee_effect",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_foreign_resealing",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_foreign_resealing",
+      "to": "probate_foreign_resealing_designated_route",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_foreign_resealing",
+      "to": "probate_foreign_resealing_resealing_documents",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_foreign_resealing",
+      "to": "probate_foreign_resealing_resealing_corrections",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_special_grants",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_special_grants",
+      "to": "probate_special_grants_pending_suit",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_special_grants",
+      "to": "probate_special_grants_ad_colligenda_bona",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_special_grants",
+      "to": "probate_special_grants_de_bonis_non",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_special_grants",
+      "to": "probate_special_grants_minor_incapacity",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_caveats_citations",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_caveats_citations",
+      "to": "probate_caveats_citations_caveat_entry",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_caveats_citations",
+      "to": "probate_caveats_citations_warning_appearance",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_caveats_citations",
+      "to": "probate_caveats_citations_citation_accept_refuse_take_grant",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_caveats_citations",
+      "to": "probate_caveats_citations_citation_propound_will",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_probate_action",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_probate_action",
+      "to": "probate_probate_action_parties_interest",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_probate_action",
+      "to": "probate_probate_action_testamentary_scripts",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_probate_action",
+      "to": "probate_probate_action_solemn_form_proof",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_personal_representative_powers",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_personal_representative_powers",
+      "to": "probate_personal_representative_powers_rights_of_action",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_personal_representative_powers",
+      "to": "probate_personal_representative_powers_disposal_charge_mortgage",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_personal_representative_powers",
+      "to": "probate_personal_representative_powers_conveyance_immovable",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_fiduciary_duties",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_fiduciary_duties",
+      "to": "probate_fiduciary_duties_self_dealing_purchase",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_fiduciary_duties",
+      "to": "probate_fiduciary_duties_appropriation_satisfaction",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_inventory_account_liability",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_inventory_account_liability",
+      "to": "probate_inventory_account_liability_inventory_account",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_inventory_account_liability",
+      "to": "probate_inventory_account_liability_protection_on_grant",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_inventory_account_liability",
+      "to": "probate_inventory_account_liability_devastavit_waste_conversion",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_debts_distribution",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_debts_distribution",
+      "to": "probate_debts_distribution_debts_creditors",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_debts_distribution",
+      "to": "probate_debts_distribution_retainer_preference",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_debts_distribution",
+      "to": "probate_debts_distribution_executor_year_distribution",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_debts_distribution",
+      "to": "probate_debts_distribution_residuary_accounts",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_family_dependant_overlay",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_family_dependant_overlay",
+      "to": "probate_family_dependant_overlay_dependant_claim_flag",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_principles_root",
+      "to": "probate_registry_documents",
+      "relationship": "contains"
+    },
+    {
+      "from": "probate_registry_documents",
+      "to": "probate_registry_documents_inspection_copies",
+      "relationship": "principle_child"
+    },
+    {
+      "from": "probate_registry_documents",
+      "to": "probate_registry_documents_registry_requisitions",
+      "relationship": "principle_child"
+    }
+  ]
+}

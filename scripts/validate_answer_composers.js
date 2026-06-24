@@ -92,6 +92,13 @@ assert(company.classification?.matter_type === "company_or_civil_forms", "Compan
 assert(company.classification?.scenario === "winding_up_or_statutory_demand", "Company/forms composer failed winding-up scenario", errors);
 assert(blob(company.applied_answer).includes("do not draft or file from memory"), "Company/forms answer lacks drafting gate", errors);
 
+const probate = composeAnswer({ domain: "probate", query: "My client is executor under a will and needs probate. What should we do and which forms?" });
+assert(probate.classification?.matter_type === "probate", "Probate composer scaffold not routed", errors);
+assert(probate.classification?.scenario === "common_form_probate_grant", "Probate composer failed common-form grant scenario", errors);
+assert(blob(probate.applied_answer).includes("metadata"), "Probate answer should warn metadata/source-gated status", errors);
+assert((probate.form_candidates || []).length >= 2, "Probate answer lacks form candidates", errors);
+assert(probate.source_audit?.display === "collapsed", "Probate source audit is not collapsed", errors);
+
 if (errors.length) {
   console.error("Answer composer validation failed:");
   errors.forEach(error => console.error(`- ${error}`));
