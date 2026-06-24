@@ -1,11 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 const { composeAnswer } = require("./answer-composers");
-const { classifyCriminalLaw } = require("./answer-composers/criminal_law");
 const { filterPiChunksByContract } = require("./answer-composers/pi");
 const { findCachedLegalAnswer, writeLegalAnswerCache } = require("./legal-ingest/cache");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
+const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -100,10 +100,8 @@ function detectsPersonalInjuryPurpose(query) {
 }
 
 function detectsCriminalLawPriority(query) {
-  if (detectsPersonalInjuryPurpose(query)) return false;
-  if (detectsCriminalPublicOrderQuery(query)) return true;
-  const classification = classifyCriminalLaw(query);
-  return classification.scenario !== "criminal_law_general";
+  const arbiter = arbitrateLegalQuery(query);
+  return arbiter.selected_domain === "criminal_law" || arbiter.selected_domain === "criminal_procedure";
 }
 
 function loadInconsistentPleadingsVertical(query) {
@@ -188,6 +186,8 @@ function expandQueryText(query) {
 
 function queryDomainPreferences(query) {
   const domains = new Set();
+  const arbiter = arbitrateLegalQuery(query);
+  (arbiter.allowed_static_domains || []).forEach(domainId => domains.add(domainId));
   for (const item of QUERY_EXPANSIONS) {
     if (item.pattern.test(query)) {
       (item.preferred_domains || []).forEach(domainId => domains.add(domainId));
@@ -649,7 +649,11 @@ function detectPiRoutes(query) {
 }
 
 function composerDomainForQuery(query, matched, piWorkflow) {
-  if (detectsCriminalLawPriority(query)) return "criminal_law";
+  const arbiter = arbitrateLegalQuery(query);
+  if (arbiter.selected_domain === "criminal_law") return "criminal_law";
+  if (arbiter.selected_domain === "criminal_procedure") return "criminal_procedure";
+  if (arbiter.selected_domain === "personal_injury" && piWorkflow) return "personal_injury";
+  if (arbiter.selected_domain === "company_forms") return "company_forms";
   if (piWorkflow) return "personal_injury";
   const q = String(query || "").toLowerCase();
   const domains = new Set((matched || []).map(item => item.domain_id).filter(Boolean));
@@ -802,6 +806,18 @@ function buildPiWorkflow(query) {
 }
 
 function postFilterMatchesForQuery(query, matches) {
+  const arbiter = arbitrateLegalQuery(query);
+  if ((arbiter.allowed_static_domains || []).length || (arbiter.blocked_static_domains || []).length) {
+    let filtered = matches.filter(match => {
+      if ((arbiter.blocked_static_domains || []).includes(match.domain_id)) return false;
+      if ((arbiter.allowed_static_domains || []).length) return arbiter.allowed_static_domains.includes(match.domain_id);
+      return true;
+    });
+    if (!filtered.length && arbiter.selected_domain !== "generic") {
+      filtered = matches.filter(match => !(arbiter.blocked_static_domains || []).includes(match.domain_id));
+    }
+    if (filtered.length) return filtered.slice(0, 8);
+  }
   if (detectsCriminalPublicOrderQuery(query) && !detectsPersonalInjuryPurpose(query)) {
     const criminal = matches.filter(match => {
       const blob = [match.domain_id, match.doctrine_node_id, match.title, match.summary].join(" ").toLowerCase();
@@ -854,6 +870,7 @@ module.exports = async function handler(req, res) {
   }
 
   const graph = loadGraph();
+  const arbiter = arbitrateLegalQuery(query);
   const deterministic = deterministicMatches(query, graph, 14);
   const ai = await askAiToRank(query, deterministic);
   let matched = deterministic;
@@ -932,6 +949,7 @@ module.exports = async function handler(req, res) {
     analysis_status: inquiry.status,
     ai_query_focus: ai.query_focus || "",
     backend_status: backendStatus,
+    arbiter_trace: arbiter,
     detected_domains: ai.detected_domains && ai.detected_domains.length
       ? ai.detected_domains
       : Array.from(new Set(matched.map(item => item.domain_id))),

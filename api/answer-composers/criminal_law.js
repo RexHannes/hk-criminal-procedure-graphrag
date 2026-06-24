@@ -82,14 +82,41 @@ function publicOrderAnswer() {
 function seditionAnswer() {
   return {
     title: "Applied Triage - Sedition / Public Expression",
-    short_answer: "This is a criminal-law public-expression issue. The system should separate statutory elements, meaning/context, constitutionality arguments, procedure/consent issues and source-linked paragraph proof before giving any final view.",
+    short_answer: "This is a criminal-law public-expression issue, not probate or personal injury. Ordinary criticism of government performance is not automatically sedition; the risk turns on the exact words, intention, context, audience, medium, surrounding conduct, and whether source-backed sedition/public-expression elements are actually engaged. Treat the current case fruits as candidate research until reviewed.",
     sections: [
       {
-        heading: "Issues",
+        heading: "Short Answer",
         items: [
-          "Identify the exact words, publication, audience and context.",
-          "Separate seditious intention, publication/uttering conduct, constitutional/free-expression arguments and procedure/jurisdiction.",
-          "Treat case fruits as source-linked research until reviewed.",
+          "Do not route this to probate, PI, or tort merely because the query mentions government failure, fire hazard, or criticism.",
+          "The first question is what exactly was said or published, to whom, in what setting, and with what apparent purpose.",
+          "A complaint that government failed to deal with a fire hazard may be lawful criticism on one view, but the system must check statutory elements and case context before saying more.",
+        ],
+      },
+      {
+        heading: "Likely Legal Issues",
+        items: [
+          "Whether the words or publication are merely criticism, complaint, public-interest warning, satire, or allegation of misconduct.",
+          "Whether the prosecution could point to seditious intention / incitement-type features from wording, context, audience reaction, repetition, medium, or surrounding events.",
+          "Whether any statutory exception, constitutional/free-expression argument, or public-interest context is relevant.",
+          "Whether the question is about substantive liability, arrest/interview risk, charge screening, or trial defence.",
+        ],
+      },
+      {
+        heading: "Facts Needed",
+        items: [
+          "Exact words, image/video/post and language used.",
+          "Where and when it was said; audience size; platform; whether it was public or private.",
+          "Whether it called for action, hatred, contempt, disaffection, violence, obstruction, or unlawful conduct.",
+          "Whether there were surrounding protests, disorder, national-security allegations, or prior warnings.",
+          "Whether the person has been contacted by police, arrested, charged, or asked for interview.",
+        ],
+      },
+      {
+        heading: "Source / Review Gate",
+        items: [
+          "Use the sedition/public-expression case fruits and statute nodes as source-linked research.",
+          "Do not treat candidate propositions as answer-safe until a reviewer checks the paragraph, authority role and factual fit.",
+          "If the user is facing police contact or a charge, escalate to criminal-law procedure and bail/interview advice immediately.",
         ],
       },
     ],
@@ -127,7 +154,9 @@ function composeCriminalLawAnswer({ query, matched }) {
     answer_contract: {
       domain: "criminal_law",
       scenario_family: classification.scenario,
-      answer_sections: ["Short Answer", "Likely Legal Issues", "Evidence Factors", "Possible Defence / Mitigation Lines", "Source / Review Gate"],
+      answer_sections: classification.scenario === "sedition_public_expression"
+        ? ["Short Answer", "Likely Legal Issues", "Facts Needed", "Source / Review Gate"]
+        : ["Short Answer", "Likely Legal Issues", "Evidence Factors", "Possible Defence / Mitigation Lines", "Source / Review Gate"],
       required_source_families: classification.scenario === "public_order_unlawful_assembly_riot"
         ? ["criminal_law_hk.public_order", "criminal_law_hk.joint.enterprise"]
         : ["criminal_law_hk"],
