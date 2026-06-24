@@ -1,4 +1,4 @@
-const { assertReviewAdmin, isSchemaMismatchError, json, supabaseConfig, supabaseRest } = require("../../_utils");
+const { assertReviewAdmin, isSchemaMismatchError, json, supabaseConfig, supabaseRest } = require("../../../../src/api/legal-ingest/_utils");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {

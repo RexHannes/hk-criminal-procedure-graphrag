@@ -1,4 +1,4 @@
-const { assertReviewAdmin, json, supabaseConfig } = require("./legal-ingest/_utils");
+const { assertReviewAdmin, json, supabaseConfig } = require("../src/api/legal-ingest/_utils");
 const {
   buildCaseFruitSopBridge,
   writeCaseFruitSopBridgeCache,

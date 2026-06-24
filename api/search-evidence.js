@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
-const { composeAnswer } = require("./answer-composers");
-const { filterPiChunksByContract } = require("./answer-composers/pi");
-const { findCachedLegalAnswer, writeLegalAnswerCache } = require("./legal-ingest/cache");
+const { composeAnswer } = require("../src/api/answer-composers");
+const { filterPiChunksByContract } = require("../src/api/answer-composers/pi");
+const { findCachedLegalAnswer, writeLegalAnswerCache } = require("../src/api/legal-ingest/cache");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
