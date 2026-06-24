@@ -1,0 +1,61 @@
+{
+  "workflow_id": "notebooklm_field_expansion_workflow_v1",
+  "generated_at": "2026-06-24",
+  "status": "candidate_only_operational_workflow",
+  "purpose": "Use NotebookLM as a private, candidate-only tree and landmark-case proposer, then verify every public case fruit before attaching to backend doctrine branches.",
+  "source_policy": {
+    "notebooklm_role": "candidate_tree_and_case_lineage_proposer_only",
+    "deepseek_role": "secondary_case_name_or_lineage_suggestion_only",
+    "public_source_role": "only source of paragraph/proposition proof",
+    "private_book_text_in_public_repo": "forbidden",
+    "answer_safe_auto_promotion": false
+  },
+  "phases": [
+    {
+      "phase_id": "existing_tree_match",
+      "description": "Try existing domain packs and doctrine_node_id routes before asking NotebookLM.",
+      "outputs": ["matched_domain_id", "matched_doctrine_node_ids", "tree_gap_reason"]
+    },
+    {
+      "phase_id": "notebooklm_candidate_tree",
+      "description": "Ask NotebookLM for metadata-only field/branch tree, routing keywords, statutory anchors, and candidate case names.",
+      "outputs": ["candidate_field_tree", "candidate_landmark_cases", "routing_keywords", "exclusion_keywords"]
+    },
+    {
+      "phase_id": "secondary_case_discovery",
+      "description": "Optionally ask DeepSeek/API for additional candidate case names; treat every result as hallucination-risk until public-source verified.",
+      "outputs": ["candidate_case_names", "hallucination_check_status"]
+    },
+    {
+      "phase_id": "public_source_verification",
+      "description": "Verify candidate cases through LegalRef/HKLII/Judiciary, extract paragraphs, and require exact quote match before any proposition card.",
+      "outputs": ["source_manifest", "paragraph_cards", "proposition_cards", "rejected_candidates"]
+    },
+    {
+      "phase_id": "tree_attachment",
+      "description": "Attach quote-verified proposition cards to existing or newly proposed doctrine_node_id as machine_candidate only.",
+      "outputs": ["proposition_node_links", "l4_case_applications", "l5_paragraph_proof", "review_queue"]
+    },
+    {
+      "phase_id": "review_and_promotion",
+      "description": "Human review may promote source_verified proposition cards to answer_safe. The workflow must never do this automatically.",
+      "outputs": ["review_items", "answer_safe_promotions"]
+    }
+  ],
+  "status_ladder": [
+    "notebooklm_candidate",
+    "public_case_found",
+    "quote_verified",
+    "source_verified",
+    "lawyer_reviewed",
+    "answer_safe"
+  ],
+  "hard_gates": [
+    "No NotebookLM output is authority.",
+    "No DeepSeek output is authority.",
+    "No private book excerpt may be committed.",
+    "No proposition without exact public-source quote match.",
+    "No tree link without known doctrine_node_id or candidate branch record.",
+    "No answer_safe without explicit review approval."
+  ]
+}
