@@ -43,7 +43,7 @@ const STOPWORDS = new Set([
   "of", "on", "or", "the", "to", "what", "when", "where", "which", "who", "why", "with", "does", "do",
   "there", "under", "law", "hk", "hong", "kong",
 ]);
-const VERIFIED_COVERAGE_STATUSES = new Set(["paragraph_verified", "answer_safe"]);
+const VERIFIED_COVERAGE_STATUSES = new Set(["source_verified", "paragraph_verified", "answer_safe"]);
 
 const QUERY_EXPANSIONS = [
   {
@@ -543,8 +543,24 @@ async function firstSupabaseRow(baseUrl, serviceKey, table, query) {
   return Array.isArray(rows) && rows.length ? rows[0] : null;
 }
 
+function hasPublicParagraphProof({ proposition, paragraph, legalCase }) {
+  return Boolean(
+    (paragraph?.source_url || legalCase?.source_url) &&
+    (paragraph?.para_no || proposition?.canonical_para_id) &&
+    (paragraph?.text || proposition?.proposition_text || proposition?.candidate_proposition)
+  );
+}
+
+function evidenceLayerStatus({ reviewStatus, proposition, paragraph, legalCase }) {
+  if (SAFE_STATUSES.has(reviewStatus)) return "answer_safe";
+  if (VERIFIED_STATUSES.has(reviewStatus)) return "paragraph_verified";
+  if (hasPublicParagraphProof({ proposition, paragraph, legalCase })) return "source_verified";
+  return "candidate_only";
+}
+
 function cleanEvidenceItem({ link, proposition, paragraph, legalCase }) {
   const reviewStatus = link.review_status || proposition.review_status || "machine_candidate";
+  const answerLayerStatus = evidenceLayerStatus({ reviewStatus, proposition, paragraph, legalCase });
   return {
     case_name: legalCase?.title_en || legalCase?.case_name || "",
     neutral_citation: legalCase?.neutral_citation || "",
@@ -560,11 +576,9 @@ function cleanEvidenceItem({ link, proposition, paragraph, legalCase }) {
     link_type: link.link_type || "candidate",
     authority_role: link.link_type || "candidate",
     verification_status: reviewStatus,
-    answer_layer_status: SAFE_STATUSES.has(reviewStatus)
-      ? "answer_safe"
-      : VERIFIED_STATUSES.has(reviewStatus)
-        ? "paragraph_verified"
-        : "candidate_only",
+    source_verification_status: answerLayerStatus === "source_verified" ? "public_paragraph_linked" : reviewStatus,
+    public_source_link_verified: answerLayerStatus === "source_verified" || answerLayerStatus === "paragraph_verified" || answerLayerStatus === "answer_safe",
+    answer_layer_status: answerLayerStatus,
     human_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
     validator_flags: [],
   };
@@ -605,13 +619,27 @@ async function evidenceForNode(baseUrl, serviceKey, doctrineNodeId) {
 
 function coverageForEvidence(evidence) {
   if (evidence.some(item => item.answer_layer_status === "answer_safe")) return "answer_safe";
-  if (evidence.some(item => item.answer_layer_status === "paragraph_verified")) return "paragraph_verified";
+  if (evidence.some(item => item.answer_layer_status === "paragraph_verified" || item.answer_layer_status === "source_verified")) return "paragraph_verified";
   if (evidence.length) return "candidate_only";
   return "no_evidence";
 }
 
+function hasLocalPublicParagraphProof(item) {
+  return Boolean(item?.source_url && item?.para_no && (item?.paragraph_text || item?.supporting_quote || item?.proposition_text));
+}
+
 function localEvidenceFallbackForNode(doctrineNodeId) {
-  return localCaseFruitEvidenceForNode(doctrineNodeId);
+  return localCaseFruitEvidenceForNode(doctrineNodeId).map(item => {
+    if (item.answer_layer_status === "candidate_only" && hasLocalPublicParagraphProof(item)) {
+      return {
+        ...item,
+        answer_layer_status: "source_verified",
+        source_verification_status: "public_paragraph_linked",
+        public_source_link_verified: true,
+      };
+    }
+    return item;
+  });
 }
 
 function warningsForResult(matches, aiStatus, backendStatus, legalSourceCardCount = 0) {

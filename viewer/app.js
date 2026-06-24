@@ -885,6 +885,7 @@
   const COVERAGE_BADGE = {
     answer_safe: '<span class="badge badge-approved">Answer-safe (human reviewed)</span>',
     paragraph_verified: '<span class="badge badge-verified">Paragraph verified</span>',
+    source_verified: '<span class="badge badge-verified">Source verified — review pending</span>',
     candidate_only: '<span class="badge badge-review">Candidate only — needs review</span>',
     no_evidence: '<span class="badge badge-pending">No paragraph evidence yet</span>',
   };
@@ -1067,6 +1068,7 @@
         <div class="inq-evidence">
           <div><strong>${esc(e.case_name || 'Unnamed case')}</strong> <span class="inq-cite">${esc(e.neutral_citation || '')}${e.para_no ? ' · ¶' + esc(e.para_no) : ''}</span></div>
           <p>${esc((e.proposition_text || e.paragraph_text || '').slice(0, 260))}</p>
+          ${e.source_url ? `<a class="inq-cite" href="${esc(e.source_url)}" target="_blank" rel="noreferrer">Open public source</a>` : ''}
           ${COVERAGE_BADGE[e.answer_layer_status] || ''}
         </div>`).join('');
       return `
