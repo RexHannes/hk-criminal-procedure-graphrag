@@ -38,6 +38,17 @@ function providerName(env, primary, fallback, defaultValue) {
   return String(env[primary] || env[fallback] || defaultValue || "").trim().toLowerCase();
 }
 
+function cleanEnvValue(env, key) {
+  return String(env[key] || "").trim().replace(/^['"]|['"]$/g, "");
+}
+
+function openRouterFreeOnlyAllowsModel(env, model) {
+  const freeOnly = String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false";
+  const paidAllowed = String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() === "true";
+  if (!freeOnly || paidAllowed) return true;
+  return /:free$/i.test(String(model || "").trim());
+}
+
 function isProductionEmbeddingReady(env) {
   const provider = providerName(env, "LEGAL_EMBEDDING_PROVIDER", "EMBEDDING_PROVIDER", "local-hash");
   if (["", "none", "local", "local-hash"].includes(provider)) return false;
@@ -45,8 +56,16 @@ function isProductionEmbeddingReady(env) {
     openai: ["OPENAI_API_KEY"],
     voyage: ["VOYAGE_API_KEY"],
     cohere: ["COHERE_API_KEY"],
+    openrouter: ["OPENROUTER_API_KEY"],
   };
-  return hasAny(env, requiredKeys[provider] || ["LEGAL_EMBEDDING_API_KEY", "OPENAI_API_KEY", "VOYAGE_API_KEY", "COHERE_API_KEY"]);
+  if (!hasAny(env, requiredKeys[provider] || ["LEGAL_EMBEDDING_API_KEY", "OPENAI_API_KEY", "VOYAGE_API_KEY", "COHERE_API_KEY", "OPENROUTER_API_KEY"])) {
+    return false;
+  }
+  if (provider === "openrouter") {
+    const model = cleanEnvValue(env, "LEGAL_EMBEDDING_MODEL") || cleanEnvValue(env, "OPENROUTER_EMBEDDING_MODEL");
+    return Boolean(model) && openRouterFreeOnlyAllowsModel(env, model);
+  }
+  return true;
 }
 
 function isProductionRerankReady(env) {
@@ -55,8 +74,16 @@ function isProductionRerankReady(env) {
   const requiredKeys = {
     cohere: ["COHERE_API_KEY"],
     voyage: ["VOYAGE_API_KEY"],
+    openrouter: ["OPENROUTER_API_KEY"],
   };
-  return hasAny(env, requiredKeys[provider] || ["LEGAL_RERANK_API_KEY", "COHERE_API_KEY", "VOYAGE_API_KEY"]);
+  if (!hasAny(env, requiredKeys[provider] || ["LEGAL_RERANK_API_KEY", "COHERE_API_KEY", "VOYAGE_API_KEY", "OPENROUTER_API_KEY"])) {
+    return false;
+  }
+  if (provider === "openrouter") {
+    const model = cleanEnvValue(env, "LEGAL_RERANK_MODEL") || cleanEnvValue(env, "OPENROUTER_RERANK_MODEL");
+    return Boolean(model) && openRouterFreeOnlyAllowsModel(env, model);
+  }
+  return true;
 }
 
 function isDurableOrchestrationReady(env) {
@@ -70,10 +97,13 @@ function artifactStats(batchDir = DEFAULT_BATCH_DIR) {
   const links = readJson(path.join(batchDir, "proposition_node_links.json"));
   const propositionCards = propositions.proposition_cards || [];
   const answerSafe = propositionCards.filter(card => card.answer_safe === true || card.answer_layer_status === "answer_safe");
-  const nonCandidate = propositionCards.filter(card => {
+  const illicitNonCandidate = propositionCards.filter(card => {
     const state = card.review_state || card.review_status || "";
     const layer = card.answer_layer_status || "";
-    return card.answer_safe === true || layer === "answer_safe" || ["approved", "lawyer_reviewed", "answer_safe"].includes(state);
+    const approvedGold = card.answer_safe === true || layer === "answer_safe" || ["approved", "lawyer_reviewed", "answer_safe"].includes(state);
+    if (approvedGold) return false;
+    const allowedCandidateStates = new Set(["", "machine_candidate", "candidate_only", "quote_verified", "source_verified", "research_only", "lawyer_review_required"]);
+    return !allowedCandidateStates.has(state) || !allowedCandidateStates.has(layer);
   });
   return {
     batch_id: manifest.batch_id,
@@ -84,7 +114,7 @@ function artifactStats(batchDir = DEFAULT_BATCH_DIR) {
     link_count: parseReport.link_count || (links.proposition_node_links || []).length,
     rejected_count: parseReport.rejected_count || 0,
     answer_safe_count: answerSafe.length,
-    non_candidate_count: nonCandidate.length,
+    non_candidate_count: illicitNonCandidate.length,
     source_policy: manifest.source_policy || {},
     scale_policy: manifest.scale_policy || {},
   };
@@ -127,9 +157,15 @@ function evaluateScaleReadiness({
     }),
     gate("production_embeddings_configured", isProductionEmbeddingReady(env), {
       provider: providerName(env, "LEGAL_EMBEDDING_PROVIDER", "EMBEDDING_PROVIDER", "local-hash"),
+      model: cleanEnvValue(env, "LEGAL_EMBEDDING_MODEL") || cleanEnvValue(env, "OPENROUTER_EMBEDDING_MODEL") || cleanEnvValue(env, "EMBEDDING_MODEL"),
+      openrouter_free_only: String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false",
+      openrouter_paid_allowed: String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() === "true",
     }),
     gate("production_reranker_configured", isProductionRerankReady(env), {
       provider: providerName(env, "LEGAL_RERANK_PROVIDER", "RERANK_PROVIDER", "none"),
+      model: cleanEnvValue(env, "LEGAL_RERANK_MODEL") || cleanEnvValue(env, "OPENROUTER_RERANK_MODEL") || cleanEnvValue(env, "RERANK_MODEL"),
+      openrouter_free_only: String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false",
+      openrouter_paid_allowed: String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() === "true",
     }),
     gate("durable_orchestration_configured", isDurableOrchestrationReady(env), {
       inngest_event_key_present: Boolean(env.INNGEST_EVENT_KEY),

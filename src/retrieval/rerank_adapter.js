@@ -1,6 +1,6 @@
 const { exactJsonHeaders } = require("../api/json_content_type");
 
-const SUPPORTED_RERANK_PROVIDERS = new Set(["none", "local", "cohere", "voyage"]);
+const SUPPORTED_RERANK_PROVIDERS = new Set(["none", "local", "cohere", "voyage", "openrouter"]);
 
 function rerankProvider(env = process.env) {
   return String(env.LEGAL_RERANK_PROVIDER || env.RERANK_PROVIDER || "none").trim().toLowerCase();
@@ -16,9 +16,19 @@ function assertRerankConfig(env = process.env) {
   const keyMap = {
     cohere: "COHERE_API_KEY",
     voyage: "VOYAGE_API_KEY",
+    openrouter: "OPENROUTER_API_KEY",
   };
   const keyName = keyMap[provider];
   if (!env[keyName]) throw new Error(`missing_rerank_key:${keyName}`);
+  if (provider === "openrouter") {
+    const model = env.LEGAL_RERANK_MODEL || env.OPENROUTER_RERANK_MODEL || "";
+    const freeOnly = String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false";
+    const paidAllowed = String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() === "true";
+    if (!model) throw new Error("missing_rerank_model:LEGAL_RERANK_MODEL");
+    if (freeOnly && !paidAllowed && !/:free$/i.test(model)) {
+      throw new Error("openrouter_free_rerank_model_required");
+    }
+  }
   return { provider, status: "configured", key_name: keyName };
 }
 
@@ -107,6 +117,27 @@ async function voyageRerank(query, candidates, { env, limit }) {
   return { provider: "voyage", status: "configured", model, results };
 }
 
+async function openRouterRerank(query, candidates, { env, limit }) {
+  const model = env.LEGAL_RERANK_MODEL || env.OPENROUTER_RERANK_MODEL;
+  const documents = (candidates || []).map(candidateText);
+  const payload = await postJson("https://openrouter.ai/api/v1/rerank", {
+    headers: { Authorization: `Bearer ${env.OPENROUTER_API_KEY}` },
+    body: {
+      model,
+      query,
+      documents,
+      top_n: Math.min(limit, documents.length),
+    },
+  });
+  const results = (payload.results || []).map(item => ({
+    ...(candidates[item.index] || {}),
+    rerank_score: Number(item.relevance_score || 0),
+    rerank_provider: "openrouter",
+    rerank_model: model,
+  }));
+  return { provider: "openrouter", status: "configured", model, results };
+}
+
 async function rerank(query, candidates, { env = process.env, limit = 10 } = {}) {
   const config = assertRerankConfig(env);
   if (config.provider === "none") {
@@ -117,6 +148,7 @@ async function rerank(query, candidates, { env = process.env, limit = 10 } = {})
   }
   if (config.provider === "cohere") return cohereRerank(query, candidates, { env, limit });
   if (config.provider === "voyage") return voyageRerank(query, candidates, { env, limit });
+  if (config.provider === "openrouter") return openRouterRerank(query, candidates, { env, limit });
   throw new Error(`unsupported_rerank_provider:${config.provider}`);
 }
 

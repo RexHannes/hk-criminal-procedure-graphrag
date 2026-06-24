@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 const { exactJsonHeaders } = require("../api/json_content_type");
 
-const SUPPORTED_EMBEDDING_PROVIDERS = new Set(["none", "local", "local-hash", "openai", "voyage", "cohere"]);
+const SUPPORTED_EMBEDDING_PROVIDERS = new Set(["none", "local", "local-hash", "openai", "voyage", "cohere", "openrouter"]);
 
 function embeddingProvider(env = process.env) {
   return String(env.LEGAL_EMBEDDING_PROVIDER || env.EMBEDDING_PROVIDER || "none").trim().toLowerCase();
@@ -18,9 +18,19 @@ function assertEmbeddingConfig(env = process.env) {
     openai: "OPENAI_API_KEY",
     voyage: "VOYAGE_API_KEY",
     cohere: "COHERE_API_KEY",
+    openrouter: "OPENROUTER_API_KEY",
   };
   const keyName = keyMap[provider];
   if (!env[keyName]) throw new Error(`missing_embedding_key:${keyName}`);
+  if (provider === "openrouter") {
+    const model = env.LEGAL_EMBEDDING_MODEL || env.OPENROUTER_EMBEDDING_MODEL || "";
+    const freeOnly = String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false";
+    const paidAllowed = String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() === "true";
+    if (!model) throw new Error("missing_embedding_model:LEGAL_EMBEDDING_MODEL");
+    if (freeOnly && !paidAllowed && !/:free$/i.test(model)) {
+      throw new Error("openrouter_free_embedding_model_required");
+    }
+  }
   return { provider, status: "configured", key_name: keyName };
 }
 
@@ -96,6 +106,19 @@ async function cohereEmbedding(text, env) {
   return { provider: "cohere", status: "configured", model, vector, dimension: vector.length };
 }
 
+async function openRouterEmbedding(text, env) {
+  const model = env.LEGAL_EMBEDDING_MODEL || env.OPENROUTER_EMBEDDING_MODEL;
+  const body = { model, input: text };
+  if (env.LEGAL_EMBEDDING_DIM) body.dimensions = Number(env.LEGAL_EMBEDDING_DIM);
+  const payload = await postJson("https://openrouter.ai/api/v1/embeddings", {
+    headers: { Authorization: `Bearer ${env.OPENROUTER_API_KEY}` },
+    body,
+  });
+  const vector = payload.data?.[0]?.embedding;
+  if (!Array.isArray(vector)) throw new Error("openrouter_embedding_missing_vector");
+  return { provider: "openrouter", status: "configured", model, vector, dimension: vector.length };
+}
+
 async function embedText(text, { env = process.env, dimension = 384 } = {}) {
   const config = assertEmbeddingConfig(env);
   if (config.provider === "none" || config.provider === "local" || config.provider === "local-hash") {
@@ -109,6 +132,7 @@ async function embedText(text, { env = process.env, dimension = 384 } = {}) {
   if (config.provider === "openai") return openAiEmbedding(text, env);
   if (config.provider === "voyage") return voyageEmbedding(text, env);
   if (config.provider === "cohere") return cohereEmbedding(text, env);
+  if (config.provider === "openrouter") return openRouterEmbedding(text, env);
   throw new Error(`unsupported_embedding_provider:${config.provider}`);
 }
 

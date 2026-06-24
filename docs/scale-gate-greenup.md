@@ -24,6 +24,21 @@ OPENROUTER_ALLOW_PAID=false
 
 It does **not** add provider keys and does **not** approve legal propositions.
 
+If `OPENROUTER_API_KEY` is already present, the script also writes the free-only
+OpenRouter retrieval defaults:
+
+```text
+OPENROUTER_MODEL=nvidia/nemotron-3-ultra-550b-a55b:free
+LEGAL_EMBEDDING_PROVIDER=openrouter
+LEGAL_EMBEDDING_MODEL=nvidia/llama-nemotron-embed-vl-1b-v2:free
+LEGAL_EMBEDDING_DIM=2048
+LEGAL_RERANK_PROVIDER=openrouter
+LEGAL_RERANK_MODEL=nvidia/llama-nemotron-rerank-vl-1b-v2:free
+```
+
+The model IDs deliberately end in `:free`, so the OpenRouter free-only guard can
+allow them without setting `OPENROUTER_ALLOW_PAID=true`.
+
 ## What Can Be Automated
 
 ```text
@@ -42,11 +57,13 @@ bail_gold_review_set_exists
 
 require real inputs:
 
-- embeddings: Voyage, Cohere, OpenAI, or another implemented embedding provider key;
-- reranker: Cohere or Voyage reranker key;
+- embeddings: Voyage, Cohere, OpenAI, or OpenRouter with a free embedding model;
+- reranker: Cohere, Voyage, or OpenRouter with a free rerank model;
 - gold review: human/legal approval of at least 3 CFA bail propositions.
 
-OpenRouter and DeepSeek chat keys do not clear the embedding or reranker gates.
+DeepSeek chat keys do not clear the embedding or reranker gates. OpenRouter can
+clear those gates only when configured as the embedding/rerank provider with
+free `:free` model IDs or an explicit paid override.
 
 ## Review Packet
 

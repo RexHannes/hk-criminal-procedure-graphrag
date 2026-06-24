@@ -8,6 +8,10 @@ const { evaluateScaleReadiness, loadEnv } = require("../src/case_graph/scale_rea
 const ROOT = path.resolve(__dirname, "..");
 const ENV_LOCAL = path.join(ROOT, ".env.local");
 const REVIEW_PACKET = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "bail_public_batch_v1", "answer_safe_review_packet.json");
+const OPENROUTER_FREE_CHAT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free";
+const OPENROUTER_FREE_EMBEDDING_MODEL = "nvidia/llama-nemotron-embed-vl-1b-v2:free";
+const OPENROUTER_FREE_RERANK_MODEL = "nvidia/llama-nemotron-rerank-vl-1b-v2:free";
+const OPENROUTER_FREE_EMBEDDING_DIM = "2048";
 
 function parseArgs(argv) {
   const args = { targetCases: 10000, writeLocalDevEnv: false };
@@ -37,6 +41,14 @@ function writeLocalDevEnv() {
     OPENROUTER_FREE_ONLY: "true",
     OPENROUTER_ALLOW_PAID: "false",
   };
+  if (process.env.OPENROUTER_API_KEY || entries.has("OPENROUTER_API_KEY")) {
+    safeDefaults.OPENROUTER_MODEL = OPENROUTER_FREE_CHAT_MODEL;
+    safeDefaults.LEGAL_EMBEDDING_PROVIDER = "openrouter";
+    safeDefaults.LEGAL_EMBEDDING_MODEL = OPENROUTER_FREE_EMBEDDING_MODEL;
+    safeDefaults.LEGAL_EMBEDDING_DIM = OPENROUTER_FREE_EMBEDDING_DIM;
+    safeDefaults.LEGAL_RERANK_PROVIDER = "openrouter";
+    safeDefaults.LEGAL_RERANK_MODEL = OPENROUTER_FREE_RERANK_MODEL;
+  }
   for (const [key, value] of Object.entries(safeDefaults)) {
     if (!entries.has(key)) entries.set(key, value);
   }
@@ -52,7 +64,7 @@ function writeLocalDevEnv() {
 
 function providerSuggestions(env) {
   const suggestions = [];
-  if (!env.VOYAGE_API_KEY && !env.COHERE_API_KEY && !env.OPENAI_API_KEY && !env.LEGAL_EMBEDDING_API_KEY) {
+  if (!env.VOYAGE_API_KEY && !env.COHERE_API_KEY && !env.OPENAI_API_KEY && !env.LEGAL_EMBEDDING_API_KEY && !env.OPENROUTER_API_KEY) {
     suggestions.push({
       gate_id: "production_embeddings_configured",
       action: "Set a real embedding provider and matching key.",
@@ -60,19 +72,31 @@ function providerSuggestions(env) {
         "LEGAL_EMBEDDING_PROVIDER=voyage + VOYAGE_API_KEY + LEGAL_EMBEDDING_MODEL=voyage-3-large",
         "LEGAL_EMBEDDING_PROVIDER=cohere + COHERE_API_KEY + LEGAL_EMBEDDING_MODEL=embed-v4.0",
         "LEGAL_EMBEDDING_PROVIDER=openai + OPENAI_API_KEY + LEGAL_EMBEDDING_MODEL=text-embedding-3-small",
+        `LEGAL_EMBEDDING_PROVIDER=openrouter + OPENROUTER_API_KEY + LEGAL_EMBEDDING_MODEL=${OPENROUTER_FREE_EMBEDDING_MODEL} + LEGAL_EMBEDDING_DIM=${OPENROUTER_FREE_EMBEDDING_DIM}`,
       ],
-      note: "OpenRouter chat keys do not clear the embedding gate.",
+      note: "OpenRouter can clear this gate only with an embedding model id ending in :free, unless OPENROUTER_ALLOW_PAID=true is explicit.",
     });
   }
-  if (!env.COHERE_API_KEY && !env.VOYAGE_API_KEY && !env.LEGAL_RERANK_API_KEY) {
+  if (!env.COHERE_API_KEY && !env.VOYAGE_API_KEY && !env.LEGAL_RERANK_API_KEY && !env.OPENROUTER_API_KEY) {
     suggestions.push({
       gate_id: "production_reranker_configured",
       action: "Set a real reranker provider and matching key.",
       examples: [
         "LEGAL_RERANK_PROVIDER=cohere + COHERE_API_KEY + LEGAL_RERANK_MODEL=rerank-v3.5",
         "LEGAL_RERANK_PROVIDER=voyage + VOYAGE_API_KEY + LEGAL_RERANK_MODEL=rerank-2",
+        `LEGAL_RERANK_PROVIDER=openrouter + OPENROUTER_API_KEY + LEGAL_RERANK_MODEL=${OPENROUTER_FREE_RERANK_MODEL}`,
       ],
-      note: "DeepSeek/OpenRouter chat models do not clear the reranker gate.",
+      note: "OpenRouter can clear this gate only with a rerank model id ending in :free, unless OPENROUTER_ALLOW_PAID=true is explicit.",
+    });
+  }
+  if (env.OPENROUTER_API_KEY && String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false" && String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() !== "true") {
+    suggestions.push({
+      gate_id: "production_embeddings_configured",
+      action: "If using OpenRouter for embeddings under free-only mode, set LEGAL_EMBEDDING_MODEL to a free model id ending in :free.",
+    });
+    suggestions.push({
+      gate_id: "production_reranker_configured",
+      action: "If using OpenRouter for rerank under free-only mode, set LEGAL_RERANK_MODEL to a free model id ending in :free.",
     });
   }
   if (!env.INNGEST_DEV && !(env.INNGEST_EVENT_KEY && env.INNGEST_SIGNING_KEY)) {
@@ -107,6 +131,9 @@ const output = {
     ok: item.ok,
     status: item.status,
     provider: item.provider,
+    model: item.model,
+    openrouter_free_only: item.openrouter_free_only,
+    openrouter_paid_allowed: item.openrouter_paid_allowed,
     answer_safe_count: item.answer_safe_count,
     required_answer_safe_count: item.required_answer_safe_count,
     inngest_dev_present: item.inngest_dev_present,
