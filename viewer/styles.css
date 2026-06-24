@@ -620,6 +620,15 @@ a { color: inherit; }
   font-size: 12.5px;
   line-height: 1.45;
 }
+.fruit-quote-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--umber);
+  margin-bottom: 6px;
+}
+.inq-evidence-list .fruit-list { margin-top: 8px; }
 .fruit-proof {
   margin-top: 8px;
   border-top: 1px solid var(--hairline-soft);
