@@ -461,30 +461,36 @@
   }
 
   function renderCaseFruitCard(e) {
-    const quote = e.supporting_quote || '';
+    const quote = e.supporting_quote || e.exact_quote || '';
     const paragraph = e.paragraph_text || quote;
     const statusBadge = e.answer_layer_status === 'answer_safe'
       ? '<span class="badge badge-approved">Answer-safe</span>'
-      : '<span class="badge badge-review">Human review required</span>';
+      : e.answer_layer_status === 'paragraph_verified' || e.quote_verified
+        ? '<span class="badge badge-source-linked">Quote verified</span>'
+        : '<span class="badge badge-review">Human review required</span>';
     const sourceLink = e.source_url
-      ? `<a href="${esc(e.source_url)}" target="_blank" rel="noreferrer">Open public judgment</a>`
+      ? `<a href="${esc(e.source_url)}" target="_blank" rel="noreferrer">Open public judgment (HKLII/LegalRef)</a>`
       : '';
+    const citeLabel = [
+      e.neutral_citation || '',
+      e.law_report_citation || '',
+      e.para_no ? `para ${e.para_no}` : '',
+    ].filter(Boolean).join(' · ');
     return `
       <article class="fruit-card">
         <div class="fruit-card-top">
           <strong>${esc(e.case_name || 'Untitled case')}</strong>
-          <span>${esc(e.neutral_citation || '')}${e.para_no ? ' · para ' + esc(e.para_no) : ''}</span>
+          <span>${esc(citeLabel)}</span>
         </div>
         <div class="fruit-badges">
-          <span class="badge badge-source-linked">Quote verified</span>
           ${statusBadge}
           ${e.authority_role ? `<span class="badge badge-research">${esc(e.authority_role)}</span>` : ''}
           ${e.significance_label ? `<span class="badge badge-draft">${esc(e.significance_label)}</span>` : ''}
         </div>
         ${e.proposition_text ? `<p class="fruit-proposition">${esc(e.proposition_text)}</p>` : ''}
-        ${quote ? `<blockquote class="fruit-quote">${esc(quote)}</blockquote>` : ''}
-        <details class="fruit-proof">
-          <summary>Paragraph proof / audit trail</summary>
+        ${quote ? `<blockquote class="fruit-quote"><span class="fruit-quote-label">Exact quote</span>${esc(quote)}</blockquote>` : ''}
+        <details class="fruit-proof" ${paragraph && paragraph !== quote ? 'open' : ''}>
+          <summary>Full paragraph text / audit trail</summary>
           <div class="fruit-paragraph">${highlightQuote(paragraph, quote)}</div>
           <div class="fruit-meta">
             <span>${esc(e.paragraph_id || e.proposition_id || '')}</span>
@@ -1054,6 +1060,28 @@
     });
   }
 
+  function renderAnalysisCaseReferences(analysis, matchedNodes) {
+    const refs = analysis?.case_references || [];
+    if (!refs.length) return '';
+    const evidenceByKey = new Map();
+    (matchedNodes || []).forEach(node => {
+      (node.evidence || []).forEach(item => {
+        const key = `${item.neutral_citation || item.case_name || ''}::${item.para_no || ''}`;
+        if (!evidenceByKey.has(key)) evidenceByKey.set(key, item);
+      });
+    });
+    const cards = refs.map(ref => {
+      const key = `${ref.neutral_citation || ref.case_name || ''}::${ref.para_no || ''}`;
+      const merged = { ...(evidenceByKey.get(key) || {}), ...ref };
+      return renderCaseFruitCard(merged);
+    }).join('');
+    return `
+      <div class="card">
+        <div class="card-top"><span class="card-title">Cited paragraph proof</span></div>
+        <div class="card-body fruit-list">${cards}</div>
+      </div>`;
+  }
+
   function inquiryResultHTML() {
     const r = INQ.result;
     if (!r) return '';
@@ -1063,12 +1091,7 @@
       const localId = m.source_node_id || m.doctrine_node_id;
       const inGraph = !!S.nodeMap[localId];
       const sops = sopsForNodeId(localId);
-      const evidence = (m.evidence || []).map(e => `
-        <div class="inq-evidence">
-          <div><strong>${esc(e.case_name || 'Unnamed case')}</strong> <span class="inq-cite">${esc(e.neutral_citation || '')}${e.para_no ? ' · ¶' + esc(e.para_no) : ''}</span></div>
-          <p>${esc((e.proposition_text || e.paragraph_text || '').slice(0, 260))}</p>
-          ${COVERAGE_BADGE[e.answer_layer_status] || ''}
-        </div>`).join('');
+      const evidence = (m.evidence || []).map(e => renderCaseFruitCard(e)).join('');
       return `
         <div class="card ${inGraph ? 'selectable' : ''}" ${inGraph ? `data-sel="node:${esc(localId)}" data-card="node:${esc(localId)}"` : ''}>
           <div class="card-top">
@@ -1079,7 +1102,7 @@
             <span class="inq-meta">${esc(m.doctrine_node_id)} · ${esc(m.domain_id || '')} · ${esc(TYPE_LABEL[m.node_type] || m.node_type || '')}</span>
             <p>${esc((m.summary || '').slice(0, 280))}</p>
           </div>
-          ${evidence ? `<div class="inq-evidence-list"><span class="sn-label">Paragraph evidence trail</span>${evidence}</div>` : ''}
+          ${evidence ? `<div class="inq-evidence-list"><span class="sn-label">Paragraph evidence trail</span><div class="fruit-list">${evidence}</div></div>` : ''}
           ${sops.map(s => `<div class="sop-note"><span class="sn-label">Firm SOP applies · ${esc(s.title)} ${versionBadge(s.version)}</span>${esc(s.description || '')}</div>`).join('')}
         </div>`;
     }).join('');
@@ -1097,6 +1120,7 @@
           ${analysis.application ? `<p><em>Application to facts:</em> ${esc(analysis.application)}</p>` : ''}
         </div>
       </div>` : ''}
+      ${analysis ? renderAnalysisCaseReferences(analysis, r.matched_doctrine_nodes) : ''}
       ${warnings ? `<div class="inq-warnings">${warnings}</div>` : ''}
       ${hasAppliedAnswer ? `<details class="piw-audit"><summary>Underlying graph matches</summary>${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}</details>` : (cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.'))}
       <p class="inq-note">Source-bounded research trail — not legal advice. Every node and citation above exists in the maintained doctrine graph${INQ.mode === 'api' ? ' and Supabase evidence store' : ''}; nothing is generated outside it. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;

@@ -54,6 +54,9 @@ function localEvidenceFromDir(doctrineNodeId, config) {
       const l4 = l4ByProposition.get(link.proposition_id) || {};
       const l5 = l5ByProposition.get(link.proposition_id) || {};
       const caseRecord = caseById.get(l4.case_id || l5.case_id) || {};
+      const quote = l5.exact_quote || "";
+      const paragraphText = l5.paragraph_text || "";
+      const quoteVerified = Boolean(quote && paragraphText && paragraphText.includes(quote));
       return {
         case_name: l4.case_name || l5.case_name || l4.case_id || config.fallbackCaseName,
         neutral_citation: l4.neutral_citation || l5.neutral_citation || config.fallbackCitation,
@@ -67,14 +70,16 @@ function localEvidenceFromDir(doctrineNodeId, config) {
         para_no: l5.para_no || "",
         proposition_id: link.proposition_id,
         proposition_text: l4.application_summary || "",
-        supporting_quote: l5.exact_quote || "",
-        paragraph_text: l5.paragraph_text || "",
-        source_url: l5.source_url || config.sourceUrl,
+        supporting_quote: quote,
+        exact_quote: quote,
+        paragraph_text: paragraphText,
+        source_url: l5.source_url || caseRecord.source_url_or_path || config.sourceUrl,
         link_type: link.link_type || "candidate",
         authority_role: link.authority_role || "application",
         significance_label: link.significance_label || "",
         verification_status: link.review_status || "machine_candidate",
-        answer_layer_status: "candidate_only",
+        answer_layer_status: quoteVerified ? "paragraph_verified" : "candidate_only",
+        quote_verified: quoteVerified,
         human_review_status: "unreviewed",
         validator_flags: config.flags,
         l4_application_id: l4.l4_application_id || "",

@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
-const { composeAnswer } = require("./answer-composers");
-const { filterPiChunksByContract } = require("./answer-composers/pi");
-const { findCachedLegalAnswer, writeLegalAnswerCache } = require("./legal-ingest/cache");
+const { composeAnswer } = require("../src/api/answer-composers");
+const { filterPiChunksByContract } = require("../src/api/answer-composers/pi");
+const { findCachedLegalAnswer, writeLegalAnswerCache } = require("../src/api/legal-ingest/cache");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
@@ -392,7 +392,9 @@ async function askAiToAnalyze(query, matches, evidenceCount) {
       court_level: item.court_level,
       para_no: item.para_no,
       proposition_text: item.proposition_text,
+      supporting_quote: item.supporting_quote || item.exact_quote || "",
       paragraph_text: item.paragraph_text,
+      source_url: item.source_url,
       verification_status: item.verification_status,
       answer_layer_status: item.answer_layer_status,
     })),
@@ -487,9 +489,16 @@ function validateAiAnalysis(parsed, matches) {
       case_name: item.case_name,
       neutral_citation: item.neutral_citation,
       para_no: item.para_no,
+      paragraph_id: item.paragraph_id || "",
+      proposition_id: item.proposition_id || "",
+      proposition_text: item.proposition_text || "",
+      supporting_quote: item.supporting_quote || item.exact_quote || "",
+      paragraph_text: item.paragraph_text || "",
+      source_url: item.source_url || "",
       status: item.answer_layer_status,
       verification_status: item.verification_status,
       doctrine_node_id: item.doctrine_node_id,
+      quote_verified: Boolean(item.quote_verified || (item.supporting_quote && item.paragraph_text && item.paragraph_text.includes(item.supporting_quote))),
     });
   }
 
@@ -538,8 +547,18 @@ async function firstSupabaseRow(baseUrl, serviceKey, table, query) {
   return Array.isArray(rows) && rows.length ? rows[0] : null;
 }
 
+function filterMatchesByArbiter(matches, arbiter) {
+  const blocked = new Set(arbiter?.blocked_static_domains || []);
+  if (!blocked.size) return matches;
+  const filtered = matches.filter(match => !blocked.has(match.domain_id));
+  return filtered.length ? filtered : matches;
+}
+
 function cleanEvidenceItem({ link, proposition, paragraph, legalCase }) {
   const reviewStatus = link.review_status || proposition.review_status || "machine_candidate";
+  const supportingQuote = proposition.supporting_quote || proposition.exact_quote || "";
+  const paragraphText = paragraph?.text || "";
+  const quoteVerified = Boolean(supportingQuote && paragraphText && paragraphText.includes(supportingQuote));
   return {
     case_name: legalCase?.title_en || legalCase?.case_name || "",
     neutral_citation: legalCase?.neutral_citation || "",
@@ -549,17 +568,19 @@ function cleanEvidenceItem({ link, proposition, paragraph, legalCase }) {
     para_no: paragraph?.para_no || "",
     proposition_id: proposition.id || link.proposition_id || "",
     proposition_text: proposition.proposition_text || proposition.candidate_proposition || "",
-    supporting_quote: proposition.supporting_quote || "",
-    paragraph_text: paragraph?.text || "",
+    supporting_quote: supportingQuote,
+    exact_quote: supportingQuote,
+    paragraph_text: paragraphText,
     source_url: paragraph?.source_url || legalCase?.source_url || "",
     link_type: link.link_type || "candidate",
     authority_role: link.link_type || "candidate",
     verification_status: reviewStatus,
     answer_layer_status: SAFE_STATUSES.has(reviewStatus)
       ? "answer_safe"
-      : VERIFIED_STATUSES.has(reviewStatus)
+      : quoteVerified || VERIFIED_STATUSES.has(reviewStatus)
         ? "paragraph_verified"
         : "candidate_only",
+    quote_verified: quoteVerified,
     human_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
     validator_flags: [],
   };
@@ -576,7 +597,7 @@ async function evidenceForNode(baseUrl, serviceKey, doctrineNodeId) {
   for (const link of links || []) {
     const proposition = await firstSupabaseRow(baseUrl, serviceKey, "proposition_cards", {
       id: `eq.${link.proposition_id}`,
-      select: "id,case_id,canonical_para_id,proposition_text,proposition_type,issue_tags,doctrine_tags,review_status,confidence",
+      select: "id,case_id,canonical_para_id,proposition_text,supporting_quote,proposition_type,issue_tags,doctrine_tags,review_status,confidence",
     });
     if (!proposition) continue;
     const [paragraph, legalCase] = await Promise.all([
@@ -884,7 +905,7 @@ module.exports = async function handler(req, res) {
   const legalAnswerCache = legalIngestBundle
     ? await findCachedLegalAnswer({ query, legalIngestBundle })
     : { status: "skipped_no_legal_ingest_bundle" };
-  matched = postFilterMatchesForQuery(query, matched).slice(0, 8);
+  matched = filterMatchesByArbiter(postFilterMatchesForQuery(query, matched), arbiter).slice(0, 8);
 
   const supabaseUrl = (process.env.SUPABASE_URL || "").trim().replace(/\/$/, "");
   const serviceKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();

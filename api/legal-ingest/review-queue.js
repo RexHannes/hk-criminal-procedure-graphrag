@@ -5,7 +5,7 @@ const {
   normalizeLegacyReviewItem,
   supabaseConfig,
   supabaseRest,
-} = require("./_utils");
+} = require("../../src/api/legal-ingest/_utils");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "GET") {

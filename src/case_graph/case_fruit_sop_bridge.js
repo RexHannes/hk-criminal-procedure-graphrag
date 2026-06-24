@@ -8,7 +8,7 @@ const {
   cacheIds,
   legalIngestSourceFingerprint,
   writeLegalAnswerCache,
-} = require("../../api/legal-ingest/cache");
+} = require("../api/legal-ingest/cache");
 
 function unique(values) {
   return Array.from(new Set((values || []).filter(Boolean).map(String))).sort();

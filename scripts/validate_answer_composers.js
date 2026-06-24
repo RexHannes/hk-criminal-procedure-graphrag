@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* Validate the reusable applied-answer composer framework. */
 
-const { composeAnswer, composePiAnswer } = require("../api/answer-composers");
+const { composeAnswer, composePiAnswer } = require("../src/api/answer-composers");
 
 function assert(condition, message, errors) {
   if (!condition) errors.push(message);
