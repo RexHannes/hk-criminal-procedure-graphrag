@@ -283,13 +283,24 @@ function deterministicMatches(query, graph, limit = 12) {
 }
 
 function getAiProvider() {
+  const preferredProvider = String(process.env.LLM_PROVIDER || process.env.CASE_GRAPH_LLM_PROVIDER || "").trim().toLowerCase();
   const openRouterKey = (process.env.OPENROUTER_API_KEY || "").trim();
-  if (openRouterKey) {
+  const openRouterModel = String(process.env.OPENROUTER_MODEL || "").trim();
+  const openRouterPaidAllowed = String(process.env.OPENROUTER_ALLOW_PAID || "").toLowerCase() === "true";
+  const openRouterFreeOnly = String(process.env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false";
+  if (openRouterKey && preferredProvider !== "deepseek") {
+    if (openRouterFreeOnly && !openRouterPaidAllowed && !/:free$/i.test(openRouterModel)) {
+      return {
+        name: "openrouter",
+        disabled: true,
+        warnings: ["openrouter_free_model_required"],
+      };
+    }
     return {
       name: "openrouter",
       apiKey: openRouterKey,
       endpoint: "https://openrouter.ai/api/v1/chat/completions",
-      model: process.env.OPENROUTER_MODEL || "openrouter/auto",
+      model: openRouterModel,
       headers: {
         "HTTP-Referer": "https://hk-criminal-procedure-graphrag.vercel.app",
         "X-Title": "HK Legal Doctrine Evidence Viewer",
@@ -312,6 +323,7 @@ function getAiProvider() {
 async function callAiJson(systemPrompt, userPrompt) {
   const provider = getAiProvider();
   if (!provider) return { provider: "none", status: "not_configured", json: null, warnings: ["ai_provider_not_configured"] };
+  if (provider.disabled) return { provider: provider.name, status: "disabled", json: null, warnings: provider.warnings || [`${provider.name}_disabled`] };
   try {
     const response = await fetch(provider.endpoint, {
       method: "POST",

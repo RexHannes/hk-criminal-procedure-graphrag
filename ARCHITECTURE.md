@@ -89,9 +89,12 @@ there and run the Supabase advisors before production.
 
 **GAP 2:** Vercel env vars must be set for the API to leave fallback mode:
 `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (server-side only — never expose to
-the static viewer), `OPENROUTER_API_KEY` (+ optional `OPENROUTER_MODEL`), or
-`DEEPSEEK_API_KEY`. Without them the endpoint still works but returns
-deterministic matches with warnings.
+the static viewer), and an optional analysis provider key. OpenRouter is guarded
+as free-model-only by default: set `OPENROUTER_API_KEY`,
+`OPENROUTER_FREE_ONLY=true`, and an `OPENROUTER_MODEL` ending in `:free`.
+`openrouter/auto` is intentionally blocked unless `OPENROUTER_ALLOW_PAID=true`
+is explicitly set. Without an allowed provider the endpoint still works but
+returns deterministic matches with warnings.
 
 **GAP 3:** `evidenceForNode` does N+1 REST calls per match. Fine for a demo;
 for production replace with one Postgres RPC (a `security definer` function
