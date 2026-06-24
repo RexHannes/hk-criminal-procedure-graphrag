@@ -3,6 +3,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { validateShardRegistryScope } = require("../src/case_graph/scale_ingest_safeguards");
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -36,6 +37,18 @@ if (!args.shardId) throw new Error("shard-id required");
 const plan = JSON.parse(fs.readFileSync(args.plan, "utf8"));
 const shard = (plan.shards || []).find(item => item.shard_id === args.shardId);
 if (!shard) throw new Error(`unknown_shard_id:${args.shardId}`);
+const allowedScopes = [
+  "bail_only",
+  "public_order_riot",
+  "sedition_public_expression",
+  "public_order_unlawful_assembly_riot_candidate_branch",
+  "sedition_public_expression_candidate_branch",
+  "criminal_domain_public_cases",
+];
+const registryScopeCheck = validateShardRegistryScope({
+  registryCases: plan.registry_cases || [],
+  allowedScopes,
+});
 
 const report = {
   shard_executor: "case_scale_shard_guard_v1",
@@ -48,7 +61,16 @@ const report = {
   shard,
   status: "",
   blockers: plan.blockers || [],
+  registry_scope_check: registryScopeCheck,
 };
+
+if (!registryScopeCheck.ok) {
+  report.status = "blocked_by_registry_scope";
+  report.message = "Shard execution refused because registry cases include non-criminal or citation-invalid sources.";
+  writeOutput(args.output, report);
+  console.log(JSON.stringify(report, null, 2));
+  process.exit(args.preflightOnly ? 0 : 1);
+}
 
 if (!plan.execution_allowed) {
   report.status = "blocked_by_scale_readiness";

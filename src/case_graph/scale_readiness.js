@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { buildRetrievalScopeFilter } = require("./scale_ingest_safeguards");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 const DEFAULT_PLAN_PATH = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "scale_plan_20k.json");
@@ -90,6 +91,12 @@ function isDurableOrchestrationReady(env) {
   return hasAny(env, ["INNGEST_EVENT_KEY", "INNGEST_SIGNING_KEY", "INNGEST_DEV"]) && hasAny(env, ["INNGEST_SIGNING_KEY", "INNGEST_DEV"]);
 }
 
+function isCriminalDomainRetrievalScopeEnforced(env) {
+  const filter = buildRetrievalScopeFilter({ runtimeMode: "production_scale" });
+  const serialized = JSON.stringify(filter);
+  return serialized.includes("domain_id") && serialized.includes("practice_area") && serialized.includes("criminal_procedure_hk") && serialized.includes("criminal_law_hk");
+}
+
 function artifactStats(batchDir = DEFAULT_BATCH_DIR) {
   const manifest = readJson(path.join(batchDir, "source_manifest.json"));
   const parseReport = readJson(path.join(batchDir, "parse_report.json"));
@@ -155,6 +162,9 @@ function evaluateScaleReadiness({
       bulk_auto_attach_allowed: stats.source_policy.bulk_auto_attach_allowed,
       large_cross_domain_crawl_allowed: stats.scale_policy.large_cross_domain_crawl_allowed,
     }),
+    gate("criminal_domain_retrieval_scope_enforced", isCriminalDomainRetrievalScopeEnforced(env), {
+      runtime_mode_for_check: "production_scale",
+    }),
     gate("production_embeddings_configured", isProductionEmbeddingReady(env), {
       provider: providerName(env, "LEGAL_EMBEDDING_PROVIDER", "EMBEDDING_PROVIDER", "local-hash"),
       model: cleanEnvValue(env, "LEGAL_EMBEDDING_MODEL") || cleanEnvValue(env, "OPENROUTER_EMBEDDING_MODEL") || cleanEnvValue(env, "EMBEDDING_MODEL"),
@@ -213,6 +223,7 @@ module.exports = {
   artifactStats,
   evaluateScaleReadiness,
   isDurableOrchestrationReady,
+  isCriminalDomainRetrievalScopeEnforced,
   isProductionEmbeddingReady,
   isProductionRerankReady,
   loadEnv,

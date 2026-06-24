@@ -2,6 +2,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const { embedText } = require("../retrieval/embedding_adapter");
+const { buildRetrievalScopeFilter } = require("../case_graph/scale_ingest_safeguards");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 
@@ -92,32 +93,11 @@ function matchValue(key, value) {
 }
 
 function publicDemoFilter() {
-  return {
-    must: [
-      matchValue("source_visibility", "public_demo"),
-      matchValue("tenant_id", "public"),
-    ],
-  };
+  return buildRetrievalScopeFilter();
 }
 
 function tenantRetrievalFilter({ tenantId, includePrivate = false, privateIngestionEnabled = false } = {}) {
-  if (!includePrivate || !privateIngestionEnabled || !tenantId) return publicDemoFilter();
-  return {
-    should: [
-      {
-        must: [
-          matchValue("source_visibility", "public_demo"),
-          matchValue("tenant_id", "public"),
-        ],
-      },
-      {
-        must: [
-          matchValue("source_visibility", "private_tenant"),
-          matchValue("tenant_id", tenantId),
-        ],
-      },
-    ],
-  };
+  return buildRetrievalScopeFilter({ sourceMode: "private_tenant", tenantId, includePrivate, privateIngestionEnabled });
 }
 
 async function searchQdrant({
@@ -134,9 +114,13 @@ async function searchQdrant({
   const dimension = Number(env.LEGAL_EMBEDDING_DIM || (provider === "openai" ? 1536 : 384));
   const collection = collectionName || env.QDRANT_COLLECTION_PROPOSITIONS || "hk_proposition_cards";
   const privateIngestionEnabled = String(env.PRIVATE_SOURCE_INGESTION_ENABLED || "false").toLowerCase() === "true";
-  const filter = sourceMode === "private_tenant"
-    ? tenantRetrievalFilter({ tenantId, includePrivate, privateIngestionEnabled })
-    : publicDemoFilter();
+  const filter = buildRetrievalScopeFilter({
+    sourceMode,
+    tenantId,
+    includePrivate,
+    privateIngestionEnabled,
+    runtimeMode: env.LEGAL_RUNTIME_MODE || env.RUNTIME_MODE || "",
+  });
   const vector = await embed(query, env, dimension);
   const actualDimension = vector.length;
   const payload = await qdrantRequest(env, `/collections/${encodeURIComponent(collection)}/points/search`, {
