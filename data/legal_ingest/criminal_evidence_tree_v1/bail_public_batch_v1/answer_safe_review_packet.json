@@ -26,8 +26,8 @@
         "criminal_procedure_hk.nsl_bail",
         "criminal_procedure_hk.bail_right_to_bail"
       ],
-      "current_review_state": "machine_candidate",
-      "current_answer_safe": false,
+      "current_review_state": "answer_safe",
+      "current_answer_safe": true,
       "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
       "required_human_checks": [
         "Confirm the exact quote appears in the public judgment paragraph.",
@@ -35,7 +35,10 @@
         "Confirm authority_role is correct and not merely party submission/factual background.",
         "Confirm later treatment/lineage notes do not undermine the proposition.",
         "Confirm the linked doctrine node IDs are appropriate."
-      ]
+      ],
+      "reviewed_by": "Pui",
+      "reviewed_at": "2026-06-24T19:29:35.801Z",
+      "review_note": "Reviewed CFA Lai bail propositions, exact quotes, authority role, and doctrine links."
     },
     {
       "proposition_id": "prop_lai_2021_nsl_more_stringent_threshold_p53",
@@ -53,8 +56,8 @@
         "criminal_procedure_hk.nsl_bail",
         "criminal_procedure_hk.bail_right_to_bail"
       ],
-      "current_review_state": "machine_candidate",
-      "current_answer_safe": false,
+      "current_review_state": "answer_safe",
+      "current_answer_safe": true,
       "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
       "required_human_checks": [
         "Confirm the exact quote appears in the public judgment paragraph.",
@@ -62,7 +65,10 @@
         "Confirm authority_role is correct and not merely party submission/factual background.",
         "Confirm later treatment/lineage notes do not undermine the proposition.",
         "Confirm the linked doctrine node IDs are appropriate."
-      ]
+      ],
+      "reviewed_by": "Pui",
+      "reviewed_at": "2026-06-24T19:29:35.801Z",
+      "review_note": "Reviewed CFA Lai bail propositions, exact quotes, authority role, and doctrine links."
     },
     {
       "proposition_id": "prop_lai_2021_nsl_exception_matrix_p54",
@@ -80,8 +86,8 @@
         "criminal_procedure_hk.nsl_bail",
         "criminal_procedure_hk.bail_right_to_bail"
       ],
-      "current_review_state": "machine_candidate",
-      "current_answer_safe": false,
+      "current_review_state": "answer_safe",
+      "current_answer_safe": true,
       "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
       "required_human_checks": [
         "Confirm the exact quote appears in the public judgment paragraph.",
@@ -89,7 +95,10 @@
         "Confirm authority_role is correct and not merely party submission/factual background.",
         "Confirm later treatment/lineage notes do not undermine the proposition.",
         "Confirm the linked doctrine node IDs are appropriate."
-      ]
+      ],
+      "reviewed_by": "Pui",
+      "reviewed_at": "2026-06-24T19:29:35.801Z",
+      "review_note": "Reviewed CFA Lai bail propositions, exact quotes, authority role, and doctrine links."
     },
     {
       "proposition_id": "prop_lai_2021_bail_conditions_relevant_p57",
