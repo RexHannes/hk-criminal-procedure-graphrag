@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { composeAnswer } = require("./answer-composers");
+const { classifyCriminalLaw } = require("./answer-composers/criminal_law");
 const { filterPiChunksByContract } = require("./answer-composers/pi");
 const { findCachedLegalAnswer, writeLegalAnswerCache } = require("./legal-ingest/cache");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
@@ -59,6 +60,11 @@ const QUERY_EXPANSIONS = [
     pattern: /\b(slip|slipped|trip|tripped|fall|fell)\b.*\b(shop|mall|premises|building|restaurant|office|stairs|floor)\b|\b(shop|mall|premises|building|restaurant|office|stairs|floor)\b.*\b(slip|slipped|trip|tripped|fall|fell)\b/i,
     terms: ["occupiers liability", "premises", "negligence", "duty of care", "breach", "personal injury"],
     preferred_domains: ["tort_law_hk"]
+  },
+  {
+    pattern: /\b(unlawful assembly|riot|rioting|public order|protest|protestor|protester|harcourt road|black bloc|black clothing|conceal(?:ed|ment)?|masked|hand(?:ed|ing)? water|water to protest|2019)\b/i,
+    terms: ["unlawful assembly", "riot", "public order", "joint enterprise", "accessory", "presence", "common purpose", "breach of the peace", "criminal law"],
+    preferred_domains: ["criminal_law_hk", "criminal_procedure_hk"]
   }
 ];
 
@@ -73,6 +79,29 @@ function detectsInconsistentPleadingsQuery(query) {
     (/\b(inconsistent|contradictory|diametrically opposed|opposite|different version|different versions)\b/.test(q) &&
       /\b(pleading|pleadings|statement|statements|affidavit|affirmation|proceeding|proceedings|case|cases|action|actions)\b/.test(q))
   );
+}
+
+function detectsCriminalPublicOrderQuery(query) {
+  const q = String(query || "").toLowerCase();
+  return (
+    /\b(unlawful assembly|riot|rioting|public order|protest|protestor|protester|harcourt road|black bloc|black clothing|conceal(?:ed|ment)?|masked|2019)\b/.test(q) ||
+    (/\b(hand(?:ed|ing)?|give|gave|provid(?:e|ed|ing))\b/.test(q) && /\b(water|supplies|helmet|mask|umbrella)\b/.test(q) && /\b(protest|protestor|protester|riot|unlawful assembly)\b/.test(q))
+  );
+}
+
+function detectsCriminalLawQuery(query) {
+  const q = String(query || "").toLowerCase();
+  return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|assault|battery|manslaughter|murder|dishonesty|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting)\b/.test(q);
+}
+
+function detectsPersonalInjuryPurpose(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(personal injury|injur(?:y|ed|ies)|medical|compensation|damages|quantum|fracture|pain|suffering|loss of earnings|hospital|sick leave|accident claim)\b/.test(q);
+}
+
+function detectsCriminalLawPriority(query) {
+  const q = String(query || "").toLowerCase();
+  return detectsCriminalPublicOrderQuery(q) && !detectsPersonalInjuryPurpose(q);
 }
 
 function loadInconsistentPleadingsVertical(query) {
@@ -605,6 +634,7 @@ function detectPiRoutes(query) {
   const q = String(query || "").toLowerCase();
   const routes = new Set();
   const hasAny = terms => terms.some(term => q.includes(term));
+  if (detectsCriminalPublicOrderQuery(q) && !detectsPersonalInjuryPurpose(q)) return routes;
   if (hasAny(["personal injury", "injury", "injured", "slip", "slipped", "trip", "fall", "fell", "restaurant", "mall", "premises", "wet floor", "water", "cctv", "mopped", "workplace", "worker", "construction site", "scaffold", "stacked materials", "road traffic", "vehicle", "driver", "fatal accident", "dependency", "deceased", "car", "crash", "crashed", "hit by car", "knocked down", "road", "street", "pedestrian", "crossing", "zebra", "traffic light", "red light", "green light", "no white lines", "no zebra crossing"])) routes.add("pi");
   if (hasAny(["restaurant", "mall", "premises", "shop", "wet floor", "water", "mopped", "slip", "slipped", "trip", "fall", "fell"])) routes.add("premises");
   if (hasAny(["form", "writ", "draft", "template", "statement of claim", "schedule of damages"])) routes.add("forms");
@@ -617,10 +647,15 @@ function detectPiRoutes(query) {
 }
 
 function composerDomainForQuery(query, matched, piWorkflow) {
+  if (detectsCriminalLawPriority(query)) return "criminal_law";
   if (piWorkflow) return "personal_injury";
   const q = String(query || "").toLowerCase();
   const domains = new Set((matched || []).map(item => item.domain_id).filter(Boolean));
   if (detectsInconsistentPleadingsQuery(q)) return "generic";
+  if (domains.has("criminal_law_hk") || /\b(unlawful assembly|riot|sedition|public order|protest|protestor|protester)\b/.test(q)) {
+    return "criminal_law";
+  }
+  if (detectsCriminalLawQuery(q) || domains.has("criminal_law_hk")) return "criminal_law";
   if (
     /\b(company|listing|listed|sehk|sfc|winding[- ]?up|statutory demand|petition|insolvency|incorporation|director|shareholder|board|form|filing)\b/.test(q) ||
     domains.has("hk_listing_and_listed_company_regulation")
@@ -722,6 +757,7 @@ function inferredMissingFacts(query, chunks) {
 }
 
 function buildPiWorkflow(query) {
+  if (detectsCriminalLawPriority(query)) return null;
   const result = retrievePiRag(query);
   if (!result) return null;
   const { routes, chunks } = result;
@@ -764,6 +800,19 @@ function buildPiWorkflow(query) {
 }
 
 function postFilterMatchesForQuery(query, matches) {
+  if (detectsCriminalPublicOrderQuery(query) && !detectsPersonalInjuryPurpose(query)) {
+    const criminal = matches.filter(match => {
+      const blob = [match.domain_id, match.doctrine_node_id, match.title, match.summary].join(" ").toLowerCase();
+      return (
+        match.domain_id === "criminal_law_hk" ||
+        match.domain_id === "criminal_procedure_hk" ||
+        /public_order|unlawful assembly|riot|joint enterprise|accessory|presence|common purpose|criminal/.test(blob)
+      );
+    });
+    return (criminal.length ? criminal : matches)
+      .filter(match => match.domain_id !== "tort_law_hk")
+      .slice(0, 8);
+  }
   const routes = detectPiRoutes(query);
   if (!routes.has("pi")) return matches;
   let filtered = matches;
