@@ -1,0 +1,102 @@
+{
+  "review_items": [
+    {
+      "review_item_id": "review_prop_inconsistent_positions_scope_minloy_p31",
+      "item_type": "proposition_card",
+      "item_id": "prop_inconsistent_positions_scope_minloy_p31",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_case_2020_minloy",
+        "neutral_citation": "[2020] HKCFI 2215",
+        "paragraph_id": "hk_case_2020_minloy_p31",
+        "paragraph_no": "31",
+        "exact_quote": "not confined to inconsistent factual allegations but applies to inconsistent positions or assumptions",
+        "proposition_text": "The inconsistent-positions principle is not confined to inconsistent factual allegations and may apply to inconsistent positions or assumptions adopted in different proceedings.",
+        "target_doctrine_node_ids": [
+          "civil_procedure_hk.abuse_process.inconsistent_positions",
+          "civil_procedure_hk.estoppel.res_judicata"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_abuse_estoppel_lancom_p43",
+      "item_type": "proposition_card",
+      "item_id": "prop_abuse_estoppel_lancom_p43",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_case_2022_lancom_capxon",
+        "neutral_citation": "[2022] HKCFI 381",
+        "paragraph_id": "hk_case_2022_lancom_capxon_p43",
+        "paragraph_no": "43",
+        "exact_quote": "inconsistent and incompatible with the position he adopted in previous proceedings",
+        "proposition_text": "A party adopting a position inconsistent and incompatible with one adopted in previous proceedings may face an abuse-of-process and estoppel objection.",
+        "target_doctrine_node_ids": [
+          "civil_procedure_hk.abuse_process.inconsistent_positions",
+          "civil_procedure_hk.estoppel.res_judicata"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_diametrically_opposed_integrity_vasily_p39",
+      "item_type": "proposition_card",
+      "item_id": "prop_diametrically_opposed_integrity_vasily_p39",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_case_2025_vasily_trubnikov",
+        "neutral_citation": "[2025] HKCFI 1576",
+        "paragraph_id": "hk_case_2025_vasily_trubnikov_p39",
+        "paragraph_no": "39",
+        "exact_quote": "diametrically opposed to its position taken in an earlier set of proceedings",
+        "proposition_text": "A diametrically opposed later claim advanced with full knowledge of the facts may be abusive because it undermines the integrity of the administration of justice.",
+        "target_doctrine_node_ids": [
+          "civil_procedure_hk.abuse_process.inconsistent_positions",
+          "civil_procedure_hk.abuse_process.diametrically_opposed_positions"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_alternative_pleading_within_knowledge_liu_p16",
+      "item_type": "proposition_card",
+      "item_id": "prop_alternative_pleading_within_knowledge_liu_p16",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_case_2023_liu_hao_tsing",
+        "neutral_citation": "[2023] HKCFI 1463",
+        "paragraph_id": "hk_case_2023_liu_hao_tsing_p16",
+        "paragraph_no": "16",
+        "exact_quote": "plainly within that party's knowledge",
+        "proposition_text": "Where the relevant facts are plainly within a party's knowledge, inconsistent alternative factual cases may be impermissible.",
+        "target_doctrine_node_ids": [
+          "civil_procedure_hk.pleadings.alternative_cases_within_knowledge"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_summary_judgment_material_deviation_shinyei_p19",
+      "item_type": "proposition_card",
+      "item_id": "prop_summary_judgment_material_deviation_shinyei_p19",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_case_2019_shinyei_jenus",
+        "neutral_citation": "[2019] HKCFI 2377",
+        "paragraph_id": "hk_case_2019_shinyei_jenus_p19",
+        "paragraph_no": "19",
+        "exact_quote": "material deviation from the plaintiff's pleaded case",
+        "proposition_text": "A material deviation between a verifying affirmation and the pleaded case may prevent summary judgment because the claim is not verified as pleaded.",
+        "target_doctrine_node_ids": [
+          "civil_procedure_hk.summary_judgment.pleaded_case_verification"
+        ]
+      }
+    }
+  ]
+}

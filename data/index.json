@@ -83,6 +83,17 @@
         "needs_official_source_verification": true,
         "authority_status": "candidate_tree_seed"
       }
+    },
+    {
+      "domain_id": "civil_procedure_hk",
+      "title": "Hong Kong Civil Procedure",
+      "path": "civil_procedure_hk/domain.json",
+      "status": {
+        "not_product_answer_layer": true,
+        "needs_hklii_verification": true,
+        "needs_official_source_verification": true,
+        "authority_status": "candidate_tree_seed"
+      }
     }
   ]
 }

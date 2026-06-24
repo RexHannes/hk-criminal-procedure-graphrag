@@ -1,0 +1,69 @@
+{
+  "l5_paragraph_proof": [
+    {
+      "l5_proof_id": "prop_inconsistent_positions_scope_minloy_p31_proof",
+      "proposition_id": "prop_inconsistent_positions_scope_minloy_p31",
+      "case_id": "hk_case_2020_minloy",
+      "paragraph_id": "hk_case_2020_minloy_p31",
+      "para_no": "31",
+      "exact_quote": "not confined to inconsistent factual allegations but applies to inconsistent positions or assumptions",
+      "paragraph_text": "The principle is not confined to inconsistent factual allegations but applies to inconsistent positions or assumptions adopted by a party in different proceedings. The mischief to which the principle is directed is to prevent a litigant from adopting inconsistent positions on the same issue in different proceedings.",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2020/2215",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l5_proof_id": "prop_abuse_estoppel_lancom_p43_proof",
+      "proposition_id": "prop_abuse_estoppel_lancom_p43",
+      "case_id": "hk_case_2022_lancom_capxon",
+      "paragraph_id": "hk_case_2022_lancom_capxon_p43",
+      "para_no": "43",
+      "exact_quote": "inconsistent and incompatible with the position he adopted in previous proceedings",
+      "paragraph_text": "It is an abuse of process for a party to adopt a position which is inconsistent and incompatible with the position he adopted in previous proceedings, and the party would be estopped from doing so.",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/381",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l5_proof_id": "prop_diametrically_opposed_integrity_vasily_p39_proof",
+      "proposition_id": "prop_diametrically_opposed_integrity_vasily_p39",
+      "case_id": "hk_case_2025_vasily_trubnikov",
+      "paragraph_id": "hk_case_2025_vasily_trubnikov_p39",
+      "para_no": "39",
+      "exact_quote": "diametrically opposed to its position taken in an earlier set of proceedings",
+      "paragraph_text": "It may be an abuse of process for a party, with full knowledge of the facts, to advance a claim that is diametrically opposed to its position taken in an earlier set of proceedings. The abuse lies in its effect on the integrity of the administration of justice.",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2025/1576",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l5_proof_id": "prop_alternative_pleading_within_knowledge_liu_p16_proof",
+      "proposition_id": "prop_alternative_pleading_within_knowledge_liu_p16",
+      "case_id": "hk_case_2023_liu_hao_tsing",
+      "paragraph_id": "hk_case_2023_liu_hao_tsing_p16",
+      "para_no": "16",
+      "exact_quote": "plainly within that party's knowledge",
+      "paragraph_text": "If the matters pleaded are matters which are plainly within that party's knowledge, so that he must know which of the inconsistent alternatives is the correct one, then the pleading of inconsistent alternative cases is not permissible.",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2023/1463",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l5_proof_id": "prop_summary_judgment_material_deviation_shinyei_p19_proof",
+      "proposition_id": "prop_summary_judgment_material_deviation_shinyei_p19",
+      "case_id": "hk_case_2019_shinyei_jenus",
+      "paragraph_id": "hk_case_2019_shinyei_jenus_p19",
+      "para_no": "19",
+      "exact_quote": "material deviation from the plaintiff's pleaded case",
+      "paragraph_text": "Where the assertions in the plaintiff's affirmation constitute a material deviation from the plaintiff's pleaded case, the plaintiff will have failed to verify his claim as pleaded, and summary judgment should not be granted.",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2019/2377",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    }
+  ]
+}

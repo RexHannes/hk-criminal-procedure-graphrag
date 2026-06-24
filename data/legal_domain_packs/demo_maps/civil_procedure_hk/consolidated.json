@@ -1,0 +1,31 @@
+{
+  "domain_id": "civil_procedure_hk",
+  "title": "Hong Kong Civil Procedure",
+  "version": "0.1.0",
+  "last_updated": "2026-06-25",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "needs_official_source_verification": true,
+    "authority_status": "candidate_tree_seed"
+  },
+  "sections": [
+    {
+      "id": "01",
+      "title": "Civil Procedure Principles",
+      "node_file": "nodes/01_civil_procedure_principles.json",
+      "edge_file": "edges/01_civil_procedure_edges.json"
+    }
+  ],
+  "answer_parts": [
+    {
+      "id": "principles",
+      "label": "Principles",
+      "source": "nodes/01_civil_procedure_principles.json"
+    }
+  ],
+  "counts": {
+    "principle_nodes": 8,
+    "edges": 7
+  }
+}

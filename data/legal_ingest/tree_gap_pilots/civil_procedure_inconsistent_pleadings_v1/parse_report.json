@@ -1,0 +1,19 @@
+{
+  "artifact_id": "civil_procedure_inconsistent_pleadings_tree_gap_pilot_v1",
+  "generated_at": "2026-06-24T16:09:00.707Z",
+  "batch_id": "civil_procedure_inconsistent_pleadings_tree_gap_pilot_v1",
+  "source_count": 5,
+  "paragraph_count": 5,
+  "proposition_count": 5,
+  "link_count": 8,
+  "review_item_count": 5,
+  "rejected_count": 1,
+  "rejected": [
+    {
+      "proposition_id": "prop_henderson_abuse_dp_world_pending",
+      "reason": "paragraph_pinpoint_pending"
+    }
+  ],
+  "status": "built_with_rejections",
+  "rejected_policy_note": "DP World/Henderson pending-pinpoint card is expected to be rejected until exact paragraph proof is added."
+}

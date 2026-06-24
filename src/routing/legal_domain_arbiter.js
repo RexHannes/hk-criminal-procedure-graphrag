@@ -62,11 +62,13 @@ function arbitrateLegalQuery(query) {
     probate: 0,
     company_forms: 0,
     data_privacy: 0,
+    civil_procedure: 0,
     general_legal_research: 0,
   };
 
   if (CIVIL_LIT_RE.test(q)) {
-    scores.general_legal_research += 12;
+    scores.civil_procedure += 14;
+    scores.general_legal_research += 4;
     trace.push("civil-litigation high-signal phrase");
   }
   if (CRIMINAL_PUBLIC_ORDER_RE.test(q) || hasSupplyToProtest(q)) {
@@ -125,6 +127,7 @@ function arbitrateLegalQuery(query) {
     probate: ["probate_law_hk"],
     company_forms: ["hk_listing_and_listed_company_regulation"],
     data_privacy: ["data_privacy_hk"],
+    civil_procedure: ["civil_procedure_hk"],
     general_legal_research: [],
     generic: [],
   };
@@ -140,6 +143,9 @@ function arbitrateLegalQuery(query) {
   }
   if (selectedDomain === "data_privacy") {
     blockedDomains.push("probate_law_hk", "tort_law_hk", "criminal_law_hk", "criminal_procedure_hk", "hk_listing_and_listed_company_regulation");
+  }
+  if (selectedDomain === "civil_procedure") {
+    blockedDomains.push("probate_law_hk", "tort_law_hk", "criminal_law_hk", "criminal_procedure_hk", "hk_listing_and_listed_company_regulation", "data_privacy_hk");
   }
 
   return {
