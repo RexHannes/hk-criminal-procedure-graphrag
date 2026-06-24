@@ -1,0 +1,204 @@
+{
+  "artifact_id": "notebooklm_domain_arbiter_candidate_v1",
+  "generated_at": "2026-06-24T10:53:25.936Z",
+  "source": "NotebookLM logged-in private notebook candidate proposal",
+  "status": "candidate_only_requires_public_source_verification",
+  "warning": "NotebookLM output is a proposal source only. It is not public authority, not legal advice, and must not create answer-safe rules without public source-card verification.",
+  "purpose": "Improve deterministic legal-domain arbitration before retrieval/composer selection.",
+  "top_level_domains": [
+    "criminal_law_and_procedure",
+    "tort_and_personal_injury",
+    "contract_and_commercial",
+    "company_insolvency_and_listing",
+    "probate_trusts_and_equity",
+    "property_and_land",
+    "civil_procedure_evidence_and_remedies",
+    "arbitration_and_adr",
+    "administrative_and_public_law",
+    "employment_and_discrimination",
+    "intellectual_property_and_data_privacy"
+  ],
+  "arbiter_pipeline": [
+    "domain_candidates",
+    "issue_candidates",
+    "task_taxonomy",
+    "user_posture",
+    "strict_priority_overrides",
+    "source_family_filter",
+    "composer_selection",
+    "retrieval",
+    "answer_contract"
+  ],
+  "task_taxonomy": [
+    "urgent_triage",
+    "elements_or_test",
+    "procedure_sop",
+    "forms_documents",
+    "evidence_discovery",
+    "quantum_remedies",
+    "limitation_deadline",
+    "defence",
+    "appeal_review",
+    "settlement_adr"
+  ],
+  "posture_taxonomy": [
+    "claimant_plaintiff",
+    "defendant_accused_suspect",
+    "business_operator",
+    "personal_representative_trustee",
+    "regulator_prosecutor",
+    "court_stage_unknown"
+  ],
+  "high_signal_domains": {
+    "criminal_law_and_procedure": {
+      "high_signal_triggers": [
+        "arrest",
+        "bail",
+        "charge",
+        "conviction",
+        "sentence",
+        "unlawful assembly",
+        "riot",
+        "search warrant",
+        "police interview",
+        "ICAC",
+        "beyond reasonable doubt"
+      ],
+      "ambiguous_terms": [
+        "police",
+        "fraud",
+        "assault",
+        "caught",
+        "road",
+        "water"
+      ],
+      "negative_gates": [
+        "sue for damages",
+        "compensation",
+        "insurance payout",
+        "civil claim"
+      ],
+      "source_filters": [
+        "criminal_law_hk",
+        "criminal_procedure_hk",
+        "public_judgment",
+        "statute"
+      ]
+    },
+    "tort_and_personal_injury": {
+      "high_signal_triggers": [
+        "personal injury",
+        "damages",
+        "compensation",
+        "duty of care",
+        "negligence",
+        "occupiers liability",
+        "vicarious liability",
+        "medical report",
+        "loss of earnings"
+      ],
+      "ambiguous_terms": [
+        "accident",
+        "injury",
+        "road",
+        "water",
+        "hospital",
+        "fall"
+      ],
+      "negative_gates": [
+        "prosecution",
+        "conviction",
+        "imprisonment",
+        "bail",
+        "riot",
+        "unlawful assembly"
+      ],
+      "source_filters": [
+        "tort_law_hk",
+        "pi_rag_index",
+        "public_judgment",
+        "statute",
+        "form_metadata"
+      ]
+    },
+    "company_insolvency_and_listing": {
+      "high_signal_triggers": [
+        "winding up",
+        "liquidator",
+        "listing rules",
+        "SFC",
+        "prospectus",
+        "connected transaction",
+        "statutory demand"
+      ],
+      "ambiguous_terms": [
+        "director",
+        "shares",
+        "business",
+        "market"
+      ],
+      "negative_gates": [
+        "criminal prosecution unless SFC/market misconduct context requires split routing"
+      ],
+      "source_filters": [
+        "hk_listing_and_listed_company_regulation",
+        "company_forms"
+      ]
+    }
+  },
+  "strict_priority_overrides": [
+    {
+      "rule_id": "criminal_public_order_override",
+      "condition": "query contains unlawful assembly OR riot OR protest-public-order context OR arrest/bail/search-warrant and does not clearly ask for injury/compensation/damages",
+      "action": "force criminal_law_or_procedure; suppress tort/pi workflow",
+      "implemented_status": "partially_implemented_public_order_queries"
+    },
+    {
+      "rule_id": "civil_compensation_override",
+      "condition": "query contains sue/damages/compensation/civil claim and the factual frame is injury, police battery, false imprisonment, road accident, or occupiers liability",
+      "action": "route to tort/civil procedure, not criminal, unless user also asks about prosecution/criminal liability",
+      "implemented_status": "not_generalized"
+    },
+    {
+      "rule_id": "winding_up_override",
+      "condition": "query contains winding up/liquidator/statutory demand/petition and not partnership-only context",
+      "action": "force company_insolvency_and_listing",
+      "implemented_status": "partially_covered_by_company_forms_composer"
+    }
+  ],
+  "regression_seed_queries": [
+    {
+      "query": "If I went to Harcourt Road in black and handed water to protestors, is it unlawful assembly or riot?",
+      "expected_domain": "criminal_law",
+      "expected_scenario": "public_order_unlawful_assembly_riot",
+      "must_not_route_to": [
+        "personal_injury",
+        "premises_slip_fall"
+      ]
+    },
+    {
+      "query": "Can I sue the police for compensation if they handcuffed me during a protest?",
+      "expected_domain": "tort_or_civil_procedure",
+      "expected_task": "quantum_remedies",
+      "must_not_route_to": [
+        "public_order_elements_only"
+      ]
+    },
+    {
+      "query": "What is the penalty for throwing a brick at a crowd during an unlawful assembly?",
+      "expected_domain": "criminal_law",
+      "expected_task": "elements_or_test",
+      "must_not_route_to": [
+        "negligence",
+        "battery_tort_only"
+      ]
+    }
+  ],
+  "recommended_next_steps": [
+    "Extract arbiter into src/routing/legal_domain_arbiter.js",
+    "Return arbiter_trace in /api/search-evidence response",
+    "Require every composer to receive domain/task/posture/source_filter from arbiter",
+    "Add regression tests for cross-domain ambiguous terms: road, water, police, injury, fraud, company, trust, estate",
+    "Verify any NotebookLM-suggested authorities through public judgment/statute source cards before backend attachment"
+  ]
+}
