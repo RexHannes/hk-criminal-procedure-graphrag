@@ -9,6 +9,7 @@ const PROBATE_WILL_CONTEXT_RE = /\b(?:last|valid|original|copy|lost|nuncupative|
 const COMPANY_RE = /\b(company|listing|listed|sehk|sfc|winding[- ]?up|statutory demand|petition|insolvency|incorporation|director|shareholder|board|liquidator)\b/i;
 const COMPANY_FORM_CONTEXT_RE = /\b(?:company|companies registry|sfc|sehk|listing|listed|director|shareholder|winding[- ]?up|liquidator)\b.{0,60}\b(?:form|filing|return|petition)\b|\b(?:form|filing|return|petition)\b.{0,60}\b(?:company|companies registry|sfc|sehk|listing|listed|director|shareholder|winding[- ]?up|liquidator)\b/i;
 const CIVIL_LIT_RE = /\b(abuse of process|estoppel|collateral attack|res judicata|henderson|inconsistent pleadings|contradictory pleading)\b/i;
+const DATA_PRIVACY_RE = /\b(personal data|data privacy|privacy commissioner|pcpd|pdpo|data protection principle|dpp1|dpp ?1|data access request|direct marketing|doxxing|medical records|employee data|data user|data subject)\b/i;
 
 function hasSupplyToProtest(query) {
   return /\b(hand(?:ed|ing)?|give|gave|provid(?:e|ed|ing))\b/i.test(query) &&
@@ -60,6 +61,7 @@ function arbitrateLegalQuery(query) {
     personal_injury: 0,
     probate: 0,
     company_forms: 0,
+    data_privacy: 0,
     general_legal_research: 0,
   };
 
@@ -91,6 +93,10 @@ function arbitrateLegalQuery(query) {
     scores.company_forms += 10;
     trace.push("company/forms high-signal phrase");
   }
+  if (DATA_PRIVACY_RE.test(q)) {
+    scores.data_privacy += 14;
+    trace.push("data-privacy high-signal phrase");
+  }
 
   const asksPiPurpose = PI_PURPOSE_RE.test(q);
   if ((CRIMINAL_PUBLIC_ORDER_RE.test(q) || SEDITION_RE.test(q) || CRIMINAL_OFFENCE_RE.test(q) || CRIMINAL_PROCEDURE_RE.test(q)) && !asksPiPurpose) {
@@ -118,6 +124,7 @@ function arbitrateLegalQuery(query) {
     personal_injury: ["tort_law_hk"],
     probate: ["probate_law_hk"],
     company_forms: ["hk_listing_and_listed_company_regulation"],
+    data_privacy: ["data_privacy_hk"],
     general_legal_research: [],
     generic: [],
   };
@@ -130,6 +137,9 @@ function arbitrateLegalQuery(query) {
   }
   if (selectedDomain === "probate") {
     blockedDomains.push("tort_law_hk", "criminal_law_hk", "criminal_procedure_hk", "hk_listing_and_listed_company_regulation");
+  }
+  if (selectedDomain === "data_privacy") {
+    blockedDomains.push("probate_law_hk", "tort_law_hk", "criminal_law_hk", "criminal_procedure_hk", "hk_listing_and_listed_company_regulation");
   }
 
   return {

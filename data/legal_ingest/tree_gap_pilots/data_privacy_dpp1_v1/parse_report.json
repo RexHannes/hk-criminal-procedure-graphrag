@@ -1,0 +1,13 @@
+{
+  "artifact_id": "data_privacy_dpp1_tree_gap_pilot_v1",
+  "generated_at": "2026-06-24T15:27:32.969632+00:00",
+  "batch_id": "data_privacy_dpp1_tree_gap_pilot_v1",
+  "source_count": 1,
+  "paragraph_count": 6,
+  "proposition_count": 6,
+  "link_count": 10,
+  "review_item_count": 6,
+  "rejected_count": 0,
+  "rejected": [],
+  "status": "built_quote_verified_candidate"
+}

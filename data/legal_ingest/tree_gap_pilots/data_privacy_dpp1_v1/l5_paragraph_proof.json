@@ -1,0 +1,82 @@
+{
+  "l5_paragraph_proof": [
+    {
+      "l5_proof_id": "prop_cathay_2008_pdpo_employee_data_scope_p1_proof",
+      "proposition_id": "prop_cathay_2008_pdpo_employee_data_scope_p1",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p1",
+      "para_no": "1",
+      "exact_quote": "If an employer (a data user) wishes to collect in a recorded form personal data of its employees",
+      "paragraph_text": "1. The Personal Data (Privacy) Ordinance, Cap. 486, seeks to protect the privacy of all persons in relation to information which is personal to them. If an employer (a data user) wishes to collect in a recorded form personal data of its employees (data subjects), it may only do so to the extent provided for, and in a manner specified, in the Ordinance.",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l5_proof_id": "prop_cathay_2008_dpp1_purpose_necessity_nonexcessive_p4_proof",
+      "proposition_id": "prop_cathay_2008_dpp1_purpose_necessity_nonexcessive_p4",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p4",
+      "para_no": "4",
+      "exact_quote": "the collection of the data is necessary for or directly related to that purpose",
+      "paragraph_text": "4. S.s.(1) of the first principle states that personal data shall not be collected unless — “(a) the data are collected for a lawful purpose directly related to a function or activity of the data user who is to use the data; (b) … the collection of the data is necessary for or directly related to that purpose; and (c) the data are adequate but not excessive in relation to that purpose.”",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l5_proof_id": "prop_cathay_2008_dpp1_lawful_fair_collection_p5_proof",
+      "proposition_id": "prop_cathay_2008_dpp1_lawful_fair_collection_p5",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p5",
+      "para_no": "5",
+      "exact_quote": "fair in the circumstances of the case",
+      "paragraph_text": "5. As to the permissible manner in which personal data may be collected, s.s.(2) directs that it shall be collected by means which are — “(a) lawful; and (b) fair in the circumstances of the case.”",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l5_proof_id": "prop_cathay_2008_medical_data_necessary_not_excessive_p17_proof",
+      "proposition_id": "prop_cathay_2008_medical_data_necessary_not_excessive_p17",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p17",
+      "para_no": "17",
+      "exact_quote": "the collection of medical data in terms of the AMP was directly related to the discharge of Cathay’s obligations",
+      "paragraph_text": "17. In his report, the Commissioner recognised the highly sensitive nature of private medical records. He accepted, however, that Cathay had not breached any of the data protection principles set out in s.s.(1) of the first principle. He accepted tha t : (i) Cathay was under a duty to monitor the health of its cabin crew and that the collection of medical data in terms of the AMP was directly related to the discharge of Cathay’s obligations as a passenger-carrying airline and, as such, was necessary. (ii) Cathay only sought to collect medical data related to a cabin crew member’s absence from work and, as such, the data that was sought was not excessive.",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l5_proof_id": "prop_cathay_2008_consent_pressure_fairness_issue_p36_proof",
+      "proposition_id": "prop_cathay_2008_consent_pressure_fairness_issue_p36",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p36",
+      "para_no": "36",
+      "exact_quote": "the crew were made to give consent under the threat or for fear of a disciplinary process",
+      "paragraph_text": "36. As we best understand it, the core of the Commissioner’s reasoning is explained in the following extract of his report : “In the present case, the data subjects (cabin crew) are the employees of the data user (Cathay) who seeks to collect the employees’ past medical data from their own private or treating doctors. Cathay purports to do this with the consent of the employees. However, Cathay failed to provide to the crew all necessary information which could enable them to exercise his or her free will in determining whether to give the consent. On the contrary, the crew were made to give consent under the threat or for fear of a disciplinary process for failure to co-operate.”",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l5_proof_id": "prop_cathay_2008_fairness_construction_set_aside_p50_proof",
+      "proposition_id": "prop_cathay_2008_fairness_construction_set_aside_p50",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p50",
+      "para_no": "50",
+      "exact_quote": "both the decision of the Commissioner and the judgment of the Board were based on an incorrect construction of the true meaning and intent",
+      "paragraph_text": "50. In our judgment, therefore, both the decision of the Commissioner and the judgment of the Board were based on an incorrect construction of the true meaning and intent of s.s.(2) of the Schedule. Both decisions must therefore, to that extent, be set aside.",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf",
+      "quote_validation_status": "exact_quote_found_in_public_paragraph",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    }
+  ]
+}

@@ -59,10 +59,33 @@
       "field_label": "Contract Law",
       "domain_action": "new_domain_pack_candidate",
       "priority": 1,
-      "top_principles": ["formation", "terms", "vitiating factors", "breach", "remedies", "third parties", "discharge"],
-      "routing_keywords": ["contract", "offer", "acceptance", "consideration", "misrepresentation", "breach of contract", "specific performance"],
-      "exclusion_keywords": ["unlawful assembly", "probate", "personal injury compensation"],
-      "forbidden_neighbor_domains": ["criminal_law_hk", "probate_law_hk"],
+      "top_principles": [
+        "formation",
+        "terms",
+        "vitiating factors",
+        "breach",
+        "remedies",
+        "third parties",
+        "discharge"
+      ],
+      "routing_keywords": [
+        "contract",
+        "offer",
+        "acceptance",
+        "consideration",
+        "misrepresentation",
+        "breach of contract",
+        "specific performance"
+      ],
+      "exclusion_keywords": [
+        "unlawful assembly",
+        "probate",
+        "personal injury compensation"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk",
+        "probate_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -71,10 +94,34 @@
       "field_label": "Civil Procedure / Litigation",
       "domain_action": "new_domain_pack_candidate",
       "priority": 1,
-      "top_principles": ["commencement", "pleadings", "interlocutory applications", "discovery", "summary judgment", "strike out", "costs", "appeals"],
-      "routing_keywords": ["writ", "originating summons", "pleadings", "discovery", "summary judgment", "strike out", "costs order"],
-      "exclusion_keywords": ["charge sheet", "bail", "grant of probate"],
-      "forbidden_neighbor_domains": ["criminal_procedure_hk", "probate_law_hk"],
+      "top_principles": [
+        "commencement",
+        "pleadings",
+        "interlocutory applications",
+        "discovery",
+        "summary judgment",
+        "strike out",
+        "costs",
+        "appeals"
+      ],
+      "routing_keywords": [
+        "writ",
+        "originating summons",
+        "pleadings",
+        "discovery",
+        "summary judgment",
+        "strike out",
+        "costs order"
+      ],
+      "exclusion_keywords": [
+        "charge sheet",
+        "bail",
+        "grant of probate"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_procedure_hk",
+        "probate_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "partial_inconsistent_pleadings_vertical_exists"
     },
@@ -83,10 +130,33 @@
       "field_label": "Evidence",
       "domain_action": "new_domain_pack_candidate",
       "priority": 1,
-      "top_principles": ["relevance", "hearsay", "confessions", "privilege", "burden and standard", "expert evidence", "admissibility"],
-      "routing_keywords": ["admissible", "hearsay", "confession", "privilege", "without prejudice", "expert evidence", "burden of proof"],
-      "exclusion_keywords": ["form W1", "employees compensation", "listing rule"],
-      "forbidden_neighbor_domains": ["probate_law_hk", "hk_listing_and_listed_company_regulation"],
+      "top_principles": [
+        "relevance",
+        "hearsay",
+        "confessions",
+        "privilege",
+        "burden and standard",
+        "expert evidence",
+        "admissibility"
+      ],
+      "routing_keywords": [
+        "admissible",
+        "hearsay",
+        "confession",
+        "privilege",
+        "without prejudice",
+        "expert evidence",
+        "burden of proof"
+      ],
+      "exclusion_keywords": [
+        "form W1",
+        "employees compensation",
+        "listing rule"
+      ],
+      "forbidden_neighbor_domains": [
+        "probate_law_hk",
+        "hk_listing_and_listed_company_regulation"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -95,10 +165,32 @@
       "field_label": "Family Law",
       "domain_action": "new_domain_pack_candidate",
       "priority": 1,
-      "top_principles": ["divorce", "children", "ancillary relief", "maintenance", "custody", "matrimonial home", "injunctions"],
-      "routing_keywords": ["divorce", "custody", "ancillary relief", "maintenance", "matrimonial", "child arrangements"],
-      "exclusion_keywords": ["probate executor", "company winding up", "criminal bail"],
-      "forbidden_neighbor_domains": ["probate_law_hk", "criminal_procedure_hk"],
+      "top_principles": [
+        "divorce",
+        "children",
+        "ancillary relief",
+        "maintenance",
+        "custody",
+        "matrimonial home",
+        "injunctions"
+      ],
+      "routing_keywords": [
+        "divorce",
+        "custody",
+        "ancillary relief",
+        "maintenance",
+        "matrimonial",
+        "child arrangements"
+      ],
+      "exclusion_keywords": [
+        "probate executor",
+        "company winding up",
+        "criminal bail"
+      ],
+      "forbidden_neighbor_domains": [
+        "probate_law_hk",
+        "criminal_procedure_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -107,10 +199,33 @@
       "field_label": "Land / Property Law",
       "domain_action": "new_domain_pack_candidate",
       "priority": 1,
-      "top_principles": ["title", "co-ownership", "adverse possession", "easements", "mortgages", "landlord and tenant", "conveyancing"],
-      "routing_keywords": ["land", "property", "adverse possession", "easement", "mortgage", "tenancy", "landlord"],
-      "exclusion_keywords": ["riot", "probate grant", "personal injury"],
-      "forbidden_neighbor_domains": ["criminal_law_hk", "tort_law_hk"],
+      "top_principles": [
+        "title",
+        "co-ownership",
+        "adverse possession",
+        "easements",
+        "mortgages",
+        "landlord and tenant",
+        "conveyancing"
+      ],
+      "routing_keywords": [
+        "land",
+        "property",
+        "adverse possession",
+        "easement",
+        "mortgage",
+        "tenancy",
+        "landlord"
+      ],
+      "exclusion_keywords": [
+        "riot",
+        "probate grant",
+        "personal injury"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk",
+        "tort_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -119,10 +234,32 @@
       "field_label": "Administrative / Public Law",
       "domain_action": "new_domain_pack_candidate",
       "priority": 1,
-      "top_principles": ["judicial review", "standing", "procedural fairness", "illegality", "irrationality", "proportionality", "remedies"],
-      "routing_keywords": ["judicial review", "procedural fairness", "public authority", "irrationality", "legitimate expectation", "proportionality"],
-      "exclusion_keywords": ["personal injury damages", "probate registry requisition", "company filing"],
-      "forbidden_neighbor_domains": ["tort_law_hk", "probate_law_hk"],
+      "top_principles": [
+        "judicial review",
+        "standing",
+        "procedural fairness",
+        "illegality",
+        "irrationality",
+        "proportionality",
+        "remedies"
+      ],
+      "routing_keywords": [
+        "judicial review",
+        "procedural fairness",
+        "public authority",
+        "irrationality",
+        "legitimate expectation",
+        "proportionality"
+      ],
+      "exclusion_keywords": [
+        "personal injury damages",
+        "probate registry requisition",
+        "company filing"
+      ],
+      "forbidden_neighbor_domains": [
+        "tort_law_hk",
+        "probate_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -131,10 +268,30 @@
       "field_label": "Constitutional / Basic Law",
       "domain_action": "new_domain_pack_candidate",
       "priority": 1,
-      "top_principles": ["Basic Law rights", "proportionality", "interpretation", "standing", "remedies", "national security interface"],
-      "routing_keywords": ["Basic Law", "Bill of Rights", "constitutional", "proportionality", "freedom of expression", "right of abode"],
-      "exclusion_keywords": ["ordinary probate", "ordinary PI quantum"],
-      "forbidden_neighbor_domains": ["probate_law_hk", "tort_law_hk"],
+      "top_principles": [
+        "Basic Law rights",
+        "proportionality",
+        "interpretation",
+        "standing",
+        "remedies",
+        "national security interface"
+      ],
+      "routing_keywords": [
+        "Basic Law",
+        "Bill of Rights",
+        "constitutional",
+        "proportionality",
+        "freedom of expression",
+        "right of abode"
+      ],
+      "exclusion_keywords": [
+        "ordinary probate",
+        "ordinary PI quantum"
+      ],
+      "forbidden_neighbor_domains": [
+        "probate_law_hk",
+        "tort_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -143,10 +300,31 @@
       "field_label": "Employment Law",
       "domain_action": "new_domain_pack_candidate",
       "priority": 1,
-      "top_principles": ["contract of employment", "termination", "wages", "statutory benefits", "rest days", "wrongful dismissal", "discrimination interface"],
-      "routing_keywords": ["employment", "employee", "employer", "termination", "wages", "severance", "long service payment"],
-      "exclusion_keywords": ["work injury compensation", "criminal prosecution"],
-      "forbidden_neighbor_domains": ["criminal_law_hk"],
+      "top_principles": [
+        "contract of employment",
+        "termination",
+        "wages",
+        "statutory benefits",
+        "rest days",
+        "wrongful dismissal",
+        "discrimination interface"
+      ],
+      "routing_keywords": [
+        "employment",
+        "employee",
+        "employer",
+        "termination",
+        "wages",
+        "severance",
+        "long service payment"
+      ],
+      "exclusion_keywords": [
+        "work injury compensation",
+        "criminal prosecution"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -155,10 +333,31 @@
       "field_label": "Discrimination / Equal Opportunities",
       "domain_action": "new_domain_pack_candidate",
       "priority": 2,
-      "top_principles": ["sex discrimination", "disability discrimination", "family status", "race discrimination", "harassment", "victimisation", "remedies"],
-      "routing_keywords": ["discrimination", "harassment", "victimisation", "EOC", "disability", "sex discrimination", "race discrimination"],
-      "exclusion_keywords": ["criminal assault", "ordinary employment wages"],
-      "forbidden_neighbor_domains": ["criminal_law_hk"],
+      "top_principles": [
+        "sex discrimination",
+        "disability discrimination",
+        "family status",
+        "race discrimination",
+        "harassment",
+        "victimisation",
+        "remedies"
+      ],
+      "routing_keywords": [
+        "discrimination",
+        "harassment",
+        "victimisation",
+        "EOC",
+        "disability",
+        "sex discrimination",
+        "race discrimination"
+      ],
+      "exclusion_keywords": [
+        "criminal assault",
+        "ordinary employment wages"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -167,10 +366,32 @@
       "field_label": "Arbitration / ADR",
       "domain_action": "new_domain_pack_candidate",
       "priority": 2,
-      "top_principles": ["arbitration agreement", "stay", "tribunal jurisdiction", "interim measures", "award enforcement", "set aside", "mediation privilege"],
-      "routing_keywords": ["arbitration", "arbitral award", "stay proceedings", "HKIAC", "mediation", "set aside award", "enforcement award"],
-      "exclusion_keywords": ["criminal sentence", "probate grant"],
-      "forbidden_neighbor_domains": ["criminal_procedure_hk", "probate_law_hk"],
+      "top_principles": [
+        "arbitration agreement",
+        "stay",
+        "tribunal jurisdiction",
+        "interim measures",
+        "award enforcement",
+        "set aside",
+        "mediation privilege"
+      ],
+      "routing_keywords": [
+        "arbitration",
+        "arbitral award",
+        "stay proceedings",
+        "HKIAC",
+        "mediation",
+        "set aside award",
+        "enforcement award"
+      ],
+      "exclusion_keywords": [
+        "criminal sentence",
+        "probate grant"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_procedure_hk",
+        "probate_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -179,10 +400,31 @@
       "field_label": "Insolvency / Bankruptcy",
       "domain_action": "new_domain_pack_candidate",
       "priority": 2,
-      "top_principles": ["bankruptcy petition", "statutory demand", "acts of bankruptcy", "IVA", "trustee in bankruptcy", "avoidance", "discharge"],
-      "routing_keywords": ["bankruptcy", "statutory demand", "petition", "trustee in bankruptcy", "insolvent", "winding up"],
-      "exclusion_keywords": ["probate trustee", "criminal dishonesty"],
-      "forbidden_neighbor_domains": ["probate_law_hk", "criminal_law_hk"],
+      "top_principles": [
+        "bankruptcy petition",
+        "statutory demand",
+        "acts of bankruptcy",
+        "IVA",
+        "trustee in bankruptcy",
+        "avoidance",
+        "discharge"
+      ],
+      "routing_keywords": [
+        "bankruptcy",
+        "statutory demand",
+        "petition",
+        "trustee in bankruptcy",
+        "insolvent",
+        "winding up"
+      ],
+      "exclusion_keywords": [
+        "probate trustee",
+        "criminal dishonesty"
+      ],
+      "forbidden_neighbor_domains": [
+        "probate_law_hk",
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -191,10 +433,30 @@
       "field_label": "Banking / Finance",
       "domain_action": "new_domain_pack_candidate",
       "priority": 2,
-      "top_principles": ["banker-customer", "guarantees", "letters of credit", "mortgage finance", "unauthorised transactions", "bank duties"],
-      "routing_keywords": ["bank", "loan", "guarantee", "letter of credit", "unauthorised transaction", "mortgage finance"],
-      "exclusion_keywords": ["money laundering offence", "company listing"],
-      "forbidden_neighbor_domains": ["criminal_law_hk", "hk_listing_and_listed_company_regulation"],
+      "top_principles": [
+        "banker-customer",
+        "guarantees",
+        "letters of credit",
+        "mortgage finance",
+        "unauthorised transactions",
+        "bank duties"
+      ],
+      "routing_keywords": [
+        "bank",
+        "loan",
+        "guarantee",
+        "letter of credit",
+        "unauthorised transaction",
+        "mortgage finance"
+      ],
+      "exclusion_keywords": [
+        "money laundering offence",
+        "company listing"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk",
+        "hk_listing_and_listed_company_regulation"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -203,10 +465,30 @@
       "field_label": "Competition Law",
       "domain_action": "new_domain_pack_candidate",
       "priority": 2,
-      "top_principles": ["first conduct rule", "second conduct rule", "mergers", "exclusions", "enforcement", "pecuniary penalties"],
-      "routing_keywords": ["competition", "cartel", "market power", "first conduct rule", "second conduct rule", "Competition Tribunal"],
-      "exclusion_keywords": ["criminal conspiracy", "company shareholder dispute"],
-      "forbidden_neighbor_domains": ["criminal_law_hk", "hk_listing_and_listed_company_regulation"],
+      "top_principles": [
+        "first conduct rule",
+        "second conduct rule",
+        "mergers",
+        "exclusions",
+        "enforcement",
+        "pecuniary penalties"
+      ],
+      "routing_keywords": [
+        "competition",
+        "cartel",
+        "market power",
+        "first conduct rule",
+        "second conduct rule",
+        "Competition Tribunal"
+      ],
+      "exclusion_keywords": [
+        "criminal conspiracy",
+        "company shareholder dispute"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk",
+        "hk_listing_and_listed_company_regulation"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -215,10 +497,29 @@
       "field_label": "Intellectual Property",
       "domain_action": "new_domain_pack_candidate",
       "priority": 2,
-      "top_principles": ["copyright", "trade marks", "passing off", "patents", "confidential information", "remedies"],
-      "routing_keywords": ["copyright", "trade mark", "passing off", "patent", "confidential information", "infringement"],
-      "exclusion_keywords": ["criminal theft", "data privacy"],
-      "forbidden_neighbor_domains": ["criminal_law_hk"],
+      "top_principles": [
+        "copyright",
+        "trade marks",
+        "passing off",
+        "patents",
+        "confidential information",
+        "remedies"
+      ],
+      "routing_keywords": [
+        "copyright",
+        "trade mark",
+        "passing off",
+        "patent",
+        "confidential information",
+        "infringement"
+      ],
+      "exclusion_keywords": [
+        "criminal theft",
+        "data privacy"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -227,22 +528,70 @@
       "field_label": "Data Privacy / Personal Data",
       "domain_action": "new_domain_pack_candidate",
       "priority": 2,
-      "top_principles": ["data protection principles", "collection", "use", "direct marketing", "data access request", "enforcement", "doxxing"],
-      "routing_keywords": ["personal data", "privacy", "PCPD", "data access request", "direct marketing", "doxxing"],
-      "exclusion_keywords": ["copyright", "criminal theft"],
-      "forbidden_neighbor_domains": ["intellectual_property_hk", "criminal_law_hk"],
+      "top_principles": [
+        "data protection principles",
+        "collection",
+        "use",
+        "direct marketing",
+        "data access request",
+        "enforcement",
+        "doxxing"
+      ],
+      "routing_keywords": [
+        "personal data",
+        "privacy",
+        "PCPD",
+        "data access request",
+        "direct marketing",
+        "doxxing"
+      ],
+      "exclusion_keywords": [
+        "copyright",
+        "criminal theft"
+      ],
+      "forbidden_neighbor_domains": [
+        "intellectual_property_hk",
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
-      "public_source_status": "not_started"
+      "public_source_status": "pilot_dpp1_cathay_public_pdf_quote_verified",
+      "pilot_artifact": "data/legal_ingest/tree_gap_pilots/data_privacy_dpp1_v1",
+      "notes": [
+        "First public-source DPP1 pilot added from Cathay Pacific Airways Ltd v Administrative Appeals Board and Another [2008] 5 HKLRD 539.",
+        "Six numbered paragraphs and propositions are quote-verified from the official PCPD-hosted judgment PDF.",
+        "All links remain machine_candidate/candidate_only pending human review."
+      ]
     },
     {
       "field_id": "tax_revenue_hk",
       "field_label": "Tax / Revenue",
       "domain_action": "new_domain_pack_candidate",
       "priority": 3,
-      "top_principles": ["profits tax", "salaries tax", "property tax", "source", "deductions", "anti-avoidance", "appeals"],
-      "routing_keywords": ["tax", "Inland Revenue", "profits tax", "salaries tax", "source of profits", "deduction"],
-      "exclusion_keywords": ["criminal proceeds", "probate estate duty"],
-      "forbidden_neighbor_domains": ["criminal_law_hk", "probate_law_hk"],
+      "top_principles": [
+        "profits tax",
+        "salaries tax",
+        "property tax",
+        "source",
+        "deductions",
+        "anti-avoidance",
+        "appeals"
+      ],
+      "routing_keywords": [
+        "tax",
+        "Inland Revenue",
+        "profits tax",
+        "salaries tax",
+        "source of profits",
+        "deduction"
+      ],
+      "exclusion_keywords": [
+        "criminal proceeds",
+        "probate estate duty"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk",
+        "probate_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -252,10 +601,31 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "land_property_hk",
       "priority": 2,
-      "top_principles": ["tenancy formation", "rent", "forfeiture", "possession", "repair", "assignment", "renewal"],
-      "routing_keywords": ["landlord", "tenant", "rent", "forfeiture", "possession", "tenancy agreement"],
-      "exclusion_keywords": ["trespass to person", "probate property transfer"],
-      "forbidden_neighbor_domains": ["tort_law_hk", "probate_law_hk"],
+      "top_principles": [
+        "tenancy formation",
+        "rent",
+        "forfeiture",
+        "possession",
+        "repair",
+        "assignment",
+        "renewal"
+      ],
+      "routing_keywords": [
+        "landlord",
+        "tenant",
+        "rent",
+        "forfeiture",
+        "possession",
+        "tenancy agreement"
+      ],
+      "exclusion_keywords": [
+        "trespass to person",
+        "probate property transfer"
+      ],
+      "forbidden_neighbor_domains": [
+        "tort_law_hk",
+        "probate_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -264,10 +634,32 @@
       "field_label": "Building / Construction Law",
       "domain_action": "new_domain_pack_candidate",
       "priority": 2,
-      "top_principles": ["construction contracts", "variations", "delay", "defects", "payment", "architect/certifier", "building control"],
-      "routing_keywords": ["construction", "building contract", "variation", "delay", "defects", "architect certificate", "contractor"],
-      "exclusion_keywords": ["workplace injury", "dangerous building prosecution"],
-      "forbidden_neighbor_domains": ["tort_law_hk", "criminal_law_hk"],
+      "top_principles": [
+        "construction contracts",
+        "variations",
+        "delay",
+        "defects",
+        "payment",
+        "architect/certifier",
+        "building control"
+      ],
+      "routing_keywords": [
+        "construction",
+        "building contract",
+        "variation",
+        "delay",
+        "defects",
+        "architect certificate",
+        "contractor"
+      ],
+      "exclusion_keywords": [
+        "workplace injury",
+        "dangerous building prosecution"
+      ],
+      "forbidden_neighbor_domains": [
+        "tort_law_hk",
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -277,10 +669,32 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "criminal_law_hk",
       "priority": 1,
-      "top_principles": ["fraud", "theft", "false accounting", "money laundering", "bribery", "conspiracy", "dishonesty"],
-      "routing_keywords": ["fraud", "dishonesty", "theft", "false accounting", "money laundering", "deception", "bribery"],
-      "exclusion_keywords": ["civil misrepresentation only", "banking negligence"],
-      "forbidden_neighbor_domains": ["contract_law_hk", "banking_finance_hk"],
+      "top_principles": [
+        "fraud",
+        "theft",
+        "false accounting",
+        "money laundering",
+        "bribery",
+        "conspiracy",
+        "dishonesty"
+      ],
+      "routing_keywords": [
+        "fraud",
+        "dishonesty",
+        "theft",
+        "false accounting",
+        "money laundering",
+        "deception",
+        "bribery"
+      ],
+      "exclusion_keywords": [
+        "civil misrepresentation only",
+        "banking negligence"
+      ],
+      "forbidden_neighbor_domains": [
+        "contract_law_hk",
+        "banking_finance_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "partial_criminal_law_tree_exists"
     },
@@ -290,10 +704,31 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "criminal_law_hk",
       "priority": 1,
-      "top_principles": ["agent advantage", "public servant bribery", "elections", "ICAC powers", "mens rea", "defences"],
-      "routing_keywords": ["bribery", "corruption", "advantage", "ICAC", "agent", "public servant", "POBO"],
-      "exclusion_keywords": ["company director duties only", "gift in probate"],
-      "forbidden_neighbor_domains": ["company_forms", "probate_law_hk"],
+      "top_principles": [
+        "agent advantage",
+        "public servant bribery",
+        "elections",
+        "ICAC powers",
+        "mens rea",
+        "defences"
+      ],
+      "routing_keywords": [
+        "bribery",
+        "corruption",
+        "advantage",
+        "ICAC",
+        "agent",
+        "public servant",
+        "POBO"
+      ],
+      "exclusion_keywords": [
+        "company director duties only",
+        "gift in probate"
+      ],
+      "forbidden_neighbor_domains": [
+        "company_forms",
+        "probate_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -303,10 +738,30 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "criminal_law_hk",
       "priority": 2,
-      "top_principles": ["possession", "trafficking", "knowledge", "custody/control", "sentencing bands", "search/seizure"],
-      "routing_keywords": ["dangerous drugs", "trafficking", "possession of drugs", "ketamine", "heroin", "drug trafficking"],
-      "exclusion_keywords": ["medical negligence", "pharmaceutical IP"],
-      "forbidden_neighbor_domains": ["tort_law_hk", "intellectual_property_hk"],
+      "top_principles": [
+        "possession",
+        "trafficking",
+        "knowledge",
+        "custody/control",
+        "sentencing bands",
+        "search/seizure"
+      ],
+      "routing_keywords": [
+        "dangerous drugs",
+        "trafficking",
+        "possession of drugs",
+        "ketamine",
+        "heroin",
+        "drug trafficking"
+      ],
+      "exclusion_keywords": [
+        "medical negligence",
+        "pharmaceutical IP"
+      ],
+      "forbidden_neighbor_domains": [
+        "tort_law_hk",
+        "intellectual_property_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -315,10 +770,30 @@
       "field_label": "Immigration / Right of Abode",
       "domain_action": "new_domain_pack_candidate",
       "priority": 3,
-      "top_principles": ["right of abode", "deportation", "removal", "employment visas", "non-refoulement", "judicial review"],
-      "routing_keywords": ["immigration", "right of abode", "visa", "deportation", "removal", "non-refoulement"],
-      "exclusion_keywords": ["probate domicile", "employment wages"],
-      "forbidden_neighbor_domains": ["probate_law_hk", "employment_law_hk"],
+      "top_principles": [
+        "right of abode",
+        "deportation",
+        "removal",
+        "employment visas",
+        "non-refoulement",
+        "judicial review"
+      ],
+      "routing_keywords": [
+        "immigration",
+        "right of abode",
+        "visa",
+        "deportation",
+        "removal",
+        "non-refoulement"
+      ],
+      "exclusion_keywords": [
+        "probate domicile",
+        "employment wages"
+      ],
+      "forbidden_neighbor_domains": [
+        "probate_law_hk",
+        "employment_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -327,10 +802,30 @@
       "field_label": "Planning / Environment",
       "domain_action": "new_domain_pack_candidate",
       "priority": 3,
-      "top_principles": ["town planning", "environmental impact", "pollution", "building control", "judicial review", "enforcement"],
-      "routing_keywords": ["town planning", "environment", "pollution", "EIA", "building order", "planning permission"],
-      "exclusion_keywords": ["private nuisance only", "construction contract"],
-      "forbidden_neighbor_domains": ["tort_law_hk", "building_construction_hk"],
+      "top_principles": [
+        "town planning",
+        "environmental impact",
+        "pollution",
+        "building control",
+        "judicial review",
+        "enforcement"
+      ],
+      "routing_keywords": [
+        "town planning",
+        "environment",
+        "pollution",
+        "EIA",
+        "building order",
+        "planning permission"
+      ],
+      "exclusion_keywords": [
+        "private nuisance only",
+        "construction contract"
+      ],
+      "forbidden_neighbor_domains": [
+        "tort_law_hk",
+        "building_construction_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -339,10 +834,31 @@
       "field_label": "Insurance Law",
       "domain_action": "new_domain_pack_candidate",
       "priority": 3,
-      "top_principles": ["policy interpretation", "utmost good faith", "non-disclosure", "claims handling", "subrogation", "third-party insurance"],
-      "routing_keywords": ["insurance", "policy", "insurer", "coverage", "indemnity", "subrogation", "non-disclosure"],
-      "exclusion_keywords": ["PI quantum only", "criminal compensation"],
-      "forbidden_neighbor_domains": ["tort_law_hk", "criminal_law_hk"],
+      "top_principles": [
+        "policy interpretation",
+        "utmost good faith",
+        "non-disclosure",
+        "claims handling",
+        "subrogation",
+        "third-party insurance"
+      ],
+      "routing_keywords": [
+        "insurance",
+        "policy",
+        "insurer",
+        "coverage",
+        "indemnity",
+        "subrogation",
+        "non-disclosure"
+      ],
+      "exclusion_keywords": [
+        "PI quantum only",
+        "criminal compensation"
+      ],
+      "forbidden_neighbor_domains": [
+        "tort_law_hk",
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -351,10 +867,31 @@
       "field_label": "Sale of Goods / Consumer",
       "domain_action": "new_domain_pack_candidate",
       "priority": 3,
-      "top_principles": ["sale contracts", "implied terms", "title", "quality", "consumer protection", "misdescription", "remedies"],
-      "routing_keywords": ["sale of goods", "consumer", "merchantable quality", "implied terms", "misdescription", "refund"],
-      "exclusion_keywords": ["criminal fraud", "product injury"],
-      "forbidden_neighbor_domains": ["criminal_law_hk", "tort_law_hk"],
+      "top_principles": [
+        "sale contracts",
+        "implied terms",
+        "title",
+        "quality",
+        "consumer protection",
+        "misdescription",
+        "remedies"
+      ],
+      "routing_keywords": [
+        "sale of goods",
+        "consumer",
+        "merchantable quality",
+        "implied terms",
+        "misdescription",
+        "refund"
+      ],
+      "exclusion_keywords": [
+        "criminal fraud",
+        "product injury"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk",
+        "tort_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -364,10 +901,30 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "hk_listing_and_listed_company_regulation",
       "priority": 2,
-      "top_principles": ["market misconduct", "inside information", "licensing", "enforcement", "disclosure", "SFC powers"],
-      "routing_keywords": ["SFC", "securities", "market misconduct", "inside information", "licensed corporation", "SFO"],
-      "exclusion_keywords": ["ordinary company filing", "criminal theft"],
-      "forbidden_neighbor_domains": ["company_forms", "criminal_law_hk"],
+      "top_principles": [
+        "market misconduct",
+        "inside information",
+        "licensing",
+        "enforcement",
+        "disclosure",
+        "SFC powers"
+      ],
+      "routing_keywords": [
+        "SFC",
+        "securities",
+        "market misconduct",
+        "inside information",
+        "licensed corporation",
+        "SFO"
+      ],
+      "exclusion_keywords": [
+        "ordinary company filing",
+        "criminal theft"
+      ],
+      "forbidden_neighbor_domains": [
+        "company_forms",
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "partial_listing_pack_exists"
     },
@@ -377,10 +934,31 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "equity_trusts_hk",
       "priority": 2,
-      "top_principles": ["injunctions", "specific performance", "rescission", "account", "tracing", "declarations", "damages in lieu"],
-      "routing_keywords": ["injunction", "specific performance", "rescission", "tracing", "account of profits", "equitable compensation"],
-      "exclusion_keywords": ["criminal sentence", "probate grant form"],
-      "forbidden_neighbor_domains": ["criminal_procedure_hk", "probate_law_hk"],
+      "top_principles": [
+        "injunctions",
+        "specific performance",
+        "rescission",
+        "account",
+        "tracing",
+        "declarations",
+        "damages in lieu"
+      ],
+      "routing_keywords": [
+        "injunction",
+        "specific performance",
+        "rescission",
+        "tracing",
+        "account of profits",
+        "equitable compensation"
+      ],
+      "exclusion_keywords": [
+        "criminal sentence",
+        "probate grant form"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_procedure_hk",
+        "probate_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "partial_equity_pack_exists"
     },
@@ -390,10 +968,31 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "tort_law_hk",
       "priority": 2,
-      "top_principles": ["publication", "defamatory meaning", "identification", "defences", "malice", "damages", "interim injunctions"],
-      "routing_keywords": ["defamation", "libel", "slander", "publication", "fair comment", "qualified privilege"],
-      "exclusion_keywords": ["sedition", "privacy data"],
-      "forbidden_neighbor_domains": ["criminal_law_hk", "data_privacy_hk"],
+      "top_principles": [
+        "publication",
+        "defamatory meaning",
+        "identification",
+        "defences",
+        "malice",
+        "damages",
+        "interim injunctions"
+      ],
+      "routing_keywords": [
+        "defamation",
+        "libel",
+        "slander",
+        "publication",
+        "fair comment",
+        "qualified privilege"
+      ],
+      "exclusion_keywords": [
+        "sedition",
+        "privacy data"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk",
+        "data_privacy_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "partial_tort_pack_exists"
     },
@@ -403,10 +1002,31 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "tort_law_hk",
       "priority": 2,
-      "top_principles": ["duty", "standard of care", "informed consent", "causation", "expert evidence", "quantum", "disciplinary interface"],
-      "routing_keywords": ["medical negligence", "doctor", "hospital", "informed consent", "clinical", "medical expert"],
-      "exclusion_keywords": ["criminal assault", "employment sick leave only"],
-      "forbidden_neighbor_domains": ["criminal_law_hk", "employment_law_hk"],
+      "top_principles": [
+        "duty",
+        "standard of care",
+        "informed consent",
+        "causation",
+        "expert evidence",
+        "quantum",
+        "disciplinary interface"
+      ],
+      "routing_keywords": [
+        "medical negligence",
+        "doctor",
+        "hospital",
+        "informed consent",
+        "clinical",
+        "medical expert"
+      ],
+      "exclusion_keywords": [
+        "criminal assault",
+        "employment sick leave only"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk",
+        "employment_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "partial_pi_pack_exists"
     },
@@ -416,10 +1036,29 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "tort_law_hk",
       "priority": 3,
-      "top_principles": ["defective product", "negligence", "manufacturer duty", "warnings", "causation", "consumer remedies"],
-      "routing_keywords": ["product liability", "defective product", "manufacturer", "warning", "consumer injury"],
-      "exclusion_keywords": ["sale refund only", "criminal dangerous goods"],
-      "forbidden_neighbor_domains": ["sale_of_goods_consumer_hk", "criminal_law_hk"],
+      "top_principles": [
+        "defective product",
+        "negligence",
+        "manufacturer duty",
+        "warnings",
+        "causation",
+        "consumer remedies"
+      ],
+      "routing_keywords": [
+        "product liability",
+        "defective product",
+        "manufacturer",
+        "warning",
+        "consumer injury"
+      ],
+      "exclusion_keywords": [
+        "sale refund only",
+        "criminal dangerous goods"
+      ],
+      "forbidden_neighbor_domains": [
+        "sale_of_goods_consumer_hk",
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -429,10 +1068,29 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "tort_law_hk",
       "priority": 2,
-      "top_principles": ["duty", "standard of care", "scope of duty", "causation", "loss", "limitation", "contributory negligence"],
-      "routing_keywords": ["professional negligence", "solicitor negligence", "accountant negligence", "scope of duty", "advice"],
-      "exclusion_keywords": ["disciplinary only", "criminal fraud"],
-      "forbidden_neighbor_domains": ["criminal_law_hk"],
+      "top_principles": [
+        "duty",
+        "standard of care",
+        "scope of duty",
+        "causation",
+        "loss",
+        "limitation",
+        "contributory negligence"
+      ],
+      "routing_keywords": [
+        "professional negligence",
+        "solicitor negligence",
+        "accountant negligence",
+        "scope of duty",
+        "advice"
+      ],
+      "exclusion_keywords": [
+        "disciplinary only",
+        "criminal fraud"
+      ],
+      "forbidden_neighbor_domains": [
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -442,10 +1100,31 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "equity_trusts_hk",
       "priority": 2,
-      "top_principles": ["breach of trust", "account", "tracing", "beneficiary claims", "trustee removal", "estate disputes", "fiduciary remedies"],
-      "routing_keywords": ["breach of trust", "trustee", "beneficiary", "estate dispute", "account", "tracing"],
-      "exclusion_keywords": ["ordinary probate form", "company director duties"],
-      "forbidden_neighbor_domains": ["probate_law_hk", "hk_listing_and_listed_company_regulation"],
+      "top_principles": [
+        "breach of trust",
+        "account",
+        "tracing",
+        "beneficiary claims",
+        "trustee removal",
+        "estate disputes",
+        "fiduciary remedies"
+      ],
+      "routing_keywords": [
+        "breach of trust",
+        "trustee",
+        "beneficiary",
+        "estate dispute",
+        "account",
+        "tracing"
+      ],
+      "exclusion_keywords": [
+        "ordinary probate form",
+        "company director duties"
+      ],
+      "forbidden_neighbor_domains": [
+        "probate_law_hk",
+        "hk_listing_and_listed_company_regulation"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "partial_equity_probate_packs_exist"
     },
@@ -454,10 +1133,30 @@
       "field_label": "Agency / Partnership",
       "domain_action": "new_domain_pack_candidate",
       "priority": 3,
-      "top_principles": ["authority", "apparent authority", "fiduciary duties", "partnership formation", "liability", "dissolution"],
-      "routing_keywords": ["agent", "agency", "apparent authority", "partnership", "partner", "fiduciary duty"],
-      "exclusion_keywords": ["estate trustee", "company director only"],
-      "forbidden_neighbor_domains": ["probate_law_hk", "hk_listing_and_listed_company_regulation"],
+      "top_principles": [
+        "authority",
+        "apparent authority",
+        "fiduciary duties",
+        "partnership formation",
+        "liability",
+        "dissolution"
+      ],
+      "routing_keywords": [
+        "agent",
+        "agency",
+        "apparent authority",
+        "partnership",
+        "partner",
+        "fiduciary duty"
+      ],
+      "exclusion_keywords": [
+        "estate trustee",
+        "company director only"
+      ],
+      "forbidden_neighbor_domains": [
+        "probate_law_hk",
+        "hk_listing_and_listed_company_regulation"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -466,10 +1165,32 @@
       "field_label": "Credit / Security / Guarantees",
       "domain_action": "new_domain_pack_candidate",
       "priority": 3,
-      "top_principles": ["guarantees", "indemnities", "charges", "mortgages", "priority", "enforcement", "undue influence"],
-      "routing_keywords": ["guarantee", "indemnity", "charge", "security", "mortgage", "priority", "undue influence"],
-      "exclusion_keywords": ["probate surety", "criminal bail surety"],
-      "forbidden_neighbor_domains": ["probate_law_hk", "criminal_procedure_hk"],
+      "top_principles": [
+        "guarantees",
+        "indemnities",
+        "charges",
+        "mortgages",
+        "priority",
+        "enforcement",
+        "undue influence"
+      ],
+      "routing_keywords": [
+        "guarantee",
+        "indemnity",
+        "charge",
+        "security",
+        "mortgage",
+        "priority",
+        "undue influence"
+      ],
+      "exclusion_keywords": [
+        "probate surety",
+        "criminal bail surety"
+      ],
+      "forbidden_neighbor_domains": [
+        "probate_law_hk",
+        "criminal_procedure_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -478,10 +1199,30 @@
       "field_label": "Shipping / Transport",
       "domain_action": "new_domain_pack_candidate",
       "priority": 4,
-      "top_principles": ["carriage of goods", "bills of lading", "charterparty", "collision", "limitation", "marine insurance"],
-      "routing_keywords": ["shipping", "bill of lading", "charterparty", "carriage of goods", "collision", "marine"],
-      "exclusion_keywords": ["road traffic personal injury", "transport employment"],
-      "forbidden_neighbor_domains": ["tort_law_hk", "employment_law_hk"],
+      "top_principles": [
+        "carriage of goods",
+        "bills of lading",
+        "charterparty",
+        "collision",
+        "limitation",
+        "marine insurance"
+      ],
+      "routing_keywords": [
+        "shipping",
+        "bill of lading",
+        "charterparty",
+        "carriage of goods",
+        "collision",
+        "marine"
+      ],
+      "exclusion_keywords": [
+        "road traffic personal injury",
+        "transport employment"
+      ],
+      "forbidden_neighbor_domains": [
+        "tort_law_hk",
+        "employment_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -491,10 +1232,30 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "tort_law_hk",
       "priority": 4,
-      "top_principles": ["school supervision", "student injury", "bullying", "discipline", "special needs", "negligence"],
-      "routing_keywords": ["school", "student", "teacher", "playground", "supervision", "bullying"],
-      "exclusion_keywords": ["employment teacher dispute", "criminal assault only"],
-      "forbidden_neighbor_domains": ["employment_law_hk", "criminal_law_hk"],
+      "top_principles": [
+        "school supervision",
+        "student injury",
+        "bullying",
+        "discipline",
+        "special needs",
+        "negligence"
+      ],
+      "routing_keywords": [
+        "school",
+        "student",
+        "teacher",
+        "playground",
+        "supervision",
+        "bullying"
+      ],
+      "exclusion_keywords": [
+        "employment teacher dispute",
+        "criminal assault only"
+      ],
+      "forbidden_neighbor_domains": [
+        "employment_law_hk",
+        "criminal_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "partial_pi_pack_exists"
     },
@@ -503,10 +1264,30 @@
       "field_label": "Mental Capacity / Guardianship",
       "domain_action": "new_domain_pack_candidate",
       "priority": 3,
-      "top_principles": ["mental capacity", "committee", "guardianship", "best interests", "medical evidence", "property management"],
-      "routing_keywords": ["mental capacity", "committee", "guardianship", "MHO", "best interests", "incapable person"],
-      "exclusion_keywords": ["minor settlement only", "probate executor"],
-      "forbidden_neighbor_domains": ["probate_law_hk", "tort_law_hk"],
+      "top_principles": [
+        "mental capacity",
+        "committee",
+        "guardianship",
+        "best interests",
+        "medical evidence",
+        "property management"
+      ],
+      "routing_keywords": [
+        "mental capacity",
+        "committee",
+        "guardianship",
+        "MHO",
+        "best interests",
+        "incapable person"
+      ],
+      "exclusion_keywords": [
+        "minor settlement only",
+        "probate executor"
+      ],
+      "forbidden_neighbor_domains": [
+        "probate_law_hk",
+        "tort_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     },
@@ -516,10 +1297,31 @@
       "domain_action": "branch_candidate",
       "parent_domain_if_existing": "constitutional_basic_law_hk",
       "priority": 2,
-      "top_principles": ["freedom of expression", "assembly", "fair trial", "privacy", "equality", "proportionality", "remedies"],
-      "routing_keywords": ["Bill of Rights", "freedom of expression", "assembly", "fair trial", "proportionality", "BORO"],
-      "exclusion_keywords": ["private defamation only", "ordinary tort damages"],
-      "forbidden_neighbor_domains": ["defamation_media_hk", "tort_law_hk"],
+      "top_principles": [
+        "freedom of expression",
+        "assembly",
+        "fair trial",
+        "privacy",
+        "equality",
+        "proportionality",
+        "remedies"
+      ],
+      "routing_keywords": [
+        "Bill of Rights",
+        "freedom of expression",
+        "assembly",
+        "fair trial",
+        "proportionality",
+        "BORO"
+      ],
+      "exclusion_keywords": [
+        "private defamation only",
+        "ordinary tort damages"
+      ],
+      "forbidden_neighbor_domains": [
+        "defamation_media_hk",
+        "tort_law_hk"
+      ],
       "notebooklm_status": "pending_branch_fill",
       "public_source_status": "not_started"
     }

@@ -1,0 +1,12 @@
+{
+  "domain_id": "data_privacy_hk",
+  "title": "Hong Kong Data Privacy Law",
+  "version": "0.1.0",
+  "last_updated": "2026-06-24",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "needs_official_source_verification": true,
+    "authority_status": "candidate_tree_seed"
+  }
+}

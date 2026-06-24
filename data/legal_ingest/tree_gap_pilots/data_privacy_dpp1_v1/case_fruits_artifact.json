@@ -1,0 +1,11 @@
+{
+  "artifact_id": "data_privacy_dpp1_case_fruits_v1",
+  "source_manifest": "source_manifest.json",
+  "paragraph_cards": "paragraph_cards.json",
+  "proposition_cards": "proposition_cards.json",
+  "proposition_node_links": "proposition_node_links.json",
+  "l4_case_applications": "l4_case_applications.json",
+  "l5_paragraph_proof": "l5_paragraph_proof.json",
+  "review_queue": "review_queue.json",
+  "status": "candidate_only_requires_review"
+}

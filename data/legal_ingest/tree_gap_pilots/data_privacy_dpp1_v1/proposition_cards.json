@@ -1,0 +1,162 @@
+{
+  "proposition_cards": [
+    {
+      "proposition_id": "prop_cathay_2008_pdpo_employee_data_scope_p1",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p1",
+      "source_paragraph": "1",
+      "exact_quote": "If an employer (a data user) wishes to collect in a recorded form personal data of its employees",
+      "proposition_text": "The CFI described the PDPO as protecting privacy in relation to personal information and requiring an employer collecting employee personal data to do so only as provided and specified in the Ordinance.",
+      "tree_node_ids": [
+        "data_privacy_hk",
+        "data_privacy_hk.dpp1.collection_purpose"
+      ],
+      "target_doctrine_node_ids": [
+        "data_privacy_hk",
+        "data_privacy_hk.dpp1.collection_purpose"
+      ],
+      "significance_label": "states_context",
+      "authority_role": "background_or_applied_context",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf"
+    },
+    {
+      "proposition_id": "prop_cathay_2008_dpp1_purpose_necessity_nonexcessive_p4",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p4",
+      "source_paragraph": "4",
+      "exact_quote": "the collection of the data is necessary for or directly related to that purpose",
+      "proposition_text": "DPP1(1) requires personal data collection to be for a lawful purpose directly related to the data user's function or activity, necessary or directly related to that purpose, and adequate but not excessive.",
+      "tree_node_ids": [
+        "data_privacy_hk.dpp1.collection_purpose"
+      ],
+      "target_doctrine_node_ids": [
+        "data_privacy_hk.dpp1.collection_purpose"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "statutory_text_recited",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf"
+    },
+    {
+      "proposition_id": "prop_cathay_2008_dpp1_lawful_fair_collection_p5",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p5",
+      "source_paragraph": "5",
+      "exact_quote": "fair in the circumstances of the case",
+      "proposition_text": "DPP1(2) requires personal data to be collected by lawful means and by means fair in the circumstances of the case.",
+      "tree_node_ids": [
+        "data_privacy_hk.dpp1.collection_fairness"
+      ],
+      "target_doctrine_node_ids": [
+        "data_privacy_hk.dpp1.collection_fairness"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "statutory_text_recited",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf"
+    },
+    {
+      "proposition_id": "prop_cathay_2008_medical_data_necessary_not_excessive_p17",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p17",
+      "source_paragraph": "17",
+      "exact_quote": "the collection of medical data in terms of the AMP was directly related to the discharge of Cathay’s obligations",
+      "proposition_text": "The Commissioner accepted that Cathay's collection of medical data under the AMP was directly related to its airline obligations, necessary, and not excessive because it was tied to absence from work.",
+      "tree_node_ids": [
+        "data_privacy_hk.dpp1.collection_purpose",
+        "data_privacy_hk.employment.medical_records"
+      ],
+      "target_doctrine_node_ids": [
+        "data_privacy_hk.dpp1.collection_purpose",
+        "data_privacy_hk.employment.medical_records"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "procedural_history_commissioner_finding",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf"
+    },
+    {
+      "proposition_id": "prop_cathay_2008_consent_pressure_fairness_issue_p36",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p36",
+      "source_paragraph": "36",
+      "exact_quote": "the crew were made to give consent under the threat or for fear of a disciplinary process",
+      "proposition_text": "The Commissioner reasoned that Cathay's employees were made to give consent under threat or fear of disciplinary process; this was treated as the core fairness issue.",
+      "tree_node_ids": [
+        "data_privacy_hk.dpp1.collection_fairness",
+        "data_privacy_hk.employment.medical_records"
+      ],
+      "target_doctrine_node_ids": [
+        "data_privacy_hk.dpp1.collection_fairness",
+        "data_privacy_hk.employment.medical_records"
+      ],
+      "significance_label": "states_issue",
+      "authority_role": "procedural_history_commissioner_reasoning",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf"
+    },
+    {
+      "proposition_id": "prop_cathay_2008_fairness_construction_set_aside_p50",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "paragraph_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008_p50",
+      "source_paragraph": "50",
+      "exact_quote": "both the decision of the Commissioner and the judgment of the Board were based on an incorrect construction of the true meaning and intent",
+      "proposition_text": "The CFI held that the Commissioner and Board had adopted an incorrect construction of the true meaning and intent of DPP1(2), and set aside the decisions to that extent.",
+      "tree_node_ids": [
+        "data_privacy_hk.dpp1.collection_fairness",
+        "data_privacy_hk.enforcement.appeals"
+      ],
+      "target_doctrine_node_ids": [
+        "data_privacy_hk.dpp1.collection_fairness",
+        "data_privacy_hk.enforcement.appeals"
+      ],
+      "significance_label": "holding",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf"
+    }
+  ]
+}

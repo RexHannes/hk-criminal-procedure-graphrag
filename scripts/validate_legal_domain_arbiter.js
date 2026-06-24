@@ -51,6 +51,22 @@ const CASES = [
     selected_domain: "company_forms",
     allowed: ["hk_listing_and_listed_company_regulation"],
   },
+  {
+    id: "personal_data_dpp1",
+    query: "Under the PDPO, when is collecting personal data unfair or excessive under DPP1?",
+    selected_domain: "data_privacy",
+    allowed: ["data_privacy_hk"],
+    blocked: ["probate_law_hk", "tort_law_hk", "criminal_law_hk"],
+    forbidden_selected: ["probate", "personal_injury", "criminal_law"],
+  },
+  {
+    id: "employee_medical_records_privacy",
+    query: "Can an employer demand employee medical records and threaten discipline if consent is refused?",
+    selected_domain: "data_privacy",
+    allowed: ["data_privacy_hk"],
+    blocked: ["probate_law_hk", "tort_law_hk", "criminal_law_hk"],
+    forbidden_selected: ["probate", "personal_injury", "criminal_law"],
+  },
 ];
 
 function includesAll(haystack, needles) {

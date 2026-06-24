@@ -1,0 +1,38 @@
+{
+  "batch_id": "data_privacy_dpp1_tree_gap_pilot_v1",
+  "domain_id": "data_privacy_hk",
+  "scope": "data_privacy_dpp1_employment_medical_records_candidate_branch",
+  "source_policy": {
+    "public_sources_only": true,
+    "private_or_licensed_sources_allowed": false,
+    "raw_private_upload_allowed": false,
+    "bulk_auto_attach_allowed": false,
+    "answer_safe_by_default": false
+  },
+  "sources": [
+    {
+      "source_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
+      "case_name": "Cathay Pacific Airways Ltd v Administrative Appeals Board and Another",
+      "neutral_citation": "[2008] 5 HKLRD 539",
+      "court": "Court of First Instance",
+      "court_level": "CFI",
+      "date": "2008-08-28",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf",
+      "fetch_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf",
+      "source_format": "official_pdf_public_judgment",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    }
+  ],
+  "tree_gap_resolution": {
+    "existing_tree_match": "new_domain_pack_candidate_created",
+    "tree_proposal_source": "notebooklm_field_expansion_queue_v1",
+    "tree_proposal_status": "candidate_only",
+    "verification_gate": "official_public_pdf_exact_quote_case_fruits_only"
+  }
+}

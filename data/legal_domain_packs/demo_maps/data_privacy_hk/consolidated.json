@@ -1,0 +1,31 @@
+{
+  "domain_id": "data_privacy_hk",
+  "title": "Hong Kong Data Privacy Law",
+  "version": "0.1.0",
+  "last_updated": "2026-06-24",
+  "status": {
+    "not_product_answer_layer": true,
+    "needs_hklii_verification": true,
+    "needs_official_source_verification": true,
+    "authority_status": "candidate_tree_seed"
+  },
+  "sections": [
+    {
+      "id": "01",
+      "title": "Data Privacy Principles",
+      "node_file": "nodes/01_data_privacy_principles.json",
+      "edge_file": "edges/01_data_privacy_edges.json"
+    }
+  ],
+  "answer_parts": [
+    {
+      "id": "principles",
+      "label": "Principles",
+      "source": "nodes/01_data_privacy_principles.json"
+    }
+  ],
+  "counts": {
+    "principle_nodes": 7,
+    "edges": 6
+  }
+}
