@@ -99,6 +99,25 @@ assert(blob(probate.applied_answer).includes("metadata"), "Probate answer should
 assert((probate.form_candidates || []).length >= 2, "Probate answer lacks form candidates", errors);
 assert(probate.source_audit?.display === "collapsed", "Probate source audit is not collapsed", errors);
 
+const intestacyDistribution = composeAnswer({
+  domain: "probate",
+  query: "If my father dies in US and does not have will, now left a son, a daughter and 2 grandaughter; the former 18 the later not; what happens?",
+});
+const intestacyText = blob(intestacyDistribution);
+assert(intestacyDistribution.classification?.matter_type === "probate", "Intestacy distribution should route to probate", errors);
+assert(intestacyDistribution.classification?.scenario === "intestate_administration", `Intestacy distribution wrong scenario ${intestacyDistribution.classification?.scenario}`, errors);
+assert(intestacyDistribution.classification?.subscenario === "intestacy_distribution_issue_statutory_trusts", "Intestacy distribution subscenario missing", errors);
+assert(intestacyText.includes("intestates' estates ordinance"), "Intestacy distribution lacks Cap. 73 ordinance anchor", errors);
+assert(intestacyText.includes("cap. 73"), "Intestacy distribution lacks Cap. 73 reference", errors);
+assert(intestacyText.includes("statutory trusts"), "Intestacy distribution lacks statutory trusts analysis", errors);
+assert(intestacyText.includes("granddaughters"), "Intestacy distribution lacks granddaughter branch analysis", errors);
+assert(intestacyText.includes("predeceased"), "Intestacy distribution lacks predeceased-parent gate", errors);
+assert(intestacyText.includes("18"), "Intestacy distribution lacks age/minor analysis", errors);
+assert(intestacyText.includes("letters of administration"), "Intestacy distribution lacks letters-of-administration route", errors);
+assert(!intestacyText.includes("common form grant"), "Intestacy distribution leaked common-form grant route", errors);
+assert(!intestacyText.includes("for a death with a will"), "Intestacy distribution leaked will-based answer", errors);
+assert(!intestacyText.includes("w1.1"), "Intestacy distribution leaked W1 executor form", errors);
+
 if (errors.length) {
   console.error("Answer composer validation failed:");
   errors.forEach(error => console.error(`- ${error}`));

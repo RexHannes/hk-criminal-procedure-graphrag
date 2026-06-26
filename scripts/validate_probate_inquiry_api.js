@@ -46,6 +46,13 @@ function assert(condition, message, errors) {
       scenario: "foreign_grant_resealing",
       must: ["foreign grant", "hong kong assets", "resealing"],
     },
+    {
+      query: "If my father dies in US and does not have will, now left a son, a daughter and 2 grandaughter; the former 18 the later not; what happens?",
+      scenario: "intestate_administration",
+      subscenario: "intestacy_distribution_issue_statutory_trusts",
+      must: ["intestates' estates ordinance", "cap. 73", "statutory trusts", "granddaughters", "predeceased", "18", "letters of administration"],
+      must_not: ["common form grant", "for a death with a will", "w1.1"],
+    },
   ];
   const errors = [];
   for (const item of queries) {
@@ -53,12 +60,18 @@ function assert(condition, message, errors) {
     const text = blob(payload);
     assert(payload.classification?.matter_type === "probate", `${item.scenario}: not routed to probate`, errors);
     assert(payload.classification?.scenario === item.scenario, `${item.scenario}: wrong scenario ${payload.classification?.scenario}`, errors);
+    if (item.subscenario) {
+      assert(payload.classification?.subscenario === item.subscenario, `${item.scenario}: wrong subscenario ${payload.classification?.subscenario}`, errors);
+    }
     assert((payload.detected_domains || []).includes("probate_law_hk"), `${item.scenario}: probate domain not detected`, errors);
     assert(payload.applied_answer?.mode === "probate_metadata_source_gated", `${item.scenario}: wrong answer mode`, errors);
     assert((payload.form_candidates || []).length >= 1, `${item.scenario}: missing form candidates`, errors);
     assert(payload.source_audit?.display === "collapsed", `${item.scenario}: source audit not collapsed`, errors);
     for (const term of item.must) {
       assert(text.includes(term), `${item.scenario}: missing ${term}`, errors);
+    }
+    for (const term of item.must_not || []) {
+      assert(!text.includes(term), `${item.scenario}: leaked ${term}`, errors);
     }
     assert(!text.includes("restaurant wet-floor"), `${item.scenario}: leaked PI restaurant language`, errors);
     assert(!text.includes("road traffic collision"), `${item.scenario}: leaked PI RTA language`, errors);
