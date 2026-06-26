@@ -67,6 +67,11 @@ const QUERY_EXPANSIONS = [
     preferred_domains: ["criminal_law_hk", "criminal_procedure_hk"]
   },
   {
+    pattern: /\b(theft|steal|stealing|stole|stolen|shoplift|shoplifting|dishonest|dishonesty|appropriation|permanent(?:ly)? deprive|forgot to pay|forget to pay|forgotten to pay|without paying|did not pay|didn't pay)\b/i,
+    terms: ["theft", "dishonesty", "appropriation", "property", "belonging to another", "intention permanently to deprive", "shoplifting", "Theft Ordinance"],
+    preferred_domains: ["criminal_law_hk", "criminal_procedure_hk"]
+  },
+  {
     pattern: /\b(probate|letters of administration|intestate|executor|administrator|grant of representation|caveat|warning|citation|reseal|resealing|foreign grant|lost will|copy will|swear death|rectification of will|inventory|estate distribution)\b/i,
     terms: ["probate", "grant", "executor", "administrator", "will", "estate", "probate registry", "common form", "contentious probate", "assets liabilities"],
     preferred_domains: ["probate_law_hk"]
@@ -96,7 +101,7 @@ function detectsCriminalPublicOrderQuery(query) {
 
 function detectsCriminalLawQuery(query) {
   const q = String(query || "").toLowerCase();
-  return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|assault|battery|manslaughter|murder|dishonesty|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting)\b/.test(q);
+  return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|steal|stealing|stole|stolen|shoplift|shoplifting|assault|battery|manslaughter|murder|dishonesty|dishonest|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting|forgot to pay|forget to pay|without paying)\b/.test(q);
 }
 
 function detectsPersonalInjuryPurpose(query) {
@@ -888,7 +893,16 @@ function postFilterMatchesForQuery(query, matches) {
     if (!filtered.length && arbiter.selected_domain !== "generic") {
       filtered = matches.filter(match => !(arbiter.blocked_static_domains || []).includes(match.domain_id));
     }
-    if (filtered.length) return filtered.slice(0, 8);
+    if (filtered.length) {
+      if (arbiter.selected_domain === "criminal_law" && arbiter.scenario === "theft_shoplifting_forgot_to_pay") {
+        const theftFocused = filtered.filter(match => {
+          const blob = [match.doctrine_node_id, match.title, match.summary].join(" ").toLowerCase();
+          return /criminal_law_hk\.theft|property_dishonesty|appropriation|dishonesty|intent\.deprive|permanently to deprive/.test(blob);
+        });
+        if (theftFocused.length >= 3) return theftFocused.slice(0, 8);
+      }
+      return filtered.slice(0, 8);
+    }
   }
   if (detectsCriminalPublicOrderQuery(query) && !detectsPersonalInjuryPurpose(query)) {
     const criminal = matches.filter(match => {

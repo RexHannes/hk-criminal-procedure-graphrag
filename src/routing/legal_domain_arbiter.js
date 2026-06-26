@@ -1,5 +1,6 @@
 const CRIMINAL_PUBLIC_ORDER_RE = /\b(unlawful assembly|riot|rioting|public order|protest|protestor|protester|harcourt road|black bloc|black clothing|conceal(?:ed|ment)?|masked|2019)\b/i;
-const CRIMINAL_OFFENCE_RE = /\b(sedition|seditious|theft|assault|battery|manslaughter|murder|dishonesty|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting|criminal liability|offence|guilty|convicted|prosecuted|prosecution)\b/i;
+const THEFT_SHOPLIFTING_RE = /\b(theft|steal|stealing|stole|stolen|shoplift|shoplifting|dishonesty|dishonest|appropriation|permanently deprive|forgot to pay|forget to pay|forgotten to pay|without paying|did not pay|didn't pay)\b/i;
+const CRIMINAL_OFFENCE_RE = /\b(sedition|seditious|theft|steal|stealing|stole|stolen|shoplift|shoplifting|assault|battery|manslaughter|murder|dishonesty|dishonest|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting|criminal liability|offence|guilty|convicted|prosecuted|prosecution)\b/i;
 const CRIMINAL_PROCEDURE_RE = /\b(arrest|arrested|detained|custody|remand|bail|release|search warrant|seizure|seized|police interview|charge sheet|charged|plea|mention|first hearing|appeal|sentence|review)\b/i;
 const SEDITION_RE = /\b(sedition|seditious|critic(?:ise|ize|ises|izes|ising|izing|ism)?|government|public expression|speech|chant|slogan|incitement)\b/i;
 const PI_PURPOSE_RE = /\b(personal injury|injur(?:y|ed|ies)|medical|compensation|damages|quantum|fracture|pain|suffering|loss of earnings|hospital|sick leave|accident claim)\b/i;
@@ -17,6 +18,13 @@ function hasSupplyToProtest(query) {
     /\b(protest|protestor|protester|riot|unlawful assembly)\b/i.test(query);
 }
 
+function hasTheftShopliftingSignal(query) {
+  return THEFT_SHOPLIFTING_RE.test(query) && (
+    CRIMINAL_OFFENCE_RE.test(query) ||
+    /\b(alleged|caught|stopped|charged|police|security|shop|store|supermarket|retail|goods|item|cashier|checkout)\b/i.test(query)
+  );
+}
+
 function hasProbateSignal(query) {
   return PROBATE_RE.test(query) || PROBATE_WILL_CONTEXT_RE.test(query);
 }
@@ -28,6 +36,7 @@ function hasCompanySignal(query) {
 function criminalScenario(query) {
   if (CRIMINAL_PUBLIC_ORDER_RE.test(query) || hasSupplyToProtest(query)) return "public_order_unlawful_assembly_riot";
   if (/\b(sedition|seditious|critic(?:ise|ize|ises|izes|ising|izing|ism)?|government|public expression|speech|chant|slogan|incitement)\b/i.test(query)) return "sedition_public_expression";
+  if (hasTheftShopliftingSignal(query)) return "theft_shoplifting_forgot_to_pay";
   return "criminal_law_general";
 }
 
@@ -75,7 +84,7 @@ function arbitrateLegalQuery(query) {
     scores.criminal_law += 20;
     trace.push("criminal public-order strict signal");
   }
-  if (CRIMINAL_OFFENCE_RE.test(q) || SEDITION_RE.test(q)) {
+  if (CRIMINAL_OFFENCE_RE.test(q) || SEDITION_RE.test(q) || hasTheftShopliftingSignal(q)) {
     scores.criminal_law += 14;
     trace.push("criminal-law/offence high-signal phrase");
   }

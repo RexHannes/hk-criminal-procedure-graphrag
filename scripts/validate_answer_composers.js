@@ -87,6 +87,27 @@ assert(criminal.classification?.matter_type === "criminal_procedure", "Criminal 
 assert(criminal.classification?.scenario === "bail_or_release", "Criminal composer failed bail scenario", errors);
 assert(blob(criminal.applied_answer).includes("release"), "Criminal bail answer lacks release triage", errors);
 
+const theftShoplifting = composeAnswer({
+  domain: "criminal_law",
+  query: "If I am alleged to be Stealing something in the convenient store, but i try to argue i just forgot to pay",
+});
+const theftText = blob(theftShoplifting);
+assert(theftShoplifting.classification?.matter_type === "criminal_law", "Theft/shoplifting should route to criminal law", errors);
+assert(theftShoplifting.classification?.scenario === "theft_property_dishonesty", `Theft/shoplifting wrong scenario ${theftShoplifting.classification?.scenario}`, errors);
+assert(theftShoplifting.classification?.subscenario === "shoplifting_forgot_to_pay_mr_defence", "Theft/shoplifting subscenario missing", errors);
+assert(theftText.includes("ar / mr matrix"), "Theft/shoplifting lacks AR/MR matrix", errors);
+assert(theftText.includes("theft ordinance"), "Theft/shoplifting lacks Theft Ordinance anchor", errors);
+assert(theftText.includes("cap. 210"), "Theft/shoplifting lacks Cap. 210 reference", errors);
+assert(theftText.includes("dishonesty"), "Theft/shoplifting lacks dishonesty analysis", errors);
+assert(theftText.includes("intention permanently to deprive"), "Theft/shoplifting lacks intent permanently to deprive", errors);
+assert(theftText.includes("forgot"), "Theft/shoplifting lacks forgotten-payment defence", errors);
+assert(theftText.includes("cctv"), "Theft/shoplifting lacks CCTV evidence analysis", errors);
+assert(theftText.includes("prosecution must prove"), "Theft/shoplifting lacks burden analysis", errors);
+assert(theftText.includes("do not state that ivey has been adopted in hong kong"), "Theft/shoplifting lacks Ivey/HK verification gate", errors);
+assert(!theftText.includes("restaurant wet-floor"), "Theft/shoplifting leaked PI restaurant language", errors);
+assert(!theftText.includes("interim payment"), "Theft/shoplifting leaked PI interim payment language", errors);
+assert(!theftText.includes("criminal law triage"), "Theft/shoplifting fell back to generic criminal triage", errors);
+
 const company = composeAnswer({ domain: "company_forms", query: "We need a winding-up demand and petition route. Which form should I use?" });
 assert(company.classification?.matter_type === "company_or_civil_forms", "Company/forms composer scaffold not routed", errors);
 assert(company.classification?.scenario === "winding_up_or_statutory_demand", "Company/forms composer failed winding-up scenario", errors);

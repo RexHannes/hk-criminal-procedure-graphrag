@@ -32,11 +32,28 @@ const CASES = [
     blocked: ["probate_law_hk", "tort_law_hk"],
   },
   {
+    id: "theft_shoplifting_forgot_to_pay",
+    query: "If I am alleged to be stealing something in the convenience store, but I argue I just forgot to pay.",
+    selected_domain: "criminal_law",
+    scenario: "theft_shoplifting_forgot_to_pay",
+    allowed: ["criminal_law_hk", "criminal_procedure_hk"],
+    blocked: ["probate_law_hk", "tort_law_hk"],
+    forbidden_selected: ["generic", "personal_injury", "probate", "civil_procedure"],
+  },
+  {
     id: "restaurant_wet_floor_pi",
     query: "A customer slipped on water in my restaurant after mopping and claims compensation for injury.",
     selected_domain: "personal_injury",
     allowed: ["tort_law_hk"],
     blocked: ["probate_law_hk"],
+  },
+  {
+    id: "convenience_store_slip_pi",
+    query: "A customer slipped on water in a convenience store and claims compensation for injury.",
+    selected_domain: "personal_injury",
+    allowed: ["tort_law_hk"],
+    blocked: ["probate_law_hk"],
+    forbidden_selected: ["criminal_law"],
   },
   {
     id: "ordinary_executor_probate",
