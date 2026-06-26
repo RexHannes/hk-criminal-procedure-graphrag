@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { buildAppliedAnalysis } = require("../../legal_answer/applied_analysis/applied_legal_analyzer");
 
 const PROBATE_DIR = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps", "probate_law_hk");
 
@@ -394,7 +395,16 @@ function composeProbateAnswer({ query }) {
   const classification = classifyProbate(query);
   const registry = loadProbateJson("probate_form_registry.json", { forms: [] });
   const contracts = loadProbateJson("probate_answer_contracts.json", { answer_contracts: [] });
-  const scenarioSupport = classification.subscenario === "intestacy_distribution_issue_statutory_trusts"
+  const structuredAnalysis = buildAppliedAnalysis({
+    domain: "probate_law_hk",
+    scenario: classification.scenario,
+    subscenario: classification.subscenario,
+    query,
+    facts: classification.detected_facts,
+  });
+  const scenarioSupport = structuredAnalysis.matched
+    ? structuredAnalysis.support
+    : classification.subscenario === "intestacy_distribution_issue_statutory_trusts"
     ? intestacyDistributionSupport(classification)
     : supportForScenario(classification.scenario);
   const formCandidates = selectForms(registry.forms, classification.scenario);
@@ -430,6 +440,8 @@ function composeProbateAnswer({ query }) {
     applied_answer: {
       title: scenarioSupport.title,
       mode: "probate_metadata_source_gated",
+      answer_generation_mode: structuredAnalysis.matched ? structuredAnalysis.answer_generation_mode : "deterministic_fallback_template",
+      llm_status: structuredAnalysis.llm_status || "not_invoked",
       short_answer: scenarioSupport.short_answer,
       sections,
     },
@@ -442,6 +454,8 @@ function composeProbateAnswer({ query }) {
       verification_rule: "No official source card means source-verification-required. Forms are metadata-only candidates.",
       source_audit_policy: "collapsed_by_default",
       review_status: "research_only",
+      answer_generation_mode: structuredAnalysis.matched ? structuredAnalysis.answer_generation_mode : "deterministic_fallback_template",
+      verifier_status: structuredAnalysis.verification?.status || "not_run_fallback_template",
     },
     form_candidates: formCandidates,
     source_backed_rules: scenarioSupport.source_backed_rules || [],
@@ -452,6 +466,15 @@ function composeProbateAnswer({ query }) {
       form_registry_count: (registry.forms || []).length,
       source_backed_rule_count: (scenarioSupport.source_backed_rules || []).length,
       unsupported_claims: scenarioSupport.unsupported_claims || [],
+      applied_analysis: structuredAnalysis.matched ? {
+        rule_deck_id: structuredAnalysis.rule_deck_id,
+        answer_generation_mode: structuredAnalysis.answer_generation_mode,
+        llm_status: structuredAnalysis.llm_status,
+        verifier: structuredAnalysis.verification,
+      } : {
+        answer_generation_mode: "deterministic_fallback_template",
+        reason: structuredAnalysis.reason,
+      },
       note: "Probate pack is metadata-only. Use official source cards and private-vault templates before drafting.",
     },
   };

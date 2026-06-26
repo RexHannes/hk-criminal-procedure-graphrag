@@ -1,3 +1,5 @@
+const { buildAppliedAnalysis } = require("../../legal_answer/applied_analysis/applied_legal_analyzer");
+
 const THEFT_SHOPLIFTING_RE = /\b(theft|steal|stealing|stole|stolen|shoplift|shoplifting|dishonesty|dishonest|appropriation|permanently deprive|forgot to pay|forget to pay|forgotten to pay|without paying|did not pay|didn't pay)\b/;
 
 function detectTheftShopliftingFacts(query) {
@@ -316,19 +318,34 @@ function unsupportedClaimsForScenario(classification) {
 function composeCriminalLawAnswer({ query, matched }) {
   const classification = classifyCriminalLaw(query);
   const matchedNodeIds = (matched || []).map(item => item.doctrine_node_id).filter(Boolean);
-  const sourceBackedRules = sourceBackedRulesForScenario(classification);
-  const unsupportedClaims = unsupportedClaimsForScenario(classification);
+  const structuredAnalysis = buildAppliedAnalysis({
+    domain: "criminal_law",
+    scenario: classification.scenario,
+    subscenario: classification.subscenario,
+    query,
+    facts: classification.detected_facts,
+  });
+  const sourceBackedRules = structuredAnalysis.matched ? structuredAnalysis.source_backed_rules : sourceBackedRulesForScenario(classification);
+  const unsupportedClaims = structuredAnalysis.matched ? structuredAnalysis.unsupported_claims : unsupportedClaimsForScenario(classification);
   return {
-    applied_answer: appliedCriminalLawAnswer(classification),
+    applied_answer: structuredAnalysis.matched
+      ? structuredAnalysis.applied_answer
+      : {
+        ...appliedCriminalLawAnswer(classification),
+        answer_generation_mode: "deterministic_fallback_template",
+      },
     classification,
     answer_contract: {
+      ...(structuredAnalysis.matched ? structuredAnalysis.answer_contract : {}),
       domain: "criminal_law",
       scenario_family: classification.scenario,
       subscenario: classification.subscenario,
-      answer_sections: answerSectionsForScenario(classification),
-      required_source_families: requiredSourceFamiliesForScenario(classification),
-      excluded_issue_families: ["personal_injury", "premises_slip_fall", "road_traffic_compensation", "workplace_injury", "civil_procedure", "probate"],
-      verification_rule: "Candidate case fruits are source-linked research only until human review promotes them.",
+      answer_sections: structuredAnalysis.matched ? structuredAnalysis.answer_contract.answer_sections : answerSectionsForScenario(classification),
+      required_source_families: structuredAnalysis.matched ? structuredAnalysis.answer_contract.required_source_families : requiredSourceFamiliesForScenario(classification),
+      excluded_issue_families: structuredAnalysis.matched ? structuredAnalysis.answer_contract.excluded_issue_families : ["personal_injury", "premises_slip_fall", "road_traffic_compensation", "workplace_injury", "civil_procedure", "probate"],
+      verification_rule: structuredAnalysis.matched ? structuredAnalysis.answer_contract.verification_rule : "Candidate case fruits are source-linked research only until human review promotes them.",
+      answer_generation_mode: structuredAnalysis.matched ? structuredAnalysis.answer_generation_mode : "deterministic_fallback_template",
+      verifier_status: structuredAnalysis.verification?.status || "not_run_fallback_template",
     },
     source_backed_rules: sourceBackedRules,
     unsupported_claims: unsupportedClaims,
@@ -338,6 +355,15 @@ function composeCriminalLawAnswer({ query, matched }) {
       matched_doctrine_node_ids: matchedNodeIds,
       source_backed_rule_count: sourceBackedRules.length,
       unsupported_claims: unsupportedClaims,
+      applied_analysis: structuredAnalysis.matched ? {
+        rule_deck_id: structuredAnalysis.rule_deck_id,
+        answer_generation_mode: structuredAnalysis.answer_generation_mode,
+        llm_status: structuredAnalysis.llm_status,
+        verifier: structuredAnalysis.verification,
+      } : {
+        answer_generation_mode: "deterministic_fallback_template",
+        reason: structuredAnalysis.reason,
+      },
     },
   };
 }

@@ -1,0 +1,87 @@
+{
+  "policy_id": "future_field_answer_architecture_policy_v1",
+  "status": "enforced_by_validate_applied_answer_architecture",
+  "purpose": "Prevent future HK law fields from becoming an infinite chain of if/else answer templates.",
+  "architecture": {
+    "required_layers": [
+      "structured_fact_extraction",
+      "rule_and_source_cards",
+      "applied_legal_analyzer",
+      "answer_verifier",
+      "deterministic_fallback_only_when_no_safe_analyzer"
+    ],
+    "rules_control": [
+      "routing",
+      "fact extraction",
+      "source requirements",
+      "forbidden claims",
+      "verification"
+    ],
+    "rules_must_not_be_primary_final_answer_writer": true,
+    "allowed_answer_generation_modes": [
+      "structured_rule_card_applied_analysis",
+      "llm_applied_analysis_source_gated_future",
+      "deterministic_fallback_template"
+    ],
+    "fallback_policy": "Deterministic prose blocks may stay only as fallback for demo continuity. New fields should add rule decks and verifier tests before any final prose output is exposed."
+  },
+  "notebooklm_browser_workflow": {
+    "when_to_use": [
+      "existing domain tree has no clean doctrine_node_id",
+      "new field/branch needs issue taxonomy",
+      "landmark case lineage is needed for candidate discovery"
+    ],
+    "required_sequence": [
+      "search_existing_tree_first",
+      "ask_one_focused_notebooklm_prompt_for_candidate_structure",
+      "save_candidate_metadata_only",
+      "verify every case/statute through public LegalRef/HKLII/e-Legislation sources",
+      "create paragraph/proposition/source cards only after exact quote/source match",
+      "attach to doctrine tree as machine_candidate only",
+      "run answer verifier and golden queries"
+    ],
+    "notebooklm_role": "candidate_tree_and_case_lineage_proposer_only",
+    "notebooklm_not_authority": true,
+    "private_text_policy": "Do not copy private/licensed NotebookLM source text into public artifacts.",
+    "browser_safety": [
+      "Use logged-in Chrome/NotebookLM only if user asks or the workflow is blocked without it.",
+      "Do not inspect cookies, passwords, account storage or unrelated tabs.",
+      "Do not upload private files unless the user explicitly confirms exact files."
+    ],
+    "prompt_template": "data/legal_ingest/applied_answer/notebooklm_future_field_prompt_template.md"
+  },
+  "new_field_acceptance_gate": {
+    "must_have": [
+      "field_id",
+      "routing_keywords_and_exclusions",
+      "fact_schema_or_extractor",
+      "rule_card_deck",
+      "source_card_requirements",
+      "answer_contract",
+      "verifier_required_terms_and_forbidden_terms",
+      "golden_queries",
+      "public_source_verification_plan"
+    ],
+    "must_not": [
+      "treat NotebookLM output as authority",
+      "treat DeepSeek output as authority",
+      "cite a case without public paragraph/source card",
+      "promote answer_safe without human review",
+      "add a final-prose composer branch without a rule deck and verifier"
+    ]
+  },
+  "current_demo_verticals": [
+    {
+      "domain": "probate_law_hk",
+      "scenario": "intestate_administration",
+      "subscenario": "intestacy_distribution_issue_statutory_trusts",
+      "rule_deck_id": "probate_intestacy_distribution_v1"
+    },
+    {
+      "domain": "criminal_law",
+      "scenario": "theft_property_dishonesty",
+      "subscenario": "shoplifting_forgot_to_pay_mr_defence",
+      "rule_deck_id": "criminal_theft_shoplifting_v1"
+    }
+  ]
+}
