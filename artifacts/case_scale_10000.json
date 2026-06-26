@@ -1,0 +1,746 @@
+{
+  "run_plan_id": "case_scale_criminal_domain_public_cases_10000_v1",
+  "generated_at": "2026-06-25T11:23:41.924Z",
+  "target_cases": 10000,
+  "scope": "criminal_domain_public_cases",
+  "execution_allowed": false,
+  "status": "blocked_preflight_only",
+  "readiness_status": "blocked_for_large_scale",
+  "blockers": [
+    "durable_orchestration_configured"
+  ],
+  "selected_rung": {
+    "rung_id": "rung_6_domain_20000",
+    "scope": "criminal_domain_public_cases",
+    "case_range": [
+      5001,
+      20000
+    ],
+    "status": "blocked_until_all_quality_and_ops_gates_green",
+    "required_before_next": [
+      "production_embeddings",
+      "production_reranker",
+      "durable_orchestration",
+      "retrieval_quality_floor_satisfied",
+      "review_promotion_gold_set",
+      "lineage_and_treatment_tracking",
+      "tenant_and_private_source_controls"
+    ]
+  },
+  "shard_policy": {
+    "cases_per_shard": 100,
+    "requires_checksum_dedup": true,
+    "requires_idempotent_upserts": true,
+    "requires_resume_manifest": true,
+    "max_parallel_shards_without_orchestrator": 1
+  },
+  "shards": [
+    {
+      "shard_id": "shard_0001",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 100,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0002",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 200,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0003",
+      "case_ordinal_start": 201,
+      "case_ordinal_end": 300,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0004",
+      "case_ordinal_start": 301,
+      "case_ordinal_end": 400,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0005",
+      "case_ordinal_start": 401,
+      "case_ordinal_end": 500,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0006",
+      "case_ordinal_start": 501,
+      "case_ordinal_end": 600,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0007",
+      "case_ordinal_start": 601,
+      "case_ordinal_end": 700,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0008",
+      "case_ordinal_start": 701,
+      "case_ordinal_end": 800,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0009",
+      "case_ordinal_start": 801,
+      "case_ordinal_end": 900,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0010",
+      "case_ordinal_start": 901,
+      "case_ordinal_end": 1000,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0011",
+      "case_ordinal_start": 1001,
+      "case_ordinal_end": 1100,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0012",
+      "case_ordinal_start": 1101,
+      "case_ordinal_end": 1200,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0013",
+      "case_ordinal_start": 1201,
+      "case_ordinal_end": 1300,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0014",
+      "case_ordinal_start": 1301,
+      "case_ordinal_end": 1400,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0015",
+      "case_ordinal_start": 1401,
+      "case_ordinal_end": 1500,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0016",
+      "case_ordinal_start": 1501,
+      "case_ordinal_end": 1600,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0017",
+      "case_ordinal_start": 1601,
+      "case_ordinal_end": 1700,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0018",
+      "case_ordinal_start": 1701,
+      "case_ordinal_end": 1800,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0019",
+      "case_ordinal_start": 1801,
+      "case_ordinal_end": 1900,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0020",
+      "case_ordinal_start": 1901,
+      "case_ordinal_end": 2000,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0021",
+      "case_ordinal_start": 2001,
+      "case_ordinal_end": 2100,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0022",
+      "case_ordinal_start": 2101,
+      "case_ordinal_end": 2200,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0023",
+      "case_ordinal_start": 2201,
+      "case_ordinal_end": 2300,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0024",
+      "case_ordinal_start": 2301,
+      "case_ordinal_end": 2400,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0025",
+      "case_ordinal_start": 2401,
+      "case_ordinal_end": 2500,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0026",
+      "case_ordinal_start": 2501,
+      "case_ordinal_end": 2600,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0027",
+      "case_ordinal_start": 2601,
+      "case_ordinal_end": 2700,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0028",
+      "case_ordinal_start": 2701,
+      "case_ordinal_end": 2800,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0029",
+      "case_ordinal_start": 2801,
+      "case_ordinal_end": 2900,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0030",
+      "case_ordinal_start": 2901,
+      "case_ordinal_end": 3000,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0031",
+      "case_ordinal_start": 3001,
+      "case_ordinal_end": 3100,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0032",
+      "case_ordinal_start": 3101,
+      "case_ordinal_end": 3200,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0033",
+      "case_ordinal_start": 3201,
+      "case_ordinal_end": 3300,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0034",
+      "case_ordinal_start": 3301,
+      "case_ordinal_end": 3400,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0035",
+      "case_ordinal_start": 3401,
+      "case_ordinal_end": 3500,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0036",
+      "case_ordinal_start": 3501,
+      "case_ordinal_end": 3600,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0037",
+      "case_ordinal_start": 3601,
+      "case_ordinal_end": 3700,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0038",
+      "case_ordinal_start": 3701,
+      "case_ordinal_end": 3800,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0039",
+      "case_ordinal_start": 3801,
+      "case_ordinal_end": 3900,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0040",
+      "case_ordinal_start": 3901,
+      "case_ordinal_end": 4000,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0041",
+      "case_ordinal_start": 4001,
+      "case_ordinal_end": 4100,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0042",
+      "case_ordinal_start": 4101,
+      "case_ordinal_end": 4200,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0043",
+      "case_ordinal_start": 4201,
+      "case_ordinal_end": 4300,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0044",
+      "case_ordinal_start": 4301,
+      "case_ordinal_end": 4400,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0045",
+      "case_ordinal_start": 4401,
+      "case_ordinal_end": 4500,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0046",
+      "case_ordinal_start": 4501,
+      "case_ordinal_end": 4600,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0047",
+      "case_ordinal_start": 4601,
+      "case_ordinal_end": 4700,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0048",
+      "case_ordinal_start": 4701,
+      "case_ordinal_end": 4800,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0049",
+      "case_ordinal_start": 4801,
+      "case_ordinal_end": 4900,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0050",
+      "case_ordinal_start": 4901,
+      "case_ordinal_end": 5000,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0051",
+      "case_ordinal_start": 5001,
+      "case_ordinal_end": 5100,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0052",
+      "case_ordinal_start": 5101,
+      "case_ordinal_end": 5200,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0053",
+      "case_ordinal_start": 5201,
+      "case_ordinal_end": 5300,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0054",
+      "case_ordinal_start": 5301,
+      "case_ordinal_end": 5400,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0055",
+      "case_ordinal_start": 5401,
+      "case_ordinal_end": 5500,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0056",
+      "case_ordinal_start": 5501,
+      "case_ordinal_end": 5600,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0057",
+      "case_ordinal_start": 5601,
+      "case_ordinal_end": 5700,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0058",
+      "case_ordinal_start": 5701,
+      "case_ordinal_end": 5800,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0059",
+      "case_ordinal_start": 5801,
+      "case_ordinal_end": 5900,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0060",
+      "case_ordinal_start": 5901,
+      "case_ordinal_end": 6000,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0061",
+      "case_ordinal_start": 6001,
+      "case_ordinal_end": 6100,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0062",
+      "case_ordinal_start": 6101,
+      "case_ordinal_end": 6200,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0063",
+      "case_ordinal_start": 6201,
+      "case_ordinal_end": 6300,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0064",
+      "case_ordinal_start": 6301,
+      "case_ordinal_end": 6400,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0065",
+      "case_ordinal_start": 6401,
+      "case_ordinal_end": 6500,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0066",
+      "case_ordinal_start": 6501,
+      "case_ordinal_end": 6600,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0067",
+      "case_ordinal_start": 6601,
+      "case_ordinal_end": 6700,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0068",
+      "case_ordinal_start": 6701,
+      "case_ordinal_end": 6800,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0069",
+      "case_ordinal_start": 6801,
+      "case_ordinal_end": 6900,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0070",
+      "case_ordinal_start": 6901,
+      "case_ordinal_end": 7000,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0071",
+      "case_ordinal_start": 7001,
+      "case_ordinal_end": 7100,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0072",
+      "case_ordinal_start": 7101,
+      "case_ordinal_end": 7200,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0073",
+      "case_ordinal_start": 7201,
+      "case_ordinal_end": 7300,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0074",
+      "case_ordinal_start": 7301,
+      "case_ordinal_end": 7400,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0075",
+      "case_ordinal_start": 7401,
+      "case_ordinal_end": 7500,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0076",
+      "case_ordinal_start": 7501,
+      "case_ordinal_end": 7600,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0077",
+      "case_ordinal_start": 7601,
+      "case_ordinal_end": 7700,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0078",
+      "case_ordinal_start": 7701,
+      "case_ordinal_end": 7800,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0079",
+      "case_ordinal_start": 7801,
+      "case_ordinal_end": 7900,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0080",
+      "case_ordinal_start": 7901,
+      "case_ordinal_end": 8000,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0081",
+      "case_ordinal_start": 8001,
+      "case_ordinal_end": 8100,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0082",
+      "case_ordinal_start": 8101,
+      "case_ordinal_end": 8200,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0083",
+      "case_ordinal_start": 8201,
+      "case_ordinal_end": 8300,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0084",
+      "case_ordinal_start": 8301,
+      "case_ordinal_end": 8400,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0085",
+      "case_ordinal_start": 8401,
+      "case_ordinal_end": 8500,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0086",
+      "case_ordinal_start": 8501,
+      "case_ordinal_end": 8600,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0087",
+      "case_ordinal_start": 8601,
+      "case_ordinal_end": 8700,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0088",
+      "case_ordinal_start": 8701,
+      "case_ordinal_end": 8800,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0089",
+      "case_ordinal_start": 8801,
+      "case_ordinal_end": 8900,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0090",
+      "case_ordinal_start": 8901,
+      "case_ordinal_end": 9000,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0091",
+      "case_ordinal_start": 9001,
+      "case_ordinal_end": 9100,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0092",
+      "case_ordinal_start": 9101,
+      "case_ordinal_end": 9200,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0093",
+      "case_ordinal_start": 9201,
+      "case_ordinal_end": 9300,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0094",
+      "case_ordinal_start": 9301,
+      "case_ordinal_end": 9400,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0095",
+      "case_ordinal_start": 9401,
+      "case_ordinal_end": 9500,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0096",
+      "case_ordinal_start": 9501,
+      "case_ordinal_end": 9600,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0097",
+      "case_ordinal_start": 9601,
+      "case_ordinal_end": 9700,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0098",
+      "case_ordinal_start": 9701,
+      "case_ordinal_end": 9800,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0099",
+      "case_ordinal_start": 9801,
+      "case_ordinal_end": 9900,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    },
+    {
+      "shard_id": "shard_0100",
+      "case_ordinal_start": 9901,
+      "case_ordinal_end": 10000,
+      "max_cases": 100,
+      "status": "planned_not_started"
+    }
+  ],
+  "safeguards": [
+    "No private or licensed source material in public scale runs.",
+    "No proposition may be emitted without exact quote validation.",
+    "No doctrine-node link may become answer_safe through this run plan.",
+    "No cross-domain auto-attach unless readiness status is green_for_requested_target.",
+    "All machine-generated outputs must enter the review queue as machine_candidate."
+  ]
+}

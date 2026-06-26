@@ -1,0 +1,285 @@
+{
+  "report_id": "hk_criminal_case_growth_10000_status_v1",
+  "generated_at": "2026-06-25T11:24:53.552Z",
+  "target_cases": 10000,
+  "current_status": "verified_pilot_corpus_plus_10k_candidate_growth_plan",
+  "accuracy_position": {
+    "accurately_recallable_10k_completed": false,
+    "candidate_case_fruits_verified_for_current_pilots": true,
+    "production_answer_safe_10k_completed": false,
+    "investor_safe_claim": "10k public-case growth path is planned and gated; current verified corpus is the pilot corpus, not 10k completed cases."
+  },
+  "current_verified_artifacts": {
+    "unique_public_case_sources_with_artifacts": 31,
+    "remaining_to_target": 9969,
+    "batch_count": 5,
+    "paragraph_cards": 112,
+    "proposition_cards": 114,
+    "answer_safe_cards": 3,
+    "batches": [
+      {
+        "batch_id": "criminal_bail_public_batch_v1",
+        "relative_path": "data/legal_ingest/criminal_evidence_tree_v1/bail_public_batch_v1",
+        "domain_id": "criminal_procedure_hk",
+        "practice_area": "criminal_procedure",
+        "scope": "bail_only",
+        "source_count": 26,
+        "paragraph_count": 71,
+        "proposition_count": 71,
+        "answer_safe_count": 3,
+        "public_sources_only": true,
+        "candidate_only_by_default": true,
+        "missing_citation_source_ids": [],
+        "source_ids": [
+          "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+          "hk_cfi_2020_tong_ying_kit_hcal_1601_2020",
+          "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+          "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+          "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+          "hk_cfi_2021_lai_chee_ying_hccp_738_2020",
+          "hk_cfi_2021_chan_chi_chuen_hccp_473_2021",
+          "hk_cfi_2022_fan_kwok_wai_hccp_454_2021",
+          "hk_cfi_2021_sze_tak_loy_hccp_115_2021",
+          "hk_cfi_2021_chui_chi_kin_hccp_126_2021",
+          "hk_cfi_2021_wan_siu_kin_andrew_hccp_141_2021",
+          "hk_cfi_2021_mo_man_ching_claudia_hccp_134_2021",
+          "hk_cfi_2021_chow_ka_shing_hccp_294_2021",
+          "hk_cfi_2021_wong_pik_wan_hccp_113_2021",
+          "hk_cfi_2021_or_yiu_lam_ricky_hccp_119_2021",
+          "hk_cfi_2021_leung_kwok_hung_hccp_136_2021",
+          "hk_cfi_2021_tam_hoi_pong_hccp_417_2021",
+          "hk_cfi_2021_wong_pak_yu_hccp_430_2021",
+          "hk_cfi_2022_fung_tat_chun_frankie_hccp_584_2021",
+          "hk_cfi_2021_tam_man_ho_jeremy_jansen_hccp_114_2021",
+          "hk_cfi_2021_kwok_ka_ki_hccp_118_2021",
+          "hk_cfi_2021_chung_kam_lun_hccp_137_2021",
+          "hk_cfi_2021_yung_chung_hei_hccp_446_2021",
+          "hk_cfi_2022_fung_wai_kong_hccp_678_2021",
+          "hk_cfi_2022_ng_man_yee_carol_hccp_193_2021",
+          "hk_cfi_2022_lam_cheuk_ting_hccp_138_2022"
+        ]
+      },
+      {
+        "batch_id": "investigation_search_seizure_tree_gap_pilot_v1",
+        "relative_path": "data/legal_ingest/criminal_evidence_tree_v1/tree_gap_pilots/investigation_search_seizure_v1",
+        "domain_id": "criminal_procedure_hk",
+        "practice_area": "criminal_procedure",
+        "scope": "investigation_search_warrant_seizure_candidate_branch",
+        "source_count": 2,
+        "paragraph_count": 10,
+        "proposition_count": 11,
+        "answer_safe_count": 0,
+        "public_sources_only": true,
+        "candidate_only_by_default": true,
+        "missing_citation_source_ids": [],
+        "source_ids": [
+          "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738",
+          "hk_ca_2022_lai_chee_ying_cacv_356_357"
+        ]
+      },
+      {
+        "batch_id": "public_order_riot_tree_gap_pilot_v1",
+        "relative_path": "data/legal_ingest/criminal_evidence_tree_v1/tree_gap_pilots/public_order_riot_v1",
+        "domain_id": "criminal_law_hk",
+        "practice_area": "criminal_law",
+        "scope": "public_order_unlawful_assembly_riot_candidate_branch",
+        "source_count": 1,
+        "paragraph_count": 13,
+        "proposition_count": 14,
+        "answer_safe_count": 0,
+        "public_sources_only": true,
+        "candidate_only_by_default": true,
+        "missing_citation_source_ids": [],
+        "source_ids": [
+          "hk_ca_2021_tong_wai_hung_casj_1_2020"
+        ]
+      },
+      {
+        "batch_id": "sedition_public_expression_tree_gap_pilot_v1",
+        "relative_path": "data/legal_ingest/criminal_evidence_tree_v1/tree_gap_pilots/sedition_public_expression_v1",
+        "domain_id": "criminal_law_hk",
+        "practice_area": "criminal_law",
+        "scope": "sedition_public_expression_candidate_branch",
+        "source_count": 1,
+        "paragraph_count": 8,
+        "proposition_count": 8,
+        "answer_safe_count": 0,
+        "public_sources_only": true,
+        "candidate_only_by_default": true,
+        "missing_citation_source_ids": [],
+        "source_ids": [
+          "hk_ca_2024_tam_tak_chi_cacc_62_2022"
+        ]
+      },
+      {
+        "batch_id": "theft_dishonesty_fraud_tree_gap_pilot_v1",
+        "relative_path": "data/legal_ingest/criminal_evidence_tree_v1/tree_gap_pilots/theft_dishonesty_fraud_v1",
+        "domain_id": "criminal_law_hk",
+        "practice_area": "criminal_law",
+        "scope": "theft_dishonesty_fraud_candidate_branch",
+        "source_count": 1,
+        "paragraph_count": 10,
+        "proposition_count": 10,
+        "answer_safe_count": 0,
+        "public_sources_only": true,
+        "candidate_only_by_default": true,
+        "missing_citation_source_ids": [],
+        "source_ids": [
+          "hk_cfa_2022_chan_kam_ching_facc_10_2021"
+        ]
+      }
+    ]
+  },
+  "ten_k_plan": {
+    "plan_id": "hk_criminal_multibranch_public_case_expansion_10000_v1",
+    "status": "planned_candidate_only_not_bulk_executed",
+    "target_cases": 10000,
+    "total_branch_quota": 10000,
+    "shard_count": 205,
+    "max_cases_per_shard": 50,
+    "branch_count": 13,
+    "planned_not_executed": true,
+    "branch_allocations": [
+      {
+        "branch_family": "investigation_arrest_search_detention",
+        "priority": 1,
+        "target_case_quota": 1800,
+        "initial_rung_case_count": 20,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "theft_dishonesty_fraud",
+        "priority": 1,
+        "target_case_quota": 667,
+        "initial_rung_case_count": 20,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "public_order_riot_unlawful_assembly",
+        "priority": 1,
+        "target_case_quota": 648,
+        "initial_rung_case_count": 20,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "trial_no_case_jury_directions",
+        "priority": 2,
+        "target_case_quota": 1400,
+        "initial_rung_case_count": 20,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "appeals_reviews_sentence",
+        "priority": 2,
+        "target_case_quota": 1400,
+        "initial_rung_case_count": 20,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "offences_against_person",
+        "priority": 2,
+        "target_case_quota": 1106,
+        "initial_rung_case_count": 20,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "bribery_corruption_misconduct",
+        "priority": 2,
+        "target_case_quota": 579,
+        "initial_rung_case_count": 20,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "aml_money_laundering",
+        "priority": 2,
+        "target_case_quota": 499,
+        "initial_rung_case_count": 20,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "indictments_charges_joinder",
+        "priority": 3,
+        "target_case_quota": 462,
+        "initial_rung_case_count": 10,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "defences",
+        "priority": 3,
+        "target_case_quota": 414,
+        "initial_rung_case_count": 10,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "nsl_procedure_non_bail",
+        "priority": 3,
+        "target_case_quota": 294,
+        "initial_rung_case_count": 10,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "other_criminal_procedure",
+        "priority": 4,
+        "target_case_quota": 414,
+        "initial_rung_case_count": 10,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      },
+      {
+        "branch_family": "other_criminal_law",
+        "priority": 4,
+        "target_case_quota": 317,
+        "initial_rung_case_count": 10,
+        "review_gate_every_cases": 50,
+        "answer_safe_allowed": false
+      }
+    ]
+  },
+  "qdrant": {
+    "live": true,
+    "collections": [
+      {
+        "name": "hk_legal_paragraphs_openrouter_2048",
+        "points_count": 112,
+        "vector_size": 2048,
+        "distance": "Cosine",
+        "status": "green"
+      },
+      {
+        "name": "hk_proposition_cards_openrouter_2048",
+        "points_count": 114,
+        "vector_size": 2048,
+        "distance": "Cosine",
+        "status": "green"
+      },
+      {
+        "name": "hk_form_metadata_openrouter_2048",
+        "points_count": 6,
+        "vector_size": 2048,
+        "distance": "Cosine",
+        "status": "green"
+      }
+    ]
+  },
+  "gates_before_claiming_10000_accurately_recallable": [
+    "resolve each planned case to a public LegalRef/HKLII/Judiciary source with citation and stable source id",
+    "fetch and parse numbered paragraphs for each case",
+    "verify exact_quote is a substring of the paragraph text",
+    "link each proposition only to existing allowed criminal doctrine/procedure nodes",
+    "deduplicate by citation/source id/DIS before indexing",
+    "upsert only public_demo/public/candidate_only payloads to Qdrant",
+    "run branch golden retrieval suites after each shard",
+    "keep answer_safe false until human review promotes specific propositions"
+  ]
+}

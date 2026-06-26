@@ -1,0 +1,28 @@
+{
+  "artifact_id": "theft_dishonesty_fraud_case_lineage_notes",
+  "batch_id": "theft_dishonesty_fraud_tree_gap_pilot_v1",
+  "source_policy": "public LegalRef only; no private or licensed material",
+  "lineage_edges": [
+    {
+      "from_case_id": "hk_cfa_2007_mo_yuk_ping",
+      "to_case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "relation": "cited_for_dishonesty_state_of_mind_and_ghosh_test",
+      "text_supported_by_proposition_ids": [
+        "prop_chan_kam_ching_2022_dishonesty_state_of_mind_p148",
+        "prop_chan_kam_ching_2022_ghosh_test_hk_p149"
+      ],
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "from_case_id": "hk_ca_ho_ka_keung",
+      "to_case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "relation": "not_followed_on_importing_dishonesty_into_to_s16a",
+      "text_supported_by_proposition_id": "prop_chan_kam_ching_2022_deceit_dishonesty_distinct_p150",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    }
+  ],
+  "lineage_policy": "candidate_only_until_human_review",
+  "source_fingerprint": "2233ced90a34ff98c6e60bb91eb4bd3549f356791f0dc0239e16ecd35e9f927c"
+}

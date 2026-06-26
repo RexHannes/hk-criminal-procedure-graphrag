@@ -2,7 +2,10 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const { embedText } = require("../retrieval/embedding_adapter");
-const { buildRetrievalScopeFilter } = require("../case_graph/scale_ingest_safeguards");
+const {
+  CRIMINAL_DOMAIN_IDS,
+  CRIMINAL_PRACTICE_AREAS,
+} = require("../case_graph/scale_ingest_safeguards");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 
@@ -92,12 +95,54 @@ function matchValue(key, value) {
   };
 }
 
+function anyOf(key, values) {
+  return {
+    should: Array.from(values).map(value => matchValue(key, value)),
+  };
+}
+
 function publicDemoFilter() {
-  return buildRetrievalScopeFilter();
+  return {
+    must: [
+      matchValue("source_visibility", "public_demo"),
+      matchValue("tenant_id", "public"),
+    ],
+  };
 }
 
 function tenantRetrievalFilter({ tenantId, includePrivate = false, privateIngestionEnabled = false } = {}) {
-  return buildRetrievalScopeFilter({ sourceMode: "private_tenant", tenantId, includePrivate, privateIngestionEnabled });
+  if (!includePrivate || !privateIngestionEnabled || !tenantId) return publicDemoFilter();
+  return {
+    should: [
+      {
+        must: [
+          matchValue("source_visibility", "public_demo"),
+          matchValue("tenant_id", "public"),
+        ],
+      },
+      {
+        must: [
+          matchValue("source_visibility", "private_tenant"),
+          matchValue("tenant_id", tenantId),
+        ],
+      },
+    ],
+  };
+}
+
+function withProductionScope(filter, { runtimeMode = "", domainIds = CRIMINAL_DOMAIN_IDS, practiceAreas = CRIMINAL_PRACTICE_AREAS } = {}) {
+  if (runtimeMode !== "production_scale") return filter;
+  return {
+    must: [
+      filter,
+      {
+        should: [
+          anyOf("domain_id", domainIds),
+          anyOf("practice_area", practiceAreas),
+        ],
+      },
+    ],
+  };
 }
 
 async function searchQdrant({
@@ -114,13 +159,10 @@ async function searchQdrant({
   const dimension = Number(env.LEGAL_EMBEDDING_DIM || (provider === "openai" ? 1536 : 384));
   const collection = collectionName || env.QDRANT_COLLECTION_PROPOSITIONS || "hk_proposition_cards";
   const privateIngestionEnabled = String(env.PRIVATE_SOURCE_INGESTION_ENABLED || "false").toLowerCase() === "true";
-  const filter = buildRetrievalScopeFilter({
-    sourceMode,
-    tenantId,
-    includePrivate,
-    privateIngestionEnabled,
-    runtimeMode: env.LEGAL_RUNTIME_MODE || env.RUNTIME_MODE || "",
-  });
+  const baseFilter = sourceMode === "private_tenant"
+    ? tenantRetrievalFilter({ tenantId, includePrivate, privateIngestionEnabled })
+    : publicDemoFilter();
+  const filter = withProductionScope(baseFilter, { runtimeMode: env.LEGAL_RUNTIME_MODE || env.RUNTIME_MODE || "" });
   const vector = await embed(query, env, dimension);
   const actualDimension = vector.length;
   const payload = await qdrantRequest(env, `/collections/${encodeURIComponent(collection)}/points/search`, {
@@ -155,4 +197,5 @@ module.exports = {
   qdrantRequest,
   searchQdrant,
   tenantRetrievalFilter,
+  withProductionScope,
 };

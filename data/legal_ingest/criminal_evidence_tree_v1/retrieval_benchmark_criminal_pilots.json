@@ -1,0 +1,120 @@
+{
+  "suite_id": "hk_criminal_pilot_case_fruits_retrieval_v1",
+  "description": "Criminal pilot retrieval benchmark aligned to the public LegalRef case-fruit pilots already indexed in Qdrant. This is separate from the older MVP benchmark that still expects civil samples, ordinances, and placeholder graph bundles.",
+  "quality_floor": {
+    "min_hit_rate": 0.6,
+    "min_query_count": 10,
+    "current_expected_status": "criminal_pilot_alignment_floor"
+  },
+  "queries": [
+    {
+      "id": "specified_evidence_definition",
+      "query": "specified evidence offence endangering national security Implementation Rules definition",
+      "expected_source_ids_any": ["prop_lai_cfi_2022_specified_evidence_definition_p4"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "magistrate_warrant_threshold",
+      "query": "magistrate may issue search warrant reasonable ground suspecting specified evidence place",
+      "expected_source_ids_any": ["prop_lai_cfi_2022_magistrate_warrant_threshold_p5"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "journalistic_material_specified_evidence_issue",
+      "query": "specified evidence journalistic material JM search warrant construction issue",
+      "expected_source_ids_any": [
+        "prop_lai_cfi_2022_jm_construction_challenge_p3",
+        "prop_lai_ca_2022_appeal_issue_p1"
+      ],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "search_warrant_jr_bound_to_fail",
+      "query": "judicial review search warrant bound to fail leave refused Lai Chee Ying",
+      "expected_source_ids_any": ["prop_lai_cfi_2022_jr_bound_to_fail_p26"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "effective_investigation_local_search_laws",
+      "query": "effective investigation offences endangering national security local search laws coherent whole",
+      "expected_source_ids_any": [
+        "prop_lai_ca_2022_effective_investigation_p17",
+        "prop_lai_ca_2022_local_search_laws_coherent_whole_p17"
+      ],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "journalistic_material_not_immune",
+      "query": "journalistic material not immune specified evidence search seizure warrant",
+      "expected_source_ids_any": [
+        "prop_lai_ca_2022_journalistic_material_not_immune_p34",
+        "prop_lai_ca_2022_search_anything_including_jm_p35"
+      ],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "fraud_dishonesty_element_s16a",
+      "query": "fraud offence section 16A Theft Ordinance dishonesty separate element",
+      "expected_source_ids_any": [
+        "prop_chan_kam_ching_2022_fraud_substitution_issue_p2",
+        "prop_chan_kam_ching_2022_dishonesty_not_ingredient_p139",
+        "prop_chan_kam_ching_2022_s16a_no_implied_dishonesty_p146"
+      ],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "intent_to_defraud_culpable_mental_state",
+      "query": "section 16A intent to defraud culpable mental state Theft Ordinance",
+      "expected_source_ids_any": ["prop_chan_kam_ching_2022_s16a_intent_to_defraud_p142"],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "deceit_dishonesty_distinct",
+      "query": "deceit dishonesty distinct concepts Ho Ka Keung fraud Chan Kam Ching",
+      "expected_source_ids_any": [
+        "prop_chan_kam_ching_2022_deceit_definition_p147",
+        "prop_chan_kam_ching_2022_deceit_dishonesty_distinct_p150"
+      ],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    },
+    {
+      "id": "ghosh_hk_dishonesty_test",
+      "query": "Ghosh test Hong Kong law dishonesty Mo Yuk Ping Chan Kam Ching",
+      "expected_source_ids_any": [
+        "prop_chan_kam_ching_2022_dishonesty_state_of_mind_p148",
+        "prop_chan_kam_ching_2022_ghosh_test_hk_p149"
+      ],
+      "expected_source_kind_any": ["proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "min_expected_rank": 10,
+      "mode": "public_demo"
+    }
+  ]
+}

@@ -87,7 +87,8 @@ function isProductionRerankReady(env) {
   return true;
 }
 
-function isDurableOrchestrationReady(env) {
+function isDurableOrchestrationReady(env, { targetCases = 0 } = {}) {
+  if (targetCases > 1000) return Boolean(env.INNGEST_EVENT_KEY && env.INNGEST_SIGNING_KEY);
   return hasAny(env, ["INNGEST_EVENT_KEY", "INNGEST_SIGNING_KEY", "INNGEST_DEV"]) && hasAny(env, ["INNGEST_SIGNING_KEY", "INNGEST_DEV"]);
 }
 
@@ -177,10 +178,11 @@ function evaluateScaleReadiness({
       openrouter_free_only: String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false",
       openrouter_paid_allowed: String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() === "true",
     }),
-    gate("durable_orchestration_configured", isDurableOrchestrationReady(env), {
+    gate("durable_orchestration_configured", isDurableOrchestrationReady(env, { targetCases }), {
       inngest_event_key_present: Boolean(env.INNGEST_EVENT_KEY),
       inngest_signing_key_present: Boolean(env.INNGEST_SIGNING_KEY),
       inngest_dev_present: Boolean(env.INNGEST_DEV),
+      production_orchestration_required: targetCases > 1000,
     }),
     gate("bail_gold_review_set_exists", stats.answer_safe_count >= 3, {
       answer_safe_count: stats.answer_safe_count,

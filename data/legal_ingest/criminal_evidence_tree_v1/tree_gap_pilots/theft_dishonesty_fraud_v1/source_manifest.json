@@ -1,0 +1,53 @@
+{
+  "batch_id": "theft_dishonesty_fraud_tree_gap_pilot_v1",
+  "domain_id": "criminal_law_hk",
+  "practice_area": "criminal_law",
+  "scope": "theft_dishonesty_fraud_candidate_branch",
+  "source_policy": {
+    "public_sources_only": true,
+    "private_or_licensed_sources_allowed": false,
+    "raw_private_upload_allowed": false,
+    "bulk_auto_attach_allowed": false,
+    "answer_safe_by_default": false
+  },
+  "scale_policy": {
+    "current_rung": "single_public_case_theft_dishonesty_fraud_pilot",
+    "next_rung": "10_to_20_public_theft_dishonesty_fraud_cases_after_review",
+    "max_sources_without_force": 50,
+    "large_cross_domain_crawl_allowed": false,
+    "requires_review_before_next_rung": true
+  },
+  "sources": [
+    {
+      "source_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "law_report_citation": "(2022) 25 HKCFAR 48",
+      "court": "Court of Final Appeal",
+      "court_level": "CFA",
+      "date": "2022-04-14",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=143540&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=143540&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    }
+  ],
+  "tree_gap_resolution": {
+    "existing_tree_match": "criminal_law_hk property/dishonesty branch",
+    "tree_proposal_source": "existing_doctrine_tree_plus_public_secondary_leads",
+    "tree_proposal_status": "existing_branch_candidate_only_until_review",
+    "verification_gate": "legalref_exact_quote_case_fruits_only"
+  },
+  "ai_assist_policy": {
+    "notebooklm_role": "candidate_lineage_or_branch_prompt_only_not_authority",
+    "deepseek_role": "optional_candidate_rule_proposer_only_not_authority",
+    "public_judgment_text_required_before_extraction": true,
+    "private_or_licensed_text_used": false
+  }
+}

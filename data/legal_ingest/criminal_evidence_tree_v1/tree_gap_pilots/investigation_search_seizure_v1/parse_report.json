@@ -1,0 +1,15 @@
+{
+  "artifact_id": "investigation_search_seizure_tree_gap_pilot_v1",
+  "generated_at": "2026-06-24T21:15:38.562Z",
+  "batch_id": "investigation_search_seizure_tree_gap_pilot_v1",
+  "domain_id": "criminal_procedure_hk",
+  "scope": "investigation_search_warrant_seizure_candidate_branch",
+  "status": "public_source_candidate_links",
+  "source_count": 2,
+  "paragraph_count": 10,
+  "proposition_count": 11,
+  "link_count": 25,
+  "rejected_count": 0,
+  "errors": [],
+  "rejected": []
+}

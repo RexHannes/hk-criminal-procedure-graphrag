@@ -62,7 +62,7 @@ function writeLocalDevEnv() {
   fs.writeFileSync(ENV_LOCAL, `${preservedComments ? `${preservedComments}\n` : ""}${body}\n`);
 }
 
-function providerSuggestions(env) {
+function providerSuggestions(env, { targetCases = 0 } = {}) {
   const suggestions = [];
   if (!env.VOYAGE_API_KEY && !env.COHERE_API_KEY && !env.OPENAI_API_KEY && !env.LEGAL_EMBEDDING_API_KEY && !env.OPENROUTER_API_KEY) {
     suggestions.push({
@@ -99,10 +99,12 @@ function providerSuggestions(env) {
       action: "If using OpenRouter for rerank under free-only mode, set LEGAL_RERANK_MODEL to a free model id ending in :free.",
     });
   }
-  if (!env.INNGEST_DEV && !(env.INNGEST_EVENT_KEY && env.INNGEST_SIGNING_KEY)) {
+  if ((targetCases > 1000 && !(env.INNGEST_EVENT_KEY && env.INNGEST_SIGNING_KEY)) || (!env.INNGEST_DEV && !(env.INNGEST_EVENT_KEY && env.INNGEST_SIGNING_KEY))) {
     suggestions.push({
       gate_id: "durable_orchestration_configured",
-      action: "For local dev, run this script with --write-local-dev-env. For production, set INNGEST_EVENT_KEY and INNGEST_SIGNING_KEY.",
+      action: targetCases > 1000
+        ? "For 10k-scale execution, set production INNGEST_EVENT_KEY and INNGEST_SIGNING_KEY; local INNGEST_DEV is only accepted for smaller dev rungs."
+        : "For local dev, run this script with --write-local-dev-env. For production, set INNGEST_EVENT_KEY and INNGEST_SIGNING_KEY.",
     });
   }
   suggestions.push({
@@ -139,8 +141,9 @@ const output = {
     inngest_dev_present: item.inngest_dev_present,
     inngest_event_key_present: item.inngest_event_key_present,
     inngest_signing_key_present: item.inngest_signing_key_present,
+    production_orchestration_required: item.production_orchestration_required,
   })),
-  next_actions: providerSuggestions(env).filter(item => report.blockers.includes(item.gate_id)),
+  next_actions: providerSuggestions(env, { targetCases: args.targetCases }).filter(item => report.blockers.includes(item.gate_id)),
   safety_note: "This script may enable local Inngest dev, but it never fakes embeddings, reranker, or legal review.",
 };
 

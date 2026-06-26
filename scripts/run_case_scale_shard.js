@@ -43,6 +43,7 @@ const allowedScopes = [
   "sedition_public_expression",
   "public_order_unlawful_assembly_riot_candidate_branch",
   "sedition_public_expression_candidate_branch",
+  "investigation_search_warrant_seizure_candidate_branch",
   "criminal_domain_public_cases",
 ];
 const registryScopeCheck = validateShardRegistryScope({

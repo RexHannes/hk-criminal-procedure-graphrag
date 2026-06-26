@@ -1,0 +1,32 @@
+{
+  "shard_executor": "case_scale_shard_guard_v1",
+  "generated_at": "2026-06-25T08:12:06.822Z",
+  "run_plan_id": "case_scale_criminal_domain_public_cases_2500_v1",
+  "readiness_status": "green_for_requested_target",
+  "plan_status": "planned_ready_for_allowed_rung",
+  "execution_allowed": true,
+  "preflight_only": true,
+  "shard": {
+    "shard_id": "shard_0001",
+    "case_ordinal_start": 1,
+    "case_ordinal_end": 50,
+    "max_cases": 50,
+    "status": "planned_not_started"
+  },
+  "status": "preflight_passed_not_executed",
+  "blockers": [],
+  "registry_scope_check": {
+    "ok": true,
+    "errors": [],
+    "allowed_scopes": [
+      "bail_only",
+      "public_order_riot",
+      "sedition_public_expression",
+      "public_order_unlawful_assembly_riot_candidate_branch",
+      "sedition_public_expression_candidate_branch",
+      "investigation_search_warrant_seizure_candidate_branch",
+      "criminal_domain_public_cases"
+    ]
+  },
+  "message": "Shard readiness passed; no ingestion was performed."
+}

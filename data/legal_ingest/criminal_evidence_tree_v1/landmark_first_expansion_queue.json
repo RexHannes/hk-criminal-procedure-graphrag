@@ -1,6 +1,6 @@
 {
   "queue_id": "criminal_landmark_first_expansion_queue_v1",
-  "generated_at": "2026-06-24T16:17:11.885Z",
+  "generated_at": "2026-06-25T08:22:12.032Z",
   "status": "candidate_only_scale_preparation_not_bulk_execution",
   "purpose": "Landmark-first branch expansion queue for criminal law/procedure case fruits.",
   "source_policy": {
@@ -33,20 +33,22 @@
   "coverage_summary": {
     "total_nodes": 371,
     "doctrine_or_procedure_nodes": 186,
-    "nodes_with_candidate_fruits": 18,
-    "queued_doctrine_or_procedure_nodes_without_fruits": 170,
+    "nodes_with_candidate_fruits": 26,
+    "queued_doctrine_or_procedure_nodes_without_fruits": 165,
     "populated_batches": [
       "bail_pilot",
       "criminal_bail_public_batch_v1",
+      "investigation_search_seizure_tree_gap_pilot_v1",
       "public_order_riot_tree_gap_pilot_v1",
-      "sedition_public_expression_tree_gap_pilot_v1"
+      "sedition_public_expression_tree_gap_pilot_v1",
+      "theft_dishonesty_fraud_tree_gap_pilot_v1"
     ]
   },
   "branch_family_queue": [
     {
       "branch_family": "investigation_arrest_search_detention",
       "priority": 1,
-      "queued_node_count": 21,
+      "queued_node_count": 19,
       "sample_node_ids": [
         "criminal_procedure_hk.archer_v_commissioner_of_police",
         "criminal_procedure_hk.invest_arrest_with_warrant",
@@ -60,20 +62,6 @@
       "notebooklm_prompt_hint": "HK criminal investigation, arrest, search, detention and reasonable suspicion; include statutory powers, admissibility consequences and leading HK cases."
     },
     {
-      "branch_family": "theft_dishonesty_fraud",
-      "priority": 1,
-      "queued_node_count": 6,
-      "sample_node_ids": [
-        "criminal_law_hk.theft.appropriation",
-        "criminal_law_hk.theft.dishonesty",
-        "criminal_law_hk.fraud",
-        "criminal_law_hk.theft.intent.deprive",
-        "criminal_law_hk.property_dishonesty",
-        "criminal_law_hk.theft"
-      ],
-      "notebooklm_prompt_hint": "HK theft, fraud and dishonesty tests; include Theft Ordinance, Ghosh/Ivey treatment, HK CFA/CA lineages and offence-element cases."
-    },
-    {
       "branch_family": "public_order_riot_unlawful_assembly",
       "priority": 1,
       "queued_node_count": 4,
@@ -84,6 +72,18 @@
         "criminal_law_hk.withdrawal.joint.enterprise"
       ],
       "notebooklm_prompt_hint": "HK unlawful assembly and riot lineage after Tong Wai Hung; include physical presence, joint enterprise/accessory liability, common purpose, peaceful assembly and overcharging."
+    },
+    {
+      "branch_family": "theft_dishonesty_fraud",
+      "priority": 1,
+      "queued_node_count": 4,
+      "sample_node_ids": [
+        "criminal_law_hk.theft.appropriation",
+        "criminal_law_hk.theft.intent.deprive",
+        "criminal_law_hk.property_dishonesty",
+        "criminal_law_hk.theft"
+      ],
+      "notebooklm_prompt_hint": "HK theft, fraud and dishonesty tests; include Theft Ordinance, Ghosh/Ivey treatment, HK CFA/CA lineages and offence-element cases."
     },
     {
       "branch_family": "trial_no_case_jury_directions",
@@ -205,7 +205,7 @@
     {
       "branch_family": "other_criminal_procedure",
       "priority": 4,
-      "queued_node_count": 27,
+      "queued_node_count": 26,
       "sample_node_ids": [
         "criminal_procedure_hk.witness_sexual_offence_complainants",
         "criminal_procedure_hk.costs_bankruptcy_orders",
@@ -329,50 +329,6 @@
       "domain_id": "criminal_law_hk",
       "doctrine_node_id": "criminal_law_hk.theft.appropriation",
       "label": "Appropriation",
-      "node_class": "doctrine_or_procedure_branch",
-      "branch_family": "theft_dishonesty_fraud",
-      "priority": 1,
-      "existing_case_fruits": {
-        "link_count": 0,
-        "proposition_count": 0,
-        "batches": [],
-        "candidate_only": true
-      },
-      "recommended_action": "landmark_first_branch_fill",
-      "notebooklm_prompt_hint": "HK theft, fraud and dishonesty tests; include Theft Ordinance, Ghosh/Ivey treatment, HK CFA/CA lineages and offence-element cases.",
-      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
-      "public_source_required": true,
-      "exact_quote_required": true,
-      "allowed_status": "machine_candidate",
-      "answer_safe_allowed": false
-    },
-    {
-      "queue_item_id": "criminal_landmark_queue_8ba28b5f3a6a8c37",
-      "domain_id": "criminal_law_hk",
-      "doctrine_node_id": "criminal_law_hk.theft.dishonesty",
-      "label": "Dishonesty",
-      "node_class": "doctrine_or_procedure_branch",
-      "branch_family": "theft_dishonesty_fraud",
-      "priority": 1,
-      "existing_case_fruits": {
-        "link_count": 0,
-        "proposition_count": 0,
-        "batches": [],
-        "candidate_only": true
-      },
-      "recommended_action": "landmark_first_branch_fill",
-      "notebooklm_prompt_hint": "HK theft, fraud and dishonesty tests; include Theft Ordinance, Ghosh/Ivey treatment, HK CFA/CA lineages and offence-element cases.",
-      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
-      "public_source_required": true,
-      "exact_quote_required": true,
-      "allowed_status": "machine_candidate",
-      "answer_safe_allowed": false
-    },
-    {
-      "queue_item_id": "criminal_landmark_queue_42a0c79458749ea9",
-      "domain_id": "criminal_law_hk",
-      "doctrine_node_id": "criminal_law_hk.fraud",
-      "label": "Fraud",
       "node_class": "doctrine_or_procedure_branch",
       "branch_family": "theft_dishonesty_fraud",
       "priority": 1,
@@ -787,54 +743,10 @@
       "answer_safe_allowed": false
     },
     {
-      "queue_item_id": "criminal_landmark_queue_a5f8978c4b772e47",
-      "domain_id": "criminal_procedure_hk",
-      "doctrine_node_id": "criminal_procedure_hk.invest_search_with_warrant",
-      "label": "Search With Warrant",
-      "node_class": "doctrine_or_procedure_branch",
-      "branch_family": "investigation_arrest_search_detention",
-      "priority": 1,
-      "existing_case_fruits": {
-        "link_count": 0,
-        "proposition_count": 0,
-        "batches": [],
-        "candidate_only": true
-      },
-      "recommended_action": "landmark_first_branch_fill",
-      "notebooklm_prompt_hint": "HK criminal investigation, arrest, search, detention and reasonable suspicion; include statutory powers, admissibility consequences and leading HK cases.",
-      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
-      "public_source_required": true,
-      "exact_quote_required": true,
-      "allowed_status": "machine_candidate",
-      "answer_safe_allowed": false
-    },
-    {
       "queue_item_id": "criminal_landmark_queue_344e65127880e5c7",
       "domain_id": "criminal_procedure_hk",
       "doctrine_node_id": "criminal_procedure_hk.invest_search_without_warrant",
       "label": "Search Without Warrant",
-      "node_class": "doctrine_or_procedure_branch",
-      "branch_family": "investigation_arrest_search_detention",
-      "priority": 1,
-      "existing_case_fruits": {
-        "link_count": 0,
-        "proposition_count": 0,
-        "batches": [],
-        "candidate_only": true
-      },
-      "recommended_action": "landmark_first_branch_fill",
-      "notebooklm_prompt_hint": "HK criminal investigation, arrest, search, detention and reasonable suspicion; include statutory powers, admissibility consequences and leading HK cases.",
-      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
-      "public_source_required": true,
-      "exact_quote_required": true,
-      "allowed_status": "machine_candidate",
-      "answer_safe_allowed": false
-    },
-    {
-      "queue_item_id": "criminal_landmark_queue_fc7c2461b1d67b91",
-      "domain_id": "criminal_procedure_hk",
-      "doctrine_node_id": "criminal_procedure_hk.invest_source_of_power",
-      "label": "Source of Investigatory Power",
       "node_class": "doctrine_or_procedure_branch",
       "branch_family": "investigation_arrest_search_detention",
       "priority": 1,
@@ -1115,9 +1027,169 @@
       "exact_quote_required": true,
       "allowed_status": "machine_candidate",
       "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_493b6c2adb540412",
+      "domain_id": "criminal_law_hk",
+      "doctrine_node_id": "criminal_law_hk.pobo.s9",
+      "label": "POBO s.9 - Private Sector Corruption",
+      "node_class": "doctrine_or_procedure_branch",
+      "branch_family": "bribery_corruption_misconduct",
+      "priority": 2,
+      "existing_case_fruits": {
+        "link_count": 0,
+        "proposition_count": 0,
+        "batches": [],
+        "candidate_only": true
+      },
+      "recommended_action": "landmark_first_branch_fill",
+      "notebooklm_prompt_hint": "HK POBO, misconduct in public office and corruption lineages; include CFA/CA authorities and element-by-element treatment.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_1c749e19ef9ea8e3",
+      "domain_id": "criminal_law_hk",
+      "doctrine_node_id": "criminal_law_hk.pobo.s4.s5",
+      "label": "POBO ss.4 and 5 - Public Servant Bribery",
+      "node_class": "doctrine_or_procedure_branch",
+      "branch_family": "bribery_corruption_misconduct",
+      "priority": 2,
+      "existing_case_fruits": {
+        "link_count": 0,
+        "proposition_count": 0,
+        "batches": [],
+        "candidate_only": true
+      },
+      "recommended_action": "landmark_first_branch_fill",
+      "notebooklm_prompt_hint": "HK POBO, misconduct in public office and corruption lineages; include CFA/CA authorities and element-by-element treatment.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_80debc7cd237bfce",
+      "domain_id": "criminal_law_hk",
+      "doctrine_node_id": "criminal_law_hk.abh",
+      "label": "Assault Occasioning Actual Bodily Harm",
+      "node_class": "doctrine_or_procedure_branch",
+      "branch_family": "offences_against_person",
+      "priority": 2,
+      "existing_case_fruits": {
+        "link_count": 0,
+        "proposition_count": 0,
+        "batches": [],
+        "candidate_only": true
+      },
+      "recommended_action": "landmark_first_branch_fill",
+      "notebooklm_prompt_hint": "HK offences against the person; include homicide, assault, wounding/GBH, sexual offences, mens rea and sentencing/proof distinctions.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_4d356e03ede5c58c",
+      "domain_id": "criminal_law_hk",
+      "doctrine_node_id": "criminal_law_hk.assault.battery",
+      "label": "Common Assault and Battery",
+      "node_class": "doctrine_or_procedure_branch",
+      "branch_family": "offences_against_person",
+      "priority": 2,
+      "existing_case_fruits": {
+        "link_count": 0,
+        "proposition_count": 0,
+        "batches": [],
+        "candidate_only": true
+      },
+      "recommended_action": "landmark_first_branch_fill",
+      "notebooklm_prompt_hint": "HK offences against the person; include homicide, assault, wounding/GBH, sexual offences, mens rea and sentencing/proof distinctions.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
     }
   ],
   "covered_or_anchor_items": [
+    {
+      "queue_item_id": "criminal_landmark_queue_8ba28b5f3a6a8c37",
+      "domain_id": "criminal_law_hk",
+      "doctrine_node_id": "criminal_law_hk.theft.dishonesty",
+      "label": "Dishonesty",
+      "node_class": "doctrine_or_procedure_branch",
+      "branch_family": "theft_dishonesty_fraud",
+      "priority": 1,
+      "existing_case_fruits": {
+        "link_count": 8,
+        "proposition_count": 8,
+        "batches": [
+          "theft_dishonesty_fraud_tree_gap_pilot_v1"
+        ],
+        "candidate_only": true
+      },
+      "recommended_action": "covered_candidate_fruits_exist_keep_reviewing_and_expand_only_if_golden_tests_need_more",
+      "notebooklm_prompt_hint": "HK theft, fraud and dishonesty tests; include Theft Ordinance, Ghosh/Ivey treatment, HK CFA/CA lineages and offence-element cases.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_42a0c79458749ea9",
+      "domain_id": "criminal_law_hk",
+      "doctrine_node_id": "criminal_law_hk.fraud",
+      "label": "Fraud",
+      "node_class": "doctrine_or_procedure_branch",
+      "branch_family": "theft_dishonesty_fraud",
+      "priority": 1,
+      "existing_case_fruits": {
+        "link_count": 9,
+        "proposition_count": 9,
+        "batches": [
+          "theft_dishonesty_fraud_tree_gap_pilot_v1"
+        ],
+        "candidate_only": true
+      },
+      "recommended_action": "covered_candidate_fruits_exist_keep_reviewing_and_expand_only_if_golden_tests_need_more",
+      "notebooklm_prompt_hint": "HK theft, fraud and dishonesty tests; include Theft Ordinance, Ghosh/Ivey treatment, HK CFA/CA lineages and offence-element cases.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_989ae48ee1714cfb",
+      "domain_id": "criminal_law_hk",
+      "doctrine_node_id": "criminal_law_hk.gap_verify_dishonesty_hk_post_ivey",
+      "label": "Gap: Verify HK dishonesty post-Ivey",
+      "node_class": "gap_marker",
+      "branch_family": "theft_dishonesty_fraud",
+      "priority": 1,
+      "existing_case_fruits": {
+        "link_count": 1,
+        "proposition_count": 1,
+        "batches": [
+          "theft_dishonesty_fraud_tree_gap_pilot_v1"
+        ],
+        "candidate_only": true
+      },
+      "recommended_action": "covered_candidate_fruits_exist_keep_reviewing_and_expand_only_if_golden_tests_need_more",
+      "notebooklm_prompt_hint": "HK theft, fraud and dishonesty tests; include Theft Ordinance, Ghosh/Ivey treatment, HK CFA/CA lineages and offence-element cases.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
     {
       "queue_item_id": "criminal_landmark_queue_8fa9d836042bfce8",
       "domain_id": "criminal_law_hk",
@@ -1448,6 +1520,126 @@
       },
       "recommended_action": "covered_candidate_fruits_exist_keep_reviewing_and_expand_only_if_golden_tests_need_more",
       "notebooklm_prompt_hint": "HK unlawful assembly and riot lineage after Tong Wai Hung; include physical presence, joint enterprise/accessory liability, common purpose, peaceful assembly and overcharging.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_fc7c2461b1d67b91",
+      "domain_id": "criminal_procedure_hk",
+      "doctrine_node_id": "criminal_procedure_hk.invest_source_of_power",
+      "label": "Source of Investigatory Power",
+      "node_class": "doctrine_or_procedure_branch",
+      "branch_family": "investigation_arrest_search_detention",
+      "priority": 1,
+      "existing_case_fruits": {
+        "link_count": 4,
+        "proposition_count": 4,
+        "batches": [
+          "investigation_search_seizure_tree_gap_pilot_v1"
+        ],
+        "candidate_only": true
+      },
+      "recommended_action": "covered_candidate_fruits_exist_keep_reviewing_and_expand_only_if_golden_tests_need_more",
+      "notebooklm_prompt_hint": "HK criminal investigation, arrest, search, detention and reasonable suspicion; include statutory powers, admissibility consequences and leading HK cases.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_a5f8978c4b772e47",
+      "domain_id": "criminal_procedure_hk",
+      "doctrine_node_id": "criminal_procedure_hk.invest_search_with_warrant",
+      "label": "Search With Warrant",
+      "node_class": "doctrine_or_procedure_branch",
+      "branch_family": "investigation_arrest_search_detention",
+      "priority": 1,
+      "existing_case_fruits": {
+        "link_count": 11,
+        "proposition_count": 11,
+        "batches": [
+          "investigation_search_seizure_tree_gap_pilot_v1"
+        ],
+        "candidate_only": true
+      },
+      "recommended_action": "covered_candidate_fruits_exist_keep_reviewing_and_expand_only_if_golden_tests_need_more",
+      "notebooklm_prompt_hint": "HK criminal investigation, arrest, search, detention and reasonable suspicion; include statutory powers, admissibility consequences and leading HK cases.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_4e21325dff665aad",
+      "domain_id": "criminal_procedure_hk",
+      "doctrine_node_id": "criminal_procedure_hk.invest_seizure",
+      "label": "Seizure of Property / Documents / Digital Material",
+      "node_class": "doctrine_or_procedure_branch",
+      "branch_family": "other_criminal_procedure",
+      "priority": 4,
+      "existing_case_fruits": {
+        "link_count": 8,
+        "proposition_count": 8,
+        "batches": [
+          "investigation_search_seizure_tree_gap_pilot_v1"
+        ],
+        "candidate_only": true
+      },
+      "recommended_action": "covered_candidate_fruits_exist_keep_reviewing_and_expand_only_if_golden_tests_need_more",
+      "notebooklm_prompt_hint": "Propose a HK case lineage and issue tree for Seizure of Property / Documents / Digital Material.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_36708f0b55740011",
+      "domain_id": "criminal_procedure_hk",
+      "doctrine_node_id": "criminal_procedure_hk.invest_arrest_detention_flow_start",
+      "label": "Arrest/Detention Flow: Identify Power",
+      "node_class": "procedure_flow",
+      "branch_family": "investigation_arrest_search_detention",
+      "priority": 1,
+      "existing_case_fruits": {
+        "link_count": 1,
+        "proposition_count": 1,
+        "batches": [
+          "investigation_search_seizure_tree_gap_pilot_v1"
+        ],
+        "candidate_only": true
+      },
+      "recommended_action": "covered_candidate_fruits_exist_keep_reviewing_and_expand_only_if_golden_tests_need_more",
+      "notebooklm_prompt_hint": "HK criminal investigation, arrest, search, detention and reasonable suspicion; include statutory powers, admissibility consequences and leading HK cases.",
+      "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
+      "public_source_required": true,
+      "exact_quote_required": true,
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "queue_item_id": "criminal_landmark_queue_4533e196a5385de5",
+      "domain_id": "criminal_procedure_hk",
+      "doctrine_node_id": "criminal_procedure_hk.invest_arrest_detention_flow_step2",
+      "label": "Arrest/Detention Flow: Reasonable Suspicion",
+      "node_class": "procedure_flow",
+      "branch_family": "investigation_arrest_search_detention",
+      "priority": 1,
+      "existing_case_fruits": {
+        "link_count": 1,
+        "proposition_count": 1,
+        "batches": [
+          "investigation_search_seizure_tree_gap_pilot_v1"
+        ],
+        "candidate_only": true
+      },
+      "recommended_action": "covered_candidate_fruits_exist_keep_reviewing_and_expand_only_if_golden_tests_need_more",
+      "notebooklm_prompt_hint": "HK criminal investigation, arrest, search, detention and reasonable suspicion; include statutory powers, admissibility consequences and leading HK cases.",
       "deepseek_role": "secondary_case_seed_or_extraction_rule_proposer_only",
       "public_source_required": true,
       "exact_quote_required": true,

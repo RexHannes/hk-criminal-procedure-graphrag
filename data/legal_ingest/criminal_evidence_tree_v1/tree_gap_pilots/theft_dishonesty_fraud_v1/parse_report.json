@@ -1,0 +1,15 @@
+{
+  "artifact_id": "theft_dishonesty_fraud_tree_gap_pilot_v1",
+  "generated_at": "2026-06-25T08:21:32.131Z",
+  "batch_id": "theft_dishonesty_fraud_tree_gap_pilot_v1",
+  "domain_id": "criminal_law_hk",
+  "scope": "theft_dishonesty_fraud_candidate_branch",
+  "status": "public_source_candidate_links",
+  "source_count": 1,
+  "paragraph_count": 10,
+  "proposition_count": 10,
+  "link_count": 18,
+  "rejected_count": 0,
+  "errors": [],
+  "rejected": []
+}

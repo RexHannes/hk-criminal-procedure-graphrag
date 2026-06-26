@@ -11,7 +11,7 @@ const CRIM_LAW_NODES_DIR = path.join(ROOT, "data", "legal_domain_packs", "demo_m
 const BAIL_BATCH_DIR = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "bail_public_batch_v1");
 const TREE_GAP_PILOTS_DIR = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "tree_gap_pilots");
 const BROWSER_POLICY = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "browser_discovery_policy.json");
-const QDRANT_COLLECTIONS = ["hk_legal_paragraphs", "hk_proposition_cards", "hk_form_metadata"];
+const DEFAULT_QDRANT_COLLECTIONS = ["hk_legal_paragraphs", "hk_proposition_cards", "hk_form_metadata"];
 
 function parseArgs(argv) {
   const args = { format: "json" };
@@ -116,10 +116,18 @@ function treeGapPilotStats() {
 async function qdrantCollectionStats(env) {
   const url = String(env.QDRANT_URL || "").replace(/\/$/, "");
   if (!url) return { configured: false, collections: [] };
+  const collectionNames = [
+    env.QDRANT_COLLECTION_PARAGRAPHS,
+    env.QDRANT_COLLECTION_PROPOSITIONS,
+    env.QDRANT_COLLECTION_FORMS,
+  ].filter(Boolean);
+  const names = collectionNames.length ? collectionNames : DEFAULT_QDRANT_COLLECTIONS;
+  const headers = {};
+  if (env.QDRANT_API_KEY) headers["api-key"] = env.QDRANT_API_KEY;
   const collections = [];
-  for (const name of QDRANT_COLLECTIONS) {
+  for (const name of names) {
     try {
-      const response = await fetch(`${url}/collections/${encodeURIComponent(name)}`);
+      const response = await fetch(`${url}/collections/${encodeURIComponent(name)}`, { headers });
       if (!response.ok) {
         collections.push({ name, ok: false, error: `http_${response.status}` });
         continue;
@@ -144,12 +152,13 @@ async function qdrantCollectionStats(env) {
 function providerStatus(env) {
   const embeddingProvider = String(env.LEGAL_EMBEDDING_PROVIDER || env.EMBEDDING_PROVIDER || "local-hash");
   const rerankProvider = String(env.LEGAL_RERANK_PROVIDER || env.RERANK_PROVIDER || "none");
+  const openRouterKeyPresent = Boolean(env.OPENROUTER_API_KEY);
   return {
     supabase_configured: Boolean(env.SUPABASE_URL && env.SUPABASE_SERVICE_ROLE_KEY),
     embedding_provider: embeddingProvider,
-    production_embedding_key_present: Boolean(env.OPENAI_API_KEY || env.VOYAGE_API_KEY || env.COHERE_API_KEY || env.LEGAL_EMBEDDING_API_KEY),
+    production_embedding_key_present: Boolean(env.OPENAI_API_KEY || env.VOYAGE_API_KEY || env.COHERE_API_KEY || env.LEGAL_EMBEDDING_API_KEY || openRouterKeyPresent),
     rerank_provider: rerankProvider,
-    rerank_key_present: Boolean(env.COHERE_API_KEY || env.VOYAGE_API_KEY || env.LEGAL_RERANK_API_KEY),
+    rerank_key_present: Boolean(env.COHERE_API_KEY || env.VOYAGE_API_KEY || env.LEGAL_RERANK_API_KEY || openRouterKeyPresent),
     inngest_configured: Boolean((env.INNGEST_DEV || env.INNGEST_EVENT_KEY) && (env.INNGEST_DEV || env.INNGEST_SIGNING_KEY)),
     deepseek_available: Boolean(env.DEEPSEEK_API_KEY),
   };
@@ -175,7 +184,9 @@ function overallVerdict({ scale50, scale20000, bail, treeGapPilots, criminalProc
     "quote/rejection gate is clean for current bail batch",
     ...(treeGapPilots.length ? ["tree-gap candidate branch workflow exists"] : []),
     "SOP bridge and source audit path exist",
-    "large-scale 20k run is blocked by readiness gates",
+    ...(scale20000.execution_allowed
+      ? ["large-scale sharded run has readiness clearance but still needs branch-by-branch review gates"]
+      : ["large-scale 20k run is blocked by readiness gates"]),
   ];
   const partial = [
     "Qdrant is useful only to the extent embeddings are production-grade",
@@ -198,7 +209,7 @@ function overallVerdict({ scale50, scale20000, bail, treeGapPilots, criminalProc
     status: scale50.execution_allowed && !scale20000.execution_allowed
       ? "pilot_working_large_scale_blocked"
       : scale20000.execution_allowed
-        ? "large_scale_allowed"
+        ? "large_scale_scaffold_allowed_quality_floor_still_required"
         : "blocked",
     implemented,
     partial,

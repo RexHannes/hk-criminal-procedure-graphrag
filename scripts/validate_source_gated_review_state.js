@@ -10,7 +10,11 @@ function assert(condition, message, errors) {
 
 (async () => {
   const errors = [];
-  const pack = await buildEvidencePack({ query: "inconsistent pleadings abuse of process", topK: 3 });
+  const pack = await buildEvidencePack({
+    query: "fraud offence section 16A Theft Ordinance dishonesty separate element",
+    topK: 3,
+    collectionName: "hk_proposition_cards_openrouter_2048",
+  });
   const answer = generateSourceGatedAnswer(pack);
   assert(answer.legal_claims.length > 0, "expected claims for pilot query", errors);
   for (const claim of answer.legal_claims) {

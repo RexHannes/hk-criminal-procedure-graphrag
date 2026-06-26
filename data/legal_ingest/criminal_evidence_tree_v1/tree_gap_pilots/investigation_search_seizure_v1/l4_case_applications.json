@@ -1,0 +1,238 @@
+{
+  "l4_case_applications": [
+    {
+      "l4_application_id": "l4_prop_lai_cfi_2022_specified_evidence_definition_p4",
+      "proposition_id": "prop_lai_cfi_2022_specified_evidence_definition_p4",
+      "case_id": "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCFI 2688",
+      "paragraph_id": "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738_p4",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of First Instance set out the Implementation Rules definition of specified evidence for national security search-warrant purposes.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_source_of_power",
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.invest_seizure"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "statutory_text_recited",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_lai_cfi_2022_magistrate_warrant_threshold_p5",
+      "proposition_id": "prop_lai_cfi_2022_magistrate_warrant_threshold_p5",
+      "case_id": "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCFI 2688",
+      "paragraph_id": "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738_p5",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of First Instance set out the magistrate search-warrant threshold under Schedule 1 of the Implementation Rules.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.invest_arrest_detention_flow_step2"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "statutory_text_recited",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_lai_cfi_2022_jm_construction_challenge_p3",
+      "proposition_id": "prop_lai_cfi_2022_jm_construction_challenge_p3",
+      "case_id": "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCFI 2688",
+      "paragraph_id": "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738_p3",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of First Instance identified the core search-warrant challenge as whether specified evidence covers journalistic material.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.invest_seizure"
+      ],
+      "significance_label": "frames_issue",
+      "authority_role": "issue_framing",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_lai_cfi_2022_jr_bound_to_fail_p26",
+      "proposition_id": "prop_lai_cfi_2022_jr_bound_to_fail_p26",
+      "case_id": "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCFI 2688",
+      "paragraph_id": "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738_p26",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of First Instance refused leave because the intended judicial review of the 2022 warrant was bound to fail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.invest_seizure"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "holding",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_lai_ca_2022_appeal_issue_p1",
+      "proposition_id": "prop_lai_ca_2022_appeal_issue_p1",
+      "case_id": "hk_ca_2022_lai_chee_ying_cacv_356_357",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCA 1574",
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_cacv_356_357_p1",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of Appeal identified the central issue as whether specified evidence under the Implementation Rules covers journalistic material.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_source_of_power",
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.invest_seizure"
+      ],
+      "significance_label": "frames_issue",
+      "authority_role": "issue_framing",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_lai_ca_2022_2022_warrant_scope_p3",
+      "proposition_id": "prop_lai_ca_2022_2022_warrant_scope_p3",
+      "case_id": "hk_ca_2022_lai_chee_ying_cacv_356_357",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCA 1574",
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_cacv_356_357_p3",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of Appeal recorded that the 2022 warrant specifically authorised search of digital contents including material claimed to be journalistic material.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.invest_seizure"
+      ],
+      "significance_label": "states_application",
+      "authority_role": "procedural_history",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_lai_ca_2022_effective_investigation_p17",
+      "proposition_id": "prop_lai_ca_2022_effective_investigation_p17",
+      "case_id": "hk_ca_2022_lai_chee_ying_cacv_356_357",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCA 1574",
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_cacv_356_357_p17",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of Appeal held that effective national-security investigation requires sufficient police powers and informs construction of specified evidence.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_source_of_power",
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.invest_arrest_detention_flow_start"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_lai_ca_2022_local_search_laws_coherent_whole_p17",
+      "proposition_id": "prop_lai_ca_2022_local_search_laws_coherent_whole_p17",
+      "case_id": "hk_ca_2022_lai_chee_ying_cacv_356_357",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCA 1574",
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_cacv_356_357_p17",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of Appeal treated Schedule 1 and local search laws as working in tandem as a coherent whole for NSL search powers.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_source_of_power",
+        "criminal_procedure_hk.invest_search_with_warrant"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_lai_ca_2022_journalistic_material_not_immune_p34",
+      "proposition_id": "prop_lai_ca_2022_journalistic_material_not_immune_p34",
+      "case_id": "hk_ca_2022_lai_chee_ying_cacv_356_357",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCA 1574",
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_cacv_356_357_p34",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of Appeal held that journalistic material is important but not immune from search and seizure in criminal investigations.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.invest_seizure"
+      ],
+      "significance_label": "limits_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_lai_ca_2022_search_anything_including_jm_p35",
+      "proposition_id": "prop_lai_ca_2022_search_anything_including_jm_p35",
+      "case_id": "hk_ca_2022_lai_chee_ying_cacv_356_357",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCA 1574",
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_cacv_356_357_p35",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of Appeal held that specified evidence must include things, including journalistic material, likely to contain evidence of national-security offences.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.invest_seizure"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_lai_ca_2022_appeal_outcome_p44",
+      "proposition_id": "prop_lai_ca_2022_appeal_outcome_p44",
+      "case_id": "hk_ca_2022_lai_chee_ying_cacv_356_357",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCA 1574",
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_cacv_356_357_p44",
+      "scenario_label": "Investigation / search warrants / seizure of digital or journalistic material",
+      "application_summary": "The Court of Appeal held that the judicial-review challenge to the 2022 warrant was doomed to fail.",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.invest_seizure"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "holding",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Affirms the CFI refusal of leave and directions giving effect to the 2022 warrant."
+    }
+  ]
+}
