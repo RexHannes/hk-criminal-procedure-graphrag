@@ -1,0 +1,43 @@
+name: Validate PR
+
+on:
+  pull_request:
+  push:
+    branches:
+      - codex/investor-recall-25k-path
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate applied answer architecture
+        run: node scripts/validate_applied_answer_architecture.js
+
+      - name: Validate Part 1 source cards
+        run: node scripts/validate_part1_two_vertical_source_cards.js
+
+      - name: Dry-run Part 1 source-card Qdrant indexer
+        run: node scripts/index_part1_two_vertical_source_cards_qdrant.js --dry-run
+
+      - name: Validate answer composers
+        run: node scripts/validate_answer_composers.js
+
+      - name: Validate criminal inquiry API
+        run: node scripts/validate_criminal_inquiry_api.js
+
+      - name: Validate probate inquiry API
+        run: node scripts/validate_probate_inquiry_api.js
+
+      - name: Validate legal domain arbiter
+        run: node scripts/validate_legal_domain_arbiter.js
+
+      - name: Validate committed secrets
+        run: node scripts/validate_no_secrets_committed.js

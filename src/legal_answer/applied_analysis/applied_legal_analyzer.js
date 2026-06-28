@@ -1,4 +1,5 @@
 const { extractFacts } = require("./fact_extractor");
+const { buildLegalResearchAnswer } = require("./legal_research_answer_renderer");
 const { findRuleDeck } = require("./rule_card_loader");
 const { conditionPasses, verifyAppliedAnalysis } = require("./verifier");
 
@@ -43,20 +44,23 @@ function buildAppliedAnalysis({ domain, scenario, subscenario, query, facts: sup
 
   const facts = suppliedFacts || extractFacts({ domain, scenario, subscenario, query });
   const support = supportFromDeck(deck, facts);
-  const appliedAnswer = {
-    title: support.title,
-    mode: deck.answer_mode || "source_gated_applied_analysis",
-    answer_generation_mode: "structured_rule_card_applied_analysis",
-    llm_status: "not_invoked_token_saving",
-    short_answer: support.short_answer,
-    sections: support.sections.map(([heading, items]) => ({ heading, items })),
-  };
+  const renderedSections = support.sections.map(([heading, items]) => ({ heading, items }));
+  const appliedAnswer = deck.legal_research_answer
+    ? buildLegalResearchAnswer({ deck, facts, renderedSections })
+    : {
+      title: support.title,
+      mode: deck.answer_mode || "source_gated_applied_analysis",
+      answer_generation_mode: "structured_rule_card_applied_analysis",
+      llm_status: "not_invoked_token_saving",
+      short_answer: support.short_answer,
+      sections: renderedSections,
+    };
   const verification = verifyAppliedAnalysis({ deck, facts, appliedAnswer });
 
   return {
     matched: true,
     rule_deck_id: deck.rule_deck_id,
-    answer_generation_mode: "structured_rule_card_applied_analysis",
+    answer_generation_mode: appliedAnswer.answer_generation_mode || "structured_rule_card_applied_analysis",
     llm_status: "not_invoked_token_saving",
     facts,
     support,
@@ -66,11 +70,14 @@ function buildAppliedAnalysis({ domain, scenario, subscenario, query, facts: sup
       domain,
       scenario_family: scenario,
       subscenario,
-      answer_generation_mode: "structured_rule_card_applied_analysis",
+      answer_generation_mode: appliedAnswer.answer_generation_mode || "structured_rule_card_applied_analysis",
+      answer_sections: (appliedAnswer.sections || []).map(section => section.heading).filter(Boolean),
       verifier_status: verification.status,
     },
     source_backed_rules: support.source_backed_rules,
     unsupported_claims: support.unsupported_claims,
+    source_audit_claims: appliedAnswer.debug_audit?.claims || [],
+    debug_audit: appliedAnswer.debug_audit,
     verification,
   };
 }

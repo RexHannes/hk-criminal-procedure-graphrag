@@ -48,7 +48,7 @@ function validateAppliedOutputs(errors) {
     domain: "probate",
     query: "If my father dies in US and does not have will, now left a son, a daughter and 2 grandaughter; the former 18 the later not; what happens?",
   });
-  assert(probate.applied_answer?.answer_generation_mode === "structured_rule_card_applied_analysis", "probate intestacy should use structured rule-card analyzer", errors);
+  assert(probate.applied_answer?.answer_generation_mode === "legal_research_answer_layer", "probate intestacy should use legal research answer layer", errors);
   assert(probate.source_audit?.applied_analysis?.verifier?.status === "passed", "probate verifier should pass", errors);
   assert(blob(probate).includes("granddaughters"), "probate structured answer missing granddaughters", errors);
 
@@ -56,7 +56,7 @@ function validateAppliedOutputs(errors) {
     domain: "criminal_law",
     query: "If I am alleged to be Stealing something in the convenient store, but i try to argue i just forgot to pay",
   });
-  assert(theft.applied_answer?.answer_generation_mode === "structured_rule_card_applied_analysis", "criminal theft should use structured rule-card analyzer", errors);
+  assert(theft.applied_answer?.answer_generation_mode === "legal_research_answer_layer", "criminal theft should use legal research answer layer", errors);
   assert(theft.source_audit?.applied_analysis?.verifier?.status === "passed", "criminal theft verifier should pass", errors);
   assert(blob(theft).includes("ar / mr matrix"), "criminal theft structured answer missing AR/MR", errors);
 

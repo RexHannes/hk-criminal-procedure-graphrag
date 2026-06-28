@@ -217,9 +217,10 @@ function intestacyDistributionSupport(classification) {
         "The granddaughters' entitlement turns on a missing fact: whether their parent was a child of the deceased and died before the deceased. Grandchildren normally take by branch only if the parent through whom they claim is not alive to take.",
       ]],
       ["Source Anchors / Verification Cards", [
-        "Cap. 73 Intestates' Estates Ordinance section 4 is the statutory distribution anchor for an intestate estate. Official card required before final advice: https://www.elegislation.gov.hk/hk/cap73/s4",
-        "Cap. 73 section 3 is the statutory trusts / issue machinery anchor, including branch distribution logic. Official card required before final advice: https://www.elegislation.gov.hk/hk/cap73/s3",
-        "Cap. 410 section 2 is the full-age anchor for 18. Official card required before final advice: https://www.elegislation.gov.hk/hk/cap410/s2",
+        "Cap. 73 Intestates' Estates Ordinance section 4 is the statutory distribution anchor for an intestate estate. Public source card: hk_cap73_s4_intestacy_succession.",
+        "Cap. 73 section 5 is the statutory trusts / issue machinery anchor, including branch distribution logic. Public source card: hk_cap73_s5_statutory_trusts_issue.",
+        "Cap. 73 section 3 is a spouse-valid-marriage gate, not the statutory-trusts provision. Public source card: hk_cap73_s3_valid_marriage.",
+        "Cap. 410 section 2 is the full-age anchor for 18. Public source card: hk_cap410_s2_full_age_18.",
         "No case authority is answer-safe for this probate scenario yet. Do not cite cases unless HKLII paragraph-level cards have been attached.",
       ]],
       ["Applied Distribution Analysis", [
@@ -244,21 +245,24 @@ function intestacyDistributionSupport(classification) {
         proposition: "Where Hong Kong intestacy law applies, distribution of the residuary estate is governed by Cap. 73 section 4.",
         source: "Intestates' Estates Ordinance (Cap. 73) s.4",
         official_url: "https://www.elegislation.gov.hk/hk/cap73/s4",
-        verification_status: "source_verification_required",
+        source_card_ids: ["hk_cap73_s4_intestacy_succession"],
+        verification_status: "source_verified_public_api",
       },
       {
-        id: "hk_probate_statutory_trusts_issue_cap73_s3",
+        id: "hk_probate_statutory_trusts_issue_cap73_s5",
         proposition: "The statutory trusts mechanism determines how issue take by branch and whether issue take only through a deceased parent.",
-        source: "Intestates' Estates Ordinance (Cap. 73) s.3",
-        official_url: "https://www.elegislation.gov.hk/hk/cap73/s3",
-        verification_status: "source_verification_required",
+        source: "Intestates' Estates Ordinance (Cap. 73) s.5",
+        official_url: "https://www.elegislation.gov.hk/hk/cap73/s5",
+        source_card_ids: ["hk_cap73_s5_statutory_trusts_issue"],
+        verification_status: "source_verified_public_api",
       },
       {
         id: "hk_probate_full_age_cap410_s2",
         proposition: "For Hong Kong statutory references to full age, full age is 18 unless the context requires otherwise.",
         source: "Age of Majority (Related Provisions) Ordinance (Cap. 410) s.2",
         official_url: "https://www.elegislation.gov.hk/hk/cap410/s2",
-        verification_status: "source_verification_required",
+        source_card_ids: ["hk_cap410_s2_full_age_18"],
+        verification_status: "source_verified_public_api",
       },
     ],
     missing_facts: [
@@ -416,21 +420,24 @@ function composeProbateAnswer({ query }) {
     "Hong Kong assets and liabilities, including whether the ordinary grant schedule, corrective schedule or resealing schedule route is needed.",
     "Whether caveat, citation, warning, requisition, foreign grant or dispute exists.",
   ];
+  const baseSections = structuredAnalysis.matched
+    ? structuredAnalysis.applied_answer.sections || []
+    : scenarioSupport.sections.map(([heading, items]) => ({ heading, items }));
   const sections = [
-    ...scenarioSupport.sections.map(([heading, items]) => ({ heading, items })),
+    ...baseSections,
     {
       heading: "Documents / Forms",
       items: formGuidance,
     },
-    {
+    ...(structuredAnalysis.matched ? [] : [{
       heading: "Missing Facts",
       items: missingFacts,
-    },
+    }]),
     {
       heading: "Review Gate",
       items: [
-        "This Probate answer is a metadata/practice-seed triage, not legal advice.",
-        "No Probate proposition is answer-safe until official ordinance/rules/case source cards are attached and reviewed.",
+        "This Probate answer is source-gated legal research and workflow triage, not final legal advice.",
+        "No Probate case proposition is answer-safe until public HKLII/LegalRef paragraph cards are attached and reviewed.",
         "Butterworths text and private form bodies remain private-vault-only and are not reproduced here.",
       ],
     },
@@ -438,12 +445,15 @@ function composeProbateAnswer({ query }) {
 
   return {
     applied_answer: {
-      title: scenarioSupport.title,
+      title: structuredAnalysis.matched ? structuredAnalysis.applied_answer.title : scenarioSupport.title,
       mode: "probate_metadata_source_gated",
       answer_generation_mode: structuredAnalysis.matched ? structuredAnalysis.answer_generation_mode : "deterministic_fallback_template",
       llm_status: structuredAnalysis.llm_status || "not_invoked",
-      short_answer: scenarioSupport.short_answer,
+      short_answer: structuredAnalysis.matched ? structuredAnalysis.applied_answer.short_answer : scenarioSupport.short_answer,
       sections,
+      source_card_ids: structuredAnalysis.applied_answer?.source_card_ids || [],
+      principle_card_ids: structuredAnalysis.applied_answer?.principle_card_ids || [],
+      case_digest_card_ids: structuredAnalysis.applied_answer?.case_digest_card_ids || [],
     },
     classification,
     answer_contract: {
@@ -466,6 +476,8 @@ function composeProbateAnswer({ query }) {
       form_registry_count: (registry.forms || []).length,
       source_backed_rule_count: (scenarioSupport.source_backed_rules || []).length,
       unsupported_claims: scenarioSupport.unsupported_claims || [],
+      claims: structuredAnalysis.source_audit_claims || [],
+      debug_audit: structuredAnalysis.debug_audit || null,
       applied_analysis: structuredAnalysis.matched ? {
         rule_deck_id: structuredAnalysis.rule_deck_id,
         answer_generation_mode: structuredAnalysis.answer_generation_mode,

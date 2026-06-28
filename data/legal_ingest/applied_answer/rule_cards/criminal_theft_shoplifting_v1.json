@@ -97,10 +97,10 @@
         "heading": "Source / Review Gate",
         "items": [
           {
-            "text": "Use Cap. 210 sections 2, 4, 5, 6, 7 and 9 as official statutory anchors before final advice."
+            "text": "Use Cap. 210 sections 2, 3, 4, 6, 7 and 9 as official statutory anchors before final liability or penalty advice."
           },
           {
-            "text": "For dishonesty, do not state that Ivey has been adopted in Hong Kong unless a verified HK authority card supports that proposition. The local public candidate card for HKSAR v Chan Kam Ching [2022] HKCFA 7 records Ghosh as the Hong Kong position at that point, but it is still machine-candidate until reviewed for this theft scenario."
+            "text": "For dishonesty, do not state that Ivey has been adopted in Hong Kong unless a verified HK authority card supports that proposition. The public candidate card for HKSAR v Chan Kam Ching [2022] HKCFA 7 records Ghosh as the Hong Kong position at that point, but it remains research-only until reviewed for this theft scenario."
           },
           {
             "text": "Do not cite shoplifting cases unless HKLII/LegalRef paragraph cards are attached and mapped to the precise issue: dishonesty, intention permanently to deprive, continuing appropriation, similar fact, or sentencing."
@@ -109,34 +109,127 @@
       }
     ]
   },
+  "legal_research_answer": {
+    "title": "Legal Research Answer - Theft / Shoplifting / Forgotten Payment",
+    "source_card_ids": [
+      "hk_cap210_s2_theft_definition",
+      "hk_cap210_s3_dishonesty",
+      "hk_cap210_s4_appropriation",
+      "hk_cap210_s6_belonging_to_another",
+      "hk_cap210_s7_intention_permanently_depriving",
+      "hk_cap210_s9_theft_offence_penalty",
+      "hk_hkcfa_2022_7_chan_kam_ching_p148_149",
+      "hk_hkcfi_2022_1220_khan_altaf_p1_24"
+    ],
+    "principle_card_ids": [
+      "principle_theft_elements_cap210_s2",
+      "principle_theft_dishonesty_cap210_s3",
+      "principle_theft_appropriation_cap210_s4",
+      "principle_theft_belonging_to_another_cap210_s6",
+      "principle_theft_intent_deprive_cap210_s7",
+      "principle_dishonesty_state_of_mind_chan_p148",
+      "principle_ghosh_hk_candidate_chan_p149"
+    ],
+    "case_digest_card_ids": [
+      "case_digest_chan_kam_ching_2022",
+      "case_digest_khan_altaf_2022"
+    ],
+    "issue_items": [
+      "Whether the physical act amounts to appropriation of property belonging to another.",
+      "Whether the user’s forgotten-payment account negates dishonesty and/or intention permanently to deprive.",
+      "Whether the prosecution evidence can prove the theft elements beyond reasonable doubt.",
+      "Whether police/interview, caution/diversion, charge and sentence issues should be separated from liability."
+    ],
+    "governing_law_items": [
+      "Cap. 210 s.2 supplies the theft definition: dishonest appropriation of property belonging to another with intention permanently to deprive.",
+      "Cap. 210 s.3 supplies statutory dishonesty exclusions and confirms willingness to pay does not automatically remove dishonesty.",
+      "Cap. 210 s.4 defines appropriation as assumption of the rights of an owner.",
+      "Cap. 210 s.6 anchors the property-belonging-to-another element.",
+      "Cap. 210 s.7 anchors intention permanently to deprive.",
+      "Cap. 210 s.9 is the offence/maximum-penalty route; it should not be confused with the liability elements."
+    ],
+    "application_items": [
+      "AR / MR matrix: the actus reus is likely the handling/removal/passing-checkout conduct; the mens rea fights are dishonesty and intention permanently to deprive.",
+      "If the person genuinely forgot to pay, that can be a complete answer to theft only if the evidence leaves dishonesty and intention permanently to deprive unproved.",
+      "Strong defence facts include ordinary shopping behaviour, item visible, distraction, attempted payment, immediate return/payment before confrontation, and consistent account.",
+      "Bad facts include concealment, bypassing checkout, looking around, leaving quickly, removing tags, inconsistent explanations, prior incidents, or only raising forgetfulness after being stopped.",
+      "Chan Kam Ching gives a candidate dishonesty-state-of-mind/Ghosh source, but it is not a shoplifting case and remains research-only pending current-treatment review."
+    ],
+    "practical_next_steps": [
+      "Preserve CCTV, receipts/payment records, phone/location/distraction evidence, staff notes and police notebook/interview records.",
+      "Do not give an improvised interview explanation without understanding the caution, disclosure and legal-advice position.",
+      "Separate liability analysis from caution/diversion/mitigation because some disposal routes may require admissions inconsistent with a genuine forgotten-payment defence.",
+      "Do not state that Ivey has been adopted in Hong Kong or has replaced Ghosh unless a current verified HK authority card supports it."
+    ],
+    "relevant_authorities_note": "Case digests are included only where HKLII/LegalRef paragraph proof is available; neither case is a shoplifting-specific forgotten-payment authority."
+  },
   "source_backed_rules": [
     {
       "id": "hk_theft_cap210_s2_definition",
       "proposition": "Theft requires dishonest appropriation of property belonging to another with intention permanently to deprive.",
       "source": "Theft Ordinance (Cap. 210) s.2",
       "official_url": "https://www.elegislation.gov.hk/hk/cap210/s2",
-      "verification_status": "source_verification_required"
+      "source_card_ids": ["hk_cap210_s2_theft_definition"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_theft_cap210_s3_dishonesty",
+      "proposition": "Dishonesty must be analysed through Cap. 210 s.3 and verified HK dishonesty authorities; willingness to pay is not conclusive.",
+      "source": "Theft Ordinance (Cap. 210) s.3",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap210/s3",
+      "source_card_ids": ["hk_cap210_s3_dishonesty"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
     },
     {
       "id": "hk_theft_cap210_s4_appropriation",
       "proposition": "Appropriation covers assumption of an owner's rights and is the physical element usually engaged by taking store goods.",
       "source": "Theft Ordinance (Cap. 210) s.4",
       "official_url": "https://www.elegislation.gov.hk/hk/cap210/s4",
-      "verification_status": "source_verification_required"
+      "source_card_ids": ["hk_cap210_s4_appropriation"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_theft_cap210_s6_belonging_to_another",
+      "proposition": "Store goods will usually be property belonging to another where the store has possession or control.",
+      "source": "Theft Ordinance (Cap. 210) s.6",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap210/s6",
+      "source_card_ids": ["hk_cap210_s6_belonging_to_another"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
     },
     {
       "id": "hk_theft_cap210_s7_intent_permanently_deprive",
       "proposition": "Intention permanently to deprive is a separate theft element and must be analysed apart from mere non-payment.",
       "source": "Theft Ordinance (Cap. 210) s.7",
       "official_url": "https://www.elegislation.gov.hk/hk/cap210/s7",
-      "verification_status": "source_verification_required"
+      "source_card_ids": ["hk_cap210_s7_intention_permanently_depriving"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_theft_cap210_s9_offence_penalty",
+      "proposition": "Theft is an offence under Cap. 210 s.9 with a maximum indictment penalty, but penalty must be separated from liability.",
+      "source": "Theft Ordinance (Cap. 210) s.9",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap210/s9",
+      "source_card_ids": ["hk_cap210_s9_theft_offence_penalty"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
     },
     {
       "id": "hk_theft_chan_kam_ching_dishonesty_candidate",
       "proposition": "Dishonesty is a state-of-mind issue; the current HK dishonesty test must be verified against HK authority before final advice.",
       "source": "HKSAR v Chan Kam Ching [2022] HKCFA 7, paras. 148-149",
-      "official_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=143540&QS=%2B&TP=JU&ILAN=en",
-      "verification_status": "machine_candidate_human_review_required"
+      "official_url": "https://www.hklii.hk/en/cases/hkcfa/2022/7#p148",
+      "source_card_ids": ["hk_hkcfa_2022_7_chan_kam_ching_p148_149"],
+      "proposition_card_ids": [
+        "prop_chan_kam_ching_2022_dishonesty_state_of_mind_p148",
+        "prop_chan_kam_ching_2022_ghosh_test_hk_p149"
+      ],
+      "verification_status": "quote_verified_public_api_human_review_required",
+      "claim_status": "quote_verified_research_only_human_review_required"
     }
   ],
   "missing_facts": [
@@ -174,7 +267,7 @@
       "civil_procedure",
       "probate"
     ],
-    "verification_rule": "Candidate case fruits are source-linked research only until human review promotes them.",
+    "verification_rule": "Every legal proposition must be sourced to an official source/case card or explicitly listed in unsupported_claims. Candidate case fruits remain research-only until human review promotes them.",
     "source_audit_policy": "collapsed_by_default",
     "review_status": "research_only"
   },
