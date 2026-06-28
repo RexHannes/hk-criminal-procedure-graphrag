@@ -104,6 +104,17 @@ assert(theftText.includes("forgot"), "Theft/shoplifting lacks forgotten-payment 
 assert(theftText.includes("cctv"), "Theft/shoplifting lacks CCTV evidence analysis", errors);
 assert(theftText.includes("prosecution must prove"), "Theft/shoplifting lacks burden analysis", errors);
 assert(theftText.includes("do not state that ivey has been adopted in hong kong"), "Theft/shoplifting lacks Ivey/HK verification gate", errors);
+assert(!/cap\.?\s*210[^.\n]{0,80}(section|sections|s\.?)\s*[^.\n]{0,40}\b5\b/i.test(theftText), "Theft/shoplifting should not cite Cap. 210 s.5 as a source anchor", errors);
+for (const sourceCardId of [
+  "hk_cap210_s2_theft_definition",
+  "hk_cap210_s3_dishonesty",
+  "hk_cap210_s4_appropriation",
+  "hk_cap210_s6_belonging_to_another",
+  "hk_cap210_s7_intention_permanently_depriving",
+  "hk_cap210_s9_theft_offence_penalty",
+]) {
+  assert(theftText.includes(sourceCardId), `Theft/shoplifting missing source card ${sourceCardId}`, errors);
+}
 assert(!theftText.includes("restaurant wet-floor"), "Theft/shoplifting leaked PI restaurant language", errors);
 assert(!theftText.includes("interim payment"), "Theft/shoplifting leaked PI interim payment language", errors);
 assert(!theftText.includes("criminal law triage"), "Theft/shoplifting fell back to generic criminal triage", errors);

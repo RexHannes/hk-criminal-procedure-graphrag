@@ -208,7 +208,7 @@ function theftShopliftingForgotToPayAnswer(classification) {
       {
         heading: "Source / Review Gate",
         items: [
-          "Use Cap. 210 sections 2, 4, 5, 6, 7 and 9 as official statutory anchors before final advice.",
+          "Use Cap. 210 sections 2, 3, 4, 6, 7 and 9 as official statutory anchors before final liability or penalty advice.",
           "For dishonesty, do not state that Ivey has been adopted in Hong Kong unless a verified HK authority card supports that proposition. The local public candidate card for HKSAR v Chan Kam Ching [2022] HKCFA 7 records Ghosh as the Hong Kong position at that point, but it is still machine-candidate until reviewed for this theft scenario.",
           "Do not cite shoplifting cases unless HKLII/LegalRef paragraph cards are attached and mapped to the precise issue: dishonesty, intention permanently to deprive, continuing appropriation, similar fact, or sentencing.",
         ],
@@ -292,11 +292,35 @@ function sourceBackedRulesForScenario(classification) {
       verification_status: "source_verified_public_api",
     },
     {
+      id: "hk_theft_cap210_s3_dishonesty",
+      proposition: "Dishonesty must be analysed through Cap. 210 s.3 and verified Hong Kong dishonesty authorities; willingness to pay is not conclusive.",
+      source: "Theft Ordinance (Cap. 210) s.3",
+      official_url: "https://www.elegislation.gov.hk/hk/cap210/s3",
+      source_card_ids: ["hk_cap210_s3_dishonesty"],
+      verification_status: "source_verified_public_api",
+    },
+    {
+      id: "hk_theft_cap210_s6_belonging_to_another",
+      proposition: "Shop goods normally satisfy the property-belonging-to-another element because the shop has possession or control before sale.",
+      source: "Theft Ordinance (Cap. 210) s.6",
+      official_url: "https://www.elegislation.gov.hk/hk/cap210/s6",
+      source_card_ids: ["hk_cap210_s6_belonging_to_another"],
+      verification_status: "source_verified_public_api",
+    },
+    {
       id: "hk_theft_cap210_s7_intent_permanently_deprive",
       proposition: "Intention permanently to deprive is a separate theft element and must be analysed apart from mere non-payment.",
       source: "Theft Ordinance (Cap. 210) s.7",
       official_url: "https://www.elegislation.gov.hk/hk/cap210/s7",
       source_card_ids: ["hk_cap210_s7_intention_permanently_depriving"],
+      verification_status: "source_verified_public_api",
+    },
+    {
+      id: "hk_theft_cap210_s9_offence_penalty",
+      proposition: "Cap. 210 s.9 supplies the theft offence and maximum penalty route, but penalty must be kept separate from liability.",
+      source: "Theft Ordinance (Cap. 210) s.9",
+      official_url: "https://www.elegislation.gov.hk/hk/cap210/s9",
+      source_card_ids: ["hk_cap210_s9_theft_offence_penalty"],
       verification_status: "source_verified_public_api",
     },
     {
