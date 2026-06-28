@@ -5,6 +5,7 @@ const { filterPiChunksByContract } = require("../src/api/answer-composers/pi");
 const { findCachedLegalAnswer, writeLegalAnswerCache } = require("../src/api/legal-ingest/cache");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
+const { buildLegalResearchPresentation } = require("../src/api/legal_research_presenter");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
@@ -1028,8 +1029,14 @@ module.exports = async function handler(req, res) {
     : legalAnswerCache.status === "hit" && legalAnswerCache.answer_json
       ? legalAnswerCache.answer_json
       : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched, legalIngestBundle });
+  const warnings = Array.from(new Set(warningsForResult(matched, ai.status, backendStatus, legalSourceCardCount).concat(aiWarnings)));
+  const presentation = buildLegalResearchPresentation({ applied, matched, warnings });
   const responsePayload = {
     query,
+    presentation_mode: presentation.presentation_mode,
+    legal_research_answer: presentation.legal_research_answer,
+    answer_markdown: presentation.answer_markdown,
+    audit_trail: presentation.audit_trail,
     ai_status: ai.status,
     ai_provider: ai.provider || inquiry.provider || "none",
     analysis_status: inquiry.status,
@@ -1069,9 +1076,9 @@ module.exports = async function handler(req, res) {
     answer_confidence: totalEvidenceCount > 0 && !matched.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))
       ? "medium"
       : "low",
-    warnings: Array.from(new Set(warningsForResult(matched, ai.status, backendStatus, legalSourceCardCount).concat(aiWarnings))),
+    warnings,
     inquiry_analysis: inquiry.analysis,
-    answer_note: "This endpoint returns a source-bounded graph/evidence trail. It does not produce legal advice and does not treat candidate evidence as answer-safe.",
+    answer_note: "This endpoint returns an answer-first, source-bounded legal research memo with the raw graph/evidence trail collapsed for audit. It does not produce legal advice and does not treat candidate evidence as answer-safe.",
   };
   if (legalIngestBundle) {
     const cacheWrite = await writeLegalAnswerCache({ query, legalIngestBundle, applied, responsePayload });

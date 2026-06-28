@@ -62,6 +62,14 @@
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
+  function renderInlineText(value) {
+    return String(value == null ? '' : value)
+      .split(/(https?:\/\/[^\s)]+)/g)
+      .map(part => /^https?:\/\//.test(part)
+        ? `<a href="${esc(part)}" target="_blank" rel="noopener noreferrer">${esc(part)}</a>`
+        : esc(part))
+      .join('');
+  }
   function nodeStatusBadges(n) {
     const out = [];
     if (n.answer_layer_status) out.push(badge(n.answer_layer_status));
@@ -958,10 +966,60 @@
           ${(triage.sections || []).map(section => `
             <section class="piw-applied-section">
               <h3>${esc(section.heading)}</h3>
-              <ul class="piw-list">${(section.items || []).map(item => `<li>${esc(item)}</li>`).join('')}</ul>
+              <ul class="piw-list">${(section.items || []).map(item => `<li>${renderInlineText(item)}</li>`).join('')}</ul>
             </section>
           `).join('')}
         </div>
+      </section>`;
+  }
+
+  function renderLegalResearchAnswer(answer, fallbackApplied) {
+    const memo = answer || (fallbackApplied ? {
+      title: fallbackApplied.title,
+      short_answer: fallbackApplied.short_answer,
+      sections: fallbackApplied.sections || [],
+      source_status: {
+        display: fallbackApplied.source_audit_policy || 'collapsed_by_default',
+        answer_layer_status: fallbackApplied.answer_generation_mode || fallbackApplied.mode || 'research_only',
+      },
+      debug_hidden_by_default: true,
+    } : null);
+    if (!memo) return '';
+    const sections = memo.sections || [];
+    const sourceStatus = memo.source_status || {};
+    return `
+      <section class="research-answer">
+        <div class="research-answer-head">
+          <div>
+            <div class="view-eyebrow">Legal research answer</div>
+            <h2>${esc(memo.title || 'Source-Gated Legal Research Answer')}</h2>
+          </div>
+          <span class="card-badges">
+            <span class="badge badge-research">Answer first</span>
+            <span class="badge badge-review">Review required</span>
+          </span>
+        </div>
+        ${memo.short_answer ? `<p class="research-short">${renderInlineText(memo.short_answer)}</p>` : ''}
+        <div class="research-section-list">
+          ${sections.map(section => `
+            <section class="research-section">
+              <h3>${esc(section.heading)}</h3>
+              ${(section.items || []).length
+                ? `<ul class="piw-list">${section.items.map(item => `<li>${renderInlineText(item)}</li>`).join('')}</ul>`
+                : '<div class="piw-empty">No source-backed item is currently attached.</div>'}
+            </section>
+          `).join('')}
+        </div>
+        <details class="piw-audit">
+          <summary>Source audit and debug status</summary>
+          <ul class="piw-list">
+            <li>Audit display: ${esc(sourceStatus.display || 'collapsed')}</li>
+            <li>Verification status: ${esc(sourceStatus.verification_status || 'research_only')}</li>
+            <li>Claim count: ${esc(sourceStatus.claims_count || 0)}</li>
+            <li>Unsupported/problem claims: ${esc(sourceStatus.unsupported_claims_count || 0)}</li>
+            <li>Recall-only cases cannot support final legal propositions.</li>
+          </ul>
+        </details>
       </section>`;
   }
 
@@ -1108,10 +1166,10 @@
         </div>`;
     }).join('');
 
-    const hasAppliedAnswer = !!(r.pi_workflow || r.applied_answer);
+    const hasAppliedAnswer = !!(r.pi_workflow || r.applied_answer || r.legal_research_answer);
     return `
       ${renderPiWorkflow(r.pi_workflow)}
-      ${!r.pi_workflow ? renderAppliedTriage(r.applied_answer) : ''}
+      ${!r.pi_workflow ? renderLegalResearchAnswer(r.legal_research_answer, r.applied_answer) : ''}
       ${analysis ? `<div class="card" style="background:var(--parchment);">
         <div class="card-top"><span class="card-title">Source-bounded analysis${r.ai_provider && r.ai_provider !== 'none' ? ' · via ' + esc(r.ai_provider) : ''}</span>
           ${analysis.abstain ? '<span class="badge badge-audit">Abstained — insufficient verified evidence</span>' : ''}</div>
@@ -1123,8 +1181,8 @@
       </div>` : ''}
       ${analysis ? renderAnalysisCaseReferences(analysis, r.matched_doctrine_nodes) : ''}
       ${warnings ? `<div class="inq-warnings">${warnings}</div>` : ''}
-      ${hasAppliedAnswer ? `<details class="piw-audit"><summary>Underlying graph matches</summary>${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}</details>` : (cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.'))}
-      <p class="inq-note">Source-bounded research trail — not legal advice. Every node and citation above exists in the maintained doctrine graph${INQ.mode === 'api' ? ' and Supabase evidence store' : ''}; nothing is generated outside it. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;
+      ${hasAppliedAnswer ? `<details class="piw-audit"><summary>Underlying retrieval / graph matches</summary>${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}</details>` : (cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.'))}
+      <p class="inq-note">Answer-first source-bounded research trail — not legal advice. The memo renders verified source-card content first; raw doctrine matches remain collapsed for audit. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;
   }
 
   function viewInquiry() {

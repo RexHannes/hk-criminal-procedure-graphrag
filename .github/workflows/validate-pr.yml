@@ -24,6 +24,9 @@ jobs:
       - name: Validate Part 1 source cards
         run: node scripts/validate_part1_two_vertical_source_cards.js
 
+      - name: Validate answer-first legal RAG API
+        run: node scripts/validate_legal_rag_answer_first_api.js
+
       - name: Dry-run Part 1 source-card Qdrant indexer
         run: node scripts/index_part1_two_vertical_source_cards_qdrant.js --dry-run
 
