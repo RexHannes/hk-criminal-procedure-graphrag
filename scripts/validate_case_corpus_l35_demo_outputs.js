@@ -25,15 +25,17 @@ const theftMd = read("theft_case_corpus_l35_answer.md");
 const theftJson = read("theft_case_corpus_l35_answer.json");
 const probateMd = read("probate_case_corpus_l35_answer.md");
 const unsupportedMd = read("unsupported_general_query_l35_answer.md");
+const theftTable = read("theft_dishonesty_case_law_table.md");
+const authoritiesTable = read("case_corpus_sample_authorities_table.md");
 
 assert(theftMd.includes("L1-L3.5 Case-Law Research Memo"), "theft demo missing L3.5 memo");
 assert(theftMd.includes("Case-by-Case Authorities"), "theft demo missing case-by-case authorities");
 assert(theftMd.includes("Exact quote:"), "theft demo missing exact quote");
-assert(theftMd.includes("HKSAR v Chan Kam Ching"), "theft demo missing Chan Kam Ching");
-assert(theftMd.includes("https://www.hklii.hk/en/cases/hkcfa/2022/7#p148"), "theft demo missing HKLII paragraph URL");
+assert((theftMd.match(/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\/[^#\s]+#p\d+/g) || []).length >= 5, "theft demo must show at least 5 case paragraph URLs");
 assert(theftMd.includes("Evidence Analysis"), "theft demo missing evidence analysis");
 assert(theftMd.includes("not legal authority"), "theft evidence boundary missing");
 assert(!theftMd.includes("answer_safe: true"), "theft demo must not be answer_safe");
+assert(theftMd.indexOf("## Product Mode") < theftMd.indexOf("```json"), "theft demo must not expose raw JSON first");
 
 let parsed = {};
 try {
@@ -42,6 +44,8 @@ try {
   errors.push("theft_case_corpus_l35_answer.json is invalid JSON");
 }
 assert(parsed.case_law_research?.answer_layer_status === "research_only", "theft JSON case law status must be research_only");
+assert(parsed.case_law_research?.cases_returned >= 5, "theft JSON should return at least 5 case-corpus authorities");
+assert(parsed.audit_trail?.case_corpus_audit?.registry_case_count >= 25, "theft JSON audit should show expanded registry count");
 assert(parsed.audit_trail?.paragraph_proof_audit?.all_case_corpus_output_research_only === true, "theft JSON paragraph proof boundary missing");
 
 assert(probateMd.includes("No case-by-case authority is attached") || probateMd.includes("No source-grounded case-corpus authority"), "probate demo must remain case-corpus bounded");
@@ -51,7 +55,13 @@ assert(!probateMd.includes("answer_safe: true"), "probate demo must not be answe
 assert(unsupportedMd.includes("unsupported_general_query"), "unsupported demo missing unsupported mode");
 assert(unsupportedMd.includes("No case-law application is made") || unsupportedMd.includes("No source-grounded case-corpus authority"), "unsupported demo must not assert case law");
 assert(!unsupportedMd.includes("HKSAR v Chan"), "unsupported demo must not cite theft case as authority");
+assert(!/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\//.test(unsupportedMd), "unsupported demo must not cite case-corpus authorities");
 assert(!unsupportedMd.includes("answer_safe: true"), "unsupported demo must not be answer_safe");
+
+assert(theftTable.includes("Actual listed cases:") && theftTable.includes("research-only"), "theft table missing count/status");
+assert((theftTable.match(/https:\/\/www\.hklii\.hk\/en\/cases\/[^#\s]+#p\d+/g) || []).length >= 25, "theft table should contain many paragraph-proof URLs");
+assert(authoritiesTable.includes("Actual cases: 100"), "authorities table missing actual 100-case count");
+assert((authoritiesTable.match(/^\| .*?\[20\d{2}\] HK/mg) || []).length >= 25, "authorities table should list at least 25 cases");
 
 if (errors.length) {
   console.error("Case corpus L3.5 demo output validation failed:");

@@ -1,18 +1,5 @@
 # Probate L1-L3.5 Case-Corpus Boundary Memo
 
-## Request
-
-```json
-{
-  "query": "If my father dies in US and does not have will, now left a son, a daughter and 2 granddaughters; one is 18 and the other is not, what happens?",
-  "use_case_corpus": true,
-  "case_corpus_mode": "sample",
-  "issue_id": "probate.intestacy",
-  "max_cases": 3,
-  "max_paragraphs": 4
-}
-```
-
 ## Product Mode
 
 - Mode: `demo_supported`
@@ -52,9 +39,9 @@
 - Do not cite case law as authority without paragraph cards and exact quote support.
 
 ## Source Audit
-- L1 registry cases: 2
-- L2 paragraph cards: 4
-- L3 propositions/principles: 8
+- L1 registry cases: 100
+- L2 paragraph cards: 300
+- L3 propositions/principles: 600
 - L3.5 digests returned: 0
 - L4 answer-safe propositions: not implemented.
 - All case-corpus outputs are research_only / lawyer_review_required.
@@ -182,10 +169,23 @@ Do not answer this as a will/executor form question. It is an intestacy distribu
 - Do not cite case law as authority without paragraph cards and exact quote support.
 
 ## Source Audit
-- L1 registry cases: 2
-- L2 paragraph cards: 4
-- L3 propositions/principles: 8
+- L1 registry cases: 100
+- L2 paragraph cards: 300
+- L3 propositions/principles: 600
 - L3.5 digests returned: 0
 - L4 answer-safe propositions: not implemented.
 - All case-corpus outputs are research_only / lawyer_review_required.
+
+## Request
+
+```json
+{
+  "query": "If my father dies in US and does not have will, now left a son, a daughter and 2 granddaughters; one is 18 and the other is not, what happens?",
+  "use_case_corpus": true,
+  "case_corpus_mode": "sample",
+  "issue_id": "probate.intestacy",
+  "max_cases": 3,
+  "max_paragraphs": 4
+}
+```
 

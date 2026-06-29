@@ -3,6 +3,7 @@
 
 const {
   loadCaseCorpus,
+  byId,
 } = require("../src/legal_answer/case_corpus/case_corpus_store");
 
 function hasFlag(name) {
@@ -12,6 +13,16 @@ function hasFlag(name) {
 const dryRun = hasFlag("--dry-run") || !process.env.QDRANT_URL;
 const sample = hasFlag("--sample") || process.argv.includes("--dry-run");
 const corpus = loadCaseCorpus({ mode: sample ? "sample" : "full" });
+const paragraphById = byId(corpus.paragraphs, "paragraph_id");
+
+function firstLinkedParagraph(item) {
+  return (item.source_paragraph_ids || []).map(id => paragraphById.get(id)).find(Boolean) || null;
+}
+
+function digestIssueTags(item) {
+  const propositions = corpus.propositions.filter(prop => (item.proposition_ids || []).includes(prop.proposition_id));
+  return Array.from(new Set(propositions.flatMap(prop => prop.issue_tags || [])));
+}
 
 const collections = {
   hk_case_paragraphs_openrouter_2048: corpus.paragraphs.map(item => ({
@@ -42,10 +53,10 @@ const collections = {
       case_name: item.case_name,
       citation: item.neutral_citation,
       court: item.court,
-      date: "",
+      date: firstLinkedParagraph(item)?.judgment_date || "",
       issue_tags: item.issue_tags || [],
-      source_url: "",
-      checksum: "",
+      source_url: firstLinkedParagraph(item)?.source_url || item.source_urls?.[0] || "",
+      checksum: firstLinkedParagraph(item)?.checksum || "",
       answer_layer_status: "research_only",
       review_status: item.review_status,
       tenant_id: "public",
@@ -56,15 +67,15 @@ const collections = {
     id: item.principle_id,
     text: item.principle_text,
     payload: {
-      case_id: "",
+      case_id: item.case_id || firstLinkedParagraph(item)?.case_id || "",
       principle_id: item.principle_id,
-      case_name: "",
-      citation: "",
-      court: item.authority_strength,
-      date: "",
+      case_name: item.case_name || firstLinkedParagraph(item)?.case_name || "",
+      citation: item.neutral_citation || firstLinkedParagraph(item)?.neutral_citation || "",
+      court: item.court || item.authority_strength,
+      date: firstLinkedParagraph(item)?.judgment_date || "",
       issue_tags: item.issue_tags || [],
-      source_url: "",
-      checksum: "",
+      source_url: firstLinkedParagraph(item)?.source_url || item.source_urls?.[0] || "",
+      checksum: firstLinkedParagraph(item)?.checksum || "",
       answer_layer_status: "research_only",
       review_status: item.review_status,
       tenant_id: "public",
@@ -81,9 +92,9 @@ const collections = {
       citation: item.neutral_citation,
       court: item.court,
       date: item.judgment_date,
-      issue_tags: [],
+      issue_tags: digestIssueTags(item),
       source_url: item.source_url,
-      checksum: "",
+      checksum: item.hklii_paragraph_urls?.[0] ? paragraphById.get(item.key_paragraphs?.[0])?.checksum || "" : "",
       answer_layer_status: "research_only",
       review_status: item.review_status,
       tenant_id: "public",

@@ -22,6 +22,8 @@ const principles = readJsonl(PATHS.principlesSample);
 const digests = readJsonl(PATHS.digestsSample);
 const issueMap = readJsonl(PATHS.issueMapSample);
 const errors = [];
+const minCasesIndex = process.argv.indexOf("--min-cases");
+const minCases = Number(minCasesIndex >= 0 ? process.argv[minCasesIndex + 1] : "25");
 
 function assert(condition, message) {
   if (!condition) errors.push(message);
@@ -40,6 +42,7 @@ const researchOnlyCount = []
   .filter(item => item.answer_layer_status === "research_only").length;
 
 assert(report.registry_case_count === registry.length, "registry_case_count mismatch");
+assert(report.registry_case_count >= minCases, `registry_case_count below minimum ${minCases}`);
 assert(report.paragraphized_case_count === new Set(paragraphs.map(item => item.case_id)).size, "paragraphized_case_count mismatch");
 assert(report.paragraph_card_count === paragraphs.length, "paragraph_card_count mismatch");
 assert(report.proposition_card_count === propositions.length, "proposition_card_count mismatch");
@@ -52,8 +55,19 @@ assert(report.checksum_pass_rate === checksumPassCount / paragraphs.length, "che
 assert(report.answer_safe_count === 0, "answer_safe_count must remain 0");
 assert(report.research_only_count === researchOnlyCount, "research_only_count mismatch");
 assert(report.layers?.L4?.includes("not implemented"), "L4 boundary missing");
+assert(Array.isArray(report.top_issue_coverage) && report.top_issue_coverage.length >= 3, "top_issue_coverage missing/too small");
+assert(report.top_issue_coverage.some(item => item.issue_id === "criminal_law.theft"), "top_issue_coverage missing criminal_law.theft");
+assert(report.cases_by_court && Object.keys(report.cases_by_court).length >= 1, "cases_by_court missing");
+assert(report.cases_by_year && Object.keys(report.cases_by_year).length >= 1, "cases_by_year missing");
+assert(Array.isArray(report.extraction_limitations) && report.extraction_limitations.length >= 2, "extraction_limitations missing");
+assert(report.next_scale_target?.safe_claim?.includes("not a 10k answer-safe corpus"), "next_scale_target safe claim missing");
+assert(report.scope_note?.includes("real L1-L3.5 public criminal-law sample corpus"), "scope note must identify real sample corpus");
+assert(report.scope_note?.includes("L4 is not implemented"), "scope note missing L4 boundary");
 assert(markdown.includes("L4 answer-safe review: not implemented"), "status markdown missing L4 boundary");
 assert(markdown.includes("Do not describe this sample as 10k answer-safe propositions"), "status markdown missing forbidden claim");
+assert(markdown.includes("Top Issue Coverage"), "status markdown missing top issue coverage");
+assert(markdown.includes("Cases By Court"), "status markdown missing court table");
+assert(markdown.includes("Cases By Year"), "status markdown missing year table");
 
 if (errors.length) {
   console.error("Case corpus L1-L3.5 status validation failed:");

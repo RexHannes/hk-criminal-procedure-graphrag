@@ -1,20 +1,96 @@
 {
   "status_id": "case_corpus_l1_l35_status_v1",
   "generated_at": "2026-06-29T00:00:00.000Z",
-  "scope_note": "Truthful sample L1-L3.5 case corpus built from existing public paragraph cards; L4 answer-safe review is not implemented.",
-  "registry_case_count": 2,
-  "paragraphized_case_count": 2,
-  "paragraph_card_count": 4,
-  "proposition_card_count": 4,
-  "principle_card_count": 4,
-  "case_digest_card_count": 2,
-  "issue_mapped_case_count": 2,
+  "scope_note": "This is a real L1-L3.5 public criminal-law sample corpus with 100 HKLII-verified cases. It is not 10k answer-safe and L4 is not implemented.",
+  "source_artifact": "data/legal_ingest/case_corpus/criminal_sample_source_cases.json",
+  "source_artifact_case_count": 100,
+  "registry_case_count": 100,
+  "paragraphized_case_count": 100,
+  "paragraph_card_count": 300,
+  "proposition_card_count": 300,
+  "principle_card_count": 300,
+  "case_digest_card_count": 100,
+  "issue_mapped_case_count": 100,
   "paragraph_anchor_pass_rate": 1,
   "quote_support_pass_rate": 1,
   "checksum_pass_rate": 1,
   "answer_safe_count": 0,
-  "research_only_count": 16,
-  "lawyer_review_required_count": 2,
+  "research_only_count": 1100,
+  "lawyer_review_required_count": 100,
+  "top_issue_coverage": [
+    {
+      "issue_id": "criminal_law.theft.sentencing",
+      "case_count": 94
+    },
+    {
+      "issue_id": "criminal_law.deception",
+      "case_count": 90
+    },
+    {
+      "issue_id": "criminal_law.theft",
+      "case_count": 84
+    },
+    {
+      "issue_id": "criminal_law.theft.appropriation",
+      "case_count": 58
+    },
+    {
+      "issue_id": "criminal_law.fraud",
+      "case_count": 56
+    },
+    {
+      "issue_id": "criminal_procedure.interview_caution",
+      "case_count": 36
+    },
+    {
+      "issue_id": "criminal_law.dishonesty",
+      "case_count": 21
+    },
+    {
+      "issue_id": "criminal_law.theft.dishonesty",
+      "case_count": 21
+    },
+    {
+      "issue_id": "criminal_law.theft.mens_rea",
+      "case_count": 21
+    },
+    {
+      "issue_id": "criminal_law.theft.handling_stolen_goods",
+      "case_count": 15
+    },
+    {
+      "issue_id": "criminal_procedure.bail",
+      "case_count": 8
+    },
+    {
+      "issue_id": "criminal_law.theft.belonging_to_another",
+      "case_count": 2
+    }
+  ],
+  "cases_by_court": {
+    "District Court": 85,
+    "Court of Appeal": 8,
+    "Court of First Instance": 7
+  },
+  "cases_by_year": {
+    "2020": 3,
+    "2021": 25,
+    "2022": 8,
+    "2023": 11,
+    "2024": 20,
+    "2025": 23,
+    "2026": 10
+  },
+  "extraction_limitations": [
+    "Automated paragraph selection is term-based and conservative.",
+    "Legal propositions and principles remain machine_candidate / research_only.",
+    "Current treatment and ratio/obiter classification are unchecked unless later lawyer-reviewed.",
+    "The sample focuses on theft, dishonesty, deception, fraud and theft-linked procedure; it is not a whole HK criminal-law corpus."
+  ],
+  "next_scale_target": {
+    "target": "Expand from this verified sample toward 500 then 10,000 L1/L2 cases only after adding reviewer gates and stronger current-treatment checks.",
+    "safe_claim": "Validated L1-L3.5 sample corpus; not a 10k answer-safe corpus."
+  },
   "demo_vertical_coverage": {
     "theft_shoplifting": "L1-L3.5 sample case-law corpus available with paragraph proof",
     "probate_intestacy": "statute-first; no public probate case paragraph authority attached"

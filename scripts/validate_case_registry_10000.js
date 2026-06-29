@@ -11,6 +11,8 @@ const sampleMode = process.argv.includes("--sample");
 const filePath = sampleMode ? PATHS.registrySample : PATHS.registryFull;
 const records = readJsonl(filePath);
 const errors = [];
+const minCasesIndex = process.argv.indexOf("--min-cases");
+const minCases = Number(minCasesIndex >= 0 ? process.argv[minCasesIndex + 1] : sampleMode ? "25" : "0");
 
 function assert(condition, message) {
   if (!condition) errors.push(message);
@@ -18,6 +20,7 @@ function assert(condition, message) {
 
 const ids = new Set();
 const urls = new Set();
+assert(records.length >= minCases, `registry has ${records.length} case(s), below minimum ${minCases}`);
 for (const [index, record] of records.entries()) {
   const label = record.case_id || `record_${index + 1}`;
   assert(record.case_id && !ids.has(record.case_id), `${label}: missing/duplicate case_id`);
@@ -35,6 +38,20 @@ for (const [index, record] of records.entries()) {
   assert(record.answer_layer_status === "research_only", `${label}: answer_layer_status must be research_only`);
   assert(!/private|licensed|textbook|butterworth|atkin/i.test(JSON.stringify(record)), `${label}: private/licensed source marker present`);
   assert(record.answer_layer_status !== "answer_safe", `${label}: registry cannot be answer_safe`);
+  assert(!/placeholder|todo|fake|sample case|case_recall_only/i.test(JSON.stringify(record)), `${label}: placeholder/recall-only marker present`);
+}
+
+if (sampleMode) {
+  const sourceArtifactPath = PATHS.registrySample.replace("sample_case_registry_100.jsonl", "criminal_sample_source_cases.json");
+  const fs = require("fs");
+  if (!fs.existsSync(sourceArtifactPath)) {
+    errors.push("missing criminal_sample_source_cases.json source artifact");
+  } else {
+    const sourceArtifact = JSON.parse(fs.readFileSync(sourceArtifactPath, "utf8"));
+    assert(sourceArtifact.actual_case_count === records.length, "source artifact actual_case_count must match sample registry");
+    assert((sourceArtifact.cases || []).length === records.length, "source artifact cases[] length must match sample registry");
+    assert((sourceArtifact.cases || []).every(item => (item.selected_paragraphs || []).length >= 1), "every source case needs selected paragraph proof");
+  }
 }
 
 if (errors.length) {

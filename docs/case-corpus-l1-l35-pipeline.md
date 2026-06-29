@@ -1,6 +1,6 @@
 # Case Corpus L1-L3.5 Pipeline
 
-This PR adds a public, research-only case-law pipeline for the HK legal RAG demo. It is deliberately scoped to a verified sample corpus. It does not claim 10k answer-safe propositions or whole-system HK legal advice.
+This PR adds a public, research-only case-law pipeline for the HK legal RAG demo. It is deliberately scoped to a verified criminal-law sample corpus. It does not claim 10k answer-safe propositions or whole-system HK legal advice.
 
 ## Safe Claim
 
@@ -31,12 +31,22 @@ All outputs remain `research_only` / `lawyer_review_required` unless separately 
 
 ## Current Sample Coverage
 
-The committed sample uses public HKLII paragraph proof for:
+The committed sample now uses public HKLII paragraph proof for:
 
-- `HKSAR v Chan Kam Ching [2022] HKCFA 7`
-- `HKSAR v Khan, Altaf [2022] HKCFI 1220`
+- 100 public criminal-law cases;
+- 300 paragraph cards with exact HKLII `#p` anchors and checksums;
+- 300 paragraph-backed proposition cards;
+- 300 principle cards;
+- 100 L3.5 case digest cards;
+- 100 issue-mapped cases.
 
-The theft/shoplifting demo can retrieve those cases as research-only case authorities. Probate remains statute-first unless public probate paragraph authority is later verified.
+Coverage is focused on theft, dishonesty, deception, fraud, theft sentencing and theft-linked procedure. The top issue coverage is theft sentencing (94 cases), deception (90), theft (84), theft appropriation (58), fraud (56), interview/caution (36), and dishonesty/theft dishonesty (21). Probate remains statute-first unless public probate paragraph authority is later verified.
+
+The committed source artifact is:
+
+```text
+data/legal_ingest/case_corpus/criminal_sample_source_cases.json
+```
 
 ## API Usage
 
@@ -48,8 +58,8 @@ The theft/shoplifting demo can retrieve those cases as research-only case author
   "use_case_corpus": true,
   "case_corpus_mode": "sample",
   "issue_id": "criminal_law.theft.dishonesty",
-  "max_cases": 3,
-  "max_paragraphs": 4
+  "max_cases": 8,
+  "max_paragraphs": 12
 }
 ```
 
@@ -66,7 +76,7 @@ No case-corpus output is answer-safe.
 ```bash
 node scripts/build_case_corpus_l1_l35_sample.js
 node scripts/validate_case_registry_10000.js --sample
-node scripts/validate_hklii_paragraph_accuracy.js --sample-size 50
+node scripts/validate_hklii_paragraph_accuracy.js --full
 node scripts/validate_proposition_cards.js --sample
 node scripts/validate_principle_cards.js --sample
 node scripts/validate_case_digest_cards.js --sample
@@ -83,13 +93,19 @@ The current metrics are generated at:
 - `artifacts/case_corpus_l1_l35_status.json`
 - `artifacts/case_corpus_l1_l35_status.md`
 
-These reports distinguish:
+These reports distinguish actual counts and coverage:
 
 - L1 registry;
 - L2 paragraph proof;
 - L3 proposition/principle extraction;
 - L3.5 case digest + issue-mapped research memo;
 - L4 not implemented.
+
+The safe wording is:
+
+```text
+The system has a validated L1-L3.5 case-law pipeline and a real public criminal-law sample corpus. Current sample size is 100 cases, 300 paragraph cards, 300 propositions, 300 principles, and 100 digests. It remains research-only and lawyer-review-required.
+```
 
 ## Forbidden Claims
 

@@ -38,7 +38,9 @@ for (const [index, paragraph] of paragraphs.entries()) {
   assert(paragraph.checksum === sha256NormalizedParagraphText(paragraph.paragraph_text), `${label}: checksum mismatch`);
   assert(paragraph.answer_layer_status === "research_only", `${label}: paragraph must be research_only`);
   assert(paragraph.answer_layer_status !== "answer_safe", `${label}: paragraph cannot be answer_safe`);
-  assert(["source_verified_public", "source_verification_required"].includes(paragraph.verification_status), `${label}: invalid verification_status`);
+  assert(paragraph.verification_status === "source_verified_public", `${label}: paragraph must be source_verified_public`);
+  assert(paragraph.review_status === "machine_candidate", `${label}: paragraph must remain machine_candidate`);
+  assert(!/case_recall_only|placeholder|todo|fake/i.test(JSON.stringify(paragraph)), `${label}: recall-only/placeholder marker present`);
 }
 
 if (errors.length) {

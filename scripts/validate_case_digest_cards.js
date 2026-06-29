@@ -15,12 +15,15 @@ const paragraphById = byId(paragraphs, "paragraph_id");
 const propositionById = byId(propositions, "proposition_id");
 const principleById = byId(principles, "principle_id");
 const errors = [];
+const minCasesIndex = process.argv.indexOf("--min-cases");
+const minCases = Number(minCasesIndex >= 0 ? process.argv[minCasesIndex + 1] : "25");
 
 function assert(condition, message) {
   if (!condition) errors.push(message);
 }
 
 const ids = new Set();
+assert(digests.length >= minCases, `digests contain fewer than ${minCases} case(s)`);
 for (const digest of digests) {
   assert(digest.case_digest_card_id && !ids.has(digest.case_digest_card_id), `${digest.case_digest_card_id}: missing/duplicate digest id`);
   ids.add(digest.case_digest_card_id);
@@ -48,6 +51,7 @@ for (const digest of digests) {
   assert(digest.review_status === "lawyer_review_required", `${digest.case_digest_card_id}: must require lawyer review`);
   assert(digest.answer_layer_status !== "answer_safe", `${digest.case_digest_card_id}: digest cannot be answer_safe`);
   assert(digest.treatment?.current_treatment_status === "unchecked", `${digest.case_digest_card_id}: treatment should default unchecked`);
+  assert(!/case_recall_only|placeholder|todo|fake/i.test(JSON.stringify(digest)), `${digest.case_digest_card_id}: recall-only/placeholder marker present`);
 }
 
 if (errors.length) {

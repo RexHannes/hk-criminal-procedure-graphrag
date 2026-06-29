@@ -1,17 +1,5 @@
 # Unsupported General Query L1-L3.5 Boundary Memo
 
-## Request
-
-```json
-{
-  "query": "Can my landlord increase rent for my Hong Kong flat next month?",
-  "use_case_corpus": true,
-  "case_corpus_mode": "sample",
-  "max_cases": 3,
-  "max_paragraphs": 4
-}
-```
-
 ## Product Mode
 
 - Mode: `unsupported_general_query`
@@ -51,9 +39,9 @@
 - Do not cite case law as authority without paragraph cards and exact quote support.
 
 ## Source Audit
-- L1 registry cases: 2
-- L2 paragraph cards: 4
-- L3 propositions/principles: 8
+- L1 registry cases: 100
+- L2 paragraph cards: 300
+- L3 propositions/principles: 600
 - L3.5 digests returned: 0
 - L4 answer-safe propositions: not implemented.
 - All case-corpus outputs are research_only / lawyer_review_required.
@@ -134,10 +122,22 @@ This query is outside the currently source-gated demo verticals unless a separat
 - Do not cite case law as authority without paragraph cards and exact quote support.
 
 ## Source Audit
-- L1 registry cases: 2
-- L2 paragraph cards: 4
-- L3 propositions/principles: 8
+- L1 registry cases: 100
+- L2 paragraph cards: 300
+- L3 propositions/principles: 600
 - L3.5 digests returned: 0
 - L4 answer-safe propositions: not implemented.
 - All case-corpus outputs are research_only / lawyer_review_required.
+
+## Request
+
+```json
+{
+  "query": "Can my landlord increase rent for my Hong Kong flat next month?",
+  "use_case_corpus": true,
+  "case_corpus_mode": "sample",
+  "max_cases": 3,
+  "max_paragraphs": 4
+}
+```
 

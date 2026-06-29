@@ -35,12 +35,15 @@ const propositions = readJsonl(PATHS.propositionsSample);
 const caseIds = new Set(registry.map(item => item.case_id));
 const paragraphById = byId(paragraphs, "paragraph_id");
 const errors = [];
+const minCasesIndex = process.argv.indexOf("--min-cases");
+const minCases = Number(minCasesIndex >= 0 ? process.argv[minCasesIndex + 1] : "25");
 
 function assert(condition, message) {
   if (!condition) errors.push(message);
 }
 
 const ids = new Set();
+assert(new Set(propositions.map(item => item.case_id)).size >= minCases, `propositions cover fewer than ${minCases} case(s)`);
 for (const prop of propositions) {
   assert(prop.proposition_id && !ids.has(prop.proposition_id), `${prop.proposition_id}: missing/duplicate proposition_id`);
   ids.add(prop.proposition_id);
@@ -57,6 +60,7 @@ for (const prop of propositions) {
   assert(prop.answer_layer_status === "research_only", `${prop.proposition_id}: must be research_only`);
   assert(prop.review_status === "machine_candidate" || prop.review_status === "needs_review", `${prop.proposition_id}: invalid review_status`);
   assert(prop.answer_layer_status !== "answer_safe", `${prop.proposition_id}: cannot be answer_safe`);
+  assert(!/case_recall_only|placeholder|todo|fake/i.test(JSON.stringify(prop)), `${prop.proposition_id}: recall-only/placeholder marker present`);
   if (prop.legal_function === "background_only") {
     assert(!/principle|test|requires|must/i.test(prop.proposition_text), `${prop.proposition_id}: background_only reads like a legal principle`);
   }

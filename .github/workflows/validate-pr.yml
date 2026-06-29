@@ -49,7 +49,7 @@ jobs:
         run: node scripts/validate_case_registry_10000.js --sample
 
       - name: Validate L2 paragraph proof
-        run: node scripts/validate_hklii_paragraph_accuracy.js --sample-size 50
+        run: node scripts/validate_hklii_paragraph_accuracy.js --full
 
       - name: Validate L3 proposition cards
         run: node scripts/validate_proposition_cards.js --sample

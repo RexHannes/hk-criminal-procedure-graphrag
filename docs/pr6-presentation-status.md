@@ -47,7 +47,7 @@ exact paragraph cards, extracted propositions/principles, case digest cards,
 issue mapping, and research-only case-law memo retrieval.
 ```
 
-Important boundary: this is a verified sample corpus, not 10,000 answer-safe propositions. L4 lawyer-reviewed answer-safe promotion is not implemented.
+Actual committed sample: 100 public HKLII criminal-law cases, 300 paragraph cards, 300 proposition cards, 300 principle cards, 100 digest cards, and 100 issue-mapped cases. Important boundary: this is a verified sample corpus, not 10,000 answer-safe propositions. L4 lawyer-reviewed answer-safe promotion is not implemented.
 
 Status dashboard:
 
@@ -77,7 +77,19 @@ It is not legal authority. It does not make any answer `answer_safe`. Binary PDF
 
 ## Case-Law Coverage Boundary
 
-The theft demo currently uses conservative paragraph-proof cards only where public paragraph text is attached and checked. Probate remains statute-first, with no public HKLII/LegalRef probate case paragraph authority attached for the intestacy/minor/statutory-trust scenario unless later verified.
+The theft demo currently uses conservative paragraph-proof cards only where public paragraph text is attached and checked. The expanded criminal-law sample is focused on theft, dishonesty, deception, fraud, theft sentencing and theft-linked procedure. Probate remains statute-first, with no public HKLII/LegalRef probate case paragraph authority attached for the intestacy/minor/statutory-trust scenario unless later verified.
+
+Current issue coverage:
+
+| Issue | Cases |
+|---|---:|
+| `criminal_law.theft.sentencing` | 94 |
+| `criminal_law.deception` | 90 |
+| `criminal_law.theft` | 84 |
+| `criminal_law.theft.appropriation` | 58 |
+| `criminal_law.fraud` | 56 |
+| `criminal_procedure.interview_caution` | 36 |
+| `criminal_law.theft.dishonesty` | 21 |
 
 Expanding case-law coverage must follow this order:
 
@@ -120,6 +132,7 @@ Expected story:
 - product mode: `demo_supported`;
 - theft elements, dishonesty and intention permanently to deprive appear before raw graph/debug data;
 - Chan/Khan authorities and statute links are clickable;
+- the opt-in L1-L3.5 case-corpus memo can return 8 research-only case authorities from the expanded sample;
 - `Evidence Analysis` maps helpful and harmful facts but says no uploaded text evidence was supplied;
 - audit/retrieval remains collapsed.
 
@@ -184,6 +197,8 @@ artifacts/demo_outputs/theft_case_corpus_l35_answer.md
 artifacts/demo_outputs/theft_case_corpus_l35_answer.json
 artifacts/demo_outputs/probate_case_corpus_l35_answer.md
 artifacts/demo_outputs/unsupported_general_query_l35_answer.md
+artifacts/demo_outputs/theft_dishonesty_case_law_table.md
+artifacts/demo_outputs/case_corpus_sample_authorities_table.md
 ```
 
 Regenerate and validate them with:

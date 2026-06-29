@@ -16,12 +16,15 @@ const principles = readJsonl(PATHS.principlesSample);
 const paragraphById = byId(paragraphs, "paragraph_id");
 const propositionById = byId(propositions, "proposition_id");
 const errors = [];
+const minCasesIndex = process.argv.indexOf("--min-cases");
+const minCases = Number(minCasesIndex >= 0 ? process.argv[minCasesIndex + 1] : "25");
 
 function assert(condition, message) {
   if (!condition) errors.push(message);
 }
 
 const ids = new Set();
+assert(new Set(principles.map(item => item.case_id).filter(Boolean)).size >= minCases, `principles cover fewer than ${minCases} case(s)`);
 for (const principle of principles) {
   assert(principle.principle_id && !ids.has(principle.principle_id), `${principle.principle_id}: missing/duplicate principle_id`);
   ids.add(principle.principle_id);
@@ -33,6 +36,7 @@ for (const principle of principles) {
   assert(VALID_TREATMENT.has(principle.current_treatment_status || "unchecked"), `${principle.principle_id}: invalid current_treatment_status`);
   assert(principle.answer_layer_status === "research_only", `${principle.principle_id}: must be research_only`);
   assert(principle.answer_layer_status !== "answer_safe", `${principle.principle_id}: cannot be answer_safe`);
+  assert(!/case_recall_only|placeholder|todo|fake/i.test(JSON.stringify(principle)), `${principle.principle_id}: recall-only/placeholder marker present`);
   if (principle.source_type === "case") {
     assert((principle.source_proposition_ids || []).length >= 1, `${principle.principle_id}: missing source_proposition_ids`);
     assert((principle.source_paragraph_ids || []).length >= 1, `${principle.principle_id}: missing source_paragraph_ids`);
