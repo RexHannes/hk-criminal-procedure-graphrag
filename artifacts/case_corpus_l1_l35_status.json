@@ -1,0 +1,30 @@
+{
+  "status_id": "case_corpus_l1_l35_status_v1",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "scope_note": "Truthful sample L1-L3.5 case corpus built from existing public paragraph cards; L4 answer-safe review is not implemented.",
+  "registry_case_count": 2,
+  "paragraphized_case_count": 2,
+  "paragraph_card_count": 4,
+  "proposition_card_count": 4,
+  "principle_card_count": 4,
+  "case_digest_card_count": 2,
+  "issue_mapped_case_count": 2,
+  "paragraph_anchor_pass_rate": 1,
+  "quote_support_pass_rate": 1,
+  "checksum_pass_rate": 1,
+  "answer_safe_count": 0,
+  "research_only_count": 16,
+  "lawyer_review_required_count": 2,
+  "demo_vertical_coverage": {
+    "theft_shoplifting": "L1-L3.5 sample case-law corpus available with paragraph proof",
+    "probate_intestacy": "statute-first; no public probate case paragraph authority attached"
+  },
+  "unsupported_general_query_policy": "unsupported_general_query must not assert final legal propositions.",
+  "layers": {
+    "L1": "case registry",
+    "L2": "exact paragraph cards with anchors/checksums",
+    "L3": "paragraph-backed proposition/principle cards",
+    "L35": "issue-mapped digest and research memo retrieval",
+    "L4": "not implemented; no answer-safe propositions"
+  }
+}

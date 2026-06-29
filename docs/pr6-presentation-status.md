@@ -31,6 +31,37 @@ Do not claim:
 - `case_recall_only` cards cannot support final legal propositions.
 - Private textbooks, private precedents, client documents and AI-generated candidates are not public answer authority.
 
+## L1-L3.5 Case-Corpus Pipeline
+
+PR 6 now includes a sample public case-law pipeline:
+
+```text
+public source -> case registry -> paragraph card -> proposition card -> principle card -> case digest card -> issue-mapped retrieval -> research-only memo
+```
+
+Safe claim:
+
+```text
+The system demonstrates an L1-L3.5 public case-law pipeline: case registry,
+exact paragraph cards, extracted propositions/principles, case digest cards,
+issue mapping, and research-only case-law memo retrieval.
+```
+
+Important boundary: this is a verified sample corpus, not 10,000 answer-safe propositions. L4 lawyer-reviewed answer-safe promotion is not implemented.
+
+Status dashboard:
+
+```text
+artifacts/case_corpus_l1_l35_status.json
+artifacts/case_corpus_l1_l35_status.md
+```
+
+Detailed pipeline doc:
+
+```text
+docs/case-corpus-l1-l35-pipeline.md
+```
+
 ## Uploaded Evidence Contract
 
 The API accepts text or transcript evidence through JSON fields such as:
@@ -144,4 +175,20 @@ Validate the demo assets with:
 
 ```bash
 node scripts/validate_pr6_demo_assets.js
+```
+
+Additional L1-L3.5 case-corpus demo outputs:
+
+```text
+artifacts/demo_outputs/theft_case_corpus_l35_answer.md
+artifacts/demo_outputs/theft_case_corpus_l35_answer.json
+artifacts/demo_outputs/probate_case_corpus_l35_answer.md
+artifacts/demo_outputs/unsupported_general_query_l35_answer.md
+```
+
+Regenerate and validate them with:
+
+```bash
+node scripts/generate_case_corpus_l35_demo_outputs.js
+node scripts/validate_case_corpus_l35_demo_outputs.js
 ```

@@ -42,6 +42,39 @@ jobs:
       - name: Ensure PR 6 demo outputs are committed
         run: git diff --exit-code artifacts/demo_outputs
 
+      - name: Build L1-L3.5 case corpus sample
+        run: node scripts/build_case_corpus_l1_l35_sample.js
+
+      - name: Validate L1 case registry
+        run: node scripts/validate_case_registry_10000.js --sample
+
+      - name: Validate L2 paragraph proof
+        run: node scripts/validate_hklii_paragraph_accuracy.js --sample-size 50
+
+      - name: Validate L3 proposition cards
+        run: node scripts/validate_proposition_cards.js --sample
+
+      - name: Validate L3 principle cards
+        run: node scripts/validate_principle_cards.js --sample
+
+      - name: Validate L3.5 case digest cards
+        run: node scripts/validate_case_digest_cards.js --sample
+
+      - name: Validate L1-L3.5 status dashboard
+        run: node scripts/validate_case_corpus_l1_l35_status.js
+
+      - name: Dry-run L1-L3.5 case corpus Qdrant indexer
+        run: node scripts/index_case_corpus_qdrant.js --dry-run --sample
+
+      - name: Generate L1-L3.5 demo outputs
+        run: node scripts/generate_case_corpus_l35_demo_outputs.js
+
+      - name: Validate L1-L3.5 demo outputs
+        run: node scripts/validate_case_corpus_l35_demo_outputs.js
+
+      - name: Ensure L1-L3.5 artifacts are committed
+        run: git diff --exit-code data/legal_ingest/case_corpus artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/demo_outputs
+
       - name: Dry-run Part 1 source-card Qdrant indexer
         run: node scripts/index_part1_two_vertical_source_cards_qdrant.js --dry-run
 

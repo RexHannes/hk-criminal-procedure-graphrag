@@ -1,0 +1,138 @@
+{
+  "query": "If I am alleged to be stealing something in the convenience store, but I forgot to pay and security stopped me, what are the AR/MR issues and what facts help or hurt?",
+  "product_mode": {
+    "mode": "demo_supported",
+    "labels": [
+      "demo_supported",
+      "source_grounded_research_only",
+      "needs_lawyer_review"
+    ],
+    "needs_lawyer_review": true,
+    "answer_safe": false,
+    "supported_demo_vertical": true,
+    "unsupported_reason": "",
+    "layer_order": [
+      "legal_research_case_law_analysis",
+      "reusable_sop_playbook",
+      "forms_document_pack"
+    ],
+    "forms_and_sops_policy": "forms and SOPs are downstream of legal issue/authority classification",
+    "uploaded_evidence_mode": "text_evidence_research_triage_only"
+  },
+  "case_law_research": {
+    "presentation_mode": "case_corpus_l1_l35_research_only",
+    "title": "L1-L3.5 Case-Law Research Memo",
+    "query": "If I am alleged to be stealing something in the convenience store, but I forgot to pay and security stopped me, what are the AR/MR issues and what facts help or hurt?",
+    "sections": [
+      {
+        "heading": "Short Answer",
+        "items": [
+          "The case-corpus layer found research-only public case authorities with paragraph proof. They may support legal research and issue spotting, but they are not answer-safe legal advice."
+        ]
+      },
+      {
+        "heading": "Issues",
+        "items": [
+          "Issue mapped: criminal_law.theft.dishonesty"
+        ]
+      },
+      {
+        "heading": "Governing Law / Elements",
+        "items": [
+          "Use statute/source cards for governing elements; case-corpus cards provide paragraph-backed research context and factual application only."
+        ]
+      },
+      {
+        "heading": "Case-by-Case Authorities",
+        "items": [
+          "HKSAR v Chan Kam Ching [2022] HKCFA 7 (Court of Final Appeal, 2022-04-14). Facts: Forgery/fraud substitution appeal involving the relationship between deceit and dishonesty. Issue: Dishonesty as a state of mind Holding: Dishonesty is discussed as a distinct state-of-mind concept. Key paragraph: para. 148 - https://www.hklii.hk/en/cases/hkcfa/2022/7#p148 Exact quote: \"Dishonesty addresses a wholly different matter\" Principle: Dishonesty should be treated as a mental-state issue when analysing criminal dishonesty, subject to current-treatment review. Why relevant: CFA paragraphs discuss dishonesty as state of mind and recorded HK Ghosh treatment. How distinguishable: The dispute is purely actus reus, sentencing-only, or turns on shop-specific CCTV facts not considered in Chan. Source URL: https://www.hklii.hk/en/cases/hkcfa/2022/7#p148"
+        ]
+      },
+      {
+        "heading": "Extracted Legal Principles",
+        "items": [
+          "Dishonesty should be treated as a mental-state issue when analysing criminal dishonesty, subject to current-treatment review. Quote: \"Dishonesty addresses a wholly different matter\". Status: research_only; review: machine_candidate.",
+          "Chan Kam Ching records Ghosh as the Hong Kong dishonesty test at that time; current treatment must be checked before final advice. Quote: \"the Ghosh test for dishonesty represents the law in Hong Kong at present\". Status: research_only; review: machine_candidate."
+        ]
+      },
+      {
+        "heading": "Application to User Facts",
+        "items": [
+          "Apply the extracted principles only as research triage: compare the user's facts against the paragraph quote, the digest facts, and the distinguishability limits before any advice."
+        ]
+      },
+      {
+        "heading": "Evidence Analysis",
+        "items": [
+          "Uploaded text evidence parsed: 1 item(s). It is fact/evidence material only, not legal authority.",
+          "Helps: Item appears visible or handled openly.",
+          "Helps: Payment/checkout context may support ordinary shopping or mistake.",
+          "Helps: Distraction or mistake context is asserted.",
+          "Hurts or needs explanation: Exit/security-stop facts may support prosecution inferences depending on detail."
+        ]
+      },
+      {
+        "heading": "Missing Facts",
+        "items": [
+          "Current treatment check for each case.",
+          "Full factual record, charge/procedural posture and source review.",
+          "Lawyer review before any answer-safe proposition."
+        ]
+      },
+      {
+        "heading": "Practical Next Steps",
+        "items": [
+          "Review the paragraph cards against HKLII/LegalRef.",
+          "Check current treatment before relying on the case.",
+          "Do not promote machine candidates to answer-safe without lawyer review."
+        ]
+      },
+      {
+        "heading": "Source Audit",
+        "items": [
+          "L1 registry cases: 2",
+          "L2 paragraph cards: 4",
+          "L3 propositions/principles: 8",
+          "L3.5 digests returned: 1",
+          "L4 answer-safe propositions: not implemented.",
+          "All case-corpus outputs are research_only / lawyer_review_required."
+        ]
+      }
+    ],
+    "markdown": "# L1-L3.5 Case-Law Research Memo\n\n## Short Answer\n- The case-corpus layer found research-only public case authorities with paragraph proof. They may support legal research and issue spotting, but they are not answer-safe legal advice.\n\n## Issues\n- Issue mapped: criminal_law.theft.dishonesty\n\n## Governing Law / Elements\n- Use statute/source cards for governing elements; case-corpus cards provide paragraph-backed research context and factual application only.\n\n## Case-by-Case Authorities\n- HKSAR v Chan Kam Ching [2022] HKCFA 7 (Court of Final Appeal, 2022-04-14). Facts: Forgery/fraud substitution appeal involving the relationship between deceit and dishonesty. Issue: Dishonesty as a state of mind Holding: Dishonesty is discussed as a distinct state-of-mind concept. Key paragraph: para. 148 - https://www.hklii.hk/en/cases/hkcfa/2022/7#p148 Exact quote: \"Dishonesty addresses a wholly different matter\" Principle: Dishonesty should be treated as a mental-state issue when analysing criminal dishonesty, subject to current-treatment review. Why relevant: CFA paragraphs discuss dishonesty as state of mind and recorded HK Ghosh treatment. How distinguishable: The dispute is purely actus reus, sentencing-only, or turns on shop-specific CCTV facts not considered in Chan. Source URL: https://www.hklii.hk/en/cases/hkcfa/2022/7#p148\n\n## Extracted Legal Principles\n- Dishonesty should be treated as a mental-state issue when analysing criminal dishonesty, subject to current-treatment review. Quote: \"Dishonesty addresses a wholly different matter\". Status: research_only; review: machine_candidate.\n- Chan Kam Ching records Ghosh as the Hong Kong dishonesty test at that time; current treatment must be checked before final advice. Quote: \"the Ghosh test for dishonesty represents the law in Hong Kong at present\". Status: research_only; review: machine_candidate.\n\n## Application to User Facts\n- Apply the extracted principles only as research triage: compare the user's facts against the paragraph quote, the digest facts, and the distinguishability limits before any advice.\n\n## Evidence Analysis\n- Uploaded text evidence parsed: 1 item(s). It is fact/evidence material only, not legal authority.\n- Helps: Item appears visible or handled openly.\n- Helps: Payment/checkout context may support ordinary shopping or mistake.\n- Helps: Distraction or mistake context is asserted.\n- Hurts or needs explanation: Exit/security-stop facts may support prosecution inferences depending on detail.\n\n## Missing Facts\n- Current treatment check for each case.\n- Full factual record, charge/procedural posture and source review.\n- Lawyer review before any answer-safe proposition.\n\n## Practical Next Steps\n- Review the paragraph cards against HKLII/LegalRef.\n- Check current treatment before relying on the case.\n- Do not promote machine candidates to answer-safe without lawyer review.\n\n## Source Audit\n- L1 registry cases: 2\n- L2 paragraph cards: 4\n- L3 propositions/principles: 8\n- L3.5 digests returned: 1\n- L4 answer-safe propositions: not implemented.\n- All case-corpus outputs are research_only / lawyer_review_required.\n",
+    "cases_returned": 1,
+    "answer_layer_status": "research_only",
+    "review_status": "lawyer_review_required",
+    "l4_answer_safe_implemented": false
+  },
+  "audit_trail": {
+    "case_corpus_audit": {
+      "display": "collapsed",
+      "mode": "sample",
+      "requested_issue_id": "criminal_law.theft.dishonesty",
+      "inferred_issue_ids": [
+        "criminal_law.theft.dishonesty"
+      ],
+      "registry_case_count": 2,
+      "paragraph_card_count": 4,
+      "proposition_card_count": 4,
+      "principle_card_count": 4,
+      "case_digest_card_count": 2,
+      "issue_map_count": 4,
+      "returned_case_count": 1,
+      "answer_layer_status": "research_only",
+      "review_status": "lawyer_review_required",
+      "l4_answer_safe_implemented": false
+    },
+    "paragraph_proof_audit": {
+      "display": "collapsed",
+      "paragraph_ids": [
+        "hk_hkcfa_2022_7_chan_kam_ching_p148",
+        "hk_hkcfa_2022_7_chan_kam_ching_p149"
+      ],
+      "all_case_corpus_output_research_only": true,
+      "exact_paragraph_anchor_required": true,
+      "l4_answer_safe_implemented": false
+    }
+  }
+}

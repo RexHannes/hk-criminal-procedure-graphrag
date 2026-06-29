@@ -1,0 +1,82 @@
+{
+  "taxonomy_id": "issue_taxonomy_hk_law_v1",
+  "created_at": "2026-06-29",
+  "status": "sample_taxonomy_for_l1_l35_case_corpus",
+  "issues": [
+    {
+      "issue_id": "criminal_law.theft",
+      "label": "theft",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "criminal_law.theft.actus_reus",
+      "label": "actus reus",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "criminal_law.theft.mens_rea",
+      "label": "mens rea",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "criminal_law.theft.dishonesty",
+      "label": "dishonesty",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "criminal_law.theft.intention_permanently_deprive",
+      "label": "intention permanently deprive",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "criminal_law.theft.appropriation",
+      "label": "appropriation",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "criminal_law.theft.belonging_to_another",
+      "label": "belonging to another",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "criminal_law.theft.mistake_or_forgot_to_pay",
+      "label": "mistake or forgot to pay",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "criminal_law.theft.sentencing",
+      "label": "sentencing",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "criminal_procedure.interview_caution",
+      "label": "interview caution",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "criminal_procedure.bail",
+      "label": "bail",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "probate.intestacy",
+      "label": "intestacy",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "probate.domicile",
+      "label": "domicile",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "probate.minors_statutory_trusts",
+      "label": "minors statutory trusts",
+      "status": "taxonomy_seed"
+    },
+    {
+      "issue_id": "probate.letters_of_administration",
+      "label": "letters of administration",
+      "status": "taxonomy_seed"
+    }
+  ]
+}

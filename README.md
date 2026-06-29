@@ -36,6 +36,15 @@ node scripts/generate_pr6_demo_outputs.js
 node scripts/validate_pr6_demo_assets.js
 ```
 
+The branch also includes a sample public case-law L1-L3.5 pipeline:
+
+- L1 case registry;
+- L2 exact paragraph cards;
+- L3 proposition/principle cards;
+- L3.5 case digest + issue-mapped research memo retrieval.
+
+See [docs/case-corpus-l1-l35-pipeline.md](docs/case-corpus-l1-l35-pipeline.md). L4 answer-safe legal advice is not implemented.
+
 ## Deployment / Private-Source Warning
 
 The hosted demo path is **public/demo-source only**.
