@@ -155,6 +155,13 @@
       "Bad facts include concealment, bypassing checkout, looking around, leaving quickly, removing tags, inconsistent explanations, prior incidents, or only raising forgetfulness after being stopped.",
       "Chan Kam Ching gives a candidate dishonesty-state-of-mind/Ghosh source, but it is not a shoplifting case and remains research-only pending current-treatment review."
     ],
+    "evidence_analysis_items": [
+      "Fact: item visible in basket or ordinary shopping route. Legal relevance: helps a mistake/absence-of-dishonesty argument if CCTV and receipts are consistent.",
+      "Fact: item concealed in bag, pocket or clothing. Legal relevance: hurts the forgotten-payment account and may support an inference of dishonesty.",
+      "Fact: user paid for other items or attempted payment. Legal relevance: can support ordinary shopping or mistake, but Cap. 210 s.3 means willingness to pay is not conclusive.",
+      "Fact: voluntary return/payment before confrontation. Legal relevance: helps absence of intent permanently to deprive; return only after being stopped is weaker and may be mitigation rather than defence.",
+      "Evidence source audit: no uploaded CCTV, receipt, police notebook or witness statement is parsed in this response; those documents must be separately ingested before final advice."
+    ],
     "practical_next_steps": [
       "Preserve CCTV, receipts/payment records, phone/location/distraction evidence, staff notes and police notebook/interview records.",
       "Do not give an improvised interview explanation without understanding the caution, disclosure and legal-advice position.",

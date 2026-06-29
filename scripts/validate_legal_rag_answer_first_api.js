@@ -43,14 +43,19 @@ function validateAnswerFirstPayload(label, payload, errors) {
   const markdown = String(payload.answer_markdown || "");
 
   assert(payload.presentation_mode === "answer_first_source_gated", `${label}: wrong presentation mode`, errors);
+  assert(payload.product_mode?.needs_lawyer_review === true, `${label}: missing lawyer-review product mode`, errors);
   assert(answerIndex >= 0, `${label}: missing legal_research_answer`, errors);
   assert(graphIndex >= 0, `${label}: missing matched_doctrine_nodes audit payload`, errors);
   assert(answerIndex < graphIndex, `${label}: answer must precede graph matches in API payload`, errors);
   assert(payload.audit_trail?.display === "collapsed", `${label}: audit_trail should be collapsed`, errors);
+  assert(payload.audit_trail?.legal_source_audit?.display === "collapsed", `${label}: missing separated legal source audit`, errors);
+  assert(payload.audit_trail?.evidence_source_audit?.uploaded_evidence_ingested === false, `${label}: uploaded evidence audit should be explicit`, errors);
   assert(payload.audit_trail?.debug_hidden_by_default === true, `${label}: debug should be hidden by default`, errors);
   assert(memo.debug_hidden_by_default === true, `${label}: memo debug flag missing`, errors);
   assert(memo.source_status?.case_recall_only_allowed_as_answer_authority === false, `${label}: recall-only authority must be forbidden`, errors);
-  assert((memo.source_links || []).some(url => /^https:\/\//.test(url)), `${label}: source links missing`, errors);
+  if (payload.product_mode?.mode !== "unsupported_general_query") {
+    assert((memo.source_links || []).some(url => /^https:\/\//.test(url)), `${label}: source links missing`, errors);
+  }
   assert(markdown.includes("## Short Answer"), `${label}: markdown missing Short Answer`, errors);
   for (const heading of MEMO_HEADINGS) {
     assert(headings.includes(heading), `${label}: missing memo heading ${heading}`, errors);
@@ -58,6 +63,14 @@ function validateAnswerFirstPayload(label, payload, errors) {
   assert(!markdown.includes("matched_doctrine_nodes"), `${label}: markdown leaks raw graph field`, errors);
   assert(!markdown.includes("\"doctrine_node_id\""), `${label}: markdown leaks raw doctrine JSON`, errors);
   assert(!markdown.includes("\"source_card_id\""), `${label}: markdown leaks raw source-card JSON`, errors);
+
+  const applicationIndex = headings.indexOf("Application to User Facts");
+  const evidenceIndex = headings.indexOf("Evidence Analysis");
+  const formsIndex = headings.indexOf("Documents / Forms");
+  if (formsIndex >= 0) {
+    assert(applicationIndex >= 0 && formsIndex > applicationIndex, `${label}: forms must be downstream of fact application`, errors);
+  }
+  assert(evidenceIndex > applicationIndex, `${label}: Evidence Analysis should follow fact application`, errors);
 }
 
 function validateViewerWiring(errors) {
@@ -76,6 +89,8 @@ function validateViewerWiring(errors) {
 
   validateAnswerFirstPayload("probate", probate, errors);
   validateAnswerFirstPayload("theft", theft, errors);
+  assert(probate.product_mode?.mode === "demo_supported", "probate should be demo_supported", errors);
+  assert(theft.product_mode?.mode === "demo_supported", "theft should be demo_supported", errors);
 
   const probateText = blob({
     markdown: probate.answer_markdown,
@@ -97,8 +112,15 @@ function validateViewerWiring(errors) {
   assert(theftText.includes("elegislation.gov.hk/hk/cap210/s2"), "theft answer missing Cap. 210 s.2 official URL", errors);
   assert(theftText.includes("hklii.hk/en/cases/hkcfa/2022/7#p148"), "theft answer missing Chan Kam Ching paragraph URL", errors);
   assert(theftText.includes("hklii.hk/en/cases/hkcfi/2022/1220#p24"), "theft answer missing Khan Altaf paragraph URL", errors);
+  assert(theftText.includes("case 1:") && theftText.includes("facts:") && theftText.includes("how distinguishable:"), "theft answer missing case-by-case authority analysis", errors);
+  assert(theftText.includes("evidence analysis") && theftText.includes("helps") && theftText.includes("hurts"), "theft answer missing evidence/fact helpful-harmful analysis", errors);
   assert(theftText.includes("forgot"), "theft answer missing forgot-to-pay application", errors);
   assert(theftText.includes("ivey") && theftText.includes("unsupported"), "theft answer missing unsupported Ivey/Ghosh caveat", errors);
+
+  const unsupported = await run("Can my landlord increase rent for my Hong Kong flat next month?");
+  validateAnswerFirstPayload("unsupported", unsupported, errors);
+  assert(unsupported.product_mode?.mode === "unsupported_general_query", "random HK law query should be unsupported_general_query", errors);
+  assert(blob(unsupported.answer_markdown).includes("outside the currently source-gated demo verticals"), "unsupported answer should not look like general HK legal advice", errors);
 
   validateViewerWiring(errors);
 

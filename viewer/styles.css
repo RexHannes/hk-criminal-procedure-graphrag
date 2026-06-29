@@ -803,6 +803,12 @@ a { color: inherit; }
   border-left: 3px solid var(--bronze);
   background: var(--ivory);
 }
+.research-mode-note {
+  margin-top: 8px;
+  color: var(--audit);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
 .research-section-list {
   display: grid;
   gap: 10px;

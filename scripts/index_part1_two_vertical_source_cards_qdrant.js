@@ -96,12 +96,36 @@ function recordsFromCards(cards) {
       source_card_id: card.source_card_id,
       domain_id: card.domain_id,
       source_kind: card.source_kind,
+      source_class: card.source_kind === "legislation" ? "public_statute" : "public_judgment",
       cap: card.cap || "",
       section: card.section || "",
       paragraph_id: (card.paragraph_refs || []).join(","),
       source_url: card.official_url,
       hklii_url: card.hklii_url || "",
       issue_tags: card.issue_tags || [],
+      answer_layer_status: card.answer_layer_status,
+      review_status: card.review_status,
+    },
+  }));
+  const paragraphs = (cards.paragraph_cards || []).map(card => ({
+    id: card.paragraph_id,
+    kind: "paragraph_card",
+    text: `${card.case_name} ${card.citation} para ${card.para_no}\n${card.paragraph_text}`,
+    payload: {
+      record_kind: "paragraph_card",
+      paragraph_id: card.paragraph_id,
+      case_id: card.case_id,
+      source_card_id: card.source_card_id,
+      domain_id: "criminal_law_hk",
+      source_kind: "case_judgment",
+      source_class: "public_judgment",
+      case_name: card.case_name,
+      citation: card.citation,
+      court: card.court,
+      paragraph_id_ref: card.para_no,
+      source_url: card.source_url,
+      issue_tags: card.issue_tags || [],
+      authority_role: card.authority_role || "",
       answer_layer_status: card.answer_layer_status,
       review_status: card.review_status,
     },
@@ -115,6 +139,7 @@ function recordsFromCards(cards) {
       principle_id: card.principle_id,
       domain_id: card.domain_id,
       source_card_ids: card.source_card_ids || [],
+      paragraph_card_ids: card.paragraph_card_ids || [],
       paragraph_or_section: card.paragraph_or_section,
       issue_tags: card.linked_scenarios || [],
       answer_layer_status: card.answer_layer_status,
@@ -134,12 +159,13 @@ function recordsFromCards(cards) {
       court: card.court,
       paragraph_id: (card.key_paragraphs || []).join(","),
       source_url: card.source_url,
+      paragraph_card_ids: card.paragraph_card_ids || [],
       hklii_paragraph_urls: card.hklii_paragraph_urls || [],
       answer_layer_status: card.answer_layer_status,
       review_status: card.review_status,
     },
   }));
-  return [...sources, ...principles, ...digests];
+  return [...sources, ...paragraphs, ...principles, ...digests];
 }
 
 async function main() {
@@ -163,6 +189,7 @@ async function main() {
       point_counts: {
         total: records.length,
         source_cards: cards.source_cards.length,
+        paragraph_cards: (cards.paragraph_cards || []).length,
         principle_cards: cards.principle_cards.length,
         case_digest_cards: cards.case_digest_cards.length,
       },

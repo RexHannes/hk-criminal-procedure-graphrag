@@ -134,6 +134,13 @@
       "The 'former 18, later not' fact matters for administration/payment mechanics because Cap. 410 s.2 sets full age at 18 and Cap. 73 s.5 uses full age in statutory-trusts language.",
       "Forms and drafting should come after this classification; letters of administration and minor-beneficiary handling are downstream of the distribution analysis."
     ],
+    "evidence_analysis_items": [
+      "Fact: death in the US / foreign connection. Legal relevance: may make domicile and asset situs decisive before Hong Kong intestacy distribution is applied.",
+      "Fact: no will asserted. Legal relevance: supports intestacy routing, but the original will/codicil search and any foreign grant must still be verified.",
+      "Fact: son, daughter and granddaughters are named. Legal relevance: requires a family tree proving whether the granddaughters' parent predeceased and whether that branch can take.",
+      "Fact: one beneficiary is under 18. Legal relevance: affects administration/payment mechanics and possible guardian/co-administrator or trust handling.",
+      "Evidence source audit: no death certificate, family-tree documents, grant papers or asset schedule is parsed in this response; those documents must be separately ingested before final advice."
+    ],
     "practical_next_steps": [
       "Confirm domicile at death, Hong Kong asset situs, and whether any US state proceeding or foreign grant exists.",
       "Confirm there is no valid will and no surviving spouse.",

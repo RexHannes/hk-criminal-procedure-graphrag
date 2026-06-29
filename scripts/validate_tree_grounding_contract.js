@@ -84,6 +84,12 @@ function validateRegisteredVertical(vertical, deckById, cards, errors) {
     assert(digest?.review_status === "lawyer_review_required", `${digestId}: case digest must require lawyer review`, errors);
     assert((digest?.hklii_paragraph_urls || []).every(url => url.includes("#p")), `${digestId}: case digest lacks paragraph URL anchors`, errors);
   }
+  for (const paragraphId of vertical.paragraph_card_ids || []) {
+    const paragraph = cards.paragraphById.get(paragraphId);
+    assert(paragraph, `${vertical.rule_deck_id}: paragraph card artifact missing ${paragraphId}`, errors);
+    assert(paragraph?.source_url?.includes(`#p${paragraph?.para_no}`), `${paragraphId}: paragraph source URL lacks anchor`, errors);
+    assert(paragraph?.answer_layer_status === "research_only", `${paragraphId}: paragraph card must remain research_only`, errors);
+  }
 }
 
 function validateTheftSectionConsistency(errors) {
@@ -107,6 +113,14 @@ function main() {
 
   assert(policy.global_rag_claim_boundary?.status === "two_vertical_demo_only", "policy must keep two-vertical demo-only boundary", errors);
   assert(policy.global_rag_claim_boundary?.not_a_whole_system_rag_fix === true, "policy must forbid whole-system RAG claims", errors);
+  for (const layer of ["paragraph_card", "proposition_card", "principle_card", "case_digest_card"]) {
+    assert(policy.card_layer_definitions?.[layer], `policy missing ${layer} definition`, errors);
+  }
+  for (const sourceClass of ["public_statute", "public_judgment", "public_practice_direction"]) {
+    assert((policy.source_class_policy?.public_demo_answer_sources_allowed || []).includes(sourceClass), `policy missing public source class ${sourceClass}`, errors);
+  }
+  assert((policy.source_class_policy?.never_public_answer_authority_without_review || []).includes("case_recall_only"), "case_recall_only must never be public answer authority without review", errors);
+  assert((policy.expansion_order || []).indexOf("golden_query_validation") < (policy.expansion_order || []).indexOf("case_scale"), "case scale must come after golden validation", errors);
   for (const item of REQUIRED_PACK_ITEMS) {
     assert((policy.tree_by_tree_required_pack || []).includes(item), `tree-by-tree required pack missing ${item}`, errors);
   }

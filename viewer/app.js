@@ -987,6 +987,7 @@
     if (!memo) return '';
     const sections = memo.sections || [];
     const sourceStatus = memo.source_status || {};
+    const productMode = memo.product_mode || {};
     return `
       <section class="research-answer">
         <div class="research-answer-head">
@@ -996,10 +997,12 @@
           </div>
           <span class="card-badges">
             <span class="badge badge-research">Answer first</span>
+            ${productMode.mode ? `<span class="badge badge-pending">${esc(String(productMode.mode).replace(/_/g, ' '))}</span>` : ''}
             <span class="badge badge-review">Review required</span>
           </span>
         </div>
         ${memo.short_answer ? `<p class="research-short">${renderInlineText(memo.short_answer)}</p>` : ''}
+        ${productMode.unsupported_reason ? `<p class="research-mode-note">${esc(productMode.unsupported_reason)}</p>` : ''}
         <div class="research-section-list">
           ${sections.map(section => `
             <section class="research-section">

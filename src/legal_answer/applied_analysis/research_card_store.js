@@ -7,6 +7,7 @@ const APPLIED_DIR = path.join(ROOT, "data", "legal_ingest", "applied_answer");
 const SOURCE_CARDS_PATH = path.join(APPLIED_DIR, "source_cards", "part1_two_vertical_public_source_cards.json");
 const PRINCIPLE_CARDS_PATH = path.join(APPLIED_DIR, "principle_cards", "part1_two_vertical_principle_cards.json");
 const CASE_DIGEST_CARDS_PATH = path.join(APPLIED_DIR, "case_digest_cards", "part1_two_vertical_case_digest_cards.json");
+const PARAGRAPH_CARDS_PATH = path.join(APPLIED_DIR, "paragraph_cards", "part1_two_vertical_paragraph_cards.json");
 
 function readJson(filePath, fallback) {
   try {
@@ -28,13 +29,16 @@ function loadResearchCards() {
   const sourcePayload = readJson(SOURCE_CARDS_PATH, { source_cards: [] });
   const principlePayload = readJson(PRINCIPLE_CARDS_PATH, { principle_cards: [] });
   const digestPayload = readJson(CASE_DIGEST_CARDS_PATH, { case_digest_cards: [] });
+  const paragraphPayload = readJson(PARAGRAPH_CARDS_PATH, { paragraph_cards: [] });
   return {
     source_cards: sourcePayload.source_cards || [],
     principle_cards: principlePayload.principle_cards || [],
     case_digest_cards: digestPayload.case_digest_cards || [],
+    paragraph_cards: paragraphPayload.paragraph_cards || [],
     sourceById: byId(sourcePayload.source_cards || [], "source_card_id"),
     principleById: byId(principlePayload.principle_cards || [], "principle_id"),
     caseDigestById: byId(digestPayload.case_digest_cards || [], "case_digest_card_id"),
+    paragraphById: byId(paragraphPayload.paragraph_cards || [], "paragraph_id"),
   };
 }
 
@@ -51,6 +55,7 @@ function sourceCardStatus(card) {
 
 module.exports = {
   CASE_DIGEST_CARDS_PATH,
+  PARAGRAPH_CARDS_PATH,
   PRINCIPLE_CARDS_PATH,
   SOURCE_CARDS_PATH,
   loadResearchCards,

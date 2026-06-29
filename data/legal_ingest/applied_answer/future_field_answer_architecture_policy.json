@@ -46,6 +46,50 @@
     "golden_queries",
     "ci_validator_that_blocks_recall_only_or_candidate_only_answer_authority"
   ],
+  "card_layer_definitions": {
+    "paragraph_card": "Raw court paragraph text with paragraph number, source URL anchor and checksum.",
+    "proposition_card": "Extracted statement from one or more paragraph cards; cannot stand without paragraph proof.",
+    "principle_card": "Legal rule synthesized from statute text or one or more proposition/paragraph cards.",
+    "case_digest_card": "Case-level facts, issues, holding, ratio/obiter, treatment, applicability and distinguishability summary."
+  },
+  "source_class_policy": {
+    "public_demo_answer_sources_allowed": [
+      "public_statute",
+      "public_judgment",
+      "public_practice_direction"
+    ],
+    "never_public_answer_authority_without_review": [
+      "private_textbook",
+      "private_precedent",
+      "client_document",
+      "ai_generated_candidate",
+      "case_recall_only"
+    ],
+    "legal_source_audit_must_be_separate_from": [
+      "evidence_source_audit",
+      "user_provided_facts",
+      "ai_inference"
+    ]
+  },
+  "expansion_order": [
+    "source_card_schema",
+    "paragraph_card_ingestion",
+    "principle_extraction",
+    "answer_renderer",
+    "golden_query_validation",
+    "case_scale"
+  ],
+  "next_major_milestone": {
+    "target": "one_excellent_criminal_law_vertical",
+    "must_include": [
+      "full_theft_doctrine_tree_display",
+      "more_exact_paragraph_case_law",
+      "case_treatment_tracking",
+      "user_fact_evidence_mapping",
+      "criminal_procedure_downstream_module",
+      "source_audit_and_anti_hallucination_validation"
+    ]
+  },
   "notebooklm_browser_workflow": {
     "when_to_use": [
       "existing domain tree has no clean doctrine_node_id",
@@ -106,6 +150,7 @@
         "hk_cap410_s2_full_age_18"
       ],
       "case_digest_card_ids": [],
+      "paragraph_card_ids": [],
       "answer_first_validator": "scripts/validate_legal_rag_answer_first_api.js",
       "source_card_validator": "scripts/validate_part1_two_vertical_source_cards.js",
       "golden_query_validator": "scripts/validate_probate_inquiry_api.js",
@@ -130,6 +175,12 @@
       "case_digest_card_ids": [
         "case_digest_chan_kam_ching_2022",
         "case_digest_khan_altaf_2022"
+      ],
+      "paragraph_card_ids": [
+        "hk_hkcfa_2022_7_chan_kam_ching_p148",
+        "hk_hkcfa_2022_7_chan_kam_ching_p149",
+        "hk_hkcfi_2022_1220_khan_altaf_p1",
+        "hk_hkcfi_2022_1220_khan_altaf_p24"
       ],
       "answer_first_validator": "scripts/validate_legal_rag_answer_first_api.js",
       "source_card_validator": "scripts/validate_part1_two_vertical_source_cards.js",

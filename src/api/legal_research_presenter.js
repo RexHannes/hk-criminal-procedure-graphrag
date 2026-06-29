@@ -3,11 +3,26 @@ const MEMO_HEADINGS = [
   "Issues",
   "Governing Law / Elements",
   "Relevant Authorities",
+  "Case-by-Case Authorities",
   "Extracted Legal Principles",
   "Application to User Facts",
+  "Evidence Analysis",
   "Missing Facts",
   "Practical Next Steps",
   "Source Audit",
+];
+
+const DEMO_VERTICALS = [
+  {
+    domain: "probate_law_hk",
+    scenario: "intestate_administration",
+    subscenario: "intestacy_distribution_issue_statutory_trusts",
+  },
+  {
+    domain: "criminal_law",
+    scenario: "theft_property_dishonesty",
+    subscenario: "shoplifting_forgot_to_pay_mr_defence",
+  },
 ];
 
 function cleanItems(items = []) {
@@ -52,6 +67,105 @@ function sourceLinksFromAudit(sourceAudit = {}) {
   return Array.from(new Set(sourceCards.concat(caseDigestLinks, principleLinks).filter(Boolean))).sort();
 }
 
+function isDemoSupported(applied = {}) {
+  const contract = applied.answer_contract || {};
+  const classification = applied.classification || {};
+  return DEMO_VERTICALS.some(vertical => (
+    vertical.domain === (contract.domain || classification.practice_area || classification.matter_type) &&
+    vertical.scenario === (contract.scenario_family || classification.scenario) &&
+    vertical.subscenario === (contract.subscenario || classification.subscenario)
+  ));
+}
+
+function buildProductMode({ applied = {}, legalIngestBundle = null } = {}) {
+  const classification = applied.classification || {};
+  const sourceRules = applied.source_backed_rules || [];
+  const sourceAudit = applied.source_audit || {};
+  const unsupportedGeneral = classification.scenario === "professional_generic_legal_analysis" || (
+    classification.matter_type === "general_legal_research" &&
+    !sourceRules.length &&
+    !legalIngestBundle
+  );
+  let mode = "unsupported_general_query";
+  if (isDemoSupported(applied)) mode = "demo_supported";
+  else if (!unsupportedGeneral && (legalIngestBundle || sourceRules.length || /quote_verified|source_verified/.test(String(sourceAudit.verification_status || "")))) {
+    mode = "source_grounded_research_only";
+  }
+  return {
+    mode,
+    labels: Array.from(new Set([
+      mode,
+      mode === "unsupported_general_query" ? "unsupported_general_query" : "source_grounded_research_only",
+      "needs_lawyer_review",
+    ])),
+    needs_lawyer_review: true,
+    answer_safe: false,
+    supported_demo_vertical: mode === "demo_supported",
+    unsupported_reason: mode === "unsupported_general_query"
+      ? "This query is outside the two source-gated demo verticals unless a separate verified vertical bundle is loaded."
+      : "",
+    layer_order: [
+      "legal_research_case_law_analysis",
+      "reusable_sop_playbook",
+      "forms_document_pack",
+    ],
+    forms_and_sops_policy: "forms and SOPs are downstream of legal issue/authority classification",
+  };
+}
+
+function unsupportedSections() {
+  return [
+    {
+      heading: "Short Answer",
+      items: ["This query is outside the currently source-gated demo verticals unless a separate verified vertical bundle is loaded. Treat this as unsupported general research orientation only, not a general HK legal AI answer."],
+    },
+    {
+      heading: "Issues",
+      items: ["The legal issue, field, procedural posture and relief have not been source-grounded by a registered vertical pack."],
+    },
+    {
+      heading: "Governing Law / Elements",
+      items: ["No governing law or element test is treated as established for this unsupported query."],
+    },
+    {
+      heading: "Relevant Authorities",
+      items: ["No verified statute, public judgment or practice-direction source card is attached for this unsupported query."],
+    },
+    {
+      heading: "Case-by-Case Authorities",
+      items: ["No case-by-case authority is attached; do not cite case law until paragraph cards and digest cards are verified."],
+    },
+    {
+      heading: "Extracted Legal Principles",
+      items: ["No extracted legal principle is answer authority for this unsupported query."],
+    },
+    {
+      heading: "Application to User Facts",
+      items: ["The user's facts should be mapped to issues only after a supported vertical exists. At present, any application would be speculative."],
+    },
+    {
+      heading: "Evidence Analysis",
+      items: ["No uploaded evidence has been parsed. Keep user facts, document evidence, legal authorities and AI inference separate."],
+    },
+    {
+      heading: "Missing Facts",
+      items: ["Supported field/vertical, procedural posture, relevant documents, official sources, paragraph proof and lawyer review status."],
+    },
+    {
+      heading: "Practical Next Steps",
+      items: ["Route the query to a supported vertical or create a source-grounded vertical pack before answering.", "Add official source cards, paragraph cards where cases are used, issue tags and golden queries before final advice."],
+    },
+    {
+      heading: "Source Audit",
+      items: ["Product mode: unsupported_general_query.", "No final legal proposition is source-grounded by this response.", "Forms and SOPs are downstream and are not recommended for this unsupported query."],
+    },
+    {
+      heading: "Documents / Forms",
+      items: ["No document pack is recommended for this unsupported query."],
+    },
+  ];
+}
+
 function buildMarkdown(answer = {}, sections = []) {
   const lines = [];
   if (answer.title) lines.push(`# ${answer.title}`);
@@ -68,22 +182,35 @@ function buildMarkdown(answer = {}, sections = []) {
   return `${lines.join("\n").trim()}\n`;
 }
 
-function buildLegalResearchPresentation({ applied = {}, matched = [], warnings = [] } = {}) {
+function buildLegalResearchPresentation({ applied = {}, matched = [], warnings = [], legalIngestBundle = null } = {}) {
   const answer = applied.applied_answer || {};
   const sourceAudit = applied.source_audit || {};
-  const sections = normalizeSections(answer.sections || []);
-  const headings = sections.map(section => section.heading);
-  const memoHeadingCoverage = MEMO_HEADINGS.filter(heading => headings.includes(heading));
   const sourceStatus = claimStatus(sourceAudit);
   const source_links = sourceLinksFromAudit(sourceAudit);
+  const product_mode = buildProductMode({ applied, legalIngestBundle });
+  const displayAnswer = product_mode.mode === "unsupported_general_query"
+    ? {
+        ...answer,
+        title: "Unsupported General Query - Source Verification Required",
+        short_answer: "This query is outside the currently source-gated demo verticals unless a separate verified vertical bundle is loaded. Treat this as unsupported general research orientation only, not final HK legal advice.",
+      }
+    : answer;
+  const sections = product_mode.mode === "unsupported_general_query"
+    ? unsupportedSections()
+    : normalizeSections(answer.sections || []);
+  const headings = sections.map(section => section.heading);
+  const memoHeadingCoverage = MEMO_HEADINGS.filter(heading => headings.includes(heading));
 
   return {
     presentation_mode: "answer_first_source_gated",
+    product_mode,
     legal_research_answer: {
-      title: answer.title || "Source-Gated Legal Research Answer",
-      short_answer: answer.short_answer || "",
+      title: displayAnswer.title || "Source-Gated Legal Research Answer",
+      short_answer: displayAnswer.short_answer || "",
       sections,
       memo_heading_coverage: memoHeadingCoverage,
+      product_mode,
+      product_layers: answer.product_layers || [],
       source_links,
       source_status: {
         display: "source_audit_collapsed",
@@ -95,10 +222,29 @@ function buildLegalResearchPresentation({ applied = {}, matched = [], warnings =
       },
       debug_hidden_by_default: true,
     },
-    answer_markdown: buildMarkdown(answer, sections),
+    answer_markdown: buildMarkdown(displayAnswer, sections),
     audit_trail: {
       display: "collapsed",
       debug_hidden_by_default: true,
+      legal_source_audit: {
+        display: "collapsed",
+        claims_count: sourceStatus.claims_count,
+        verification_status: sourceAudit.verification_status || "research_only",
+      },
+      evidence_source_audit: {
+        display: "collapsed",
+        uploaded_evidence_ingested: false,
+        note: "No uploaded evidence parser is invoked by this endpoint; user facts are separated from legal authorities.",
+      },
+      user_fact_audit: {
+        display: "collapsed",
+        facts_source: "user_query_and_structured_fact_extractor",
+      },
+      inference_audit: {
+        display: "collapsed",
+        llm_status: answer.llm_status || "not_invoked_or_not_reported",
+        answer_generation_mode: answer.answer_generation_mode || answer.mode || "research_only",
+      },
       raw_graph_matches_count: matched.length,
       source_audit_claims_count: sourceStatus.claims_count,
       warnings_count: warnings.length,
@@ -109,5 +255,6 @@ function buildLegalResearchPresentation({ applied = {}, matched = [], warnings =
 
 module.exports = {
   MEMO_HEADINGS,
+  buildProductMode,
   buildLegalResearchPresentation,
 };

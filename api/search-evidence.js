@@ -1030,10 +1030,11 @@ module.exports = async function handler(req, res) {
       ? legalAnswerCache.answer_json
       : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched, legalIngestBundle });
   const warnings = Array.from(new Set(warningsForResult(matched, ai.status, backendStatus, legalSourceCardCount).concat(aiWarnings)));
-  const presentation = buildLegalResearchPresentation({ applied, matched, warnings });
+  const presentation = buildLegalResearchPresentation({ applied, matched, warnings, legalIngestBundle });
   const responsePayload = {
     query,
     presentation_mode: presentation.presentation_mode,
+    product_mode: presentation.product_mode,
     legal_research_answer: presentation.legal_research_answer,
     answer_markdown: presentation.answer_markdown,
     audit_trail: presentation.audit_trail,

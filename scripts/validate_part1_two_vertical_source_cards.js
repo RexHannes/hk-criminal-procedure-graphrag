@@ -7,6 +7,7 @@ const { composeAnswer } = require("../src/api/answer-composers");
 const { REQUIRED_HEADINGS } = require("../src/legal_answer/applied_analysis/legal_research_answer_renderer");
 const {
   CASE_DIGEST_CARDS_PATH,
+  PARAGRAPH_CARDS_PATH,
   PRINCIPLE_CARDS_PATH,
   SOURCE_CARDS_PATH,
   loadResearchCards,
@@ -59,6 +60,23 @@ function validateSourceCards(cards, errors) {
   }
 }
 
+function validateParagraphCards(cards, errors) {
+  const seen = new Set();
+  for (const paragraph of cards.paragraph_cards || []) {
+    assert(paragraph.paragraph_id, "paragraph card missing paragraph_id", errors);
+    assert(!seen.has(paragraph.paragraph_id), `duplicate paragraph card ${paragraph.paragraph_id}`, errors);
+    seen.add(paragraph.paragraph_id);
+    assert(paragraph.case_id && paragraph.case_name && paragraph.citation && paragraph.court, `${paragraph.paragraph_id}: case identity incomplete`, errors);
+    assert(paragraph.para_no, `${paragraph.paragraph_id}: missing para_no`, errors);
+    assert(paragraph.paragraph_text?.length >= 40, `${paragraph.paragraph_id}: paragraph_text too thin`, errors);
+    assert(paragraph.source_url?.includes(`#p${paragraph.para_no}`), `${paragraph.paragraph_id}: source_url missing paragraph anchor`, errors);
+    assert(paragraph.checksum === sha256(paragraph.paragraph_text), `${paragraph.paragraph_id}: checksum mismatch`, errors);
+    assert(cards.sourceById.has(paragraph.source_card_id), `${paragraph.paragraph_id}: source_card_id missing from source cards`, errors);
+    assert(paragraph.verification_status === "source_verified_public", `${paragraph.paragraph_id}: paragraph should be source_verified_public`, errors);
+    assert(paragraph.answer_layer_status === "research_only", `${paragraph.paragraph_id}: paragraph must remain research_only`, errors);
+  }
+}
+
 function validateDeck(deck, cards, errors) {
   assert(deck.legal_research_answer, `${deck.rule_deck_id}: missing legal_research_answer`, errors);
   const deckText = blob(deck);
@@ -88,6 +106,10 @@ function validatePrinciples(cards, errors) {
     assert(principle.principle_text?.length >= 20, `${principle.principle_id}: principle text too thin`, errors);
     assert(principle.exact_quote?.length >= 10, `${principle.principle_id}: exact_quote missing`, errors);
     assert((principle.source_card_ids || []).every(id => cards.sourceById.has(id)), `${principle.principle_id}: missing source_card_id`, errors);
+    if (principle.source_type === "case") {
+      assert((principle.paragraph_card_ids || []).length >= 1, `${principle.principle_id}: case principle missing paragraph_card_ids`, errors);
+      assert((principle.paragraph_card_ids || []).every(id => cards.paragraphById.has(id)), `${principle.principle_id}: missing paragraph_card_id`, errors);
+    }
     assert(principle.answer_layer_status === "research_only", `${principle.principle_id}: must remain research_only`, errors);
     assert(!blob(principle).includes("case_recall_only"), `${principle.principle_id}: case_recall_only leaked into principle`, errors);
   }
@@ -98,6 +120,8 @@ function validateCaseDigests(cards, errors) {
     assert(digest.case_digest_card_id, "case digest missing id", errors);
     assert(digest.case_name && digest.citation && digest.court, `${digest.case_digest_card_id}: case identity incomplete`, errors);
     assert((digest.hklii_paragraph_urls || []).every(url => url.includes("#p")), `${digest.case_digest_card_id}: paragraph URL missing #p anchor`, errors);
+    assert((digest.paragraph_card_ids || []).length >= 1, `${digest.case_digest_card_id}: paragraph_card_ids missing`, errors);
+    assert((digest.paragraph_card_ids || []).every(id => cards.paragraphById.has(id)), `${digest.case_digest_card_id}: missing paragraph card`, errors);
     assert((digest.exact_quotes || []).length >= 1, `${digest.case_digest_card_id}: exact_quotes missing`, errors);
     assert(digest.answer_layer_status === "research_only", `${digest.case_digest_card_id}: must remain research_only`, errors);
   }
@@ -145,11 +169,18 @@ function validateAnswers(errors) {
 function main() {
   const errors = [];
   assert(fs.existsSync(SOURCE_CARDS_PATH), "source card artifact missing", errors);
+  assert(fs.existsSync(PARAGRAPH_CARDS_PATH), "paragraph card artifact missing", errors);
   assert(fs.existsSync(PRINCIPLE_CARDS_PATH), "principle card artifact missing", errors);
   assert(fs.existsSync(CASE_DIGEST_CARDS_PATH), "case digest artifact missing", errors);
 
   const cards = loadResearchCards();
+  const sourcePayload = readJson(SOURCE_CARDS_PATH);
+  assert(sourcePayload.source_policy?.public_sources_only === true, "source policy must be public-sources-only", errors);
+  for (const sourceClass of ["public_statute", "public_judgment", "public_practice_direction"]) {
+    assert((sourcePayload.source_policy?.allowed_public_answer_source_classes || []).includes(sourceClass), `source policy missing ${sourceClass}`, errors);
+  }
   validateSourceCards(cards, errors);
+  validateParagraphCards(cards, errors);
   validatePrinciples(cards, errors);
   validateCaseDigests(cards, errors);
   for (const deckId of TARGET_DECKS) validateDeck(loadDeck(deckId), cards, errors);

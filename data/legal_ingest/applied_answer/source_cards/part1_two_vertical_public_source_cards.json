@@ -5,7 +5,18 @@
     "public_sources_only": true,
     "canonical_statute_source": "Hong Kong e-Legislation",
     "machine_extraction_source": "HKLII public API / LegalRef public judgment HTML",
-    "answer_safe_by_default": false
+    "answer_safe_by_default": false,
+    "allowed_public_answer_source_classes": [
+      "public_statute",
+      "public_judgment",
+      "public_practice_direction"
+    ],
+    "excluded_public_demo_source_classes": [
+      "private_textbook",
+      "private_precedent",
+      "client_document",
+      "ai_generated_candidate"
+    ]
   },
   "source_cards": [
     {

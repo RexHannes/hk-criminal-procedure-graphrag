@@ -30,6 +30,9 @@ jobs:
       - name: Validate tree grounding contract
         run: node scripts/validate_tree_grounding_contract.js
 
+      - name: Validate anti-hallucination contract
+        run: node scripts/validate_anti_hallucination_contract.js
+
       - name: Dry-run Part 1 source-card Qdrant indexer
         run: node scripts/index_part1_two_vertical_source_cards_qdrant.js --dry-run
 

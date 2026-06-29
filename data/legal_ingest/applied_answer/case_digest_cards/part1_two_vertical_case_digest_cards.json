@@ -53,6 +53,10 @@
         "current_treatment_status": "not_fully_checked"
       },
       "source_card_ids": ["hk_hkcfa_2022_7_chan_kam_ching_p148_149"],
+      "paragraph_card_ids": [
+        "hk_hkcfa_2022_7_chan_kam_ching_p148",
+        "hk_hkcfa_2022_7_chan_kam_ching_p149"
+      ],
       "hklii_paragraph_urls": [
         "https://www.hklii.hk/en/cases/hkcfa/2022/7#p148",
         "https://www.hklii.hk/en/cases/hkcfa/2022/7#p149"
@@ -90,7 +94,7 @@
         }
       ],
       "obiter_principles": [],
-      "key_paragraphs": ["1", "23", "24"],
+      "key_paragraphs": ["1", "24"],
       "exact_quotes": [
         "offence of theft, contrary to section 9 of the Theft Ordinance, Cap 210",
         "The appellant was convicted of an offence of theft by pickpocketing"
@@ -104,9 +108,12 @@
         "current_treatment_status": "not_fully_checked"
       },
       "source_card_ids": ["hk_hkcfi_2022_1220_khan_altaf_p1_24"],
+      "paragraph_card_ids": [
+        "hk_hkcfi_2022_1220_khan_altaf_p1",
+        "hk_hkcfi_2022_1220_khan_altaf_p24"
+      ],
       "hklii_paragraph_urls": [
         "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p1",
-        "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p23",
         "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p24"
       ],
       "answer_layer_status": "research_only",
