@@ -129,5 +129,26 @@
   "duplicate_rate": 0,
   "failed_ingest_count": 0,
   "retryable_failure_count": 0,
-  "ingest_queue_count": 100
+  "ingest_queue_count": 100,
+  "candidate_extractions_total": 42,
+  "candidates_verified": 40,
+  "candidates_rejected": 2,
+  "rejection_reasons": {
+    "unsupported_principle": 4,
+    "quote_not_found": 3,
+    "missing_paragraph": 2,
+    "missing_case": 1,
+    "private_or_nonpublic_source": 1
+  },
+  "verified_cases_added": 40,
+  "paragraph_cards_added": 120,
+  "propositions_added": 120,
+  "principles_added": 120,
+  "digests_added": 40,
+  "candidate_paragraph_cards_added": 120,
+  "candidate_propositions_added": 120,
+  "candidate_principles_added": 120,
+  "candidate_digests_added": 40,
+  "candidate_answer_safe_count": 0,
+  "fast_growth_workflow": "candidate_extractor_to_public_paragraph_verification_to_research_only_cards"
 }

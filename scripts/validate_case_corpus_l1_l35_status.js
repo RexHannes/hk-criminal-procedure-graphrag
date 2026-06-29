@@ -91,6 +91,22 @@ assert(report.duplicate_rate === 0, "duplicate_rate must be 0 for sample");
 assert(report.failed_ingest_count === 0, "failed_ingest_count must be 0");
 assert(report.retryable_failure_count === 0, "retryable_failure_count must be 0");
 assert(markdown.includes("RAG Pipeline Metrics"), "status markdown missing RAG pipeline metrics");
+assert(report.candidate_extractions_total >= 40, "candidate_extractions_total missing/too low");
+assert(report.candidates_verified >= 25, "candidates_verified missing/too low");
+assert(report.candidates_rejected >= 1, "candidates_rejected missing/too low");
+assert(report.verified_cases_added >= 25, "verified_cases_added missing/too low");
+assert(report.paragraph_cards_added >= 100, "paragraph_cards_added missing/too low");
+assert(report.propositions_added >= 50, "propositions_added missing/too low");
+assert(report.principles_added >= 25, "principles_added missing/too low");
+assert(report.digests_added >= 25, "digests_added missing/too low");
+assert(report.candidate_paragraph_cards_added >= 100, "candidate_paragraph_cards_added missing/too low");
+assert(report.candidate_propositions_added >= 50, "candidate_propositions_added missing/too low");
+assert(report.candidate_principles_added >= 25, "candidate_principles_added missing/too low");
+assert(report.candidate_digests_added >= 25, "candidate_digests_added missing/too low");
+assert(report.candidate_answer_safe_count === 0, "candidate workflow cannot create answer_safe cards");
+assert(report.fast_growth_workflow === "candidate_extractor_to_public_paragraph_verification_to_research_only_cards", "fast growth workflow marker missing");
+assert(markdown.includes("Candidate Fast-Growth Metrics"), "status markdown missing candidate fast-growth metrics");
+assert(markdown.includes("candidate extractors only"), "status markdown missing candidate-only boundary");
 
 if (errors.length) {
   console.error("Case corpus L1-L3.5 status validation failed:");

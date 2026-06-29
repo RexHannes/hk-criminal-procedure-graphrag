@@ -65,6 +65,22 @@ The retrieval layer now also has a non-network ingest/chunk/embed/index/eval dry
 
 This is the correct demo framing: retrieval plumbing, source-proof filtering and abstention are present for the sample corpus; broad HK legal RAG and L4 answer-safe advice are still not claimed.
 
+The fast-growth factory is now also present for candidate extraction:
+
+| Metric | Current sample |
+|---|---:|
+| Candidate extractions | 42 |
+| Candidates verified | 40 |
+| Candidates rejected | 2 |
+| Verified cases | 40 |
+| Candidate paragraph cards | 120 |
+| Candidate propositions | 120 |
+| Candidate principles | 120 |
+| Candidate digests | 40 |
+| Candidate answer-safe cards | 0 |
+
+Correct framing: NotebookLM, DeepSeek, Claude, GPT and manual notes can accelerate candidate extraction, but HKLII/LegalRef paragraph verification remains the source of truth. Rejected candidates are retained in a report instead of being silently promoted.
+
 Status dashboard:
 
 ```text
@@ -72,6 +88,8 @@ artifacts/case_corpus_l1_l35_status.json
 artifacts/case_corpus_l1_l35_status.md
 artifacts/case_corpus_ingest_run_status.json
 artifacts/case_corpus_retrieval_eval.json
+artifacts/candidate_extraction_verification_report.json
+artifacts/candidate_verified_cards_report.json
 ```
 
 Detailed pipeline doc:

@@ -78,6 +78,41 @@ Every returned authority must pass the source-proof filter:
 
 All corpus outputs remain `research_only` and `lawyer_review_required`. L4 answer-safe promotion is not implemented.
 
+## Fast Candidate-Growth Workflow
+
+This PR also adds the faster growth path for NotebookLM, DeepSeek, Claude, GPT or manual notes:
+
+```text
+candidate extraction
+  -> public HKLII/LegalRef paragraph verification
+  -> verified paragraph/proposition/principle/digest cards
+  -> validators
+  -> research-only retrieval
+```
+
+The candidate extractor is never authority. Its job is to propose issue tags, principles, key paragraphs, summaries and quotes. The verifier accepts only candidates whose case identity, public source URL, paragraph anchor and quote support match the committed HKLII paragraph cards. Unsupported, private-source, missing-paragraph and quote-not-found candidates go to the rejected report.
+
+Current sample fast-growth run:
+
+- 42 candidate extractions;
+- 40 verified candidates;
+- 2 rejected candidates;
+- 40 verified cases;
+- 120 verified paragraph cards;
+- 120 proposition cards;
+- 120 principle cards;
+- 40 digest cards;
+- 0 answer-safe cards.
+
+The sample files are:
+
+```text
+data/legal_ingest/case_corpus/candidate_extractions/sample_candidate_extractions.jsonl
+artifacts/candidate_extraction_verification_report.json
+data/legal_ingest/case_corpus/candidate_verified/
+artifacts/candidate_verified_cards_report.json
+```
+
 ## API Usage
 
 `/api/search-evidence` supports the following opt-in request fields:
@@ -115,6 +150,9 @@ node scripts/embed_case_corpus_chunks.js --dry-run --sample --no-network
 node scripts/index_case_corpus_qdrant.js --dry-run --sample --no-network
 node scripts/evaluate_case_corpus_retrieval.js --sample
 node scripts/run_case_corpus_ingest_pipeline.js --sample --no-network --dry-run
+node scripts/build_sample_candidate_extractions.js --limit 40
+node scripts/run_candidate_to_l35_batch.js --dry-run --build-cards
+node scripts/validate_candidate_extraction_verification.js
 node scripts/validate_case_corpus_l1_l35_status.js
 node scripts/generate_case_corpus_l35_demo_outputs.js
 node scripts/validate_case_corpus_l35_demo_outputs.js
@@ -136,6 +174,8 @@ These reports distinguish actual counts and coverage:
 - L4 not implemented.
 
 The RAG pipeline dashboard also reports chunk, embedding, dry-run vector, retrieval-eval, duplicate and ingest-failure metrics. Current sample metrics include 1,012 chunks, 1,012 embedded dry-run vectors, Precision@5 of 0.925, Recall@10 of 0.341798, source-proof rate of 1, wrong-domain leak rate of 0, unsupported-query abstention rate of 1, duplicate rate of 0, and zero failed or retryable ingest records.
+
+The candidate fast-growth dashboard reports candidate extraction totals, verified/rejected candidates, rejection reasons, verified cases added, candidate paragraph cards, propositions, principles and digests. These are speed-layer metrics only; they do not change the L4 answer-safe boundary.
 
 The safe wording is:
 

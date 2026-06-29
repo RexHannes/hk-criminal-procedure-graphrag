@@ -19,6 +19,14 @@ const PATHS = {
   chunksSample: path.join(CASE_CORPUS_DIR, "chunks_sample_100.jsonl"),
   embeddedChunksManifestSample: path.join(CASE_CORPUS_DIR, "embedded_chunks_manifest_sample_100.jsonl"),
   retrievalEvalQueriesSample: path.join(CASE_CORPUS_DIR, "retrieval_eval_queries_sample.json"),
+  candidateExtractionsSample: path.join(CASE_CORPUS_DIR, "candidate_extractions", "sample_candidate_extractions.jsonl"),
+  candidateVerifiedDir: path.join(CASE_CORPUS_DIR, "candidate_verified"),
+  candidateVerifiedParagraphs: path.join(CASE_CORPUS_DIR, "candidate_verified", "paragraph_cards_from_candidates.jsonl"),
+  candidateVerifiedPropositions: path.join(CASE_CORPUS_DIR, "candidate_verified", "proposition_cards_from_candidates.jsonl"),
+  candidateVerifiedPrinciples: path.join(CASE_CORPUS_DIR, "candidate_verified", "principle_cards_from_candidates.jsonl"),
+  candidateVerifiedDigests: path.join(CASE_CORPUS_DIR, "candidate_verified", "case_digest_cards_from_candidates.jsonl"),
+  candidateVerifiedIssueMap: path.join(CASE_CORPUS_DIR, "candidate_verified", "issue_case_map_from_candidates.jsonl"),
+  candidateGeneratedManifest: path.join(CASE_CORPUS_DIR, "candidate_verified", "candidate_generated_cards_manifest.json"),
 };
 
 function ensureCaseCorpusDir() {

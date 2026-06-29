@@ -94,3 +94,29 @@ Do not describe this sample as 10k answer-safe propositions, whole HK legal RAG,
 | Duplicate rate | 0 |
 | Failed ingest count | 0 |
 | Retryable failure count | 0 |
+
+## Candidate Fast-Growth Metrics
+
+NotebookLM, DeepSeek, Claude, GPT and manual outputs are candidate extractors only. HKLII/LegalRef paragraph verification remains the source of truth.
+
+| Metric | Value |
+|---|---:|
+| Candidate extractions total | 42 |
+| Candidates verified | 40 |
+| Candidates rejected | 2 |
+| Verified cases added | 40 |
+| Candidate paragraph cards added | 120 |
+| Candidate propositions added | 120 |
+| Candidate principles added | 120 |
+| Candidate digests added | 40 |
+| Candidate answer-safe count | 0 |
+
+### Candidate Rejection Reasons
+
+| Reason | Count |
+|---|---:|
+| unsupported_principle | 4 |
+| quote_not_found | 3 |
+| missing_paragraph | 2 |
+| missing_case | 1 |
+| private_or_nonpublic_source | 1 |
