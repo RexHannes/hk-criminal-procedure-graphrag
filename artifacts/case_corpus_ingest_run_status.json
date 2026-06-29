@@ -9,15 +9,18 @@
   "embedded_chunk_count": 1012,
   "dry_run_vector_count": 1012,
   "retrieval_eval_metrics": {
-    "recall_at_5": 0.233399,
-    "recall_at_10": 0.341798,
-    "precision_at_5": 0.925,
-    "mrr": 1,
-    "issue_match_rate": 0.9,
+    "recall_at_5": 0.927273,
+    "recall_at_10": 0.954545,
+    "legacy_corpus_recall_at_5": 0.189844,
+    "legacy_corpus_recall_at_10": 0.296242,
+    "precision_at_5": 0.872727,
+    "mrr": 0.818182,
+    "issue_match_rate": 0.881818,
     "source_proof_rate": 1,
     "paragraph_quote_support_rate": 1,
     "wrong_domain_leak_rate": 0,
-    "unsupported_query_abstention_rate": 1
+    "unsupported_query_abstention_rate": 1,
+    "exact_lookup_hit_rate": 1
   },
   "duplicate_rate": 0,
   "stage_summary": [
@@ -194,8 +197,8 @@
     },
     {
       "stage": "evaluate_retrieval",
-      "attempted_count": 9,
-      "success_count": 9,
+      "attempted_count": 12,
+      "success_count": 12,
       "failed_count": 0,
       "skipped_count": 0,
       "retryable_failures": [],

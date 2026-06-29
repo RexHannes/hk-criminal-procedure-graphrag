@@ -17,7 +17,7 @@ Idempotent sample ingest/chunk/embed/index/eval run for the 100-case public HKLI
 | chunk | 1012 | 1012 | 0 | 0 |
 | embed_dry_run_vectorize | 1012 | 1012 | 0 | 0 |
 | index_dry_run | 1012 | 1012 | 0 | 0 |
-| evaluate_retrieval | 9 | 9 | 0 | 0 |
+| evaluate_retrieval | 12 | 12 | 0 | 0 |
 
 ## Outputs
 

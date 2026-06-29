@@ -83,7 +83,10 @@ assert(report.embedded_chunk_count === embeddedChunks.length, "embedded_chunk_co
 assert(report.dry_run_vector_count === chunks.length, "dry_run_vector_count mismatch");
 assert(report.qdrant_collection_targets?.primary_chunk_collection, "qdrant collection target missing");
 assert(report.retrieval_eval_precision_at_5 > 0, "retrieval precision@5 missing");
-assert(report.retrieval_eval_recall_at_10 > 0, "retrieval recall@10 missing");
+assert(report.retrieval_eval_precision_at_5 >= 0.85, "retrieval precision@5 below target");
+assert(report.retrieval_eval_recall_at_10 >= 0.5, "retrieval recall@10 below target");
+assert(report.retrieval_recall_improvement > 0, "retrieval_recall_improvement missing/non-positive");
+assert(report.retrieval_eval_legacy_corpus_recall_at_10 >= 0, "legacy corpus recall missing");
 assert(report.source_proof_rate === 1, "source_proof_rate must be 1");
 assert(report.wrong_domain_leak_rate === 0, "wrong_domain_leak_rate must be 0");
 assert(report.unsupported_query_abstention_rate === 1, "unsupported_query_abstention_rate must be 1");
@@ -104,9 +107,18 @@ assert(report.candidate_propositions_added >= 50, "candidate_propositions_added 
 assert(report.candidate_principles_added >= 25, "candidate_principles_added missing/too low");
 assert(report.candidate_digests_added >= 25, "candidate_digests_added missing/too low");
 assert(report.candidate_answer_safe_count === 0, "candidate workflow cannot create answer_safe cards");
+assert(report.candidate_cards_demoted >= 1, "candidate_cards_demoted missing/too low");
+assert(report.cards_demoted >= 1, "cards_demoted missing/too low");
 assert(report.fast_growth_workflow === "candidate_extractor_to_public_paragraph_verification_to_research_only_cards", "fast growth workflow marker missing");
 assert(markdown.includes("Candidate Fast-Growth Metrics"), "status markdown missing candidate fast-growth metrics");
 assert(markdown.includes("candidate extractors only"), "status markdown missing candidate-only boundary");
+assert(report.quality_audit_pass_rate >= 0.8, "quality_audit_pass_rate missing/too low");
+assert(report.quality_audited_case_count >= 20, "quality_audited_case_count missing/too low");
+assert(Array.isArray(report.weak_issue_tags), "weak_issue_tags missing");
+assert(report.weak_issue_tags.includes("criminal_law.theft.belonging_to_another"), "weak_issue_tags should flag belonging_to_another");
+assert(report.next_target_500_cases && report.next_target_500_cases.includes("500"), "next_target_500_cases missing");
+assert(markdown.includes("Quality Audit Metrics"), "status markdown missing quality audit metrics");
+assert(markdown.includes("Issue Coverage Audit"), "status markdown missing issue coverage audit");
 
 if (errors.length) {
   console.error("Case corpus L1-L3.5 status validation failed:");

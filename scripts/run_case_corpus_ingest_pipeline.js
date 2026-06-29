@@ -95,6 +95,8 @@ function updateMainStatus({ corpus, chunks, embeddingSummary, qdrantSummary, eva
   status.qdrant_collection_targets = qdrantSummary.qdrant_collection_targets || {};
   status.retrieval_eval_precision_at_5 = evalReport.metrics?.precision_at_5 || 0;
   status.retrieval_eval_recall_at_10 = evalReport.metrics?.recall_at_10 || 0;
+  status.retrieval_eval_legacy_corpus_recall_at_10 = evalReport.metrics?.legacy_corpus_recall_at_10 || 0;
+  status.retrieval_recall_improvement = Number(((evalReport.metrics?.recall_at_10 || 0) - 0.341798).toFixed(6));
   status.source_proof_rate = evalReport.metrics?.source_proof_rate || 0;
   status.wrong_domain_leak_rate = evalReport.metrics?.wrong_domain_leak_rate || 0;
   status.unsupported_query_abstention_rate = evalReport.metrics?.unsupported_query_abstention_rate || 0;
@@ -118,6 +120,8 @@ function updateMainStatus({ corpus, chunks, embeddingSummary, qdrantSummary, eva
       `| Dry-run vectors | ${status.dry_run_vector_count} |`,
       `| Retrieval eval Precision@5 | ${status.retrieval_eval_precision_at_5} |`,
       `| Retrieval eval Recall@10 | ${status.retrieval_eval_recall_at_10} |`,
+      `| Retrieval legacy corpus Recall@10 | ${status.retrieval_eval_legacy_corpus_recall_at_10} |`,
+      `| Retrieval Recall@10 improvement vs prior | ${status.retrieval_recall_improvement} |`,
       `| Source proof rate | ${status.source_proof_rate} |`,
       `| Wrong-domain leak rate | ${status.wrong_domain_leak_rate} |`,
       `| Unsupported-query abstention rate | ${status.unsupported_query_abstention_rate} |`,

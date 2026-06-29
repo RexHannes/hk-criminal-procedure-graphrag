@@ -25,6 +25,15 @@
     "propositions_added": 120,
     "principles_added": 120,
     "digests_added": 40,
+    "demotion_reasons": {
+      "current_treatment_unchecked": 40,
+      "issue_tag_overbroad": 36,
+      "quote_context_insufficient": 25,
+      "sentencing_only_not_liability": 25,
+      "quote_too_short": 7,
+      "background_only_not_principle": 4
+    },
+    "cards_demoted": 240,
     "answer_safe_count": 0
   },
   "accepted_candidates": [
@@ -82,7 +91,11 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -100,7 +113,11 @@
           ],
           "proposition_text": "This paragraph is background-only public case context and does not itself state a legal rule.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "background_only_not_principle",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -118,7 +135,11 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -133,6 +154,10 @@
             "criminal_law.theft",
             "criminal_law.theft.sentencing",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -145,6 +170,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.theft"
+          ],
+          "demotion_flags": [
+            "background_only_not_principle",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -157,10 +186,19 @@
             "criminal_law.theft",
             "criminal_law.theft.sentencing",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "current_treatment_unchecked",
+        "background_only_not_principle"
+      ],
       "rejection_reasons": []
     },
     {
@@ -220,7 +258,11 @@
           ],
           "proposition_text": "This paragraph identifies research-only theft or Theft Ordinance context and should be checked against the full judgment before use.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -239,7 +281,10 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on dishonesty or mens rea and requires current-treatment and lawyer review.",
           "legal_function": "test",
-          "authority_role_candidate": "ratio_candidate"
+          "authority_role_candidate": "ratio_candidate",
+          "demotion_flags": [
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -258,7 +303,10 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on dishonesty or mens rea and requires current-treatment and lawyer review.",
           "legal_function": "test",
-          "authority_role_candidate": "ratio_candidate"
+          "authority_role_candidate": "ratio_candidate",
+          "demotion_flags": [
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -274,6 +322,11 @@
             "criminal_law.dishonesty",
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked",
+            "background_only_not_principle"
           ]
         },
         {
@@ -287,6 +340,9 @@
             "criminal_law.dishonesty",
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea"
+          ],
+          "demotion_flags": [
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -300,10 +356,18 @@
             "criminal_law.dishonesty",
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea"
+          ],
+          "demotion_flags": [
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "current_treatment_unchecked",
+        "background_only_not_principle"
+      ],
       "rejection_reasons": []
     },
     {
@@ -368,7 +432,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -388,7 +457,13 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -408,7 +483,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -425,6 +504,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.theft.handling_stolen_goods",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -439,6 +523,12 @@
             "criminal_law.deception",
             "criminal_law.theft.handling_stolen_goods",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -453,10 +543,20 @@
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing",
             "criminal_law.theft.handling_stolen_goods"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -510,7 +610,11 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -527,7 +631,11 @@
           ],
           "proposition_text": "This paragraph identifies research-only theft or Theft Ordinance context and should be checked against the full judgment before use.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -544,7 +652,11 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -558,6 +670,11 @@
           "issue_tags": [
             "criminal_law.theft",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked",
+            "sentencing_only_not_liability"
           ]
         },
         {
@@ -569,6 +686,11 @@
           "issue_tags": [
             "criminal_law.theft",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked",
+            "background_only_not_principle"
           ]
         },
         {
@@ -580,10 +702,21 @@
           "issue_tags": [
             "criminal_law.theft",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked",
+            "sentencing_only_not_liability"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
       "rejection_reasons": []
     },
     {
@@ -647,7 +780,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -667,7 +805,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -687,7 +830,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -704,6 +852,11 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -718,6 +871,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -732,10 +890,21 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_context_insufficient"
+      ],
       "rejection_reasons": []
     },
     {
@@ -802,7 +971,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -823,7 +996,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -844,7 +1022,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -862,6 +1044,10 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -877,6 +1063,11 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -892,10 +1083,19 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_context_insufficient"
+      ],
       "rejection_reasons": []
     },
     {
@@ -956,7 +1156,13 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -975,7 +1181,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -994,7 +1204,13 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -1010,6 +1226,12 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1023,6 +1245,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1036,10 +1262,23 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_too_short",
+        "quote_context_insufficient",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -1103,7 +1342,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -1123,7 +1366,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -1143,7 +1390,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -1160,6 +1411,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1174,6 +1429,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1188,10 +1447,18 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -1255,7 +1522,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -1275,7 +1546,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -1295,7 +1571,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -1312,6 +1592,10 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1326,6 +1610,11 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1340,10 +1629,19 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -1400,7 +1698,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -1418,7 +1721,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -1436,7 +1743,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -1451,6 +1762,11 @@
             "criminal_law.theft",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1463,6 +1779,10 @@
             "criminal_law.theft",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1475,10 +1795,19 @@
             "criminal_law.theft",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -1543,7 +1872,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -1563,7 +1896,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -1583,7 +1921,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -1600,6 +1943,10 @@
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1614,6 +1961,11 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1628,10 +1980,21 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability",
+        "quote_context_insufficient"
+      ],
       "rejection_reasons": []
     },
     {
@@ -1693,7 +2056,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -1712,7 +2079,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -1731,7 +2103,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -1747,6 +2124,10 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1760,6 +2141,11 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1773,10 +2159,21 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -1838,7 +2235,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -1857,7 +2258,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -1876,7 +2282,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -1892,6 +2303,10 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1905,6 +2320,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -1918,10 +2338,20 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -1985,7 +2415,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -2005,7 +2439,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -2025,7 +2464,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -2042,6 +2486,10 @@
             "criminal_law.theft.sentencing",
             "criminal_procedure.bail",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2056,6 +2504,11 @@
             "criminal_law.deception",
             "criminal_procedure.bail",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2070,10 +2523,20 @@
             "criminal_law.deception",
             "criminal_law.theft",
             "criminal_procedure.bail"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -2134,7 +2597,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -2153,7 +2620,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -2172,7 +2643,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -2188,6 +2664,10 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2201,6 +2681,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2214,10 +2698,20 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.theft"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_context_insufficient"
+      ],
       "rejection_reasons": []
     },
     {
@@ -2291,7 +2785,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -2315,7 +2813,12 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -2339,7 +2842,13 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on dishonesty or mens rea and requires current-treatment and lawyer review.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -2360,6 +2869,10 @@
             "criminal_law.dishonesty",
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2378,6 +2891,11 @@
             "criminal_law.dishonesty",
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2396,10 +2914,22 @@
             "criminal_law.fraud",
             "criminal_law.theft",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_context_insufficient",
+        "quote_too_short"
+      ],
       "rejection_reasons": []
     },
     {
@@ -2463,7 +2993,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -2483,7 +3018,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -2503,7 +3042,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -2520,6 +3063,11 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2534,6 +3082,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2548,10 +3100,19 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -2616,7 +3177,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -2636,7 +3201,13 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -2656,7 +3227,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -2673,6 +3248,10 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2687,6 +3266,12 @@
             "criminal_procedure.interview_caution",
             "criminal_law.theft.appropriation",
             "criminal_law.theft"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2701,10 +3286,20 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -2780,7 +3375,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -2805,7 +3404,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on dishonesty or mens rea and requires current-treatment and lawyer review.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -2830,7 +3433,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -2852,6 +3459,10 @@
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2871,6 +3482,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.fraud",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -2890,10 +3505,18 @@
             "criminal_law.dishonesty",
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -2958,7 +3581,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -2978,7 +3605,13 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -2998,7 +3631,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -3015,6 +3653,10 @@
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3029,6 +3671,12 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3043,10 +3691,21 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -3110,7 +3769,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -3130,7 +3794,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -3150,7 +3818,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -3167,6 +3839,11 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3181,6 +3858,10 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3195,10 +3876,19 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -3267,7 +3957,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -3289,7 +3984,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -3311,7 +4010,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -3330,6 +4034,11 @@
             "criminal_procedure.interview_caution",
             "criminal_law.theft.belonging_to_another",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3346,6 +4055,10 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3362,10 +4075,21 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.belonging_to_another"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_context_insufficient"
+      ],
       "rejection_reasons": []
     },
     {
@@ -3429,7 +4153,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -3449,7 +4177,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -3469,7 +4202,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -3486,6 +4224,10 @@
             "criminal_law.deception",
             "criminal_law.theft.handling_stolen_goods",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3500,6 +4242,11 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_law.theft.handling_stolen_goods"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3514,10 +4261,20 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_law.theft.handling_stolen_goods"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -3588,7 +4345,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -3611,7 +4372,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on dishonesty or mens rea and requires current-treatment and lawyer review.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -3634,7 +4400,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -3654,6 +4424,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3671,6 +4445,11 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3688,10 +4467,19 @@
             "criminal_law.dishonesty",
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_context_insufficient"
+      ],
       "rejection_reasons": []
     },
     {
@@ -3752,7 +4540,13 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -3771,7 +4565,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -3790,7 +4589,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -3806,6 +4610,12 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3819,6 +4629,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3832,10 +4647,21 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -3896,7 +4722,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -3915,7 +4745,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -3934,7 +4769,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -3950,6 +4789,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3963,6 +4806,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -3976,10 +4824,19 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -4043,7 +4900,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -4063,7 +4924,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -4083,7 +4948,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -4100,6 +4969,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4114,6 +4987,10 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4128,10 +5005,18 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -4193,7 +5078,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -4212,7 +5102,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -4231,7 +5125,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -4247,6 +5145,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4260,6 +5163,10 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4273,10 +5180,19 @@
             "criminal_law.deception",
             "criminal_law.theft.sentencing",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -4337,7 +5253,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -4356,7 +5277,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -4375,7 +5300,13 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -4391,6 +5322,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4404,6 +5340,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4417,10 +5357,23 @@
             "criminal_law.deception",
             "criminal_law.theft.sentencing",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_too_short",
+        "quote_context_insufficient"
+      ],
       "rejection_reasons": []
     },
     {
@@ -4478,7 +5431,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -4496,7 +5453,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -4514,7 +5475,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -4529,6 +5494,10 @@
             "criminal_law.theft",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4541,6 +5510,10 @@
             "criminal_law.theft",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4553,10 +5526,18 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -4617,7 +5598,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -4636,7 +5622,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -4655,7 +5646,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -4671,6 +5667,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4684,6 +5685,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4697,10 +5703,20 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -4769,7 +5785,14 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -4791,7 +5814,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -4813,7 +5841,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -4832,6 +5864,13 @@
             "criminal_law.theft.handling_stolen_goods",
             "criminal_law.theft.appropriation",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4848,6 +5887,11 @@
             "criminal_law.theft.handling_stolen_goods",
             "criminal_law.fraud",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4864,10 +5908,21 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_too_short",
+        "quote_context_insufficient",
+        "sentencing_only_not_liability",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -4929,7 +5984,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -4948,7 +6007,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -4967,7 +6030,11 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -4983,6 +6050,10 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -4996,6 +6067,10 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5009,10 +6084,19 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -5077,7 +6161,12 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -5097,7 +6186,13 @@
           ],
           "proposition_text": "This paragraph identifies research-only theft or Theft Ordinance context and should be checked against the full judgment before use.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -5117,7 +6212,11 @@
           ],
           "proposition_text": "This paragraph identifies research-only theft or Theft Ordinance context and should be checked against the full judgment before use.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -5134,6 +6233,11 @@
             "criminal_procedure.interview_caution",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5148,6 +6252,13 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked",
+            "background_only_not_principle"
           ]
         },
         {
@@ -5162,10 +6273,22 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked",
+            "background_only_not_principle"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_too_short",
+        "background_only_not_principle"
+      ],
       "rejection_reasons": []
     },
     {
@@ -5239,7 +6362,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -5263,7 +6391,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on dishonesty or mens rea and requires current-treatment and lawyer review.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -5287,7 +6419,11 @@
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -5308,6 +6444,11 @@
             "criminal_law.theft.appropriation",
             "criminal_law.fraud",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5326,6 +6467,10 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_procedure.interview_caution"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5344,10 +6489,19 @@
             "criminal_law.theft.mens_rea",
             "criminal_law.theft.appropriation",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     },
     {
@@ -5413,7 +6567,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -5434,7 +6592,13 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -5455,7 +6619,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -5473,6 +6641,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5488,6 +6660,12 @@
             "criminal_law.deception",
             "criminal_law.theft.handling_stolen_goods",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5503,10 +6681,20 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_law.theft.handling_stolen_goods"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_too_short",
+        "quote_context_insufficient"
+      ],
       "rejection_reasons": []
     },
     {
@@ -5577,7 +6765,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -5600,7 +6793,13 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on dishonesty or mens rea and requires current-treatment and lawyer review.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -5623,7 +6822,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -5643,6 +6847,11 @@
             "criminal_law.dishonesty",
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5660,6 +6869,12 @@
             "criminal_law.theft",
             "criminal_law.deception",
             "criminal_procedure.bail"
+          ],
+          "demotion_flags": [
+            "quote_too_short",
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5677,10 +6892,22 @@
             "criminal_law.dishonesty",
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "quote_too_short",
+        "quote_context_insufficient"
+      ],
       "rejection_reasons": []
     },
     {
@@ -5744,7 +6971,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -5764,7 +6995,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -5784,7 +7019,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -5801,6 +7041,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5815,6 +7059,10 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5829,10 +7077,20 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_law.theft.appropriation"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -5893,7 +7151,12 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -5912,7 +7175,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -5931,7 +7199,12 @@
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
-          "authority_role_candidate": "sentencing_observation"
+          "authority_role_candidate": "sentencing_observation",
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -5947,6 +7220,11 @@
             "criminal_law.deception",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "quote_context_insufficient",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5960,6 +7238,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -5973,10 +7256,21 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "sentencing_only_not_liability",
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "issue_tag_overbroad",
+        "current_treatment_unchecked",
+        "sentencing_only_not_liability"
+      ],
       "rejection_reasons": []
     },
     {
@@ -6040,7 +7334,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
-          "authority_role_candidate": "procedural_history"
+          "authority_role_candidate": "procedural_history",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 1,
@@ -6060,7 +7358,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         },
         {
           "quote_index": 2,
@@ -6080,7 +7382,11 @@
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
-          "authority_role_candidate": "application_to_facts"
+          "authority_role_candidate": "application_to_facts",
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
+          ]
         }
       ],
       "rejected_quotes": [],
@@ -6097,6 +7403,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -6111,6 +7421,10 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         },
         {
@@ -6125,10 +7439,18 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception"
+          ],
+          "demotion_flags": [
+            "issue_tag_overbroad",
+            "current_treatment_unchecked"
           ]
         }
       ],
       "rejected_principles": [],
+      "demotion_reasons": [
+        "issue_tag_overbroad",
+        "current_treatment_unchecked"
+      ],
       "rejection_reasons": []
     }
   ],
@@ -6173,6 +7495,7 @@
           "reason": "unsupported_principle"
         }
       ],
+      "demotion_reasons": [],
       "rejection_reasons": [
         "private_or_nonpublic_source",
         "missing_case",
@@ -6223,6 +7546,7 @@
           "reason": "unsupported_principle"
         }
       ],
+      "demotion_reasons": [],
       "rejection_reasons": [
         "quote_not_found",
         "unsupported_principle"

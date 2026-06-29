@@ -52,6 +52,8 @@ function updateStatusDashboard({ verificationReport, cardManifest }) {
   status.candidate_principles_added = cardManifest.principles_added;
   status.candidate_digests_added = cardManifest.digests_added;
   status.candidate_answer_safe_count = 0;
+  status.candidate_cards_demoted = cardManifest.cards_demoted || summary.cards_demoted || 0;
+  status.candidate_demotion_reasons = summary.demotion_reasons || cardManifest.demotion_reasons || {};
   status.fast_growth_workflow = "candidate_extractor_to_public_paragraph_verification_to_research_only_cards";
   fs.writeFileSync(STATUS_JSON_PATH, `${JSON.stringify(status, null, 2)}\n`, "utf8");
 
@@ -74,6 +76,7 @@ function updateStatusDashboard({ verificationReport, cardManifest }) {
       `| Candidate propositions added | ${cardManifest.propositions_added} |`,
       `| Candidate principles added | ${cardManifest.principles_added} |`,
       `| Candidate digests added | ${cardManifest.digests_added} |`,
+      `| Candidate cards with demotion flags | ${status.candidate_cards_demoted} |`,
       `| Candidate answer-safe count | 0 |`,
       "",
       "### Candidate Rejection Reasons",
@@ -81,6 +84,12 @@ function updateStatusDashboard({ verificationReport, cardManifest }) {
       "| Reason | Count |",
       "|---|---:|",
       ...Object.entries(summary.rejection_reasons).map(([reason, count]) => `| ${reason} | ${count} |`),
+      "",
+      "### Candidate Demotion Reasons",
+      "",
+      "| Reason | Count |",
+      "|---|---:|",
+      ...Object.entries(summary.demotion_reasons || {}).map(([reason, count]) => `| ${reason} | ${count} |`),
       "",
     ];
     fs.writeFileSync(STATUS_MD_PATH, `${lines.join("\n")}`, "utf8");

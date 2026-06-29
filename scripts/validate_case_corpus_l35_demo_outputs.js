@@ -27,6 +27,11 @@ const probateMd = read("probate_case_corpus_l35_answer.md");
 const unsupportedMd = read("unsupported_general_query_l35_answer.md");
 const theftTable = read("theft_dishonesty_case_law_table.md");
 const authoritiesTable = read("case_corpus_sample_authorities_table.md");
+const theftDishonestyMemo = read("theft_dishonesty_research_memo.md");
+const forgotEvidence = read("forgot_to_pay_with_evidence_text.md");
+const sentencingBoundary = read("theft_sentencing_boundary.md");
+const fraudBoundary = read("fraud_dishonesty_boundary.md");
+const unsupportedLandlord = read("unsupported_landlord_query.md");
 
 assert(theftMd.includes("L1-L3.5 Case-Law Research Memo"), "theft demo missing L3.5 memo");
 assert(theftMd.includes("Case-by-Case Authorities"), "theft demo missing case-by-case authorities");
@@ -62,6 +67,27 @@ assert(theftTable.includes("Actual listed cases:") && theftTable.includes("resea
 assert((theftTable.match(/https:\/\/www\.hklii\.hk\/en\/cases\/[^#\s]+#p\d+/g) || []).length >= 25, "theft table should contain many paragraph-proof URLs");
 assert(authoritiesTable.includes("Actual cases: 100"), "authorities table missing actual 100-case count");
 assert((authoritiesTable.match(/^\| .*?\[20\d{2}\] HK/mg) || []).length >= 25, "authorities table should list at least 25 cases");
+
+for (const [label, content] of [
+  ["theft_dishonesty_research_memo", theftDishonestyMemo],
+  ["forgot_to_pay_with_evidence_text", forgotEvidence],
+  ["theft_sentencing_boundary", sentencingBoundary],
+  ["fraud_dishonesty_boundary", fraudBoundary],
+]) {
+  assert(content.includes("Case-by-Case Authorities"), `${label} missing case-by-case authorities`);
+  assert(content.includes("Extracted Legal Principles"), `${label} missing extracted principles`);
+  assert(content.includes("Application to User Facts"), `${label} missing application section`);
+  assert(content.includes("Source Audit"), `${label} missing source audit`);
+  assert(content.includes("Answer safe: `false`"), `${label} must show answer_safe=false`);
+  assert((content.match(/Exact quote:/g) || []).length >= 5, `${label} must include exact paragraph quotes`);
+  assert((content.match(/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\/[^#\s]+#p\d+/g) || []).length >= 5, `${label} must include paragraph URLs`);
+}
+assert(forgotEvidence.includes("Uploaded text evidence parsed") && forgotEvidence.includes("not legal authority"), "forgot-to-pay evidence demo missing evidence analysis boundary");
+assert(sentencingBoundary.includes("sentencing") && sentencingBoundary.includes("liability"), "sentencing boundary demo missing liability boundary");
+assert(fraudBoundary.includes("fraud") || fraudBoundary.includes("deception"), "fraud boundary demo missing fraud/deception content");
+assert(unsupportedLandlord.includes("unsupported_general_query"), "new landlord demo missing unsupported mode");
+assert(!/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\//.test(unsupportedLandlord), "new landlord demo must not cite case-corpus authorities");
+assert(unsupportedLandlord.includes("Answer safe: `false`"), "new landlord demo must show answer_safe=false");
 
 if (errors.length) {
   console.error("Case corpus L3.5 demo output validation failed:");

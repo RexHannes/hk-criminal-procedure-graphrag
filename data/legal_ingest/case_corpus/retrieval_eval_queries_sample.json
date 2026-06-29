@@ -60,6 +60,29 @@
       "negative": false
     },
     {
+      "query_id": "shoplifting_without_paying",
+      "query": "Shoplifting without paying and later saying it was an accident or mistake.",
+      "issue_id": "criminal_law.theft.dishonesty",
+      "expected_issue_ids": ["criminal_law.theft.dishonesty", "criminal_law.theft.mens_rea", "criminal_law.theft"],
+      "negative": false
+    },
+    {
+      "query_id": "exact_citation_lookup",
+      "query": "Find [2022] HKCFI 1962 and explain the dishonesty paragraph in the theft appeal.",
+      "issue_id": "criminal_law.theft.dishonesty",
+      "expected_issue_ids": ["criminal_law.theft.dishonesty", "criminal_law.dishonesty"],
+      "expected_case_ids": ["hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant"],
+      "negative": false
+    },
+    {
+      "query_id": "case_name_lookup",
+      "query": "Khan Altaf theft sentence pick pocketing aggravating features",
+      "issue_id": "criminal_law.theft.sentencing",
+      "expected_issue_ids": ["criminal_law.theft.sentencing"],
+      "expected_case_ids": ["hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant"],
+      "negative": false
+    },
+    {
       "query_id": "unsupported_landlord_rent",
       "query": "Can my landlord increase rent for my Hong Kong flat next month?",
       "expected_issue_ids": [],

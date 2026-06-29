@@ -46,6 +46,66 @@ const REQUESTS = [
       max_paragraphs: 4,
     },
   },
+  {
+    file: "theft_dishonesty_research_memo",
+    title: "Theft Dishonesty Research Memo",
+    request: {
+      query: "What Hong Kong theft dishonesty cases should I research where the issue is whether the accused acted dishonestly?",
+      use_case_corpus: true,
+      case_corpus_mode: "sample",
+      issue_id: "criminal_law.theft.dishonesty",
+      max_cases: 8,
+      max_paragraphs: 12,
+    },
+  },
+  {
+    file: "forgot_to_pay_with_evidence_text",
+    title: "Forgot To Pay With Evidence Text",
+    request: {
+      query: "I forgot to pay at a shop and security stopped me. What mens rea and dishonesty case-law research helps or hurts?",
+      use_case_corpus: true,
+      case_corpus_mode: "sample",
+      issue_id: "criminal_law.theft.dishonesty",
+      max_cases: 8,
+      max_paragraphs: 12,
+      evidence_text: "CCTV transcript: customer picked up chocolate, kept it visible in hand, paid for a drink at checkout, received a phone call, walked out still holding chocolate, security stopped him outside, and immediately offered to pay.",
+    },
+  },
+  {
+    file: "theft_sentencing_boundary",
+    title: "Theft Sentencing Boundary",
+    request: {
+      query: "What theft sentencing cases are useful, and why should they not be used as liability rules?",
+      use_case_corpus: true,
+      case_corpus_mode: "sample",
+      issue_id: "criminal_law.theft.sentencing",
+      max_cases: 8,
+      max_paragraphs: 12,
+    },
+  },
+  {
+    file: "fraud_dishonesty_boundary",
+    title: "Fraud Dishonesty Boundary",
+    request: {
+      query: "Fraud and deception dishonesty cases: what research authorities are in the sample, and what is the boundary against theft liability?",
+      use_case_corpus: true,
+      case_corpus_mode: "sample",
+      issue_id: "criminal_law.fraud",
+      max_cases: 8,
+      max_paragraphs: 12,
+    },
+  },
+  {
+    file: "unsupported_landlord_query",
+    title: "Unsupported Landlord Query",
+    request: {
+      query: "Can my landlord increase rent for my Hong Kong flat next month?",
+      use_case_corpus: true,
+      case_corpus_mode: "sample",
+      max_cases: 3,
+      max_paragraphs: 4,
+    },
+  },
 ];
 
 function run(body) {

@@ -31,6 +31,11 @@ function reciprocalRank(returnedCaseIds = [], relevant = new Set()) {
   return index >= 0 ? 1 / (index + 1) : 0;
 }
 
+function recallAtK(hits, relevantSize, k) {
+  const denominator = Math.min(k, relevantSize || k);
+  return denominator ? hits / denominator : 1;
+}
+
 function issueMatchRate(results = [], issueIds = []) {
   if (!results.length) return 0;
   return results.filter(item => (item.chunks || []).some(chunk => (chunk.issue_tags || []).some(tag => issueIds.includes(tag)))).length / results.length;
@@ -97,14 +102,22 @@ function evaluateQuery(querySpec, corpus, indexes) {
   const top10 = returnedCaseIds.slice(0, 10);
   const hits5 = top5.filter(id => relevant.has(id)).length;
   const hits10 = top10.filter(id => relevant.has(id)).length;
+  const expectedCaseIds = querySpec.expected_case_ids || [];
+  const expectedCaseHit = expectedCaseIds.length
+    ? expectedCaseIds.every(id => returnedCaseIds.includes(id))
+    : null;
   return {
     query_id: querySpec.query_id,
     negative: false,
     expected_issue_ids: querySpec.expected_issue_ids,
     relevant_case_count: relevant.size,
     returned_case_count: returnedCaseIds.length,
-    recall_at_5: relevant.size ? hits5 / relevant.size : 1,
-    recall_at_10: relevant.size ? hits10 / relevant.size : 1,
+    expected_case_ids: expectedCaseIds,
+    expected_case_hit: expectedCaseHit,
+    recall_at_5: relevant.size ? recallAtK(hits5, relevant.size, 5) : 1,
+    recall_at_10: relevant.size ? recallAtK(hits10, relevant.size, 10) : 1,
+    legacy_corpus_recall_at_5: relevant.size ? hits5 / relevant.size : 1,
+    legacy_corpus_recall_at_10: relevant.size ? hits10 / relevant.size : 1,
     precision_at_5: top5.length ? hits5 / top5.length : 0,
     mrr: reciprocalRank(returnedCaseIds, relevant),
     issue_match_rate: issueMatchRate(retrieval.top_cases, querySpec.expected_issue_ids || []),
@@ -135,12 +148,21 @@ function writeMarkdown(report) {
     `| Paragraph quote support rate | ${report.metrics.paragraph_quote_support_rate} |`,
     `| Wrong-domain leak rate | ${report.metrics.wrong_domain_leak_rate} |`,
     `| Unsupported query abstention rate | ${report.metrics.unsupported_query_abstention_rate} |`,
+    `| Exact citation/name lookup hit rate | ${report.metrics.exact_lookup_hit_rate} |`,
     "",
     "## Query Results",
     "",
     "| Query | R@5 | R@10 | P@5 | MRR | Returned |",
     "|---|---:|---:|---:|---:|---:|",
     ...report.query_results.map(item => `| ${item.query_id} | ${item.recall_at_5} | ${item.recall_at_10} | ${item.precision_at_5} | ${item.mrr} | ${item.returned_case_count} |`),
+    "",
+    "## Legacy Whole-Corpus Recall",
+    "",
+    "The previous metric divided top-k hits by every case mapped to a broad issue, which caps common issues such as theft sentencing at 10/94. It is retained as a coverage diagnostic, not as the top-k recall target.",
+    "",
+    "| Query | Legacy R@10 | Relevant cases |",
+    "|---|---:|---:|",
+    ...report.query_results.filter(item => !item.negative).map(item => `| ${item.query_id} | ${item.legacy_corpus_recall_at_10} | ${item.relevant_case_count} |`),
     "",
     "## Boundary",
     "",
@@ -162,6 +184,8 @@ function main() {
   const metrics = {
     recall_at_5: Number(avg(positives.map(item => item.recall_at_5)).toFixed(6)),
     recall_at_10: Number(avg(positives.map(item => item.recall_at_10)).toFixed(6)),
+    legacy_corpus_recall_at_5: Number(avg(positives.map(item => item.legacy_corpus_recall_at_5)).toFixed(6)),
+    legacy_corpus_recall_at_10: Number(avg(positives.map(item => item.legacy_corpus_recall_at_10)).toFixed(6)),
     precision_at_5: Number(avg(positives.map(item => item.precision_at_5)).toFixed(6)),
     mrr: Number(avg(positives.map(item => item.mrr)).toFixed(6)),
     issue_match_rate: Number(avg(positives.map(item => item.issue_match_rate)).toFixed(6)),
@@ -169,6 +193,7 @@ function main() {
     paragraph_quote_support_rate: Number(avg(queryResults.map(item => item.paragraph_quote_support_rate)).toFixed(6)),
     wrong_domain_leak_rate: Number(avg(queryResults.map(item => item.wrong_domain_leak)).toFixed(6)),
     unsupported_query_abstention_rate: Number(avg(negatives.map(item => item.unsupported_query_abstained ? 1 : 0)).toFixed(6)),
+    exact_lookup_hit_rate: Number(avg(positives.filter(item => item.expected_case_hit !== null).map(item => item.expected_case_hit ? 1 : 0)).toFixed(6)),
   };
   const report = {
     eval_suite_id: suite.eval_suite_id,
@@ -176,13 +201,15 @@ function main() {
     metrics,
     query_results: queryResults,
     acceptance: {
+      recall_at_10_target_met: metrics.recall_at_10 >= 0.5,
+      precision_at_5_target_met: metrics.precision_at_5 >= 0.85,
       wrong_domain_leak_rate_zero: metrics.wrong_domain_leak_rate === 0,
       unsupported_query_abstention_passed: metrics.unsupported_query_abstention_rate === 1,
       all_outputs_research_only: true,
       answer_safe: false,
     },
   };
-  if (metrics.wrong_domain_leak_rate !== 0 || metrics.unsupported_query_abstention_rate !== 1) {
+  if (metrics.precision_at_5 < 0.85 || metrics.recall_at_10 < 0.5 || metrics.wrong_domain_leak_rate !== 0 || metrics.unsupported_query_abstention_rate !== 1 || metrics.source_proof_rate !== 1) {
     console.error("Retrieval eval failed boundary checks.");
     console.error(JSON.stringify(report.metrics, null, 2));
     process.exit(1);

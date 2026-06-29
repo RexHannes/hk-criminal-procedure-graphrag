@@ -43,6 +43,10 @@ assert(verification.summary.paragraph_cards_added >= 100, "fewer than 100 verifi
 assert(verification.summary.propositions_added >= 50, "fewer than 50 candidate propositions");
 assert(verification.summary.principles_added >= 25, "fewer than 25 candidate principles");
 assert(verification.summary.digests_added >= 25, "fewer than 25 candidate digests");
+assert(verification.summary.cards_demoted >= 1, "expected at least one demotion-flagged candidate card");
+for (const reason of ["background_only_not_principle", "sentencing_only_not_liability", "quote_too_short", "quote_context_insufficient", "current_treatment_unchecked", "issue_tag_overbroad"]) {
+  assert(Object.prototype.hasOwnProperty.call(verification.summary.demotion_reasons || {}, reason), `missing demotion category ${reason}`);
+}
 assert(verification.summary.answer_safe_count === 0, "candidate workflow cannot create answer_safe cards");
 assert(Object.keys(verification.summary.rejection_reasons || {}).length >= 1, "rejection reasons missing");
 
@@ -68,6 +72,7 @@ for (const prop of propositions) {
   assert(prop.answer_layer_status === "research_only", `${prop.proposition_id}: proposition must be research_only`);
   assert(prop.review_status === "machine_candidate", `${prop.proposition_id}: proposition must be machine_candidate`);
   assert(prop.authority_status === "not_authority", `${prop.proposition_id}: proposition source must not become authority`);
+  assert(Array.isArray(prop.demotion_flags), `${prop.proposition_id}: demotion_flags missing`);
   assert((prop.source_paragraph_ids || []).length >= 1, `${prop.proposition_id}: missing paragraph proof`);
   assert(prop.exact_quote_support, `${prop.proposition_id}: missing quote support`);
   const linked = (prop.source_paragraph_ids || []).map(id => paragraphById.get(id)).filter(Boolean);
@@ -79,6 +84,7 @@ for (const prop of propositions) {
 for (const principle of principles) {
   assert(principle.answer_layer_status === "research_only", `${principle.principle_id}: principle must be research_only`);
   assert(principle.authority_status === "not_authority", `${principle.principle_id}: principle source must not become authority`);
+  assert(Array.isArray(principle.demotion_flags), `${principle.principle_id}: demotion_flags missing`);
   assert((principle.source_proposition_ids || []).every(id => propositionById.has(id)), `${principle.principle_id}: missing proposition link`);
   assert((principle.source_paragraph_ids || []).every(id => paragraphById.has(id)), `${principle.principle_id}: missing paragraph link`);
   assert(principle.answer_layer_status !== "answer_safe", `${principle.principle_id}: cannot be answer_safe`);
@@ -98,6 +104,7 @@ for (const mapItem of issueMap) {
 }
 
 assert(cardReport.answer_safe_count === 0, "card build report answer_safe_count must be 0");
+assert(cardReport.cards_demoted === propositions.filter(item => (item.demotion_flags || []).length).length + principles.filter(item => (item.demotion_flags || []).length).length, "cards_demoted report mismatch");
 assert(cardReport.paragraph_cards_added === paragraphs.length, "paragraph card report mismatch");
 assert(cardReport.propositions_added === propositions.length, "proposition report mismatch");
 assert(cardReport.principles_added === principles.length, "principle report mismatch");

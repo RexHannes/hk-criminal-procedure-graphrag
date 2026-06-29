@@ -121,8 +121,10 @@
       "hk_case_digests_openrouter_2048": 100
     }
   },
-  "retrieval_eval_precision_at_5": 0.925,
-  "retrieval_eval_recall_at_10": 0.341798,
+  "retrieval_eval_precision_at_5": 0.872727,
+  "retrieval_eval_recall_at_10": 0.954545,
+  "retrieval_eval_legacy_corpus_recall_at_10": 0.296242,
+  "retrieval_recall_improvement": 0.612747,
   "source_proof_rate": 1,
   "wrong_domain_leak_rate": 0,
   "unsupported_query_abstention_rate": 1,
@@ -150,5 +152,36 @@
   "candidate_principles_added": 120,
   "candidate_digests_added": 40,
   "candidate_answer_safe_count": 0,
-  "fast_growth_workflow": "candidate_extractor_to_public_paragraph_verification_to_research_only_cards"
+  "candidate_cards_demoted": 240,
+  "candidate_demotion_reasons": {
+    "current_treatment_unchecked": 40,
+    "issue_tag_overbroad": 36,
+    "quote_context_insufficient": 25,
+    "sentencing_only_not_liability": 25,
+    "quote_too_short": 7,
+    "background_only_not_principle": 4
+  },
+  "fast_growth_workflow": "candidate_extractor_to_public_paragraph_verification_to_research_only_cards",
+  "quality_audit_pass_rate": 0.908046,
+  "quality_audited_case_count": 29,
+  "cards_demoted": 40,
+  "quality_suspicious_card_count": 40,
+  "next_target_500_cases": "Before scaling to 500, prioritize weak/medium issue tags, especially belonging_to_another, intention_permanently_deprive, bail, and dishonesty/mens_rea.",
+  "weak_issue_tags": [
+    "criminal_law.theft.belonging_to_another",
+    "criminal_law.theft.intention_permanently_deprive",
+    "criminal_procedure.bail"
+  ],
+  "medium_issue_tags": [
+    "criminal_law.theft.dishonesty",
+    "criminal_law.theft.mens_rea"
+  ],
+  "demo_credible_issue_tags": [
+    "criminal_law.theft",
+    "criminal_law.theft.appropriation",
+    "criminal_law.theft.sentencing",
+    "criminal_law.fraud",
+    "criminal_law.deception",
+    "criminal_procedure.interview_caution"
+  ]
 }

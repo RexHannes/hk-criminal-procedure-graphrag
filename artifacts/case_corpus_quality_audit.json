@@ -1,0 +1,1093 @@
+{
+  "report_id": "case_corpus_quality_audit_sample_v1",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "scope": "Quality audit over deterministic 20-case random sample plus 10 high-value theft/dishonesty cases; no corpus scaling.",
+  "sampling": {
+    "random_case_count": 20,
+    "high_value_theft_dishonesty_case_count": 10,
+    "audited_case_count": 29
+  },
+  "summary": {
+    "audited_case_count": 29,
+    "paragraph_match_rate": 1,
+    "quote_support_match_rate": 1,
+    "proposition_quality_pass_rate": 0.977011,
+    "principle_quality_pass_rate": 0.563218,
+    "digest_quality_pass_rate": 1,
+    "quality_audit_pass_rate": 0.908046,
+    "suspicious_cards": [
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki_p1_principle",
+        "case_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki_p69_principle",
+        "case_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki_p22_principle",
+        "case_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin_p15_principle",
+        "case_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin_p14_principle",
+        "case_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin_p16_principle",
+        "case_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "proposition",
+        "card_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p24_prop",
+        "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p10_principle",
+        "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p16_principle",
+        "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p24_principle",
+        "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2025_1674_hksar_v_kothari_chirag_d_p15_principle",
+        "case_id": "hk_hkdc_2025_1674_hksar_v_kothari_chirag_d",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen_p8_principle",
+        "case_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2024_2039_hksar_v_cheung_kwan_po_p14_principle",
+        "case_id": "hk_hkdc_2024_2039_hksar_v_cheung_kwan_po",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang_p5_principle",
+        "case_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex_p36_principle",
+        "case_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant_p1_principle",
+        "case_id": "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant_p1_principle",
+        "case_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant_p2_principle",
+        "case_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong_p9_principle",
+        "case_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung_p16_principle",
+        "case_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung_p1_principle",
+        "case_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping_p35_principle",
+        "case_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo_p13_principle",
+        "case_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo_p1_principle",
+        "case_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "proposition",
+        "card_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant_p5_prop",
+        "case_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant_p5_principle",
+        "case_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1_p22_principle",
+        "case_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1_p5_principle",
+        "case_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2022_652_hksar_v_umar_farooq_p1_principle",
+        "case_id": "hk_hkdc_2022_652_hksar_v_umar_farooq",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2_p25_principle",
+        "case_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2_p22_principle",
+        "case_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant_p1_principle",
+        "case_id": "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant_p1_principle",
+        "case_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung_p21_principle",
+        "case_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung_p33_principle",
+        "case_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao_p1_principle",
+        "case_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p34_principle",
+        "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p21_principle",
+        "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam_p1_principle",
+        "case_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam_p28_principle",
+        "case_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      }
+    ],
+    "rejected_or_demoted_cards": [
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki_p1_principle",
+        "case_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki_p69_principle",
+        "case_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki_p22_principle",
+        "case_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin_p15_principle",
+        "case_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin_p14_principle",
+        "case_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin_p16_principle",
+        "case_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "proposition",
+        "card_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p24_prop",
+        "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p10_principle",
+        "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p16_principle",
+        "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p24_principle",
+        "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2025_1674_hksar_v_kothari_chirag_d_p15_principle",
+        "case_id": "hk_hkdc_2025_1674_hksar_v_kothari_chirag_d",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen_p8_principle",
+        "case_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2024_2039_hksar_v_cheung_kwan_po_p14_principle",
+        "case_id": "hk_hkdc_2024_2039_hksar_v_cheung_kwan_po",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang_p5_principle",
+        "case_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex_p36_principle",
+        "case_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant_p1_principle",
+        "case_id": "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant_p1_principle",
+        "case_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant_p2_principle",
+        "case_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong_p9_principle",
+        "case_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung_p16_principle",
+        "case_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung_p1_principle",
+        "case_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping_p35_principle",
+        "case_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo_p13_principle",
+        "case_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo_p1_principle",
+        "case_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "proposition",
+        "card_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant_p5_prop",
+        "case_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant_p5_principle",
+        "case_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1_p22_principle",
+        "case_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1_p5_principle",
+        "case_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2022_652_hksar_v_umar_farooq_p1_principle",
+        "case_id": "hk_hkdc_2022_652_hksar_v_umar_farooq",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2_p25_principle",
+        "case_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2_p22_principle",
+        "case_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant_p1_principle",
+        "case_id": "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant_p1_principle",
+        "case_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung_p21_principle",
+        "case_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung_p33_principle",
+        "case_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao_p1_principle",
+        "case_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p34_principle",
+        "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p21_principle",
+        "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam_p1_principle",
+        "case_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam",
+        "reasons": [
+          "background_only_not_principle"
+        ],
+        "action": "demote_or_keep_research_only"
+      },
+      {
+        "card_type": "principle",
+        "card_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam_p28_principle",
+        "case_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam",
+        "reasons": [
+          "sentencing_only_not_liability"
+        ],
+        "action": "demote_or_keep_research_only"
+      }
+    ]
+  },
+  "audited_cases": [
+    {
+      "case_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki",
+      "case_name": "HKSAR v LAM KA KI",
+      "neutral_citation": "[2023] HKDC 395",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/395",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin",
+      "case_name": "HKSAR v WONG HEI YIN",
+      "neutral_citation": "[2021] HKDC 1660",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1660",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+      "case_name": "HKSAR v CHRISTOPHER OKECHI NWOSU",
+      "neutral_citation": "[2021] HKDC 1077",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1077",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2025_1174_hksar_v_chan_kin_ming_d1_ng_sau_man_rebecca_d2",
+      "case_name": "HKSAR v CHAN Kin-ming (D1) NG Sau-man, Rebecca (D2)",
+      "neutral_citation": "[2025] HKDC 1174",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/1174",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2021_1182_hksar_v_wong_wai_yee",
+      "case_name": "HKSAR v WONG WAI YEE",
+      "neutral_citation": "[2021] HKDC 1182",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1182",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch",
+      "case_name": "HKSAR v Mohammed Jaqub Baloch",
+      "neutral_citation": "[2023] HKDC 337",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/337",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2025_1674_hksar_v_kothari_chirag_d",
+      "case_name": "HKSAR v KOTHARI CHIRAG (D)",
+      "neutral_citation": "[2025] HKDC 1674",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/1674",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen",
+      "case_name": "HKSAR v Zhang Yichen",
+      "neutral_citation": "[2024] HKDC 1329",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1329",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2024_2039_hksar_v_cheung_kwan_po",
+      "case_name": "HKSAR v CHEUNG Kwan-po",
+      "neutral_citation": "[2024] HKDC 2039",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/2039",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang",
+      "case_name": "HKSAR v TANG CHI WANG",
+      "neutral_citation": "[2024] HKDC 2191",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/2191",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex",
+      "case_name": "HKSAR v CHING MAN LONG REX",
+      "neutral_citation": "[2023] HKDC 1430",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1430",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant",
+      "case_name": "BETWEEN HKSAR Respondent and YEOH, POH LEAN Appellant",
+      "neutral_citation": "[2022] HKCFI 1962",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1962",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant",
+      "case_name": "HKSAR v TSAGAACH BAATAR 1 st Defendant BALDORJ MYAGMARJAV 2 nd Defendant",
+      "neutral_citation": "[2026] HKDC 801",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/801",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong",
+      "case_name": "HKSAR v Kwok Wai-hong",
+      "neutral_citation": "[2021] HKDC 931",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/931",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+      "case_name": "HKSAR v TSE CHUN HUNG",
+      "neutral_citation": "[2021] HKDC 102",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/102",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping",
+      "case_name": "HKSAR v TSUI KIN PING",
+      "neutral_citation": "[2023] HKDC 170",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/170",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+      "case_name": "HKSAR v LAU WA KWO",
+      "neutral_citation": "[2021] HKDC 1113",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1113",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+      "case_name": "HKSAR Respondent v Ho Chi Tat (何志達) Applicant",
+      "neutral_citation": "[2025] HKCA 123",
+      "source_url": "https://www.hklii.hk/en/cases/hkca/2025/123",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2024_673_hksar_v_tai_wai_yin",
+      "case_name": "HKSAR v TAI WAI YIN",
+      "neutral_citation": "[2024] HKDC 673",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/673",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1",
+      "case_name": "HKSAR v WONG Ngai-pan (also known as WONG Ngai-pun) (D1)",
+      "neutral_citation": "[2021] HKDC 86",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/86",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2022_652_hksar_v_umar_farooq",
+      "case_name": "HKSAR v UMAR FAROOQ",
+      "neutral_citation": "[2022] HKDC 652",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2022/652",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+      "case_name": "HKSAR v LI QINFANG (D1) LI YUN (D2)",
+      "neutral_citation": "[2021] HKDC 1527",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1527",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant",
+      "case_name": "HKSAR Respondent and LIMBU, SURYA PRASAD Appellant",
+      "neutral_citation": "[2024] HKCFI 415",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2024/415",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2025_135_hksar_v_singh_gursewak",
+      "case_name": "HKSAR v SINGH GURSEWAK",
+      "neutral_citation": "[2025] HKDC 135",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/135",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+      "case_name": "BETWEEN HKSAR Respondent and CHAN Wai-ho (陳偉豪) Appellant",
+      "neutral_citation": "[2021] HKCFI 3439",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2021/3439",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung",
+      "case_name": "HKSAR v LAI KING FUNG",
+      "neutral_citation": "[2024] HKDC 466",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/466",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao",
+      "case_name": "HKSAR v DONG JIAHAO",
+      "neutral_citation": "[2025] HKDC 1524",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/1524",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+      "case_name": "BETWEEN HKSAR Respondent and CHOI Ping-chiu (蔡炳超) Applicant",
+      "neutral_citation": "[2021] HKCA 1387",
+      "source_url": "https://www.hklii.hk/en/cases/hkca/2021/1387",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    },
+    {
+      "case_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam",
+      "case_name": "HKSAR v LAM Hiu-laam",
+      "neutral_citation": "[2025] HKDC 781",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/781",
+      "public_source_verified": true,
+      "paragraph_count": 3,
+      "proposition_count": 3,
+      "principle_count": 3,
+      "digest_present": true,
+      "issues": []
+    }
+  ]
+}

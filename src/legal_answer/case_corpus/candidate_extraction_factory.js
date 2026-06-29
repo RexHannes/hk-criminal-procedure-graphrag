@@ -214,6 +214,30 @@ function validateCandidateEnvelope(candidate = {}) {
   return reasons;
 }
 
+function demotionFlagsForQuote(quote = {}, candidate = {}) {
+  const flags = new Set();
+  const support = normalizeParagraphText(quote.exact_quote_support || "");
+  const words = support.split(/\s+/).filter(Boolean);
+  const tags = quote.issue_tags || [];
+  if (support.length < 18 || words.length < 3) flags.add("quote_too_short");
+  if (support.length < 36 || words.length < 6) flags.add("quote_context_insufficient");
+  if (quote.legal_function === "background_only" || /background|public case context/i.test(quote.proposition_text || "")) flags.add("background_only_not_principle");
+  if (quote.legal_function === "sentencing" && tags.some(tag => /dishonesty|mens_rea|appropriation|belonging_to_another|intention_permanently_deprive|fraud|deception/.test(tag))) {
+    flags.add("sentencing_only_not_liability");
+  }
+  if (tags.length > 4 || (tags.includes("criminal_law.theft") && tags.some(tag => /fraud|deception|interview_caution/.test(tag)))) flags.add("issue_tag_overbroad");
+  if ((candidate.candidate_holdings || []).some(item => /unchecked|review|candidate|no final/i.test(String(item)))) flags.add("current_treatment_unchecked");
+  return Array.from(flags);
+}
+
+function demotionFlagsForPrinciple(principle = {}, linkedQuote = {}) {
+  const flags = new Set(linkedQuote.demotion_flags || []);
+  if (/public case context only|background|not answer-safe/i.test(principle.principle_text || "")) flags.add("background_only_not_principle");
+  if (/sentencing context/i.test(principle.principle_text || "") && (principle.issue_tags || []).some(tag => !/sentencing/.test(tag))) flags.add("sentencing_only_not_liability");
+  flags.add("current_treatment_unchecked");
+  return Array.from(flags);
+}
+
 function verifyOneCandidate(candidate = {}, corpus = loadCaseCorpus({ mode: "sample" }), options = {}) {
   const reasons = validateCandidateEnvelope(candidate);
   const matchedCase = findCase(candidate, corpus);
@@ -235,7 +259,7 @@ function verifyOneCandidate(candidate = {}, corpus = loadCaseCorpus({ mode: "sam
   for (const quote of quoteObjects(candidate)) {
     const match = bestQuoteMatch(quote, paragraphPool.length ? paragraphPool : allParagraphs);
     if (match.paragraph && match.score >= minimumScore && match.exact_quote_support && match.paragraph.paragraph_text.includes(match.exact_quote_support)) {
-      acceptedQuotes.push({
+      const acceptedQuote = {
         quote_index: quote.quote_index,
         candidate_quote: quote.quote,
         exact_quote_support: match.exact_quote_support,
@@ -250,7 +274,9 @@ function verifyOneCandidate(candidate = {}, corpus = loadCaseCorpus({ mode: "sam
         authority_role_candidate: quote.authority_role_candidate === "case_application"
           ? "application_to_facts"
           : (VALID_AUTHORITY_ROLES.has(quote.authority_role_candidate) ? quote.authority_role_candidate : "application_to_facts"),
-      });
+      };
+      acceptedQuote.demotion_flags = demotionFlagsForQuote(acceptedQuote, candidate);
+      acceptedQuotes.push(acceptedQuote);
     } else {
       rejectedQuotes.push({
         quote_index: quote.quote_index,
@@ -277,14 +303,16 @@ function verifyOneCandidate(candidate = {}, corpus = loadCaseCorpus({ mode: "sam
         reason: "unsupported_principle",
       });
     } else {
-      acceptedPrinciples.push({
+      const acceptedPrinciple = {
         principle_index: principle.principle_index,
         principle_text: principle.principle_text,
         paragraph_id: linkedQuote.paragraph_id,
         quote_index: linkedQuote.quote_index,
         exact_quote_support: linkedQuote.exact_quote_support,
         issue_tags: uniq(asArray(principle.issue_tags).concat(linkedQuote.issue_tags || [])),
-      });
+      };
+      acceptedPrinciple.demotion_flags = demotionFlagsForPrinciple(acceptedPrinciple, linkedQuote);
+      acceptedPrinciples.push(acceptedPrinciple);
     }
   }
 
@@ -312,6 +340,7 @@ function verifyOneCandidate(candidate = {}, corpus = loadCaseCorpus({ mode: "sam
     rejected_quotes: rejectedQuotes,
     accepted_principles: acceptedPrinciples,
     rejected_principles: rejectedPrinciples,
+    demotion_reasons: uniq(acceptedQuotes.flatMap(item => item.demotion_flags || []).concat(acceptedPrinciples.flatMap(item => item.demotion_flags || []))),
     rejection_reasons: uniq(reasons),
   };
 }
@@ -322,6 +351,14 @@ function rejectionReasonCounts(records = []) {
     for (const reason of record.rejection_reasons || []) counts[reason] = (counts[reason] || 0) + 1;
     for (const quote of record.rejected_quotes || []) counts[quote.reason] = (counts[quote.reason] || 0) + 1;
     for (const principle of record.rejected_principles || []) counts[principle.reason] = (counts[principle.reason] || 0) + 1;
+  }
+  return Object.fromEntries(Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])));
+}
+
+function demotionReasonCounts(records = []) {
+  const counts = {};
+  for (const record of records) {
+    for (const reason of record.demotion_reasons || []) counts[reason] = (counts[reason] || 0) + 1;
   }
   return Object.fromEntries(Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])));
 }
@@ -339,6 +376,12 @@ function verificationSummary(results = []) {
     propositions_added: accepted.reduce((sum, item) => sum + (item.accepted_quotes || []).length, 0),
     principles_added: accepted.reduce((sum, item) => sum + (item.accepted_principles || []).length, 0),
     digests_added: accepted.length,
+    demotion_reasons: demotionReasonCounts(accepted.map(item => ({ demotion_reasons: item.demotion_reasons || [] }))),
+    cards_demoted: accepted.reduce((sum, item) => (
+      sum +
+      (item.accepted_quotes || []).filter(quote => (quote.demotion_flags || []).length).length +
+      (item.accepted_principles || []).filter(principle => (principle.demotion_flags || []).length).length
+    ), 0),
     answer_safe_count: 0,
   };
 }
@@ -360,6 +403,7 @@ function writeVerificationMarkdown(report, outputPath = VERIFICATION_REPORT_MD) 
     `| Proposition candidates | ${summary.propositions_added} |`,
     `| Principle candidates | ${summary.principles_added} |`,
     `| Digest candidates | ${summary.digests_added} |`,
+    `| Cards with demotion flags | ${summary.cards_demoted} |`,
     `| Answer-safe cards | ${summary.answer_safe_count} |`,
     "",
     "## Rejection Reasons",
@@ -367,6 +411,12 @@ function writeVerificationMarkdown(report, outputPath = VERIFICATION_REPORT_MD) 
     "| Reason | Count |",
     "|---|---:|",
     ...Object.entries(summary.rejection_reasons).map(([reason, count]) => `| ${reason} | ${count} |`),
+    "",
+    "## Demotion Categories",
+    "",
+    "| Reason | Count |",
+    "|---|---:|",
+    ...Object.entries(summary.demotion_reasons || {}).map(([reason, count]) => `| ${reason} | ${count} |`),
     "",
     "## Boundary",
     "",
@@ -484,6 +534,7 @@ function buildCardsFromVerificationReport({
         source_urls: [quote.source_url],
         exact_quote_support: quote.exact_quote_support,
         issue_tags: uniq(quote.issue_tags),
+        demotion_flags: quote.demotion_flags || [],
         legal_function: quote.legal_function,
         authority_role_candidate: quote.authority_role_candidate,
         extraction_method: "candidate_extraction_then_hklii_paragraph_verification",
@@ -513,6 +564,7 @@ function buildCardsFromVerificationReport({
         source_urls: [linkedQuote?.source_url || candidate.source_url],
         exact_quote_support: principle.exact_quote_support,
         issue_tags: uniq(principle.issue_tags),
+        demotion_flags: principle.demotion_flags || [],
         applies_to: candidate.candidate_applies_when.length ? candidate.candidate_applies_when : ["Candidate applies only where the user's facts match the linked public paragraph context."],
         required_facts: ["charge_or_issue", "procedural_posture", "full_fact_record", "paragraph_context_review"],
         limits: "Candidate-extracted principle; verified only for paragraph/quote existence. Whole-judgment treatment and lawyer review are still required.",
@@ -556,6 +608,7 @@ function buildCardsFromVerificationReport({
         current_treatment_status: "unchecked",
         note: "Candidate workflow verifies paragraph/quote support only; no L4 current-treatment review.",
       },
+      demotion_flags: uniq((candidate.accepted_quotes || []).flatMap(item => item.demotion_flags || []).concat((candidate.accepted_principles || []).flatMap(item => item.demotion_flags || []))),
       hklii_paragraph_urls: (candidate.accepted_quotes || []).map(item => item.source_url),
       candidate_id: candidate.candidate_id,
       source_tool: candidate.source_tool,
@@ -593,6 +646,8 @@ function buildCardsFromVerificationReport({
     principles_added: principles.length,
     digests_added: digests.length,
     issue_map_records_added: issueMap.length,
+    cards_demoted: propositions.filter(item => (item.demotion_flags || []).length).length + principles.filter(item => (item.demotion_flags || []).length).length,
+    demotion_reasons: demotionReasonCounts((report.accepted_candidates || []).map(item => ({ demotion_reasons: item.demotion_reasons || [] }))),
     answer_safe_count: 0,
     authority_policy: "Generated cards remain research_only; candidate source tools are not authority.",
     outputs: {
@@ -624,6 +679,7 @@ function buildCardsFromVerificationReport({
       `| Principle cards | ${principles.length} |`,
       `| Digest cards | ${digests.length} |`,
       `| Issue map records | ${issueMap.length} |`,
+      `| Cards with demotion flags | ${manifest.cards_demoted} |`,
       `| Answer-safe cards | ${manifest.answer_safe_count} |`,
       "",
       "All generated cards are research-only candidate cards backed by public paragraph proof.",

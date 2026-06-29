@@ -86,8 +86,10 @@ Do not describe this sample as 10k answer-safe propositions, whole HK legal RAG,
 | Total chunks | 1012 |
 | Embedded chunks | 1012 |
 | Dry-run vectors | 1012 |
-| Retrieval eval Precision@5 | 0.925 |
-| Retrieval eval Recall@10 | 0.341798 |
+| Retrieval eval Precision@5 | 0.872727 |
+| Retrieval eval Recall@10 | 0.954545 |
+| Retrieval legacy corpus Recall@10 | 0.296242 |
+| Retrieval Recall@10 improvement vs prior | 0.612747 |
 | Source proof rate | 1 |
 | Wrong-domain leak rate | 0 |
 | Unsupported-query abstention rate | 1 |
@@ -109,6 +111,7 @@ NotebookLM, DeepSeek, Claude, GPT and manual outputs are candidate extractors on
 | Candidate propositions added | 120 |
 | Candidate principles added | 120 |
 | Candidate digests added | 40 |
+| Candidate cards with demotion flags | 240 |
 | Candidate answer-safe count | 0 |
 
 ### Candidate Rejection Reasons
@@ -120,3 +123,46 @@ NotebookLM, DeepSeek, Claude, GPT and manual outputs are candidate extractors on
 | missing_paragraph | 2 |
 | missing_case | 1 |
 | private_or_nonpublic_source | 1 |
+
+### Candidate Demotion Reasons
+
+| Reason | Count |
+|---|---:|
+| current_treatment_unchecked | 40 |
+| issue_tag_overbroad | 36 |
+| quote_context_insufficient | 25 |
+| sentencing_only_not_liability | 25 |
+| quote_too_short | 7 |
+| background_only_not_principle | 4 |
+
+## Quality Audit Metrics
+
+| Metric | Value |
+|---|---:|
+| Audited cases | 29 |
+| Paragraph match rate | 1 |
+| Quote support match rate | 1 |
+| Proposition quality pass rate | 0.977011 |
+| Principle quality pass rate | 0.563218 |
+| Digest quality pass rate | 1 |
+| Overall quality audit pass rate | 0.908046 |
+| Suspicious cards | 40 |
+| Rejected or demoted cards | 40 |
+
+## Issue Coverage Audit
+
+| Issue | Cases | Coverage |
+|---|---:|---|
+| criminal_law.theft | 84 | demo-credible |
+| criminal_law.theft.dishonesty | 21 | medium |
+| criminal_law.theft.mens_rea | 21 | medium |
+| criminal_law.theft.appropriation | 58 | demo-credible |
+| criminal_law.theft.belonging_to_another | 2 | weak |
+| criminal_law.theft.intention_permanently_deprive | 0 | weak |
+| criminal_law.theft.sentencing | 94 | demo-credible |
+| criminal_law.fraud | 56 | demo-credible |
+| criminal_law.deception | 90 | demo-credible |
+| criminal_procedure.interview_caution | 36 | demo-credible |
+| criminal_procedure.bail | 8 | weak |
+
+Weak issue tags: criminal_law.theft.belonging_to_another, criminal_law.theft.intention_permanently_deprive, criminal_procedure.bail.

@@ -12,6 +12,7 @@ NotebookLM, DeepSeek, Claude, GPT and manual notes are candidate extractors only
 | Proposition candidates | 120 |
 | Principle candidates | 120 |
 | Digest candidates | 40 |
+| Cards with demotion flags | 240 |
 | Answer-safe cards | 0 |
 
 ## Rejection Reasons
@@ -23,6 +24,17 @@ NotebookLM, DeepSeek, Claude, GPT and manual notes are candidate extractors only
 | missing_paragraph | 2 |
 | missing_case | 1 |
 | private_or_nonpublic_source | 1 |
+
+## Demotion Categories
+
+| Reason | Count |
+|---|---:|
+| current_treatment_unchecked | 40 |
+| issue_tag_overbroad | 36 |
+| quote_context_insufficient | 25 |
+| sentencing_only_not_liability | 25 |
+| quote_too_short | 7 |
+| background_only_not_principle | 4 |
 
 ## Boundary
 
