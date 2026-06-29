@@ -8,9 +8,12 @@ const { MEMO_HEADINGS } = require("../src/api/legal_research_presenter");
 
 const ROOT = path.resolve(__dirname, "..");
 
-function run(query) {
+function run(queryOrBody) {
   return new Promise((resolve, reject) => {
-    const req = { method: "POST", body: { query } };
+    const req = {
+      method: "POST",
+      body: typeof queryOrBody === "string" ? { query: queryOrBody } : queryOrBody,
+    };
     const res = {
       statusCode: 200,
       status(code) {
@@ -49,7 +52,8 @@ function validateAnswerFirstPayload(label, payload, errors) {
   assert(answerIndex < graphIndex, `${label}: answer must precede graph matches in API payload`, errors);
   assert(payload.audit_trail?.display === "collapsed", `${label}: audit_trail should be collapsed`, errors);
   assert(payload.audit_trail?.legal_source_audit?.display === "collapsed", `${label}: missing separated legal source audit`, errors);
-  assert(payload.audit_trail?.evidence_source_audit?.uploaded_evidence_ingested === false, `${label}: uploaded evidence audit should be explicit`, errors);
+  assert(typeof payload.audit_trail?.evidence_source_audit?.uploaded_evidence_ingested === "boolean", `${label}: uploaded evidence audit should be explicit`, errors);
+  assert(payload.audit_trail?.evidence_source_audit?.status, `${label}: uploaded evidence audit status missing`, errors);
   assert(payload.audit_trail?.debug_hidden_by_default === true, `${label}: debug should be hidden by default`, errors);
   assert(memo.debug_hidden_by_default === true, `${label}: memo debug flag missing`, errors);
   assert(memo.source_status?.case_recall_only_allowed_as_answer_authority === false, `${label}: recall-only authority must be forbidden`, errors);
@@ -86,9 +90,25 @@ function validateViewerWiring(errors) {
   const errors = [];
   const probate = await run("If my father dies in US and does not have will, now left a son, a daughter and 2 grandaughter; the former 18 the later not; what happens?");
   const theft = await run("If I am alleged to be stealing something in the convenience store, but I try to argue I just forgot to pay");
+  const theftEvidence = await run({
+    query: "If I am alleged to be stealing something in the convenience store, but I try to argue I just forgot to pay, does my evidence help?",
+    uploaded_evidence: [
+      {
+        name: "CCTV transcript",
+        source_kind: "cctv",
+        text: "The item stayed visible in the basket, the shopper queued at checkout, then exited without paying and security stopped them.",
+      },
+      {
+        name: "Payment record",
+        source_kind: "receipt",
+        text: "Receipt and Octopus record show payment for other items; shopper says a phone call distracted them.",
+      },
+    ],
+  });
 
   validateAnswerFirstPayload("probate", probate, errors);
   validateAnswerFirstPayload("theft", theft, errors);
+  validateAnswerFirstPayload("theftEvidence", theftEvidence, errors);
   assert(probate.product_mode?.mode === "demo_supported", "probate should be demo_supported", errors);
   assert(theft.product_mode?.mode === "demo_supported", "theft should be demo_supported", errors);
 
@@ -116,6 +136,10 @@ function validateViewerWiring(errors) {
   assert(theftText.includes("evidence analysis") && theftText.includes("helps") && theftText.includes("hurts"), "theft answer missing evidence/fact helpful-harmful analysis", errors);
   assert(theftText.includes("forgot"), "theft answer missing forgot-to-pay application", errors);
   assert(theftText.includes("ivey") && theftText.includes("unsupported"), "theft answer missing unsupported Ivey/Ghosh caveat", errors);
+  assert(theftEvidence.audit_trail?.evidence_source_audit?.uploaded_evidence_ingested === true, "theft evidence audit should parse uploaded evidence", errors);
+  assert(theftEvidence.evidence_ingest_summary?.text_item_count === 2, "theft evidence summary should expose parsed text count", errors);
+  assert(blob(theftEvidence.answer_markdown).includes("text/transcript evidence is parsed for research triage only"), "theft evidence answer missing evidence authority boundary", errors);
+  assert(!/no uploaded .* parsed/.test(blob(theftEvidence.answer_markdown)), "theft evidence answer contains contradictory no-uploaded-evidence text", errors);
 
   const unsupported = await run("Can my landlord increase rent for my Hong Kong flat next month?");
   validateAnswerFirstPayload("unsupported", unsupported, errors);

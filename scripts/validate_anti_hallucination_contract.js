@@ -4,9 +4,12 @@
 const handler = require("../api/search-evidence.js");
 const { loadResearchCards } = require("../src/legal_answer/applied_analysis/research_card_store");
 
-function run(query) {
+function run(queryOrBody) {
   return new Promise((resolve, reject) => {
-    const req = { method: "POST", body: { query } };
+    const req = {
+      method: "POST",
+      body: typeof queryOrBody === "string" ? { query: queryOrBody } : queryOrBody,
+    };
     const res = {
       statusCode: 200,
       status(code) {
@@ -90,6 +93,22 @@ function validateAnswer(label, payload, cards, errors) {
   validateSourceRules(label, payload, cards, errors);
 }
 
+function validateUploadedEvidence(payload, errors) {
+  const evidenceAudit = payload.audit_trail?.evidence_source_audit || {};
+  assert(evidenceAudit.uploaded_evidence_ingested === true, "uploaded evidence: evidence text was not ingested", errors);
+  assert(evidenceAudit.text_item_count >= 2, "uploaded evidence: expected at least two parsed text items", errors);
+  assert((evidenceAudit.source_kinds || []).includes("cctv_or_video_transcript"), "uploaded evidence: CCTV transcript source kind missing", errors);
+  assert((evidenceAudit.source_kinds || []).includes("receipt_or_payment_record"), "uploaded evidence: receipt/payment source kind missing", errors);
+  assert(payload.evidence_ingest_summary?.uploaded_evidence_ingested === true, "uploaded evidence: summary not exposed", errors);
+  assert(payload.product_mode?.answer_safe === false, "uploaded evidence must not make answer_safe true", errors);
+  assert(payload.product_mode?.uploaded_evidence_mode === "text_evidence_research_triage_only", "uploaded evidence: product mode not research-only", errors);
+  const evidenceText = sectionText(payload, "Evidence Analysis");
+  assert(evidenceText.includes("uploaded evidence") && evidenceText.includes("helps"), "uploaded evidence: helpful evidence not rendered", errors);
+  assert(evidenceText.includes("hurts") || evidenceText.includes("needs explanation"), "uploaded evidence: harmful evidence not rendered", errors);
+  assert(evidenceText.includes("not legal authority"), "uploaded evidence: authority boundary missing", errors);
+  assert(!/no uploaded .* parsed/.test(evidenceText), "uploaded evidence: contradictory no-uploaded-evidence text rendered", errors);
+}
+
 (async () => {
   const errors = [];
   const cards = loadResearchCards();
@@ -98,10 +117,27 @@ function validateAnswer(label, payload, cards, errors) {
   const theft = await run("If I am alleged to be stealing something in the convenience store, but I forgot to pay and security stopped me.");
   const probate = await run("If my father dies in US and does not have will, now left a son, a daughter and 2 grandaughter; the former 18 the later not; what happens?");
   const unsupported = await run("Can my landlord increase rent for my Hong Kong flat next month?");
+  const theftWithEvidence = await run({
+    query: "If I am alleged to be shoplifting but I forgot to pay, can the CCTV and receipt help?",
+    evidence_items: [
+      {
+        name: "CCTV transcript",
+        source_kind: "cctv",
+        text: "CCTV shows the item was visible in the basket at checkout, but the person then exited and security stopped them after leaving without paying.",
+      },
+      {
+        name: "Receipt",
+        source_kind: "receipt",
+        text: "Receipt shows the person paid for other items by Octopus and says they forgot the unpaid item during a phone call distraction.",
+      },
+    ],
+  });
 
   validateAnswer("theft", theft, cards, errors);
+  validateAnswer("theft_with_uploaded_evidence", theftWithEvidence, cards, errors);
   validateAnswer("probate", probate, cards, errors);
   validateAnswer("unsupported", unsupported, cards, errors);
+  validateUploadedEvidence(theftWithEvidence, errors);
 
   assert(theft.product_mode?.mode === "demo_supported", "theft should be demo_supported", errors);
   assert(probate.product_mode?.mode === "demo_supported", "probate should be demo_supported", errors);

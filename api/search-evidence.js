@@ -6,6 +6,7 @@ const { findCachedLegalAnswer, writeLegalAnswerCache } = require("../src/api/leg
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
 const { buildLegalResearchPresentation } = require("../src/api/legal_research_presenter");
+const { buildUploadedEvidenceBundle } = require("../src/api/evidence_text_ingest");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
@@ -955,6 +956,9 @@ module.exports = async function handler(req, res) {
     res.status(400).json({ error: "missing_query" });
     return;
   }
+  const uploadedEvidenceBundle = req.method === "POST"
+    ? buildUploadedEvidenceBundle(req.body || {})
+    : buildUploadedEvidenceBundle({});
 
   const graph = loadGraph();
   const arbiter = arbitrateLegalQuery(query);
@@ -1030,7 +1034,7 @@ module.exports = async function handler(req, res) {
       ? legalAnswerCache.answer_json
       : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched, legalIngestBundle });
   const warnings = Array.from(new Set(warningsForResult(matched, ai.status, backendStatus, legalSourceCardCount).concat(aiWarnings)));
-  const presentation = buildLegalResearchPresentation({ applied, matched, warnings, legalIngestBundle });
+  const presentation = buildLegalResearchPresentation({ applied, matched, warnings, legalIngestBundle, uploadedEvidenceBundle });
   const responsePayload = {
     query,
     presentation_mode: presentation.presentation_mode,
@@ -1038,6 +1042,16 @@ module.exports = async function handler(req, res) {
     legal_research_answer: presentation.legal_research_answer,
     answer_markdown: presentation.answer_markdown,
     audit_trail: presentation.audit_trail,
+    evidence_ingest_summary: {
+      status: uploadedEvidenceBundle.status,
+      uploaded_evidence_ingested: uploadedEvidenceBundle.uploaded_evidence_ingested,
+      evidence_item_count: uploadedEvidenceBundle.evidence_item_count,
+      text_item_count: uploadedEvidenceBundle.text_item_count,
+      unparsed_item_count: uploadedEvidenceBundle.unparsed_item_count,
+      source_kinds: uploadedEvidenceBundle.source_kinds,
+      issue_tags: uploadedEvidenceBundle.issue_tags,
+      limitations: uploadedEvidenceBundle.limitations,
+    },
     ai_status: ai.status,
     ai_provider: ai.provider || inquiry.provider || "none",
     analysis_status: inquiry.status,

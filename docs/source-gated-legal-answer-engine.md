@@ -33,6 +33,20 @@ Smoke command:
 node scripts/build_legal_evidence_pack_smoke.js --query "What is the rule on inconsistent pleadings?"
 ```
 
+## Uploaded Text Evidence
+
+The answer-first API can also receive user-supplied text/transcript evidence through JSON fields such as `evidence_text`, `evidence_items[]`, `uploaded_evidence[]`, or `documents[]`.
+
+This evidence is deliberately separate from legal authority:
+
+- it appears in `Evidence Analysis`;
+- it appears in `audit_trail.evidence_source_audit`;
+- it may identify helpful, harmful, or neutral factual signals;
+- it never becomes a statute, case, paragraph card, or answer authority;
+- it does not change `answer_safe=false` or `needs_lawyer_review=true`.
+
+Binary PDFs, images, audio, and video files remain unparsed unless a separate OCR/media layer supplies extracted text or a transcript.
+
 ## Legal Answer Schema
 
 `src/legal_answer/schema.js` defines the canonical objects:

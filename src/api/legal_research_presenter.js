@@ -1,3 +1,5 @@
+const { evidenceBundleToMemoItems } = require("./evidence_text_ingest");
+
 const MEMO_HEADINGS = [
   "Short Answer",
   "Issues",
@@ -77,7 +79,7 @@ function isDemoSupported(applied = {}) {
   ));
 }
 
-function buildProductMode({ applied = {}, legalIngestBundle = null } = {}) {
+function buildProductMode({ applied = {}, legalIngestBundle = null, uploadedEvidenceBundle = null } = {}) {
   const classification = applied.classification || {};
   const sourceRules = applied.source_backed_rules || [];
   const sourceAudit = applied.source_audit || {};
@@ -110,6 +112,9 @@ function buildProductMode({ applied = {}, legalIngestBundle = null } = {}) {
       "forms_document_pack",
     ],
     forms_and_sops_policy: "forms and SOPs are downstream of legal issue/authority classification",
+    uploaded_evidence_mode: uploadedEvidenceBundle?.uploaded_evidence_ingested
+      ? "text_evidence_research_triage_only"
+      : "no_uploaded_evidence_parsed",
   };
 }
 
@@ -182,12 +187,37 @@ function buildMarkdown(answer = {}, sections = []) {
   return `${lines.join("\n").trim()}\n`;
 }
 
-function buildLegalResearchPresentation({ applied = {}, matched = [], warnings = [], legalIngestBundle = null } = {}) {
+function mergeEvidenceAnalysis(sections = [], uploadedEvidenceBundle = null) {
+  const evidenceItems = evidenceBundleToMemoItems(uploadedEvidenceBundle || {});
+  if (!evidenceItems.length) return sections;
+  const hasParsedEvidence = Boolean(uploadedEvidenceBundle?.uploaded_evidence_ingested);
+  let found = false;
+  const merged = sections.map(section => {
+    if (section.heading !== "Evidence Analysis") return section;
+    found = true;
+    const baseItems = hasParsedEvidence
+      ? (section.items || []).filter(item => !/no uploaded .* parsed|no uploaded evidence has been parsed/i.test(String(item || "")))
+      : section.items || [];
+    return {
+      ...section,
+      items: cleanItems([...baseItems, ...evidenceItems]),
+    };
+  });
+  if (!found) {
+    merged.push({
+      heading: "Evidence Analysis",
+      items: evidenceItems,
+    });
+  }
+  return merged;
+}
+
+function buildLegalResearchPresentation({ applied = {}, matched = [], warnings = [], legalIngestBundle = null, uploadedEvidenceBundle = null } = {}) {
   const answer = applied.applied_answer || {};
   const sourceAudit = applied.source_audit || {};
   const sourceStatus = claimStatus(sourceAudit);
   const source_links = sourceLinksFromAudit(sourceAudit);
-  const product_mode = buildProductMode({ applied, legalIngestBundle });
+  const product_mode = buildProductMode({ applied, legalIngestBundle, uploadedEvidenceBundle });
   const displayAnswer = product_mode.mode === "unsupported_general_query"
     ? {
         ...answer,
@@ -195,9 +225,10 @@ function buildLegalResearchPresentation({ applied = {}, matched = [], warnings =
         short_answer: "This query is outside the currently source-gated demo verticals unless a separate verified vertical bundle is loaded. Treat this as unsupported general research orientation only, not final HK legal advice.",
       }
     : answer;
-  const sections = product_mode.mode === "unsupported_general_query"
+  const baseSections = product_mode.mode === "unsupported_general_query"
     ? unsupportedSections()
     : normalizeSections(answer.sections || []);
+  const sections = mergeEvidenceAnalysis(baseSections, uploadedEvidenceBundle);
   const headings = sections.map(section => section.heading);
   const memoHeadingCoverage = MEMO_HEADINGS.filter(heading => headings.includes(heading));
 
@@ -233,12 +264,23 @@ function buildLegalResearchPresentation({ applied = {}, matched = [], warnings =
       },
       evidence_source_audit: {
         display: "collapsed",
-        uploaded_evidence_ingested: false,
-        note: "No uploaded evidence parser is invoked by this endpoint; user facts are separated from legal authorities.",
+        uploaded_evidence_ingested: Boolean(uploadedEvidenceBundle?.uploaded_evidence_ingested),
+        status: uploadedEvidenceBundle?.status || "no_uploaded_evidence",
+        evidence_item_count: uploadedEvidenceBundle?.evidence_item_count || 0,
+        text_item_count: uploadedEvidenceBundle?.text_item_count || 0,
+        unparsed_item_count: uploadedEvidenceBundle?.unparsed_item_count || 0,
+        source_kinds: uploadedEvidenceBundle?.source_kinds || [],
+        issue_tags: uploadedEvidenceBundle?.issue_tags || [],
+        evidence_items: uploadedEvidenceBundle?.evidence_items || [],
+        note: uploadedEvidenceBundle?.uploaded_evidence_ingested
+          ? "Text/transcript evidence was parsed for research triage only. It is not legal authority and is separated from statute/case sources."
+          : "No uploaded evidence text parser input was supplied; user facts are separated from legal authorities.",
       },
       user_fact_audit: {
         display: "collapsed",
-        facts_source: "user_query_and_structured_fact_extractor",
+        facts_source: uploadedEvidenceBundle?.uploaded_evidence_ingested
+          ? "user_query_structured_fact_extractor_and_uploaded_text_evidence"
+          : "user_query_and_structured_fact_extractor",
       },
       inference_audit: {
         display: "collapsed",
