@@ -33,6 +33,15 @@ jobs:
       - name: Validate anti-hallucination contract
         run: node scripts/validate_anti_hallucination_contract.js
 
+      - name: Regenerate PR 6 demo outputs
+        run: node scripts/generate_pr6_demo_outputs.js
+
+      - name: Validate PR 6 demo assets
+        run: node scripts/validate_pr6_demo_assets.js
+
+      - name: Ensure PR 6 demo outputs are committed
+        run: git diff --exit-code artifacts/demo_outputs
+
       - name: Dry-run Part 1 source-card Qdrant indexer
         run: node scripts/index_part1_two_vertical_source_cards_qdrant.js --dry-run
 

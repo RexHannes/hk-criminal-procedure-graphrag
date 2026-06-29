@@ -19,6 +19,23 @@ This is a **legal issue checklist / doctrine map / case map** for Hong Kong crim
 
 **This map does not constitute legal advice.**
 
+## PR 6 Demo Boundary
+
+PR #6 is frozen as a boss-demo-ready **two-vertical** preview, not a general HK legal RAG expansion.
+
+Use [docs/pr6-presentation-status.md](docs/pr6-presentation-status.md) for the exact demo script:
+
+- theft/shoplifting forgotten-payment memo without uploaded evidence;
+- theft/shoplifting forgotten-payment memo with `evidence_text`;
+- unsupported landlord/rent query that safely refuses a confident answer.
+
+Saved demo memo outputs live in `artifacts/demo_outputs/` and can be regenerated with:
+
+```bash
+node scripts/generate_pr6_demo_outputs.js
+node scripts/validate_pr6_demo_assets.js
+```
+
 ## Deployment / Private-Source Warning
 
 The hosted demo path is **public/demo-source only**.

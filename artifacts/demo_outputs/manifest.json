@@ -1,0 +1,34 @@
+{
+  "demos": [
+    {
+      "id": "demo-a-theft-no-evidence",
+      "title": "Demo A - Theft / Shoplifting Without Uploaded Evidence",
+      "output": "artifacts/demo_outputs/demo-a-theft-no-evidence.md",
+      "product_mode": "demo_supported",
+      "answer_safe": false,
+      "needs_lawyer_review": true,
+      "uploaded_evidence_ingested": false,
+      "evidence_status": "no_uploaded_evidence"
+    },
+    {
+      "id": "demo-b-theft-with-evidence-text",
+      "title": "Demo B - Theft / Shoplifting With Uploaded Text Evidence",
+      "output": "artifacts/demo_outputs/demo-b-theft-with-evidence-text.md",
+      "product_mode": "demo_supported",
+      "answer_safe": false,
+      "needs_lawyer_review": true,
+      "uploaded_evidence_ingested": true,
+      "evidence_status": "text_evidence_parsed_research_only"
+    },
+    {
+      "id": "demo-c-unsupported-landlord-rent",
+      "title": "Demo C - Unsupported General Landlord / Rent Query",
+      "output": "artifacts/demo_outputs/demo-c-unsupported-landlord-rent.md",
+      "product_mode": "unsupported_general_query",
+      "answer_safe": false,
+      "needs_lawyer_review": true,
+      "uploaded_evidence_ingested": false,
+      "evidence_status": "no_uploaded_evidence"
+    }
+  ]
+}

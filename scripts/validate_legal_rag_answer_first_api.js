@@ -83,6 +83,8 @@ function validateViewerWiring(errors) {
   assert(app.includes("renderLegalResearchAnswer"), "viewer does not render legal_research_answer first", errors);
   assert(app.includes("Underlying retrieval / graph matches"), "viewer does not collapse graph matches", errors);
   assert(app.includes("renderInlineText"), "viewer does not link source URLs", errors);
+  assert(app.includes("${esc(String(productMode.mode))}"), "viewer should display exact product-mode token", errors);
+  assert(app.includes("Uploaded text evidence:"), "viewer should include collapsed evidence audit status", errors);
   assert(css.includes(".research-answer"), "viewer CSS missing research answer surface", errors);
 }
 

@@ -973,7 +973,7 @@
       </section>`;
   }
 
-  function renderLegalResearchAnswer(answer, fallbackApplied) {
+  function renderLegalResearchAnswer(answer, fallbackApplied, auditTrail) {
     const memo = answer || (fallbackApplied ? {
       title: fallbackApplied.title,
       short_answer: fallbackApplied.short_answer,
@@ -988,6 +988,7 @@
     const sections = memo.sections || [];
     const sourceStatus = memo.source_status || {};
     const productMode = memo.product_mode || {};
+    const evidenceAudit = auditTrail?.evidence_source_audit || {};
     return `
       <section class="research-answer">
         <div class="research-answer-head">
@@ -997,7 +998,7 @@
           </div>
           <span class="card-badges">
             <span class="badge badge-research">Answer first</span>
-            ${productMode.mode ? `<span class="badge badge-pending">${esc(String(productMode.mode).replace(/_/g, ' '))}</span>` : ''}
+            ${productMode.mode ? `<span class="badge badge-pending">${esc(String(productMode.mode))}</span>` : ''}
             <span class="badge badge-review">Review required</span>
           </span>
         </div>
@@ -1020,6 +1021,8 @@
             <li>Verification status: ${esc(sourceStatus.verification_status || 'research_only')}</li>
             <li>Claim count: ${esc(sourceStatus.claims_count || 0)}</li>
             <li>Unsupported/problem claims: ${esc(sourceStatus.unsupported_claims_count || 0)}</li>
+            <li>Uploaded text evidence: ${evidenceAudit.uploaded_evidence_ingested ? 'parsed for research triage only' : 'not parsed / not supplied'}</li>
+            <li>Evidence items: ${esc(evidenceAudit.text_item_count || 0)} parsed text item(s), ${esc(evidenceAudit.unparsed_item_count || 0)} unparsed item(s)</li>
             <li>Recall-only cases cannot support final legal propositions.</li>
           </ul>
         </details>
@@ -1172,7 +1175,7 @@
     const hasAppliedAnswer = !!(r.pi_workflow || r.applied_answer || r.legal_research_answer);
     return `
       ${renderPiWorkflow(r.pi_workflow)}
-      ${!r.pi_workflow ? renderLegalResearchAnswer(r.legal_research_answer, r.applied_answer) : ''}
+      ${!r.pi_workflow ? renderLegalResearchAnswer(r.legal_research_answer, r.applied_answer, r.audit_trail) : ''}
       ${analysis ? `<div class="card" style="background:var(--parchment);">
         <div class="card-top"><span class="card-title">Source-bounded analysis${r.ai_provider && r.ai_provider !== 'none' ? ' · via ' + esc(r.ai_provider) : ''}</span>
           ${analysis.abstain ? '<span class="badge badge-audit">Abstained — insufficient verified evidence</span>' : ''}</div>

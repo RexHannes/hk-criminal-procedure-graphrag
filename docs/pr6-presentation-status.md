@@ -71,3 +71,77 @@ Avoid presenting it as:
 - comprehensive HK law;
 - broad uploaded-evidence analysis;
 - automated lawyer-quality advice.
+
+## Three Demo Scripts
+
+Run these three only. Do not add a third vertical for the demo.
+
+### Demo A - Theft Without Uploaded Evidence
+
+Query:
+
+```text
+If I am alleged to be stealing something in the convenience store, but I forgot to pay and security stopped me, what are the AR/MR issues and what facts help or hurt?
+```
+
+Expected story:
+
+- product mode: `demo_supported`;
+- theft elements, dishonesty and intention permanently to deprive appear before raw graph/debug data;
+- Chan/Khan authorities and statute links are clickable;
+- `Evidence Analysis` maps helpful and harmful facts but says no uploaded text evidence was supplied;
+- audit/retrieval remains collapsed.
+
+### Demo B - Theft With Uploaded Text Evidence
+
+Use the same scenario with an evidence transcript:
+
+```json
+{
+  "query": "If I am alleged to be stealing something in the convenience store, but I forgot to pay and security stopped me, what are the AR/MR issues and what facts help or hurt?",
+  "evidence_text": "CCTV transcript: customer picked up chocolate, kept it visible in hand, paid for a drink at checkout, received a phone call, walked out still holding chocolate, security stopped him outside, he immediately offered to pay."
+}
+```
+
+Expected story:
+
+- product mode: `demo_supported`;
+- `Evidence Analysis` says visible item, payment for another item, distraction and immediate offer to pay help the forgotten-payment account;
+- exit/security-stop facts still need explanation;
+- evidence is labelled text/transcript research triage only, not legal authority;
+- `answer_safe` remains false and lawyer review remains required.
+
+### Demo C - Unsupported General Query
+
+Query:
+
+```text
+Can my landlord increase rent for my Hong Kong flat next month?
+```
+
+Expected story:
+
+- product mode: `unsupported_general_query`;
+- no confident HK landlord/rent answer;
+- no final legal proposition is source-grounded;
+- the output asks for a supported vertical/source pack before answering.
+
+## Saved Demo Outputs
+
+The current saved memo outputs live under:
+
+```text
+artifacts/demo_outputs/
+```
+
+Regenerate them from the local API handler with:
+
+```bash
+node scripts/generate_pr6_demo_outputs.js
+```
+
+Validate the demo assets with:
+
+```bash
+node scripts/validate_pr6_demo_assets.js
+```
