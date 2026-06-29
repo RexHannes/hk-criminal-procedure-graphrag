@@ -30,6 +30,8 @@ const authoritiesTable = read("case_corpus_sample_authorities_table.md");
 const theftDishonestyMemo = read("theft_dishonesty_research_memo.md");
 const forgotEvidence = read("forgot_to_pay_with_evidence_text.md");
 const sentencingBoundary = read("theft_sentencing_boundary.md");
+const intentionMemo = read("intention_permanently_deprive_research_memo.md");
+const belongingMemo = read("belonging_to_another_research_memo.md");
 const fraudBoundary = read("fraud_dishonesty_boundary.md");
 const unsupportedLandlord = read("unsupported_landlord_query.md");
 
@@ -65,12 +67,14 @@ assert(!unsupportedMd.includes("answer_safe: true"), "unsupported demo must not 
 
 assert(theftTable.includes("Actual listed cases:") && theftTable.includes("research-only"), "theft table missing count/status");
 assert((theftTable.match(/https:\/\/www\.hklii\.hk\/en\/cases\/[^#\s]+#p\d+/g) || []).length >= 25, "theft table should contain many paragraph-proof URLs");
-assert(authoritiesTable.includes("Actual cases: 100"), "authorities table missing actual 100-case count");
+assert(/Actual cases: \d+/.test(authoritiesTable), "authorities table missing actual case count");
 assert((authoritiesTable.match(/^\| .*?\[20\d{2}\] HK/mg) || []).length >= 25, "authorities table should list at least 25 cases");
 
 for (const [label, content] of [
   ["theft_dishonesty_research_memo", theftDishonestyMemo],
   ["forgot_to_pay_with_evidence_text", forgotEvidence],
+  ["intention_permanently_deprive_research_memo", intentionMemo],
+  ["belonging_to_another_research_memo", belongingMemo],
   ["theft_sentencing_boundary", sentencingBoundary],
   ["fraud_dishonesty_boundary", fraudBoundary],
 ]) {
@@ -79,10 +83,13 @@ for (const [label, content] of [
   assert(content.includes("Application to User Facts"), `${label} missing application section`);
   assert(content.includes("Source Audit"), `${label} missing source audit`);
   assert(content.includes("Answer safe: `false`"), `${label} must show answer_safe=false`);
+  assert(!content.includes("Mode: `unsupported_general_query`"), `${label} should not present supported case-corpus research as unsupported`);
   assert((content.match(/Exact quote:/g) || []).length >= 5, `${label} must include exact paragraph quotes`);
   assert((content.match(/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\/[^#\s]+#p\d+/g) || []).length >= 5, `${label} must include paragraph URLs`);
 }
 assert(forgotEvidence.includes("Uploaded text evidence parsed") && forgotEvidence.includes("not legal authority"), "forgot-to-pay evidence demo missing evidence analysis boundary");
+assert(/permanent(?:ly)? to deprive|permanently deprive|intention/i.test(intentionMemo), "intention permanently deprive demo missing target issue language");
+assert(/belong(?:ing)? to another|belonged to another|property of another/i.test(belongingMemo), "belonging-to-another demo missing target issue language");
 assert(sentencingBoundary.includes("sentencing") && sentencingBoundary.includes("liability"), "sentencing boundary demo missing liability boundary");
 assert(fraudBoundary.includes("fraud") || fraudBoundary.includes("deception"), "fraud boundary demo missing fraud/deception content");
 assert(unsupportedLandlord.includes("unsupported_general_query"), "new landlord demo missing unsupported mode");

@@ -5,17 +5,17 @@
   "output_dir": "data/legal_ingest/case_corpus/candidate_verified",
   "paragraph_cards_added": 120,
   "propositions_added": 120,
-  "principles_added": 120,
+  "principles_added": 106,
   "digests_added": 40,
-  "issue_map_records_added": 204,
-  "cards_demoted": 240,
+  "issue_map_records_added": 205,
+  "cards_demoted": 226,
   "demotion_reasons": {
     "current_treatment_unchecked": 40,
     "issue_tag_overbroad": 36,
     "quote_context_insufficient": 25,
     "sentencing_only_not_liability": 25,
     "quote_too_short": 7,
-    "background_only_not_principle": 4
+    "background_only_not_principle": 3
   },
   "answer_safe_count": 0,
   "authority_policy": "Generated cards remain research_only; candidate source tools are not authority.",

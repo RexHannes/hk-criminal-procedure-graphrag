@@ -84,6 +84,30 @@ const REQUESTS = [
     },
   },
   {
+    file: "intention_permanently_deprive_research_memo",
+    title: "Intention Permanently To Deprive Research Memo",
+    request: {
+      query: "For Hong Kong theft, what cases discuss intention permanently to deprive, especially where the accused says the property would be returned?",
+      use_case_corpus: true,
+      case_corpus_mode: "sample",
+      issue_id: "criminal_law.theft.intention_permanently_deprive",
+      max_cases: 8,
+      max_paragraphs: 12,
+    },
+  },
+  {
+    file: "belonging_to_another_research_memo",
+    title: "Belonging To Another Research Memo",
+    request: {
+      query: "For Hong Kong theft, what cases discuss whether property belonged to another, and how should that element be applied to facts?",
+      use_case_corpus: true,
+      case_corpus_mode: "sample",
+      issue_id: "criminal_law.theft.belonging_to_another",
+      max_cases: 8,
+      max_paragraphs: 12,
+    },
+  },
+  {
     file: "fraud_dishonesty_boundary",
     title: "Fraud Dishonesty Boundary",
     request: {

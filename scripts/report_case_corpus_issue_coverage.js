@@ -79,7 +79,7 @@ function main() {
   const report = {
     report_id: "case_corpus_issue_coverage_sample_v1",
     generated_at: "2026-06-29T00:00:00.000Z",
-    scope: "Current 100-case L1-L3.5 criminal-law sample only; no scaling.",
+    scope: "Current targeted L1-L3.5 criminal-law sample only; no 500-case scaling.",
     thresholds: {
       weak: "fewer than 10 cases",
       medium: "10-24 cases",
@@ -103,7 +103,9 @@ function main() {
     "",
     "## Scale Guidance",
     "",
-    "- Weak issues need targeted discovery before 500-case scaling.",
+    report.weak_issue_tags.length
+      ? "- Weak issues need targeted discovery before 500-case scaling."
+      : "- No target issue remains weak; medium issues still need lawyer review and more coverage before 500-case scaling.",
     "- Demo-credible issues can support investor-facing research-only demos.",
     "- No issue is answer-safe without L4 review.",
     "",

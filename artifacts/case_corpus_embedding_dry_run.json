@@ -13,8 +13,8 @@
     "chunk_schema_version": "case_corpus_chunk_v1",
     "payload_schema_version": "case-corpus-qdrant-payload-v1"
   },
-  "chunk_count": 1012,
-  "embedded_chunk_count": 1012,
+  "chunk_count": 918,
+  "embedded_chunk_count": 918,
   "output": "data/legal_ingest/case_corpus/embedded_chunks_manifest_sample_100.jsonl",
   "status": "dry_run_ready_no_provider_calls"
 }

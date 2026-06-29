@@ -10,16 +10,16 @@ NotebookLM, DeepSeek, Claude, GPT and manual notes are candidate extractors only
 | Verified cases | 40 |
 | Verified paragraph cards | 120 |
 | Proposition candidates | 120 |
-| Principle candidates | 120 |
+| Principle candidates | 106 |
 | Digest candidates | 40 |
-| Cards with demotion flags | 240 |
+| Cards with demotion flags | 226 |
 | Answer-safe cards | 0 |
 
 ## Rejection Reasons
 
 | Reason | Count |
 |---|---:|
-| unsupported_principle | 4 |
+| unsupported_principle | 18 |
 | quote_not_found | 3 |
 | missing_paragraph | 2 |
 | missing_case | 1 |
@@ -34,7 +34,7 @@ NotebookLM, DeepSeek, Claude, GPT and manual notes are candidate extractors only
 | quote_context_insufficient | 25 |
 | sentencing_only_not_liability | 25 |
 | quote_too_short | 7 |
-| background_only_not_principle | 4 |
+| background_only_not_principle | 3 |
 
 ## Boundary
 

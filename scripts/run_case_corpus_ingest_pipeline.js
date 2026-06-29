@@ -138,7 +138,7 @@ function writeMarkdown(report) {
   const lines = [
     "# Case Corpus Ingest Run Status",
     "",
-    "Idempotent sample ingest/chunk/embed/index/eval run for the 100-case public HKLII corpus. Network fetching and live Qdrant writes are disabled in CI.",
+    "Idempotent sample ingest/chunk/embed/index/eval run for the targeted public HKLII sample corpus. Network fetching and live Qdrant writes are disabled in CI.",
     "",
     "| Stage | Attempted | Success | Failed | Skipped |",
     "|---|---:|---:|---:|---:|",

@@ -14,7 +14,7 @@
     "candidates_verified": 40,
     "candidates_rejected": 2,
     "rejection_reasons": {
-      "unsupported_principle": 4,
+      "unsupported_principle": 18,
       "quote_not_found": 3,
       "missing_paragraph": 2,
       "missing_case": 1,
@@ -23,7 +23,7 @@
     "verified_cases_added": 40,
     "paragraph_cards_added": 120,
     "propositions_added": 120,
-    "principles_added": 120,
+    "principles_added": 106,
     "digests_added": 40,
     "demotion_reasons": {
       "current_treatment_unchecked": 40,
@@ -31,9 +31,9 @@
       "quote_context_insufficient": 25,
       "sentencing_only_not_liability": 25,
       "quote_too_short": 7,
-      "background_only_not_principle": 4
+      "background_only_not_principle": 3
     },
-    "cards_demoted": 240,
+    "cards_demoted": 226,
     "answer_safe_count": 0
   },
   "accepted_candidates": [
@@ -59,7 +59,8 @@
         "appropriation"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -225,7 +226,8 @@
         "mens rea"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -396,7 +398,8 @@
         "interview caution"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -493,45 +496,6 @@
       "rejected_quotes": [],
       "accepted_principles": [
         {
-          "principle_index": 0,
-          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkdc_2026_705_hksar_v_anthony_theresia_olwi_p1",
-          "quote_index": 0,
-          "exact_quote_support": "Theft Ordinance , Cap",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.deception",
-            "criminal_law.theft.sentencing",
-            "criminal_law.theft.handling_stolen_goods",
-            "criminal_procedure.interview_caution"
-          ],
-          "demotion_flags": [
-            "quote_context_insufficient",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
-        },
-        {
-          "principle_index": 1,
-          "principle_text": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio.",
-          "paragraph_id": "hk_hkdc_2026_705_hksar_v_anthony_theresia_olwi_p12",
-          "quote_index": 1,
-          "exact_quote_support": "handling stolen goods",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.theft.sentencing",
-            "criminal_law.deception",
-            "criminal_law.theft.handling_stolen_goods",
-            "criminal_procedure.interview_caution"
-          ],
-          "demotion_flags": [
-            "quote_context_insufficient",
-            "sentencing_only_not_liability",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
-        },
-        {
           "principle_index": 2,
           "principle_text": "Use this case only as public-source interview/caution context unless a reviewer confirms an evidential rule.",
           "paragraph_id": "hk_hkdc_2026_705_hksar_v_anthony_theresia_olwi_p9",
@@ -550,7 +514,18 @@
           ]
         }
       ],
-      "rejected_principles": [],
+      "rejected_principles": [
+        {
+          "principle_index": 0,
+          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "reason": "unsupported_principle"
+        },
+        {
+          "principle_index": 1,
+          "principle_text": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio.",
+          "reason": "unsupported_principle"
+        }
+      ],
       "demotion_reasons": [
         "quote_context_insufficient",
         "issue_tag_overbroad",
@@ -579,7 +554,8 @@
         "sentencing"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -662,38 +638,6 @@
       "rejected_quotes": [],
       "accepted_principles": [
         {
-          "principle_index": 0,
-          "principle_text": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio.",
-          "paragraph_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p24",
-          "quote_index": 0,
-          "exact_quote_support": "Theft Ordinance , Cap",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.theft.sentencing"
-          ],
-          "demotion_flags": [
-            "quote_context_insufficient",
-            "current_treatment_unchecked",
-            "sentencing_only_not_liability"
-          ]
-        },
-        {
-          "principle_index": 1,
-          "principle_text": "Treat the paragraph as public case context only; it is not answer-safe and needs lawyer review.",
-          "paragraph_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p24",
-          "quote_index": 0,
-          "exact_quote_support": "Theft Ordinance , Cap",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.theft.sentencing"
-          ],
-          "demotion_flags": [
-            "quote_context_insufficient",
-            "current_treatment_unchecked",
-            "background_only_not_principle"
-          ]
-        },
-        {
           "principle_index": 2,
           "principle_text": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio.",
           "paragraph_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
@@ -710,12 +654,22 @@
           ]
         }
       ],
-      "rejected_principles": [],
+      "rejected_principles": [
+        {
+          "principle_index": 0,
+          "principle_text": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio.",
+          "reason": "unsupported_principle"
+        },
+        {
+          "principle_index": 1,
+          "principle_text": "Treat the paragraph as public case context only; it is not answer-safe and needs lawyer review.",
+          "reason": "unsupported_principle"
+        }
+      ],
       "demotion_reasons": [
         "quote_context_insufficient",
         "current_treatment_unchecked",
-        "sentencing_only_not_liability",
-        "background_only_not_principle"
+        "sentencing_only_not_liability"
       ],
       "rejection_reasons": []
     },
@@ -745,7 +699,8 @@
         "fraud"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -934,7 +889,8 @@
         "deception"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -1122,7 +1078,8 @@
         "sentencing"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -1216,25 +1173,6 @@
       "rejected_quotes": [],
       "accepted_principles": [
         {
-          "principle_index": 0,
-          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen_p1",
-          "quote_index": 0,
-          "exact_quote_support": "Theft Ordinance",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.deception",
-            "criminal_law.theft.appropriation",
-            "criminal_law.theft.sentencing"
-          ],
-          "demotion_flags": [
-            "quote_too_short",
-            "quote_context_insufficient",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
-        },
-        {
           "principle_index": 1,
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
           "paragraph_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen_p5",
@@ -1271,7 +1209,13 @@
           ]
         }
       ],
-      "rejected_principles": [],
+      "rejected_principles": [
+        {
+          "principle_index": 0,
+          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "reason": "unsupported_principle"
+        }
+      ],
       "demotion_reasons": [
         "quote_too_short",
         "quote_context_insufficient",
@@ -1307,7 +1251,8 @@
         "fraud"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -1487,7 +1432,8 @@
         "appropriation"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -1666,7 +1612,8 @@
         "deception"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -1753,23 +1700,6 @@
       "rejected_quotes": [],
       "accepted_principles": [
         {
-          "principle_index": 0,
-          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkdc_2026_764_hksar_v_wong_kinman_1_st_defendant_yung_waileong_2_nd_defendant_p2",
-          "quote_index": 0,
-          "exact_quote_support": "Theft Ordinance , Cap",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.fraud",
-            "criminal_law.deception"
-          ],
-          "demotion_flags": [
-            "quote_context_insufficient",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
-        },
-        {
           "principle_index": 1,
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
           "paragraph_id": "hk_hkdc_2026_764_hksar_v_wong_kinman_1_st_defendant_yung_waileong_2_nd_defendant_p3",
@@ -1802,7 +1732,13 @@
           ]
         }
       ],
-      "rejected_principles": [],
+      "rejected_principles": [
+        {
+          "principle_index": 0,
+          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "reason": "unsupported_principle"
+        }
+      ],
       "demotion_reasons": [
         "quote_context_insufficient",
         "issue_tag_overbroad",
@@ -1836,7 +1772,8 @@
         "appropriation"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -1967,28 +1904,15 @@
             "issue_tag_overbroad",
             "current_treatment_unchecked"
           ]
-        },
+        }
+      ],
+      "rejected_principles": [
         {
           "principle_index": 2,
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong_p17",
-          "quote_index": 2,
-          "exact_quote_support": "stolen the phone case",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.theft.appropriation",
-            "criminal_law.theft.sentencing",
-            "criminal_law.deception",
-            "criminal_procedure.interview_caution"
-          ],
-          "demotion_flags": [
-            "quote_context_insufficient",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
+          "reason": "unsupported_principle"
         }
       ],
-      "rejected_principles": [],
       "demotion_reasons": [
         "issue_tag_overbroad",
         "current_treatment_unchecked",
@@ -2021,7 +1945,8 @@
         "sentencing"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -2200,7 +2125,8 @@
         "sentencing"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -2380,7 +2306,8 @@
         "fraud"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -2563,7 +2490,8 @@
         "sentencing"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -2744,7 +2672,8 @@
         "theft"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -2897,33 +2826,15 @@
             "issue_tag_overbroad",
             "current_treatment_unchecked"
           ]
-        },
+        }
+      ],
+      "rejected_principles": [
         {
           "principle_index": 2,
           "principle_text": "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkdc_2021_1071_hksar_v_chan_hung_wai_p17",
-          "quote_index": 2,
-          "exact_quote_support": "dishonesty offences",
-          "issue_tags": [
-            "criminal_law.dishonesty",
-            "criminal_law.theft.dishonesty",
-            "criminal_law.theft.mens_rea",
-            "criminal_law.theft.sentencing",
-            "criminal_law.deception",
-            "criminal_law.theft.appropriation",
-            "criminal_law.fraud",
-            "criminal_law.theft",
-            "criminal_procedure.interview_caution"
-          ],
-          "demotion_flags": [
-            "quote_too_short",
-            "quote_context_insufficient",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
+          "reason": "unsupported_principle"
         }
       ],
-      "rejected_principles": [],
       "demotion_reasons": [
         "issue_tag_overbroad",
         "current_treatment_unchecked",
@@ -2958,7 +2869,8 @@
         "fraud"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -3141,7 +3053,8 @@
         "theft"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -3333,7 +3246,8 @@
         "deception"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -3545,7 +3459,8 @@
         "fraud"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -3734,7 +3649,8 @@
         "fraud"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -3828,25 +3744,6 @@
       "rejected_quotes": [],
       "accepted_principles": [
         {
-          "principle_index": 0,
-          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkdc_2025_382_hksar_v_mtenga_enock_maro_p1",
-          "quote_index": 0,
-          "exact_quote_support": "Theft Ordinance , Cap",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.deception",
-            "criminal_law.theft.appropriation",
-            "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
-          ],
-          "demotion_flags": [
-            "quote_context_insufficient",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
-        },
-        {
           "principle_index": 1,
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
           "paragraph_id": "hk_hkdc_2025_382_hksar_v_mtenga_enock_maro_p7",
@@ -3883,7 +3780,13 @@
           ]
         }
       ],
-      "rejected_principles": [],
+      "rejected_principles": [
+        {
+          "principle_index": 0,
+          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "reason": "unsupported_principle"
+        }
+      ],
       "demotion_reasons": [
         "quote_context_insufficient",
         "issue_tag_overbroad",
@@ -3919,7 +3822,8 @@
         "interview caution"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -4118,7 +4022,8 @@
         "sentencing"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -4306,7 +4211,8 @@
         "mens rea"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -4506,7 +4412,8 @@
         "deception"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -4688,7 +4595,8 @@
         "deception"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -4865,7 +4773,8 @@
         "fraud"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -5043,7 +4952,8 @@
         "interview caution"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -5219,7 +5129,8 @@
         "appropriation"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -5345,28 +5256,15 @@
             "issue_tag_overbroad",
             "current_treatment_unchecked"
           ]
-        },
+        }
+      ],
+      "rejected_principles": [
         {
           "principle_index": 2,
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkdc_2021_363_hksar_v_wan_chiu_ying_p2",
-          "quote_index": 2,
-          "exact_quote_support": "stolen from her",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.deception",
-            "criminal_law.theft.sentencing",
-            "criminal_law.theft.appropriation"
-          ],
-          "demotion_flags": [
-            "quote_too_short",
-            "quote_context_insufficient",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
+          "reason": "unsupported_principle"
         }
       ],
-      "rejected_principles": [],
       "demotion_reasons": [
         "sentencing_only_not_liability",
         "issue_tag_overbroad",
@@ -5398,7 +5296,8 @@
         "interview caution"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -5564,7 +5463,8 @@
         "deception"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -5747,7 +5647,8 @@
         "handling stolen goods"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -5851,29 +5752,6 @@
       "rejected_quotes": [],
       "accepted_principles": [
         {
-          "principle_index": 0,
-          "principle_text": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio.",
-          "paragraph_id": "hk_hkdc_2024_1497_hksar_v_chui_tak_man_p11",
-          "quote_index": 0,
-          "exact_quote_support": "imprisonment",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.theft.sentencing",
-            "criminal_law.fraud",
-            "criminal_law.deception",
-            "criminal_law.theft.handling_stolen_goods",
-            "criminal_law.theft.appropriation",
-            "criminal_procedure.interview_caution"
-          ],
-          "demotion_flags": [
-            "quote_too_short",
-            "quote_context_insufficient",
-            "sentencing_only_not_liability",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
-        },
-        {
           "principle_index": 1,
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
           "paragraph_id": "hk_hkdc_2024_1497_hksar_v_chui_tak_man_p17",
@@ -5915,7 +5793,13 @@
           ]
         }
       ],
-      "rejected_principles": [],
+      "rejected_principles": [
+        {
+          "principle_index": 0,
+          "principle_text": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio.",
+          "reason": "unsupported_principle"
+        }
+      ],
       "demotion_reasons": [
         "quote_too_short",
         "quote_context_insufficient",
@@ -5949,7 +5833,8 @@
         "sentencing"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -6125,7 +6010,8 @@
         "sentencing"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -6241,27 +6127,6 @@
           ]
         },
         {
-          "principle_index": 1,
-          "principle_text": "Treat the paragraph as public case context only; it is not answer-safe and needs lawyer review.",
-          "paragraph_id": "hk_hkdc_2023_1163_hksar_v_leung_on_yee_ivan_p29",
-          "quote_index": 1,
-          "exact_quote_support": "imprisonment",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.theft.appropriation",
-            "criminal_law.theft.sentencing",
-            "criminal_law.deception",
-            "criminal_procedure.interview_caution"
-          ],
-          "demotion_flags": [
-            "quote_too_short",
-            "quote_context_insufficient",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked",
-            "background_only_not_principle"
-          ]
-        },
-        {
           "principle_index": 2,
           "principle_text": "Treat the paragraph as public case context only; it is not answer-safe and needs lawyer review.",
           "paragraph_id": "hk_hkdc_2023_1163_hksar_v_leung_on_yee_ivan_p35",
@@ -6281,7 +6146,13 @@
           ]
         }
       ],
-      "rejected_principles": [],
+      "rejected_principles": [
+        {
+          "principle_index": 1,
+          "principle_text": "Treat the paragraph as public case context only; it is not answer-safe and needs lawyer review.",
+          "reason": "unsupported_principle"
+        }
+      ],
       "demotion_reasons": [
         "quote_context_insufficient",
         "issue_tag_overbroad",
@@ -6321,7 +6192,8 @@
         "dishonesty"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -6531,7 +6403,8 @@
         "sentencing"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -6648,27 +6521,6 @@
           ]
         },
         {
-          "principle_index": 1,
-          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkdc_2023_781_hksar_v_fong_tak_chi_p22",
-          "quote_index": 1,
-          "exact_quote_support": "imprisonment",
-          "issue_tags": [
-            "criminal_law.theft",
-            "criminal_law.theft.appropriation",
-            "criminal_law.theft.sentencing",
-            "criminal_law.deception",
-            "criminal_law.theft.handling_stolen_goods",
-            "criminal_law.fraud"
-          ],
-          "demotion_flags": [
-            "quote_too_short",
-            "quote_context_insufficient",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
-        },
-        {
           "principle_index": 2,
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
           "paragraph_id": "hk_hkdc_2023_781_hksar_v_fong_tak_chi_p26",
@@ -6688,7 +6540,13 @@
           ]
         }
       ],
-      "rejected_principles": [],
+      "rejected_principles": [
+        {
+          "principle_index": 1,
+          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "reason": "unsupported_principle"
+        }
+      ],
       "demotion_reasons": [
         "issue_tag_overbroad",
         "current_treatment_unchecked",
@@ -6726,7 +6584,8 @@
         "bail"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -6855,29 +6714,6 @@
           ]
         },
         {
-          "principle_index": 1,
-          "principle_text": "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant_p2",
-          "quote_index": 1,
-          "exact_quote_support": "imprisonment",
-          "issue_tags": [
-            "criminal_law.dishonesty",
-            "criminal_law.theft.dishonesty",
-            "criminal_law.theft.mens_rea",
-            "criminal_law.theft.sentencing",
-            "criminal_law.fraud",
-            "criminal_law.theft",
-            "criminal_law.deception",
-            "criminal_procedure.bail"
-          ],
-          "demotion_flags": [
-            "quote_too_short",
-            "quote_context_insufficient",
-            "issue_tag_overbroad",
-            "current_treatment_unchecked"
-          ]
-        },
-        {
           "principle_index": 2,
           "principle_text": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio.",
           "paragraph_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant_p14",
@@ -6900,7 +6736,13 @@
           ]
         }
       ],
-      "rejected_principles": [],
+      "rejected_principles": [
+        {
+          "principle_index": 1,
+          "principle_text": "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review.",
+          "reason": "unsupported_principle"
+        }
+      ],
       "demotion_reasons": [
         "sentencing_only_not_liability",
         "issue_tag_overbroad",
@@ -6936,7 +6778,8 @@
         "fraud"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -7117,7 +6960,8 @@
         "fraud"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -7286,6 +7130,7 @@
       "candidate_issue_tags": [
         "criminal_law.theft",
         "criminal_law.deception",
+        "criminal_law.theft.belonging_to_another",
         "criminal_law.theft.appropriation",
         "criminal_law.theft.sentencing",
         "criminal_law.fraud"
@@ -7294,12 +7139,13 @@
       "candidate_issues": [
         "theft",
         "deception",
+        "belonging to another",
         "appropriation",
-        "sentencing",
-        "fraud"
+        "sentencing"
       ],
       "candidate_holdings": [
-        "Machine extraction identified public paragraphs relevant to the listed issues.",
+        "No final ratio/current-treatment conclusion is made at L3.5.",
+        "Machine extraction identified public paragraphs; demoted principles are preserved for audit and excluded from answer-layer principle links.",
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
@@ -7312,7 +7158,7 @@
       ],
       "matched_paragraph_ids": [
         "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p1",
-        "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p36",
+        "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p32",
         "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p33"
       ],
       "accepted_quotes": [
@@ -7328,6 +7174,7 @@
           "issue_tags": [
             "criminal_law.theft",
             "criminal_law.deception",
+            "criminal_law.theft.belonging_to_another",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
@@ -7342,22 +7189,23 @@
         },
         {
           "quote_index": 1,
-          "candidate_quote": "imprisonment is an appropriate sentencing starting point for this charge involving simple case of credit card fraud where stolen genuine credit cards ar",
-          "exact_quote_support": "imprisonment is an appropriate sentencing starting point for this charge involving simple case of credit card fraud where stolen genuine credit cards ar",
-          "paragraph_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p36",
-          "para_no": "36",
-          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494#p36",
+          "candidate_quote": "The Court of Appeal in the case of HKSAR v Tandon William Chaing CACC 404/2012, approved sentencing starting point of 3 years’ imprisonment adopted in the case of HKSAR v Kwan Po Keung [2012] 2 HKLRD 12 , for the unautho",
+          "exact_quote_support": "The Court of Appeal in the case of HKSAR v Tandon William Chaing CACC 404/2012, approved sentencing starting point of 3 years’ imprisonment adopted in the case of HKSAR v Kwan Po Keung [2012] 2 HKLRD 12 , for the unautho",
+          "paragraph_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p32",
+          "para_no": "32",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494#p32",
           "match_score": 1,
           "match_type": "exact_substring",
           "issue_tags": [
+            "criminal_law.theft.belonging_to_another",
             "criminal_law.theft",
+            "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.fraud"
           ],
-          "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
-          "legal_function": "evidential_factor",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "legal_function": "case_application",
           "authority_role_candidate": "application_to_facts",
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -7378,7 +7226,8 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.deception",
+            "criminal_law.theft.belonging_to_another"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
@@ -7400,6 +7249,7 @@
           "issue_tags": [
             "criminal_law.theft",
             "criminal_law.deception",
+            "criminal_law.theft.belonging_to_another",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
@@ -7411,16 +7261,17 @@
         },
         {
           "principle_index": 1,
-          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p36",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review.",
+          "paragraph_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p32",
           "quote_index": 1,
-          "exact_quote_support": "imprisonment is an appropriate sentencing starting point for this charge involving simple case of credit card fraud where stolen genuine credit cards ar",
+          "exact_quote_support": "The Court of Appeal in the case of HKSAR v Tandon William Chaing CACC 404/2012, approved sentencing starting point of 3 years’ imprisonment adopted in the case of HKSAR v Kwan Po Keung [2012] 2 HKLRD 12 , for the unautho",
           "issue_tags": [
+            "criminal_law.theft.belonging_to_another",
             "criminal_law.theft",
+            "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.fraud"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -7438,7 +7289,8 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.deception",
+            "criminal_law.theft.belonging_to_another"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",

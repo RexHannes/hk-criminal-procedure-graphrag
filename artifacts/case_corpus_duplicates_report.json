@@ -2,8 +2,8 @@
   "report_id": "case_corpus_duplicates_report_v1",
   "generated_at": "2026-06-29T00:00:00.000Z",
   "mode": "sample",
-  "registry_case_count": 100,
-  "paragraph_card_count": 300,
+  "registry_case_count": 120,
+  "paragraph_card_count": 344,
   "duplicate_rate": 0,
   "duplicate_group_counts": {
     "source_url": 0,

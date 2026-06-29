@@ -4,6 +4,7 @@ const {
   byId,
   normalizeParagraphText,
 } = require("./case_corpus_store");
+const { principleUsable } = require("./principle_quality");
 
 const CHUNK_SCHEMA_VERSION = "case_corpus_chunk_v1";
 const SAFE_MAX_PARAGRAPH_TOKENS = 1400;
@@ -139,7 +140,7 @@ function buildPropositionChunks(corpus, paragraphById) {
 }
 
 function buildPrincipleChunks(corpus, paragraphById) {
-  return corpus.principles.map(principle => {
+  return corpus.principles.filter(principleUsable).map(principle => {
     const paragraph = (principle.source_paragraph_ids || []).map(id => paragraphById.get(id)).find(Boolean);
     return commonPayload({
       chunkId: `chunk_${principle.principle_id}`,
@@ -205,7 +206,7 @@ function buildDigestChunks(corpus, propositionsById) {
 function buildIssueClusterChunks(corpus) {
   const paragraphById = byId(corpus.paragraphs, "paragraph_id");
   const propositionById = byId(corpus.propositions, "proposition_id");
-  const principleById = byId(corpus.principles, "principle_id");
+  const principleById = byId(corpus.principles.filter(principleUsable), "principle_id");
   const digestByCaseId = byId(corpus.digests, "case_id");
 
   const byIssue = new Map();

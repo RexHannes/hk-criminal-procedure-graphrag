@@ -1082,6 +1082,19 @@ module.exports = async function handler(req, res) {
           : "",
       })
     : null;
+  const hasCaseCorpusAuthorities = (caseLawResearch?.cases_returned || 0) > 0;
+  const productMode = hasCaseCorpusAuthorities && presentation.product_mode.mode === "unsupported_general_query"
+    ? {
+        ...presentation.product_mode,
+        mode: "source_grounded_research_only",
+        labels: Array.from(new Set([
+          "source_grounded_research_only",
+          "case_corpus_l1_l35_research_only",
+          "needs_lawyer_review",
+        ])),
+        unsupported_reason: "",
+      }
+    : presentation.product_mode;
   const auditTrail = caseLawResearch
     ? {
         ...presentation.audit_trail,
@@ -1102,12 +1115,14 @@ module.exports = async function handler(req, res) {
       }
     : presentation.audit_trail;
   const answerMarkdown = caseLawResearch
-    ? `${presentation.answer_markdown.trim()}\n\n---\n\n${caseLawResearch.markdown}`
+    ? hasCaseCorpusAuthorities && presentation.product_mode.mode === "unsupported_general_query"
+      ? caseLawResearch.markdown
+      : `${presentation.answer_markdown.trim()}\n\n---\n\n${caseLawResearch.markdown}`
     : presentation.answer_markdown;
   const responsePayload = {
     query,
     presentation_mode: presentation.presentation_mode,
-    product_mode: presentation.product_mode,
+    product_mode: productMode,
     legal_research_answer: presentation.legal_research_answer,
     answer_markdown: answerMarkdown,
     case_law_research: caseLawResearch,

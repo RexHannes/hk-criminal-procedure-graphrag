@@ -42,6 +42,12 @@ const checksumPassCount = paragraphs.filter(paragraph => paragraph.checksum === 
 const researchOnlyCount = []
   .concat(registry, paragraphs, propositions, principles, digests)
   .filter(item => item.answer_layer_status === "research_only").length;
+const usablePrincipleCount = principles.filter(item => item.usable_in_answer_layer === true && item.principle_quality_status === "pass").length;
+const issueCaseCounts = issueMap.reduce((acc, item) => {
+  if (!acc[item.issue_id]) acc[item.issue_id] = new Set();
+  acc[item.issue_id].add(item.case_id);
+  return acc;
+}, {});
 const chunkCounts = chunks.reduce((acc, chunk) => {
   acc[chunk.chunk_type] = (acc[chunk.chunk_type] || 0) + 1;
   return acc;
@@ -76,7 +82,7 @@ assert(markdown.includes("Cases By Court"), "status markdown missing court table
 assert(markdown.includes("Cases By Year"), "status markdown missing year table");
 assert(report.chunk_count_by_type?.case_paragraph_chunk === paragraphs.length, "paragraph chunk count mismatch");
 assert(report.chunk_count_by_type?.case_proposition_chunk === propositions.length, "proposition chunk count mismatch");
-assert(report.chunk_count_by_type?.case_principle_chunk === principles.length, "principle chunk count mismatch");
+assert(report.chunk_count_by_type?.case_principle_chunk === usablePrincipleCount, "usable principle chunk count mismatch");
 assert(report.chunk_count_by_type?.case_digest_chunk === digests.length, "digest chunk count mismatch");
 assert(report.chunk_count_by_type?.issue_cluster_chunk === chunkCounts.issue_cluster_chunk, "issue cluster chunk count mismatch");
 assert(report.embedded_chunk_count === embeddedChunks.length, "embedded_chunk_count mismatch");
@@ -109,16 +115,27 @@ assert(report.candidate_digests_added >= 25, "candidate_digests_added missing/to
 assert(report.candidate_answer_safe_count === 0, "candidate workflow cannot create answer_safe cards");
 assert(report.candidate_cards_demoted >= 1, "candidate_cards_demoted missing/too low");
 assert(report.cards_demoted >= 1, "cards_demoted missing/too low");
+assert(report.usable_principle_count === usablePrincipleCount, "usable_principle_count mismatch");
+assert(report.demoted_principle_count >= 1, "demoted_principle_count missing/too low");
+assert(report.principle_quality_status_counts?.pass === usablePrincipleCount, "principle pass status count mismatch");
 assert(report.fast_growth_workflow === "candidate_extractor_to_public_paragraph_verification_to_research_only_cards", "fast growth workflow marker missing");
 assert(markdown.includes("Candidate Fast-Growth Metrics"), "status markdown missing candidate fast-growth metrics");
 assert(markdown.includes("candidate extractors only"), "status markdown missing candidate-only boundary");
 assert(report.quality_audit_pass_rate >= 0.8, "quality_audit_pass_rate missing/too low");
+assert(report.quality_audit_pass_rate >= 0.95, "quality_audit_pass_rate should improve after principle repair");
+assert(report.principle_quality_pass_rate >= 0.75, "principle_quality_pass_rate below target");
 assert(report.quality_audited_case_count >= 20, "quality_audited_case_count missing/too low");
 assert(Array.isArray(report.weak_issue_tags), "weak_issue_tags missing");
-assert(report.weak_issue_tags.includes("criminal_law.theft.belonging_to_another"), "weak_issue_tags should flag belonging_to_another");
+assert(!report.weak_issue_tags.includes("criminal_law.theft.belonging_to_another"), "belonging_to_another should no longer be weak");
+assert(!report.weak_issue_tags.includes("criminal_law.theft.intention_permanently_deprive"), "intention_permanently_deprive should no longer be weak");
+assert(!report.weak_issue_tags.includes("criminal_procedure.bail"), "bail should no longer be weak");
+assert((issueCaseCounts["criminal_law.theft.belonging_to_another"]?.size || 0) >= 10, "belonging_to_another target coverage not met");
+assert((issueCaseCounts["criminal_law.theft.intention_permanently_deprive"]?.size || 0) >= 10, "intention_permanently_deprive target coverage not met");
+assert((issueCaseCounts["criminal_procedure.bail"]?.size || 0) >= 15, "bail target coverage not met");
 assert(report.next_target_500_cases && report.next_target_500_cases.includes("500"), "next_target_500_cases missing");
 assert(markdown.includes("Quality Audit Metrics"), "status markdown missing quality audit metrics");
 assert(markdown.includes("Issue Coverage Audit"), "status markdown missing issue coverage audit");
+assert(markdown.includes("Principle Quality Repair"), "status markdown missing principle quality repair");
 
 if (errors.length) {
   console.error("Case corpus L1-L3.5 status validation failed:");

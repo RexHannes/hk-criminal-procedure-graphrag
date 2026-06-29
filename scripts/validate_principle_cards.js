@@ -6,9 +6,19 @@ const {
   readJsonl,
   byId,
 } = require("../src/legal_answer/case_corpus/case_corpus_store");
+const {
+  assessPrincipleQuality,
+  hasSpecificLiabilityIssue,
+  quoteTooShort,
+  SENTENCING_PATTERN,
+  BACKGROUND_PATTERN,
+  LEGAL_TEST_PATTERN,
+} = require("../src/legal_answer/case_corpus/principle_quality");
 
 const VALID_AUTHORITY_STRENGTH = new Set(["cfa", "ca", "cfi", "dc", "magistracy", "tribunal", "statute", "practice_direction"]);
 const VALID_TREATMENT = new Set(["unchecked", "checked_current", "doubted", "distinguished", "overruled", "superseded_by_statute"]);
+const VALID_PRINCIPLE_STATUS = new Set(["pass", "demoted", "needs_review"]);
+const VALID_LIABILITY_RELEVANCE = new Set(["liability", "sentencing", "procedure", "background"]);
 
 const paragraphs = readJsonl(PATHS.paragraphsSample);
 const propositions = readJsonl(PATHS.propositionsSample);
@@ -32,8 +42,20 @@ for (const principle of principles) {
   assert(["case", "statute", "practice_direction"].includes(principle.source_type), `${principle.principle_id}: invalid source_type`);
   assert((principle.issue_tags || []).length >= 1, `${principle.principle_id}: issue_tags required`);
   assert(principle.exact_quote_support, `${principle.principle_id}: missing exact_quote_support`);
+  assert(!quoteTooShort(principle.exact_quote_support), `${principle.principle_id}: exact_quote_support too short`);
   assert(VALID_AUTHORITY_STRENGTH.has(principle.authority_strength), `${principle.principle_id}: invalid authority_strength`);
   assert(VALID_TREATMENT.has(principle.current_treatment_status || "unchecked"), `${principle.principle_id}: invalid current_treatment_status`);
+  assert(VALID_PRINCIPLE_STATUS.has(principle.principle_quality_status), `${principle.principle_id}: invalid/missing principle_quality_status`);
+  assert(VALID_LIABILITY_RELEVANCE.has(principle.liability_relevance), `${principle.principle_id}: invalid/missing liability_relevance`);
+  assert(typeof principle.usable_in_answer_layer === "boolean", `${principle.principle_id}: usable_in_answer_layer must be boolean`);
+  if (principle.principle_quality_status === "demoted") {
+    assert(principle.usable_in_answer_layer === false, `${principle.principle_id}: demoted principle cannot be answer-layer usable`);
+    assert(principle.demotion_reason, `${principle.principle_id}: demoted principle missing demotion_reason`);
+  }
+  if (principle.usable_in_answer_layer) {
+    assert(principle.principle_quality_status === "pass", `${principle.principle_id}: usable principle must pass quality repair`);
+    assert(!principle.demotion_reason, `${principle.principle_id}: usable principle cannot carry demotion_reason`);
+  }
   assert(principle.answer_layer_status === "research_only", `${principle.principle_id}: must be research_only`);
   assert(principle.answer_layer_status !== "answer_safe", `${principle.principle_id}: cannot be answer_safe`);
   assert(!/case_recall_only|placeholder|todo|fake/i.test(JSON.stringify(principle)), `${principle.principle_id}: recall-only/placeholder marker present`);
@@ -44,10 +66,24 @@ for (const principle of principles) {
       assert(propositionById.has(propId), `${principle.principle_id}: missing proposition ${propId}`);
     }
     const linkedParagraphs = (principle.source_paragraph_ids || []).map(id => paragraphById.get(id)).filter(Boolean);
+    const linkedPropositions = (principle.source_proposition_ids || []).map(id => propositionById.get(id)).filter(Boolean);
     assert(linkedParagraphs.length === (principle.source_paragraph_ids || []).length, `${principle.principle_id}: missing linked paragraph`);
     assert(linkedParagraphs.some(paragraph => paragraph.paragraph_text.includes(principle.exact_quote_support)), `${principle.principle_id}: exact quote not found in source paragraph`);
     assert(principle.limits, `${principle.principle_id}: case principle requires limits`);
     assert(principle.distinguishable_when, `${principle.principle_id}: case principle requires distinguishable_when`);
+    const assessment = assessPrincipleQuality(principle, { paragraphById, propositionById });
+    assert(assessment.principle_quality_status === principle.principle_quality_status, `${principle.principle_id}: principle_quality_status does not match validator assessment`);
+    assert(assessment.liability_relevance === principle.liability_relevance, `${principle.principle_id}: liability_relevance does not match validator assessment`);
+    const roleBlob = linkedParagraphs.concat(linkedPropositions).map(item => `${item.authority_role_candidate || ""} ${item.legal_function || ""} ${item.proposition_text || ""} ${item.paragraph_text || ""}`).join(" ");
+    if (BACKGROUND_PATTERN.test(roleBlob) && hasSpecificLiabilityIssue(principle.issue_tags || [])) {
+      assert(principle.usable_in_answer_layer === false, `${principle.principle_id}: background-only paragraph cannot become liability principle`);
+    }
+    if (SENTENCING_PATTERN.test(roleBlob) && hasSpecificLiabilityIssue(principle.issue_tags || [])) {
+      assert(principle.usable_in_answer_layer === false, `${principle.principle_id}: sentencing-only paragraph cannot become AR/MR liability principle`);
+    }
+    if (/(procedural_history|background)/i.test(roleBlob) && LEGAL_TEST_PATTERN.test(principle.principle_text || "")) {
+      assert(principle.usable_in_answer_layer === false, `${principle.principle_id}: procedural/background role cannot state usable legal test`);
+    }
     assert((principle.current_treatment_status || "unchecked") === "unchecked" || principle.review_status === "lawyer_review_required", `${principle.principle_id}: treatment changed without review gate`);
   }
 }

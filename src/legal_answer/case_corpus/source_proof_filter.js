@@ -4,6 +4,7 @@ const {
   sha256NormalizedParagraphText,
   publicSourceUrl,
 } = require("./case_corpus_store");
+const { principleUsable } = require("./principle_quality");
 
 function sourceProofIndexes(corpus = loadCaseCorpus({ mode: "sample" })) {
   return {
@@ -38,6 +39,7 @@ function propositionVerified(proposition = null, indexes = sourceProofIndexes())
 
 function principleVerified(principle = null, indexes = sourceProofIndexes()) {
   if (!principle || principle.answer_layer_status !== "research_only") return false;
+  if (!principleUsable(principle)) return false;
   const hasProp = (principle.source_proposition_ids || []).some(id => propositionVerified(indexes.propositionById.get(id), indexes));
   const hasParagraph = (principle.source_paragraph_ids || []).some(id => paragraphVerified(indexes.paragraphById.get(id)));
   return hasProp && hasParagraph;

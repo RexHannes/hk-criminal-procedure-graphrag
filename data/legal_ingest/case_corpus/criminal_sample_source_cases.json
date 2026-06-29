@@ -1,11 +1,11 @@
 {
   "artifact_id": "criminal_sample_source_cases_v1",
-  "generated_at": "2026-06-29T13:41:20.795Z",
+  "generated_at": "2026-06-30T00:00:00.000Z",
   "source_policy": "Public HKLII judgment API only; private/licensed sources excluded; all extracted cards remain research_only.",
   "target_case_count": 100,
   "hard_minimum_case_count": 25,
-  "actual_case_count": 100,
-  "discovery_query_count": 15,
+  "actual_case_count": 120,
+  "discovery_query_count": 25,
   "discovery_queries": [
     "offence of theft contrary to section 9 of the Theft Ordinance",
     "obtaining property by deception",
@@ -21,13 +21,25 @@
     "burglary Theft Ordinance theft",
     "using false instrument deception theft",
     "fraud dishonesty HKSAR theft",
-    "shoplifting theft HKSAR"
+    "shoplifting theft HKSAR",
+    "\"belonging to another\" \"Theft Ordinance\"",
+    "\"property belonging to another\" theft",
+    "\"section 6\" \"Theft Ordinance\" HKSAR",
+    "\"permanently deprive\" \"Theft Ordinance\"",
+    "\"with the intention of permanently\" theft",
+    "\"section 7\" \"Theft Ordinance\" HKSAR",
+    "\"bail\" \"Theft Ordinance\"",
+    "\"bail\" \"dishonesty\" HKSAR",
+    "\"admitted to bail\" \"Theft Ordinance\"",
+    "\"pending appeal\" \"Theft Ordinance\""
   ],
   "extraction_limitations": [
     "Automated paragraph selection is term-based and conservative.",
     "Legal propositions and principles remain machine_candidate / research_only.",
     "Current treatment and ratio/obiter classification are unchecked unless later lawyer-reviewed.",
-    "The sample focuses on theft, dishonesty, deception, fraud and theft-linked procedure; it is not a whole HK criminal-law corpus."
+    "The sample focuses on theft, dishonesty, deception, fraud and theft-linked procedure; it is not a whole HK criminal-law corpus.",
+    "Targeted weak-issue cases were added only where public HKLII paragraphs contained the weak issue signal.",
+    "This is not a 500-case scale-up; it is a narrow quality/coverage repair pass."
   ],
   "cases": [
     {
@@ -3539,14 +3551,16 @@
       "issue_seed_tags": [
         "criminal_law.theft",
         "criminal_law.deception",
+        "criminal_law.theft.belonging_to_another",
         "criminal_law.theft.appropriation",
         "criminal_law.theft.sentencing",
         "criminal_law.fraud"
       ],
-      "ingestion_status": "l2_paragraph_sample_verified",
+      "ingestion_status": "l2_paragraph_sample_plus_targeted_verified",
       "answer_layer_status": "research_only",
       "discovery_queries": [
-        "obtaining property by deception"
+        "obtaining property by deception",
+        "\"belonging to another\" \"Theft Ordinance\""
       ],
       "search_metadata": {
         "title": "HKSAR V. CHOI PING CHIU",
@@ -3574,23 +3588,21 @@
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review."
         },
         {
-          "para_no": "36",
-          "paragraph_text": "Considering all the circumstances of the case, this court finds that 3 years’ imprisonment is an appropriate sentencing starting point for this charge involving simple case of credit card fraud where stolen genuine credit cards are used to commit the offence. The case relied on is HKSAR v Lam See Chung, Stephen [2013] 5 HKLRD 242 .",
-          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494#p36",
-          "checksum": "27c6d7e8476f092069acb1d2c87d35359d616b7fdc15c596ac476ae799cff474",
+          "para_no": "32",
+          "paragraph_text": "The Court of Appeal in the case of HKSAR v Tandon William Chaing CACC 404/2012, approved sentencing starting point of 3 years’ imprisonment adopted in the case of HKSAR v Kwan Po Keung [2012] 2 HKLRD 12 , for the unauthorised use of a credit card belonging to another on a single occasion to obtain jewellery and watches to a total value of $56,116.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494#p32",
+          "checksum": "abf5d4c57255c9f3f06cee5c3c04b109ed070f516f246c7b6570657cfa9b117b",
           "checksum_algorithm": "sha256_normalized_paragraph_text",
           "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
             "criminal_law.theft",
-            "criminal_law.theft.appropriation",
-            "criminal_law.theft.sentencing",
-            "criminal_law.fraud",
             "criminal_law.deception"
           ],
           "authority_role_candidate": "case_application",
-          "legal_function": "evidential_factor",
-          "exact_quote_support": "imprisonment is an appropriate sentencing starting point for this charge involving simple case of credit card fraud where stolen genuine credit cards ar",
-          "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
-          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review."
+          "legal_function": "case_application",
+          "exact_quote_support": "The Court of Appeal in the case of HKSAR v Tandon William Chaing CACC 404/2012, approved sentencing starting point of 3 years’ imprisonment adopted in the case of HKSAR v Kwan Po Keung [2012] 2 HKLRD 12 , for the unautho",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
         },
         {
           "para_no": "33",
@@ -3608,6 +3620,25 @@
           "authority_role_candidate": "case_application",
           "legal_function": "evidential_factor",
           "exact_quote_support": "sentences on this charge, it was said that the court must take into consideration the factors relevant to sentencing for credit card fraud as laid o",
+          "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
+          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "36",
+          "paragraph_text": "Considering all the circumstances of the case, this court finds that 3 years’ imprisonment is an appropriate sentencing starting point for this charge involving simple case of credit card fraud where stolen genuine credit cards are used to commit the offence. The case relied on is HKSAR v Lam See Chung, Stephen [2013] 5 HKLRD 242 .",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494#p36",
+          "checksum": "27c6d7e8476f092069acb1d2c87d35359d616b7fdc15c596ac476ae799cff474",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing",
+            "criminal_law.fraud",
+            "criminal_law.deception"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "evidential_factor",
+          "exact_quote_support": "imprisonment is an appropriate sentencing starting point for this charge involving simple case of credit card fraud where stolen genuine credit cards ar",
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review."
         }
@@ -6642,17 +6673,19 @@
       ],
       "issue_seed_tags": [
         "criminal_law.theft",
+        "criminal_law.theft.sentencing",
+        "criminal_law.deception",
         "criminal_law.dishonesty",
         "criminal_law.theft.dishonesty",
         "criminal_law.theft.mens_rea",
-        "criminal_law.theft.belonging_to_another",
-        "criminal_law.deception",
-        "criminal_law.theft.sentencing"
+        "criminal_law.theft.belonging_to_another"
       ],
-      "ingestion_status": "l2_paragraph_sample_verified",
+      "ingestion_status": "l2_paragraph_sample_plus_targeted_verified",
       "answer_layer_status": "research_only",
       "discovery_queries": [
-        "obtaining property by deception"
+        "obtaining property by deception",
+        "\"belonging to another\" \"Theft Ordinance\"",
+        "\"property belonging to another\" theft"
       ],
       "search_metadata": {
         "title": "HKSAR V. CHAN WAI HO",
@@ -6663,6 +6696,23 @@
         "coram": "Before:  Hon Campbell-Moffat J in Court"
       },
       "selected_paragraphs": [
+        {
+          "para_no": "1",
+          "paragraph_text": "The appellant was convicted after trial before Deputy Magistrate Chan Pui‑man on 11 February 2021, of one count of attempting to obtain property by deception contrary to s17 (1) of the Theft Ordinance , Cap 210 , and s159G of the Crimes Ordinance , Cap 200 . On the same date, the appellant was sentenced to a fine in the sum of $15,000.",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2021/3439#p1",
+          "checksum": "1492b26816efd5d6db852340a0355f90526c66554c514e640be2ea3e3cfe8678",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft",
+            "criminal_law.theft.sentencing",
+            "criminal_law.deception"
+          ],
+          "authority_role_candidate": "sentencing_observation",
+          "legal_function": "sentencing",
+          "exact_quote_support": "Theft Ordinance , Cap 210 , and s159G of the Crimes Ordinance , Cap 200",
+          "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
+          "principle_text": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio."
+        },
         {
           "para_no": "6",
           "paragraph_text": "This was a charge of attempt to obtain property by deception. Section 159G of the Crimes Ordinance Cap 200 states: “(1) A person who, intending to commit an offence to which this section applies, does an act that is more than merely preparatory to the commission of the offence is guilty of attempting to commit the offence.” ( Emphasis added ) Section 17 of the Theft Ordinance , Cap 210 states: “(1) Any person who by any deception (whether or not such deception was the sole or main inducement) dishonestly obtains property belonging to another, with the intention of permanently depriving the other of it, shall be guilty of an offence…” ( Emphasis added )",
@@ -6682,23 +6732,6 @@
           "exact_quote_support": "Theft Ordinance , Cap 210 states: “(1) Any person who by any deception (whether or not such deception was the sole or main inducement)",
           "proposition_text": "This paragraph is a research-only candidate on dishonesty or mens rea and requires current-treatment and lawyer review.",
           "principle_text": "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review."
-        },
-        {
-          "para_no": "1",
-          "paragraph_text": "The appellant was convicted after trial before Deputy Magistrate Chan Pui‑man on 11 February 2021, of one count of attempting to obtain property by deception contrary to s17 (1) of the Theft Ordinance , Cap 210 , and s159G of the Crimes Ordinance , Cap 200 . On the same date, the appellant was sentenced to a fine in the sum of $15,000.",
-          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2021/3439#p1",
-          "checksum": "1492b26816efd5d6db852340a0355f90526c66554c514e640be2ea3e3cfe8678",
-          "checksum_algorithm": "sha256_normalized_paragraph_text",
-          "issue_tags_candidate": [
-            "criminal_law.theft",
-            "criminal_law.theft.sentencing",
-            "criminal_law.deception"
-          ],
-          "authority_role_candidate": "sentencing_observation",
-          "legal_function": "sentencing",
-          "exact_quote_support": "Theft Ordinance , Cap 210 , and s159G of the Crimes Ordinance , Cap 200",
-          "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
-          "principle_text": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio."
         },
         {
           "para_no": "7",
@@ -8672,12 +8705,18 @@
         "criminal_law.theft",
         "criminal_law.fraud",
         "criminal_law.theft.sentencing",
-        "criminal_law.theft.appropriation"
+        "criminal_law.theft.appropriation",
+        "criminal_procedure.bail",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea"
       ],
-      "ingestion_status": "l2_paragraph_sample_verified",
+      "ingestion_status": "l2_paragraph_sample_plus_targeted_verified",
       "answer_layer_status": "research_only",
       "discovery_queries": [
-        "obtaining property by deception"
+        "obtaining property by deception",
+        "\"bail\" \"Theft Ordinance\"",
+        "\"bail\" \"dishonesty\" HKSAR"
       ],
       "search_metadata": {
         "title": "HKSAR V. LAM SEE CHUNG STEPHEN",
@@ -8738,6 +8777,60 @@
           "exact_quote_support": "sentence with the other counts",
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "34",
+          "paragraph_text": "It was further conceded that, as part of the offences were committed whilst the defendant was on bail, which again constituted another aggravating factor, this court should enhance the final sentence with a nominal term of imprisonment.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/236#p34",
+          "checksum": "141c6222456d41ec72bf18603a2cdacaf9ee8f16d464de88dc039b8fd312b3fd",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft",
+            "criminal_law.fraud"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "It was further conceded that, as part of the offences were committed whilst the defendant was on bail, which again constituted another aggravating factor, this court should enhance the final sentence with a nominal term",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        },
+        {
+          "para_no": "46",
+          "paragraph_text": "Defendant has numerous previous convictions relating to dishonesty and, accordingly, his culpability in the commission of the present offence is aggravated. Sentencing starting point is enhanced by 2 months to 7 months. Further, defendant committed the second incident whilst he was on bail. This aggravates his culpability and, accordingly, the sentencing starting point is enhanced by 2 months to 9 months’ imprisonment.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/236#p46",
+          "checksum": "ac18ba3b9a31bae4731d23642a05db5f4d0e9b6fe3a6d2daad22466529a317ae",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.fraud"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "Further, defendant committed the second incident whilst he was on bail.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        },
+        {
+          "para_no": "49",
+          "paragraph_text": "Offence was committed over a period of 3½ months and the defendant had committed incident 8 while he was on bail. This is again another aggravating factor in sentencing. Therefore, adopting the same sentencing starting point as the 1 st charge (5 months’ imprisonment), enhancing the same by 2 months as he is a persistent offender, the sentencing starting point further enhanced by 2 months to 9 months by reason of his committing the offence whilst on bail.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/236#p49",
+          "checksum": "de67d5239ea3b01366008573e42c1df863a1f8b846f94f19a799485fefe5cd03",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft",
+            "criminal_law.fraud"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "Offence was committed over a period of 3½ months and the defendant had committed incident 8 while he was on bail.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
         }
       ]
     },
@@ -8913,6 +9006,1415 @@
           "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review."
         }
       ]
+    },
+    {
+      "case_id": "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant",
+      "case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+      "neutral_citation": "[2025] HKCA 451",
+      "court": "Court of Appeal",
+      "judgment_date": "2025-05-16",
+      "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkca/2025/451",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.belonging_to_another",
+        "criminal_law.theft",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea",
+        "criminal_law.theft.appropriation",
+        "criminal_law.theft.intention_permanently_deprive"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"belonging to another\" \"Theft Ordinance\"",
+        "\"property belonging to another\" theft",
+        "\"permanently deprive\" \"Theft Ordinance\"",
+        "\"with the intention of permanently\" theft"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. MA CHUN KIT",
+        "parties": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+        "charge": "",
+        "action_no": "CACC224/2020",
+        "pub_date": "2025-05-16T00:00:00+08:00",
+        "coram": "Before: Hon Macrae VP, Zervos and Anthea Pang JJA in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "15",
+          "paragraph_text": "The prosecution explained to the jury that the offence of theft is committed when a person dishonestly appropriates property belonging to another with the intention of permanently depriving the other of it. [19] Regarding the element of “dishonesty”, the prosecution submitted that it would have been obvious to the appellant that he was acting dishonestly when he arranged the transfer of large sums of money from Hyundai HK’s accounts to his personal accounts. To this end, he dishonestly used the security tokens of senior management to make the unauthorised transfers to his personal accounts, whereupon he spent the money for his own benefit. [20] Regarding the element of “appropriation to another”, the prosecution submitted that this was satisfied when the appellant transferred the company’s funds to his personal accounts, thereby assuming the rights of the owner of the choses in action. [21] Regarding the element of “intention to permanently deprive the owner of the property”, the prosecution explained that this was demonstrated by the appellant treating the money as his own, including using it for gambling, luxury goods, and property purchases. [22] The defence case",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p15",
+          "checksum": "38de7796fc62b6049dfa377ba471278a1db46f4d61b7a4b6a3f50958115d5d69",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.intention_permanently_deprive"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "The prosecution explained to the jury that the offence of theft is committed when a person dishonestly appropriates property belonging to another with the intention of permanently depriving the other of it.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "27",
+          "paragraph_text": "The final point made by Mr Young concerns s.6 (3) of the Theft Ordinance regarding the element of “belonging to another”, which provides: Where a person receives property from or on account of another, and is under an obligation to the other to retain and deal with that property or its proceeds in a particular way, the property or its proceeds shall be regarded (as against him) as belonging to the other. He submits that this provision would not apply because the appellant never received property from Hyundai HK. He notes that the electronic transfer of funds occurred by extinguishing the chose in action owned by Hyundai HK in its HSBC account and the creation of a new chose in action to the appellant in his bank account. In these circumstances, no property of Hyundai HK was received or obtained by the appellant as a new property interest was created: HKSAR v Goh Swee Yan Angelina [46] ; R v Klineberg [47] ; Preddy [48] .",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p27",
+          "checksum": "59b35be63ff60e0b6eb5fd10cd60af1dfe38f9dbdc177e64872bc31694a6b250",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "The final point made by Mr Young concerns s.6 (3) of the Theft Ordinance regarding the element of “belonging to another”, which provides: Where a person receives property from or on account of another, and is under an ob",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "35",
+          "paragraph_text": "The Judge’s impugned remarks, which Mr Young refers to in his submissions, need to be considered in their proper context because it is apparent she repeatedly reminded the jury that there was no issue between the parties that the property in question concerned funds belonging to Hyundai HK. It raises for consideration, as submitted by the respondent, that the Judge’s remarks were directed to the “appropriation” of the chose in action constituted by the credit balance in Hyundai HK’s bank account, and that the subsequent change to a chose in action constituted by the credit balance in the appellant’s bank accounts was not an issue between the parties. In other words, the case was always focused on whether the appellant had dishonestly appropriated the amounts in the credit balance of Hyundai HK’s bank accounts, and his subsequent financial dealings evidenced his intention to permanently deprive the company of those appropriated amounts.",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p35",
+          "checksum": "b2a41a539fb5f6035c2132f547a10fd88f6eeaffaca829039b22e21386f61fdd",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "In other words, the case was always focused on whether the appellant had dishonestly appropriated the amounts in the credit balance of Hyundai HK’s bank accounts, and his subsequent financial dealings evidenced his inten",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "37",
+          "paragraph_text": "The Judge then went on to discuss the remaining elements of theft of “property belonging to another” and “intention to permanently deprive”. She said: [56] Let me turn now to the words “property belonging to another”. I have repeated this over and over again; there is no dispute here that the property belongs to Hyundai. But I have to explain to you the words in the charge because that is what is said, and I know that Mr Marray has said this in his opening speech but I am going to tell you again because the property here, as you know, is called the “chose in action”. In all the counts, it is stated that Ma Chun‑kit stole the choses in action, namely debts. So chose in action is just a legal expression used to describe all the personal rights over property that can be claimed or enforced by action, and not by taking physical action. In respect of bank accounts, monies put into the account in the bank, the bank owes a debt which is the chose in action to the crediting customer, which the bank undertakes to repay on demand. So in this case, as I said, members of the jury, there is no dispute and you should have no difficulties finding that the monies in the HSBC bank account were ‑‑ sorry, in the defendant’s bank account deposited belong to Hyundai. That is really the chose in action is the money. And when it was in the bank account of Hyundai Hong Kong, the bank owed Hyundai Hong Kong the debt which is the chose in action. Okay, let me turn to the last element. “With the intention of permanently depriving the owner of it” means having the intention of treating it as his own to dispose of regardless of the others’ right. So the intention to treat the money as his own to dispose of regardless of the others’ rights include using the monies to purchase property, to buy luxury goods, use at casinos, entertainment and so forth. So if you find the defendant used the money for these purposes, this amounts to the intention of permanently depriving the owner of it. So, in summary, if you find the defendant made the confession or confessions and they are true, you will find the defendant guilty of the four counts of theft. If you find the prosecution witness to be honest and truthful witness, you will find the defendant, on the evidence, guilty of the four counts of theft. If you find the defendant assumed the right as a Hong Kong Hyundai’s money ‑‑ a right to Hyundai Hong Kong’s money by keeping it or dealing with it as the owner, you will find him guilty of the four charges of theft. (Emphasis added)",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p37",
+          "checksum": "36158134bd59b39e402ec6275589be8425ef3453012d6be155deaad8271ed473",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft",
+            "criminal_law.theft.intention_permanently_deprive"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "The Judge then went on to discuss the remaining elements of theft of “property belonging to another” and “intention to permanently deprive”.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2023_1820_hksar_v_mohammad_shahzad_d1",
+      "case_name": "HKSAR v MOHAMMAD SHAHZAD (D1)",
+      "neutral_citation": "[2023] HKDC 1820",
+      "court": "District Court",
+      "judgment_date": "2023-12-18",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1820",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2023/1820",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.belonging_to_another",
+        "criminal_law.theft"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"belonging to another\" \"Theft Ordinance\"",
+        "\"property belonging to another\" theft"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. MOHAMMAD SHAHZAD ",
+        "parties": "HKSAR v MOHAMMAD SHAHZAD (D1)",
+        "charge": "Offence: DCCC 900/2022 Burglary (入屋犯法罪) DCCC 830/2023 [1] Burglary (入屋犯法罪)  – D1 [2] Burglary (入屋犯法罪)  – D1 & D2 [3] Theft (盜竊罪)  – D1 & D2",
+        "action_no": "DCCC900/2022",
+        "pub_date": "2023-12-18T00:00:00+08:00",
+        "coram": "Before: Deputy District Judge Edward Wong in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "13",
+          "paragraph_text": "D1 pleaded guilty to Charges 1 to 3. D2 pleaded guilty to Charges 2 and 3: Charge 1: Burglary, contrary to section 11(1)(b) and (4) of the Theft Ordinance, Cap 210. The particulars are that, on 4 April 2023, in Hong Kong, having entered as a trespasser a building known as a construction site of No 68 Gillies Avenue South, Hung Hom, Kowloon (the “Site”), stole therein 30 copper pipes. Charge 2: Burglary, contrary to section 11(1)(a) and (4) of the Theft Ordinance. The particulars are that D1 and D2, on 24 April 2023, in Hong Kong, entered as a trespasser the Site with intent to steal therein. Charge 3: Theft, contrary to section 9 of the Theft Ordinance, Cap. 210. The particulars are that they, on 24 April 2023, at the Site, stole 7 rolls of electric wires, one bag and one trolley, property belonging to another.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1820#p13",
+          "checksum": "37f8a76615472bca56ee5194dd4ed241fa4dd3b273d073adc193ecb87746230c",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "The particulars are that they, on 24 April 2023, at the Site, stole 7 rolls of electric wires, one bag and one trolley, property belonging to another.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "28",
+          "paragraph_text": "On 24 April 2023: (a) D1 and D2 entered the Building as a trespasser with intent to steal therein (Charge 2); and (b) they stole 7 rolls of electric wires, one bag and one trolley, all being property belonging to another, at the Site (Charge 3). B. MITIGATION B.1 D1",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1820#p28",
+          "checksum": "1219816f6bec6788cf040d437b2e5745547c2d5274a5b031bbbe0161bbd90b5e",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "On 24 April 2023: (a) D1 and D2 entered the Building as a trespasser with intent to steal therein (Charge 2); and (b) they stole 7 rolls of electric wires, one bag and one trolley, all being property belonging to another",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2025_1530_hksar_v_lai_hoi_yan_vivian",
+      "case_name": "HKSAR v LAI HOI YAN VIVIAN",
+      "neutral_citation": "[2025] HKDC 1530",
+      "court": "District Court",
+      "judgment_date": "2025-09-03",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/1530",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2025/1530",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.belonging_to_another",
+        "criminal_law.theft"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"belonging to another\" \"Theft Ordinance\"",
+        "\"property belonging to another\" theft"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. LAI HOI YAN VIVIAN",
+        "parties": "HKSAR v LAI HOI YAN VIVIAN",
+        "charge": "Offences: DCCC 936/2024 [1] & [2] Theft（盜竊罪） [3] Attempted theft（企圖盜竊罪） [4] Possession of dangerous drugs（管有危險藥物） [5] Assaulting a police officer in the execution of her duty（襲擊執行職責的警務人員） DCCC 1337/2024 Theft（盜竊罪）",
+        "action_no": "DCCC936/2024",
+        "pub_date": "2025-09-03T00:00:00+08:00",
+        "coram": "Before: His Honour Judge Tam"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "6",
+          "paragraph_text": "Charge 3 is Attempted theft, contrary to section 9 of the Theft Ordinance , Cap 210 , and section 159G of the Crimes Ordinance , Cap 200 . Particulars of Charge 3 are that she, on 31 October 2023, at Shop No 11B, Ground Floor, Healey Building Shopping Centre, Nos 211-223 Castle Peak Road – Yuen Long, Yuen Long, New Territories, in Hong Kong, attempted to steal two iPhones, property belonging to another.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/1530#p6",
+          "checksum": "3d82ea252a85151175105373afc8484db8984a714a672b8d42ee3e4313f9c43a",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "Particulars of Charge 3 are that she, on 31 October 2023, at Shop No 11B, Ground Floor, Healey Building Shopping Centre, Nos 211-223 Castle Peak Road – Yuen Long, Yuen Long, New Territories, in Hong Kong, attempted to st",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "10",
+          "paragraph_text": "Particulars are that she, on 20 August 2024, inside a light rail train compartment, Siu Hong Light Rail Station, Tuen Mun, New Territories, in Hong Kong, stole one backpack, one wallet, two Hong Kong Identity Cards, one Birth Certificate, one driving licence, 5 credit cards, one ATM card, one Octopus card, one E-payment card of the Hong Kong Housing Authority and cash of $600 Hong Kong currency, property belonging to another. Facts admitted by Ms Lai Charge 1 of DCCC 936/2024",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/1530#p10",
+          "checksum": "581c7ac14e861570db9b9376533238798d6b0b07deba37442688ef9aedcd7256",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "Particulars are that she, on 20 August 2024, inside a light rail train compartment, Siu Hong Light Rail Station, Tuen Mun, New Territories, in Hong Kong, stole one backpack, one wallet, two Hong Kong Identity Cards, one",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2026_97_hksar_v_wong_wai_hon_d2",
+      "case_name": "HKSAR v WONG WAI HON (D2)",
+      "neutral_citation": "[2026] HKDC 97",
+      "court": "District Court",
+      "judgment_date": "2026-01-14",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/97",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2026/97",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.belonging_to_another",
+        "criminal_law.theft"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"belonging to another\" \"Theft Ordinance\"",
+        "\"property belonging to another\" theft"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. WONG WAI HON",
+        "parties": "HKSAR v WONG WAI HON (D2)",
+        "charge": "Offence: Burglary（入屋犯法罪）",
+        "action_no": "DCCC1022/2025",
+        "pub_date": "2026-01-14T00:00:00+08:00",
+        "coram": "Before: Deputy District Judge Casewell"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "6",
+          "paragraph_text": "This is a clear and simple case of burglary by the 2 nd defendant entering an unsecured building, in a sense secured by the roller shutters but not by any locking of the roller shutters and then taking property belonging to another inside the store.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/97#p6",
+          "checksum": "9f7872bfd5d4287aa887aa35507d1d385b04d88a2edf766a0c040e1a8ba78eeb",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "This is a clear and simple case of burglary by the 2 nd defendant entering an unsecured building, in a sense secured by the roller shutters but not by any locking of the roller shutters and then taking property belonging",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2024_1965_hksar_v_lo_tsz_ho_vincent",
+      "case_name": "HKSAR v LO TSZ HO, VINCENT",
+      "neutral_citation": "[2024] HKDC 1965",
+      "court": "District Court",
+      "judgment_date": "2024-11-18",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1965",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2024/1965",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.belonging_to_another",
+        "criminal_law.theft"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"belonging to another\" \"Theft Ordinance\"",
+        "\"property belonging to another\" theft"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. LO TSZ HO, VINCENT",
+        "parties": "HKSAR v LO TSZ HO, VINCENT",
+        "charge": "Offences: [1] Burglary（入屋犯法罪） [2] - [5] Theft（盜竊罪）",
+        "action_no": "DCCC826/2024",
+        "pub_date": "2024-11-18T00:00:00+08:00",
+        "coram": "Before: His Honour Judge Tam"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "3",
+          "paragraph_text": "Charges 2 to 5 are Theft, contrary to section 9 of the Theft Ordinance , Cap 210 . Particulars are that he, on 9 March 2024, in Hong Kong, stole a chose in action, namely a debt in sum of X Hong Kong currency owed by Bank of China (Hong Kong) Limited in account numbered 012-735-20302981 to Kung Fu Tea (Queens Hill Estate), property belonging to another.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1965#p3",
+          "checksum": "07ab7b2ef0a4a03c4b34a9dc7f4670e419e9aa8458d5b54f55abca6af05d6fb1",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "Particulars are that he, on 9 March 2024, in Hong Kong, stole a chose in action, namely a debt in sum of X Hong Kong currency owed by Bank of China (Hong Kong) Limited in account numbered 012-735-20302981 to Kung Fu Tea",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2023_958_hksar_v_tam_wan_yan_also_known_as_pham_bich_thuy_and_pham_thi_van",
+      "case_name": "HKSAR v TAM WAN YAN also known as PHAM BICH THUY and PHAM THI VAN",
+      "neutral_citation": "[2023] HKDC 958",
+      "court": "District Court",
+      "judgment_date": "2023-07-06",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/958",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2023/958",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.belonging_to_another",
+        "criminal_law.theft"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"belonging to another\" \"Theft Ordinance\"",
+        "\"property belonging to another\" theft"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. TAM WAN YAN ALSO KNOWN AS PHAM BICH THUY AND PHAM THI VAN",
+        "parties": "HKSAR v TAM WAN YAN also known as PHAM BICH THUY and PHAM THI VAN",
+        "charge": "Offence: Theft (盜竊罪)",
+        "action_no": "DCCC254/2023",
+        "pub_date": "2023-07-06T00:00:00+08:00",
+        "coram": "Before: His Honour Judge Tam in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "1",
+          "paragraph_text": "Ms Tam pleaded guilty before me to one charge of Theft (a pickpocketing), contrary to section 9 of the Theft Ordinance , Cap 210 . Particulars are that she, on 5 November 2022, at No HPP 26 stall, Tai Nan Street, Sham Shui Po, Kowloon, in Hong Kong, stole one wallet, property belonging to another. Facts admitted by Ms Tam",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/958#p1",
+          "checksum": "537b6ec8754c2d4fc61afdb4932e295f893003f2654130c256018e820789c3b8",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "Particulars are that she, on 5 November 2022, at No HPP 26 stall, Tai Nan Street, Sham Shui Po, Kowloon, in Hong Kong, stole one wallet, property belonging to another.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2022_913_hksar_v_chung_karman",
+      "case_name": "HKSAR v CHUNG KARMAN",
+      "neutral_citation": "[2022] HKDC 913",
+      "court": "District Court",
+      "judgment_date": "2022-08-25",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2022/913",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2022/913",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.belonging_to_another",
+        "criminal_law.theft"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"belonging to another\" \"Theft Ordinance\""
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. CHUNG KARMAN",
+        "parties": "HKSAR v CHUNG KARMAN",
+        "charge": "Offence: [1] Theft (盜竊罪) [2] Possession of identity cards relating to other persons (管有他人的身分證) [3] Burglary (入屋犯法罪)",
+        "action_no": "DCCC883/2021",
+        "pub_date": "2022-08-25T00:00:00+08:00",
+        "coram": "Before: His Honour Judge Douglas Yau"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "29",
+          "paragraph_text": "Sentencing guidelines for possession of another person’s identity card and related offences are found in the case of HKSAR v Li Chang Li [2004-2005] HKCLRT 193; HCMA 935/2004, where the main concern of the Court of Appeal was to punish and deter illegal workers using identity cards of others to obtain employment: “40. In our judgment, for the offence of possessing a forged identity card or identity card belonging to another, even if the offender’s presence in Hong Kong is lawful, the starting point upon a plea of guilty should ordinarily be 12 months’ imprisonment, so as to reflect the seriousness of the offence and serve deterrent purposes.” [4]",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2022/913#p29",
+          "checksum": "6137fc932cf4cef10c444ad690f795701d670f03faad6ac716cb755935294893",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "In our judgment, for the offence of possessing a forged identity card or identity card belonging to another, even if the offender’s presence in Hong Kong is lawful, the starting point upon a plea of guilty should ordinar",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant",
+      "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+      "neutral_citation": "[2022] HKCA 1135",
+      "court": "Court of Appeal",
+      "judgment_date": "2022-07-28",
+      "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkca/2022/1135",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.intention_permanently_deprive",
+        "criminal_law.theft",
+        "criminal_law.theft.belonging_to_another"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"permanently deprive\" \"Theft Ordinance\"",
+        "\"section 7\" \"Theft Ordinance\" HKSAR"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. CHRISTOPHER OKECHI NWOSU",
+        "parties": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+        "charge": "",
+        "action_no": "CACC201/2021",
+        "pub_date": "2022-07-28T00:00:00+08:00",
+        "coram": "Before:  Hon Zervos JA in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "5",
+          "paragraph_text": "The issue at trial in respect of the burglary charge was whether the applicant was a trespasser and whether he had stolen the notice with the requisite intention to permanently deprive the owner of the notice. The reasons for verdict",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p5",
+          "checksum": "8081754977a9026037765034ae0b11a98a44f57a04ddc6a46a7d81a50a6a17de",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "The issue at trial in respect of the burglary charge was whether the applicant was a trespasser and whether he had stolen the notice with the requisite intention to permanently deprive the owner of the notice.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "20",
+          "paragraph_text": "Mr Beel submits that the evidence did not establish that the applicant had no intention to return the notice, nor did it establish that the applicant’s removal of the notice fell within the ambit of section 7 of the Theft Ordinance , which sets out the circumstances by which a person is said to have the intention to permanently deprive property belonging to another.",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p20",
+          "checksum": "5b31b33d622d352372930185a94fdf31a688a41410b5765dc02076ac8164ebbc",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.theft",
+            "criminal_law.theft.belonging_to_another"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "Mr Beel submits that the evidence did not establish that the applicant had no intention to return the notice, nor did it establish that the applicant’s removal of the notice fell within the ambit of section 7 of the Thef",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "22",
+          "paragraph_text": "Mr Beel argues that the mere borrowing of an item may not satisfy the element of intending to permanently deprive, particularly if it is intended to be returned in an unchanged state: R v Lloyd, Bhuee & Ali. [18] He submits that the short time from the taking (9 August 2020) to the recovery of the notice (13 August 2020) did not amount to a disposal or an outright taking of the notice; and that the taking of the notice constituted a borrowing of it by the applicant, who intended to return it in the same form, unchanged and undamaged (and in fact it was recovered in such a condition).",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p22",
+          "checksum": "9ee7f27788943c6703a2f5a1c1a68fe3b3decb5610e759baa127e4fa6c8d2d3e",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "Mr Beel argues that the mere borrowing of an item may not satisfy the element of intending to permanently deprive, particularly if it is intended to be returned in an unchanged state: R v Lloyd, Bhuee & Ali.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant",
+      "case_name": "BETWEEN HKSAR Respondent and Chan Pui-Yu Appellant",
+      "neutral_citation": "[2024] HKCFI 3560",
+      "court": "Court of First Instance",
+      "judgment_date": "2024-12-13",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2024/3560",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkcfi/2024/3560",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.intention_permanently_deprive",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea",
+        "criminal_law.theft.appropriation"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"permanently deprive\" \"Theft Ordinance\"",
+        "\"with the intention of permanently\" theft"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. CHAN PUI YU",
+        "parties": "BETWEEN HKSAR Respondent and Chan Pui-Yu Appellant",
+        "charge": "",
+        "action_no": "HCMA151/2024",
+        "pub_date": "2024-12-13T00:00:00+08:00",
+        "coram": "Before: Deputy High Court Judge Edmond Lee in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "3",
+          "paragraph_text": "The above was not in dispute and the only issue at the trial was whether the Appellant was acting dishonestly and had the intention of permanently depriving the owner of the Phone. The Defence Case",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2024/3560#p3",
+          "checksum": "f961bf3d1b90bdae61cc86d7496970365fb2ca2f008d3219b41970e942ddbc2f",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "The above was not in dispute and the only issue at the trial was whether the Appellant was acting dishonestly and had the intention of permanently depriving the owner of the Phone.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "9",
+          "paragraph_text": "The Appellant relied on three grounds of appeal:- (a) Ground 1 – the Magistrate erred in law in finding beyond reasonable doubt that the Appellant was dishonest with an intention to permanently deprive the owner of the Phone. (b) Ground 2 – the Magistrate wrongly and unfairly rejected the Appellant’s evidence. (c) Ground 3 – in all the circumstances of the case, the conviction is unsafe and/or unsatisfactory.",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2024/3560#p9",
+          "checksum": "9884637d0741cb9eed40b7169cba80f161c6213e6c8177032b976c179650504a",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "The Appellant relied on three grounds of appeal:- (a) Ground 1 – the Magistrate erred in law in finding beyond reasonable doubt that the Appellant was dishonest with an intention to permanently deprive the owner of the P",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "10",
+          "paragraph_text": "For Ground 1, the Appellant submitted that the Magistrate automatically found the Appellant guilty after rejecting his evidence and the Magistrate had failed to analyse the material facts before coming to his conclusion. It was submitted that the material facts were unable to support an irresistible and adverse inference of a guilty intention and that the Magistrate erred in law and failed to apply the Ghosh test. The Appellant also sought to rely on a case HKSAR v. Chang Wen Hou HCMA 63 of 2007 and submitted that it was of similar facts, where in that case that appellant found a lost wallet late at night and kept it until 3:30 p.m. the next day when stopped by police and that the appellate court held that there was insufficient evidence to prove beyond reasonable doubt the requisite intention to appropriate the wallet so as to permanently deprive the owner of it.",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2024/3560#p10",
+          "checksum": "1e32e74b1bc3adc1ab611ea22ea43936a4ef80b7098596072600ebe73c1eee51",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "the next day when stopped by police and that the appellate court held that there was insufficient evidence to prove beyond reasonable doubt the requisite intention to appropriate the wallet so as to permanently deprive t",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant",
+      "case_name": "HKSAR Respondent and LI LINLIN Appellant",
+      "neutral_citation": "[2023] HKCFI 424",
+      "court": "Court of First Instance",
+      "judgment_date": "2023-02-17",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2023/424",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkcfi/2023/424",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.intention_permanently_deprive",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"permanently deprive\" \"Theft Ordinance\""
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. LI LINLIN",
+        "parties": "HKSAR Respondent and LI LINLIN Appellant",
+        "charge": "",
+        "action_no": "HCMA145/2022",
+        "pub_date": "2023-02-17T00:00:00+08:00",
+        "coram": "Before: Deputy High Court Judge Woodcock in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "3",
+          "paragraph_text": "The only issue at trial was whether she had an intention to permanently deprive the supermarket of the items she had taken. The central issue was whether the prosecution had proved her state of mind necessary to establish the offence. Did the prosecution prove she was dishonest or had she forgotten to pay on her way out?",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2023/424#p3",
+          "checksum": "d72a0f45ea865bc139e82695cef4aa79eee38a09eab84fa85a476c8c3ed9609a",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "The only issue at trial was whether she had an intention to permanently deprive the supermarket of the items she had taken.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "16",
+          "paragraph_text": "The 1 st to 4 th particulars can be considered together in that they supported the testimony of the appellant, cast doubt on the necessary mens rea of dishonesty and militated against the conclusion or irresistible inference that she was dishonest and intended to permanently deprive the supermarket of its products.",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2023/424#p16",
+          "checksum": "196361c9acb994ae40cb60ea88a2b2fc716b723258ecca56dcea0c914d950619",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "The 1 st to 4 th particulars can be considered together in that they supported the testimony of the appellant, cast doubt on the necessary mens rea of dishonesty and militated against the conclusion or irresistible infer",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2021_1158_hksar_v_wun_kam_po",
+      "case_name": "HKSAR v Wun Kam Po",
+      "neutral_citation": "[2021] HKDC 1158",
+      "court": "District Court",
+      "judgment_date": "2021-09-10",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1158",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2021/1158",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.intention_permanently_deprive",
+        "criminal_law.theft",
+        "criminal_procedure.bail",
+        "criminal_law.theft.appropriation",
+        "criminal_law.theft.belonging_to_another"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"permanently deprive\" \"Theft Ordinance\"",
+        "\"with the intention of permanently\" theft",
+        "\"section 7\" \"Theft Ordinance\" HKSAR"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. WUN KAM PO",
+        "parties": "HKSAR V WUN KAM PO",
+        "charge": "Offence: [1] Theft (盜竊罪) [2] Failing to surrender to custody without reasonable cause (無合理因由而沒有按照法庭的指定歸押)",
+        "action_no": "DCCC154/2021",
+        "pub_date": "2021-09-10T00:00:00+08:00",
+        "coram": "Before: Deputy District Judge Charles J Chan"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "19",
+          "paragraph_text": "However, from the wordings used in the written mitigation, it is another related concern that whether the defendant had the intention to permanently deprive the owner of the stolen property that has to be addressed.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1158#p19",
+          "checksum": "e0946bc8e606480784943d50f510955860965742e6ab84b7440381e2d1fe0036",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.theft",
+            "criminal_procedure.bail"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "However, from the wordings used in the written mitigation, it is another related concern that whether the defendant had the intention to permanently deprive the owner of the stolen property that has to be addressed.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "20",
+          "paragraph_text": "Section 7 of the Theft Ordinance , Cap 210 , stipulates that:- “7. With the intention of permanently depriving the other of it (意圖永久地剝奪他人財產 ) (1) A person appropriating property belonging to another without meaning the other permanently to lose the thing itself is nevertheless to be regarded as having the intention of permanently depriving the other of it if his intention is to treat the thing as his own to dispose of regardless of the other’s rights; and a borrowing or lending of it may amount to so treating if, but only if, the borrowing or lending of it is for a period and in circumstances making it equivalent to an outright taking or disposal. (2) Without prejudice to the generality of subsection (1), where a person, having possession or control (lawfully or not) of property belonging to another, parts with the property under a condition as to its return which he may not be able to perform, this (if done for purposes of his own and without the other’s authority) amounts to treating the property as his own to dispose of regardless of the other’s rights.”",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1158#p20",
+          "checksum": "6b755909f9ffd163ad81b445e96886c01d6bfc05793f8095e6774381ac922997",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.theft",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.belonging_to_another",
+            "criminal_procedure.bail"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "With the intention of permanently depriving the other of it (意圖永久地剝奪他人財產 ) (1) A person appropriating property belonging to another without meaning the other permanently to lose the thing itself is nevertheless to be reg",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2021_575_hksar_v_wong_nok_yin_d1_chung_chin_ming_d2_sing_ming_fung_d3_chan_ka_yee",
+      "case_name": "HKSAR v WONG NOK YIN (D1) CHUNG CHIN MING (D2) SING MING FUNG (D3) CHAN KA YEE (D4) KO SHING YUEN (D5)",
+      "neutral_citation": "[2021] HKDC 575",
+      "court": "District Court",
+      "judgment_date": "2021-05-11",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/575",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2021/575",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.intention_permanently_deprive",
+        "criminal_law.theft",
+        "criminal_procedure.interview_caution",
+        "criminal_procedure.bail"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"permanently deprive\" \"Theft Ordinance\""
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. WONG NOK YIN AND OTHERS",
+        "parties": "HKSAR v WONG NOK YIN (D1) CHUNG CHIN MING (D2) SING MING FUNG (D3) CHAN KA YEE (D4) KO SHING YUEN (D5)",
+        "charge": "Offence(s): [1]-[2]  Burglary (入屋犯法罪) [4]  Failure to produce proof of identity on demand (未能在規定下出示身分證明文件) [5]  Failing to surrender to custody without reasonable cause (無合理因由而沒有按照法庭的指定歸押)",
+        "action_no": "DCCC972/2020",
+        "pub_date": "2021-05-11T00:00:00+08:00",
+        "coram": "Before: His Honour Judge Tam in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "77",
+          "paragraph_text": "In respect of Charge 2, the fact that the relevant defendants pleaded guilty to the charge suggests that they admitted to having an intention to permanently deprive the owner of the property involved. The motive appears to be, as least as far as D2 (who admitted under caution to be the instigator) was concerned, to get Tsoi into trouble. The decision to return the stolen property only came at a later stage. I am satisfied that the mastermind of this burglary was D2. I take into account the fact that there was no damage to the hotel room and there was in the end no loss of property. I will again take 2 ½ years as the basic starting point. For the aggravating factor of acting in concert, I will add 3 months. As against D2 for his singular role, I will add a further 3 months.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/575#p77",
+          "checksum": "12153ce230660126f8aea0586271af7b26940b589f9845121e3ace1cf1e5bade",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.theft",
+            "criminal_procedure.interview_caution",
+            "criminal_procedure.bail"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "In respect of Charge 2, the fact that the relevant defendants pleaded guilty to the charge suggests that they admitted to having an intention to permanently deprive the owner of the property involved.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkcfi_2021_3253_between_hksar_respondent_and_shiv_kumar_appellant",
+      "case_name": "BETWEEN HKSAR Respondent and SHIV Kumar Appellant",
+      "neutral_citation": "[2021] HKCFI 3253",
+      "court": "Court of First Instance",
+      "judgment_date": "2021-12-10",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2021/3253",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkcfi/2021/3253",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.intention_permanently_deprive",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"permanently deprive\" \"Theft Ordinance\""
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. SHIV KUMAR",
+        "parties": "BETWEEN HKSAR Respondent and SHIV Kumar Appellant",
+        "charge": "",
+        "action_no": "HCMA38/2021",
+        "pub_date": "2021-12-10T00:00:00+08:00",
+        "coram": "Before:  Deputy High Court Judge Johnny Chan in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "29",
+          "paragraph_text": "On Charge 1 and Charge 2, the Magistrate made the following findings: (1) PW1 lost his wallet which contained the subject matters of Charges 1 and 2 at around 6 am on 5 September 2020. (2) Full weight was attached to the Appellant’s admission that he found the items involved before he was stopped and searched by PW2. (3) The Appellant had no intention to return the lost items to their owner. (4) The Appellant was dishonest and he had the intention to permanently deprive the owner of those items, applying the test in R v Ghosh [1982] QB 1053 .",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2021/3253#p29",
+          "checksum": "8eb330b8b80db952530528143e1c1be4d631066bda1f43b9ce8be1eb8bae7548",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "(4) The Appellant was dishonest and he had the intention to permanently deprive the owner of those items, applying the test in R v Ghosh [1982] QB 1053 .",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkca_2023_396_hksar_respondent_v_christopher_okechi_nwosu_appellant",
+      "case_name": "HKSAR Respondent v Christopher Okechi Nwosu Appellant",
+      "neutral_citation": "[2023] HKCA 396",
+      "court": "Court of Appeal",
+      "judgment_date": "2023-03-17",
+      "source_url": "https://www.hklii.hk/en/cases/hkca/2023/396",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkca/2023/396",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.intention_permanently_deprive",
+        "criminal_law.theft"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"permanently deprive\" \"Theft Ordinance\""
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. CHRISTOPHER OKECHI NWOSU",
+        "parties": "HKSAR Respondent v Christopher Okechi Nwosu Appellant",
+        "charge": "",
+        "action_no": "CACC201/2021",
+        "pub_date": "2023-03-17T00:00:00+08:00",
+        "coram": "Before: Hon Macrae VP, Zervos and M Poon JJA in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "5",
+          "paragraph_text": "The issue at trial regarding the burglary charge was whether the appellant was a trespasser and whether he had stolen the Notice with the requisite intention to permanently deprive the owner of it. The reasons for verdict",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2023/396#p5",
+          "checksum": "526ca0c059105f81c87ff63cbe45b866ec5e542cb779a7312f442536445aea6b",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "The issue at trial regarding the burglary charge was whether the appellant was a trespasser and whether he had stolen the Notice with the requisite intention to permanently deprive the owner of it.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2024_1361_hksar_v_leung_chi_kit",
+      "case_name": "HKSAR v LEUNG CHI KIT",
+      "neutral_citation": "[2024] HKDC 1361",
+      "court": "District Court",
+      "judgment_date": "2024-08-16",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1361",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2024/1361",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.intention_permanently_deprive",
+        "criminal_law.theft",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea",
+        "criminal_law.theft.appropriation",
+        "criminal_law.theft.belonging_to_another"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"permanently deprive\" \"Theft Ordinance\""
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. LEUNG CHI KIT",
+        "parties": "HKSAR v LEUNG CHI KIT",
+        "charge": "Offence: Theft (盜竊罪)",
+        "action_no": "DCCC855/2022",
+        "pub_date": "2024-08-16T00:00:00+08:00",
+        "coram": "Before: Deputy District Judge Caesar Lo"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "65",
+          "paragraph_text": "In the present case, I find the HK$3,600,000 mistakenly credited into the Account constituted “ property belong to another ” namely, VTC, and the defendant must have had knowledge of it. In conducting the 81 purchases of cryptocurrencies and the subsequent 11 withdrawals as discussed above, the defendant’s conduct clearly amounted to an “ appropriation ” of VTC’s property with the “ intention to permanently deprive ” VTC of it. Such conduct was no doubt “ dishonest ” according to the two-fold test in the case of R v Ghosh [1982] 75 Cr App R 154 . Conclusion",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1361#p65",
+          "checksum": "93219a9a2b74767d92ca2f3c94b727af3c3744a6dfe8515a4366b45cb9e9b675",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.theft",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.belonging_to_another"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "In conducting the 81 purchases of cryptocurrencies and the subsequent 11 withdrawals as discussed above, the defendant’s conduct clearly amounted to an “ appropriation ” of VTC’s property with the “ intention to permanen",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4",
+      "case_name": "HKSAR v NG KONG FAI (D1) CHAN SZE TO (D2) LEE HON KI (D3) CHI KIN ON (D4)",
+      "neutral_citation": "[2024] HKDC 1195",
+      "court": "District Court",
+      "judgment_date": "2024-07-17",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2024/1195",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_procedure.bail",
+        "criminal_law.theft"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"bail\" \"Theft Ordinance\"",
+        "\"bail\" \"dishonesty\" HKSAR"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. NG KONG FAI AND OTHERS",
+        "parties": "HKSAR v NG KONG FAI (D1) CHAN SZE TO (D2) LEE HON KI (D3) CHI KIN ON (D4)",
+        "charge": "Offences: [1], [3], [5] & [7] Theft（盜竊罪） [2], [4], [6] & [8] Handling stolen goods（處理贓物罪）",
+        "action_no": "DCCC743/2023",
+        "pub_date": "2024-07-17T00:00:00+08:00",
+        "coram": "Before: His Honour Judge Tam in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "41",
+          "paragraph_text": "He was arrested on 30 December 2022. Despite he was given bail, he was not able to come up with sufficient bail money. Hence, despite given bail, D2 has been detained since 30 December 2022.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195#p41",
+          "checksum": "56b3d3c62f5287a22fffe8d0909bde8973cd52ad2d87d8444f0b0f768fdd308c",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "Despite he was given bail, he was not able to come up with sufficient bail money.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        },
+        {
+          "para_no": "51",
+          "paragraph_text": "During hearing on 28 November 2023, the court granted bail to D3 with some conditions (including the condition of payment of cash in the sum of HK$10,000) imposed.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195#p51",
+          "checksum": "43df0ac9f367a56db53b831ea420a5f221d421f1d721f25bda3fe6a618eb912b",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "During hearing on 28 November 2023, the court granted bail to D3 with some conditions (including the condition of payment of cash in the sum of HK$10,000) imposed.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        },
+        {
+          "para_no": "52",
+          "paragraph_text": "However, D3 was unable to comply with the condition of payment of cash bail. Therefore, D3 was still remanded in jail custody.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195#p52",
+          "checksum": "813c917c090eb31ba830a3444d2e08cefca90785faaa607f55995648c9f1ed38",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "However, D3 was unable to comply with the condition of payment of cash bail.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2026_358_hksar_v_maria_maninder_singh",
+      "case_name": "HKSAR v MARIA MANINDER SINGH",
+      "neutral_citation": "[2026] HKDC 358",
+      "court": "District Court",
+      "judgment_date": "2026-02-25",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/358",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2026/358",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_procedure.bail",
+        "criminal_law.theft",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"bail\" \"Theft Ordinance\"",
+        "\"bail\" \"dishonesty\" HKSAR"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. MARIA MANINDER SINGH",
+        "parties": "HKSAR v MARIA MANINDER SINGH",
+        "charge": "Offences: [1] Burglary (入屋犯法罪) [2] Theft (盜竊)",
+        "action_no": "DCCC600/2025",
+        "pub_date": "2026-02-25T00:00:00+08:00",
+        "coram": "Before: Deputy District Judge Flora Cheng"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "8",
+          "paragraph_text": "Defendant admitted that he committed the subject 2 offences whilst he was on Court bail for another case numbered KCCC 3007/2023. Mitigation & Sentencing Considerations",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/358#p8",
+          "checksum": "fb82ec06a6c33c36daadd21fdb0f081d772c9b65bd4c30442df8e04a1f4e757c",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "Defendant admitted that he committed the subject 2 offences whilst he was on Court bail for another case numbered KCCC 3007/2023.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        },
+        {
+          "para_no": "11",
+          "paragraph_text": "Defendant has previous convictions for 12 charges, 8 out of those 12 charges were offences of dishonesty brought under the Theft Ordinance , consisting of 1 count of robbery, 1 count of theft and 6 counts of burglary/attempted burglary. He committed the present 2 offences whilst he jumped bail of the case numbered KCCC 3007/23, which he was sentenced to 16 months imprisonment. His last conviction was for Passing /Tendering Counterfeits of Currency Notes, he was sentenced to 2 years imprisonment on 15 October 2025.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/358#p11",
+          "checksum": "a93b123a8a527e14a5acf1b9eb3561354ea0cbe70a61946c465881b5bb3a3fe0",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "He committed the present 2 offences whilst he jumped bail of the case numbered KCCC 3007/23, which he was sentenced to 16 months imprisonment.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        },
+        {
+          "para_no": "17",
+          "paragraph_text": "In respect of Charge 2, apart from the fact that substantial value of properties were stolen and not recovered, the loss of a digital device, MacBook, personal documents and credit cards would cause much inconvenience to the victims, the smashing of the nearside window would cause WONG extra time and costs to have his vehicle repaired, coupled with the fact that this offence was committed when Defendant was on bail for another offence of theft, which he was sentenced to 16 months imprisonment, I consider the proper starting point of Charge 2 should be 18 months imprisonment in order to reflect the salient features of this case and to have deterrent effect on him, the sentence is reduced to 12 months after discount for his guilty plea.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/358#p17",
+          "checksum": "b5a70ce90b35b85858d539ed344521bfe223918d58f8b3d6f276869a34ec538a",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "In respect of Charge 2, apart from the fact that substantial value of properties were stolen and not recovered, the loss of a digital device, MacBook, personal documents and credit cards would cause much inconvenience to",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2023_924_hksar_v_cheung_chi_chiu",
+      "case_name": "HKSAR v CHEUNG CHI CHIU",
+      "neutral_citation": "[2023] HKDC 924",
+      "court": "District Court",
+      "judgment_date": "2023-06-30",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/924",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2023/924",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_procedure.bail",
+        "criminal_law.theft",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea",
+        "criminal_law.theft.appropriation"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"bail\" \"Theft Ordinance\"",
+        "\"bail\" \"dishonesty\" HKSAR"
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. CHEUNG CHI CHIU",
+        "parties": "HKSAR v CHEUNG CHI CHIU",
+        "charge": "Offences: [1] & [2] Theft (盜竊罪) [3] Forgery of document(偽造文件) [4] Failing to display a valid vehicle licence(沒有展示有效車輛牌照) [5] Driving without a valid driving licence(駕駛時無有效駕駛執照) [6] Using a motor vehicle without third party insurance (沒有第三者保險而使用汽車) [7] Going equipped for stealing (外出時備有偷竊用的物品)",
+        "action_no": "DCCC728/2022",
+        "pub_date": "2023-06-30T00:00:00+08:00",
+        "coram": "Before: HH Judge Kathie Cheung"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "24",
+          "paragraph_text": "Although the defendant is a repeated offender, the defence urged this Court not to enhance the sentence as the defendant had stayed out of trouble since after 2006 to 2022. It was accepted that the defendant committed the present offences while on bail for the offences in KTCC 55/2022. The defence urged this Court not to enhance the sentence on this basis.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/924#p24",
+          "checksum": "2ec09fbf71c9f734a2e58555e5f68ced2fd0588f83f455901d3e727c2458df7c",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "It was accepted that the defendant committed the present offences while on bail for the offences in KTCC 55/2022.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        },
+        {
+          "para_no": "27",
+          "paragraph_text": "There is no sentencing guideline in respect of the offences in question. When considering sentence, I bear in mind that the defendant committed the present offences while he was on bail for the offences in KTCC 55/2022. This is an aggravating feature and justifies enhancement of sentence. Further, the defendant has previous conviction records of similar offences in the past. In particular, he has 17 previous convictions relating to dishonesty (Charges 1-2), 6 previous convictions for using a motor vehicle without third party insurance (Charge 6), 4 previous convictions relating to driving without a valid licence (Charge 5) and 2 previous convictions relating to forgery (Charge 3). Despite he has been imprisoned and also disqualified from driving or obtaining driving licence for substantial periods in respect of the past offences, the defendant still committed the present offences. It clearly shows the defendant was not deterred, he deliberately breached the law and selfishly disregarded the safety of other road users solely for his own interest. The fact that the defendant is a repeated offender in such circumstances is clearly another factor for enhancement of sentence even though he had at some stage stayed out of trouble for over 10 years.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/924#p27",
+          "checksum": "e224076df50d44ab6cff22c03e1bf04a10b54b4f0abe02ae4526d9ce82f74fa4",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "When considering sentence, I bear in mind that the defendant committed the present offences while he was on bail for the offences in KTCC 55/2022.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        },
+        {
+          "para_no": "28",
+          "paragraph_text": "For Charge 1, it was clearly committed to facilitate the defendant’s theft of V2. While the value of the Number Plate may be low, it was not recovered and the loss of it would still cause inconvenience to the owner of V1. I consider the appropriate starting point to be 5 months’ imprisonment. It is to be enhanced by 0.5 month for the defendant as a repeated offender and 0.5 month for committing the offence while on bail. Given the defendant’s plea, the sentence is reduced to 4 months’ imprisonment.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/924#p28",
+          "checksum": "84a5b066f85f14bf21a043f1cf91b6350b287ec995caf994a7e1faadf7f2a565",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft",
+            "criminal_law.theft.appropriation"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "It is to be enhanced by 0.5 month for the defendant as a repeated offender and 0.5 month for committing the offence while on bail.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant",
+      "case_name": "HKSAR v NG KONG FAI (1 st Defendant)",
+      "neutral_citation": "[2024] HKDC 1268",
+      "court": "District Court",
+      "judgment_date": "2024-07-31",
+      "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1268",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkdc/2024/1268",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_procedure.bail",
+        "criminal_law.theft"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"bail\" \"Theft Ordinance\""
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. NG KONG FAI",
+        "parties": "HKSAR v NG KONG FAI (1 st Defendant)",
+        "charge": "Offences: [1], [3], [5] & [7] Theft (盜竊罪) [2], [4], [6] & [8] Handling stolen goods (處理贓物罪)",
+        "action_no": "DCCC743/2023",
+        "pub_date": "2024-07-31T00:00:00+08:00",
+        "coram": "Before: His Honour Judge Tam in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "2",
+          "paragraph_text": "In any event, it was revealed that D1 had defaulted 5 times in his reports to the police station as per one of the bail conditions. On 17 July 2024, prosecution applied for bail to be revoked and arrest warrant to be issued against D1; so granted by the court.",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1268#p2",
+          "checksum": "6b379f290089003d58cd05b66b9c8e9e8c82802438d8724aa90316cb2ea33606",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "In any event, it was revealed that D1 had defaulted 5 times in his reports to the police station as per one of the bail conditions.",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        },
+        {
+          "para_no": "45",
+          "paragraph_text": "On sentencing for the handling charges, Ms Ng referred to R v Chan Wing Kwan & Anor , CACC 121/1985 and HKSAR v Cheng Chi Wai , CACC 94/2011 & CAAR 2/2011. In the latter case, the Court of Appeal, having referred to R v Webbe [2002] 1 Cr App R (S) 22, identified the following factors (at para 55) as being relevant in the consideration of sentence: (1) The closeness of the handler to the primary offence (we add that closeness may be geographical, arising from presence at or near the primary offence when it was committed, or temporal, where the handler instigated or encouraged the primary offence beforehand, or, soon after, provided a safe haven or route for disposal). (2) Particular seriousness in the primary offence. (3) High value of the goods to the loser, including sentimental value. (4) The fact that the goods were the proceeds of a domestic burglary. (5) Sophistication in relation to the handling. (6) A high level of profit made or expected by the handler. (7) The provision by the handler of a regular outlet for stolen goods. (8) Threats of violence or abuse of power by the handler over others, for example, an adult commissioning criminal activity by children, or a drug dealer pressurizing addicts to steal in order to pay for their habit. [(9) As is statutorily provided by section 151(2) of the Powers of Criminal Courts (Sentencing) Act 2000, the commission of an offence while on bail.]",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1268#p45",
+          "checksum": "83eee57ee5cf0d70418261564fb521a9239c0fff0588ef5e0f421f78c1620e92",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_procedure.bail",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "procedural_history",
+          "legal_function": "procedure",
+          "exact_quote_support": "[(9) As is statutorily provided by section 151(2) of the Powers of Criminal Courts (Sentencing) Act 2000, the commission of an offence while on bail.]",
+          "proposition_text": "This paragraph provides research-only bail/procedural context in a theft, dishonesty, fraud or burglary-linked criminal case.",
+          "principle_text": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule."
+        }
+      ]
+    },
+    {
+      "case_id": "hk_hkcfi_2022_1152_hksar_respondent_and_lee_heung_yee_appellant",
+      "case_name": "HKSAR Respondent and LEE HEUNG YEE （李香儀） Appellant",
+      "neutral_citation": "[2022] HKCFI 1152",
+      "court": "Court of First Instance",
+      "judgment_date": "2022-05-04",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1152",
+      "legalref_url": "",
+      "source_system": "hklii",
+      "source_path": "/en/cases/hkcfi/2022/1152",
+      "source_visibility": "public",
+      "practice_area_candidates": [
+        "criminal_law"
+      ],
+      "issue_seed_tags": [
+        "criminal_law.theft.intention_permanently_deprive",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea",
+        "criminal_law.theft"
+      ],
+      "ingestion_status": "l2_paragraph_targeted_verified",
+      "answer_layer_status": "research_only",
+      "discovery_queries": [
+        "\"permanently deprive\" \"Theft Ordinance\""
+      ],
+      "search_metadata": {
+        "title": "HKSAR V. LEE HEUNG YEE",
+        "parties": "HKSAR Respondent and LEE HEUNG YEE （李香儀） Appellant",
+        "charge": "",
+        "action_no": "HCMA563/2021",
+        "pub_date": "2022-05-04T00:00:00+08:00",
+        "coram": "Before: Hon Alex Lee J in Court"
+      },
+      "selected_paragraphs": [
+        {
+          "para_no": "36",
+          "paragraph_text": "In respect of the above submission, the first issue that I have to deal with is what actually the magistrate’s finding on the appellant’s state of mind was, and whether it was like the appellant said, “thought that the subject goods had no owner”. The magistrate stated in the relevant paragraphs of her Statement of Findings [40] : “37. Firstly, the defence counsel often emphasised that in the clauses of the company, there was a three-day limit for storage in the warehouse. If [the goods] were not collected beyond that limit, the order would be cancelled without separate notification or refund. This clause in fact was not related to this case, because this clause only applied to goods of which a signature had not been put for acknowledgment of receipt. A signature had already been put for acknowledgment of receipt of the goods in this case. Moreover, the goods arrived and a signature was put for acknowledgment of receipt on 29 November, and the defendant took away the goods on 30 November. The goods were not stored in the warehouse for as long as three days. Besides, the clause concerned only changed the owner of the goods from the original purchaser back to the company, HKTVmall. It would not change the goods to something that could be thrown away casually or that had no owner. Even when the defendant was testifying, she admitted that this clause was not related to the facts of this case. 38. In addition, the defence also often emphasised that fresh food would perish and rot. When no one collected [it/them], there was no need for the staff of the shop to send the goods back to the warehouse and could throw them away directly. Such a statement was not supported by the evidence of any of the prosecution witnesses. They unanimously said that even if the goods concerned could be thrown away, it had to go through a series of procedures, including photo-taking, reporting to the [chat] group, obtaining an approval from the superior and reporting to the customer service department. When giving evidence, the defendant explained that she was a part-time staff member. She was normally not responsible for the return-to-the-warehouse procedures. She did not know the relevant procedures, nor did she know the procedures stated by the prosecution witnesses above. However, in any event, the subject goods were not fresh goods, nor were they food that was perishable like sashimi or frozen meat mentioned by the defence as examples. So in fact the two could not and should not be mentioned in the same breath. 39. Besides, when the defendant was testifying, she always claimed that she was only a part-time staff member and was not familiar with the return-to-the-warehouse procedures. If she was not familiar with them, why did she make a decision without authorisation to reckon the goods concerned as not belonging to anyone and regard them as something that could be treated as thrown away items and take them for her own use? 40. In fact, the WhatsApp conservation between the defendant and PW1 in D3 actually showed exactly what the defendant had in mind at that time, namely that she thought the goods concerned were “superfluous”. Under cross-examination, she also explained that she thought the goods had no owner; but it was not that she thought the goods were going to be thrown away and took them away in order not to waste them. 41. A reasonable person knows that even if the owner who originally ordered the goods abandoned the goods in the company, HKTVmall, for various reasons, the company, HKTVmall, still had the right to own and deal with the goods concerned. Such reasoning was not difficult to understand, and there were examples that could be followed from the working experience of the defendant, because the so-called G99 return-to-the-warehouse procedures that the defendant dealt with were exactly returning goods, which no one claimed for or had been delivered repeatedly, to the head warehouse of HKTVmall for disposal. 42. In addition, [as seen] from the CCTV footage viewed in court, the defendant’s actions and demeanour when handling the goods concerned were, as described by the prosecution, evasive . At around 133119 hours, the defendant inspected the goods concerned. Later, when PW2 entered the warehouse from the front of the shop twice, the defendant at once put the goods concerned aside. At another time, [she] at once picked up the computer and pretended to be working. After PW2 had left, she resumed tidying up the goods concerned and put them into her bag. If what happened was like what the defendant claimed, [that is] she genuinely reckoned that she had the right to take away the goods, why did she need to act in such an evasive way ? 43. I am of the view that from the packing of the goods and the information shown on the counting device, the defendant indeed would not have known the goods were ordered by PW1. And it was also for this reason that after the defendant found that PW1 was the owner, she at once sent messages and re-purchased the goods concerned as compensation for PW1. However, a person with dishonest intent to permanently deprive another person of property did not need to know the true identity of the owner, and so it does not affect the court’s finding that the defendant was dishonest. Therefore, the court does not accept the defendant’s account that she misunderstood the goods were abandoned items. [The court] does not accept her to be an honest and reliable witness, nor attach weight to her evidence .” (emphases added) I have carefully compared the above text and the magistrate’s verbal reasons [41] . The latter is similar to the above text, with differences between verbal and textual expressions only.",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1152#p36",
+          "checksum": "434ec9fa5c3dacbc35e2f70ea2b2eb5cff3efb76a29f8aa8cf882b8ece2e2721",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "However, a person with dishonest intent to permanently deprive another person of property did not need to know the true identity of the owner, and so it does not affect the court’s finding that the defendant was dishones",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "45",
+          "paragraph_text": "According to section 2 (1) of the Theft Ordinance , the prosecution was required to prove that the appellant had “ the intention of permanently depriving the other of the property ”. Therefore, the prosecution must prove that the appellant knew that the items concerned belonged to “the other”: R v Adrian Anthony Small (above); and Regina v Smith (David) [56] .",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1152#p45",
+          "checksum": "49601f4e14ef184d2eedbdbc8a09b5ccd3bb4d348a46b246cdf1bb7c515e4174",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.theft"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "According to section 2 (1) of the Theft Ordinance , the prosecution was required to prove that the appellant had “ the intention of permanently depriving the other of the property ”.",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        },
+        {
+          "para_no": "46",
+          "paragraph_text": "Regarding this, Mr Pun contended that as the magistrate had already found that at that time in the appellant’s mind, she thought that the goods concerned had no owner, and that meant it was not possible for her to have the intention of permanently depriving “the other” of the property, because the two could not co-exist. However, the magistrate did not consider this point.",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1152#p46",
+          "checksum": "b8f92da5b7dc8400fbfd0e7fa4aafd65b24f1f5c78502a274c167a6457789aef",
+          "checksum_algorithm": "sha256_normalized_paragraph_text",
+          "issue_tags_candidate": [
+            "criminal_law.theft.intention_permanently_deprive"
+          ],
+          "authority_role_candidate": "case_application",
+          "legal_function": "case_application",
+          "exact_quote_support": "Regarding this, Mr Pun contended that as the magistrate had already found that at that time in the appellant’s mind, she thought that the goods concerned had no owner, and that meant it was not possible for her to have t",
+          "proposition_text": "This paragraph provides research-only paragraph proof relevant to intention permanently to deprive in a theft-linked case.",
+          "principle_text": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review."
+        }
+      ]
     }
   ],
   "rejected_or_skipped": [
@@ -8927,5 +10429,37 @@
       "reason": "no_target_paragraph"
     }
   ],
-  "source_artifact_checksum": "1d5a1ed09c71cd2452d5949d27fe1a6577deab4a8885e0180ec4d59a2bf005a7"
+  "source_artifact_checksum": "ac91cdac899b158e8626449b168f06e8333df32e18950775bd4f4452393b2542",
+  "targeted_weak_issue_discovery": {
+    "generated_at": "2026-06-30T00:00:00.000Z",
+    "targets": [
+      {
+        "issue_id": "criminal_law.theft.belonging_to_another",
+        "baseline_case_count": 2,
+        "pre_run_case_count": 13,
+        "before_case_count": 13,
+        "after_case_count": 13,
+        "target_min_cases": 10,
+        "target_met": true
+      },
+      {
+        "issue_id": "criminal_law.theft.intention_permanently_deprive",
+        "baseline_case_count": 0,
+        "pre_run_case_count": 10,
+        "before_case_count": 10,
+        "after_case_count": 10,
+        "target_min_cases": 10,
+        "target_met": true
+      },
+      {
+        "issue_id": "criminal_procedure.bail",
+        "baseline_case_count": 8,
+        "pre_run_case_count": 15,
+        "before_case_count": 15,
+        "after_case_count": 15,
+        "target_min_cases": 15,
+        "target_met": true
+      }
+    ]
+  }
 }

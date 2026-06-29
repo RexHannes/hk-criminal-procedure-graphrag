@@ -17,13 +17,13 @@
   "qdrant_collection_targets": {
     "primary_chunk_collection": "hk_case_corpus_chunks_local_hash_legal_demo_v1_2048",
     "legacy_artifact_collections": {
-      "hk_case_paragraphs_openrouter_2048": 300,
-      "hk_case_propositions_openrouter_2048": 300,
-      "hk_case_principles_openrouter_2048": 300,
-      "hk_case_digests_openrouter_2048": 100
+      "hk_case_paragraphs_openrouter_2048": 344,
+      "hk_case_propositions_openrouter_2048": 344,
+      "hk_case_principles_openrouter_2048": 344,
+      "hk_case_digests_openrouter_2048": 120
     }
   },
-  "dry_run_vector_count": 1012,
+  "dry_run_vector_count": 918,
   "sample_payload": {
     "chunk_id": "chunk_hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant_p1",
     "chunk_type": "case_paragraph_chunk",

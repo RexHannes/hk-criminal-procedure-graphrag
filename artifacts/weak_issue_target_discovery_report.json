@@ -1,0 +1,360 @@
+{
+  "report_id": "weak_issue_target_discovery_v1",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "scope": "Targeted HKLII discovery for weak issues only; no 500-case scaling.",
+  "source_artifact": "data/legal_ingest/case_corpus/criminal_sample_source_cases.json",
+  "before_case_count": 100,
+  "after_case_count": 120,
+  "targets": [
+    {
+      "issue_id": "criminal_law.theft.belonging_to_another",
+      "baseline_case_count": 2,
+      "before_case_count": 13,
+      "after_case_count": 13,
+      "target_min_cases": 10,
+      "target_met": true,
+      "accepted_cases": [],
+      "targeted_cases": [
+        {
+          "case_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+          "case_name": "BETWEEN HKSAR Respondent and CHAN Wai-ho (陳偉豪) Appellant",
+          "neutral_citation": "[2021] HKCFI 3439",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2021/3439",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2021/3439#p6"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2021_1158_hksar_v_wun_kam_po",
+          "case_name": "HKSAR v Wun Kam Po",
+          "neutral_citation": "[2021] HKDC 1158",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1158",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2021/1158#p20"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu",
+          "case_name": "HKSAR v CHOI PING CHIU",
+          "neutral_citation": "[2021] HKDC 494",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2021/494#p32"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant",
+          "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+          "neutral_citation": "[2022] HKCA 1135",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2022/1135#p20"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2022_913_hksar_v_chung_karman",
+          "case_name": "HKSAR v CHUNG KARMAN",
+          "neutral_citation": "[2022] HKDC 913",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2022/913",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2022/913#p29"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2023_1820_hksar_v_mohammad_shahzad_d1",
+          "case_name": "HKSAR v MOHAMMAD SHAHZAD (D1)",
+          "neutral_citation": "[2023] HKDC 1820",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1820",
+          "paragraph_count": 2,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2023/1820#p13",
+            "https://www.hklii.hk/en/cases/hkdc/2023/1820#p28"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2023_958_hksar_v_tam_wan_yan_also_known_as_pham_bich_thuy_and_pham_thi_van",
+          "case_name": "HKSAR v TAM WAN YAN also known as PHAM BICH THUY and PHAM THI VAN",
+          "neutral_citation": "[2023] HKDC 958",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/958",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2023/958#p1"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2024_1361_hksar_v_leung_chi_kit",
+          "case_name": "HKSAR v LEUNG CHI KIT",
+          "neutral_citation": "[2024] HKDC 1361",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1361",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2024/1361#p65"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2024_1965_hksar_v_lo_tsz_ho_vincent",
+          "case_name": "HKSAR v LO TSZ HO, VINCENT",
+          "neutral_citation": "[2024] HKDC 1965",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1965",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2024/1965#p3"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant",
+          "case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+          "neutral_citation": "[2025] HKCA 451",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451",
+          "paragraph_count": 3,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2025/451#p15",
+            "https://www.hklii.hk/en/cases/hkca/2025/451#p27",
+            "https://www.hklii.hk/en/cases/hkca/2025/451#p37"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2025_1530_hksar_v_lai_hoi_yan_vivian",
+          "case_name": "HKSAR v LAI HOI YAN VIVIAN",
+          "neutral_citation": "[2025] HKDC 1530",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/1530",
+          "paragraph_count": 2,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2025/1530#p6",
+            "https://www.hklii.hk/en/cases/hkdc/2025/1530#p10"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2026_97_hksar_v_wong_wai_hon_d2",
+          "case_name": "HKSAR v WONG WAI HON (D2)",
+          "neutral_citation": "[2026] HKDC 97",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/97",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2026/97#p6"
+          ]
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "issue_id": "criminal_law.theft.intention_permanently_deprive",
+      "baseline_case_count": 0,
+      "before_case_count": 10,
+      "after_case_count": 10,
+      "target_min_cases": 10,
+      "target_met": true,
+      "accepted_cases": [],
+      "targeted_cases": [
+        {
+          "case_id": "hk_hkcfi_2021_3253_between_hksar_respondent_and_shiv_kumar_appellant",
+          "case_name": "BETWEEN HKSAR Respondent and SHIV Kumar Appellant",
+          "neutral_citation": "[2021] HKCFI 3253",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2021/3253",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2021/3253#p29"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2021_1158_hksar_v_wun_kam_po",
+          "case_name": "HKSAR v Wun Kam Po",
+          "neutral_citation": "[2021] HKDC 1158",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1158",
+          "paragraph_count": 2,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2021/1158#p19",
+            "https://www.hklii.hk/en/cases/hkdc/2021/1158#p20"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2021_575_hksar_v_wong_nok_yin_d1_chung_chin_ming_d2_sing_ming_fung_d3_chan_ka_yee",
+          "case_name": "HKSAR v WONG NOK YIN (D1) CHUNG CHIN MING (D2) SING MING FUNG (D3) CHAN KA YEE (D4) KO SHING YUEN (D5)",
+          "neutral_citation": "[2021] HKDC 575",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/575",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2021/575#p77"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant",
+          "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+          "neutral_citation": "[2022] HKCA 1135",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135",
+          "paragraph_count": 3,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2022/1135#p5",
+            "https://www.hklii.hk/en/cases/hkca/2022/1135#p20",
+            "https://www.hklii.hk/en/cases/hkca/2022/1135#p22"
+          ]
+        },
+        {
+          "case_id": "hk_hkcfi_2022_1152_hksar_respondent_and_lee_heung_yee_appellant",
+          "case_name": "HKSAR Respondent and LEE HEUNG YEE （李香儀） Appellant",
+          "neutral_citation": "[2022] HKCFI 1152",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1152",
+          "paragraph_count": 3,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2022/1152#p36",
+            "https://www.hklii.hk/en/cases/hkcfi/2022/1152#p45",
+            "https://www.hklii.hk/en/cases/hkcfi/2022/1152#p46"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2023_396_hksar_respondent_v_christopher_okechi_nwosu_appellant",
+          "case_name": "HKSAR Respondent v Christopher Okechi Nwosu Appellant",
+          "neutral_citation": "[2023] HKCA 396",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2023/396",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2023/396#p5"
+          ]
+        },
+        {
+          "case_id": "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant",
+          "case_name": "HKSAR Respondent and LI LINLIN Appellant",
+          "neutral_citation": "[2023] HKCFI 424",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2023/424",
+          "paragraph_count": 2,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2023/424#p3",
+            "https://www.hklii.hk/en/cases/hkcfi/2023/424#p16"
+          ]
+        },
+        {
+          "case_id": "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant",
+          "case_name": "BETWEEN HKSAR Respondent and Chan Pui-Yu Appellant",
+          "neutral_citation": "[2024] HKCFI 3560",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2024/3560",
+          "paragraph_count": 3,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2024/3560#p3",
+            "https://www.hklii.hk/en/cases/hkcfi/2024/3560#p9",
+            "https://www.hklii.hk/en/cases/hkcfi/2024/3560#p10"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2024_1361_hksar_v_leung_chi_kit",
+          "case_name": "HKSAR v LEUNG CHI KIT",
+          "neutral_citation": "[2024] HKDC 1361",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1361",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2024/1361#p65"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant",
+          "case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+          "neutral_citation": "[2025] HKCA 451",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451",
+          "paragraph_count": 3,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2025/451#p15",
+            "https://www.hklii.hk/en/cases/hkca/2025/451#p35",
+            "https://www.hklii.hk/en/cases/hkca/2025/451#p37"
+          ]
+        }
+      ],
+      "skipped": []
+    },
+    {
+      "issue_id": "criminal_procedure.bail",
+      "baseline_case_count": 8,
+      "before_case_count": 15,
+      "after_case_count": 15,
+      "target_min_cases": 15,
+      "target_met": true,
+      "accepted_cases": [],
+      "targeted_cases": [
+        {
+          "case_id": "hk_hkdc_2021_1158_hksar_v_wun_kam_po",
+          "case_name": "HKSAR v Wun Kam Po",
+          "neutral_citation": "[2021] HKDC 1158",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1158",
+          "paragraph_count": 2,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2021/1158#p19",
+            "https://www.hklii.hk/en/cases/hkdc/2021/1158#p20"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen",
+          "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+          "neutral_citation": "[2021] HKDC 236",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/236",
+          "paragraph_count": 3,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2021/236#p34",
+            "https://www.hklii.hk/en/cases/hkdc/2021/236#p46",
+            "https://www.hklii.hk/en/cases/hkdc/2021/236#p49"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2021_575_hksar_v_wong_nok_yin_d1_chung_chin_ming_d2_sing_ming_fung_d3_chan_ka_yee",
+          "case_name": "HKSAR v WONG NOK YIN (D1) CHUNG CHIN MING (D2) SING MING FUNG (D3) CHAN KA YEE (D4) KO SHING YUEN (D5)",
+          "neutral_citation": "[2021] HKDC 575",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/575",
+          "paragraph_count": 1,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2021/575#p77"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2023_924_hksar_v_cheung_chi_chiu",
+          "case_name": "HKSAR v CHEUNG CHI CHIU",
+          "neutral_citation": "[2023] HKDC 924",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/924",
+          "paragraph_count": 3,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2023/924#p24",
+            "https://www.hklii.hk/en/cases/hkdc/2023/924#p27",
+            "https://www.hklii.hk/en/cases/hkdc/2023/924#p28"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4",
+          "case_name": "HKSAR v NG KONG FAI (D1) CHAN SZE TO (D2) LEE HON KI (D3) CHI KIN ON (D4)",
+          "neutral_citation": "[2024] HKDC 1195",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195",
+          "paragraph_count": 3,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2024/1195#p41",
+            "https://www.hklii.hk/en/cases/hkdc/2024/1195#p51",
+            "https://www.hklii.hk/en/cases/hkdc/2024/1195#p52"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant",
+          "case_name": "HKSAR v NG KONG FAI (1 st Defendant)",
+          "neutral_citation": "[2024] HKDC 1268",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1268",
+          "paragraph_count": 2,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2024/1268#p2",
+            "https://www.hklii.hk/en/cases/hkdc/2024/1268#p45"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2026_358_hksar_v_maria_maninder_singh",
+          "case_name": "HKSAR v MARIA MANINDER SINGH",
+          "neutral_citation": "[2026] HKDC 358",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/358",
+          "paragraph_count": 3,
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2026/358#p8",
+            "https://www.hklii.hk/en/cases/hkdc/2026/358#p11",
+            "https://www.hklii.hk/en/cases/hkdc/2026/358#p17"
+          ]
+        }
+      ],
+      "skipped": []
+    }
+  ]
+}

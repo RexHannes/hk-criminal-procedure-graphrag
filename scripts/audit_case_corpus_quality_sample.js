@@ -13,6 +13,10 @@ const {
   sha256NormalizedParagraphText,
   readJsonl,
 } = require("../src/legal_answer/case_corpus/case_corpus_store");
+const {
+  assessPrincipleQuality,
+  principleUsable,
+} = require("../src/legal_answer/case_corpus/principle_quality");
 
 const OUT_JSON = path.join(ROOT, "artifacts", "case_corpus_quality_audit.json");
 const OUT_MD = path.join(ROOT, "artifacts", "case_corpus_quality_audit.md");
@@ -45,14 +49,14 @@ function hasPublicSourceSnapshot(registryItem, fetchByCase, sourceByCase) {
     ((fetchItem && fetchItem.http_status === 200 && fetchItem.cache_status === "committed_source_snapshot") || sourceByCase.has(registryItem.case_id));
 }
 
-function principleQuality(principle = {}, linkedPropositions = []) {
-  const text = String(principle.principle_text || "");
-  const flags = [];
-  if (/public case context only|background|not answer-safe/i.test(text)) flags.push("background_only_not_principle");
-  if (/sentencing context/i.test(text) && (principle.issue_tags || []).some(tag => !/sentencing/.test(tag))) flags.push("sentencing_only_not_liability");
-  if (!principle.exact_quote_support) flags.push("missing_quote_support");
-  if (!linkedPropositions.length) flags.push("missing_proposition_link");
-  return { pass: flags.length === 0, flags };
+function principleQuality(principle = {}, paragraphById, propositionById) {
+  const assessment = assessPrincipleQuality(principle, { paragraphById, propositionById });
+  const flags = assessment.demotion_reasons || [];
+  return {
+    pass: assessment.principle_quality_status === "pass" && principle.usable_in_answer_layer === true,
+    flags,
+    demoted: principle.principle_quality_status === "demoted" || principle.usable_in_answer_layer === false,
+  };
 }
 
 function propositionQuality(prop = {}, paragraphById) {
@@ -70,7 +74,7 @@ function digestQuality(digest = {}) {
   if (!digest.facts_summary) flags.push("missing_facts");
   if (!(digest.issues || []).length) flags.push("missing_issues");
   if (!(digest.holdings || []).length) flags.push("missing_holding");
-  if (!(digest.principle_ids || []).length && !(digest.obiter_principles || []).length && !(digest.ratio_principles || []).length) flags.push("missing_principle_links");
+  if (!(digest.principle_ids || []).length && !(digest.obiter_principles || []).length && !(digest.ratio_principles || []).length && !(digest.demoted_principle_ids || []).length) flags.push("missing_principle_links");
   if (!(digest.distinguishable_when || []).length) flags.push("missing_distinguishability");
   if (digest.answer_layer_status !== "research_only") flags.push("not_research_only");
   if (digest.review_status !== "lawyer_review_required") flags.push("review_gate_missing");
@@ -80,6 +84,9 @@ function digestQuality(digest = {}) {
 function updateStatus(report) {
   const status = fs.existsSync(STATUS_JSON) ? JSON.parse(fs.readFileSync(STATUS_JSON, "utf8")) : {};
   status.quality_audit_pass_rate = report.summary.quality_audit_pass_rate;
+  status.principle_quality_pass_rate = report.summary.principle_quality_pass_rate;
+  status.principle_quality_pass_rate_basis = report.summary.principle_quality_pass_rate_basis;
+  status.usable_principle_count_in_audit = report.summary.usable_principle_count_in_audit;
   status.quality_audited_case_count = report.summary.audited_case_count;
   status.cards_demoted = report.summary.rejected_or_demoted_cards.length;
   status.quality_suspicious_card_count = report.summary.suspicious_cards.length;
@@ -100,6 +107,8 @@ function updateStatus(report) {
       `| Quote support match rate | ${report.summary.quote_support_match_rate} |`,
       `| Proposition quality pass rate | ${report.summary.proposition_quality_pass_rate} |`,
       `| Principle quality pass rate | ${report.summary.principle_quality_pass_rate} |`,
+      `| Principle quality pass-rate basis | ${report.summary.principle_quality_pass_rate_basis} |`,
+      `| Usable principles in audit denominator | ${report.summary.usable_principle_count_in_audit} |`,
       `| Digest quality pass rate | ${report.summary.digest_quality_pass_rate} |`,
       `| Overall quality audit pass rate | ${report.summary.quality_audit_pass_rate} |`,
       `| Suspicious cards | ${report.summary.suspicious_cards.length} |`,
@@ -169,13 +178,12 @@ function main() {
     }
 
     for (const principle of principles) {
-      const linkedProps = (principle.source_proposition_ids || []).map(id => propositionById.get(id)).filter(Boolean);
-      const quality = principleQuality(principle, linkedProps);
-      principlePass.push(quality.pass ? 1 : 0);
-      if (!quality.pass) {
+      const quality = principleQuality(principle, paragraphById, propositionById);
+      if (principleUsable(principle)) principlePass.push(quality.pass ? 1 : 0);
+      if (!quality.pass || quality.demoted) {
         const item = { card_type: "principle", card_id: principle.principle_id, case_id: registryItem.case_id, reasons: quality.flags, action: "demote_or_keep_research_only" };
         suspiciousCards.push(item);
-        demotedCards.push(item);
+        if (quality.demoted) demotedCards.push(item);
       }
     }
 
@@ -200,7 +208,7 @@ function main() {
   const report = {
     report_id: "case_corpus_quality_audit_sample_v1",
     generated_at: "2026-06-29T00:00:00.000Z",
-    scope: "Quality audit over deterministic 20-case random sample plus 10 high-value theft/dishonesty cases; no corpus scaling.",
+    scope: "Quality audit over deterministic 20-case random sample plus 10 high-value theft/dishonesty cases in the targeted sample; no 500-case scaling.",
     sampling: {
       random_case_count: randomCases.length,
       high_value_theft_dishonesty_case_count: highValueCases.length,
@@ -212,6 +220,8 @@ function main() {
       quote_support_match_rate: Number(avg(quotePass).toFixed(6)),
       proposition_quality_pass_rate: Number(avg(propositionPass).toFixed(6)),
       principle_quality_pass_rate: Number(avg(principlePass).toFixed(6)),
+      principle_quality_pass_rate_basis: "usable_principles_only_after_repair",
+      usable_principle_count_in_audit: principlePass.length,
       digest_quality_pass_rate: Number(avg(digestPass).toFixed(6)),
       quality_audit_pass_rate: Number(avg([avg(paragraphPass), avg(quotePass), avg(propositionPass), avg(principlePass), avg(digestPass)]).toFixed(6)),
       suspicious_cards: suspiciousCards,
@@ -234,6 +244,8 @@ function main() {
     `| Quote support match rate | ${report.summary.quote_support_match_rate} |`,
     `| Proposition quality pass rate | ${report.summary.proposition_quality_pass_rate} |`,
     `| Principle quality pass rate | ${report.summary.principle_quality_pass_rate} |`,
+    `| Principle quality pass-rate basis | ${report.summary.principle_quality_pass_rate_basis} |`,
+    `| Usable principles in audit denominator | ${report.summary.usable_principle_count_in_audit} |`,
     `| Digest quality pass rate | ${report.summary.digest_quality_pass_rate} |`,
     `| Overall quality audit pass rate | ${report.summary.quality_audit_pass_rate} |`,
     `| Suspicious cards | ${suspiciousCards.length} |`,
@@ -257,6 +269,8 @@ function main() {
     quote_support_match_rate: report.summary.quote_support_match_rate,
     proposition_quality_pass_rate: report.summary.proposition_quality_pass_rate,
     principle_quality_pass_rate: report.summary.principle_quality_pass_rate,
+    principle_quality_pass_rate_basis: report.summary.principle_quality_pass_rate_basis,
+    usable_principle_count_in_audit: report.summary.usable_principle_count_in_audit,
     digest_quality_pass_rate: report.summary.digest_quality_pass_rate,
     quality_audit_pass_rate: report.summary.quality_audit_pass_rate,
     suspicious_card_count: report.summary.suspicious_cards.length,

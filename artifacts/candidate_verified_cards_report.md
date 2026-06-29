@@ -4,10 +4,10 @@
 |---|---:|
 | Paragraph cards | 120 |
 | Proposition cards | 120 |
-| Principle cards | 120 |
+| Principle cards | 106 |
 | Digest cards | 40 |
-| Issue map records | 204 |
-| Cards with demotion flags | 240 |
+| Issue map records | 205 |
+| Cards with demotion flags | 226 |
 | Answer-safe cards | 0 |
 
 All generated cards are research-only candidate cards backed by public paragraph proof.
