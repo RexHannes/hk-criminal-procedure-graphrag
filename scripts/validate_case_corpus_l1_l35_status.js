@@ -21,6 +21,8 @@ const propositions = readJsonl(PATHS.propositionsSample);
 const principles = readJsonl(PATHS.principlesSample);
 const digests = readJsonl(PATHS.digestsSample);
 const issueMap = readJsonl(PATHS.issueMapSample);
+const chunks = readJsonl(PATHS.chunksSample, { optional: true });
+const embeddedChunks = readJsonl(PATHS.embeddedChunksManifestSample, { optional: true });
 const errors = [];
 const minCasesIndex = process.argv.indexOf("--min-cases");
 const minCases = Number(minCasesIndex >= 0 ? process.argv[minCasesIndex + 1] : "25");
@@ -40,6 +42,10 @@ const checksumPassCount = paragraphs.filter(paragraph => paragraph.checksum === 
 const researchOnlyCount = []
   .concat(registry, paragraphs, propositions, principles, digests)
   .filter(item => item.answer_layer_status === "research_only").length;
+const chunkCounts = chunks.reduce((acc, chunk) => {
+  acc[chunk.chunk_type] = (acc[chunk.chunk_type] || 0) + 1;
+  return acc;
+}, {});
 
 assert(report.registry_case_count === registry.length, "registry_case_count mismatch");
 assert(report.registry_case_count >= minCases, `registry_case_count below minimum ${minCases}`);
@@ -68,6 +74,23 @@ assert(markdown.includes("Do not describe this sample as 10k answer-safe proposi
 assert(markdown.includes("Top Issue Coverage"), "status markdown missing top issue coverage");
 assert(markdown.includes("Cases By Court"), "status markdown missing court table");
 assert(markdown.includes("Cases By Year"), "status markdown missing year table");
+assert(report.chunk_count_by_type?.case_paragraph_chunk === paragraphs.length, "paragraph chunk count mismatch");
+assert(report.chunk_count_by_type?.case_proposition_chunk === propositions.length, "proposition chunk count mismatch");
+assert(report.chunk_count_by_type?.case_principle_chunk === principles.length, "principle chunk count mismatch");
+assert(report.chunk_count_by_type?.case_digest_chunk === digests.length, "digest chunk count mismatch");
+assert(report.chunk_count_by_type?.issue_cluster_chunk === chunkCounts.issue_cluster_chunk, "issue cluster chunk count mismatch");
+assert(report.embedded_chunk_count === embeddedChunks.length, "embedded_chunk_count mismatch");
+assert(report.dry_run_vector_count === chunks.length, "dry_run_vector_count mismatch");
+assert(report.qdrant_collection_targets?.primary_chunk_collection, "qdrant collection target missing");
+assert(report.retrieval_eval_precision_at_5 > 0, "retrieval precision@5 missing");
+assert(report.retrieval_eval_recall_at_10 > 0, "retrieval recall@10 missing");
+assert(report.source_proof_rate === 1, "source_proof_rate must be 1");
+assert(report.wrong_domain_leak_rate === 0, "wrong_domain_leak_rate must be 0");
+assert(report.unsupported_query_abstention_rate === 1, "unsupported_query_abstention_rate must be 1");
+assert(report.duplicate_rate === 0, "duplicate_rate must be 0 for sample");
+assert(report.failed_ingest_count === 0, "failed_ingest_count must be 0");
+assert(report.retryable_failure_count === 0, "retryable_failure_count must be 0");
+assert(markdown.includes("RAG Pipeline Metrics"), "status markdown missing RAG pipeline metrics");
 
 if (errors.length) {
   console.error("Case corpus L1-L3.5 status validation failed:");

@@ -102,5 +102,32 @@
     "L3": "paragraph-backed proposition/principle cards",
     "L35": "issue-mapped digest and research memo retrieval",
     "L4": "not implemented; no answer-safe propositions"
-  }
+  },
+  "chunk_count_by_type": {
+    "case_paragraph_chunk": 300,
+    "case_proposition_chunk": 300,
+    "case_principle_chunk": 300,
+    "case_digest_chunk": 100,
+    "issue_cluster_chunk": 12
+  },
+  "embedded_chunk_count": 1012,
+  "dry_run_vector_count": 1012,
+  "qdrant_collection_targets": {
+    "primary_chunk_collection": "hk_case_corpus_chunks_local_hash_legal_demo_v1_2048",
+    "legacy_artifact_collections": {
+      "hk_case_paragraphs_openrouter_2048": 300,
+      "hk_case_propositions_openrouter_2048": 300,
+      "hk_case_principles_openrouter_2048": 300,
+      "hk_case_digests_openrouter_2048": 100
+    }
+  },
+  "retrieval_eval_precision_at_5": 0.925,
+  "retrieval_eval_recall_at_10": 0.341798,
+  "source_proof_rate": 1,
+  "wrong_domain_leak_rate": 0,
+  "unsupported_query_abstention_rate": 1,
+  "duplicate_rate": 0,
+  "failed_ingest_count": 0,
+  "retryable_failure_count": 0,
+  "ingest_queue_count": 100
 }

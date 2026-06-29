@@ -49,11 +49,29 @@ issue mapping, and research-only case-law memo retrieval.
 
 Actual committed sample: 100 public HKLII criminal-law cases, 300 paragraph cards, 300 proposition cards, 300 principle cards, 100 digest cards, and 100 issue-mapped cases. Important boundary: this is a verified sample corpus, not 10,000 answer-safe propositions. L4 lawyer-reviewed answer-safe promotion is not implemented.
 
+The retrieval layer now also has a non-network ingest/chunk/embed/index/eval dry run:
+
+| Metric | Current sample |
+|---|---:|
+| Chunks | 1,012 |
+| Embedded dry-run vectors | 1,012 |
+| Retrieval Precision@5 | 0.925 |
+| Retrieval Recall@10 | 0.341798 |
+| Source proof rate | 1 |
+| Wrong-domain leak rate | 0 |
+| Unsupported-query abstention rate | 1 |
+| Duplicate rate | 0 |
+| Failed ingest records | 0 |
+
+This is the correct demo framing: retrieval plumbing, source-proof filtering and abstention are present for the sample corpus; broad HK legal RAG and L4 answer-safe advice are still not claimed.
+
 Status dashboard:
 
 ```text
 artifacts/case_corpus_l1_l35_status.json
 artifacts/case_corpus_l1_l35_status.md
+artifacts/case_corpus_ingest_run_status.json
+artifacts/case_corpus_retrieval_eval.json
 ```
 
 Detailed pipeline doc:

@@ -48,6 +48,36 @@ The committed source artifact is:
 data/legal_ingest/case_corpus/criminal_sample_source_cases.json
 ```
 
+## Ingestion, Chunking, Embedding, Vectorization and Ranking
+
+This pass adds the retrieval plumbing around the 100-case sample without changing the legal safety boundary. The pipeline is idempotent and network-disabled in CI:
+
+```text
+ingest queue
+  -> public source fetch cache manifest
+  -> paragraph/proposition/principle/digest cards
+  -> paragraph-preserving chunks
+  -> local-hash 2048-dimension embedding dry run
+  -> Qdrant payload dry run
+  -> hybrid retrieval evaluation
+  -> source-proof filtering
+```
+
+Paragraph chunks preserve exact HKLII paragraph identity. The chunker does not split a verified paragraph unless it emits a warning, because paragraph integrity is what makes source audit and quote proof possible. Separate proposition, principle, digest and issue-cluster chunks are generated so the retriever can search different legal layers without treating them as the same authority class.
+
+The dry-run embedding path uses deterministic local hash vectors, not OpenRouter paid embeddings. The Qdrant dry run writes payloads shaped for a future online collection, with `source_kind`, `case_id`, `paragraph_id`, `proposition_id`, `issue_tags`, `answer_layer_status`, `review_status`, `court_level` and authority metadata. Live Qdrant writes remain opt-in and are blocked in CI.
+
+Ranking is hybrid. Exact issue tags, citation/name hits, keyword overlap, court authority, paragraph verification, issue role, treatment labels and penalty-topic signals are applied before semantic similarity can dominate. This is deliberate: semantic search alone is too loose for legal RAG because it can retrieve plausible but unsupported or wrong-domain material.
+
+Every returned authority must pass the source-proof filter:
+
+- paragraph cards need a public source URL, exact paragraph anchor and checksum;
+- proposition cards need an exact quote supported by a verified paragraph card;
+- principle cards need supported proposition and paragraph proof;
+- recall-only, private-source, unsupported, or cross-domain material is excluded from the answer layer.
+
+All corpus outputs remain `research_only` and `lawyer_review_required`. L4 answer-safe promotion is not implemented.
+
 ## API Usage
 
 `/api/search-evidence` supports the following opt-in request fields:
@@ -80,8 +110,12 @@ node scripts/validate_hklii_paragraph_accuracy.js --full
 node scripts/validate_proposition_cards.js --sample
 node scripts/validate_principle_cards.js --sample
 node scripts/validate_case_digest_cards.js --sample
+node scripts/build_case_corpus_chunks.js --sample
+node scripts/embed_case_corpus_chunks.js --dry-run --sample --no-network
+node scripts/index_case_corpus_qdrant.js --dry-run --sample --no-network
+node scripts/evaluate_case_corpus_retrieval.js --sample
+node scripts/run_case_corpus_ingest_pipeline.js --sample --no-network --dry-run
 node scripts/validate_case_corpus_l1_l35_status.js
-node scripts/index_case_corpus_qdrant.js --dry-run --sample
 node scripts/generate_case_corpus_l35_demo_outputs.js
 node scripts/validate_case_corpus_l35_demo_outputs.js
 ```
@@ -100,6 +134,8 @@ These reports distinguish actual counts and coverage:
 - L3 proposition/principle extraction;
 - L3.5 case digest + issue-mapped research memo;
 - L4 not implemented.
+
+The RAG pipeline dashboard also reports chunk, embedding, dry-run vector, retrieval-eval, duplicate and ingest-failure metrics. Current sample metrics include 1,012 chunks, 1,012 embedded dry-run vectors, Precision@5 of 0.925, Recall@10 of 0.341798, source-proof rate of 1, wrong-domain leak rate of 0, unsupported-query abstention rate of 1, duplicate rate of 0, and zero failed or retryable ingest records.
 
 The safe wording is:
 

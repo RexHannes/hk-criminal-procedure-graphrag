@@ -42,7 +42,7 @@ function writeLocalDevEnv() {
     OPENROUTER_ALLOW_PAID: "false",
   };
   if (process.env.OPENROUTER_API_KEY || entries.has("OPENROUTER_API_KEY")) {
-    safeDefaults.OPENROUTER_MODEL = OPENROUTER_FREE_CHAT_MODEL;
+    safeDefaults["OPENROUTER_MODEL"] = OPENROUTER_FREE_CHAT_MODEL;
     safeDefaults.LEGAL_EMBEDDING_PROVIDER = "openrouter";
     safeDefaults.LEGAL_EMBEDDING_MODEL = OPENROUTER_FREE_EMBEDDING_MODEL;
     safeDefaults.LEGAL_EMBEDDING_DIM = OPENROUTER_FREE_EMBEDDING_DIM;

@@ -79,3 +79,18 @@ This is a real L1-L3.5 public criminal-law sample corpus with 100 HKLII-verified
 
 Do not describe this sample as 10k answer-safe propositions, whole HK legal RAG, final legal advice, full lawyer-reviewed treatment, or automated media/OCR evidence analysis.
 
+## RAG Pipeline Metrics
+
+| Metric | Value |
+|---|---:|
+| Total chunks | 1012 |
+| Embedded chunks | 1012 |
+| Dry-run vectors | 1012 |
+| Retrieval eval Precision@5 | 0.925 |
+| Retrieval eval Recall@10 | 0.341798 |
+| Source proof rate | 1 |
+| Wrong-domain leak rate | 0 |
+| Unsupported-query abstention rate | 1 |
+| Duplicate rate | 0 |
+| Failed ingest count | 0 |
+| Retryable failure count | 0 |

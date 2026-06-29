@@ -14,6 +14,11 @@ const PATHS = {
   digestsSample: path.join(CASE_CORPUS_DIR, "case_digest_cards_sample_100.jsonl"),
   issueTaxonomy: path.join(CASE_CORPUS_DIR, "issue_taxonomy_hk_law_v1.json"),
   issueMapSample: path.join(CASE_CORPUS_DIR, "issue_case_map_sample_100.jsonl"),
+  ingestQueueSample: path.join(CASE_CORPUS_DIR, "ingest_queue_sample_100.jsonl"),
+  fetchCacheManifestSample: path.join(CASE_CORPUS_DIR, "fetch_cache_manifest_sample_100.jsonl"),
+  chunksSample: path.join(CASE_CORPUS_DIR, "chunks_sample_100.jsonl"),
+  embeddedChunksManifestSample: path.join(CASE_CORPUS_DIR, "embedded_chunks_manifest_sample_100.jsonl"),
+  retrievalEvalQueriesSample: path.join(CASE_CORPUS_DIR, "retrieval_eval_queries_sample.json"),
 };
 
 function ensureCaseCorpusDir() {
@@ -64,6 +69,8 @@ function loadCaseCorpus({ mode = "sample" } = {}) {
     principles: readJsonl(PATHS.principlesSample, { optional: true }),
     digests: readJsonl(PATHS.digestsSample, { optional: true }),
     issueMap: readJsonl(PATHS.issueMapSample, { optional: true }),
+    chunks: readJsonl(PATHS.chunksSample, { optional: true }),
+    embeddedChunks: readJsonl(PATHS.embeddedChunksManifestSample, { optional: true }),
     issueTaxonomy: fs.existsSync(PATHS.issueTaxonomy)
       ? JSON.parse(fs.readFileSync(PATHS.issueTaxonomy, "utf8"))
       : { issues: [] },

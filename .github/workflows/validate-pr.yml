@@ -60,11 +60,23 @@ jobs:
       - name: Validate L3.5 case digest cards
         run: node scripts/validate_case_digest_cards.js --sample
 
-      - name: Validate L1-L3.5 status dashboard
-        run: node scripts/validate_case_corpus_l1_l35_status.js
+      - name: Build L1-L3.5 case corpus chunks
+        run: node scripts/build_case_corpus_chunks.js --sample
+
+      - name: Dry-run L1-L3.5 case corpus embeddings
+        run: node scripts/embed_case_corpus_chunks.js --dry-run --sample --no-network
 
       - name: Dry-run L1-L3.5 case corpus Qdrant indexer
-        run: node scripts/index_case_corpus_qdrant.js --dry-run --sample
+        run: node scripts/index_case_corpus_qdrant.js --dry-run --sample --no-network
+
+      - name: Evaluate L1-L3.5 case corpus retrieval
+        run: node scripts/evaluate_case_corpus_retrieval.js --sample
+
+      - name: Run L1-L3.5 ingest pipeline status
+        run: node scripts/run_case_corpus_ingest_pipeline.js --sample --no-network --dry-run
+
+      - name: Validate L1-L3.5 status dashboard
+        run: node scripts/validate_case_corpus_l1_l35_status.js
 
       - name: Generate L1-L3.5 demo outputs
         run: node scripts/generate_case_corpus_l35_demo_outputs.js
@@ -73,7 +85,7 @@ jobs:
         run: node scripts/validate_case_corpus_l35_demo_outputs.js
 
       - name: Ensure L1-L3.5 artifacts are committed
-        run: git diff --exit-code data/legal_ingest/case_corpus artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/demo_outputs
+        run: git diff --exit-code data/legal_ingest/case_corpus artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/case_corpus_ingest_run_status.json artifacts/case_corpus_ingest_run_status.md artifacts/case_corpus_embedding_dry_run.json artifacts/case_corpus_qdrant_dry_run.json artifacts/case_corpus_retrieval_eval.json artifacts/case_corpus_retrieval_eval.md artifacts/case_corpus_duplicates_report.json artifacts/demo_outputs
 
       - name: Dry-run Part 1 source-card Qdrant indexer
         run: node scripts/index_part1_two_vertical_source_cards_qdrant.js --dry-run

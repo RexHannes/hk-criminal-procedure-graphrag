@@ -1,0 +1,25 @@
+{
+  "report_id": "case_corpus_duplicates_report_v1",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "mode": "sample",
+  "registry_case_count": 100,
+  "paragraph_card_count": 300,
+  "duplicate_rate": 0,
+  "duplicate_group_counts": {
+    "source_url": 0,
+    "neutral_citation": 0,
+    "case_id": 0,
+    "normalized_case_name_date": 0,
+    "paragraph_checksum": 0,
+    "paragraph_text_checksum": 0
+  },
+  "duplicates": {
+    "source_url": [],
+    "neutral_citation": [],
+    "case_id": [],
+    "normalized_case_name_date": [],
+    "paragraph_checksum": [],
+    "paragraph_text_checksum": []
+  },
+  "status": "passed_no_case_duplicates"
+}

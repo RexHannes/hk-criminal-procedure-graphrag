@@ -1,0 +1,1299 @@
+{
+  "eval_suite_id": "case_corpus_retrieval_eval_sample_v1",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "metrics": {
+    "recall_at_5": 0.233399,
+    "recall_at_10": 0.341798,
+    "precision_at_5": 0.925,
+    "mrr": 1,
+    "issue_match_rate": 0.9,
+    "source_proof_rate": 1,
+    "paragraph_quote_support_rate": 1,
+    "wrong_domain_leak_rate": 0,
+    "unsupported_query_abstention_rate": 1
+  },
+  "query_results": [
+    {
+      "query_id": "theft_dishonesty",
+      "negative": false,
+      "expected_issue_ids": [
+        "criminal_law.theft.dishonesty"
+      ],
+      "relevant_case_count": 21,
+      "returned_case_count": 10,
+      "recall_at_5": 0.23809523809523808,
+      "recall_at_10": 0.47619047619047616,
+      "precision_at_5": 1,
+      "mrr": 1,
+      "issue_match_rate": 1,
+      "source_proof_rate": 1,
+      "paragraph_quote_support_rate": 1,
+      "wrong_domain_leak": 0,
+      "unsupported_query_abstained": false,
+      "returned_case_ids": [
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+        "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant",
+        "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant",
+        "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+        "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+        "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+        "hk_hkdc_2021_230_hksar_v_lam_see_chung_stephen"
+      ],
+      "ranking_breakdown": [
+        {
+          "chunk_id": "chunk_hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+          "score": 7.861667,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.5555555555555556,
+            "keyword_match": 0.6111111111111112,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+          "score": 7.861667,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.5555555555555556,
+            "keyword_match": 0.6111111111111112,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+          "score": 7.815,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.6666666666666666,
+            "keyword_match": 0.7333333333333334,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+          "score": 7.721667,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.5555555555555556,
+            "keyword_match": 0.6111111111111112,
+            "court_authority": 0.45499999999999996,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant",
+          "score": 7.721667,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.5555555555555556,
+            "keyword_match": 0.6111111111111112,
+            "court_authority": 0.45499999999999996,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        }
+      ],
+      "excluded_results": [
+        {
+          "chunk_id": "chunk_hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "source_object_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "case_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho",
+          "reason": "private_or_licensed_source_not_public_authority"
+        }
+      ]
+    },
+    {
+      "query_id": "forgot_to_pay",
+      "negative": false,
+      "expected_issue_ids": [
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea"
+      ],
+      "relevant_case_count": 21,
+      "returned_case_count": 10,
+      "recall_at_5": 0.23809523809523808,
+      "recall_at_10": 0.47619047619047616,
+      "precision_at_5": 1,
+      "mrr": 1,
+      "issue_match_rate": 1,
+      "source_proof_rate": 1,
+      "paragraph_quote_support_rate": 1,
+      "wrong_domain_leak": 0,
+      "unsupported_query_abstained": false,
+      "returned_case_ids": [
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+        "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant",
+        "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant",
+        "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+        "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+        "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+        "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+        "hk_hkdc_2021_230_hksar_v_lam_see_chung_stephen"
+      ],
+      "ranking_breakdown": [
+        {
+          "chunk_id": "chunk_hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+          "score": 7.559706,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.4117647058823529,
+            "keyword_match": 0.45294117647058824,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+          "score": 7.436176,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.35294117647058826,
+            "keyword_match": 0.3882352941176471,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+          "score": 7.419706,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.4117647058823529,
+            "keyword_match": 0.45294117647058824,
+            "court_authority": 0.45499999999999996,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant",
+          "score": 7.419706,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.4117647058823529,
+            "keyword_match": 0.45294117647058824,
+            "court_authority": 0.45499999999999996,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant",
+          "score": 7.419706,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.4117647058823529,
+            "keyword_match": 0.45294117647058824,
+            "court_authority": 0.45499999999999996,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        }
+      ],
+      "excluded_results": [
+        {
+          "chunk_id": "chunk_hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "source_object_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "case_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho",
+          "reason": "private_or_licensed_source_not_public_authority"
+        }
+      ]
+    },
+    {
+      "query_id": "intention_permanently_deprive",
+      "negative": false,
+      "expected_issue_ids": [
+        "criminal_law.theft"
+      ],
+      "relevant_case_count": 84,
+      "returned_case_count": 10,
+      "recall_at_5": 0.05952380952380952,
+      "recall_at_10": 0.11904761904761904,
+      "precision_at_5": 1,
+      "mrr": 1,
+      "issue_match_rate": 1,
+      "source_proof_rate": 1,
+      "paragraph_quote_support_rate": 1,
+      "wrong_domain_leak": 0,
+      "unsupported_query_abstained": false,
+      "returned_case_ids": [
+        "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+        "hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant",
+        "hk_hkdc_2022_321_hksar_v_choi_hiu_hung",
+        "hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch",
+        "hk_hkdc_2024_400_hksar_v_chung_hiu_tung",
+        "hk_hkcfi_2025_1047_hksar_v_leong_how_seng_defendant",
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent"
+      ],
+      "ranking_breakdown": [
+        {
+          "chunk_id": "chunk_hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+          "score": 7.395,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.3333333333333333,
+            "keyword_match": 0.3666666666666667,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant",
+          "score": 7.395,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.3333333333333333,
+            "keyword_match": 0.3666666666666667,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2022_321_hksar_v_choi_hiu_hung_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkdc_2022_321_hksar_v_choi_hiu_hung",
+          "score": 7.29,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.4166666666666667,
+            "keyword_match": 0.45833333333333337,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch",
+          "score": 7.29,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.4166666666666667,
+            "keyword_match": 0.45833333333333337,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2024_400_hksar_v_chung_hiu_tung_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkdc_2024_400_hksar_v_chung_hiu_tung",
+          "score": 7.29,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.4166666666666667,
+            "keyword_match": 0.45833333333333337,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        }
+      ],
+      "excluded_results": [
+        {
+          "chunk_id": "chunk_hk_hkdc_2023_225_hksar_v_cheung_chiu_fai_d1_wong_man_shan_d2_digest_l35",
+          "source_object_id": "hk_hkdc_2023_225_hksar_v_cheung_chiu_fai_d1_wong_man_shan_d2_digest_l35",
+          "case_id": "hk_hkdc_2023_225_hksar_v_cheung_chiu_fai_d1_wong_man_shan_d2",
+          "reason": "private_or_licensed_source_not_public_authority"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "source_object_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "case_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho",
+          "reason": "private_or_licensed_source_not_public_authority"
+        }
+      ]
+    },
+    {
+      "query_id": "appropriation",
+      "negative": false,
+      "expected_issue_ids": [
+        "criminal_law.theft.appropriation"
+      ],
+      "relevant_case_count": 58,
+      "returned_case_count": 10,
+      "recall_at_5": 0.08620689655172414,
+      "recall_at_10": 0.1724137931034483,
+      "precision_at_5": 1,
+      "mrr": 1,
+      "issue_match_rate": 1,
+      "source_proof_rate": 1,
+      "paragraph_quote_support_rate": 1,
+      "wrong_domain_leak": 0,
+      "unsupported_query_abstained": false,
+      "returned_case_ids": [
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+        "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+        "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant",
+        "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+        "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+        "hk_hkdc_2021_1182_hksar_v_wong_wai_yee",
+        "hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald",
+        "hk_hkdc_2021_137_hksar_v_luk_kit_chun"
+      ],
+      "ranking_breakdown": [
+        {
+          "chunk_id": "chunk_hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+          "score": 7.458636,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.36363636363636365,
+            "keyword_match": 0.4,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+          "score": 7.458636,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.36363636363636365,
+            "keyword_match": 0.4,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+          "score": 7.458636,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.36363636363636365,
+            "keyword_match": 0.4,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+          "score": 7.458636,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.36363636363636365,
+            "keyword_match": 0.4,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant",
+          "score": 7.458636,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.36363636363636365,
+            "keyword_match": 0.4,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        }
+      ],
+      "excluded_results": [
+        {
+          "chunk_id": "chunk_hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "source_object_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "case_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho",
+          "reason": "private_or_licensed_source_not_public_authority"
+        }
+      ]
+    },
+    {
+      "query_id": "belonging_to_another",
+      "negative": false,
+      "expected_issue_ids": [
+        "criminal_law.theft.belonging_to_another"
+      ],
+      "relevant_case_count": 2,
+      "returned_case_count": 10,
+      "recall_at_5": 1,
+      "recall_at_10": 1,
+      "precision_at_5": 0.4,
+      "mrr": 1,
+      "issue_match_rate": 0.2,
+      "source_proof_rate": 1,
+      "paragraph_quote_support_rate": 1,
+      "wrong_domain_leak": 0,
+      "unsupported_query_abstained": false,
+      "returned_case_ids": [
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+        "hk_hkdc_2021_137_hksar_v_luk_kit_chun",
+        "hk_hkdc_2023_1416_hksar_v_abdul_sameer_d1_mullick_abdul_dayan_d2",
+        "hk_hkdc_2024_1329_hksar_v_zhang_yichen",
+        "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+        "hk_hkdc_2021_1182_hksar_v_wong_wai_yee",
+        "hk_hkdc_2021_175_hksar_v_ching_wa_wai",
+        "hk_hkdc_2021_931_hksar_v_kwok_wai_hong",
+        "hk_hkdc_2024_1021_hksar_v_pathomworrakan_nichakan_also_known_as_maisam_orathai_pathomworra",
+        "hk_hkdc_2024_673_hksar_v_tai_wai_yin"
+      ],
+      "ranking_breakdown": [
+        {
+          "chunk_id": "chunk_hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+          "score": 7.605,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.5,
+            "keyword_match": 0.55,
+            "court_authority": 0.45499999999999996,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2021_137_hksar_v_luk_kit_chun_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkdc_2021_137_hksar_v_luk_kit_chun",
+          "score": 7.465,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.5,
+            "keyword_match": 0.55,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2021_137_hksar_v_luk_kit_chun_p19_principle",
+          "chunk_type": "case_principle_chunk",
+          "case_id": "hk_hkdc_2021_137_hksar_v_luk_kit_chun",
+          "score": 7.175,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.6,
+            "keyword_match": 0.66,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_issue_criminal_law_theft_belonging_to_another",
+          "chunk_type": "issue_cluster_chunk",
+          "case_id": "",
+          "score": 6.755,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.4,
+            "keyword_match": 0.44000000000000006,
+            "court_authority": 0.315,
+            "authority_role": 0,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant_p6_principle",
+          "chunk_type": "case_principle_chunk",
+          "case_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+          "score": 6.685,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.3,
+            "keyword_match": 0.33,
+            "court_authority": 0.45499999999999996,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        }
+      ],
+      "excluded_results": [
+        {
+          "chunk_id": "chunk_hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "source_object_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "case_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho",
+          "reason": "private_or_licensed_source_not_public_authority"
+        }
+      ]
+    },
+    {
+      "query_id": "theft_sentencing",
+      "negative": false,
+      "expected_issue_ids": [
+        "criminal_law.theft.sentencing"
+      ],
+      "relevant_case_count": 94,
+      "returned_case_count": 10,
+      "recall_at_5": 0.05319148936170213,
+      "recall_at_10": 0.10638297872340426,
+      "precision_at_5": 1,
+      "mrr": 1,
+      "issue_match_rate": 1,
+      "source_proof_rate": 1,
+      "paragraph_quote_support_rate": 1,
+      "wrong_domain_leak": 0,
+      "unsupported_query_abstained": false,
+      "returned_case_ids": [
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+        "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+        "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "hk_hkca_2025_518_between_hksar_respondent_and_chow_kuen_fung_d1_applicant",
+        "hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant",
+        "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+        "hk_hkdc_2021_494_hksar_v_choi_ping_chiu"
+      ],
+      "ranking_breakdown": [
+        {
+          "chunk_id": "chunk_hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+          "score": 7.395,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.3333333333333333,
+            "keyword_match": 0.3666666666666667,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+          "score": 7.395,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.3333333333333333,
+            "keyword_match": 0.3666666666666667,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+          "score": 7.395,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.3333333333333333,
+            "keyword_match": 0.3666666666666667,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+          "score": 7.395,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.3333333333333333,
+            "keyword_match": 0.3666666666666667,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+          "score": 7.395,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.3333333333333333,
+            "keyword_match": 0.3666666666666667,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        }
+      ],
+      "excluded_results": [
+        {
+          "chunk_id": "chunk_hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "source_object_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "case_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho",
+          "reason": "private_or_licensed_source_not_public_authority"
+        }
+      ]
+    },
+    {
+      "query_id": "fraud_dishonesty",
+      "negative": false,
+      "expected_issue_ids": [
+        "criminal_law.fraud",
+        "criminal_law.deception"
+      ],
+      "relevant_case_count": 94,
+      "returned_case_count": 10,
+      "recall_at_5": 0.05319148936170213,
+      "recall_at_10": 0.10638297872340426,
+      "precision_at_5": 1,
+      "mrr": 1,
+      "issue_match_rate": 1,
+      "source_proof_rate": 1,
+      "paragraph_quote_support_rate": 1,
+      "wrong_domain_leak": 0,
+      "unsupported_query_abstained": false,
+      "returned_case_ids": [
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+        "hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald",
+        "hk_hkdc_2022_652_hksar_v_umar_farooq",
+        "hk_hkdc_2025_1174_hksar_v_chan_kin_ming_d1_ng_sau_man_rebecca_d2",
+        "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+        "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+        "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+        "hk_hkdc_2021_230_hksar_v_lam_see_chung_stephen"
+      ],
+      "ranking_breakdown": [
+        {
+          "chunk_id": "chunk_hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+          "score": 7.745,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.5,
+            "keyword_match": 0.55,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+          "score": 7.745,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.5,
+            "keyword_match": 0.55,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent_p33_principle",
+          "chunk_type": "case_principle_chunk",
+          "case_id": "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+          "score": 7.5075,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.625,
+            "keyword_match": 0.6875,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent_p34_principle",
+          "chunk_type": "case_principle_chunk",
+          "case_id": "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+          "score": 7.5075,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.625,
+            "keyword_match": 0.6875,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald_p10_principle",
+          "chunk_type": "case_principle_chunk",
+          "case_id": "hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald",
+          "score": 7.49,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.75,
+            "keyword_match": 0.8250000000000001,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        }
+      ],
+      "excluded_results": [
+        {
+          "chunk_id": "chunk_hk_hkdc_2024_229_hksar_v_pun_hong_ting_d1_yuen_ka_kin_d2_p10",
+          "source_object_id": "hk_hkdc_2024_229_hksar_v_pun_hong_ting_d1_yuen_ka_kin_d2_p10",
+          "case_id": "hk_hkdc_2024_229_hksar_v_pun_hong_ting_d1_yuen_ka_kin_d2",
+          "reason": "private_or_licensed_source_not_public_authority"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "source_object_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "case_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho",
+          "reason": "private_or_licensed_source_not_public_authority"
+        }
+      ]
+    },
+    {
+      "query_id": "caution_interview",
+      "negative": false,
+      "expected_issue_ids": [
+        "criminal_procedure.interview_caution"
+      ],
+      "relevant_case_count": 36,
+      "returned_case_count": 10,
+      "recall_at_5": 0.1388888888888889,
+      "recall_at_10": 0.2777777777777778,
+      "precision_at_5": 1,
+      "mrr": 1,
+      "issue_match_rate": 1,
+      "source_proof_rate": 1,
+      "paragraph_quote_support_rate": 1,
+      "wrong_domain_leak": 0,
+      "unsupported_query_abstained": false,
+      "returned_case_ids": [
+        "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+        "hk_hkdc_2022_321_hksar_v_choi_hiu_hung",
+        "hk_hkdc_2023_170_hksar_v_tsui_kin_ping",
+        "hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch",
+        "hk_hkdc_2024_2191_hksar_v_tang_chi_wang",
+        "hk_hkdc_2024_229_hksar_v_pun_hong_ting_d1_yuen_ka_kin_d2",
+        "hk_hkdc_2024_400_hksar_v_chung_hiu_tung",
+        "hk_hkdc_2024_427_hksar_v_kwong_man_chun",
+        "hk_hkdc_2025_113_hksar_v_so_man_ho",
+        "hk_hkdc_2025_2201_hksar_v_meng_caiyi"
+      ],
+      "ranking_breakdown": [
+        {
+          "chunk_id": "chunk_hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+          "score": 7.955,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.6,
+            "keyword_match": 0.66,
+            "court_authority": 0.595,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2022_321_hksar_v_choi_hiu_hung_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkdc_2022_321_hksar_v_choi_hiu_hung",
+          "score": 7.885,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.7,
+            "keyword_match": 0.77,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2023_170_hksar_v_tsui_kin_ping_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping",
+          "score": 7.885,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.7,
+            "keyword_match": 0.77,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch",
+          "score": 7.885,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.7,
+            "keyword_match": 0.77,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2024_2191_hksar_v_tang_chi_wang_digest_l35",
+          "chunk_type": "case_digest_chunk",
+          "case_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang",
+          "score": 7.885,
+          "components": {
+            "exact_issue_match": 2.4,
+            "semantic_similarity": 0.7,
+            "keyword_match": 0.77,
+            "court_authority": 0.315,
+            "authority_role": 0.5,
+            "paragraph_verified": 1.2,
+            "principle_card": 0.7,
+            "digest_card": 0.5,
+            "current_treatment_checked": 0,
+            "query_fact_match": 0,
+            "supported_vertical_match": 0.8,
+            "unchecked_penalty": 0,
+            "wrong_domain_penalty": 0,
+            "recall_only_penalty": 0
+          },
+          "source_proof_status": "passed"
+        }
+      ],
+      "excluded_results": [
+        {
+          "chunk_id": "chunk_hk_hkdc_2023_225_hksar_v_cheung_chiu_fai_d1_wong_man_shan_d2_digest_l35",
+          "source_object_id": "hk_hkdc_2023_225_hksar_v_cheung_chiu_fai_d1_wong_man_shan_d2_digest_l35",
+          "case_id": "hk_hkdc_2023_225_hksar_v_cheung_chiu_fai_d1_wong_man_shan_d2",
+          "reason": "private_or_licensed_source_not_public_authority"
+        },
+        {
+          "chunk_id": "chunk_hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "source_object_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p26",
+          "case_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho",
+          "reason": "private_or_licensed_source_not_public_authority"
+        }
+      ]
+    },
+    {
+      "query_id": "unsupported_landlord_rent",
+      "negative": true,
+      "returned_case_count": 0,
+      "recall_at_5": 1,
+      "recall_at_10": 1,
+      "precision_at_5": 1,
+      "mrr": 1,
+      "issue_match_rate": 1,
+      "source_proof_rate": 1,
+      "paragraph_quote_support_rate": 1,
+      "wrong_domain_leak": 0,
+      "unsupported_query_abstained": true,
+      "returned_case_ids": [],
+      "excluded_results": []
+    }
+  ],
+  "acceptance": {
+    "wrong_domain_leak_rate_zero": true,
+    "unsupported_query_abstention_passed": true,
+    "all_outputs_research_only": true,
+    "answer_safe": false
+  }
+}
