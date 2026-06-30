@@ -2,24 +2,769 @@
   "report_id": "case_corpus_duplicates_report_v1",
   "generated_at": "2026-06-29T00:00:00.000Z",
   "mode": "sample",
-  "registry_case_count": 120,
-  "paragraph_card_count": 344,
-  "duplicate_rate": 0,
+  "registry_case_count": 530,
+  "paragraph_card_count": 1633,
+  "duplicate_rate": 0.016181,
   "duplicate_group_counts": {
     "source_url": 0,
     "neutral_citation": 0,
     "case_id": 0,
-    "normalized_case_name_date": 0,
-    "paragraph_checksum": 0,
-    "paragraph_text_checksum": 0
+    "normalized_case_name_date": 3,
+    "paragraph_checksum": 16,
+    "paragraph_text_checksum": 16
   },
   "duplicates": {
     "source_url": [],
     "neutral_citation": [],
     "case_id": [],
-    "normalized_case_name_date": [],
-    "paragraph_checksum": [],
-    "paragraph_text_checksum": []
+    "normalized_case_name_date": [
+      {
+        "key": "v cheng kong yiu|2024-07-22",
+        "count": 2,
+        "records": [
+          {
+            "case_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu",
+            "case_name": "HKSAR v Cheng Kong Yiu",
+            "neutral_citation": "[2024] HKDC 1198",
+            "judgment_date": "2024-07-22",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1198"
+          },
+          {
+            "case_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu",
+            "case_name": "HKSAR v Cheng Kong Yiu",
+            "neutral_citation": "[2024] HKDC 1197",
+            "judgment_date": "2024-07-22",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1197"
+          }
+        ]
+      },
+      {
+        "key": "v gurung niraj|2023-01-26",
+        "count": 2,
+        "records": [
+          {
+            "case_id": "hk_hkdc_2023_135_hksar_v_gurung_niraj",
+            "case_name": "HKSAR v GURUNG NIRAJ",
+            "neutral_citation": "[2023] HKDC 135",
+            "judgment_date": "2023-01-26",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/135"
+          },
+          {
+            "case_id": "hk_hkdc_2023_132_hksar_v_gurung_niraj",
+            "case_name": "HKSAR v GURUNG NIRAJ",
+            "neutral_citation": "[2023] HKDC 132",
+            "judgment_date": "2023-01-26",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/132"
+          }
+        ]
+      },
+      {
+        "key": "and bam raghav|2024-05-14",
+        "count": 2,
+        "records": [
+          {
+            "case_id": "hk_hkcfi_2024_1316_hksar_respondent_and_bam_raghav_appellant",
+            "case_name": "HKSAR Respondent and BAM, RAGHAV Appellant",
+            "neutral_citation": "[2024] HKCFI 1316",
+            "judgment_date": "2024-05-14",
+            "source_url": "https://www.hklii.hk/en/cases/hkcfi/2024/1316"
+          },
+          {
+            "case_id": "hk_hkcfi_2024_1270_hksar_respondent_and_bam_raghav_appellant",
+            "case_name": "HKSAR Respondent and BAM, RAGHAV Appellant",
+            "neutral_citation": "[2024] HKCFI 1270",
+            "judgment_date": "2024-05-14",
+            "source_url": "https://www.hklii.hk/en/cases/hkcfi/2024/1270"
+          }
+        ]
+      }
+    ],
+    "paragraph_checksum": [
+      {
+        "key": "27c6d7e8476f092069acb1d2c87d35359d616b7fdc15c596ac476ae799cff474",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p36",
+            "case_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu",
+            "neutral_citation": "[2021] HKDC 494",
+            "para_no": "36",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494#p36"
+          },
+          {
+            "paragraph_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p36",
+            "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+            "neutral_citation": "[2021] HKCA 1387",
+            "para_no": "36",
+            "source_url": "https://www.hklii.hk/en/cases/hkca/2021/1387#p36"
+          }
+        ]
+      },
+      {
+        "key": "ec0ed3c4e3c2a7d7cdd7e333a6573c762537424ffa9a718f5f5132b5c664af3a",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo_p1",
+            "case_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+            "neutral_citation": "[2021] HKDC 1113",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1113#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_1129_hksar_v_ting_ka_wai_p1",
+            "case_id": "hk_hkdc_2021_1129_hksar_v_ting_ka_wai",
+            "neutral_citation": "[2021] HKDC 1129",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1129#p1"
+          }
+        ]
+      },
+      {
+        "key": "b650509bed6c352bf004768231a01bbf6586cb690a41927c90ac52694258a2ed",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung_p1",
+            "case_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+            "neutral_citation": "[2021] HKDC 102",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/102#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_366_hksar_v_kwok_chun_ping_p1",
+            "case_id": "hk_hkdc_2021_366_hksar_v_kwok_chun_ping",
+            "neutral_citation": "[2021] HKDC 366",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/366#p1"
+          }
+        ]
+      },
+      {
+        "key": "6924d5fee527c9db0eeb129a20f6776bd162725f0589128d9f0d85a7887850c3",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_456_hksar_v_wun_pik_chun_p1",
+            "case_id": "hk_hkdc_2021_456_hksar_v_wun_pik_chun",
+            "neutral_citation": "[2021] HKDC 456",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/456#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_539_hksar_v_kok_ping_cheung_p1",
+            "case_id": "hk_hkdc_2021_539_hksar_v_kok_ping_cheung",
+            "neutral_citation": "[2021] HKDC 539",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/539#p1"
+          }
+        ]
+      },
+      {
+        "key": "c76b0457f31348234b8d07bb955d64604f5da08dd4f15c8389dd70a982b58c5f",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4_p3",
+            "case_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4",
+            "neutral_citation": "[2024] HKDC 1195",
+            "para_no": "3",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195#p3"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant_p6",
+            "case_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant",
+            "neutral_citation": "[2024] HKDC 1268",
+            "para_no": "6",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1268#p6"
+          }
+        ]
+      },
+      {
+        "key": "592bbe02aaba17542c40b7220ccd75a0f4f88ce69e428071fa29040574a354f4",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4_p5",
+            "case_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4",
+            "neutral_citation": "[2024] HKDC 1195",
+            "para_no": "5",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195#p5"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant_p8",
+            "case_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant",
+            "neutral_citation": "[2024] HKDC 1268",
+            "para_no": "8",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1268#p8"
+          }
+        ]
+      },
+      {
+        "key": "2a27a3485c6293b940446547c648a4b3fdd8664ef0614c751692fafd1a043553",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4_p7",
+            "case_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4",
+            "neutral_citation": "[2024] HKDC 1195",
+            "para_no": "7",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195#p7"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant_p10",
+            "case_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant",
+            "neutral_citation": "[2024] HKDC 1268",
+            "para_no": "10",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1268#p10"
+          }
+        ]
+      },
+      {
+        "key": "7c23a19a8dbe348625174e7c9fbbc6c414b5173966ade7726102fd3d21b6d43b",
+        "count": 3,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2026_768_hksar_v_hui_ping_kei_p1",
+            "case_id": "hk_hkdc_2026_768_hksar_v_hui_ping_kei",
+            "neutral_citation": "[2026] HKDC 768",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/768#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2023_1001_hksar_v_mahmood_azhar_p1",
+            "case_id": "hk_hkdc_2023_1001_hksar_v_mahmood_azhar",
+            "neutral_citation": "[2023] HKDC 1001",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1001#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2023_1391_hksar_v_ernawati_p1",
+            "case_id": "hk_hkdc_2023_1391_hksar_v_ernawati",
+            "neutral_citation": "[2023] HKDC 1391",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1391#p1"
+          }
+        ]
+      },
+      {
+        "key": "2b66fa0aa2b58371f9e9ef7160255bb3ce01ca4740ebb0d09ad83284a1aa8c95",
+        "count": 3,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_1483_hksar_v_chan_wing_chung_p12",
+            "case_id": "hk_hkdc_2021_1483_hksar_v_chan_wing_chung",
+            "neutral_citation": "[2021] HKDC 1483",
+            "para_no": "12",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1483#p12"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2022_1500_hksar_v_ng_kwan_ki_p9",
+            "case_id": "hk_hkdc_2022_1500_hksar_v_ng_kwan_ki",
+            "neutral_citation": "[2022] HKDC 1500",
+            "para_no": "9",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2022/1500#p9"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1919_hksar_v_wang_bao_p16",
+            "case_id": "hk_hkdc_2024_1919_hksar_v_wang_bao",
+            "neutral_citation": "[2024] HKDC 1919",
+            "para_no": "16",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1919#p16"
+          }
+        ]
+      },
+      {
+        "key": "6aa67ca515877d0ca91e0090e9ba88cb3ad8b28e3f6dfb55b513b0edf7d6cd6c",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu_p2",
+            "case_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1198",
+            "para_no": "2",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1198#p2"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu_p2",
+            "case_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1197",
+            "para_no": "2",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1197#p2"
+          }
+        ]
+      },
+      {
+        "key": "8f6fe692abfa83797fa97680bc9d543cb434f1ddc8d4358db927194baebca112",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu_p3",
+            "case_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1198",
+            "para_no": "3",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1198#p3"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu_p3",
+            "case_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1197",
+            "para_no": "3",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1197#p3"
+          }
+        ]
+      },
+      {
+        "key": "f5ac92cd3035aaeece97834d26ccc0468920c1f3ad444e7234c220234b33b018",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu_p11",
+            "case_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1198",
+            "para_no": "11",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1198#p11"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu_p11",
+            "case_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1197",
+            "para_no": "11",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1197#p11"
+          }
+        ]
+      },
+      {
+        "key": "e14efe04c82a05548ceea35d1f1eaaf2a6ab126703d4bc4dc26f08f767165445",
+        "count": 3,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_969_hksar_v_vo_huu_phuoc_also_known_as_mo_man_fuk_p1",
+            "case_id": "hk_hkdc_2021_969_hksar_v_vo_huu_phuoc_also_known_as_mo_man_fuk",
+            "neutral_citation": "[2021] HKDC 969",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/969#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_541_hksar_v_nguyen_anh_tuan_also_known_as_yuen_ying_chun_p1",
+            "case_id": "hk_hkdc_2021_541_hksar_v_nguyen_anh_tuan_also_known_as_yuen_ying_chun",
+            "neutral_citation": "[2021] HKDC 541",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/541#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_501_hksar_v_emperador_edarlyn_arcalas_p1",
+            "case_id": "hk_hkdc_2021_501_hksar_v_emperador_edarlyn_arcalas",
+            "neutral_citation": "[2021] HKDC 501",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/501#p1"
+          }
+        ]
+      },
+      {
+        "key": "3b28fda529b14a15ffad97ae9b455a61b3d7bf9ec5f2064e3624cdc7cb74b121",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_677_hksar_v_navneet_singh_p1",
+            "case_id": "hk_hkdc_2021_677_hksar_v_navneet_singh",
+            "neutral_citation": "[2021] HKDC 677",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/677#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_706_hksar_v_muhammad_shehbaz_also_known_as_muhmmad_sahbaz_and_muhmmad_shamba_p1",
+            "case_id": "hk_hkdc_2021_706_hksar_v_muhammad_shehbaz_also_known_as_muhmmad_sahbaz_and_muhmmad_shamba",
+            "neutral_citation": "[2021] HKDC 706",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/706#p1"
+          }
+        ]
+      },
+      {
+        "key": "8f5a1d16c5543753016b30f3fc3ac750fd2351695eb80c7669152baf7d20194a",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_1120_hksar_v_wong_kai_chun_p1",
+            "case_id": "hk_hkdc_2021_1120_hksar_v_wong_kai_chun",
+            "neutral_citation": "[2021] HKDC 1120",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1120#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_235_hksar_v_leung_ting_lap_marianne_p1",
+            "case_id": "hk_hkdc_2021_235_hksar_v_leung_ting_lap_marianne",
+            "neutral_citation": "[2021] HKDC 235",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/235#p1"
+          }
+        ]
+      },
+      {
+        "key": "6d7f2c6328409e18e33632302e04e582bf3294d079ee20787d3eba96f03eb991",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1836_hksar_v_zulifkar_p1",
+            "case_id": "hk_hkdc_2024_1836_hksar_v_zulifkar",
+            "neutral_citation": "[2024] HKDC 1836",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1836#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2023_1506_hksar_v_chan_po_heung_p1",
+            "case_id": "hk_hkdc_2023_1506_hksar_v_chan_po_heung",
+            "neutral_citation": "[2023] HKDC 1506",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1506#p1"
+          }
+        ]
+      }
+    ],
+    "paragraph_text_checksum": [
+      {
+        "key": "27c6d7e8476f092069acb1d2c87d35359d616b7fdc15c596ac476ae799cff474",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p36",
+            "case_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu",
+            "neutral_citation": "[2021] HKDC 494",
+            "para_no": "36",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494#p36"
+          },
+          {
+            "paragraph_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p36",
+            "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+            "neutral_citation": "[2021] HKCA 1387",
+            "para_no": "36",
+            "source_url": "https://www.hklii.hk/en/cases/hkca/2021/1387#p36"
+          }
+        ]
+      },
+      {
+        "key": "ec0ed3c4e3c2a7d7cdd7e333a6573c762537424ffa9a718f5f5132b5c664af3a",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo_p1",
+            "case_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+            "neutral_citation": "[2021] HKDC 1113",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1113#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_1129_hksar_v_ting_ka_wai_p1",
+            "case_id": "hk_hkdc_2021_1129_hksar_v_ting_ka_wai",
+            "neutral_citation": "[2021] HKDC 1129",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1129#p1"
+          }
+        ]
+      },
+      {
+        "key": "b650509bed6c352bf004768231a01bbf6586cb690a41927c90ac52694258a2ed",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung_p1",
+            "case_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+            "neutral_citation": "[2021] HKDC 102",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/102#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_366_hksar_v_kwok_chun_ping_p1",
+            "case_id": "hk_hkdc_2021_366_hksar_v_kwok_chun_ping",
+            "neutral_citation": "[2021] HKDC 366",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/366#p1"
+          }
+        ]
+      },
+      {
+        "key": "6924d5fee527c9db0eeb129a20f6776bd162725f0589128d9f0d85a7887850c3",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_456_hksar_v_wun_pik_chun_p1",
+            "case_id": "hk_hkdc_2021_456_hksar_v_wun_pik_chun",
+            "neutral_citation": "[2021] HKDC 456",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/456#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_539_hksar_v_kok_ping_cheung_p1",
+            "case_id": "hk_hkdc_2021_539_hksar_v_kok_ping_cheung",
+            "neutral_citation": "[2021] HKDC 539",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/539#p1"
+          }
+        ]
+      },
+      {
+        "key": "c76b0457f31348234b8d07bb955d64604f5da08dd4f15c8389dd70a982b58c5f",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4_p3",
+            "case_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4",
+            "neutral_citation": "[2024] HKDC 1195",
+            "para_no": "3",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195#p3"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant_p6",
+            "case_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant",
+            "neutral_citation": "[2024] HKDC 1268",
+            "para_no": "6",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1268#p6"
+          }
+        ]
+      },
+      {
+        "key": "592bbe02aaba17542c40b7220ccd75a0f4f88ce69e428071fa29040574a354f4",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4_p5",
+            "case_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4",
+            "neutral_citation": "[2024] HKDC 1195",
+            "para_no": "5",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195#p5"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant_p8",
+            "case_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant",
+            "neutral_citation": "[2024] HKDC 1268",
+            "para_no": "8",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1268#p8"
+          }
+        ]
+      },
+      {
+        "key": "2a27a3485c6293b940446547c648a4b3fdd8664ef0614c751692fafd1a043553",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4_p7",
+            "case_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4",
+            "neutral_citation": "[2024] HKDC 1195",
+            "para_no": "7",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195#p7"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant_p10",
+            "case_id": "hk_hkdc_2024_1268_hksar_v_ng_kong_fai_1_st_defendant",
+            "neutral_citation": "[2024] HKDC 1268",
+            "para_no": "10",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1268#p10"
+          }
+        ]
+      },
+      {
+        "key": "7c23a19a8dbe348625174e7c9fbbc6c414b5173966ade7726102fd3d21b6d43b",
+        "count": 3,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2026_768_hksar_v_hui_ping_kei_p1",
+            "case_id": "hk_hkdc_2026_768_hksar_v_hui_ping_kei",
+            "neutral_citation": "[2026] HKDC 768",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/768#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2023_1001_hksar_v_mahmood_azhar_p1",
+            "case_id": "hk_hkdc_2023_1001_hksar_v_mahmood_azhar",
+            "neutral_citation": "[2023] HKDC 1001",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1001#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2023_1391_hksar_v_ernawati_p1",
+            "case_id": "hk_hkdc_2023_1391_hksar_v_ernawati",
+            "neutral_citation": "[2023] HKDC 1391",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1391#p1"
+          }
+        ]
+      },
+      {
+        "key": "2b66fa0aa2b58371f9e9ef7160255bb3ce01ca4740ebb0d09ad83284a1aa8c95",
+        "count": 3,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_1483_hksar_v_chan_wing_chung_p12",
+            "case_id": "hk_hkdc_2021_1483_hksar_v_chan_wing_chung",
+            "neutral_citation": "[2021] HKDC 1483",
+            "para_no": "12",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1483#p12"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2022_1500_hksar_v_ng_kwan_ki_p9",
+            "case_id": "hk_hkdc_2022_1500_hksar_v_ng_kwan_ki",
+            "neutral_citation": "[2022] HKDC 1500",
+            "para_no": "9",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2022/1500#p9"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1919_hksar_v_wang_bao_p16",
+            "case_id": "hk_hkdc_2024_1919_hksar_v_wang_bao",
+            "neutral_citation": "[2024] HKDC 1919",
+            "para_no": "16",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1919#p16"
+          }
+        ]
+      },
+      {
+        "key": "6aa67ca515877d0ca91e0090e9ba88cb3ad8b28e3f6dfb55b513b0edf7d6cd6c",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu_p2",
+            "case_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1198",
+            "para_no": "2",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1198#p2"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu_p2",
+            "case_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1197",
+            "para_no": "2",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1197#p2"
+          }
+        ]
+      },
+      {
+        "key": "8f6fe692abfa83797fa97680bc9d543cb434f1ddc8d4358db927194baebca112",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu_p3",
+            "case_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1198",
+            "para_no": "3",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1198#p3"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu_p3",
+            "case_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1197",
+            "para_no": "3",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1197#p3"
+          }
+        ]
+      },
+      {
+        "key": "f5ac92cd3035aaeece97834d26ccc0468920c1f3ad444e7234c220234b33b018",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu_p11",
+            "case_id": "hk_hkdc_2024_1198_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1198",
+            "para_no": "11",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1198#p11"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu_p11",
+            "case_id": "hk_hkdc_2024_1197_hksar_v_cheng_kong_yiu",
+            "neutral_citation": "[2024] HKDC 1197",
+            "para_no": "11",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1197#p11"
+          }
+        ]
+      },
+      {
+        "key": "e14efe04c82a05548ceea35d1f1eaaf2a6ab126703d4bc4dc26f08f767165445",
+        "count": 3,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_969_hksar_v_vo_huu_phuoc_also_known_as_mo_man_fuk_p1",
+            "case_id": "hk_hkdc_2021_969_hksar_v_vo_huu_phuoc_also_known_as_mo_man_fuk",
+            "neutral_citation": "[2021] HKDC 969",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/969#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_541_hksar_v_nguyen_anh_tuan_also_known_as_yuen_ying_chun_p1",
+            "case_id": "hk_hkdc_2021_541_hksar_v_nguyen_anh_tuan_also_known_as_yuen_ying_chun",
+            "neutral_citation": "[2021] HKDC 541",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/541#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_501_hksar_v_emperador_edarlyn_arcalas_p1",
+            "case_id": "hk_hkdc_2021_501_hksar_v_emperador_edarlyn_arcalas",
+            "neutral_citation": "[2021] HKDC 501",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/501#p1"
+          }
+        ]
+      },
+      {
+        "key": "3b28fda529b14a15ffad97ae9b455a61b3d7bf9ec5f2064e3624cdc7cb74b121",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_677_hksar_v_navneet_singh_p1",
+            "case_id": "hk_hkdc_2021_677_hksar_v_navneet_singh",
+            "neutral_citation": "[2021] HKDC 677",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/677#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_706_hksar_v_muhammad_shehbaz_also_known_as_muhmmad_sahbaz_and_muhmmad_shamba_p1",
+            "case_id": "hk_hkdc_2021_706_hksar_v_muhammad_shehbaz_also_known_as_muhmmad_sahbaz_and_muhmmad_shamba",
+            "neutral_citation": "[2021] HKDC 706",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/706#p1"
+          }
+        ]
+      },
+      {
+        "key": "8f5a1d16c5543753016b30f3fc3ac750fd2351695eb80c7669152baf7d20194a",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2021_1120_hksar_v_wong_kai_chun_p1",
+            "case_id": "hk_hkdc_2021_1120_hksar_v_wong_kai_chun",
+            "neutral_citation": "[2021] HKDC 1120",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1120#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2021_235_hksar_v_leung_ting_lap_marianne_p1",
+            "case_id": "hk_hkdc_2021_235_hksar_v_leung_ting_lap_marianne",
+            "neutral_citation": "[2021] HKDC 235",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/235#p1"
+          }
+        ]
+      },
+      {
+        "key": "6d7f2c6328409e18e33632302e04e582bf3294d079ee20787d3eba96f03eb991",
+        "count": 2,
+        "records": [
+          {
+            "paragraph_id": "hk_hkdc_2024_1836_hksar_v_zulifkar_p1",
+            "case_id": "hk_hkdc_2024_1836_hksar_v_zulifkar",
+            "neutral_citation": "[2024] HKDC 1836",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1836#p1"
+          },
+          {
+            "paragraph_id": "hk_hkdc_2023_1506_hksar_v_chan_po_heung_p1",
+            "case_id": "hk_hkdc_2023_1506_hksar_v_chan_po_heung",
+            "neutral_citation": "[2023] HKDC 1506",
+            "para_no": "1",
+            "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/1506#p1"
+          }
+        ]
+      }
+    ]
   },
-  "status": "passed_no_case_duplicates"
+  "status": "duplicates_require_review"
 }

@@ -1,0 +1,41 @@
+{
+  "report_id": "verified_500_case_validation_report_v1",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "min_cases": 500,
+  "metrics": {
+    "source_case_count": 530,
+    "registry_case_count": 530,
+    "paragraph_card_count": 1633,
+    "proposition_card_count": 1633,
+    "principle_card_count": 1633,
+    "usable_principle_count": 623,
+    "demoted_principle_count": 1010,
+    "digest_card_count": 530,
+    "issue_map_count": 2290,
+    "chunk_count": 4433,
+    "embedded_chunk_count": 4433,
+    "paragraph_proof_rate": 1,
+    "quote_proof_rate": 1,
+    "usable_principle_proof_rate": 1,
+    "answer_safe_count": 0,
+    "current_treatment_unchecked_count": 15355,
+    "current_treatment_checked_count": 0,
+    "private_or_licensed_source_count": 0,
+    "source_visibility_counts": {
+      "not_applicable": 9862,
+      "public": 5493
+    },
+    "answer_layer_status_counts": {
+      "research_only": 15355
+    }
+  },
+  "boundaries": [
+    "Public HKLII/LegalRef/e-Legislation-style sources only.",
+    "No answer_safe promotion.",
+    "No checked_current treatment without lawyer review.",
+    "No private/licensed source authority.",
+    "All case-law answer authority requires paragraph and quote proof."
+  ],
+  "errors": []
+}

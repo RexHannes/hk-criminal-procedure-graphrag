@@ -7,7 +7,7 @@ Actual listed cases: 40. All entries are public-source research-only candidates.
 | BETWEEN HKSAR Respondent and KHAN, ALTAF Appellant | [2022] HKCFI 1220 | criminal_law.theft, criminal_law.theft.sentencing, criminal_law.theft.appropriation | https://www.hklii.hk/en/cases/hkcfi/2022/1220#p1 |
 | BETWEEN HKSAR Respondent and YEOH, POH LEAN Appellant | [2022] HKCFI 1962 | criminal_law.theft, criminal_law.dishonesty, criminal_law.theft.dishonesty, criminal_law.theft.mens_rea | https://www.hklii.hk/en/cases/hkcfi/2022/1962#p1 |
 | HKSAR v ANTHONY Theresia Olwi | [2026] HKDC 705 | criminal_law.theft, criminal_law.deception, criminal_law.theft.sentencing, criminal_law.theft.handling_stolen_goods | https://www.hklii.hk/en/cases/hkdc/2026/705#p1 |
-| HKSAR v WONG Chun-ho | [2026] HKDC 909 | criminal_law.theft, criminal_law.theft.sentencing | https://www.hklii.hk/en/cases/hkdc/2026/909#p24 |
+| HKSAR v WONG Chun-ho | [2026] HKDC 909 | criminal_law.theft, criminal_law.theft.sentencing, criminal_procedure.bail | https://www.hklii.hk/en/cases/hkdc/2026/909#p24 |
 | HKSAR v CHING WA WAI | [2021] HKDC 175 | criminal_law.theft, criminal_law.theft.sentencing, criminal_law.deception, criminal_law.theft.appropriation | https://www.hklii.hk/en/cases/hkdc/2021/175#p42 |
 | HKSAR v CHOI HIU HUNG | [2022] HKDC 321 | criminal_law.theft, criminal_law.theft.appropriation, criminal_law.theft.sentencing, criminal_law.fraud | https://www.hklii.hk/en/cases/hkdc/2022/321#p46 |
 | HKSAR v Zhang Yichen | [2024] HKDC 1329 | criminal_law.theft, criminal_law.deception, criminal_law.theft.appropriation, criminal_law.theft.sentencing | https://www.hklii.hk/en/cases/hkdc/2024/1329#p1 |
@@ -43,4 +43,4 @@ Actual listed cases: 40. All entries are public-source research-only candidates.
 | HKSAR Respondent v LAM SEE CHUNG STEPHEN Appellant | [2022] HKCA 990 | criminal_law.theft, criminal_law.theft.sentencing, criminal_law.fraud, criminal_law.deception | https://www.hklii.hk/en/cases/hkca/2022/990#p26 |
 | HKSAR v HO CHI TAT (D2) HKSAR v HO CHI TAT HKSAR v HO CHI TAT | [2024] HKDC 359 | criminal_law.theft, criminal_law.deception, criminal_law.theft.appropriation, criminal_law.theft.sentencing | https://www.hklii.hk/en/cases/hkdc/2024/359#p2 |
 | HKSAR v FOK TIK SANG (D1) WAJID SYED ZAKIR (D2) | [2024] HKDC 376 | criminal_law.theft, criminal_law.deception, criminal_law.theft.sentencing, criminal_law.fraud | https://www.hklii.hk/en/cases/hkdc/2024/376#p2 |
-| HKSAR v CHOI PING CHIU | [2021] HKDC 494 | criminal_law.theft, criminal_law.deception, criminal_law.theft.belonging_to_another, criminal_law.theft.appropriation | https://www.hklii.hk/en/cases/hkdc/2021/494#p1 |
+| HKSAR v CHOI PING CHIU | [2021] HKDC 494 | criminal_law.theft, criminal_law.deception, criminal_law.theft.appropriation, criminal_law.theft.sentencing | https://www.hklii.hk/en/cases/hkdc/2021/494#p1 |

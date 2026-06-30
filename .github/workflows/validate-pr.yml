@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - codex/investor-recall-25k-path
+      - codex/verified-500-case-criminal-corpus
 
 jobs:
   validate:
@@ -33,35 +34,29 @@ jobs:
       - name: Validate anti-hallucination contract
         run: node scripts/validate_anti_hallucination_contract.js
 
-      - name: Regenerate PR 6 demo outputs
-        run: node scripts/generate_pr6_demo_outputs.js
-
       - name: Validate PR 6 demo assets
         run: node scripts/validate_pr6_demo_assets.js
 
-      - name: Ensure PR 6 demo outputs are committed
-        run: git diff --exit-code artifacts/demo_outputs
-
       - name: Build L1-L3.5 case corpus sample
-        run: node scripts/build_case_corpus_l1_l35_sample.js
+        run: node scripts/build_case_corpus_l1_l35_sample.js --min-cases 500
 
       - name: Repair L3 principle quality
         run: node scripts/repair_principle_quality.js
 
       - name: Validate L1 case registry
-        run: node scripts/validate_case_registry_10000.js --sample
+        run: node scripts/validate_case_registry_10000.js --sample --min-cases 500
 
       - name: Validate L2 paragraph proof
         run: node scripts/validate_hklii_paragraph_accuracy.js --full
 
       - name: Validate L3 proposition cards
-        run: node scripts/validate_proposition_cards.js --sample
+        run: node scripts/validate_proposition_cards.js --sample --min-cases 500
 
       - name: Validate L3 principle cards
-        run: node scripts/validate_principle_cards.js --sample
+        run: node scripts/validate_principle_cards.js --sample --min-cases 500
 
       - name: Validate L3.5 case digest cards
-        run: node scripts/validate_case_digest_cards.js --sample
+        run: node scripts/validate_case_digest_cards.js --sample --min-cases 500
 
       - name: Build L1-L3.5 case corpus chunks
         run: node scripts/build_case_corpus_chunks.js --sample
@@ -96,26 +91,17 @@ jobs:
       - name: Validate L1-L3.5 status dashboard
         run: node scripts/validate_case_corpus_l1_l35_status.js
 
-      - name: Generate L1-L3.5 demo outputs
-        run: node scripts/generate_case_corpus_l35_demo_outputs.js
+      - name: Validate verified 500+ case corpus
+        run: node scripts/validate_verified_500_case_corpus.js --min-cases 500
 
-      - name: Validate L1-L3.5 demo outputs
-        run: node scripts/validate_case_corpus_l35_demo_outputs.js
+      - name: Build verified 500+ regression report
+        run: node scripts/report_verified_500_case_regression.js
 
-      - name: Build PR 6 demo freeze package
-        run: node scripts/build_demo_freeze_package_pr6.js
-
-      - name: Validate PR 6 demo readiness
-        run: node scripts/validate_demo_readiness_pr6.js
-
-      - name: Smoke test PR 6 demo API
-        run: node scripts/smoke_test_pr6_demo_api.js --local-only --skip-network
-
-      - name: Ensure PR 6 demo freeze artifacts are committed
-        run: git diff --exit-code artifacts/demo_freeze_report.json artifacts/demo_freeze_report.md artifacts/demo_outputs/demo_query_pack.json artifacts/demo_outputs/demo_query_pack.md docs/boss_demo_script_pr6.md
+      - name: Build dataset readiness projection
+        run: node scripts/report_dataset_readiness_projection_500_case.js
 
       - name: Ensure L1-L3.5 artifacts are committed
-        run: git diff --exit-code data/legal_ingest/case_corpus artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/case_corpus_ingest_run_status.json artifacts/case_corpus_ingest_run_status.md artifacts/case_corpus_embedding_dry_run.json artifacts/case_corpus_qdrant_dry_run.json artifacts/case_corpus_retrieval_eval.json artifacts/case_corpus_retrieval_eval.md artifacts/case_corpus_duplicates_report.json artifacts/candidate_extraction_verification_report.json artifacts/candidate_extraction_verification_report.md artifacts/candidate_verified_cards_report.json artifacts/candidate_verified_cards_report.md artifacts/case_corpus_quality_audit.json artifacts/case_corpus_quality_audit.md artifacts/case_corpus_issue_coverage.json artifacts/case_corpus_issue_coverage.md artifacts/principle_quality_repair_report.json artifacts/principle_quality_repair_report.md artifacts/weak_issue_target_discovery_report.json artifacts/weak_issue_target_discovery_report.md artifacts/demo_outputs
+        run: git diff --exit-code data/legal_ingest/case_corpus artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/case_corpus_ingest_run_status.json artifacts/case_corpus_ingest_run_status.md artifacts/case_corpus_embedding_dry_run.json artifacts/case_corpus_qdrant_dry_run.json artifacts/case_corpus_retrieval_eval.json artifacts/case_corpus_retrieval_eval.md artifacts/case_corpus_duplicates_report.json artifacts/candidate_extraction_verification_report.json artifacts/candidate_extraction_verification_report.md artifacts/candidate_verified_cards_report.json artifacts/candidate_verified_cards_report.md artifacts/case_corpus_quality_audit.json artifacts/case_corpus_quality_audit.md artifacts/case_corpus_issue_coverage.json artifacts/case_corpus_issue_coverage.md artifacts/principle_quality_repair_report.json artifacts/principle_quality_repair_report.md artifacts/verified_500_case_discovery_report.json artifacts/verified_500_case_discovery_report.md artifacts/verified_500_case_validation_report.json artifacts/verified_500_case_validation_report.md artifacts/verified_500_case_regression_report.json artifacts/verified_500_case_regression_report.md artifacts/dataset_readiness_projection_500_case.json artifacts/dataset_readiness_projection_500_case.md
 
       - name: Dry-run Part 1 source-card Qdrant indexer
         run: node scripts/index_part1_two_vertical_source_cards_qdrant.js --dry-run

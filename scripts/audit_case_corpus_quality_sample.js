@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Quality audit for the current 100-case L1-L3.5 sample; no scaling. */
+/* Quality audit for the current verified L1-L3.5 case corpus branch. */
 
 const fs = require("fs");
 const path = require("path");
@@ -81,6 +81,19 @@ function digestQuality(digest = {}) {
   return { pass: flags.length === 0, flags };
 }
 
+function privateOrLicensedSource(record = {}) {
+  const sourceFields = [
+    record.source_url,
+    record.official_url,
+    record.legalref_url,
+    record.source_system,
+    record.source_visibility,
+    record.source_kind,
+  ].filter(Boolean).join(" ");
+  if (record.source_visibility && record.source_visibility !== "public") return true;
+  return /lexis|westlaw|licensed|private_source|client_document|textbook/i.test(sourceFields);
+}
+
 function updateStatus(report) {
   const status = fs.existsSync(STATUS_JSON) ? JSON.parse(fs.readFileSync(STATUS_JSON, "utf8")) : {};
   status.quality_audit_pass_rate = report.summary.quality_audit_pass_rate;
@@ -90,7 +103,10 @@ function updateStatus(report) {
   status.quality_audited_case_count = report.summary.audited_case_count;
   status.cards_demoted = report.summary.rejected_or_demoted_cards.length;
   status.quality_suspicious_card_count = report.summary.suspicious_cards.length;
-  status.next_target_500_cases = "Do not scale to 500 until weak issue tags are reviewed and demoted/background-only cards are excluded or marked in retrieval.";
+  status.current_treatment_unchecked_count = report.summary.current_treatment_unchecked_count;
+  status.current_treatment_checked_count = report.summary.current_treatment_checked_count;
+  status.private_or_licensed_source_count = report.summary.private_or_licensed_source_count;
+  status.next_target_500_cases = "500-case corpus reached on this branch; do not scale beyond 500 until weak issue tags, demotions and current-treatment checks are reviewed.";
   fs.writeFileSync(STATUS_JSON, `${JSON.stringify(status, null, 2)}\n`, "utf8");
 
   if (fs.existsSync(STATUS_MD)) {
@@ -113,6 +129,9 @@ function updateStatus(report) {
       `| Overall quality audit pass rate | ${report.summary.quality_audit_pass_rate} |`,
       `| Suspicious cards | ${report.summary.suspicious_cards.length} |`,
       `| Rejected or demoted cards | ${report.summary.rejected_or_demoted_cards.length} |`,
+      `| Current treatment unchecked | ${report.summary.current_treatment_unchecked_count} |`,
+      `| Current treatment checked | ${report.summary.current_treatment_checked_count} |`,
+      `| Private/licensed source count | ${report.summary.private_or_licensed_source_count} |`,
       "",
     ];
     fs.writeFileSync(STATUS_MD, `${lines.join("\n")}`, "utf8");
@@ -128,6 +147,8 @@ function main() {
   const sourceArtifactPath = path.join(ROOT, "data", "legal_ingest", "case_corpus", "criminal_sample_source_cases.json");
   const sourceArtifact = fs.existsSync(sourceArtifactPath) ? JSON.parse(fs.readFileSync(sourceArtifactPath, "utf8")) : { cases: [] };
   const sourceByCase = byId(sourceArtifact.cases || [], "case_id");
+  const allLayerRecords = []
+    .concat(corpus.registry, corpus.paragraphs, corpus.propositions, corpus.principles, corpus.digests);
 
   const randomCases = corpus.registry.slice().sort((a, b) => scoreId(a.case_id) - scoreId(b.case_id)).slice(0, 20);
   const highValueCases = corpus.registry
@@ -207,8 +228,8 @@ function main() {
 
   const report = {
     report_id: "case_corpus_quality_audit_sample_v1",
-    generated_at: "2026-06-29T00:00:00.000Z",
-    scope: "Quality audit over deterministic 20-case random sample plus 10 high-value theft/dishonesty cases in the targeted sample; no 500-case scaling.",
+    generated_at: "2026-06-30T00:00:00.000Z",
+    scope: "Quality audit over deterministic 20-case random sample plus 10 high-value theft/dishonesty cases in the verified L1-L3.5 criminal-law corpus branch.",
     sampling: {
       random_case_count: randomCases.length,
       high_value_theft_dishonesty_case_count: highValueCases.length,
@@ -224,6 +245,10 @@ function main() {
       usable_principle_count_in_audit: principlePass.length,
       digest_quality_pass_rate: Number(avg(digestPass).toFixed(6)),
       quality_audit_pass_rate: Number(avg([avg(paragraphPass), avg(quotePass), avg(propositionPass), avg(principlePass), avg(digestPass)]).toFixed(6)),
+      answer_safe_count: allLayerRecords.filter(item => item.answer_layer_status === "answer_safe").length,
+      current_treatment_unchecked_count: allLayerRecords.filter(item => (item.current_treatment_status || item.treatment?.current_treatment_status || "unchecked") === "unchecked").length,
+      current_treatment_checked_count: allLayerRecords.filter(item => (item.current_treatment_status || item.treatment?.current_treatment_status || "") === "checked_current").length,
+      private_or_licensed_source_count: allLayerRecords.filter(privateOrLicensedSource).length,
       suspicious_cards: suspiciousCards,
       rejected_or_demoted_cards: demotedCards,
     },
@@ -250,6 +275,10 @@ function main() {
     `| Overall quality audit pass rate | ${report.summary.quality_audit_pass_rate} |`,
     `| Suspicious cards | ${suspiciousCards.length} |`,
     `| Rejected or demoted cards | ${demotedCards.length} |`,
+    `| Answer-safe count | ${report.summary.answer_safe_count} |`,
+    `| Current treatment unchecked | ${report.summary.current_treatment_unchecked_count} |`,
+    `| Current treatment checked | ${report.summary.current_treatment_checked_count} |`,
+    `| Private/licensed source count | ${report.summary.private_or_licensed_source_count} |`,
     "",
     "## Most Common Suspicious Reasons",
     "",
@@ -259,7 +288,7 @@ function main() {
   const reasonCounts = {};
   for (const item of suspiciousCards) for (const reason of item.reasons || [item.reason]) reasonCounts[reason] = (reasonCounts[reason] || 0) + 1;
   lines.push(...Object.entries(reasonCounts).sort((a, b) => b[1] - a[1]).map(([reason, count]) => `| ${reason} | ${count} |`));
-  lines.push("", "## Boundary", "", "- This audit does not promote cards to answer_safe.", "- Suspicious cards remain research_only and should be reviewed before scaling to 500 cases.", "");
+  lines.push("", "## Boundary", "", "- This audit does not promote cards to answer_safe.", "- Suspicious and demoted cards remain research_only and should be reviewed before scaling beyond this branch.", "- Current treatment remains unchecked unless a lawyer-review gate explicitly changes it.", "");
   fs.writeFileSync(OUT_MD, `${lines.join("\n")}`, "utf8");
   updateStatus(report);
   console.log(JSON.stringify({
@@ -275,6 +304,10 @@ function main() {
     quality_audit_pass_rate: report.summary.quality_audit_pass_rate,
     suspicious_card_count: report.summary.suspicious_cards.length,
     rejected_or_demoted_card_count: report.summary.rejected_or_demoted_cards.length,
+    answer_safe_count: report.summary.answer_safe_count,
+    current_treatment_unchecked_count: report.summary.current_treatment_unchecked_count,
+    current_treatment_checked_count: report.summary.current_treatment_checked_count,
+    private_or_licensed_source_count: report.summary.private_or_licensed_source_count,
     status: "passed",
   }, null, 2));
 }

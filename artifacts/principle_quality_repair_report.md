@@ -4,19 +4,19 @@ Repairs current L1-L3.5 sample principle quality before 500-case scaling; demote
 
 | Metric | Value |
 |---|---:|
-| Principle cards | 344 |
-| Usable in research answer layer | 97 |
-| Demoted / not answer-layer usable | 247 |
+| Principle cards | 1633 |
+| Usable in research answer layer | 623 |
+| Demoted / not answer-layer usable | 1010 |
 | Needs review | 0 |
 
 ## Demotion Reasons
 
 | Reason | Count |
 |---|---:|
-| sentencing_only_not_liability | 187 |
-| quote_context_insufficient | 40 |
-| background_only_not_principle | 29 |
-| procedural_only_not_liability | 25 |
+| sentencing_only_not_liability | 521 |
+| background_only_not_principle | 480 |
+| quote_context_insufficient | 334 |
+| procedural_only_not_liability | 56 |
 
 ## Boundary
 

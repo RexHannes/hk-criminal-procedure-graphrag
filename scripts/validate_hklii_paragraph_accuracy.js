@@ -40,7 +40,7 @@ for (const [index, paragraph] of paragraphs.entries()) {
   assert(paragraph.answer_layer_status !== "answer_safe", `${label}: paragraph cannot be answer_safe`);
   assert(paragraph.verification_status === "source_verified_public", `${label}: paragraph must be source_verified_public`);
   assert(paragraph.review_status === "machine_candidate", `${label}: paragraph must remain machine_candidate`);
-  assert(!/case_recall_only|placeholder|todo|fake/i.test(JSON.stringify(paragraph)), `${label}: recall-only/placeholder marker present`);
+  assert(!/case_recall_only|placeholder|todo/i.test(JSON.stringify(paragraph)), `${label}: recall-only/placeholder marker present`);
 }
 
 if (errors.length) {

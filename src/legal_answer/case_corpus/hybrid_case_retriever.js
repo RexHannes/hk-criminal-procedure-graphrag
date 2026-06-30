@@ -33,15 +33,12 @@ function expandIssueIds(issueIds = []) {
     if (issueId === "criminal_law.theft.dishonesty") {
       expanded.add("criminal_law.dishonesty");
       expanded.add("criminal_law.theft.mens_rea");
-      expanded.add("criminal_law.theft");
-      expanded.add("criminal_law.theft.mistake_or_forgot_to_pay");
     }
     if (issueId === "criminal_law.theft.mens_rea") {
       expanded.add("criminal_law.theft.dishonesty");
       expanded.add("criminal_law.dishonesty");
       expanded.add("criminal_law.theft");
     }
-    if (issueId.startsWith("criminal_law.theft.") && issueId !== "criminal_law.theft.sentencing") expanded.add("criminal_law.theft");
     if (issueId === "criminal_law.fraud") expanded.add("criminal_law.deception");
     if (issueId === "criminal_law.deception") expanded.add("criminal_law.fraud");
   }
@@ -62,6 +59,7 @@ function inferCaseCorpusIssueIds(query = "") {
     ids.add("criminal_law.theft.dishonesty");
     ids.add("criminal_law.theft.mens_rea");
   }
+  if (/\b(forgot|forget|forgotten|mistake|accident|without paying|did not pay|didn't pay)\b/.test(q)) ids.add("criminal_law.theft.mistake_or_forgot_to_pay");
   if (/\bappropriat|taking|picked up|owner rights|assuming rights/.test(q)) ids.add("criminal_law.theft.appropriation");
   if (/permanent|permanently deprive|keep it|not return/i.test(q)) ids.add("criminal_law.theft.intention_permanently_deprive");
   if (/belonging to another|belongs to another|owner|ownership/i.test(q)) ids.add("criminal_law.theft.belonging_to_another");
@@ -71,6 +69,17 @@ function inferCaseCorpusIssueIds(query = "") {
   if (/caution|interview|vri|video-recorded|under caution|admission|confession/i.test(q)) ids.add("criminal_procedure.interview_caution");
   if (/bail|remand/i.test(q)) ids.add("criminal_procedure.bail");
   return expandIssueIds(Array.from(ids));
+}
+
+function requestedIssueIds(query = "", issueId = "") {
+  const inferred = inferCaseCorpusIssueIds(query);
+  if (!issueId) return inferred;
+  const explicit = expandIssueIds([issueId]);
+  const explicitSpecific = /\./.test(issueId.replace(/^criminal_law\./, "").replace(/^criminal_procedure\./, ""));
+  const filteredInferred = explicitSpecific
+    ? inferred.filter(id => id !== "criminal_law.theft")
+    : inferred;
+  return expandIssueIds(uniq([...explicit, ...filteredInferred]));
 }
 
 function loadChunksOrBuild(mode = "sample") {
@@ -193,7 +202,7 @@ function retrieveHybridCaseCorpus({
   evidence_text = "",
 } = {}) {
   const { corpus, chunks } = loadChunksOrBuild(mode);
-  const issueIds = issue_id ? expandIssueIds([issue_id]) : inferCaseCorpusIssueIds(query);
+  const issueIds = requestedIssueIds(query, issue_id);
   if (!issueIds.length) {
     return {
       mode,
@@ -267,6 +276,7 @@ module.exports = {
   expandIssueIds,
   synonymQuery,
   inferCaseCorpusIssueIds,
+  requestedIssueIds,
   bm25Matches,
   retrieveHybridCaseCorpus,
 };

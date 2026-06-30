@@ -46,6 +46,7 @@ function commonPayload({
   sourceUrl = "",
   text = "",
   reviewStatus = "machine_candidate",
+  currentTreatmentStatus = "unchecked",
 } = {}) {
   const normalizedText = normalizeParagraphText(text);
   return {
@@ -69,6 +70,9 @@ function commonPayload({
     text: normalizedText,
     token_estimate: tokenEstimate(normalizedText),
     checksum: sha256(normalizedText),
+    domain_id: "criminal_law_hk",
+    source_kind: "case_law",
+    current_treatment_status: currentTreatmentStatus || "unchecked",
     answer_layer_status: "research_only",
     review_status: reviewStatus,
   };
@@ -102,6 +106,7 @@ function buildParagraphChunks(corpus) {
       sourceUrl: paragraph.source_url,
       text: `Paragraph ${paragraph.para_no}. ${text}`,
       reviewStatus: paragraph.review_status,
+      currentTreatmentStatus: paragraph.current_treatment_status,
     });
     if (base.token_estimate <= SAFE_MAX_PARAGRAPH_TOKENS) return [base];
     return [{
@@ -135,6 +140,7 @@ function buildPropositionChunks(corpus, paragraphById) {
         `Source paragraphs: ${(prop.source_paragraph_ids || []).join(", ")}`,
       ].join("\n"),
       reviewStatus: prop.review_status,
+      currentTreatmentStatus: prop.current_treatment_status,
     });
   });
 }
@@ -167,6 +173,7 @@ function buildPrincipleChunks(corpus, paragraphById) {
         `Treatment: ${principle.current_treatment_status || "unchecked"}`,
       ].join("\n"),
       reviewStatus: principle.review_status,
+      currentTreatmentStatus: principle.current_treatment_status,
     });
   });
 }
@@ -200,6 +207,7 @@ function buildDigestChunks(corpus, propositionsById) {
       `Key paragraphs: ${(digest.key_paragraphs || []).join(", ")}`,
     ].join("\n"),
     reviewStatus: digest.review_status,
+    currentTreatmentStatus: digest.current_treatment_status || digest.treatment?.current_treatment_status,
   }));
 }
 

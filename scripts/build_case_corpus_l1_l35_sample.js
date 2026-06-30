@@ -136,8 +136,11 @@ function buildRegistry(cases) {
     practice_area_candidates: item.practice_area_candidates || ["criminal_law"],
     issue_seed_tags: Array.from(new Set(item.issue_seed_tags || [])),
     ingestion_status: item.ingestion_status || "l2_paragraph_sample_verified",
+    verification_status: item.verification_status || "source_verified_public",
     source_visibility: "public",
     answer_layer_status: "research_only",
+    current_treatment_status: "unchecked",
+    review_status: "machine_candidate",
   }));
 }
 
@@ -162,6 +165,7 @@ function buildParagraphs(cases) {
         authority_role_candidate: normalizeAuthorityRole(paragraph.authority_role_candidate),
         extraction_status: "deterministic_from_committed_hklii_source_artifact",
         verification_status: "source_verified_public",
+        current_treatment_status: "unchecked",
         answer_layer_status: "research_only",
         review_status: "machine_candidate",
       });
@@ -192,6 +196,7 @@ function buildPropositions(cases) {
         extraction_method: "deterministic_term_and_quote_extraction",
         confidence: 0.62,
         verification_status: "quote_verified_from_paragraph_card",
+        current_treatment_status: "unchecked",
         answer_layer_status: "research_only",
         review_status: "machine_candidate",
       });
@@ -283,6 +288,7 @@ function buildDigests(cases, propositions, principles) {
         current_treatment_status: "unchecked",
         note: "No L4 lawyer treatment review in this sample.",
       },
+      current_treatment_status: "unchecked",
       hklii_paragraph_urls: (item.selected_paragraphs || []).map(paragraph => paragraph.source_url),
       answer_layer_status: "research_only",
       review_status: "lawyer_review_required",
@@ -363,8 +369,8 @@ function statusReport(sourceArtifact, records) {
 
   return {
     status_id: "case_corpus_l1_l35_status_v1",
-    generated_at: "2026-06-29T00:00:00.000Z",
-    scope_note: `This is a real L1-L3.5 public criminal-law sample corpus with ${records.cases.length} HKLII-verified cases. It is not 10k answer-safe and L4 is not implemented.`,
+    generated_at: "2026-06-30T00:00:00.000Z",
+    scope_note: `This is a real L1-L3.5 public criminal-law corpus branch with ${records.cases.length} HKLII-verified cases. It is not 10k answer-safe and L4/current-treatment review is not implemented.`,
     source_artifact: "data/legal_ingest/case_corpus/criminal_sample_source_cases.json",
     source_artifact_case_count: sourceArtifact.actual_case_count,
     registry_case_count: records.cases.length,
@@ -388,8 +394,8 @@ function statusReport(sourceArtifact, records) {
       "No current-treatment review has been performed.",
     ],
     next_scale_target: {
-      target: "Expand from this verified sample toward 500 then 10,000 L1/L2 cases only after adding reviewer gates and stronger current-treatment checks.",
-      safe_claim: "Validated L1-L3.5 sample corpus; not a 10k answer-safe corpus.",
+      target: "Audit this 500-case branch before any later 1k/10k L1/L2 growth; add reviewer gates and current-treatment checks before answer-safe promotion.",
+      safe_claim: "Validated public-source L1-L3.5 research-only criminal-law corpus; not a 10k answer-safe corpus.",
     },
     demo_vertical_coverage: {
       theft_shoplifting: "L1-L3.5 sample case-law corpus available with paragraph proof",
