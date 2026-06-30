@@ -180,7 +180,7 @@
     const verify = new Set(cards.map(c => c.verification_status));
     const out = ['<span class="badge badge-research">Research layer</span>'];
     if ([...verify].some(v => String(v).includes('verified') || v === 'source_verified')) out.push('<span class="badge badge-verified">Source card present</span>');
-    if ([...verify].some(v => String(v).includes('needs'))) out.push('<span class="badge badge-review">Source proof not attached</span>');
+    if ([...verify].some(v => String(v).includes('needs'))) out.push('<span class="badge badge-review">Research-only</span>');
     if (statuses.has('answer_safe')) out.push('<span class="badge badge-approved">Answer-safe</span>');
     return out.join('');
   }
@@ -269,7 +269,7 @@
               <strong>${esc(c.source_title)}</strong>
               <div class="pi-meta">${esc(c.citation)} · ${esc(c.pinpoint)} · ${esc(c.verification_status)} · ${esc(c.source_license_status)}</div>
               <q>${esc(c.quoted_excerpt)}</q>
-            </div>`).join('') : '<div class="pi-abstain">Source proof not attached for this route.</div>'}
+            </div>`).join('') : '<div class="pi-abstain">Withheld from the public demo until source-card proof is mapped.</div>'}
           ${firmBlocks.length ? `<div class="view-eyebrow" style="margin-top:14px">Firm private overlay</div>${firmBlocks.map(({ sop, block }) => `
             <div class="sop-note"><span class="sn-label">${esc(sop.title)} v${esc(sop.version)} · ${esc(block.title)}</span>${esc(block.instruction)}</div>`).join('')}` : ''}
         </section>

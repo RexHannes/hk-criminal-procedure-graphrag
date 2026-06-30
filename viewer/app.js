@@ -32,10 +32,10 @@
   // ── Badge mapping: raw pipeline labels → professional badges ──
   const BADGE_MAP = {
     not_product_answer_layer: { text: 'Research layer', cls: 'badge-research' },
-    needs_hklii_verification: { text: 'Source proof not attached', cls: 'badge-audit' },
-    needs_official_source_verification: { text: 'Public source card needed', cls: 'badge-audit' },
-    unverified_case_seed: { text: 'Seed reference', cls: 'badge-audit' },
-    not_source_proofed_seed: { text: 'Seed reference', cls: 'badge-audit' },
+    needs_hklii_verification: { text: 'Developer audit only', cls: 'badge-audit' },
+    needs_official_source_verification: { text: 'Developer audit only', cls: 'badge-audit' },
+    unverified_case_seed: { text: 'Excluded seed', cls: 'badge-audit' },
+    not_source_proofed_seed: { text: 'Excluded seed', cls: 'badge-audit' },
     seed_identity_verified_only: { text: 'Seed identity verified only', cls: 'badge-source-linked' },
     research_graph_reference: { text: 'Research graph reference', cls: 'badge-research' },
     paragraph_linked_public_source: { text: 'Paragraph-linked sample', cls: 'badge-source-linked' },
@@ -50,7 +50,7 @@
   };
 
   const TYPE_LABEL = {
-    legal_issue: 'Issue', statute: 'Statute', case_seed: 'Seed reference',
+    legal_issue: 'Issue', statute: 'Statute', case_seed: 'Verified case',
     flow_step: 'Flow step', practice_direction: 'Practice direction',
     restricted_nsl: 'NSL', section_header: 'Section', gap: 'Gap',
     listing_rule_anchor: 'Listing rule', guidance_letter_seed: 'Guidance letter',
@@ -95,9 +95,9 @@
     if (n.answer_layer_status) out.push(badge(n.answer_layer_status));
     if (n.verification_status) out.push(badge(n.verification_status));
     if (n.authority_status && n.authority_status !== n.verification_status) out.push(badge(n.authority_status));
-    if (n.type === 'case_seed') out.push('<span class="badge badge-audit">Seed reference</span>');
+    if (n.type === 'case_seed') out.push('<span class="badge badge-audit">Excluded from demo authority</span>');
     if (/needs_|unverified|pending/i.test([n.verification_status, n.authority_status].filter(Boolean).join(' '))) {
-      out.push('<span class="badge badge-audit">Not source-proofed</span>');
+      out.push('<span class="badge badge-audit">Developer audit only</span>');
     }
     if (n.type === 'restricted_nsl') out.push('<span class="badge badge-nsl">NSL — restricted</span>');
     return out.join('');
@@ -564,7 +564,7 @@
     request
       .then(payload => renderCaseFruits(target, nodeId, payload))
       .catch(err => {
-        target.innerHTML = `<div class="fruit-empty">No public paragraph proof is attached to this graph item. It is shown only as a research/navigation reference. <span>${esc(err.message || '')}</span></div>`;
+        target.innerHTML = `<div class="fruit-empty">Paragraph proof could not be loaded in this preview. <span>${esc(err.message || '')}</span></div>`;
       });
   }
 
@@ -638,7 +638,7 @@
     const normalized = normalizeEvidencePayload(payload);
     const evidence = normalized.evidence || [];
     if (!evidence.length) {
-      target.innerHTML = '<div class="fruit-empty">No public paragraph proof is attached to this graph item. It is not used as answer authority.</div>';
+      target.innerHTML = '';
       return;
     }
     const sorted = evidence.slice().sort((a, b) => {
@@ -724,19 +724,32 @@
     ].includes(n.authority_status);
   }
 
-  function authorityReferenceBadge(n) {
-    if (isSourceProofedAuthorityNode(n)) return nodeStatusBadges(n);
-    if (n.type === 'case_seed') return '<span class="badge badge-audit">Seed reference · not answer authority</span>';
-    if (n.type === 'statute') return badge('needs_official_source_verification');
-    return '<span class="badge badge-audit">Source proof not attached</span>';
+  function isVisibleCaseAuthorityNode(n) {
+    return Boolean(n && n.type === 'case_seed' && hasViewerCaseEvidenceForNode(n));
   }
 
-  function renderAuthorityReferenceList(items, proofed) {
+  function isVisibleSearchNode(n) {
+    return !(n?.type === 'case_seed' && !isVisibleCaseAuthorityNode(n));
+  }
+
+  function verifiedAuthoritiesForNode(n) {
+    return authoritiesForNode(n).filter(isSourceProofedAuthorityNode);
+  }
+
+  function verifiedAuthoritiesForStep(stepId) {
+    return authoritiesForStep(stepId).filter(isSourceProofedAuthorityNode);
+  }
+
+  function unresolvedCaseAuthorityCount(items) {
+    return items.filter(item => item.type === 'case_seed' && !isVisibleCaseAuthorityNode(item)).length;
+  }
+
+  function renderAuthorityReferenceList(items) {
     if (!items.length) return '';
     return `<ul class="insp-list">${items.map(a => `
       <li>
         <button data-go="node:${a.id}">${esc(a.label)}</button>
-        ${proofed ? nodeStatusBadges(a) : authorityReferenceBadge(a)}
+        ${nodeStatusBadges(a)}
       </li>`).join('')}</ul>`;
   }
 
@@ -752,11 +765,12 @@
       kindEl.textContent = TYPE_LABEL[n.type] || n.type;
       const auths = n.type === 'flow_step' ? authoritiesForStep(n.id) : authoritiesForNode(n);
       const proofedAuths = auths.filter(isSourceProofedAuthorityNode);
-      const graphRefs = auths.filter(a => !isSourceProofedAuthorityNode(a));
+      const hiddenCaseRefCount = unresolvedCaseAuthorityCount(auths);
       const sopBlocks = n.type === 'flow_step' ? sopBlocksForStep(n.id) : [];
       const used = usedInLastTrace(n.id);
       const relatedFlows = S.flows.filter(f => (f.steps || []).includes(n.id));
       const doctrineId = doctrineNodeId(n);
+      const hasParagraphProof = hasViewerCaseEvidenceForNode(n);
 
       body.innerHTML = `
         <div class="insp-title">${esc(n.label)}</div>
@@ -769,13 +783,12 @@
         </div>
         ${proofedAuths.length ? `<div class="insp-section">
           <div class="insp-label">Source-proofed authority</div>
-          ${renderAuthorityReferenceList(proofedAuths, true)}
+          ${renderAuthorityReferenceList(proofedAuths)}
         </div>` : ''}
-        ${graphRefs.length ? `<div class="insp-section">
-          <div class="insp-label">Seed / graph references</div>
-          <div class="insp-text">These references are navigation and research seeds unless their paragraph proof appears below.</div>
-          ${renderAuthorityReferenceList(graphRefs, false)}
-        </div>` : ''}
+        ${hiddenCaseRefCount ? `<details class="insp-section piw-audit">
+          <summary>Unresolved seed cases excluded from demo (${hiddenCaseRefCount})</summary>
+          <div class="insp-text">These case seeds are omitted from product authority surfaces until a public HKLII/LegalRef/Judiciary paragraph, exact quote, and issue mapping are attached. See <code>artifacts/excluded_unverified_case_seeds_report.md</code>.</div>
+        </details>` : ''}
         ${relatedFlows.length ? `<div class="insp-section">
           <div class="insp-label">Appears in flows</div>
           <ul class="insp-list">${relatedFlows.map(f => `<li><button data-goflow="${f.flow_id}">${esc(f.title)}</button></li>`).join('')}</ul>
@@ -786,18 +799,18 @@
             <div class="sop-note"><span class="sn-label">${esc(sop.title)} ${versionBadge(block.version)}</span>${esc(block.instruction)}</div>
           `).join('')}
         </div>` : ''}
-        <div class="insp-section">
+        ${hasParagraphProof ? `<div class="insp-section">
           <div class="insp-label">Case Fruits / Paragraph Proof</div>
           <div class="fruit-panel" id="${caseFruitKey(doctrineId)}" data-node-id="${esc(doctrineId)}">
             <div class="fruit-loading">Loading source-linked paragraph proof…</div>
           </div>
-        </div>
+        </div>` : ''}
         <div class="insp-section">
           <div class="insp-label">Audit</div>
           <div class="insp-text">Every use of this item in a task run is recorded in the execution trace with flow, SOP and template versions.</div>
         </div>`;
       wireInspectorLinks(body);
-      loadCaseFruitsForNode(n);
+      if (hasParagraphProof) loadCaseFruitsForNode(n);
       return;
     }
 
@@ -926,7 +939,7 @@
           <button class="ghost-btn" data-case-target="${esc(item.issueTag)}">Open in inspector</button>
         </div>
         <div class="fruit-list">
-          ${evidence.length ? evidence.map(renderCaseFruitCard).join('') : '<div class="fruit-empty">No native paragraph evidence is mapped for this issue yet.</div>'}
+          ${evidence.length ? evidence.map(renderCaseFruitCard).join('') : '<div class="fruit-empty">Withheld from the public demo until paragraph evidence is mapped.</div>'}
         </div>
         <details class="piw-audit">
           <summary>Source audit</summary>
@@ -1077,7 +1090,7 @@
   function renderStepCard(stepId, num) {
     const n = S.nodeMap[stepId];
     if (!n) return '';
-    const auths = authoritiesForStep(stepId);
+    const auths = verifiedAuthoritiesForStep(stepId);
     const issues = issuesLinkedToStep(stepId);
     const sopBlocks = sopBlocksForStep(stepId);
     const used = usedInLastTrace(stepId);
@@ -1104,7 +1117,7 @@
   function viewDoctrine() {
     const sections = S.nodes.filter(n => n.type === 'section_header').sort((a, b) => (a.section || '').localeCompare(b.section || ''));
     root().innerHTML = `
-      ${viewHeader('Doctrine map', S.domainInfo?.title || 'Doctrine by section', 'The base legal graph: issues, statutes, case seeds, and practice directions grouped by section. Click any item to inspect its extracted principle and source trail.')}
+      ${viewHeader('Doctrine map', S.domainInfo?.title || 'Doctrine by section', 'The base legal graph: issues, statutes, practice directions, and verified paragraph proof grouped by section. Click any item to inspect its extracted principle and source trail.')}
       ${seedGraphBanner()}
       ${sections.map(sec => {
         const issues = S.nodes.filter(n => n.type === 'legal_issue' && n.section === sec.section)
@@ -1118,10 +1131,10 @@
               <span class="ds-count">${issues.length} issues</span>
             </button>
             ${open ? `<div class="doc-issues">${issues.map(iss => {
-              const refCount = authoritiesForNode(iss).length;
+              const refCount = verifiedAuthoritiesForNode(iss).length + (hasViewerCaseEvidenceForNode(iss) ? 1 : 0);
               return `<button class="doc-issue" data-sel="node:${iss.id}" data-card="node:${iss.id}">
                 <span class="di-label">${esc(iss.label)}</span>
-                <span class="di-refs">${refCount} sources</span>
+                <span class="di-refs">${refCount} proof${refCount === 1 ? '' : 's'}</span>
               </button>`;
             }).join('')}</div>` : ''}
           </div>`;
@@ -1269,27 +1282,28 @@
     const counts = {};
     S.nodes.forEach(n => { counts[n.type] = (counts[n.type] || 0) + 1; });
     const caseSeeds = S.nodes.filter(n => n.type === 'case_seed');
+    const verifiedCaseSeeds = caseSeeds.filter(isVisibleCaseAuthorityNode);
+    const excludedCaseSeedCount = Math.max(0, caseSeeds.length - verifiedCaseSeeds.length);
     root().innerHTML = `
-      ${viewHeader('Governance', 'Sources & audit', 'Transparency is the product. Every node carries an explicit verification status; nothing in the research layer is presented as a final answer, and nothing is hidden behind an unlock.')}
+      ${viewHeader('Governance', 'Sources & audit', 'Transparency is the product. Product authority surfaces show paragraph-linked public evidence only; unresolved case seeds are excluded from the demo and kept in a developer audit report.')}
       ${seedGraphBanner()}
       <table class="audit-table">
         <thead><tr><th>Object type</th><th>Count</th><th>Default status</th></tr></thead>
         <tbody>
           ${Object.entries(counts).sort().map(([k, v]) => `<tr>
             <td>${esc(TYPE_LABEL[k] || k)}</td><td class="mono">${v}</td>
-            <td>${k === 'case_seed' ? badge('unverified_case_seed') : k === 'statute' ? badge('needs_official_source_verification') : badge('not_product_answer_layer')}</td>
+            <td>${k === 'case_seed' ? '<span class="badge badge-audit">Excluded unless paragraph-linked</span>' : k === 'statute' ? badge('needs_official_source_verification') : badge('not_product_answer_layer')}</td>
           </tr>`).join('')}
+          <tr><td>Visible case authorities</td><td class="mono">${verifiedCaseSeeds.length}</td><td><span class="badge badge-source-linked">Paragraph-linked sample</span></td></tr>
+          <tr><td>Unresolved seed cases excluded from demo</td><td class="mono">${excludedCaseSeedCount}</td><td><span class="badge badge-audit">Developer audit only</span></td></tr>
           <tr><td>Edges</td><td class="mono">${S.edges.length}</td><td>${badge('not_product_answer_layer')}</td></tr>
           <tr><td>Firm SOPs</td><td class="mono">${currentDomainSops().length}</td><td>${badge('approved', 'where marked')}</td></tr>
         </tbody>
       </table>
-      <div class="view-eyebrow" style="margin-bottom:10px">Case seed references not used as answer authority</div>
-      ${caseSeeds.slice(0, 12).map(c => `
-        <div class="card selectable" data-sel="node:${esc(c.id)}" data-card="node:${esc(c.id)}">
-          <div class="card-top"><span class="card-title">${esc(c.label)}</span><span class="card-badges">${badge('unverified_case_seed')}</span></div>
-          <div class="card-body">${esc(c.summary || '')}</div>
-        </div>`).join('')}
-      ${caseSeeds.length > 12 ? `<p class="view-lede">…and ${caseSeeds.length - 12} more case seeds in the audit queue.</p>` : ''}
+      <details class="piw-audit">
+        <summary>Unresolved seed cases excluded from demo (${excludedCaseSeedCount})</summary>
+        <p class="view-lede">The omitted seed list is committed at <code>artifacts/excluded_unverified_case_seeds_report.md</code>. It is intentionally outside product authority surfaces until public paragraph proof is attached.</p>
+      </details>
     `;
     wireCards();
   }
@@ -1309,7 +1323,7 @@
     paragraph_verified: '<span class="badge badge-verified">Paragraph verified</span>',
     source_verified: '<span class="badge badge-verified">Source verified — review required</span>',
     candidate_only: '<span class="badge badge-review">Candidate only — needs review</span>',
-    no_evidence: '<span class="badge badge-audit">No paragraph proof attached</span>',
+    no_evidence: '<span class="badge badge-audit">Abstained</span>',
   };
 
   function isUnsupportedLandlordQuery(query) {
@@ -1359,12 +1373,14 @@
   }
 
   function localInquiryMatches(query, limit = 8) {
+    if (isUnsupportedLandlordQuery(query)) return [];
     const evidenceMatches = caseEvidenceInquiryMatches(query, 4);
     const terms = query.toLowerCase().split(/[^a-z0-9一-鿿]+/).filter(w => w.length > 2);
     const scored = [];
     const evidenceSourceIds = new Set(evidenceMatches.map(match => match.source_node_id).filter(Boolean));
     S.nodes.forEach(n => {
       if (n.type === 'section_header') return;
+      if (!hasViewerCaseEvidenceForNode(n)) return;
       if (evidenceSourceIds.has(n.id)) return;
       const hay = `${n.id} ${n.label || ''} ${n.summary || ''} ${(n.statute_refs || []).join(' ')} ${(n.case_seeds || []).join(' ')}`.toLowerCase();
       let score = 0;
@@ -1374,17 +1390,20 @@
       });
       if (score) scored.push({ n, score });
     });
-    const graphMatches = scored.sort((a, b) => b.score - a.score).slice(0, Math.max(0, limit - evidenceMatches.length)).map(({ n, score }) => ({
-      doctrine_node_id: n.id,
-      source_node_id: n.id,
-      title: n.label || n.id,
-      node_type: n.type || 'unknown',
-      domain_id: S.selectedDomainId,
-      summary: n.summary || '',
-      match_score: score,
-      evidence: [],
-      coverage_status: 'no_evidence',
-    }));
+    const graphMatches = scored.sort((a, b) => b.score - a.score).slice(0, Math.max(0, limit - evidenceMatches.length)).map(({ n, score }) => {
+      const evidence = viewerEvidencePayloadForNode(n, 4).evidence || [];
+      return {
+        doctrine_node_id: doctrineNodeId(n),
+        source_node_id: n.id,
+        title: n.label || n.id,
+        node_type: n.type || 'unknown',
+        domain_id: S.selectedDomainId,
+        summary: n.summary || '',
+        match_score: score,
+        evidence,
+        coverage_status: evidence.length ? 'paragraph_verified' : 'no_evidence',
+      };
+    }).filter(match => match.evidence.length);
     return evidenceMatches.concat(graphMatches).slice(0, limit);
   }
 
@@ -1723,6 +1742,7 @@
       if (q.length < 2) { results.hidden = true; return; }
       items = [];
       S.nodes.forEach(n => {
+        if (!isVisibleSearchNode(n)) return;
         const hay = (n.label + ' ' + (n.summary || '') + ' ' + n.id).toLowerCase();
         if (hay.includes(q)) items.push({ kind: 'node', id: n.id, type: TYPE_LABEL[n.type] || n.type, label: n.label, sum: n.summary || '' });
       });

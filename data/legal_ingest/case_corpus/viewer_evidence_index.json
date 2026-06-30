@@ -355,6 +355,22 @@
       "demo_query": "What bail factors matter in a theft or dishonesty-related case?",
       "label": "Bail",
       "summary": "Research-only paragraph proof for bail/procedure issues in the frozen PR #6 sample."
+    },
+    {
+      "issue_tag": "criminal_law.public_order",
+      "domain_id": "criminal_procedure_hk",
+      "viewer_node_ids": [
+        "hksar_v_leung_kwok_hung"
+      ],
+      "doctrine_node_ids": [
+        "criminal_procedure_hk.hksar_v_leung_kwok_hung"
+      ],
+      "flow_step_ids": [],
+      "query_ids": [],
+      "demo_query": "",
+      "label": "Leung Kwok Hung and Others v HKSAR",
+      "summary": "CFA public-law authority on peaceful assembly and expression; not a verified legal-adviser/confession authority for the arrest/detention seed parent.",
+      "mapping_note": "Seed identity proof only; does not promote the parent graph issue unless separately mapped."
     }
   ],
   "evidence": [
@@ -44188,13 +44204,69 @@
       "current_treatment_status": "unchecked",
       "usable_in_answer_layer": true,
       "lineage_note": "Machine-extracted from selected paragraph text only; verify the whole judgment, issue posture and later treatment before relying on it."
+    },
+    {
+      "evidence_id": "seed_hksar_v_leung_kwok_hung_2005_p1",
+      "issue_tag": "criminal_law.public_order",
+      "domain_id": "criminal_procedure_hk",
+      "viewer_node_id": "hksar_v_leung_kwok_hung",
+      "viewer_node_ids": [
+        "hksar_v_leung_kwok_hung"
+      ],
+      "doctrine_node_id": "criminal_procedure_hk.hksar_v_leung_kwok_hung",
+      "doctrine_node_ids": [
+        "criminal_procedure_hk.hksar_v_leung_kwok_hung"
+      ],
+      "issue_tags": [
+        "criminal_law.public_order",
+        "constitutional_law.peaceful_assembly"
+      ],
+      "flow_step_id": "",
+      "flow_step_ids": [],
+      "query_id": "",
+      "query_ids": [],
+      "demo_query": "",
+      "case_id": "legalref_DIS45653_p1",
+      "case_name": "Leung Kwok Hung and Others v HKSAR",
+      "citation": "FACC Nos. 1 & 2 of 2005",
+      "neutral_citation": "FACC Nos. 1 & 2 of 2005",
+      "law_report_citation": "[2005] 3 HKLRD 164",
+      "court": "Court of Final Appeal",
+      "judgment_date": "2005-07-08",
+      "paragraph_id": "legalref_DIS45653_p1",
+      "paragraph_number": "1",
+      "para_no": "1",
+      "exact_quote": "The freedom of peaceful assembly is a fundamental right.",
+      "supporting_quote": "The freedom of peaceful assembly is a fundamental right.",
+      "paragraph_text": "The freedom of peaceful assembly is a fundamental right. It is closely associated with the fundamental right of the freedom of speech. The freedom of speech and the freedom of peaceful assembly are precious and lie at the foundation of a democratic society.",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p1",
+      "source_anchor": "#p1",
+      "source_system": "legalref",
+      "checksum": "39882de9ac608144a95d1f94d4fe7919b4ca9c41f099e2c79f94243fb85620f0",
+      "proposition_id": "",
+      "proposition_text": "The freedom of peaceful assembly is a fundamental right closely associated with freedom of speech.",
+      "principle_id": "",
+      "principle_text": "CFA public-law authority on peaceful assembly and expression; not a verified legal-adviser/confession authority for the arrest/detention seed parent.",
+      "principle_quality_status": "needs_review",
+      "liability_relevance": "",
+      "authority_role": "public_paragraph_proof_for_seed_identity_only",
+      "verification_status": "paragraph_linked_public_source",
+      "source_verification_status": "source_verified_public",
+      "answer_layer_status": "research_only",
+      "answer_safe": false,
+      "review_status": "machine_candidate",
+      "needs_lawyer_review": true,
+      "lawyer_review_required": true,
+      "current_treatment_status": "unchecked",
+      "usable_in_answer_layer": false,
+      "lineage_note": "This source card verifies the public judgment identity and paragraph, but does not support the old arrest/detention legal-adviser summary."
     }
   ],
   "counts": {
-    "mappings": 8,
-    "evidence_entries": 758,
-    "hklii_or_legalref_links": 758,
-    "paragraph_anchors": 758,
-    "exact_quotes": 758
+    "mappings": 9,
+    "evidence_entries": 759,
+    "hklii_or_legalref_links": 759,
+    "paragraph_anchors": 759,
+    "exact_quotes": 759
   }
 }

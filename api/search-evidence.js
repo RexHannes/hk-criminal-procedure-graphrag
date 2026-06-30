@@ -139,6 +139,12 @@ function detectsCriminalLawQuery(query) {
   return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|steal|stealing|stole|stolen|shoplift|shoplifting|assault|battery|manslaughter|murder|dishonesty|dishonest|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting|forgot to pay|forget to pay|without paying|bail|surety|recognizance|recognisance|remand|custody)\b/.test(q);
 }
 
+function detectsUnsupportedLandlordQuery(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(landlord|tenant|rent|lease|tenancy|deposit)\b/.test(q) &&
+    !/\b(theft|steal|stolen|shoplift|shoplifting|dishonest|dishonesty|bail|criminal|fraud|deception)\b/.test(q);
+}
+
 function detectsPersonalInjuryPurpose(query) {
   const q = String(query || "").toLowerCase();
   return /\b(personal injury|injur(?:y|ed|ies)|medical|compensation|damages|quantum|fracture|pain|suffering|loss of earnings|hospital|sick leave|accident claim)\b/.test(q);
@@ -308,6 +314,7 @@ function deterministicMatches(query, graph, limit = 12) {
     }
     if (!terms.length && node.domain_id === "criminal_procedure_hk") score = 1;
     if (score <= 0) continue;
+    if (node.type === "case_seed" && !hasViewerPublicParagraphProof(node)) continue;
 
     const displayNode = displayNodeForSearch(node, graph);
     if (SUPPORT_TYPES.has(displayNode.type) && !hasViewerPublicParagraphProof(displayNode)) continue;
@@ -1028,11 +1035,14 @@ module.exports = async function handler(req, res) {
     ? buildUploadedEvidenceBundle(req.body || {})
     : buildUploadedEvidenceBundle({});
   const requestedCaseCorpus = caseCorpusOptions(req);
+  const unsupportedLandlordQuery = detectsUnsupportedLandlordQuery(query);
 
   const graph = loadGraph();
   const arbiter = arbitrateLegalQuery(query);
-  const deterministic = deterministicMatches(query, graph, 14);
-  const ai = await askAiToRank(query, deterministic);
+  const deterministic = unsupportedLandlordQuery ? [] : deterministicMatches(query, graph, 14);
+  const ai = unsupportedLandlordQuery
+    ? { provider: "none", status: "unsupported_domain_abstained", ranked_ids: [], warnings: ["unsupported_landlord_query_abstained"] }
+    : await askAiToRank(query, deterministic);
   let matched = deterministic;
   if (ai.ranked_ids && ai.ranked_ids.length) {
     const byId = new Map(deterministic.map(item => [item.doctrine_node_id, item]));
@@ -1072,6 +1082,13 @@ module.exports = async function handler(req, res) {
     });
   }
 
+  const paragraphBackedMatches = matched.filter(match => (match.evidence || []).length > 0);
+  if (paragraphBackedMatches.length) {
+    matched = paragraphBackedMatches;
+  } else if (!piWorkflow && !legalIngestBundle && (detectsCriminalLawQuery(query) || detectsCriminalLawPriority(query))) {
+    matched = [];
+  }
+
   const graphEvidenceCount = matched.reduce((sum, item) => sum + (item.evidence || []).length, 0);
   const legalSourceCardCount = legalIngestBundle ? (legalIngestBundle.proposition_cards || []).length : 0;
   const totalEvidenceCount = graphEvidenceCount + legalSourceCardCount;
@@ -1082,6 +1099,21 @@ module.exports = async function handler(req, res) {
         analysis: null,
         warnings: ["pi_workflow_used_no_freeform_analysis"],
       }
+    : unsupportedLandlordQuery
+      ? {
+          provider: ai.provider || "none",
+          status: "unsupported_domain_abstained",
+          analysis: {
+            summary: "This query is outside the frozen PR #6 criminal-law case-corpus demo.",
+            legal_position: "",
+            application: "",
+            node_references: [],
+            case_references: [],
+            warnings: ["unsupported_query_abstention"],
+            abstain: true,
+          },
+          warnings: ["unsupported_query_abstention"],
+        }
     : legalSourceCardCount
       ? {
           provider: ai.provider || getAiProvider()?.name || "none",

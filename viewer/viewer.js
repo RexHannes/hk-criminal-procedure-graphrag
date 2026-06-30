@@ -224,8 +224,8 @@
       const vb = document.createElement('span');
       vb.className = 'status-badge';
       if (nd.verification_status === 'verified') { vb.className += ' verified'; vb.textContent = 'verified'; }
-      else if (nd.verification_status === 'needs_official_source_verification' || nd.verification_status === 'needs_hklii_verification') { vb.className += ' needs-verification'; vb.textContent = 'source proof not attached'; }
-      else { vb.className += ' unverified'; vb.textContent = nd.verification_status; }
+      else if (nd.verification_status === 'needs_official_source_verification' || nd.verification_status === 'needs_hklii_verification') { vb.className += ' needs-verification'; vb.textContent = 'developer audit only'; }
+      else { vb.className += ' unverified'; vb.textContent = String(nd.verification_status).replace(/_/g, ' '); }
       badges.appendChild(vb);
     }
 
@@ -239,7 +239,7 @@
     if (nd && nd.authority_status === 'unverified_case_seed') {
       const ab = document.createElement('span');
       ab.className = 'status-badge unverified';
-      ab.textContent = 'unverified';
+      ab.textContent = 'excluded';
       badges.appendChild(ab);
     }
 

@@ -20,6 +20,8 @@ const REQUIRED_FILES = [
   "data/legal_ingest/case_corpus/viewer_seed_case_public_sources.json",
   "artifacts/demo_freeze_report.json",
   "artifacts/demo_freeze_report.md",
+  "artifacts/excluded_unverified_case_seeds_report.json",
+  "artifacts/excluded_unverified_case_seeds_report.md",
   "artifacts/demo_outputs/demo_query_pack.json",
   "artifacts/demo_outputs/theft_dishonesty_research_memo.md",
   "artifacts/demo_outputs/intention_permanently_deprive_research_memo.md",
@@ -95,6 +97,7 @@ assertIncludes(workspace, "Case Fruits / Paragraph Proof", "workspace inspector 
 assertIncludes(workspace, "caseEvidenceInquiryMatches", "workspace inquiry evidence bridge");
 assertIncludes(workspace, "Paragraph-linked sample", "workspace mapped-node proof label");
 assertIncludes(workspace, "Legacy seed graph - not the verified case-law demo.", "workspace seed graph banner");
+assertIncludes(workspace, "Unresolved seed cases excluded from demo", "workspace excluded seed audit label");
 if (/case-demo-frame|<iframe/i.test(workspace)) {
   fail("workspace must not iframe case_corpus_demo.html as the main evidence display");
 }
@@ -106,6 +109,9 @@ if (/Static proof fallback for smoke tests|Source-proofed HK criminal-law resear
 }
 if (/Verification pending|Source check pending|needs verify|Linked authority/i.test(workspace)) {
   fail("/viewer/ must not expose old pending-verification authority labels");
+}
+if (/caseSeeds\.slice\(|Seed \/ graph references/i.test(workspace)) {
+  fail("/viewer/ must not render unresolved case seeds as product authority/reference cards");
 }
 assertIncludes(demoHtml, "PR #6 verified case-corpus demo", "case_corpus_demo.html");
 assertIncludes(demoHtml, "Source-proofed HK criminal-law research demo", "case_corpus_demo.html");

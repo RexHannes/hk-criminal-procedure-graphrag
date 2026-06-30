@@ -90,6 +90,7 @@ function assertMatch(text, re, message) {
   assertMatch(workspaceCombined, /Case Fruits \/ Paragraph Proof/i, "workspace missing inspector paragraph-proof panel");
   assertMatch(workspaceCombined, /caseEvidenceInquiryMatches/i, "workspace missing AI Inquiry evidence bridge");
   assertMatch(workspaceCombined, /Legacy seed graph - not the verified case-law demo\./i, "seed graph warning missing");
+  assertMatch(workspaceCombined, /Unresolved seed cases excluded from demo/i, "workspace missing excluded seed audit boundary");
   if (/case-demo-frame|<iframe/i.test(workspaceCombined)) {
     fail("workspace must not iframe the verified demo route as the main solution");
   }
@@ -110,6 +111,9 @@ function assertMatch(text, re, message) {
   }
   if (/Verification pending|Source check pending|needs verify|Linked authority/i.test(workspaceCombined)) {
     fail("/viewer/ still contains old pending-verification authority language");
+  }
+  if (/caseSeeds\.slice\(|Seed \/ graph references/i.test(workspaceCombined)) {
+    fail("/viewer/ still renders unresolved seed cases as product references");
   }
 
   if (errors.length) {

@@ -189,6 +189,77 @@ function optionalJson(relativePath) {
   return JSON.parse(fs.readFileSync(fullPath, "utf8"));
 }
 
+function normalizeSeedEvidenceEntry(item) {
+  const issueTag = (item.issue_tags || [])[0] || `seed_case.${item.source_node_ids?.[0] || item.evidence_id}`;
+  return {
+    evidence_id: item.evidence_id,
+    issue_tag: issueTag,
+    domain_id: (item.doctrine_node_ids?.[0] || "").split(".")[0] || "",
+    viewer_node_id: item.source_node_ids?.[0] || "",
+    viewer_node_ids: item.source_node_ids || [],
+    doctrine_node_id: item.doctrine_node_ids?.[0] || "",
+    doctrine_node_ids: item.doctrine_node_ids || [],
+    issue_tags: item.issue_tags || [issueTag],
+    flow_step_id: "",
+    flow_step_ids: [],
+    query_id: "",
+    query_ids: [],
+    demo_query: "",
+    case_id: item.case_id || item.paragraph_id || item.evidence_id,
+    case_name: item.case_name,
+    citation: item.neutral_citation || item.law_report_citation || "",
+    neutral_citation: item.neutral_citation || "",
+    law_report_citation: item.law_report_citation || "",
+    court: item.court || "",
+    judgment_date: item.judgment_date || "",
+    paragraph_id: item.paragraph_id,
+    paragraph_number: item.para_no,
+    para_no: item.para_no,
+    exact_quote: item.exact_quote || item.supporting_quote || "",
+    supporting_quote: item.supporting_quote || item.exact_quote || "",
+    paragraph_text: item.paragraph_text,
+    source_url: item.source_url,
+    source_anchor: sourceAnchor(item.source_url, item.para_no),
+    source_system: item.source_system || "",
+    checksum: item.checksum || "",
+    proposition_id: item.proposition_id || "",
+    proposition_text: item.proposition_text || "",
+    principle_id: item.principle_id || "",
+    principle_text: item.principle_text || "",
+    principle_quality_status: "needs_review",
+    liability_relevance: item.liability_relevance || "",
+    authority_role: item.authority_role || "public_paragraph_proof_for_seed_identity_only",
+    verification_status: "paragraph_linked_public_source",
+    source_verification_status: item.source_verification_status || "source_verified_public",
+    answer_layer_status: "research_only",
+    answer_safe: false,
+    review_status: item.review_status || "machine_candidate",
+    needs_lawyer_review: true,
+    lawyer_review_required: true,
+    current_treatment_status: item.current_treatment_status || "unchecked",
+    usable_in_answer_layer: false,
+    lineage_note: item.seed_alignment_warning || "Verified seed paragraph proof; research-only and lawyer-review-required.",
+  };
+}
+
+function seedEvidenceMappings(seedEntries) {
+  return seedEntries.map(item => {
+    const issueTag = item.issue_tag;
+    return {
+      issue_tag: issueTag,
+      domain_id: item.domain_id,
+      viewer_node_ids: item.viewer_node_ids,
+      doctrine_node_ids: item.doctrine_node_ids,
+      flow_step_ids: [],
+      query_ids: [],
+      demo_query: "",
+      label: item.case_name,
+      summary: item.principle_text || item.proposition_text || "Verified seed paragraph proof.",
+      mapping_note: "Seed identity proof only; does not promote the parent graph issue unless separately mapped.",
+    };
+  });
+}
+
 function build() {
   const paragraphs = readJsonl("data/legal_ingest/case_corpus/paragraph_cards_sample_100.jsonl");
   const propositions = readJsonl("data/legal_ingest/case_corpus/proposition_cards_sample_100.jsonl");
@@ -227,6 +298,17 @@ function build() {
     }
   }
 
+  const seedSourcePayload = optionalJson("data/legal_ingest/case_corpus/viewer_seed_case_public_sources.json");
+  const seedEntries = (seedSourcePayload?.evidence || [])
+    .filter(item => item.source_url && /#p\d+/i.test(item.source_url) && item.exact_quote && item.paragraph_text?.includes(item.exact_quote))
+    .map(normalizeSeedEvidenceEntry);
+  for (const entry of seedEntries) {
+    if (seen.has(entry.evidence_id)) continue;
+    seen.add(entry.evidence_id);
+    entries.push(entry);
+  }
+  const mappings = NODE_MAP.mappings.concat(seedEvidenceMappings(seedEntries));
+
   const index = {
     index_id: "pr6_viewer_evidence_index",
     generated_at: NODE_MAP.generated_at,
@@ -244,10 +326,10 @@ function build() {
     issue_coverage: optionalJson("artifacts/demo_freeze_report.json")?.issue_coverage
       || optionalJson("artifacts/case_corpus_issue_coverage.json")?.coverage
       || [],
-    mappings: NODE_MAP.mappings,
+    mappings,
     evidence: entries,
     counts: {
-      mappings: NODE_MAP.mappings.length,
+      mappings: mappings.length,
       evidence_entries: entries.length,
       hklii_or_legalref_links: entries.filter(item => /(?:hklii\.hk|legalref\.judiciary\.hk)/i.test(item.source_url)).length,
       paragraph_anchors: entries.filter(item => /#p\d+/.test(item.source_url)).length,

@@ -27,6 +27,7 @@ if (/Verification pending|Source check pending|needs verify|Case audit required|
 }
 
 const seedSources = JSON.parse(read("data/legal_ingest/case_corpus/viewer_seed_case_public_sources.json"));
+const excludedReport = JSON.parse(read("artifacts/excluded_unverified_case_seeds_report.json"));
 const leung = (seedSources.evidence || []).find(item => item.evidence_id === "seed_hksar_v_leung_kwok_hung_2005_p1");
 if (!leung) {
   fail("missing Leung Kwok Hung public seed source proof");
@@ -48,6 +49,13 @@ if (!backendEvidence.length) {
   const item = backendEvidence[0];
   if (!/#p\d+/i.test(item.source_url || "")) fail("backend Leung proof missing paragraph anchor");
   if (item.answer_safe !== false) fail("backend Leung proof must be answer_safe=false");
+}
+
+if ((excludedReport.counts?.excluded_unverified_seed_nodes || 0) < 1) {
+  fail("excluded unverified seed report is empty");
+}
+if ((excludedReport.excluded_unverified_seed_nodes || []).some(item => item.product_status !== "excluded_from_product_authority_surfaces")) {
+  fail("excluded seed report contains a seed not marked excluded_from_product_authority_surfaces");
 }
 
 if (errors.length) {
