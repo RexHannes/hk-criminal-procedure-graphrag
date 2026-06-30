@@ -102,6 +102,18 @@ jobs:
       - name: Validate L1-L3.5 demo outputs
         run: node scripts/validate_case_corpus_l35_demo_outputs.js
 
+      - name: Build PR 6 demo freeze package
+        run: node scripts/build_demo_freeze_package_pr6.js
+
+      - name: Validate PR 6 demo readiness
+        run: node scripts/validate_demo_readiness_pr6.js
+
+      - name: Smoke test PR 6 demo API
+        run: node scripts/smoke_test_pr6_demo_api.js --local-only --skip-network
+
+      - name: Ensure PR 6 demo freeze artifacts are committed
+        run: git diff --exit-code artifacts/demo_freeze_report.json artifacts/demo_freeze_report.md artifacts/demo_outputs/demo_query_pack.json artifacts/demo_outputs/demo_query_pack.md docs/boss_demo_script_pr6.md
+
       - name: Ensure L1-L3.5 artifacts are committed
         run: git diff --exit-code data/legal_ingest/case_corpus artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/case_corpus_ingest_run_status.json artifacts/case_corpus_ingest_run_status.md artifacts/case_corpus_embedding_dry_run.json artifacts/case_corpus_qdrant_dry_run.json artifacts/case_corpus_retrieval_eval.json artifacts/case_corpus_retrieval_eval.md artifacts/case_corpus_duplicates_report.json artifacts/candidate_extraction_verification_report.json artifacts/candidate_extraction_verification_report.md artifacts/candidate_verified_cards_report.json artifacts/candidate_verified_cards_report.md artifacts/case_corpus_quality_audit.json artifacts/case_corpus_quality_audit.md artifacts/case_corpus_issue_coverage.json artifacts/case_corpus_issue_coverage.md artifacts/principle_quality_repair_report.json artifacts/principle_quality_repair_report.md artifacts/weak_issue_target_discovery_report.json artifacts/weak_issue_target_discovery_report.md artifacts/demo_outputs
 
