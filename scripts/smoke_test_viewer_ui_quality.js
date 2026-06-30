@@ -37,6 +37,7 @@ async function loadTargets() {
     const nativeEvidence = await Promise.all([
       "../data/legal_ingest/case_corpus/viewer_evidence_index.json",
       "../data/legal_ingest/case_corpus/viewer_node_evidence_map.json",
+      "../data/legal_ingest/case_corpus/viewer_seed_case_public_sources.json",
     ].map(file => fetchText(resolveUrl(demoUrl, file))));
     const artifacts = await Promise.all([
       "../artifacts/demo_outputs/theft_dishonesty_research_memo.md",
@@ -55,6 +56,7 @@ async function loadTargets() {
     nativeEvidence: [
       read("data/legal_ingest/case_corpus/viewer_evidence_index.json"),
       read("data/legal_ingest/case_corpus/viewer_node_evidence_map.json"),
+      read("data/legal_ingest/case_corpus/viewer_seed_case_public_sources.json"),
     ].join("\n"),
     artifacts: [
       read("artifacts/demo_outputs/theft_dishonesty_research_memo.md"),
@@ -84,6 +86,7 @@ function assertMatch(text, re, message) {
   assertMatch(workspaceCombined, /case-demo-native/i, "Verified Case Demo does not render as a native workspace module");
   assertMatch(workspaceCombined, /viewer_evidence_index\.json/i, "workspace missing native evidence index loader");
   assertMatch(workspaceCombined, /viewer_node_evidence_map\.json/i, "workspace missing native evidence map loader");
+  assertMatch(workspaceCombined, /viewer_seed_case_public_sources\.json/i, "workspace missing seed-case public source loader");
   assertMatch(workspaceCombined, /Case Fruits \/ Paragraph Proof/i, "workspace missing inspector paragraph-proof panel");
   assertMatch(workspaceCombined, /caseEvidenceInquiryMatches/i, "workspace missing AI Inquiry evidence bridge");
   assertMatch(workspaceCombined, /Legacy seed graph - not the verified case-law demo\./i, "seed graph warning missing");
@@ -105,8 +108,8 @@ function assertMatch(text, re, message) {
   if (/markdownToHtml|data-demo-markdown|Static proof fallback for smoke tests|```json/.test(demoShell)) {
     fail("verified demo shell exposes raw markdown/JSON/audit dump");
   }
-  if (/Verification pending/i.test(workspace.split("</header>")[0] || workspace)) {
-    fail("/viewer/ still presents Verification pending as a top-level state");
+  if (/Verification pending|Source check pending|needs verify|Linked authority/i.test(workspaceCombined)) {
+    fail("/viewer/ still contains old pending-verification authority language");
   }
 
   if (errors.length) {

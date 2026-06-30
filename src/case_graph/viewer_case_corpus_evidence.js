@@ -2,8 +2,10 @@ const fs = require("fs");
 const path = require("path");
 
 const INDEX_PATH = path.join(process.cwd(), "data", "legal_ingest", "case_corpus", "viewer_evidence_index.json");
+const SEED_SOURCES_PATH = path.join(process.cwd(), "data", "legal_ingest", "case_corpus", "viewer_seed_case_public_sources.json");
 
 let cachedIndex = null;
+let cachedSeedSources = null;
 
 function loadViewerEvidenceIndex() {
   if (cachedIndex) return cachedIndex;
@@ -13,6 +15,16 @@ function loadViewerEvidenceIndex() {
   }
   cachedIndex = JSON.parse(fs.readFileSync(INDEX_PATH, "utf8"));
   return cachedIndex;
+}
+
+function loadViewerSeedCaseSources() {
+  if (cachedSeedSources) return cachedSeedSources;
+  if (!fs.existsSync(SEED_SOURCES_PATH)) {
+    cachedSeedSources = { evidence: [] };
+    return cachedSeedSources;
+  }
+  cachedSeedSources = JSON.parse(fs.readFileSync(SEED_SOURCES_PATH, "utf8"));
+  return cachedSeedSources;
 }
 
 function suffixId(nodeId) {
@@ -27,6 +39,14 @@ function mappingMatchesNodeId(mapping, nodeId) {
   const viewerIds = new Set([...(mapping.viewer_node_ids || []), mapping.viewer_node_id].filter(Boolean));
   const flowStepIds = new Set([...(mapping.flow_step_ids || []), mapping.flow_step_id].filter(Boolean));
   return doctrineIds.has(id) || viewerIds.has(id) || viewerIds.has(suffix) || flowStepIds.has(id) || flowStepIds.has(suffix);
+}
+
+function seedSourceMatchesNodeId(item, nodeId) {
+  const id = String(nodeId || "");
+  const suffix = suffixId(id);
+  const sourceIds = new Set([...(item.source_node_ids || []), item.source_node_id].filter(Boolean));
+  const doctrineIds = new Set([...(item.doctrine_node_ids || []), item.doctrine_node_id].filter(Boolean));
+  return sourceIds.has(id) || sourceIds.has(suffix) || doctrineIds.has(id);
 }
 
 function normalizeViewerEvidenceItem(item) {
@@ -63,6 +83,11 @@ function rankViewerEvidence(items) {
 }
 
 function viewerCaseCorpusEvidenceForNode(nodeId, limit = 12) {
+  const seedEvidence = (loadViewerSeedCaseSources().evidence || [])
+    .filter(item => seedSourceMatchesNodeId(item, nodeId))
+    .map(normalizeViewerEvidenceItem);
+  if (seedEvidence.length) return rankViewerEvidence(seedEvidence).slice(0, limit);
+
   const index = loadViewerEvidenceIndex();
   const mappings = (index.mappings || []).filter(mapping => mappingMatchesNodeId(mapping, nodeId));
   if (!mappings.length) return [];
@@ -82,5 +107,6 @@ function viewerCaseCorpusEvidenceForNode(nodeId, limit = 12) {
 
 module.exports = {
   loadViewerEvidenceIndex,
+  loadViewerSeedCaseSources,
   viewerCaseCorpusEvidenceForNode,
 };

@@ -58,9 +58,13 @@ function validateWorkspace(html, js = "") {
   if (!/case-demo-native/i.test(combined)) fail("workspace does not render the verified demo as a native module");
   if (!/viewer_evidence_index\.json/i.test(combined)) fail("workspace missing native viewer evidence index loader");
   if (!/viewer_node_evidence_map\.json/i.test(combined)) fail("workspace missing native viewer evidence map loader");
+  if (!/viewer_seed_case_public_sources\.json/i.test(combined)) fail("workspace missing seed-case public source loader");
   if (!/Case Fruits \/ Paragraph Proof/i.test(combined)) fail("workspace missing inspector paragraph-proof panel");
   if (!/caseEvidenceInquiryMatches/i.test(combined)) fail("workspace missing native AI Inquiry evidence bridge");
   if (/case-demo-frame|<iframe/i.test(combined)) fail("workspace must not iframe the verified demo route as the main solution");
+  if (/Verification pending|Source check pending|needs verify|Linked authority/i.test(combined)) {
+    fail("workspace still contains old pending-verification authority language");
+  }
   if (/Static proof fallback for smoke tests|Source-proofed HK criminal-law research demo/i.test(html)) {
     fail("/viewer/ appears to be the raw verified demo page instead of the workspace");
   }
@@ -125,6 +129,7 @@ function validateVerifiedDemo(combined, shellText) {
   const artifactUrls = extractArtifactUrls(demoUrl, demoHtml, js);
   artifactUrls.push(resolveUrl(demoUrl, "../data/legal_ingest/case_corpus/viewer_evidence_index.json"));
   artifactUrls.push(resolveUrl(demoUrl, "../data/legal_ingest/case_corpus/viewer_node_evidence_map.json"));
+  artifactUrls.push(resolveUrl(demoUrl, "../data/legal_ingest/case_corpus/viewer_seed_case_public_sources.json"));
   const fetched = [demoHtml, js];
   for (const url of artifactUrls) {
     try {

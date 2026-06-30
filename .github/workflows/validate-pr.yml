@@ -111,6 +111,9 @@ jobs:
       - name: Validate public demo source links
         run: node scripts/validate_public_demo_source_links.js
 
+      - name: Validate viewer seed source proof
+        run: node scripts/validate_viewer_seed_source_proof.js
+
       - name: Smoke test viewer UI quality
         run: node scripts/smoke_test_viewer_ui_quality.js
 

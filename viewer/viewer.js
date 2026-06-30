@@ -224,7 +224,7 @@
       const vb = document.createElement('span');
       vb.className = 'status-badge';
       if (nd.verification_status === 'verified') { vb.className += ' verified'; vb.textContent = 'verified'; }
-      else if (nd.verification_status === 'needs_official_source_verification' || nd.verification_status === 'needs_hklii_verification') { vb.className += ' needs-verification'; vb.textContent = 'needs verify'; }
+      else if (nd.verification_status === 'needs_official_source_verification' || nd.verification_status === 'needs_hklii_verification') { vb.className += ' needs-verification'; vb.textContent = 'source proof not attached'; }
       else { vb.className += ' unverified'; vb.textContent = nd.verification_status; }
       badges.appendChild(vb);
     }

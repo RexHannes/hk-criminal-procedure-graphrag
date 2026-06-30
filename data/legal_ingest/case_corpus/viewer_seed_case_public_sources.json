@@ -1,0 +1,45 @@
+{
+  "artifact_id": "viewer_seed_case_public_sources_v1",
+  "generated_at": "2026-06-30T20:40:00+08:00",
+  "source_policy": {
+    "purpose": "Attach verified public paragraph proof directly to legacy seed-case nodes where a public judgment paragraph has been checked.",
+    "no_parent_issue_support_without_mapping": true,
+    "answer_safe": false,
+    "lawyer_review_required": true
+  },
+  "evidence": [
+    {
+      "evidence_id": "seed_hksar_v_leung_kwok_hung_2005_p1",
+      "source_node_ids": ["hksar_v_leung_kwok_hung"],
+      "doctrine_node_ids": ["criminal_procedure_hk.hksar_v_leung_kwok_hung"],
+      "case_name": "Leung Kwok Hung and Others v HKSAR",
+      "neutral_citation": "FACC Nos. 1 & 2 of 2005",
+      "law_report_citation": "[2005] 3 HKLRD 164",
+      "court": "Court of Final Appeal",
+      "court_level": "CFA",
+      "judgment_date": "2005-07-08",
+      "paragraph_id": "legalref_DIS45653_p1",
+      "para_no": "1",
+      "paragraph_text": "The freedom of peaceful assembly is a fundamental right. It is closely associated with the fundamental right of the freedom of speech. The freedom of speech and the freedom of peaceful assembly are precious and lie at the foundation of a democratic society.",
+      "supporting_quote": "The freedom of peaceful assembly is a fundamental right.",
+      "exact_quote": "The freedom of peaceful assembly is a fundamental right.",
+      "principle_text": "CFA public-law authority on peaceful assembly and expression; not a verified legal-adviser/confession authority for the arrest/detention seed parent.",
+      "proposition_text": "The freedom of peaceful assembly is a fundamental right closely associated with freedom of speech.",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p1",
+      "source_system": "legalref",
+      "checksum": "39882de9ac608144a95d1f94d4fe7919b4ca9c41f099e2c79f94243fb85620f0",
+      "checksum_algorithm": "sha256_normalized_paragraph_text",
+      "issue_tags": ["criminal_law.public_order", "constitutional_law.peaceful_assembly"],
+      "authority_role": "public_paragraph_proof_for_seed_identity_only",
+      "verification_status": "paragraph_linked_public_source",
+      "source_verification_status": "source_verified_public",
+      "answer_layer_status": "research_only",
+      "answer_safe": false,
+      "needs_lawyer_review": true,
+      "lawyer_review_required": true,
+      "human_review_status": "lawyer_review_required",
+      "current_treatment_status": "unchecked",
+      "seed_alignment_warning": "This source card verifies the public judgment identity and paragraph, but does not support the old arrest/detention legal-adviser summary."
+    }
+  ]
+}

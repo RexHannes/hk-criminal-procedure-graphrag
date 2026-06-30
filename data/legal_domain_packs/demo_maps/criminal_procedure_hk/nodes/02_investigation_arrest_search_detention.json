@@ -314,11 +314,12 @@
       "id": "hksar_v_leung_kwok_hung",
       "type": "case_seed",
       "label": "HKSAR v Leung Kwok Hung [2005] 3 HKLRD 164",
-      "summary": "Right to legal adviser; denial of access to solicitor may render confession inadmissible.",
+      "summary": "Public-source paragraph proof has been attached for this case identity, but the old seed placement under arrest/detention is not a verified legal-adviser or confession proposition.",
       "section": "02",
       "neutral_citation": "[2005] 3 HKLRD 164",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p1",
+      "authority_status": "seed_identity_verified_only",
+      "verification_status": "paragraph_linked_public_source"
     },
     {
       "id": "invest_detainee_rights",

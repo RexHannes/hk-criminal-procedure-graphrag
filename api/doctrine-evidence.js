@@ -41,9 +41,9 @@ function findStaticNode(nodeId) {
             title: node.label || node.id,
             node_type: node.type || "unknown",
             summary: node.summary || "",
-            verification_status: node.verification_status || "needs_hklii_verification",
+            verification_status: node.verification_status || "source_proof_not_attached",
             answer_layer_status: node.answer_layer_status || "not_product_answer_layer",
-            authority_status: node.authority_status || "unverified_case_seed",
+            authority_status: node.authority_status || (node.type === "case_seed" ? "not_source_proofed_seed" : "research_graph_reference"),
           };
         }
       }

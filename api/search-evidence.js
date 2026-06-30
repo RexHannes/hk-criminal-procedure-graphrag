@@ -165,6 +165,12 @@ function doctrineNodeIdFor(node, domainId) {
   return `${domainId}.${node.id}`;
 }
 
+function hasViewerPublicParagraphProof(node) {
+  if (!node) return false;
+  const doctrineNodeId = doctrineNodeIdFor(node, node.domain_id || "");
+  return viewerCaseCorpusEvidenceForNode(doctrineNodeId, 1).length > 0;
+}
+
 function loadGraph() {
   const registry = readJson(INDEX_PATH);
   const nodes = [];
@@ -268,8 +274,19 @@ function nodeSearchText(node) {
 
 function displayNodeForSearch(node, graph) {
   if (!SUPPORT_TYPES.has(node.type)) return node;
+  if (hasViewerPublicParagraphProof(node)) return node;
   const parentId = graph.parentBySupportId.get(node.id);
   return parentId ? (graph.nodeById.get(parentId) || node) : node;
+}
+
+function defaultVerificationStatus(node) {
+  if (hasViewerPublicParagraphProof(node)) return "paragraph_linked_public_source";
+  return node.verification_status || "source_proof_not_attached";
+}
+
+function defaultAuthorityStatus(node) {
+  if (hasViewerPublicParagraphProof(node)) return node.authority_status || "source_verified_public";
+  return node.authority_status || (node.type === "case_seed" ? "not_source_proofed_seed" : "research_graph_reference");
 }
 
 function deterministicMatches(query, graph, limit = 12) {
@@ -293,7 +310,7 @@ function deterministicMatches(query, graph, limit = 12) {
     if (score <= 0) continue;
 
     const displayNode = displayNodeForSearch(node, graph);
-    if (SUPPORT_TYPES.has(displayNode.type)) continue;
+    if (SUPPORT_TYPES.has(displayNode.type) && !hasViewerPublicParagraphProof(displayNode)) continue;
     const existing = seen.get(displayNode.doctrine_node_id);
     const matchedVia = node.id === displayNode.id ? [] : [{ id: node.id, label: node.title, type: node.type }];
     if (!existing || score > existing.score) {
@@ -314,9 +331,9 @@ function deterministicMatches(query, graph, limit = 12) {
       domain_id: item.node.domain_id,
       section: item.node.section || "",
       summary: item.node.summary || "",
-      verification_status: item.node.verification_status || "needs_hklii_verification",
+      verification_status: defaultVerificationStatus(item.node),
       answer_layer_status: item.node.answer_layer_status || "not_product_answer_layer",
-      authority_status: item.node.authority_status || "unverified_case_seed",
+      authority_status: defaultAuthorityStatus(item.node),
       match_score: item.score,
       matched_via: item.matched_via.slice(0, 4),
     }));
@@ -722,9 +739,10 @@ function localEvidenceFallbackForNode(doctrineNodeId) {
 
 function warningsForResult(matches, aiStatus, backendStatus, legalSourceCardCount = 0) {
   const warnings = [];
+  const hasGraphEvidence = matches.some(m => m.evidence && m.evidence.length);
   if (aiStatus !== "used") warnings.push(aiStatus === "not_configured" ? "ai_not_configured_fallback_search" : "ai_ranking_unavailable");
-  if (backendStatus !== "connected") warnings.push("backend_evidence_unavailable");
-  if (!matches.some(m => m.evidence && m.evidence.length) && !legalSourceCardCount) warnings.push("no_verified_paragraph_proof", "insufficient_authority");
+  if (backendStatus !== "connected" && !hasGraphEvidence && !legalSourceCardCount) warnings.push("backend_evidence_unavailable");
+  if (!hasGraphEvidence && !legalSourceCardCount) warnings.push("no_verified_paragraph_proof", "insufficient_authority");
   if (matches.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))) warnings.push("candidate_only", "needs_human_review");
   if (legalSourceCardCount) warnings.push("legal_ingest_source_cards_research_only", "needs_human_review");
   return Array.from(new Set(warnings));

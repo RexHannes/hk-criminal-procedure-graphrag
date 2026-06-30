@@ -17,6 +17,7 @@ const REQUIRED_FILES = [
   "viewer/index_legacy.html",
   "data/legal_ingest/case_corpus/viewer_evidence_index.json",
   "data/legal_ingest/case_corpus/viewer_node_evidence_map.json",
+  "data/legal_ingest/case_corpus/viewer_seed_case_public_sources.json",
   "artifacts/demo_freeze_report.json",
   "artifacts/demo_freeze_report.md",
   "artifacts/demo_outputs/demo_query_pack.json",
@@ -54,6 +55,7 @@ const workspace = [
 const nativeEvidence = [
   files.get("data/legal_ingest/case_corpus/viewer_evidence_index.json"),
   files.get("data/legal_ingest/case_corpus/viewer_node_evidence_map.json"),
+  files.get("data/legal_ingest/case_corpus/viewer_seed_case_public_sources.json"),
 ].join("\n");
 
 const verifiedDemo = [
@@ -86,6 +88,7 @@ assertIncludes(viewerIndex, "class=\"verified-demo-chip\"", "/viewer/");
 assertIncludes(viewerIndex, "app.js", "/viewer/");
 assertIncludes(workspace, "viewer_evidence_index.json", "workspace native evidence index");
 assertIncludes(workspace, "viewer_node_evidence_map.json", "workspace native evidence map");
+assertIncludes(workspace, "viewer_seed_case_public_sources.json", "workspace seed-case public source index");
 assertIncludes(workspace, "case-demo-native", "workspace native verified demo");
 assertIncludes(workspace, "renderCaseFruitCard", "workspace native source cards");
 assertIncludes(workspace, "Case Fruits / Paragraph Proof", "workspace inspector source panel");
@@ -100,6 +103,9 @@ if (/href=["']case_corpus_demo\.html["'][^>]*Verified Case Demo/i.test(viewerInd
 }
 if (/Static proof fallback for smoke tests|Source-proofed HK criminal-law research demo/.test(viewerIndex)) {
   fail("/viewer/ must be the polished workspace shell, not the raw verified proof page");
+}
+if (/Verification pending|Source check pending|needs verify|Linked authority/i.test(workspace)) {
+  fail("/viewer/ must not expose old pending-verification authority labels");
 }
 assertIncludes(demoHtml, "PR #6 verified case-corpus demo", "case_corpus_demo.html");
 assertIncludes(demoHtml, "Source-proofed HK criminal-law research demo", "case_corpus_demo.html");
