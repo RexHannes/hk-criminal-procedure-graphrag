@@ -36,7 +36,9 @@
       "quote_context_insufficient": 40,
       "background_only_not_principle": 29,
       "procedural_only_not_liability": 25
-    }
+    },
+    "principle_quality_pass_rate": 1,
+    "principle_quality_pass_rate_basis": "usable_principles_only_after_repair"
   },
   "issue_coverage": [
     {

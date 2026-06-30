@@ -98,3 +98,93 @@ Do not describe this sample as 10k answer-safe propositions, whole HK legal RAG,
 | quote_context_insufficient | 40 |
 | background_only_not_principle | 29 |
 | procedural_only_not_liability | 25 |
+
+## RAG Pipeline Metrics
+
+| Metric | Value |
+|---|---:|
+| Total chunks | 918 |
+| Embedded chunks | 918 |
+| Dry-run vectors | 918 |
+| Retrieval eval Precision@5 | 0.945455 |
+| Retrieval eval Recall@10 | 0.909091 |
+| Retrieval legacy corpus Recall@10 | 0.223482 |
+| Retrieval Recall@10 improvement vs prior | 0.567293 |
+| Source proof rate | 1 |
+| Wrong-domain leak rate | 0 |
+| Unsupported-query abstention rate | 1 |
+| Duplicate rate | 0 |
+| Failed ingest count | 0 |
+| Retryable failure count | 0 |
+
+## Candidate Fast-Growth Metrics
+
+NotebookLM, DeepSeek, Claude, GPT and manual outputs are candidate extractors only. HKLII/LegalRef paragraph verification remains the source of truth.
+
+| Metric | Value |
+|---|---:|
+| Candidate extractions total | 42 |
+| Candidates verified | 40 |
+| Candidates rejected | 2 |
+| Verified cases added | 40 |
+| Candidate paragraph cards added | 120 |
+| Candidate propositions added | 120 |
+| Candidate principles added | 106 |
+| Candidate digests added | 40 |
+| Candidate cards with demotion flags | 226 |
+| Candidate answer-safe count | 0 |
+
+### Candidate Rejection Reasons
+
+| Reason | Count |
+|---|---:|
+| unsupported_principle | 18 |
+| quote_not_found | 3 |
+| missing_paragraph | 2 |
+| missing_case | 1 |
+| private_or_nonpublic_source | 1 |
+
+### Candidate Demotion Reasons
+
+| Reason | Count |
+|---|---:|
+| current_treatment_unchecked | 40 |
+| issue_tag_overbroad | 36 |
+| quote_context_insufficient | 25 |
+| sentencing_only_not_liability | 25 |
+| quote_too_short | 7 |
+| background_only_not_principle | 3 |
+
+## Quality Audit Metrics
+
+| Metric | Value |
+|---|---:|
+| Audited cases | 28 |
+| Paragraph match rate | 1 |
+| Quote support match rate | 1 |
+| Proposition quality pass rate | 0.987805 |
+| Principle quality pass rate | 1 |
+| Principle quality pass-rate basis | usable_principles_only_after_repair |
+| Usable principles in audit denominator | 30 |
+| Digest quality pass rate | 1 |
+| Overall quality audit pass rate | 0.997561 |
+| Suspicious cards | 53 |
+| Rejected or demoted cards | 53 |
+
+## Issue Coverage Audit
+
+| Issue | Cases | Coverage |
+|---|---:|---|
+| criminal_law.theft | 101 | demo-credible |
+| criminal_law.theft.dishonesty | 30 | demo-credible |
+| criminal_law.theft.mens_rea | 30 | demo-credible |
+| criminal_law.theft.appropriation | 63 | demo-credible |
+| criminal_law.theft.belonging_to_another | 13 | medium |
+| criminal_law.theft.intention_permanently_deprive | 10 | medium |
+| criminal_law.theft.sentencing | 94 | demo-credible |
+| criminal_law.fraud | 56 | demo-credible |
+| criminal_law.deception | 90 | demo-credible |
+| criminal_procedure.interview_caution | 37 | demo-credible |
+| criminal_procedure.bail | 15 | medium |
+
+Weak issue tags: none.
