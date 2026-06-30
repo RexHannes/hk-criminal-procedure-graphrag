@@ -113,6 +113,18 @@
       fallbackCaseName: 'Theft/fraud branch pilot',
       fallbackCitation: '[Public source candidate]',
     },
+    {
+      base: '../data/legal_ingest/tree_gap_pilots/data_privacy_dpp1_v1',
+      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'tree_gap_candidate', 'field_expansion_pilot'],
+      fallbackCaseName: 'Data-privacy source candidate',
+      fallbackCitation: '[Public source candidate]',
+    },
+    {
+      base: '../data/legal_ingest/tree_gap_pilots/civil_procedure_inconsistent_pleadings_v1',
+      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'tree_gap_candidate'],
+      fallbackCaseName: 'Civil procedure source candidate',
+      fallbackCitation: '[Public source candidate]',
+    },
   ];
 
   function domainBase(domainId) {
@@ -144,6 +156,17 @@
     });
   }
 
+  function domainSummaryDescription(info, manifest, domain) {
+    if (info?.description) return info.description;
+    const counts = manifest?.counts || {};
+    const issues = counts.principle_nodes || counts.issue_nodes;
+    if (issues) {
+      return `${manifest.title || domain.title}: ${issues} principle nodes across ${(manifest.sections || []).length} section(s). Public case fruits attach separately and remain review-gated.`;
+    }
+    if (info?.intended_use) return info.intended_use;
+    return 'Legal domain pack with doctrine map and source audit queue.';
+  }
+
   function summarizeDomain(domain) {
     const base = domainBase(domain.domain_id);
     return Promise.all([
@@ -154,9 +177,10 @@
       S.domainSummaries[domain.domain_id] = {
         id: domain.domain_id,
         title: info?.title || manifest.title || domain.title,
-        description: info?.description || '',
+        description: domainSummaryDescription(info, manifest, domain),
         sectionCount: (manifest.sections || []).length,
         flowCount: (flowPack.flows || []).length,
+        nodeCount: manifest?.counts?.principle_nodes || null,
         status: domain.status || info?.status || manifest.status || {},
       };
     });
@@ -628,7 +652,7 @@
   // — Domains —
   function viewDomains() {
     root().innerHTML = `
-      ${viewHeader('Domain registry', 'Legal domains', 'Choose a restored domain pack. Each pack has its own doctrine map, legal flows, source audit queue, and any firm overlay that applies to those flow IDs.')}
+      ${viewHeader('Domain registry', 'Legal domains', 'Choose a legal domain pack. Each pack has its own doctrine map, legal flows, source audit queue, and any firm overlay that applies to those flow IDs.')}
       <div class="domain-grid">
         ${S.domains.map(domain => {
           const summary = S.domainSummaries[domain.domain_id] || {};
@@ -638,10 +662,11 @@
               <span class="domain-card-title">${esc(summary.title || domain.title)}</span>
               ${active ? '<span class="badge badge-approved">Active</span>' : ''}
             </div>
-            <p>${esc(summary.description || 'Restored Casemap4 legal domain pack.')}</p>
+            <p>${esc(summary.description || 'Legal domain pack with doctrine map and flows.')}</p>
             <div class="domain-card-meta">
               <span>${summary.sectionCount || 0} sections</span>
               <span>${summary.flowCount || 0} flows</span>
+              ${summary.nodeCount ? `<span>${summary.nodeCount} issues</span>` : ''}
               <span>${esc(domain.domain_id)}</span>
             </div>
           </button>`;

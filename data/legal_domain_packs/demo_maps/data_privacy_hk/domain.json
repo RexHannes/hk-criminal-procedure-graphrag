@@ -1,6 +1,8 @@
 {
   "domain_id": "data_privacy_hk",
   "title": "Hong Kong Data Privacy Law",
+  "description": "Principle-flow map for Hong Kong personal data protection under the PDPO, covering DPP1 collection purpose, use and disclosure, data subject rights, and public-authority case fruits (PCPD guidance + quote-verified pilot).",
+  "intended_use": "Structured metadata tree for HK data privacy research. Public case fruits remain candidate-only until lawyer review.",
   "version": "0.1.0",
   "last_updated": "2026-06-24",
   "status": {

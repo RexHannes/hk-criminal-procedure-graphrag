@@ -1,6 +1,8 @@
 {
   "domain_id": "civil_procedure_hk",
   "title": "Hong Kong Civil Procedure",
+  "description": "Pilot principle-flow map for Hong Kong civil procedure, starting with abuse of process and inconsistent pleadings, linked to quote-verified HKLII/LegalRef case fruits.",
+  "intended_use": "Structured civil procedure research layer. Case fruits are source-verified candidates, not answer-safe holdings.",
   "version": "0.1.0",
   "last_updated": "2026-06-25",
   "status": {
