@@ -15,6 +15,8 @@ const REQUIRED_FILES = [
   "viewer/case_corpus_demo.js",
   "viewer/case_corpus_demo.css",
   "viewer/index_legacy.html",
+  "data/legal_ingest/case_corpus/viewer_evidence_index.json",
+  "data/legal_ingest/case_corpus/viewer_node_evidence_map.json",
   "artifacts/demo_freeze_report.json",
   "artifacts/demo_freeze_report.md",
   "artifacts/demo_outputs/demo_query_pack.json",
@@ -49,9 +51,15 @@ const workspace = [
   files.get("viewer/styles.css"),
 ].join("\n");
 
+const nativeEvidence = [
+  files.get("data/legal_ingest/case_corpus/viewer_evidence_index.json"),
+  files.get("data/legal_ingest/case_corpus/viewer_node_evidence_map.json"),
+].join("\n");
+
 const verifiedDemo = [
   files.get("viewer/case_corpus_demo.html"),
   files.get("viewer/case_corpus_demo.js"),
+  nativeEvidence,
   files.get("artifacts/demo_freeze_report.json"),
   files.get("artifacts/demo_freeze_report.md"),
   files.get("artifacts/demo_outputs/demo_query_pack.json"),
@@ -74,10 +82,22 @@ assertIncludes(viewerIndex, "data-view=\"flows\"", "/viewer/");
 assertIncludes(viewerIndex, "data-view=\"doctrine\"", "/viewer/");
 assertIncludes(viewerIndex, "data-view=\"caseDemo\"", "/viewer/");
 assertIncludes(viewerIndex, "Verified Case Demo", "/viewer/");
-assertIncludes(viewerIndex, "href=\"case_corpus_demo.html\"", "/viewer/");
+assertIncludes(viewerIndex, "class=\"verified-demo-chip\"", "/viewer/");
 assertIncludes(viewerIndex, "app.js", "/viewer/");
-assertIncludes(workspace, "case-demo-frame", "workspace embedded verified demo");
+assertIncludes(workspace, "viewer_evidence_index.json", "workspace native evidence index");
+assertIncludes(workspace, "viewer_node_evidence_map.json", "workspace native evidence map");
+assertIncludes(workspace, "case-demo-native", "workspace native verified demo");
+assertIncludes(workspace, "renderCaseFruitCard", "workspace native source cards");
+assertIncludes(workspace, "Case Fruits / Paragraph Proof", "workspace inspector source panel");
+assertIncludes(workspace, "caseEvidenceInquiryMatches", "workspace inquiry evidence bridge");
+assertIncludes(workspace, "Paragraph-linked sample", "workspace mapped-node proof label");
 assertIncludes(workspace, "Legacy seed graph - not the verified case-law demo.", "workspace seed graph banner");
+if (/case-demo-frame|<iframe/i.test(workspace)) {
+  fail("workspace must not iframe case_corpus_demo.html as the main evidence display");
+}
+if (/href=["']case_corpus_demo\.html["'][^>]*Verified Case Demo/i.test(viewerIndex)) {
+  fail("/viewer/ must open Verified Case Demo as a native workspace view, not only link out");
+}
 if (/Static proof fallback for smoke tests|Source-proofed HK criminal-law research demo/.test(viewerIndex)) {
   fail("/viewer/ must be the polished workspace shell, not the raw verified proof page");
 }
@@ -97,15 +117,24 @@ assertIncludes(legacy, "Standalone seed graph viewer - unverified map", "seed gr
 assertIncludes(legacy, "not the PR #6 verified case-corpus demo", "legacy viewer");
 assertIncludes(legacy, "case_corpus_demo.html", "legacy viewer");
 
+const requiredIssueTags = [
+  "criminal_law.theft.dishonesty",
+  "criminal_law.theft.appropriation",
+  "criminal_law.theft.belonging_to_another",
+  "criminal_law.theft.intention_permanently_deprive",
+  "criminal_procedure.bail",
+];
+for (const tag of requiredIssueTags) assertIncludes(nativeEvidence, tag, "native viewer evidence map");
+
 if (!/https?:\/\/(?:www\.)?(?:hklii\.hk|legalref\.judiciary\.hk)\//i.test(verifiedDemo)) {
   fail("verified demo/artifacts must contain at least one HKLII/LegalRef URL");
 }
 if (!/#p\d+/i.test(verifiedDemo)) fail("verified demo/artifacts must contain at least one #p paragraph anchor");
-if (!/Exact quote:/i.test(verifiedDemo)) fail("verified demo/artifacts must contain at least one Exact quote");
-if (!/(answer_safe=false|Answer safe:\s*`false`|Answer safe:\s*false)/i.test(verifiedDemo)) {
+if (!/(Exact quote:?|exact_quote)/i.test(verifiedDemo)) fail("verified demo/artifacts must contain at least one Exact quote");
+if (!/(answer_safe=false|Answer safe:\s*`false`|Answer safe:\s*false|"answer_safe":\s*false)/i.test(verifiedDemo)) {
   fail("verified demo/artifacts must show answer_safe=false");
 }
-if (!/(lawyer-review-required|Lawyer review required|needs_lawyer_review=true|needs_lawyer_review":\s*true)/i.test(verifiedDemo)) {
+if (!/(lawyer-review-required|Lawyer review required|lawyer_review_required|needs_lawyer_review=true|needs_lawyer_review":\s*true)/i.test(verifiedDemo)) {
   fail("verified demo/artifacts must show lawyer-review-required label");
 }
 if (!/(unsupported_general_query|unsupported landlord|Unsupported Landlord Query)/i.test(verifiedDemo)) {

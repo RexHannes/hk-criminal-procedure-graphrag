@@ -6,11 +6,11 @@ For the current unmerged PR, open the Vercel Preview URL recorded in PR #6 and u
 
 After merge or production promotion, open: https://hk-criminal-procedure-graphrag.vercel.app/viewer/
 
-For the direct verified case-law proof view, open: /viewer/case_corpus_demo.html
+The verified proof is now integrated natively into the original Fable workspace. Inside `/viewer/`, click the sidebar entry labelled "Verified Case Demo" to open the source-proofed case-law module.
 
-Inside the workspace, click the sidebar entry labelled "Verified Case Demo" to open the source-proofed case-law module.
+Secondary fallback route only: `/viewer/case_corpus_demo.html`
 
-Do not present graph/domain seed-map views as the verified case-law demo. Graph/domain views are seed-map research UI unless the source-proofed Verified Case Demo is opened. They are not the PR #6 paragraph-linked case-law authority view and must not be presented as verified authority.
+Do not present graph/domain seed-map views as the verified case-law demo. Graph/domain views are seed-map research UI unless the source-proofed Verified Case Demo is opened. They are not the PR #6 paragraph-linked case-law authority view and must not be presented as verified authority. Do not iframe or navigate away as the main demo; show the native workspace cards, inspector proof panel, and AI Inquiry evidence trail.
 
 ## Timing
 
@@ -44,6 +44,8 @@ Ask: "If I forgot to pay at a shop, what are the dishonesty issues?"
 
 Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say `answer_safe=false` with lawyer review required.
 
+Workspace click path: open Verified Case Demo, then use "Open in inspector" on the Theft/dishonesty card. The original inspector should show Case Fruits / Paragraph Proof with HKLII paragraph links.
+
 ### B. Intention permanently to deprive
 
 Ask: "What does intention permanently to deprive mean in theft?"
@@ -61,6 +63,8 @@ Expected explanation: the answer should return a research memo, show case-by-cas
 Ask: "What bail factors matter in a theft or dishonesty-related case?"
 
 Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say `answer_safe=false` with lawyer review required.
+
+Workspace click path: open Verified Case Demo, then use "Open in inspector" on the Bail card, or open Doctrine Map → Bail → Factors in Bail Decisions. The original inspector should show paragraph-linked bail evidence.
 
 ## 5:15-6:00 - Unsupported Query
 

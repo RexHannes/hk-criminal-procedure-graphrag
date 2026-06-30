@@ -25,8 +25,9 @@ function main() {
     "CASE_FRUIT_ARTIFACTS",
     "loadLocalCaseFruitArtifacts",
     "l5_paragraph_proof.json",
-    "Source-linked demo",
-    "Paragraph proof / audit trail",
+    "viewer_evidence_index.json",
+    "Paragraph-linked sample",
+    "Full paragraph text / audit trail",
   ].forEach(marker => assertContains("viewer/app.js", app, marker));
 
   [

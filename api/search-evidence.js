@@ -10,6 +10,7 @@ const { buildUploadedEvidenceBundle } = require("../src/api/evidence_text_ingest
 const { retrieveCaseLawResearch } = require("../src/legal_answer/case_corpus/case_law_research_retriever");
 const { renderCaseLawResearch } = require("../src/legal_answer/case_corpus/case_law_research_renderer");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
+const { viewerCaseCorpusEvidenceForNode } = require("../src/case_graph/viewer_case_corpus_evidence");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -76,6 +77,11 @@ const QUERY_EXPANSIONS = [
     preferred_domains: ["criminal_law_hk", "criminal_procedure_hk"]
   },
   {
+    pattern: /\b(bail|surety|recognizance|recognisance|remand|custody|abscond|surrender|bail condition|refusal grounds)\b/i,
+    terms: ["bail", "right to bail", "bail factors", "refusal grounds", "conditions", "recognizance", "surety", "Criminal Procedure Ordinance"],
+    preferred_domains: ["criminal_procedure_hk", "criminal_law_hk"]
+  },
+  {
     pattern: /\b(probate|letters of administration|intestate|executor|administrator|grant of representation|caveat|warning|citation|reseal|resealing|foreign grant|lost will|copy will|swear death|rectification of will|inventory|estate distribution)\b/i,
     terms: ["probate", "grant", "executor", "administrator", "will", "estate", "probate registry", "common form", "contentious probate", "assets liabilities"],
     preferred_domains: ["probate_law_hk"]
@@ -130,7 +136,7 @@ function detectsCriminalPublicOrderQuery(query) {
 
 function detectsCriminalLawQuery(query) {
   const q = String(query || "").toLowerCase();
-  return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|steal|stealing|stole|stolen|shoplift|shoplifting|assault|battery|manslaughter|murder|dishonesty|dishonest|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting|forgot to pay|forget to pay|without paying)\b/.test(q);
+  return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|steal|stealing|stole|stolen|shoplift|shoplifting|assault|battery|manslaughter|murder|dishonesty|dishonest|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting|forgot to pay|forget to pay|without paying|bail|surety|recognizance|recognisance|remand|custody)\b/.test(q);
 }
 
 function detectsPersonalInjuryPurpose(query) {
@@ -689,6 +695,7 @@ async function evidenceForNode(baseUrl, serviceKey, doctrineNodeId) {
 function coverageForEvidence(evidence) {
   if (evidence.some(item => item.answer_layer_status === "answer_safe")) return "answer_safe";
   if (evidence.some(item => item.answer_layer_status === "paragraph_verified" || item.answer_layer_status === "source_verified")) return "paragraph_verified";
+  if (evidence.some(item => item.public_source_link_verified || item.verification_status === "paragraph_linked_public_source")) return "paragraph_verified";
   if (evidence.length) return "candidate_only";
   return "no_evidence";
 }
@@ -698,6 +705,8 @@ function hasLocalPublicParagraphProof(item) {
 }
 
 function localEvidenceFallbackForNode(doctrineNodeId) {
+  const viewerEvidence = viewerCaseCorpusEvidenceForNode(doctrineNodeId);
+  if (viewerEvidence.length) return viewerEvidence;
   return localCaseFruitEvidenceForNode(doctrineNodeId).map(item => {
     if (item.answer_layer_status === "candidate_only" && hasLocalPublicParagraphProof(item)) {
       return {
@@ -913,6 +922,18 @@ function buildPiWorkflow(query) {
 
 function postFilterMatchesForQuery(query, matches) {
   const arbiter = arbitrateLegalQuery(query);
+  const isBailQuery = /\b(bail|surety|recognizance|recognisance|remand|custody|abscond|surrender|bail condition|refusal grounds)\b/i.test(query);
+  const bailSort = items => items.slice().sort((a, b) => {
+    const score = match => {
+      const blob = [match.domain_id, match.doctrine_node_id, match.title, match.summary].join(" ").toLowerCase();
+      let out = 0;
+      if (match.domain_id === "criminal_procedure_hk") out += 4;
+      if (/bail|surety|recognizance|recognisance|remand|custody|abscond|surrender|refusal grounds/.test(blob)) out += 6;
+      if (/criminal_law_hk\.theft|dishonesty|theft/.test(blob)) out += 1;
+      return out;
+    };
+    return score(b) - score(a) || (b.match_score || 0) - (a.match_score || 0);
+  });
   if ((arbiter.allowed_static_domains || []).length || (arbiter.blocked_static_domains || []).length) {
     let filtered = matches.filter(match => {
       if ((arbiter.blocked_static_domains || []).includes(match.domain_id)) return false;
@@ -930,9 +951,11 @@ function postFilterMatchesForQuery(query, matches) {
         });
         if (theftFocused.length >= 3) return theftFocused.slice(0, 8);
       }
+      if (isBailQuery) return bailSort(filtered).slice(0, 8);
       return filtered.slice(0, 8);
     }
   }
+  if (isBailQuery) return bailSort(matches).slice(0, 8);
   if (detectsCriminalPublicOrderQuery(query) && !detectsPersonalInjuryPurpose(query)) {
     const criminal = matches.filter(match => {
       const blob = [match.domain_id, match.doctrine_node_id, match.title, match.summary].join(" ").toLowerCase();
@@ -1011,7 +1034,8 @@ module.exports = async function handler(req, res) {
   if (supabaseUrl && serviceKey) {
     try {
       for (const match of matched) {
-        match.evidence = await evidenceForNode(supabaseUrl, serviceKey, match.doctrine_node_id);
+        const viewerEvidence = viewerCaseCorpusEvidenceForNode(match.doctrine_node_id);
+        match.evidence = viewerEvidence.length ? viewerEvidence : await evidenceForNode(supabaseUrl, serviceKey, match.doctrine_node_id);
         if (!match.evidence.length) match.evidence = localEvidenceFallbackForNode(match.doctrine_node_id);
         match.coverage_status = coverageForEvidence(match.evidence);
       }
@@ -1024,7 +1048,8 @@ module.exports = async function handler(req, res) {
     }
   } else {
     matched.forEach(match => {
-      match.evidence = localEvidenceFallbackForNode(match.doctrine_node_id);
+      const viewerEvidence = viewerCaseCorpusEvidenceForNode(match.doctrine_node_id);
+      match.evidence = viewerEvidence.length ? viewerEvidence : localEvidenceFallbackForNode(match.doctrine_node_id);
       match.coverage_status = coverageForEvidence(match.evidence);
     });
   }

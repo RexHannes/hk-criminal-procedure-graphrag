@@ -22,6 +22,8 @@
     dataSource: 'live',
     openSections: new Set(),
     caseFruitCache: {},
+    caseEvidenceIndex: null,
+    caseEvidenceMap: null,
   };
 
   const $ = (sel) => document.querySelector(sel);
@@ -32,6 +34,11 @@
     needs_hklii_verification: { text: 'Verification pending', cls: 'badge-pending' },
     needs_official_source_verification: { text: 'Source check pending', cls: 'badge-pending' },
     unverified_case_seed: { text: 'Case audit required', cls: 'badge-audit' },
+    paragraph_linked_public_source: { text: 'Paragraph-linked sample', cls: 'badge-source-linked' },
+    source_verified_public: { text: 'Paragraph-linked sample', cls: 'badge-source-linked' },
+    paragraph_quote_verified_research_only: { text: 'Paragraph-linked sample', cls: 'badge-source-linked' },
+    research_only: { text: 'Research-only', cls: 'badge-research' },
+    lawyer_review_required: { text: 'Lawyer review required', cls: 'badge-review' },
     approved: { text: 'Approved', cls: 'badge-approved' },
     needs_review: { text: 'Needs review', cls: 'badge-review' },
     draft: { text: 'Draft', cls: 'badge-draft' },
@@ -45,6 +52,7 @@
     listing_rule_anchor: 'Listing rule', guidance_letter_seed: 'Guidance letter',
     listing_decision_seed: 'Listing decision', enforcement_seed: 'Enforcement seed',
     sfc_material_seed: 'SFC material', source_anchor: 'Source anchor',
+    candidate_evidence: 'Evidence',
   };
 
   const AUTHORITY_TYPES = new Set([
@@ -71,10 +79,22 @@
       .join('');
   }
   function nodeStatusBadges(n) {
+    if (hasViewerCaseEvidenceForNode(n)) {
+      return [
+        '<span class="badge badge-source-linked">Paragraph-linked sample</span>',
+        '<span class="badge badge-research">Research-only</span>',
+        '<span class="badge badge-review">Lawyer review required</span>',
+        '<span class="badge badge-audit">answer_safe=false</span>',
+      ].join('');
+    }
     const out = [];
     if (n.answer_layer_status) out.push(badge(n.answer_layer_status));
     if (n.verification_status) out.push(badge(n.verification_status));
     if (n.authority_status && n.authority_status !== n.verification_status) out.push(badge(n.authority_status));
+    if (n.type === 'case_seed') out.push('<span class="badge badge-audit">Legacy seed</span>');
+    if (/needs_|unverified|pending/i.test([n.verification_status, n.authority_status].filter(Boolean).join(' '))) {
+      out.push('<span class="badge badge-pending">Not source-proofed</span>');
+    }
     if (n.type === 'restricted_nsl') out.push('<span class="badge badge-nsl">NSL — restricted</span>');
     return out.join('');
   }
@@ -87,6 +107,8 @@
   const DATA_INDEX = window.DATA_INDEX || '../data/index.json';
   const DATA_ROOT = window.DATA_ROOT || '../data/legal_domain_packs/demo_maps/';
   const DEFAULT_DOMAIN_ID = window.DEFAULT_DOMAIN_ID || 'criminal_procedure_hk';
+  const VIEWER_EVIDENCE_INDEX = window.VIEWER_EVIDENCE_INDEX || '../data/legal_ingest/case_corpus/viewer_evidence_index.json';
+  const VIEWER_NODE_EVIDENCE_MAP = window.VIEWER_NODE_EVIDENCE_MAP || '../data/legal_ingest/case_corpus/viewer_node_evidence_map.json';
   const CASE_FRUIT_ARTIFACTS = window.CASE_FRUIT_ARTIFACTS || [
     {
       base: '../data/legal_ingest/criminal_evidence_tree_v1/bail_public_batch_v1',
@@ -137,6 +159,16 @@
     });
   }
 
+  function loadViewerCaseEvidence() {
+    return Promise.all([
+      loadJSON(VIEWER_NODE_EVIDENCE_MAP).catch(() => null),
+      loadJSON(VIEWER_EVIDENCE_INDEX).catch(() => null),
+    ]).then(([nodeMap, evidenceIndex]) => {
+      S.caseEvidenceMap = nodeMap;
+      S.caseEvidenceIndex = evidenceIndex;
+    });
+  }
+
   function summarizeDomain(domain) {
     const base = domainBase(domain.domain_id);
     return Promise.all([
@@ -175,6 +207,7 @@
       const flowP = loadJSON(base + (manifest.flows_file || 'flows.json')).then(d => { S.flows = d.flows || []; });
       return Promise.all([...sectionP, flowP]);
     }).then(() => {
+      applyViewerEvidenceStatus();
       indexData();
       renderDomainSelect();
       renderFirmCard();
@@ -344,6 +377,125 @@
     return `case-fruits-${String(nodeId).replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   }
 
+  function evidenceMappings() {
+    return S.caseEvidenceMap?.mappings || S.caseEvidenceIndex?.mappings || [];
+  }
+
+  function mappedViewerNodeIds(mapping) {
+    return new Set([...(mapping.viewer_node_ids || []), mapping.viewer_node_id].filter(Boolean));
+  }
+
+  function mappedDoctrineNodeIds(mapping) {
+    return new Set([...(mapping.doctrine_node_ids || []), mapping.doctrine_node_id].filter(Boolean));
+  }
+
+  function mappedFlowStepIds(mapping) {
+    return new Set([...(mapping.flow_step_ids || []), mapping.flow_step_id].filter(Boolean));
+  }
+
+  function mappingMatchesNode(mapping, n) {
+    if (!n) return false;
+    const doctrineId = doctrineNodeId(n);
+    const viewerIds = mappedViewerNodeIds(mapping);
+    const doctrineIds = mappedDoctrineNodeIds(mapping);
+    const flowIds = mappedFlowStepIds(mapping);
+    if (viewerIds.has(n.id) || doctrineIds.has(doctrineId) || flowIds.has(n.id)) return true;
+    if (n.type === 'flow_step') {
+      return issuesLinkedToStep(n.id).some(issue => viewerIds.has(issue.id) || doctrineIds.has(doctrineNodeId(issue)));
+    }
+    return false;
+  }
+
+  function caseEvidenceMappingsForNode(n) {
+    if (!S.caseEvidenceIndex?.evidence?.length) return [];
+    return evidenceMappings().filter(mapping => mappingMatchesNode(mapping, n));
+  }
+
+  function viewerEvidenceEntriesForMapping(mapping) {
+    if (!mapping || !S.caseEvidenceIndex?.evidence?.length) return [];
+    const issueTag = mapping.issue_tag || '';
+    return S.caseEvidenceIndex.evidence.filter(item =>
+      item.issue_tag === issueTag || (item.issue_tags || []).includes(issueTag)
+    );
+  }
+
+  function hasViewerCaseEvidenceForNode(n) {
+    return caseEvidenceMappingsForNode(n).some(mapping => viewerEvidenceEntriesForMapping(mapping).length > 0);
+  }
+
+  function applyViewerEvidenceStatus() {
+    S.nodes.forEach(n => {
+      const mappings = caseEvidenceMappingsForNode(n);
+      const issueTags = mappings
+        .filter(mapping => viewerEvidenceEntriesForMapping(mapping).length)
+        .map(mapping => mapping.issue_tag);
+      if (issueTags.length) {
+        n.case_evidence_status = 'paragraph_linked_sample';
+        n.case_evidence_issue_tags = Array.from(new Set(issueTags));
+      }
+    });
+  }
+
+  function normalizeViewerEvidenceEntry(item) {
+    return {
+      ...item,
+      neutral_citation: item.neutral_citation || item.citation || '',
+      para_no: item.para_no || item.paragraph_number || '',
+      supporting_quote: item.supporting_quote || item.exact_quote || '',
+      answer_layer_status: item.answer_layer_status || 'research_only',
+      answer_safe: item.answer_safe === true ? true : false,
+      needs_lawyer_review: item.needs_lawyer_review !== false,
+      lawyer_review_required: item.lawyer_review_required !== false,
+      human_review_status: item.human_review_status || 'lawyer_review_required',
+      verification_status: item.verification_status || 'paragraph_linked_public_source',
+      source_verification_status: item.source_verification_status || 'source_verified_public',
+      quote_verified: Boolean(item.source_url && /#p\d+/i.test(item.source_url) && (item.exact_quote || item.supporting_quote)),
+      validator_flags: Array.from(new Set([
+        ...(item.validator_flags || []),
+        'answer_safe=false',
+        'lawyer_review_required',
+        'current_treatment_unchecked',
+      ])),
+    };
+  }
+
+  function rankViewerEvidence(items) {
+    const relevanceRank = item => {
+      if (item.usable_in_answer_layer) return 0;
+      if (item.liability_relevance === 'liability' || item.liability_relevance === 'procedure') return 1;
+      if (item.principle_quality_status === 'demoted') return 3;
+      return 2;
+    };
+    return items.slice().sort((a, b) =>
+      relevanceRank(a) - relevanceRank(b) ||
+      String(a.neutral_citation || a.citation || '').localeCompare(String(b.neutral_citation || b.citation || '')) ||
+      String(a.para_no || a.paragraph_number || '').localeCompare(String(b.para_no || b.paragraph_number || ''), undefined, { numeric: true })
+    );
+  }
+
+  function viewerEvidencePayloadForNode(n, limit = 5) {
+    const mappings = caseEvidenceMappingsForNode(n);
+    const seen = new Set();
+    const evidence = [];
+    mappings.forEach(mapping => {
+      rankViewerEvidence(viewerEvidenceEntriesForMapping(mapping)).forEach(item => {
+        const key = item.evidence_id || `${item.issue_tag}:${item.paragraph_id}`;
+        if (seen.has(key)) return;
+        seen.add(key);
+        evidence.push(normalizeViewerEvidenceEntry(item));
+      });
+    });
+    return normalizeEvidencePayload({
+      coverage_status: evidence.length ? 'paragraph_verified' : 'no_evidence',
+      evidence: evidence.slice(0, limit),
+      verified_evidence: evidence.slice(0, limit),
+      candidate_evidence: evidence.slice(0, limit),
+      warnings: evidence.length
+        ? ['pr6_frozen_case_corpus_research_only', 'lawyer_review_required', 'answer_safe_false']
+        : [],
+    });
+  }
+
   function normalizeEvidencePayload(payload) {
     const evidence = payload?.evidence || payload?.candidate_evidence || [];
     return {
@@ -361,6 +513,12 @@
     const target = document.getElementById(caseFruitKey(nodeId));
     if (!target) return;
     target.innerHTML = '<div class="fruit-loading">Loading source-linked paragraph proof…</div>';
+    const viewerPayload = viewerEvidencePayloadForNode(n);
+    if ((viewerPayload.evidence || []).length) {
+      S.caseFruitCache[nodeId] = viewerPayload;
+      renderCaseFruits(target, nodeId, viewerPayload);
+      return;
+    }
     const cached = S.caseFruitCache[nodeId];
     const request = cached
       ? Promise.resolve(cached)
@@ -458,8 +616,9 @@
     });
     target.innerHTML = `
       <div class="fruit-summary">
-        <span class="badge badge-source-linked">Source-linked demo</span>
-        <span>${sorted.length} quote-proof case fruit${sorted.length === 1 ? '' : 's'} attached to <code>${esc(nodeId)}</code>.</span>
+        <span class="badge badge-source-linked">Paragraph-linked sample</span>
+        <span>${sorted.length} source-proof card${sorted.length === 1 ? '' : 's'} attached to <code>${esc(nodeId)}</code>.</span>
+        <span class="badge badge-audit">answer_safe=false</span>
       </div>
       ${(normalized.warnings || []).length ? `<div class="fruit-warning">${normalized.warnings.map(esc).join(' ')}</div>` : ''}
       <div class="fruit-list">
@@ -471,11 +630,17 @@
   function renderCaseFruitCard(e) {
     const quote = e.supporting_quote || e.exact_quote || '';
     const paragraph = e.paragraph_text || quote;
-    const statusBadge = e.answer_layer_status === 'answer_safe'
-      ? '<span class="badge badge-approved">Answer-safe</span>'
-      : e.answer_layer_status === 'paragraph_verified' || e.quote_verified
-        ? '<span class="badge badge-source-linked">Quote verified</span>'
-        : '<span class="badge badge-review">Human review required</span>';
+    const proofLinked = Boolean(e.source_url && /#p\d+/i.test(e.source_url) && quote);
+    const badgeHtml = [
+      proofLinked ? '<span class="badge badge-source-linked">Paragraph-linked sample</span>' : '',
+      e.answer_layer_status === 'answer_safe' ? '<span class="badge badge-approved">Answer-safe</span>' : '<span class="badge badge-research">Research-only</span>',
+      e.needs_lawyer_review || e.lawyer_review_required || e.human_review_status === 'lawyer_review_required' || e.human_review_status === 'unreviewed'
+        ? '<span class="badge badge-review">Lawyer review required</span>'
+        : '',
+      e.answer_safe === false || e.answer_layer_status !== 'answer_safe' ? '<span class="badge badge-audit">answer_safe=false</span>' : '',
+      e.current_treatment_status === 'unchecked' ? '<span class="badge badge-pending">Current treatment unchecked</span>' : '',
+      e.principle_quality_status === 'demoted' ? '<span class="badge badge-audit">Demoted principle boundary</span>' : '',
+    ].filter(Boolean).join('');
     const sourceLink = e.source_url
       ? `<a href="${esc(e.source_url)}" target="_blank" rel="noreferrer">Open public judgment (HKLII/LegalRef)</a>`
       : '';
@@ -491,11 +656,12 @@
           <span>${esc(citeLabel)}</span>
         </div>
         <div class="fruit-badges">
-          ${statusBadge}
+          ${badgeHtml}
           ${e.authority_role ? `<span class="badge badge-research">${esc(e.authority_role)}</span>` : ''}
           ${e.significance_label ? `<span class="badge badge-draft">${esc(e.significance_label)}</span>` : ''}
         </div>
         ${e.proposition_text ? `<p class="fruit-proposition">${esc(e.proposition_text)}</p>` : ''}
+        ${e.principle_text && e.principle_text !== e.proposition_text ? `<p class="fruit-proposition"><strong>Principle:</strong> ${esc(e.principle_text)}</p>` : ''}
         ${quote ? `<blockquote class="fruit-quote"><span class="fruit-quote-label">Exact quote</span>${esc(quote)}</blockquote>` : ''}
         <details class="fruit-proof" ${paragraph && paragraph !== quote ? 'open' : ''}>
           <summary>Full paragraph text / audit trail</summary>
@@ -613,33 +779,175 @@
   function renderView() {
     root().classList.toggle('wide-view', S.view === 'caseDemo');
     ({ domains: viewDomains, flows: viewFlows, doctrine: viewDoctrine, caseDemo: viewCaseDemo, inquiry: viewInquiry, tasks: viewTasks, playbooks: viewPlaybooks, templates: viewTemplates, audit: viewAudit }[S.view] || viewFlows)();
+    wireViewJumps(root());
+    bindNavTriggers();
   }
 
   function viewHeader(eyebrow, title, lede) {
     return `<div class="view-eyebrow">${eyebrow}</div><div class="view-title">${title}</div><p class="view-lede">${lede}</p>`;
   }
 
+  function mappingForIssueTag(issueTag) {
+    return evidenceMappings().find(mapping => mapping.issue_tag === issueTag) || null;
+  }
+
+  function issueCoverageForIssueTag(issueTag) {
+    return (S.caseEvidenceIndex?.issue_coverage || []).find(item => item.issue_id === issueTag) || null;
+  }
+
+  function caseEvidenceForIssueTag(issueTag, limit = 3) {
+    const mapping = mappingForIssueTag(issueTag);
+    if (!mapping) return [];
+    return rankViewerEvidence(viewerEvidenceEntriesForMapping(mapping)).slice(0, limit).map(normalizeViewerEvidenceEntry);
+  }
+
+  function caseDemoQueries() {
+    return [
+      {
+        issueTag: 'criminal_law.theft.dishonesty',
+        label: 'Theft / dishonesty',
+        query: 'If I forgot to pay at a shop, what are the dishonesty issues?',
+        memo: 'Research memo focuses on the dishonest-state-of-mind issue and flags missing facts such as accident, concealment, later payment, and interview record.',
+      },
+      {
+        issueTag: 'criminal_law.theft.intention_permanently_deprive',
+        label: 'Intention permanently to deprive',
+        query: 'What does intention permanently to deprive mean in theft?',
+        memo: 'Research memo separates the theft element from sentencing/background-only paragraphs and keeps current treatment unchecked.',
+      },
+      {
+        issueTag: 'criminal_law.theft.belonging_to_another',
+        label: 'Belonging to another',
+        query: 'How does Hong Kong theft law handle property belonging to another?',
+        memo: 'The seed graph has no standalone element node, so verified paragraph proof is attached under the existing Theft node and shown here natively.',
+      },
+      {
+        issueTag: 'criminal_procedure.bail',
+        label: 'Bail',
+        query: 'What bail factors matter in a theft or dishonesty-related case?',
+        memo: 'Research memo stays procedural and research-only; it does not convert paragraph candidates into answer-safe advice.',
+      },
+    ];
+  }
+
+  function renderMetric(label, value) {
+    return `<div class="case-demo-metric"><span>${esc(label)}</span><strong>${esc(value == null || value === '' ? '—' : value)}</strong></div>`;
+  }
+
+  function renderCaseDemoQueryCard(item) {
+    const mapping = mappingForIssueTag(item.issueTag);
+    const coverage = issueCoverageForIssueTag(item.issueTag);
+    const evidence = caseEvidenceForIssueTag(item.issueTag, 3);
+    return `
+      <section class="case-demo-query-card">
+        <div class="card-top">
+          <span class="card-title">${esc(item.label)}</span>
+          <span class="card-badges">
+            <span class="badge badge-source-linked">Paragraph proof</span>
+            <span class="badge badge-audit">answer_safe=false</span>
+          </span>
+        </div>
+        <p class="card-body">${esc(item.query)}</p>
+        <p class="case-demo-memo">${esc(item.memo)}</p>
+        <div class="case-demo-row">
+          <span class="link-pill"><span class="lp-kind">coverage</span>${esc(coverage?.coverage_band || 'mapped sample')}</span>
+          <span class="link-pill"><span class="lp-kind">cases</span>${esc(coverage?.case_count || evidence.length)}</span>
+          <button class="ghost-btn" data-case-target="${esc(item.issueTag)}">Open in inspector</button>
+        </div>
+        <div class="fruit-list">
+          ${evidence.length ? evidence.map(renderCaseFruitCard).join('') : '<div class="fruit-empty">No native paragraph evidence is mapped for this issue yet.</div>'}
+        </div>
+        <details class="piw-audit">
+          <summary>Source audit</summary>
+          <ul class="piw-list">
+            <li>Issue tag: ${esc(item.issueTag)}</li>
+            <li>Viewer node: ${esc((mapping?.viewer_node_ids || []).join(', ') || 'unmapped')}</li>
+            <li>Doctrine node: ${esc((mapping?.doctrine_node_ids || []).join(', ') || 'unmapped')}</li>
+            <li>All displayed cards are research-only, lawyer-review-required, and not legal advice.</li>
+          </ul>
+        </details>
+      </section>
+    `;
+  }
+
+  function renderUnsupportedCaseDemoCard() {
+    return `
+      <section class="case-demo-query-card case-demo-unsupported">
+        <div class="card-top">
+          <span class="card-title">Unsupported landlord/rent query</span>
+          <span class="card-badges"><span class="badge badge-audit">Abstains</span><span class="badge badge-audit">answer_safe=false</span></span>
+        </div>
+        <p class="card-body">My landlord increased my rent. What should I do?</p>
+        <p class="case-demo-memo">Unsupported general query: the PR #6 frozen demo is a criminal-law case-corpus sample, so no criminal-law authority is attached and the inquiry must abstain.</p>
+        <div class="fruit-empty">No case-by-case criminal authority is attached to this landlord/rent query.</div>
+      </section>
+    `;
+  }
+
+  function focusMappedIssue(issueTag) {
+    const mapping = mappingForIssueTag(issueTag);
+    const nodeId = (mapping?.viewer_node_ids || [])[0];
+    if (!mapping || !nodeId) return;
+    const afterLoad = () => {
+      S.view = 'doctrine';
+      setActiveNav();
+      renderView();
+      select('node', nodeId);
+    };
+    if (mapping.domain_id && mapping.domain_id !== S.selectedDomainId) {
+      loadDomain(mapping.domain_id).then(afterLoad);
+    } else {
+      afterLoad();
+    }
+  }
+
+  function wireCaseDemoActions() {
+    root().querySelectorAll('[data-case-target]').forEach(button => {
+      button.addEventListener('click', () => focusMappedIssue(button.dataset.caseTarget));
+    });
+  }
+
   function viewCaseDemo() {
+    const counts = S.caseEvidenceIndex?.corpus_counts || {};
     root().innerHTML = `
       ${viewHeader('Verified proof', 'Verified Case Demo', 'A source-proofed PR #6 module over the frozen 120-case sample. It keeps answer_safe=false, shows public paragraph anchors and exact quotes, and remains lawyer-review-required.')}
-      <div class="case-demo-shell">
+      <div class="case-demo-shell case-demo-native" data-native-case-demo="true">
         <div class="case-demo-toolbar">
           <div>
             <span class="badge badge-source-linked">Source-proofed sample</span>
+            <span class="badge badge-research">Research-only</span>
             <span class="badge badge-review">Lawyer review required</span>
+            <span class="badge badge-pending">Current treatment unchecked</span>
             <span class="badge badge-audit">answer_safe=false</span>
           </div>
-          <a class="case-demo-open" href="case_corpus_demo.html" target="_blank" rel="noopener noreferrer">Open direct route</a>
+          <a class="case-demo-open" href="case_corpus_demo.html" target="_blank" rel="noopener noreferrer">Secondary proof route</a>
         </div>
-        <iframe class="case-demo-frame" src="case_corpus_demo.html" title="Verified Case Demo"></iframe>
+        <section class="case-demo-hero card">
+          <div class="card-top"><span class="card-title">Native source-proof module inside the Fable workspace</span></div>
+          <p class="card-body">${esc(S.caseEvidenceIndex?.safe_demo_claim || 'Source-proofed, research-only HK criminal-law case-law sample. Not legal advice.')}</p>
+          <div class="case-demo-metrics">
+            ${renderMetric('Targeted cases', counts.registry_case_count || 120)}
+            ${renderMetric('Paragraph cards', counts.paragraph_card_count || '—')}
+            ${renderMetric('Propositions', counts.proposition_card_count || '—')}
+            ${renderMetric('Principle cards', counts.principle_card_count || '—')}
+            ${renderMetric('Usable principles', counts.usable_principle_count || '—')}
+            ${renderMetric('Demoted principles', counts.demoted_principle_count || '—')}
+            ${renderMetric('answer_safe_count', S.caseEvidenceIndex?.answer_safe_count ?? 0)}
+          </div>
+        </section>
+        <div class="case-demo-grid">
+          ${caseDemoQueries().map(renderCaseDemoQueryCard).join('')}
+          ${renderUnsupportedCaseDemoCard()}
+        </div>
       </div>
     `;
+    wireCaseDemoActions();
   }
 
   function seedGraphBanner() {
     return `<div class="seed-graph-banner">
       <strong>Legacy seed graph - not the verified case-law demo.</strong>
-      <span>These graph/domain views are useful for workspace navigation and issue mapping, but they are not source-proofed answer authority. For HKLII/LegalRef paragraph-linked authorities, open <a href="case_corpus_demo.html">Verified Case Demo</a>.</span>
+      <span>These graph/domain views are useful for workspace navigation and issue mapping, but only mapped nodes have PR #6 paragraph proof. For HKLII/LegalRef paragraph-linked authorities, open <button class="inline-link" data-view-jump="caseDemo">Verified Case Demo</button>.</span>
     </div>`;
   }
 
@@ -933,11 +1241,60 @@
     no_evidence: '<span class="badge badge-pending">No paragraph evidence yet</span>',
   };
 
+  function isUnsupportedLandlordQuery(query) {
+    const q = String(query || '').toLowerCase();
+    return /\b(landlord|tenant|rent|lease|tenancy)\b/.test(q) &&
+      !/\b(theft|steal|shoplift|dishonest|bail|criminal|fraud|deception)\b/.test(q);
+  }
+
+  function issueTagsForInquiry(query) {
+    const q = String(query || '').toLowerCase();
+    if (isUnsupportedLandlordQuery(q)) return [];
+    const tags = [];
+    if (/\b(bail|surety|recognizance|abscond|custody|remand)\b/.test(q)) tags.push('criminal_procedure.bail');
+    if (/\b(permanent(?:ly)?|depriv|intent(?:ion)?\s+permanently)\b/.test(q)) tags.push('criminal_law.theft.intention_permanently_deprive');
+    if (/\b(belong(?:ing)?|another|owner|property)\b/.test(q)) tags.push('criminal_law.theft.belonging_to_another');
+    if (/\b(forgot|forget|shop|pay|paid|payment|dishonest|dishonesty|mens rea|shoplift)\b/.test(q)) tags.push('criminal_law.theft.dishonesty');
+    if (/\b(appropriat|assum(?:e|ed)|rights of owner)\b/.test(q)) tags.push('criminal_law.theft.appropriation');
+    if (/\b(fraud|deception|deceiv)\b/.test(q)) tags.push('criminal_law.fraud');
+    if (!tags.length && /\b(theft|steal|stole|stolen|shoplift|theft ordinance)\b/.test(q)) tags.push('criminal_law.theft');
+    return Array.from(new Set(tags));
+  }
+
+  function caseEvidenceInquiryMatches(query, limit = 4) {
+    return issueTagsForInquiry(query).map(issueTag => {
+      const mapping = mappingForIssueTag(issueTag);
+      if (!mapping) return null;
+      const nodeId = (mapping.viewer_node_ids || [])[0] || '';
+      const node = S.nodeMap[nodeId] || {
+        id: nodeId,
+        label: mapping.label,
+        type: 'legal_issue',
+        summary: mapping.summary || '',
+      };
+      const evidence = caseEvidenceForIssueTag(issueTag, limit);
+      return {
+        doctrine_node_id: (mapping.doctrine_node_ids || [])[0] || doctrineNodeId(node),
+        source_node_id: nodeId,
+        title: mapping.label || node.label || issueTag,
+        node_type: node.type || 'legal_issue',
+        domain_id: mapping.domain_id || S.selectedDomainId,
+        summary: mapping.summary || node.summary || '',
+        match_score: 100,
+        evidence,
+        coverage_status: evidence.length ? 'paragraph_verified' : 'no_evidence',
+      };
+    }).filter(Boolean);
+  }
+
   function localInquiryMatches(query, limit = 8) {
+    const evidenceMatches = caseEvidenceInquiryMatches(query, 4);
     const terms = query.toLowerCase().split(/[^a-z0-9一-鿿]+/).filter(w => w.length > 2);
     const scored = [];
+    const evidenceSourceIds = new Set(evidenceMatches.map(match => match.source_node_id).filter(Boolean));
     S.nodes.forEach(n => {
       if (n.type === 'section_header') return;
+      if (evidenceSourceIds.has(n.id)) return;
       const hay = `${n.id} ${n.label || ''} ${n.summary || ''} ${(n.statute_refs || []).join(' ')} ${(n.case_seeds || []).join(' ')}`.toLowerCase();
       let score = 0;
       terms.forEach(t => {
@@ -946,7 +1303,7 @@
       });
       if (score) scored.push({ n, score });
     });
-    return scored.sort((a, b) => b.score - a.score).slice(0, limit).map(({ n, score }) => ({
+    const graphMatches = scored.sort((a, b) => b.score - a.score).slice(0, Math.max(0, limit - evidenceMatches.length)).map(({ n, score }) => ({
       doctrine_node_id: n.id,
       source_node_id: n.id,
       title: n.label || n.id,
@@ -957,6 +1314,7 @@
       evidence: [],
       coverage_status: 'no_evidence',
     }));
+    return evidenceMatches.concat(graphMatches).slice(0, limit);
   }
 
   function sopsForNodeId(nodeId) {
@@ -1181,7 +1539,14 @@
     if (!r) return '';
     const analysis = r.inquiry_analysis;
     const warnings = (r.warnings || []).map(w => `<span class="badge badge-pending">${esc(String(w).replace(/_/g, ' '))}</span>`).join(' ');
-    const cards = (r.matched_doctrine_nodes || []).map(m => {
+    const matches = r.matched_doctrine_nodes || [];
+    const abstentionCard = !matches.length && isUnsupportedLandlordQuery(INQ.query)
+      ? `<div class="card">
+          <div class="card-top"><span class="card-title">Unsupported landlord/rent query</span><span class="card-badges"><span class="badge badge-audit">Abstained</span><span class="badge badge-audit">answer_safe=false</span></span></div>
+          <div class="card-body">This frozen PR #6 demo is limited to the source-proofed criminal-law sample. No criminal-law authority is attached to the landlord/rent query.</div>
+        </div>`
+      : '';
+    const cards = matches.map(m => {
       const localId = m.source_node_id || m.doctrine_node_id;
       const inGraph = !!S.nodeMap[localId];
       const sops = sopsForNodeId(localId);
@@ -1216,7 +1581,7 @@
       </div>` : ''}
       ${analysis ? renderAnalysisCaseReferences(analysis, r.matched_doctrine_nodes) : ''}
       ${warnings ? `<div class="inq-warnings">${warnings}</div>` : ''}
-      ${hasAppliedAnswer ? `<details class="piw-audit"><summary>Underlying retrieval / graph matches</summary>${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}</details>` : (cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.'))}
+      ${hasAppliedAnswer ? `<details class="piw-audit"><summary>Underlying retrieval / graph matches</summary>${cards || abstentionCard || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}</details>` : (cards || abstentionCard || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.'))}
       <p class="inq-note">Answer-first source-bounded research trail — not legal advice. The memo renders verified source-card content first; raw doctrine matches remain collapsed for audit. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;
   }
 
@@ -1246,6 +1611,33 @@
         const [kind, id] = el.dataset.card.split(':');
         select(kind, id);
       });
+    });
+  }
+
+  function jumpToView(view) {
+    S.view = view;
+    setActiveNav();
+    renderView();
+    $('#inspector').classList.remove('open');
+  }
+
+  function navTriggerFromEvent(e) {
+    return e.target.closest('.nav-item[data-view], .verified-demo-chip[data-view]');
+  }
+
+  function bindNavTriggers() {
+    document.querySelectorAll('.nav-item[data-view], .verified-demo-chip[data-view]').forEach(trigger => {
+      trigger.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        jumpToView(trigger.dataset.view);
+      };
+    });
+  }
+
+  function wireViewJumps(scope) {
+    scope.querySelectorAll('[data-view-jump]').forEach(el => {
+      el.addEventListener('click', () => jumpToView(el.dataset.viewJump));
     });
   }
 
@@ -1348,10 +1740,15 @@
     document.querySelectorAll('.nav-item[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view === S.view));
   }
   function setupNav() {
-    document.querySelectorAll('.nav-item[data-view]').forEach(b => b.addEventListener('click', () => {
-      S.view = b.dataset.view; setActiveNav(); renderView();
-      $('#inspector').classList.remove('open');
-    }));
+    const handleNav = (e) => {
+      const trigger = navTriggerFromEvent(e);
+      if (!trigger) return;
+      e.preventDefault();
+      e.stopPropagation();
+      jumpToView(trigger.dataset.view);
+    };
+    bindNavTriggers();
+    document.addEventListener('click', handleNav);
     document.addEventListener('click', (e) => {
       if (window.matchMedia('(max-width: 1100px)').matches && !e.target.closest('#inspector') && !e.target.closest('[data-card]')) {
         $('#inspector').classList.remove('open');
@@ -1375,7 +1772,7 @@
   }
 
   // ── Boot ──
-  Promise.allSettled([loadRegistry(), loadFirm()]).then(([registryRes, firmRes]) => {
+  Promise.allSettled([loadRegistry(), loadFirm(), loadViewerCaseEvidence()]).then(([registryRes, firmRes]) => {
     if (firmRes.status === 'rejected' || !S.firm) fallbackFirm();
     if (registryRes.status === 'rejected' || !S.domains.length) {
       S.domains = [{ domain_id: DEFAULT_DOMAIN_ID, title: 'Hong Kong Criminal Procedure', path: DEFAULT_DOMAIN_ID + '/domain.json' }];

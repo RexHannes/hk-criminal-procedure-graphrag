@@ -53,10 +53,14 @@ function validateWorkspace(html, js = "") {
   if (!/id=["']inspector["']/i.test(html)) fail("/viewer/ missing inspector shell");
   if (!/data-view=["']caseDemo["']/i.test(html)) fail("/viewer/ missing in-workspace Verified Case Demo nav item");
   if (!/Verified Case Demo/i.test(html)) fail("/viewer/ missing visible Verified Case Demo entry");
-  if (!/href=["']case_corpus_demo\.html["']/i.test(html)) fail("/viewer/ missing link to case_corpus_demo.html");
   if (!/app\.js/i.test(html)) fail("/viewer/ does not load the original workspace app.js");
   if (!/Legacy seed graph - not the verified case-law demo\./i.test(combined)) fail("workspace seed graph views are not labelled");
-  if (!/case-demo-frame/i.test(combined)) fail("workspace does not embed the verified demo module");
+  if (!/case-demo-native/i.test(combined)) fail("workspace does not render the verified demo as a native module");
+  if (!/viewer_evidence_index\.json/i.test(combined)) fail("workspace missing native viewer evidence index loader");
+  if (!/viewer_node_evidence_map\.json/i.test(combined)) fail("workspace missing native viewer evidence map loader");
+  if (!/Case Fruits \/ Paragraph Proof/i.test(combined)) fail("workspace missing inspector paragraph-proof panel");
+  if (!/caseEvidenceInquiryMatches/i.test(combined)) fail("workspace missing native AI Inquiry evidence bridge");
+  if (/case-demo-frame|<iframe/i.test(combined)) fail("workspace must not iframe the verified demo route as the main solution");
   if (/Static proof fallback for smoke tests|Source-proofed HK criminal-law research demo/i.test(html)) {
     fail("/viewer/ appears to be the raw verified demo page instead of the workspace");
   }
@@ -69,11 +73,11 @@ function validateVerifiedDemo(combined, shellText) {
   }
   if (!hasSourceLinks) fail("verified route has no HKLII/LegalRef links");
   if (!/#p\d+/i.test(combined)) fail("deployed demo has no paragraph #p anchors");
-  if (!/Exact quote:/i.test(combined)) fail("deployed demo has no exact quote proof");
-  if (!/(answer_safe=false|Answer safe:\s*`false`|Answer safe:\s*false|"expected_answer_safe":\s*false)/i.test(combined)) {
+  if (!/(Exact quote:?|exact_quote)/i.test(combined)) fail("deployed demo has no exact quote proof");
+  if (!/(answer_safe=false|Answer safe:\s*`false`|Answer safe:\s*false|"answer_safe":\s*false|"expected_answer_safe":\s*false)/i.test(combined)) {
     fail("deployed demo missing answer_safe=false boundary");
   }
-  if (!/(lawyer-review-required|Lawyer review required|needs_lawyer_review=true|needs_lawyer_review":\s*true)/i.test(combined)) {
+  if (!/(lawyer-review-required|Lawyer review required|lawyer_review_required|needs_lawyer_review=true|needs_lawyer_review":\s*true)/i.test(combined)) {
     fail("deployed demo missing lawyer-review-required boundary");
   }
   if (!/(unsupported_general_query|Unsupported Landlord Query|unsupported landlord|landlord\/rent query abstains)/i.test(combined)) {
@@ -119,6 +123,8 @@ function validateVerifiedDemo(combined, shellText) {
   }
 
   const artifactUrls = extractArtifactUrls(demoUrl, demoHtml, js);
+  artifactUrls.push(resolveUrl(demoUrl, "../data/legal_ingest/case_corpus/viewer_evidence_index.json"));
+  artifactUrls.push(resolveUrl(demoUrl, "../data/legal_ingest/case_corpus/viewer_node_evidence_map.json"));
   const fetched = [demoHtml, js];
   for (const url of artifactUrls) {
     try {

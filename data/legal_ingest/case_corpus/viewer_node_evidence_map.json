@@ -1,0 +1,144 @@
+{
+  "map_id": "pr6_viewer_node_evidence_map",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "source_corpus": "frozen_pr6_l1_l35_120_case_sample",
+  "mappings": [
+    {
+      "issue_tag": "criminal_law.theft",
+      "domain_id": "criminal_law_hk",
+      "viewer_node_ids": [
+        "crim_theft"
+      ],
+      "doctrine_node_ids": [
+        "criminal_law_hk.theft"
+      ],
+      "flow_step_ids": [],
+      "query_ids": [
+        "A"
+      ],
+      "demo_query": "If I forgot to pay at a shop, what are the dishonesty issues?",
+      "label": "Theft",
+      "summary": "Paragraph-proof theft evidence from the frozen PR #6 corpus."
+    },
+    {
+      "issue_tag": "criminal_law.theft.dishonesty",
+      "domain_id": "criminal_law_hk",
+      "viewer_node_ids": [
+        "crim_theft_dishonesty"
+      ],
+      "doctrine_node_ids": [
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "flow_step_ids": [],
+      "query_ids": [
+        "A"
+      ],
+      "demo_query": "If I forgot to pay at a shop, what are the dishonesty issues?",
+      "label": "Theft / dishonesty",
+      "summary": "Research-only HK paragraph proof for theft dishonesty and mens rea questions."
+    },
+    {
+      "issue_tag": "criminal_law.theft.appropriation",
+      "domain_id": "criminal_law_hk",
+      "viewer_node_ids": [
+        "crim_theft_appropriation"
+      ],
+      "doctrine_node_ids": [
+        "criminal_law_hk.theft.appropriation"
+      ],
+      "flow_step_ids": [],
+      "query_ids": [],
+      "demo_query": "",
+      "label": "Appropriation",
+      "summary": "Research-only appropriation-linked theft evidence."
+    },
+    {
+      "issue_tag": "criminal_law.theft.belonging_to_another",
+      "domain_id": "criminal_law_hk",
+      "viewer_node_ids": [
+        "crim_theft"
+      ],
+      "doctrine_node_ids": [
+        "criminal_law_hk.theft"
+      ],
+      "flow_step_ids": [],
+      "query_ids": [
+        "C"
+      ],
+      "demo_query": "How does Hong Kong theft law handle property belonging to another?",
+      "label": "Belonging to another",
+      "summary": "Attached under the existing Theft node because the Fable seed graph has no standalone belonging-to-another element node.",
+      "mapping_note": "No new graph node is invented; the source-proofed evidence appears in the native Verified Case Demo and under the existing Theft inspector."
+    },
+    {
+      "issue_tag": "criminal_law.theft.intention_permanently_deprive",
+      "domain_id": "criminal_law_hk",
+      "viewer_node_ids": [
+        "crim_theft_intent_deprive"
+      ],
+      "doctrine_node_ids": [
+        "criminal_law_hk.theft.intent.deprive"
+      ],
+      "flow_step_ids": [],
+      "query_ids": [
+        "B"
+      ],
+      "demo_query": "What does intention permanently to deprive mean in theft?",
+      "label": "Intention permanently to deprive",
+      "summary": "Research-only paragraph proof for intention permanently to deprive."
+    },
+    {
+      "issue_tag": "criminal_law.fraud",
+      "domain_id": "criminal_law_hk",
+      "viewer_node_ids": [
+        "crim_fraud"
+      ],
+      "doctrine_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "flow_step_ids": [],
+      "query_ids": [],
+      "demo_query": "",
+      "label": "Fraud",
+      "summary": "Research-only fraud/deception boundary evidence."
+    },
+    {
+      "issue_tag": "criminal_law.deception",
+      "domain_id": "criminal_law_hk",
+      "viewer_node_ids": [
+        "crim_fraud"
+      ],
+      "doctrine_node_ids": [
+        "criminal_law_hk.deception"
+      ],
+      "flow_step_ids": [],
+      "query_ids": [],
+      "demo_query": "",
+      "label": "Deception",
+      "summary": "Research-only deception-linked evidence."
+    },
+    {
+      "issue_tag": "criminal_procedure.bail",
+      "domain_id": "criminal_procedure_hk",
+      "viewer_node_ids": [
+        "bail_factors",
+        "bail_right_to_bail",
+        "bail_pending_appeal"
+      ],
+      "doctrine_node_ids": [
+        "criminal_procedure_hk.bail"
+      ],
+      "flow_step_ids": [
+        "bail_flow_step3",
+        "bail_flow_step4",
+        "bail_flow_step5"
+      ],
+      "query_ids": [
+        "D"
+      ],
+      "demo_query": "What bail factors matter in a theft or dishonesty-related case?",
+      "label": "Bail",
+      "summary": "Research-only paragraph proof for bail/procedure issues in the frozen PR #6 sample."
+    }
+  ]
+}

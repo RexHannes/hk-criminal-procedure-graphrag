@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
+const { viewerCaseCorpusEvidenceForNode } = require("../src/case_graph/viewer_case_corpus_evidence");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -52,6 +53,23 @@ function findStaticNode(nodeId) {
 }
 
 function noEvidencePayload(node, extraWarnings = []) {
+  const viewerEvidence = viewerCaseCorpusEvidenceForNode(node.doctrine_node_id);
+  if (viewerEvidence.length) {
+    const split = splitEvidence(viewerEvidence);
+    return {
+      doctrine_node_id: node.doctrine_node_id,
+      source_node_id: node.source_node_id,
+      title: node.title,
+      node_type: node.node_type,
+      domain_id: node.domain_id,
+      coverage_status: "paragraph_verified",
+      warnings: Array.from(new Set(["pr6_viewer_case_corpus_fallback", "research_only", "lawyer_review_required", ...extraWarnings])),
+      evidence: viewerEvidence,
+      candidate_evidence: split.candidate,
+      verified_evidence: viewerEvidence,
+      answer_safe_evidence: [],
+    };
+  }
   const localEvidence = localCaseFruitEvidenceForNode(node.doctrine_node_id).map(item => {
     if (item.answer_layer_status === "candidate_only" && item.source_url && item.para_no && (item.paragraph_text || item.supporting_quote || item.proposition_text)) {
       return {
@@ -192,6 +210,25 @@ module.exports = async function handler(req, res) {
   const node = findStaticNode(nodeId);
   if (!node) {
     res.status(404).json({ error: "doctrine_node_not_found", doctrine_node_id: nodeId });
+    return;
+  }
+
+  const viewerEvidence = viewerCaseCorpusEvidenceForNode(node.doctrine_node_id);
+  if (viewerEvidence.length) {
+    const split = splitEvidence(viewerEvidence);
+    res.status(200).json({
+      doctrine_node_id: node.doctrine_node_id,
+      source_node_id: node.source_node_id,
+      title: node.title,
+      node_type: node.node_type,
+      domain_id: node.domain_id,
+      coverage_status: "paragraph_verified",
+      warnings: Array.from(new Set(["pr6_viewer_case_corpus_fallback", "research_only", "lawyer_review_required"])),
+      evidence: viewerEvidence,
+      candidate_evidence: split.candidate,
+      verified_evidence: viewerEvidence,
+      answer_safe_evidence: [],
+    });
     return;
   }
 

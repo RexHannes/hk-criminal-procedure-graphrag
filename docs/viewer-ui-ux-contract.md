@@ -46,6 +46,7 @@ If adding verified case-law demo material, add it as one of:
 - a direct route that visually matches the existing viewer.
 
 Do not replace `/viewer/` with a standalone raw demo unless explicitly instructed.
+Do not iframe a separate proof page as the main solution. The primary `/viewer/` experience must render verified evidence natively through the existing workspace cards, inspector, badges, and source panels.
 
 ## 4. Legacy Graph Labelling Rule
 
@@ -90,6 +91,7 @@ Before finishing any viewer task, check:
 - new feature is easy to find;
 - no raw JSON is visible as main content;
 - no giant markdown wall is visible as main content;
+- no iframe is used as the primary verified demo inside `/viewer/`;
 - source links and quotes are readable;
 - layout is readable at desktop width;
 - old graph is labelled accurately if unverified.
@@ -110,6 +112,7 @@ For viewer changes, run or create checks that verify:
 - `answer_safe=false` is visible;
 - unsupported query abstention is visible;
 - raw JSON is not exposed as primary UI.
+- iframe-based proof-page embedding is absent from the main `/viewer/` demo.
 
 Current PR #6 viewer checks:
 

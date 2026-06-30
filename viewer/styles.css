@@ -168,11 +168,13 @@ a { color: inherit; }
   border: 1px solid rgba(79, 107, 81, .28);
   color: var(--verified);
   background: var(--verified-bg);
+  font-family: var(--sans);
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: .03em;
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
 }
 .verified-demo-chip:hover { border-color: var(--verified); }
 
@@ -335,6 +337,16 @@ a { color: inherit; }
   text-decoration: none;
   border-bottom: 1px solid rgba(79, 107, 81, .32);
 }
+.inline-link {
+  border: 0;
+  border-bottom: 1px solid rgba(79, 107, 81, .32);
+  background: transparent;
+  color: var(--verified);
+  font: inherit;
+  font-weight: 650;
+  padding: 0;
+  cursor: pointer;
+}
 
 .case-demo-shell {
   min-height: 620px;
@@ -368,13 +380,70 @@ a { color: inherit; }
   font-weight: 650;
   text-decoration: none;
 }
-.case-demo-frame {
-  display: block;
-  width: 100%;
-  height: min(820px, calc(100vh - 230px));
-  min-height: 580px;
-  border: 0;
+.case-demo-hero {
+  margin: 14px;
+}
+.case-demo-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.case-demo-metric {
+  border: 1px solid var(--hairline-soft);
+  border-radius: 7px;
   background: var(--ivory);
+  padding: 9px 10px;
+}
+.case-demo-metric span {
+  display: block;
+  color: var(--faded);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.case-demo-metric strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1;
+}
+.case-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0 14px 14px;
+}
+.case-demo-query-card {
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: var(--panel);
+  padding: 12px;
+  min-width: 0;
+}
+.case-demo-query-card .fruit-list {
+  max-height: 560px;
+  overflow: auto;
+  padding-right: 2px;
+}
+.case-demo-memo {
+  color: var(--umber);
+  font-size: 12.5px;
+  line-height: 1.45;
+  margin-top: -4px;
+}
+.case-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+  margin: 10px 0;
+}
+.case-demo-unsupported {
+  background: var(--parchment);
 }
 
 /* chips */
@@ -1027,6 +1096,8 @@ a { color: inherit; }
 .piw-governance { margin-top: 12px; }
 
 @media (max-width: 880px) {
+  .case-demo-grid,
+  .case-demo-metrics,
   .piw-grid,
   .piw-applied-grid {
     grid-template-columns: 1fr;

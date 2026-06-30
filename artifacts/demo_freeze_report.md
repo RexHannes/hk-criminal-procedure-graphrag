@@ -77,16 +77,17 @@ Generated: 2026-06-30T00:00:00.000Z
 - Current PR preview URL source: Use the exact Vercel Preview URL recorded in the PR #6 body and GitHub deployment status for the current head commit.
 - Production target URL after merge/promotion: https://hk-criminal-procedure-graphrag.vercel.app/viewer/
 - Polished workspace route: /viewer/
-- Verified case-corpus route: /viewer/case_corpus_demo.html
-- Direct verified case-corpus route: /viewer/case_corpus_demo.html
+- Verified case-corpus route: Native "Verified Case Demo" workspace view inside /viewer/
+- Direct verified case-corpus fallback route: /viewer/case_corpus_demo.html
 - Seed graph viewer route: /viewer/index_legacy.html
-- Page to show: For the unmerged draft PR, open the Vercel Preview deployment at /viewer/ to show the polished Legal Graph-SOP Workspace. Then click Verified Case Demo, or open /viewer/case_corpus_demo.html directly, for the source-proofed paragraph-linked case-law demo.
+- Page to show: For the unmerged draft PR, open the Vercel Preview deployment at /viewer/ to show the polished Legal Graph-SOP Workspace. Then click Verified Case Demo in the sidebar to show native source-proofed paragraph-linked cards, inspector proof, and AI Inquiry evidence. Use /viewer/case_corpus_demo.html only as a secondary fallback proof route.
 - Seed graph warning: Graph/domain views are seed-map research UI unless the source-proofed Verified Case Demo is opened. They are not the PR #6 paragraph-linked case-law authority view and must not be presented as verified authority.
 
 ## Safe Demo Instructions
 
 - Open /viewer/ on the current Vercel Preview deployment to show the polished Legal Graph-SOP Workspace.
-- Use the Verified Case Demo sidebar entry/card, or open /viewer/case_corpus_demo.html directly, for the source-proofed case-law demo.
+- Use the Verified Case Demo sidebar entry/card for the source-proofed case-law demo; it renders natively inside the original Fable workspace, not as an iframe.
+- Keep /viewer/case_corpus_demo.html as a secondary fallback proof route only.
 - Point to the 120-case sample metrics and the 344 paragraph/proposition/principle card counts.
 - Open at least one HKLII/LegalRef paragraph URL with a #p anchor from the demo output.
 - State that every supported demo remains answer_safe=false and lawyer-review-required.
