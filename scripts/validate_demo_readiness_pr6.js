@@ -13,7 +13,7 @@ const TARGET_MINIMUMS = {
   "criminal_procedure.bail": 15,
 };
 
-const SAFE_DEMO_CLAIM = "The system demonstrates a source-proofed, research-only HK criminal-law case-law assistant over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not final legal advice and remains lawyer-review-required.";
+const SAFE_DEMO_CLAIM = "The system demonstrates a source-linked HK criminal-law case-law research prototype over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, exact quotes, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not professional legal advice; professional certification is a later HITL product step.";
 
 function fail(message) {
   errors.push(message);
@@ -75,7 +75,7 @@ function validateFreezeReport({ status, coverage, retrieval }) {
     "10k answer-safe propositions",
     "whole HK legal RAG solved",
     "production legal advice",
-    "lawyer-reviewed current treatment",
+    "professionally certified current treatment",
     "automated OCR/PDF/image/audio/video evidence analysis",
   ]) {
     if (!(report.forbidden_claims || []).includes(forbidden)) fail(`demo freeze report missing forbidden claim: ${forbidden}`);
@@ -156,8 +156,9 @@ function validateQueryPack() {
     else {
       assertEqual(query.expected_issue_id, issueId, `demo query ${query.id} issue id`);
       assertEqual(query.should_abstain, shouldAbstain, `demo query ${query.id} abstention`);
-      assertEqual(query.expected_answer_safe, false, `demo query ${query.id} answer_safe`);
-      assertEqual(query.expected_needs_lawyer_review, true, `demo query ${query.id} lawyer review`);
+      assertEqual(query.expected_answer_mode, "research_prototype", `demo query ${query.id} answer mode`);
+      assertEqual(query.expected_lawyer_review_status, "unreviewed", `demo query ${query.id} quiet review metadata`);
+      assertEqual(query.expected_professional_advice_certified, false, `demo query ${query.id} professional certification`);
     }
     if (!md.includes(query.query)) fail(`demo query pack markdown missing query ${query.id}`);
   }
@@ -230,15 +231,16 @@ function validateDemoOutputsFresh({ status }) {
   assertEqual(theftPayload.audit_trail?.case_corpus_audit?.registry_case_count, status.registry_case_count, "demo output registry count");
   assertEqual(theftPayload.audit_trail?.case_corpus_audit?.paragraph_card_count, status.paragraph_card_count, "demo output paragraph count");
   assertEqual(theftPayload.audit_trail?.case_corpus_audit?.principle_card_count, status.principle_card_count, "demo output principle count");
-  assertEqual(theftPayload.product_mode?.answer_safe, false, "demo output answer_safe");
-  assertEqual(theftPayload.product_mode?.needs_lawyer_review, true, "demo output lawyer review");
+  assertEqual(theftPayload.product_mode?.answer_mode, "research_prototype", "demo output answer mode");
+  assertEqual(theftPayload.product_mode?.lawyer_review_status, "unreviewed", "demo output quiet review metadata");
+  assertEqual(theftPayload.product_mode?.professional_advice_certified, false, "demo output professional certification");
 
   const unsupported = readText("artifacts/demo_outputs/unsupported_landlord_query.md");
   if (!unsupported.includes("unsupported_general_query")) fail("unsupported landlord demo no longer abstains");
   if (/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\//.test(unsupported)) fail("unsupported landlord demo cites case-corpus authority");
   const bail = readText("artifacts/demo_outputs/bail_research_memo.md");
   if (!bail.includes("criminal_procedure.bail")) fail("bail demo missing issue mapping");
-  if (!bail.includes("Answer safe: `false`")) fail("bail demo must show answer_safe=false");
+  if (!bail.includes("Professional advice certified: `false`")) fail("bail demo must show professional certification boundary");
   if ((bail.match(/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\/[^#\s]+#p\d+/g) || []).length < 5) {
     fail("bail demo should show at least five paragraph URLs");
   }

@@ -95,7 +95,8 @@ assertIncludes(workspace, "case-demo-native", "workspace native verified demo");
 assertIncludes(workspace, "renderCaseFruitCard", "workspace native source cards");
 assertIncludes(workspace, "Case Fruits / Paragraph Proof", "workspace inspector source panel");
 assertIncludes(workspace, "caseEvidenceInquiryMatches", "workspace inquiry evidence bridge");
-assertIncludes(workspace, "Paragraph-linked sample", "workspace mapped-node proof label");
+assertIncludes(workspace, "Source-linked", "workspace mapped-node proof label");
+assertIncludes(workspace, "Paragraph proof", "workspace mapped-node proof label");
 assertIncludes(workspace, "Legacy seed graph - not the verified case-law demo.", "workspace seed graph banner");
 assertIncludes(workspace, "Unresolved seed cases excluded from demo", "workspace excluded seed audit label");
 if (/case-demo-frame|<iframe/i.test(workspace)) {
@@ -107,7 +108,7 @@ if (/href=["']case_corpus_demo\.html["'][^>]*Verified Case Demo/i.test(viewerInd
 if (/Static proof fallback for smoke tests|Source-proofed HK criminal-law research demo/.test(viewerIndex)) {
   fail("/viewer/ must be the polished workspace shell, not the raw verified proof page");
 }
-if (/Verification pending|Source check pending|needs verify|Linked authority/i.test(workspace)) {
+if (/Verification pending|Source check pending|Human review required|Lawyer review required|lawyer-review-required|answer_safe=false|needs_lawyer_review|needs verify|Linked authority/i.test(workspace)) {
   fail("/viewer/ must not expose old pending-verification authority labels");
 }
 if (/caseSeeds\.slice\(|Seed \/ graph references/i.test(workspace)) {
@@ -143,12 +144,9 @@ if (!/https?:\/\/(?:www\.)?(?:hklii\.hk|legalref\.judiciary\.hk)\//i.test(verifi
 }
 if (!/#p\d+/i.test(verifiedDemo)) fail("verified demo/artifacts must contain at least one #p paragraph anchor");
 if (!/(Exact quote:?|exact_quote)/i.test(verifiedDemo)) fail("verified demo/artifacts must contain at least one Exact quote");
-if (!/(answer_safe=false|Answer safe:\s*`false`|Answer safe:\s*false|"answer_safe":\s*false)/i.test(verifiedDemo)) {
-  fail("verified demo/artifacts must show answer_safe=false");
-}
-if (!/(lawyer-review-required|Lawyer review required|lawyer_review_required|needs_lawyer_review=true|needs_lawyer_review":\s*true)/i.test(verifiedDemo)) {
-  fail("verified demo/artifacts must show lawyer-review-required label");
-}
+if (!/(Source-linked|Public judgment|Paragraph proof)/i.test(verifiedDemo)) fail("verified demo/artifacts must show clean source-linked labels");
+if (!/(Research prototype|research_prototype)/i.test(verifiedDemo)) fail("verified demo/artifacts must show research prototype mode");
+if (!/(professional_advice_certified=false|"professional_advice_certified":\s*false)/i.test(verifiedDemo)) fail("verified demo/artifacts must show quiet professional certification metadata");
 if (!/(unsupported_general_query|unsupported landlord|Unsupported Landlord Query)/i.test(verifiedDemo)) {
   fail("verified demo/artifacts must include unsupported query abstention demo");
 }
@@ -158,9 +156,7 @@ if (!/(abstain|abstention|No case-by-case authority is attached)/i.test(verified
 if (!/(Demoted principles|demoted principles|demoted_principle_count|247)/i.test(verifiedDemo)) {
   fail("verified demo/artifacts must show demoted-principle boundary");
 }
-if (/(answer_safe:\s*true|Answer safe:\s*`true`|"answer_safe":\s*true)/i.test(verifiedDemo)) {
-  fail("verified demo must not show answer_safe=true");
-}
+if (/(Human review required|Lawyer review required|lawyer-review-required|answer_safe=false|needs_lawyer_review|answer_safe:\s*true|Answer safe:\s*`true`|"answer_safe":\s*true)/i.test(verifiedDemo)) fail("verified demo must not show old answer-safe/lawyer-review labels");
 
 if (errors.length) {
   console.error("Public demo source-link validation failed:");

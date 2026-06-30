@@ -6,11 +6,11 @@ For the current unmerged PR, open the Vercel Preview URL recorded in PR #6 and u
 
 After merge or production promotion, open: https://hk-criminal-procedure-graphrag.vercel.app/viewer/
 
-The verified proof is now integrated natively into the original Fable workspace. Inside `/viewer/`, click the sidebar entry labelled "Verified Case Demo" to open the source-proofed case-law module.
+For the direct verified case-law proof view, open: /viewer/case_corpus_demo.html
 
-Secondary fallback route only: `/viewer/case_corpus_demo.html`
+Inside the workspace, click the sidebar entry labelled "Verified Case Demo" to open the source-proofed case-law module.
 
-Do not present graph/domain seed-map views as the verified case-law demo. Graph/domain views are seed-map research UI unless the source-proofed Verified Case Demo is opened. They are not the PR #6 paragraph-linked case-law authority view and must not be presented as verified authority. Do not iframe or navigate away as the main demo; show the native workspace cards, inspector proof panel, and AI Inquiry evidence trail.
+Do not present graph/domain seed-map views as the verified case-law demo. Graph/domain views are seed-map research UI unless the source-proofed Verified Case Demo is opened. They are not the PR #6 paragraph-linked case-law authority view and must not be presented as verified authority.
 
 ## Timing
 
@@ -30,7 +30,7 @@ The frozen sample has 120 targeted public Hong Kong criminal-law cases, 344 para
 
 ## 1:45-2:45 - Why Source Proof Matters
 
-When the system cites a case, it should show a public paragraph URL and an exact quote path. That gives a lawyer or reviewer something concrete to inspect. It also lets the product say no when the source is missing, private, candidate-only, recall-only, or outside the loaded issue map.
+When the system cites a case, it should show a public paragraph URL and an exact quote path. That gives the user something concrete to inspect. It also lets the product say no when the source is missing, private, unverified, recall-only, or outside the loaded issue map.
 
 ## 2:45-3:30 - How Demoted Principles Prevent Hallucination
 
@@ -42,29 +42,25 @@ The system now marks each extracted principle as pass, demoted, or needs review.
 
 Ask: "If I forgot to pay at a shop, what are the dishonesty issues?"
 
-Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say `answer_safe=false` with lawyer review required.
-
-Workspace click path: open Verified Case Demo, then use "Open in inspector" on the Theft/dishonesty card. The original inspector should show Case Fruits / Paragraph Proof with HKLII paragraph links.
+Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say it is source-linked research-prototype analysis with professional_advice_certified=false.
 
 ### B. Intention permanently to deprive
 
 Ask: "What does intention permanently to deprive mean in theft?"
 
-Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say `answer_safe=false` with lawyer review required.
+Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say it is source-linked research-prototype analysis with professional_advice_certified=false.
 
 ### C. Belonging to another
 
 Ask: "How does Hong Kong theft law handle property belonging to another?"
 
-Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say `answer_safe=false` with lawyer review required.
+Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say it is source-linked research-prototype analysis with professional_advice_certified=false.
 
 ### D. Bail
 
 Ask: "What bail factors matter in a theft or dishonesty-related case?"
 
-Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say `answer_safe=false` with lawyer review required.
-
-Workspace click path: open Verified Case Demo, then use "Open in inspector" on the Bail card, or open Doctrine Map → Bail → Factors in Bail Decisions. The original inspector should show paragraph-linked bail evidence.
+Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say it is source-linked research-prototype analysis with professional_advice_certified=false.
 
 ## 5:15-6:00 - Unsupported Query
 
@@ -72,9 +68,9 @@ Ask: "My landlord increased my rent. What should I do?"
 
 Expected explanation: the system should abstain. It should not borrow theft or dishonesty cases for a landlord/rent question. This is a feature, not a failure: it shows wrong-domain leakage is being controlled.
 
-## 6:00-6:45 - How To Explain `answer_safe=false`
+## 6:00-6:45 - How To Explain Research Prototype Mode
 
-`answer_safe=false` means the system is doing legal research triage, not final advice. It can show useful authorities and issue maps, but a lawyer still needs to verify current treatment, ratio/obiter status, the full judgment, and the user's actual evidence before relying on it.
+`research_prototype` means the system can retrieve, quote, summarize and apply public paragraph-linked authorities for research analysis, but professional_advice_certified remains false until a later HITL certification step checks current treatment, ratio/obiter status, the full judgment, and the user's actual evidence.
 
 ## Next Roadmap
 
@@ -82,12 +78,12 @@ The next step is a separate 500-case scaling PR only after review gates remain g
 
 ## Safe Demo Claim
 
-> The system demonstrates a source-proofed, research-only HK criminal-law case-law assistant over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not final legal advice and remains lawyer-review-required.
+> The system demonstrates a source-linked HK criminal-law case-law research prototype over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, exact quotes, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not professional legal advice; professional certification is a later HITL product step.
 
 ## Forbidden Claims
 
 - 10k answer-safe propositions
 - whole HK legal RAG solved
 - production legal advice
-- lawyer-reviewed current treatment
+- professionally certified current treatment
 - automated OCR/PDF/image/audio/video evidence analysis

@@ -3,7 +3,7 @@
   "generated_at": "2026-06-30T00:00:00.000Z",
   "pr_number": 6,
   "branch": "codex/investor-recall-25k-path",
-  "safe_demo_claim": "The system demonstrates a source-proofed, research-only HK criminal-law case-law assistant over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not final legal advice and remains lawyer-review-required.",
+  "safe_demo_claim": "The system demonstrates a source-linked HK criminal-law case-law research prototype over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, exact quotes, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not professional legal advice; professional certification is a later HITL product step.",
   "queries": [
     {
       "id": "A",
@@ -18,8 +18,9 @@
       "expected_source_proof_behaviour": "Return public case-law research only when paragraph anchors, proposition quote support and usable principle filtering pass.",
       "case_corpus_should_be_used": true,
       "should_abstain": false,
-      "expected_answer_safe": false,
-      "expected_needs_lawyer_review": true
+      "expected_answer_mode": "research_prototype",
+      "expected_lawyer_review_status": "unreviewed",
+      "expected_professional_advice_certified": false
     },
     {
       "id": "B",
@@ -33,8 +34,9 @@
       "expected_source_proof_behaviour": "Return only paragraph-proofed public cases mapped to intention permanently to deprive or theft.",
       "case_corpus_should_be_used": true,
       "should_abstain": false,
-      "expected_answer_safe": false,
-      "expected_needs_lawyer_review": true
+      "expected_answer_mode": "research_prototype",
+      "expected_lawyer_review_status": "unreviewed",
+      "expected_professional_advice_certified": false
     },
     {
       "id": "C",
@@ -48,8 +50,9 @@
       "expected_source_proof_behaviour": "Return only paragraph-proofed public cases mapped to belonging-to-another or theft.",
       "case_corpus_should_be_used": true,
       "should_abstain": false,
-      "expected_answer_safe": false,
-      "expected_needs_lawyer_review": true
+      "expected_answer_mode": "research_prototype",
+      "expected_lawyer_review_status": "unreviewed",
+      "expected_professional_advice_certified": false
     },
     {
       "id": "D",
@@ -63,8 +66,9 @@
       "expected_source_proof_behaviour": "Return only paragraph-proofed public cases mapped to bail; do not convert bail/procedure material into liability advice.",
       "case_corpus_should_be_used": true,
       "should_abstain": false,
-      "expected_answer_safe": false,
-      "expected_needs_lawyer_review": true
+      "expected_answer_mode": "research_prototype",
+      "expected_lawyer_review_status": "unreviewed",
+      "expected_professional_advice_certified": false
     },
     {
       "id": "E",
@@ -78,8 +82,9 @@
       "expected_source_proof_behaviour": "Abstain from criminal-law case-corpus authority and do not cite theft/dishonesty cases.",
       "case_corpus_should_be_used": false,
       "should_abstain": true,
-      "expected_answer_safe": false,
-      "expected_needs_lawyer_review": true
+      "expected_answer_mode": "research_prototype",
+      "expected_lawyer_review_status": "unreviewed",
+      "expected_professional_advice_certified": false
     }
   ]
 }

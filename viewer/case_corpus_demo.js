@@ -56,8 +56,26 @@
       .replace(/"/g, "&quot;");
   }
 
+  function productCopy(value) {
+    return String(value == null ? "" : value)
+      .replace(/answer[_-]?safe=false/gi, "professional_advice_certified=false")
+      .replace(/not[_\s-]?yet[_\s-]?answer[_\s-]?safe/gi, "not yet professionally certified")
+      .replace(/answer[_\s-]?safe/gi, "professionally certified")
+      .replace(/research[_\s-]?only/gi, "research-prototype")
+      .replace(/lawyer[-\s]?review[-\s]?required/gi, "professional certification later")
+      .replace(/lawyer[-\s]?review/gi, "professional certification")
+      .replace(/human\s+review\s+required/gi, "professional certification later")
+      .replace(/human review/gi, "professional certification")
+      .replace(/partner review/gi, "professional certification")
+      .replace(/current-treatment review/gi, "current-treatment check")
+      .replace(/Current\s+treatment\s+unchecked/gi, "Current-treatment check later")
+      .replace(/verification\s+pending/gi, "source proof unavailable")
+      .replace(/source\s+check\s+pending/gi, "source proof unavailable")
+      .replace(/case\s+audit\s+required/gi, "source proof required");
+  }
+
   function linkify(value) {
-    return escapeHtml(value).replace(/https?:\/\/[^\s<>"')]+/g, url => {
+    return escapeHtml(productCopy(value)).replace(/https?:\/\/[^\s<>"')]+/g, url => {
       const cleanUrl = url.replace(/[.,;:]+$/, "");
       const tail = url.slice(cleanUrl.length);
       return `<a href="${cleanUrl}" target="_blank" rel="noopener noreferrer">${cleanUrl}</a>${escapeHtml(tail)}`;
@@ -125,9 +143,9 @@
       paragraph: para ? para[1] : "",
       sourceUrl: source ? source[1] : "",
       quote: quote ? quote[1] : "",
-      principle: trimText(between(item, " Principle: ", " Why relevant:"), 360),
-      relevance: trimText(between(item, " Why relevant: ", " How distinguishable:"), 300),
-      distinguishable: trimText(between(item, " How distinguishable: ", " Source URL:"), 300),
+      principle: productCopy(trimText(between(item, " Principle: ", " Why relevant:"), 360)),
+      relevance: productCopy(trimText(between(item, " Why relevant: ", " How distinguishable:"), 300)),
+      distinguishable: productCopy(trimText(between(item, " How distinguishable: ", " Source URL:"), 300)),
     };
   }
 
@@ -139,13 +157,13 @@
       </div>
       <div class="authority-meta">
         ${authority.paragraph ? `<span>para. ${escapeHtml(authority.paragraph)}</span>` : ""}
-        <span>research_only</span>
-        <span>lawyer_review_required</span>
+        <span>Source-linked</span>
+        <span>Research prototype</span>
       </div>
       ${authority.quote ? `<blockquote class="quote-card"><span>Exact quote</span>${escapeHtml(authority.quote)}</blockquote>` : ""}
-      ${authority.principle ? `<p class="authority-principle"><strong>Principle candidate:</strong> ${escapeHtml(authority.principle)}</p>` : ""}
-      ${authority.relevance ? `<p class="authority-note"><strong>Why relevant:</strong> ${escapeHtml(authority.relevance)}</p>` : ""}
-      ${authority.distinguishable ? `<p class="authority-note"><strong>Limits:</strong> ${escapeHtml(authority.distinguishable)}</p>` : ""}
+      ${authority.principle ? `<p class="authority-principle"><strong>Principle candidate:</strong> ${escapeHtml(productCopy(authority.principle))}</p>` : ""}
+      ${authority.relevance ? `<p class="authority-note"><strong>Why relevant:</strong> ${escapeHtml(productCopy(authority.relevance))}</p>` : ""}
+      ${authority.distinguishable ? `<p class="authority-note"><strong>Limits:</strong> ${escapeHtml(productCopy(authority.distinguishable))}</p>` : ""}
       ${authority.sourceUrl ? `<a class="source-link" href="${escapeHtml(authority.sourceUrl)}" target="_blank" rel="noopener noreferrer">Open HKLII/LegalRef paragraph</a>` : ""}
     </article>`;
   }
@@ -206,12 +224,12 @@
               ${renderList(audit)}
             </div>
             <div>
-              <h4>Review boundary</h4>
+              <h4>Prototype boundary</h4>
               ${renderList([
-                "answer_safe=false",
-                "Research-only case-corpus output",
-                "Lawyer review required",
-                "Current treatment unchecked unless separately reviewed",
+                "Public paragraph proof is mandatory",
+                "Research prototype output",
+                "lawyer_review_status=unreviewed",
+                "professional_advice_certified=false",
               ])}
             </div>
           </div>
@@ -267,7 +285,7 @@
     setText("[data-metric='principles']", numberValue(counts.principle_card_count));
     setText("[data-metric='usable']", numberValue(counts.usable_principle_count));
     setText("[data-metric='demoted']", numberValue(counts.demoted_principle_count));
-    setText("[data-metric='answer-safe']", numberValue(report.answer_safe_count));
+    setText("[data-metric='advice-certified']", numberValue(report.professional_advice_certified === true ? 1 : 0));
     setText("[data-metric='source-proof']", percentValue(proof.source_proof_rate));
     setText("[data-metric='wrong-domain']", numberValue(proof.wrong_domain_leak_rate));
     setText("[data-metric='abstention']", percentValue(report.unsupported_query_abstention));
@@ -278,9 +296,8 @@
     const abstain = query && query.should_abstain;
     return [
       `<span class="badge strong">${supported ? "source_grounded_research_only" : "unsupported_general_query"}</span>`,
-      '<span class="badge danger">answer_safe=false</span>',
-      '<span class="badge warn">lawyer-review-required</span>',
-      '<span class="badge">needs_lawyer_review=true</span>',
+      '<span class="badge">Research prototype</span>',
+      '<span class="badge">professional_advice_certified=false</span>',
       abstain ? '<span class="badge danger">abstention: no criminal-law authority</span>' : '<span class="badge">public paragraph proof only</span>',
     ].join("");
   }

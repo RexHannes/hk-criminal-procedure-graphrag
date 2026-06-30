@@ -78,8 +78,9 @@ function validateCasePrinciples(cards, errors) {
 
 function validateAnswer(label, payload, cards, errors) {
   const headingList = headings(payload);
-  assert(payload.product_mode?.needs_lawyer_review === true, `${label}: missing needs_lawyer_review`, errors);
-  assert(payload.product_mode?.answer_safe === false, `${label}: answer_safe must be false`, errors);
+  assert(payload.product_mode?.answer_mode === "research_prototype", `${label}: missing research_prototype answer mode`, errors);
+  assert(payload.product_mode?.lawyer_review_status === "unreviewed", `${label}: missing quiet lawyer_review_status`, errors);
+  assert(payload.product_mode?.professional_advice_certified === false, `${label}: professional_advice_certified must be false`, errors);
   assert(payload.legal_research_answer?.source_status?.case_recall_only_allowed_as_answer_authority === false, `${label}: recall-only authority not blocked`, errors);
   assert(!blob({
     markdown: payload.answer_markdown,

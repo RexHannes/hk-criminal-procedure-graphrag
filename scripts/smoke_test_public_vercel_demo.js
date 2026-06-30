@@ -63,7 +63,7 @@ function validateWorkspace(html, js = "") {
   if (!/caseEvidenceInquiryMatches/i.test(combined)) fail("workspace missing native AI Inquiry evidence bridge");
   if (!/Unresolved seed cases excluded from demo/i.test(combined)) fail("workspace missing excluded seed audit boundary");
   if (/case-demo-frame|<iframe/i.test(combined)) fail("workspace must not iframe the verified demo route as the main solution");
-  if (/Verification pending|Source check pending|needs verify|Linked authority/i.test(combined)) {
+  if (/Verification pending|Source check pending|Human review required|Lawyer review required|lawyer-review-required|answer_safe=false|needs_lawyer_review|needs verify|Linked authority/i.test(combined)) {
     fail("workspace still contains old pending-verification authority language");
   }
   if (/caseSeeds\.slice\(|Seed \/ graph references/i.test(combined)) {
@@ -82,12 +82,9 @@ function validateVerifiedDemo(combined, shellText) {
   if (!hasSourceLinks) fail("verified route has no HKLII/LegalRef links");
   if (!/#p\d+/i.test(combined)) fail("deployed demo has no paragraph #p anchors");
   if (!/(Exact quote:?|exact_quote)/i.test(combined)) fail("deployed demo has no exact quote proof");
-  if (!/(answer_safe=false|Answer safe:\s*`false`|Answer safe:\s*false|"answer_safe":\s*false|"expected_answer_safe":\s*false)/i.test(combined)) {
-    fail("deployed demo missing answer_safe=false boundary");
-  }
-  if (!/(lawyer-review-required|Lawyer review required|lawyer_review_required|needs_lawyer_review=true|needs_lawyer_review":\s*true)/i.test(combined)) {
-    fail("deployed demo missing lawyer-review-required boundary");
-  }
+  if (!/(Source-linked|Public judgment|Paragraph proof)/i.test(combined)) fail("deployed demo missing clean source-linked labels");
+  if (!/(Research prototype|research_prototype)/i.test(combined)) fail("deployed demo missing research prototype label");
+  if (!/(professional_advice_certified=false|"professional_advice_certified":\s*false)/i.test(combined)) fail("deployed demo missing quiet professional certification metadata");
   if (!/(unsupported_general_query|Unsupported Landlord Query|unsupported landlord|landlord\/rent query abstains)/i.test(combined)) {
     fail("deployed demo missing unsupported query demo");
   }
@@ -100,9 +97,7 @@ function validateVerifiedDemo(combined, shellText) {
   if (/markdownToHtml|data-demo-markdown|```json|Static proof fallback for smoke tests/i.test(shellText)) {
     fail("verified route appears to expose raw markdown/JSON/audit dump as the main UI");
   }
-  if (/(answer_safe:\s*true|Answer safe:\s*`true`|"answer_safe":\s*true)/i.test(combined)) {
-    fail("deployed demo must not show answer_safe=true");
-  }
+  if (/(Human review required|Lawyer review required|lawyer-review-required|answer_safe=false|needs_lawyer_review|answer_safe:\s*true|Answer safe:\s*`true`|"answer_safe":\s*true)/i.test(combined)) fail("deployed demo must not show old answer-safe/lawyer-review labels");
 }
 
 (async () => {

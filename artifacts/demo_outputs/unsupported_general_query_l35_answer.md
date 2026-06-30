@@ -3,8 +3,9 @@
 ## Product Mode
 
 - Mode: `unsupported_general_query`
-- Answer safe: `false`
-- Lawyer review required: `true`
+- Answer mode: `research_prototype`
+- Professional advice certified: `false`
+- HITL certification status: `unreviewed`
 
 ## Case-Corpus Research
 
@@ -32,7 +33,7 @@
 - No uploaded evidence text was supplied for this case-corpus memo. User facts remain separate from legal authority.
 
 ## Missing Facts
-- Supported issue id, paragraph proof, proposition/principle extraction and lawyer review.
+- Supported issue id, paragraph proof, and proposition/principle extraction.
 
 ## Practical Next Steps
 - Build or load a source-grounded vertical pack before answering.
@@ -43,8 +44,8 @@
 - L2 paragraph cards: 344
 - L3 propositions/principles: 688
 - L3.5 digests returned: 0
-- L4 answer-safe propositions: not implemented.
-- All case-corpus outputs are research_only / lawyer_review_required.
+- Answer mode: research prototype.
+- Professional advice certified: false.
 
 ## Full Answer Markdown
 
@@ -115,7 +116,7 @@ This query is outside the currently source-gated demo verticals unless a separat
 - No uploaded evidence text was supplied for this case-corpus memo. User facts remain separate from legal authority.
 
 ## Missing Facts
-- Supported issue id, paragraph proof, proposition/principle extraction and lawyer review.
+- Supported issue id, paragraph proof, and proposition/principle extraction.
 
 ## Practical Next Steps
 - Build or load a source-grounded vertical pack before answering.
@@ -126,8 +127,8 @@ This query is outside the currently source-gated demo verticals unless a separat
 - L2 paragraph cards: 344
 - L3 propositions/principles: 688
 - L3.5 digests returned: 0
-- L4 answer-safe propositions: not implemented.
-- All case-corpus outputs are research_only / lawyer_review_required.
+- Answer mode: research prototype.
+- Professional advice certified: false.
 
 ## Request
 

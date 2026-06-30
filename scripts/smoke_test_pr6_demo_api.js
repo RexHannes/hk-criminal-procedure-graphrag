@@ -169,8 +169,9 @@ function validatePayload(query, payload, indexes) {
   if (answerMarkdown.indexOf("{") === 0 || answerMarkdown.indexOf("[") === 0) fail(`${label} raw JSON-first output detected`);
   if (!answerMarkdown.trim().startsWith("#")) fail(`${label} answer_markdown should start with a human-readable heading`);
 
-  if (productMode.answer_safe !== false) fail(`${label} expected answer_safe=false`);
-  if (productMode.needs_lawyer_review !== true) fail(`${label} expected needs_lawyer_review=true`);
+  if (productMode.answer_mode !== "research_prototype") fail(`${label} expected answer_mode=research_prototype`);
+  if (productMode.lawyer_review_status !== "unreviewed") fail(`${label} expected quiet lawyer_review_status=unreviewed`);
+  if (productMode.professional_advice_certified !== false) fail(`${label} expected professional_advice_certified=false`);
 
   if (!(query.expected_product_modes || []).includes(productMode.mode)) {
     fail(`${label} unexpected product mode ${productMode.mode}; expected ${(query.expected_product_modes || []).join(", ")}`);
@@ -187,9 +188,10 @@ function validatePayload(query, payload, indexes) {
   if (!caseMarkdown.includes("Case-by-Case Authorities")) fail(`${label} case-law memo missing case-by-case authorities`);
   if (!caseMarkdown.includes("Source Audit")) fail(`${label} case-law memo missing source audit`);
   if (!caseMarkdown.includes("Exact quote:")) fail(`${label} case-law memo missing exact quote support`);
-  if (!caseMarkdown.includes("research_only")) fail(`${label} case-law memo missing research_only boundary`);
+  if (!/research prototype/i.test(caseMarkdown)) fail(`${label} case-law memo missing research prototype boundary`);
   if (payload.case_law_research?.answer_layer_status !== "research_only") fail(`${label} case-law status is not research_only`);
-  if (payload.case_law_research?.review_status !== "lawyer_review_required") fail(`${label} case-law review status is not lawyer_review_required`);
+  if (payload.case_law_research?.answer_mode !== "research_prototype") fail(`${label} case-law answer mode is not research_prototype`);
+  if (payload.case_law_research?.professional_advice_certified !== false) fail(`${label} case-law professional certification should be false`);
 
   const inferred = audit.inferred_issue_ids || [];
   if (query.expected_issue_id && !inferred.includes(query.expected_issue_id)) {

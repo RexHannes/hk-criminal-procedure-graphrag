@@ -211,7 +211,9 @@ function retrieveHybridCaseCorpus({
         abstain_reason: "no_supported_case_corpus_issue_detected",
         wrong_domain_leak: false,
         answer_safe: false,
-        needs_lawyer_review: true,
+        answer_mode: "research_prototype",
+        lawyer_review_status: "unreviewed",
+        professional_advice_certified: false,
       },
     };
   }
@@ -257,7 +259,9 @@ function retrieveHybridCaseCorpus({
       source_proof_excluded_count: filtered.excluded_results.length,
       returned_case_count: topCases.length,
       answer_safe: false,
-      needs_lawyer_review: true,
+      answer_mode: "research_prototype",
+      lawyer_review_status: "unreviewed",
+      professional_advice_certified: false,
     },
   };
 }

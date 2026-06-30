@@ -1,7 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
-const { viewerCaseCorpusEvidenceForNode } = require("../src/case_graph/viewer_case_corpus_evidence");
+const {
+  viewerCaseCorpusEvidenceForNode,
+  hasPublicParagraphProof: hasNormalizedPublicParagraphProof,
+} = require("../src/case_graph/viewer_case_corpus_evidence");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -63,11 +66,13 @@ function noEvidencePayload(node, extraWarnings = []) {
       node_type: node.node_type,
       domain_id: node.domain_id,
       coverage_status: "paragraph_verified",
-      warnings: Array.from(new Set(["pr6_viewer_case_corpus_fallback", "research_only", "lawyer_review_required", ...extraWarnings])),
+      warnings: Array.from(new Set(["pr6_viewer_case_corpus_fallback", "source_linked_public_judgment", "research_prototype", ...extraWarnings])),
       evidence: viewerEvidence,
-      candidate_evidence: split.candidate,
+      candidate_evidence: [],
       verified_evidence: viewerEvidence,
       answer_safe_evidence: [],
+      answer_mode: "research_prototype",
+      professional_advice_certified: false,
     };
   }
   const localEvidence = localCaseFruitEvidenceForNode(node.doctrine_node_id).map(item => {
@@ -134,7 +139,7 @@ async function firstSupabaseRow(baseUrl, serviceKey, table, query) {
   return Array.isArray(rows) && rows.length ? rows[0] : null;
 }
 
-function hasPublicParagraphProof({ proposition, paragraph, legalCase }) {
+function hasSupabasePublicParagraphProof({ proposition, paragraph, legalCase }) {
   return Boolean(
     (paragraph?.source_url || legalCase?.source_url) &&
     (paragraph?.para_no || proposition?.canonical_para_id) &&
@@ -145,7 +150,7 @@ function hasPublicParagraphProof({ proposition, paragraph, legalCase }) {
 function evidenceLayerStatus({ reviewStatus, proposition, paragraph, legalCase }) {
   if (SAFE_STATUSES.has(reviewStatus)) return "answer_safe";
   if (VERIFIED_STATUSES.has(reviewStatus)) return "paragraph_verified";
-  if (hasPublicParagraphProof({ proposition, paragraph, legalCase })) return "source_verified";
+  if (hasSupabasePublicParagraphProof({ proposition, paragraph, legalCase })) return "source_verified";
   return "candidate_only";
 }
 
@@ -171,7 +176,9 @@ function cleanEvidenceItem({ link, proposition, paragraph, legalCase, reviewItem
     source_verification_status: answerLayerStatus === "source_verified" ? "public_paragraph_linked" : reviewStatus,
     public_source_link_verified: answerLayerStatus === "source_verified" || answerLayerStatus === "paragraph_verified" || answerLayerStatus === "answer_safe",
     answer_layer_status: answerLayerStatus,
-    human_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
+    answer_mode: "research_prototype",
+    lawyer_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
+    professional_advice_certified: false,
     validator_flags: [],
   };
 }
@@ -182,7 +189,7 @@ function splitEvidence(items) {
   const answerSafe = [];
   for (const item of items) {
     if (item.answer_layer_status === "answer_safe") answerSafe.push(item);
-    else if (item.answer_layer_status === "paragraph_verified" || item.answer_layer_status === "source_verified") verified.push(item);
+    else if (item.answer_layer_status === "paragraph_verified" || item.answer_layer_status === "source_verified" || hasNormalizedPublicParagraphProof(item)) verified.push(item);
     else candidate.push(item);
   }
   let coverage = "no_evidence";
@@ -191,7 +198,7 @@ function splitEvidence(items) {
   else if (candidate.length) coverage = "candidate_only";
   const warnings = [];
   if (!items.length) warnings.push("insufficient_authority", "no_verified_paragraph_proof");
-  if (candidate.length && !verified.length && !answerSafe.length) warnings.push("candidate_only", "needs_human_review");
+  if (candidate.length && !verified.length && !answerSafe.length) warnings.push("unverified_candidates_excluded");
   return { coverage, candidate, verified, answerSafe, warnings };
 }
 
@@ -223,11 +230,13 @@ module.exports = async function handler(req, res) {
       node_type: node.node_type,
       domain_id: node.domain_id,
       coverage_status: "paragraph_verified",
-      warnings: Array.from(new Set(["pr6_viewer_case_corpus_fallback", "research_only", "lawyer_review_required"])),
+      warnings: Array.from(new Set(["pr6_viewer_case_corpus_fallback", "source_linked_public_judgment", "research_prototype"])),
       evidence: viewerEvidence,
-      candidate_evidence: split.candidate,
+      candidate_evidence: [],
       verified_evidence: viewerEvidence,
       answer_safe_evidence: [],
+      answer_mode: "research_prototype",
+      professional_advice_certified: false,
     });
     return;
   }

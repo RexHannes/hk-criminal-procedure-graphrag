@@ -10,23 +10,23 @@ const PR_NUMBER = 6;
 const BRANCH = "codex/investor-recall-25k-path";
 const FREEZE_BASELINE_HEAD = "f4e19a81fdd780eb7e685adc3f1a263a023dd935";
 
-const SAFE_DEMO_CLAIM = "The system demonstrates a source-proofed, research-only HK criminal-law case-law assistant over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not final legal advice and remains lawyer-review-required.";
+const SAFE_DEMO_CLAIM = "The system demonstrates a source-linked HK criminal-law case-law research prototype over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, exact quotes, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not professional legal advice; professional certification is a later HITL product step.";
 
 const FORBIDDEN_CLAIMS = [
   "10k answer-safe propositions",
   "whole HK legal RAG solved",
   "production legal advice",
-  "lawyer-reviewed current treatment",
+  "professionally certified current treatment",
   "automated OCR/PDF/image/audio/video evidence analysis",
 ];
 
 const KNOWN_LIMITATIONS = [
   "The PR remains a draft research/demo preview, not a merged production release.",
   "The sample is intentionally frozen at 120 targeted criminal-law cases; this run does not scale to 500, 10k or 25k cases.",
-  "All case-law outputs remain research_only and lawyer_review_required.",
-  "No machine-generated proposition or principle is promoted to answer_safe.",
-  "The three repaired target issues are medium coverage, not broad lawyer-reviewed coverage.",
-  "Current treatment, ratio/obiter classification and final legal advice require later lawyer review.",
+    "All case-law outputs remain in research_prototype mode.",
+    "No machine-generated proposition or principle is professionally certified.",
+    "The three repaired target issues are medium coverage, not broad professionally certified coverage.",
+    "Current treatment, ratio/obiter classification and final legal advice require later professional certification.",
   "Uploaded evidence handling is text/transcript triage only; OCR/PDF/image/audio/video evidence analysis is not implemented.",
   "Private/licensed sources, AI candidates and recall-only cases cannot support answer-layer authority.",
 ];
@@ -46,7 +46,7 @@ const PUBLIC_DEMO = {
     "Use the Verified Case Demo sidebar entry/card, or open /viewer/case_corpus_demo.html directly, for the source-proofed case-law demo.",
     "Point to the 120-case sample metrics and the 344 paragraph/proposition/principle card counts.",
     "Open at least one HKLII/LegalRef paragraph URL with a #p anchor from the demo output.",
-    "State that every supported demo remains answer_safe=false and lawyer-review-required.",
+    "State that every supported demo is source-linked research-prototype analysis with professional_advice_certified=false.",
     "Use the unsupported landlord/rent query to show abstention and wrong-domain control.",
     "Treat graph/domain views as seed-map research UI unless the source-proofed case demo is opened.",
     "Do not use the production URL for the boss/VC demo until the production smoke test passes."
@@ -64,8 +64,9 @@ const DEMO_QUERIES = [
     expected_source_proof_behaviour: "Return public case-law research only when paragraph anchors, proposition quote support and usable principle filtering pass.",
     case_corpus_should_be_used: true,
     should_abstain: false,
-    expected_answer_safe: false,
-    expected_needs_lawyer_review: true,
+    expected_answer_mode: "research_prototype",
+    expected_lawyer_review_status: "unreviewed",
+    expected_professional_advice_certified: false,
   },
   {
     id: "B",
@@ -77,8 +78,9 @@ const DEMO_QUERIES = [
     expected_source_proof_behaviour: "Return only paragraph-proofed public cases mapped to intention permanently to deprive or theft.",
     case_corpus_should_be_used: true,
     should_abstain: false,
-    expected_answer_safe: false,
-    expected_needs_lawyer_review: true,
+    expected_answer_mode: "research_prototype",
+    expected_lawyer_review_status: "unreviewed",
+    expected_professional_advice_certified: false,
   },
   {
     id: "C",
@@ -90,8 +92,9 @@ const DEMO_QUERIES = [
     expected_source_proof_behaviour: "Return only paragraph-proofed public cases mapped to belonging-to-another or theft.",
     case_corpus_should_be_used: true,
     should_abstain: false,
-    expected_answer_safe: false,
-    expected_needs_lawyer_review: true,
+    expected_answer_mode: "research_prototype",
+    expected_lawyer_review_status: "unreviewed",
+    expected_professional_advice_certified: false,
   },
   {
     id: "D",
@@ -103,8 +106,9 @@ const DEMO_QUERIES = [
     expected_source_proof_behaviour: "Return only paragraph-proofed public cases mapped to bail; do not convert bail/procedure material into liability advice.",
     case_corpus_should_be_used: true,
     should_abstain: false,
-    expected_answer_safe: false,
-    expected_needs_lawyer_review: true,
+    expected_answer_mode: "research_prototype",
+    expected_lawyer_review_status: "unreviewed",
+    expected_professional_advice_certified: false,
   },
   {
     id: "E",
@@ -116,8 +120,9 @@ const DEMO_QUERIES = [
     expected_source_proof_behaviour: "Abstain from criminal-law case-corpus authority and do not cite theft/dishonesty cases.",
     case_corpus_should_be_used: false,
     should_abstain: true,
-    expected_answer_safe: false,
-    expected_needs_lawyer_review: true,
+    expected_answer_mode: "research_prototype",
+    expected_lawyer_review_status: "unreviewed",
+    expected_professional_advice_certified: false,
   },
 ];
 
@@ -295,7 +300,7 @@ function renderReportMarkdown(report) {
       { Metric: "Digest cards", Value: report.corpus_counts.case_digest_card_count },
       { Metric: "Usable principles", Value: report.corpus_counts.usable_principle_count },
       { Metric: "Demoted principles preserved", Value: report.corpus_counts.demoted_principle_count },
-      { Metric: "Answer-safe cards", Value: report.answer_safe_count },
+      { Metric: "Professional advice certified cards", Value: 0 },
     ], ["Metric", "Value"]),
     "",
     "## Issue Coverage",
@@ -352,7 +357,8 @@ function renderQueryPackMarkdown(pack) {
     Issue: query.expected_issue_id ? `\`${query.expected_issue_id}\`` : "none",
     Corpus: query.case_corpus_should_be_used ? "yes" : "no",
     Abstain: query.should_abstain ? "yes" : "no",
-    "Answer Safe": String(query.expected_answer_safe),
+    "Answer Mode": query.expected_answer_mode,
+    "Certified": String(query.expected_professional_advice_certified),
   }));
   return [
     "# PR #6 Demo Query Pack",
@@ -365,7 +371,7 @@ function renderQueryPackMarkdown(pack) {
     "",
     "## Queries",
     "",
-    mdTable(rows, ["ID", "Query", "Route", "Issue", "Corpus", "Abstain", "Answer Safe"]),
+    mdTable(rows, ["ID", "Query", "Route", "Issue", "Corpus", "Abstain", "Answer Mode", "Certified"]),
     "",
     "## Source-Proof Expectations",
     "",
@@ -373,7 +379,8 @@ function renderQueryPackMarkdown(pack) {
       `### ${query.id}. ${query.label}`,
       "",
       `- Expected source-proof behaviour: ${query.expected_source_proof_behaviour}`,
-      `- Expected needs lawyer review: ${query.expected_needs_lawyer_review}`,
+      `- Expected answer mode: ${query.expected_answer_mode}`,
+      `- Expected professional advice certified: ${query.expected_professional_advice_certified}`,
       "",
     ].join("\n")),
   ].join("\n");
@@ -415,7 +422,7 @@ function renderBossDemoScript(report, pack) {
     "",
     "## 1:45-2:45 - Why Source Proof Matters",
     "",
-    "When the system cites a case, it should show a public paragraph URL and an exact quote path. That gives a lawyer or reviewer something concrete to inspect. It also lets the product say no when the source is missing, private, candidate-only, recall-only, or outside the loaded issue map.",
+    "When the system cites a case, it should show a public paragraph URL and an exact quote path. That gives the user something concrete to inspect. It also lets the product say no when the source is missing, private, unverified, recall-only, or outside the loaded issue map.",
     "",
     "## 2:45-3:30 - How Demoted Principles Prevent Hallucination",
     "",
@@ -428,7 +435,7 @@ function renderBossDemoScript(report, pack) {
       "",
       `Ask: \"${query.query}\"`,
       "",
-      "Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say `answer_safe=false` with lawyer review required.",
+      "Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say it is source-linked research-prototype analysis with professional_advice_certified=false.",
       "",
     ]),
     "## 5:15-6:00 - Unsupported Query",
@@ -437,9 +444,9 @@ function renderBossDemoScript(report, pack) {
     "",
     "Expected explanation: the system should abstain. It should not borrow theft or dishonesty cases for a landlord/rent question. This is a feature, not a failure: it shows wrong-domain leakage is being controlled.",
     "",
-    "## 6:00-6:45 - How To Explain `answer_safe=false`",
+    "## 6:00-6:45 - How To Explain Research Prototype Mode",
     "",
-    "`answer_safe=false` means the system is doing legal research triage, not final advice. It can show useful authorities and issue maps, but a lawyer still needs to verify current treatment, ratio/obiter status, the full judgment, and the user's actual evidence before relying on it.",
+    "`research_prototype` means the system can retrieve, quote, summarize and apply public paragraph-linked authorities for research analysis, but professional_advice_certified remains false until a later HITL certification step checks current treatment, ratio/obiter status, the full judgment, and the user's actual evidence.",
     "",
     "## Next Roadmap",
     "",

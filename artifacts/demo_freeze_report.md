@@ -11,7 +11,7 @@ Generated: 2026-06-30T00:00:00.000Z
 
 ## Safe Demo Claim
 
-> The system demonstrates a source-proofed, research-only HK criminal-law case-law assistant over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not final legal advice and remains lawyer-review-required.
+> The system demonstrates a source-linked HK criminal-law case-law research prototype over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, exact quotes, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not professional legal advice; professional certification is a later HITL product step.
 
 ## Corpus Counts
 
@@ -24,7 +24,7 @@ Generated: 2026-06-30T00:00:00.000Z
 | Digest cards | 120 |
 | Usable principles | 97 |
 | Demoted principles preserved | 247 |
-| Answer-safe cards | 0 |
+| Professional advice certified cards | 0 |
 
 ## Issue Coverage
 
@@ -77,20 +77,19 @@ Generated: 2026-06-30T00:00:00.000Z
 - Current PR preview URL source: Use the exact Vercel Preview URL recorded in the PR #6 body and GitHub deployment status for the current head commit.
 - Production target URL after merge/promotion: https://hk-criminal-procedure-graphrag.vercel.app/viewer/
 - Polished workspace route: /viewer/
-- Verified case-corpus route: Native "Verified Case Demo" workspace view inside /viewer/
-- Direct verified case-corpus fallback route: /viewer/case_corpus_demo.html
+- Verified case-corpus route: /viewer/case_corpus_demo.html
+- Direct verified case-corpus route: /viewer/case_corpus_demo.html
 - Seed graph viewer route: /viewer/index_legacy.html
-- Page to show: For the unmerged draft PR, open the Vercel Preview deployment at /viewer/ to show the polished Legal Graph-SOP Workspace. Then click Verified Case Demo in the sidebar to show native source-proofed paragraph-linked cards, inspector proof, and AI Inquiry evidence. Use /viewer/case_corpus_demo.html only as a secondary fallback proof route.
+- Page to show: For the unmerged draft PR, open the Vercel Preview deployment at /viewer/ to show the polished Legal Graph-SOP Workspace. Then click Verified Case Demo, or open /viewer/case_corpus_demo.html directly, for the source-proofed paragraph-linked case-law demo.
 - Seed graph warning: Graph/domain views are seed-map research UI unless the source-proofed Verified Case Demo is opened. They are not the PR #6 paragraph-linked case-law authority view and must not be presented as verified authority.
 
 ## Safe Demo Instructions
 
 - Open /viewer/ on the current Vercel Preview deployment to show the polished Legal Graph-SOP Workspace.
-- Use the Verified Case Demo sidebar entry/card for the source-proofed case-law demo; it renders natively inside the original Fable workspace, not as an iframe.
-- Keep /viewer/case_corpus_demo.html as a secondary fallback proof route only.
+- Use the Verified Case Demo sidebar entry/card, or open /viewer/case_corpus_demo.html directly, for the source-proofed case-law demo.
 - Point to the 120-case sample metrics and the 344 paragraph/proposition/principle card counts.
 - Open at least one HKLII/LegalRef paragraph URL with a #p anchor from the demo output.
-- State that every supported demo remains answer_safe=false and lawyer-review-required.
+- State that every supported demo is source-linked research-prototype analysis with professional_advice_certified=false.
 - Use the unsupported landlord/rent query to show abstention and wrong-domain control.
 - Treat graph/domain views as seed-map research UI unless the source-proofed case demo is opened.
 - Do not use the production URL for the boss/VC demo until the production smoke test passes.
@@ -103,10 +102,10 @@ Generated: 2026-06-30T00:00:00.000Z
 
 - The PR remains a draft research/demo preview, not a merged production release.
 - The sample is intentionally frozen at 120 targeted criminal-law cases; this run does not scale to 500, 10k or 25k cases.
-- All case-law outputs remain research_only and lawyer_review_required.
-- No machine-generated proposition or principle is promoted to answer_safe.
-- The three repaired target issues are medium coverage, not broad lawyer-reviewed coverage.
-- Current treatment, ratio/obiter classification and final legal advice require later lawyer review.
+- All case-law outputs remain in research_prototype mode.
+- No machine-generated proposition or principle is professionally certified.
+- The three repaired target issues are medium coverage, not broad professionally certified coverage.
+- Current treatment, ratio/obiter classification and final legal advice require later professional certification.
 - Uploaded evidence handling is text/transcript triage only; OCR/PDF/image/audio/video evidence analysis is not implemented.
 - Private/licensed sources, AI candidates and recall-only cases cannot support answer-layer authority.
 
@@ -115,5 +114,5 @@ Generated: 2026-06-30T00:00:00.000Z
 - 10k answer-safe propositions
 - whole HK legal RAG solved
 - production legal advice
-- lawyer-reviewed current treatment
+- professionally certified current treatment
 - automated OCR/PDF/image/audio/video evidence analysis

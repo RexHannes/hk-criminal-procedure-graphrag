@@ -244,14 +244,14 @@
     const forms = relatedForms(node);
     const firmBlocks = relatedFirmBlocks(node);
     const missing = missingFacts(node.required_facts);
-    const abstain = !cards.length || cards.some(c => c.answer_layer_status !== 'answer_safe');
+    const abstain = !cards.length;
     return `
       <div class="pi-inspector">
         <section class="pi-trace">
           <div class="view-eyebrow">Structured legal reasoning trace</div>
           <div class="view-title">${esc(node.title)}</div>
-          <div class="pi-node-badges">${badgeHTML(node)}<span class="badge badge-review">Lawyer review required</span></div>
-          ${abstain ? '<div class="pi-abstain">Abstention gate: this item cannot be shown as final legal advice because it is research-only, unverified, or source support is incomplete.</div>' : ''}
+          <div class="pi-node-badges">${badgeHTML(node)}<span class="badge badge-research">Research prototype</span></div>
+          ${abstain ? '<div class="pi-abstain">Abstention gate: this item has no mapped public source card in the current prototype.</div>' : ''}
           <div class="pi-trace-grid">
             <div class="pi-trace-label">Issue</div><div class="pi-trace-value">${esc(node.group || node.rail)}: ${esc(node.title)}</div>
             <div class="pi-trace-label">Rule</div><div class="pi-trace-value">${esc(cards[0]?.rule_text || 'Source missing. No legal proposition may be stated as verified.')}</div>
@@ -259,7 +259,7 @@
             <div class="pi-trace-label">Missing facts</div><div class="pi-trace-value">${missing.length ? esc(missing.join('; ')) : 'No obvious required fact gap detected by the demo classifier.'}</div>
             <div class="pi-trace-label">Procedure</div><div class="pi-trace-value">${esc((node.related_procedural_steps || node.related_legal_nodes || []).join('; ') || 'No linked procedural step recorded.')}</div>
             <div class="pi-trace-label">Forms</div><div class="pi-trace-value">${forms.length ? forms.map(f => esc(f.title) + ' (' + esc(f.verification_status) + ')').join('; ') : 'No form/template linked.'}</div>
-            <div class="pi-trace-label">Review status</div><div class="pi-trace-value">Research layer only. Partner review and latest official form check required before external use.</div>
+            <div class="pi-trace-label">Prototype status</div><div class="pi-trace-value">Research prototype. Professional certification is a later HITL product step.</div>
           </div>
         </section>
         <section class="pi-trace">
@@ -280,7 +280,7 @@
     if (!S.facts.trim()) return 'No fact pattern entered; node remains a checklist item only.';
     const missing = missingFacts(node.required_facts);
     if (missing.length) return 'The fact pattern may engage this node, but the workflow withholds a final view until missing facts are supplied: ' + missing.join(', ') + '.';
-    return 'The entered facts contain the required demo fields for this node. The output remains research-only unless source cards become verified and lawyer review is recorded.';
+    return 'The entered facts contain the required demo fields for this node. The output remains a research prototype unless public source cards and professional certification are added.';
   }
 
   function renderPreviews() {
@@ -290,7 +290,7 @@
         ${previews.map(p => `
           <section class="pi-preview">
             <h3>${esc(p.title)}</h3>
-            <div class="pi-node-badges"><span class="badge badge-review">Lawyer review required</span><span class="badge badge-research">Mock assembly preview</span></div>
+            <div class="pi-node-badges"><span class="badge badge-research">Research prototype</span><span class="badge badge-research">Mock assembly preview</span></div>
             ${(p.paragraphs || []).map(para => {
               const missing = missingFacts(para.required_facts);
               const supported = (para.source_card_ids || []).length || (para.firm_template_clause_ids || []).length;
@@ -318,7 +318,7 @@
         ${facts.length ? `<div class="pi-meta">required facts: ${esc(facts.slice(0, 8).join(', '))}</div>` : ''}
         <div class="pi-node-badges">
           <span class="badge badge-research">${esc(chunk.answer_layer_status || 'research_only')}</span>
-          <span class="badge badge-review">${esc(chunk.review_status || chunk.output_mode || 'lawyer_review_required')}</span>
+          <span class="badge badge-research">${esc(chunk.answer_mode || chunk.output_mode || 'research_prototype')}</span>
         </div>
       </div>`;
   }
@@ -339,7 +339,7 @@
           <div class="pi-node-badges">
             <span class="badge badge-research">No source, no answer</span>
             <span class="badge badge-review">Metadata only</span>
-            <span class="badge badge-review">Lawyer review required</span>
+            <span class="badge badge-research">Research prototype</span>
           </div>
         </div>
         ${unsupported ? '<div class="pi-abstain">I cannot verify this from the current PI metadata/source index. Add sources or narrow the facts before generating a legal/procedural output.</div>' : ''}

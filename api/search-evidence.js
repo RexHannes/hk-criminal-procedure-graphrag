@@ -10,7 +10,10 @@ const { buildUploadedEvidenceBundle } = require("../src/api/evidence_text_ingest
 const { retrieveCaseLawResearch } = require("../src/legal_answer/case_corpus/case_law_research_retriever");
 const { renderCaseLawResearch } = require("../src/legal_answer/case_corpus/case_law_research_renderer");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
-const { viewerCaseCorpusEvidenceForNode } = require("../src/case_graph/viewer_case_corpus_evidence");
+const {
+  viewerCaseCorpusEvidenceForNode,
+  hasPublicParagraphProof: hasNormalizedPublicParagraphProof,
+} = require("../src/case_graph/viewer_case_corpus_evidence");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -48,7 +51,7 @@ const STOPWORDS = new Set([
   "of", "on", "or", "the", "to", "what", "when", "where", "which", "who", "why", "with", "does", "do",
   "there", "under", "law", "hk", "hong", "kong",
 ]);
-const VERIFIED_COVERAGE_STATUSES = new Set(["source_verified", "paragraph_verified", "answer_safe"]);
+const VERIFIED_COVERAGE_STATUSES = new Set(["source_verified", "paragraph_verified", "answer_safe", "research_only"]);
 
 const QUERY_EXPANSIONS = [
   {
@@ -489,8 +492,8 @@ async function askAiToAnalyze(query, matches, evidenceCount) {
     "- Do not invent authorities, paragraphs, citations, statutes, or facts.",
     "- node_references must copy doctrine_node_id values from the supplied context exactly.",
     "- case_references must copy case_name, neutral_citation, and para_no from the supplied evidence exactly.",
-    "- If evidence is absent or only candidate_only, state the limitation clearly.",
-    "- Do not call anything answer-safe unless supplied evidence says answer_safe or human_reviewed.",
+    "- If public paragraph proof is absent, state the limitation clearly and abstain from case-law application.",
+    "- Paragraph-linked public judgments may be quoted and applied for this research prototype even if lawyer review is still later quiet metadata.",
     "- Keep the analysis concise and audit-style, not legal advice.",
     "User query:",
     query,
@@ -584,13 +587,13 @@ function validateAiAnalysis(parsed, matches) {
   }
 
   const evidenceCount = evidenceItems.length;
-  const verifiedEvidenceCount = evidenceItems.filter(item => VERIFIED_COVERAGE_STATUSES.has(item.answer_layer_status)).length;
+  const verifiedEvidenceCount = evidenceItems.filter(isSourceLinkedPublicEvidence).length;
   let abstain = Boolean(parsed.abstain);
   if (!evidenceCount) {
     warnings.push("analysis_has_no_paragraph_evidence");
     abstain = true;
   } else if (!verifiedEvidenceCount) {
-    warnings.push("analysis_has_candidate_only_evidence");
+    warnings.push("analysis_has_no_public_paragraph_proof");
     abstain = true;
   }
 
@@ -635,7 +638,7 @@ function filterMatchesByArbiter(matches, arbiter) {
   return filtered.length ? filtered : matches;
 }
 
-function hasPublicParagraphProof({ proposition, paragraph, legalCase }) {
+function hasSupabasePublicParagraphProof({ proposition, paragraph, legalCase }) {
   return Boolean(
     (paragraph?.source_url || legalCase?.source_url) &&
     (paragraph?.para_no || proposition?.canonical_para_id) &&
@@ -646,7 +649,7 @@ function hasPublicParagraphProof({ proposition, paragraph, legalCase }) {
 function evidenceLayerStatus({ reviewStatus, proposition, paragraph, legalCase, quoteVerified }) {
   if (SAFE_STATUSES.has(reviewStatus)) return "answer_safe";
   if (VERIFIED_STATUSES.has(reviewStatus) || quoteVerified) return "paragraph_verified";
-  if (hasPublicParagraphProof({ proposition, paragraph, legalCase })) return "source_verified";
+  if (hasSupabasePublicParagraphProof({ proposition, paragraph, legalCase })) return "source_verified";
   return "candidate_only";
 }
 
@@ -677,8 +680,10 @@ function cleanEvidenceItem({ link, proposition, paragraph, legalCase }) {
       : reviewStatus,
     public_source_link_verified: ["source_verified", "paragraph_verified", "answer_safe"].includes(answerLayerStatus),
     answer_layer_status: answerLayerStatus,
+    answer_mode: "research_prototype",
     quote_verified: quoteVerified,
-    human_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
+    lawyer_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
+    professional_advice_certified: false,
     validator_flags: [],
   };
 }
@@ -725,7 +730,29 @@ function coverageForEvidence(evidence) {
 }
 
 function hasLocalPublicParagraphProof(item) {
-  return Boolean(item?.source_url && item?.para_no && (item?.paragraph_text || item?.supporting_quote || item?.proposition_text));
+  const quote = item?.supporting_quote || item?.exact_quote || "";
+  return Boolean(
+    item?.source_url &&
+    /(?:hklii\.hk|legalref\.judiciary\.hk)/i.test(item.source_url) &&
+    /#p\d+/i.test(item.source_url) &&
+    item?.para_no &&
+    quote &&
+    item?.paragraph_text &&
+    String(item.paragraph_text).includes(quote)
+  );
+}
+
+function isSourceLinkedPublicEvidence(item) {
+  return Boolean(
+    hasNormalizedPublicParagraphProof(item) ||
+    hasLocalPublicParagraphProof(item) ||
+    (
+      ["source_verified", "paragraph_verified", "answer_safe", "research_only"].includes(item?.answer_layer_status) &&
+      item?.public_source_link_verified &&
+      /#p\d+/i.test(item?.source_url || "") &&
+      (item?.supporting_quote || item?.exact_quote)
+    )
+  );
 }
 
 function localEvidenceFallbackForNode(doctrineNodeId) {
@@ -750,8 +777,8 @@ function warningsForResult(matches, aiStatus, backendStatus, legalSourceCardCoun
   if (aiStatus !== "used") warnings.push(aiStatus === "not_configured" ? "ai_not_configured_fallback_search" : "ai_ranking_unavailable");
   if (backendStatus !== "connected" && !hasGraphEvidence && !legalSourceCardCount) warnings.push("backend_evidence_unavailable");
   if (!hasGraphEvidence && !legalSourceCardCount) warnings.push("no_verified_paragraph_proof", "insufficient_authority");
-  if (matches.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))) warnings.push("candidate_only", "needs_human_review");
-  if (legalSourceCardCount) warnings.push("legal_ingest_source_cards_research_only", "needs_human_review");
+  if (matches.some(m => (m.evidence || []).some(e => !isSourceLinkedPublicEvidence(e)))) warnings.push("unverified_candidates_excluded");
+  if (legalSourceCardCount) warnings.push("legal_ingest_source_cards_research_only");
   return Array.from(new Set(warnings));
 }
 
@@ -856,7 +883,7 @@ function summarizePiChunk(chunk) {
     required_facts: meta.required_facts || [],
     trigger_conditions: meta.trigger_conditions || [],
     review_status: chunk.review_status || meta.review_status || meta.human_review_status || "unreviewed",
-    output_mode: chunk.output_mode || meta.output_mode || "draft_only_lawyer_review_required",
+    output_mode: chunk.output_mode || meta.output_mode || "research_prototype",
     score: Number(chunk.score || 0),
   };
 }
@@ -925,7 +952,7 @@ function buildPiWorkflow(query) {
     status: chunks.length ? "retrieved" : "abstain_no_pi_source_match",
     routes: Array.from(routes).sort(),
     matter_view: owner ? "potential occupier / defendant-side triage" : "personal injury triage",
-    answer_note: "PI workflow output is metadata/source-gated. It is research-only, not legal advice, and stays draft-only until source verification and lawyer review.",
+    answer_note: "PI workflow output is metadata/source-gated. It is research-prototype material, not legal advice, and professional certification is a later HITL step.",
     classification,
     answer_contract: answerContract,
     applied_answer: appliedTriage,
@@ -941,7 +968,9 @@ function buildPiWorkflow(query) {
     verification,
     raw_chunk_count: chunks.length,
     contract_chunk_count: contractChunks.length,
-    review_status: "draft_only_lawyer_review_required",
+    answer_mode: "research_prototype",
+    lawyer_review_status: "unreviewed",
+    professional_advice_certified: false,
   };
 }
 
@@ -1165,7 +1194,7 @@ module.exports = async function handler(req, res) {
         labels: Array.from(new Set([
           "source_grounded_research_only",
           "case_corpus_l1_l35_research_only",
-          "needs_lawyer_review",
+          "research_prototype",
         ])),
         unsupported_reason: "",
       }
@@ -1185,7 +1214,8 @@ module.exports = async function handler(req, res) {
           paragraph_ids: caseCorpusRetrieval.cases.flatMap(item => item.paragraphs.map(paragraph => paragraph.paragraph_id)),
           all_case_corpus_output_research_only: true,
           exact_paragraph_anchor_required: true,
-          l4_answer_safe_implemented: false,
+          answer_mode: "research_prototype",
+          professional_advice_certified: false,
         },
       }
     : presentation.audit_trail;
@@ -1248,12 +1278,12 @@ module.exports = async function handler(req, res) {
     evidence_count: totalEvidenceCount,
     graph_evidence_count: graphEvidenceCount,
     legal_source_card_count: legalSourceCardCount,
-    answer_confidence: totalEvidenceCount > 0 && !matched.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))
+    answer_confidence: totalEvidenceCount > 0 && matched.some(m => (m.evidence || []).some(isSourceLinkedPublicEvidence))
       ? "medium"
       : "low",
     warnings,
     inquiry_analysis: inquiry.analysis,
-    answer_note: "This endpoint returns an answer-first, source-bounded legal research memo with the raw graph/evidence trail collapsed for audit. It does not produce legal advice and does not treat candidate evidence as answer-safe.",
+    answer_note: "This endpoint returns an answer-first, source-bounded legal research memo with the raw graph/evidence trail collapsed for audit. It is a research prototype and uses only public paragraph-linked case evidence for case-law analysis.",
   };
   if (legalIngestBundle) {
     const cacheWrite = await writeLegalAnswerCache({ query, legalIngestBundle, applied, responsePayload });

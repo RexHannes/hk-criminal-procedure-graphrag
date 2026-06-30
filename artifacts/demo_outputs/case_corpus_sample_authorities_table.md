@@ -1,6 +1,6 @@
 # Case Corpus Sample Authorities
 
-Actual cases: 120. All research-only and lawyer-review-required.
+Actual cases: 120. All source-linked research-prototype authorities.
 
 | Case | Citation | Court | Date | Issue tags | First paragraph proof |
 |---|---|---|---|---|---|

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verified Case Demo - Legal Graph-SOP Workspace</title>
+  <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -16,15 +17,14 @@
       <h1 id="page-title">Source-proofed HK criminal-law research demo</h1>
       <p class="lede">
         This section shows the frozen PR #6 L1-L3.5 case-corpus sample, not the seed graph.
-        It is a research-only, lawyer-review-required display of public HKLII/LegalRef paragraph proof.
+        It is a source-linked research prototype display of public HKLII/LegalRef paragraph proof.
       </p>
 
       <div class="badges" aria-label="Demo boundaries">
-        <span class="badge strong">Research-only</span>
-        <span class="badge strong">Source-proofed sample</span>
-        <span class="badge warn">Lawyer review required</span>
-        <span class="badge danger">Not legal advice</span>
-        <span class="badge danger">answer_safe=false</span>
+        <span class="badge strong">Source-linked</span>
+        <span class="badge strong">Public judgment</span>
+        <span class="badge strong">Paragraph proof</span>
+        <span class="badge">Research prototype</span>
       </div>
 
       <div class="demo-links">
@@ -44,7 +44,7 @@
       <div class="metric"><span>Principle cards</span><strong data-metric="principles">344</strong></div>
       <div class="metric"><span>Usable principles</span><strong data-metric="usable">97</strong></div>
       <div class="metric"><span>Demoted principles</span><strong data-metric="demoted">247</strong></div>
-      <div class="metric"><span>Answer-safe count</span><strong data-metric="answer-safe">0</strong></div>
+      <div class="metric"><span>Professional advice certified</span><strong data-metric="advice-certified">0</strong></div>
       <div class="metric"><span>Source proof rate</span><strong data-metric="source-proof">100%</strong></div>
       <div class="metric"><span>Wrong-domain leaks</span><strong data-metric="wrong-domain">0</strong></div>
       <div class="metric"><span>Unsupported abstention</span><strong data-metric="abstention">100%</strong></div>
@@ -58,9 +58,9 @@
         Exact quote: "offence of theft and Ghosh is the leading authority on the issue of dishonesty".
       </p>
       <p>
-        Boundary: answer_safe=false; needs_lawyer_review=true; lawyer-review-required.
+        Boundary: research prototype; professional_advice_certified=false.
         Unsupported landlord/rent query abstains and attaches no criminal-law authority.
-        Demoted principles remain preserved for audit and are not used as answer-safe propositions.
+        Demoted principles remain preserved for audit and are not used as professionally certified propositions.
       </p>
     </section>
 

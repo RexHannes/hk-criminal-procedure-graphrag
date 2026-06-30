@@ -101,7 +101,9 @@ function assertMatch(text, re, message) {
   assertMatch(demoCombined, /https?:\/\/(?:www\.)?(?:hklii\.hk|legalref\.judiciary\.hk)\//i, "verified demo missing HKLII/LegalRef link");
   assertMatch(demoCombined, /#p\d+/i, "verified demo missing paragraph anchor");
   assertMatch(demoCombined, /Exact quote|exact_quote/i, "verified demo missing exact quote label");
-  assertMatch(demoCombined, /answer_safe=false|Answer safe:\s*`false`|Answer safe:\s*false|"answer_safe":\s*false/i, "verified demo missing answer_safe=false");
+  assertMatch(demoCombined, /Source-linked|Public judgment|Paragraph proof/i, "verified demo missing clean source-linked labels");
+  assertMatch(demoCombined, /Research prototype|research_prototype/i, "verified demo missing research prototype label");
+  assertMatch(demoCombined, /professional_advice_certified=false|"professional_advice_certified":\s*false/i, "verified demo missing quiet professional certification metadata");
   assertMatch(demoCombined, /unsupported_general_query|Unsupported Landlord Query|abstention/i, "verified demo missing unsupported-query abstention");
   assertMatch(nativeEvidence, /criminal_law\.theft\.dishonesty/i, "native evidence missing theft/dishonesty mapping");
   assertMatch(nativeEvidence, /criminal_procedure\.bail/i, "native evidence missing bail mapping");
@@ -109,7 +111,7 @@ function assertMatch(text, re, message) {
   if (/markdownToHtml|data-demo-markdown|Static proof fallback for smoke tests|```json/.test(demoShell)) {
     fail("verified demo shell exposes raw markdown/JSON/audit dump");
   }
-  if (/Verification pending|Source check pending|needs verify|Linked authority/i.test(workspaceCombined)) {
+  if (/Verification pending|Source check pending|Human review required|Lawyer review required|lawyer-review-required|answer_safe=false|needs_lawyer_review|needs verify|Linked authority/i.test(workspaceCombined)) {
     fail("/viewer/ still contains old pending-verification authority language");
   }
   if (/caseSeeds\.slice\(|Seed \/ graph references/i.test(workspaceCombined)) {

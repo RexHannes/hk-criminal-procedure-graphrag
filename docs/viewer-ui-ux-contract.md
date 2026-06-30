@@ -73,15 +73,15 @@ Required layout:
 
 ## 6. Required Legal Badges
 
-Every legal demo must visibly include:
+Every paragraph-linked legal demo must visibly include clean prototype labels:
 
-- Research-only;
-- Lawyer review required;
-- Not legal advice;
-- `answer_safe=false`;
-- Current treatment unchecked unless reviewed.
+- Source-linked;
+- Public judgment;
+- Paragraph proof;
+- Research prototype;
+- professional_advice_certified=false, only as quiet metadata or compact audit copy.
 
-These should be badges or compact notices, not giant warning walls.
+Do not show per-card labels such as `Verification pending`, `Source check pending`, `Human review required`, `Lawyer review required`, `Not answer safe`, `Case audit required`, or `answer_safe=false`.
 
 ## 7. Visual Quality Gate
 
@@ -109,7 +109,7 @@ For viewer changes, run or create checks that verify:
 - HKLII/LegalRef links exist in verified demo;
 - paragraph anchors exist where expected;
 - exact quote labels exist;
-- `answer_safe=false` is visible;
+- clean Source-linked/Public judgment/Paragraph proof/Research prototype labels are visible;
 - unsupported query abstention is visible;
 - raw JSON is not exposed as primary UI.
 - iframe-based proof-page embedding is absent from the main `/viewer/` demo.

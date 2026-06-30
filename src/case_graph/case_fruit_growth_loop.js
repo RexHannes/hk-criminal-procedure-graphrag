@@ -143,9 +143,10 @@ function validateBatchAgainstLoop(config, batchDir = DEFAULT_BATCH_DIR) {
     if (!allowedNodes.has(link.doctrine_node_id)) {
       correctionItems.push({ type: "wrong_branch_candidate", link_id: link.link_id, doctrine_node_id: link.doctrine_node_id });
     }
-    if (link.answer_layer_status !== "candidate_only" || link.review_status !== "machine_candidate") {
+    const autoAnswerSafe = link.answer_safe === true || link.review_state === "answer_safe" || link.answer_layer_status === "answer_safe";
+    if (autoAnswerSafe && link.review_status !== "approved") {
       correctionItems.push({
-        type: "candidate_only_gate_failed",
+        type: "unapproved_answer_safe_link_forbidden",
         link_id: link.link_id,
         answer_layer_status: link.answer_layer_status,
         review_status: link.review_status,

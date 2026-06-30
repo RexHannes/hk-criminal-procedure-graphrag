@@ -60,8 +60,9 @@ function retrieveCaseLawResearch({
         returned_case_count: 0,
         abstain_reason: hybrid.audit?.abstain_reason || "no_supported_issue_id_inferred",
         answer_layer_status: "research_only",
-        review_status: "lawyer_review_required",
-        l4_answer_safe_implemented: false,
+        answer_mode: "research_prototype",
+        lawyer_review_status: "unreviewed",
+        professional_advice_certified: false,
       },
     };
   }
@@ -84,8 +85,9 @@ function retrieveCaseLawResearch({
         issue_id: issueId,
         relevance_score: item.score,
         relevance_reason: "Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof.",
-        source_status: "paragraph_quote_verified_research_only",
-        review_status: "machine_candidate",
+      source_status: "paragraph_quote_verified_research_only",
+      answer_mode: "research_prototype",
+      lawyer_review_status: "unreviewed",
       })),
       paragraphs: (paragraphs.length ? paragraphs : fallbackParagraphs).slice(0, Math.max(1, Number(max_paragraphs) || 6)),
       propositions: propositions.length ? propositions : fallbackPropositions,
@@ -112,8 +114,9 @@ function retrieveCaseLawResearch({
       source_proof_pass_count: hybrid.audit?.source_proof_pass_count || 0,
       source_proof_excluded_count: hybrid.audit?.source_proof_excluded_count || 0,
       answer_layer_status: "research_only",
-      review_status: "lawyer_review_required",
-      l4_answer_safe_implemented: false,
+      answer_mode: "research_prototype",
+      lawyer_review_status: "unreviewed",
+      professional_advice_certified: false,
     },
   };
 }

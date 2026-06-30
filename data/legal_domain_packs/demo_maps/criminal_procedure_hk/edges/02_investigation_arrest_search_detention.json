@@ -42,7 +42,7 @@
     { "from": "invest_detention_after_arrest", "to": "cap232_s52", "relationship": "statutory_anchor" },
     { "from": "invest_detention_after_arrest", "to": "cap204_s10a", "relationship": "statutory_anchor" },
     { "from": "invest_detention_after_arrest", "to": "cap221_s12", "relationship": "statutory_anchor" },
-    { "from": "invest_detention_after_arrest", "to": "hksar_v_leung_kwok_hung", "relationship": "case_seed" },
+    { "from": "invest_detention_after_arrest", "to": "hksar_v_lam_tat_ming", "relationship": "case_seed" },
     { "from": "invest_release_charge_bail", "to": "cap232_s52", "relationship": "statutory_anchor" },
     { "from": "invest_release_charge_bail", "to": "cap221_s9b", "relationship": "statutory_anchor" },
     { "from": "invest_release_charge_bail", "to": "cap204_s10a", "relationship": "statutory_anchor" },

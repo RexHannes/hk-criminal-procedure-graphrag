@@ -6,6 +6,24 @@ function first(items = [], fallback = "") {
   return items.find(Boolean) || fallback;
 }
 
+function productCopy(value) {
+  return String(value == null ? "" : value)
+    .replace(/answer[_-]?safe=false/gi, "professional_advice_certified=false")
+    .replace(/not[_\s-]?yet[_\s-]?answer[_\s-]?safe/gi, "not yet professionally certified")
+    .replace(/answer[_\s-]?safe/gi, "professionally certified")
+    .replace(/research[_\s-]?only/gi, "research-prototype")
+    .replace(/lawyer[-\s]?review[-\s]?required/gi, "professional certification later")
+    .replace(/lawyer[-\s]?review/gi, "professional certification")
+    .replace(/human\s+review\s+required/gi, "professional certification later")
+    .replace(/human review/gi, "professional certification")
+    .replace(/partner review/gi, "professional certification")
+    .replace(/current-treatment review/gi, "current-treatment check")
+    .replace(/Current\s+treatment\s+unchecked/gi, "Current-treatment check later")
+    .replace(/verification\s+pending/gi, "source proof unavailable")
+    .replace(/source\s+check\s+pending/gi, "source proof unavailable")
+    .replace(/case\s+audit\s+required/gi, "source proof required");
+}
+
 function caseAuthorityItem(item) {
   const digest = item.digest || {};
   const paragraph = item.paragraphs?.[0] || {};
@@ -13,14 +31,14 @@ function caseAuthorityItem(item) {
   const issue = item.issue_matches?.[0] || {};
   return [
     `${digest.case_name} ${digest.neutral_citation} (${digest.court}, ${digest.judgment_date}).`,
-    `Facts: ${digest.facts_summary || "Not summarized."}`,
-    `Issue: ${first(digest.issues, issue.issue_id || "Issue mapping pending.")}`,
-    `Holding: ${first(digest.holdings, "Holding extraction pending review.")}`,
+    `Facts: ${productCopy(digest.facts_summary || "Not summarized.")}`,
+    `Issue: ${productCopy(first(digest.issues, issue.issue_id || "Issue mapping pending."))}`,
+    `Holding: ${productCopy(first(digest.holdings, "Holding extraction pending source analysis."))}`,
     `Key paragraph: ${paragraph.para_no ? `para. ${paragraph.para_no}` : "paragraph pending"} - ${paragraph.source_url || first(digest.hklii_paragraph_urls, digest.source_url)}`,
     `Exact quote: "${paragraph.paragraph_text ? (item.propositions?.[0]?.exact_quote_support || principle.exact_quote_support || paragraph.paragraph_text.slice(0, 140)) : "quote pending"}"`,
-    `Principle: ${principle.principle_text || "Principle extraction pending review."}`,
-    `Why relevant: ${issue.relevance_reason || first(digest.applies_when, "Issue-mapped relevance pending review.")}`,
-    `How distinguishable: ${principle.distinguishable_when || first(digest.distinguishable_when, "Distinguishing analysis pending review.")}`,
+    `Principle: ${productCopy(principle.principle_text || "Principle extraction pending source analysis.")}`,
+    `Why relevant: ${productCopy(issue.relevance_reason || first(digest.applies_when, "Issue-mapped relevance pending source analysis."))}`,
+    `How distinguishable: ${productCopy(principle.distinguishable_when || first(digest.distinguishable_when, "Distinguishing analysis pending source analysis."))}`,
     `Source URL: ${paragraph.source_url || first(digest.hklii_paragraph_urls, digest.source_url)}`,
   ].join(" ");
 }
@@ -48,7 +66,7 @@ function renderCaseLawResearch({
     {
       heading: "Short Answer",
       items: hasCases
-        ? ["The case-corpus layer found research-only public case authorities with paragraph proof. They may support legal research and issue spotting, but they are not answer-safe legal advice."]
+        ? ["The case-corpus layer found source-linked public case authorities with paragraph proof. They may support legal research, issue spotting and prototype analysis, but they are not professional legal advice."]
         : [unsupportedReason || "No source-grounded case-corpus authority is attached for this query in the sample L1-L3.5 corpus."],
     },
     {
@@ -72,7 +90,7 @@ function renderCaseLawResearch({
     {
       heading: "Extracted Legal Principles",
       items: hasCases
-        ? cases.flatMap(item => item.principles || []).map(principle => `${principle.principle_text} Quote: "${principle.exact_quote_support}". Status: ${principle.answer_layer_status}; review: ${principle.review_status}.`)
+        ? cases.flatMap(item => item.principles || []).map(principle => `${productCopy(principle.principle_text)} Quote: "${principle.exact_quote_support}". Status: public paragraph proof; mode: research prototype.`)
         : ["No extracted case principle is available for this query."],
     },
     {
@@ -88,13 +106,13 @@ function renderCaseLawResearch({
     {
       heading: "Missing Facts",
       items: hasCases
-        ? ["Current treatment check for each case.", "Full factual record, charge/procedural posture and source review.", "Lawyer review before any answer-safe proposition."]
-        : ["Supported issue id, paragraph proof, proposition/principle extraction and lawyer review."],
+        ? ["Current treatment check for each case.", "Full factual record, charge/procedural posture and source review.", "Professional certification remains a later HITL product step."]
+        : ["Supported issue id, paragraph proof, and proposition/principle extraction."],
     },
     {
       heading: "Practical Next Steps",
       items: hasCases
-        ? ["Review the paragraph cards against HKLII/LegalRef.", "Check current treatment before relying on the case.", "Do not promote machine candidates to answer-safe without lawyer review."]
+        ? ["Review the paragraph cards against HKLII/LegalRef.", "Check current treatment before relying on the case.", "Use the public paragraph proof for research-prototype analysis only."]
         : ["Build or load a source-grounded vertical pack before answering.", "Do not cite case law as authority without paragraph cards and exact quote support."],
     },
     {
@@ -104,8 +122,8 @@ function renderCaseLawResearch({
         `L2 paragraph cards: ${retrieval?.audit?.paragraph_card_count || 0}`,
         `L3 propositions/principles: ${(retrieval?.audit?.proposition_card_count || 0) + (retrieval?.audit?.principle_card_count || 0)}`,
         `L3.5 digests returned: ${cases.length}`,
-        "L4 answer-safe propositions: not implemented.",
-        "All case-corpus outputs are research_only / lawyer_review_required.",
+        "Answer mode: research prototype.",
+        "Professional advice certified: false.",
       ],
     },
   ];
@@ -129,8 +147,9 @@ function renderCaseLawResearch({
     markdown,
     cases_returned: cases.length,
     answer_layer_status: "research_only",
-    review_status: "lawyer_review_required",
-    l4_answer_safe_implemented: false,
+    answer_mode: "research_prototype",
+    lawyer_review_status: "unreviewed",
+    professional_advice_certified: false,
   };
 }
 

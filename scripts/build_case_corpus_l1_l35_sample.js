@@ -491,7 +491,7 @@ function writeAuthorityTables(records) {
   ];
   fs.writeFileSync(
     path.join(DEMO_OUT_DIR, "case_corpus_sample_authorities_table.md"),
-    `${markdownTable(["# Case Corpus Sample Authorities", "", `Actual cases: ${records.cases.length}. All research-only and lawyer-review-required.`, "", ...header, ...rows])}\n`,
+    `${markdownTable(["# Case Corpus Sample Authorities", "", `Actual cases: ${records.cases.length}. All source-linked research-prototype authorities.`, "", ...header, ...rows])}\n`,
     "utf8"
   );
 

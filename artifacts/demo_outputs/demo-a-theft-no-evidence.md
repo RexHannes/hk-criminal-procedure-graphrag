@@ -2,8 +2,9 @@
 demo_id: "demo-a-theft-no-evidence"
 title: "Demo A - Theft / Shoplifting Without Uploaded Evidence"
 product_mode: "demo_supported"
-answer_safe: false
-needs_lawyer_review: true
+answer_mode: "research_prototype"
+lawyer_review_status: "unreviewed"
+professional_advice_certified: false
 uploaded_evidence_ingested: false
 evidence_status: "no_uploaded_evidence"
 ---
@@ -21,8 +22,9 @@ evidence_status: "no_uploaded_evidence"
 ## Product Mode
 
 - Mode: `demo_supported`
-- Answer safe: `false`
-- Lawyer review required: `true`
+- Answer mode: `research_prototype`
+- Professional advice certified: `false`
+- HITL certification status: `unreviewed`
 - Uploaded evidence mode: `no_uploaded_evidence_parsed`
 
 ## Evidence Ingest Summary
@@ -120,4 +122,4 @@ A genuine forgotten-payment explanation is legally relevant because theft is not
 
 - Raw graph matches and source-card debug data are audit material, not the demo headline.
 - Uploaded text/transcript evidence is fact/evidence material only; it is not legal authority.
-- This output is research-only and lawyer-review-required.
+- This output is a research prototype. Professional certification is false until a later HITL product step.

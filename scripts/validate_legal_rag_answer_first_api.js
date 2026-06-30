@@ -46,7 +46,8 @@ function validateAnswerFirstPayload(label, payload, errors) {
   const markdown = String(payload.answer_markdown || "");
 
   assert(payload.presentation_mode === "answer_first_source_gated", `${label}: wrong presentation mode`, errors);
-  assert(payload.product_mode?.needs_lawyer_review === true, `${label}: missing lawyer-review product mode`, errors);
+  assert(payload.product_mode?.answer_mode === "research_prototype", `${label}: missing research_prototype product mode`, errors);
+  assert(payload.product_mode?.professional_advice_certified === false, `${label}: professional certification boundary missing`, errors);
   assert(answerIndex >= 0, `${label}: missing legal_research_answer`, errors);
   assert(graphIndex >= 0, `${label}: missing matched_doctrine_nodes audit payload`, errors);
   assert(answerIndex < graphIndex, `${label}: answer must precede graph matches in API payload`, errors);
@@ -83,7 +84,7 @@ function validateViewerWiring(errors) {
   assert(app.includes("renderLegalResearchAnswer"), "viewer does not render legal_research_answer first", errors);
   assert(app.includes("Underlying retrieval / graph matches"), "viewer does not collapse graph matches", errors);
   assert(app.includes("renderInlineText"), "viewer does not link source URLs", errors);
-  assert(app.includes("${esc(String(productMode.mode))}"), "viewer should display exact product-mode token", errors);
+  assert(app.includes("${esc(productCopy(String(productMode.mode)))}"), "viewer should display a clean product-mode label", errors);
   assert(app.includes("Uploaded text evidence:"), "viewer should include collapsed evidence audit status", errors);
   assert(css.includes(".research-answer"), "viewer CSS missing research answer surface", errors);
 }

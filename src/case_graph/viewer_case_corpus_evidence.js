@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { authorityEvidenceForNode } = require("./case_authority_bridge");
 
 const INDEX_PATH = path.join(process.cwd(), "data", "legal_ingest", "case_corpus", "viewer_evidence_index.json");
 const SEED_SOURCES_PATH = path.join(process.cwd(), "data", "legal_ingest", "case_corpus", "viewer_seed_case_public_sources.json");
@@ -51,8 +52,15 @@ function seedSourceMatchesNodeId(item, nodeId) {
 
 function normalizeViewerEvidenceItem(item) {
   const quote = item.supporting_quote || item.exact_quote || "";
+  const {
+    needs_lawyer_review,
+    lawyer_review_required,
+    human_review_status,
+    validator_flags,
+    ...rest
+  } = item;
   return {
-    ...item,
+    ...rest,
     neutral_citation: item.neutral_citation || item.citation || "",
     para_no: item.para_no || item.paragraph_number || "",
     supporting_quote: quote,
@@ -60,12 +68,26 @@ function normalizeViewerEvidenceItem(item) {
     source_verification_status: item.source_verification_status || "source_verified_public",
     public_source_link_verified: Boolean(item.source_url && /#p\d+/i.test(item.source_url) && quote),
     answer_layer_status: item.answer_layer_status || "research_only",
+    answer_mode: item.answer_mode || "research_prototype",
     answer_safe: false,
-    needs_lawyer_review: true,
-    lawyer_review_required: true,
-    human_review_status: "lawyer_review_required",
-    validator_flags: Array.from(new Set([...(item.validator_flags || []), "answer_safe=false", "lawyer_review_required"])),
+    lawyer_review_status: item.lawyer_review_status || "unreviewed",
+    professional_advice_certified: item.professional_advice_certified === true ? true : false,
+    usable_in_research_prototype: true,
+    validator_flags: Array.from(new Set([...(validator_flags || []), "public_paragraph_proof", "research_prototype"])),
   };
+}
+
+function hasPublicParagraphProof(item) {
+  const quote = item.supporting_quote || item.exact_quote || "";
+  return Boolean(
+    item.source_url &&
+    /(?:hklii\.hk|legalref\.judiciary\.hk)/i.test(item.source_url) &&
+    /#p\d+/i.test(item.source_url) &&
+    (item.para_no || item.paragraph_number) &&
+    quote &&
+    item.paragraph_text &&
+    String(item.paragraph_text).includes(quote)
+  );
 }
 
 function rankViewerEvidence(items) {
@@ -83,9 +105,15 @@ function rankViewerEvidence(items) {
 }
 
 function viewerCaseCorpusEvidenceForNode(nodeId, limit = 12) {
+  const registryEvidence = authorityEvidenceForNode(nodeId, limit)
+    .map(normalizeViewerEvidenceItem)
+    .filter(hasPublicParagraphProof);
+  if (registryEvidence.length) return rankViewerEvidence(registryEvidence).slice(0, limit);
+
   const seedEvidence = (loadViewerSeedCaseSources().evidence || [])
     .filter(item => seedSourceMatchesNodeId(item, nodeId))
-    .map(normalizeViewerEvidenceItem);
+    .map(normalizeViewerEvidenceItem)
+    .filter(hasPublicParagraphProof);
   if (seedEvidence.length) return rankViewerEvidence(seedEvidence).slice(0, limit);
 
   const index = loadViewerEvidenceIndex();
@@ -99,7 +127,9 @@ function viewerCaseCorpusEvidenceForNode(nodeId, limit = 12) {
     const key = item.evidence_id || `${item.issue_tag}:${item.paragraph_id}`;
     if (seen.has(key)) continue;
     seen.add(key);
-    evidence.push(normalizeViewerEvidenceItem(item));
+    const normalized = normalizeViewerEvidenceItem(item);
+    if (!hasPublicParagraphProof(normalized)) continue;
+    evidence.push(normalized);
     if (evidence.length >= limit) break;
   }
   return evidence;
@@ -109,4 +139,5 @@ module.exports = {
   loadViewerEvidenceIndex,
   loadViewerSeedCaseSources,
   viewerCaseCorpusEvidenceForNode,
+  hasPublicParagraphProof,
 };

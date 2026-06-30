@@ -84,7 +84,8 @@ for (const [label, content] of [
   assert(content.includes("Extracted Legal Principles"), `${label} missing extracted principles`);
   assert(content.includes("Application to User Facts"), `${label} missing application section`);
   assert(content.includes("Source Audit"), `${label} missing source audit`);
-  assert(content.includes("Answer safe: `false`"), `${label} must show answer_safe=false`);
+    assert(content.includes("Answer mode: `research_prototype`"), `${label} must show research prototype mode`);
+    assert(content.includes("Professional advice certified: `false`"), `${label} must show professional certification boundary`);
   assert(!content.includes("Mode: `unsupported_general_query`"), `${label} should not present supported case-corpus research as unsupported`);
   assert((content.match(/Exact quote:/g) || []).length >= 5, `${label} must include exact paragraph quotes`);
   assert((content.match(/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\/[^#\s]+#p\d+/g) || []).length >= 5, `${label} must include paragraph URLs`);
@@ -98,7 +99,7 @@ assert(bailMemo.includes("bail") || bailMemo.includes("Bail"), "bail demo missin
 assert(bailMemo.includes("liability") || bailMemo.includes("procedure"), "bail demo missing procedure/liability boundary");
 assert(unsupportedLandlord.includes("unsupported_general_query"), "new landlord demo missing unsupported mode");
 assert(!/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\//.test(unsupportedLandlord), "new landlord demo must not cite case-corpus authorities");
-assert(unsupportedLandlord.includes("Answer safe: `false`"), "new landlord demo must show answer_safe=false");
+assert(unsupportedLandlord.includes("Professional advice certified: `false`"), "new landlord demo must show professional certification boundary");
 
 if (errors.length) {
   console.error("Case corpus L3.5 demo output validation failed:");

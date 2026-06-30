@@ -29,6 +29,11 @@ function assertNoBadVisibleLabels(label, text) {
   const bad = [
     /Verification pending/i,
     /Source check pending/i,
+    /Human review required/i,
+    /Lawyer review required/i,
+    /lawyer-review-required/i,
+    /answer_safe=false/i,
+    /needs_lawyer_review/i,
     /Source proof not attached/i,
     /Case audit required/i,
     /needs verify/i,
@@ -72,7 +77,9 @@ function validateEvidenceItem(item, label) {
   if (!quote) fail(`${label}: missing exact quote`);
   if (quote && item.paragraph_text && !String(item.paragraph_text).includes(quote)) fail(`${label}: exact quote not found in paragraph text`);
   if (item.answer_safe !== false) fail(`${label}: answer_safe must be false`);
-  if (item.lawyer_review_required !== true && item.needs_lawyer_review !== true) fail(`${label}: lawyer review flag missing`);
+  if (item.lawyer_review_status !== "unreviewed") fail(`${label}: lawyer_review_status must be quiet unreviewed metadata`);
+  if (item.answer_mode !== "research_prototype") fail(`${label}: answer_mode must be research_prototype`);
+  if (item.professional_advice_certified !== false) fail(`${label}: professional_advice_certified must be false`);
 }
 
 for (const [index, item] of (evidenceIndex.evidence || []).entries()) {

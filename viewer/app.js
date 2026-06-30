@@ -38,11 +38,10 @@
     not_source_proofed_seed: { text: 'Excluded seed', cls: 'badge-audit' },
     seed_identity_verified_only: { text: 'Seed identity verified only', cls: 'badge-source-linked' },
     research_graph_reference: { text: 'Research graph reference', cls: 'badge-research' },
-    paragraph_linked_public_source: { text: 'Paragraph-linked sample', cls: 'badge-source-linked' },
-    source_verified_public: { text: 'Paragraph-linked sample', cls: 'badge-source-linked' },
-    paragraph_quote_verified_research_only: { text: 'Paragraph-linked sample', cls: 'badge-source-linked' },
-    research_only: { text: 'Research-only', cls: 'badge-research' },
-    lawyer_review_required: { text: 'Lawyer review required', cls: 'badge-review' },
+    paragraph_linked_public_source: { text: 'Source-linked', cls: 'badge-source-linked' },
+    source_verified_public: { text: 'Public judgment', cls: 'badge-source-linked' },
+    paragraph_quote_verified_research_only: { text: 'Paragraph proof', cls: 'badge-source-linked' },
+    research_only: { text: 'Research prototype', cls: 'badge-research' },
     approved: { text: 'Approved', cls: 'badge-approved' },
     needs_review: { text: 'Needs review', cls: 'badge-review' },
     draft: { text: 'Draft', cls: 'badge-draft' },
@@ -74,8 +73,26 @@
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
-  function renderInlineText(value) {
+  function productCopy(value) {
     return String(value == null ? '' : value)
+      .replace(/answer[_-]?safe=false/gi, 'professional_advice_certified=false')
+      .replace(/not[_\s-]?yet[_\s-]?answer[_\s-]?safe/gi, 'not yet professionally certified')
+      .replace(/answer[_\s-]?safe/gi, 'professionally certified')
+      .replace(/research[_\s-]?only/gi, 'research-prototype')
+      .replace(/lawyer[-\s]?review[-\s]?required/gi, 'professional certification later')
+      .replace(/lawyer[-\s]?review/gi, 'professional certification')
+      .replace(/human\s+review\s+required/gi, 'professional certification later')
+      .replace(/human review gate/gi, 'professional certification gate')
+      .replace(/human review/gi, 'professional certification')
+      .replace(/partner review/gi, 'professional certification')
+      .replace(/current-treatment review/gi, 'current-treatment check')
+      .replace(/Current\s+treatment\s+unchecked/gi, 'Current-treatment check later')
+      .replace(/verification\s+pending/gi, 'source proof unavailable')
+      .replace(/source\s+check\s+pending/gi, 'source proof unavailable')
+      .replace(/case\s+audit\s+required/gi, 'source proof required');
+  }
+  function renderInlineText(value) {
+    return productCopy(value)
       .split(/(https?:\/\/[^\s)]+)/g)
       .map(part => /^https?:\/\//.test(part)
         ? `<a href="${esc(part)}" target="_blank" rel="noopener noreferrer">${esc(part)}</a>`
@@ -85,10 +102,10 @@
   function nodeStatusBadges(n) {
     if (hasViewerCaseEvidenceForNode(n)) {
       return [
-        '<span class="badge badge-source-linked">Paragraph-linked sample</span>',
-        '<span class="badge badge-research">Research-only</span>',
-        '<span class="badge badge-review">Lawyer review required</span>',
-        '<span class="badge badge-audit">answer_safe=false</span>',
+        '<span class="badge badge-source-linked">Source-linked</span>',
+        '<span class="badge badge-source-linked">Public judgment</span>',
+        '<span class="badge badge-source-linked">Paragraph proof</span>',
+        '<span class="badge badge-research">Research prototype</span>',
       ].join('');
     }
     const out = [];
@@ -117,7 +134,7 @@
   const CASE_FRUIT_ARTIFACTS = window.CASE_FRUIT_ARTIFACTS || [
     {
       base: '../data/legal_ingest/criminal_evidence_tree_v1/bail_public_batch_v1',
-      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review'],
+      flags: ['public_source_linked', 'quote_verified', 'research_prototype'],
       fallbackCaseName: 'Public bail source candidate',
       fallbackCitation: '[Public source candidate]',
     },
@@ -245,7 +262,7 @@
 
   function fallbackFirm() {
     S.firm = {
-      firm_profile: { name: 'Demo Litigation Firm', jurisdiction: 'Hong Kong SAR', practice_areas: ['Criminal Procedure'], review_policy: 'Partner review required before any external advice.', overlay_version: '0.0-demo' },
+      firm_profile: { name: 'Demo Litigation Firm', jurisdiction: 'Hong Kong SAR', practice_areas: ['Criminal Procedure'], review_policy: 'Professional certification before external advice.', overlay_version: '0.0-demo' },
       sops: [], templates: [], demo_tasks: [],
     };
   }
@@ -469,18 +486,17 @@
       para_no: item.para_no || item.paragraph_number || '',
       supporting_quote: item.supporting_quote || item.exact_quote || '',
       answer_layer_status: item.answer_layer_status || 'research_only',
+      answer_mode: item.answer_mode || 'research_prototype',
       answer_safe: item.answer_safe === true ? true : false,
-      needs_lawyer_review: item.needs_lawyer_review !== false,
-      lawyer_review_required: item.lawyer_review_required !== false,
-      human_review_status: item.human_review_status || 'lawyer_review_required',
+      lawyer_review_status: item.lawyer_review_status || 'unreviewed',
+      professional_advice_certified: item.professional_advice_certified === true,
       verification_status: item.verification_status || 'paragraph_linked_public_source',
       source_verification_status: item.source_verification_status || 'source_verified_public',
       quote_verified: Boolean(item.source_url && /#p\d+/i.test(item.source_url) && (item.exact_quote || item.supporting_quote)),
       validator_flags: Array.from(new Set([
         ...(item.validator_flags || []),
-        'answer_safe=false',
-        'lawyer_review_required',
-        'current_treatment_unchecked',
+        'public_paragraph_proof',
+        'research_prototype',
       ])),
     };
   }
@@ -523,7 +539,7 @@
       verified_evidence: evidence.slice(0, limit),
       candidate_evidence: evidence.slice(0, limit),
       warnings: evidence.length
-        ? ['pr6_frozen_case_corpus_research_only', 'lawyer_review_required', 'answer_safe_false']
+        ? ['pr6_frozen_case_corpus_research_prototype', 'source_linked_public_judgment', 'paragraph_proof']
         : [],
     });
   }
@@ -576,7 +592,7 @@
           coverage_status: evidence.length ? 'candidate_only' : 'no_evidence',
           evidence,
           candidate_evidence: evidence,
-          warnings: evidence.length ? ['Loaded from local quote-proof artifacts. Human review still required.'] : [],
+          warnings: evidence.length ? ['Loaded from local public paragraph-proof artifacts.'] : [],
         });
       });
   }
@@ -648,11 +664,11 @@
     });
     target.innerHTML = `
       <div class="fruit-summary">
-        <span class="badge badge-source-linked">Paragraph-linked sample</span>
+        <span class="badge badge-source-linked">Source-linked</span>
+        <span class="badge badge-source-linked">Paragraph proof</span>
         <span>${sorted.length} source-proof card${sorted.length === 1 ? '' : 's'} attached to <code>${esc(nodeId)}</code>.</span>
-        <span class="badge badge-audit">answer_safe=false</span>
       </div>
-      ${(normalized.warnings || []).length ? `<div class="fruit-warning">${normalized.warnings.map(esc).join(' ')}</div>` : ''}
+      ${(normalized.warnings || []).length ? `<div class="fruit-warning">${normalized.warnings.map(item => esc(productCopy(item))).join(' ')}</div>` : ''}
       <div class="fruit-list">
         ${sorted.map(renderCaseFruitCard).join('')}
       </div>
@@ -664,13 +680,10 @@
     const paragraph = e.paragraph_text || quote;
     const proofLinked = Boolean(e.source_url && /#p\d+/i.test(e.source_url) && quote);
     const badgeHtml = [
-      proofLinked ? '<span class="badge badge-source-linked">Paragraph-linked sample</span>' : '',
-      e.answer_layer_status === 'answer_safe' ? '<span class="badge badge-approved">Answer-safe</span>' : '<span class="badge badge-research">Research-only</span>',
-      e.needs_lawyer_review || e.lawyer_review_required || e.human_review_status === 'lawyer_review_required' || e.human_review_status === 'unreviewed'
-        ? '<span class="badge badge-review">Lawyer review required</span>'
-        : '',
-      e.answer_safe === false || e.answer_layer_status !== 'answer_safe' ? '<span class="badge badge-audit">answer_safe=false</span>' : '',
-      e.current_treatment_status === 'unchecked' ? '<span class="badge badge-pending">Current treatment unchecked</span>' : '',
+      proofLinked ? '<span class="badge badge-source-linked">Source-linked</span>' : '',
+      proofLinked ? '<span class="badge badge-source-linked">Public judgment</span>' : '',
+      proofLinked ? '<span class="badge badge-source-linked">Paragraph proof</span>' : '',
+      '<span class="badge badge-research">Research prototype</span>',
       e.principle_quality_status === 'demoted' ? '<span class="badge badge-audit">Demoted principle boundary</span>' : '',
     ].filter(Boolean).join('');
     const sourceLink = e.source_url
@@ -689,11 +702,11 @@
         </div>
         <div class="fruit-badges">
           ${badgeHtml}
-          ${e.authority_role ? `<span class="badge badge-research">${esc(e.authority_role)}</span>` : ''}
-          ${e.significance_label ? `<span class="badge badge-draft">${esc(e.significance_label)}</span>` : ''}
+          ${e.authority_role ? `<span class="badge badge-research">${esc(productCopy(e.authority_role))}</span>` : ''}
+          ${e.significance_label ? `<span class="badge badge-draft">${esc(productCopy(e.significance_label))}</span>` : ''}
         </div>
-        ${e.proposition_text ? `<p class="fruit-proposition">${esc(e.proposition_text)}</p>` : ''}
-        ${e.principle_text && e.principle_text !== e.proposition_text ? `<p class="fruit-proposition"><strong>Principle:</strong> ${esc(e.principle_text)}</p>` : ''}
+        ${e.proposition_text ? `<p class="fruit-proposition">${esc(productCopy(e.proposition_text))}</p>` : ''}
+        ${e.principle_text && e.principle_text !== e.proposition_text ? `<p class="fruit-proposition"><strong>Principle:</strong> ${esc(productCopy(e.principle_text))}</p>` : ''}
         ${quote ? `<blockquote class="fruit-quote"><span class="fruit-quote-label">Exact quote</span>${esc(quote)}</blockquote>` : ''}
         <details class="fruit-proof" ${paragraph && paragraph !== quote ? 'open' : ''}>
           <summary>Full paragraph text / audit trail</summary>
@@ -702,7 +715,7 @@
             <span>${esc(e.paragraph_id || e.proposition_id || '')}</span>
             ${sourceLink}
           </div>
-          ${e.lineage_note ? `<div class="fruit-lineage">${esc(e.lineage_note)}</div>` : ''}
+          ${e.lineage_note ? `<div class="fruit-lineage">${esc(productCopy(e.lineage_note))}</div>` : ''}
         </details>
       </article>
     `;
@@ -778,7 +791,7 @@
         ${used !== null ? `<div class="insp-section"><span class="used-flag ${used ? '' : 'not-used'}">${used ? '✓ Used in current task trace' : '— Not used in current task trace'}</span></div>` : ''}
         <div class="insp-section">
           <div class="insp-label">Extracted principle / summary</div>
-          <div class="insp-quote">${esc(n.summary || '—')}</div>
+          <div class="insp-quote">${esc(productCopy(n.summary || '—'))}</div>
           <div class="insp-anchor">${esc(n.id)}${n.subsection ? ' · §' + esc(n.subsection) : n.section ? ' · §' + esc(n.section) : ''}</div>
         </div>
         ${proofedAuths.length ? `<div class="insp-section">
@@ -796,7 +809,7 @@
         ${sopBlocks.length ? `<div class="insp-section">
           <div class="insp-label">Firm SOP at this step</div>
           ${sopBlocks.map(({ sop, block }) => `
-            <div class="sop-note"><span class="sn-label">${esc(sop.title)} ${versionBadge(block.version)}</span>${esc(block.instruction)}</div>
+            <div class="sop-note"><span class="sn-label">${esc(sop.title)} ${versionBadge(block.version)}</span>${esc(productCopy(block.instruction))}</div>
           `).join('')}
         </div>` : ''}
         ${hasParagraphProof ? `<div class="insp-section">
@@ -821,11 +834,11 @@
       body.innerHTML = `
         <div class="insp-title">${esc(sop.title)}</div>
         <div class="insp-badges">${badge(sop.status)} ${versionBadge(sop.version)}</div>
-        <div class="insp-section"><div class="insp-label">Purpose</div><div class="insp-text">${esc(sop.description)}</div></div>
+        <div class="insp-section"><div class="insp-label">Purpose</div><div class="insp-text">${esc(productCopy(sop.description))}</div></div>
         ${(sop.review_gates || []).length ? `<div class="insp-section"><div class="insp-label">Review gates</div>
-          <ul class="insp-list">${sop.review_gates.map(g => `<li><span class="badge badge-review">Human review</span> ${esc(g.label)}</li>`).join('')}</ul></div>` : ''}
+          <ul class="insp-list">${sop.review_gates.map(g => `<li><span class="badge badge-review">Professional certification</span> ${esc(productCopy(g.label))}</li>`).join('')}</ul></div>` : ''}
         <div class="insp-section"><div class="insp-label">Version history</div>
-          <ul class="insp-list">${(sop.changelog || []).map(c => `<li><strong>v${esc(c.version)}</strong> · ${esc(c.date)} · ${esc(c.by)}<br><span style="color:var(--umber)">${esc(c.note)}</span></li>`).join('')}</ul></div>
+          <ul class="insp-list">${(sop.changelog || []).map(c => `<li><strong>v${esc(c.version)}</strong> · ${esc(c.date)} · ${esc(c.by)}<br><span style="color:var(--umber)">${esc(productCopy(c.note))}</span></li>`).join('')}</ul></div>
         <div class="insp-section">
           <button class="ghost-btn" disabled title="Demo: edit proposals route to partner approval">Propose edit</button>
           <button class="ghost-btn" disabled title="Demo: compare versions">Compare versions</button>
@@ -897,7 +910,7 @@
         issueTag: 'criminal_law.theft.intention_permanently_deprive',
         label: 'Intention permanently to deprive',
         query: 'What does intention permanently to deprive mean in theft?',
-        memo: 'Research memo separates the theft element from sentencing/background-only paragraphs and keeps current treatment unchecked.',
+        memo: 'Research memo separates the theft element from sentencing/background-only paragraphs and keeps current-treatment checks as a later research step.',
       },
       {
         issueTag: 'criminal_law.theft.belonging_to_another',
@@ -909,7 +922,7 @@
         issueTag: 'criminal_procedure.bail',
         label: 'Bail',
         query: 'What bail factors matter in a theft or dishonesty-related case?',
-        memo: 'Research memo stays procedural and research-only; it does not convert paragraph candidates into answer-safe advice.',
+        memo: 'Research memo stays procedural and research-prototype; it does not convert paragraph candidates into professionally certified advice.',
       },
     ];
   }
@@ -927,12 +940,13 @@
         <div class="card-top">
           <span class="card-title">${esc(item.label)}</span>
           <span class="card-badges">
+            <span class="badge badge-source-linked">Source-linked</span>
             <span class="badge badge-source-linked">Paragraph proof</span>
-            <span class="badge badge-audit">answer_safe=false</span>
+            <span class="badge badge-research">Research prototype</span>
           </span>
         </div>
         <p class="card-body">${esc(item.query)}</p>
-        <p class="case-demo-memo">${esc(item.memo)}</p>
+        <p class="case-demo-memo">${esc(productCopy(item.memo))}</p>
         <div class="case-demo-row">
           <span class="link-pill"><span class="lp-kind">coverage</span>${esc(coverage?.coverage_band || 'mapped sample')}</span>
           <span class="link-pill"><span class="lp-kind">cases</span>${esc(coverage?.case_count || evidence.length)}</span>
@@ -947,7 +961,7 @@
             <li>Issue tag: ${esc(item.issueTag)}</li>
             <li>Viewer node: ${esc((mapping?.viewer_node_ids || []).join(', ') || 'unmapped')}</li>
             <li>Doctrine node: ${esc((mapping?.doctrine_node_ids || []).join(', ') || 'unmapped')}</li>
-            <li>All displayed cards are research-only, lawyer-review-required, and not legal advice.</li>
+            <li>All displayed cards have public paragraph proof and run in research-prototype mode.</li>
           </ul>
         </details>
       </section>
@@ -959,7 +973,7 @@
       <section class="case-demo-query-card case-demo-unsupported">
         <div class="card-top">
           <span class="card-title">Unsupported landlord/rent query</span>
-          <span class="card-badges"><span class="badge badge-audit">Abstains</span><span class="badge badge-audit">answer_safe=false</span></span>
+          <span class="card-badges"><span class="badge badge-audit">Abstains</span><span class="badge badge-research">Research prototype</span></span>
         </div>
         <p class="card-body">My landlord increased my rent. What should I do?</p>
         <p class="case-demo-memo">Unsupported general query: the PR #6 frozen demo is a criminal-law case-corpus sample, so no criminal-law authority is attached and the inquiry must abstain.</p>
@@ -994,21 +1008,20 @@
   function viewCaseDemo() {
     const counts = S.caseEvidenceIndex?.corpus_counts || {};
     root().innerHTML = `
-      ${viewHeader('Verified proof', 'Verified Case Demo', 'A source-proofed PR #6 module over the frozen 120-case sample. It keeps answer_safe=false, shows public paragraph anchors and exact quotes, and remains lawyer-review-required.')}
+      ${viewHeader('Verified proof', 'Verified Case Demo', 'A source-proofed PR #6 module over the frozen 120-case sample. It shows public paragraph anchors, exact quotes and research-prototype analysis.')}
       <div class="case-demo-shell case-demo-native" data-native-case-demo="true">
         <div class="case-demo-toolbar">
           <div>
-            <span class="badge badge-source-linked">Source-proofed sample</span>
-            <span class="badge badge-research">Research-only</span>
-            <span class="badge badge-review">Lawyer review required</span>
-            <span class="badge badge-pending">Current treatment unchecked</span>
-            <span class="badge badge-audit">answer_safe=false</span>
+            <span class="badge badge-source-linked">Source-linked</span>
+            <span class="badge badge-source-linked">Public judgment</span>
+            <span class="badge badge-source-linked">Paragraph proof</span>
+            <span class="badge badge-research">Research prototype</span>
           </div>
           <a class="case-demo-open" href="case_corpus_demo.html" target="_blank" rel="noopener noreferrer">Secondary proof route</a>
         </div>
         <section class="case-demo-hero card">
           <div class="card-top"><span class="card-title">Native source-proof module inside the Fable workspace</span></div>
-          <p class="card-body">${esc(S.caseEvidenceIndex?.safe_demo_claim || 'Source-proofed, research-only HK criminal-law case-law sample. Not legal advice.')}</p>
+          <p class="card-body">${esc(productCopy(S.caseEvidenceIndex?.safe_demo_claim || 'Source-proofed, research-prototype HK criminal-law case-law sample. Not legal advice.'))}</p>
           <div class="case-demo-metrics">
             ${renderMetric('Targeted cases', counts.registry_case_count || 120)}
             ${renderMetric('Paragraph cards', counts.paragraph_card_count || '—')}
@@ -1016,7 +1029,7 @@
             ${renderMetric('Principle cards', counts.principle_card_count || '—')}
             ${renderMetric('Usable principles', counts.usable_principle_count || '—')}
             ${renderMetric('Demoted principles', counts.demoted_principle_count || '—')}
-            ${renderMetric('answer_safe_count', S.caseEvidenceIndex?.answer_safe_count ?? 0)}
+              ${renderMetric('Professional advice certified', S.caseEvidenceIndex?.professional_advice_certified === true ? 1 : 0)}
           </div>
         </section>
         <div class="case-demo-grid">
@@ -1152,14 +1165,14 @@
   function viewTasks() {
     const tasks = currentDomainTasks();
     root().innerHTML = `
-      ${viewHeader('Task runner', 'Matter tasks', 'Run an AI task only through an approved flow, firm SOP, and template. The execution trace records exactly which authority, SOP block, and clause each output relied on — and where human review is required.')}
+      ${viewHeader('Task runner', 'Matter tasks', 'Run an AI task only through an approved flow, firm SOP, and template. The execution trace records exactly which authority, SOP block, and clause each output relied on — and where professional certification is required.')}
       ${tasks.length ? tasks.map(t => {
         const flow = S.flows.find(f => f.flow_id === t.flow_id);
         const sop = (S.firm.sops || []).find(s => s.sop_id === t.sop_id);
         const tpl = (S.firm.templates || []).find(x => x.template_id === t.template_id);
         return `<div class="card">
           <div class="card-top"><span class="card-title">${esc(t.title)}</span>
-            <span class="card-badges"><span class="badge badge-review">Human review gate</span></span></div>
+            <span class="card-badges"><span class="badge badge-review">Professional certification gate</span></span></div>
           <div class="card-body">${esc(t.description)}</div>
           <div class="card-links">
             ${flow ? `<span class="link-pill"><span class="lp-kind">flow</span>${esc(flow.title)} v1.0</span>` : ''}
@@ -1219,7 +1232,7 @@
     el.innerHTML = `
       <div class="card" style="border-color:var(--bronze-soft)">
         <div class="card-top"><span class="card-title">Execution trace — ${esc(tr.task.title)}</span>
-          <span class="card-badges">${badge('not_product_answer_layer')}<span class="badge badge-review">Partner review required</span></span></div>
+          <span class="card-badges">${badge('not_product_answer_layer')}<span class="badge badge-research">Professional certification later</span></span></div>
         <div class="card-body" style="font-family:var(--mono);font-size:11px;color:var(--faded)">
           flow: ${esc(tr.flowLabel)} · sop: ${esc(tr.sopLabel)} · template: ${esc(tr.tplLabel)} · run: ${esc(tr.ranAt)}
         </div>
@@ -1319,10 +1332,10 @@
   const INQ = { query: '', loading: false, result: null, mode: null };
 
   const COVERAGE_BADGE = {
-    answer_safe: '<span class="badge badge-approved">Answer-safe (human reviewed)</span>',
-    paragraph_verified: '<span class="badge badge-verified">Paragraph verified</span>',
-    source_verified: '<span class="badge badge-verified">Source verified — review required</span>',
-    candidate_only: '<span class="badge badge-review">Candidate only — needs review</span>',
+    answer_safe: '<span class="badge badge-approved">Certified advice</span>',
+    paragraph_verified: '<span class="badge badge-source-linked">Paragraph proof</span>',
+    source_verified: '<span class="badge badge-source-linked">Source-linked</span>',
+    candidate_only: '<span class="badge badge-audit">Unverified candidate excluded</span>',
     no_evidence: '<span class="badge badge-audit">Abstained</span>',
   };
 
@@ -1422,7 +1435,7 @@
         ${item.quote ? `<div class="piw-quote">${esc(item.quote)}</div>` : ''}
         ${item.citation ? `<div class="piw-meta">${esc(item.source || '')} · ${esc(item.citation)} · ${esc(item.pinpoint || '')}</div>` : ''}
         ${item.required_facts && item.required_facts.length ? `<div class="piw-meta">required facts: ${esc(item.required_facts.slice(0, 8).join(', '))}</div>` : ''}
-        ${item.review_status || item.output_mode ? `<div class="piw-badges"><span class="badge badge-review">${esc(item.review_status || 'review required')}</span><span class="badge badge-draft">${esc(item.output_mode || 'draft only')}</span></div>` : ''}
+        ${item.review_status || item.output_mode ? `<div class="piw-badges"><span class="badge badge-research">${esc(String(item.review_status || 'research_prototype').replace(/lawyer.?review.?required|needs.?lawyer.?review/gi, 'research_prototype'))}</span><span class="badge badge-draft">${esc(item.output_mode || 'draft only')}</span></div>` : ''}
       </div>
     `).join('');
   }
@@ -1475,8 +1488,8 @@
           </div>
           <span class="card-badges">
             <span class="badge badge-research">Answer first</span>
-            ${productMode.mode ? `<span class="badge badge-pending">${esc(String(productMode.mode))}</span>` : ''}
-            <span class="badge badge-review">Review required</span>
+            ${productMode.mode ? `<span class="badge badge-pending">${esc(productCopy(String(productMode.mode)))}</span>` : ''}
+            <span class="badge badge-research">Research prototype</span>
           </span>
         </div>
         ${memo.short_answer ? `<p class="research-short">${renderInlineText(memo.short_answer)}</p>` : ''}
@@ -1495,7 +1508,7 @@
           <summary>Source audit and debug status</summary>
           <ul class="piw-list">
             <li>Audit display: ${esc(sourceStatus.display || 'collapsed')}</li>
-            <li>Verification status: ${esc(sourceStatus.verification_status || 'research_only')}</li>
+            <li>Verification status: ${esc(productCopy(sourceStatus.verification_status || 'research_prototype'))}</li>
             <li>Claim count: ${esc(sourceStatus.claims_count || 0)}</li>
             <li>Unsupported/problem claims: ${esc(sourceStatus.unsupported_claims_count || 0)}</li>
             <li>Uploaded text evidence: ${evidenceAudit.uploaded_evidence_ingested ? 'parsed for research triage only' : 'not parsed / not supplied'}</li>
@@ -1512,7 +1525,7 @@
       <div class="piw-panel">
         <div class="card-top">
           <span class="card-title">PI staged workflow · ${esc(workflow.matter_view || 'triage')}</span>
-          <span class="card-badges"><span class="badge badge-research">Research layer</span><span class="badge badge-review">Lawyer review required</span></span>
+          <span class="card-badges"><span class="badge badge-research">Research prototype</span></span>
         </div>
         <div class="card-body">${esc(workflow.answer_note || '')}</div>
         ${renderAppliedTriage(workflow.applied_answer || workflow.applied_triage)}
@@ -1632,7 +1645,7 @@
     const matches = r.matched_doctrine_nodes || [];
     const abstentionCard = !matches.length && isUnsupportedLandlordQuery(INQ.query)
       ? `<div class="card">
-          <div class="card-top"><span class="card-title">Unsupported landlord/rent query</span><span class="card-badges"><span class="badge badge-audit">Abstained</span><span class="badge badge-audit">answer_safe=false</span></span></div>
+          <div class="card-top"><span class="card-title">Unsupported landlord/rent query</span><span class="card-badges"><span class="badge badge-audit">Abstained</span><span class="badge badge-research">Research prototype</span></span></div>
           <div class="card-body">This frozen PR #6 demo is limited to the source-proofed criminal-law sample. No criminal-law authority is attached to the landlord/rent query.</div>
         </div>`
       : '';

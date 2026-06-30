@@ -4,7 +4,7 @@
     "name": "Demo Litigation Firm",
     "jurisdiction": "Hong Kong SAR",
     "practice_areas": ["Personal Injury", "Tort", "Civil Litigation"],
-    "review_policy": "Partner review required before external advice, filing, service, or final form recommendation.",
+    "review_policy": "Professional certification before external advice, filing, service, or final form recommendation.",
     "overlay_version": "0.1.0-pi-demo",
     "last_updated": "2026-06-14"
   },
@@ -19,7 +19,7 @@
       "last_updated": "2026-06-14",
       "linked_flows": ["pi_legal_analysis_flow", "pi_procedural_forms_flow"],
       "linked_templates": ["pi_statement_of_claim_outline", "pi_schedule_of_damages_outline", "pi_pre_action_letter_outline"],
-      "description": "Drafting runs fail closed: every legal proposition and draft paragraph must point to a source card or firm-private clause, and every output stays research-only until partner review.",
+      "description": "Drafting runs fail closed: every legal proposition and draft paragraph must point to a source card or firm-private clause, and every output stays in research-prototype mode until professional certification.",
       "review_gates": [
         {
           "gate_id": "pi_gate_partner_review",
@@ -102,7 +102,7 @@
         {
           "clause_id": "pi_soc_breach",
           "title": "Duty / breach particulars",
-          "text": "[Research-only breach particulars tied to source cards and firm SOP blocks. No verified legal conclusion until authority and partner review are recorded.]"
+          "text": "[Research-prototype breach particulars tied to source cards and firm SOP blocks. No verified legal conclusion until authority and professional certification are recorded.]"
         },
         {
           "clause_id": "pi_soc_loss",
@@ -150,7 +150,7 @@
         {
           "clause_id": "pi_lba_liability",
           "title": "Preliminary liability basis",
-          "text": "[Research-layer summary only; source verification and partner review required.]"
+          "text": "[Research-layer summary only; source proof and professional certification required.]"
         }
       ]
     }
