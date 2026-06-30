@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hk_legal_model_training.retrieved_authorities_to_memo.v1",
+  "title": "Retrieved Authorities To Research Memo Example",
+  "type": "object",
+  "required": [
+    "example_id",
+    "task",
+    "source_object_ids",
+    "case_id",
+    "case_name",
+    "citation",
+    "court",
+    "judgment_date",
+    "paragraph_ids",
+    "source_urls",
+    "exact_quote_support",
+    "issue_tags",
+    "answer_layer_status",
+    "review_status",
+    "usable_in_answer_layer",
+    "demotion_reasons",
+    "answer_safe",
+    "input",
+    "output",
+    "provenance"
+  ],
+  "properties": {
+    "example_id": { "type": "string" },
+    "task": { "const": "retrieved_authorities_to_memo" },
+    "split": { "enum": ["train", "eval"] },
+    "source_object_ids": { "type": "array", "items": { "type": "string" } },
+    "case_id": { "type": "string" },
+    "case_name": { "type": "string" },
+    "citation": { "type": "string" },
+    "court": { "type": "string" },
+    "judgment_date": { "type": "string" },
+    "paragraph_ids": { "type": "array", "items": { "type": "string" } },
+    "source_urls": { "type": "array", "items": { "type": "string" } },
+    "exact_quote_support": { "type": "string" },
+    "issue_tags": { "type": "array", "items": { "type": "string" } },
+    "answer_layer_status": { "enum": ["research_only", "unsupported_abstention"] },
+    "review_status": { "type": "string" },
+    "usable_in_answer_layer": { "type": "boolean" },
+    "demotion_reasons": { "type": "array", "items": { "type": "string" } },
+    "answer_safe": { "const": false },
+    "input": {
+      "type": "object",
+      "required": ["query", "retrieved_authorities", "expected_abstention"],
+      "properties": {
+        "query": { "type": "string" },
+        "retrieved_authorities": { "type": "array" },
+        "expected_abstention": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "required": ["memo_markdown", "supported_legal_answer", "answer_safe"],
+      "properties": {
+        "memo_markdown": { "type": "string" },
+        "supported_legal_answer": { "type": "boolean" },
+        "answer_safe": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source", "teacher_candidate", "verification_status"],
+      "properties": {
+        "source": { "type": "string" },
+        "teacher_candidate": { "const": false },
+        "verification_status": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "not": {
+    "anyOf": [
+      { "required": ["private_source_content"] },
+      { "required": ["licensed_source_content"] },
+      { "required": ["client_document_text"] },
+      { "required": ["teacher_unverified_prose"] }
+    ]
+  },
+  "additionalProperties": false
+}

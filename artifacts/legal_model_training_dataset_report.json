@@ -1,0 +1,53 @@
+{
+  "report_id": "legal_model_training_dataset_report_v1",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "total_examples": 789,
+  "examples_by_task": {
+    "demotion_classifier": 344,
+    "paragraph_to_proposition": 344,
+    "proposition_to_principle": 97,
+    "retrieved_authorities_to_memo": 4
+  },
+  "train_eval_split_counts": {
+    "eval": 159,
+    "train": 630
+  },
+  "positive_usable_principle_examples": 97,
+  "demoted_negative_examples": 247,
+  "issue_coverage": {
+    "criminal_law.theft": 578,
+    "criminal_law.theft.sentencing": 393,
+    "criminal_law.dishonesty": 91,
+    "criminal_law.theft.dishonesty": 92,
+    "criminal_law.theft.mens_rea": 91,
+    "criminal_law.theft.appropriation": 172,
+    "criminal_law.fraud": 243,
+    "criminal_law.deception": 446,
+    "criminal_procedure.interview_caution": 92,
+    "criminal_procedure.bail": 59,
+    "criminal_law.theft.handling_stolen_goods": 75,
+    "criminal_law.theft.belonging_to_another": 46,
+    "criminal_law.theft.intention_permanently_deprive": 55
+  },
+  "source_proof_rate": 1,
+  "quote_support_rate": 1,
+  "answer_safe_count": 0,
+  "private_source_count": 0,
+  "unverified_teacher_count": 0,
+  "unsupported_domain_examples": 1,
+  "dataset_limitations": [
+    "Dataset is derived from the frozen PR #6 120-case criminal-law sample only.",
+    "No model has been trained in this PR.",
+    "Teacher candidates remain candidate-only unless verified by public paragraph quote/card generation.",
+    "The dataset teaches extraction, classification, demotion and memo drafting behaviour, not final legal advice.",
+    "Current treatment and lawyer-reviewed answer-safe status remain out of scope."
+  ],
+  "recommended_minimum_corpus_size_before_lora": {
+    "verified_cases": 500,
+    "verified_task_examples": 5000,
+    "source_proof_rate": 1,
+    "quote_support_rate": 1,
+    "answer_safe_count": 0,
+    "private_source_count": 0
+  }
+}
