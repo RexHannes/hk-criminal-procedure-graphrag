@@ -76,20 +76,22 @@ Generated: 2026-06-30T00:00:00.000Z
 
 - Current PR preview URL source: Use the exact Vercel Preview URL recorded in the PR #6 body and GitHub deployment status for the current head commit.
 - Production target URL after merge/promotion: https://hk-criminal-procedure-graphrag.vercel.app/viewer/
-- Verified case-corpus route: /viewer/
+- Polished workspace route: /viewer/
+- Verified case-corpus route: /viewer/case_corpus_demo.html
 - Direct verified case-corpus route: /viewer/case_corpus_demo.html
-- Legacy graph viewer route: /viewer/index_legacy.html
-- Page to show: For the unmerged draft PR, show the Vercel Preview deployment at /viewer/. After merge or production promotion, the production /viewer/ URL should show the same verified case-corpus demo.
-- Legacy warning: The legacy visual tree is an unverified seed map. It is not the PR #6 source-proofed case-corpus demo and must not be presented as verified authority.
+- Seed graph viewer route: /viewer/index_legacy.html
+- Page to show: For the unmerged draft PR, open the Vercel Preview deployment at /viewer/ to show the polished Legal Graph-SOP Workspace. Then click Verified Case Demo, or open /viewer/case_corpus_demo.html directly, for the source-proofed paragraph-linked case-law demo.
+- Seed graph warning: Graph/domain views are seed-map research UI unless the source-proofed Verified Case Demo is opened. They are not the PR #6 paragraph-linked case-law authority view and must not be presented as verified authority.
 
 ## Safe Demo Instructions
 
-- Show the verified case-law demo page first: /viewer/ on the current Vercel Preview deployment.
+- Open /viewer/ on the current Vercel Preview deployment to show the polished Legal Graph-SOP Workspace.
+- Use the Verified Case Demo sidebar entry/card, or open /viewer/case_corpus_demo.html directly, for the source-proofed case-law demo.
 - Point to the 120-case sample metrics and the 344 paragraph/proposition/principle card counts.
 - Open at least one HKLII/LegalRef paragraph URL with a #p anchor from the demo output.
 - State that every supported demo remains answer_safe=false and lawyer-review-required.
 - Use the unsupported landlord/rent query to show abstention and wrong-domain control.
-- Avoid the legacy graph viewer unless explaining historical seed-map work.
+- Treat graph/domain views as seed-map research UI unless the source-proofed case demo is opened.
 - Do not use the production URL for the boss/VC demo until the production smoke test passes.
 
 ## Unsupported Query Abstention

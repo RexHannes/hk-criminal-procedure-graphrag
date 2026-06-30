@@ -3,77 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PR #6 Verified Case-Corpus Demo</title>
-  <link rel="canonical" href="case_corpus_demo.html">
-  <link rel="stylesheet" href="case_corpus_demo.css">
+  <title>HK Criminal Procedure - Legal Graph-SOP Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="shell">
-    <section class="hero" aria-labelledby="page-title">
-      <p class="eyebrow">PR #6 verified case-corpus demo</p>
-      <h1 id="page-title">Source-proofed HK criminal-law research demo</h1>
-      <p class="lede">
-        This public demo shows the frozen PR #6 L1-L3.5 case-corpus sample, not the old seed graph.
-        It is a research-only, lawyer-review-required display of public HKLII/LegalRef paragraph proof.
-      </p>
 
-      <div class="badges" aria-label="Demo boundaries">
-        <span class="badge strong">Research-only</span>
-        <span class="badge strong">Source-proofed sample</span>
-        <span class="badge warn">Lawyer review required</span>
-        <span class="badge danger">Not legal advice</span>
-        <span class="badge danger">answer_safe=false</span>
+  <header id="masthead">
+    <div class="masthead-brand">
+      <div class="brand-mark">¶</div>
+      <div class="brand-text">
+        <h1>Hong Kong Criminal Procedure</h1>
+        <span class="brand-sub">Legal Graph-SOP Workspace</span>
       </div>
+    </div>
+    <div class="command-wrap">
+      <input type="text" id="command-bar" placeholder="Search authority, run a legal flow, or draft from firm SOP..." autocomplete="off" />
+      <div id="command-results" class="command-results" hidden></div>
+    </div>
+    <div class="domain-wrap">
+      <label for="domain-select">Domain</label>
+      <select id="domain-select" aria-label="Select legal domain"></select>
+    </div>
+    <div class="masthead-badges">
+      <span class="badge badge-research" title="The workspace is a research UI with flow, source and SOP inspection.">Workspace</span>
+      <a class="verified-demo-chip" href="case_corpus_demo.html" title="Open the source-proofed PR #6 case-corpus demo">Verified Case Demo</a>
+    </div>
+  </header>
+  <div class="masthead-rule"></div>
 
-      <div class="demo-links">
-        <a class="button primary" href="case_corpus_demo.html">Verified case-law demo</a>
-        <a class="button" href="index_legacy.html">Legacy graph viewer - unverified seed map</a>
+  <div id="workspace">
+
+    <nav id="sidebar">
+      <div class="nav-section-label">Workspace</div>
+      <button class="nav-item active" data-view="domains"><span class="nav-glyph">◇</span>Domains</button>
+      <button class="nav-item" data-view="flows"><span class="nav-glyph">→</span>Legal Flows</button>
+      <button class="nav-item" data-view="doctrine"><span class="nav-glyph">§</span>Doctrine Map</button>
+      <a class="nav-item" href="pi/"><span class="nav-glyph">PI</span>PI Workflow</a>
+      <button class="nav-item" data-view="inquiry"><span class="nav-glyph">?</span>AI Inquiry</button>
+      <button class="nav-item" data-view="tasks"><span class="nav-glyph">▸</span>Tasks</button>
+
+      <div class="nav-section-label">Verified Proof</div>
+      <button class="nav-item nav-item-emphasis" data-view="caseDemo">
+        <span class="nav-glyph">✓</span>Verified Case Demo
+      </button>
+
+      <div class="nav-section-label">Firm Overlay</div>
+      <button class="nav-item" data-view="playbooks"><span class="nav-glyph">¶</span>Firm Playbooks</button>
+      <button class="nav-item" data-view="templates"><span class="nav-glyph">≡</span>Templates</button>
+
+      <div class="nav-section-label">Governance</div>
+      <button class="nav-item" data-view="audit"><span class="nav-glyph">✓</span>Sources &amp; Audit</button>
+
+      <div id="firm-card">
+        <div class="firm-card-label">Firm profile</div>
+        <div class="firm-card-name" id="firm-name">-</div>
+        <div class="firm-card-meta" id="firm-meta"></div>
       </div>
+    </nav>
 
-      <div class="notice">
-        Legacy warning: the old visual tree is an unverified seed map and must not be presented as the PR #6 verified case-corpus demo.
+    <main id="center">
+      <div id="view-root"></div>
+    </main>
+
+    <aside id="inspector">
+      <div class="inspector-header">
+        <span class="inspector-title">Inspector</span>
+        <span class="inspector-kind" id="inspector-kind"></span>
       </div>
-    </section>
+      <div id="inspector-body">
+        <p class="hint">Select a flow step, authority, SOP block, or template clause to inspect its source trail.</p>
+      </div>
+    </aside>
 
-    <section class="metrics" aria-label="Frozen corpus metrics">
-      <div class="metric"><span>Targeted cases</span><strong data-metric="cases">120</strong></div>
-      <div class="metric"><span>Paragraph cards</span><strong data-metric="paragraphs">344</strong></div>
-      <div class="metric"><span>Propositions</span><strong data-metric="propositions">344</strong></div>
-      <div class="metric"><span>Principle cards</span><strong data-metric="principles">344</strong></div>
-      <div class="metric"><span>Usable principles</span><strong data-metric="usable">97</strong></div>
-      <div class="metric"><span>Demoted principles</span><strong data-metric="demoted">247</strong></div>
-      <div class="metric"><span>Answer-safe count</span><strong data-metric="answer-safe">0</strong></div>
-      <div class="metric"><span>Source proof rate</span><strong data-metric="source-proof">100%</strong></div>
-      <div class="metric"><span>Wrong-domain leaks</span><strong data-metric="wrong-domain">0</strong></div>
-      <div class="metric"><span>Unsupported abstention</span><strong data-metric="abstention">100%</strong></div>
-    </section>
+  </div>
 
-    <section class="fallback-proof" aria-label="Static source proof fallback">
-      <strong>Static proof fallback for smoke tests:</strong>
-      <p>
-        Example HKLII paragraph link:
-        <a href="https://www.hklii.hk/en/cases/hkcfi/2022/1962#p24">https://www.hklii.hk/en/cases/hkcfi/2022/1962#p24</a>.
-        Exact quote: "offence of theft and Ghosh is the leading authority on the issue of dishonesty".
-      </p>
-      <p>
-        Boundary: answer_safe=false; needs_lawyer_review=true; lawyer-review-required.
-        Unsupported landlord/rent query abstains and attaches no criminal-law authority.
-        Demoted principles remain preserved for audit and are not used as answer-safe propositions.
-      </p>
-    </section>
+  <footer id="status-bar">
+    <span id="status-data">Loading data...</span>
+    <span class="status-sep"></span>
+    <span id="status-counts"></span>
+    <span class="status-spacer"></span>
+    <span id="status-selected">Nothing selected</span>
+  </footer>
 
-    <section aria-labelledby="demo-title">
-      <h2 id="demo-title">Frozen demo queries</h2>
-      <p id="load-status" class="lede">Loading frozen PR #6 artifacts...</p>
-      <div class="tabs" id="demo-tabs" role="tablist" aria-label="Frozen demo queries"></div>
-      <div id="demo-panels"></div>
-    </section>
-
-    <p class="footer">
-      Public artifact sources: <code>artifacts/demo_freeze_report.json</code>,
-      <code>artifacts/demo_outputs/demo_query_pack.json</code>, and the frozen demo memo markdown files.
-    </p>
-  </main>
-  <script src="case_corpus_demo.js"></script>
+  <script>
+    window.DATA_INDEX = '../data/index.json';
+    window.DATA_ROOT = '../data/legal_domain_packs/demo_maps/';
+    window.DEFAULT_DOMAIN_ID = 'criminal_procedure_hk';
+    window.FIRM_OVERLAY_PATH = '../data/firm_overlay/demo_firm.json';
+  </script>
+  <script src="app.js"></script>
 </body>
 </html>

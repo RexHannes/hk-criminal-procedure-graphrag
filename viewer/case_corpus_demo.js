@@ -64,48 +64,173 @@
     });
   }
 
-  function markdownToHtml(markdown) {
-    const lines = String(markdown || "").split(/\r?\n/);
-    const out = [];
-    let inList = false;
+  function escapeRegExp(value) {
+    return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
 
-    function closeList() {
-      if (inList) {
-        out.push("</ul>");
-        inList = false;
+  function primaryMemo(markdown) {
+    return String(markdown || "").split(/\n## Full Answer Markdown\b/i)[0];
+  }
+
+  function sectionText(markdown, title) {
+    const re = new RegExp(`(?:^|\\n)## ${escapeRegExp(title)}\\n([\\s\\S]*?)(?=\\n## |\\n# |$)`, "i");
+    const match = primaryMemo(markdown).match(re);
+    return match ? match[1].trim() : "";
+  }
+
+  function listItems(text) {
+    const items = [];
+    let current = "";
+    for (const rawLine of String(text || "").split(/\r?\n/)) {
+      const line = rawLine.trim();
+      if (line.startsWith("- ")) {
+        if (current) items.push(current.trim());
+        current = line.slice(2).trim();
+      } else if (current && line) {
+        current += ` ${line}`;
       }
     }
+    if (current) items.push(current.trim());
+    return items;
+  }
 
-    for (const raw of lines) {
-      const line = raw.trimEnd();
-      if (!line.trim()) {
-        closeList();
-        continue;
-      }
-      if (line.startsWith("### ")) {
-        closeList();
-        out.push(`<h3>${linkify(line.slice(4))}</h3>`);
-      } else if (line.startsWith("## ")) {
-        closeList();
-        out.push(`<h2>${linkify(line.slice(3))}</h2>`);
-      } else if (line.startsWith("# ")) {
-        closeList();
-        out.push(`<h1>${linkify(line.slice(2))}</h1>`);
-      } else if (line.startsWith("- ")) {
-        if (!inList) {
-          out.push("<ul>");
-          inList = true;
-        }
-        out.push(`<li>${linkify(line.slice(2))}</li>`);
-      } else if (line.startsWith("```")) {
-        closeList();
-      } else {
-        closeList();
-        out.push(`<p>${linkify(line)}</p>`);
-      }
-    }
-    closeList();
-    return out.join("\n");
+  function between(text, start, end) {
+    const i = text.indexOf(start);
+    if (i < 0) return "";
+    const from = i + start.length;
+    const j = text.indexOf(end, from);
+    return (j < 0 ? text.slice(from) : text.slice(from, j)).trim();
+  }
+
+  function trimText(value, max = 420) {
+    const text = String(value || "").replace(/\s+/g, " ").trim();
+    if (text.length <= max) return text;
+    return `${text.slice(0, max - 1).trim()}...`;
+  }
+
+  function renderList(items = [], empty = "No source-backed item is attached.") {
+    const clean = items.map(item => trimText(item, 520)).filter(Boolean);
+    if (!clean.length) return `<p class="empty-copy">${escapeHtml(empty)}</p>`;
+    return `<ul class="memo-list">${clean.map(item => `<li>${linkify(item)}</li>`).join("")}</ul>`;
+  }
+
+  function parseAuthority(item) {
+    const source = item.match(/Source URL:\s*(https?:\/\/(?:www\.)?(?:hklii\.hk|legalref\.judiciary\.hk)[^\s)"]*#p\d+)/i)
+      || item.match(/(https?:\/\/(?:www\.)?(?:hklii\.hk|legalref\.judiciary\.hk)[^\s)"]*#p\d+)/i);
+    const para = item.match(/Key paragraph:\s*para\.?\s*([^-\s]+)\s*-/i);
+    const quote = item.match(/Exact quote:\s*"([^"]+)"/i);
+    const title = trimText(item.split(" Facts:")[0] || item.split(" Key paragraph:")[0] || "Case authority", 160);
+    return {
+      title,
+      paragraph: para ? para[1] : "",
+      sourceUrl: source ? source[1] : "",
+      quote: quote ? quote[1] : "",
+      principle: trimText(between(item, " Principle: ", " Why relevant:"), 360),
+      relevance: trimText(between(item, " Why relevant: ", " How distinguishable:"), 300),
+      distinguishable: trimText(between(item, " How distinguishable: ", " Source URL:"), 300),
+    };
+  }
+
+  function renderAuthorityCard(authority, index) {
+    return `<article class="authority-card">
+      <div class="authority-top">
+        <span class="authority-index">${index + 1}</span>
+        <h3>${escapeHtml(authority.title)}</h3>
+      </div>
+      <div class="authority-meta">
+        ${authority.paragraph ? `<span>para. ${escapeHtml(authority.paragraph)}</span>` : ""}
+        <span>research_only</span>
+        <span>lawyer_review_required</span>
+      </div>
+      ${authority.quote ? `<blockquote class="quote-card"><span>Exact quote</span>${escapeHtml(authority.quote)}</blockquote>` : ""}
+      ${authority.principle ? `<p class="authority-principle"><strong>Principle candidate:</strong> ${escapeHtml(authority.principle)}</p>` : ""}
+      ${authority.relevance ? `<p class="authority-note"><strong>Why relevant:</strong> ${escapeHtml(authority.relevance)}</p>` : ""}
+      ${authority.distinguishable ? `<p class="authority-note"><strong>Limits:</strong> ${escapeHtml(authority.distinguishable)}</p>` : ""}
+      ${authority.sourceUrl ? `<a class="source-link" href="${escapeHtml(authority.sourceUrl)}" target="_blank" rel="noopener noreferrer">Open HKLII/LegalRef paragraph</a>` : ""}
+    </article>`;
+  }
+
+  function renderMemo(markdown, query) {
+    const shortAnswer = listItems(sectionText(markdown, "Short Answer"));
+    const issues = listItems(sectionText(markdown, "Issues"));
+    const governing = listItems(sectionText(markdown, "Governing Law / Elements"));
+    const authorities = listItems(sectionText(markdown, "Case-by-Case Authorities")).map(parseAuthority).filter(item => item.title || item.sourceUrl || item.quote);
+    const principles = listItems(sectionText(markdown, "Extracted Legal Principles"));
+    const application = listItems(sectionText(markdown, "Application to User Facts"));
+    const evidence = listItems(sectionText(markdown, "Evidence Analysis"));
+    const missing = listItems(sectionText(markdown, "Missing Facts"));
+    const nextSteps = listItems(sectionText(markdown, "Practical Next Steps"));
+    const audit = listItems(sectionText(markdown, "Source Audit"));
+    const unsupported = query?.should_abstain || /unsupported_general_query|No case-by-case authority is attached/i.test(markdown);
+
+    return `<div class="demo-grid">
+      <section class="memo-panel">
+        <article class="memo-card short-answer">
+          <div class="section-label">Answer-first memo</div>
+          <h3>Short answer</h3>
+          ${renderList(shortAnswer)}
+        </article>
+        <article class="memo-card">
+          <h3>Issues</h3>
+          <div class="issue-pills">
+            ${issues.length ? issues.map(item => `<span>${escapeHtml(item.replace(/^Issue mapped:\s*/i, ""))}</span>`).join("") : "<span>No supported issue id attached</span>"}
+          </div>
+        </article>
+        <article class="memo-card">
+          <h3>Governing law / elements</h3>
+          ${renderList(governing)}
+        </article>
+        <article class="memo-card">
+          <h3>Application to user facts</h3>
+          ${renderList(application)}
+        </article>
+        <div class="memo-two">
+          <article class="memo-card">
+            <h3>Evidence analysis</h3>
+            ${renderList(evidence)}
+          </article>
+          <article class="memo-card">
+            <h3>Missing decisive facts</h3>
+            ${renderList(missing)}
+          </article>
+        </div>
+        <article class="memo-card">
+          <h3>Next steps</h3>
+          ${renderList(nextSteps)}
+        </article>
+        <details class="audit-drawer">
+          <summary>Audit details and limitations</summary>
+          <div class="audit-grid">
+            <div>
+              <h4>Source audit</h4>
+              ${renderList(audit)}
+            </div>
+            <div>
+              <h4>Review boundary</h4>
+              ${renderList([
+                "answer_safe=false",
+                "Research-only case-corpus output",
+                "Lawyer review required",
+                "Current treatment unchecked unless separately reviewed",
+              ])}
+            </div>
+          </div>
+        </details>
+      </section>
+      <aside class="source-panel">
+        <div class="source-panel-head">
+          <span class="section-label">Source panel</span>
+          <h3>${unsupported ? "Unsupported query abstention" : "Case authorities"}</h3>
+        </div>
+        ${unsupported ? `<article class="authority-card abstention-card">
+          <div class="authority-top"><span class="authority-index">!</span><h3>No criminal-law authority attached</h3></div>
+          <p class="authority-note">The landlord/rent question is outside this criminal-law demo pack. The system abstains instead of borrowing theft or dishonesty authorities.</p>
+          <div class="authority-meta"><span>unsupported_general_query</span><span>wrong_domain_leak_rate=0</span></div>
+        </article>` : ""}
+        ${authorities.length ? authorities.slice(0, 8).map(renderAuthorityCard).join("") : (!unsupported ? `<p class="empty-copy">No case authority card is attached for this query.</p>` : "")}
+        ${principles.length ? `<details class="audit-drawer compact"><summary>Principle candidates</summary>${renderList(principles.slice(0, 8))}</details>` : ""}
+      </aside>
+    </div>`;
   }
 
   async function fetchText(path) {
@@ -195,7 +320,7 @@
         "</div>",
         `<div class="boundary">${boundaryBadges(query)}</div>`,
         "</div>",
-        '<div class="markdown" data-demo-markdown>Loading frozen demo output...</div>',
+        '<div class="demo-body" data-demo-body>Loading frozen demo output...</div>',
       ].join("");
       panels.appendChild(panel);
 
@@ -211,10 +336,13 @@
   async function renderDemoArtifacts() {
     const panels = Array.from(document.querySelectorAll("[data-artifact]"));
     await Promise.all(panels.map(async panel => {
-      const target = panel.querySelector("[data-demo-markdown]");
+      const target = panel.querySelector("[data-demo-body]");
+      const tabId = panel.id.replace(/^panel-/, "");
+      const demo = DEMO_ARTIFACTS.demos.find(item => item.slug === tabId);
+      const query = (window.PR6_CASE_CORPUS_QUERY_MAP || new Map()).get(demo?.id);
       try {
         const markdown = await fetchText(panel.dataset.artifact);
-        target.innerHTML = markdownToHtml(markdown);
+        target.innerHTML = renderMemo(markdown, query);
       } catch (error) {
         target.innerHTML = `<p>Could not load frozen demo artifact: ${escapeHtml(error.message)}</p>`;
       }
@@ -228,6 +356,7 @@
         fetchJson(DEMO_ARTIFACTS.queryPack),
       ]);
       renderMetrics(report);
+      window.PR6_CASE_CORPUS_QUERY_MAP = new Map((queryPack.queries || []).map(query => [query.id, query]));
       renderTabs(queryPack);
       await renderDemoArtifacts();
       setText("#load-status", "Frozen PR #6 artifacts loaded.");

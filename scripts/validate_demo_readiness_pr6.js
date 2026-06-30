@@ -108,11 +108,17 @@ function validateFreezeReport({ status, coverage, retrieval }) {
   if (!String(report.public_demo?.verified_case_corpus_direct_route || "").includes("/viewer/case_corpus_demo.html")) {
     fail("demo freeze report missing verified case-corpus demo URL");
   }
-  if (!String(report.public_demo?.legacy_warning || "").includes("unverified seed map")) {
-    fail("demo freeze report missing legacy unverified seed-map warning");
+  if (!String(report.public_demo?.workspace_route || "").includes("/viewer/")) {
+    fail("demo freeze report missing polished workspace route");
   }
-  if (!md.includes("Legacy graph viewer") && !md.includes("legacy visual tree")) {
-    fail("demo freeze markdown missing legacy viewer warning");
+  if (!String(report.public_demo?.legacy_warning || "").includes("seed-map research UI")) {
+    fail("demo freeze report missing seed-map research UI warning");
+  }
+  if (!md.includes("Polished workspace route") || !md.includes("Verified case-corpus route")) {
+    fail("demo freeze markdown missing workspace/verified-route split");
+  }
+  if (!md.includes("Graph/domain views are seed-map research UI")) {
+    fail("demo freeze markdown missing seed-map research UI boundary");
   }
 
   const reportCoverage = coverageMap({ coverage: report.issue_coverage || [] });

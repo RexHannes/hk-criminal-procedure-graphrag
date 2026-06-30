@@ -611,17 +611,43 @@
   const root = () => $('#view-root');
 
   function renderView() {
-    ({ domains: viewDomains, flows: viewFlows, doctrine: viewDoctrine, inquiry: viewInquiry, tasks: viewTasks, playbooks: viewPlaybooks, templates: viewTemplates, audit: viewAudit }[S.view] || viewFlows)();
+    root().classList.toggle('wide-view', S.view === 'caseDemo');
+    ({ domains: viewDomains, flows: viewFlows, doctrine: viewDoctrine, caseDemo: viewCaseDemo, inquiry: viewInquiry, tasks: viewTasks, playbooks: viewPlaybooks, templates: viewTemplates, audit: viewAudit }[S.view] || viewFlows)();
   }
 
   function viewHeader(eyebrow, title, lede) {
     return `<div class="view-eyebrow">${eyebrow}</div><div class="view-title">${title}</div><p class="view-lede">${lede}</p>`;
   }
 
+  function viewCaseDemo() {
+    root().innerHTML = `
+      ${viewHeader('Verified proof', 'Verified Case Demo', 'A source-proofed PR #6 module over the frozen 120-case sample. It keeps answer_safe=false, shows public paragraph anchors and exact quotes, and remains lawyer-review-required.')}
+      <div class="case-demo-shell">
+        <div class="case-demo-toolbar">
+          <div>
+            <span class="badge badge-source-linked">Source-proofed sample</span>
+            <span class="badge badge-review">Lawyer review required</span>
+            <span class="badge badge-audit">answer_safe=false</span>
+          </div>
+          <a class="case-demo-open" href="case_corpus_demo.html" target="_blank" rel="noopener noreferrer">Open direct route</a>
+        </div>
+        <iframe class="case-demo-frame" src="case_corpus_demo.html" title="Verified Case Demo"></iframe>
+      </div>
+    `;
+  }
+
+  function seedGraphBanner() {
+    return `<div class="seed-graph-banner">
+      <strong>Legacy seed graph - not the verified case-law demo.</strong>
+      <span>These graph/domain views are useful for workspace navigation and issue mapping, but they are not source-proofed answer authority. For HKLII/LegalRef paragraph-linked authorities, open <a href="case_corpus_demo.html">Verified Case Demo</a>.</span>
+    </div>`;
+  }
+
   // — Domains —
   function viewDomains() {
     root().innerHTML = `
       ${viewHeader('Domain registry', 'Legal domains', 'Choose a restored domain pack. Each pack has its own doctrine map, legal flows, source audit queue, and any firm overlay that applies to those flow IDs.')}
+      ${seedGraphBanner()}
       <div class="domain-grid">
         ${S.domains.map(domain => {
           const summary = S.domainSummaries[domain.domain_id] || {};
@@ -655,6 +681,7 @@
 
     root().innerHTML = `
       ${viewHeader('Legal flows', S.domainInfo?.title || 'Procedural flows', 'Fixed, reusable procedural flows extracted from the selected doctrine graph. Each step shows its linked authority, verification status, and any firm SOP instruction layered on top.')}
+      ${seedGraphBanner()}
       <div class="chip-row">${S.flows.map(f => `<button class="chip ${f.flow_id === flow.flow_id ? 'active' : ''}" data-flow="${f.flow_id}">${esc(f.title)}</button>`).join('')}</div>
       <div class="card" style="background:var(--parchment);border-style:dashed;">
         <div class="card-top"><span class="card-title">${esc(flow.title)}</span>${versionBadge('1.0')}
@@ -699,6 +726,7 @@
     const sections = S.nodes.filter(n => n.type === 'section_header').sort((a, b) => (a.section || '').localeCompare(b.section || ''));
     root().innerHTML = `
       ${viewHeader('Doctrine map', S.domainInfo?.title || 'Doctrine by section', 'The base legal graph: issues, statutes, case seeds, and practice directions grouped by section. Click any item to inspect its extracted principle and source trail.')}
+      ${seedGraphBanner()}
       ${sections.map(sec => {
         const issues = S.nodes.filter(n => n.type === 'legal_issue' && n.section === sec.section)
           .sort((a, b) => (a.subsection || '').localeCompare(b.subsection || ''));
@@ -864,6 +892,7 @@
     const caseSeeds = S.nodes.filter(n => n.type === 'case_seed');
     root().innerHTML = `
       ${viewHeader('Governance', 'Sources & audit', 'Transparency is the product. Every node carries an explicit verification status; nothing in the research layer is presented as a final answer, and nothing is hidden behind an unlock.')}
+      ${seedGraphBanner()}
       <table class="audit-table">
         <thead><tr><th>Object type</th><th>Count</th><th>Default status</th></tr></thead>
         <tbody>
@@ -1316,10 +1345,10 @@
 
   // ── Nav ──
   function setActiveNav() {
-    document.querySelectorAll('.nav-item').forEach(b => b.classList.toggle('active', b.dataset.view === S.view));
+    document.querySelectorAll('.nav-item[data-view]').forEach(b => b.classList.toggle('active', b.dataset.view === S.view));
   }
   function setupNav() {
-    document.querySelectorAll('.nav-item').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item[data-view]').forEach(b => b.addEventListener('click', () => {
       S.view = b.dataset.view; setActiveNav(); renderView();
       $('#inspector').classList.remove('open');
     }));

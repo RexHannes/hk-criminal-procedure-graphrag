@@ -111,6 +111,9 @@ jobs:
       - name: Validate public demo source links
         run: node scripts/validate_public_demo_source_links.js
 
+      - name: Smoke test viewer UI quality
+        run: node scripts/smoke_test_viewer_ui_quality.js
+
       - name: Smoke test PR 6 demo API
         run: node scripts/smoke_test_pr6_demo_api.js --local-only --skip-network
 
@@ -121,7 +124,7 @@ jobs:
         run: node scripts/smoke_test_public_vercel_demo.js
 
       - name: Ensure PR 6 demo freeze artifacts are committed
-        run: git diff --exit-code artifacts/demo_freeze_report.json artifacts/demo_freeze_report.md artifacts/demo_outputs/demo_query_pack.json artifacts/demo_outputs/demo_query_pack.md docs/boss_demo_script_pr6.md
+        run: git diff --exit-code artifacts/demo_freeze_report.json artifacts/demo_freeze_report.md artifacts/demo_outputs/demo_query_pack.json artifacts/demo_outputs/demo_query_pack.md artifacts/ui_demo_quality_check.md docs/boss_demo_script_pr6.md
 
       - name: Ensure L1-L3.5 artifacts are committed
         run: git diff --exit-code data/legal_ingest/case_corpus artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/case_corpus_ingest_run_status.json artifacts/case_corpus_ingest_run_status.md artifacts/case_corpus_embedding_dry_run.json artifacts/case_corpus_qdrant_dry_run.json artifacts/case_corpus_retrieval_eval.json artifacts/case_corpus_retrieval_eval.md artifacts/case_corpus_duplicates_report.json artifacts/candidate_extraction_verification_report.json artifacts/candidate_extraction_verification_report.md artifacts/candidate_verified_cards_report.json artifacts/candidate_verified_cards_report.md artifacts/case_corpus_quality_audit.json artifacts/case_corpus_quality_audit.md artifacts/case_corpus_issue_coverage.json artifacts/case_corpus_issue_coverage.md artifacts/principle_quality_repair_report.json artifacts/principle_quality_repair_report.md artifacts/weak_issue_target_discovery_report.json artifacts/weak_issue_target_discovery_report.md artifacts/demo_outputs

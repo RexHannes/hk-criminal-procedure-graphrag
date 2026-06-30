@@ -2,13 +2,15 @@
 
 ## Public Demo Page
 
-For the current unmerged PR, open the Vercel Preview URL recorded in PR #6 and use /viewer/.
+For the current unmerged PR, open the Vercel Preview URL recorded in PR #6 and use /viewer/ for the polished Legal Graph-SOP Workspace.
 
 After merge or production promotion, open: https://hk-criminal-procedure-graphrag.vercel.app/viewer/
 
-Direct verified case-corpus route: /viewer/case_corpus_demo.html
+For the direct verified case-law proof view, open: /viewer/case_corpus_demo.html
 
-Do not present the legacy visual tree as the verified demo. The legacy visual tree is an unverified seed map. It is not the PR #6 source-proofed case-corpus demo and must not be presented as verified authority.
+Inside the workspace, click the sidebar entry labelled "Verified Case Demo" to open the source-proofed case-law module.
+
+Do not present graph/domain seed-map views as the verified case-law demo. Graph/domain views are seed-map research UI unless the source-proofed Verified Case Demo is opened. They are not the PR #6 paragraph-linked case-law authority view and must not be presented as verified authority.
 
 ## Timing
 
