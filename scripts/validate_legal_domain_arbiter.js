@@ -67,6 +67,14 @@ const CASES = [
     blocked: ["probate_law_hk", "tort_law_hk", "criminal_law_hk"],
     forbidden_selected: ["probate", "personal_injury", "criminal_law"],
   },
+  {
+    id: "inconsistent_pleadings_civil_procedure",
+    query: "What is the consequence for inconsistent factual pleadings across two proceedings: abuse of process, estoppel or collateral attack?",
+    selected_domain: "civil_procedure",
+    allowed: ["civil_procedure_hk"],
+    blocked: ["probate_law_hk", "tort_law_hk", "criminal_law_hk"],
+    forbidden_selected: ["probate", "personal_injury", "criminal_law"],
+  },
 ];
 
 function includesAll(haystack, needles) {

@@ -59,6 +59,7 @@ function embeddingModelFor(env, provider) {
   }
   if (provider === "voyage") return env.LEGAL_EMBEDDING_MODEL || env.VOYAGE_EMBEDDING_MODEL || "voyage-3-large";
   if (provider === "cohere") return env.LEGAL_EMBEDDING_MODEL || env.COHERE_EMBEDDING_MODEL || "embed-v4.0";
+  if (provider === "openrouter") return env.LEGAL_EMBEDDING_MODEL || env.OPENROUTER_EMBEDDING_MODEL || "nvidia/llama-nemotron-embed-vl-1b-v2:free";
   return "local-hash-v1";
 }
 
@@ -187,6 +188,25 @@ async function main() {
     propositions: resolveQdrantCollection("hk_proposition_cards", env, "QDRANT_COLLECTION_PROPOSITIONS"),
   };
   const { manifest, paragraphs, propositions } = buildBatchRecords();
+  if (dryRun) {
+    console.log(JSON.stringify({
+      indexer: "public_bail_batch_qdrant_v1",
+      batch_id: manifest.batch_id,
+      dry_run: true,
+      qdrant_configured: Boolean(env.QDRANT_URL),
+      embedding_provider: provider,
+      embedding_model: embeddingModel,
+      dimension: configuredDimension,
+      collections,
+      point_counts: {
+        paragraphs: paragraphs.length,
+        propositions: propositions.length,
+      },
+      review_policy: "candidate_only_except_reviewed_gold_set_no_auto_promotion",
+      status: "dry_run_ready_no_provider_calls",
+    }, null, 2));
+    return;
+  }
   const paragraphPoints = [];
   let actualDimension = configuredDimension;
   for (const paragraph of paragraphs) {
@@ -206,6 +226,7 @@ async function main() {
       embedding_model: embeddingModel,
       tokenizer_version: provider === "local-hash" ? "regex_local_hash_v1" : "provider_tokenizer",
       source_id: paragraph.source_id,
+      domain_id: "criminal_procedure_hk",
       source_type: "case_judgment",
       jurisdiction: "Hong Kong",
       practice_area: "criminal_procedure",
@@ -245,6 +266,7 @@ async function main() {
       embedding_model: embeddingModel,
       tokenizer_version: provider === "local-hash" ? "regex_local_hash_v1" : "provider_tokenizer",
       source_id: card.source_id,
+      domain_id: "criminal_procedure_hk",
       source_type: "case_judgment",
       jurisdiction: "Hong Kong",
       practice_area: "criminal_procedure",

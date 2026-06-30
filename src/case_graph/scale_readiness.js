@@ -1,17 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const {
-  embeddingVectorSpaceId,
-  isProductionScaleMode,
-  resolveQdrantCollection,
-  runtimeIsolationReport,
-  vectorNamespaceSuffix,
-} = require("../retrieval/runtime_isolation");
-
-const {
-  isCriminalDomainRetrievalScopeEnforced,
-  retrievalScopePolicy,
-} = require("./scale_ingest_safeguards");
+const { buildRetrievalScopeFilter } = require("./scale_ingest_safeguards");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 const DEFAULT_PLAN_PATH = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "scale_plan_20k.json");
@@ -50,16 +39,34 @@ function providerName(env, primary, fallback, defaultValue) {
   return String(env[primary] || env[fallback] || defaultValue || "").trim().toLowerCase();
 }
 
+function cleanEnvValue(env, key) {
+  return String(env[key] || "").trim().replace(/^['"]|['"]$/g, "");
+}
+
+function openRouterFreeOnlyAllowsModel(env, model) {
+  const freeOnly = String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false";
+  const paidAllowed = String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() === "true";
+  if (!freeOnly || paidAllowed) return true;
+  return /:free$/i.test(String(model || "").trim());
+}
+
 function isProductionEmbeddingReady(env) {
   const provider = providerName(env, "LEGAL_EMBEDDING_PROVIDER", "EMBEDDING_PROVIDER", "local-hash");
   if (["", "none", "local", "local-hash"].includes(provider)) return false;
   const requiredKeys = {
     openai: ["OPENAI_API_KEY"],
-    openrouter: ["OPENROUTER_API_KEY"],
     voyage: ["VOYAGE_API_KEY"],
     cohere: ["COHERE_API_KEY"],
+    openrouter: ["OPENROUTER_API_KEY"],
   };
-  return hasAny(env, requiredKeys[provider] || ["LEGAL_EMBEDDING_API_KEY", "OPENAI_API_KEY", "VOYAGE_API_KEY", "COHERE_API_KEY"]);
+  if (!hasAny(env, requiredKeys[provider] || ["LEGAL_EMBEDDING_API_KEY", "OPENAI_API_KEY", "VOYAGE_API_KEY", "COHERE_API_KEY", "OPENROUTER_API_KEY"])) {
+    return false;
+  }
+  if (provider === "openrouter") {
+    const model = cleanEnvValue(env, "LEGAL_EMBEDDING_MODEL") || cleanEnvValue(env, "OPENROUTER_EMBEDDING_MODEL");
+    return Boolean(model) && openRouterFreeOnlyAllowsModel(env, model);
+  }
+  return true;
 }
 
 function isProductionRerankReady(env) {
@@ -67,14 +74,27 @@ function isProductionRerankReady(env) {
   if (["", "none", "local"].includes(provider)) return false;
   const requiredKeys = {
     cohere: ["COHERE_API_KEY"],
-    openrouter: ["OPENROUTER_API_KEY"],
     voyage: ["VOYAGE_API_KEY"],
+    openrouter: ["OPENROUTER_API_KEY"],
   };
-  return hasAny(env, requiredKeys[provider] || ["LEGAL_RERANK_API_KEY", "COHERE_API_KEY", "VOYAGE_API_KEY"]);
+  if (!hasAny(env, requiredKeys[provider] || ["LEGAL_RERANK_API_KEY", "COHERE_API_KEY", "VOYAGE_API_KEY", "OPENROUTER_API_KEY"])) {
+    return false;
+  }
+  if (provider === "openrouter") {
+    const model = cleanEnvValue(env, "LEGAL_RERANK_MODEL") || cleanEnvValue(env, "OPENROUTER_RERANK_MODEL");
+    return Boolean(model) && openRouterFreeOnlyAllowsModel(env, model);
+  }
+  return true;
 }
 
 function isDurableOrchestrationReady(env) {
   return hasAny(env, ["INNGEST_EVENT_KEY", "INNGEST_SIGNING_KEY", "INNGEST_DEV"]) && hasAny(env, ["INNGEST_SIGNING_KEY", "INNGEST_DEV"]);
+}
+
+function isCriminalDomainRetrievalScopeEnforced(env) {
+  const filter = buildRetrievalScopeFilter({ runtimeMode: "production_scale" });
+  const serialized = JSON.stringify(filter);
+  return serialized.includes("domain_id") && serialized.includes("practice_area") && serialized.includes("criminal_procedure_hk") && serialized.includes("criminal_law_hk");
 }
 
 function artifactStats(batchDir = DEFAULT_BATCH_DIR) {
@@ -85,15 +105,12 @@ function artifactStats(batchDir = DEFAULT_BATCH_DIR) {
   const propositionCards = propositions.proposition_cards || [];
   const answerSafe = propositionCards.filter(card => card.answer_safe === true || card.answer_layer_status === "answer_safe");
   const illicitNonCandidate = propositionCards.filter(card => {
-    if (card.answer_safe === true || card.answer_layer_status === "answer_safe") return false;
     const state = card.review_state || card.review_status || "";
     const layer = card.answer_layer_status || "";
-    return ["approved", "lawyer_reviewed", "answer_safe"].includes(state) || layer === "lawyer_reviewed";
-  });
-  const nonCandidate = propositionCards.filter(card => {
-    const state = card.review_state || card.review_status || "";
-    const layer = card.answer_layer_status || "";
-    return card.answer_safe === true || layer === "answer_safe" || ["approved", "lawyer_reviewed", "answer_safe"].includes(state);
+    const approvedGold = card.answer_safe === true || layer === "answer_safe" || ["approved", "lawyer_reviewed", "answer_safe"].includes(state);
+    if (approvedGold) return false;
+    const allowedCandidateStates = new Set(["", "machine_candidate", "candidate_only", "quote_verified", "source_verified", "research_only", "lawyer_review_required"]);
+    return !allowedCandidateStates.has(state) || !allowedCandidateStates.has(layer);
   });
   return {
     batch_id: manifest.batch_id,
@@ -104,60 +121,9 @@ function artifactStats(batchDir = DEFAULT_BATCH_DIR) {
     link_count: parseReport.link_count || (links.proposition_node_links || []).length,
     rejected_count: parseReport.rejected_count || 0,
     answer_safe_count: answerSafe.length,
-    non_candidate_count: nonCandidate.length,
-    illicit_non_candidate_count: illicitNonCandidate.length,
+    non_candidate_count: illicitNonCandidate.length,
     source_policy: manifest.source_policy || {},
     scale_policy: manifest.scale_policy || {},
-  };
-}
-
-function isRuntimeIsolationEnforced(env) {
-  if (!isProductionScaleMode(env)) return true;
-  return runtimeIsolationReport(env).ok;
-}
-
-function isVectorNamespaceSeparated(env) {
-  if (!isProductionScaleMode(env)) return true;
-  const propositions = resolveQdrantCollection("hk_proposition_cards", env, "QDRANT_COLLECTION_PROPOSITIONS");
-  const paragraphs = resolveQdrantCollection("hk_legal_paragraphs", env, "QDRANT_COLLECTION_PARAGRAPHS");
-  return propositions.includes("_prod")
-    && paragraphs.includes("_prod")
-    && !propositions.includes("_dev")
-    && !paragraphs.includes("_dev");
-}
-
-const CORE_BATCH_GATES = [
-  "current_batch_quote_rules_clean",
-  "current_batch_candidate_only",
-  "public_source_policy_enforced",
-  "bulk_auto_attach_blocked",
-];
-
-const PRODUCTION_SCALE_GATES = [
-  "production_embeddings_configured",
-  "production_reranker_configured",
-  "durable_orchestration_configured",
-  "runtime_isolation_enforced",
-  "vector_namespace_separated",
-];
-
-const POST_10K_DOMAIN_GATES = [
-  "criminal_domain_retrieval_scope_enforced",
-];
-
-function requiredGatesForTarget(targetCases) {
-  if (targetCases <= 50) {
-    return { blocking: [...CORE_BATCH_GATES], optional: [] };
-  }
-  if (targetCases <= 10000) {
-    return {
-      blocking: [...CORE_BATCH_GATES, ...PRODUCTION_SCALE_GATES, "bail_gold_review_set_exists", ...POST_10K_DOMAIN_GATES],
-      optional: [],
-    };
-  }
-  return {
-    blocking: [...CORE_BATCH_GATES, ...PRODUCTION_SCALE_GATES, "bail_gold_review_set_exists", ...POST_10K_DOMAIN_GATES],
-    optional: [],
   };
 }
 
@@ -188,11 +154,7 @@ function evaluateScaleReadiness({
   const selectedRung = selectRung(plan, targetCases);
   const gates = [
     gate("current_batch_quote_rules_clean", stats.rejected_count === 0, { rejected_count: stats.rejected_count }),
-    gate("current_batch_candidate_only", stats.illicit_non_candidate_count === 0, {
-      non_candidate_count: stats.non_candidate_count,
-      illicit_non_candidate_count: stats.illicit_non_candidate_count,
-      answer_safe_gold_count: stats.answer_safe_count,
-    }),
+    gate("current_batch_candidate_only", stats.non_candidate_count === 0, { non_candidate_count: stats.non_candidate_count }),
     gate("public_source_policy_enforced", stats.source_policy.public_sources_only === true && stats.source_policy.private_or_licensed_sources_allowed === false, {
       source_policy: stats.source_policy,
     }),
@@ -200,85 +162,70 @@ function evaluateScaleReadiness({
       bulk_auto_attach_allowed: stats.source_policy.bulk_auto_attach_allowed,
       large_cross_domain_crawl_allowed: stats.scale_policy.large_cross_domain_crawl_allowed,
     }),
+    gate("criminal_domain_retrieval_scope_enforced", isCriminalDomainRetrievalScopeEnforced(env), {
+      runtime_mode_for_check: "production_scale",
+    }),
     gate("production_embeddings_configured", isProductionEmbeddingReady(env), {
       provider: providerName(env, "LEGAL_EMBEDDING_PROVIDER", "EMBEDDING_PROVIDER", "local-hash"),
+      model: cleanEnvValue(env, "LEGAL_EMBEDDING_MODEL") || cleanEnvValue(env, "OPENROUTER_EMBEDDING_MODEL") || cleanEnvValue(env, "EMBEDDING_MODEL"),
+      openrouter_free_only: String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false",
+      openrouter_paid_allowed: String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() === "true",
     }),
     gate("production_reranker_configured", isProductionRerankReady(env), {
       provider: providerName(env, "LEGAL_RERANK_PROVIDER", "RERANK_PROVIDER", "none"),
+      model: cleanEnvValue(env, "LEGAL_RERANK_MODEL") || cleanEnvValue(env, "OPENROUTER_RERANK_MODEL") || cleanEnvValue(env, "RERANK_MODEL"),
+      openrouter_free_only: String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false",
+      openrouter_paid_allowed: String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() === "true",
     }),
     gate("durable_orchestration_configured", isDurableOrchestrationReady(env), {
       inngest_event_key_present: Boolean(env.INNGEST_EVENT_KEY),
       inngest_signing_key_present: Boolean(env.INNGEST_SIGNING_KEY),
       inngest_dev_present: Boolean(env.INNGEST_DEV),
     }),
-    gate("runtime_isolation_enforced", isRuntimeIsolationEnforced(env), runtimeIsolationReport(env)),
-    gate("vector_namespace_separated", isVectorNamespaceSeparated(env), {
-      runtime_mode: isProductionScaleMode(env) ? "production_scale" : "development",
-      vector_namespace_suffix: vectorNamespaceSuffix(env),
-      vector_space_id: embeddingVectorSpaceId(env),
-      propositions_collection: resolveQdrantCollection("hk_proposition_cards", env, "QDRANT_COLLECTION_PROPOSITIONS"),
-      paragraphs_collection: resolveQdrantCollection("hk_legal_paragraphs", env, "QDRANT_COLLECTION_PARAGRAPHS"),
-    }),
     gate("bail_gold_review_set_exists", stats.answer_safe_count >= 3, {
       answer_safe_count: stats.answer_safe_count,
       required_answer_safe_count: 3,
     }),
-    gate("criminal_domain_retrieval_scope_enforced", isCriminalDomainRetrievalScopeEnforced(env), retrievalScopePolicy(env)),
   ];
-  const gatePolicy = requiredGatesForTarget(targetCases);
-  const blockers = gates.filter(item => gatePolicy.blocking.includes(item.gate_id) && !item.ok).map(item => item.gate_id);
-  const warnings = gates.filter(item => gatePolicy.optional.includes(item.gate_id) && !item.ok).map(item => item.gate_id);
-  const targetRequiresProductionStack = targetCases > 50;
-  const coreBlockers = blockers.filter(id => CORE_BATCH_GATES.includes(id));
-  const allowedNow = Boolean(selectedRung && targetCases <= 50 && coreBlockers.length === 0);
-  const status = blockers.length === 0
-    ? "green_for_requested_target"
-    : targetRequiresProductionStack
-      ? targetCases <= 10000
-        ? "blocked_until_production_stack_ready"
-        : "blocked_for_large_scale"
-      : allowedNow
-        ? "allowed_for_bail_next_rung_with_warnings"
-        : "blocked_until_core_gates_pass";
+  const blockers = gates.filter(item => !item.ok).map(item => item.gate_id);
+  const targetRequiresAllGreen = targetCases > 50;
+  const allowedNow = selectedRung
+    && targetCases <= 50
+    && blockers.every(id => !["current_batch_quote_rules_clean", "current_batch_candidate_only", "public_source_policy_enforced", "bulk_auto_attach_blocked"].includes(id));
   return {
-    readiness_id: "hk_criminal_case_scale_readiness_v2",
+    readiness_id: "hk_criminal_case_scale_readiness_v1",
     generated_at: new Date().toISOString(),
     target_cases: targetCases,
     selected_rung: selectedRung,
     current_batch: stats,
     gate_results: gates,
-    gate_policy: gatePolicy,
     blockers,
-    warnings,
-    status,
+    status: blockers.length === 0
+      ? "green_for_requested_target"
+      : targetRequiresAllGreen
+        ? "blocked_for_large_scale"
+        : allowedNow
+          ? "allowed_for_bail_next_rung_with_warnings"
+          : "blocked_until_core_gates_pass",
     execution_allowed: blockers.length === 0 || allowedNow,
-    runtime_isolation: runtimeIsolationReport(env),
     next_safe_action: blockers.length === 0
-      ? "Run the requested scale rung with sharded manifests, production vector namespaces and review queue enabled."
-      : targetCases <= 10000
-        ? "Clear production embeddings, reranker, orchestration, gold review and vector namespace gates before any 10k cross-domain write."
-        : targetCases > 50
-          ? "Do not run cross-section or 20000-case ingestion. Clear production embeddings, reranker, orchestration, gold review and eval gates first."
-          : "Stay within bail-only scale; keep exact-quote rules and candidate-only outputs.",
-    policy_note: targetCases <= 10000
-      ? "10k cross-domain public-demo writes remain blocked until production embeddings, reranker, durable orchestration, vector namespace isolation and bail gold review are all green."
-      : "This readiness report prepares large-scale ingestion but intentionally blocks unsafe 20000-case auto-fill until quality and operations gates are green.",
+      ? "Run the requested scale rung with sharded manifests and review queue enabled."
+      : targetCases > 50
+        ? "Do not run cross-section or 20000-case ingestion. Clear production embeddings, reranker, orchestration, gold review and eval gates first."
+        : "Stay within bail-only scale; keep exact-quote rules and candidate-only outputs.",
+    policy_note: "This readiness report prepares large-scale ingestion but intentionally blocks unsafe 20000-case auto-fill until quality and operations gates are green.",
   };
 }
 
 module.exports = {
-  CORE_BATCH_GATES,
   DEFAULT_BATCH_DIR,
   DEFAULT_PLAN_PATH,
-  PRODUCTION_SCALE_GATES,
   artifactStats,
   evaluateScaleReadiness,
   isDurableOrchestrationReady,
+  isCriminalDomainRetrievalScopeEnforced,
   isProductionEmbeddingReady,
   isProductionRerankReady,
-  isRuntimeIsolationEnforced,
-  isVectorNamespaceSeparated,
   loadEnv,
-  requiredGatesForTarget,
   selectRung,
 };

@@ -8,7 +8,9 @@ const {
 } = require("./browser_guided_discovery");
 const { evaluateScaleReadiness, loadEnv } = require("./scale_readiness");
 const {
+  postScaleSafeguardReport,
   validateDoctrineTargets,
+  validateForbiddenIssueFamilies,
   validateManifestDoctrineAllowlist,
   validateSourceCitationRecord,
   validateTreeNodeTargets,
@@ -73,6 +75,14 @@ function validateBatchAgainstLoop(config, batchDir = DEFAULT_BATCH_DIR) {
   const seenParagraphHashes = new Set();
 
   for (const source of artifacts.manifest.sources || []) {
+    const citation = validateSourceCitationRecord(source);
+    if (!citation.ok) {
+      correctionItems.push({
+        type: "citation_record_failed",
+        source_id: source.source_id,
+        errors: citation.errors,
+      });
+    }
     const haystack = `${source.source_visibility} ${source.tenant_id} ${source.licence_status} ${source.source_kind} ${source.source_url_or_path}`;
     correctionItems.push(...validateSourceCitationRecord(source));
     if (source.source_visibility !== "public_demo" || source.tenant_id !== "public" || source.licence_status !== "public_judgment") {
@@ -110,7 +120,14 @@ function validateBatchAgainstLoop(config, batchDir = DEFAULT_BATCH_DIR) {
     } else if (!String(paragraph.text || "").includes(card.exact_quote)) {
       correctionItems.push({ type: "quote_not_found", proposition_id: card.proposition_id, paragraph_id: card.paragraph_id });
     }
-    if (card.answer_safe === true || card.review_state === "answer_safe" || card.answer_layer_status === "answer_safe") {
+    const isAnswerSafe = card.answer_safe === true || card.review_state === "answer_safe" || card.answer_layer_status === "answer_safe";
+    const approvedGold = isAnswerSafe
+      && card.review_status === "approved"
+      && card.verification_status === "source_verified"
+      && Boolean(card.reviewed_by)
+      && Boolean(card.review_note)
+      && Boolean(card.citation && card.pinpoint && (card.supporting_quote || card.exact_quote));
+    if (isAnswerSafe && !approvedGold) {
       correctionItems.push({ type: "auto_answer_safe_forbidden", proposition_id: card.proposition_id });
     }
     for (const nodeId of card.target_doctrine_node_ids || []) {
@@ -152,6 +169,17 @@ function validateBatchAgainstLoop(config, batchDir = DEFAULT_BATCH_DIR) {
       });
     }
   }
+  const familyResult = validateForbiddenIssueFamilies({
+    propositions: artifacts.propositions.proposition_cards || [],
+    links: artifacts.links.proposition_node_links || [],
+  });
+  for (const item of familyResult.errors) correctionItems.push(item);
+  const allowlistResult = validateManifestDoctrineAllowlist({
+    allowedDoctrineNodeIds: config.default_scope?.allowed_doctrine_node_ids || [],
+    propositions: artifacts.propositions.proposition_cards || [],
+    links: artifacts.links.proposition_node_links || [],
+  });
+  for (const item of allowlistResult.errors) correctionItems.push(item);
 
   return {
     batch_id: artifacts.manifest.batch_id,
@@ -302,6 +330,13 @@ function buildLoopReport({
   const branchReport = validateBranchTargets(config);
   const batchReport = validateBatchAgainstLoop(config, batchDir);
   const backlog = branchBacklog(config, batchDir);
+  const artifacts = loadBatchArtifacts(batchDir);
+  const safeguardReport = postScaleSafeguardReport({
+    manifest: artifacts.manifest,
+    propositions: artifacts.propositions.proposition_cards || [],
+    links: artifacts.links.proposition_node_links || [],
+    allowedDoctrineNodeIds: config.default_scope?.allowed_doctrine_node_ids || [],
+  });
   const scale = evaluateScaleReadiness({ targetCases: target, batchDir, env });
   const canRunSafeLocal = branchReport.ok
     && batchReport.ok
@@ -335,6 +370,7 @@ function buildLoopReport({
     } : null,
     branch_report: branchReport,
     batch_report: batchReport,
+    post_scale_safeguards: safeguardReport,
     branch_backlog_summary: {
       node_count: backlog.nodes.length,
       nodes_with_candidate_fruits: backlog.nodes.filter(node => node.proposition_count > 0).length,

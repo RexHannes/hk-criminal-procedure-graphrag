@@ -44,7 +44,7 @@ function assert(condition, message, errors) {
   assert(matched.some(item => item.doctrine_node_id === "data_privacy_hk.employment.medical_records"), "missing employment medical-records node", errors);
   assert(evidence.some(item => item.neutral_citation === "[2008] 5 HKLRD 539" && item.para_no === "4"), "missing Cathay para 4 evidence", errors);
   assert(evidence.some(item => item.neutral_citation === "[2008] 5 HKLRD 539" && item.para_no === "5"), "missing Cathay para 5 evidence", errors);
-  assert(evidence.some(item => item.answer_layer_status === "source_verified" && item.source_url), "expected source-verified evidence with URL", errors);
+  assert(evidence.some(item => item.answer_layer_status === "paragraph_verified" && item.source_url), "expected paragraph-verified evidence with URL", errors);
   assert(!matchedBlob.includes("probate triage") && !matchedBlob.includes("wet floor") && !matchedBlob.includes("unlawful assembly"), "wrong-domain content leaked into data privacy results", errors);
 
   if (errors.length) {
@@ -68,7 +68,7 @@ function assert(condition, message, errors) {
     process.exit(1);
   }
 
-  console.log("Data-privacy inquiry validation passed: DPP1 route surfaces source-verified paragraph proof.");
+  console.log("Data-privacy inquiry validation passed: DPP1 route surfaces paragraph-verified proof.");
 })().catch(error => {
   console.error(error);
   process.exit(1);

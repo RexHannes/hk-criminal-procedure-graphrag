@@ -122,8 +122,14 @@
         "criminal_procedure_hk",
         "probate_law_hk"
       ],
-      "notebooklm_status": "pending_branch_fill",
-      "public_source_status": "partial_inconsistent_pleadings_vertical_exists"
+      "notebooklm_status": "candidate_branch_seeded",
+      "public_source_status": "pilot_inconsistent_pleadings_public_hklii_quote_verified",
+      "pilot_artifact": "data/legal_ingest/tree_gap_pilots/civil_procedure_inconsistent_pleadings_v1",
+      "pilot_notes": [
+        "Civil procedure domain pack now has an inconsistent-positions / abuse-of-process pilot branch.",
+        "Pilot currently contains 5 public HKLII paragraph/proposition cards and 8 candidate doctrine links.",
+        "DP World / Henderson lead is deliberately rejected until an exact paragraph pinpoint is added."
+      ]
     },
     {
       "field_id": "evidence_law_hk",

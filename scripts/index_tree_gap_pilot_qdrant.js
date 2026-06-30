@@ -59,6 +59,7 @@ function embeddingModelFor(env, provider) {
   if (provider === "openai") return env.LEGAL_EMBEDDING_MODEL || env.OPENAI_EMBEDDING_MODEL || "text-embedding-3-small";
   if (provider === "voyage") return env.LEGAL_EMBEDDING_MODEL || env.VOYAGE_EMBEDDING_MODEL || "voyage-3-large";
   if (provider === "cohere") return env.LEGAL_EMBEDDING_MODEL || env.COHERE_EMBEDDING_MODEL || "embed-v4.0";
+  if (provider === "openrouter") return env.LEGAL_EMBEDDING_MODEL || env.OPENROUTER_EMBEDDING_MODEL || "nvidia/llama-nemotron-embed-vl-1b-v2:free";
   return "local-hash-v1";
 }
 
@@ -130,6 +131,26 @@ async function main() {
     paragraphs: env.QDRANT_COLLECTION_PARAGRAPHS || "hk_legal_paragraphs",
     propositions: env.QDRANT_COLLECTION_PROPOSITIONS || "hk_proposition_cards",
   };
+  if (args.dryRun) {
+    console.log(JSON.stringify({
+      indexer: "tree_gap_pilot_qdrant_v1",
+      pilot_id: args.pilot,
+      batch_id: manifest.batch_id,
+      dry_run: true,
+      qdrant_configured: Boolean(env.QDRANT_URL),
+      embedding_provider: provider,
+      embedding_model: embeddingModel,
+      dimension,
+      collections,
+      point_counts: {
+        paragraphs: paragraphs.length,
+        propositions: propositions.length,
+      },
+      answer_policy: "candidate_only_no_answer_safe_promotion",
+      status: "dry_run_ready_no_provider_calls",
+    }, null, 2));
+    return;
+  }
   const paragraphPoints = [];
   let actualDimension = dimension;
 
@@ -147,6 +168,7 @@ async function main() {
         embedding_model: embeddingModel,
         tokenizer_version: provider === "local-hash" ? "regex_local_hash_v1" : "provider_tokenizer",
         source_id: paragraph.case_id,
+        domain_id: manifest.domain_id || "criminal_law_hk",
         source_type: "case_judgment",
         jurisdiction: "Hong Kong",
         practice_area: "criminal_law",
@@ -182,6 +204,7 @@ async function main() {
         embedding_model: embeddingModel,
         tokenizer_version: provider === "local-hash" ? "regex_local_hash_v1" : "provider_tokenizer",
         source_id: card.case_id,
+        domain_id: manifest.domain_id || "criminal_law_hk",
         source_type: "case_judgment",
         jurisdiction: "Hong Kong",
         practice_area: "criminal_law",
@@ -221,11 +244,6 @@ async function main() {
     answer_policy: "candidate_only_no_answer_safe_promotion",
   };
 
-  if (args.dryRun) {
-    report.status = "dry_run_ready";
-    console.log(JSON.stringify(report, null, 2));
-    return;
-  }
   await ensureCollection(env, collections.paragraphs, actualDimension);
   await ensureCollection(env, collections.propositions, actualDimension);
   await upsertPoints(env, collections.paragraphs, paragraphPoints);

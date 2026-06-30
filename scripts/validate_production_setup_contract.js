@@ -40,10 +40,12 @@ function providerKeyPresent(env, kind, providerName) {
       openai: ["OPENAI_API_KEY"],
       voyage: ["VOYAGE_API_KEY"],
       cohere: ["COHERE_API_KEY"],
+      openrouter: ["OPENROUTER_API_KEY"],
     },
     rerank: {
       cohere: ["COHERE_API_KEY"],
       voyage: ["VOYAGE_API_KEY"],
+      openrouter: ["OPENROUTER_API_KEY"],
     },
   };
   return (keys[kind]?.[providerName] || []).some(key => present(env, key));
@@ -66,13 +68,13 @@ function envFlags(env) {
     embedding_provider: embeddingProvider,
     embedding_provider_is_dev_only: ["", "none", "local", "local-hash"].includes(embeddingProvider),
     production_embeddings_configured: isProductionEmbeddingReady(env),
-    embedding_model_present: present(env, "LEGAL_EMBEDDING_MODEL") || present(env, "EMBEDDING_MODEL"),
+    embedding_model_present: present(env, "LEGAL_EMBEDDING_MODEL") || present(env, "OPENROUTER_EMBEDDING_MODEL") || present(env, "EMBEDDING_MODEL"),
     embedding_dim_present: present(env, "LEGAL_EMBEDDING_DIM"),
     embedding_provider_key_present: providerKeyPresent(env, "embedding", embeddingProvider),
     rerank_provider: rerankProvider,
     rerank_provider_is_disabled: ["", "none", "local"].includes(rerankProvider),
     production_reranker_configured: isProductionRerankReady(env),
-    rerank_model_present: present(env, "LEGAL_RERANK_MODEL") || present(env, "RERANK_MODEL"),
+    rerank_model_present: present(env, "LEGAL_RERANK_MODEL") || present(env, "OPENROUTER_RERANK_MODEL") || present(env, "RERANK_MODEL"),
     rerank_provider_key_present: providerKeyPresent(env, "rerank", rerankProvider),
     deepseek_key_present: present(env, "DEEPSEEK_API_KEY"),
     durable_orchestration_configured: isDurableOrchestrationReady(env),

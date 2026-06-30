@@ -290,11 +290,19 @@ function deterministicMatches(query, graph, limit = 12) {
 }
 
 function getAiProvider() {
+  const preferredProvider = String(process.env.LLM_PROVIDER || process.env.CASE_GRAPH_LLM_PROVIDER || "").trim().toLowerCase();
   const openRouterKey = (process.env.OPENROUTER_API_KEY || "").trim();
-  if (openRouterKey) {
-    const model = resolveOpenRouterModel(process.env, ["OPENROUTER_MODEL"]) || defaultFreeOpenRouterChatModel();
+  if (openRouterKey && preferredProvider !== "deepseek") {
+    const model = resolveOpenRouterModel(process.env, ["OPENROUTER_MODEL"]) || String(process.env.OPENROUTER_MODEL || "").trim();
     try {
-      assertFreeOpenRouterModel(model, process.env, { context: "chat_completions" });
+      if (model) assertFreeOpenRouterModel(model, process.env, { context: "chat_completions" });
+      if (!model) {
+        return {
+          name: "openrouter",
+          disabled: true,
+          warnings: ["openrouter_free_model_required"],
+        };
+      }
       return {
         name: "openrouter",
         apiKey: openRouterKey,
@@ -309,8 +317,7 @@ function getAiProvider() {
       if (isOpenRouterFreeOnlyEnabled(process.env) && !isOpenRouterPaidAllowed(process.env)) {
         return {
           name: "openrouter",
-          apiKey: openRouterKey,
-          status: "blocked_free_model_required",
+          disabled: true,
           warnings: [error.message],
         };
       }
@@ -332,12 +339,13 @@ function getAiProvider() {
 
 async function callAiJson(systemPrompt, userPrompt) {
   const provider = getAiProvider();
-  if (!provider || provider.status === "blocked_free_model_required" || !provider.endpoint) {
+  if (!provider) return { provider: "none", status: "not_configured", json: null, warnings: ["ai_provider_not_configured"] };
+  if (provider.disabled || provider.status === "blocked_free_model_required" || !provider.endpoint) {
     return {
-      provider: provider?.name || "none",
-      status: provider?.status || "not_configured",
+      provider: provider.name || "none",
+      status: provider.status || "disabled",
       json: null,
-      warnings: provider?.warnings || ["ai_provider_not_configured"],
+      warnings: provider.warnings || [`${provider.name || "provider"}_disabled`],
     };
   }
   try {

@@ -52,6 +52,13 @@ const CASE_FRUIT_DIRS = [
     fallbackCaseName: "Data-privacy source candidate",
     fallbackCitation: "[Public source candidate]",
   },
+  {
+    dir: path.join(ROOT, "data", "legal_ingest", "tree_gap_pilots", "civil_procedure_inconsistent_pleadings_v1"),
+    sourceUrl: "https://www.hklii.hk/",
+    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "tree_gap_candidate", "field_expansion_pilot"],
+    fallbackCaseName: "Civil-procedure source candidate",
+    fallbackCitation: "[Public source candidate]",
+  },
 ];
 
 function readJsonIfExists(filePath) {

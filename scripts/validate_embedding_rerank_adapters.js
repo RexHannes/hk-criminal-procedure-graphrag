@@ -40,11 +40,37 @@ function assert(condition, message, errors) {
   } catch (error) {
     assert(error.message.includes("missing_rerank_key"), "cohere missing key error expected", errors);
   }
+  try {
+    assertEmbeddingConfig({ EMBEDDING_PROVIDER: "openrouter", LEGAL_EMBEDDING_MODEL: "some/model:free" });
+    errors.push("openrouter embedding without key should fail closed");
+  } catch (error) {
+    assert(error.message.includes("missing_embedding_key"), "openrouter embedding missing key error expected", errors);
+  }
+  try {
+    assertRerankConfig({ RERANK_PROVIDER: "openrouter", LEGAL_RERANK_MODEL: "some/rerank:free" });
+    errors.push("openrouter rerank without key should fail closed");
+  } catch (error) {
+    assert(error.message.includes("missing_rerank_key"), "openrouter rerank missing key error expected", errors);
+  }
+  try {
+    assertEmbeddingConfig({ EMBEDDING_PROVIDER: "openrouter", OPENROUTER_API_KEY: "test", LEGAL_EMBEDDING_MODEL: "openai/text-embedding-3-small" });
+    errors.push("openrouter non-free embedding should fail closed");
+  } catch (error) {
+    assert(error.message.includes("openrouter_free_embedding_model_required"), "openrouter free embedding guard expected", errors);
+  }
+  try {
+    assertRerankConfig({ RERANK_PROVIDER: "openrouter", OPENROUTER_API_KEY: "test", LEGAL_RERANK_MODEL: "cohere/rerank-v3.5" });
+    errors.push("openrouter non-free rerank should fail closed");
+  } catch (error) {
+    assert(error.message.includes("openrouter_free_rerank_model_required"), "openrouter free rerank guard expected", errors);
+  }
   assert(assertEmbeddingConfig({ EMBEDDING_PROVIDER: "openai", OPENAI_API_KEY: "test" }).key_name === "OPENAI_API_KEY", "openai embedding key config expected", errors);
   assert(assertEmbeddingConfig({ EMBEDDING_PROVIDER: "voyage", VOYAGE_API_KEY: "test" }).key_name === "VOYAGE_API_KEY", "voyage embedding key config expected", errors);
   assert(assertEmbeddingConfig({ EMBEDDING_PROVIDER: "cohere", COHERE_API_KEY: "test" }).key_name === "COHERE_API_KEY", "cohere embedding key config expected", errors);
+  assert(assertEmbeddingConfig({ EMBEDDING_PROVIDER: "openrouter", OPENROUTER_API_KEY: "test", LEGAL_EMBEDDING_MODEL: "provider/model:free" }).key_name === "OPENROUTER_API_KEY", "openrouter embedding key config expected", errors);
   assert(assertRerankConfig({ RERANK_PROVIDER: "cohere", COHERE_API_KEY: "test" }).key_name === "COHERE_API_KEY", "cohere rerank key config expected", errors);
   assert(assertRerankConfig({ RERANK_PROVIDER: "voyage", VOYAGE_API_KEY: "test" }).key_name === "VOYAGE_API_KEY", "voyage rerank key config expected", errors);
+  assert(assertRerankConfig({ RERANK_PROVIDER: "openrouter", OPENROUTER_API_KEY: "test", LEGAL_RERANK_MODEL: "provider/rerank:free" }).key_name === "OPENROUTER_API_KEY", "openrouter rerank key config expected", errors);
   const root = path.resolve(__dirname, "..");
   const bailIndexer = fs.readFileSync(path.join(root, "scripts", "index_public_bail_batch_qdrant.js"), "utf8");
   const qdrantRetriever = fs.readFileSync(path.join(root, "src", "legal_answer", "qdrant_retriever.js"), "utf8");

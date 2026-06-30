@@ -1,0 +1,135 @@
+{
+  "proposition_cards": [
+    {
+      "proposition_id": "prop_inconsistent_positions_scope_minloy_p31",
+      "case_id": "hk_case_2020_minloy",
+      "paragraph_id": "hk_case_2020_minloy_p31",
+      "source_paragraph": "31",
+      "exact_quote": "not confined to inconsistent factual allegations but applies to inconsistent positions or assumptions",
+      "proposition_text": "The inconsistent-positions principle is not confined to inconsistent factual allegations and may apply to inconsistent positions or assumptions adopted in different proceedings.",
+      "tree_node_ids": [
+        "civil_procedure_hk.abuse_process.inconsistent_positions",
+        "civil_procedure_hk.estoppel.res_judicata"
+      ],
+      "target_doctrine_node_ids": [
+        "civil_procedure_hk.abuse_process.inconsistent_positions",
+        "civil_procedure_hk.estoppel.res_judicata"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "applied_principle",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2020/2215"
+    },
+    {
+      "proposition_id": "prop_abuse_estoppel_lancom_p43",
+      "case_id": "hk_case_2022_lancom_capxon",
+      "paragraph_id": "hk_case_2022_lancom_capxon_p43",
+      "source_paragraph": "43",
+      "exact_quote": "inconsistent and incompatible with the position he adopted in previous proceedings",
+      "proposition_text": "A party adopting a position inconsistent and incompatible with one adopted in previous proceedings may face an abuse-of-process and estoppel objection.",
+      "tree_node_ids": [
+        "civil_procedure_hk.abuse_process.inconsistent_positions",
+        "civil_procedure_hk.estoppel.res_judicata"
+      ],
+      "target_doctrine_node_ids": [
+        "civil_procedure_hk.abuse_process.inconsistent_positions",
+        "civil_procedure_hk.estoppel.res_judicata"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "applied_principle",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/381"
+    },
+    {
+      "proposition_id": "prop_diametrically_opposed_integrity_vasily_p39",
+      "case_id": "hk_case_2025_vasily_trubnikov",
+      "paragraph_id": "hk_case_2025_vasily_trubnikov_p39",
+      "source_paragraph": "39",
+      "exact_quote": "diametrically opposed to its position taken in an earlier set of proceedings",
+      "proposition_text": "A diametrically opposed later claim advanced with full knowledge of the facts may be abusive because it undermines the integrity of the administration of justice.",
+      "tree_node_ids": [
+        "civil_procedure_hk.abuse_process.inconsistent_positions",
+        "civil_procedure_hk.abuse_process.diametrically_opposed_positions"
+      ],
+      "target_doctrine_node_ids": [
+        "civil_procedure_hk.abuse_process.inconsistent_positions",
+        "civil_procedure_hk.abuse_process.diametrically_opposed_positions"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "applied_principle",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2025/1576"
+    },
+    {
+      "proposition_id": "prop_alternative_pleading_within_knowledge_liu_p16",
+      "case_id": "hk_case_2023_liu_hao_tsing",
+      "paragraph_id": "hk_case_2023_liu_hao_tsing_p16",
+      "source_paragraph": "16",
+      "exact_quote": "plainly within that party's knowledge",
+      "proposition_text": "Where the relevant facts are plainly within a party's knowledge, inconsistent alternative factual cases may be impermissible.",
+      "tree_node_ids": [
+        "civil_procedure_hk.pleadings.alternative_cases_within_knowledge"
+      ],
+      "target_doctrine_node_ids": [
+        "civil_procedure_hk.pleadings.alternative_cases_within_knowledge"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "applied_principle",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2023/1463"
+    },
+    {
+      "proposition_id": "prop_summary_judgment_material_deviation_shinyei_p19",
+      "case_id": "hk_case_2019_shinyei_jenus",
+      "paragraph_id": "hk_case_2019_shinyei_jenus_p19",
+      "source_paragraph": "19",
+      "exact_quote": "material deviation from the plaintiff's pleaded case",
+      "proposition_text": "A material deviation between a verifying affirmation and the pleaded case may prevent summary judgment because the claim is not verified as pleaded.",
+      "tree_node_ids": [
+        "civil_procedure_hk.summary_judgment.pleaded_case_verification"
+      ],
+      "target_doctrine_node_ids": [
+        "civil_procedure_hk.summary_judgment.pleaded_case_verification"
+      ],
+      "significance_label": "procedural_consequence",
+      "authority_role": "applied_principle",
+      "confidence": "medium",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_tree_gap_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2019/2377"
+    }
+  ]
+}

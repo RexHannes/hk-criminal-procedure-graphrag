@@ -80,13 +80,22 @@ for (const paragraph of paragraphs) {
 
 for (const proposition of propositions) {
   const paragraph = paragraphById.get(proposition.paragraph_id);
-  const isGold = proposition.gold_set_member === true || proposition.answer_safe === true;
+  const isAnswerSafe = proposition.answer_safe === true || proposition.review_state === "answer_safe" || proposition.answer_layer_status === "answer_safe";
+  const isGold = proposition.gold_set_member === true || isAnswerSafe;
   assert(paragraph, `${proposition.proposition_id}: missing paragraph`);
   assert(paragraph && paragraph.text.includes(proposition.exact_quote), `${proposition.proposition_id}: exact quote not found in paragraph`);
-  if (!isGold) {
-    assert(proposition.review_state === "machine_candidate", `${proposition.proposition_id}: must remain machine_candidate`);
-    assert(proposition.answer_safe === false, `${proposition.proposition_id}: must not be answer_safe`);
-    assert(proposition.human_review_required === true, `${proposition.proposition_id}: must require human review`);
+  if (isAnswerSafe) {
+    assert(proposition.review_status === "approved", `${proposition.proposition_id}: answer_safe requires approved review_status`);
+    assert(proposition.verification_status === "source_verified", `${proposition.proposition_id}: answer_safe requires source_verified`);
+    assert(proposition.human_review_required === false, `${proposition.proposition_id}: answer_safe should not require further human review`);
+    assert(Boolean(proposition.reviewed_by), `${proposition.proposition_id}: answer_safe requires reviewed_by`);
+    assert(Boolean(proposition.review_note), `${proposition.proposition_id}: answer_safe requires review_note`);
+    assert(Boolean(proposition.citation && proposition.pinpoint && proposition.supporting_quote), `${proposition.proposition_id}: answer_safe requires citation, pinpoint and supporting_quote`);
+    assert(paragraph && paragraph.text.includes(proposition.supporting_quote), `${proposition.proposition_id}: supporting_quote not found in paragraph`);
+  } else if (!isGold) {
+    assert(proposition.review_state === "machine_candidate", `${proposition.proposition_id}: must remain machine_candidate unless answer_safe reviewed`);
+    assert(proposition.answer_safe === false, `${proposition.proposition_id}: must not be answer_safe without review`);
+    assert(proposition.human_review_required === true, `${proposition.proposition_id}: must require human review unless answer_safe reviewed`);
   }
   assert(proposition.source_visibility === "public_demo", `${proposition.proposition_id}: must be public_demo`);
   assert(proposition.tenant_id === "public", `${proposition.proposition_id}: tenant must be public`);

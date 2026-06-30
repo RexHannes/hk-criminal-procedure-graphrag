@@ -31,43 +31,26 @@
       "authority_status": "real_public_authority_candidate",
       "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
       "lineage_note": "CFA statement of the statutory text used in construing NSL Article 42(2).",
-      "review_status": "approved",
+      "citation": "[2021] HKCFA 3",
+      "pinpoint": "para 52",
+      "paragraph": "52",
+      "supporting_quote": "No bail shall be granted to a criminal suspect or defendant unless the judge has sufficient grounds for believing that the criminal suspect or defendant will not continue to commit acts endangering national security.",
+      "verification_status": "source_verified",
       "answer_layer_status": "answer_safe",
-      "reviewed_by": "public_demo_gold_reviewer",
-      "reviewed_at": "2026-06-24T19:04:00.275Z",
-      "review_note": "Promoted via apply_bail_gold_review_set.js after quote/source checks against public LegalRef CFA judgment.",
+      "review_status": "approved",
+      "reviewed_by": "Pui",
+      "reviewed_at": "2026-06-24T19:29:35.801Z",
+      "review_note": "Reviewed CFA Lai bail propositions, exact quotes, authority role, and doctrine links.",
       "promotion_audit": [
         {
           "previous_status": "machine_candidate",
-          "new_status": "quote_verified",
-          "reviewed_by": "",
-          "reviewed_at": "2026-06-24T19:04:00.274Z",
-          "review_note": ""
-        },
-        {
-          "previous_status": "quote_verified",
-          "new_status": "source_verified",
-          "reviewed_by": "",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": ""
-        },
-        {
-          "previous_status": "source_verified",
-          "new_status": "lawyer_reviewed",
-          "reviewed_by": "public_demo_gold_reviewer",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": ""
-        },
-        {
-          "previous_status": "lawyer_reviewed",
           "new_status": "answer_safe",
-          "reviewed_by": "public_demo_gold_reviewer",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": "Promoted via apply_bail_gold_review_set.js after quote/source checks against public LegalRef CFA judgment."
+          "reviewed_by": "Pui",
+          "reviewed_at": "2026-06-24T19:29:35.801Z",
+          "review_note": "Reviewed CFA Lai bail propositions, exact quotes, authority role, and doctrine links.",
+          "source": "answer_safe_review_packet"
         }
-      ],
-      "gold_set_member": true,
-      "gold_set_id": "bail_cfa_nsl_gold_v1"
+      ]
     },
     {
       "proposition_id": "prop_lai_2021_nsl_more_stringent_threshold_p53",
@@ -96,43 +79,26 @@
       "authority_status": "real_public_authority_candidate",
       "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
       "lineage_note": "CFA distinguishes the NSL Article 42 threshold from ordinary bail.",
-      "review_status": "approved",
+      "citation": "[2021] HKCFA 3",
+      "pinpoint": "para 53",
+      "paragraph": "53",
+      "supporting_quote": "Plainly, NSL 42(2) introduces a considerably more stringent threshold requirement.",
+      "verification_status": "source_verified",
       "answer_layer_status": "answer_safe",
-      "reviewed_by": "public_demo_gold_reviewer",
-      "reviewed_at": "2026-06-24T19:04:00.275Z",
-      "review_note": "Promoted via apply_bail_gold_review_set.js after quote/source checks against public LegalRef CFA judgment.",
+      "review_status": "approved",
+      "reviewed_by": "Pui",
+      "reviewed_at": "2026-06-24T19:29:35.801Z",
+      "review_note": "Reviewed CFA Lai bail propositions, exact quotes, authority role, and doctrine links.",
       "promotion_audit": [
         {
           "previous_status": "machine_candidate",
-          "new_status": "quote_verified",
-          "reviewed_by": "",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": ""
-        },
-        {
-          "previous_status": "quote_verified",
-          "new_status": "source_verified",
-          "reviewed_by": "",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": ""
-        },
-        {
-          "previous_status": "source_verified",
-          "new_status": "lawyer_reviewed",
-          "reviewed_by": "public_demo_gold_reviewer",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": ""
-        },
-        {
-          "previous_status": "lawyer_reviewed",
           "new_status": "answer_safe",
-          "reviewed_by": "public_demo_gold_reviewer",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": "Promoted via apply_bail_gold_review_set.js after quote/source checks against public LegalRef CFA judgment."
+          "reviewed_by": "Pui",
+          "reviewed_at": "2026-06-24T19:29:35.801Z",
+          "review_note": "Reviewed CFA Lai bail propositions, exact quotes, authority role, and doctrine links.",
+          "source": "answer_safe_review_packet"
         }
-      ],
-      "gold_set_member": true,
-      "gold_set_id": "bail_cfa_nsl_gold_v1"
+      ]
     },
     {
       "proposition_id": "prop_lai_2021_nsl_exception_matrix_p54",
@@ -161,43 +127,26 @@
       "authority_status": "real_public_authority_candidate",
       "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
       "lineage_note": "CFA frames NSL Article 42(2) as a special threshold within the wider bail system.",
-      "review_status": "approved",
+      "citation": "[2021] HKCFA 3",
+      "pinpoint": "para 54",
+      "paragraph": "54",
+      "supporting_quote": "NSL 42(2) operates in the context or matrix of the existing bail regime and draws on its rules and principles insofar as they may be relevant, while introducing a new and more stringent threshold requirement for the grant of bail.",
+      "verification_status": "source_verified",
       "answer_layer_status": "answer_safe",
-      "reviewed_by": "public_demo_gold_reviewer",
-      "reviewed_at": "2026-06-24T19:04:00.275Z",
-      "review_note": "Promoted via apply_bail_gold_review_set.js after quote/source checks against public LegalRef CFA judgment.",
+      "review_status": "approved",
+      "reviewed_by": "Pui",
+      "reviewed_at": "2026-06-24T19:29:35.801Z",
+      "review_note": "Reviewed CFA Lai bail propositions, exact quotes, authority role, and doctrine links.",
       "promotion_audit": [
         {
           "previous_status": "machine_candidate",
-          "new_status": "quote_verified",
-          "reviewed_by": "",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": ""
-        },
-        {
-          "previous_status": "quote_verified",
-          "new_status": "source_verified",
-          "reviewed_by": "",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": ""
-        },
-        {
-          "previous_status": "source_verified",
-          "new_status": "lawyer_reviewed",
-          "reviewed_by": "public_demo_gold_reviewer",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": ""
-        },
-        {
-          "previous_status": "lawyer_reviewed",
           "new_status": "answer_safe",
-          "reviewed_by": "public_demo_gold_reviewer",
-          "reviewed_at": "2026-06-24T19:04:00.275Z",
-          "review_note": "Promoted via apply_bail_gold_review_set.js after quote/source checks against public LegalRef CFA judgment."
+          "reviewed_by": "Pui",
+          "reviewed_at": "2026-06-24T19:29:35.801Z",
+          "review_note": "Reviewed CFA Lai bail propositions, exact quotes, authority role, and doctrine links.",
+          "source": "answer_safe_review_packet"
         }
-      ],
-      "gold_set_member": true,
-      "gold_set_id": "bail_cfa_nsl_gold_v1"
+      ]
     },
     {
       "proposition_id": "prop_lai_2021_bail_conditions_relevant_p57",

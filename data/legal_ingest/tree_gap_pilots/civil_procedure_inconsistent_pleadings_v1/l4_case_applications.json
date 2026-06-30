@@ -1,0 +1,64 @@
+{
+  "l4_case_applications": [
+    {
+      "l4_application_id": "prop_inconsistent_positions_scope_minloy_p31_application",
+      "proposition_id": "prop_inconsistent_positions_scope_minloy_p31",
+      "case_id": "hk_case_2020_minloy",
+      "case_name": "Re Minloy Ltd and others",
+      "neutral_citation": "[2020] HKCFI 2215",
+      "application_summary": "The inconsistent-positions principle is not confined to inconsistent factual allegations and may apply to inconsistent positions or assumptions adopted in different proceedings.",
+      "significance_label": "states_rule",
+      "authority_role": "applied_principle",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l4_application_id": "prop_abuse_estoppel_lancom_p43_application",
+      "proposition_id": "prop_abuse_estoppel_lancom_p43",
+      "case_id": "hk_case_2022_lancom_capxon",
+      "case_name": "Lancom Ltd v Capxon International Electronic Co Ltd",
+      "neutral_citation": "[2022] HKCFI 381",
+      "application_summary": "A party adopting a position inconsistent and incompatible with one adopted in previous proceedings may face an abuse-of-process and estoppel objection.",
+      "significance_label": "states_rule",
+      "authority_role": "applied_principle",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l4_application_id": "prop_diametrically_opposed_integrity_vasily_p39_application",
+      "proposition_id": "prop_diametrically_opposed_integrity_vasily_p39",
+      "case_id": "hk_case_2025_vasily_trubnikov",
+      "case_name": "Vasily Trubnikov v Evgeny Volosov and others",
+      "neutral_citation": "[2025] HKCFI 1576",
+      "application_summary": "A diametrically opposed later claim advanced with full knowledge of the facts may be abusive because it undermines the integrity of the administration of justice.",
+      "significance_label": "states_rule",
+      "authority_role": "applied_principle",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l4_application_id": "prop_alternative_pleading_within_knowledge_liu_p16_application",
+      "proposition_id": "prop_alternative_pleading_within_knowledge_liu_p16",
+      "case_id": "hk_case_2023_liu_hao_tsing",
+      "case_name": "Liu Hao Tsing Education Foundation Ltd and another v Liu Tieh Ching Brandon",
+      "neutral_citation": "[2023] HKCFI 1463",
+      "application_summary": "Where the relevant facts are plainly within a party's knowledge, inconsistent alternative factual cases may be impermissible.",
+      "significance_label": "states_rule",
+      "authority_role": "applied_principle",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    },
+    {
+      "l4_application_id": "prop_summary_judgment_material_deviation_shinyei_p19_application",
+      "proposition_id": "prop_summary_judgment_material_deviation_shinyei_p19",
+      "case_id": "hk_case_2019_shinyei_jenus",
+      "case_name": "Shinyei (Shanghai) Trading Co Ltd v Jenus Top Ltd",
+      "neutral_citation": "[2019] HKCFI 2377",
+      "application_summary": "A material deviation between a verifying affirmation and the pleaded case may prevent summary judgment because the claim is not verified as pleaded.",
+      "significance_label": "procedural_consequence",
+      "authority_role": "applied_principle",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    }
+  ]
+}
