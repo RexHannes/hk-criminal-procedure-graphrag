@@ -1,0 +1,53 @@
+{
+  "corpus_id": "hk_criminal_investor_recall_corpus_v1",
+  "generated_at": "2026-06-25T11:25:45.829Z",
+  "target_cases": 25000,
+  "case_count": 46,
+  "pending_to_target": 24954,
+  "fruit_tier_policy": {
+    "recall_index": "LegalRef metadata + judgment snippet for semantic case search only",
+    "quote_verified_pilot": "Existing pilot sources merged for overlap with deep fruits",
+    "answer_safe": "Not included in this corpus builder"
+  },
+  "investor_accuracy_tiers": {
+    "tier_1_recall": "46 cases searchable by citation/name/issue (case_recall_only)",
+    "tier_2_quote_verified": "Use branch pilots + bail batch proposition cards (machine_candidate)",
+    "tier_3_answer_safe": "Gold-reviewed propositions only (currently 3 bail CFA cards)",
+    "honest_pitch": "Tell investors: large criminal case recall corpus now; proposition-level answer accuracy grows branch-by-branch."
+  },
+  "harvest": {
+    "dis_range": [
+      133400,
+      133600
+    ],
+    "scanned": 201,
+    "accepted_from_harvest": 19,
+    "sample_errors": [
+      {
+        "dis": 133403,
+        "message": "HTTP 500 for https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=133403&QS=%2B&TP=JU"
+      },
+      {
+        "dis": 133400,
+        "message": "HTTP 500 for https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=133400&QS=%2B&TP=JU"
+      },
+      {
+        "dis": 133402,
+        "message": "HTTP 500 for https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=133402&QS=%2B&TP=JU"
+      },
+      {
+        "dis": 133401,
+        "message": "HTTP 500 for https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=133401&QS=%2B&TP=JU"
+      },
+      {
+        "dis": 133426,
+        "message": "HTTP 500 for https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=133426&QS=%2B&TP=JU"
+      }
+    ]
+  },
+  "source_policy": {
+    "public_sources_only": true,
+    "legalref_only": true,
+    "bulk_auto_attach_propositions": false
+  }
+}

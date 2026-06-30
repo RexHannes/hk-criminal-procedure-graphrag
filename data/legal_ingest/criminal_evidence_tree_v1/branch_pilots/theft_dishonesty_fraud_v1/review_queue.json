@@ -1,0 +1,107 @@
+{
+  "review_items": [
+    {
+      "review_item_id": "review_prop_mo_yuk_ping_2022_fraud_concealment_duty_p3",
+      "item_type": "proposition_card",
+      "item_id": "prop_mo_yuk_ping_2022_fraud_concealment_duty_p3",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+        "case_name": "HKSAR v Mo Yuk Ping and Another",
+        "neutral_citation": "CACC 223/2022",
+        "paragraph_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022_p3",
+        "paragraph_no": "3",
+        "exact_quote": "a concealment attracts criminal liability only if it was made in breach of a duty of disclosure",
+        "proposition_text": "For section 16A fraud, concealment attracts criminal liability only if made in breach of a duty of disclosure.",
+        "target_doctrine_node_ids": [
+          "criminal_law_hk.fraud",
+          "criminal_law_hk.theft.dishonesty"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_mo_yuk_ping_2022_no_general_duty_disclose_breach_p4",
+      "item_type": "proposition_card",
+      "item_id": "prop_mo_yuk_ping_2022_no_general_duty_disclose_breach_p4",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+        "case_name": "HKSAR v Mo Yuk Ping and Another",
+        "neutral_citation": "CACC 223/2022",
+        "paragraph_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022_p4",
+        "paragraph_no": "4",
+        "exact_quote": "no general duty to disclose one’s own breach of contract",
+        "proposition_text": "The Court of Appeal held there is no general common-law duty to disclose one's own breach of contract, and a commercial lease did not create a special disclosure duty on these facts.",
+        "target_doctrine_node_ids": [
+          "criminal_law_hk.fraud"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_mo_yuk_ping_2022_actus_reus_not_proved_p4",
+      "item_type": "proposition_card",
+      "item_id": "prop_mo_yuk_ping_2022_actus_reus_not_proved_p4",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+        "case_name": "HKSAR v Mo Yuk Ping and Another",
+        "neutral_citation": "CACC 223/2022",
+        "paragraph_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022_p4",
+        "paragraph_no": "4",
+        "exact_quote": "the prosecution had failed to prove the applicants had committed the actus reus of the fraud charges",
+        "proposition_text": "The Court of Appeal quashed the fraud convictions because the prosecution failed to prove the actus reus of the section 16A charges.",
+        "target_doctrine_node_ids": [
+          "criminal_law_hk.fraud"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_betty_2018_s300_fraudulent_conduct_p9",
+      "item_type": "proposition_card",
+      "item_id": "prop_betty_2018_s300_fraudulent_conduct_p9",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+        "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+        "neutral_citation": "FACV 7/2018",
+        "paragraph_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018_p9",
+        "paragraph_no": "9",
+        "exact_quote": "S 300 is a general provision that outlaws fraudulent conduct in securities transactions",
+        "proposition_text": "The CFA held that section 300 SFO is a general provision outlawing fraudulent conduct in securities transactions, and 'transaction' must be given a wide meaning in that context.",
+        "target_doctrine_node_ids": [
+          "criminal_law_hk.fraud",
+          "criminal_law_hk.theft.dishonesty"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_betty_2018_insider_dealing_species_of_fraud_p12",
+      "item_type": "proposition_card",
+      "item_id": "prop_betty_2018_insider_dealing_species_of_fraud_p12",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+        "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+        "neutral_citation": "FACV 7/2018",
+        "paragraph_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018_p12",
+        "paragraph_no": "12",
+        "exact_quote": "insider dealing is a species of fraud",
+        "proposition_text": "The CFA treated insider dealing as a species of fraud on the public rather than a victimless crime.",
+        "target_doctrine_node_ids": [
+          "criminal_law_hk.fraud",
+          "criminal_law_hk.theft.dishonesty"
+        ]
+      }
+    }
+  ]
+}

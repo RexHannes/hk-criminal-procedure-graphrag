@@ -1,0 +1,16 @@
+{
+  "domain_id": "civil_procedure_hk",
+  "flows": [
+    {
+      "flow_id": "civil_proc_inconsistent_pleadings_flow",
+      "title": "Inconsistent Pleadings / Abuse of Process Flow",
+      "description": "Research flow for inconsistent positions, estoppel and abuse-of-process analysis across proceedings.",
+      "steps": [
+        "abuse_inconsistent_positions",
+        "estoppel_res_judicata",
+        "henderson_abuse",
+        "summary_judgment_verification"
+      ]
+    }
+  ]
+}

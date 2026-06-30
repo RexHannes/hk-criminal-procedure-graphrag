@@ -1,0 +1,70 @@
+{
+  "suite_id": "hk_criminal_investor_recall_v1",
+  "quality_floor": {
+    "min_hit_rate": 0.5,
+    "current_expected_status": "investor_recall_case_level"
+  },
+  "queries": [
+    {
+      "id": "lai_cfa_bail_nsl",
+      "query": "Lai Chee Ying National Security Law bail Article 42 CFA",
+      "expected_source_ids_any": ["hk_legalref_133491", "hk_cfa_2021_lai_chee_ying_facc_1_2021"],
+      "expected_source_kind_any": ["case_judgment_recall", "proposition_card", "case"],
+      "must_not_retrieve_source_kinds": ["precedent_private", "textbook_private"],
+      "mode": "public_demo"
+    },
+    {
+      "id": "lai_cfi_search_warrant",
+      "query": "Lai Chee Ying Commissioner of Police search warrant specified evidence",
+      "expected_source_ids_any": ["hk_legalref_146837", "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738"],
+      "expected_source_kind_any": ["case_judgment_recall", "proposition_card", "case"],
+      "must_not_retrieve_source_kinds": ["precedent_private"],
+      "mode": "public_demo"
+    },
+    {
+      "id": "sham_wing_kan_search",
+      "query": "Sham Wing Kan mobile phone search section 50 Police Force Ordinance",
+      "expected_source_ids_any": ["hk_legalref_127304", "hk_ca_2020_sham_wing_kan_cacv_270_2017"],
+      "expected_source_kind_any": ["case_judgment_recall", "proposition_card", "case"],
+      "must_not_retrieve_source_kinds": ["precedent_private"],
+      "mode": "public_demo"
+    },
+    {
+      "id": "tong_wai_hung_joint_enterprise",
+      "query": "Tong Wai Hung joint enterprise public order",
+      "expected_source_ids_any": ["hk_legalref_134508", "hk_ca_2021_tong_wai_hung_casj_1_2020"],
+      "expected_source_kind_any": ["case_judgment_recall", "proposition_card", "case"],
+      "must_not_retrieve_source_kinds": ["precedent_private"],
+      "mode": "public_demo"
+    },
+    {
+      "id": "tam_tak_chi_sedition",
+      "query": "Tam Tak Chi sedition public expression Hong Kong",
+      "expected_source_ids_any": ["hk_legalref_158600", "hk_ca_2024_tam_tak_chi_cacc_62_2022"],
+      "expected_source_kind_any": ["case_judgment_recall", "proposition_card", "case"],
+      "must_not_retrieve_source_kinds": ["precedent_private"],
+      "mode": "public_demo"
+    },
+    {
+      "id": "criminal_bail_hk",
+      "query": "Hong Kong criminal bail application refusal grounds",
+      "expected_source_kind_any": ["case_judgment_recall", "proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private"],
+      "mode": "public_demo"
+    },
+    {
+      "id": "search_warrant_criminal",
+      "query": "Hong Kong criminal search warrant seizure specified evidence",
+      "expected_source_kind_any": ["case_judgment_recall", "proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private"],
+      "mode": "public_demo"
+    },
+    {
+      "id": "arrest_reasonable_suspicion_hk",
+      "query": "arrest without warrant reasonable suspicion Hong Kong criminal",
+      "expected_source_kind_any": ["case_judgment_recall", "proposition_card"],
+      "must_not_retrieve_source_kinds": ["precedent_private"],
+      "mode": "public_demo"
+    }
+  ]
+}

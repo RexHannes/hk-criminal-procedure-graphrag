@@ -406,6 +406,29 @@ a { color: inherit; }
 
 /* doctrine tree */
 .doc-section { margin-bottom: 8px; }
+.doc-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 0 0 18px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2, #faf8f5);
+}
+.doc-toolbar-meta { font-size: 0.88rem; color: var(--muted); margin-right: auto; }
+.doc-toolbar-btn {
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+.doc-toolbar-btn:hover { border-color: var(--bronze); color: var(--bronze); }
+.doc-toolbar-link { text-decoration: none; color: inherit; display: inline-flex; align-items: center; }
 .doc-section-head {
   display: flex; align-items: baseline; gap: 10px;
   width: 100%; text-align: left;

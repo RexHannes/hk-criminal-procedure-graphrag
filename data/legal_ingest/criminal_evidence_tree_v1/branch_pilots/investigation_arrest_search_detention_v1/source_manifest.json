@@ -1,0 +1,65 @@
+{
+  "batch_id": "investigation_arrest_search_detention_branch_landmark_pilot_v1",
+  "domain_id": "criminal_procedure_hk",
+  "scope": "investigation_arrest_search_detention_branch_landmark",
+  "branch_family_id": "investigation_arrest_search_detention",
+  "source_policy": {
+    "public_sources_only": true,
+    "private_or_licensed_sources_allowed": false,
+    "raw_private_upload_allowed": false,
+    "bulk_auto_attach_allowed": false,
+    "answer_safe_by_default": false
+  },
+  "scale_policy": {
+    "large_cross_domain_crawl_allowed": false,
+    "max_sources_without_force": 5,
+    "branch_landmark_pilot_only": true
+  },
+  "branch_pilot_resolution": {
+    "branch_family_id": "investigation_arrest_search_detention",
+    "tree_proposal_source": "notebooklm_logged_in_private_notebook",
+    "tree_proposal_status": "candidate_only",
+    "verification_gate": "legalref_exact_quote_case_fruits_only",
+    "pending_landmark_cases": [
+      "Keen Lloyd v Commissioner of Police"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "case_name": "Sham Wing Kan v Commissioner of Police",
+      "neutral_citation": "[2020] HKCA 186",
+      "court": "Court of Appeal",
+      "court_level": "CA",
+      "date": "2020-00-00",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=127304&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "source_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCA 1574",
+      "court": "Court of Appeal",
+      "court_level": "CA",
+      "date": "2022-00-00",
+      "source_kind": "case_judgment_press_summary",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=148078&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=148078&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "batch_id": "investigation_arrest_search_detention_branch_landmark_pilot_v1",
+  "branch_family_id": "investigation_arrest_search_detention",
+  "branch_label": "Investigation, Arrest, Search and Detention",
+  "domain_id": "criminal_procedure_hk",
+  "scope": "investigation_arrest_search_detention_branch_landmark",
+  "scenario_label": "Investigation / arrest / search / detention branch landmark pilot",
+  "max_cases": 5,
+  "fixture_status": "real_public_source_branch_landmark_pilot",
+  "linking_method": "branch_landmark_pilot_notebooklm_leads_plus_legalref_exact_quote_v1",
+  "tree_proposal": {
+    "proposal_id": "notebooklm_investigation_arrest_search_detention_tree_proposal_v1",
+    "source": "notebooklm_logged_in_private_notebook",
+    "proposal_status": "candidate_only_requires_public_source_verification",
+    "generated_from_prompt_at": "2026-06-24T17:30:00+08:00",
+    "domain_id": "criminal_procedure_hk",
+    "proposed_branch_id": "criminal_procedure_hk.investigation_arrest_search_detention",
+    "branch_label": "Investigation, Arrest, Search and Detention",
+    "parent_candidates": [
+      "criminal_procedure_hk.invest_search_without_warrant",
+      "criminal_procedure_hk.invest_search_with_warrant",
+      "criminal_procedure_hk.cap232_s50"
+    ],
+    "notes": [
+      "NotebookLM/DeepSeek leads proposed Cap 232 search powers and digital-device safeguards.",
+      "Only LegalRef-fetched judgments with exact-quote validation enter proposition cards.",
+      "Keen Lloyd and Ng Sau Yee remain pending until public LegalRef DIS is pinned.",
+      "No proposition is answer-safe."
+    ]
+  },
+  "deepseek_landmark_seed": {
+    "seed_source": "deepseek",
+    "seed_status": "llm_unverified_seed",
+    "note": "DeepSeek/NotebookLM suggested Sham Wing Kan, Lai Chee Ying v Commissioner of Police and Keen Lloyd as landmark leads. Sham Wing Kan and Lai Chee Ying v Commissioner (2022 HKCA 1574 press summary) were accepted in v1.",
+    "accepted_case_ids": [
+      "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022"
+    ],
+    "pending_case_leads": [
+      {
+        "case_name": "Keen Lloyd v Commissioner of Police",
+        "doctrine_hooks": [
+          "criminal_procedure_hk.invest_search_without_warrant"
+        ],
+        "status": "pending_public_legalref_dis"
+      }
+    ]
+  },
+  "pending_landmark_cases": [
+    "Keen Lloyd v Commissioner of Police"
+  ],
+  "sources": [
+    {
+      "source_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "case_name": "Sham Wing Kan v Commissioner of Police",
+      "neutral_citation": "[2020] HKCA 186",
+      "court": "Court of Appeal",
+      "court_level": "CA",
+      "date": "2020-00-00",
+      "source_kind": "case_judgment",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=127304&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "source_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCA 1574",
+      "court": "Court of Appeal",
+      "court_level": "CA",
+      "date": "2022-00-00",
+      "source_kind": "case_judgment_press_summary",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=148078&QS=%2B&TP=JU&ILAN=en",
+      "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=148078&QS=%2B&TP=JU",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "sham_2020_s50_6_mobile_search_declaration_p33",
+      "source_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_no": "33",
+      "proposition_id": "prop_sham_2020_s50_6_mobile_search_declaration_p33",
+      "proposition_text": "The Court of Appeal declared that section 50(6) PFO authorizes warrantless search of a seized mobile phone's digital contents only in exigent circumstances.",
+      "exact_quote": "Section 50(6) on a proper construction authorizes police officers to search the digital contents of a mobile phone",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.cap232_s50",
+        "criminal_procedure_hk.invest_search_without_warrant"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "sham_2020_common_law_governs_digital_search_p103",
+      "source_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_no": "103",
+      "proposition_id": "prop_sham_2020_common_law_governs_digital_search_p103",
+      "proposition_text": "The Court of Appeal held that search of digital contents on a phone seized on arrest is governed by the common law power of search incidental to arrest rather than section 50(6) PFO.",
+      "exact_quote": "a search of the digital contents of a mobile phone (as opposed to the mobile phone itself as an object) as a specie of the power of search by law enforcement officer incidental to arrest is governed by the common law instead of Section 50",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_without_warrant",
+        "criminal_procedure_hk.invest_source_of_power"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "sham_2020_proportionality_warrantless_search_p106",
+      "source_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_no": "106",
+      "proposition_id": "prop_sham_2020_proportionality_warrantless_search_p106",
+      "proposition_text": "The Court of Appeal held that any warrantless search of digital phone contents must satisfy the proportionality test.",
+      "exact_quote": "any warrantless search must be subject to scrutiny under the proportionality test",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_without_warrant"
+      ],
+      "significance_label": "sets_out_test",
+      "authority_role": "ratio",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "sham_2020_prior_judicial_scrutiny_safeguards_p105",
+      "source_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_no": "105",
+      "proposition_id": "prop_sham_2020_prior_judicial_scrutiny_safeguards_p105",
+      "proposition_text": "The Court of Appeal applied Keen Lloyd safeguards, emphasizing prior judicial scrutiny for intrusive warrantless digital searches.",
+      "exact_quote": "the general considerations discussed therein on the importance of safeguards by way of prior judicial scrutiny apply equally to a search of the digital contents of a mobile phone",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_without_warrant",
+        "criminal_procedure_hk.invest_search_with_warrant"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "lineage_note": "Recites Keen Lloyd proportionality safeguards."
+    },
+    {
+      "rule_id": "lai_cop_2022_specified_evidence_covers_jm_p33",
+      "source_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "paragraph_no": "33",
+      "proposition_id": "prop_lai_cop_2022_specified_evidence_covers_jm_p33",
+      "proposition_text": "The Court of Appeal held that 'specified evidence' under NSL Implementation Rules Schedule 1 covers journalistic material.",
+      "exact_quote": "it covers journalistic material",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.lai_chee_ying_v_commissioner_of_police"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "lai_cop_2022_jm_protection_not_absolute_p34",
+      "source_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "paragraph_no": "34",
+      "proposition_id": "prop_lai_cop_2022_jm_protection_not_absolute_p34",
+      "proposition_text": "The Court of Appeal held that protection for journalistic material in search cases is important but not absolute.",
+      "exact_quote": "the protection afforded to journalistic material is not absolute",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.lai_chee_ying_v_commissioner_of_police"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "lai_cop_2022_excluding_jm_limits_investigation_p35",
+      "source_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "paragraph_no": "35",
+      "proposition_id": "prop_lai_cop_2022_excluding_jm_limits_investigation_p35",
+      "proposition_text": "The Court of Appeal reasoned that excluding journalistic material from 'specified evidence' would unduly limit effective police investigation in NSL cases.",
+      "exact_quote": "it would unduly limit the scope and hence reduce the effectiveness of police investigation",
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high"
+    }
+  ]
+}

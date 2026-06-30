@@ -1,0 +1,18 @@
+{
+  "seed_source": "deepseek",
+  "seed_status": "llm_unverified_seed",
+  "note": "DeepSeek/NotebookLM suggested Sham Wing Kan, Lai Chee Ying v Commissioner of Police and Keen Lloyd as landmark leads. Sham Wing Kan and Lai Chee Ying v Commissioner (2022 HKCA 1574 press summary) were accepted in v1.",
+  "accepted_case_ids": [
+    "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+    "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022"
+  ],
+  "pending_case_leads": [
+    {
+      "case_name": "Keen Lloyd v Commissioner of Police",
+      "doctrine_hooks": [
+        "criminal_procedure_hk.invest_search_without_warrant"
+      ],
+      "status": "pending_public_legalref_dis"
+    }
+  ]
+}

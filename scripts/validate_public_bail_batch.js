@@ -81,6 +81,7 @@ for (const paragraph of paragraphs) {
 for (const proposition of propositions) {
   const paragraph = paragraphById.get(proposition.paragraph_id);
   const isAnswerSafe = proposition.answer_safe === true || proposition.review_state === "answer_safe" || proposition.answer_layer_status === "answer_safe";
+  const isGold = proposition.gold_set_member === true || isAnswerSafe;
   assert(paragraph, `${proposition.proposition_id}: missing paragraph`);
   assert(paragraph && paragraph.text.includes(proposition.exact_quote), `${proposition.proposition_id}: exact quote not found in paragraph`);
   if (isAnswerSafe) {
@@ -91,7 +92,7 @@ for (const proposition of propositions) {
     assert(Boolean(proposition.review_note), `${proposition.proposition_id}: answer_safe requires review_note`);
     assert(Boolean(proposition.citation && proposition.pinpoint && proposition.supporting_quote), `${proposition.proposition_id}: answer_safe requires citation, pinpoint and supporting_quote`);
     assert(paragraph && paragraph.text.includes(proposition.supporting_quote), `${proposition.proposition_id}: supporting_quote not found in paragraph`);
-  } else {
+  } else if (!isGold) {
     assert(proposition.review_state === "machine_candidate", `${proposition.proposition_id}: must remain machine_candidate unless answer_safe reviewed`);
     assert(proposition.answer_safe === false, `${proposition.proposition_id}: must not be answer_safe without review`);
     assert(proposition.human_review_required === true, `${proposition.proposition_id}: must require human review unless answer_safe reviewed`);
@@ -101,6 +102,15 @@ for (const proposition of propositions) {
   assert(Array.isArray(proposition.target_doctrine_node_ids) && proposition.target_doctrine_node_ids.length > 0, `${proposition.proposition_id}: missing target doctrine nodes`);
   for (const doctrineNodeId of proposition.target_doctrine_node_ids || []) {
     assert(doctrineIds.has(doctrineNodeId), `${proposition.proposition_id}: unknown doctrine node ${doctrineNodeId}`);
+  }
+}
+
+const manifestAllow = new Set(manifest.target_doctrine_node_ids || []);
+if (manifestAllow.size) {
+  for (const proposition of propositions) {
+    for (const doctrineNodeId of proposition.target_doctrine_node_ids || []) {
+      assert(manifestAllow.has(doctrineNodeId), `${proposition.proposition_id}: doctrine node ${doctrineNodeId} outside manifest allow-list`);
+    }
   }
 }
 

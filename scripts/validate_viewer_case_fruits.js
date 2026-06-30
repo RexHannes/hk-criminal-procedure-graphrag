@@ -26,13 +26,18 @@ function main() {
     "loadLocalCaseFruitArtifacts",
     "l5_paragraph_proof.json",
     "Source-linked demo",
-    "Paragraph proof / audit trail",
+    "Case Fruits / Paragraph Proof",
   ].forEach(marker => assertContains("viewer/app.js", app, marker));
 
   [
     "tree_gap_pilots",
     "sedition_public_expression_v1",
     "public_order_riot_v1",
+  ].forEach(marker => assertContains("local_case_fruit_evidence.js", localEvidence, marker));
+
+  [
+    "investigation_arrest_search_detention_v1",
+    "theft_dishonesty_fraud_v1",
   ].forEach(marker => assertContains("local_case_fruit_evidence.js", localEvidence, marker));
 
   [

@@ -1,0 +1,20 @@
+{
+  "proposal_id": "notebooklm_theft_dishonesty_fraud_tree_proposal_v1",
+  "source": "notebooklm_logged_in_private_notebook",
+  "proposal_status": "candidate_only_requires_public_source_verification",
+  "generated_from_prompt_at": "2026-06-24T17:30:00+08:00",
+  "domain_id": "criminal_law_hk",
+  "proposed_branch_id": "criminal_law_hk.theft_dishonesty_fraud",
+  "branch_label": "Theft, Dishonesty and Fraud",
+  "parent_candidates": [
+    "criminal_law_hk.property_dishonesty",
+    "criminal_law_hk.theft",
+    "criminal_law_hk.fraud"
+  ],
+  "notes": [
+    "NotebookLM/DeepSeek leads proposed branch structure only.",
+    "Only LegalRef-fetched judgments with exact-quote validation enter proposition cards.",
+    "Lam Hin Fai and Chan Wai Lam remain pending until public LegalRef/HKLII URLs are pinned.",
+    "No proposition is answer-safe."
+  ]
+}

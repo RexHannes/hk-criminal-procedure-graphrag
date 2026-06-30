@@ -29,6 +29,9 @@
   // ── Badge mapping: raw pipeline labels → professional badges ──
   const BADGE_MAP = {
     not_product_answer_layer: { text: 'Research layer', cls: 'badge-research' },
+    case_recall_only: { text: 'Case recall', cls: 'badge-research' },
+    machine_candidate: { text: 'Machine candidate', cls: 'badge-pending' },
+    answer_safe: { text: 'Answer safe', cls: 'badge-approved' },
     needs_hklii_verification: { text: 'Verification pending', cls: 'badge-pending' },
     needs_official_source_verification: { text: 'Source check pending', cls: 'badge-pending' },
     unverified_case_seed: { text: 'Case audit required', cls: 'badge-audit' },
@@ -98,6 +101,30 @@
       fallbackCaseName: 'Public-order source candidate',
       fallbackCitation: '[Public source candidate]',
     },
+    {
+      base: '../data/legal_ingest/criminal_evidence_tree_v1/branch_pilots/investigation_arrest_search_detention_v1',
+      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'branch_landmark_pilot'],
+      fallbackCaseName: 'Investigation/search branch pilot',
+      fallbackCitation: '[Public source candidate]',
+    },
+    {
+      base: '../data/legal_ingest/criminal_evidence_tree_v1/branch_pilots/theft_dishonesty_fraud_v1',
+      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'branch_landmark_pilot'],
+      fallbackCaseName: 'Theft/fraud branch pilot',
+      fallbackCitation: '[Public source candidate]',
+    },
+    {
+      base: '../data/legal_ingest/tree_gap_pilots/data_privacy_dpp1_v1',
+      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'tree_gap_candidate', 'field_expansion_pilot'],
+      fallbackCaseName: 'Data-privacy source candidate',
+      fallbackCitation: '[Public source candidate]',
+    },
+    {
+      base: '../data/legal_ingest/tree_gap_pilots/civil_procedure_inconsistent_pleadings_v1',
+      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'tree_gap_candidate'],
+      fallbackCaseName: 'Civil procedure source candidate',
+      fallbackCitation: '[Public source candidate]',
+    },
   ];
 
   function domainBase(domainId) {
@@ -129,6 +156,17 @@
     });
   }
 
+  function domainSummaryDescription(info, manifest, domain) {
+    if (info?.description) return info.description;
+    const counts = manifest?.counts || {};
+    const issues = counts.principle_nodes || counts.issue_nodes;
+    if (issues) {
+      return `${manifest.title || domain.title}: ${issues} principle nodes across ${(manifest.sections || []).length} section(s). Public case fruits attach separately and remain review-gated.`;
+    }
+    if (info?.intended_use) return info.intended_use;
+    return 'Legal domain pack with doctrine map and source audit queue.';
+  }
+
   function summarizeDomain(domain) {
     const base = domainBase(domain.domain_id);
     return Promise.all([
@@ -139,9 +177,10 @@
       S.domainSummaries[domain.domain_id] = {
         id: domain.domain_id,
         title: info?.title || manifest.title || domain.title,
-        description: info?.description || '',
+        description: domainSummaryDescription(info, manifest, domain),
         sectionCount: (manifest.sections || []).length,
         flowCount: (flowPack.flows || []).length,
+        nodeCount: manifest?.counts?.principle_nodes || null,
         status: domain.status || info?.status || manifest.status || {},
       };
     });
@@ -613,7 +652,7 @@
   // — Domains —
   function viewDomains() {
     root().innerHTML = `
-      ${viewHeader('Domain registry', 'Legal domains', 'Choose a restored domain pack. Each pack has its own doctrine map, legal flows, source audit queue, and any firm overlay that applies to those flow IDs.')}
+      ${viewHeader('Domain registry', 'Legal domains', 'Choose a legal domain pack. Each pack has its own doctrine map, legal flows, source audit queue, and any firm overlay that applies to those flow IDs.')}
       <div class="domain-grid">
         ${S.domains.map(domain => {
           const summary = S.domainSummaries[domain.domain_id] || {};
@@ -623,10 +662,11 @@
               <span class="domain-card-title">${esc(summary.title || domain.title)}</span>
               ${active ? '<span class="badge badge-approved">Active</span>' : ''}
             </div>
-            <p>${esc(summary.description || 'Restored Casemap4 legal domain pack.')}</p>
+            <p>${esc(summary.description || 'Legal domain pack with doctrine map and flows.')}</p>
             <div class="domain-card-meta">
               <span>${summary.sectionCount || 0} sections</span>
               <span>${summary.flowCount || 0} flows</span>
+              ${summary.nodeCount ? `<span>${summary.nodeCount} issues</span>` : ''}
               <span>${esc(domain.domain_id)}</span>
             </div>
           </button>`;
@@ -687,10 +727,30 @@
   }
 
   // — Doctrine map —
+  function expandAllDoctrineSections() {
+    S.nodes.filter(n => n.type === 'section_header').forEach(sec => {
+      if (sec.section) S.openSections.add(sec.section);
+    });
+  }
+
   function viewDoctrine() {
     const sections = S.nodes.filter(n => n.type === 'section_header').sort((a, b) => (a.section || '').localeCompare(b.section || ''));
+    if (!sections.length) {
+      root().innerHTML = `${viewHeader('Doctrine map', S.domainInfo?.title || 'Doctrine by section', 'The base legal graph: issues, statutes, case seeds, and practice directions grouped by section.')}
+        ${emptyState('No doctrine sections loaded', 'The domain pack did not return any section headers. Check that data files are reachable, or open the Visual Tree view.')}
+        <p class="view-lede"><a href="index_legacy.html">Open visual tree map</a> for the hierarchical L0–L4 explorer.</p>`;
+      return;
+    }
+    if (!S.openSections.size) expandAllDoctrineSections();
+    const issueCount = S.nodes.filter(n => n.type === 'legal_issue').length;
     root().innerHTML = `
       ${viewHeader('Doctrine map', S.domainInfo?.title || 'Doctrine by section', 'The base legal graph: issues, statutes, case seeds, and practice directions grouped by section. Click any item to inspect its extracted principle and source trail.')}
+      <div class="doc-toolbar">
+        <span class="doc-toolbar-meta">${sections.length} sections · ${issueCount} issues · ${S.nodes.length} nodes</span>
+        <button type="button" class="doc-toolbar-btn" id="doctrine-expand-all">Expand all</button>
+        <button type="button" class="doc-toolbar-btn" id="doctrine-collapse-all">Collapse all</button>
+        <a class="doc-toolbar-btn doc-toolbar-link" href="index_legacy.html">Visual tree</a>
+      </div>
       ${sections.map(sec => {
         const issues = S.nodes.filter(n => n.type === 'legal_issue' && n.section === sec.section)
           .sort((a, b) => (a.subsection || '').localeCompare(b.subsection || ''));
@@ -717,6 +777,10 @@
       S.openSections.has(id) ? S.openSections.delete(id) : S.openSections.add(id);
       renderView();
     }));
+    const expandAll = root().querySelector('#doctrine-expand-all');
+    const collapseAll = root().querySelector('#doctrine-collapse-all');
+    if (expandAll) expandAll.addEventListener('click', () => { expandAllDoctrineSections(); renderView(); });
+    if (collapseAll) collapseAll.addEventListener('click', () => { S.openSections.clear(); renderView(); });
     wireCards();
   }
 

@@ -373,6 +373,7 @@ module.exports = {
   buildPublicBailBatch,
   collapseForQuote,
   extractNumberedParagraph,
+  fetchUrl,
   stripHtmlToText,
   validateManifestScalePolicy,
 };

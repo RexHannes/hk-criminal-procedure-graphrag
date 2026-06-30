@@ -1,0 +1,16 @@
+{
+  "domain_id": "data_privacy_hk",
+  "flows": [
+    {
+      "flow_id": "data_privacy_dpp1_review_flow",
+      "title": "DPP1 Collection Review Flow",
+      "description": "Research flow for lawful purpose, necessity and non-excessiveness under Data Protection Principle 1.",
+      "steps": [
+        "personal_data_scope",
+        "dpp1_collection_purpose",
+        "dpp1_collection_fairness",
+        "employment_medical_records"
+      ]
+    }
+  ]
+}

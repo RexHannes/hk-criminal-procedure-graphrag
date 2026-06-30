@@ -1,0 +1,200 @@
+{
+  "artifact_id": "investigation_arrest_search_detention_branch_landmark_pilot_v1_proposition_cards",
+  "generated_at": "2026-06-24T17:27:20.393Z",
+  "batch_id": "investigation_arrest_search_detention_branch_landmark_pilot_v1",
+  "proposition_count": 7,
+  "proposition_cards": [
+    {
+      "proposition_id": "prop_sham_2020_s50_6_mobile_search_declaration_p33",
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p33",
+      "source_paragraph": "33",
+      "exact_quote": "Section 50(6) on a proper construction authorizes police officers to search the digital contents of a mobile phone",
+      "proposition_text": "The Court of Appeal declared that section 50(6) PFO authorizes warrantless search of a seized mobile phone's digital contents only in exigent circumstances.",
+      "tree_node_ids": [
+        "criminal_procedure_hk.cap232_s50",
+        "criminal_procedure_hk.invest_search_without_warrant"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.cap232_s50",
+        "criminal_procedure_hk.invest_search_without_warrant"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_sham_2020_common_law_governs_digital_search_p103",
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p103",
+      "source_paragraph": "103",
+      "exact_quote": "a search of the digital contents of a mobile phone (as opposed to the mobile phone itself as an object) as a specie of the power of search by law enforcement officer incidental to arrest is governed by the common law instead of Section 50",
+      "proposition_text": "The Court of Appeal held that search of digital contents on a phone seized on arrest is governed by the common law power of search incidental to arrest rather than section 50(6) PFO.",
+      "tree_node_ids": [
+        "criminal_procedure_hk.invest_search_without_warrant",
+        "criminal_procedure_hk.invest_source_of_power"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_without_warrant",
+        "criminal_procedure_hk.invest_source_of_power"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_sham_2020_proportionality_warrantless_search_p106",
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p106",
+      "source_paragraph": "106",
+      "exact_quote": "any warrantless search must be subject to scrutiny under the proportionality test",
+      "proposition_text": "The Court of Appeal held that any warrantless search of digital phone contents must satisfy the proportionality test.",
+      "tree_node_ids": [
+        "criminal_procedure_hk.invest_search_without_warrant"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_without_warrant"
+      ],
+      "significance_label": "sets_out_test",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_sham_2020_prior_judicial_scrutiny_safeguards_p105",
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p105",
+      "source_paragraph": "105",
+      "exact_quote": "the general considerations discussed therein on the importance of safeguards by way of prior judicial scrutiny apply equally to a search of the digital contents of a mobile phone",
+      "proposition_text": "The Court of Appeal applied Keen Lloyd safeguards, emphasizing prior judicial scrutiny for intrusive warrantless digital searches.",
+      "tree_node_ids": [
+        "criminal_procedure_hk.invest_search_without_warrant",
+        "criminal_procedure_hk.invest_search_with_warrant"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_without_warrant",
+        "criminal_procedure_hk.invest_search_with_warrant"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": "Recites Keen Lloyd proportionality safeguards."
+    },
+    {
+      "proposition_id": "prop_lai_cop_2022_specified_evidence_covers_jm_p33",
+      "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p33",
+      "source_paragraph": "33",
+      "exact_quote": "it covers journalistic material",
+      "proposition_text": "The Court of Appeal held that 'specified evidence' under NSL Implementation Rules Schedule 1 covers journalistic material.",
+      "tree_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.lai_chee_ying_v_commissioner_of_police"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.lai_chee_ying_v_commissioner_of_police"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=148078&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_lai_cop_2022_jm_protection_not_absolute_p34",
+      "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p34",
+      "source_paragraph": "34",
+      "exact_quote": "the protection afforded to journalistic material is not absolute",
+      "proposition_text": "The Court of Appeal held that protection for journalistic material in search cases is important but not absolute.",
+      "tree_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.lai_chee_ying_v_commissioner_of_police"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant",
+        "criminal_procedure_hk.lai_chee_ying_v_commissioner_of_police"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=148078&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_lai_cop_2022_excluding_jm_limits_investigation_p35",
+      "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p35",
+      "source_paragraph": "35",
+      "exact_quote": "it would unduly limit the scope and hence reduce the effectiveness of police investigation",
+      "proposition_text": "The Court of Appeal reasoned that excluding journalistic material from 'specified evidence' would unduly limit effective police investigation in NSL cases.",
+      "tree_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_procedure_hk.invest_search_with_warrant"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=148078&QS=%2B&TP=JU&ILAN=en",
+      "lineage_note": ""
+    }
+  ]
+}

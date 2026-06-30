@@ -1,0 +1,26 @@
+{
+  "seed_source": "deepseek",
+  "seed_status": "llm_unverified_seed",
+  "note": "DeepSeek/NotebookLM suggested Lam Hin Fai, Chan Wai Lam and Mo Yuk Ping as landmark leads. Only Mo Yuk Ping and the Betty insider-dealing CFA summary were accepted in v1 because they were public-source fetched and exact-quote verified.",
+  "accepted_case_ids": [
+    "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+    "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018"
+  ],
+  "pending_case_leads": [
+    {
+      "case_name": "HKSAR v Lam Hin Fai",
+      "citation": "FAMC 3/2016",
+      "doctrine_hooks": [
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "status": "pending_public_legalref_dis"
+    },
+    {
+      "case_name": "HKSAR v Chan Wai Lam",
+      "doctrine_hooks": [
+        "criminal_law_hk.fraud"
+      ],
+      "status": "pending_public_legalref_dis"
+    }
+  ]
+}

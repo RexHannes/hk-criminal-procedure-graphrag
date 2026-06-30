@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/viewer/index.html" },
+    { "source": "/tree", "destination": "/viewer/index_legacy.html" }
+  ],
+  "headers": [
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=300, stale-while-revalidate=600" }
+      ]
+    }
+  ]
+}
