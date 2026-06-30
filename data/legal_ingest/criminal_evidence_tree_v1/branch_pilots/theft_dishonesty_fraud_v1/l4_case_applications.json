@@ -1,0 +1,107 @@
+{
+  "l4_case_applications": [
+    {
+      "l4_application_id": "l4_prop_mo_yuk_ping_2022_fraud_concealment_duty_p3",
+      "proposition_id": "prop_mo_yuk_ping_2022_fraud_concealment_duty_p3",
+      "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "case_name": "HKSAR v Mo Yuk Ping and Another",
+      "neutral_citation": "CACC 223/2022",
+      "paragraph_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022_p3",
+      "scenario_label": "Theft / dishonesty / fraud branch landmark pilot",
+      "application_summary": "For section 16A fraud, concealment attracts criminal liability only if made in breach of a duty of disclosure.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_mo_yuk_ping_2022_no_general_duty_disclose_breach_p4",
+      "proposition_id": "prop_mo_yuk_ping_2022_no_general_duty_disclose_breach_p4",
+      "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "case_name": "HKSAR v Mo Yuk Ping and Another",
+      "neutral_citation": "CACC 223/2022",
+      "paragraph_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022_p4",
+      "scenario_label": "Theft / dishonesty / fraud branch landmark pilot",
+      "application_summary": "The Court of Appeal held there is no general common-law duty to disclose one's own breach of contract, and a commercial lease did not create a special disclosure duty on these facts.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_mo_yuk_ping_2022_actus_reus_not_proved_p4",
+      "proposition_id": "prop_mo_yuk_ping_2022_actus_reus_not_proved_p4",
+      "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "case_name": "HKSAR v Mo Yuk Ping and Another",
+      "neutral_citation": "CACC 223/2022",
+      "paragraph_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022_p4",
+      "scenario_label": "Theft / dishonesty / fraud branch landmark pilot",
+      "application_summary": "The Court of Appeal quashed the fraud convictions because the prosecution failed to prove the actus reus of the section 16A charges.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_betty_2018_s300_fraudulent_conduct_p9",
+      "proposition_id": "prop_betty_2018_s300_fraudulent_conduct_p9",
+      "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+      "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+      "neutral_citation": "FACV 7/2018",
+      "paragraph_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018_p9",
+      "scenario_label": "Theft / dishonesty / fraud branch landmark pilot",
+      "application_summary": "The CFA held that section 300 SFO is a general provision outlawing fraudulent conduct in securities transactions, and 'transaction' must be given a wide meaning in that context.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Securities fraud under SFO; mapped as comparative fraud/dishonesty branch fruit pending HK Theft Ordinance dishonesty verification."
+    },
+    {
+      "l4_application_id": "l4_prop_betty_2018_insider_dealing_species_of_fraud_p12",
+      "proposition_id": "prop_betty_2018_insider_dealing_species_of_fraud_p12",
+      "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+      "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+      "neutral_citation": "FACV 7/2018",
+      "paragraph_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018_p12",
+      "scenario_label": "Theft / dishonesty / fraud branch landmark pilot",
+      "application_summary": "The CFA treated insider dealing as a species of fraud on the public rather than a victimless crime.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Securities fraud under SFO; dishonesty formulation still requires HK Theft Ordinance verification."
+    }
+  ]
+}

@@ -32,6 +32,20 @@ const CASE_FRUIT_DIRS = [
     fallbackCitation: "[Public source candidate]",
   },
   {
+    dir: path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "branch_pilots", "investigation_arrest_search_detention_v1"),
+    sourceUrl: "https://legalref.judiciary.hk/",
+    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "branch_landmark_pilot"],
+    fallbackCaseName: "Investigation/search branch pilot",
+    fallbackCitation: "[Public source candidate]",
+  },
+  {
+    dir: path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "branch_pilots", "theft_dishonesty_fraud_v1"),
+    sourceUrl: "https://legalref.judiciary.hk/",
+    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "branch_landmark_pilot"],
+    fallbackCaseName: "Theft/fraud branch pilot",
+    fallbackCitation: "[Public source candidate]",
+  },
+  {
     dir: path.join(ROOT, "data", "legal_ingest", "tree_gap_pilots", "data_privacy_dpp1_v1"),
     sourceUrl: "https://www.pcpd.org.hk/",
     flags: ["public_source_candidate", "quote_verified", "needs_human_review", "tree_gap_candidate", "field_expansion_pilot"],

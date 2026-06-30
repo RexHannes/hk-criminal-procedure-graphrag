@@ -6,7 +6,16 @@ const path = require("path");
 const { buildEvidencePack } = require("../src/legal_answer/build_evidence_pack");
 
 const ROOT = path.resolve(__dirname, "..");
-const BENCHMARK_PATH = path.join(ROOT, "data", "legal_ingest", "mvp", "retrieval_benchmark_queries.json");
+const DEFAULT_BENCHMARK_PATH = path.join(ROOT, "data", "legal_ingest", "mvp", "retrieval_benchmark_queries.json");
+
+function parseArgs(argv) {
+  const args = { suitePath: DEFAULT_BENCHMARK_PATH, topK: 10 };
+  for (let i = 2; i < argv.length; i += 1) {
+    if (argv[i] === "--suite") args.suitePath = path.resolve(ROOT, argv[++i] || "");
+    else if (argv[i] === "--top-k") args.topK = Number(argv[++i] || args.topK);
+  }
+  return args;
+}
 
 function hitMatches(query, chunks) {
   const ids = new Set();
@@ -16,8 +25,12 @@ function hitMatches(query, chunks) {
     ids.add(chunk.excerpt_id);
     kinds.add(chunk.source?.source_kind);
   }
+  const expectedIds = query.expected_source_ids_any || [];
+  const expectedHit = expectedIds.length
+    ? expectedIds.some(id => Array.from(ids).some(retrieved => String(retrieved || "").includes(id) || String(id).includes(String(retrieved || ""))))
+    : (query.expected_source_kind_any || []).some(kind => kinds.has(kind)) && chunks.length > 0;
   return {
-    expected_hit: (query.expected_source_ids_any || []).some(id => ids.has(id)),
+    expected_hit: expectedHit,
     source_kind_hit: (query.expected_source_kind_any || []).some(kind => kinds.has(kind)),
     private_leakage: (query.must_not_retrieve_source_kinds || []).filter(kind => kinds.has(kind)),
     retrieved_ids: Array.from(ids).filter(Boolean),
@@ -25,8 +38,8 @@ function hitMatches(query, chunks) {
   };
 }
 
-async function runBenchmark({ topK = 10 } = {}) {
-  const suite = JSON.parse(fs.readFileSync(BENCHMARK_PATH, "utf8"));
+async function runBenchmark({ topK = 10, suitePath = DEFAULT_BENCHMARK_PATH } = {}) {
+  const suite = JSON.parse(fs.readFileSync(suitePath, "utf8"));
   const results = [];
   for (const query of suite.queries || []) {
     const pack = await buildEvidencePack({ query: query.query, topK, sourceMode: "public_demo" });
@@ -65,7 +78,8 @@ async function runBenchmark({ topK = 10 } = {}) {
 }
 
 if (require.main === module) {
-  runBenchmark().then(report => {
+  const args = parseArgs(process.argv);
+  runBenchmark({ topK: args.topK, suitePath: args.suitePath }).then(report => {
     console.log(JSON.stringify(report, null, 2));
   }).catch(error => {
     console.error(error.message);

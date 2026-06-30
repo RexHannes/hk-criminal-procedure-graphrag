@@ -80,16 +80,28 @@ for (const paragraph of paragraphs) {
 
 for (const proposition of propositions) {
   const paragraph = paragraphById.get(proposition.paragraph_id);
+  const isGold = proposition.gold_set_member === true || proposition.answer_safe === true;
   assert(paragraph, `${proposition.proposition_id}: missing paragraph`);
   assert(paragraph && paragraph.text.includes(proposition.exact_quote), `${proposition.proposition_id}: exact quote not found in paragraph`);
-  assert(proposition.review_state === "machine_candidate", `${proposition.proposition_id}: must remain machine_candidate`);
-  assert(proposition.answer_safe === false, `${proposition.proposition_id}: must not be answer_safe`);
-  assert(proposition.human_review_required === true, `${proposition.proposition_id}: must require human review`);
+  if (!isGold) {
+    assert(proposition.review_state === "machine_candidate", `${proposition.proposition_id}: must remain machine_candidate`);
+    assert(proposition.answer_safe === false, `${proposition.proposition_id}: must not be answer_safe`);
+    assert(proposition.human_review_required === true, `${proposition.proposition_id}: must require human review`);
+  }
   assert(proposition.source_visibility === "public_demo", `${proposition.proposition_id}: must be public_demo`);
   assert(proposition.tenant_id === "public", `${proposition.proposition_id}: tenant must be public`);
   assert(Array.isArray(proposition.target_doctrine_node_ids) && proposition.target_doctrine_node_ids.length > 0, `${proposition.proposition_id}: missing target doctrine nodes`);
   for (const doctrineNodeId of proposition.target_doctrine_node_ids || []) {
     assert(doctrineIds.has(doctrineNodeId), `${proposition.proposition_id}: unknown doctrine node ${doctrineNodeId}`);
+  }
+}
+
+const manifestAllow = new Set(manifest.target_doctrine_node_ids || []);
+if (manifestAllow.size) {
+  for (const proposition of propositions) {
+    for (const doctrineNodeId of proposition.target_doctrine_node_ids || []) {
+      assert(manifestAllow.has(doctrineNodeId), `${proposition.proposition_id}: doctrine node ${doctrineNodeId} outside manifest allow-list`);
+    }
   }
 }
 

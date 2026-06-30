@@ -6,6 +6,13 @@ const { findCachedLegalAnswer, writeLegalAnswerCache } = require("../src/api/leg
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
+const {
+  assertFreeOpenRouterModel,
+  defaultFreeOpenRouterChatModel,
+  isOpenRouterFreeOnlyEnabled,
+  isOpenRouterPaidAllowed,
+  resolveOpenRouterModel,
+} = require("../src/retrieval/openrouter_free_only");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -285,16 +292,30 @@ function deterministicMatches(query, graph, limit = 12) {
 function getAiProvider() {
   const openRouterKey = (process.env.OPENROUTER_API_KEY || "").trim();
   if (openRouterKey) {
-    return {
-      name: "openrouter",
-      apiKey: openRouterKey,
-      endpoint: "https://openrouter.ai/api/v1/chat/completions",
-      model: process.env.OPENROUTER_MODEL || "openrouter/auto",
-      headers: {
-        "HTTP-Referer": "https://hk-criminal-procedure-graphrag.vercel.app",
-        "X-Title": "HK Legal Doctrine Evidence Viewer",
-      },
-    };
+    const model = resolveOpenRouterModel(process.env, ["OPENROUTER_MODEL"]) || defaultFreeOpenRouterChatModel();
+    try {
+      assertFreeOpenRouterModel(model, process.env, { context: "chat_completions" });
+      return {
+        name: "openrouter",
+        apiKey: openRouterKey,
+        endpoint: "https://openrouter.ai/api/v1/chat/completions",
+        model,
+        headers: {
+          "HTTP-Referer": "https://hk-criminal-procedure-graphrag.vercel.app",
+          "X-Title": "HK Legal Doctrine Evidence Viewer",
+        },
+      };
+    } catch (error) {
+      if (isOpenRouterFreeOnlyEnabled(process.env) && !isOpenRouterPaidAllowed(process.env)) {
+        return {
+          name: "openrouter",
+          apiKey: openRouterKey,
+          status: "blocked_free_model_required",
+          warnings: [error.message],
+        };
+      }
+      throw error;
+    }
   }
   const deepSeekKey = (process.env.DEEPSEEK_API_KEY || "").trim();
   if (deepSeekKey) {
@@ -311,7 +332,14 @@ function getAiProvider() {
 
 async function callAiJson(systemPrompt, userPrompt) {
   const provider = getAiProvider();
-  if (!provider) return { provider: "none", status: "not_configured", json: null, warnings: ["ai_provider_not_configured"] };
+  if (!provider || provider.status === "blocked_free_model_required" || !provider.endpoint) {
+    return {
+      provider: provider?.name || "none",
+      status: provider?.status || "not_configured",
+      json: null,
+      warnings: provider?.warnings || ["ai_provider_not_configured"],
+    };
+  }
   try {
     const response = await fetch(provider.endpoint, {
       method: "POST",

@@ -136,7 +136,34 @@
       ]
     },
     {
-      "stage_id": "large_scale_20k_preflight",
+      "stage_id": "large_scale_10k_public_demo",
+      "label": "10k public-demo scale",
+      "target": "Run up to 10000 public cases once production embeddings, reranker, orchestration and vector namespace isolation are green.",
+      "required_env": [
+        "LEGAL_RUNTIME_MODE",
+        "QDRANT_URL",
+        "LEGAL_EMBEDDING_PROVIDER",
+        "LEGAL_EMBEDDING_MODEL",
+        "LEGAL_EMBEDDING_DIM",
+        "LEGAL_RERANK_PROVIDER",
+        "LEGAL_RERANK_MODEL"
+      ],
+      "must_equal": {
+        "LEGAL_RUNTIME_MODE": "production_scale"
+      },
+      "required_gates": [
+        "production_embeddings_configured",
+        "production_reranker_configured",
+        "durable_orchestration_configured",
+        "runtime_isolation_enforced",
+        "vector_namespace_separated"
+      ],
+      "notes": [
+        "Lawyer gold review is optional at 10k; machine_candidate source-linked demo remains allowed.",
+        "Never index local-hash vectors into _prod collections."
+      ]
+    },
+    {
       "label": "20k preflight",
       "target": "Plan large-scale ingestion but keep execution blocked until all gates pass.",
       "required_gates": [

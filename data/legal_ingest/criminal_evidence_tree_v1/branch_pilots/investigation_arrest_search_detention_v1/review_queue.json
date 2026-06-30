@@ -1,0 +1,149 @@
+{
+  "review_items": [
+    {
+      "review_item_id": "review_prop_sham_2020_s50_6_mobile_search_declaration_p33",
+      "item_type": "proposition_card",
+      "item_id": "prop_sham_2020_s50_6_mobile_search_declaration_p33",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+        "case_name": "Sham Wing Kan v Commissioner of Police",
+        "neutral_citation": "[2020] HKCA 186",
+        "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p33",
+        "paragraph_no": "33",
+        "exact_quote": "Section 50(6) on a proper construction authorizes police officers to search the digital contents of a mobile phone",
+        "proposition_text": "The Court of Appeal declared that section 50(6) PFO authorizes warrantless search of a seized mobile phone's digital contents only in exigent circumstances.",
+        "target_doctrine_node_ids": [
+          "criminal_procedure_hk.cap232_s50",
+          "criminal_procedure_hk.invest_search_without_warrant"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_sham_2020_common_law_governs_digital_search_p103",
+      "item_type": "proposition_card",
+      "item_id": "prop_sham_2020_common_law_governs_digital_search_p103",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+        "case_name": "Sham Wing Kan v Commissioner of Police",
+        "neutral_citation": "[2020] HKCA 186",
+        "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p103",
+        "paragraph_no": "103",
+        "exact_quote": "a search of the digital contents of a mobile phone (as opposed to the mobile phone itself as an object) as a specie of the power of search by law enforcement officer incidental to arrest is governed by the common law instead of Section 50",
+        "proposition_text": "The Court of Appeal held that search of digital contents on a phone seized on arrest is governed by the common law power of search incidental to arrest rather than section 50(6) PFO.",
+        "target_doctrine_node_ids": [
+          "criminal_procedure_hk.invest_search_without_warrant",
+          "criminal_procedure_hk.invest_source_of_power"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_sham_2020_proportionality_warrantless_search_p106",
+      "item_type": "proposition_card",
+      "item_id": "prop_sham_2020_proportionality_warrantless_search_p106",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+        "case_name": "Sham Wing Kan v Commissioner of Police",
+        "neutral_citation": "[2020] HKCA 186",
+        "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p106",
+        "paragraph_no": "106",
+        "exact_quote": "any warrantless search must be subject to scrutiny under the proportionality test",
+        "proposition_text": "The Court of Appeal held that any warrantless search of digital phone contents must satisfy the proportionality test.",
+        "target_doctrine_node_ids": [
+          "criminal_procedure_hk.invest_search_without_warrant"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_sham_2020_prior_judicial_scrutiny_safeguards_p105",
+      "item_type": "proposition_card",
+      "item_id": "prop_sham_2020_prior_judicial_scrutiny_safeguards_p105",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+        "case_name": "Sham Wing Kan v Commissioner of Police",
+        "neutral_citation": "[2020] HKCA 186",
+        "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p105",
+        "paragraph_no": "105",
+        "exact_quote": "the general considerations discussed therein on the importance of safeguards by way of prior judicial scrutiny apply equally to a search of the digital contents of a mobile phone",
+        "proposition_text": "The Court of Appeal applied Keen Lloyd safeguards, emphasizing prior judicial scrutiny for intrusive warrantless digital searches.",
+        "target_doctrine_node_ids": [
+          "criminal_procedure_hk.invest_search_without_warrant",
+          "criminal_procedure_hk.invest_search_with_warrant"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_lai_cop_2022_specified_evidence_covers_jm_p33",
+      "item_type": "proposition_card",
+      "item_id": "prop_lai_cop_2022_specified_evidence_covers_jm_p33",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+        "case_name": "Lai Chee Ying v Commissioner of Police",
+        "neutral_citation": "[2022] HKCA 1574",
+        "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p33",
+        "paragraph_no": "33",
+        "exact_quote": "it covers journalistic material",
+        "proposition_text": "The Court of Appeal held that 'specified evidence' under NSL Implementation Rules Schedule 1 covers journalistic material.",
+        "target_doctrine_node_ids": [
+          "criminal_procedure_hk.invest_search_with_warrant",
+          "criminal_procedure_hk.lai_chee_ying_v_commissioner_of_police"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_lai_cop_2022_jm_protection_not_absolute_p34",
+      "item_type": "proposition_card",
+      "item_id": "prop_lai_cop_2022_jm_protection_not_absolute_p34",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+        "case_name": "Lai Chee Ying v Commissioner of Police",
+        "neutral_citation": "[2022] HKCA 1574",
+        "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p34",
+        "paragraph_no": "34",
+        "exact_quote": "the protection afforded to journalistic material is not absolute",
+        "proposition_text": "The Court of Appeal held that protection for journalistic material in search cases is important but not absolute.",
+        "target_doctrine_node_ids": [
+          "criminal_procedure_hk.invest_search_with_warrant",
+          "criminal_procedure_hk.lai_chee_ying_v_commissioner_of_police"
+        ]
+      }
+    },
+    {
+      "review_item_id": "review_prop_lai_cop_2022_excluding_jm_limits_investigation_p35",
+      "item_type": "proposition_card",
+      "item_id": "prop_lai_cop_2022_excluding_jm_limits_investigation_p35",
+      "status": "open",
+      "review_status": "machine_candidate",
+      "human_review_required": true,
+      "payload_json": {
+        "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+        "case_name": "Lai Chee Ying v Commissioner of Police",
+        "neutral_citation": "[2022] HKCA 1574",
+        "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p35",
+        "paragraph_no": "35",
+        "exact_quote": "it would unduly limit the scope and hence reduce the effectiveness of police investigation",
+        "proposition_text": "The Court of Appeal reasoned that excluding journalistic material from 'specified evidence' would unduly limit effective police investigation in NSL cases.",
+        "target_doctrine_node_ids": [
+          "criminal_procedure_hk.invest_search_with_warrant"
+        ]
+      }
+    }
+  ]
+}

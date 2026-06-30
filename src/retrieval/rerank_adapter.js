@@ -1,6 +1,17 @@
 const { exactJsonHeaders } = require("../api/json_content_type");
+const { postOpenRouter } = require("./openrouter_client");
+const {
+  assertFreeOpenRouterModel,
+  isOpenRouterFreeOnlyEnabled,
+  isOpenRouterPaidAllowed,
+} = require("./openrouter_free_only");
+const { resolveOpenRouterRoleModel } = require("./openrouter_free_models");
+const {
+  assertProductionScaleRetrievalStack,
+  isDevOnlyRerankProvider,
+} = require("./runtime_isolation");
 
-const SUPPORTED_RERANK_PROVIDERS = new Set(["none", "local", "cohere", "voyage"]);
+const SUPPORTED_RERANK_PROVIDERS = new Set(["none", "local", "cohere", "openrouter", "voyage"]);
 
 function rerankProvider(env = process.env) {
   return String(env.LEGAL_RERANK_PROVIDER || env.RERANK_PROVIDER || "none").trim().toLowerCase();
@@ -15,6 +26,7 @@ function assertRerankConfig(env = process.env) {
   if (provider === "local") return { provider, status: "deterministic_local_rerank" };
   const keyMap = {
     cohere: "COHERE_API_KEY",
+    openrouter: "OPENROUTER_API_KEY",
     voyage: "VOYAGE_API_KEY",
   };
   const keyName = keyMap[provider];
@@ -107,8 +119,35 @@ async function voyageRerank(query, candidates, { env, limit }) {
   return { provider: "voyage", status: "configured", model, results };
 }
 
-async function rerank(query, candidates, { env = process.env, limit = 10 } = {}) {
+async function openRouterRerank(query, candidates, { env, limit }) {
+  const model = resolveOpenRouterRoleModel(env, "rerank");
+  assertFreeOpenRouterModel(model, env, { context: "rerank" });
+  const documents = (candidates || []).map(candidateText);
+  const payload = await postOpenRouter("/rerank", {
+    env,
+    body: {
+      model,
+      query,
+      documents,
+      top_n: Math.min(limit, documents.length),
+    },
+  });
+  const rows = payload.results || payload.data || [];
+  const results = rows.map(item => ({
+    ...(candidates[item.index] || {}),
+    rerank_score: Number(item.relevance_score || item.score || 0),
+    rerank_provider: "openrouter",
+    rerank_model: model,
+  }));
+  return { provider: "openrouter", status: "configured", model, results };
+}
+
+async function rerank(query, candidates, { env = process.env, limit = 10, allowDevRerank = true } = {}) {
+  assertProductionScaleRetrievalStack(env, "rerank");
   const config = assertRerankConfig(env);
+  if (!allowDevRerank && isDevOnlyRerankProvider(config.provider)) {
+    throw new Error(`dev_rerank_blocked:${config.provider}`);
+  }
   if (config.provider === "none") {
     return { provider: "none", status: config.status, results: (candidates || []).slice(0, limit) };
   }
@@ -116,6 +155,15 @@ async function rerank(query, candidates, { env = process.env, limit = 10 } = {})
     return { provider: "local", status: config.status, results: localRerank(query, candidates, { limit }) };
   }
   if (config.provider === "cohere") return cohereRerank(query, candidates, { env, limit });
+  if (config.provider === "openrouter") {
+    if (isOpenRouterFreeOnlyEnabled(env) && !isOpenRouterPaidAllowed(env)) {
+      const model = resolveOpenRouterRoleModel(env, "rerank");
+      if (!model) {
+        throw new Error("openrouter_free_rerank_blocked:use_local_or_none_rerank_provider");
+      }
+    }
+    return openRouterRerank(query, candidates, { env, limit });
+  }
   if (config.provider === "voyage") return voyageRerank(query, candidates, { env, limit });
   throw new Error(`unsupported_rerank_provider:${config.provider}`);
 }

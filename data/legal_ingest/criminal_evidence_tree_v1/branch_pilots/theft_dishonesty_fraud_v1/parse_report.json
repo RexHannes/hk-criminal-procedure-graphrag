@@ -1,0 +1,16 @@
+{
+  "artifact_id": "theft_dishonesty_fraud_branch_landmark_pilot_v1_artifact",
+  "generated_at": "2026-06-24T17:27:19.529Z",
+  "batch_id": "theft_dishonesty_fraud_branch_landmark_pilot_v1",
+  "branch_family_id": "theft_dishonesty_fraud",
+  "domain_id": "criminal_law_hk",
+  "scope": "theft_dishonesty_fraud_branch_landmark",
+  "source_count": 2,
+  "paragraph_count": 4,
+  "proposition_count": 5,
+  "link_count": 8,
+  "rejected_count": 0,
+  "errors": [],
+  "rejected": [],
+  "status": "built_quote_verified_candidate"
+}

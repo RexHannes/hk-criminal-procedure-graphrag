@@ -7,6 +7,12 @@ const {
   loadBrowserDiscoveryPolicy,
 } = require("./browser_guided_discovery");
 const { evaluateScaleReadiness, loadEnv } = require("./scale_readiness");
+const {
+  validateDoctrineTargets,
+  validateManifestDoctrineAllowlist,
+  validateSourceCitationRecord,
+  validateTreeNodeTargets,
+} = require("./scale_ingest_safeguards");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 const DEFAULT_LOOP_CONFIG = path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "case_fruit_growth_loop.json");
@@ -68,6 +74,7 @@ function validateBatchAgainstLoop(config, batchDir = DEFAULT_BATCH_DIR) {
 
   for (const source of artifacts.manifest.sources || []) {
     const haystack = `${source.source_visibility} ${source.tenant_id} ${source.licence_status} ${source.source_kind} ${source.source_url_or_path}`;
+    correctionItems.push(...validateSourceCitationRecord(source));
     if (source.source_visibility !== "public_demo" || source.tenant_id !== "public" || source.licence_status !== "public_judgment") {
       correctionItems.push({
         type: "forbidden_source_policy",
@@ -116,7 +123,21 @@ function validateBatchAgainstLoop(config, batchDir = DEFAULT_BATCH_DIR) {
         });
       }
     }
+    correctionItems.push(...validateDoctrineTargets({
+      doctrineNodeIds: card.target_doctrine_node_ids || [],
+      allowedDoctrineNodeIds: Array.from(allowedNodes),
+      allowedDomainId: config.default_scope?.domain || artifacts.manifest.domain_id || "criminal_procedure_hk",
+    }).map(item => ({ ...item, proposition_id: card.proposition_id })));
+    correctionItems.push(...validateTreeNodeTargets(card.tree_node_ids || []).map(item => ({
+      ...item,
+      proposition_id: card.proposition_id,
+    })));
   }
+
+  correctionItems.push(...validateManifestDoctrineAllowlist(
+    artifacts.manifest,
+    artifacts.propositions.proposition_cards || [],
+  ));
 
   for (const link of artifacts.links.proposition_node_links || []) {
     if (!allowedNodes.has(link.doctrine_node_id)) {

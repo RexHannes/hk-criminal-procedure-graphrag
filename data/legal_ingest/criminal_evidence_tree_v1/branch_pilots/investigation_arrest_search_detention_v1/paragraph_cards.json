@@ -1,0 +1,129 @@
+{
+  "artifact_id": "investigation_arrest_search_detention_branch_landmark_pilot_v1_paragraph_cards",
+  "generated_at": "2026-06-24T17:27:20.393Z",
+  "batch_id": "investigation_arrest_search_detention_branch_landmark_pilot_v1",
+  "case_count": 2,
+  "paragraph_count": 7,
+  "cases": [
+    {
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "case_name": "Sham Wing Kan v Commissioner of Police",
+      "neutral_citation": "[2020] HKCA 186",
+      "law_report_citation": "",
+      "court": "Court of Appeal",
+      "court_level": "CA",
+      "date": "2020-00-00",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case_judgment",
+      "licence_status": "public_judgment",
+      "ingestion_status": "paragraphized",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "case_name": "Lai Chee Ying v Commissioner of Police",
+      "neutral_citation": "[2022] HKCA 1574",
+      "law_report_citation": "",
+      "court": "Court of Appeal",
+      "court_level": "CA",
+      "date": "2022-00-00",
+      "source_url_or_path": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=148078&QS=%2B&TP=JU&ILAN=en",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "source_kind": "case_judgment_press_summary",
+      "licence_status": "public_judgment",
+      "ingestion_status": "paragraphized",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate"
+    }
+  ],
+  "paragraph_cards": [
+    {
+      "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p33",
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_no": "33",
+      "text": "33. In the result, the Judge made a declaration that Section 50(6) on a proper construction authorizes police officers to search the digital contents of a mobile phone (or a similar device) seized on arrest without warrant only in exigent circumstances; and that in so authorizing the warrantless search, Section 50(6) is constitutional and compliant with BOR 14 and BL 30. He made no order in respect to the applicant’s relief to quash the Decision as the Subject Mobile Phones had already been returned to the applicant without any search of their contents. C. Parties’ stance on appeal",
+      "chunk_hash": "f655bef06aaa18497d3fbe8879eee60c49f76ba1b97123ff3646ce1a1efc22ae",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p103",
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_no": "103",
+      "text": "103. For reasons expanded upon below, we are of the view that a search of the digital contents of a mobile phone (as opposed to the mobile phone itself as an object) as a specie of the power of search by law enforcement officer incidental to arrest is governed by the common law instead of Section 50(6) [64] . Also, as explained below, we do not and need not have the doctrine of exigent circumstances under our common law in Hong Kong. With the familiarity by those responsible for administration of criminal justice in Hong Kong with the concept of reasonable practicality as the guide for search without warrant, we are of the view that this should also be a guide for warrantless search of the digital contents of mobile phone under our common law when such power is exercised by a law enforcement officer.",
+      "chunk_hash": "603cf1c50a915ea06d55f8aedfa3cd796fb527e5270c5f175ccef7be14462c89",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p106",
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_no": "106",
+      "text": "106. As held in Keen Lloyd , any warrantless search must be subject to scrutiny under the proportionality test. The set of criteria permitting a warrantless search of digital contents of a mobile phone must serve legitimate interests, rationally connected with such interests and the permitted search should be no more than necessary to accomplish such interests. In the context of the protection of privacy interest when an individual is subject to warrantless search, the courts will be vigilant in ensuring that adequate and effective safeguards against abuse are in place with strict limits on such power of search [65] .",
+      "chunk_hash": "6a03d842b95e772f3905bae5ff8e80df856dc43906a3b66e58aa43c44fda34db",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p105",
+      "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+      "paragraph_no": "105",
+      "text": "105. Though the Court was not concerned with the power of search incidental to arrest in Keen Lloyd , in our view the general considerations discussed therein on the importance of safeguards by way of prior judicial scrutiny apply equally to a search of the digital contents of a mobile phone even in the context of a search incidental to arrest. As will be discussed below, a warrant can be obtained under Section 50(7) for the search of the digital contents of a mobile phone. Given the engagement of the rights protected under BOR 14 and BL 30 and the potentially high privacy interest of the digital contents stored in a mobile phone (which in many cases would be even higher than the privacy interest engaged in a search of private premises), we hold that even in the context of a search of such materials incidental to an arrest a warrant should be obtained before a search unless it is not reasonably practicable to do so. In processing an application for such warrant, a judicial officer must bear in mind the judicial gatekeeping role discussed under Section B3 in the judgment of Keen Lloyd .",
+      "chunk_hash": "f5c7c280fa54257ee8cea06f403ed84db894163f73bfd87e777bd18e85ff2e1b",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p33",
+      "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "paragraph_no": "33",
+      "text": "33. Construing “specified evidence” in the above context, it is clear that as borne out by its natural and ordinary language, it covers journalistic material.",
+      "chunk_hash": "f73e7ac171615f589f2cd90697b6b0407307366e27c169e4ea62b1d52ba42d9a",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=148078&QS=%2B&TP=JU&ILAN=en",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p34",
+      "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "paragraph_no": "34",
+      "text": "34. First, despite its importance to the freedom of the press, the protection afforded to journalistic material is not absolute. Although always subject to the protection and procedural safeguards based on public interest and vigilant judicial scrutiny, journalistic material is not immune from search and seizure in the investigation of any criminal offence. As a matter of principle, the same must be true for offences endangering national security.",
+      "chunk_hash": "2b3bf702893c527100eb87197d66ea08fab25867ca5f7dae14c67770465589b4",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=148078&QS=%2B&TP=JU&ILAN=en",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p35",
+      "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+      "paragraph_no": "35",
+      "text": "35. Second, to serve the legislative purpose of furthering the primary objective of the NSL to effectively suppress, prevent and punish offences endangering national security as identified at [17(1)] above, the police must be able to carry out effective search on anything, including journalistic material, that contains or is likely to contain evidence of an offence endangering national security. Were such material excluded from the definition of “specified evidence”, it would unduly limit the scope and hence reduce the effectiveness of police investigation. That would not be conducive to the said legislative purpose.",
+      "chunk_hash": "c5e29f169fd5773c5ec4ac3c7ca9ff8edd3acc5b078bdbf37ea089a03999d8df",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=148078&QS=%2B&TP=JU&ILAN=en",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate"
+    }
+  ]
+}

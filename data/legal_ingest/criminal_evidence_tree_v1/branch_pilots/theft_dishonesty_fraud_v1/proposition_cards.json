@@ -1,0 +1,144 @@
+{
+  "artifact_id": "theft_dishonesty_fraud_branch_landmark_pilot_v1_proposition_cards",
+  "generated_at": "2026-06-24T17:27:19.529Z",
+  "batch_id": "theft_dishonesty_fraud_branch_landmark_pilot_v1",
+  "proposition_count": 5,
+  "proposition_cards": [
+    {
+      "proposition_id": "prop_mo_yuk_ping_2022_fraud_concealment_duty_p3",
+      "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "paragraph_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022_p3",
+      "source_paragraph": "3",
+      "exact_quote": "a concealment attracts criminal liability only if it was made in breach of a duty of disclosure",
+      "proposition_text": "For section 16A fraud, concealment attracts criminal liability only if made in breach of a duty of disclosure.",
+      "tree_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_mo_yuk_ping_2022_no_general_duty_disclose_breach_p4",
+      "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "paragraph_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022_p4",
+      "source_paragraph": "4",
+      "exact_quote": "no general duty to disclose one’s own breach of contract",
+      "proposition_text": "The Court of Appeal held there is no general common-law duty to disclose one's own breach of contract, and a commercial lease did not create a special disclosure duty on these facts.",
+      "tree_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_mo_yuk_ping_2022_actus_reus_not_proved_p4",
+      "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "paragraph_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022_p4",
+      "source_paragraph": "4",
+      "exact_quote": "the prosecution had failed to prove the applicants had committed the actus reus of the fraud charges",
+      "proposition_text": "The Court of Appeal quashed the fraud convictions because the prosecution failed to prove the actus reus of the section 16A charges.",
+      "tree_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+      "lineage_note": ""
+    },
+    {
+      "proposition_id": "prop_betty_2018_s300_fraudulent_conduct_p9",
+      "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+      "paragraph_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018_p9",
+      "source_paragraph": "9",
+      "exact_quote": "S 300 is a general provision that outlaws fraudulent conduct in securities transactions",
+      "proposition_text": "The CFA held that section 300 SFO is a general provision outlawing fraudulent conduct in securities transactions, and 'transaction' must be given a wide meaning in that context.",
+      "tree_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+      "lineage_note": "Securities fraud under SFO; mapped as comparative fraud/dishonesty branch fruit pending HK Theft Ordinance dishonesty verification."
+    },
+    {
+      "proposition_id": "prop_betty_2018_insider_dealing_species_of_fraud_p12",
+      "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+      "paragraph_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018_p12",
+      "source_paragraph": "12",
+      "exact_quote": "insider dealing is a species of fraud",
+      "proposition_text": "The CFA treated insider dealing as a species of fraud on the public rather than a victimless crime.",
+      "tree_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "review_state": "machine_candidate",
+      "answer_safe": false,
+      "human_review_required": true,
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "fixture_status": "real_public_source_branch_landmark_pilot",
+      "authority_status": "real_public_authority_candidate",
+      "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+      "lineage_note": "Securities fraud under SFO; dishonesty formulation still requires HK Theft Ordinance verification."
+    }
+  ]
+}

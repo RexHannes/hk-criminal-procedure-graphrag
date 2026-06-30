@@ -51,8 +51,8 @@ function findStaticNode(nodeId) {
   return null;
 }
 
-function noEvidencePayload(node, extraWarnings = []) {
-  const localEvidence = localCaseFruitEvidenceForNode(node.doctrine_node_id).map(item => {
+function localEvidenceForNode(node) {
+  return localCaseFruitEvidenceForNode(node.doctrine_node_id).map(item => {
     if (item.answer_layer_status === "candidate_only" && item.source_url && item.para_no && (item.paragraph_text || item.supporting_quote || item.proposition_text)) {
       return {
         ...item,
@@ -63,21 +63,37 @@ function noEvidencePayload(node, extraWarnings = []) {
     }
     return item;
   });
+}
+
+function mergeLocalEvidence(node, evidence = [], extraWarnings = []) {
+  const merged = [...evidence];
+  const seen = new Set(merged.map(item => item.proposition_id || item.paragraph_id || `${item.case_id}:${item.para_no}`));
+  for (const item of localEvidenceForNode(node)) {
+    const key = item.proposition_id || item.paragraph_id || `${item.case_id}:${item.para_no}`;
+    if (seen.has(key)) continue;
+    merged.push(item);
+    seen.add(key);
+  }
+  const split = splitEvidence(merged);
+  return {
+    doctrine_node_id: node.doctrine_node_id,
+    source_node_id: node.source_node_id,
+    title: node.title,
+    node_type: node.node_type,
+    domain_id: node.domain_id,
+    coverage_status: split.coverage,
+    warnings: Array.from(new Set([...split.warnings, ...(merged.length > evidence.length ? ["local_case_fruits_merged"] : []), ...extraWarnings])),
+    evidence: merged,
+    candidate_evidence: split.candidate,
+    verified_evidence: split.verified,
+    answer_safe_evidence: split.answerSafe,
+  };
+}
+
+function noEvidencePayload(node, extraWarnings = []) {
+  const localEvidence = localEvidenceForNode(node);
   if (localEvidence.length) {
-    const split = splitEvidence(localEvidence);
-    return {
-      doctrine_node_id: node.doctrine_node_id,
-      source_node_id: node.source_node_id,
-      title: node.title,
-      node_type: node.node_type,
-      domain_id: node.domain_id,
-      coverage_status: split.coverage,
-      warnings: Array.from(new Set([...split.warnings, "local_case_fruits_fixture_fallback", ...extraWarnings])),
-      evidence: localEvidence,
-      candidate_evidence: split.candidate,
-      verified_evidence: split.verified,
-      answer_safe_evidence: split.answerSafe,
-    };
+    return mergeLocalEvidence(node, [], ["local_case_fruits_fixture_fallback", ...extraWarnings]);
   }
   return {
     doctrine_node_id: node.doctrine_node_id,
@@ -246,19 +262,7 @@ module.exports = async function handler(req, res) {
     }
 
     const split = splitEvidence(evidence);
-    res.status(200).json({
-      doctrine_node_id: node.doctrine_node_id,
-      source_node_id: node.source_node_id,
-      title: node.title,
-      node_type: node.node_type,
-      domain_id: node.domain_id,
-      coverage_status: split.coverage,
-      warnings: split.warnings,
-      evidence,
-      candidate_evidence: split.candidate,
-      verified_evidence: split.verified,
-      answer_safe_evidence: split.answerSafe,
-    });
+    res.status(200).json(mergeLocalEvidence(node, evidence, split.warnings));
   } catch (error) {
     res.status(200).json(noEvidencePayload(node, ["backend_query_failed"]));
   }

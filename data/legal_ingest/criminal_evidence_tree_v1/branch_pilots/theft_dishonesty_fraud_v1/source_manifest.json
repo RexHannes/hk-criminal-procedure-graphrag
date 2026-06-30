@@ -1,0 +1,66 @@
+{
+  "batch_id": "theft_dishonesty_fraud_branch_landmark_pilot_v1",
+  "domain_id": "criminal_law_hk",
+  "scope": "theft_dishonesty_fraud_branch_landmark",
+  "branch_family_id": "theft_dishonesty_fraud",
+  "source_policy": {
+    "public_sources_only": true,
+    "private_or_licensed_sources_allowed": false,
+    "raw_private_upload_allowed": false,
+    "bulk_auto_attach_allowed": false,
+    "answer_safe_by_default": false
+  },
+  "scale_policy": {
+    "large_cross_domain_crawl_allowed": false,
+    "max_sources_without_force": 5,
+    "branch_landmark_pilot_only": true
+  },
+  "branch_pilot_resolution": {
+    "branch_family_id": "theft_dishonesty_fraud",
+    "tree_proposal_source": "notebooklm_logged_in_private_notebook",
+    "tree_proposal_status": "candidate_only",
+    "verification_gate": "legalref_exact_quote_case_fruits_only",
+    "pending_landmark_cases": [
+      "HKSAR v Lam Hin Fai (FAMC 3/2016)",
+      "HKSAR v Chan Wai Lam"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "case_name": "HKSAR v Mo Yuk Ping and Another",
+      "neutral_citation": "CACC 223/2022",
+      "court": "Court of Appeal",
+      "court_level": "CA",
+      "date": "2026-02-26",
+      "source_kind": "case_judgment_press_summary",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+      "fetch_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "source_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+      "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+      "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+      "neutral_citation": "FACV 7/2018",
+      "court": "Court of Final Appeal",
+      "court_level": "CFA",
+      "date": "2018-00-00",
+      "source_kind": "case_judgment_press_summary",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+      "fetch_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    }
+  ]
+}

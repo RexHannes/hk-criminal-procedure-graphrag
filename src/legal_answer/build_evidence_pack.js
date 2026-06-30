@@ -8,6 +8,7 @@ function sha256(value) {
 
 function sourceKindFromPayload(payload = {}) {
   if (payload.source_type === "case") return payload.proposition_id ? "proposition_card" : "case";
+  if (payload.source_type === "case_judgment_recall") return "case_judgment_recall";
   if (payload.source_type === "form_metadata") return "form_metadata";
   if (payload.source_type === "practice_direction") return "practice_direction";
   if (payload.source_type === "legislation") return "ordinance";

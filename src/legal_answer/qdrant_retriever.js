@@ -2,6 +2,13 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const { embedText } = require("../retrieval/embedding_adapter");
+const {
+  assertProductionScaleRetrievalStack,
+  embeddingVectorSpaceId,
+  resolveQdrantCollection,
+  resolvedEmbeddingProvider,
+} = require("../retrieval/runtime_isolation");
+const { buildRetrievalScopeFilter } = require("../case_graph/scale_ingest_safeguards");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 
@@ -43,12 +50,13 @@ function localHashEmbedding(text, dimension) {
 }
 
 async function embed(text, env, dimension) {
-  const provider = env.LEGAL_EMBEDDING_PROVIDER || "local-hash";
-  if (provider === "local-hash" && !env.EMBEDDING_PROVIDER) return localHashEmbedding(text, dimension);
+  assertProductionScaleRetrievalStack(env, "qdrant_embed");
+  const provider = resolvedEmbeddingProvider(env);
   const result = await embedText(text, {
     env: {
       ...env,
-      EMBEDDING_PROVIDER: provider === "local-hash" ? "local-hash" : provider,
+      LEGAL_EMBEDDING_PROVIDER: provider,
+      EMBEDDING_PROVIDER: provider,
     },
     dimension,
   });
@@ -130,13 +138,22 @@ async function searchQdrant({
   tenantId = "public",
   includePrivate = false,
 } = {}) {
-  const provider = env.LEGAL_EMBEDDING_PROVIDER || "local-hash";
+  const provider = resolvedEmbeddingProvider(env);
   const dimension = Number(env.LEGAL_EMBEDDING_DIM || (provider === "openai" ? 1536 : 384));
-  const collection = collectionName || env.QDRANT_COLLECTION_PROPOSITIONS || "hk_proposition_cards";
+  const collection = collectionName || resolveQdrantCollection(
+    "hk_proposition_cards",
+    env,
+    "QDRANT_COLLECTION_PROPOSITIONS",
+  );
   const privateIngestionEnabled = String(env.PRIVATE_SOURCE_INGESTION_ENABLED || "false").toLowerCase() === "true";
   const filter = sourceMode === "private_tenant"
     ? tenantRetrievalFilter({ tenantId, includePrivate, privateIngestionEnabled })
-    : publicDemoFilter();
+    : buildRetrievalScopeFilter(env, {
+      sourceMode,
+      tenantId,
+      includePrivate,
+      privateIngestionEnabled,
+    });
   const vector = await embed(query, env, dimension);
   const actualDimension = vector.length;
   const payload = await qdrantRequest(env, `/collections/${encodeURIComponent(collection)}/points/search`, {
@@ -155,6 +172,7 @@ async function searchQdrant({
     top_k: topK,
     returned_count: (payload.result || []).length,
     embedding_provider: provider,
+    vector_space_id: embeddingVectorSpaceId(env),
     dimension: actualDimension,
     source_mode: sourceMode,
     tenant_id: sourceMode === "private_tenant" ? tenantId : "public",
@@ -164,6 +182,7 @@ async function searchQdrant({
 }
 
 module.exports = {
+  buildRetrievalScopeFilter,
   embed,
   loadEnv,
   localHashEmbedding,

@@ -1,0 +1,16 @@
+{
+  "artifact_id": "investigation_arrest_search_detention_branch_landmark_pilot_v1_artifact",
+  "generated_at": "2026-06-24T17:27:20.393Z",
+  "batch_id": "investigation_arrest_search_detention_branch_landmark_pilot_v1",
+  "branch_family_id": "investigation_arrest_search_detention",
+  "domain_id": "criminal_procedure_hk",
+  "scope": "investigation_arrest_search_detention_branch_landmark",
+  "source_count": 2,
+  "paragraph_count": 7,
+  "proposition_count": 7,
+  "link_count": 12,
+  "rejected_count": 0,
+  "errors": [],
+  "rejected": [],
+  "status": "built_quote_verified_candidate"
+}

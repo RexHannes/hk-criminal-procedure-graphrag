@@ -3,6 +3,12 @@
 
 const { assertEmbeddingConfig, embedText } = require("../src/retrieval/embedding_adapter");
 const { assertRerankConfig, rerank } = require("../src/retrieval/rerank_adapter");
+const {
+  defaultFreeOpenRouterChatModel,
+  defaultFreeOpenRouterEmbeddingModel,
+  defaultFreeOpenRouterRerankModel,
+  resolveOpenRouterRoleModel,
+} = require("../src/retrieval/openrouter_free_models");
 const fs = require("fs");
 const path = require("path");
 
@@ -46,6 +52,59 @@ function assert(condition, message, errors) {
   assert(bailIndexer.includes("actualDimension"), "bail Qdrant indexer should use actual provider vector dimensions", errors);
   assert(bailIndexer.includes("Embedding dimension drift"), "bail Qdrant indexer should fail on dimension drift", errors);
   assert(qdrantRetriever.includes("actualDimension"), "Qdrant retriever should report actual query vector dimension", errors);
+  assert(qdrantRetriever.includes("resolveQdrantCollection"), "Qdrant retriever should resolve isolated collection namespaces", errors);
+  assert(resolveOpenRouterRoleModel({}, "chat") === defaultFreeOpenRouterChatModel(), "default chat model should be curated free owl-alpha", errors);
+  assert(resolveOpenRouterRoleModel({}, "embedding") === defaultFreeOpenRouterEmbeddingModel(), "default embedding model should be curated free nemotron embed", errors);
+  assert(resolveOpenRouterRoleModel({}, "rerank") === defaultFreeOpenRouterRerankModel(), "default rerank model should be curated free nemotron rerank", errors);
+  try {
+    await embedText("bail", { env: { LEGAL_RUNTIME_MODE: "production_scale", LEGAL_EMBEDDING_PROVIDER: "local-hash", INNGEST_DEV: "1" }, dimension: 8 });
+    errors.push("production_scale local-hash embed should fail");
+  } catch (error) {
+    assert(error.message.includes("dev_embedding_blocked"), "production_scale embedding guard expected", errors);
+  }
+  try {
+    await embedText("bail", {
+      env: {
+        LEGAL_RUNTIME_MODE: "production_scale",
+        LEGAL_EMBEDDING_PROVIDER: "openrouter",
+        LEGAL_RERANK_PROVIDER: "openrouter",
+        OPENROUTER_API_KEY: "sk-or-v1-test",
+        INNGEST_DEV: "1",
+      },
+      dimension: 8,
+    });
+    errors.push("production_scale wrong openrouter suffix should fail");
+  } catch (error) {
+    assert(
+      error.message.includes("openrouter_key_not_allowed_suffix")
+        || error.message.includes("openrouter_free_embedding_blocked")
+        || error.message.includes("openrouter_free_model_required"),
+      "openrouter key/free guard expected",
+      errors,
+    );
+  }
+  try {
+    await embedText("bail", {
+      env: {
+        LEGAL_RUNTIME_MODE: "production_scale",
+        LEGAL_EMBEDDING_PROVIDER: "openrouter",
+        LEGAL_RERANK_PROVIDER: "openrouter",
+        OPENROUTER_API_KEY: "sk-or-v1-test11bb60",
+        LEGAL_EMBEDDING_MODEL: "openai/text-embedding-3-small",
+        OPENROUTER_FREE_ONLY: "true",
+        OPENROUTER_ALLOW_PAID: "false",
+        INNGEST_DEV: "1",
+      },
+      dimension: 8,
+    });
+    errors.push("production_scale paid openrouter embedding model should fail free-only guard");
+  } catch (error) {
+    assert(
+      error.message.includes("openrouter_free_model_required"),
+      "openrouter free-only paid embedding guard expected",
+      errors,
+    );
+  }
   if (errors.length) {
     console.error("Embedding/rerank adapter validation failed:");
     errors.forEach(error => console.error(`- ${error}`));

@@ -17,6 +17,13 @@ body {
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;
   flex-shrink: 0; z-index: 10;
 }
+.legacy-back-link {
+  font-size: 12px;
+  color: #93c5fd;
+  text-decoration: none;
+  margin-right: 8px;
+}
+.legacy-back-link:hover { text-decoration: underline; }
 #header-title { display: flex; align-items: center; gap: 8px; min-width: 0; }
 #header-title h1 { font-size: 15px; font-weight: 600; white-space: nowrap; }
 .domain-badge {

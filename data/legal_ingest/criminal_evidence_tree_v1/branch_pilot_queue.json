@@ -1,0 +1,57 @@
+{
+  "queue_id": "hk_criminal_branch_landmark_pilot_queue_v1",
+  "generated_at": "2026-06-24T17:30:00+08:00",
+  "purpose": "Honest tiered scaling: branch landmark pilots (3-5 cases) before section pilots (<=50) and before cross-domain 10k writes.",
+  "policy": {
+    "branch_landmark_pilot_max_cases": 5,
+    "section_pilot_max_cases": 50,
+    "cross_domain_10k_blocked_until": [
+      "production_embeddings_configured",
+      "production_reranker_configured",
+      "durable_orchestration_configured",
+      "bail_gold_review_set_exists"
+    ],
+    "all_outputs_candidate_only": true,
+    "exact_quote_required": true
+  },
+  "branches": [
+    {
+      "branch_family_id": "theft_dishonesty_fraud",
+      "branch_label": "Theft, Dishonesty and Fraud",
+      "domain_id": "criminal_law_hk",
+      "pilot_dir": "data/legal_ingest/criminal_evidence_tree_v1/branch_pilots/theft_dishonesty_fraud_v1",
+      "config_file": "pilot_config.json",
+      "status": "built",
+      "target_landmark_cases": 5,
+      "verified_public_cases_in_config": 2,
+      "pending_landmark_leads": [
+        "HKSAR v Lam Hin Fai (FAMC 3/2016) — dishonesty/Ivey HK position; public LegalRef DIS still to be resolved",
+        "HKSAR v Chan Wai Lam — fraud seed in doctrine tree; public source pending"
+      ],
+      "build_command": "node scripts/build_branch_landmark_pilot.js --branch theft_dishonesty_fraud",
+      "validate_command": "node scripts/validate_branch_landmark_pilot.js --branch theft_dishonesty_fraud"
+    },
+    {
+      "branch_family_id": "investigation_arrest_search_detention",
+      "branch_label": "Investigation, Arrest, Search and Detention",
+      "domain_id": "criminal_procedure_hk",
+      "pilot_dir": "data/legal_ingest/criminal_evidence_tree_v1/branch_pilots/investigation_arrest_search_detention_v1",
+      "config_file": "pilot_config.json",
+      "status": "built",
+      "target_landmark_cases": 5,
+      "verified_public_cases_in_config": 2,
+      "pending_landmark_leads": [
+        "Keen Lloyd v Commissioner of Police — proportionality/search safeguards (public DIS to be pinned)",
+        "Ng Sau Yee v Commissioner of Police — protective detention comparative lead"
+      ],
+      "build_command": "node scripts/build_branch_landmark_pilot.js --branch investigation_arrest_search_detention",
+      "validate_command": "node scripts/validate_branch_landmark_pilot.js --branch investigation_arrest_search_detention"
+    }
+  ],
+  "next_safe_actions": [
+    "node scripts/validate_branch_scale_readiness.js --tier branch_landmark_pilot --branch theft_dishonesty_fraud",
+    "node scripts/run_branch_landmark_pilot.js --branch theft_dishonesty_fraud",
+    "node scripts/run_branch_landmark_pilot.js --branch investigation_arrest_search_detention",
+    "node scripts/validate_case_scale_readiness.js --target-cases 10000 --require-green"
+  ]
+}

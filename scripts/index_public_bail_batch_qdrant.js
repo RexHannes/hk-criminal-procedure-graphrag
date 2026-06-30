@@ -3,8 +3,15 @@
 
 const crypto = require("crypto");
 const fs = require("fs");
+const { defaultFreeOpenRouterEmbeddingDim, defaultFreeOpenRouterEmbeddingModel } = require("../src/retrieval/openrouter_free_models");
 const path = require("path");
 const { embed } = require("../src/legal_answer/qdrant_retriever");
+const {
+  assertScaleIndexAllowed,
+  embeddingVectorSpaceId,
+  resolveQdrantCollection,
+  resolvedEmbeddingProvider,
+} = require("../src/retrieval/runtime_isolation");
 
 const ROOT = path.resolve(__dirname, "..");
 const BATCH_DIR = path.join(
@@ -47,6 +54,9 @@ function uuidFromText(text) {
 
 function embeddingModelFor(env, provider) {
   if (provider === "openai") return env.LEGAL_EMBEDDING_MODEL || env.OPENAI_EMBEDDING_MODEL || "text-embedding-3-small";
+  if (provider === "openrouter") {
+    return env.LEGAL_EMBEDDING_MODEL || env.OPENROUTER_EMBEDDING_MODEL || defaultFreeOpenRouterEmbeddingModel();
+  }
   if (provider === "voyage") return env.LEGAL_EMBEDDING_MODEL || env.VOYAGE_EMBEDDING_MODEL || "voyage-3-large";
   if (provider === "cohere") return env.LEGAL_EMBEDDING_MODEL || env.COHERE_EMBEDDING_MODEL || "embed-v4.0";
   return "local-hash-v1";
@@ -167,12 +177,14 @@ function buildBatchRecords() {
 async function main() {
   const env = loadEnv();
   const dryRun = process.argv.includes("--dry-run");
-  const provider = env.LEGAL_EMBEDDING_PROVIDER || "local-hash";
-  const configuredDimension = Number(env.LEGAL_EMBEDDING_DIM || (provider === "openai" ? 1536 : 384));
+  const isolation = assertScaleIndexAllowed(env, "index_public_bail_batch_qdrant");
+  const provider = resolvedEmbeddingProvider(env);
+  const configuredDimension = Number(env.LEGAL_EMBEDDING_DIM || (provider === "openrouter" ? defaultFreeOpenRouterEmbeddingDim() : provider === "openai" ? 1536 : 384));
   const embeddingModel = embeddingModelFor(env, provider);
+  const vectorSpaceId = embeddingVectorSpaceId(env);
   const collections = {
-    paragraphs: env.QDRANT_COLLECTION_PARAGRAPHS || "hk_legal_paragraphs",
-    propositions: env.QDRANT_COLLECTION_PROPOSITIONS || "hk_proposition_cards",
+    paragraphs: resolveQdrantCollection("hk_legal_paragraphs", env, "QDRANT_COLLECTION_PARAGRAPHS"),
+    propositions: resolveQdrantCollection("hk_proposition_cards", env, "QDRANT_COLLECTION_PROPOSITIONS"),
   };
   const { manifest, paragraphs, propositions } = buildBatchRecords();
   const paragraphPoints = [];
@@ -186,7 +198,10 @@ async function main() {
       vector,
       payload: {
       batch_id: manifest.batch_id,
+      domain_id: manifest.domain_id || "criminal_procedure_hk",
       vector_scope: "bail_public_batch_v1",
+      vector_space_id: vectorSpaceId,
+      runtime_mode: isolation.mode,
       embedding_provider: provider,
       embedding_model: embeddingModel,
       tokenizer_version: provider === "local-hash" ? "regex_local_hash_v1" : "provider_tokenizer",
@@ -222,7 +237,10 @@ async function main() {
       vector,
       payload: {
       batch_id: manifest.batch_id,
+      domain_id: manifest.domain_id || "criminal_procedure_hk",
       vector_scope: "bail_public_batch_v1",
+      vector_space_id: vectorSpaceId,
+      runtime_mode: isolation.mode,
       embedding_provider: provider,
       embedding_model: embeddingModel,
       tokenizer_version: provider === "local-hash" ? "regex_local_hash_v1" : "provider_tokenizer",

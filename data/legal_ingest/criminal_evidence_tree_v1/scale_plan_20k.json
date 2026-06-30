@@ -91,9 +91,29 @@
       ]
     },
     {
+      "rung_id": "rung_5b_domain_10000",
+      "scope": "criminal_domain_public_cases",
+      "case_range": [5001, 10000],
+      "status": "allowed_when_production_stack_green",
+      "required_before_next": [
+        "production_embeddings",
+        "production_reranker",
+        "durable_orchestration",
+        "runtime_isolation_enforced",
+        "vector_namespace_separated",
+        "semi_auto_quote_validator_passes",
+        "review_promotion_gold_set"
+      ],
+      "notes": [
+        "10k cross-domain writes require lawyer gold review (>=3 answer_safe bail propositions) in addition to production stack gates.",
+        "LEGAL_RUNTIME_MODE=production_scale blocks local-hash embeddings and local/none rerankers.",
+        "Qdrant collections must use isolated _prod namespaces."
+      ]
+    },
+    {
       "rung_id": "rung_6_domain_20000",
       "scope": "criminal_domain_public_cases",
-      "case_range": [5001, 20000],
+      "case_range": [10001, 20000],
       "status": "blocked_until_all_quality_and_ops_gates_green",
       "required_before_next": [
         "production_embeddings",

@@ -1,7 +1,24 @@
 const crypto = require("crypto");
 const { exactJsonHeaders } = require("../api/json_content_type");
+const { postOpenRouter } = require("./openrouter_client");
+const {
+  assertFreeOpenRouterModel,
+  isOpenRouterFreeOnlyEnabled,
+  isOpenRouterPaidAllowed,
+  resolveOpenRouterModel,
+} = require("./openrouter_free_only");
+const {
+  defaultFreeOpenRouterEmbeddingDim,
+  defaultFreeOpenRouterEmbeddingModel,
+  resolveOpenRouterRoleModel,
+} = require("./openrouter_free_models");
+const {
+  assertProductionScaleRetrievalStack,
+  isDevOnlyEmbeddingProvider,
+  resolvedEmbeddingProvider,
+} = require("./runtime_isolation");
 
-const SUPPORTED_EMBEDDING_PROVIDERS = new Set(["none", "local", "local-hash", "openai", "voyage", "cohere"]);
+const SUPPORTED_EMBEDDING_PROVIDERS = new Set(["none", "local", "local-hash", "openai", "openrouter", "voyage", "cohere"]);
 
 function embeddingProvider(env = process.env) {
   return String(env.LEGAL_EMBEDDING_PROVIDER || env.EMBEDDING_PROVIDER || "none").trim().toLowerCase();
@@ -16,6 +33,7 @@ function assertEmbeddingConfig(env = process.env) {
   if (provider === "local" || provider === "local-hash") return { provider, status: "deterministic_local_test_vectors" };
   const keyMap = {
     openai: "OPENAI_API_KEY",
+    openrouter: "OPENROUTER_API_KEY",
     voyage: "VOYAGE_API_KEY",
     cohere: "COHERE_API_KEY",
   };
@@ -80,6 +98,18 @@ async function voyageEmbedding(text, env) {
   return { provider: "voyage", status: "configured", model, vector, dimension: vector.length };
 }
 
+async function openRouterEmbedding(text, env) {
+  const model = resolveOpenRouterRoleModel(env, "embedding");
+  assertFreeOpenRouterModel(model, env, { context: "embeddings" });
+  const body = { model, input: text };
+  const configuredDim = Number(env.LEGAL_EMBEDDING_DIM || defaultFreeOpenRouterEmbeddingDim());
+  if (configuredDim) body.dimensions = configuredDim;
+  const payload = await postOpenRouter("/embeddings", { env, body });
+  const vector = payload.data?.[0]?.embedding;
+  if (!Array.isArray(vector)) throw new Error("openrouter_embedding_missing_vector");
+  return { provider: "openrouter", status: "configured", model, vector, dimension: vector.length };
+}
+
 async function cohereEmbedding(text, env) {
   const model = env.LEGAL_EMBEDDING_MODEL || env.COHERE_EMBEDDING_MODEL || "embed-v4.0";
   const payload = await postJson("https://api.cohere.com/v2/embed", {
@@ -96,8 +126,12 @@ async function cohereEmbedding(text, env) {
   return { provider: "cohere", status: "configured", model, vector, dimension: vector.length };
 }
 
-async function embedText(text, { env = process.env, dimension = 384 } = {}) {
+async function embedText(text, { env = process.env, dimension = 384, allowDevVectors = true } = {}) {
+  assertProductionScaleRetrievalStack(env, "embedText");
   const config = assertEmbeddingConfig(env);
+  if (!allowDevVectors && isDevOnlyEmbeddingProvider(config.provider)) {
+    throw new Error(`dev_embedding_blocked:${config.provider}`);
+  }
   if (config.provider === "none" || config.provider === "local" || config.provider === "local-hash") {
     return {
       provider: config.provider,
@@ -107,6 +141,15 @@ async function embedText(text, { env = process.env, dimension = 384 } = {}) {
     };
   }
   if (config.provider === "openai") return openAiEmbedding(text, env);
+  if (config.provider === "openrouter") {
+    if (isOpenRouterFreeOnlyEnabled(env) && !isOpenRouterPaidAllowed(env)) {
+      const model = resolveOpenRouterRoleModel(env, "embedding");
+      if (!model) {
+        throw new Error("openrouter_free_embedding_blocked:use_local_hash_or_non_openrouter_provider");
+      }
+    }
+    return openRouterEmbedding(text, env);
+  }
   if (config.provider === "voyage") return voyageEmbedding(text, env);
   if (config.provider === "cohere") return cohereEmbedding(text, env);
   throw new Error(`unsupported_embedding_provider:${config.provider}`);
@@ -119,4 +162,5 @@ module.exports = {
   embedText,
   embeddingProvider,
   postJson,
+  resolvedEmbeddingProvider,
 };

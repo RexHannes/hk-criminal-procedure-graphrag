@@ -1,0 +1,14 @@
+{
+  "gold_set_id": "bail_cfa_nsl_gold_v1",
+  "generated_at": "2026-06-24T19:04:00.276Z",
+  "batch_id": "criminal_bail_public_batch_v1",
+  "proposition_ids": [
+    "prop_lai_2021_nsl_art42_text_p52",
+    "prop_lai_2021_nsl_more_stringent_threshold_p53",
+    "prop_lai_2021_nsl_exception_matrix_p54"
+  ],
+  "reviewer": "public_demo_gold_reviewer",
+  "review_note": "Promoted via apply_bail_gold_review_set.js after quote/source checks against public LegalRef CFA judgment.",
+  "status": "applied",
+  "errors": []
+}

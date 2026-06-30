@@ -1,0 +1,176 @@
+{
+  "batch_id": "theft_dishonesty_fraud_branch_landmark_pilot_v1",
+  "branch_family_id": "theft_dishonesty_fraud",
+  "branch_label": "Theft, Dishonesty and Fraud",
+  "domain_id": "criminal_law_hk",
+  "scope": "theft_dishonesty_fraud_branch_landmark",
+  "scenario_label": "Theft / dishonesty / fraud branch landmark pilot",
+  "max_cases": 5,
+  "fixture_status": "real_public_source_branch_landmark_pilot",
+  "linking_method": "branch_landmark_pilot_notebooklm_leads_plus_legalref_exact_quote_v1",
+  "tree_proposal": {
+    "proposal_id": "notebooklm_theft_dishonesty_fraud_tree_proposal_v1",
+    "source": "notebooklm_logged_in_private_notebook",
+    "proposal_status": "candidate_only_requires_public_source_verification",
+    "generated_from_prompt_at": "2026-06-24T17:30:00+08:00",
+    "domain_id": "criminal_law_hk",
+    "proposed_branch_id": "criminal_law_hk.theft_dishonesty_fraud",
+    "branch_label": "Theft, Dishonesty and Fraud",
+    "parent_candidates": [
+      "criminal_law_hk.property_dishonesty",
+      "criminal_law_hk.theft",
+      "criminal_law_hk.fraud"
+    ],
+    "notes": [
+      "NotebookLM/DeepSeek leads proposed branch structure only.",
+      "Only LegalRef-fetched judgments with exact-quote validation enter proposition cards.",
+      "Lam Hin Fai and Chan Wai Lam remain pending until public LegalRef/HKLII URLs are pinned.",
+      "No proposition is answer-safe."
+    ]
+  },
+  "deepseek_landmark_seed": {
+    "seed_source": "deepseek",
+    "seed_status": "llm_unverified_seed",
+    "note": "DeepSeek/NotebookLM suggested Lam Hin Fai, Chan Wai Lam and Mo Yuk Ping as landmark leads. Only Mo Yuk Ping and the Betty insider-dealing CFA summary were accepted in v1 because they were public-source fetched and exact-quote verified.",
+    "accepted_case_ids": [
+      "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018"
+    ],
+    "pending_case_leads": [
+      {
+        "case_name": "HKSAR v Lam Hin Fai",
+        "citation": "FAMC 3/2016",
+        "doctrine_hooks": [
+          "criminal_law_hk.theft.dishonesty"
+        ],
+        "status": "pending_public_legalref_dis"
+      },
+      {
+        "case_name": "HKSAR v Chan Wai Lam",
+        "doctrine_hooks": [
+          "criminal_law_hk.fraud"
+        ],
+        "status": "pending_public_legalref_dis"
+      }
+    ]
+  },
+  "pending_landmark_cases": [
+    "HKSAR v Lam Hin Fai (FAMC 3/2016)",
+    "HKSAR v Chan Wai Lam"
+  ],
+  "sources": [
+    {
+      "source_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "case_name": "HKSAR v Mo Yuk Ping and Another",
+      "neutral_citation": "CACC 223/2022",
+      "court": "Court of Appeal",
+      "court_level": "CA",
+      "date": "2026-02-26",
+      "source_kind": "case_judgment_press_summary",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+      "fetch_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    },
+    {
+      "source_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+      "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+      "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+      "neutral_citation": "FACV 7/2018",
+      "court": "Court of Final Appeal",
+      "court_level": "CFA",
+      "date": "2018-00-00",
+      "source_kind": "case_judgment_press_summary",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "licence_status": "public_judgment",
+      "source_url_or_path": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+      "fetch_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+      "source_format": "legalref_html_body",
+      "ingestion_status": "source_candidate",
+      "authority_status": "real_public_authority_candidate"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "mo_yuk_ping_2022_fraud_s16a_concealment_duty_p3",
+      "source_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "paragraph_no": "3",
+      "proposition_id": "prop_mo_yuk_ping_2022_fraud_concealment_duty_p3",
+      "proposition_text": "For section 16A fraud, concealment attracts criminal liability only if made in breach of a duty of disclosure.",
+      "exact_quote": "a concealment attracts criminal liability only if it was made in breach of a duty of disclosure",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "mo_yuk_ping_2022_no_general_duty_disclose_breach_p4",
+      "source_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "paragraph_no": "4",
+      "proposition_id": "prop_mo_yuk_ping_2022_no_general_duty_disclose_breach_p4",
+      "proposition_text": "The Court of Appeal held there is no general common-law duty to disclose one's own breach of contract, and a commercial lease did not create a special disclosure duty on these facts.",
+      "exact_quote": "no general duty to disclose one\u2019s own breach of contract",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "mo_yuk_ping_2022_actus_reus_not_proved_p4",
+      "source_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+      "paragraph_no": "4",
+      "proposition_id": "prop_mo_yuk_ping_2022_actus_reus_not_proved_p4",
+      "proposition_text": "The Court of Appeal quashed the fraud convictions because the prosecution failed to prove the actus reus of the section 16A charges.",
+      "exact_quote": "the prosecution had failed to prove the applicants had committed the actus reus of the fraud charges",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "significance_label": "applies_rule",
+      "authority_role": "ratio",
+      "confidence": "high"
+    },
+    {
+      "rule_id": "betty_2018_s300_fraudulent_conduct_p9",
+      "source_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+      "paragraph_no": "9",
+      "proposition_id": "prop_betty_2018_s300_fraudulent_conduct_p9",
+      "proposition_text": "The CFA held that section 300 SFO is a general provision outlawing fraudulent conduct in securities transactions, and 'transaction' must be given a wide meaning in that context.",
+      "exact_quote": "S 300 is a general provision that outlaws fraudulent conduct in securities transactions",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "lineage_note": "Securities fraud under SFO; mapped as comparative fraud/dishonesty branch fruit pending HK Theft Ordinance dishonesty verification."
+    },
+    {
+      "rule_id": "betty_2018_insider_dealing_species_of_fraud_p12",
+      "source_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+      "paragraph_no": "12",
+      "proposition_id": "prop_betty_2018_insider_dealing_species_of_fraud_p12",
+      "proposition_text": "The CFA treated insider dealing as a species of fraud on the public rather than a victimless crime.",
+      "exact_quote": "insider dealing is a species of fraud",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "confidence": "high",
+      "lineage_note": "Securities fraud under SFO; dishonesty formulation still requires HK Theft Ordinance verification."
+    }
+  ]
+}

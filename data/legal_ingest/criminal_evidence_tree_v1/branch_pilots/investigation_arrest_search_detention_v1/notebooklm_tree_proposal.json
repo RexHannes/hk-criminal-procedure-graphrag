@@ -1,0 +1,20 @@
+{
+  "proposal_id": "notebooklm_investigation_arrest_search_detention_tree_proposal_v1",
+  "source": "notebooklm_logged_in_private_notebook",
+  "proposal_status": "candidate_only_requires_public_source_verification",
+  "generated_from_prompt_at": "2026-06-24T17:30:00+08:00",
+  "domain_id": "criminal_procedure_hk",
+  "proposed_branch_id": "criminal_procedure_hk.investigation_arrest_search_detention",
+  "branch_label": "Investigation, Arrest, Search and Detention",
+  "parent_candidates": [
+    "criminal_procedure_hk.invest_search_without_warrant",
+    "criminal_procedure_hk.invest_search_with_warrant",
+    "criminal_procedure_hk.cap232_s50"
+  ],
+  "notes": [
+    "NotebookLM/DeepSeek leads proposed Cap 232 search powers and digital-device safeguards.",
+    "Only LegalRef-fetched judgments with exact-quote validation enter proposition cards.",
+    "Keen Lloyd and Ng Sau Yee remain pending until public LegalRef DIS is pinned.",
+    "No proposition is answer-safe."
+  ]
+}
