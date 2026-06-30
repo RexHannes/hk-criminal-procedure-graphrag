@@ -87,6 +87,38 @@ assert(criminal.classification?.matter_type === "criminal_procedure", "Criminal 
 assert(criminal.classification?.scenario === "bail_or_release", "Criminal composer failed bail scenario", errors);
 assert(blob(criminal.applied_answer).includes("release"), "Criminal bail answer lacks release triage", errors);
 
+const theftShoplifting = composeAnswer({
+  domain: "criminal_law",
+  query: "If I am alleged to be Stealing something in the convenient store, but i try to argue i just forgot to pay",
+});
+const theftText = blob(theftShoplifting);
+assert(theftShoplifting.classification?.matter_type === "criminal_law", "Theft/shoplifting should route to criminal law", errors);
+assert(theftShoplifting.classification?.scenario === "theft_property_dishonesty", `Theft/shoplifting wrong scenario ${theftShoplifting.classification?.scenario}`, errors);
+assert(theftShoplifting.classification?.subscenario === "shoplifting_forgot_to_pay_mr_defence", "Theft/shoplifting subscenario missing", errors);
+assert(theftText.includes("ar / mr matrix"), "Theft/shoplifting lacks AR/MR matrix", errors);
+assert(theftText.includes("theft ordinance"), "Theft/shoplifting lacks Theft Ordinance anchor", errors);
+assert(theftText.includes("cap. 210"), "Theft/shoplifting lacks Cap. 210 reference", errors);
+assert(theftText.includes("dishonesty"), "Theft/shoplifting lacks dishonesty analysis", errors);
+assert(theftText.includes("intention permanently to deprive"), "Theft/shoplifting lacks intent permanently to deprive", errors);
+assert(theftText.includes("forgot"), "Theft/shoplifting lacks forgotten-payment defence", errors);
+assert(theftText.includes("cctv"), "Theft/shoplifting lacks CCTV evidence analysis", errors);
+assert(theftText.includes("prosecution must prove"), "Theft/shoplifting lacks burden analysis", errors);
+assert(theftText.includes("do not state that ivey has been adopted in hong kong"), "Theft/shoplifting lacks Ivey/HK verification gate", errors);
+assert(!/cap\.?\s*210[^.\n]{0,80}(section|sections|s\.?)\s*[^.\n]{0,40}\b5\b/i.test(theftText), "Theft/shoplifting should not cite Cap. 210 s.5 as a source anchor", errors);
+for (const sourceCardId of [
+  "hk_cap210_s2_theft_definition",
+  "hk_cap210_s3_dishonesty",
+  "hk_cap210_s4_appropriation",
+  "hk_cap210_s6_belonging_to_another",
+  "hk_cap210_s7_intention_permanently_depriving",
+  "hk_cap210_s9_theft_offence_penalty",
+]) {
+  assert(theftText.includes(sourceCardId), `Theft/shoplifting missing source card ${sourceCardId}`, errors);
+}
+assert(!theftText.includes("restaurant wet-floor"), "Theft/shoplifting leaked PI restaurant language", errors);
+assert(!theftText.includes("interim payment"), "Theft/shoplifting leaked PI interim payment language", errors);
+assert(!theftText.includes("criminal law triage"), "Theft/shoplifting fell back to generic criminal triage", errors);
+
 const company = composeAnswer({ domain: "company_forms", query: "We need a winding-up demand and petition route. Which form should I use?" });
 assert(company.classification?.matter_type === "company_or_civil_forms", "Company/forms composer scaffold not routed", errors);
 assert(company.classification?.scenario === "winding_up_or_statutory_demand", "Company/forms composer failed winding-up scenario", errors);
@@ -98,6 +130,25 @@ assert(probate.classification?.scenario === "common_form_probate_grant", "Probat
 assert(blob(probate.applied_answer).includes("metadata"), "Probate answer should warn metadata/source-gated status", errors);
 assert((probate.form_candidates || []).length >= 2, "Probate answer lacks form candidates", errors);
 assert(probate.source_audit?.display === "collapsed", "Probate source audit is not collapsed", errors);
+
+const intestacyDistribution = composeAnswer({
+  domain: "probate",
+  query: "If my father dies in US and does not have will, now left a son, a daughter and 2 grandaughter; the former 18 the later not; what happens?",
+});
+const intestacyText = blob(intestacyDistribution);
+assert(intestacyDistribution.classification?.matter_type === "probate", "Intestacy distribution should route to probate", errors);
+assert(intestacyDistribution.classification?.scenario === "intestate_administration", `Intestacy distribution wrong scenario ${intestacyDistribution.classification?.scenario}`, errors);
+assert(intestacyDistribution.classification?.subscenario === "intestacy_distribution_issue_statutory_trusts", "Intestacy distribution subscenario missing", errors);
+assert(intestacyText.includes("intestates' estates ordinance"), "Intestacy distribution lacks Cap. 73 ordinance anchor", errors);
+assert(intestacyText.includes("cap. 73"), "Intestacy distribution lacks Cap. 73 reference", errors);
+assert(intestacyText.includes("statutory trusts"), "Intestacy distribution lacks statutory trusts analysis", errors);
+assert(intestacyText.includes("granddaughters"), "Intestacy distribution lacks granddaughter branch analysis", errors);
+assert(intestacyText.includes("predeceased"), "Intestacy distribution lacks predeceased-parent gate", errors);
+assert(intestacyText.includes("18"), "Intestacy distribution lacks age/minor analysis", errors);
+assert(intestacyText.includes("letters of administration"), "Intestacy distribution lacks letters-of-administration route", errors);
+assert(!intestacyText.includes("common form grant"), "Intestacy distribution leaked common-form grant route", errors);
+assert(!intestacyText.includes("for a death with a will"), "Intestacy distribution leaked will-based answer", errors);
+assert(!intestacyText.includes("w1.1"), "Intestacy distribution leaked W1 executor form", errors);
 
 if (errors.length) {
   console.error("Answer composer validation failed:");

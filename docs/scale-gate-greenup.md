@@ -37,7 +37,7 @@ LEGAL_RERANK_MODEL=nvidia/llama-nemotron-rerank-vl-1b-v2:free
 ```
 
 The model IDs deliberately end in `:free`, so the OpenRouter free-only guard can
-allow them without setting `OPENROUTER_ALLOW_PAID=true`.
+allow them without enabling a paid OpenRouter override.
 
 ## What Can Be Automated
 

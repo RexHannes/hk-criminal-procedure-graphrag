@@ -1,0 +1,286 @@
+{
+  "rule_deck_id": "criminal_theft_shoplifting_v1",
+  "domain": "criminal_law",
+  "scenario": "theft_property_dishonesty",
+  "subscenario": "shoplifting_forgot_to_pay_mr_defence",
+  "title": "Applied Criminal Analysis - Theft / Shoplifting / Forgotten Payment",
+  "answer_mode": "criminal_source_gated_applied_analysis",
+  "status": "source_gated_rule_card_deck",
+  "purpose": "Fact-sensitive theft/shoplifting analysis without adding another final-prose composer branch.",
+  "answer_blueprint": {
+    "title": "Applied Criminal Analysis - Theft / Shoplifting / Forgotten Payment",
+    "short_answer": "A genuine forgotten-payment explanation is legally relevant because theft is not just taking an item: the prosecution must prove the required mental elements. The system should analyse actus reus, mens rea, credibility of the explanation, and later conduct. If the person genuinely forgot and did not act dishonestly or intend permanently to deprive the shop, that is a potentially complete answer to theft. But the court will test that claim against CCTV, concealment, route through checkout, value, conduct after leaving, and what was said when stopped.",
+    "sections": [
+      {
+        "heading": "Offence Framework",
+        "items": [
+          {
+            "text": "Start with Theft Ordinance (Cap. 210) section 2: theft requires dishonest appropriation of property belonging to another with intention permanently to deprive."
+          },
+          {
+            "text": "For an ordinary convenience-store/shoplifting allegation, the likely physical element is appropriation of shop property by taking or carrying it away. The live fight is often mens rea: dishonesty and intention permanently to deprive."
+          },
+          {
+            "text": "Do not jump straight to penalty, caution or mitigation until AR/MR and proof are mapped."
+          }
+        ]
+      },
+      {
+        "heading": "AR / MR Matrix",
+        "items": [
+          {
+            "text": "Actus reus: identify the item, ownership, possession/control, movement out of the store or past the checkout, and whether any rights of the owner were assumed."
+          },
+          {
+            "text": "Mens rea - dishonesty: ask what the person actually believed and intended at the time, then test whether the prosecution can prove dishonesty under the verified Hong Kong dishonesty authorities."
+          },
+          {
+            "text": "Mens rea - intention permanently to deprive: ask whether the person meant to keep/treat the item as their own, or whether the unpaid taking was genuinely accidental and immediately corrected once noticed."
+          },
+          {
+            "text": "Burden: the accused does not have to prove innocence. Once the issue is live, the prosecution must prove the theft elements beyond reasonable doubt."
+          }
+        ]
+      },
+      {
+        "heading": "Forgot-To-Pay Defence",
+        "items": [
+          {
+            "text": "If the person truly forgot to pay, that can negate dishonesty and/or intention permanently to deprive. The system should say this directly, then qualify it by evidence."
+          },
+          {
+            "text": "Strong facts for the defence include item in plain sight, low value, distraction, ordinary shopping behaviour, no bypassing behaviour, and voluntary return/payment before being confronted."
+          },
+          {
+            "text": "Bad facts include concealment in a bag/pocket/clothing, looking around, avoiding checkout, leaving quickly, high-value goods, removing tags, inconsistent explanations, prior similar incidents, or only saying 'I forgot' after security intervened."
+          },
+          {
+            "text": "If the person later realizes the item was unpaid and decides to keep it, the analysis changes. Later dishonest retention can become important even if the original taking was accidental."
+          }
+        ]
+      },
+      {
+        "heading": "Evidence To Collect",
+        "items": [
+          {
+            "text": "CCTV from entry, item selection, movement around store, checkout area, exit, and security stop."
+          },
+          {
+            "text": "Receipt history, payment attempt, wallet/Octopus/card state, shopping list, phone call/distraction, child/medical/stress context, and immediate messages after the incident."
+          },
+          {
+            "text": "Security/staff notes, police notebook/interview record, caution statement, body-worn video, item value, packaging/tag condition and where the item was carried."
+          },
+          {
+            "text": "Any previous incidents must be handled carefully; similar-fact/bad-character use is a separate evidence issue and should not be casually assumed admissible."
+          }
+        ]
+      },
+      {
+        "heading": "Practical Criminal Procedure",
+        "items": [
+          {
+            "text": "If police are involved, treat interview strategy as urgent. Do not give an improvised explanation without understanding the caution, disclosure position and right to legal advice."
+          },
+          {
+            "text": "If the explanation is true, preserve evidence quickly: CCTV may be overwritten, staff memory fades, and payment/phone/location records may become harder to retrieve."
+          },
+          {
+            "text": "A caution or diversion route may require an admission, which may conflict with a genuine 'I forgot' defence. Do not describe it as automatically available."
+          },
+          {
+            "text": "Penalty and mitigation depend on charge, value, record, plea, restitution, mental health/distraction evidence and prosecution facts; keep sentencing advice separate from liability analysis."
+          }
+        ]
+      },
+      {
+        "heading": "Source / Review Gate",
+        "items": [
+          {
+            "text": "Use Cap. 210 sections 2, 3, 4, 6, 7 and 9 as official statutory anchors before final liability or penalty advice."
+          },
+          {
+            "text": "For dishonesty, do not state that Ivey has been adopted in Hong Kong unless a verified HK authority card supports that proposition. The public candidate card for HKSAR v Chan Kam Ching [2022] HKCFA 7 records Ghosh as the Hong Kong position at that point, but it remains research-only until reviewed for this theft scenario."
+          },
+          {
+            "text": "Do not cite shoplifting cases unless HKLII/LegalRef paragraph cards are attached and mapped to the precise issue: dishonesty, intention permanently to deprive, continuing appropriation, similar fact, or sentencing."
+          }
+        ]
+      }
+    ]
+  },
+  "legal_research_answer": {
+    "title": "Legal Research Answer - Theft / Shoplifting / Forgotten Payment",
+    "source_card_ids": [
+      "hk_cap210_s2_theft_definition",
+      "hk_cap210_s3_dishonesty",
+      "hk_cap210_s4_appropriation",
+      "hk_cap210_s6_belonging_to_another",
+      "hk_cap210_s7_intention_permanently_depriving",
+      "hk_cap210_s9_theft_offence_penalty",
+      "hk_hkcfa_2022_7_chan_kam_ching_p148_149",
+      "hk_hkcfi_2022_1220_khan_altaf_p1_24"
+    ],
+    "principle_card_ids": [
+      "principle_theft_elements_cap210_s2",
+      "principle_theft_dishonesty_cap210_s3",
+      "principle_theft_appropriation_cap210_s4",
+      "principle_theft_belonging_to_another_cap210_s6",
+      "principle_theft_intent_deprive_cap210_s7",
+      "principle_dishonesty_state_of_mind_chan_p148",
+      "principle_ghosh_hk_candidate_chan_p149"
+    ],
+    "case_digest_card_ids": [
+      "case_digest_chan_kam_ching_2022",
+      "case_digest_khan_altaf_2022"
+    ],
+    "issue_items": [
+      "Whether the physical act amounts to appropriation of property belonging to another.",
+      "Whether the user’s forgotten-payment account negates dishonesty and/or intention permanently to deprive.",
+      "Whether the prosecution evidence can prove the theft elements beyond reasonable doubt.",
+      "Whether police/interview, caution/diversion, charge and sentence issues should be separated from liability."
+    ],
+    "governing_law_items": [
+      "Cap. 210 s.2 supplies the theft definition: dishonest appropriation of property belonging to another with intention permanently to deprive.",
+      "Cap. 210 s.3 supplies statutory dishonesty exclusions and confirms willingness to pay does not automatically remove dishonesty.",
+      "Cap. 210 s.4 defines appropriation as assumption of the rights of an owner.",
+      "Cap. 210 s.6 anchors the property-belonging-to-another element.",
+      "Cap. 210 s.7 anchors intention permanently to deprive.",
+      "Cap. 210 s.9 is the offence/maximum-penalty route; it should not be confused with the liability elements."
+    ],
+    "application_items": [
+      "AR / MR matrix: the actus reus is likely the handling/removal/passing-checkout conduct; the mens rea fights are dishonesty and intention permanently to deprive.",
+      "If the person genuinely forgot to pay, that can be a complete answer to theft only if the evidence leaves dishonesty and intention permanently to deprive unproved.",
+      "Strong defence facts include ordinary shopping behaviour, item visible, distraction, attempted payment, immediate return/payment before confrontation, and consistent account.",
+      "Bad facts include concealment, bypassing checkout, looking around, leaving quickly, removing tags, inconsistent explanations, prior incidents, or only raising forgetfulness after being stopped.",
+      "Chan Kam Ching gives a candidate dishonesty-state-of-mind/Ghosh source, but it is not a shoplifting case and remains research-only pending current-treatment review."
+    ],
+    "evidence_analysis_items": [
+      "Fact: item visible in basket or ordinary shopping route. Legal relevance: helps a mistake/absence-of-dishonesty argument if CCTV and receipts are consistent.",
+      "Fact: item concealed in bag, pocket or clothing. Legal relevance: hurts the forgotten-payment account and may support an inference of dishonesty.",
+      "Fact: user paid for other items or attempted payment. Legal relevance: can support ordinary shopping or mistake, but Cap. 210 s.3 means willingness to pay is not conclusive.",
+      "Fact: voluntary return/payment before confrontation. Legal relevance: helps absence of intent permanently to deprive; return only after being stopped is weaker and may be mitigation rather than defence.",
+      "Evidence source audit: no uploaded CCTV, receipt, police notebook or witness statement is parsed in this response; those documents must be separately ingested before final advice."
+    ],
+    "practical_next_steps": [
+      "Preserve CCTV, receipts/payment records, phone/location/distraction evidence, staff notes and police notebook/interview records.",
+      "Do not give an improvised interview explanation without understanding the caution, disclosure and legal-advice position.",
+      "Separate liability analysis from caution/diversion/mitigation because some disposal routes may require admissions inconsistent with a genuine forgotten-payment defence.",
+      "Do not state that Ivey has been adopted in Hong Kong or has replaced Ghosh unless a current verified HK authority card supports it."
+    ],
+    "relevant_authorities_note": "Case digests are included only where HKLII/LegalRef paragraph proof is available; neither case is a shoplifting-specific forgotten-payment authority."
+  },
+  "source_backed_rules": [
+    {
+      "id": "hk_theft_cap210_s2_definition",
+      "proposition": "Theft requires dishonest appropriation of property belonging to another with intention permanently to deprive.",
+      "source": "Theft Ordinance (Cap. 210) s.2",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap210/s2",
+      "source_card_ids": ["hk_cap210_s2_theft_definition"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_theft_cap210_s3_dishonesty",
+      "proposition": "Dishonesty must be analysed through Cap. 210 s.3 and verified HK dishonesty authorities; willingness to pay is not conclusive.",
+      "source": "Theft Ordinance (Cap. 210) s.3",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap210/s3",
+      "source_card_ids": ["hk_cap210_s3_dishonesty"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_theft_cap210_s4_appropriation",
+      "proposition": "Appropriation covers assumption of an owner's rights and is the physical element usually engaged by taking store goods.",
+      "source": "Theft Ordinance (Cap. 210) s.4",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap210/s4",
+      "source_card_ids": ["hk_cap210_s4_appropriation"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_theft_cap210_s6_belonging_to_another",
+      "proposition": "Store goods will usually be property belonging to another where the store has possession or control.",
+      "source": "Theft Ordinance (Cap. 210) s.6",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap210/s6",
+      "source_card_ids": ["hk_cap210_s6_belonging_to_another"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_theft_cap210_s7_intent_permanently_deprive",
+      "proposition": "Intention permanently to deprive is a separate theft element and must be analysed apart from mere non-payment.",
+      "source": "Theft Ordinance (Cap. 210) s.7",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap210/s7",
+      "source_card_ids": ["hk_cap210_s7_intention_permanently_depriving"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_theft_cap210_s9_offence_penalty",
+      "proposition": "Theft is an offence under Cap. 210 s.9 with a maximum indictment penalty, but penalty must be separated from liability.",
+      "source": "Theft Ordinance (Cap. 210) s.9",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap210/s9",
+      "source_card_ids": ["hk_cap210_s9_theft_offence_penalty"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_theft_chan_kam_ching_dishonesty_candidate",
+      "proposition": "Dishonesty is a state-of-mind issue; the current HK dishonesty test must be verified against HK authority before final advice.",
+      "source": "HKSAR v Chan Kam Ching [2022] HKCFA 7, paras. 148-149",
+      "official_url": "https://www.hklii.hk/en/cases/hkcfa/2022/7#p148",
+      "source_card_ids": ["hk_hkcfa_2022_7_chan_kam_ching_p148_149"],
+      "proposition_card_ids": [
+        "prop_chan_kam_ching_2022_dishonesty_state_of_mind_p148",
+        "prop_chan_kam_ching_2022_ghosh_test_hk_p149"
+      ],
+      "verification_status": "quote_verified_public_api_human_review_required",
+      "claim_status": "quote_verified_research_only_human_review_required"
+    }
+  ],
+  "missing_facts": [
+    "Exact item, value, store, route through checkout and whether payment was attempted.",
+    "Where the item was carried and whether it was concealed.",
+    "Whether CCTV shows ordinary shopping, distraction, bypassing checkout or evasive behaviour.",
+    "What the person said before and after being stopped, and whether they voluntarily returned or paid.",
+    "Whether police interview, caution, charge, caution/diversion or court date exists."
+  ],
+  "unsupported_claims": [
+    "No final statement about Ivey replacing Ghosh in Hong Kong should be made without a verified HK authority card.",
+    "No shoplifting-specific HK case comparison is answer-safe until HKLII/LegalRef paragraph cards are attached.",
+    "No final advice on caution, charge outcome or sentence can be given without police/prosecution facts and lawyer review."
+  ],
+  "answer_contract": {
+    "answer_sections": [
+      "Offence Framework",
+      "AR / MR Matrix",
+      "Forgot-To-Pay Defence",
+      "Evidence To Collect",
+      "Practical Criminal Procedure",
+      "Source / Review Gate"
+    ],
+    "required_source_families": [
+      "criminal_law_hk.theft",
+      "criminal_law_hk.theft.appropriation",
+      "criminal_law_hk.theft.dishonesty",
+      "criminal_law_hk.theft.intent.deprive"
+    ],
+    "excluded_issue_families": [
+      "personal_injury",
+      "premises_slip_fall",
+      "road_traffic_compensation",
+      "workplace_injury",
+      "civil_procedure",
+      "probate"
+    ],
+    "verification_rule": "Every legal proposition must be sourced to an official source/case card or explicitly listed in unsupported_claims. Candidate case fruits remain research-only until human review promotes them.",
+    "source_audit_policy": "collapsed_by_default",
+    "review_status": "research_only"
+  },
+  "verifier": {
+    "required_fact_flags": ["theft_shoplifting.theft_signal"],
+    "must_include_terms": ["ar / mr matrix", "theft ordinance", "cap. 210", "dishonesty", "intention permanently to deprive", "forgot", "cctv", "prosecution must prove"],
+    "must_not_include_terms": ["restaurant wet-floor", "interim payment", "criminal law triage"]
+  }
+}

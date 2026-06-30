@@ -1,0 +1,45 @@
+{
+  "policy_id": "hk_criminal_investor_recall_tier_10000_v1",
+  "purpose": "Define the deliberately loosened evidence tier for investor-scale case recall without misrepresenting answer-safe proposition accuracy.",
+  "target_case_recall_count": 10000,
+  "tier_name": "case_recall_only",
+  "allowed_claim": "Up to 10,000 Hong Kong criminal judgments can be indexed for citation/source-page accurate recall after each card validates against a public LegalRef/HKLII/Judiciary source.",
+  "forbidden_claims": [
+    "10,000 answer-safe legal propositions",
+    "10,000 quote-verified holdings",
+    "10,000 lawyer-reviewed case fruits",
+    "HKLII paragraph-anchored propositions unless paragraph anchors are separately extracted and validated"
+  ],
+  "minimum_case_recall_card_requirements": [
+    "public source provider is LegalRef, HKLII, or Judiciary",
+    "stable source URL is stored",
+    "LegalRef DIS or equivalent public source id is stored",
+    "neutral citation is parsed and validates against Hong Kong neutral citation format",
+    "case name is parsed from the public judgment page",
+    "criminal-likely signals are recorded",
+    "source_visibility is public_demo",
+    "tenant_id is public",
+    "answer_layer_status is case_recall_only",
+    "answer_safe is false"
+  ],
+  "hklii_position": {
+    "legalref_is_accepted_public_evidence": true,
+    "hklii_crosscheck_is_optional_for_case_recall": true,
+    "hklii_or_paragraph_anchor_required_for_proposition_promotion": true,
+    "current_hklii_crosscheck_status_default": "not_attempted"
+  },
+  "separation_rules": [
+    "case_recall_only vectors go into QDRANT_COLLECTION_CASE_RECALL, not the proposition collection",
+    "case_recall_only cards may support search, lookup, and citation discovery",
+    "case_recall_only cards must not be used as source-gated legal claims unless promoted through paragraph/proposition extraction",
+    "answer demos must continue to use answer_safe or clearly machine_candidate proposition cards"
+  ],
+  "commands": {
+    "bounded_smoke": "node scripts/build_investor_recall_corpus.js --target-cases 10 --dis-start 143540 --dis-end 143590 --max-requests 50 --delay-ms 0 --no-resume",
+    "enrich_hklii": "node scripts/enrich_investor_recall_hklii_paragraph_urls.js",
+    "validate": "node scripts/validate_investor_recall_corpus.js --min-cards 40",
+    "validate_hklii_paragraph_urls": "node scripts/validate_investor_recall_corpus.js --min-cards 40 --require-hklii-paragraph-urls",
+    "index": "node scripts/index_investor_recall_qdrant.js",
+    "overnight_10k_candidate": "node scripts/build_investor_recall_corpus.js --target-cases 10000 --dis-start 100000 --dis-end 360000"
+  }
+}

@@ -1,0 +1,3274 @@
+{
+  "report_id": "principle_quality_repair_v1",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "scope": "Repairs current L1-L3.5 sample principle quality before 500-case scaling; demoted cards are preserved, not deleted.",
+  "summary": {
+    "principle_card_count": 344,
+    "usable_principle_count": 97,
+    "demoted_principle_count": 247,
+    "needs_review_principle_count": 0,
+    "principle_quality_status_counts": {
+      "demoted": 247,
+      "pass": 97
+    },
+    "liability_relevance_counts": {
+      "sentencing": 214,
+      "liability": 77,
+      "procedure": 38,
+      "background": 15
+    },
+    "demotion_reason_counts": {
+      "sentencing_only_not_liability": 187,
+      "quote_context_insufficient": 40,
+      "background_only_not_principle": 29,
+      "procedural_only_not_liability": 25
+    }
+  },
+  "demoted_cards": [
+    {
+      "principle_id": "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant_p1_principle",
+      "case_id": "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant",
+      "case_name": "BETWEEN HKSAR Respondent and KHAN, ALTAF Appellant",
+      "neutral_citation": "[2022] HKCFI 1220",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant_p24_principle",
+      "case_id": "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant",
+      "case_name": "BETWEEN HKSAR Respondent and KHAN, ALTAF Appellant",
+      "neutral_citation": "[2022] HKCFI 1220",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p24"
+      ]
+    },
+    {
+      "principle_id": "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant_p1_principle",
+      "case_id": "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant",
+      "case_name": "BETWEEN HKSAR Respondent and YEOH, POH LEAN Appellant",
+      "neutral_citation": "[2022] HKCFI 1962",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2022/1962#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_705_hksar_v_anthony_theresia_olwi_p1_principle",
+      "case_id": "hk_hkdc_2026_705_hksar_v_anthony_theresia_olwi",
+      "case_name": "HKSAR v ANTHONY Theresia Olwi",
+      "neutral_citation": "[2026] HKDC 705",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/705#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_705_hksar_v_anthony_theresia_olwi_p12_principle",
+      "case_id": "hk_hkdc_2026_705_hksar_v_anthony_theresia_olwi",
+      "case_name": "HKSAR v ANTHONY Theresia Olwi",
+      "neutral_citation": "[2026] HKDC 705",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/705#p12"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_705_hksar_v_anthony_theresia_olwi_p9_principle",
+      "case_id": "hk_hkdc_2026_705_hksar_v_anthony_theresia_olwi",
+      "case_name": "HKSAR v ANTHONY Theresia Olwi",
+      "neutral_citation": "[2026] HKDC 705",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/705#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p24_principle",
+      "case_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho",
+      "case_name": "HKSAR v WONG Chun-ho",
+      "neutral_citation": "[2026] HKDC 909",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/909#p24"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho_p1_principle",
+      "case_id": "hk_hkdc_2026_909_hksar_v_wong_chun_ho",
+      "case_name": "HKSAR v WONG Chun-ho",
+      "neutral_citation": "[2026] HKDC 909",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/909#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_175_hksar_v_ching_wa_wai_p42_principle",
+      "case_id": "hk_hkdc_2021_175_hksar_v_ching_wa_wai",
+      "case_name": "HKSAR v CHING WA WAI",
+      "neutral_citation": "[2021] HKDC 175",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/175#p42"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_175_hksar_v_ching_wa_wai_p33_principle",
+      "case_id": "hk_hkdc_2021_175_hksar_v_ching_wa_wai",
+      "case_name": "HKSAR v CHING WA WAI",
+      "neutral_citation": "[2021] HKDC 175",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/175#p33"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_175_hksar_v_ching_wa_wai_p41_principle",
+      "case_id": "hk_hkdc_2021_175_hksar_v_ching_wa_wai",
+      "case_name": "HKSAR v CHING WA WAI",
+      "neutral_citation": "[2021] HKDC 175",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/175#p41"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_321_hksar_v_choi_hiu_hung_p46_principle",
+      "case_id": "hk_hkdc_2022_321_hksar_v_choi_hiu_hung",
+      "case_name": "HKSAR v CHOI HIU HUNG",
+      "neutral_citation": "[2022] HKDC 321",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/321#p46"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_321_hksar_v_choi_hiu_hung_p49_principle",
+      "case_id": "hk_hkdc_2022_321_hksar_v_choi_hiu_hung",
+      "case_name": "HKSAR v CHOI HIU HUNG",
+      "neutral_citation": "[2022] HKDC 321",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/321#p49"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_321_hksar_v_choi_hiu_hung_p8_principle",
+      "case_id": "hk_hkdc_2022_321_hksar_v_choi_hiu_hung",
+      "case_name": "HKSAR v CHOI HIU HUNG",
+      "neutral_citation": "[2022] HKDC 321",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/321#p8"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen_p5_principle",
+      "case_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen",
+      "case_name": "HKSAR v Zhang Yichen",
+      "neutral_citation": "[2024] HKDC 1329",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1329#p5"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen_p8_principle",
+      "case_id": "hk_hkdc_2024_1329_hksar_v_zhang_yichen",
+      "case_name": "HKSAR v Zhang Yichen",
+      "neutral_citation": "[2024] HKDC 1329",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1329#p8"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_1174_hksar_v_chan_kin_ming_d1_ng_sau_man_rebecca_d2_p1_principle",
+      "case_id": "hk_hkdc_2025_1174_hksar_v_chan_kin_ming_d1_ng_sau_man_rebecca_d2",
+      "case_name": "HKSAR v CHAN Kin-ming (D1) NG Sau-man, Rebecca (D2)",
+      "neutral_citation": "[2025] HKDC 1174",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/1174#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_1174_hksar_v_chan_kin_ming_d1_ng_sau_man_rebecca_d2_p16_principle",
+      "case_id": "hk_hkdc_2025_1174_hksar_v_chan_kin_ming_d1_ng_sau_man_rebecca_d2",
+      "case_name": "HKSAR v CHAN Kin-ming (D1) NG Sau-man, Rebecca (D2)",
+      "neutral_citation": "[2025] HKDC 1174",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/1174#p16"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1628_hksar_v_tsang_tak_wa_d1_wong_pui_yan_rachel_d2_p1_principle",
+      "case_id": "hk_hkdc_2021_1628_hksar_v_tsang_tak_wa_d1_wong_pui_yan_rachel_d2",
+      "case_name": "HKSAR v TSANG TAK WA (D1) WONG PUI YAN RACHEL (D2)",
+      "neutral_citation": "[2021] HKDC 1628",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1628#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1628_hksar_v_tsang_tak_wa_d1_wong_pui_yan_rachel_d2_p35_principle",
+      "case_id": "hk_hkdc_2021_1628_hksar_v_tsang_tak_wa_d1_wong_pui_yan_rachel_d2",
+      "case_name": "HKSAR v TSANG TAK WA (D1) WONG PUI YAN RACHEL (D2)",
+      "neutral_citation": "[2021] HKDC 1628",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1628#p35"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1628_hksar_v_tsang_tak_wa_d1_wong_pui_yan_rachel_d2_p40_principle",
+      "case_id": "hk_hkdc_2021_1628_hksar_v_tsang_tak_wa_d1_wong_pui_yan_rachel_d2",
+      "case_name": "HKSAR v TSANG TAK WA (D1) WONG PUI YAN RACHEL (D2)",
+      "neutral_citation": "[2021] HKDC 1628",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1628#p40"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong_p7_principle",
+      "case_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong",
+      "case_name": "HKSAR v Kwok Wai-hong",
+      "neutral_citation": "[2021] HKDC 931",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/931#p7"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong_p9_principle",
+      "case_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong",
+      "case_name": "HKSAR v Kwok Wai-hong",
+      "neutral_citation": "[2021] HKDC 931",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/931#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong_p17_principle",
+      "case_id": "hk_hkdc_2021_931_hksar_v_kwok_wai_hong",
+      "case_name": "HKSAR v Kwok Wai-hong",
+      "neutral_citation": "[2021] HKDC 931",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/931#p17"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_1041_hksar_v_siska_tyara_p8_principle",
+      "case_id": "hk_hkdc_2022_1041_hksar_v_siska_tyara",
+      "case_name": "HKSAR v SISKA-TYARA",
+      "neutral_citation": "[2022] HKDC 1041",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/1041#p8"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_1041_hksar_v_siska_tyara_p13_principle",
+      "case_id": "hk_hkdc_2022_1041_hksar_v_siska_tyara",
+      "case_name": "HKSAR v SISKA-TYARA",
+      "neutral_citation": "[2022] HKDC 1041",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/1041#p13"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_967_hksar_v_ng_so_hung_p4_principle",
+      "case_id": "hk_hkdc_2025_967_hksar_v_ng_so_hung",
+      "case_name": "HKSAR v NG SO HUNG",
+      "neutral_citation": "[2025] HKDC 967",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/967#p4"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_967_hksar_v_ng_so_hung_p8_principle",
+      "case_id": "hk_hkdc_2025_967_hksar_v_ng_so_hung",
+      "case_name": "HKSAR v NG SO HUNG",
+      "neutral_citation": "[2025] HKDC 967",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/967#p8"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_967_hksar_v_ng_so_hung_p9_principle",
+      "case_id": "hk_hkdc_2025_967_hksar_v_ng_so_hung",
+      "case_name": "HKSAR v NG SO HUNG",
+      "neutral_citation": "[2025] HKDC 967",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/967#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_649_hksar_v_hai_chung_po_also_known_as_hat_chung_po_p38_principle",
+      "case_id": "hk_hkdc_2021_649_hksar_v_hai_chung_po_also_known_as_hat_chung_po",
+      "case_name": "HKSAR v HAI CHUNG PO (also known as HAT CHUNG PO)",
+      "neutral_citation": "[2021] HKDC 649",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/649#p38"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_649_hksar_v_hai_chung_po_also_known_as_hat_chung_po_p12_principle",
+      "case_id": "hk_hkdc_2021_649_hksar_v_hai_chung_po_also_known_as_hat_chung_po",
+      "case_name": "HKSAR v HAI CHUNG PO (also known as HAT CHUNG PO)",
+      "neutral_citation": "[2021] HKDC 649",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/649#p12"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_851_hksar_v_tam_wai_tsung_defendant_p23_principle",
+      "case_id": "hk_hkdc_2025_851_hksar_v_tam_wai_tsung_defendant",
+      "case_name": "HKSAR v TAM WAI TSUNG Defendant",
+      "neutral_citation": "[2025] HKDC 851",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/851#p23"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_851_hksar_v_tam_wai_tsung_defendant_p28_principle",
+      "case_id": "hk_hkdc_2025_851_hksar_v_tam_wai_tsung_defendant",
+      "case_name": "HKSAR v TAM WAI TSUNG Defendant",
+      "neutral_citation": "[2025] HKDC 851",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/851#p28"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1071_hksar_v_chan_hung_wai_p21_principle",
+      "case_id": "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+      "case_name": "HKSAR v CHAN HUNG WAI",
+      "neutral_citation": "[2021] HKDC 1071",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1071#p21"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1071_hksar_v_chan_hung_wai_p4_principle",
+      "case_id": "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+      "case_name": "HKSAR v CHAN HUNG WAI",
+      "neutral_citation": "[2021] HKDC 1071",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1071#p4"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1071_hksar_v_chan_hung_wai_p17_principle",
+      "case_id": "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+      "case_name": "HKSAR v CHAN HUNG WAI",
+      "neutral_citation": "[2021] HKDC 1071",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1071#p17"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1416_hksar_v_abdul_sameer_d1_mullick_abdul_dayan_d2_p1_principle",
+      "case_id": "hk_hkdc_2023_1416_hksar_v_abdul_sameer_d1_mullick_abdul_dayan_d2",
+      "case_name": "HKSAR v ABDUL SAMEER (D1) MULLICK ABDUL DAYAN (D2)",
+      "neutral_citation": "[2023] HKDC 1416",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1416#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1416_hksar_v_abdul_sameer_d1_mullick_abdul_dayan_d2_p67_principle",
+      "case_id": "hk_hkdc_2023_1416_hksar_v_abdul_sameer_d1_mullick_abdul_dayan_d2",
+      "case_name": "HKSAR v ABDUL SAMEER (D1) MULLICK ABDUL DAYAN (D2)",
+      "neutral_citation": "[2023] HKDC 1416",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1416#p67"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_756_hksar_v_zou_yaxue_d1_zha_xingmei_d2_huang_jiaqiang_d3_p21_principle",
+      "case_id": "hk_hkdc_2025_756_hksar_v_zou_yaxue_d1_zha_xingmei_d2_huang_jiaqiang_d3",
+      "case_name": "HKSAR v ZOU Yaxue (D1) ZHA Xingmei (D2) HUANG Jiaqiang (D3)",
+      "neutral_citation": "[2025] HKDC 756",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/756#p21"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_756_hksar_v_zou_yaxue_d1_zha_xingmei_d2_huang_jiaqiang_d3_p14_principle",
+      "case_id": "hk_hkdc_2025_756_hksar_v_zou_yaxue_d1_zha_xingmei_d2_huang_jiaqiang_d3",
+      "case_name": "HKSAR v ZOU Yaxue (D1) ZHA Xingmei (D2) HUANG Jiaqiang (D3)",
+      "neutral_citation": "[2025] HKDC 756",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/756#p14"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_673_hksar_v_tai_wai_yin_p10_principle",
+      "case_id": "hk_hkdc_2024_673_hksar_v_tai_wai_yin",
+      "case_name": "HKSAR v TAI WAI YIN",
+      "neutral_citation": "[2024] HKDC 673",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/673#p10"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_673_hksar_v_tai_wai_yin_p14_principle",
+      "case_id": "hk_hkdc_2024_673_hksar_v_tai_wai_yin",
+      "case_name": "HKSAR v TAI WAI YIN",
+      "neutral_citation": "[2024] HKDC 673",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/673#p14"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_673_hksar_v_tai_wai_yin_p9_principle",
+      "case_id": "hk_hkdc_2024_673_hksar_v_tai_wai_yin",
+      "case_name": "HKSAR v TAI WAI YIN",
+      "neutral_citation": "[2024] HKDC 673",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/673#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_471_hksar_v_chung_kai_lun_p5_principle",
+      "case_id": "hk_hkdc_2024_471_hksar_v_chung_kai_lun",
+      "case_name": "HKSAR v CHUNG KAI LUN",
+      "neutral_citation": "[2024] HKDC 471",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/471#p5"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_471_hksar_v_chung_kai_lun_p17_principle",
+      "case_id": "hk_hkdc_2024_471_hksar_v_chung_kai_lun",
+      "case_name": "HKSAR v CHUNG KAI LUN",
+      "neutral_citation": "[2024] HKDC 471",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/471#p17"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_471_hksar_v_chung_kai_lun_p20_principle",
+      "case_id": "hk_hkdc_2024_471_hksar_v_chung_kai_lun",
+      "case_name": "HKSAR v CHUNG KAI LUN",
+      "neutral_citation": "[2024] HKDC 471",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/471#p20"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_382_hksar_v_mtenga_enock_maro_p7_principle",
+      "case_id": "hk_hkdc_2025_382_hksar_v_mtenga_enock_maro",
+      "case_name": "HKSAR v Mtenga Enock Maro",
+      "neutral_citation": "[2025] HKDC 382",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/382#p7"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_137_hksar_v_luk_kit_chun_p14_principle",
+      "case_id": "hk_hkdc_2021_137_hksar_v_luk_kit_chun",
+      "case_name": "HKSAR v LUK Kit-chun",
+      "neutral_citation": "[2021] HKDC 137",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/137#p14"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_137_hksar_v_luk_kit_chun_p19_principle",
+      "case_id": "hk_hkdc_2021_137_hksar_v_luk_kit_chun",
+      "case_name": "HKSAR v LUK Kit-chun",
+      "neutral_citation": "[2021] HKDC 137",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/137#p19"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_137_hksar_v_luk_kit_chun_p21_principle",
+      "case_id": "hk_hkdc_2021_137_hksar_v_luk_kit_chun",
+      "case_name": "HKSAR v LUK Kit-chun",
+      "neutral_citation": "[2021] HKDC 137",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/137#p21"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_563_hksar_v_yau_ka_leung_p35_principle",
+      "case_id": "hk_hkdc_2022_563_hksar_v_yau_ka_leung",
+      "case_name": "HKSAR v YAU KA LEUNG",
+      "neutral_citation": "[2022] HKDC 563",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/563#p35"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_563_hksar_v_yau_ka_leung_p39_principle",
+      "case_id": "hk_hkdc_2022_563_hksar_v_yau_ka_leung",
+      "case_name": "HKSAR v YAU KA LEUNG",
+      "neutral_citation": "[2022] HKDC 563",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/563#p39"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_63_hksar_v_lo_wan_p13_principle",
+      "case_id": "hk_hkdc_2025_63_hksar_v_lo_wan",
+      "case_name": "HKSAR v LO WAN",
+      "neutral_citation": "[2025] HKDC 63",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/63#p13"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_63_hksar_v_lo_wan_p19_principle",
+      "case_id": "hk_hkdc_2025_63_hksar_v_lo_wan",
+      "case_name": "HKSAR v LO WAN",
+      "neutral_citation": "[2025] HKDC 63",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/63#p19"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant_p30_principle",
+      "case_id": "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+      "case_name": "HKSAR Respondent v LAM SEE CHUNG STEPHEN Applicant",
+      "neutral_citation": "[2021] HKCA 2012",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2021/2012#p30"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant_p2_principle",
+      "case_id": "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+      "case_name": "HKSAR Respondent v LAM SEE CHUNG STEPHEN Applicant",
+      "neutral_citation": "[2021] HKCA 2012",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2021/2012#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant_p5_principle",
+      "case_id": "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+      "case_name": "HKSAR Respondent v LAM SEE CHUNG STEPHEN Applicant",
+      "neutral_citation": "[2021] HKCA 2012",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2021/2012#p5"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1021_hksar_v_pathomworrakan_nichakan_also_known_as_maisam_orathai_pathomworra_p4_principle",
+      "case_id": "hk_hkdc_2024_1021_hksar_v_pathomworrakan_nichakan_also_known_as_maisam_orathai_pathomworra",
+      "case_name": "HKSAR V PATHOMWORRAKAN NICHAKAN also known as MAISAM ORATHAI, PATHOMWORRAKAN ORATHAI and PATHOMWORRAKAN NICHAKAN MAISAM ORATHAI",
+      "neutral_citation": "[2024] HKDC 1021",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1021#p4"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1021_hksar_v_pathomworrakan_nichakan_also_known_as_maisam_orathai_pathomworra_p3_principle",
+      "case_id": "hk_hkdc_2024_1021_hksar_v_pathomworrakan_nichakan_also_known_as_maisam_orathai_pathomworra",
+      "case_name": "HKSAR V PATHOMWORRAKAN NICHAKAN also known as MAISAM ORATHAI, PATHOMWORRAKAN ORATHAI and PATHOMWORRAKAN NICHAKAN MAISAM ORATHAI",
+      "neutral_citation": "[2024] HKDC 1021",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1021#p3"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1021_hksar_v_pathomworrakan_nichakan_also_known_as_maisam_orathai_pathomworra_p7_principle",
+      "case_id": "hk_hkdc_2024_1021_hksar_v_pathomworrakan_nichakan_also_known_as_maisam_orathai_pathomworra",
+      "case_name": "HKSAR V PATHOMWORRAKAN NICHAKAN also known as MAISAM ORATHAI, PATHOMWORRAKAN ORATHAI and PATHOMWORRAKAN NICHAKAN MAISAM ORATHAI",
+      "neutral_citation": "[2024] HKDC 1021",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1021#p7"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1182_hksar_v_wong_wai_yee_p35_principle",
+      "case_id": "hk_hkdc_2021_1182_hksar_v_wong_wai_yee",
+      "case_name": "HKSAR v WONG WAI YEE",
+      "neutral_citation": "[2021] HKDC 1182",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1182#p35"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1693_hksar_v_yeung_ming_nok_p14_principle",
+      "case_id": "hk_hkdc_2023_1693_hksar_v_yeung_ming_nok",
+      "case_name": "HKSAR v YEUNG MING NOK",
+      "neutral_citation": "[2023] HKDC 1693",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1693#p14"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1693_hksar_v_yeung_ming_nok_p9_principle",
+      "case_id": "hk_hkdc_2023_1693_hksar_v_yeung_ming_nok",
+      "case_name": "HKSAR v YEUNG MING NOK",
+      "neutral_citation": "[2023] HKDC 1693",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1693#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_363_hksar_v_wan_chiu_ying_p9_principle",
+      "case_id": "hk_hkdc_2021_363_hksar_v_wan_chiu_ying",
+      "case_name": "HKSAR v Wan Chiu-ying",
+      "neutral_citation": "[2021] HKDC 363",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/363#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_363_hksar_v_wan_chiu_ying_p20_principle",
+      "case_id": "hk_hkdc_2021_363_hksar_v_wan_chiu_ying",
+      "case_name": "HKSAR v Wan Chiu-ying",
+      "neutral_citation": "[2021] HKDC 363",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/363#p20"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_225_hksar_v_cheung_chiu_fai_d1_wong_man_shan_d2_p10_principle",
+      "case_id": "hk_hkdc_2023_225_hksar_v_cheung_chiu_fai_d1_wong_man_shan_d2",
+      "case_name": "HKSAR v CHEUNG CHIU FAI (D1) WONG MAN SHAN (D2)",
+      "neutral_citation": "[2023] HKDC 225",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/225#p10"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_225_hksar_v_cheung_chiu_fai_d1_wong_man_shan_d2_p15_principle",
+      "case_id": "hk_hkdc_2023_225_hksar_v_cheung_chiu_fai_d1_wong_man_shan_d2",
+      "case_name": "HKSAR v CHEUNG CHIU FAI (D1) WONG MAN SHAN (D2)",
+      "neutral_citation": "[2023] HKDC 225",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/225#p15"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1223_hksar_v_ng_cheuk_kit_neville_p24_principle",
+      "case_id": "hk_hkdc_2021_1223_hksar_v_ng_cheuk_kit_neville",
+      "case_name": "HKSAR v NG CHEUK KIT, NEVILLE",
+      "neutral_citation": "[2021] HKDC 1223",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1223#p24"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1223_hksar_v_ng_cheuk_kit_neville_p19_principle",
+      "case_id": "hk_hkdc_2021_1223_hksar_v_ng_cheuk_kit_neville",
+      "case_name": "HKSAR v NG CHEUK KIT, NEVILLE",
+      "neutral_citation": "[2021] HKDC 1223",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1223#p19"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1223_hksar_v_ng_cheuk_kit_neville_p27_principle",
+      "case_id": "hk_hkdc_2021_1223_hksar_v_ng_cheuk_kit_neville",
+      "case_name": "HKSAR v NG CHEUK KIT, NEVILLE",
+      "neutral_citation": "[2021] HKDC 1223",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1223#p27"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1497_hksar_v_chui_tak_man_p11_principle",
+      "case_id": "hk_hkdc_2024_1497_hksar_v_chui_tak_man",
+      "case_name": "HKSAR v CHUI Tak-man",
+      "neutral_citation": "[2024] HKDC 1497",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1497#p11"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1497_hksar_v_chui_tak_man_p17_principle",
+      "case_id": "hk_hkdc_2024_1497_hksar_v_chui_tak_man",
+      "case_name": "HKSAR v CHUI Tak-man",
+      "neutral_citation": "[2024] HKDC 1497",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1497#p17"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1497_hksar_v_chui_tak_man_p6_principle",
+      "case_id": "hk_hkdc_2024_1497_hksar_v_chui_tak_man",
+      "case_name": "HKSAR v CHUI Tak-man",
+      "neutral_citation": "[2024] HKDC 1497",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1497#p6"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_229_hksar_v_pun_hong_ting_d1_yuen_ka_kin_d2_p9_principle",
+      "case_id": "hk_hkdc_2024_229_hksar_v_pun_hong_ting_d1_yuen_ka_kin_d2",
+      "case_name": "HKSAR v PUN HONG TING (D1) YUEN KA KIN (D2)",
+      "neutral_citation": "[2024] HKDC 229",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/229#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_229_hksar_v_pun_hong_ting_d1_yuen_ka_kin_d2_p21_principle",
+      "case_id": "hk_hkdc_2024_229_hksar_v_pun_hong_ting_d1_yuen_ka_kin_d2",
+      "case_name": "HKSAR v PUN HONG TING (D1) YUEN KA KIN (D2)",
+      "neutral_citation": "[2024] HKDC 229",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/229#p21"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1163_hksar_v_leung_on_yee_ivan_p16_principle",
+      "case_id": "hk_hkdc_2023_1163_hksar_v_leung_on_yee_ivan",
+      "case_name": "HKSAR v LEUNG ON YEE, IVAN",
+      "neutral_citation": "[2023] HKDC 1163",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1163#p16"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1163_hksar_v_leung_on_yee_ivan_p29_principle",
+      "case_id": "hk_hkdc_2023_1163_hksar_v_leung_on_yee_ivan",
+      "case_name": "HKSAR v LEUNG ON YEE, IVAN",
+      "neutral_citation": "[2023] HKDC 1163",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1163#p29"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1163_hksar_v_leung_on_yee_ivan_p35_principle",
+      "case_id": "hk_hkdc_2023_1163_hksar_v_leung_on_yee_ivan",
+      "case_name": "HKSAR v LEUNG ON YEE, IVAN",
+      "neutral_citation": "[2023] HKDC 1163",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1163#p35"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_652_hksar_v_umar_farooq_p1_principle",
+      "case_id": "hk_hkdc_2022_652_hksar_v_umar_farooq",
+      "case_name": "HKSAR v UMAR FAROOQ",
+      "neutral_citation": "[2022] HKDC 652",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/652#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_652_hksar_v_umar_farooq_p19_principle",
+      "case_id": "hk_hkdc_2022_652_hksar_v_umar_farooq",
+      "case_name": "HKSAR v UMAR FAROOQ",
+      "neutral_citation": "[2022] HKDC 652",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/652#p19"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_652_hksar_v_umar_farooq_p8_principle",
+      "case_id": "hk_hkdc_2022_652_hksar_v_umar_farooq",
+      "case_name": "HKSAR v UMAR FAROOQ",
+      "neutral_citation": "[2022] HKDC 652",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/652#p8"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_781_hksar_v_fong_tak_chi_p1_principle",
+      "case_id": "hk_hkdc_2023_781_hksar_v_fong_tak_chi",
+      "case_name": "HKSAR v FONG TAK CHI",
+      "neutral_citation": "[2023] HKDC 781",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/781#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_781_hksar_v_fong_tak_chi_p22_principle",
+      "case_id": "hk_hkdc_2023_781_hksar_v_fong_tak_chi",
+      "case_name": "HKSAR v FONG TAK CHI",
+      "neutral_citation": "[2023] HKDC 781",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/781#p22"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_781_hksar_v_fong_tak_chi_p26_principle",
+      "case_id": "hk_hkdc_2023_781_hksar_v_fong_tak_chi",
+      "case_name": "HKSAR v FONG TAK CHI",
+      "neutral_citation": "[2023] HKDC 781",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/781#p26"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant_p26_principle",
+      "case_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+      "case_name": "HKSAR Respondent v LAM SEE CHUNG STEPHEN Appellant",
+      "neutral_citation": "[2022] HKCA 990",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2022/990#p26"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant_p2_principle",
+      "case_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+      "case_name": "HKSAR Respondent v LAM SEE CHUNG STEPHEN Appellant",
+      "neutral_citation": "[2022] HKCA 990",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2022/990#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant_p14_principle",
+      "case_id": "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+      "case_name": "HKSAR Respondent v LAM SEE CHUNG STEPHEN Appellant",
+      "neutral_citation": "[2022] HKCA 990",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2022/990#p14"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_359_hksar_v_ho_chi_tat_d2_hksar_v_ho_chi_tat_hksar_v_ho_chi_tat_p2_principle",
+      "case_id": "hk_hkdc_2024_359_hksar_v_ho_chi_tat_d2_hksar_v_ho_chi_tat_hksar_v_ho_chi_tat",
+      "case_name": "HKSAR v HO CHI TAT (D2) HKSAR v HO CHI TAT HKSAR v HO CHI TAT",
+      "neutral_citation": "[2024] HKDC 359",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/359#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_359_hksar_v_ho_chi_tat_d2_hksar_v_ho_chi_tat_hksar_v_ho_chi_tat_p44_principle",
+      "case_id": "hk_hkdc_2024_359_hksar_v_ho_chi_tat_d2_hksar_v_ho_chi_tat_hksar_v_ho_chi_tat",
+      "case_name": "HKSAR v HO CHI TAT (D2) HKSAR v HO CHI TAT HKSAR v HO CHI TAT",
+      "neutral_citation": "[2024] HKDC 359",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/359#p44"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_359_hksar_v_ho_chi_tat_d2_hksar_v_ho_chi_tat_hksar_v_ho_chi_tat_p45_principle",
+      "case_id": "hk_hkdc_2024_359_hksar_v_ho_chi_tat_d2_hksar_v_ho_chi_tat_hksar_v_ho_chi_tat",
+      "case_name": "HKSAR v HO CHI TAT (D2) HKSAR v HO CHI TAT HKSAR v HO CHI TAT",
+      "neutral_citation": "[2024] HKDC 359",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/359#p45"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_376_hksar_v_fok_tik_sang_d1_wajid_syed_zakir_d2_p2_principle",
+      "case_id": "hk_hkdc_2024_376_hksar_v_fok_tik_sang_d1_wajid_syed_zakir_d2",
+      "case_name": "HKSAR v FOK TIK SANG (D1) WAJID SYED ZAKIR (D2)",
+      "neutral_citation": "[2024] HKDC 376",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/376#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_376_hksar_v_fok_tik_sang_d1_wajid_syed_zakir_d2_p17_principle",
+      "case_id": "hk_hkdc_2024_376_hksar_v_fok_tik_sang_d1_wajid_syed_zakir_d2",
+      "case_name": "HKSAR v FOK TIK SANG (D1) WAJID SYED ZAKIR (D2)",
+      "neutral_citation": "[2024] HKDC 376",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/376#p17"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_376_hksar_v_fok_tik_sang_d1_wajid_syed_zakir_d2_p22_principle",
+      "case_id": "hk_hkdc_2024_376_hksar_v_fok_tik_sang_d1_wajid_syed_zakir_d2",
+      "case_name": "HKSAR v FOK TIK SANG (D1) WAJID SYED ZAKIR (D2)",
+      "neutral_citation": "[2024] HKDC 376",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/376#p22"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p1_principle",
+      "case_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu",
+      "case_name": "HKSAR v CHOI PING CHIU",
+      "neutral_citation": "[2021] HKDC 494",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/494#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p32_principle",
+      "case_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu",
+      "case_name": "HKSAR v CHOI PING CHIU",
+      "neutral_citation": "[2021] HKDC 494",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/494#p32"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p33_principle",
+      "case_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu",
+      "case_name": "HKSAR v CHOI PING CHIU",
+      "neutral_citation": "[2021] HKDC 494",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/494#p33"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p36_principle",
+      "case_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu",
+      "case_name": "HKSAR v CHOI PING CHIU",
+      "neutral_citation": "[2021] HKDC 494",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/494#p36"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_707_hksar_v_wong_chun_yin_d1_muhammad_shehbaz_d2_p2_principle",
+      "case_id": "hk_hkdc_2021_707_hksar_v_wong_chun_yin_d1_muhammad_shehbaz_d2",
+      "case_name": "HKSAR v WONG CHUN YIN D1 MUHAMMAD SHEHBAZ D2",
+      "neutral_citation": "[2021] HKDC 707",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/707#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_707_hksar_v_wong_chun_yin_d1_muhammad_shehbaz_d2_p43_principle",
+      "case_id": "hk_hkdc_2021_707_hksar_v_wong_chun_yin_d1_muhammad_shehbaz_d2",
+      "case_name": "HKSAR v WONG CHUN YIN D1 MUHAMMAD SHEHBAZ D2",
+      "neutral_citation": "[2021] HKDC 707",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/707#p43"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex_p1_principle",
+      "case_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex",
+      "case_name": "HKSAR v CHING MAN LONG REX",
+      "neutral_citation": "[2023] HKDC 1430",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1430#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex_p34_principle",
+      "case_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex",
+      "case_name": "HKSAR v CHING MAN LONG REX",
+      "neutral_citation": "[2023] HKDC 1430",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1430#p34"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex_p36_principle",
+      "case_id": "hk_hkdc_2023_1430_hksar_v_ching_man_long_rex",
+      "case_name": "HKSAR v CHING MAN LONG REX",
+      "neutral_citation": "[2023] HKDC 1430",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1430#p36"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2_p25_principle",
+      "case_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+      "case_name": "HKSAR v LI QINFANG (D1) LI YUN (D2)",
+      "neutral_citation": "[2021] HKDC 1527",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1527#p25"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2_p22_principle",
+      "case_id": "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2",
+      "case_name": "HKSAR v LI QINFANG (D1) LI YUN (D2)",
+      "neutral_citation": "[2021] HKDC 1527",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1527#p22"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_2018_hksar_v_chan_chi_to_p5_principle",
+      "case_id": "hk_hkdc_2024_2018_hksar_v_chan_chi_to",
+      "case_name": "HKSAR v CHAN CHI TO",
+      "neutral_citation": "[2024] HKDC 2018",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/2018#p5"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo_p12_principle",
+      "case_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+      "case_name": "HKSAR v LAU WA KWO",
+      "neutral_citation": "[2021] HKDC 1113",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1113#p12"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo_p1_principle",
+      "case_id": "hk_hkdc_2021_1113_hksar_v_lau_wa_kwo",
+      "case_name": "HKSAR v LAU WA KWO",
+      "neutral_citation": "[2021] HKDC 1113",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1113#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_34_hksar_v_wong_kit_ho_hksar_v_wong_kit_ho_p9_principle",
+      "case_id": "hk_hkdc_2026_34_hksar_v_wong_kit_ho_hksar_v_wong_kit_ho",
+      "case_name": "HKSAR v WONG KIT HO HKSAR v WONG KIT HO",
+      "neutral_citation": "[2026] HKDC 34",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/34#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_34_hksar_v_wong_kit_ho_hksar_v_wong_kit_ho_p38_principle",
+      "case_id": "hk_hkdc_2026_34_hksar_v_wong_kit_ho_hksar_v_wong_kit_ho",
+      "case_name": "HKSAR v WONG KIT HO HKSAR v WONG KIT HO",
+      "neutral_citation": "[2026] HKDC 34",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/34#p38"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p34_principle",
+      "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+      "case_name": "BETWEEN HKSAR Respondent and CHOI Ping-chiu (蔡炳超) Applicant",
+      "neutral_citation": "[2021] HKCA 1387",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2021/1387#p34"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p21_principle",
+      "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+      "case_name": "BETWEEN HKSAR Respondent and CHOI Ping-chiu (蔡炳超) Applicant",
+      "neutral_citation": "[2021] HKCA 1387",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2021/1387#p21"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p27_principle",
+      "case_id": "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+      "case_name": "BETWEEN HKSAR Respondent and CHOI Ping-chiu (蔡炳超) Applicant",
+      "neutral_citation": "[2021] HKCA 1387",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2021/1387#p27"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_246_hksar_v_wong_chun_kwong_p7_principle",
+      "case_id": "hk_hkdc_2026_246_hksar_v_wong_chun_kwong",
+      "case_name": "HKSAR v WONG CHUN KWONG",
+      "neutral_citation": "[2026] HKDC 246",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/246#p7"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_246_hksar_v_wong_chun_kwong_p22_principle",
+      "case_id": "hk_hkdc_2026_246_hksar_v_wong_chun_kwong",
+      "case_name": "HKSAR v WONG CHUN KWONG",
+      "neutral_citation": "[2026] HKDC 246",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/246#p22"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_246_hksar_v_wong_chun_kwong_p23_principle",
+      "case_id": "hk_hkdc_2026_246_hksar_v_wong_chun_kwong",
+      "case_name": "HKSAR v WONG CHUN KWONG",
+      "neutral_citation": "[2026] HKDC 246",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/246#p23"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung_p1_principle",
+      "case_id": "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+      "case_name": "HKSAR v TSE CHUN HUNG",
+      "neutral_citation": "[2021] HKDC 102",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/102#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1115_hksar_v_tsui_be_chai_p2_principle",
+      "case_id": "hk_hkdc_2024_1115_hksar_v_tsui_be_chai",
+      "case_name": "HKSAR v Tsui Be Chai",
+      "neutral_citation": "[2024] HKDC 1115",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1115#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1115_hksar_v_tsui_be_chai_p4_principle",
+      "case_id": "hk_hkdc_2024_1115_hksar_v_tsui_be_chai",
+      "case_name": "HKSAR v Tsui Be Chai",
+      "neutral_citation": "[2024] HKDC 1115",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1115#p4"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping_p35_principle",
+      "case_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping",
+      "case_name": "HKSAR v TSUI KIN PING",
+      "neutral_citation": "[2023] HKDC 170",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/170#p35"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping_p16_principle",
+      "case_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping",
+      "case_name": "HKSAR v TSUI KIN PING",
+      "neutral_citation": "[2023] HKDC 170",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/170#p16"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping_p28_principle",
+      "case_id": "hk_hkdc_2023_170_hksar_v_tsui_kin_ping",
+      "case_name": "HKSAR v TSUI KIN PING",
+      "neutral_citation": "[2023] HKDC 170",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/170#p28"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant_p9_principle",
+      "case_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+      "case_name": "HKSAR Respondent v Ho Chi Tat (何志達) Applicant",
+      "neutral_citation": "[2025] HKCA 123",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2025/123#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant_p5_principle",
+      "case_id": "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+      "case_name": "HKSAR Respondent v Ho Chi Tat (何志達) Applicant",
+      "neutral_citation": "[2025] HKCA 123",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2025/123#p5"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1308_hksar_v_zuniga_elvin_ramon_l_d1_p1_principle",
+      "case_id": "hk_hkdc_2023_1308_hksar_v_zuniga_elvin_ramon_l_d1",
+      "case_name": "HKSAR v ZUNIGA ELVIN RAMON L (D1)",
+      "neutral_citation": "[2023] HKDC 1308",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1308#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1308_hksar_v_zuniga_elvin_ramon_l_d1_p10_principle",
+      "case_id": "hk_hkdc_2023_1308_hksar_v_zuniga_elvin_ramon_l_d1",
+      "case_name": "HKSAR v ZUNIGA ELVIN RAMON L (D1)",
+      "neutral_citation": "[2023] HKDC 1308",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1308#p10"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1308_hksar_v_zuniga_elvin_ramon_l_d1_p6_principle",
+      "case_id": "hk_hkdc_2023_1308_hksar_v_zuniga_elvin_ramon_l_d1",
+      "case_name": "HKSAR v ZUNIGA ELVIN RAMON L (D1)",
+      "neutral_citation": "[2023] HKDC 1308",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1308#p6"
+      ]
+    },
+    {
+      "principle_id": "hk_hkcfi_2022_294_between_hksar_respondent_and_chan_wai_ho_appellant_p1_principle",
+      "case_id": "hk_hkcfi_2022_294_between_hksar_respondent_and_chan_wai_ho_appellant",
+      "case_name": "BETWEEN HKSAR Respondent and CHAN Wai-ho (陳偉豪) Appellant",
+      "neutral_citation": "[2022] HKCFI 294",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2022/294#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch_p7_principle",
+      "case_id": "hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch",
+      "case_name": "HKSAR v Mohammed Jaqub Baloch",
+      "neutral_citation": "[2023] HKDC 337",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/337#p7"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch_p8_principle",
+      "case_id": "hk_hkdc_2023_337_hksar_v_mohammed_jaqub_baloch",
+      "case_name": "HKSAR v Mohammed Jaqub Baloch",
+      "neutral_citation": "[2023] HKDC 337",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/337#p8"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1354_hksar_v_ko_chun_fung_p13_principle",
+      "case_id": "hk_hkdc_2024_1354_hksar_v_ko_chun_fung",
+      "case_name": "HKSAR v KO Chun-fung",
+      "neutral_citation": "[2024] HKDC 1354",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1354#p13"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1354_hksar_v_ko_chun_fung_p9_principle",
+      "case_id": "hk_hkdc_2024_1354_hksar_v_ko_chun_fung",
+      "case_name": "HKSAR v KO Chun-fung",
+      "neutral_citation": "[2024] HKDC 1354",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1354#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1354_hksar_v_ko_chun_fung_p12_principle",
+      "case_id": "hk_hkdc_2024_1354_hksar_v_ko_chun_fung",
+      "case_name": "HKSAR v KO Chun-fung",
+      "neutral_citation": "[2024] HKDC 1354",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1354#p12"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p10_principle",
+      "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+      "case_name": "HKSAR v CHRISTOPHER OKECHI NWOSU",
+      "neutral_citation": "[2021] HKDC 1077",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1077#p10"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p16_principle",
+      "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+      "case_name": "HKSAR v CHRISTOPHER OKECHI NWOSU",
+      "neutral_citation": "[2021] HKDC 1077",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1077#p16"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu_p24_principle",
+      "case_id": "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu",
+      "case_name": "HKSAR v CHRISTOPHER OKECHI NWOSU",
+      "neutral_citation": "[2021] HKDC 1077",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1077#p24"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_427_hksar_v_kwong_man_chun_p12_principle",
+      "case_id": "hk_hkdc_2024_427_hksar_v_kwong_man_chun",
+      "case_name": "HKSAR v KWONG Man-chun",
+      "neutral_citation": "[2024] HKDC 427",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/427#p12"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_427_hksar_v_kwong_man_chun_p19_principle",
+      "case_id": "hk_hkdc_2024_427_hksar_v_kwong_man_chun",
+      "case_name": "HKSAR v KWONG Man-chun",
+      "neutral_citation": "[2024] HKDC 427",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/427#p19"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_427_hksar_v_kwong_man_chun_p6_principle",
+      "case_id": "hk_hkdc_2024_427_hksar_v_kwong_man_chun",
+      "case_name": "HKSAR v KWONG Man-chun",
+      "neutral_citation": "[2024] HKDC 427",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/427#p6"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_2039_hksar_v_cheung_kwan_po_p14_principle",
+      "case_id": "hk_hkdc_2024_2039_hksar_v_cheung_kwan_po",
+      "case_name": "HKSAR v CHEUNG Kwan-po",
+      "neutral_citation": "[2024] HKDC 2039",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/2039#p14"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_230_hksar_v_lam_see_chung_stephen_p1_principle",
+      "case_id": "hk_hkdc_2021_230_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 230",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/230#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_230_hksar_v_lam_see_chung_stephen_p22_principle",
+      "case_id": "hk_hkdc_2021_230_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 230",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/230#p22"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_230_hksar_v_lam_see_chung_stephen_p13_principle",
+      "case_id": "hk_hkdc_2021_230_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 230",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/230#p13"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang_p5_principle",
+      "case_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang",
+      "case_name": "HKSAR v TANG CHI WANG",
+      "neutral_citation": "[2024] HKDC 2191",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/2191#p5"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang_p14_principle",
+      "case_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang",
+      "case_name": "HKSAR v TANG CHI WANG",
+      "neutral_citation": "[2024] HKDC 2191",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/2191#p14"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang_p15_principle",
+      "case_id": "hk_hkdc_2024_2191_hksar_v_tang_chi_wang",
+      "case_name": "HKSAR v TANG CHI WANG",
+      "neutral_citation": "[2024] HKDC 2191",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/2191#p15"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald_p9_principle",
+      "case_id": "hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald",
+      "case_name": "HKSAR v HO HING PAN, RONALD",
+      "neutral_citation": "[2021] HKDC 1367",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1367#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald_p23_principle",
+      "case_id": "hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald",
+      "case_name": "HKSAR v HO HING PAN, RONALD",
+      "neutral_citation": "[2021] HKDC 1367",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1367#p23"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald_p10_principle",
+      "case_id": "hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald",
+      "case_name": "HKSAR v HO HING PAN, RONALD",
+      "neutral_citation": "[2021] HKDC 1367",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1367#p10"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent_p34_principle",
+      "case_id": "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+      "case_name": "Secretary for Justice Applicant v Chung Pui-kit, Billy (鍾沛傑) Respondent",
+      "neutral_citation": "[2023] HKCA 496",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2023/496#p34"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent_p33_principle",
+      "case_id": "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+      "case_name": "Secretary for Justice Applicant v Chung Pui-kit, Billy (鍾沛傑) Respondent",
+      "neutral_citation": "[2023] HKCA 496",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2023/496#p33"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_456_hksar_v_wun_pik_chun_p1_principle",
+      "case_id": "hk_hkdc_2021_456_hksar_v_wun_pik_chun",
+      "case_name": "HKSAR v WUN PIK CHUN",
+      "neutral_citation": "[2021] HKDC 456",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/456#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_456_hksar_v_wun_pik_chun_p15_principle",
+      "case_id": "hk_hkdc_2021_456_hksar_v_wun_pik_chun",
+      "case_name": "HKSAR v WUN PIK CHUN",
+      "neutral_citation": "[2021] HKDC 456",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/456#p15"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1_p22_principle",
+      "case_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1",
+      "case_name": "HKSAR v WONG Ngai-pan (also known as WONG Ngai-pun) (D1)",
+      "neutral_citation": "[2021] HKDC 86",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/86#p22"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1_p27_principle",
+      "case_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1",
+      "case_name": "HKSAR v WONG Ngai-pan (also known as WONG Ngai-pun) (D1)",
+      "neutral_citation": "[2021] HKDC 86",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/86#p27"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1_p5_principle",
+      "case_id": "hk_hkdc_2021_86_hksar_v_wong_ngai_pan_also_known_as_wong_ngai_pun_d1",
+      "case_name": "HKSAR v WONG Ngai-pan (also known as WONG Ngai-pun) (D1)",
+      "neutral_citation": "[2021] HKDC 86",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/86#p5"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_135_hksar_v_singh_gursewak_p20_principle",
+      "case_id": "hk_hkdc_2025_135_hksar_v_singh_gursewak",
+      "case_name": "HKSAR v SINGH GURSEWAK",
+      "neutral_citation": "[2025] HKDC 135",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/135#p20"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_135_hksar_v_singh_gursewak_p37_principle",
+      "case_id": "hk_hkdc_2025_135_hksar_v_singh_gursewak",
+      "case_name": "HKSAR v SINGH GURSEWAK",
+      "neutral_citation": "[2025] HKDC 135",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/135#p37"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_351_hksar_v_chan_ngor_lung_p14_principle",
+      "case_id": "hk_hkdc_2025_351_hksar_v_chan_ngor_lung",
+      "case_name": "HKSAR v Chan Ngor Lung",
+      "neutral_citation": "[2025] HKDC 351",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/351#p14"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_450_hksar_v_so_ka_wai_p22_principle",
+      "case_id": "hk_hkdc_2026_450_hksar_v_so_ka_wai",
+      "case_name": "HKSAR v SO Ka-wai",
+      "neutral_citation": "[2026] HKDC 450",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/450#p22"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_450_hksar_v_so_ka_wai_p8_principle",
+      "case_id": "hk_hkdc_2026_450_hksar_v_so_ka_wai",
+      "case_name": "HKSAR v SO Ka-wai",
+      "neutral_citation": "[2026] HKDC 450",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/450#p8"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_450_hksar_v_so_ka_wai_p16_principle",
+      "case_id": "hk_hkdc_2026_450_hksar_v_so_ka_wai",
+      "case_name": "HKSAR v SO Ka-wai",
+      "neutral_citation": "[2026] HKDC 450",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/450#p16"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_466_hksar_v_chan_nok_him_franco_p9_principle",
+      "case_id": "hk_hkdc_2026_466_hksar_v_chan_nok_him_franco",
+      "case_name": "HKSAR v CHAN NOK HIM, FRANCO",
+      "neutral_citation": "[2026] HKDC 466",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/466#p9"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant_p15_principle",
+      "case_id": "hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant",
+      "case_name": "BETWEEN HKSAR Respondent and Leong How Seng (梁厚誠) Applicant",
+      "neutral_citation": "[2025] HKCA 981",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2025/981#p15"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_778_hksar_v_pop_laszlo_elemer_d1_p19_principle",
+      "case_id": "hk_hkdc_2026_778_hksar_v_pop_laszlo_elemer_d1",
+      "case_name": "HKSAR v POP LASZLO ELEMER (D1)",
+      "neutral_citation": "[2026] HKDC 778",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/778#p19"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_778_hksar_v_pop_laszlo_elemer_d1_p12_principle",
+      "case_id": "hk_hkdc_2026_778_hksar_v_pop_laszlo_elemer_d1",
+      "case_name": "HKSAR v POP LASZLO ELEMER (D1)",
+      "neutral_citation": "[2026] HKDC 778",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/778#p12"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_778_hksar_v_pop_laszlo_elemer_d1_p20_principle",
+      "case_id": "hk_hkdc_2026_778_hksar_v_pop_laszlo_elemer_d1",
+      "case_name": "HKSAR v POP LASZLO ELEMER (D1)",
+      "neutral_citation": "[2026] HKDC 778",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/778#p20"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_113_hksar_v_so_man_ho_p22_principle",
+      "case_id": "hk_hkdc_2025_113_hksar_v_so_man_ho",
+      "case_name": "HKSAR v SO Man-ho",
+      "neutral_citation": "[2025] HKDC 113",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/113#p22"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_113_hksar_v_so_man_ho_p6_principle",
+      "case_id": "hk_hkdc_2025_113_hksar_v_so_man_ho",
+      "case_name": "HKSAR v SO Man-ho",
+      "neutral_citation": "[2025] HKDC 113",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/113#p6"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_113_hksar_v_so_man_ho_p21_principle",
+      "case_id": "hk_hkdc_2025_113_hksar_v_so_man_ho",
+      "case_name": "HKSAR v SO Man-ho",
+      "neutral_citation": "[2025] HKDC 113",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/113#p21"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam_p1_principle",
+      "case_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam",
+      "case_name": "HKSAR v LAM Hiu-laam",
+      "neutral_citation": "[2025] HKDC 781",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/781#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam_p12_principle",
+      "case_id": "hk_hkdc_2025_781_hksar_v_lam_hiu_laam",
+      "case_name": "HKSAR v LAM Hiu-laam",
+      "neutral_citation": "[2025] HKDC 781",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/781#p12"
+      ]
+    },
+    {
+      "principle_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant_p1_principle",
+      "case_id": "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+      "case_name": "BETWEEN HKSAR Respondent and CHAN Wai-ho (陳偉豪) Appellant",
+      "neutral_citation": "[2021] HKCFI 3439",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2021/3439#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_902_hksar_v_dashpal_singh_d1_p1_principle",
+      "case_id": "hk_hkdc_2021_902_hksar_v_dashpal_singh_d1",
+      "case_name": "HKSAR v DASHPAL SINGH D1",
+      "neutral_citation": "[2021] HKDC 902",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/902#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_902_hksar_v_dashpal_singh_d1_p10_principle",
+      "case_id": "hk_hkdc_2021_902_hksar_v_dashpal_singh_d1",
+      "case_name": "HKSAR v DASHPAL SINGH D1",
+      "neutral_citation": "[2021] HKDC 902",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/902#p10"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_2118_hksar_v_guan_xinghua_d2_p11_principle",
+      "case_id": "hk_hkdc_2025_2118_hksar_v_guan_xinghua_d2",
+      "case_name": "HKSAR v GUAN Xinghua (D2)",
+      "neutral_citation": "[2025] HKDC 2118",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/2118#p11"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_2118_hksar_v_guan_xinghua_d2_p18_principle",
+      "case_id": "hk_hkdc_2025_2118_hksar_v_guan_xinghua_d2",
+      "case_name": "HKSAR v GUAN Xinghua (D2)",
+      "neutral_citation": "[2025] HKDC 2118",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/2118#p18"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao_p1_principle",
+      "case_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao",
+      "case_name": "HKSAR v DONG JIAHAO",
+      "neutral_citation": "[2025] HKDC 1524",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/1524#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao_p14_principle",
+      "case_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao",
+      "case_name": "HKSAR v DONG JIAHAO",
+      "neutral_citation": "[2025] HKDC 1524",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/1524#p14"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao_p23_principle",
+      "case_id": "hk_hkdc_2025_1524_hksar_v_dong_jiahao",
+      "case_name": "HKSAR v DONG JIAHAO",
+      "neutral_citation": "[2025] HKDC 1524",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/1524#p23"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_194_hksar_v_zhao_jiaxin_p1_principle",
+      "case_id": "hk_hkdc_2025_194_hksar_v_zhao_jiaxin",
+      "case_name": "HKSAR v Zhao Jiaxin",
+      "neutral_citation": "[2025] HKDC 194",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/194#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_194_hksar_v_zhao_jiaxin_p24_principle",
+      "case_id": "hk_hkdc_2025_194_hksar_v_zhao_jiaxin",
+      "case_name": "HKSAR v Zhao Jiaxin",
+      "neutral_citation": "[2025] HKDC 194",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/194#p24"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_194_hksar_v_zhao_jiaxin_p11_principle",
+      "case_id": "hk_hkdc_2025_194_hksar_v_zhao_jiaxin",
+      "case_name": "HKSAR v Zhao Jiaxin",
+      "neutral_citation": "[2025] HKDC 194",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/194#p11"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_1371_hksar_v_li_yip_kin_ken_p2_principle",
+      "case_id": "hk_hkdc_2025_1371_hksar_v_li_yip_kin_ken",
+      "case_name": "HKSAR v LI YIP KIN KEN",
+      "neutral_citation": "[2025] HKDC 1371",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/1371#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin_p15_principle",
+      "case_id": "hk_hkdc_2021_1660_hksar_v_wong_hei_yin",
+      "case_name": "HKSAR v WONG HEI YIN",
+      "neutral_citation": "[2021] HKDC 1660",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1660#p15"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant_p36_principle",
+      "case_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant",
+      "case_name": "HKSAR v TSAGAACH BAATAR 1 st Defendant BALDORJ MYAGMARJAV 2 nd Defendant",
+      "neutral_citation": "[2026] HKDC 801",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/801#p36"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant_p1_principle",
+      "case_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant",
+      "case_name": "HKSAR v TSAGAACH BAATAR 1 st Defendant BALDORJ MYAGMARJAV 2 nd Defendant",
+      "neutral_citation": "[2026] HKDC 801",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/801#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant_p2_principle",
+      "case_id": "hk_hkdc_2026_801_hksar_v_tsagaach_baatar_1_st_defendant_baldorj_myagmarjav_2_nd_defendant",
+      "case_name": "HKSAR v TSAGAACH BAATAR 1 st Defendant BALDORJ MYAGMARJAV 2 nd Defendant",
+      "neutral_citation": "[2026] HKDC 801",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/801#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n_p2_principle",
+      "case_id": "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+      "case_name": "HKSAR Respondent v WONG CHUN YIN (D1) 1st Applicant MUHAMMAD SHEHBAZ (D2) 2nd Applicant",
+      "neutral_citation": "[2021] HKCA 1529",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2021/1529#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n_p13_principle",
+      "case_id": "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+      "case_name": "HKSAR Respondent v WONG CHUN YIN (D1) 1st Applicant MUHAMMAD SHEHBAZ (D2) 2nd Applicant",
+      "neutral_citation": "[2021] HKCA 1529",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2021/1529#p13"
+      ]
+    },
+    {
+      "principle_id": "hk_hkcfi_2025_5690_hksar_v_chau_ka_kuen_defendant_p41_principle",
+      "case_id": "hk_hkcfi_2025_5690_hksar_v_chau_ka_kuen_defendant",
+      "case_name": "HKSAR v CHAU KA KUEN (周家權) Defendant",
+      "neutral_citation": "[2025] HKCFI 5690",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2025/5690#p41"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung_p8_principle",
+      "case_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung",
+      "case_name": "HKSAR v LAI KING FUNG",
+      "neutral_citation": "[2024] HKDC 466",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/466#p8"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung_p21_principle",
+      "case_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung",
+      "case_name": "HKSAR v LAI KING FUNG",
+      "neutral_citation": "[2024] HKDC 466",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/466#p21"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung_p33_principle",
+      "case_id": "hk_hkdc_2024_466_hksar_v_lai_king_fung",
+      "case_name": "HKSAR v LAI KING FUNG",
+      "neutral_citation": "[2024] HKDC 466",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/466#p33"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_788_hksar_v_cheung_ka_chun_d1_wong_kiu_ngai_d2_p28_principle",
+      "case_id": "hk_hkdc_2024_788_hksar_v_cheung_ka_chun_d1_wong_kiu_ngai_d2",
+      "case_name": "HKSAR v CHEUNG Ka-chun (D1) WONG Kiu-ngai (D2)",
+      "neutral_citation": "[2024] HKDC 788",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/788#p28"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_788_hksar_v_cheung_ka_chun_d1_wong_kiu_ngai_d2_p24_principle",
+      "case_id": "hk_hkdc_2024_788_hksar_v_cheung_ka_chun_d1_wong_kiu_ngai_d2",
+      "case_name": "HKSAR v CHEUNG Ka-chun (D1) WONG Kiu-ngai (D2)",
+      "neutral_citation": "[2024] HKDC 788",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/788#p24"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_788_hksar_v_cheung_ka_chun_d1_wong_kiu_ngai_d2_p27_principle",
+      "case_id": "hk_hkdc_2024_788_hksar_v_cheung_ka_chun_d1_wong_kiu_ngai_d2",
+      "case_name": "HKSAR v CHEUNG Ka-chun (D1) WONG Kiu-ngai (D2)",
+      "neutral_citation": "[2024] HKDC 788",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/788#p27"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_725_hksar_v_tam_kwok_leung_d1_p18_principle",
+      "case_id": "hk_hkdc_2021_725_hksar_v_tam_kwok_leung_d1",
+      "case_name": "HKSAR v TAM KWOK LEUNG (D1)",
+      "neutral_citation": "[2021] HKDC 725",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/725#p18"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_725_hksar_v_tam_kwok_leung_d1_p28_principle",
+      "case_id": "hk_hkdc_2021_725_hksar_v_tam_kwok_leung_d1",
+      "case_name": "HKSAR v TAM KWOK LEUNG (D1)",
+      "neutral_citation": "[2021] HKDC 725",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/725#p28"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_725_hksar_v_tam_kwok_leung_d1_p45_principle",
+      "case_id": "hk_hkdc_2021_725_hksar_v_tam_kwok_leung_d1",
+      "case_name": "HKSAR v TAM KWOK LEUNG (D1)",
+      "neutral_citation": "[2021] HKDC 725",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/725#p45"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_741_hksar_v_fang_siyuan_p29_principle",
+      "case_id": "hk_hkdc_2026_741_hksar_v_fang_siyuan",
+      "case_name": "HKSAR v FANG SIYUAN",
+      "neutral_citation": "[2026] HKDC 741",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/741#p29"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_741_hksar_v_fang_siyuan_p28_principle",
+      "case_id": "hk_hkdc_2026_741_hksar_v_fang_siyuan",
+      "case_name": "HKSAR v FANG SIYUAN",
+      "neutral_citation": "[2026] HKDC 741",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/741#p28"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_741_hksar_v_fang_siyuan_p13_principle",
+      "case_id": "hk_hkdc_2026_741_hksar_v_fang_siyuan",
+      "case_name": "HKSAR v FANG SIYUAN",
+      "neutral_citation": "[2026] HKDC 741",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/741#p13"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_2090_hksar_v_chan_lok_him_p28_principle",
+      "case_id": "hk_hkdc_2025_2090_hksar_v_chan_lok_him",
+      "case_name": "HKSAR v Chan Lok Him",
+      "neutral_citation": "[2025] HKDC 2090",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/2090#p28"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_2090_hksar_v_chan_lok_him_p22_principle",
+      "case_id": "hk_hkdc_2025_2090_hksar_v_chan_lok_him",
+      "case_name": "HKSAR v Chan Lok Him",
+      "neutral_citation": "[2025] HKDC 2090",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/2090#p22"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_2090_hksar_v_chan_lok_him_p23_principle",
+      "case_id": "hk_hkdc_2025_2090_hksar_v_chan_lok_him",
+      "case_name": "HKSAR v Chan Lok Him",
+      "neutral_citation": "[2025] HKDC 2090",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/2090#p23"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_1674_hksar_v_kothari_chirag_d_p15_principle",
+      "case_id": "hk_hkdc_2025_1674_hksar_v_kothari_chirag_d",
+      "case_name": "HKSAR v KOTHARI CHIRAG (D)",
+      "neutral_citation": "[2025] HKDC 1674",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/1674#p15"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_1674_hksar_v_kothari_chirag_d_p16_principle",
+      "case_id": "hk_hkdc_2025_1674_hksar_v_kothari_chirag_d",
+      "case_name": "HKSAR v KOTHARI CHIRAG (D)",
+      "neutral_citation": "[2025] HKDC 1674",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/1674#p16"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2025_518_between_hksar_respondent_and_chow_kuen_fung_d1_applicant_p2_principle",
+      "case_id": "hk_hkca_2025_518_between_hksar_respondent_and_chow_kuen_fung_d1_applicant",
+      "case_name": "BETWEEN HKSAR Respondent and Chow Kuen Fung (周權鋒) (D1) Applicant",
+      "neutral_citation": "[2025] HKCA 518",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2025/518#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2025_518_between_hksar_respondent_and_chow_kuen_fung_d1_applicant_p17_principle",
+      "case_id": "hk_hkca_2025_518_between_hksar_respondent_and_chow_kuen_fung_d1_applicant",
+      "case_name": "BETWEEN HKSAR Respondent and Chow Kuen Fung (周權鋒) (D1) Applicant",
+      "neutral_citation": "[2025] HKCA 518",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2025/518#p17"
+      ]
+    },
+    {
+      "principle_id": "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant_p1_principle",
+      "case_id": "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant",
+      "case_name": "HKSAR Respondent and LIMBU, SURYA PRASAD Appellant",
+      "neutral_citation": "[2024] HKCFI 415",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2024/415#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_2201_hksar_v_meng_caiyi_p8_principle",
+      "case_id": "hk_hkdc_2025_2201_hksar_v_meng_caiyi",
+      "case_name": "HKSAR v MENG CAIYI",
+      "neutral_citation": "[2025] HKDC 2201",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/2201#p8"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_2201_hksar_v_meng_caiyi_p27_principle",
+      "case_id": "hk_hkdc_2025_2201_hksar_v_meng_caiyi",
+      "case_name": "HKSAR v MENG CAIYI",
+      "neutral_citation": "[2025] HKDC 2201",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/2201#p27"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_2201_hksar_v_meng_caiyi_p46_principle",
+      "case_id": "hk_hkdc_2025_2201_hksar_v_meng_caiyi",
+      "case_name": "HKSAR v MENG CAIYI",
+      "neutral_citation": "[2025] HKDC 2201",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/2201#p46"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_400_hksar_v_chung_hiu_tung_p1_principle",
+      "case_id": "hk_hkdc_2024_400_hksar_v_chung_hiu_tung",
+      "case_name": "HKSAR v CHUNG HIU TUNG",
+      "neutral_citation": "[2024] HKDC 400",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/400#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_400_hksar_v_chung_hiu_tung_p36_principle",
+      "case_id": "hk_hkdc_2024_400_hksar_v_chung_hiu_tung",
+      "case_name": "HKSAR v CHUNG HIU TUNG",
+      "neutral_citation": "[2024] HKDC 400",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/400#p36"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_400_hksar_v_chung_hiu_tung_p19_principle",
+      "case_id": "hk_hkdc_2024_400_hksar_v_chung_hiu_tung",
+      "case_name": "HKSAR v CHUNG HIU TUNG",
+      "neutral_citation": "[2024] HKDC 400",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/400#p19"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_220_hksar_v_ylagan_ester_p_p41_principle",
+      "case_id": "hk_hkdc_2024_220_hksar_v_ylagan_ester_p",
+      "case_name": "HKSAR v YLAGAN ESTER P",
+      "neutral_citation": "[2024] HKDC 220",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability",
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/220#p41"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_543_hksar_v_lam_yuk_d1_lau_kwok_on_d2_p38_principle",
+      "case_id": "hk_hkdc_2025_543_hksar_v_lam_yuk_d1_lau_kwok_on_d2",
+      "case_name": "HKSAR v LAM YUK (D1) LAU KWOK ON (D2)",
+      "neutral_citation": "[2025] HKDC 543",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/543#p38"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_543_hksar_v_lam_yuk_d1_lau_kwok_on_d2_p49_principle",
+      "case_id": "hk_hkdc_2025_543_hksar_v_lam_yuk_d1_lau_kwok_on_d2",
+      "case_name": "HKSAR v LAM YUK (D1) LAU KWOK ON (D2)",
+      "neutral_citation": "[2025] HKDC 543",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/543#p49"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2025_543_hksar_v_lam_yuk_d1_lau_kwok_on_d2_p29_principle",
+      "case_id": "hk_hkdc_2025_543_hksar_v_lam_yuk_d1_lau_kwok_on_d2",
+      "case_name": "HKSAR v LAM YUK (D1) LAU KWOK ON (D2)",
+      "neutral_citation": "[2025] HKDC 543",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2025/543#p29"
+      ]
+    },
+    {
+      "principle_id": "hk_hkcfi_2025_1047_hksar_v_leong_how_seng_defendant_p1_principle",
+      "case_id": "hk_hkcfi_2025_1047_hksar_v_leong_how_seng_defendant",
+      "case_name": "HKSAR v LEONG HOW SENG (梁厚誠) Defendant",
+      "neutral_citation": "[2025] HKCFI 1047",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2025/1047#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkcfi_2025_1047_hksar_v_leong_how_seng_defendant_p2_principle",
+      "case_id": "hk_hkcfi_2025_1047_hksar_v_leong_how_seng_defendant",
+      "case_name": "HKSAR v LEONG HOW SENG (梁厚誠) Defendant",
+      "neutral_citation": "[2025] HKCFI 1047",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2025/1047#p2"
+      ]
+    },
+    {
+      "principle_id": "hk_hkcfi_2025_1047_hksar_v_leong_how_seng_defendant_p15_principle",
+      "case_id": "hk_hkcfi_2025_1047_hksar_v_leong_how_seng_defendant",
+      "case_name": "HKSAR v LEONG HOW SENG (梁厚誠) Defendant",
+      "neutral_citation": "[2025] HKCFI 1047",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2025/1047#p15"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen_p1_principle",
+      "case_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 236",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/236#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen_p28_principle",
+      "case_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 236",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/236#p28"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen_p31_principle",
+      "case_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 236",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/236#p31"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen_p34_principle",
+      "case_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 236",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/236#p34"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen_p46_principle",
+      "case_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 236",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/236#p46"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen_p49_principle",
+      "case_id": "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 236",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/236#p49"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki_p1_principle",
+      "case_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki",
+      "case_name": "HKSAR v LAM KA KI",
+      "neutral_citation": "[2023] HKDC 395",
+      "liability_relevance": "background",
+      "demotion_reasons": [
+        "background_only_not_principle"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/395#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki_p22_principle",
+      "case_id": "hk_hkdc_2023_395_hksar_v_lam_ka_ki",
+      "case_name": "HKSAR v LAM KA KI",
+      "neutral_citation": "[2023] HKDC 395",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/395#p22"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_165_hksar_v_lam_see_chung_stephen_p1_principle",
+      "case_id": "hk_hkdc_2021_165_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 165",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/165#p1"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_165_hksar_v_lam_see_chung_stephen_p39_principle",
+      "case_id": "hk_hkdc_2021_165_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 165",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/165#p39"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_165_hksar_v_lam_see_chung_stephen_p47_principle",
+      "case_id": "hk_hkdc_2021_165_hksar_v_lam_see_chung_stephen",
+      "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+      "neutral_citation": "[2021] HKDC 165",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/165#p47"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_1820_hksar_v_mohammad_shahzad_d1_p28_principle",
+      "case_id": "hk_hkdc_2023_1820_hksar_v_mohammad_shahzad_d1",
+      "case_name": "HKSAR v MOHAMMAD SHAHZAD (D1)",
+      "neutral_citation": "[2023] HKDC 1820",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/1820#p28"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_97_hksar_v_wong_wai_hon_d2_p6_principle",
+      "case_id": "hk_hkdc_2026_97_hksar_v_wong_wai_hon_d2",
+      "case_name": "HKSAR v WONG WAI HON (D2)",
+      "neutral_citation": "[2026] HKDC 97",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/97#p6"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2022_913_hksar_v_chung_karman_p29_principle",
+      "case_id": "hk_hkdc_2022_913_hksar_v_chung_karman",
+      "case_name": "HKSAR v CHUNG KARMAN",
+      "neutral_citation": "[2022] HKDC 913",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2022/913#p29"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant_p5_principle",
+      "case_id": "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant",
+      "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+      "neutral_citation": "[2022] HKCA 1135",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2022/1135#p5"
+      ]
+    },
+    {
+      "principle_id": "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant_p3_principle",
+      "case_id": "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant",
+      "case_name": "BETWEEN HKSAR Respondent and Chan Pui-Yu Appellant",
+      "neutral_citation": "[2024] HKCFI 3560",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2024/3560#p3"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1158_hksar_v_wun_kam_po_p19_principle",
+      "case_id": "hk_hkdc_2021_1158_hksar_v_wun_kam_po",
+      "case_name": "HKSAR v Wun Kam Po",
+      "neutral_citation": "[2021] HKDC 1158",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "quote_context_insufficient",
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1158#p19"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_1158_hksar_v_wun_kam_po_p20_principle",
+      "case_id": "hk_hkdc_2021_1158_hksar_v_wun_kam_po",
+      "case_name": "HKSAR v Wun Kam Po",
+      "neutral_citation": "[2021] HKDC 1158",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "procedural_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/1158#p20"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2021_575_hksar_v_wong_nok_yin_d1_chung_chin_ming_d2_sing_ming_fung_d3_chan_ka_yee_p77_principle",
+      "case_id": "hk_hkdc_2021_575_hksar_v_wong_nok_yin_d1_chung_chin_ming_d2_sing_ming_fung_d3_chan_ka_yee",
+      "case_name": "HKSAR v WONG NOK YIN (D1) CHUNG CHIN MING (D2) SING MING FUNG (D3) CHAN KA YEE (D4) KO SHING YUEN (D5)",
+      "neutral_citation": "[2021] HKDC 575",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2021/575#p77"
+      ]
+    },
+    {
+      "principle_id": "hk_hkca_2023_396_hksar_respondent_v_christopher_okechi_nwosu_appellant_p5_principle",
+      "case_id": "hk_hkca_2023_396_hksar_respondent_v_christopher_okechi_nwosu_appellant",
+      "case_name": "HKSAR Respondent v Christopher Okechi Nwosu Appellant",
+      "neutral_citation": "[2023] HKCA 396",
+      "liability_relevance": "liability",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkca/2023/396#p5"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4_p51_principle",
+      "case_id": "hk_hkdc_2024_1195_hksar_v_ng_kong_fai_d1_chan_sze_to_d2_lee_hon_ki_d3_chi_kin_on_d4",
+      "case_name": "HKSAR v NG KONG FAI (D1) CHAN SZE TO (D2) LEE HON KI (D3) CHI KIN ON (D4)",
+      "neutral_citation": "[2024] HKDC 1195",
+      "liability_relevance": "procedure",
+      "demotion_reasons": [
+        "quote_context_insufficient"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2024/1195#p51"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2026_358_hksar_v_maria_maninder_singh_p11_principle",
+      "case_id": "hk_hkdc_2026_358_hksar_v_maria_maninder_singh",
+      "case_name": "HKSAR v MARIA MANINDER SINGH",
+      "neutral_citation": "[2026] HKDC 358",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2026/358#p11"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_924_hksar_v_cheung_chi_chiu_p27_principle",
+      "case_id": "hk_hkdc_2023_924_hksar_v_cheung_chi_chiu",
+      "case_name": "HKSAR v CHEUNG CHI CHIU",
+      "neutral_citation": "[2023] HKDC 924",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/924#p27"
+      ]
+    },
+    {
+      "principle_id": "hk_hkdc_2023_924_hksar_v_cheung_chi_chiu_p28_principle",
+      "case_id": "hk_hkdc_2023_924_hksar_v_cheung_chi_chiu",
+      "case_name": "HKSAR v CHEUNG CHI CHIU",
+      "neutral_citation": "[2023] HKDC 924",
+      "liability_relevance": "sentencing",
+      "demotion_reasons": [
+        "sentencing_only_not_liability"
+      ],
+      "source_urls": [
+        "https://www.hklii.hk/en/cases/hkdc/2023/924#p28"
+      ]
+    }
+  ]
+}

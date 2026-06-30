@@ -1,0 +1,92 @@
+{
+  "eval_suite_id": "case_corpus_retrieval_eval_sample_v1",
+  "created_at": "2026-06-29",
+  "scope": "L1-L3.5 research-only criminal case corpus retrieval; no answer-safe claims.",
+  "queries": [
+    {
+      "query_id": "theft_dishonesty",
+      "query": "What are the dishonesty issues in a theft allegation?",
+      "issue_id": "criminal_law.theft.dishonesty",
+      "expected_issue_ids": ["criminal_law.theft.dishonesty"],
+      "negative": false
+    },
+    {
+      "query_id": "forgot_to_pay",
+      "query": "I forgot to pay at a shop and security stopped me. What mens rea and dishonesty cases help?",
+      "issue_id": "criminal_law.theft.dishonesty",
+      "expected_issue_ids": ["criminal_law.theft.dishonesty", "criminal_law.theft.mens_rea"],
+      "negative": false
+    },
+    {
+      "query_id": "intention_permanently_deprive",
+      "query": "How should I research intention permanently to deprive in a theft case?",
+      "issue_id": "criminal_law.theft",
+      "expected_issue_ids": ["criminal_law.theft"],
+      "negative": false
+    },
+    {
+      "query_id": "appropriation",
+      "query": "What cases discuss appropriation or taking property in theft-linked offences?",
+      "issue_id": "criminal_law.theft.appropriation",
+      "expected_issue_ids": ["criminal_law.theft.appropriation"],
+      "negative": false
+    },
+    {
+      "query_id": "belonging_to_another",
+      "query": "What research cases touch property belonging to another in theft?",
+      "issue_id": "criminal_law.theft.belonging_to_another",
+      "expected_issue_ids": ["criminal_law.theft.belonging_to_another"],
+      "negative": false
+    },
+    {
+      "query_id": "theft_sentencing",
+      "query": "What theft sentencing cases are in the sample corpus?",
+      "issue_id": "criminal_law.theft.sentencing",
+      "expected_issue_ids": ["criminal_law.theft.sentencing"],
+      "negative": false
+    },
+    {
+      "query_id": "fraud_dishonesty",
+      "query": "Fraud and deception dishonesty cases for criminal research.",
+      "issue_id": "criminal_law.fraud",
+      "expected_issue_ids": ["criminal_law.fraud", "criminal_law.deception"],
+      "negative": false
+    },
+    {
+      "query_id": "caution_interview",
+      "query": "Cases with caution or interview evidence in theft or deception matters.",
+      "issue_id": "criminal_procedure.interview_caution",
+      "expected_issue_ids": ["criminal_procedure.interview_caution"],
+      "negative": false
+    },
+    {
+      "query_id": "shoplifting_without_paying",
+      "query": "Shoplifting without paying and later saying it was an accident or mistake.",
+      "issue_id": "criminal_law.theft.dishonesty",
+      "expected_issue_ids": ["criminal_law.theft.dishonesty", "criminal_law.theft.mens_rea", "criminal_law.theft"],
+      "negative": false
+    },
+    {
+      "query_id": "exact_citation_lookup",
+      "query": "Find [2022] HKCFI 1962 and explain the dishonesty paragraph in the theft appeal.",
+      "issue_id": "criminal_law.theft.dishonesty",
+      "expected_issue_ids": ["criminal_law.theft.dishonesty", "criminal_law.dishonesty"],
+      "expected_case_ids": ["hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant"],
+      "negative": false
+    },
+    {
+      "query_id": "case_name_lookup",
+      "query": "Khan Altaf theft sentence pick pocketing aggravating features",
+      "issue_id": "criminal_law.theft.sentencing",
+      "expected_issue_ids": ["criminal_law.theft.sentencing"],
+      "expected_case_ids": ["hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant"],
+      "negative": false
+    },
+    {
+      "query_id": "unsupported_landlord_rent",
+      "query": "Can my landlord increase rent for my Hong Kong flat next month?",
+      "expected_issue_ids": [],
+      "negative": true
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "manifest_id": "candidate_verified_cards_manifest_v1",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "source_report": "artifacts/candidate_extraction_verification_report.json",
+  "output_dir": "data/legal_ingest/case_corpus/candidate_verified",
+  "paragraph_cards_added": 120,
+  "propositions_added": 120,
+  "principles_added": 106,
+  "digests_added": 40,
+  "issue_map_records_added": 205,
+  "cards_demoted": 226,
+  "demotion_reasons": {
+    "current_treatment_unchecked": 40,
+    "issue_tag_overbroad": 36,
+    "quote_context_insufficient": 25,
+    "sentencing_only_not_liability": 25,
+    "quote_too_short": 7,
+    "background_only_not_principle": 3
+  },
+  "answer_safe_count": 0,
+  "authority_policy": "Generated cards remain research_only; candidate source tools are not authority.",
+  "outputs": {
+    "paragraph_cards": "data/legal_ingest/case_corpus/candidate_verified/paragraph_cards_from_candidates.jsonl",
+    "proposition_cards": "data/legal_ingest/case_corpus/candidate_verified/proposition_cards_from_candidates.jsonl",
+    "principle_cards": "data/legal_ingest/case_corpus/candidate_verified/principle_cards_from_candidates.jsonl",
+    "case_digest_cards": "data/legal_ingest/case_corpus/candidate_verified/case_digest_cards_from_candidates.jsonl",
+    "issue_map": "data/legal_ingest/case_corpus/candidate_verified/issue_case_map_from_candidates.jsonl"
+  }
+}

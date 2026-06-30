@@ -1,0 +1,241 @@
+{
+  "rule_deck_id": "probate_intestacy_distribution_v1",
+  "domain": "probate_law_hk",
+  "scenario": "intestate_administration",
+  "subscenario": "intestacy_distribution_issue_statutory_trusts",
+  "title": "Applied Probate Analysis - Intestacy Distribution And Minor Beneficiaries",
+  "answer_mode": "probate_metadata_source_gated",
+  "status": "source_gated_rule_card_deck",
+  "purpose": "Fact-sensitive probate intestacy analysis without embedding final legal prose in the composer.",
+  "answer_blueprint": {
+    "title": "Applied Probate Analysis - Intestacy Distribution And Minor Beneficiaries",
+    "short_answer": "Do not answer this as a will/executor form question. It is an intestacy distribution question first: identify the governing law, whether a surviving spouse exists, and whether the granddaughters' parent predeceased the deceased. If Hong Kong intestacy applies and there is no surviving spouse, the estate is held on statutory trusts for issue; living children take at the child level, and grandchildren take only through a deceased parent's branch. Any minor beneficiary's share must be administered through the relevant trust/guardian route until full age or another statutory vesting condition is met.",
+    "sections": [
+      {
+        "heading": "Governing Law / Assumptions",
+        "items": [
+          {
+            "include_if": { "all": ["foreign_connection"] },
+            "text": "The place of death being the US is not enough by itself. First identify domicile and asset situs: Hong Kong succession analysis is strongest for Hong Kong-situated assets and/or a Hong Kong domicile question; US domicile or US assets may require the relevant US state law."
+          },
+          {
+            "include_if": { "none": ["foreign_connection"] },
+            "text": "First identify domicile and asset situs. Hong Kong succession analysis depends on the estate/property connection, not only on family relationship labels."
+          },
+          {
+            "text": "This analysis assumes there is no valid will and no surviving spouse. If there is a spouse, spouse-entitlement rules must be analysed before the children/grandchildren split."
+          },
+          {
+            "text": "The granddaughters' entitlement turns on a missing fact: whether their parent was a child of the deceased and died before the deceased. Grandchildren normally take by branch only if the parent through whom they claim is not alive to take."
+          }
+        ]
+      },
+      {
+        "heading": "Source Anchors / Verification Cards",
+        "items": [
+          {
+            "text": "Cap. 73 Intestates' Estates Ordinance section 4 is the statutory distribution anchor for an intestate estate. Public source card: hk_cap73_s4_intestacy_succession."
+          },
+          {
+            "text": "Cap. 73 section 5 is the statutory trusts / issue machinery anchor, including branch distribution logic. Public source card: hk_cap73_s5_statutory_trusts_issue."
+          },
+          {
+            "text": "Cap. 73 section 3 is a spouse-valid-marriage gate, not the statutory-trusts provision. Public source card: hk_cap73_s3_valid_marriage."
+          },
+          {
+            "text": "Cap. 410 section 2 is the full-age anchor for 18. Public source card: hk_cap410_s2_full_age_18."
+          },
+          {
+            "text": "No case authority is answer-safe for this probate scenario yet. Do not cite cases unless HKLII paragraph-level cards have been attached."
+          }
+        ]
+      },
+      {
+        "heading": "Applied Distribution Analysis",
+        "items": [
+          {
+            "text": "If there is no surviving spouse, the son and daughter are alive, and the granddaughters' parent is also alive, the granddaughters usually do not take directly at this level. The living children are the operative issue for distribution; a minor child's share is held/administered rather than paid outright."
+          },
+          {
+            "text": "If there is no surviving spouse, the son and daughter are alive, and a third child of the deceased predeceased leaving two granddaughters, the estate is analysed by branches: son one branch, daughter one branch, and the deceased child's branch one branch. On that assumed fact pattern, the son would take 1/3, the daughter 1/3, and the two granddaughters would share their parent's 1/3 branch equally at 1/6 each, subject to any minor-beneficiary trust consequences."
+          },
+          {
+            "text": "If a surviving spouse exists, or if any child was adopted, illegitimate, predeceased, disclaimed, or died before vesting, the distribution table must be recalculated from the statute and source cards."
+          }
+        ]
+      },
+      {
+        "heading": "Minor Beneficiaries / Trust Consequences",
+        "items": [
+          {
+            "text": "A beneficiary under 18 should not be treated as simply receiving cash outright. The administrator must identify the trust, guardian/co-administrator, investment, maintenance/advancement and court/Registry requirements before distribution."
+          },
+          {
+            "text": "For presentation to a client, separate the arithmetic entitlement from the payment mechanics: an adult share may be distributable after administration; a minor share may need to be held until full age or another statutory vesting condition is satisfied."
+          },
+          {
+            "text": "If a minor dies before vesting, do not improvise the answer. That requires a fresh statutory-trust and survivorship analysis against the verified source cards."
+          }
+        ]
+      },
+      {
+        "heading": "Administration / Forms Layer",
+        "items": [
+          {
+            "text": "The procedural route is letters of administration, not probate to an executor and not W1 will-probate forms."
+          },
+          {
+            "text": "First identify the person entitled to apply as administrator, relationship evidence, consents/renunciations and whether a guardian or co-administrator route is needed because of minors."
+          },
+          {
+            "text": "The L1 letters-of-administration family and N2.1/N4.1 assets-liabilities schedule are only the filing layer after entitlement and distribution analysis."
+          }
+        ]
+      }
+    ]
+  },
+  "legal_research_answer": {
+    "title": "Legal Research Answer - Probate Intestacy Distribution",
+    "source_card_ids": [
+      "hk_cap73_s2_interpretation",
+      "hk_cap73_s3_valid_marriage",
+      "hk_cap73_s4_intestacy_succession",
+      "hk_cap73_s5_statutory_trusts_issue",
+      "hk_cap73_s9_personal_representative_trustee",
+      "hk_cap410_s2_full_age_18"
+    ],
+    "principle_card_ids": [
+      "principle_probate_intestate_residuary_cap73_s2",
+      "principle_probate_spouse_gate_cap73_s3",
+      "principle_probate_no_spouse_issue_cap73_s4",
+      "principle_probate_issue_stocks_cap73_s5",
+      "principle_probate_personal_representative_trustee_cap73_s9",
+      "principle_probate_full_age_18_cap410_s2"
+    ],
+    "case_digest_card_ids": [],
+    "issue_items": [
+      "Whether Hong Kong intestacy law applies at all, given the US death/foreign-connection facts.",
+      "Whether there is a valid surviving spouse before any issue-only distribution is calculated.",
+      "Whether the son, daughter and granddaughters take directly or by branch under the statutory trusts.",
+      "Whether any beneficiary is under 18 and therefore needs administration/trust handling rather than simple payment."
+    ],
+    "governing_law_items": [
+      "The Intestates' Estates Ordinance (Cap. 73) is the Hong Kong statute used for this source-gated intestacy distribution demo.",
+      "Cap. 73 s.2 defines the intestacy/residuary-estate frame after proper expenses and liabilities.",
+      "Cap. 73 s.3 is the spouse-validity gate; it is not the statutory-trusts provision.",
+      "Cap. 73 s.4 governs succession to the residuary estate on intestacy, including the no-spouse/issue branch.",
+      "Cap. 73 s.5 is the statutory-trusts provision for issue, including stocks and the rule that issue do not take while their parent is living and capable of taking.",
+      "Cap. 73 s.9 makes the personal representative trustee of the residuary estate for beneficially entitled persons.",
+      "Cap. 410 s.2 supplies the full-age-at-18 anchor."
+    ],
+    "application_items": [
+      "If Hong Kong law applies and there is no surviving spouse, the son and daughter are alive, and the granddaughters' parent is also alive and capable of taking, the granddaughters do not take at that level because Cap. 73 s.5 blocks issue whose parent is living and capable of taking.",
+      "If Hong Kong law applies, there is no surviving spouse, and a third child of the deceased predeceased leaving the two granddaughters, the son, daughter and the predeceased child's branch are analysed by stocks: son one branch, daughter one branch, and the granddaughters share their parent's branch, subject to minor-beneficiary administration.",
+      "The 'former 18, later not' fact matters for administration/payment mechanics because Cap. 410 s.2 sets full age at 18 and Cap. 73 s.5 uses full age in statutory-trusts language.",
+      "Forms and drafting should come after this classification; letters of administration and minor-beneficiary handling are downstream of the distribution analysis."
+    ],
+    "evidence_analysis_items": [
+      "Fact: death in the US / foreign connection. Legal relevance: may make domicile and asset situs decisive before Hong Kong intestacy distribution is applied.",
+      "Fact: no will asserted. Legal relevance: supports intestacy routing, but the original will/codicil search and any foreign grant must still be verified.",
+      "Fact: son, daughter and granddaughters are named. Legal relevance: requires a family tree proving whether the granddaughters' parent predeceased and whether that branch can take.",
+      "Fact: one beneficiary is under 18. Legal relevance: affects administration/payment mechanics and possible guardian/co-administrator or trust handling.",
+      "Evidence source audit: no death certificate, family-tree documents, grant papers or asset schedule is parsed in this response; those documents must be separately ingested before final advice."
+    ],
+    "practical_next_steps": [
+      "Confirm domicile at death, Hong Kong asset situs, and whether any US state proceeding or foreign grant exists.",
+      "Confirm there is no valid will and no surviving spouse.",
+      "Identify the parent through whom the granddaughters claim and whether that parent predeceased the deceased.",
+      "Collect birth/adoption/marriage/death evidence before doing final arithmetic.",
+      "Only then choose the letters-of-administration form route and any guardian/co-administrator or minor-share trust mechanics."
+    ],
+    "relevant_authorities_note": "No probate case digest card is attached because this demo is statute-led and no public HKLII/LegalRef probate paragraph authority has yet been verified for this exact distribution fact pattern."
+  },
+  "source_backed_rules": [
+    {
+      "id": "hk_probate_intestacy_definition_cap73_s2",
+      "proposition": "The analysis starts by identifying the intestate/residuary-estate frame after proper expenses and liabilities.",
+      "source": "Intestates' Estates Ordinance (Cap. 73) s.2",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap73/s2",
+      "source_card_ids": ["hk_cap73_s2_interpretation"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_probate_spouse_gate_cap73_s3",
+      "proposition": "A surviving-spouse branch requires checking whether there is a valid marriage for Cap. 73 purposes.",
+      "source": "Intestates' Estates Ordinance (Cap. 73) s.3",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap73/s3",
+      "source_card_ids": ["hk_cap73_s3_valid_marriage"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_probate_intestacy_distribution_cap73_s4",
+      "proposition": "Where Hong Kong intestacy law applies, distribution of the residuary estate is governed by Cap. 73 section 4.",
+      "source": "Intestates' Estates Ordinance (Cap. 73) s.4",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap73/s4",
+      "source_card_ids": ["hk_cap73_s4_intestacy_succession"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_probate_statutory_trusts_issue_cap73_s5",
+      "proposition": "The statutory trusts mechanism determines how issue take by branch and whether issue take only through a deceased parent.",
+      "source": "Intestates' Estates Ordinance (Cap. 73) s.5",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap73/s5",
+      "source_card_ids": ["hk_cap73_s5_statutory_trusts_issue"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_probate_personal_representative_trustee_cap73_s9",
+      "proposition": "The personal representative is trustee of the residuary estate for persons beneficially entitled under Cap. 73.",
+      "source": "Intestates' Estates Ordinance (Cap. 73) s.9",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap73/s9",
+      "source_card_ids": ["hk_cap73_s9_personal_representative_trustee"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    },
+    {
+      "id": "hk_probate_full_age_cap410_s2",
+      "proposition": "For Hong Kong statutory references to full age, full age is 18 unless the context requires otherwise.",
+      "source": "Age of Majority (Related Provisions) Ordinance (Cap. 410) s.2",
+      "official_url": "https://www.elegislation.gov.hk/hk/cap410/s2",
+      "source_card_ids": ["hk_cap410_s2_full_age_18"],
+      "verification_status": "source_verified_public_api",
+      "claim_status": "source_verified_research_only"
+    }
+  ],
+  "missing_facts": [
+    "Deceased's domicile at death and whether the relevant assets are in Hong Kong, the US or another place.",
+    "Whether there is any valid will, codicil, foreign grant or US estate proceeding.",
+    "Whether there is a surviving spouse, former spouse, or matrimonial/property issue affecting distribution.",
+    "Whether the two granddaughters' parent was a child of the deceased and whether that parent predeceased the deceased.",
+    "Exact ages/capacity of the son, daughter and granddaughters, including which beneficiaries are under 18.",
+    "Whether adoption, legitimacy, disclaimer, survivorship period, debts, funeral expenses, tax, or creditor issues alter the distributable estate."
+  ],
+  "unsupported_claims": [
+    "No HKLII paragraph-level probate case authority is attached for this scenario yet; cases must remain candidate-only until paragraph URLs are verified.",
+    "No final US-law conclusion can be given without the US state, domicile and asset-situs facts."
+  ],
+  "answer_contract": {
+    "answer_sections": [
+      "Governing Law / Assumptions",
+      "Source Anchors / Verification Cards",
+      "Applied Distribution Analysis",
+      "Minor Beneficiaries / Trust Consequences",
+      "Administration / Forms Layer",
+      "Documents / Forms",
+      "Missing Facts",
+      "Review Gate"
+    ],
+    "verification_rule": "Every legal proposition must be sourced to an official source card or explicitly listed in unsupported_claims.",
+    "source_audit_policy": "collapsed_by_default",
+    "review_status": "research_only"
+  },
+  "verifier": {
+    "required_fact_flags": ["no_will_or_intestacy", "asks_distribution_or_entitlement"],
+    "must_include_terms": ["intestates' estates ordinance", "cap. 73", "statutory trusts", "granddaughters", "predeceased", "18", "letters of administration"],
+    "must_not_include_terms": ["common form grant", "for a death with a will", "w1.1"]
+  }
+}

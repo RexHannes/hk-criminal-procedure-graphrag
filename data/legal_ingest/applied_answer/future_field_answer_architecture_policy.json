@@ -1,0 +1,191 @@
+{
+  "policy_id": "future_field_answer_architecture_policy_v1",
+  "status": "enforced_by_validate_applied_answer_architecture",
+  "purpose": "Prevent future HK law fields from becoming an infinite chain of if/else answer templates.",
+  "global_rag_claim_boundary": {
+    "status": "two_vertical_demo_only",
+    "not_a_whole_system_rag_fix": true,
+    "product_claim": "Two source-gated demo verticals are usable as answer-first legal research memos.",
+    "forbidden_claims": [
+      "HK legal AI search engine solved",
+      "general reliable HK legal RAG across all fields",
+      "10k/25k answer-safe propositions",
+      "case_recall_only material can support final legal propositions"
+    ]
+  },
+  "architecture": {
+    "required_layers": [
+      "structured_fact_extraction",
+      "rule_and_source_cards",
+      "applied_legal_analyzer",
+      "answer_verifier",
+      "deterministic_fallback_only_when_no_safe_analyzer"
+    ],
+    "rules_control": [
+      "routing",
+      "fact extraction",
+      "source requirements",
+      "forbidden claims",
+      "verification"
+    ],
+    "rules_must_not_be_primary_final_answer_writer": true,
+    "allowed_answer_generation_modes": [
+      "structured_rule_card_applied_analysis",
+      "llm_applied_analysis_source_gated_future",
+      "deterministic_fallback_template"
+    ],
+    "fallback_policy": "Deterministic prose blocks may stay only as fallback for demo continuity. New fields should add rule decks and verifier tests before any final prose output is exposed."
+  },
+  "tree_by_tree_required_pack": [
+    "official_statute_or_public_source_cards",
+    "paragraph_level_case_cards_where_cases_are_used",
+    "principle_or_proposition_cards_with_exact_quote_support",
+    "rule_deck_with_source_card_ids",
+    "unsupported_claim_gates",
+    "answer_first_renderer_contract",
+    "golden_queries",
+    "ci_validator_that_blocks_recall_only_or_candidate_only_answer_authority"
+  ],
+  "card_layer_definitions": {
+    "paragraph_card": "Raw court paragraph text with paragraph number, source URL anchor and checksum.",
+    "proposition_card": "Extracted statement from one or more paragraph cards; cannot stand without paragraph proof.",
+    "principle_card": "Legal rule synthesized from statute text or one or more proposition/paragraph cards.",
+    "case_digest_card": "Case-level facts, issues, holding, ratio/obiter, treatment, applicability and distinguishability summary."
+  },
+  "source_class_policy": {
+    "public_demo_answer_sources_allowed": [
+      "public_statute",
+      "public_judgment",
+      "public_practice_direction"
+    ],
+    "never_public_answer_authority_without_review": [
+      "private_textbook",
+      "private_precedent",
+      "client_document",
+      "ai_generated_candidate",
+      "case_recall_only"
+    ],
+    "legal_source_audit_must_be_separate_from": [
+      "evidence_source_audit",
+      "user_provided_facts",
+      "ai_inference"
+    ]
+  },
+  "expansion_order": [
+    "source_card_schema",
+    "paragraph_card_ingestion",
+    "principle_extraction",
+    "answer_renderer",
+    "golden_query_validation",
+    "case_scale"
+  ],
+  "next_major_milestone": {
+    "target": "one_excellent_criminal_law_vertical",
+    "must_include": [
+      "full_theft_doctrine_tree_display",
+      "more_exact_paragraph_case_law",
+      "case_treatment_tracking",
+      "user_fact_evidence_mapping",
+      "criminal_procedure_downstream_module",
+      "source_audit_and_anti_hallucination_validation"
+    ]
+  },
+  "notebooklm_browser_workflow": {
+    "when_to_use": [
+      "existing domain tree has no clean doctrine_node_id",
+      "new field/branch needs issue taxonomy",
+      "landmark case lineage is needed for candidate discovery"
+    ],
+    "required_sequence": [
+      "search_existing_tree_first",
+      "ask_one_focused_notebooklm_prompt_for_candidate_structure",
+      "save_candidate_metadata_only",
+      "verify every case/statute through public LegalRef/HKLII/e-Legislation sources",
+      "create paragraph/proposition/source cards only after exact quote/source match",
+      "attach to doctrine tree as machine_candidate only",
+      "run answer verifier and golden queries"
+    ],
+    "notebooklm_role": "candidate_tree_and_case_lineage_proposer_only",
+    "notebooklm_not_authority": true,
+    "private_text_policy": "Do not copy private/licensed NotebookLM source text into public artifacts.",
+    "browser_safety": [
+      "Use logged-in Chrome/NotebookLM only if user asks or the workflow is blocked without it.",
+      "Do not inspect cookies, passwords, account storage or unrelated tabs.",
+      "Do not upload private files unless the user explicitly confirms exact files."
+    ],
+    "prompt_template": "data/legal_ingest/applied_answer/notebooklm_future_field_prompt_template.md"
+  },
+  "new_field_acceptance_gate": {
+    "must_have": [
+      "field_id",
+      "routing_keywords_and_exclusions",
+      "fact_schema_or_extractor",
+      "rule_card_deck",
+      "source_card_requirements",
+      "answer_contract",
+      "verifier_required_terms_and_forbidden_terms",
+      "golden_queries",
+      "public_source_verification_plan"
+    ],
+    "must_not": [
+      "treat NotebookLM output as authority",
+      "treat DeepSeek output as authority",
+      "cite a case without public paragraph/source card",
+      "promote answer_safe without human review",
+      "add a final-prose composer branch without a rule deck and verifier"
+    ]
+  },
+  "current_demo_verticals": [
+    {
+      "domain": "probate_law_hk",
+      "scenario": "intestate_administration",
+      "subscenario": "intestacy_distribution_issue_statutory_trusts",
+      "rule_deck_id": "probate_intestacy_distribution_v1",
+      "source_card_ids": [
+        "hk_cap73_s2_interpretation",
+        "hk_cap73_s3_valid_marriage",
+        "hk_cap73_s4_intestacy_succession",
+        "hk_cap73_s5_statutory_trusts_issue",
+        "hk_cap73_s9_personal_representative_trustee",
+        "hk_cap410_s2_full_age_18"
+      ],
+      "case_digest_card_ids": [],
+      "paragraph_card_ids": [],
+      "answer_first_validator": "scripts/validate_legal_rag_answer_first_api.js",
+      "source_card_validator": "scripts/validate_part1_two_vertical_source_cards.js",
+      "golden_query_validator": "scripts/validate_probate_inquiry_api.js",
+      "scope_boundary": "statute_led_no_probate_case_digest_until_public_paragraph_authority_verified"
+    },
+    {
+      "domain": "criminal_law",
+      "scenario": "theft_property_dishonesty",
+      "subscenario": "shoplifting_forgot_to_pay_mr_defence",
+      "rule_deck_id": "criminal_theft_shoplifting_v1",
+      "source_card_ids": [
+        "hk_cap210_s2_theft_definition",
+        "hk_cap210_s3_dishonesty",
+        "hk_cap210_s4_appropriation",
+        "hk_cap210_s6_belonging_to_another",
+        "hk_cap210_s7_intention_permanently_depriving",
+        "hk_cap210_s9_theft_offence_penalty"
+      ],
+      "forbidden_source_card_ids": [
+        "hk_cap210_s5"
+      ],
+      "case_digest_card_ids": [
+        "case_digest_chan_kam_ching_2022",
+        "case_digest_khan_altaf_2022"
+      ],
+      "paragraph_card_ids": [
+        "hk_hkcfa_2022_7_chan_kam_ching_p148",
+        "hk_hkcfa_2022_7_chan_kam_ching_p149",
+        "hk_hkcfi_2022_1220_khan_altaf_p1",
+        "hk_hkcfi_2022_1220_khan_altaf_p24"
+      ],
+      "answer_first_validator": "scripts/validate_legal_rag_answer_first_api.js",
+      "source_card_validator": "scripts/validate_part1_two_vertical_source_cards.js",
+      "golden_query_validator": "scripts/validate_criminal_golden_queries_v1.js",
+      "scope_boundary": "research_only_theft_shoplifting_forgot_to_pay_not_general_criminal_law_search"
+    }
+  ]
+}

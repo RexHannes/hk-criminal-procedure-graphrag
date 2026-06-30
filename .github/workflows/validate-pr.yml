@@ -1,0 +1,136 @@
+name: Validate PR
+
+on:
+  pull_request:
+  push:
+    branches:
+      - codex/investor-recall-25k-path
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate applied answer architecture
+        run: node scripts/validate_applied_answer_architecture.js
+
+      - name: Validate Part 1 source cards
+        run: node scripts/validate_part1_two_vertical_source_cards.js
+
+      - name: Validate answer-first legal RAG API
+        run: node scripts/validate_legal_rag_answer_first_api.js
+
+      - name: Validate tree grounding contract
+        run: node scripts/validate_tree_grounding_contract.js
+
+      - name: Validate anti-hallucination contract
+        run: node scripts/validate_anti_hallucination_contract.js
+
+      - name: Regenerate PR 6 demo outputs
+        run: node scripts/generate_pr6_demo_outputs.js
+
+      - name: Validate PR 6 demo assets
+        run: node scripts/validate_pr6_demo_assets.js
+
+      - name: Ensure PR 6 demo outputs are committed
+        run: git diff --exit-code artifacts/demo_outputs
+
+      - name: Build L1-L3.5 case corpus sample
+        run: node scripts/build_case_corpus_l1_l35_sample.js
+
+      - name: Repair L3 principle quality
+        run: node scripts/repair_principle_quality.js
+
+      - name: Validate L1 case registry
+        run: node scripts/validate_case_registry_10000.js --sample
+
+      - name: Validate L2 paragraph proof
+        run: node scripts/validate_hklii_paragraph_accuracy.js --full
+
+      - name: Validate L3 proposition cards
+        run: node scripts/validate_proposition_cards.js --sample
+
+      - name: Validate L3 principle cards
+        run: node scripts/validate_principle_cards.js --sample
+
+      - name: Validate L3.5 case digest cards
+        run: node scripts/validate_case_digest_cards.js --sample
+
+      - name: Build L1-L3.5 case corpus chunks
+        run: node scripts/build_case_corpus_chunks.js --sample
+
+      - name: Dry-run L1-L3.5 case corpus embeddings
+        run: node scripts/embed_case_corpus_chunks.js --dry-run --sample --no-network
+
+      - name: Dry-run L1-L3.5 case corpus Qdrant indexer
+        run: node scripts/index_case_corpus_qdrant.js --dry-run --sample --no-network
+
+      - name: Evaluate L1-L3.5 case corpus retrieval
+        run: node scripts/evaluate_case_corpus_retrieval.js --sample
+
+      - name: Run L1-L3.5 ingest pipeline status
+        run: node scripts/run_case_corpus_ingest_pipeline.js --sample --no-network --dry-run
+
+      - name: Build sample candidate extractions
+        run: node scripts/build_sample_candidate_extractions.js --limit 40
+
+      - name: Run candidate-to-L3.5 fast-growth batch
+        run: node scripts/run_candidate_to_l35_batch.js --dry-run --build-cards
+
+      - name: Validate candidate extraction verification
+        run: node scripts/validate_candidate_extraction_verification.js
+
+      - name: Audit L1-L3.5 case corpus quality
+        run: node scripts/audit_case_corpus_quality_sample.js
+
+      - name: Report L1-L3.5 issue coverage
+        run: node scripts/report_case_corpus_issue_coverage.js
+
+      - name: Validate L1-L3.5 status dashboard
+        run: node scripts/validate_case_corpus_l1_l35_status.js
+
+      - name: Generate L1-L3.5 demo outputs
+        run: node scripts/generate_case_corpus_l35_demo_outputs.js
+
+      - name: Validate L1-L3.5 demo outputs
+        run: node scripts/validate_case_corpus_l35_demo_outputs.js
+
+      - name: Build PR 6 demo freeze package
+        run: node scripts/build_demo_freeze_package_pr6.js
+
+      - name: Validate PR 6 demo readiness
+        run: node scripts/validate_demo_readiness_pr6.js
+
+      - name: Smoke test PR 6 demo API
+        run: node scripts/smoke_test_pr6_demo_api.js --local-only --skip-network
+
+      - name: Ensure PR 6 demo freeze artifacts are committed
+        run: git diff --exit-code artifacts/demo_freeze_report.json artifacts/demo_freeze_report.md artifacts/demo_outputs/demo_query_pack.json artifacts/demo_outputs/demo_query_pack.md docs/boss_demo_script_pr6.md
+
+      - name: Ensure L1-L3.5 artifacts are committed
+        run: git diff --exit-code data/legal_ingest/case_corpus artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/case_corpus_ingest_run_status.json artifacts/case_corpus_ingest_run_status.md artifacts/case_corpus_embedding_dry_run.json artifacts/case_corpus_qdrant_dry_run.json artifacts/case_corpus_retrieval_eval.json artifacts/case_corpus_retrieval_eval.md artifacts/case_corpus_duplicates_report.json artifacts/candidate_extraction_verification_report.json artifacts/candidate_extraction_verification_report.md artifacts/candidate_verified_cards_report.json artifacts/candidate_verified_cards_report.md artifacts/case_corpus_quality_audit.json artifacts/case_corpus_quality_audit.md artifacts/case_corpus_issue_coverage.json artifacts/case_corpus_issue_coverage.md artifacts/principle_quality_repair_report.json artifacts/principle_quality_repair_report.md artifacts/weak_issue_target_discovery_report.json artifacts/weak_issue_target_discovery_report.md artifacts/demo_outputs
+
+      - name: Dry-run Part 1 source-card Qdrant indexer
+        run: node scripts/index_part1_two_vertical_source_cards_qdrant.js --dry-run
+
+      - name: Validate answer composers
+        run: node scripts/validate_answer_composers.js
+
+      - name: Validate criminal inquiry API
+        run: node scripts/validate_criminal_inquiry_api.js
+
+      - name: Validate probate inquiry API
+        run: node scripts/validate_probate_inquiry_api.js
+
+      - name: Validate legal domain arbiter
+        run: node scripts/validate_legal_domain_arbiter.js
+
+      - name: Validate committed secrets
+        run: node scripts/validate_no_secrets_committed.js

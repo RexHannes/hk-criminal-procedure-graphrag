@@ -1,0 +1,182 @@
+{
+  "query": "If I am alleged to be stealing something in the convenience store, but I forgot to pay and security stopped me, what are the AR/MR issues and what facts help or hurt?",
+  "product_mode": {
+    "mode": "demo_supported",
+    "labels": [
+      "demo_supported",
+      "source_grounded_research_only",
+      "needs_lawyer_review"
+    ],
+    "needs_lawyer_review": true,
+    "answer_safe": false,
+    "supported_demo_vertical": true,
+    "unsupported_reason": "",
+    "layer_order": [
+      "legal_research_case_law_analysis",
+      "reusable_sop_playbook",
+      "forms_document_pack"
+    ],
+    "forms_and_sops_policy": "forms and SOPs are downstream of legal issue/authority classification",
+    "uploaded_evidence_mode": "text_evidence_research_triage_only"
+  },
+  "case_law_research": {
+    "presentation_mode": "case_corpus_l1_l35_research_only",
+    "title": "L1-L3.5 Case-Law Research Memo",
+    "query": "If I am alleged to be stealing something in the convenience store, but I forgot to pay and security stopped me, what are the AR/MR issues and what facts help or hurt?",
+    "sections": [
+      {
+        "heading": "Short Answer",
+        "items": [
+          "The case-corpus layer found research-only public case authorities with paragraph proof. They may support legal research and issue spotting, but they are not answer-safe legal advice."
+        ]
+      },
+      {
+        "heading": "Issues",
+        "items": [
+          "Issue mapped: criminal_law.theft.dishonesty",
+          "Issue mapped: criminal_law.dishonesty",
+          "Issue mapped: criminal_law.theft.mens_rea",
+          "Issue mapped: criminal_law.theft",
+          "Issue mapped: criminal_law.theft.mistake_or_forgot_to_pay"
+        ]
+      },
+      {
+        "heading": "Governing Law / Elements",
+        "items": [
+          "Use statute/source cards for governing elements; case-corpus cards provide paragraph-backed research context and factual application only."
+        ]
+      },
+      {
+        "heading": "Case-by-Case Authorities",
+        "items": [
+          "HKSAR Respondent and LI LINLIN Appellant [2023] HKCFI 424 (Court of First Instance, 2023-02-17). Facts: Public HKLII criminal judgment mapped to criminal_law.theft.intention_permanently_deprive, criminal_law.dishonesty, criminal_law.theft.dishonesty, criminal_law.theft.mens_rea. Issue: intention permanently deprive Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 3 - https://www.hklii.hk/en/cases/hkcfi/2023/424#p3 Exact quote: \"The 1 st to 4 th particulars can be considered together in that they supported the testimony of the appellant, cast doubt on the necessary mens rea of dishonesty and militated against the conclusion or irresistible infer\" Principle: Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkcfi/2023/424#p3",
+          "HKSAR v KO Chun-fung [2024] HKDC 1354 (District Court, 2024-08-15). Facts: Public HKLII criminal judgment involving: Offences: (1) Handling stolen goods（處理贓物） (2) Conspiracy to obtain property by deception（串謀以欺騙手段取得財產） Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 9 - https://www.hklii.hk/en/cases/hkdc/2024/1354#p9 Exact quote: \"sentence is reduced to 14 months\" Principle: Principle extraction pending review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The charge, facts, evidence route, procedural posture or sentencing context is materially different. Source URL: https://www.hklii.hk/en/cases/hkdc/2024/1354#p9",
+          "HKSAR v KOTHARI CHIRAG (D) [2025] HKDC 1674 (District Court, 2025-09-23). Facts: Public HKLII criminal judgment involving: Offence: [1-3] Evasion of liability by deception (以欺騙手段逃避法律責任) [4-5] Attempted fraud (企圖欺詐罪) Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 15 - https://www.hklii.hk/en/cases/hkdc/2025/1674#p15 Exact quote: \"Theft Ordinance , Cap\" Principle: Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkdc/2025/1674#p15",
+          "BETWEEN HKSAR Respondent and CHAN Wai-ho (陳偉豪) Appellant [2021] HKCFI 3439 (Court of First Instance, 2021-11-19). Facts: Public HKLII criminal judgment mapped to criminal_law.theft, criminal_law.theft.sentencing, criminal_law.deception, criminal_law.dishonesty. Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 7 - https://www.hklii.hk/en/cases/hkcfi/2021/3439#p7 Exact quote: \"Theft Ordinance , Cap 210 states: “(1) Any person who by any deception (whether or not such deception was the sole or main inducement)\" Principle: Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkcfi/2021/3439#p7",
+          "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant [2025] HKCA 451 (Court of Appeal, 2025-05-16). Facts: Public HKLII criminal judgment mapped to criminal_law.theft.belonging_to_another, criminal_law.theft, criminal_law.dishonesty, criminal_law.theft.dishonesty. Issue: belonging to another Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 37 - https://www.hklii.hk/en/cases/hkca/2025/451#p37 Exact quote: \"The prosecution explained to the jury that the offence of theft is committed when a person dishonestly appropriates property belonging to another with the intention of permanently depriving the other of it.\" Principle: Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkca/2025/451#p37",
+          "BETWEEN HKSAR Respondent and CHOI Ping-chiu (蔡炳超) Applicant [2021] HKCA 1387 (Court of Appeal, 2021-09-20). Facts: Public HKLII criminal judgment mapped to criminal_law.theft, criminal_law.theft.sentencing, criminal_law.deception, criminal_law.theft.appropriation. Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 27 - https://www.hklii.hk/en/cases/hkca/2021/1387#p27 Exact quote: \"Theft Ordinance , Cap 210\" Principle: Principle extraction pending review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The charge, facts, evidence route, procedural posture or sentencing context is materially different. Source URL: https://www.hklii.hk/en/cases/hkca/2021/1387#p27",
+          "BETWEEN HKSAR Respondent and SHIV Kumar Appellant [2021] HKCFI 3253 (Court of First Instance, 2021-12-10). Facts: Public HKLII criminal judgment mapped to criminal_law.theft.intention_permanently_deprive, criminal_law.dishonesty, criminal_law.theft.dishonesty, criminal_law.theft.mens_rea. Issue: intention permanently deprive Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 29 - https://www.hklii.hk/en/cases/hkcfi/2021/3253#p29 Exact quote: \"(4) The Appellant was dishonest and he had the intention to permanently deprive the owner of those items, applying the test in R v Ghosh [1982] QB 1053 .\" Principle: Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkcfi/2021/3253#p29",
+          "HKSAR v Tsui Be Chai [2024] HKDC 1115 (District Court, 2024-07-04). Facts: Public HKLII criminal judgment involving: Offences: [1] & [2] Theft（盜竊罪） [3] Obtaining property by deception（以欺騙手段取得財產） [4] Attempted to obtain property by deception（企圖以欺騙  手段取得財產） [5] Using an identity card relating to another person（使用他   人的身分證） [6] Failing to surrender to custody without reasonable cause （無合理因由而沒有按照法庭的指定歸押） Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 4 - https://www.hklii.hk/en/cases/hkdc/2024/1115#p4 Exact quote: \"Theft Ordinance , Cap 210 , and section 159G of the Crimes Ordinance , Cap 200\" Principle: Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkdc/2024/1115#p4"
+        ]
+      },
+      {
+        "heading": "Extracted Legal Principles",
+        "items": [
+          "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Quote: \"The 1 st to 4 th particulars can be considered together in that they supported the testimony of the appellant, cast doubt on the necessary mens rea of dishonesty and militated against the conclusion or irresistible infer\". Status: research_only; review: machine_candidate.",
+          "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Quote: \"The only issue at trial was whether she had an intention to permanently deprive the supermarket of the items she had taken.\". Status: research_only; review: machine_candidate.",
+          "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review. Quote: \"The defendant has been convicted after trial on 3 counts of “Evasion of liability by deception” , contrary to section 18B (1)(b) of the Theft Ordinance , Cap.210 (Charge 1 to 3), and 2 counts of “Attempted fraud”, contra\". Status: research_only; review: machine_candidate.",
+          "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review. Quote: \"Theft Ordinance , Cap 210 states: “(1) Any person who by any deception (whether or not such deception was the sole or main inducement)\". Status: research_only; review: machine_candidate.",
+          "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review. Quote: \"Theft Ordinance requires an operative deception i\". Status: research_only; review: machine_candidate.",
+          "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review. Quote: \"The prosecution explained to the jury that the offence of theft is committed when a person dishonestly appropriates property belonging to another with the intention of permanently depriving the other of it.\". Status: research_only; review: machine_candidate.",
+          "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review. Quote: \"The final point made by Mr Young concerns s.6 (3) of the Theft Ordinance regarding the element of “belonging to another”, which provides: Where a person receives property from or on account of another, and is under an ob\". Status: research_only; review: machine_candidate.",
+          "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Quote: \"In other words, the case was always focused on whether the appellant had dishonestly appropriated the amounts in the credit balance of Hyundai HK’s bank accounts, and his subsequent financial dealings evidenced his inten\". Status: research_only; review: machine_candidate.",
+          "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review. Quote: \"The Judge then went on to discuss the remaining elements of theft of “property belonging to another” and “intention to permanently deprive”.\". Status: research_only; review: machine_candidate.",
+          "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Quote: \"(4) The Appellant was dishonest and he had the intention to permanently deprive the owner of those items, applying the test in R v Ghosh [1982] QB 1053 .\". Status: research_only; review: machine_candidate.",
+          "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review. Quote: \"Theft Ordinance , Cap 210 , and section 159G of the Crimes Ordinance , Cap 200\". Status: research_only; review: machine_candidate."
+        ]
+      },
+      {
+        "heading": "Application to User Facts",
+        "items": [
+          "Apply the extracted principles only as research triage: compare the user's facts against the paragraph quote, the digest facts, and the distinguishability limits before any advice."
+        ]
+      },
+      {
+        "heading": "Evidence Analysis",
+        "items": [
+          "Uploaded text evidence parsed: 1 item(s). It is fact/evidence material only, not legal authority.",
+          "Helps: Item appears visible or handled openly.",
+          "Helps: Payment/checkout context may support ordinary shopping or mistake.",
+          "Helps: Distraction or mistake context is asserted.",
+          "Hurts or needs explanation: Exit/security-stop facts may support prosecution inferences depending on detail."
+        ]
+      },
+      {
+        "heading": "Missing Facts",
+        "items": [
+          "Current treatment check for each case.",
+          "Full factual record, charge/procedural posture and source review.",
+          "Lawyer review before any answer-safe proposition."
+        ]
+      },
+      {
+        "heading": "Practical Next Steps",
+        "items": [
+          "Review the paragraph cards against HKLII/LegalRef.",
+          "Check current treatment before relying on the case.",
+          "Do not promote machine candidates to answer-safe without lawyer review."
+        ]
+      },
+      {
+        "heading": "Source Audit",
+        "items": [
+          "L1 registry cases: 120",
+          "L2 paragraph cards: 344",
+          "L3 propositions/principles: 688",
+          "L3.5 digests returned: 8",
+          "L4 answer-safe propositions: not implemented.",
+          "All case-corpus outputs are research_only / lawyer_review_required."
+        ]
+      }
+    ],
+    "markdown": "# L1-L3.5 Case-Law Research Memo\n\n## Short Answer\n- The case-corpus layer found research-only public case authorities with paragraph proof. They may support legal research and issue spotting, but they are not answer-safe legal advice.\n\n## Issues\n- Issue mapped: criminal_law.theft.dishonesty\n- Issue mapped: criminal_law.dishonesty\n- Issue mapped: criminal_law.theft.mens_rea\n- Issue mapped: criminal_law.theft\n- Issue mapped: criminal_law.theft.mistake_or_forgot_to_pay\n\n## Governing Law / Elements\n- Use statute/source cards for governing elements; case-corpus cards provide paragraph-backed research context and factual application only.\n\n## Case-by-Case Authorities\n- HKSAR Respondent and LI LINLIN Appellant [2023] HKCFI 424 (Court of First Instance, 2023-02-17). Facts: Public HKLII criminal judgment mapped to criminal_law.theft.intention_permanently_deprive, criminal_law.dishonesty, criminal_law.theft.dishonesty, criminal_law.theft.mens_rea. Issue: intention permanently deprive Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 3 - https://www.hklii.hk/en/cases/hkcfi/2023/424#p3 Exact quote: \"The 1 st to 4 th particulars can be considered together in that they supported the testimony of the appellant, cast doubt on the necessary mens rea of dishonesty and militated against the conclusion or irresistible infer\" Principle: Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkcfi/2023/424#p3\n- HKSAR v KO Chun-fung [2024] HKDC 1354 (District Court, 2024-08-15). Facts: Public HKLII criminal judgment involving: Offences: (1) Handling stolen goods（處理贓物） (2) Conspiracy to obtain property by deception（串謀以欺騙手段取得財產） Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 9 - https://www.hklii.hk/en/cases/hkdc/2024/1354#p9 Exact quote: \"sentence is reduced to 14 months\" Principle: Principle extraction pending review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The charge, facts, evidence route, procedural posture or sentencing context is materially different. Source URL: https://www.hklii.hk/en/cases/hkdc/2024/1354#p9\n- HKSAR v KOTHARI CHIRAG (D) [2025] HKDC 1674 (District Court, 2025-09-23). Facts: Public HKLII criminal judgment involving: Offence: [1-3] Evasion of liability by deception (以欺騙手段逃避法律責任) [4-5] Attempted fraud (企圖欺詐罪) Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 15 - https://www.hklii.hk/en/cases/hkdc/2025/1674#p15 Exact quote: \"Theft Ordinance , Cap\" Principle: Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkdc/2025/1674#p15\n- BETWEEN HKSAR Respondent and CHAN Wai-ho (陳偉豪) Appellant [2021] HKCFI 3439 (Court of First Instance, 2021-11-19). Facts: Public HKLII criminal judgment mapped to criminal_law.theft, criminal_law.theft.sentencing, criminal_law.deception, criminal_law.dishonesty. Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 7 - https://www.hklii.hk/en/cases/hkcfi/2021/3439#p7 Exact quote: \"Theft Ordinance , Cap 210 states: “(1) Any person who by any deception (whether or not such deception was the sole or main inducement)\" Principle: Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkcfi/2021/3439#p7\n- HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant [2025] HKCA 451 (Court of Appeal, 2025-05-16). Facts: Public HKLII criminal judgment mapped to criminal_law.theft.belonging_to_another, criminal_law.theft, criminal_law.dishonesty, criminal_law.theft.dishonesty. Issue: belonging to another Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 37 - https://www.hklii.hk/en/cases/hkca/2025/451#p37 Exact quote: \"The prosecution explained to the jury that the offence of theft is committed when a person dishonestly appropriates property belonging to another with the intention of permanently depriving the other of it.\" Principle: Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkca/2025/451#p37\n- BETWEEN HKSAR Respondent and CHOI Ping-chiu (蔡炳超) Applicant [2021] HKCA 1387 (Court of Appeal, 2021-09-20). Facts: Public HKLII criminal judgment mapped to criminal_law.theft, criminal_law.theft.sentencing, criminal_law.deception, criminal_law.theft.appropriation. Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 27 - https://www.hklii.hk/en/cases/hkca/2021/1387#p27 Exact quote: \"Theft Ordinance , Cap 210\" Principle: Principle extraction pending review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The charge, facts, evidence route, procedural posture or sentencing context is materially different. Source URL: https://www.hklii.hk/en/cases/hkca/2021/1387#p27\n- BETWEEN HKSAR Respondent and SHIV Kumar Appellant [2021] HKCFI 3253 (Court of First Instance, 2021-12-10). Facts: Public HKLII criminal judgment mapped to criminal_law.theft.intention_permanently_deprive, criminal_law.dishonesty, criminal_law.theft.dishonesty, criminal_law.theft.mens_rea. Issue: intention permanently deprive Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 29 - https://www.hklii.hk/en/cases/hkcfi/2021/3253#p29 Exact quote: \"(4) The Appellant was dishonest and he had the intention to permanently deprive the owner of those items, applying the test in R v Ghosh [1982] QB 1053 .\" Principle: Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkcfi/2021/3253#p29\n- HKSAR v Tsui Be Chai [2024] HKDC 1115 (District Court, 2024-07-04). Facts: Public HKLII criminal judgment involving: Offences: [1] & [2] Theft（盜竊罪） [3] Obtaining property by deception（以欺騙手段取得財產） [4] Attempted to obtain property by deception（企圖以欺騙  手段取得財產） [5] Using an identity card relating to another person（使用他   人的身分證） [6] Failing to surrender to custody without reasonable cause （無合理因由而沒有按照法庭的指定歸押） Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 4 - https://www.hklii.hk/en/cases/hkdc/2024/1115#p4 Exact quote: \"Theft Ordinance , Cap 210 , and section 159G of the Crimes Ordinance , Cap 200\" Principle: Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's facts, charge, mental-state evidence, procedural stage or sentencing posture differ from the selected public judgment context. Source URL: https://www.hklii.hk/en/cases/hkdc/2024/1115#p4\n\n## Extracted Legal Principles\n- Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Quote: \"The 1 st to 4 th particulars can be considered together in that they supported the testimony of the appellant, cast doubt on the necessary mens rea of dishonesty and militated against the conclusion or irresistible infer\". Status: research_only; review: machine_candidate.\n- Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Quote: \"The only issue at trial was whether she had an intention to permanently deprive the supermarket of the items she had taken.\". Status: research_only; review: machine_candidate.\n- Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review. Quote: \"The defendant has been convicted after trial on 3 counts of “Evasion of liability by deception” , contrary to section 18B (1)(b) of the Theft Ordinance , Cap.210 (Charge 1 to 3), and 2 counts of “Attempted fraud”, contra\". Status: research_only; review: machine_candidate.\n- Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review. Quote: \"Theft Ordinance , Cap 210 states: “(1) Any person who by any deception (whether or not such deception was the sole or main inducement)\". Status: research_only; review: machine_candidate.\n- Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review. Quote: \"Theft Ordinance requires an operative deception i\". Status: research_only; review: machine_candidate.\n- Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review. Quote: \"The prosecution explained to the jury that the offence of theft is committed when a person dishonestly appropriates property belonging to another with the intention of permanently depriving the other of it.\". Status: research_only; review: machine_candidate.\n- Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review. Quote: \"The final point made by Mr Young concerns s.6 (3) of the Theft Ordinance regarding the element of “belonging to another”, which provides: Where a person receives property from or on account of another, and is under an ob\". Status: research_only; review: machine_candidate.\n- Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Quote: \"In other words, the case was always focused on whether the appellant had dishonestly appropriated the amounts in the credit balance of Hyundai HK’s bank accounts, and his subsequent financial dealings evidenced his inten\". Status: research_only; review: machine_candidate.\n- Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review. Quote: \"The Judge then went on to discuss the remaining elements of theft of “property belonging to another” and “intention to permanently deprive”.\". Status: research_only; review: machine_candidate.\n- Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Quote: \"(4) The Appellant was dishonest and he had the intention to permanently deprive the owner of those items, applying the test in R v Ghosh [1982] QB 1053 .\". Status: research_only; review: machine_candidate.\n- Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review. Quote: \"Theft Ordinance , Cap 210 , and section 159G of the Crimes Ordinance , Cap 200\". Status: research_only; review: machine_candidate.\n\n## Application to User Facts\n- Apply the extracted principles only as research triage: compare the user's facts against the paragraph quote, the digest facts, and the distinguishability limits before any advice.\n\n## Evidence Analysis\n- Uploaded text evidence parsed: 1 item(s). It is fact/evidence material only, not legal authority.\n- Helps: Item appears visible or handled openly.\n- Helps: Payment/checkout context may support ordinary shopping or mistake.\n- Helps: Distraction or mistake context is asserted.\n- Hurts or needs explanation: Exit/security-stop facts may support prosecution inferences depending on detail.\n\n## Missing Facts\n- Current treatment check for each case.\n- Full factual record, charge/procedural posture and source review.\n- Lawyer review before any answer-safe proposition.\n\n## Practical Next Steps\n- Review the paragraph cards against HKLII/LegalRef.\n- Check current treatment before relying on the case.\n- Do not promote machine candidates to answer-safe without lawyer review.\n\n## Source Audit\n- L1 registry cases: 120\n- L2 paragraph cards: 344\n- L3 propositions/principles: 688\n- L3.5 digests returned: 8\n- L4 answer-safe propositions: not implemented.\n- All case-corpus outputs are research_only / lawyer_review_required.\n",
+    "cases_returned": 8,
+    "answer_layer_status": "research_only",
+    "review_status": "lawyer_review_required",
+    "l4_answer_safe_implemented": false
+  },
+  "audit_trail": {
+    "case_corpus_audit": {
+      "display": "collapsed",
+      "mode": "sample",
+      "requested_issue_id": "criminal_law.theft.dishonesty",
+      "inferred_issue_ids": [
+        "criminal_law.theft.dishonesty",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.mens_rea",
+        "criminal_law.theft",
+        "criminal_law.theft.mistake_or_forgot_to_pay"
+      ],
+      "registry_case_count": 120,
+      "paragraph_card_count": 344,
+      "proposition_card_count": 344,
+      "principle_card_count": 344,
+      "case_digest_card_count": 120,
+      "issue_map_count": 584,
+      "returned_case_count": 8,
+      "hybrid_candidate_count": 877,
+      "source_proof_pass_count": 874,
+      "source_proof_excluded_count": 3,
+      "answer_layer_status": "research_only",
+      "review_status": "lawyer_review_required",
+      "l4_answer_safe_implemented": false
+    },
+    "paragraph_proof_audit": {
+      "display": "collapsed",
+      "paragraph_ids": [
+        "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant_p3",
+        "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant_p16",
+        "hk_hkdc_2024_1354_hksar_v_ko_chun_fung_p9",
+        "hk_hkdc_2024_1354_hksar_v_ko_chun_fung_p12",
+        "hk_hkdc_2025_1674_hksar_v_kothari_chirag_d_p15",
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant_p7",
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant_p6",
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant_p1",
+        "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant_p37",
+        "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant_p15",
+        "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant_p27",
+        "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant_p35",
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p27",
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p34",
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant_p21",
+        "hk_hkcfi_2021_3253_between_hksar_respondent_and_shiv_kumar_appellant_p29",
+        "hk_hkdc_2024_1115_hksar_v_tsui_be_chai_p4",
+        "hk_hkdc_2024_1115_hksar_v_tsui_be_chai_p5",
+        "hk_hkdc_2024_1115_hksar_v_tsui_be_chai_p2"
+      ],
+      "all_case_corpus_output_research_only": true,
+      "exact_paragraph_anchor_required": true,
+      "l4_answer_safe_implemented": false
+    }
+  }
+}

@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { buildAppliedAnalysis } = require("../../legal_answer/applied_analysis/applied_legal_analyzer");
 
 const PROBATE_DIR = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps", "probate_law_hk");
 
@@ -11,19 +12,57 @@ function loadProbateJson(file, fallback) {
   }
 }
 
+function detectsNoWillIntestacy(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(intestate|no valid will|no will|without (?:a )?will|did not (?:make|leave|have) (?:a )?will|does(?: not|n't) (?:have|leave) (?:a )?will|not have (?:a )?will|has no will|left no will|died (?:without|with no) (?:a )?will|letters of administration|next of kin|administrator)\b/.test(q);
+}
+
+function detectsFamilyDistributionIssue(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(distribut(?:e|ion)|inherit|inheritance|share|entitled|entitlement|who gets|what happens|left|leaves|surviv(?:e|ed|ing)|son|daughter|child|children|issue|grandchild|grandchildren|granddaughter|granddaughters|grandaughter|grandaughters|spouse|wife|husband|widow|widower|minor|under 18|18|eighteen|predeceased|parent)\b/.test(q);
+}
+
+function detectsIntestacyDistributionIssue(query) {
+  return detectsNoWillIntestacy(query) && detectsFamilyDistributionIssue(query);
+}
+
+function detectIntestacyDistributionFacts(query) {
+  const q = String(query || "").toLowerCase();
+  return {
+    no_will_or_intestacy: detectsNoWillIntestacy(q),
+    asks_distribution_or_entitlement: detectsFamilyDistributionIssue(q),
+    foreign_connection: /\b(us|usa|united states|america|foreign|outside hong kong|overseas|domicil|domicile)\b/.test(q),
+    mentions_hong_kong: /\b(hk|hong kong)\b/.test(q),
+    spouse_mentioned: /\b(spouse|wife|husband|widow|widower)\b/.test(q),
+    no_spouse_stated: /\b(no spouse|no surviving spouse|no wife|no husband|widow(?:er)? not|single|unmarried)\b/.test(q),
+    children_mentioned: /\b(son|daughter|child|children|issue)\b/.test(q),
+    grandchildren_mentioned: /\b(grandchild|grandchildren|granddaughter|granddaughters|grandaughter|grandaughters|grandson|grandsons)\b/.test(q),
+    minor_or_age_mentioned: /\b(minor|under 18|under eighteen|not 18|not eighteen|18|eighteen)\b/.test(q),
+    predeceased_parent_mentioned: /\b(predeceased|died before|parent died|father died before|mother died before)\b/.test(q),
+  };
+}
+
 function classifyProbate(query) {
   const q = String(query || "").toLowerCase();
   let scenario = "probate_general";
+  let subscenario = null;
+  const detectedFacts = detectIntestacyDistributionFacts(q);
+
   if (/\b(caveat|warning|appearance|citation|contentious|solemn form|challenge will|validity dispute)\b/.test(q)) {
     scenario = "caveat_warning_contentious_gateway";
-  } else if (/\b(reseal|resealing|foreign grant|foreign probate|outside hong kong|domicil|domicile)\b/.test(q)) {
+  } else if (/\b(reseal|resealing|foreign grant|foreign probate)\b/.test(q)) {
     scenario = "foreign_grant_resealing";
+  } else if (detectsNoWillIntestacy(q)) {
+    scenario = "intestate_administration";
+    if (detectsIntestacyDistributionIssue(q)) {
+      subscenario = "intestacy_distribution_issue_statutory_trusts";
+    }
   } else if (/\b(lost will|copy will|reconstruct|reconstructed will|nuncupative|privileged will|rectification|swear death|leave to swear death)\b/.test(q)) {
     scenario = "special_probate_application";
   } else if (/\b(inventory|account|accounts|distribution|debts|creditor|executor'?s year|beneficiar|devastavit|self-dealing|sell property|immovable)\b/.test(q)) {
     scenario = "post_grant_administration";
-  } else if (/\b(intestate|no will|letters of administration|next of kin|administrator)\b/.test(q)) {
-    scenario = "intestate_administration";
+  } else if (/\b(outside hong kong|domicil|domicile)\b/.test(q)) {
+    scenario = "foreign_grant_resealing";
   } else if (/\b(will|executor|probate|grant)\b/.test(q)) {
     scenario = "common_form_probate_grant";
   }
@@ -35,6 +74,8 @@ function classifyProbate(query) {
       ? "applicant_representative_beneficiary_or_adviser"
       : "unspecified",
     procedural_posture: scenario.includes("post_grant") ? "post_grant" : (scenario.includes("contentious") ? "contentious_gateway" : "pre_grant"),
+    subscenario,
+    detected_facts: detectedFacts,
     query,
   };
 }
@@ -160,6 +201,85 @@ function formGuidanceItems(scenario, formCandidates) {
     : ["No exact Probate form candidate is answer-safe yet; use metadata-only registry and lawyer review."];
 }
 
+function intestacyDistributionSupport(classification) {
+  const facts = classification.detected_facts || {};
+  const foreignNote = facts.foreign_connection
+    ? "The place of death being the US is not enough by itself. First identify domicile and asset situs: Hong Kong succession analysis is strongest for Hong Kong-situated assets and/or a Hong Kong domicile question; US domicile or US assets may require the relevant US state law."
+    : "First identify domicile and asset situs. Hong Kong succession analysis depends on the estate/property connection, not only on family relationship labels.";
+
+  return {
+    title: "Applied Probate Analysis - Intestacy Distribution And Minor Beneficiaries",
+    short_answer: "Do not answer this as a will/executor form question. It is an intestacy distribution question first: identify the governing law, whether a surviving spouse exists, and whether the granddaughters' parent predeceased the deceased. If Hong Kong intestacy applies and there is no surviving spouse, the estate is held on statutory trusts for issue; living children take at the child level, and grandchildren take only through a deceased parent's branch. Any minor beneficiary's share must be administered through the relevant trust/guardian route until full age or another statutory vesting condition is met.",
+    sections: [
+      ["Governing Law / Assumptions", [
+        foreignNote,
+        "This analysis assumes there is no valid will and no surviving spouse. If there is a spouse, spouse-entitlement rules must be analysed before the children/grandchildren split.",
+        "The granddaughters' entitlement turns on a missing fact: whether their parent was a child of the deceased and died before the deceased. Grandchildren normally take by branch only if the parent through whom they claim is not alive to take.",
+      ]],
+      ["Source Anchors / Verification Cards", [
+        "Cap. 73 Intestates' Estates Ordinance section 4 is the statutory distribution anchor for an intestate estate. Public source card: hk_cap73_s4_intestacy_succession.",
+        "Cap. 73 section 5 is the statutory trusts / issue machinery anchor, including branch distribution logic. Public source card: hk_cap73_s5_statutory_trusts_issue.",
+        "Cap. 73 section 3 is a spouse-valid-marriage gate, not the statutory-trusts provision. Public source card: hk_cap73_s3_valid_marriage.",
+        "Cap. 410 section 2 is the full-age anchor for 18. Public source card: hk_cap410_s2_full_age_18.",
+        "No case authority is answer-safe for this probate scenario yet. Do not cite cases unless HKLII paragraph-level cards have been attached.",
+      ]],
+      ["Applied Distribution Analysis", [
+        "If there is no surviving spouse, the son and daughter are alive, and the granddaughters' parent is also alive, the granddaughters usually do not take directly at this level. The living children are the operative issue for distribution; a minor child's share is held/administered rather than paid outright.",
+        "If there is no surviving spouse, the son and daughter are alive, and a third child of the deceased predeceased leaving two granddaughters, the estate is analysed by branches: son one branch, daughter one branch, and the deceased child's branch one branch. On that assumed fact pattern, the son would take 1/3, the daughter 1/3, and the two granddaughters would share their parent's 1/3 branch equally at 1/6 each, subject to any minor-beneficiary trust consequences.",
+        "If a surviving spouse exists, or if any child was adopted, illegitimate, predeceased, disclaimed, or died before vesting, the distribution table must be recalculated from the statute and source cards.",
+      ]],
+      ["Minor Beneficiaries / Trust Consequences", [
+        "A beneficiary under 18 should not be treated as simply receiving cash outright. The administrator must identify the trust, guardian/co-administrator, investment, maintenance/advancement and court/Registry requirements before distribution.",
+        "For presentation to a client, separate the arithmetic entitlement from the payment mechanics: an adult share may be distributable after administration; a minor share may need to be held until full age or another statutory vesting condition is satisfied.",
+        "If a minor dies before vesting, do not improvise the answer. That requires a fresh statutory-trust and survivorship analysis against the verified source cards.",
+      ]],
+      ["Administration / Forms Layer", [
+        "The procedural route is letters of administration, not probate to an executor and not W1 will-probate forms.",
+        "First identify the person entitled to apply as administrator, relationship evidence, consents/renunciations and whether a guardian or co-administrator route is needed because of minors.",
+        "The L1 letters-of-administration family and N2.1/N4.1 assets-liabilities schedule are only the filing layer after entitlement and distribution analysis.",
+      ]],
+    ],
+    source_backed_rules: [
+      {
+        id: "hk_probate_intestacy_distribution_cap73_s4",
+        proposition: "Where Hong Kong intestacy law applies, distribution of the residuary estate is governed by Cap. 73 section 4.",
+        source: "Intestates' Estates Ordinance (Cap. 73) s.4",
+        official_url: "https://www.elegislation.gov.hk/hk/cap73/s4",
+        source_card_ids: ["hk_cap73_s4_intestacy_succession"],
+        verification_status: "source_verified_public_api",
+      },
+      {
+        id: "hk_probate_statutory_trusts_issue_cap73_s5",
+        proposition: "The statutory trusts mechanism determines how issue take by branch and whether issue take only through a deceased parent.",
+        source: "Intestates' Estates Ordinance (Cap. 73) s.5",
+        official_url: "https://www.elegislation.gov.hk/hk/cap73/s5",
+        source_card_ids: ["hk_cap73_s5_statutory_trusts_issue"],
+        verification_status: "source_verified_public_api",
+      },
+      {
+        id: "hk_probate_full_age_cap410_s2",
+        proposition: "For Hong Kong statutory references to full age, full age is 18 unless the context requires otherwise.",
+        source: "Age of Majority (Related Provisions) Ordinance (Cap. 410) s.2",
+        official_url: "https://www.elegislation.gov.hk/hk/cap410/s2",
+        source_card_ids: ["hk_cap410_s2_full_age_18"],
+        verification_status: "source_verified_public_api",
+      },
+    ],
+    missing_facts: [
+      "Deceased's domicile at death and whether the relevant assets are in Hong Kong, the US or another place.",
+      "Whether there is any valid will, codicil, foreign grant or US estate proceeding.",
+      "Whether there is a surviving spouse, former spouse, or matrimonial/property issue affecting distribution.",
+      "Whether the two granddaughters' parent was a child of the deceased and whether that parent predeceased the deceased.",
+      "Exact ages/capacity of the son, daughter and granddaughters, including which beneficiaries are under 18.",
+      "Whether adoption, legitimacy, disclaimer, survivorship period, debts, funeral expenses, tax, or creditor issues alter the distributable estate.",
+    ],
+    unsupported_claims: [
+      "No HKLII paragraph-level probate case authority is attached for this scenario yet; cases must remain candidate-only until paragraph URLs are verified.",
+      "No final US-law conclusion can be given without the US state, domicile and asset-situs facts.",
+    ],
+  };
+}
+
 function supportForScenario(scenario) {
   if (scenario === "caveat_warning_contentious_gateway") {
     return {
@@ -279,30 +399,45 @@ function composeProbateAnswer({ query }) {
   const classification = classifyProbate(query);
   const registry = loadProbateJson("probate_form_registry.json", { forms: [] });
   const contracts = loadProbateJson("probate_answer_contracts.json", { answer_contracts: [] });
-  const scenarioSupport = supportForScenario(classification.scenario);
+  const structuredAnalysis = buildAppliedAnalysis({
+    domain: "probate_law_hk",
+    scenario: classification.scenario,
+    subscenario: classification.subscenario,
+    query,
+    facts: classification.detected_facts,
+  });
+  const scenarioSupport = structuredAnalysis.matched
+    ? structuredAnalysis.support
+    : classification.subscenario === "intestacy_distribution_issue_statutory_trusts"
+    ? intestacyDistributionSupport(classification)
+    : supportForScenario(classification.scenario);
   const formCandidates = selectForms(registry.forms, classification.scenario);
   const formGuidance = formGuidanceItems(classification.scenario, formCandidates);
+  const missingFacts = scenarioSupport.missing_facts || [
+    "Deceased identity, date of death and domicile.",
+    "Will/codicil status and location of originals.",
+    "Executor/administrator entitlement and any renunciations, consents, deaths of executor, attorney route, minority/life interest or no-executor issue.",
+    "Hong Kong assets and liabilities, including whether the ordinary grant schedule, corrective schedule or resealing schedule route is needed.",
+    "Whether caveat, citation, warning, requisition, foreign grant or dispute exists.",
+  ];
+  const baseSections = structuredAnalysis.matched
+    ? structuredAnalysis.applied_answer.sections || []
+    : scenarioSupport.sections.map(([heading, items]) => ({ heading, items }));
   const sections = [
-    ...scenarioSupport.sections.map(([heading, items]) => ({ heading, items })),
+    ...baseSections,
     {
       heading: "Documents / Forms",
       items: formGuidance,
     },
-    {
+    ...(structuredAnalysis.matched ? [] : [{
       heading: "Missing Facts",
-      items: [
-        "Deceased identity, date of death and domicile.",
-        "Will/codicil status and location of originals.",
-        "Executor/administrator entitlement and any renunciations, consents, deaths of executor, attorney route, minority/life interest or no-executor issue.",
-        "Hong Kong assets and liabilities, including whether the ordinary grant schedule, corrective schedule or resealing schedule route is needed.",
-        "Whether caveat, citation, warning, requisition, foreign grant or dispute exists.",
-      ],
-    },
+      items: missingFacts,
+    }]),
     {
       heading: "Review Gate",
       items: [
-        "This Probate answer is a metadata/practice-seed triage, not legal advice.",
-        "No Probate proposition is answer-safe until official ordinance/rules/case source cards are attached and reviewed.",
+        "This Probate answer is source-gated legal research and workflow triage, not final legal advice.",
+        "No Probate case proposition is answer-safe until public HKLII/LegalRef paragraph cards are attached and reviewed.",
         "Butterworths text and private form bodies remain private-vault-only and are not reproduced here.",
       ],
     },
@@ -310,25 +445,48 @@ function composeProbateAnswer({ query }) {
 
   return {
     applied_answer: {
-      title: scenarioSupport.title,
+      title: structuredAnalysis.matched ? structuredAnalysis.applied_answer.title : scenarioSupport.title,
       mode: "probate_metadata_source_gated",
-      short_answer: scenarioSupport.short_answer,
+      answer_generation_mode: structuredAnalysis.matched ? structuredAnalysis.answer_generation_mode : "deterministic_fallback_template",
+      llm_status: structuredAnalysis.llm_status || "not_invoked",
+      short_answer: structuredAnalysis.matched ? structuredAnalysis.applied_answer.short_answer : scenarioSupport.short_answer,
       sections,
+      source_card_ids: structuredAnalysis.applied_answer?.source_card_ids || [],
+      principle_card_ids: structuredAnalysis.applied_answer?.principle_card_ids || [],
+      case_digest_card_ids: structuredAnalysis.applied_answer?.case_digest_card_ids || [],
     },
     classification,
     answer_contract: {
       domain: "probate_law_hk",
       scenario_family: classification.scenario,
+      subscenario: classification.subscenario,
       answer_sections: sections.map(section => section.heading),
       verification_rule: "No official source card means source-verification-required. Forms are metadata-only candidates.",
       source_audit_policy: "collapsed_by_default",
       review_status: "research_only",
+      answer_generation_mode: structuredAnalysis.matched ? structuredAnalysis.answer_generation_mode : "deterministic_fallback_template",
+      verifier_status: structuredAnalysis.verification?.status || "not_run_fallback_template",
     },
     form_candidates: formCandidates,
+    source_backed_rules: scenarioSupport.source_backed_rules || [],
+    unsupported_claims: scenarioSupport.unsupported_claims || [],
     source_audit: {
       display: "collapsed",
       probate_contracts: contracts.answer_contracts || [],
       form_registry_count: (registry.forms || []).length,
+      source_backed_rule_count: (scenarioSupport.source_backed_rules || []).length,
+      unsupported_claims: scenarioSupport.unsupported_claims || [],
+      claims: structuredAnalysis.source_audit_claims || [],
+      debug_audit: structuredAnalysis.debug_audit || null,
+      applied_analysis: structuredAnalysis.matched ? {
+        rule_deck_id: structuredAnalysis.rule_deck_id,
+        answer_generation_mode: structuredAnalysis.answer_generation_mode,
+        llm_status: structuredAnalysis.llm_status,
+        verifier: structuredAnalysis.verification,
+      } : {
+        answer_generation_mode: "deterministic_fallback_template",
+        reason: structuredAnalysis.reason,
+      },
       note: "Probate pack is metadata-only. Use official source cards and private-vault templates before drafting.",
     },
   };

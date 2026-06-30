@@ -7,7 +7,7 @@ function sha256(value) {
 }
 
 function sourceKindFromPayload(payload = {}) {
-  if (payload.source_type === "case") return payload.proposition_id ? "proposition_card" : "case";
+  if (payload.source_type === "case" || payload.source_type === "case_judgment") return payload.proposition_id ? "proposition_card" : "case";
   if (payload.source_type === "form_metadata") return "form_metadata";
   if (payload.source_type === "practice_direction") return "practice_direction";
   if (payload.source_type === "legislation") return "ordinance";
@@ -28,7 +28,7 @@ function sourceFromHit(hit, collectionName) {
     case_name: payload.title,
     neutral_citation: payload.citation,
     paragraph: payload.pinpoint || payload.paragraph_id,
-    url_or_path: payload.url_or_path,
+    url_or_path: payload.url_or_path || payload.source_url || payload.source_url_or_path,
     chunk_id: chunkId,
     chunk_hash: sha256(`${collectionName}:${chunkId}:${payload.indexed_text_preview || ""}`),
     retrieval_score: hit.score,

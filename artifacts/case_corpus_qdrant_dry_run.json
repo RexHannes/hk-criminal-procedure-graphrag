@@ -1,0 +1,56 @@
+{
+  "indexer": "index_case_corpus_qdrant",
+  "dry_run": true,
+  "no_network": true,
+  "mode": "sample",
+  "embedding_config": {
+    "embedding_provider": "local-hash",
+    "embedding_model": "local-hash-legal-demo-v1",
+    "vector_dimension": 2048,
+    "tokenizer_or_token_estimator": "whitespace_token_estimate_x1_25",
+    "embedding_version": "case-corpus-embedding-v1",
+    "created_at": "2026-06-29T00:00:00.000Z",
+    "chunk_schema_version": "case_corpus_chunk_v1",
+    "payload_schema_version": "case-corpus-qdrant-payload-v1"
+  },
+  "collection": "hk_case_corpus_chunks_local_hash_legal_demo_v1_2048",
+  "qdrant_collection_targets": {
+    "primary_chunk_collection": "hk_case_corpus_chunks_local_hash_legal_demo_v1_2048",
+    "legacy_artifact_collections": {
+      "hk_case_paragraphs_openrouter_2048": 344,
+      "hk_case_propositions_openrouter_2048": 344,
+      "hk_case_principles_openrouter_2048": 344,
+      "hk_case_digests_openrouter_2048": 120
+    }
+  },
+  "dry_run_vector_count": 918,
+  "sample_payload": {
+    "chunk_id": "chunk_hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant_p1",
+    "chunk_type": "case_paragraph_chunk",
+    "source_object_id": "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant_p1",
+    "case_id": "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant",
+    "case_name": "BETWEEN HKSAR Respondent and KHAN, ALTAF Appellant",
+    "citation": "[2022] HKCFI 1220",
+    "court": "Court of First Instance",
+    "judgment_date": "2022-04-27",
+    "issue_tags": [
+      "criminal_law.theft",
+      "criminal_law.theft.sentencing"
+    ],
+    "authority_role": "sentencing_observation",
+    "authority_strength": "cfi",
+    "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p1",
+    "paragraph_ids": [
+      "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant_p1"
+    ],
+    "checksum": "64a2f50af1b291944584d1144b907c2f0ec83f763508fbcf102a5678517e7e40",
+    "embedding_model": "local-hash-legal-demo-v1",
+    "embedding_version": "case-corpus-embedding-v1",
+    "vector_dimension": 2048,
+    "answer_layer_status": "research_only",
+    "review_status": "machine_candidate",
+    "source_visibility": "public_demo",
+    "tenant_id": "public"
+  },
+  "status": "dry_run_ready_no_provider_calls"
+}

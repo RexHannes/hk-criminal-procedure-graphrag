@@ -1,0 +1,704 @@
+{
+  "queue_id": "hk_criminal_multibranch_public_discovery_queue_v1",
+  "generated_at": "2026-06-25T08:22:12.190Z",
+  "source_plan_id": "hk_criminal_multibranch_public_case_expansion_2500_v1",
+  "status": "candidate_discovery_only_not_ingested",
+  "purpose": "Branch-sorted candidate case discovery queue before public-source verification, paragraphization, extraction and Qdrant upsert.",
+  "policy": {
+    "public_judgment_required_before_ingestion": true,
+    "allowed_verified_sources": [
+      "LegalRef",
+      "HKLII",
+      "Judiciary",
+      "HKCFA"
+    ],
+    "secondary_public_leads_are_not_authority": true,
+    "deepseek_outputs_are_not_authority": true,
+    "exact_quote_required": true,
+    "private_or_licensed_sources_allowed": false,
+    "answer_safe_by_default": false
+  },
+  "branch_discovery": [
+    {
+      "branch_family": "investigation_arrest_search_detention",
+      "priority": 1,
+      "target_case_quota": 450,
+      "initial_rung_case_count": 20,
+      "sample_node_ids": [
+        "criminal_procedure_hk.archer_v_commissioner_of_police",
+        "criminal_procedure_hk.invest_arrest_with_warrant",
+        "criminal_procedure_hk.invest_arrest_without_warrant",
+        "criminal_procedure_hk.crim_proc_bail",
+        "criminal_procedure_hk.invest_detention_after_arrest",
+        "criminal_procedure_hk.hksar_v_lam_tat_ming",
+        "criminal_procedure_hk.crim_proc_investigation",
+        "criminal_procedure_hk.nsl_key_cases"
+      ],
+      "search_queries": [
+        {
+          "query_id": "search_59d426c5a9cd",
+          "query": "site:legalref.judiciary.hk \"investigation arrest search detention\" \"HKSAR v\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 1
+        },
+        {
+          "query_id": "search_5789e02ab41a",
+          "query": "site:legalref.judiciary.hk \"HK criminal investigation, arrest, search, detention and reasonable suspicion; i\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 2
+        },
+        {
+          "query_id": "search_efd7bf0ae945",
+          "query": "site:hklii.hk \"investigation arrest search detention\" \"Hong Kong\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 3
+        },
+        {
+          "query_id": "search_96ca4d0901a6",
+          "query": "site:legalref.judiciary.hk \"archer v commissioner of police\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 4
+        },
+        {
+          "query_id": "search_3d12480fd1d7",
+          "query": "site:legalref.judiciary.hk \"invest arrest with warrant\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 5
+        },
+        {
+          "query_id": "search_1b37fb348e88",
+          "query": "site:legalref.judiciary.hk \"invest arrest without warrant\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 6
+        },
+        {
+          "query_id": "search_4e6bc7754197",
+          "query": "site:legalref.judiciary.hk \"crim proc bail\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 7
+        },
+        {
+          "query_id": "search_6fddb3b84d68",
+          "query": "site:legalref.judiciary.hk \"invest detention after arrest\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 8
+        }
+      ],
+      "candidate_case_leads": [
+        {
+          "seed_id": "case_seed_b090b542cec0b29b",
+          "branch_family": "investigation_arrest_search_detention",
+          "status": "search_result_candidate_needs_public_judgment_verification",
+          "seed_source": "search_or_secondary_public_lead",
+          "case_name": "HKSAR v Lam Tat Ming",
+          "possible_citation": "(2000) 3 HKCFAR 168",
+          "lead_source_url": "https://legalref.judiciary.hk/",
+          "reason_for_relevance": "CFA authority on confession/admissibility and law-enforcement evidence-gathering safeguards; public LegalRef/HKCFA paragraph verification required.",
+          "suggested_issue_tags": [
+            "criminal_procedure_hk.hksar_v_lam_tat_ming",
+            "criminal_procedure_hk.invest_detention_after_arrest"
+          ],
+          "priority_rank": 1,
+          "required_before_ingestion": [
+            "verify_public_judgment_url_on_legalref_hklii_or_judiciary",
+            "fetch_public_judgment",
+            "paragraphize_source",
+            "exact_quote_validate_every_proposition",
+            "candidate_only_review_state"
+          ],
+          "answer_safe_allowed": false
+        },
+        {
+          "seed_id": "case_seed_ae3dd10c9fb2edb4",
+          "branch_family": "investigation_arrest_search_detention",
+          "status": "search_result_candidate_needs_public_judgment_verification",
+          "seed_source": "search_or_secondary_public_lead",
+          "case_name": "HKSAR v Lai Man Ling",
+          "possible_citation": "[2021] HKCFA 28",
+          "lead_source_url": "https://legalref.judiciary.hk/",
+          "reason_for_relevance": "Candidate search/seizure investigative-powers authority from existing doctrine tree; public judgment paragraphs required.",
+          "suggested_issue_tags": [
+            "criminal_procedure_hk.hksar_v_lai_man_ling",
+            "criminal_procedure_hk.invest_search_with_warrant"
+          ],
+          "priority_rank": 2,
+          "required_before_ingestion": [
+            "verify_public_judgment_url_on_legalref_hklii_or_judiciary",
+            "fetch_public_judgment",
+            "paragraphize_source",
+            "exact_quote_validate_every_proposition",
+            "candidate_only_review_state"
+          ],
+          "answer_safe_allowed": false
+        }
+      ],
+      "next_action": "verify_seed_leads_against_public_judgment_sources_then_extract"
+    },
+    {
+      "branch_family": "theft_dishonesty_fraud",
+      "priority": 1,
+      "target_case_quota": 167,
+      "initial_rung_case_count": 20,
+      "sample_node_ids": [
+        "criminal_law_hk.theft.appropriation",
+        "criminal_law_hk.theft.intent.deprive",
+        "criminal_law_hk.property_dishonesty",
+        "criminal_law_hk.theft"
+      ],
+      "search_queries": [
+        {
+          "query_id": "search_f5b42cf9eaf4",
+          "query": "site:legalref.judiciary.hk \"theft dishonesty fraud\" \"HKSAR v\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 1
+        },
+        {
+          "query_id": "search_f8418c381158",
+          "query": "site:legalref.judiciary.hk \"HK theft, fraud and dishonesty tests; include Theft Ordinance, Ghosh/Ivey treatm\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 2
+        },
+        {
+          "query_id": "search_f0c52b174721",
+          "query": "site:hklii.hk \"theft dishonesty fraud\" \"Hong Kong\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 3
+        },
+        {
+          "query_id": "search_bcfda7ad53b5",
+          "query": "site:legalref.judiciary.hk \"theft appropriation\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 4
+        },
+        {
+          "query_id": "search_0d5dd9d8da46",
+          "query": "site:legalref.judiciary.hk \"theft intent deprive\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 5
+        },
+        {
+          "query_id": "search_96231ce6cafa",
+          "query": "site:legalref.judiciary.hk \"property dishonesty\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 6
+        },
+        {
+          "query_id": "search_bda7eb0aa689",
+          "query": "site:legalref.judiciary.hk \"theft\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 7
+        }
+      ],
+      "candidate_case_leads": [
+        {
+          "seed_id": "case_seed_32747750049a2bcc",
+          "branch_family": "theft_dishonesty_fraud",
+          "status": "search_result_candidate_needs_public_judgment_verification",
+          "seed_source": "search_or_secondary_public_lead",
+          "case_name": "HKSAR v Chan Kam Ching",
+          "possible_citation": "[2022] HKCFA 7; (2022) 25 HKCFAR 48",
+          "lead_source_url": "https://www.hk-lawyer.org/content/%E2%80%9Cdeceit%E2%80%9D-and-%E2%80%9Cdeception%E2%80%9D-after-chan-kam-ching-deceivingly-simple-concepts",
+          "reason_for_relevance": "CFA treatment of fraud/deceit issues under the Theft Ordinance; lead only until public judgment paragraphs are verified.",
+          "suggested_issue_tags": [
+            "criminal_law_hk.fraud",
+            "criminal_law_hk.theft.dishonesty"
+          ],
+          "priority_rank": 1,
+          "required_before_ingestion": [
+            "verify_public_judgment_url_on_legalref_hklii_or_judiciary",
+            "fetch_public_judgment",
+            "paragraphize_source",
+            "exact_quote_validate_every_proposition",
+            "candidate_only_review_state"
+          ],
+          "answer_safe_allowed": false
+        },
+        {
+          "seed_id": "case_seed_fc51186a1237403b",
+          "branch_family": "theft_dishonesty_fraud",
+          "status": "search_result_candidate_needs_public_judgment_verification",
+          "seed_source": "search_or_secondary_public_lead",
+          "case_name": "HKSAR v Lam Hin Fai",
+          "possible_citation": "[2016] 2 HKLRD 1210",
+          "lead_source_url": "https://www.hk-lawyer.org/content/hksar-v-lam-hin-fai",
+          "reason_for_relevance": "Court of Appeal discussion of whether a Ghosh dishonesty direction is necessary; lead only until public judgment paragraphs are verified.",
+          "suggested_issue_tags": [
+            "criminal_law_hk.theft.dishonesty",
+            "criminal_law_hk.fraud"
+          ],
+          "priority_rank": 2,
+          "required_before_ingestion": [
+            "verify_public_judgment_url_on_legalref_hklii_or_judiciary",
+            "fetch_public_judgment",
+            "paragraphize_source",
+            "exact_quote_validate_every_proposition",
+            "candidate_only_review_state"
+          ],
+          "answer_safe_allowed": false
+        },
+        {
+          "seed_id": "case_seed_f274b2edcf6f07a4",
+          "branch_family": "theft_dishonesty_fraud",
+          "status": "search_result_candidate_needs_public_judgment_verification",
+          "seed_source": "search_or_secondary_public_lead",
+          "case_name": "Mo Yuk Ping v HKSAR",
+          "possible_citation": "(2007) 10 HKCFAR 386",
+          "lead_source_url": "https://researchblog.law.hku.hk/2017/11/michael-jackson-on-determining-criminal.html",
+          "reason_for_relevance": "CFA authority commonly cited for dishonesty/Ghosh treatment in Hong Kong; lead only until public judgment paragraphs are verified.",
+          "suggested_issue_tags": [
+            "criminal_law_hk.theft.dishonesty"
+          ],
+          "priority_rank": 3,
+          "required_before_ingestion": [
+            "verify_public_judgment_url_on_legalref_hklii_or_judiciary",
+            "fetch_public_judgment",
+            "paragraphize_source",
+            "exact_quote_validate_every_proposition",
+            "candidate_only_review_state"
+          ],
+          "answer_safe_allowed": false
+        },
+        {
+          "seed_id": "case_seed_b1de2b77351f9293",
+          "branch_family": "theft_dishonesty_fraud",
+          "status": "search_result_candidate_needs_public_judgment_verification",
+          "seed_source": "search_or_secondary_public_lead",
+          "case_name": "HKSAR v Lai Kin Hang Erwin and Others",
+          "possible_citation": "[2019] HKCA 547",
+          "lead_source_url": "https://www.hkcfa.hk/data.json?case_court_sys=FA&case_ser_no=6&case_type=CC&case_yr=2019&i_doc_int_no=2&lang=E&src=pdf_printedcase_pdf",
+          "reason_for_relevance": "Candidate post-Ivey/Ghosh dishonesty treatment; lead only until public judgment paragraphs are verified.",
+          "suggested_issue_tags": [
+            "criminal_law_hk.theft.dishonesty"
+          ],
+          "priority_rank": 4,
+          "required_before_ingestion": [
+            "verify_public_judgment_url_on_legalref_hklii_or_judiciary",
+            "fetch_public_judgment",
+            "paragraphize_source",
+            "exact_quote_validate_every_proposition",
+            "candidate_only_review_state"
+          ],
+          "answer_safe_allowed": false
+        }
+      ],
+      "next_action": "verify_seed_leads_against_public_judgment_sources_then_extract"
+    },
+    {
+      "branch_family": "public_order_riot_unlawful_assembly",
+      "priority": 1,
+      "target_case_quota": 162,
+      "initial_rung_case_count": 20,
+      "sample_node_ids": [
+        "criminal_law_hk.complicity_inchoate",
+        "criminal_law_hk.public_order.unlawful_assembly_riot",
+        "criminal_law_hk.public_order.expression_offences",
+        "criminal_law_hk.withdrawal.joint.enterprise"
+      ],
+      "search_queries": [
+        {
+          "query_id": "search_3439eebcbcbd",
+          "query": "site:legalref.judiciary.hk \"public order riot unlawful assembly\" \"HKSAR v\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 1
+        },
+        {
+          "query_id": "search_832e4a3ff1a3",
+          "query": "site:legalref.judiciary.hk \"HK unlawful assembly and riot lineage after Tong Wai Hung; include physical pres\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 2
+        },
+        {
+          "query_id": "search_fcc817b3c88c",
+          "query": "site:hklii.hk \"public order riot unlawful assembly\" \"Hong Kong\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 3
+        },
+        {
+          "query_id": "search_76b71578294a",
+          "query": "site:legalref.judiciary.hk \"complicity inchoate\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 4
+        },
+        {
+          "query_id": "search_2099b14e4794",
+          "query": "site:legalref.judiciary.hk \"public order unlawful assembly riot\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 5
+        },
+        {
+          "query_id": "search_f1575b5e5942",
+          "query": "site:legalref.judiciary.hk \"public order expression offences\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 6
+        },
+        {
+          "query_id": "search_11ba2e3623d8",
+          "query": "site:legalref.judiciary.hk \"withdrawal joint enterprise\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 7
+        }
+      ],
+      "candidate_case_leads": [
+        {
+          "seed_id": "case_seed_0aa399d3f064b03d",
+          "branch_family": "public_order_riot_unlawful_assembly",
+          "status": "search_result_candidate_needs_public_judgment_verification",
+          "seed_source": "search_or_secondary_public_lead",
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "possible_citation": "[2021] HKCA 404",
+          "lead_source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en",
+          "reason_for_relevance": "Existing exact-quote public-order pilot anchor; use for lineage expansion and related later-treatment cases.",
+          "suggested_issue_tags": [
+            "criminal_law_hk.public_order.riot",
+            "criminal_law_hk.public_order.joint_enterprise_accessory"
+          ],
+          "priority_rank": 1,
+          "required_before_ingestion": [
+            "verify_public_judgment_url_on_legalref_hklii_or_judiciary",
+            "fetch_public_judgment",
+            "paragraphize_source",
+            "exact_quote_validate_every_proposition",
+            "candidate_only_review_state"
+          ],
+          "answer_safe_allowed": false
+        }
+      ],
+      "next_action": "verify_seed_leads_against_public_judgment_sources_then_extract"
+    },
+    {
+      "branch_family": "trial_no_case_jury_directions",
+      "priority": 2,
+      "target_case_quota": 350,
+      "initial_rung_case_count": 20,
+      "sample_node_ids": [
+        "criminal_procedure_hk.trial_allocation_and_ptp",
+        "criminal_procedure_hk.indictment_amendment",
+        "criminal_procedure_hk.appeal_conviction",
+        "criminal_procedure_hk.appeal_discharge",
+        "criminal_procedure_hk.crim_proc_appeals",
+        "criminal_procedure_hk.trial_arraignment",
+        "criminal_procedure_hk.crim_proc_cfi_trial",
+        "criminal_procedure_hk.pre_trial_offence_classification"
+      ],
+      "search_queries": [
+        {
+          "query_id": "search_2906f66ad8c1",
+          "query": "site:legalref.judiciary.hk \"trial no case jury directions\" \"HKSAR v\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 1
+        },
+        {
+          "query_id": "search_2cd6be1bc954",
+          "query": "site:legalref.judiciary.hk \"HK criminal trial procedure, no-case submissions, jury directions, burden/standa\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 2
+        },
+        {
+          "query_id": "search_667889d377c1",
+          "query": "site:hklii.hk \"trial no case jury directions\" \"Hong Kong\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 3
+        },
+        {
+          "query_id": "search_4d9d75626995",
+          "query": "site:legalref.judiciary.hk \"trial allocation and ptp\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 4
+        },
+        {
+          "query_id": "search_948941975f5b",
+          "query": "site:legalref.judiciary.hk \"indictment amendment\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 5
+        },
+        {
+          "query_id": "search_4f268a4a645b",
+          "query": "site:legalref.judiciary.hk \"appeal conviction\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 6
+        },
+        {
+          "query_id": "search_80a6893b9d6c",
+          "query": "site:legalref.judiciary.hk \"appeal discharge\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 7
+        },
+        {
+          "query_id": "search_9a9b7004c8eb",
+          "query": "site:legalref.judiciary.hk \"crim proc appeals\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 8
+        }
+      ],
+      "candidate_case_leads": [],
+      "next_action": "run_allowlisted_search_then_create_verified_public_case_registry"
+    },
+    {
+      "branch_family": "appeals_reviews_sentence",
+      "priority": 2,
+      "target_case_quota": 350,
+      "initial_rung_case_count": 20,
+      "sample_node_ids": [
+        "criminal_procedure_hk.appeal_sentence",
+        "criminal_procedure_hk.appeal_insanity_unfitness",
+        "criminal_procedure_hk.bail_pending_appeal",
+        "criminal_procedure_hk.appeal_cfa_jurisdiction",
+        "criminal_procedure_hk.hksar_v_chan_kam_ching",
+        "criminal_procedure_hk.hksar_v_cheung_tsz_wan",
+        "criminal_procedure_hk.hksar_v_fu_chiu_wa",
+        "criminal_procedure_hk.hksar_v_khaw_kin_sun"
+      ],
+      "search_queries": [
+        {
+          "query_id": "search_98ec80852000",
+          "query": "site:legalref.judiciary.hk \"appeals reviews sentence\" \"HKSAR v\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 1
+        },
+        {
+          "query_id": "search_fd1ab4d51358",
+          "query": "site:legalref.judiciary.hk \"HK criminal appeals/reviews; include conviction/sentence appeal tests, proviso, \"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 2
+        },
+        {
+          "query_id": "search_599a6e123b16",
+          "query": "site:hklii.hk \"appeals reviews sentence\" \"Hong Kong\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 3
+        },
+        {
+          "query_id": "search_747d7a4fcdd9",
+          "query": "site:legalref.judiciary.hk \"appeal sentence\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 4
+        },
+        {
+          "query_id": "search_7a0699c9a915",
+          "query": "site:legalref.judiciary.hk \"appeal insanity unfitness\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 5
+        },
+        {
+          "query_id": "search_d8032d9cec48",
+          "query": "site:legalref.judiciary.hk \"bail pending appeal\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 6
+        },
+        {
+          "query_id": "search_be27c71e6da2",
+          "query": "site:legalref.judiciary.hk \"appeal cfa jurisdiction\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 7
+        },
+        {
+          "query_id": "search_f64dc25b23a1",
+          "query": "site:legalref.judiciary.hk \"hksar v chan kam ching\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 8
+        }
+      ],
+      "candidate_case_leads": [],
+      "next_action": "run_allowlisted_search_then_create_verified_public_case_registry"
+    },
+    {
+      "branch_family": "offences_against_person",
+      "priority": 2,
+      "target_case_quota": 277,
+      "initial_rung_case_count": 20,
+      "sample_node_ids": [
+        "criminal_law_hk.abh",
+        "criminal_law_hk.assault.battery",
+        "criminal_law_hk.duress",
+        "criminal_law_hk.gross.negligence.manslaughter",
+        "criminal_law_hk.involuntary.manslaughter",
+        "criminal_law_hk.manslaughter",
+        "criminal_law_hk.murder",
+        "criminal_law_hk.offences_person"
+      ],
+      "search_queries": [
+        {
+          "query_id": "search_444695b38968",
+          "query": "site:legalref.judiciary.hk \"offences against person\" \"HKSAR v\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 1
+        },
+        {
+          "query_id": "search_ee6ce844164d",
+          "query": "site:legalref.judiciary.hk \"HK offences against the person; include homicide, assault, wounding/GBH, sexual \"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 2
+        },
+        {
+          "query_id": "search_119f6a0fd664",
+          "query": "site:hklii.hk \"offences against person\" \"Hong Kong\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 3
+        },
+        {
+          "query_id": "search_ae4781315695",
+          "query": "site:legalref.judiciary.hk \"abh\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 4
+        },
+        {
+          "query_id": "search_9431175a1c04",
+          "query": "site:legalref.judiciary.hk \"assault battery\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 5
+        },
+        {
+          "query_id": "search_82d2d7b424ea",
+          "query": "site:legalref.judiciary.hk \"duress\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 6
+        },
+        {
+          "query_id": "search_0e0598713b58",
+          "query": "site:legalref.judiciary.hk \"gross negligence manslaughter\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 7
+        },
+        {
+          "query_id": "search_e6c5fe782585",
+          "query": "site:legalref.judiciary.hk \"involuntary manslaughter\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 8
+        }
+      ],
+      "candidate_case_leads": [],
+      "next_action": "run_allowlisted_search_then_create_verified_public_case_registry"
+    },
+    {
+      "branch_family": "bribery_corruption_misconduct",
+      "priority": 2,
+      "target_case_quota": 144,
+      "initial_rung_case_count": 20,
+      "sample_node_ids": [
+        "criminal_law_hk.bribery_corruption",
+        "criminal_law_hk.misconduct.public.office",
+        "criminal_law_hk.pobo.s10",
+        "criminal_law_hk.pobo.s3",
+        "criminal_law_hk.pobo.s9",
+        "criminal_law_hk.pobo.s4.s5"
+      ],
+      "search_queries": [
+        {
+          "query_id": "search_13016c4e8a93",
+          "query": "site:legalref.judiciary.hk \"bribery corruption misconduct\" \"HKSAR v\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 1
+        },
+        {
+          "query_id": "search_79d33aa8fcee",
+          "query": "site:legalref.judiciary.hk \"HK POBO, misconduct in public office and corruption lineages; include CFA/CA aut\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 2
+        },
+        {
+          "query_id": "search_ec98c49a1082",
+          "query": "site:hklii.hk \"bribery corruption misconduct\" \"Hong Kong\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 3
+        },
+        {
+          "query_id": "search_25352b6a348d",
+          "query": "site:legalref.judiciary.hk \"bribery corruption\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 4
+        },
+        {
+          "query_id": "search_f6cfe0341718",
+          "query": "site:legalref.judiciary.hk \"misconduct public office\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 5
+        },
+        {
+          "query_id": "search_98218ad7d910",
+          "query": "site:legalref.judiciary.hk \"pobo s10\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 6
+        },
+        {
+          "query_id": "search_d35ddf20c6ae",
+          "query": "site:legalref.judiciary.hk \"pobo s3\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 7
+        },
+        {
+          "query_id": "search_a9c4c5e864b3",
+          "query": "site:legalref.judiciary.hk \"pobo s9\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 8
+        }
+      ],
+      "candidate_case_leads": [],
+      "next_action": "run_allowlisted_search_then_create_verified_public_case_registry"
+    },
+    {
+      "branch_family": "aml_money_laundering",
+      "priority": 2,
+      "target_case_quota": 124,
+      "initial_rung_case_count": 20,
+      "sample_node_ids": [
+        "criminal_law_hk.aml",
+        "criminal_law_hk.aml.wilful.blindness",
+        "criminal_law_hk.osco.s25",
+        "criminal_law_hk.aml.statutory.defence",
+        "criminal_law_hk.aml.reasonable.grounds"
+      ],
+      "search_queries": [
+        {
+          "query_id": "search_657e797cab4e",
+          "query": "site:legalref.judiciary.hk \"aml money laundering\" \"HKSAR v\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 1
+        },
+        {
+          "query_id": "search_d625bdc75954",
+          "query": "site:legalref.judiciary.hk \"HK money laundering / OSCO s25 lineages; include reasonable grounds, knowledge, \"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 2
+        },
+        {
+          "query_id": "search_73e5770b70fc",
+          "query": "site:hklii.hk \"aml money laundering\" \"Hong Kong\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 3
+        },
+        {
+          "query_id": "search_05e68011ee88",
+          "query": "site:legalref.judiciary.hk \"aml\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 4
+        },
+        {
+          "query_id": "search_bf3441320673",
+          "query": "site:legalref.judiciary.hk \"aml wilful blindness\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 5
+        },
+        {
+          "query_id": "search_c460240d3c92",
+          "query": "site:legalref.judiciary.hk \"osco s25\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 6
+        },
+        {
+          "query_id": "search_fa5e76f1cd9d",
+          "query": "site:legalref.judiciary.hk \"aml statutory defence\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 7
+        },
+        {
+          "query_id": "search_3d51b31092c8",
+          "query": "site:legalref.judiciary.hk \"aml reasonable grounds\"",
+          "status": "ready_for_allowlisted_public_search",
+          "priority_rank": 8
+        }
+      ],
+      "candidate_case_leads": [],
+      "next_action": "run_allowlisted_search_then_create_verified_public_case_registry"
+    }
+  ]
+}

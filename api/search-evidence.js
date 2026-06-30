@@ -5,6 +5,10 @@ const { filterPiChunksByContract } = require("../src/api/answer-composers/pi");
 const { findCachedLegalAnswer, writeLegalAnswerCache } = require("../src/api/legal-ingest/cache");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
+const { buildLegalResearchPresentation } = require("../src/api/legal_research_presenter");
+const { buildUploadedEvidenceBundle } = require("../src/api/evidence_text_ingest");
+const { retrieveCaseLawResearch } = require("../src/legal_answer/case_corpus/case_law_research_retriever");
+const { renderCaseLawResearch } = require("../src/legal_answer/case_corpus/case_law_research_renderer");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
@@ -67,11 +71,41 @@ const QUERY_EXPANSIONS = [
     preferred_domains: ["criminal_law_hk", "criminal_procedure_hk"]
   },
   {
+    pattern: /\b(theft|steal|stealing|stole|stolen|shoplift|shoplifting|dishonest|dishonesty|appropriation|permanent(?:ly)? deprive|forgot to pay|forget to pay|forgotten to pay|without paying|did not pay|didn't pay)\b/i,
+    terms: ["theft", "dishonesty", "appropriation", "property", "belonging to another", "intention permanently to deprive", "shoplifting", "Theft Ordinance"],
+    preferred_domains: ["criminal_law_hk", "criminal_procedure_hk"]
+  },
+  {
     pattern: /\b(probate|letters of administration|intestate|executor|administrator|grant of representation|caveat|warning|citation|reseal|resealing|foreign grant|lost will|copy will|swear death|rectification of will|inventory|estate distribution)\b/i,
     terms: ["probate", "grant", "executor", "administrator", "will", "estate", "probate registry", "common form", "contentious probate", "assets liabilities"],
     preferred_domains: ["probate_law_hk"]
   }
 ];
+
+function requestField(req, name, fallback = undefined) {
+  if (req.method === "POST" && req.body && Object.prototype.hasOwnProperty.call(req.body, name)) return req.body[name];
+  if (req.query && Object.prototype.hasOwnProperty.call(req.query, name)) return req.query[name];
+  return fallback;
+}
+
+function truthy(value) {
+  return value === true || value === "true" || value === "1" || value === 1 || value === "yes";
+}
+
+function numberField(req, name, fallback) {
+  const value = Number(requestField(req, name, fallback));
+  return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+function caseCorpusOptions(req) {
+  return {
+    use_case_corpus: truthy(requestField(req, "use_case_corpus", false)),
+    case_corpus_mode: String(requestField(req, "case_corpus_mode", "sample")) === "full" ? "full" : "sample",
+    issue_id: String(requestField(req, "issue_id", "") || "").trim(),
+    max_cases: numberField(req, "max_cases", 3),
+    max_paragraphs: numberField(req, "max_paragraphs", 6),
+  };
+}
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -96,7 +130,7 @@ function detectsCriminalPublicOrderQuery(query) {
 
 function detectsCriminalLawQuery(query) {
   const q = String(query || "").toLowerCase();
-  return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|assault|battery|manslaughter|murder|dishonesty|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting)\b/.test(q);
+  return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|steal|stealing|stole|stolen|shoplift|shoplifting|assault|battery|manslaughter|murder|dishonesty|dishonest|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting|forgot to pay|forget to pay|without paying)\b/.test(q);
 }
 
 function detectsPersonalInjuryPurpose(query) {
@@ -888,7 +922,16 @@ function postFilterMatchesForQuery(query, matches) {
     if (!filtered.length && arbiter.selected_domain !== "generic") {
       filtered = matches.filter(match => !(arbiter.blocked_static_domains || []).includes(match.domain_id));
     }
-    if (filtered.length) return filtered.slice(0, 8);
+    if (filtered.length) {
+      if (arbiter.selected_domain === "criminal_law" && arbiter.scenario === "theft_shoplifting_forgot_to_pay") {
+        const theftFocused = filtered.filter(match => {
+          const blob = [match.doctrine_node_id, match.title, match.summary].join(" ").toLowerCase();
+          return /criminal_law_hk\.theft|property_dishonesty|appropriation|dishonesty|intent\.deprive|permanently to deprive/.test(blob);
+        });
+        if (theftFocused.length >= 3) return theftFocused.slice(0, 8);
+      }
+      return filtered.slice(0, 8);
+    }
   }
   if (detectsCriminalPublicOrderQuery(query) && !detectsPersonalInjuryPurpose(query)) {
     const criminal = matches.filter(match => {
@@ -940,6 +983,10 @@ module.exports = async function handler(req, res) {
     res.status(400).json({ error: "missing_query" });
     return;
   }
+  const uploadedEvidenceBundle = req.method === "POST"
+    ? buildUploadedEvidenceBundle(req.body || {})
+    : buildUploadedEvidenceBundle({});
+  const requestedCaseCorpus = caseCorpusOptions(req);
 
   const graph = loadGraph();
   const arbiter = arbitrateLegalQuery(query);
@@ -1014,8 +1061,82 @@ module.exports = async function handler(req, res) {
     : legalAnswerCache.status === "hit" && legalAnswerCache.answer_json
       ? legalAnswerCache.answer_json
       : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched, legalIngestBundle });
+  const warnings = Array.from(new Set(warningsForResult(matched, ai.status, backendStatus, legalSourceCardCount).concat(aiWarnings)));
+  const presentation = buildLegalResearchPresentation({ applied, matched, warnings, legalIngestBundle, uploadedEvidenceBundle });
+  const caseCorpusRetrieval = requestedCaseCorpus.use_case_corpus
+    ? retrieveCaseLawResearch({
+        query,
+        issue_id: requestedCaseCorpus.issue_id,
+        mode: requestedCaseCorpus.case_corpus_mode,
+        max_cases: requestedCaseCorpus.max_cases,
+        max_paragraphs: requestedCaseCorpus.max_paragraphs,
+      })
+    : null;
+  const caseLawResearch = caseCorpusRetrieval
+    ? renderCaseLawResearch({
+        retrieval: caseCorpusRetrieval,
+        query,
+        evidenceBundle: uploadedEvidenceBundle,
+        unsupportedReason: presentation.product_mode.mode === "unsupported_general_query"
+          ? presentation.product_mode.unsupported_reason
+          : "",
+      })
+    : null;
+  const hasCaseCorpusAuthorities = (caseLawResearch?.cases_returned || 0) > 0;
+  const productMode = hasCaseCorpusAuthorities && presentation.product_mode.mode === "unsupported_general_query"
+    ? {
+        ...presentation.product_mode,
+        mode: "source_grounded_research_only",
+        labels: Array.from(new Set([
+          "source_grounded_research_only",
+          "case_corpus_l1_l35_research_only",
+          "needs_lawyer_review",
+        ])),
+        unsupported_reason: "",
+      }
+    : presentation.product_mode;
+  const auditTrail = caseLawResearch
+    ? {
+        ...presentation.audit_trail,
+        case_corpus_audit: {
+          display: "collapsed",
+          mode: requestedCaseCorpus.case_corpus_mode,
+          requested_issue_id: requestedCaseCorpus.issue_id,
+          inferred_issue_ids: caseCorpusRetrieval.inferred_issue_ids,
+          ...caseCorpusRetrieval.audit,
+        },
+        paragraph_proof_audit: {
+          display: "collapsed",
+          paragraph_ids: caseCorpusRetrieval.cases.flatMap(item => item.paragraphs.map(paragraph => paragraph.paragraph_id)),
+          all_case_corpus_output_research_only: true,
+          exact_paragraph_anchor_required: true,
+          l4_answer_safe_implemented: false,
+        },
+      }
+    : presentation.audit_trail;
+  const answerMarkdown = caseLawResearch
+    ? hasCaseCorpusAuthorities && presentation.product_mode.mode === "unsupported_general_query"
+      ? caseLawResearch.markdown
+      : `${presentation.answer_markdown.trim()}\n\n---\n\n${caseLawResearch.markdown}`
+    : presentation.answer_markdown;
   const responsePayload = {
     query,
+    presentation_mode: presentation.presentation_mode,
+    product_mode: productMode,
+    legal_research_answer: presentation.legal_research_answer,
+    answer_markdown: answerMarkdown,
+    case_law_research: caseLawResearch,
+    audit_trail: auditTrail,
+    evidence_ingest_summary: {
+      status: uploadedEvidenceBundle.status,
+      uploaded_evidence_ingested: uploadedEvidenceBundle.uploaded_evidence_ingested,
+      evidence_item_count: uploadedEvidenceBundle.evidence_item_count,
+      text_item_count: uploadedEvidenceBundle.text_item_count,
+      unparsed_item_count: uploadedEvidenceBundle.unparsed_item_count,
+      source_kinds: uploadedEvidenceBundle.source_kinds,
+      issue_tags: uploadedEvidenceBundle.issue_tags,
+      limitations: uploadedEvidenceBundle.limitations,
+    },
     ai_status: ai.status,
     ai_provider: ai.provider || inquiry.provider || "none",
     analysis_status: inquiry.status,
@@ -1055,9 +1176,9 @@ module.exports = async function handler(req, res) {
     answer_confidence: totalEvidenceCount > 0 && !matched.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))
       ? "medium"
       : "low",
-    warnings: Array.from(new Set(warningsForResult(matched, ai.status, backendStatus, legalSourceCardCount).concat(aiWarnings))),
+    warnings,
     inquiry_analysis: inquiry.analysis,
-    answer_note: "This endpoint returns a source-bounded graph/evidence trail. It does not produce legal advice and does not treat candidate evidence as answer-safe.",
+    answer_note: "This endpoint returns an answer-first, source-bounded legal research memo with the raw graph/evidence trail collapsed for audit. It does not produce legal advice and does not treat candidate evidence as answer-safe.",
   };
   if (legalIngestBundle) {
     const cacheWrite = await writeLegalAnswerCache({ query, legalIngestBundle, applied, responsePayload });

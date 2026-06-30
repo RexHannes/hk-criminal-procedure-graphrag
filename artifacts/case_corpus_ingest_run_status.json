@@ -1,0 +1,224 @@
+{
+  "run_id": "case_corpus_ingest_run_sample_100_v1",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "mode": "sample",
+  "network_fetch_allowed": false,
+  "live_qdrant_write_allowed": false,
+  "registry_case_count": 120,
+  "chunk_count": 918,
+  "embedded_chunk_count": 918,
+  "dry_run_vector_count": 918,
+  "retrieval_eval_metrics": {
+    "recall_at_5": 0.945455,
+    "recall_at_10": 0.909091,
+    "legacy_corpus_recall_at_5": 0.115794,
+    "legacy_corpus_recall_at_10": 0.223482,
+    "precision_at_5": 0.945455,
+    "mrr": 1,
+    "issue_match_rate": 0.909091,
+    "source_proof_rate": 1,
+    "paragraph_quote_support_rate": 1,
+    "wrong_domain_leak_rate": 0,
+    "unsupported_query_abstention_rate": 1,
+    "exact_lookup_hit_rate": 1
+  },
+  "duplicate_rate": 0,
+  "stage_summary": [
+    {
+      "stage": "discover_case",
+      "attempted_count": 120,
+      "success_count": 120,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/sample_case_registry_100.jsonl",
+        "data/legal_ingest/case_corpus/ingest_queue_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "fetch_public_source",
+      "attempted_count": 120,
+      "success_count": 120,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/fetch_cache_manifest_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "cache_raw_source",
+      "attempted_count": 120,
+      "success_count": 120,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/fetch_cache_manifest_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "normalize_text",
+      "attempted_count": 344,
+      "success_count": 344,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/paragraph_cards_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "paragraphize",
+      "attempted_count": 120,
+      "success_count": 120,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/paragraph_cards_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "create_paragraph_cards",
+      "attempted_count": 344,
+      "success_count": 344,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/paragraph_cards_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "extract_propositions",
+      "attempted_count": 344,
+      "success_count": 344,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/proposition_cards_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "build_principles",
+      "attempted_count": 344,
+      "success_count": 344,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/principle_cards_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "build_digests",
+      "attempted_count": 120,
+      "success_count": 120,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/case_digest_cards_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "issue_map",
+      "attempted_count": 584,
+      "success_count": 584,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/issue_case_map_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "chunk",
+      "attempted_count": 918,
+      "success_count": 918,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/chunks_sample_100.jsonl"
+      ]
+    },
+    {
+      "stage": "embed_dry_run_vectorize",
+      "attempted_count": 918,
+      "success_count": 918,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "data/legal_ingest/case_corpus/embedded_chunks_manifest_sample_100.jsonl",
+        "artifacts/case_corpus_embedding_dry_run.json"
+      ]
+    },
+    {
+      "stage": "index_dry_run",
+      "attempted_count": 918,
+      "success_count": 918,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "artifacts/case_corpus_qdrant_dry_run.json"
+      ]
+    },
+    {
+      "stage": "evaluate_retrieval",
+      "attempted_count": 12,
+      "success_count": 12,
+      "failed_count": 0,
+      "skipped_count": 0,
+      "retryable_failures": [],
+      "non_retryable_failures": [],
+      "elapsed_ms": 0,
+      "artifact_paths": [
+        "artifacts/case_corpus_retrieval_eval.json",
+        "artifacts/case_corpus_retrieval_eval.md"
+      ]
+    }
+  ],
+  "output_artifacts": [
+    "data/legal_ingest/case_corpus/ingest_queue_sample_100.jsonl",
+    "data/legal_ingest/case_corpus/fetch_cache_manifest_sample_100.jsonl",
+    "data/legal_ingest/case_corpus/chunks_sample_100.jsonl",
+    "data/legal_ingest/case_corpus/embedded_chunks_manifest_sample_100.jsonl",
+    "artifacts/case_corpus_qdrant_dry_run.json",
+    "artifacts/case_corpus_retrieval_eval.json",
+    "artifacts/case_corpus_ingest_run_status.json",
+    "artifacts/case_corpus_ingest_run_status.md"
+  ],
+  "status": "passed"
+}

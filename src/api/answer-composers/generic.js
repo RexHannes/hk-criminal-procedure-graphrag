@@ -228,29 +228,33 @@ function professionalGenericLegalAnswer(query, matched) {
   const nodeSummary = topMatches.length ? topMatches.join(", ") : "no strong domain-specific graph match";
   const answerSections = [
     "Short Answer",
-    "Legal Issues",
-    "Source-Backed Rules",
-    "Application To Facts",
-    "Procedural Consequences",
-    "Documents / Forms",
+    "Issues",
+    "Governing Law / Elements",
+    "Relevant Authorities",
+    "Case-by-Case Authorities",
+    "Extracted Legal Principles",
+    "Application to User Facts",
+    "Evidence Analysis",
     "Missing Facts",
-    "Risks / Caveats",
+    "Practical Next Steps",
+    "Source Audit",
+    "Documents / Forms",
   ];
   return {
     applied_answer: {
-      title: "Professional Source-Gated Legal Analysis",
+      title: "Unsupported General Query - Source Verification Required",
       mode: "professional_source_gated",
-      short_answer: "This is a professional-mode research answer: fuller and more auditable, but not automatically more accurate. Treat it as source-gated legal analysis. Any legal proposition needs verified authority cards, paragraph pinpoints, and lawyer review before use.",
+      short_answer: "This query is outside the currently source-gated demo verticals unless a separate verified vertical bundle is loaded. Treat this as unsupported general research orientation only: no final HK legal proposition should be used without verified authority cards, paragraph pinpoints, and lawyer review.",
       sections: [
         {
           heading: "Short Answer",
           items: [
             `Current graph orientation: ${nodeSummary}.`,
-            "The system should give an applied answer, but must mark unsupported propositions as source verification required.",
+            "The system must not present this as a supported HK legal AI answer; unsupported propositions remain source verification required.",
           ],
         },
         {
-          heading: "Legal Issues",
+          heading: "Issues",
           items: [
             "Identify the exact legal issue, procedural posture, jurisdiction and relief sought.",
             "Separate facts, legal tests, procedural consequences, forms/documents and evidential gaps.",
@@ -258,15 +262,34 @@ function professionalGenericLegalAnswer(query, matched) {
           ],
         },
         {
-          heading: "Source-Backed Rules",
+          heading: "Governing Law / Elements",
           items: [
-            "Use only retrieved, verified source cards for final legal propositions.",
-            "If a rule has no paragraph pinpoint or current source check, keep it at research-only status.",
-            "Distinguish court holdings from party submissions, commentary, precedent wording and form metadata.",
+            "No governing legal rule is treated as established for this unsupported general query.",
+            "A supported answer requires statute/source cards, paragraph cards where cases are used, issue mapping and current-treatment checks.",
           ],
         },
         {
-          heading: "Application To Facts",
+          heading: "Relevant Authorities",
+          items: [
+            "No verified authority pack is attached for this general query.",
+            "Do not cite cases, statutes or commentary as answer authority unless a public source card and paragraph/source proof are attached.",
+          ],
+        },
+        {
+          heading: "Case-by-Case Authorities",
+          items: [
+            "No case-by-case authority is attached for this unsupported query.",
+          ],
+        },
+        {
+          heading: "Extracted Legal Principles",
+          items: [
+            "No extracted legal principle is answer authority for this unsupported query.",
+            "Any principle would need source-card and paragraph-card support before use.",
+          ],
+        },
+        {
+          heading: "Application to User Facts",
           items: [
             "Map each known fact to a legal issue or procedural requirement.",
             "State which facts are missing before giving a conclusion.",
@@ -274,17 +297,10 @@ function professionalGenericLegalAnswer(query, matched) {
           ],
         },
         {
-          heading: "Procedural Consequences",
+          heading: "Evidence Analysis",
           items: [
-            "Identify possible applications, deadlines, review gates, evidence steps and costs consequences.",
-            "Keep court/form recommendations as candidates until a form registry item or verified procedural source supports them.",
-          ],
-        },
-        {
-          heading: "Documents / Forms",
-          items: [
-            "List likely documents or forms only as candidates unless an exact form/template is registered.",
-            "For drafting, require a template/source, required fields, missing facts and lawyer-review status.",
+            "No uploaded evidence has been parsed in this response.",
+            "Keep user facts, document evidence, legal authorities and AI inferences separate until an evidence ingestion layer maps them to issues.",
           ],
         },
         {
@@ -297,11 +313,26 @@ function professionalGenericLegalAnswer(query, matched) {
           ],
         },
         {
-          heading: "Risks / Caveats",
+          heading: "Practical Next Steps",
+          items: [
+            "Route the query to a supported vertical or create a source-grounded vertical pack before answering.",
+            "Collect official statutes, public judgments, paragraph proof, issue tags and golden queries for the field.",
+            "Use form/document suggestions only after legal route classification.",
+          ],
+        },
+        {
+          heading: "Source Audit",
           items: [
             "Professional mode is more useful only if citations and paragraph references are real and correctly used.",
             "Longer answers can still hallucinate, overstate or import irrelevant material unless composition is controlled.",
             "If source support is missing, the correct output is source verification required, not a confident final answer.",
+          ],
+        },
+        {
+          heading: "Documents / Forms",
+          items: [
+            "No document pack is recommended for this unsupported query.",
+            "Forms are downstream of legal issue classification and verified procedural source support.",
           ],
         },
       ],

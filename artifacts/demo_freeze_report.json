@@ -1,0 +1,310 @@
+{
+  "report_id": "pr6_demo_freeze_report",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "pr": {
+    "number": 6,
+    "branch": "codex/investor-recall-25k-path",
+    "freeze_baseline_head_commit": "f4e19a81fdd780eb7e685adc3f1a263a023dd935",
+    "final_head_commit_note": "The final pushed PR head is recorded in the PR body after commit/push; a committed artifact cannot embed its own eventual commit SHA."
+  },
+  "safe_demo_claim": "The system demonstrates a source-proofed, research-only HK criminal-law case-law assistant over a targeted 120-case L1-L3.5 sample. It retrieves public case authorities with paragraph anchors, extracted propositions/principles, issue mapping, demotion filtering, and answer-first research memos. It is not final legal advice and remains lawyer-review-required.",
+  "forbidden_claims": [
+    "10k answer-safe propositions",
+    "whole HK legal RAG solved",
+    "production legal advice",
+    "lawyer-reviewed current treatment",
+    "automated OCR/PDF/image/audio/video evidence analysis"
+  ],
+  "corpus_counts": {
+    "registry_case_count": 120,
+    "paragraph_card_count": 344,
+    "proposition_card_count": 344,
+    "principle_card_count": 344,
+    "case_digest_card_count": 120,
+    "usable_principle_count": 97,
+    "demoted_principle_count": 247
+  },
+  "principle_quality": {
+    "usable_principle_count": 97,
+    "demoted_principle_count": 247,
+    "principle_quality_status_counts": {
+      "demoted": 247,
+      "pass": 97
+    },
+    "demotion_reason_counts": {
+      "sentencing_only_not_liability": 187,
+      "quote_context_insufficient": 40,
+      "background_only_not_principle": 29,
+      "procedural_only_not_liability": 25
+    },
+    "principle_quality_pass_rate": 1,
+    "principle_quality_pass_rate_basis": "usable_principles_only_after_repair"
+  },
+  "issue_coverage": [
+    {
+      "label": "criminal_law.theft",
+      "issue_id": "criminal_law.theft",
+      "case_count": 101,
+      "coverage_band": "demo-credible",
+      "sample_case_ids": [
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+        "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+        "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant",
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkca_2023_396_hksar_respondent_v_christopher_okechi_nwosu_appellant",
+        "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+        "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant",
+        "hk_hkca_2025_518_between_hksar_respondent_and_chow_kuen_fung_d1_applicant"
+      ]
+    },
+    {
+      "label": "theft.dishonesty",
+      "issue_id": "criminal_law.theft.dishonesty",
+      "case_count": 30,
+      "coverage_band": "demo-credible",
+      "sample_case_ids": [
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant",
+        "hk_hkcfi_2021_3253_between_hksar_respondent_and_shiv_kumar_appellant",
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+        "hk_hkcfi_2022_1152_hksar_respondent_and_lee_heung_yee_appellant",
+        "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant",
+        "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant",
+        "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant",
+        "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant"
+      ]
+    },
+    {
+      "label": "theft.mens_rea",
+      "issue_id": "criminal_law.theft.mens_rea",
+      "case_count": 30,
+      "coverage_band": "demo-credible",
+      "sample_case_ids": [
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant",
+        "hk_hkcfi_2021_3253_between_hksar_respondent_and_shiv_kumar_appellant",
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+        "hk_hkcfi_2022_1152_hksar_respondent_and_lee_heung_yee_appellant",
+        "hk_hkcfi_2022_1962_between_hksar_respondent_and_yeoh_poh_lean_appellant",
+        "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant",
+        "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant",
+        "hk_hkcfi_2024_415_hksar_respondent_and_limbu_surya_prasad_appellant"
+      ]
+    },
+    {
+      "label": "theft.appropriation",
+      "issue_id": "criminal_law.theft.appropriation",
+      "case_count": 63,
+      "coverage_band": "demo-credible",
+      "sample_case_ids": [
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+        "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+        "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant",
+        "hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant",
+        "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant",
+        "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant",
+        "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+        "hk_hkdc_2021_1077_hksar_v_christopher_okechi_nwosu"
+      ]
+    },
+    {
+      "label": "theft.belonging_to_another",
+      "issue_id": "criminal_law.theft.belonging_to_another",
+      "case_count": 13,
+      "coverage_band": "medium",
+      "sample_case_ids": [
+        "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant",
+        "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant",
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+        "hk_hkdc_2021_1158_hksar_v_wun_kam_po",
+        "hk_hkdc_2021_137_hksar_v_luk_kit_chun",
+        "hk_hkdc_2021_494_hksar_v_choi_ping_chiu",
+        "hk_hkdc_2022_913_hksar_v_chung_karman",
+        "hk_hkdc_2023_1820_hksar_v_mohammad_shahzad_d1",
+        "hk_hkdc_2023_958_hksar_v_tam_wan_yan_also_known_as_pham_bich_thuy_and_pham_thi_van",
+        "hk_hkdc_2024_1361_hksar_v_leung_chi_kit"
+      ]
+    },
+    {
+      "label": "theft.intention_permanently_deprive",
+      "issue_id": "criminal_law.theft.intention_permanently_deprive",
+      "case_count": 10,
+      "coverage_band": "medium",
+      "sample_case_ids": [
+        "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant",
+        "hk_hkca_2023_396_hksar_respondent_v_christopher_okechi_nwosu_appellant",
+        "hk_hkca_2025_451_hksar_respondent_v_ma_chun_kit_appellant",
+        "hk_hkcfi_2021_3253_between_hksar_respondent_and_shiv_kumar_appellant",
+        "hk_hkcfi_2022_1152_hksar_respondent_and_lee_heung_yee_appellant",
+        "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant",
+        "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant",
+        "hk_hkdc_2021_1158_hksar_v_wun_kam_po",
+        "hk_hkdc_2021_575_hksar_v_wong_nok_yin_d1_chung_chin_ming_d2_sing_ming_fung_d3_chan_ka_yee",
+        "hk_hkdc_2024_1361_hksar_v_leung_chi_kit"
+      ]
+    },
+    {
+      "label": "theft.sentencing",
+      "issue_id": "criminal_law.theft.sentencing",
+      "case_count": 94,
+      "coverage_band": "demo-credible",
+      "sample_case_ids": [
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+        "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+        "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "hk_hkca_2025_518_between_hksar_respondent_and_chow_kuen_fung_d1_applicant",
+        "hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant",
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+        "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant"
+      ]
+    },
+    {
+      "label": "fraud",
+      "issue_id": "criminal_law.fraud",
+      "case_count": 56,
+      "coverage_band": "demo-credible",
+      "sample_case_ids": [
+        "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+        "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+        "hk_hkdc_2021_1182_hksar_v_wong_wai_yee",
+        "hk_hkdc_2021_1223_hksar_v_ng_cheuk_kit_neville",
+        "hk_hkdc_2021_1367_hksar_v_ho_hing_pan_ronald",
+        "hk_hkdc_2021_137_hksar_v_luk_kit_chun",
+        "hk_hkdc_2021_1527_hksar_v_li_qinfang_d1_li_yun_d2"
+      ]
+    },
+    {
+      "label": "deception",
+      "issue_id": "criminal_law.deception",
+      "case_count": 90,
+      "coverage_band": "demo-credible",
+      "sample_case_ids": [
+        "hk_hkca_2021_1387_between_hksar_respondent_and_choi_ping_chiu_applicant",
+        "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+        "hk_hkca_2021_2012_hksar_respondent_v_lam_see_chung_stephen_applicant",
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkca_2023_496_secretary_for_justice_applicant_v_chung_pui_kit_billy_respondent",
+        "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "hk_hkca_2025_518_between_hksar_respondent_and_chow_kuen_fung_d1_applicant",
+        "hk_hkca_2025_981_between_hksar_respondent_and_leong_how_seng_applicant",
+        "hk_hkcfi_2021_3439_between_hksar_respondent_and_chan_wai_ho_appellant",
+        "hk_hkcfi_2022_294_between_hksar_respondent_and_chan_wai_ho_appellant"
+      ]
+    },
+    {
+      "label": "interview/caution",
+      "issue_id": "criminal_procedure.interview_caution",
+      "case_count": 37,
+      "coverage_band": "demo-credible",
+      "sample_case_ids": [
+        "hk_hkca_2021_1529_hksar_respondent_v_wong_chun_yin_d1_1st_applicant_muhammad_shehbaz_d2_2n",
+        "hk_hkcfi_2025_5690_hksar_v_chau_ka_kuen_defendant",
+        "hk_hkdc_2021_102_hksar_v_tse_chun_hung",
+        "hk_hkdc_2021_1071_hksar_v_chan_hung_wai",
+        "hk_hkdc_2021_137_hksar_v_luk_kit_chun",
+        "hk_hkdc_2021_456_hksar_v_wun_pik_chun",
+        "hk_hkdc_2021_575_hksar_v_wong_nok_yin_d1_chung_chin_ming_d2_sing_ming_fung_d3_chan_ka_yee",
+        "hk_hkdc_2021_931_hksar_v_kwok_wai_hong",
+        "hk_hkdc_2022_1041_hksar_v_siska_tyara",
+        "hk_hkdc_2022_321_hksar_v_choi_hiu_hung"
+      ]
+    },
+    {
+      "label": "bail",
+      "issue_id": "criminal_procedure.bail",
+      "case_count": 15,
+      "coverage_band": "medium",
+      "sample_case_ids": [
+        "hk_hkca_2022_990_hksar_respondent_v_lam_see_chung_stephen_appellant",
+        "hk_hkca_2025_123_hksar_respondent_v_ho_chi_tat_applicant",
+        "hk_hkca_2025_518_between_hksar_respondent_and_chow_kuen_fung_d1_applicant",
+        "hk_hkcfi_2025_5690_hksar_v_chau_ka_kuen_defendant",
+        "hk_hkdc_2021_1158_hksar_v_wun_kam_po",
+        "hk_hkdc_2021_236_hksar_v_lam_see_chung_stephen",
+        "hk_hkdc_2021_575_hksar_v_wong_nok_yin_d1_chung_chin_ming_d2_sing_ming_fung_d3_chan_ka_yee",
+        "hk_hkdc_2021_649_hksar_v_hai_chung_po_also_known_as_hat_chung_po",
+        "hk_hkdc_2023_1308_hksar_v_zuniga_elvin_ramon_l_d1",
+        "hk_hkdc_2023_924_hksar_v_cheung_chi_chiu"
+      ]
+    }
+  ],
+  "weak_issue_targets": [
+    {
+      "issue_id": "criminal_law.theft.belonging_to_another",
+      "baseline_case_count": 2,
+      "current_verified_case_count": 13,
+      "target_min_cases": 10,
+      "target_met": true
+    },
+    {
+      "issue_id": "criminal_law.theft.intention_permanently_deprive",
+      "baseline_case_count": 0,
+      "current_verified_case_count": 10,
+      "target_min_cases": 10,
+      "target_met": true
+    },
+    {
+      "issue_id": "criminal_procedure.bail",
+      "baseline_case_count": 8,
+      "current_verified_case_count": 15,
+      "target_min_cases": 15,
+      "target_met": true
+    }
+  ],
+  "retrieval_metrics": {
+    "precision_at_5": 0.945455,
+    "recall_at_10": 0.909091,
+    "legacy_corpus_recall_at_10": 0.223482,
+    "mrr": 1,
+    "issue_match_rate": 0.909091,
+    "exact_lookup_hit_rate": 1
+  },
+  "source_proof_metrics": {
+    "source_proof_rate": 1,
+    "paragraph_quote_support_rate": 1,
+    "wrong_domain_leak_rate": 0,
+    "unsupported_query_abstention_rate": 1,
+    "paragraph_match_rate": 1,
+    "quote_support_match_rate": 1
+  },
+  "unsupported_query_abstention": 1,
+  "answer_safe_count": 0,
+  "quality_audit": {
+    "audited_case_count": 28,
+    "proposition_quality_pass_rate": 0.987805,
+    "principle_quality_pass_rate": 1,
+    "principle_quality_pass_rate_basis": "usable_principles_only_after_repair",
+    "quality_audit_pass_rate": 0.997561,
+    "suspicious_card_count": 53,
+    "rejected_or_demoted_card_count": 53
+  },
+  "known_limitations": [
+    "The PR remains a draft research/demo preview, not a merged production release.",
+    "The sample is intentionally frozen at 120 targeted criminal-law cases; this run does not scale to 500, 10k or 25k cases.",
+    "All case-law outputs remain research_only and lawyer_review_required.",
+    "No machine-generated proposition or principle is promoted to answer_safe.",
+    "The three repaired target issues are medium coverage, not broad lawyer-reviewed coverage.",
+    "Current treatment, ratio/obiter classification and final legal advice require later lawyer review.",
+    "Uploaded evidence handling is text/transcript triage only; OCR/PDF/image/audio/video evidence analysis is not implemented.",
+    "Private/licensed sources, AI candidates and recall-only cases cannot support answer-layer authority."
+  ],
+  "artifact_paths": {
+    "boss_demo_script": "docs/boss_demo_script_pr6.md",
+    "demo_query_pack_json": "artifacts/demo_outputs/demo_query_pack.json",
+    "demo_query_pack_md": "artifacts/demo_outputs/demo_query_pack.md",
+    "readiness_validator": "scripts/validate_demo_readiness_pr6.js",
+    "smoke_test": "scripts/smoke_test_pr6_demo_api.js"
+  }
+}

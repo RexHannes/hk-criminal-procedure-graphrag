@@ -1,0 +1,212 @@
+{
+  "l4_case_applications": [
+    {
+      "l4_application_id": "l4_prop_chan_kam_ching_2022_fraud_substitution_issue_p2",
+      "proposition_id": "prop_chan_kam_ching_2022_fraud_substitution_issue_p2",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "paragraph_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021_p2",
+      "scenario_label": "Theft Ordinance / fraud / dishonesty / deceit",
+      "application_summary": "The Court of Final Appeal identified that the appeal required considering whether dishonesty is an element of the fraud offence under Theft Ordinance s.16A.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "frames_issue",
+      "authority_role": "issue_framing",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_chan_kam_ching_2022_lrc_no_separate_dishonesty_p138",
+      "proposition_id": "prop_chan_kam_ching_2022_lrc_no_separate_dishonesty_p138",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "paragraph_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021_p138",
+      "scenario_label": "Theft Ordinance / fraud / dishonesty / deceit",
+      "application_summary": "The CFA recorded that the Law Reform Commission majority concluded there should be no separate dishonesty requirement for the fraud offence.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_chan_kam_ching_2022_dishonesty_not_ingredient_p139",
+      "proposition_id": "prop_chan_kam_ching_2022_dishonesty_not_ingredient_p139",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "paragraph_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021_p139",
+      "scenario_label": "Theft Ordinance / fraud / dishonesty / deceit",
+      "application_summary": "The CFA stated that dishonesty is not mentioned as an ingredient in the offence-creating provisions of either Crimes Ordinance s.73 or Theft Ordinance s.16A.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_chan_kam_ching_2022_s16a_intent_to_defraud_p142",
+      "proposition_id": "prop_chan_kam_ching_2022_s16a_intent_to_defraud_p142",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "paragraph_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021_p142",
+      "scenario_label": "Theft Ordinance / fraud / dishonesty / deceit",
+      "application_summary": "The CFA explained that Theft Ordinance s.16A defines the culpable mental state through intent to defraud.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_chan_kam_ching_2022_no_imported_dishonesty_p143",
+      "proposition_id": "prop_chan_kam_ching_2022_no_imported_dishonesty_p143",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "paragraph_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021_p143",
+      "scenario_label": "Theft Ordinance / fraud / dishonesty / deceit",
+      "application_summary": "The CFA held that general parlance cannot justify introducing dishonesty as a separate element of the s.16A fraud offence.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_chan_kam_ching_2022_s16a_no_implied_dishonesty_p146",
+      "proposition_id": "prop_chan_kam_ching_2022_s16a_no_implied_dishonesty_p146",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "paragraph_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021_p146",
+      "scenario_label": "Theft Ordinance / fraud / dishonesty / deceit",
+      "application_summary": "The CFA held there was no justification for concluding that Theft Ordinance s.16A impliedly incorporates dishonesty as an offence element.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "limits_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_chan_kam_ching_2022_deceit_definition_p147",
+      "proposition_id": "prop_chan_kam_ching_2022_deceit_definition_p147",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "paragraph_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021_p147",
+      "scenario_label": "Theft Ordinance / fraud / dishonesty / deceit",
+      "application_summary": "The CFA adopted the classic definition of deceit as inducing belief in something false that the person practising the deceit knows or believes to be false.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud"
+      ],
+      "significance_label": "sets_out_test",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": ""
+    },
+    {
+      "l4_application_id": "l4_prop_chan_kam_ching_2022_dishonesty_state_of_mind_p148",
+      "proposition_id": "prop_chan_kam_ching_2022_dishonesty_state_of_mind_p148",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "paragraph_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021_p148",
+      "scenario_label": "Theft Ordinance / fraud / dishonesty / deceit",
+      "application_summary": "The CFA distinguished deceit from dishonesty, noting that dishonesty describes a state of mind.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.theft.dishonesty",
+        "criminal_law_hk.fraud"
+      ],
+      "significance_label": "distinguishes",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Cites and distinguishes Mo Yuk Ping on dishonesty as a state of mind."
+    },
+    {
+      "l4_application_id": "l4_prop_chan_kam_ching_2022_ghosh_test_hk_p149",
+      "proposition_id": "prop_chan_kam_ching_2022_ghosh_test_hk_p149",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "paragraph_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021_p149",
+      "scenario_label": "Theft Ordinance / fraud / dishonesty / deceit",
+      "application_summary": "The CFA stated that the Ghosh test for dishonesty represents the law in Hong Kong at present and set out its two-stage formulation.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.theft.dishonesty",
+        "criminal_law_hk.gap_verify_dishonesty_hk_post_ivey"
+      ],
+      "significance_label": "states_rule",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Cites Mo Yuk Ping and preserves the need to verify later post-Ivey HK treatment before answer-safe promotion."
+    },
+    {
+      "l4_application_id": "l4_prop_chan_kam_ching_2022_deceit_dishonesty_distinct_p150",
+      "proposition_id": "prop_chan_kam_ching_2022_deceit_dishonesty_distinct_p150",
+      "case_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "neutral_citation": "[2022] HKCFA 7",
+      "paragraph_id": "hk_cfa_2022_chan_kam_ching_facc_10_2021_p150",
+      "scenario_label": "Theft Ordinance / fraud / dishonesty / deceit",
+      "application_summary": "The CFA concluded that deceit and dishonesty are distinct concepts, so Ho Ka Keung should not be followed on importing the Ghosh test into s.16A.",
+      "target_doctrine_node_ids": [
+        "criminal_law_hk.fraud",
+        "criminal_law_hk.theft.dishonesty"
+      ],
+      "significance_label": "distinguishes",
+      "authority_role": "ratio",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only",
+      "source_visibility": "public_demo",
+      "tenant_id": "public",
+      "lineage_note": "Expressly limits Ho Ka Keung on s.16A dishonesty."
+    }
+  ]
+}

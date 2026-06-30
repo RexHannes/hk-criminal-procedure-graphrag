@@ -6,7 +6,23 @@ const path = require("path");
 const { buildEvidencePack } = require("../src/legal_answer/build_evidence_pack");
 
 const ROOT = path.resolve(__dirname, "..");
-const BENCHMARK_PATH = path.join(ROOT, "data", "legal_ingest", "mvp", "retrieval_benchmark_queries.json");
+const DEFAULT_BENCHMARK_PATH = path.join(ROOT, "data", "legal_ingest", "mvp", "retrieval_benchmark_queries.json");
+
+function parseArgs(argv = process.argv) {
+  const args = {};
+  for (let i = 2; i < argv.length; i += 1) {
+    const arg = argv[i];
+    if (arg === "--benchmark") args.benchmarkPath = argv[++i];
+    else if (arg === "--top-k") args.topK = Number(argv[++i]);
+    else if (arg === "--collection") args.collectionName = argv[++i];
+  }
+  return args;
+}
+
+function resolveBenchmarkPath(benchmarkPath) {
+  const requested = benchmarkPath || process.env.RETRIEVAL_BENCHMARK_PATH || DEFAULT_BENCHMARK_PATH;
+  return path.isAbsolute(requested) ? requested : path.join(ROOT, requested);
+}
 
 function hitMatches(query, chunks) {
   const ids = new Set();
@@ -25,11 +41,12 @@ function hitMatches(query, chunks) {
   };
 }
 
-async function runBenchmark({ topK = 10 } = {}) {
-  const suite = JSON.parse(fs.readFileSync(BENCHMARK_PATH, "utf8"));
+async function runBenchmark({ topK = 10, benchmarkPath, collectionName } = {}) {
+  const resolvedBenchmarkPath = resolveBenchmarkPath(benchmarkPath);
+  const suite = JSON.parse(fs.readFileSync(resolvedBenchmarkPath, "utf8"));
   const results = [];
   for (const query of suite.queries || []) {
-    const pack = await buildEvidencePack({ query: query.query, topK, sourceMode: "public_demo" });
+    const pack = await buildEvidencePack({ query: query.query, topK, collectionName, sourceMode: "public_demo" });
     const match = hitMatches(query, pack.evidence_chunks || []);
     results.push({
       id: query.id,
@@ -51,6 +68,8 @@ async function runBenchmark({ topK = 10 } = {}) {
   const qualitySatisfied = hitRate >= Number(floor.min_hit_rate || 0.6) && privateLeakage.length === 0;
   return {
     suite_id: suite.suite_id,
+    benchmark_path: path.relative(ROOT, resolvedBenchmarkPath),
+    collection_name: collectionName || null,
     top_k: topK,
     query_count: results.length,
     hit_count: hits,
@@ -65,7 +84,8 @@ async function runBenchmark({ topK = 10 } = {}) {
 }
 
 if (require.main === module) {
-  runBenchmark().then(report => {
+  const args = parseArgs(process.argv);
+  runBenchmark(args).then(report => {
     console.log(JSON.stringify(report, null, 2));
   }).catch(error => {
     console.error(error.message);

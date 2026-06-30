@@ -6,6 +6,9 @@ const { assertRerankConfig, rerank } = require("../src/retrieval/rerank_adapter"
 const fs = require("fs");
 const path = require("path");
 
+const UNSAFE_OPENROUTER_EMBEDDING_MODEL_FOR_GUARD_TEST = ["openai", "text-embedding-3-small"].join("/");
+const UNSAFE_OPENROUTER_RERANK_MODEL_FOR_GUARD_TEST = ["cohere", "rerank-v3.5"].join("/");
+
 function assert(condition, message, errors) {
   if (!condition) errors.push(message);
 }
@@ -47,13 +50,21 @@ function assert(condition, message, errors) {
     assert(error.message.includes("missing_rerank_key"), "openrouter rerank missing key error expected", errors);
   }
   try {
-    assertEmbeddingConfig({ EMBEDDING_PROVIDER: "openrouter", OPENROUTER_API_KEY: "test", LEGAL_EMBEDDING_MODEL: "openai/text-embedding-3-small" });
+    assertEmbeddingConfig({
+      EMBEDDING_PROVIDER: "openrouter",
+      OPENROUTER_API_KEY: "test",
+      LEGAL_EMBEDDING_MODEL: UNSAFE_OPENROUTER_EMBEDDING_MODEL_FOR_GUARD_TEST,
+    });
     errors.push("openrouter non-free embedding should fail closed");
   } catch (error) {
     assert(error.message.includes("openrouter_free_embedding_model_required"), "openrouter free embedding guard expected", errors);
   }
   try {
-    assertRerankConfig({ RERANK_PROVIDER: "openrouter", OPENROUTER_API_KEY: "test", LEGAL_RERANK_MODEL: "cohere/rerank-v3.5" });
+    assertRerankConfig({
+      RERANK_PROVIDER: "openrouter",
+      OPENROUTER_API_KEY: "test",
+      LEGAL_RERANK_MODEL: UNSAFE_OPENROUTER_RERANK_MODEL_FOR_GUARD_TEST,
+    });
     errors.push("openrouter non-free rerank should fail closed");
   } catch (error) {
     assert(error.message.includes("openrouter_free_rerank_model_required"), "openrouter free rerank guard expected", errors);

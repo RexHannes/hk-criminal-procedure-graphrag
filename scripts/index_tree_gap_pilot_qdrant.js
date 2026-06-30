@@ -63,6 +63,13 @@ function embeddingModelFor(env, provider) {
   return "local-hash-v1";
 }
 
+function practiceAreaForManifest(manifest) {
+  if (manifest.practice_area) return manifest.practice_area;
+  if (manifest.domain_id === "criminal_procedure_hk") return "criminal_procedure";
+  if (manifest.domain_id === "criminal_law_hk") return "criminal_law";
+  return manifest.domain_id || "legal";
+}
+
 async function qdrantRequest(env, pathAndQuery, { method = "GET", body, ok = [200, 201] } = {}) {
   const base = String(env.QDRANT_URL || "").replace(/\/$/, "");
   if (!base) throw new Error("QDRANT_URL missing");
@@ -124,6 +131,7 @@ async function main() {
   const paragraphs = arrayFromPayload(paragraphPayload, "paragraph_cards");
   const propositions = arrayFromPayload(propositionPayload, "proposition_cards");
   const sourceByCaseId = new Map((manifest.sources || []).map(source => [source.case_id, source]));
+  const practiceArea = practiceAreaForManifest(manifest);
   const provider = env.LEGAL_EMBEDDING_PROVIDER || "local-hash";
   const dimension = Number(env.LEGAL_EMBEDDING_DIM || (provider === "openai" ? 1536 : 384));
   const embeddingModel = embeddingModelFor(env, provider);
@@ -171,7 +179,7 @@ async function main() {
         domain_id: manifest.domain_id || "criminal_law_hk",
         source_type: "case_judgment",
         jurisdiction: "Hong Kong",
-        practice_area: "criminal_law",
+        practice_area: practiceArea,
         issue_tags: [manifest.scope || manifest.batch_id],
         court_level: source.court_level || "",
         authority_role: "paragraph_text",
@@ -207,7 +215,7 @@ async function main() {
         domain_id: manifest.domain_id || "criminal_law_hk",
         source_type: "case_judgment",
         jurisdiction: "Hong Kong",
-        practice_area: "criminal_law",
+        practice_area: practiceArea,
         issue_tags: card.target_doctrine_node_ids || [],
         court_level: source.court_level || "",
         authority_role: card.authority_role,

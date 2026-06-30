@@ -1,0 +1,123 @@
+{
+  "artifact_id": "part1_two_vertical_case_digest_cards_v1",
+  "created_at": "2026-06-28",
+  "case_digest_cards": [
+    {
+      "case_digest_card_id": "case_digest_chan_kam_ching_2022",
+      "case_id": "hk_hkcfa_2022_chan_kam_ching_facc_10_2021",
+      "domain_id": "criminal_law_hk",
+      "case_name": "HKSAR v Chan Kam Ching",
+      "citation": "[2022] HKCFA 7",
+      "court": "Court of Final Appeal",
+      "date": "2022-04-14",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfa/2022/7",
+      "legalref_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=143540&QS=%2B&TP=JU&ILAN=en",
+      "facts_summary": "The appeal concerned forgery-related offences and whether substitution of another offence, including fraud under Theft Ordinance s.16A, was available.",
+      "procedural_history": "Court of Final Appeal appeal from CACC No. 230 of 2019.",
+      "issues": [
+        "Whether dishonesty is an element of the fraud offence under Theft Ordinance s.16A.",
+        "How deceit and dishonesty differ in the court’s substitution analysis."
+      ],
+      "holdings": [
+        "The CFA distinguished deceit and dishonesty and declined to import the Ghosh test into s.16A fraud.",
+        "The judgment records the then-current Hong Kong Ghosh dishonesty formulation by reference to Mo Yuk Ping."
+      ],
+      "ratio_principles": [
+        {
+          "principle_id": "principle_dishonesty_state_of_mind_chan_p148",
+          "paragraph": "148",
+          "exact_quote": "Dishonesty addresses a wholly different matter",
+          "paragraph_url": "https://www.hklii.hk/en/cases/hkcfa/2022/7#p148",
+          "scope": "Dishonesty concept, not shoplifting-specific facts."
+        },
+        {
+          "principle_id": "principle_ghosh_hk_candidate_chan_p149",
+          "paragraph": "149",
+          "exact_quote": "the Ghosh test for dishonesty represents the law in Hong Kong at present",
+          "paragraph_url": "https://www.hklii.hk/en/cases/hkcfa/2022/7#p149",
+          "scope": "Candidate dishonesty-test source requiring current-treatment review."
+        }
+      ],
+      "obiter_principles": [],
+      "key_paragraphs": ["148", "149", "150"],
+      "exact_quotes": [
+        "Dishonesty addresses a wholly different matter",
+        "the Ghosh test for dishonesty represents the law in Hong Kong at present"
+      ],
+      "applies_when": ["A theft/fraud question turns on dishonesty as a mental-state concept."],
+      "distinguishable_when": ["The live issue is shoplifting-specific evidence, sentencing, or post-Ivey treatment not addressed by this case."],
+      "treatment": {
+        "followed": [],
+        "distinguished": [],
+        "overruled": [],
+        "current_treatment_status": "not_fully_checked"
+      },
+      "source_card_ids": ["hk_hkcfa_2022_7_chan_kam_ching_p148_149"],
+      "paragraph_card_ids": [
+        "hk_hkcfa_2022_7_chan_kam_ching_p148",
+        "hk_hkcfa_2022_7_chan_kam_ching_p149"
+      ],
+      "hklii_paragraph_urls": [
+        "https://www.hklii.hk/en/cases/hkcfa/2022/7#p148",
+        "https://www.hklii.hk/en/cases/hkcfa/2022/7#p149"
+      ],
+      "answer_layer_status": "research_only",
+      "review_status": "lawyer_review_required"
+    },
+    {
+      "case_digest_card_id": "case_digest_khan_altaf_2022",
+      "case_id": "hk_hkcfi_2022_khan_altaf_hcma_604_2021",
+      "domain_id": "criminal_law_hk",
+      "case_name": "HKSAR v Khan, Altaf",
+      "citation": "[2022] HKCFI 1220",
+      "court": "Court of First Instance",
+      "date": "2022-04-27",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1220",
+      "legalref_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=143779&QS=%2B&TP=JU&ILAN=en",
+      "facts_summary": "Magistracy appeal against conviction and sentence for theft by pickpocketing.",
+      "procedural_history": "Appeal from ESCC 1886 of 2021; conviction appeal dismissed and sentence challenge rejected.",
+      "issues": [
+        "Whether the conviction for theft was unsafe or unsatisfactory.",
+        "Whether the 18-month sentence was excessive in light of pickpocketing guideline authority."
+      ],
+      "holdings": [
+        "The court did not disturb the magistrate’s factual evaluation and dismissed the conviction appeal.",
+        "The court treated pickpocketing theft as carrying an immediate-custody guideline, subject to aggravating features."
+      ],
+      "ratio_principles": [
+        {
+          "principle_id": "principle_theft_penalty_context_khan_p24",
+          "paragraph": "24",
+          "exact_quote": "an immediate custodial sentence of 12 to 15 months after trial is appropriate for a first offender",
+          "paragraph_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p24",
+          "scope": "Pickpocketing sentencing context only; not a shoplifting liability authority."
+        }
+      ],
+      "obiter_principles": [],
+      "key_paragraphs": ["1", "24"],
+      "exact_quotes": [
+        "offence of theft, contrary to section 9 of the Theft Ordinance, Cap 210",
+        "The appellant was convicted of an offence of theft by pickpocketing"
+      ],
+      "applies_when": ["A theft question needs offence/penalty context or sentencing boundary checks."],
+      "distinguishable_when": ["The user’s case is forgotten-payment shoplifting liability rather than pickpocketing sentence."],
+      "treatment": {
+        "followed": [],
+        "distinguished": [],
+        "overruled": [],
+        "current_treatment_status": "not_fully_checked"
+      },
+      "source_card_ids": ["hk_hkcfi_2022_1220_khan_altaf_p1_24"],
+      "paragraph_card_ids": [
+        "hk_hkcfi_2022_1220_khan_altaf_p1",
+        "hk_hkcfi_2022_1220_khan_altaf_p24"
+      ],
+      "hklii_paragraph_urls": [
+        "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p1",
+        "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p24"
+      ],
+      "answer_layer_status": "research_only",
+      "review_status": "lawyer_review_required"
+    }
+  ]
+}

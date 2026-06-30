@@ -1,0 +1,17 @@
+{
+  "artifact_id": "investigation_search_seizure_case_lineage_notes",
+  "batch_id": "investigation_search_seizure_tree_gap_pilot_v1",
+  "source_policy": "public LegalRef only; no private or licensed material",
+  "lineage_edges": [
+    {
+      "from_case_id": "hk_cfi_2022_lai_chee_ying_hcmp_1218_hcal_738",
+      "to_case_id": "hk_ca_2022_lai_chee_ying_cacv_356_357",
+      "relation": "appealed_and_affirmed",
+      "text_supported_by_proposition_id": "prop_lai_ca_2022_appeal_outcome_p44",
+      "review_status": "machine_candidate",
+      "answer_layer_status": "candidate_only"
+    }
+  ],
+  "lineage_policy": "candidate_only_until_human_review",
+  "source_fingerprint": "bc4c5af8b526ff5c79afbb552944eebb7b7a431ebf8ed20123c758de7d3afb3d"
+}

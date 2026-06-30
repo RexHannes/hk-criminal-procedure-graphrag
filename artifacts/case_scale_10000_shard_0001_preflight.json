@@ -1,0 +1,34 @@
+{
+  "shard_executor": "case_scale_shard_guard_v1",
+  "generated_at": "2026-06-25T11:24:51.197Z",
+  "run_plan_id": "case_scale_criminal_domain_public_cases_10000_v1",
+  "readiness_status": "blocked_for_large_scale",
+  "plan_status": "blocked_preflight_only",
+  "execution_allowed": false,
+  "preflight_only": true,
+  "shard": {
+    "shard_id": "shard_0001",
+    "case_ordinal_start": 1,
+    "case_ordinal_end": 100,
+    "max_cases": 100,
+    "status": "planned_not_started"
+  },
+  "status": "blocked_by_scale_readiness",
+  "blockers": [
+    "durable_orchestration_configured"
+  ],
+  "registry_scope_check": {
+    "ok": true,
+    "errors": [],
+    "allowed_scopes": [
+      "bail_only",
+      "public_order_riot",
+      "sedition_public_expression",
+      "public_order_unlawful_assembly_riot_candidate_branch",
+      "sedition_public_expression_candidate_branch",
+      "investigation_search_warrant_seizure_candidate_branch",
+      "criminal_domain_public_cases"
+    ]
+  },
+  "message": "Shard execution refused because the run plan is not execution_allowed."
+}

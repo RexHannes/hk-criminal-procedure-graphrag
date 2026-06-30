@@ -1,0 +1,908 @@
+{
+  "plan_id": "hk_criminal_multibranch_public_case_expansion_2500_v1",
+  "generated_at": "2026-06-25T11:21:11.534Z",
+  "source_queue_id": "criminal_landmark_first_expansion_queue_v1",
+  "target_cases": 2500,
+  "estimated_case_range": [
+    2000,
+    3000
+  ],
+  "status": "planned_candidate_only_not_bulk_executed",
+  "purpose": "Sorted multi-branch public case-fruit expansion plan for HK criminal law/procedure GraphRAG.",
+  "source_policy": {
+    "public_sources_only": true,
+    "allowed_public_sources": [
+      "LegalRef",
+      "HKLII",
+      "Judiciary"
+    ],
+    "private_or_licensed_sources_allowed": false,
+    "private_book_text_allowed_in_public_artifacts": false,
+    "notebooklm_role": "candidate_tree_and_landmark_lineage_proposer_only",
+    "deepseek_role": "candidate_case_seed_or_extraction_rule_proposer_only"
+  },
+  "extraction_policy": {
+    "exact_quote_required": true,
+    "paragraph_text_required": true,
+    "doctrine_node_id_must_exist": true,
+    "citation_and_pinpoint_required": true,
+    "candidate_only_by_default": true,
+    "answer_safe_by_default": false,
+    "human_review_required_for_answer_safe": true
+  },
+  "runtime_policy": {
+    "max_parallel_shards_without_orchestrator": 1,
+    "cases_per_shard": 50,
+    "requires_idempotent_upserts": true,
+    "requires_checksum_dedup": true,
+    "requires_resume_manifest": true,
+    "qdrant_upsert_allowed_for_validated_candidate_cards": true,
+    "supabase_seed_requires_credentials": true
+  },
+  "coverage_snapshot": {
+    "total_nodes": 371,
+    "doctrine_or_procedure_nodes": 186,
+    "nodes_with_candidate_fruits": 26,
+    "queued_doctrine_or_procedure_nodes_without_fruits": 165,
+    "populated_batches": [
+      "bail_pilot",
+      "criminal_bail_public_batch_v1",
+      "investigation_search_seizure_tree_gap_pilot_v1",
+      "public_order_riot_tree_gap_pilot_v1",
+      "sedition_public_expression_tree_gap_pilot_v1",
+      "theft_dishonesty_fraud_tree_gap_pilot_v1"
+    ]
+  },
+  "branch_allocations": [
+    {
+      "branch_family": "investigation_arrest_search_detention",
+      "priority": 1,
+      "queued_node_count": 19,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 450,
+      "initial_rung_case_count": 20,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 100,
+      "sample_node_ids": [
+        "criminal_procedure_hk.archer_v_commissioner_of_police",
+        "criminal_procedure_hk.invest_arrest_with_warrant",
+        "criminal_procedure_hk.invest_arrest_without_warrant",
+        "criminal_procedure_hk.crim_proc_bail",
+        "criminal_procedure_hk.invest_detention_after_arrest",
+        "criminal_procedure_hk.hksar_v_lam_tat_ming",
+        "criminal_procedure_hk.crim_proc_investigation",
+        "criminal_procedure_hk.nsl_key_cases"
+      ],
+      "notebooklm_prompt_hint": "HK criminal investigation, arrest, search, detention and reasonable suspicion; include statutory powers, admissibility consequences and leading HK cases.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "theft_dishonesty_fraud",
+      "priority": 1,
+      "queued_node_count": 4,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 167,
+      "initial_rung_case_count": 20,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 100,
+      "sample_node_ids": [
+        "criminal_law_hk.theft.appropriation",
+        "criminal_law_hk.theft.intent.deprive",
+        "criminal_law_hk.property_dishonesty",
+        "criminal_law_hk.theft"
+      ],
+      "notebooklm_prompt_hint": "HK theft, fraud and dishonesty tests; include Theft Ordinance, Ghosh/Ivey treatment, HK CFA/CA lineages and offence-element cases.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "public_order_riot_unlawful_assembly",
+      "priority": 1,
+      "queued_node_count": 4,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 162,
+      "initial_rung_case_count": 20,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 100,
+      "sample_node_ids": [
+        "criminal_law_hk.complicity_inchoate",
+        "criminal_law_hk.public_order.unlawful_assembly_riot",
+        "criminal_law_hk.public_order.expression_offences",
+        "criminal_law_hk.withdrawal.joint.enterprise"
+      ],
+      "notebooklm_prompt_hint": "HK unlawful assembly and riot lineage after Tong Wai Hung; include physical presence, joint enterprise/accessory liability, common purpose, peaceful assembly and overcharging.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "trial_no_case_jury_directions",
+      "priority": 2,
+      "queued_node_count": 37,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 350,
+      "initial_rung_case_count": 20,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 100,
+      "sample_node_ids": [
+        "criminal_procedure_hk.trial_allocation_and_ptp",
+        "criminal_procedure_hk.indictment_amendment",
+        "criminal_procedure_hk.appeal_conviction",
+        "criminal_procedure_hk.appeal_discharge",
+        "criminal_procedure_hk.crim_proc_appeals",
+        "criminal_procedure_hk.trial_arraignment",
+        "criminal_procedure_hk.crim_proc_cfi_trial",
+        "criminal_procedure_hk.pre_trial_offence_classification"
+      ],
+      "notebooklm_prompt_hint": "HK criminal trial procedure, no-case submissions, jury directions, burden/standard and appellate treatment.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "appeals_reviews_sentence",
+      "priority": 2,
+      "queued_node_count": 19,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 350,
+      "initial_rung_case_count": 20,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 100,
+      "sample_node_ids": [
+        "criminal_procedure_hk.appeal_sentence",
+        "criminal_procedure_hk.appeal_insanity_unfitness",
+        "criminal_procedure_hk.bail_pending_appeal",
+        "criminal_procedure_hk.appeal_cfa_jurisdiction",
+        "criminal_procedure_hk.hksar_v_chan_kam_ching",
+        "criminal_procedure_hk.hksar_v_cheung_tsz_wan",
+        "criminal_procedure_hk.hksar_v_fu_chiu_wa",
+        "criminal_procedure_hk.hksar_v_khaw_kin_sun"
+      ],
+      "notebooklm_prompt_hint": "HK criminal appeals/reviews; include conviction/sentence appeal tests, proviso, unsafe conviction, questions of law and SJ references.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "offences_against_person",
+      "priority": 2,
+      "queued_node_count": 13,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 277,
+      "initial_rung_case_count": 20,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 100,
+      "sample_node_ids": [
+        "criminal_law_hk.abh",
+        "criminal_law_hk.assault.battery",
+        "criminal_law_hk.duress",
+        "criminal_law_hk.gross.negligence.manslaughter",
+        "criminal_law_hk.involuntary.manslaughter",
+        "criminal_law_hk.manslaughter",
+        "criminal_law_hk.murder",
+        "criminal_law_hk.offences_person"
+      ],
+      "notebooklm_prompt_hint": "HK offences against the person; include homicide, assault, wounding/GBH, sexual offences, mens rea and sentencing/proof distinctions.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "bribery_corruption_misconduct",
+      "priority": 2,
+      "queued_node_count": 6,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 144,
+      "initial_rung_case_count": 20,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 100,
+      "sample_node_ids": [
+        "criminal_law_hk.bribery_corruption",
+        "criminal_law_hk.misconduct.public.office",
+        "criminal_law_hk.pobo.s10",
+        "criminal_law_hk.pobo.s3",
+        "criminal_law_hk.pobo.s9",
+        "criminal_law_hk.pobo.s4.s5"
+      ],
+      "notebooklm_prompt_hint": "HK POBO, misconduct in public office and corruption lineages; include CFA/CA authorities and element-by-element treatment.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "aml_money_laundering",
+      "priority": 2,
+      "queued_node_count": 5,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 124,
+      "initial_rung_case_count": 20,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 100,
+      "sample_node_ids": [
+        "criminal_law_hk.aml",
+        "criminal_law_hk.aml.wilful.blindness",
+        "criminal_law_hk.osco.s25",
+        "criminal_law_hk.aml.statutory.defence",
+        "criminal_law_hk.aml.reasonable.grounds"
+      ],
+      "notebooklm_prompt_hint": "HK money laundering / OSCO s25 lineages; include reasonable grounds, knowledge, wilful blindness and statutory defence cases.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "indictments_charges_joinder",
+      "priority": 3,
+      "queued_node_count": 8,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 115,
+      "initial_rung_case_count": 10,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 50,
+      "sample_node_ids": [
+        "criminal_procedure_hk.indictment_drafting",
+        "criminal_procedure_hk.indictment_filing_service",
+        "criminal_procedure_hk.hksar_v_chan_hon_wing",
+        "criminal_procedure_hk.hksar_v_leung_kwok_hung_1996",
+        "criminal_procedure_hk.hksar_v_tam_shing_hoi",
+        "criminal_procedure_hk.crim_proc_indictments",
+        "criminal_procedure_hk.indictment_quashing",
+        "criminal_procedure_hk.r_v_tailford"
+      ],
+      "notebooklm_prompt_hint": "HK indictments and charge sheets; include drafting, amendment, joinder, severance and quashing authorities.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "defences",
+      "priority": 3,
+      "queued_node_count": 7,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 103,
+      "initial_rung_case_count": 10,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 50,
+      "sample_node_ids": [
+        "criminal_law_hk.automatism",
+        "criminal_law_hk.defences",
+        "criminal_law_hk.insanity",
+        "criminal_law_hk.intoxication",
+        "criminal_law_hk.mistake",
+        "criminal_law_hk.self.defence",
+        "criminal_procedure_hk.costs_criminal_cases"
+      ],
+      "notebooklm_prompt_hint": "HK general criminal defences; include self-defence, duress, mistake, insanity, automatism and intoxication authorities.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "nsl_procedure_non_bail",
+      "priority": 3,
+      "queued_node_count": 3,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 76,
+      "initial_rung_case_count": 10,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 50,
+      "sample_node_ids": [
+        "criminal_procedure_hk.crim_sys_constitutional_limits",
+        "criminal_procedure_hk.nsl_surveillance",
+        "criminal_procedure_hk.nsl_overseas_lawyers"
+      ],
+      "notebooklm_prompt_hint": "HK NSL criminal procedure excluding bail; include search/seizure, designated judges, no jury, overseas lawyers and surveillance authorities.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "other_criminal_procedure",
+      "priority": 4,
+      "queued_node_count": 26,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 103,
+      "initial_rung_case_count": 10,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 50,
+      "sample_node_ids": [
+        "criminal_procedure_hk.witness_sexual_offence_complainants",
+        "criminal_procedure_hk.costs_bankruptcy_orders",
+        "criminal_procedure_hk.crim_sys_jurisdiction",
+        "criminal_procedure_hk.invest_detainee_rights",
+        "criminal_procedure_hk.dpp_v_richards",
+        "criminal_procedure_hk.gizzonio_v_chief_constable",
+        "criminal_procedure_hk.hksar_v_amarjit",
+        "criminal_procedure_hk.hksar_v_asif_ahfaq_mehmood"
+      ],
+      "notebooklm_prompt_hint": "Propose a HK case lineage and issue tree for Complainants in Specified Sexual Offences.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    },
+    {
+      "branch_family": "other_criminal_law",
+      "priority": 4,
+      "queued_node_count": 14,
+      "current_candidate_fruit_status": "needs_more_branch_fruits",
+      "target_case_quota": 79,
+      "initial_rung_case_count": 10,
+      "review_gate_every_cases": 50,
+      "max_cases_before_gold_review": 50,
+      "sample_node_ids": [
+        "criminal_law_hk.actus.reus",
+        "criminal_law_hk.attempt",
+        "criminal_law_hk.causation",
+        "criminal_law_hk.conspiracy",
+        "criminal_law_hk.criminal.damage",
+        "criminal_law_hk.fundamentals",
+        "criminal_law_hk.incitement",
+        "criminal_law_hk.intention"
+      ],
+      "notebooklm_prompt_hint": "Propose a HK case lineage and issue tree for Actus Reus.",
+      "allowed_status": "machine_candidate",
+      "answer_safe_allowed": false
+    }
+  ],
+  "shards": [
+    {
+      "shard_id": "mb_0001",
+      "branch_family": "investigation_arrest_search_detention",
+      "scope": "investigation_arrest_search_detention_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0002",
+      "branch_family": "investigation_arrest_search_detention",
+      "scope": "investigation_arrest_search_detention_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0003",
+      "branch_family": "investigation_arrest_search_detention",
+      "scope": "investigation_arrest_search_detention_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 150,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0004",
+      "branch_family": "investigation_arrest_search_detention",
+      "scope": "investigation_arrest_search_detention_public_cases",
+      "case_ordinal_start": 151,
+      "case_ordinal_end": 200,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0005",
+      "branch_family": "investigation_arrest_search_detention",
+      "scope": "investigation_arrest_search_detention_public_cases",
+      "case_ordinal_start": 201,
+      "case_ordinal_end": 250,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0006",
+      "branch_family": "investigation_arrest_search_detention",
+      "scope": "investigation_arrest_search_detention_public_cases",
+      "case_ordinal_start": 251,
+      "case_ordinal_end": 300,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0007",
+      "branch_family": "investigation_arrest_search_detention",
+      "scope": "investigation_arrest_search_detention_public_cases",
+      "case_ordinal_start": 301,
+      "case_ordinal_end": 350,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0008",
+      "branch_family": "investigation_arrest_search_detention",
+      "scope": "investigation_arrest_search_detention_public_cases",
+      "case_ordinal_start": 351,
+      "case_ordinal_end": 400,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0009",
+      "branch_family": "investigation_arrest_search_detention",
+      "scope": "investigation_arrest_search_detention_public_cases",
+      "case_ordinal_start": 401,
+      "case_ordinal_end": 450,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0010",
+      "branch_family": "theft_dishonesty_fraud",
+      "scope": "theft_dishonesty_fraud_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0011",
+      "branch_family": "theft_dishonesty_fraud",
+      "scope": "theft_dishonesty_fraud_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0012",
+      "branch_family": "theft_dishonesty_fraud",
+      "scope": "theft_dishonesty_fraud_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 150,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0013",
+      "branch_family": "theft_dishonesty_fraud",
+      "scope": "theft_dishonesty_fraud_public_cases",
+      "case_ordinal_start": 151,
+      "case_ordinal_end": 167,
+      "max_cases": 17,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0014",
+      "branch_family": "public_order_riot_unlawful_assembly",
+      "scope": "public_order_riot_unlawful_assembly_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0015",
+      "branch_family": "public_order_riot_unlawful_assembly",
+      "scope": "public_order_riot_unlawful_assembly_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0016",
+      "branch_family": "public_order_riot_unlawful_assembly",
+      "scope": "public_order_riot_unlawful_assembly_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 150,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0017",
+      "branch_family": "public_order_riot_unlawful_assembly",
+      "scope": "public_order_riot_unlawful_assembly_public_cases",
+      "case_ordinal_start": 151,
+      "case_ordinal_end": 162,
+      "max_cases": 12,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0018",
+      "branch_family": "trial_no_case_jury_directions",
+      "scope": "trial_no_case_jury_directions_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0019",
+      "branch_family": "trial_no_case_jury_directions",
+      "scope": "trial_no_case_jury_directions_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0020",
+      "branch_family": "trial_no_case_jury_directions",
+      "scope": "trial_no_case_jury_directions_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 150,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0021",
+      "branch_family": "trial_no_case_jury_directions",
+      "scope": "trial_no_case_jury_directions_public_cases",
+      "case_ordinal_start": 151,
+      "case_ordinal_end": 200,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0022",
+      "branch_family": "trial_no_case_jury_directions",
+      "scope": "trial_no_case_jury_directions_public_cases",
+      "case_ordinal_start": 201,
+      "case_ordinal_end": 250,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0023",
+      "branch_family": "trial_no_case_jury_directions",
+      "scope": "trial_no_case_jury_directions_public_cases",
+      "case_ordinal_start": 251,
+      "case_ordinal_end": 300,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0024",
+      "branch_family": "trial_no_case_jury_directions",
+      "scope": "trial_no_case_jury_directions_public_cases",
+      "case_ordinal_start": 301,
+      "case_ordinal_end": 350,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0025",
+      "branch_family": "appeals_reviews_sentence",
+      "scope": "appeals_reviews_sentence_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0026",
+      "branch_family": "appeals_reviews_sentence",
+      "scope": "appeals_reviews_sentence_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0027",
+      "branch_family": "appeals_reviews_sentence",
+      "scope": "appeals_reviews_sentence_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 150,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0028",
+      "branch_family": "appeals_reviews_sentence",
+      "scope": "appeals_reviews_sentence_public_cases",
+      "case_ordinal_start": 151,
+      "case_ordinal_end": 200,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0029",
+      "branch_family": "appeals_reviews_sentence",
+      "scope": "appeals_reviews_sentence_public_cases",
+      "case_ordinal_start": 201,
+      "case_ordinal_end": 250,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0030",
+      "branch_family": "appeals_reviews_sentence",
+      "scope": "appeals_reviews_sentence_public_cases",
+      "case_ordinal_start": 251,
+      "case_ordinal_end": 300,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0031",
+      "branch_family": "appeals_reviews_sentence",
+      "scope": "appeals_reviews_sentence_public_cases",
+      "case_ordinal_start": 301,
+      "case_ordinal_end": 350,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0032",
+      "branch_family": "offences_against_person",
+      "scope": "offences_against_person_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0033",
+      "branch_family": "offences_against_person",
+      "scope": "offences_against_person_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0034",
+      "branch_family": "offences_against_person",
+      "scope": "offences_against_person_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 150,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0035",
+      "branch_family": "offences_against_person",
+      "scope": "offences_against_person_public_cases",
+      "case_ordinal_start": 151,
+      "case_ordinal_end": 200,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0036",
+      "branch_family": "offences_against_person",
+      "scope": "offences_against_person_public_cases",
+      "case_ordinal_start": 201,
+      "case_ordinal_end": 250,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0037",
+      "branch_family": "offences_against_person",
+      "scope": "offences_against_person_public_cases",
+      "case_ordinal_start": 251,
+      "case_ordinal_end": 277,
+      "max_cases": 27,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0038",
+      "branch_family": "bribery_corruption_misconduct",
+      "scope": "bribery_corruption_misconduct_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0039",
+      "branch_family": "bribery_corruption_misconduct",
+      "scope": "bribery_corruption_misconduct_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0040",
+      "branch_family": "bribery_corruption_misconduct",
+      "scope": "bribery_corruption_misconduct_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 144,
+      "max_cases": 44,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0041",
+      "branch_family": "aml_money_laundering",
+      "scope": "aml_money_laundering_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0042",
+      "branch_family": "aml_money_laundering",
+      "scope": "aml_money_laundering_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0043",
+      "branch_family": "aml_money_laundering",
+      "scope": "aml_money_laundering_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 124,
+      "max_cases": 24,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0044",
+      "branch_family": "indictments_charges_joinder",
+      "scope": "indictments_charges_joinder_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0045",
+      "branch_family": "indictments_charges_joinder",
+      "scope": "indictments_charges_joinder_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0046",
+      "branch_family": "indictments_charges_joinder",
+      "scope": "indictments_charges_joinder_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 115,
+      "max_cases": 15,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0047",
+      "branch_family": "defences",
+      "scope": "defences_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0048",
+      "branch_family": "defences",
+      "scope": "defences_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0049",
+      "branch_family": "defences",
+      "scope": "defences_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 103,
+      "max_cases": 3,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0050",
+      "branch_family": "nsl_procedure_non_bail",
+      "scope": "nsl_procedure_non_bail_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0051",
+      "branch_family": "nsl_procedure_non_bail",
+      "scope": "nsl_procedure_non_bail_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 76,
+      "max_cases": 26,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0052",
+      "branch_family": "other_criminal_procedure",
+      "scope": "other_criminal_procedure_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0053",
+      "branch_family": "other_criminal_procedure",
+      "scope": "other_criminal_procedure_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 100,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0054",
+      "branch_family": "other_criminal_procedure",
+      "scope": "other_criminal_procedure_public_cases",
+      "case_ordinal_start": 101,
+      "case_ordinal_end": 103,
+      "max_cases": 3,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0055",
+      "branch_family": "other_criminal_law",
+      "scope": "other_criminal_law_public_cases",
+      "case_ordinal_start": 1,
+      "case_ordinal_end": 50,
+      "max_cases": 50,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    },
+    {
+      "shard_id": "mb_0056",
+      "branch_family": "other_criminal_law",
+      "scope": "other_criminal_law_public_cases",
+      "case_ordinal_start": 51,
+      "case_ordinal_end": 79,
+      "max_cases": 29,
+      "status": "planned_not_started",
+      "execution_mode": "candidate_only_public_source"
+    }
+  ],
+  "next_actions": [
+    "For each priority-1 branch, collect 3-5 public landmark cases first.",
+    "Verify each candidate case against LegalRef/HKLII/Judiciary before extracting propositions.",
+    "Use DeepSeek only on one public paragraph at a time to propose candidate extraction rules.",
+    "Reject any proposal whose exact_quote is not a substring of the paragraph card.",
+    "Upsert only paragraph/proposition cards that passed source, quote, doctrine-node, and tenant checks.",
+    "Run retrieval benchmark after each 50-case branch rung; do not call the branch answer-safe until review/golden queries pass."
+  ]
+}

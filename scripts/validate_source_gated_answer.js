@@ -6,14 +6,15 @@ const { generateSourceGatedAnswer } = require("../src/legal_answer/generate_sour
 const { legalClaim, legalSource } = require("../src/legal_answer/schema");
 const { verifyLegalAnswer } = require("../src/legal_answer/verify_legal_answer");
 
-const QUERY = "What is the consequence of inconsistent factual pleadings across more than one case? abuse of process estoppel collateral attack";
+const QUERY = "fraud offence section 16A Theft Ordinance dishonesty separate element";
+const COLLECTION = "hk_proposition_cards_openrouter_2048";
 
 function assert(condition, message, errors) {
   if (!condition) errors.push(message);
 }
 
 async function validateNormalAnswer(errors) {
-  const evidencePack = await buildEvidencePack({ query: QUERY, topK: 5 });
+  const evidencePack = await buildEvidencePack({ query: QUERY, topK: 5, collectionName: COLLECTION });
   const answer = generateSourceGatedAnswer(evidencePack);
   const verification = verifyLegalAnswer(answer, evidencePack, { publicDemoMode: true });
   assert(evidencePack.evidence_chunks.length > 0, "evidence pack should have hits", errors);
@@ -26,7 +27,9 @@ async function validateNormalAnswer(errors) {
   assert(answer.retrieval_trace.returned_count > 0, "retrieval trace should include returned count", errors);
   assert(answer.retrieval_trace.scores.length > 0, "retrieval trace should include scores", errors);
   assert(verification.status === "passed", `verification should pass: ${verification.errors.join("; ")}`, errors);
-  assert((answer.cannot_verify || []).some(item => /collateral attack/i.test(item)), "collateral attack should be cannot_verify when unsupported", errors);
+  assert(answer.legal_claims.every(claim => claim.review_state === "machine_candidate"), "pilot claims should stay machine_candidate", errors);
+  assert(answer.legal_claims.every(claim => claim.answer_safe === false), "pilot claims should not be answer_safe", errors);
+  assert(answer.legal_claims.every(claim => claim.human_review_required === true), "pilot claims should require human review", errors);
 }
 
 function validateNoSourceGate(errors) {
