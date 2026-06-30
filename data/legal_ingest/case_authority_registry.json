@@ -3,12 +3,12 @@
   "generated_at": "2026-06-30T22:15:00+08:00",
   "product_rule": "SOURCE PROOF GATE = PUBLIC PARAGRAPH LINK + EXACT QUOTE; LAWYER REVIEW IS QUIET METADATA FOR LATER HITL.",
   "counts": {
-    "verified_authority_count": 455,
-    "unique_case_count": 157,
+    "verified_authority_count": 458,
+    "unique_case_count": 158,
     "scanned_case_seed_count": 177,
-    "source_linked_case_seed_count": 1,
-    "excluded_case_seed_count": 176,
-    "doctrine_node_count": 258
+    "source_linked_case_seed_count": 2,
+    "excluded_case_seed_count": 175,
+    "doctrine_node_count": 259
   },
   "source_policy": {
     "visible_authority_requires_public_paragraph_proof": true,
@@ -17237,6 +17237,159 @@
       "authority_id": "authority_00336"
     },
     {
+      "evidence_id": "seed_hksar_v_lam_tat_ming_2000_p24",
+      "source_registry": "viewer_evidence_index",
+      "case_id": "legalref_DIS33993_p24",
+      "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+      "citation": "(2000) 3 HKCFAR 168",
+      "neutral_citation": "(2000) 3 HKCFAR 168",
+      "law_report_citation": "(2000) 3 HKCFAR 168",
+      "court": "Court of Final Appeal",
+      "court_level": "",
+      "judgment_date": "2000-06-26",
+      "paragraph_id": "legalref_DIS33993_p24",
+      "paragraph_number": "24",
+      "para_no": "24",
+      "exact_quote": "as soon as a law enforcement officer has evidence which would afford reasonable grounds for suspecting that a person has committed an offence, he shall caution the suspect before putting any or any further questions to him",
+      "supporting_quote": "as soon as a law enforcement officer has evidence which would afford reasonable grounds for suspecting that a person has committed an offence, he shall caution the suspect before putting any or any further questions to him",
+      "paragraph_text": "24. The suspect's right of silence is protected by the \"Rules and Directions for the questioning of suspects and the taking of statements\" promulgated in October 1992 by the Secretary for Security for the law enforcement agencies (\"the Secretary for Security's rules and directions\"). See Special Supplement No 5 of the Hong Kong Government Gazette on 2 October 1992. These replace the Judges' Rules previously adopted by the courts. Under these rules and directions (and previously the Judges' Rules), as soon as a law enforcement officer has evidence which would afford reasonable grounds for suspecting that a person has committed an offence, he shall caution the suspect before putting any or any further questions to him. The terms of the caution are well known:",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p24",
+      "checksum": "039706f2a49d2d3b444ae61d13b907a517551c838d1e39926aaecd795ae77815",
+      "issue_tag": "criminal_procedure.interview_caution",
+      "issue_tags": [
+        "criminal_procedure.interview_caution",
+        "criminal_procedure.confession",
+        "criminal_procedure.right_of_silence"
+      ],
+      "viewer_node_ids": [
+        "hksar_v_lam_tat_ming"
+      ],
+      "doctrine_node_ids": [
+        "criminal_procedure_hk.hksar_v_lam_tat_ming"
+      ],
+      "flow_step_ids": [],
+      "proposition_id": "",
+      "proposition_text": "Reasonable suspicion before questioning triggers the caution safeguard protecting the suspect's right of silence.",
+      "principle_id": "",
+      "principle_text": "A suspect's right of silence is protected by the Secretary for Security rules and directions; once there are reasonable grounds to suspect an offence, caution is required before questioning.",
+      "authority_role": "public_paragraph_proof_for_confession_caution_issue",
+      "significance_label": "",
+      "verification_status": "paragraph_linked_public_source",
+      "source_verification_status": "source_verified_public",
+      "answer_layer_status": "research_only",
+      "answer_mode": "research_prototype",
+      "answer_safe": false,
+      "lawyer_review_status": "unreviewed",
+      "professional_advice_certified": false,
+      "current_treatment_status": "unchecked",
+      "usable_in_research_prototype": true,
+      "usable_in_answer_layer": false,
+      "lineage_note": "Verified seed paragraph proof for the research prototype.",
+      "authority_id": "authority_00337"
+    },
+    {
+      "evidence_id": "seed_hksar_v_lam_tat_ming_2000_p39",
+      "source_registry": "viewer_evidence_index",
+      "case_id": "legalref_DIS33993_p39",
+      "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+      "citation": "(2000) 3 HKCFAR 168",
+      "neutral_citation": "(2000) 3 HKCFAR 168",
+      "law_report_citation": "(2000) 3 HKCFAR 168",
+      "court": "Court of Final Appeal",
+      "court_level": "",
+      "judgment_date": "2000-06-26",
+      "paragraph_id": "legalref_DIS33993_p39",
+      "paragraph_number": "39",
+      "para_no": "39",
+      "exact_quote": "once the officer actively questions the suspect, we enter into an area which may engage the exercise of the residual discretion",
+      "supporting_quote": "once the officer actively questions the suspect, we enter into an area which may engage the exercise of the residual discretion",
+      "paragraph_text": "39. The real problem arises where the undercover officer plays an active role in procuring the confession from the suspect by asking questions. If it were not an undercover operation, the suspect would have to be cautioned reminding him of his right of silence and enabling him to make a choice whether or not to speak. With an undercover operation, this obviously could not be done. In this situation, once the officer actively questions the suspect, we enter into an area which may engage the exercise of the residual discretion.",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p39",
+      "checksum": "433d3003fe7614a3c825d68aec9b28ecba3c030f014ab94afc4fc3c1af8b75a4",
+      "issue_tag": "criminal_procedure.undercover_confession",
+      "issue_tags": [
+        "criminal_procedure.undercover_confession",
+        "criminal_procedure.confession",
+        "criminal_procedure.right_of_silence"
+      ],
+      "viewer_node_ids": [
+        "hksar_v_lam_tat_ming"
+      ],
+      "doctrine_node_ids": [
+        "criminal_procedure_hk.hksar_v_lam_tat_ming"
+      ],
+      "flow_step_ids": [],
+      "proposition_id": "",
+      "proposition_text": "Undercover questioning that actively procures a confession may raise residual-discretion fairness issues.",
+      "principle_id": "",
+      "principle_text": "Active questioning by an undercover officer that procures a confession may engage the court's residual discretion because the suspect could not be cautioned.",
+      "authority_role": "public_paragraph_proof_for_confession_residual_discretion_issue",
+      "significance_label": "",
+      "verification_status": "paragraph_linked_public_source",
+      "source_verification_status": "source_verified_public",
+      "answer_layer_status": "research_only",
+      "answer_mode": "research_prototype",
+      "answer_safe": false,
+      "lawyer_review_status": "unreviewed",
+      "professional_advice_certified": false,
+      "current_treatment_status": "unchecked",
+      "usable_in_research_prototype": true,
+      "usable_in_answer_layer": false,
+      "lineage_note": "Verified seed paragraph proof for the research prototype.",
+      "authority_id": "authority_00338"
+    },
+    {
+      "evidence_id": "seed_hksar_v_lam_tat_ming_2000_p40",
+      "source_registry": "viewer_evidence_index",
+      "case_id": "legalref_DIS33993_p40",
+      "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+      "citation": "(2000) 3 HKCFAR 168",
+      "neutral_citation": "(2000) 3 HKCFAR 168",
+      "law_report_citation": "(2000) 3 HKCFAR 168",
+      "court": "Court of Final Appeal",
+      "court_level": "",
+      "judgment_date": "2000-06-26",
+      "paragraph_id": "legalref_DIS33993_p40",
+      "paragraph_number": "40",
+      "para_no": "40",
+      "exact_quote": "If however what the officer does amounts to interrogation, the discretion would ordinarily be exercised so as to exclude the confession",
+      "supporting_quote": "If however what the officer does amounts to interrogation, the discretion would ordinarily be exercised so as to exclude the confession",
+      "paragraph_text": "40. How it should be exercised will depend on what follows. If all the officer does is to draw attention to the incident which gives rise to the offence charged, in the absence of any other relevant circumstances, there is no persuasive reason for excluding a confession made. The officer is doing no more than providing an opportunity for the suspect to speak. If however what the officer does amounts to interrogation, the discretion would ordinarily be exercised so as to exclude the confession. Such an interrogation would constitute a derogation of the accused's right of silence and thus prejudice his fair trial. Whether the conversation amounts to an interrogation would have to be determined having regard to all the circumstances. As a matter of fact, whether such an interrogation can feasibly be conducted in the context of an undercover operation without blowing the cover, would depend on the relationship between the suspect and the undercover officer in his posed capacity.",
+      "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p40",
+      "checksum": "93986523107f4dfe72733e1f9551cc0403548b8ca60b4eb0fef28fb285760b31",
+      "issue_tag": "criminal_procedure.undercover_confession",
+      "issue_tags": [
+        "criminal_procedure.undercover_confession",
+        "criminal_procedure.confession",
+        "criminal_procedure.right_of_silence"
+      ],
+      "viewer_node_ids": [
+        "hksar_v_lam_tat_ming"
+      ],
+      "doctrine_node_ids": [
+        "criminal_procedure_hk.hksar_v_lam_tat_ming"
+      ],
+      "flow_step_ids": [],
+      "proposition_id": "",
+      "proposition_text": "Undercover interrogation ordinarily points to exclusion of the confession under the residual discretion.",
+      "principle_id": "",
+      "principle_text": "If undercover conduct amounts to interrogation, the residual discretion would ordinarily exclude the confession because it derogates from the accused's right of silence and prejudices a fair trial.",
+      "authority_role": "public_paragraph_proof_for_confession_residual_discretion_issue",
+      "significance_label": "",
+      "verification_status": "paragraph_linked_public_source",
+      "source_verification_status": "source_verified_public",
+      "answer_layer_status": "research_only",
+      "answer_mode": "research_prototype",
+      "answer_safe": false,
+      "lawyer_review_status": "unreviewed",
+      "professional_advice_certified": false,
+      "current_treatment_status": "unchecked",
+      "usable_in_research_prototype": true,
+      "usable_in_answer_layer": false,
+      "lineage_note": "Verified seed paragraph proof for the research prototype.",
+      "authority_id": "authority_00339"
+    },
+    {
       "evidence_id": "l5_prop_lai_2021_nsl_art42_text_p52",
       "source_registry": "data/legal_ingest/criminal_evidence_tree_v1/bail_public_batch_v1",
       "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
@@ -17283,7 +17436,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFA statement of the statutory text used in construing NSL Article 42(2).",
-      "authority_id": "authority_00337"
+      "authority_id": "authority_00340"
     },
     {
       "evidence_id": "l5_prop_lai_2021_nsl_more_stringent_threshold_p53",
@@ -17332,7 +17485,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFA distinguishes the NSL Article 42 threshold from ordinary bail.",
-      "authority_id": "authority_00338"
+      "authority_id": "authority_00341"
     },
     {
       "evidence_id": "l5_prop_lai_2021_nsl_exception_matrix_p54",
@@ -17381,7 +17534,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFA frames NSL Article 42(2) as a special threshold within the wider bail system.",
-      "authority_id": "authority_00339"
+      "authority_id": "authority_00342"
     },
     {
       "evidence_id": "l5_prop_lai_2021_bail_conditions_relevant_p57",
@@ -17431,7 +17584,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFA rejects a sealed-off first stage that excludes proposed bail conditions.",
-      "authority_id": "authority_00340"
+      "authority_id": "authority_00343"
     },
     {
       "evidence_id": "l5_prop_lai_2021_bail_conditions_deterrent_p58",
@@ -17481,7 +17634,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFA connects conditions to risk management and deterrence.",
-      "authority_id": "authority_00341"
+      "authority_id": "authority_00344"
     },
     {
       "evidence_id": "l5_prop_lai_2021_nsl_summary_p70",
@@ -17530,7 +17683,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFA summary of conclusions.",
-      "authority_id": "authority_00342"
+      "authority_id": "authority_00345"
     },
     {
       "evidence_id": "l5_prop_lai_2021_tong_limited_p72",
@@ -17578,7 +17731,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Lineage marker showing Lai limiting/correcting Tong on NSL bail threshold.",
-      "authority_id": "authority_00343"
+      "authority_id": "authority_00346"
     },
     {
       "evidence_id": "l5_prop_tong_2020_article42_targets_risk_p50",
@@ -17626,7 +17779,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Earlier CFI treatment; must be read with later CFA correction in Lai Chee Ying.",
-      "authority_id": "authority_00344"
+      "authority_id": "authority_00347"
     },
     {
       "evidence_id": "l5_prop_tong_2020_article42_risk_weight_p14",
@@ -17675,7 +17828,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Earlier CFI application on Article 42 risk weighting; answer composers must show later CFA treatment in Lai Chee Ying.",
-      "authority_id": "authority_00345"
+      "authority_id": "authority_00348"
     },
     {
       "evidence_id": "l5_prop_tong_2020_article42_not_absolute_bar_p16",
@@ -17724,7 +17877,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Earlier CFI statement; read with the CFA's later framing of Article 42 as a stringent threshold.",
-      "authority_id": "authority_00346"
+      "authority_id": "authority_00349"
     },
     {
       "evidence_id": "l5_prop_tong_2020_future_risk_judgment_p17",
@@ -17774,7 +17927,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Useful candidate paragraph on the predictive nature of bail risk assessment.",
-      "authority_id": "authority_00347"
+      "authority_id": "authority_00350"
     },
     {
       "evidence_id": "l5_prop_tong_2020_refusal_flight_reoffending_p32",
@@ -17823,7 +17976,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal illustration; not answer-safe without review.",
-      "authority_id": "authority_00348"
+      "authority_id": "authority_00351"
     },
     {
       "evidence_id": "l5_prop_ma_2020_undertaking_possible_p32",
@@ -17873,7 +18026,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI candidate application on undertakings; must be compared with factual refusal at paragraph 33 and later CFA treatment.",
-      "authority_id": "authority_00349"
+      "authority_id": "authority_00352"
     },
     {
       "evidence_id": "l5_prop_ma_2020_undertaking_not_accepted_p33",
@@ -17923,7 +18076,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive refusal despite proposed undertaking; useful as contrast to Lai CFI paragraph 33.",
-      "authority_id": "authority_00350"
+      "authority_id": "authority_00353"
     },
     {
       "evidence_id": "l5_prop_ma_2020_unjust_detention_reapply_p36",
@@ -17972,7 +18125,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Candidate point on renewed review/new circumstances; not a general entitlement without factual review.",
-      "authority_id": "authority_00351"
+      "authority_id": "authority_00354"
     },
     {
       "evidence_id": "l5_prop_lai_cfi_2020_nsl_not_no_bail_p30",
@@ -18021,7 +18174,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI statement later considered by the CFA in the same litigation; show with CFA Article 42 threshold propositions.",
-      "authority_id": "authority_00352"
+      "authority_id": "authority_00355"
     },
     {
       "evidence_id": "l5_prop_lai_cfi_2020_tailored_undertaking_sufficient_p33",
@@ -18071,7 +18224,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI bail-grant illustration later reviewed in CFA proceedings; candidate lineage only.",
-      "authority_id": "authority_00353"
+      "authority_id": "authority_00356"
     },
     {
       "evidence_id": "l5_prop_lai_cfi_2020_bail_not_final_p37",
@@ -18120,7 +18273,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Candidate procedural point on bail review/revocation/new circumstances.",
-      "authority_id": "authority_00354"
+      "authority_id": "authority_00357"
     },
     {
       "evidence_id": "l5_prop_lai_448_2021_art42_text_p5",
@@ -18169,7 +18322,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI post-CFA restatement of Article 42(2); pair with CFA ratio propositions for answer hierarchy.",
-      "authority_id": "authority_00355"
+      "authority_id": "authority_00358"
     },
     {
       "evidence_id": "l5_prop_lai_448_2021_cfa_threshold_p6",
@@ -18218,7 +18371,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of the CFA Article 42 threshold; CFA remains the controlling source.",
-      "authority_id": "authority_00356"
+      "authority_id": "authority_00359"
     },
     {
       "evidence_id": "l5_prop_lai_448_2021_everything_relevant_p7",
@@ -18268,7 +18421,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI post-CFA application of the factors/materials part of the Article 42 assessment.",
-      "authority_id": "authority_00357"
+      "authority_id": "authority_00360"
     },
     {
       "evidence_id": "l5_prop_lai_448_2021_future_risk_p13",
@@ -18318,7 +18471,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Candidate application point on forward-looking bail risk assessment.",
-      "authority_id": "authority_00358"
+      "authority_id": "authority_00361"
     },
     {
       "evidence_id": "l5_prop_lai_448_2021_prohibited_acts_scope_p20",
@@ -18367,7 +18520,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI application on scope of prohibited acts in future-risk assessment.",
-      "authority_id": "authority_00359"
+      "authority_id": "authority_00362"
     },
     {
       "evidence_id": "l5_prop_lai_448_2021_bail_refused_threshold_p24",
@@ -18416,7 +18569,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal after applying the CFA Article 42 framework.",
-      "authority_id": "authority_00360"
+      "authority_id": "authority_00363"
     },
     {
       "evidence_id": "l5_prop_chan_2021_cfa_threshold_p4",
@@ -18465,7 +18618,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of Lai CFA threshold in a later NSL bail review.",
-      "authority_id": "authority_00361"
+      "authority_id": "authority_00364"
     },
     {
       "evidence_id": "l5_prop_chan_2021_everything_relevant_p5",
@@ -18515,7 +18668,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI candidate application of the CFA factor/materials approach.",
-      "authority_id": "authority_00362"
+      "authority_id": "authority_00365"
     },
     {
       "evidence_id": "l5_prop_chan_2021_individual_circumstances_p23",
@@ -18565,7 +18718,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Candidate application point on individualised bail assessment.",
-      "authority_id": "authority_00363"
+      "authority_id": "authority_00366"
     },
     {
       "evidence_id": "l5_prop_chan_2021_public_record_conditions_p26",
@@ -18615,7 +18768,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Candidate illustration of facts considered in the predictive and evaluative exercise.",
-      "authority_id": "authority_00364"
+      "authority_id": "authority_00367"
     },
     {
       "evidence_id": "l5_prop_chan_2021_conditions_satisfy_threshold_p27",
@@ -18665,7 +18818,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive grant illustration; not a general rule without review.",
-      "authority_id": "authority_00365"
+      "authority_id": "authority_00368"
     },
     {
       "evidence_id": "l5_prop_chan_2021_conditions_surrender_p31",
@@ -18714,7 +18867,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive ordinary bail-risk illustration within NSL bail review.",
-      "authority_id": "authority_00366"
+      "authority_id": "authority_00369"
     },
     {
       "evidence_id": "l5_prop_fan_2022_first_threshold_p1",
@@ -18763,7 +18916,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Candidate second-bail-application source using Lai CFA threshold terminology.",
-      "authority_id": "authority_00367"
+      "authority_id": "authority_00370"
     },
     {
       "evidence_id": "l5_prop_fan_2022_delay_concern_p9",
@@ -18812,7 +18965,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Candidate delay/new-circumstances point for second bail applications.",
-      "authority_id": "authority_00368"
+      "authority_id": "authority_00371"
     },
     {
       "evidence_id": "l5_prop_fan_2022_case_management_delay_p10",
@@ -18861,7 +19014,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Candidate pre-trial delay/case-management point; source quotes Ng Hau Yi Sidney through Fan.",
-      "authority_id": "authority_00369"
+      "authority_id": "authority_00372"
     },
     {
       "evidence_id": "l5_prop_fan_2022_delay_fairness_p18",
@@ -18910,7 +19063,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Candidate fairness/delay point; paragraph records submission and must be labelled carefully until reviewed.",
-      "authority_id": "authority_00370"
+      "authority_id": "authority_00373"
     },
     {
       "evidence_id": "l5_prop_fan_2022_threshold_not_overcome_p19",
@@ -18959,7 +19112,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive refusal on a second application; not a general rule.",
-      "authority_id": "authority_00371"
+      "authority_id": "authority_00374"
     },
     {
       "evidence_id": "l5_prop_sze_2021_cfa_stringent_threshold_p4",
@@ -19008,7 +19161,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of Lai CFA threshold; candidate only and subordinate to CFA ratio.",
-      "authority_id": "authority_00372"
+      "authority_id": "authority_00375"
     },
     {
       "evidence_id": "l5_prop_sze_2021_second_threshold_conditions_p10",
@@ -19057,7 +19210,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI application on surrender-risk conditions.",
-      "authority_id": "authority_00373"
+      "authority_id": "authority_00376"
     },
     {
       "evidence_id": "l5_prop_chui_2021_cfa_everything_relevant_p5",
@@ -19107,7 +19260,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of the CFA all-relevant-materials approach.",
-      "authority_id": "authority_00374"
+      "authority_id": "authority_00377"
     },
     {
       "evidence_id": "l5_prop_chui_2021_predictive_assessment_refusal_p11",
@@ -19156,7 +19309,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal applying the NSL bail threshold.",
-      "authority_id": "authority_00375"
+      "authority_id": "authority_00378"
     },
     {
       "evidence_id": "l5_prop_wan_2021_predictive_exercise_p13",
@@ -19206,7 +19359,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of predictive/evaluative assessment terminology.",
-      "authority_id": "authority_00376"
+      "authority_id": "authority_00379"
     },
     {
       "evidence_id": "l5_prop_wan_2021_refusal_no_sufficient_grounds_p14",
@@ -19255,7 +19408,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal; candidate only.",
-      "authority_id": "authority_00377"
+      "authority_id": "authority_00380"
     },
     {
       "evidence_id": "l5_prop_mo_2021_predictive_refusal_p21",
@@ -19305,7 +19458,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal after considering proposed conditions.",
-      "authority_id": "authority_00378"
+      "authority_id": "authority_00381"
     },
     {
       "evidence_id": "l5_prop_chow_2021_cfa_everything_relevant_p12",
@@ -19355,7 +19508,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of CFA all-relevant-materials approach.",
-      "authority_id": "authority_00379"
+      "authority_id": "authority_00382"
     },
     {
       "evidence_id": "l5_prop_chow_2021_conditions_nsl_satisfied_p25",
@@ -19405,7 +19558,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI grant illustration; not a general rule without review.",
-      "authority_id": "authority_00380"
+      "authority_id": "authority_00383"
     },
     {
       "evidence_id": "l5_prop_chow_2021_second_threshold_satisfied_p26",
@@ -19454,7 +19607,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI grant illustration on ordinary second threshold.",
-      "authority_id": "authority_00381"
+      "authority_id": "authority_00384"
     },
     {
       "evidence_id": "l5_prop_wong_pik_wan_2021_cfa_threshold_p4",
@@ -19503,7 +19656,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of Lai CFA threshold formulation.",
-      "authority_id": "authority_00382"
+      "authority_id": "authority_00385"
     },
     {
       "evidence_id": "l5_prop_wong_pik_wan_2021_predictive_grant_p8",
@@ -19553,7 +19706,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive grant/continued-bail illustration following Lai CFA.",
-      "authority_id": "authority_00383"
+      "authority_id": "authority_00386"
     },
     {
       "evidence_id": "l5_prop_or_yiu_lam_2021_sufficient_grounds_p8",
@@ -19603,7 +19756,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive grant/continued-bail illustration following Lai CFA.",
-      "authority_id": "authority_00384"
+      "authority_id": "authority_00387"
     },
     {
       "evidence_id": "l5_prop_or_yiu_lam_2021_grant_same_terms_p10",
@@ -19652,7 +19805,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI bail outcome; candidate only.",
-      "authority_id": "authority_00385"
+      "authority_id": "authority_00388"
     },
     {
       "evidence_id": "l5_prop_leung_kwok_hung_2021_predictive_p14",
@@ -19702,7 +19855,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of all-relevant-materials approach following Lai CFA.",
-      "authority_id": "authority_00386"
+      "authority_id": "authority_00389"
     },
     {
       "evidence_id": "l5_prop_leung_kwok_hung_2021_refusal_p15",
@@ -19751,7 +19904,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal; candidate only.",
-      "authority_id": "authority_00387"
+      "authority_id": "authority_00390"
     },
     {
       "evidence_id": "l5_prop_tam_hoi_pong_2021_predictive_p19",
@@ -19801,7 +19954,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of predictive/evaluative assessment terminology.",
-      "authority_id": "authority_00388"
+      "authority_id": "authority_00391"
     },
     {
       "evidence_id": "l5_prop_tam_hoi_pong_2021_refusal_p20",
@@ -19850,7 +20003,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal; candidate only.",
-      "authority_id": "authority_00389"
+      "authority_id": "authority_00392"
     },
     {
       "evidence_id": "l5_prop_wong_pak_yu_2021_predictive_p21",
@@ -19900,7 +20053,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of predictive/evaluative assessment terminology.",
-      "authority_id": "authority_00390"
+      "authority_id": "authority_00393"
     },
     {
       "evidence_id": "l5_prop_wong_pak_yu_2021_evidence_conditions_p22",
@@ -19950,7 +20103,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of all-relevant-materials and possible-conditions approach.",
-      "authority_id": "authority_00391"
+      "authority_id": "authority_00394"
     },
     {
       "evidence_id": "l5_prop_fung_2022_first_then_second_threshold_p8",
@@ -20000,7 +20153,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of sequential NSL then ordinary bail thresholds.",
-      "authority_id": "authority_00392"
+      "authority_id": "authority_00395"
     },
     {
       "evidence_id": "l5_prop_fung_2022_refusal_first_threshold_p29",
@@ -20049,7 +20202,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal; candidate only.",
-      "authority_id": "authority_00393"
+      "authority_id": "authority_00396"
     },
     {
       "evidence_id": "l5_prop_tam_man_ho_2021_predictive_materials_p11",
@@ -20099,7 +20252,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of Lai CFA and post-CFA Lai CFI all-materials approach.",
-      "authority_id": "authority_00394"
+      "authority_id": "authority_00397"
     },
     {
       "evidence_id": "l5_prop_tam_man_ho_2021_bail_revoked_p12",
@@ -20148,7 +20301,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive prosecution review allowing revocation of bail.",
-      "authority_id": "authority_00395"
+      "authority_id": "authority_00398"
     },
     {
       "evidence_id": "l5_prop_kwok_ka_ki_2021_predictive_task_p12",
@@ -20198,7 +20351,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of Lai CFA first-threshold structure.",
-      "authority_id": "authority_00396"
+      "authority_id": "authority_00399"
     },
     {
       "evidence_id": "l5_prop_kwok_ka_ki_2021_revoked_conditions_considered_p13",
@@ -20248,7 +20401,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive prosecution review; bail conditions considered but insufficient.",
-      "authority_id": "authority_00397"
+      "authority_id": "authority_00400"
     },
     {
       "evidence_id": "l5_prop_chung_kam_lun_2021_predictive_p18",
@@ -20298,7 +20451,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of predictive/evaluative assessment terminology.",
-      "authority_id": "authority_00398"
+      "authority_id": "authority_00401"
     },
     {
       "evidence_id": "l5_prop_chung_kam_lun_2021_conditions_refusal_p20",
@@ -20348,7 +20501,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal after considering bail conditions.",
-      "authority_id": "authority_00399"
+      "authority_id": "authority_00402"
     },
     {
       "evidence_id": "l5_prop_yung_chung_hei_2021_conditions_grant_p15",
@@ -20398,7 +20551,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI grant illustration; candidate only.",
-      "authority_id": "authority_00400"
+      "authority_id": "authority_00403"
     },
     {
       "evidence_id": "l5_prop_yung_chung_hei_2021_second_threshold_p16",
@@ -20447,7 +20600,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI grant illustration on ordinary bail concerns.",
-      "authority_id": "authority_00401"
+      "authority_id": "authority_00404"
     },
     {
       "evidence_id": "l5_prop_fung_wai_kong_2022_first_threshold_refusal_p19",
@@ -20496,7 +20649,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal; candidate only.",
-      "authority_id": "authority_00402"
+      "authority_id": "authority_00405"
     },
     {
       "evidence_id": "l5_prop_fung_wai_kong_2022_sedition_subject_to_art42_p21",
@@ -20545,7 +20698,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application citing Ng Hau Yi Sidney; candidate only pending review.",
-      "authority_id": "authority_00403"
+      "authority_id": "authority_00406"
     },
     {
       "evidence_id": "l5_prop_ng_man_yee_2022_cfa_threshold_p4",
@@ -20594,7 +20747,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of Lai CFA threshold formulation.",
-      "authority_id": "authority_00404"
+      "authority_id": "authority_00407"
     },
     {
       "evidence_id": "l5_prop_ng_man_yee_2022_refusal_p18",
@@ -20643,7 +20796,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Fact-sensitive CFI refusal; candidate only.",
-      "authority_id": "authority_00405"
+      "authority_id": "authority_00408"
     },
     {
       "evidence_id": "l5_prop_lam_cheuk_ting_2022_more_stringent_threshold_p2",
@@ -20693,7 +20846,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of Lai CFA first-threshold sequence.",
-      "authority_id": "authority_00406"
+      "authority_id": "authority_00409"
     },
     {
       "evidence_id": "l5_prop_lam_cheuk_ting_2022_predictive_all_matters_p3",
@@ -20743,7 +20896,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "CFI application of all-materials approach following post-CFA Lai CFI.",
-      "authority_id": "authority_00407"
+      "authority_id": "authority_00410"
     },
     {
       "evidence_id": "l5_prop_lai_cfi_2022_specified_evidence_definition_p4",
@@ -20790,7 +20943,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00408"
+      "authority_id": "authority_00411"
     },
     {
       "evidence_id": "l5_prop_lai_cfi_2022_magistrate_warrant_threshold_p5",
@@ -20836,7 +20989,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00409"
+      "authority_id": "authority_00412"
     },
     {
       "evidence_id": "l5_prop_lai_cfi_2022_jm_construction_challenge_p3",
@@ -20882,7 +21035,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00410"
+      "authority_id": "authority_00413"
     },
     {
       "evidence_id": "l5_prop_lai_cfi_2022_jr_bound_to_fail_p26",
@@ -20928,7 +21081,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00411"
+      "authority_id": "authority_00414"
     },
     {
       "evidence_id": "l5_prop_lai_ca_2022_appeal_issue_p1",
@@ -20975,7 +21128,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00412"
+      "authority_id": "authority_00415"
     },
     {
       "evidence_id": "l5_prop_lai_ca_2022_2022_warrant_scope_p3",
@@ -21021,7 +21174,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00413"
+      "authority_id": "authority_00416"
     },
     {
       "evidence_id": "l5_prop_lai_ca_2022_effective_investigation_p17",
@@ -21068,7 +21221,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00414"
+      "authority_id": "authority_00417"
     },
     {
       "evidence_id": "l5_prop_lai_ca_2022_local_search_laws_coherent_whole_p17",
@@ -21114,7 +21267,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00415"
+      "authority_id": "authority_00418"
     },
     {
       "evidence_id": "l5_prop_lai_ca_2022_journalistic_material_not_immune_p34",
@@ -21160,7 +21313,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00416"
+      "authority_id": "authority_00419"
     },
     {
       "evidence_id": "l5_prop_lai_ca_2022_search_anything_including_jm_p35",
@@ -21206,7 +21359,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00417"
+      "authority_id": "authority_00420"
     },
     {
       "evidence_id": "l5_prop_lai_ca_2022_appeal_outcome_p44",
@@ -21252,7 +21405,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Affirms the CFI refusal of leave and directions giving effect to the 2022 warrant.",
-      "authority_id": "authority_00418"
+      "authority_id": "authority_00421"
     },
     {
       "evidence_id": "l5_prop_tong_2021_joint_enterprise_all_offences_p3",
@@ -21298,7 +21451,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00419"
+      "authority_id": "authority_00422"
     },
     {
       "evidence_id": "l5_prop_tong_2021_applies_to_unlawful_riot_p3",
@@ -21345,7 +21498,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00420"
+      "authority_id": "authority_00423"
     },
     {
       "evidence_id": "l5_prop_tong_2021_riot_elements_p19",
@@ -21391,7 +21544,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00421"
+      "authority_id": "authority_00424"
     },
     {
       "evidence_id": "l5_prop_tong_2021_secondary_same_offence_p29",
@@ -21437,7 +21590,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00422"
+      "authority_id": "authority_00425"
     },
     {
       "evidence_id": "l5_prop_tong_2021_joint_enterprise_independent_p30",
@@ -21483,7 +21636,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00423"
+      "authority_id": "authority_00426"
     },
     {
       "evidence_id": "l5_prop_tong_2021_presence_not_necessary_p34",
@@ -21529,7 +21682,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00424"
+      "authority_id": "authority_00427"
     },
     {
       "evidence_id": "l5_prop_tong_2021_common_law_retained_overcharge_p44",
@@ -21575,7 +21728,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00425"
+      "authority_id": "authority_00428"
     },
     {
       "evidence_id": "l5_prop_tong_2021_public_order_balance_p48",
@@ -21620,7 +21773,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00426"
+      "authority_id": "authority_00429"
     },
     {
       "evidence_id": "l5_prop_tong_2021_gravamen_numbers_p50",
@@ -21665,7 +21818,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00427"
+      "authority_id": "authority_00430"
     },
     {
       "evidence_id": "l5_prop_tong_2021_encourage_promote_participate_p51",
@@ -21712,7 +21865,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00428"
+      "authority_id": "authority_00431"
     },
     {
       "evidence_id": "l5_prop_tong_2021_common_law_liability_principal_p54",
@@ -21759,7 +21912,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00429"
+      "authority_id": "authority_00432"
     },
     {
       "evidence_id": "l5_prop_tong_2021_exclusion_lacuna_p57",
@@ -21805,7 +21958,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00430"
+      "authority_id": "authority_00433"
     },
     {
       "evidence_id": "l5_prop_tong_2021_principal_vs_secondary_p66",
@@ -21851,7 +22004,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00431"
+      "authority_id": "authority_00434"
     },
     {
       "evidence_id": "l5_prop_tong_2021_mere_presence_p80",
@@ -21897,7 +22050,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "DeepSeek was used only as an unverified seed; link accepted because the LegalRef paragraph contains the exact quote.",
-      "authority_id": "authority_00432"
+      "authority_id": "authority_00435"
     },
     {
       "evidence_id": "l5_prop_tam_tak_chi_2024_s9_seditious_intention_p47",
@@ -21942,7 +22095,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Tree branch proposed by NotebookLM; quote verified from LegalRef.",
-      "authority_id": "authority_00433"
+      "authority_id": "authority_00436"
     },
     {
       "evidence_id": "l5_prop_tam_tak_chi_2024_s10_offences_p48",
@@ -21987,7 +22140,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Tree branch proposed by NotebookLM; quote verified from LegalRef.",
-      "authority_id": "authority_00434"
+      "authority_id": "authority_00437"
     },
     {
       "evidence_id": "l5_prop_tam_tak_chi_2024_nsl_jurisdiction_context_p55",
@@ -22033,7 +22186,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Uses Ng Hau Yi Sidney / Lai Chee Ying line as recited by the CA.",
-      "authority_id": "authority_00435"
+      "authority_id": "authority_00438"
     },
     {
       "evidence_id": "l5_prop_tam_tak_chi_2024_prescribed_by_law_p131",
@@ -22078,7 +22231,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Tree branch proposed by NotebookLM; quote verified from LegalRef.",
-      "authority_id": "authority_00436"
+      "authority_id": "authority_00439"
     },
     {
       "evidence_id": "l5_prop_tam_tak_chi_2024_violence_not_required_p140",
@@ -22124,7 +22277,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Tree branch proposed by NotebookLM; quote verified from LegalRef.",
-      "authority_id": "authority_00437"
+      "authority_id": "authority_00440"
     },
     {
       "evidence_id": "l5_prop_tam_tak_chi_2024_sj_consent_safeguard_p141",
@@ -22170,7 +22323,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Tree branch proposed by NotebookLM; quote verified from LegalRef.",
-      "authority_id": "authority_00438"
+      "authority_id": "authority_00441"
     },
     {
       "evidence_id": "l5_prop_tam_tak_chi_2024_meaning_context_p149",
@@ -22215,7 +22368,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Tree branch proposed by NotebookLM; quote verified from LegalRef.",
-      "authority_id": "authority_00439"
+      "authority_id": "authority_00442"
     },
     {
       "evidence_id": "l5_prop_tam_tak_chi_2024_audience_context_p150",
@@ -22260,7 +22413,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Tree branch proposed by NotebookLM; quote verified from LegalRef.",
-      "authority_id": "authority_00440"
+      "authority_id": "authority_00443"
     },
     {
       "evidence_id": "l5_prop_chan_kam_ching_2022_fraud_substitution_issue_p2",
@@ -22306,7 +22459,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00441"
+      "authority_id": "authority_00444"
     },
     {
       "evidence_id": "l5_prop_chan_kam_ching_2022_lrc_no_separate_dishonesty_p138",
@@ -22352,7 +22505,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00442"
+      "authority_id": "authority_00445"
     },
     {
       "evidence_id": "l5_prop_chan_kam_ching_2022_dishonesty_not_ingredient_p139",
@@ -22398,7 +22551,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00443"
+      "authority_id": "authority_00446"
     },
     {
       "evidence_id": "l5_prop_chan_kam_ching_2022_s16a_intent_to_defraud_p142",
@@ -22443,7 +22596,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00444"
+      "authority_id": "authority_00447"
     },
     {
       "evidence_id": "l5_prop_chan_kam_ching_2022_no_imported_dishonesty_p143",
@@ -22489,7 +22642,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00445"
+      "authority_id": "authority_00448"
     },
     {
       "evidence_id": "l5_prop_chan_kam_ching_2022_s16a_no_implied_dishonesty_p146",
@@ -22535,7 +22688,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00446"
+      "authority_id": "authority_00449"
     },
     {
       "evidence_id": "l5_prop_chan_kam_ching_2022_deceit_definition_p147",
@@ -22580,7 +22733,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Accepted only because the LegalRef paragraph contains the exact quote; candidate-only pending human review.",
-      "authority_id": "authority_00447"
+      "authority_id": "authority_00450"
     },
     {
       "evidence_id": "l5_prop_chan_kam_ching_2022_dishonesty_state_of_mind_p148",
@@ -22626,7 +22779,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Cites and distinguishes Mo Yuk Ping on dishonesty as a state of mind.",
-      "authority_id": "authority_00448"
+      "authority_id": "authority_00451"
     },
     {
       "evidence_id": "l5_prop_chan_kam_ching_2022_ghosh_test_hk_p149",
@@ -22672,7 +22825,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Cites Mo Yuk Ping and preserves the need to verify later post-Ivey HK treatment before answer-safe promotion.",
-      "authority_id": "authority_00449"
+      "authority_id": "authority_00452"
     },
     {
       "evidence_id": "l5_prop_chan_kam_ching_2022_deceit_dishonesty_distinct_p150",
@@ -22718,7 +22871,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Expressly limits Ho Ka Keung on s.16A dishonesty.",
-      "authority_id": "authority_00450"
+      "authority_id": "authority_00453"
     },
     {
       "evidence_id": "l5_prop_inconsistent_positions_scope_minloy_p31",
@@ -22764,7 +22917,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Built from quote-verified public inconsistent-pleadings vertical; no answer-safe promotion.",
-      "authority_id": "authority_00451"
+      "authority_id": "authority_00454"
     },
     {
       "evidence_id": "l5_prop_abuse_estoppel_lancom_p43",
@@ -22810,7 +22963,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Built from quote-verified public inconsistent-pleadings vertical; no answer-safe promotion.",
-      "authority_id": "authority_00452"
+      "authority_id": "authority_00455"
     },
     {
       "evidence_id": "l5_prop_diametrically_opposed_integrity_vasily_p39",
@@ -22856,7 +23009,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Built from quote-verified public inconsistent-pleadings vertical; no answer-safe promotion.",
-      "authority_id": "authority_00453"
+      "authority_id": "authority_00456"
     },
     {
       "evidence_id": "l5_prop_alternative_pleading_within_knowledge_liu_p16",
@@ -22901,7 +23054,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Built from quote-verified public inconsistent-pleadings vertical; no answer-safe promotion.",
-      "authority_id": "authority_00454"
+      "authority_id": "authority_00457"
     },
     {
       "evidence_id": "l5_prop_summary_judgment_material_deviation_shinyei_p19",
@@ -22946,7 +23099,7 @@
       "usable_in_research_prototype": true,
       "usable_in_answer_layer": false,
       "lineage_note": "Built from quote-verified public inconsistent-pleadings vertical; no answer-safe promotion.",
-      "authority_id": "authority_00455"
+      "authority_id": "authority_00458"
     }
   ],
   "by_doctrine_node_id": {
@@ -23220,14 +23373,14 @@
       "authority_00265",
       "authority_00266",
       "authority_00267",
-      "authority_00441",
-      "authority_00442",
-      "authority_00443",
+      "authority_00444",
       "authority_00445",
       "authority_00446",
       "authority_00448",
       "authority_00449",
-      "authority_00450"
+      "authority_00451",
+      "authority_00452",
+      "authority_00453"
     ],
     "criminal_law_hk.theft.appropriation": [
       "authority_00268",
@@ -23287,15 +23440,15 @@
       "authority_00318",
       "authority_00319",
       "authority_00320",
-      "authority_00441",
-      "authority_00442",
-      "authority_00443",
       "authority_00444",
       "authority_00445",
       "authority_00446",
       "authority_00447",
       "authority_00448",
-      "authority_00450"
+      "authority_00449",
+      "authority_00450",
+      "authority_00451",
+      "authority_00453"
     ],
     "criminal_law_hk.deception": [
       "authority_00321",
@@ -23317,10 +23470,12 @@
       "authority_00335",
       "authority_00336"
     ],
-    "criminal_procedure_hk.nsl_bail": [
+    "criminal_procedure_hk.hksar_v_lam_tat_ming": [
       "authority_00337",
       "authority_00338",
-      "authority_00339",
+      "authority_00339"
+    ],
+    "criminal_procedure_hk.nsl_bail": [
       "authority_00340",
       "authority_00341",
       "authority_00342",
@@ -23329,13 +23484,13 @@
       "authority_00345",
       "authority_00346",
       "authority_00347",
+      "authority_00348",
       "authority_00349",
       "authority_00350",
       "authority_00352",
       "authority_00353",
       "authority_00355",
       "authority_00356",
-      "authority_00357",
       "authority_00358",
       "authority_00359",
       "authority_00360",
@@ -23344,141 +23499,22 @@
       "authority_00363",
       "authority_00364",
       "authority_00365",
-      "authority_00367",
-      "authority_00371",
-      "authority_00372",
-      "authority_00374",
-      "authority_00375",
-      "authority_00376",
-      "authority_00377",
-      "authority_00378",
-      "authority_00379",
-      "authority_00380",
-      "authority_00382",
-      "authority_00383",
-      "authority_00384",
-      "authority_00386",
-      "authority_00387",
-      "authority_00388",
-      "authority_00389",
-      "authority_00390",
-      "authority_00391",
-      "authority_00392",
-      "authority_00393",
-      "authority_00394",
-      "authority_00395",
-      "authority_00396",
-      "authority_00397",
-      "authority_00398",
-      "authority_00399",
-      "authority_00400",
-      "authority_00402",
-      "authority_00403",
-      "authority_00404",
-      "authority_00405",
-      "authority_00406",
-      "authority_00407"
-    ],
-    "criminal_procedure_hk.bail_right_to_bail": [
-      "authority_00337",
-      "authority_00338",
-      "authority_00339",
-      "authority_00342",
-      "authority_00346",
-      "authority_00351",
-      "authority_00352",
-      "authority_00354",
-      "authority_00355",
-      "authority_00356",
-      "authority_00361",
+      "authority_00366",
       "authority_00367",
       "authority_00368",
-      "authority_00369",
       "authority_00370",
-      "authority_00372",
-      "authority_00382",
-      "authority_00392",
-      "authority_00403",
-      "authority_00404",
-      "authority_00406"
-    ],
-    "criminal_procedure_hk.bail_factors": [
-      "authority_00340",
-      "authority_00341",
-      "authority_00345",
-      "authority_00347",
-      "authority_00348",
-      "authority_00349",
-      "authority_00350",
-      "authority_00353",
-      "authority_00357",
-      "authority_00358",
-      "authority_00359",
-      "authority_00362",
-      "authority_00363",
-      "authority_00364",
-      "authority_00365",
-      "authority_00366",
-      "authority_00373",
-      "authority_00374",
-      "authority_00376",
-      "authority_00378",
-      "authority_00379",
-      "authority_00380",
-      "authority_00381",
-      "authority_00383",
-      "authority_00384",
-      "authority_00385",
-      "authority_00386",
-      "authority_00388",
-      "authority_00390",
-      "authority_00391",
-      "authority_00394",
-      "authority_00396",
-      "authority_00397",
-      "authority_00398",
-      "authority_00399",
-      "authority_00400",
-      "authority_00401",
-      "authority_00407"
-    ],
-    "criminal_procedure_hk.bail_flow_step5": [
-      "authority_00340",
-      "authority_00341",
-      "authority_00347",
-      "authority_00348",
-      "authority_00349",
-      "authority_00350",
-      "authority_00351",
-      "authority_00353",
-      "authority_00354",
-      "authority_00357",
-      "authority_00358",
-      "authority_00360",
-      "authority_00362",
-      "authority_00363",
-      "authority_00364",
-      "authority_00365",
-      "authority_00366",
-      "authority_00368",
-      "authority_00369",
-      "authority_00370",
-      "authority_00371",
-      "authority_00373",
       "authority_00374",
       "authority_00375",
-      "authority_00376",
       "authority_00377",
       "authority_00378",
       "authority_00379",
       "authority_00380",
       "authority_00381",
+      "authority_00382",
       "authority_00383",
-      "authority_00384",
       "authority_00385",
       "authority_00386",
       "authority_00387",
-      "authority_00388",
       "authority_00389",
       "authority_00390",
       "authority_00391",
@@ -23493,20 +23529,139 @@
       "authority_00400",
       "authority_00401",
       "authority_00402",
+      "authority_00403",
       "authority_00405",
       "authority_00406",
-      "authority_00407"
-    ],
-    "criminal_procedure_hk.invest_source_of_power": [
-      "authority_00408",
-      "authority_00412",
-      "authority_00414",
-      "authority_00415"
-    ],
-    "criminal_procedure_hk.invest_search_with_warrant": [
+      "authority_00407",
       "authority_00408",
       "authority_00409",
-      "authority_00410",
+      "authority_00410"
+    ],
+    "criminal_procedure_hk.bail_right_to_bail": [
+      "authority_00340",
+      "authority_00341",
+      "authority_00342",
+      "authority_00345",
+      "authority_00349",
+      "authority_00354",
+      "authority_00355",
+      "authority_00357",
+      "authority_00358",
+      "authority_00359",
+      "authority_00364",
+      "authority_00370",
+      "authority_00371",
+      "authority_00372",
+      "authority_00373",
+      "authority_00375",
+      "authority_00385",
+      "authority_00395",
+      "authority_00406",
+      "authority_00407",
+      "authority_00409"
+    ],
+    "criminal_procedure_hk.bail_factors": [
+      "authority_00343",
+      "authority_00344",
+      "authority_00348",
+      "authority_00350",
+      "authority_00351",
+      "authority_00352",
+      "authority_00353",
+      "authority_00356",
+      "authority_00360",
+      "authority_00361",
+      "authority_00362",
+      "authority_00365",
+      "authority_00366",
+      "authority_00367",
+      "authority_00368",
+      "authority_00369",
+      "authority_00376",
+      "authority_00377",
+      "authority_00379",
+      "authority_00381",
+      "authority_00382",
+      "authority_00383",
+      "authority_00384",
+      "authority_00386",
+      "authority_00387",
+      "authority_00388",
+      "authority_00389",
+      "authority_00391",
+      "authority_00393",
+      "authority_00394",
+      "authority_00397",
+      "authority_00399",
+      "authority_00400",
+      "authority_00401",
+      "authority_00402",
+      "authority_00403",
+      "authority_00404",
+      "authority_00410"
+    ],
+    "criminal_procedure_hk.bail_flow_step5": [
+      "authority_00343",
+      "authority_00344",
+      "authority_00350",
+      "authority_00351",
+      "authority_00352",
+      "authority_00353",
+      "authority_00354",
+      "authority_00356",
+      "authority_00357",
+      "authority_00360",
+      "authority_00361",
+      "authority_00363",
+      "authority_00365",
+      "authority_00366",
+      "authority_00367",
+      "authority_00368",
+      "authority_00369",
+      "authority_00371",
+      "authority_00372",
+      "authority_00373",
+      "authority_00374",
+      "authority_00376",
+      "authority_00377",
+      "authority_00378",
+      "authority_00379",
+      "authority_00380",
+      "authority_00381",
+      "authority_00382",
+      "authority_00383",
+      "authority_00384",
+      "authority_00386",
+      "authority_00387",
+      "authority_00388",
+      "authority_00389",
+      "authority_00390",
+      "authority_00391",
+      "authority_00392",
+      "authority_00393",
+      "authority_00394",
+      "authority_00395",
+      "authority_00396",
+      "authority_00397",
+      "authority_00398",
+      "authority_00399",
+      "authority_00400",
+      "authority_00401",
+      "authority_00402",
+      "authority_00403",
+      "authority_00404",
+      "authority_00405",
+      "authority_00408",
+      "authority_00409",
+      "authority_00410"
+    ],
+    "criminal_procedure_hk.invest_source_of_power": [
+      "authority_00411",
+      "authority_00415",
+      "authority_00417",
+      "authority_00418"
+    ],
+    "criminal_procedure_hk.invest_search_with_warrant": [
       "authority_00411",
       "authority_00412",
       "authority_00413",
@@ -23514,112 +23669,115 @@
       "authority_00415",
       "authority_00416",
       "authority_00417",
-      "authority_00418"
+      "authority_00418",
+      "authority_00419",
+      "authority_00420",
+      "authority_00421"
     ],
     "criminal_procedure_hk.invest_seizure": [
-      "authority_00408",
-      "authority_00410",
       "authority_00411",
-      "authority_00412",
       "authority_00413",
+      "authority_00414",
+      "authority_00415",
       "authority_00416",
-      "authority_00417",
-      "authority_00418"
+      "authority_00419",
+      "authority_00420",
+      "authority_00421"
     ],
     "criminal_procedure_hk.invest_arrest_detention_flow_step2": [
-      "authority_00409"
+      "authority_00412"
     ],
     "criminal_procedure_hk.invest_arrest_detention_flow_start": [
-      "authority_00414"
+      "authority_00417"
     ],
     "criminal_law_hk.public_order.joint_enterprise_accessory": [
-      "authority_00419",
       "authority_00422",
-      "authority_00423",
-      "authority_00424",
       "authority_00425",
+      "authority_00426",
+      "authority_00427",
       "authority_00428",
-      "authority_00429",
-      "authority_00430",
-      "authority_00431"
+      "authority_00431",
+      "authority_00432",
+      "authority_00433",
+      "authority_00434"
     ],
     "criminal_law_hk.joint.enterprise": [
-      "authority_00419",
-      "authority_00423"
+      "authority_00422",
+      "authority_00426"
     ],
     "criminal_law_hk.public_order.unlawful_assembly": [
-      "authority_00420",
-      "authority_00421",
-      "authority_00428",
-      "authority_00429"
-    ],
-    "criminal_law_hk.public_order.riot": [
-      "authority_00420",
-      "authority_00421",
-      "authority_00428",
-      "authority_00429"
-    ],
-    "criminal_law_hk.public_order.presence_scene": [
-      "authority_00420",
+      "authority_00423",
       "authority_00424",
       "authority_00431",
       "authority_00432"
     ],
-    "criminal_law_hk.secondary.liability": [
-      "authority_00422"
-    ],
-    "criminal_law_hk.public_order.rights_overcharging": [
-      "authority_00425",
-      "authority_00426",
-      "authority_00430",
+    "criminal_law_hk.public_order.riot": [
+      "authority_00423",
+      "authority_00424",
+      "authority_00431",
       "authority_00432"
     ],
-    "criminal_law_hk.public_order.corporate_nature_common_purpose": [
-      "authority_00427"
-    ],
-    "criminal_law_hk.sedition.seditious_intention": [
-      "authority_00433",
-      "authority_00437"
-    ],
-    "criminal_law_hk.sedition.section10_offences": [
-      "authority_00434"
-    ],
-    "criminal_law_hk.sedition.procedure_jurisdiction": [
-      "authority_00435",
-      "authority_00438"
-    ],
-    "criminal_law_hk.sedition_public_expression": [
+    "criminal_law_hk.public_order.presence_scene": [
+      "authority_00423",
+      "authority_00427",
+      "authority_00434",
       "authority_00435"
     ],
-    "criminal_law_hk.sedition.constitutionality_expression": [
-      "authority_00436",
-      "authority_00437",
-      "authority_00438"
+    "criminal_law_hk.secondary.liability": [
+      "authority_00425"
     ],
-    "criminal_law_hk.sedition.meaning_context": [
-      "authority_00439",
+    "criminal_law_hk.public_order.rights_overcharging": [
+      "authority_00428",
+      "authority_00429",
+      "authority_00433",
+      "authority_00435"
+    ],
+    "criminal_law_hk.public_order.corporate_nature_common_purpose": [
+      "authority_00430"
+    ],
+    "criminal_law_hk.sedition.seditious_intention": [
+      "authority_00436",
       "authority_00440"
     ],
+    "criminal_law_hk.sedition.section10_offences": [
+      "authority_00437"
+    ],
+    "criminal_law_hk.sedition.procedure_jurisdiction": [
+      "authority_00438",
+      "authority_00441"
+    ],
+    "criminal_law_hk.sedition_public_expression": [
+      "authority_00438"
+    ],
+    "criminal_law_hk.sedition.constitutionality_expression": [
+      "authority_00439",
+      "authority_00440",
+      "authority_00441"
+    ],
+    "criminal_law_hk.sedition.meaning_context": [
+      "authority_00442",
+      "authority_00443"
+    ],
     "criminal_law_hk.gap_verify_dishonesty_hk_post_ivey": [
-      "authority_00449"
-    ],
-    "civil_procedure_hk.abuse_process.inconsistent_positions": [
-      "authority_00451",
-      "authority_00452",
-      "authority_00453"
-    ],
-    "civil_procedure_hk.estoppel.res_judicata": [
-      "authority_00451",
       "authority_00452"
     ],
+    "civil_procedure_hk.abuse_process.inconsistent_positions": [
+      "authority_00454",
+      "authority_00455",
+      "authority_00456"
+    ],
+    "civil_procedure_hk.estoppel.res_judicata": [
+      "authority_00454",
+      "authority_00455"
+    ],
     "civil_procedure_hk.abuse_process.diametrically_opposed_positions": [
-      "authority_00453"
+      "authority_00456"
     ],
     "civil_procedure_hk.pleadings.alternative_cases_within_knowledge": [
-      "authority_00454"
+      "authority_00457"
     ],
     "civil_procedure_hk.summary_judgment.pleaded_case_verification": [
-      "authority_00455"
+      "authority_00458"
     ],
     "criminal_law_hk.actus.reus": [],
     "criminal_law_hk.omissions": [],
@@ -23689,8 +23847,16 @@
     "criminal_procedure_hk.invest_reasonable_suspicion": [],
     "criminal_procedure_hk.invest_arrest_with_warrant": [],
     "criminal_procedure_hk.invest_search_without_warrant": [],
-    "criminal_procedure_hk.invest_arrest_without_warrant": [],
-    "criminal_procedure_hk.invest_detention_after_arrest": [],
+    "criminal_procedure_hk.invest_arrest_without_warrant": [
+      "authority_00337",
+      "authority_00338",
+      "authority_00339"
+    ],
+    "criminal_procedure_hk.invest_detention_after_arrest": [
+      "authority_00337",
+      "authority_00338",
+      "authority_00339"
+    ],
     "criminal_procedure_hk.nsl_search_seizure": [],
     "criminal_procedure_hk.pre_trial_time_limits": [],
     "criminal_procedure_hk.indictment_plea": [],
@@ -24426,148 +24592,150 @@
       "authority_00335",
       "authority_00336"
     ],
-    "HKSAR v Lai Chee Ying | [2021] HKCFA 3": [
+    "Secretary for Justice v Lam Tat Ming and Another | (2000) 3 HKCFAR 168": [
       "authority_00337",
       "authority_00338",
-      "authority_00339",
+      "authority_00339"
+    ],
+    "HKSAR v Lai Chee Ying | [2021] HKCFA 3": [
       "authority_00340",
       "authority_00341",
       "authority_00342",
-      "authority_00343"
+      "authority_00343",
+      "authority_00344",
+      "authority_00345",
+      "authority_00346"
     ],
     "Tong Ying Kit v HKSAR | [2020] HKCFI 2133": [
-      "authority_00344"
+      "authority_00347"
     ],
     "HKSAR v Tong Ying Kit | [2020] HKCFI 2196": [
-      "authority_00345",
-      "authority_00346",
-      "authority_00347",
-      "authority_00348"
-    ],
-    "HKSAR v Ma Chun Man | [2020] HKCFI 3132": [
+      "authority_00348",
       "authority_00349",
       "authority_00350",
       "authority_00351"
     ],
-    "HKSAR v Lai Chee Ying | [2020] HKCFI 3161": [
+    "HKSAR v Ma Chun Man | [2020] HKCFI 3132": [
       "authority_00352",
       "authority_00353",
       "authority_00354"
     ],
-    "HKSAR v Lai Chee Ying | [2021] HKCFI 448": [
+    "HKSAR v Lai Chee Ying | [2020] HKCFI 3161": [
       "authority_00355",
       "authority_00356",
-      "authority_00357",
+      "authority_00357"
+    ],
+    "HKSAR v Lai Chee Ying | [2021] HKCFI 448": [
       "authority_00358",
       "authority_00359",
-      "authority_00360"
-    ],
-    "HKSAR v Chan Chi Chuen Raymond | [2021] HKCFI 2997": [
+      "authority_00360",
       "authority_00361",
       "authority_00362",
-      "authority_00363",
+      "authority_00363"
+    ],
+    "HKSAR v Chan Chi Chuen Raymond | [2021] HKCFI 2997": [
       "authority_00364",
       "authority_00365",
-      "authority_00366"
-    ],
-    "HKSAR v Fan Kwok Wai Gary | [2022] HKCFI 1173": [
+      "authority_00366",
       "authority_00367",
       "authority_00368",
-      "authority_00369",
+      "authority_00369"
+    ],
+    "HKSAR v Fan Kwok Wai Gary | [2022] HKCFI 1173": [
       "authority_00370",
-      "authority_00371"
+      "authority_00371",
+      "authority_00372",
+      "authority_00373",
+      "authority_00374"
     ],
     "Secretary for Justice v Sze Tak Loy | [2021] HKCFI 900": [
-      "authority_00372",
-      "authority_00373"
+      "authority_00375",
+      "authority_00376"
     ],
     "HKSAR v Chui Chi Kin | [2021] HKCFI 969": [
-      "authority_00374",
-      "authority_00375"
-    ],
-    "HKSAR v Wan Siu Kin Andrew | [2021] HKCFI 1255": [
-      "authority_00376",
-      "authority_00377"
-    ],
-    "HKSAR v Mo Man Ching Claudia | [2021] HKCFI 1435": [
+      "authority_00377",
       "authority_00378"
     ],
-    "HKSAR v Chow Ka Shing | [2021] HKCFI 2075": [
+    "HKSAR v Wan Siu Kin Andrew | [2021] HKCFI 1255": [
       "authority_00379",
-      "authority_00380",
+      "authority_00380"
+    ],
+    "HKSAR v Mo Man Ching Claudia | [2021] HKCFI 1435": [
       "authority_00381"
     ],
-    "Secretary for Justice v Wong Pik Wan | [2021] HKCFI 771": [
+    "HKSAR v Chow Ka Shing | [2021] HKCFI 2075": [
       "authority_00382",
-      "authority_00383"
+      "authority_00383",
+      "authority_00384"
+    ],
+    "Secretary for Justice v Wong Pik Wan | [2021] HKCFI 771": [
+      "authority_00385",
+      "authority_00386"
     ],
     "Secretary for Justice v Or Yiu Lam Ricky | [2021] HKCFI 849": [
-      "authority_00384",
-      "authority_00385"
+      "authority_00387",
+      "authority_00388"
     ],
     "HKSAR v Leung Kwok Hung | [2021] HKCFI 1227": [
-      "authority_00386",
-      "authority_00387"
+      "authority_00389",
+      "authority_00390"
     ],
     "HKSAR v Tam Hoi Pong | [2021] HKCFI 2669": [
-      "authority_00388",
-      "authority_00389"
+      "authority_00391",
+      "authority_00392"
     ],
     "HKSAR v Wong Pak Yu | [2021] HKCFI 2875": [
-      "authority_00390",
-      "authority_00391"
+      "authority_00393",
+      "authority_00394"
     ],
     "HKSAR v Fung Tat Chun Frankie | [2022] HKCFI 744": [
-      "authority_00392",
-      "authority_00393"
+      "authority_00395",
+      "authority_00396"
     ],
     "Secretary for Justice v Tam Man Ho Jeremy Jansen | [2021] HKCFI 791": [
-      "authority_00394",
-      "authority_00395"
+      "authority_00397",
+      "authority_00398"
     ],
     "Secretary for Justice v Kwok Ka Ki | [2021] HKCFI 862": [
-      "authority_00396",
-      "authority_00397"
+      "authority_00399",
+      "authority_00400"
     ],
     "HKSAR v Chung Kam Lun | [2021] HKCFI 1473": [
-      "authority_00398",
-      "authority_00399"
+      "authority_00401",
+      "authority_00402"
     ],
     "HKSAR v Yung Chung Hei | [2021] HKCFI 2765": [
-      "authority_00400",
-      "authority_00401"
+      "authority_00403",
+      "authority_00404"
     ],
     "HKSAR v Fung Wai Kong | [2022] HKCFI 1017": [
-      "authority_00402",
-      "authority_00403"
+      "authority_00405",
+      "authority_00406"
     ],
     "HKSAR v Ng Man Yee Carol | [2022] HKCFI 1061": [
-      "authority_00404",
-      "authority_00405"
+      "authority_00407",
+      "authority_00408"
     ],
     "HKSAR v Lam Cheuk Ting | [2022] HKCFI 1797": [
-      "authority_00406",
-      "authority_00407"
+      "authority_00409",
+      "authority_00410"
     ],
     "Lai Chee Ying v Commissioner of Police | [2022] HKCFI 2688": [
-      "authority_00408",
-      "authority_00409",
-      "authority_00410",
-      "authority_00411"
-    ],
-    "Lai Chee Ying v Commissioner of Police | [2022] HKCA 1574": [
+      "authority_00411",
       "authority_00412",
       "authority_00413",
-      "authority_00414",
+      "authority_00414"
+    ],
+    "Lai Chee Ying v Commissioner of Police | [2022] HKCA 1574": [
       "authority_00415",
       "authority_00416",
       "authority_00417",
-      "authority_00418"
-    ],
-    "Secretary for Justice v Tong Wai Hung and Others | [2021] HKCA 404": [
+      "authority_00418",
       "authority_00419",
       "authority_00420",
-      "authority_00421",
+      "authority_00421"
+    ],
+    "Secretary for Justice v Tong Wai Hung and Others | [2021] HKCA 404": [
       "authority_00422",
       "authority_00423",
       "authority_00424",
@@ -24578,44 +24746,47 @@
       "authority_00429",
       "authority_00430",
       "authority_00431",
-      "authority_00432"
-    ],
-    "HKSAR v Tam Tak Chi | [2024] HKCA 231": [
+      "authority_00432",
       "authority_00433",
       "authority_00434",
-      "authority_00435",
+      "authority_00435"
+    ],
+    "HKSAR v Tam Tak Chi | [2024] HKCA 231": [
       "authority_00436",
       "authority_00437",
       "authority_00438",
       "authority_00439",
-      "authority_00440"
-    ],
-    "HKSAR v Chan Kam Ching | [2022] HKCFA 7": [
+      "authority_00440",
       "authority_00441",
       "authority_00442",
-      "authority_00443",
+      "authority_00443"
+    ],
+    "HKSAR v Chan Kam Ching | [2022] HKCFA 7": [
       "authority_00444",
       "authority_00445",
       "authority_00446",
       "authority_00447",
       "authority_00448",
       "authority_00449",
-      "authority_00450"
-    ],
-    "Re Minloy Ltd and others | [2020] HKCFI 2215": [
-      "authority_00451"
-    ],
-    "Lancom Ltd v Capxon International Electronic Co Ltd | [2022] HKCFI 381": [
-      "authority_00452"
-    ],
-    "Vasily Trubnikov v Evgeny Volosov and others | [2025] HKCFI 1576": [
+      "authority_00450",
+      "authority_00451",
+      "authority_00452",
       "authority_00453"
     ],
-    "Liu Hao Tsing Education Foundation Ltd and another v Liu Tieh Ching Brandon | [2023] HKCFI 1463": [
+    "Re Minloy Ltd and others | [2020] HKCFI 2215": [
       "authority_00454"
     ],
-    "Shinyei (Shanghai) Trading Co Ltd v Jenus Top Ltd | [2019] HKCFI 2377": [
+    "Lancom Ltd v Capxon International Electronic Co Ltd | [2022] HKCFI 381": [
       "authority_00455"
+    ],
+    "Vasily Trubnikov v Evgeny Volosov and others | [2025] HKCFI 1576": [
+      "authority_00456"
+    ],
+    "Liu Hao Tsing Education Foundation Ltd and another v Liu Tieh Ching Brandon | [2023] HKCFI 1463": [
+      "authority_00457"
+    ],
+    "Shinyei (Shanghai) Trading Co Ltd v Jenus Top Ltd | [2019] HKCFI 2377": [
+      "authority_00458"
     ]
   },
   "case_seed_nodes": [
@@ -25629,15 +25800,19 @@
       "doctrine_node_id": "criminal_procedure_hk.hksar_v_lam_tat_ming",
       "case_label": "HKSAR v Lam Tat Ming (2000) 3 HKCFAR 168",
       "citation": "(2000) 3 HKCFAR 168",
-      "summary": "Effect of failure to inform grounds of arrest. May affect admissibility of subsequent confession.",
-      "verification_status": "needs_hklii_verification",
-      "authority_status": "unverified_case_seed",
+      "summary": "CFA authority on caution, right of silence, confession admissibility, and residual discretion where active undercover questioning obtains admissions.",
+      "verification_status": "paragraph_linked_public_source",
+      "authority_status": "source_verified_public",
       "parent_doctrine_node_ids": [
         "criminal_procedure_hk.invest_arrest_without_warrant",
         "criminal_procedure_hk.invest_detention_after_arrest"
       ],
-      "verified_authority_ids": [],
-      "product_status": "excluded_from_product_authority_surfaces"
+      "verified_authority_ids": [
+        "authority_00337",
+        "authority_00338",
+        "authority_00339"
+      ],
+      "product_status": "source_linked_public_judgment"
     },
     {
       "domain_id": "criminal_procedure_hk",
@@ -28675,23 +28850,6 @@
       "parent_doctrine_node_ids": [
         "criminal_procedure_hk.invest_arrest_with_warrant",
         "criminal_procedure_hk.invest_search_without_warrant"
-      ],
-      "product_status": "excluded_from_product_authority_surfaces",
-      "reason_excluded": "No exact public paragraph proof is attached to this seed."
-    },
-    {
-      "domain_id": "criminal_procedure_hk",
-      "source_file": "data/legal_domain_packs/demo_maps/criminal_procedure_hk/nodes/02_investigation_arrest_search_detention.json",
-      "source_node_id": "hksar_v_lam_tat_ming",
-      "doctrine_node_id": "criminal_procedure_hk.hksar_v_lam_tat_ming",
-      "case_label": "HKSAR v Lam Tat Ming (2000) 3 HKCFAR 168",
-      "citation": "(2000) 3 HKCFAR 168",
-      "summary": "Effect of failure to inform grounds of arrest. May affect admissibility of subsequent confession.",
-      "verification_status": "needs_hklii_verification",
-      "authority_status": "unverified_case_seed",
-      "parent_doctrine_node_ids": [
-        "criminal_procedure_hk.invest_arrest_without_warrant",
-        "criminal_procedure_hk.invest_detention_after_arrest"
       ],
       "product_status": "excluded_from_product_authority_surfaces",
       "reason_excluded": "No exact public paragraph proof is attached to this seed."

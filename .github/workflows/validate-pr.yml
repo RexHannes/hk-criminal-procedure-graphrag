@@ -120,6 +120,30 @@ jobs:
       - name: Build excluded unverified seed report
         run: node scripts/build_excluded_unverified_case_seeds_report.js
 
+      - name: Run verified case authority pipeline
+        run: node scripts/run_case_authority_pipeline.js
+
+      - name: Validate verified case authority registry
+        run: node scripts/validate_verified_case_authority.js
+
+      - name: Validate all visible cases are resolved or excluded
+        run: node scripts/validate_all_visible_cases_resolved_or_excluded.js
+
+      - name: Validate no visible unverified case authorities
+        run: node scripts/validate_no_visible_unverified_case_authorities.js
+
+      - name: Validate backend case search uses verified only
+        run: node scripts/validate_backend_case_search_uses_verified_only.js
+
+      - name: Evaluate case recall Level 1
+        run: node scripts/evaluate_case_recall_level1.js
+
+      - name: Evaluate AI Inquiry Level 2
+        run: node scripts/evaluate_ai_inquiry_level2.js
+
+      - name: Generate case authority final report
+        run: node scripts/generate_case_authority_final_report.js
+
       - name: Validate no visible pending verification
         run: node scripts/validate_no_visible_pending_verification.js
 
@@ -139,7 +163,7 @@ jobs:
         run: node scripts/smoke_test_public_vercel_demo.js
 
       - name: Ensure PR 6 demo freeze artifacts are committed
-        run: git diff --exit-code artifacts/demo_freeze_report.json artifacts/demo_freeze_report.md artifacts/demo_outputs/demo_query_pack.json artifacts/demo_outputs/demo_query_pack.md artifacts/ui_demo_quality_check.md artifacts/excluded_unverified_case_seeds_report.json artifacts/excluded_unverified_case_seeds_report.md docs/boss_demo_script_pr6.md
+        run: git diff --exit-code artifacts/demo_freeze_report.json artifacts/demo_freeze_report.md artifacts/demo_outputs/demo_query_pack.json artifacts/demo_outputs/demo_query_pack.md artifacts/ui_demo_quality_check.md artifacts/excluded_unverified_case_seeds_report.json artifacts/excluded_unverified_case_seeds_report.md artifacts/all_visible_case_seed_inventory.json artifacts/all_visible_case_seed_inventory.md artifacts/visible_case_source_resolution_report.json artifacts/visible_case_source_resolution_report.md artifacts/case_recall_level1_eval.json artifacts/case_recall_level1_eval.md artifacts/ai_inquiry_level2_eval.json artifacts/ai_inquiry_level2_eval.md artifacts/case_authority_final_report.json artifacts/case_authority_final_report.md docs/boss_demo_script_pr6.md
 
       - name: Ensure L1-L3.5 artifacts are committed
         run: git diff --exit-code data/legal_ingest/case_corpus data/legal_ingest/case_authority_registry.json artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/case_corpus_ingest_run_status.json artifacts/case_corpus_ingest_run_status.md artifacts/case_corpus_embedding_dry_run.json artifacts/case_corpus_qdrant_dry_run.json artifacts/case_corpus_retrieval_eval.json artifacts/case_corpus_retrieval_eval.md artifacts/case_corpus_duplicates_report.json artifacts/candidate_extraction_verification_report.json artifacts/candidate_extraction_verification_report.md artifacts/candidate_verified_cards_report.json artifacts/candidate_verified_cards_report.md artifacts/case_corpus_quality_audit.json artifacts/case_corpus_quality_audit.md artifacts/case_corpus_issue_coverage.json artifacts/case_corpus_issue_coverage.md artifacts/principle_quality_repair_report.json artifacts/principle_quality_repair_report.md artifacts/weak_issue_target_discovery_report.json artifacts/weak_issue_target_discovery_report.md artifacts/demo_outputs

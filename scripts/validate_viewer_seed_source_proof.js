@@ -46,6 +46,21 @@ if (leungProofs.length !== 2) {
   }
 }
 
+const lamProofs = (seedSources.evidence || []).filter(item => /^seed_hksar_v_lam_tat_ming_2000_p(24|39|40)$/.test(item.evidence_id || ""));
+if (lamProofs.length !== 3) {
+  fail("missing Lam Tat Ming public seed source proof for paras 24, 39 and 40");
+} else {
+  for (const lam of lamProofs) {
+    if (!/legalref\.judiciary\.hk/i.test(lam.source_url || "")) fail("Lam seed proof missing public LegalRef URL");
+    if (!/#p(24|39|40)$/i.test(lam.source_url || "")) fail("Lam seed proof missing paragraph 24/39/40 anchor");
+    if (lam.neutral_citation !== "(2000) 3 HKCFAR 168") fail("Lam seed proof must use the CFA citation");
+    if (!lam.exact_quote || !String(lam.paragraph_text || "").includes(lam.exact_quote)) fail("Lam seed proof quote is not found in paragraph text");
+    if (lam.answer_mode !== "research_prototype") fail("Lam seed proof must be research_prototype");
+    if (lam.lawyer_review_status !== "unreviewed") fail("Lam seed proof must keep quiet lawyer_review_status metadata");
+    if (lam.professional_advice_certified !== false) fail("Lam seed proof must not be professionally certified");
+  }
+}
+
 const backendEvidence = viewerCaseCorpusEvidenceForNode("criminal_procedure_hk.hksar_v_leung_kwok_hung", 3);
 if (!backendEvidence.length) {
   fail("backend helper does not return Leung seed proof by doctrine node id");
@@ -54,6 +69,13 @@ if (!backendEvidence.length) {
   if (!/#p\d+/i.test(item.source_url || "")) fail("backend Leung proof missing paragraph anchor");
   if (item.answer_mode !== "research_prototype") fail("backend Leung proof must be research_prototype");
   if (item.professional_advice_certified !== false) fail("backend Leung proof must keep professional certification false");
+}
+
+const lamBackendEvidence = viewerCaseCorpusEvidenceForNode("criminal_procedure_hk.hksar_v_lam_tat_ming", 4);
+if (lamBackendEvidence.length < 3) {
+  fail("backend helper does not return Lam Tat Ming seed proof by doctrine node id");
+} else if (!lamBackendEvidence.some(item => /#p24$/i.test(item.source_url || ""))) {
+  fail("backend Lam proof missing paragraph 24 caution source");
 }
 
 if ((excludedReport.counts?.excluded_unverified_seed_nodes || 0) < 1) {

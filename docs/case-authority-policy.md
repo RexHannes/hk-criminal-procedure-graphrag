@@ -17,6 +17,20 @@ Lawyer review is not a product blocker at this stage. It is quiet HITL metadata 
 
 The prototype may retrieve, quote, summarize and apply paragraph-linked public judgments for research analysis. It must exclude unverified seed cases from authority UI and backend retrieval.
 
+## Current PR #6 Authority Bridge Counts
+
+The committed case-authority registry currently reports:
+
+- 177 case-like seed records inventoried;
+- 458 paragraph-linked public-source authority records;
+- 2 product-visible legacy case seed nodes with full paragraph proof: Leung Kwok Hung 2005 and Lam Tat Ming 2000;
+- 259 doctrine nodes with attached verified evidence;
+- 175 unresolved seed cases excluded from authority UI/backend retrieval;
+- 0 visible unverified authorities;
+- 0 backend-searchable unverified authorities.
+
+Correct product claim: the viewer and AI Inquiry expose only paragraph-linked public-source authority. Do not say every legacy seed case is verified.
+
 ## Product Labels
 
 Use clean visible labels:

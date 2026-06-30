@@ -168,11 +168,12 @@
       "id": "hksar_v_lam_tat_ming",
       "type": "case_seed",
       "label": "HKSAR v Lam Tat Ming (2000) 3 HKCFAR 168",
-      "summary": "Effect of failure to inform grounds of arrest. May affect admissibility of subsequent confession.",
+      "summary": "CFA authority on caution, right of silence, confession admissibility, and residual discretion where active undercover questioning obtains admissions.",
       "section": "02",
       "neutral_citation": "(2000) 3 HKCFAR 168",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p24",
+      "authority_status": "source_verified_public",
+      "verification_status": "paragraph_linked_public_source"
     },
     {
       "id": "invest_use_of_force",

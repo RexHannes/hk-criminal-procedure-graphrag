@@ -28,6 +28,8 @@ Legal AI often sounds confident even when it has not proved the source. For crim
 
 The frozen sample has 120 targeted public Hong Kong criminal-law cases, 344 paragraph cards, 344 proposition cards, and 344 principle cards. The important point is not the count alone. The important point is that weak material is filtered: 97 principles are currently usable for the research layer, while 247 weaker principles are preserved for audit instead of being hidden or used as authority.
 
+The viewer/backend authority bridge is stricter than the old graph seed map: it currently exposes 458 paragraph-linked public-source records, with 2 legacy case seed nodes fully source-linked (Leung Kwok Hung 2005 and Lam Tat Ming 2000). The remaining 175 unresolved seed cases are excluded from authority surfaces until a public paragraph link, exact quote, paragraph text, and issue mapping are attached.
+
 ## 1:45-2:45 - Why Source Proof Matters
 
 When the system cites a case, it should show a public paragraph URL and an exact quote path. That gives the user something concrete to inspect. It also lets the product say no when the source is missing, private, unverified, recall-only, or outside the loaded issue map.
@@ -71,6 +73,8 @@ Expected explanation: the system should abstain. It should not borrow theft or d
 ## 6:00-6:45 - How To Explain Research Prototype Mode
 
 `research_prototype` means the system can retrieve, quote, summarize and apply public paragraph-linked authorities for research analysis, but professional_advice_certified remains false until a later HITL certification step checks current treatment, ratio/obiter status, the full judgment, and the user's actual evidence.
+
+The local regression reports for this branch are `artifacts/case_recall_level1_eval.md`, `artifacts/ai_inquiry_level2_eval.md`, and `artifacts/case_authority_final_report.md`. The key acceptance numbers are: visible_unverified_authorities = 0, backend_searchable_unverified_authorities = 0, Level 1 recall = pass, and Level 2 AI Inquiry = pass.
 
 ## Next Roadmap
 

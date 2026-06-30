@@ -4,10 +4,22 @@
   "product_rule": "VISIBLE AUTHORITY = VERIFIED PARAGRAPH-LINKED PUBLIC SOURCE ONLY",
   "counts": {
     "total_case_seed_nodes": 177,
-    "verified_seed_nodes": 1,
-    "excluded_unverified_seed_nodes": 176
+    "verified_seed_nodes": 2,
+    "excluded_unverified_seed_nodes": 175
   },
   "verified_seed_nodes": [
+    {
+      "domain_id": "criminal_procedure_hk",
+      "source_file": "data/legal_domain_packs/demo_maps/criminal_procedure_hk/nodes/02_investigation_arrest_search_detention.json",
+      "original_node_id": "hksar_v_lam_tat_ming",
+      "doctrine_node_id": "criminal_procedure_hk.hksar_v_lam_tat_ming",
+      "case_label": "HKSAR v Lam Tat Ming (2000) 3 HKCFAR 168",
+      "citation": "(2000) 3 HKCFAR 168",
+      "summary": "CFA authority on caution, right of silence, confession admissibility, and residual discretion where active undercover questioning obtains admissions.",
+      "original_verification_status": "paragraph_linked_public_source",
+      "original_authority_status": "source_verified_public",
+      "product_status": "visible_only_with_paragraph_proof"
+    },
     {
       "domain_id": "criminal_procedure_hk",
       "source_file": "data/legal_domain_packs/demo_maps/criminal_procedure_hk/nodes/02_investigation_arrest_search_detention.json",
@@ -1395,27 +1407,6 @@
       "case_label": "HKSAR v Lai Man Ling [2021] HKCFA 28",
       "citation": "[2021] HKCFA 28",
       "summary": "NSL evidence-gathering powers; time limits on substantive offence do not apply to conspiracy.",
-      "original_verification_status": "needs_hklii_verification",
-      "original_authority_status": "unverified_case_seed",
-      "product_status": "excluded_from_product_authority_surfaces",
-      "reason_excluded": "No committed HKLII/LegalRef/Judiciary paragraph-linked proof card with exact quote is attached to this seed.",
-      "search_attempted": [
-        "checked viewer_seed_case_public_sources.json",
-        "checked committed viewer_evidence_index.json mappings",
-        "left for future HKLII/LegalRef discovery if exact public paragraph proof can be found"
-      ],
-      "source_resolution_status": "exact_public_source_not_attached",
-      "paragraph_proof_status": "missing",
-      "can_be_revisited_later": true
-    },
-    {
-      "domain_id": "criminal_procedure_hk",
-      "source_file": "data/legal_domain_packs/demo_maps/criminal_procedure_hk/nodes/02_investigation_arrest_search_detention.json",
-      "original_node_id": "hksar_v_lam_tat_ming",
-      "doctrine_node_id": "criminal_procedure_hk.hksar_v_lam_tat_ming",
-      "case_label": "HKSAR v Lam Tat Ming (2000) 3 HKCFAR 168",
-      "citation": "(2000) 3 HKCFAR 168",
-      "summary": "Effect of failure to inform grounds of arrest. May affect admissibility of subsequent confession.",
       "original_verification_status": "needs_hklii_verification",
       "original_authority_status": "unverified_case_seed",
       "product_status": "excluded_from_product_authority_surfaces",

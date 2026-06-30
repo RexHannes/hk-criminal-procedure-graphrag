@@ -7,11 +7,12 @@ Product rule: **VISIBLE AUTHORITY = VERIFIED PARAGRAPH-LINKED PUBLIC SOURCE ONLY
 | Metric | Count |
 |---|---:|
 | Total legacy case_seed nodes | 177 |
-| Verified seed nodes visible with paragraph proof | 1 |
-| Excluded seed nodes | 176 |
+| Verified seed nodes visible with paragraph proof | 2 |
+| Excluded seed nodes | 175 |
 
 ## Verified Seed Nodes
 
+- HKSAR v Lam Tat Ming (2000) 3 HKCFAR 168 (criminal_procedure_hk/hksar_v_lam_tat_ming)
 - HKSAR v Leung Kwok Hung [2005] 3 HKLRD 164 (criminal_procedure_hk/hksar_v_leung_kwok_hung)
 
 ## Excluded Seed Nodes
@@ -86,7 +87,6 @@ These are developer-audit records only. They must not be displayed as product au
 | criminal_procedure_hk | hksar_v_khaw_kin_sun | HKSAR v Khaw Kin Sun (2019) | - | exact_public_source_not_attached |
 | criminal_procedure_hk | hksar_v_lai_chee_ying | HKSAR v Lai Chee Ying (2021) 24 HKCFAR 121 | (2021) 24 HKCFAR 121 | exact_public_source_not_attached |
 | criminal_procedure_hk | hksar_v_lai_man_ling | HKSAR v Lai Man Ling [2021] HKCFA 28 | [2021] HKCFA 28 | exact_public_source_not_attached |
-| criminal_procedure_hk | hksar_v_lam_tat_ming | HKSAR v Lam Tat Ming (2000) 3 HKCFAR 168 | (2000) 3 HKCFAR 168 | exact_public_source_not_attached |
 | criminal_procedure_hk | hksar_v_lee_kwok_wah | HKSAR v Lee Kwok Wah (2008) 11 HKCFAR 318 | (2008) 11 HKCFAR 318 | exact_public_source_not_attached |
 | criminal_procedure_hk | hksar_v_leung_kwok_hung_1996 | HKSAR v Leung Kwok Hung (1996) | - | exact_public_source_not_attached |
 | criminal_procedure_hk | hksar_v_ma_ka_kin | HKSAR v Ma Ka Kin (2015) | - | exact_public_source_not_attached |

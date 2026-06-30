@@ -1,0 +1,297 @@
+{
+  "report_id": "ai_inquiry_level2_eval_v1",
+  "generated_at": "2026-07-01T00:00:00+08:00",
+  "pass": true,
+  "query_count": 7,
+  "passed_query_count": 7,
+  "failed_query_count": 0,
+  "results": [
+    {
+      "id": "peaceful_protest",
+      "query": "I joined a peaceful protest and police restricted the route. What legal issues matter?",
+      "supported": true,
+      "passed": true,
+      "checks": {
+        "retrieved_paragraph_linked_authorities": true,
+        "all_matched_authorities_verified": true,
+        "analysis_present": true,
+        "analysis_not_abstained": true,
+        "analysis_has_case_references": true,
+        "all_analysis_authorities_verified": true,
+        "quotes_present": true,
+        "source_urls_present": true,
+        "useful_issue_match": true,
+        "no_unresolved_seed_authority": true
+      },
+      "evidence_count": 28,
+      "product_mode": "source_grounded_research_only",
+      "analysis_status": "deterministic_source_linked_summary",
+      "top_cases": [
+        {
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "citation": "[2021] HKCA 404",
+          "para_no": "3",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en#p3"
+        },
+        {
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "citation": "[2021] HKCA 404",
+          "para_no": "29",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en#p29"
+        },
+        {
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "citation": "[2021] HKCA 404",
+          "para_no": "30",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en#p30"
+        },
+        {
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "citation": "[2021] HKCA 404",
+          "para_no": "34",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en#p34"
+        }
+      ]
+    },
+    {
+      "id": "forgot_to_pay",
+      "query": "I picked up goods in a shop, forgot to pay, and left. What theft issues matter?",
+      "supported": true,
+      "passed": true,
+      "checks": {
+        "retrieved_paragraph_linked_authorities": true,
+        "all_matched_authorities_verified": true,
+        "analysis_present": true,
+        "analysis_not_abstained": true,
+        "analysis_has_case_references": true,
+        "all_analysis_authorities_verified": true,
+        "quotes_present": true,
+        "source_urls_present": true,
+        "useful_issue_match": true,
+        "no_unresolved_seed_authority": true
+      },
+      "evidence_count": 39,
+      "product_mode": "demo_supported",
+      "analysis_status": "deterministic_source_linked_summary",
+      "top_cases": [
+        {
+          "case_name": "BETWEEN HKSAR Respondent and KHAN, ALTAF Appellant",
+          "citation": "[2022] HKCFI 1220",
+          "para_no": "25",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p25"
+        },
+        {
+          "case_name": "BETWEEN HKSAR Respondent and YEOH, POH LEAN Appellant",
+          "citation": "[2022] HKCFI 1962",
+          "para_no": "19",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1962#p19"
+        },
+        {
+          "case_name": "BETWEEN HKSAR Respondent and YEOH, POH LEAN Appellant",
+          "citation": "[2022] HKCFI 1962",
+          "para_no": "24",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1962#p24"
+        },
+        {
+          "case_name": "HKSAR v WONG Chun-ho",
+          "citation": "[2026] HKDC 909",
+          "para_no": "26",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/909#p26"
+        }
+      ]
+    },
+    {
+      "id": "intention_return_item",
+      "query": "What does intention permanently to deprive mean if I planned to return the item?",
+      "supported": true,
+      "passed": true,
+      "checks": {
+        "retrieved_paragraph_linked_authorities": true,
+        "all_matched_authorities_verified": true,
+        "analysis_present": true,
+        "analysis_not_abstained": true,
+        "analysis_has_case_references": true,
+        "all_analysis_authorities_verified": true,
+        "quotes_present": true,
+        "source_urls_present": true,
+        "useful_issue_match": true,
+        "no_unresolved_seed_authority": true
+      },
+      "evidence_count": 2,
+      "product_mode": "source_grounded_research_only",
+      "analysis_status": "deterministic_source_linked_summary",
+      "top_cases": [
+        {
+          "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+          "citation": "[2022] HKCA 1135",
+          "para_no": "22",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p22"
+        },
+        {
+          "case_name": "HKSAR Respondent and LEE HEUNG YEE （李香儀） Appellant",
+          "citation": "[2022] HKCFI 1152",
+          "para_no": "46",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1152#p46"
+        }
+      ]
+    },
+    {
+      "id": "belonging_thought_mine",
+      "query": "The property was in someone else's possession, but I thought it was mine. What theft issue is this?",
+      "supported": true,
+      "passed": true,
+      "checks": {
+        "retrieved_paragraph_linked_authorities": true,
+        "all_matched_authorities_verified": true,
+        "analysis_present": true,
+        "analysis_not_abstained": true,
+        "analysis_has_case_references": true,
+        "all_analysis_authorities_verified": true,
+        "quotes_present": true,
+        "source_urls_present": true,
+        "useful_issue_match": true,
+        "no_unresolved_seed_authority": true
+      },
+      "evidence_count": 39,
+      "product_mode": "source_grounded_research_only",
+      "analysis_status": "deterministic_source_linked_summary",
+      "top_cases": [
+        {
+          "case_name": "BETWEEN HKSAR Respondent and KHAN, ALTAF Appellant",
+          "citation": "[2022] HKCFI 1220",
+          "para_no": "25",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1220#p25"
+        },
+        {
+          "case_name": "BETWEEN HKSAR Respondent and YEOH, POH LEAN Appellant",
+          "citation": "[2022] HKCFI 1962",
+          "para_no": "19",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1962#p19"
+        },
+        {
+          "case_name": "BETWEEN HKSAR Respondent and YEOH, POH LEAN Appellant",
+          "citation": "[2022] HKCFI 1962",
+          "para_no": "24",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/1962#p24"
+        },
+        {
+          "case_name": "HKSAR v WONG Chun-ho",
+          "citation": "[2026] HKDC 909",
+          "para_no": "26",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/909#p26"
+        }
+      ]
+    },
+    {
+      "id": "bail_theft",
+      "query": "What bail factors matter after a theft arrest?",
+      "supported": true,
+      "passed": true,
+      "checks": {
+        "retrieved_paragraph_linked_authorities": true,
+        "all_matched_authorities_verified": true,
+        "analysis_present": true,
+        "analysis_not_abstained": true,
+        "analysis_has_case_references": true,
+        "all_analysis_authorities_verified": true,
+        "quotes_present": true,
+        "source_urls_present": true,
+        "useful_issue_match": true,
+        "no_unresolved_seed_authority": true
+      },
+      "evidence_count": 60,
+      "product_mode": "source_grounded_research_only",
+      "analysis_status": "deterministic_source_linked_summary",
+      "top_cases": [
+        {
+          "case_name": "HKSAR v Tong Ying Kit",
+          "citation": "[2020] HKCFI 2196",
+          "para_no": "14",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=130396&QS=%2B&TP=JU&ILAN=en#p14"
+        },
+        {
+          "case_name": "HKSAR v Tong Ying Kit",
+          "citation": "[2020] HKCFI 2196",
+          "para_no": "17",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=130396&QS=%2B&TP=JU&ILAN=en#p17"
+        },
+        {
+          "case_name": "HKSAR v Tong Ying Kit",
+          "citation": "[2020] HKCFI 2196",
+          "para_no": "32",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=130396&QS=%2B&TP=JU&ILAN=en#p32"
+        },
+        {
+          "case_name": "HKSAR v Ma Chun Man",
+          "citation": "[2020] HKCFI 3132",
+          "para_no": "32",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=132658&QS=%2B&TP=JU&ILAN=en#p32"
+        }
+      ]
+    },
+    {
+      "id": "interview_rights",
+      "query": "The police interviewed me without explaining my rights. What issues matter?",
+      "supported": true,
+      "passed": true,
+      "checks": {
+        "retrieved_paragraph_linked_authorities": true,
+        "all_matched_authorities_verified": true,
+        "analysis_present": true,
+        "analysis_not_abstained": true,
+        "analysis_has_case_references": true,
+        "all_analysis_authorities_verified": true,
+        "quotes_present": true,
+        "source_urls_present": true,
+        "useful_issue_match": true,
+        "no_unresolved_seed_authority": true
+      },
+      "evidence_count": 21,
+      "product_mode": "source_grounded_research_only",
+      "analysis_status": "deterministic_source_linked_summary",
+      "top_cases": [
+        {
+          "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+          "citation": "(2000) 3 HKCFAR 168",
+          "para_no": "24",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p24"
+        },
+        {
+          "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+          "citation": "(2000) 3 HKCFAR 168",
+          "para_no": "39",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p39"
+        },
+        {
+          "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+          "citation": "(2000) 3 HKCFAR 168",
+          "para_no": "40",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p40"
+        },
+        {
+          "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+          "citation": "(2000) 3 HKCFAR 168",
+          "para_no": "24",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p24"
+        }
+      ]
+    },
+    {
+      "id": "unsupported_landlord",
+      "query": "My landlord increased my rent. What should I do?",
+      "supported": false,
+      "passed": true,
+      "checks": {
+        "abstained": true,
+        "no_evidence_count": true,
+        "no_matched_nodes": true,
+        "unsupported_mode": true,
+        "no_criminal_authority_leak": true
+      },
+      "evidence_count": 0,
+      "product_mode": "unsupported_general_query",
+      "analysis_status": "unsupported_domain_abstained",
+      "top_cases": []
+    }
+  ]
+}

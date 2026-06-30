@@ -1,0 +1,1346 @@
+{
+  "report_id": "case_recall_level1_eval_v1",
+  "generated_at": "2026-07-01T00:00:00+08:00",
+  "pass": true,
+  "query_count": 9,
+  "passed_query_count": 9,
+  "failed_query_count": 0,
+  "results": [
+    {
+      "id": "leung_citation",
+      "query": "HKSAR v Leung Kwok Hung [2005] 3 HKLRD 164",
+      "passed": true,
+      "checks": {
+        "has_result": true,
+        "correct_case": true,
+        "correct_citation": true,
+        "correct_issue": true,
+        "public_source_url": true,
+        "paragraph_anchor": true,
+        "exact_quote_verified": true,
+        "short_summary": true,
+        "no_unresolved_seed_authority": true
+      },
+      "top_results": [
+        {
+          "authority_id": "authority_00335",
+          "case_name": "Leung Kwok Hung and Others v HKSAR",
+          "citation": "[2005] HKCFA 2",
+          "paragraph_number": "17",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p17",
+          "exact_quote": "The exercise of the right of peaceful assembly, whether under the Basic Law or under BORO, may be subject to restrictions provided two requirements are satisfied",
+          "principle_summary": "Restrictions on peaceful assembly must satisfy the prescribed-by-law and necessity requirements.",
+          "issue_tags": [
+            "criminal_law.public_order",
+            "constitutional_law.peaceful_assembly"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.hksar_v_leung_kwok_hung"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00336",
+          "case_name": "Leung Kwok Hung and Others v HKSAR",
+          "citation": "[2005] HKCFA 2",
+          "paragraph_number": "18",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p18",
+          "exact_quote": "although Article 17 uses the expression of “in conformity with the law” rather than the expression of “as prescribed by law” found in Article 39(2) of the Basic Law, the principle involved is the same",
+          "principle_summary": "For peaceful assembly under BORO, the in-conformity-with-law requirement is treated as the same principle as the Basic Law prescribed-by-law requirement.",
+          "issue_tags": [
+            "criminal_law.public_order",
+            "constitutional_law.peaceful_assembly"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.hksar_v_leung_kwok_hung"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00389",
+          "case_name": "HKSAR v Leung Kwok Hung",
+          "citation": "[2021] HKCFI 1227",
+          "paragraph_number": "14",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=135726&QS=%2B&TP=JU&ILAN=en#p14",
+          "exact_quote": "On all the materials which had been placed before me, including counsel’s submissions, both written and oral, including documents or materials which may not be admissible at trial, in order for me to make a predictive evaluation.",
+          "principle_summary": "The CFI considered all materials, submissions and even potentially inadmissible materials in making the predictive NSL bail evaluation.",
+          "issue_tags": [
+            "criminal_evidence.bail",
+            "criminal_procedure.bail"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.nsl_bail",
+            "criminal_procedure_hk.bail_factors",
+            "criminal_procedure_hk.bail_flow_step5"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00390",
+          "case_name": "HKSAR v Leung Kwok Hung",
+          "citation": "[2021] HKCFI 1227",
+          "paragraph_number": "15",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=135726&QS=%2B&TP=JU&ILAN=en#p15",
+          "exact_quote": "I cannot find sufficient grounds for believing that the Applicant will not continue to commit acts endangering national security if granted bail.",
+          "principle_summary": "On the facts, the CFI refused bail because sufficient grounds under the NSL first threshold were absent.",
+          "issue_tags": [
+            "criminal_evidence.bail",
+            "criminal_procedure.bail"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.nsl_bail",
+            "criminal_procedure_hk.bail_flow_step5"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00285",
+          "case_name": "HKSAR v TAM KWOK LEUNG (D1)",
+          "citation": "[2021] HKDC 725",
+          "paragraph_number": "18",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/725#p18",
+          "exact_quote": "sentence him to imprisonment unless it is of the view that no other method of dealing with him is appropriate, and for the purpose of determining wh",
+          "principle_summary": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing",
+            "criminal_law.fraud"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft.appropriation"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        }
+      ],
+      "top_result": {
+        "authority_id": "authority_00335",
+        "case_name": "Leung Kwok Hung and Others v HKSAR",
+        "citation": "[2005] HKCFA 2",
+        "paragraph_number": "17",
+        "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p17",
+        "exact_quote": "The exercise of the right of peaceful assembly, whether under the Basic Law or under BORO, may be subject to restrictions provided two requirements are satisfied",
+        "principle_summary": "Restrictions on peaceful assembly must satisfy the prescribed-by-law and necessity requirements.",
+        "issue_tags": [
+          "criminal_law.public_order",
+          "constitutional_law.peaceful_assembly"
+        ],
+        "doctrine_node_ids": [
+          "criminal_procedure_hk.hksar_v_leung_kwok_hung"
+        ],
+        "answer_mode": "research_prototype",
+        "lawyer_review_status": "unreviewed",
+        "professional_advice_certified": false,
+        "verified_public_paragraph_authority": true
+      }
+    },
+    {
+      "id": "leung_public_assembly",
+      "query": "Leung Kwok Hung public assembly proportionality",
+      "passed": true,
+      "checks": {
+        "has_result": true,
+        "correct_case": true,
+        "correct_citation": true,
+        "correct_issue": true,
+        "public_source_url": true,
+        "paragraph_anchor": true,
+        "exact_quote_verified": true,
+        "short_summary": true,
+        "no_unresolved_seed_authority": true
+      },
+      "top_results": [
+        {
+          "authority_id": "authority_00335",
+          "case_name": "Leung Kwok Hung and Others v HKSAR",
+          "citation": "[2005] HKCFA 2",
+          "paragraph_number": "17",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p17",
+          "exact_quote": "The exercise of the right of peaceful assembly, whether under the Basic Law or under BORO, may be subject to restrictions provided two requirements are satisfied",
+          "principle_summary": "Restrictions on peaceful assembly must satisfy the prescribed-by-law and necessity requirements.",
+          "issue_tags": [
+            "criminal_law.public_order",
+            "constitutional_law.peaceful_assembly"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.hksar_v_leung_kwok_hung"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00336",
+          "case_name": "Leung Kwok Hung and Others v HKSAR",
+          "citation": "[2005] HKCFA 2",
+          "paragraph_number": "18",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p18",
+          "exact_quote": "although Article 17 uses the expression of “in conformity with the law” rather than the expression of “as prescribed by law” found in Article 39(2) of the Basic Law, the principle involved is the same",
+          "principle_summary": "For peaceful assembly under BORO, the in-conformity-with-law requirement is treated as the same principle as the Basic Law prescribed-by-law requirement.",
+          "issue_tags": [
+            "criminal_law.public_order",
+            "constitutional_law.peaceful_assembly"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.hksar_v_leung_kwok_hung"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00389",
+          "case_name": "HKSAR v Leung Kwok Hung",
+          "citation": "[2021] HKCFI 1227",
+          "paragraph_number": "14",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=135726&QS=%2B&TP=JU&ILAN=en#p14",
+          "exact_quote": "On all the materials which had been placed before me, including counsel’s submissions, both written and oral, including documents or materials which may not be admissible at trial, in order for me to make a predictive evaluation.",
+          "principle_summary": "The CFI considered all materials, submissions and even potentially inadmissible materials in making the predictive NSL bail evaluation.",
+          "issue_tags": [
+            "criminal_evidence.bail",
+            "criminal_procedure.bail"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.nsl_bail",
+            "criminal_procedure_hk.bail_factors",
+            "criminal_procedure_hk.bail_flow_step5"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00390",
+          "case_name": "HKSAR v Leung Kwok Hung",
+          "citation": "[2021] HKCFI 1227",
+          "paragraph_number": "15",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=135726&QS=%2B&TP=JU&ILAN=en#p15",
+          "exact_quote": "I cannot find sufficient grounds for believing that the Applicant will not continue to commit acts endangering national security if granted bail.",
+          "principle_summary": "On the facts, the CFI refused bail because sufficient grounds under the NSL first threshold were absent.",
+          "issue_tags": [
+            "criminal_evidence.bail",
+            "criminal_procedure.bail"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.nsl_bail",
+            "criminal_procedure_hk.bail_flow_step5"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00423",
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "citation": "[2021] HKCA 404",
+          "paragraph_number": "3",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en#p3",
+          "exact_quote": "the doctrine of joint enterprise, including its coverage of perpetrators not present at the scene, applies to unlawful assembly and riot",
+          "principle_summary": "The Court of Appeal held that, unless excluded, joint enterprise including liability without presence at the scene applies to unlawful assembly and riot.",
+          "issue_tags": [],
+          "doctrine_node_ids": [
+            "criminal_law_hk.public_order.unlawful_assembly",
+            "criminal_law_hk.public_order.riot",
+            "criminal_law_hk.public_order.presence_scene"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        }
+      ],
+      "top_result": {
+        "authority_id": "authority_00335",
+        "case_name": "Leung Kwok Hung and Others v HKSAR",
+        "citation": "[2005] HKCFA 2",
+        "paragraph_number": "17",
+        "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p17",
+        "exact_quote": "The exercise of the right of peaceful assembly, whether under the Basic Law or under BORO, may be subject to restrictions provided two requirements are satisfied",
+        "principle_summary": "Restrictions on peaceful assembly must satisfy the prescribed-by-law and necessity requirements.",
+        "issue_tags": [
+          "criminal_law.public_order",
+          "constitutional_law.peaceful_assembly"
+        ],
+        "doctrine_node_ids": [
+          "criminal_procedure_hk.hksar_v_leung_kwok_hung"
+        ],
+        "answer_mode": "research_prototype",
+        "lawyer_review_status": "unreviewed",
+        "professional_advice_certified": false,
+        "verified_public_paragraph_authority": true
+      }
+    },
+    {
+      "id": "lam_confession",
+      "query": "Lam Tat Ming detention after arrest confession",
+      "passed": true,
+      "checks": {
+        "has_result": true,
+        "correct_case": true,
+        "correct_citation": true,
+        "correct_issue": true,
+        "public_source_url": true,
+        "paragraph_anchor": true,
+        "exact_quote_verified": true,
+        "short_summary": true,
+        "no_unresolved_seed_authority": true
+      },
+      "top_results": [
+        {
+          "authority_id": "authority_00337",
+          "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+          "citation": "(2000) 3 HKCFAR 168",
+          "paragraph_number": "24",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p24",
+          "exact_quote": "as soon as a law enforcement officer has evidence which would afford reasonable grounds for suspecting that a person has committed an offence, he shall caution the suspect before putting any or any further questions to him",
+          "principle_summary": "A suspect's right of silence is protected by the Secretary for Security rules and directions; once there are reasonable grounds to suspect an offence, caution is required before questioning.",
+          "issue_tags": [
+            "criminal_procedure.interview_caution",
+            "criminal_procedure.confession",
+            "criminal_procedure.right_of_silence"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.hksar_v_lam_tat_ming"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00338",
+          "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+          "citation": "(2000) 3 HKCFAR 168",
+          "paragraph_number": "39",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p39",
+          "exact_quote": "once the officer actively questions the suspect, we enter into an area which may engage the exercise of the residual discretion",
+          "principle_summary": "Active questioning by an undercover officer that procures a confession may engage the court's residual discretion because the suspect could not be cautioned.",
+          "issue_tags": [
+            "criminal_procedure.undercover_confession",
+            "criminal_procedure.confession",
+            "criminal_procedure.right_of_silence"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.hksar_v_lam_tat_ming"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00339",
+          "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+          "citation": "(2000) 3 HKCFAR 168",
+          "paragraph_number": "40",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p40",
+          "exact_quote": "If however what the officer does amounts to interrogation, the discretion would ordinarily be exercised so as to exclude the confession",
+          "principle_summary": "If undercover conduct amounts to interrogation, the residual discretion would ordinarily exclude the confession because it derogates from the accused's right of silence and prejudices a fair trial.",
+          "issue_tags": [
+            "criminal_procedure.undercover_confession",
+            "criminal_procedure.confession",
+            "criminal_procedure.right_of_silence"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.hksar_v_lam_tat_ming"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00023",
+          "case_name": "HKSAR v CHAN Kin-ming (D1) NG Sau-man, Rebecca (D2)",
+          "citation": "[2025] HKDC 1174",
+          "paragraph_number": "16",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/1174#p16",
+          "exact_quote": "sentence of 3 years’ imprisonment or less for cases of simple credit card fraud are based on a number of sentencing principles and considerations",
+          "principle_summary": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing",
+            "criminal_law.fraud",
+            "criminal_law.deception"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00102",
+          "case_name": "HKSAR v HO CHI TAT (D2) HKSAR v HO CHI TAT HKSAR v HO CHI TAT",
+          "citation": "[2024] HKDC 359",
+          "paragraph_number": "45",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/359#p45",
+          "exact_quote": "sentence of 3 years’ imprisonment or less for cases of simple credit card fraud are based on a number of sentencing principles and considerations",
+          "principle_summary": "Use this case only as sentencing context for theft or theft-linked offending unless a later reviewer extracts a narrower ratio.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.sentencing",
+            "criminal_law.fraud",
+            "criminal_law.deception"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        }
+      ],
+      "top_result": {
+        "authority_id": "authority_00337",
+        "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+        "citation": "(2000) 3 HKCFAR 168",
+        "paragraph_number": "24",
+        "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p24",
+        "exact_quote": "as soon as a law enforcement officer has evidence which would afford reasonable grounds for suspecting that a person has committed an offence, he shall caution the suspect before putting any or any further questions to him",
+        "principle_summary": "A suspect's right of silence is protected by the Secretary for Security rules and directions; once there are reasonable grounds to suspect an offence, caution is required before questioning.",
+        "issue_tags": [
+          "criminal_procedure.interview_caution",
+          "criminal_procedure.confession",
+          "criminal_procedure.right_of_silence"
+        ],
+        "doctrine_node_ids": [
+          "criminal_procedure_hk.hksar_v_lam_tat_ming"
+        ],
+        "answer_mode": "research_prototype",
+        "lawyer_review_status": "unreviewed",
+        "professional_advice_certified": false,
+        "verified_public_paragraph_authority": true
+      }
+    },
+    {
+      "id": "forgot_to_pay",
+      "query": "forgot to pay at shop dishonesty theft",
+      "passed": true,
+      "checks": {
+        "has_result": true,
+        "correct_case": true,
+        "correct_citation": true,
+        "correct_issue": true,
+        "public_source_url": true,
+        "paragraph_anchor": true,
+        "exact_quote_verified": true,
+        "short_summary": true,
+        "no_unresolved_seed_authority": true
+      },
+      "top_results": [
+        {
+          "authority_id": "authority_00195",
+          "case_name": "HKSAR v TSAGAACH BAATAR 1 st Defendant BALDORJ MYAGMARJAV 2 nd Defendant",
+          "citation": "[2026] HKDC 801",
+          "paragraph_number": "36",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/801#p36",
+          "exact_quote": "dishonesty and of a different nature from the subsequent use and attempted use of the stolen bank cards",
+          "principle_summary": "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00185",
+          "case_name": "HKSAR v DONG JIAHAO",
+          "citation": "[2025] HKDC 1524",
+          "paragraph_number": "23",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/1524#p23",
+          "exact_quote": "sentence is necessary to reflect the seriousness of the offence",
+          "principle_summary": "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing",
+            "criminal_law.theft.handling_stolen_goods"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00225",
+          "case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+          "citation": "[2025] HKCA 451",
+          "paragraph_number": "15",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p15",
+          "exact_quote": "The prosecution explained to the jury that the offence of theft is committed when a person dishonestly appropriates property belonging to another with the intention of permanently depriving the other of it.",
+          "principle_summary": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.intention_permanently_deprive"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00242",
+          "case_name": "HKSAR v LEUNG CHI KIT",
+          "citation": "[2024] HKDC 1361",
+          "paragraph_number": "65",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1361#p65",
+          "exact_quote": "In conducting the 81 purchases of cryptocurrencies and the subsequent 11 withdrawals as discussed above, the defendant’s conduct clearly amounted to an “ appropriation ” of VTC’s property with the “ intention to permanen",
+          "principle_summary": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.belonging_to_another"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00257",
+          "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+          "citation": "[2021] HKDC 230",
+          "paragraph_number": "22",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/230#p22",
+          "exact_quote": "dishonesty, accordingly the culpability in the commission of the present offence is aggravated",
+          "principle_summary": "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft.dishonesty",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing",
+            "criminal_law.fraud"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft.dishonesty"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        }
+      ],
+      "top_result": {
+        "authority_id": "authority_00195",
+        "case_name": "HKSAR v TSAGAACH BAATAR 1 st Defendant BALDORJ MYAGMARJAV 2 nd Defendant",
+        "citation": "[2026] HKDC 801",
+        "paragraph_number": "36",
+        "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/801#p36",
+        "exact_quote": "dishonesty and of a different nature from the subsequent use and attempted use of the stolen bank cards",
+        "principle_summary": "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review.",
+        "issue_tags": [
+          "criminal_law.theft",
+          "criminal_law.dishonesty",
+          "criminal_law.theft.dishonesty",
+          "criminal_law.theft.mens_rea",
+          "criminal_law.theft.appropriation",
+          "criminal_law.theft.sentencing"
+        ],
+        "doctrine_node_ids": [
+          "criminal_law_hk.theft"
+        ],
+        "answer_mode": "research_prototype",
+        "lawyer_review_status": "unreviewed",
+        "professional_advice_certified": false,
+        "verified_public_paragraph_authority": true
+      }
+    },
+    {
+      "id": "intention_permanently_deprive",
+      "query": "intention permanently to deprive theft",
+      "passed": true,
+      "checks": {
+        "has_result": true,
+        "correct_case": true,
+        "correct_citation": true,
+        "correct_issue": true,
+        "public_source_url": true,
+        "paragraph_anchor": true,
+        "exact_quote_verified": true,
+        "short_summary": true,
+        "no_unresolved_seed_authority": true
+      },
+      "top_results": [
+        {
+          "authority_id": "authority_00237",
+          "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+          "citation": "[2022] HKCA 1135",
+          "paragraph_number": "20",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p20",
+          "exact_quote": "Mr Beel submits that the evidence did not establish that the applicant had no intention to return the notice, nor did it establish that the applicant’s removal of the notice fell within the ambit of section 7 of the Thef",
+          "principle_summary": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.theft.belonging_to_another"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00297",
+          "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+          "citation": "[2022] HKCA 1135",
+          "paragraph_number": "22",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p22",
+          "exact_quote": "Mr Beel argues that the mere borrowing of an item may not satisfy the element of intending to permanently deprive, particularly if it is intended to be returned in an unchanged state: R v Lloyd, Bhuee & Ali.",
+          "principle_summary": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft.intention_permanently_deprive"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft.intent.deprive"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00236",
+          "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+          "citation": "[2022] HKCA 1135",
+          "paragraph_number": "5",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p5",
+          "exact_quote": "The issue at trial in respect of the burglary charge was whether the applicant was a trespasser and whether he had stolen the notice with the requisite intention to permanently deprive the owner of the notice.",
+          "principle_summary": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.intention_permanently_deprive"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00241",
+          "case_name": "HKSAR Respondent v Christopher Okechi Nwosu Appellant",
+          "citation": "[2023] HKCA 396",
+          "paragraph_number": "5",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2023/396#p5",
+          "exact_quote": "The issue at trial regarding the burglary charge was whether the appellant was a trespasser and whether he had stolen the Notice with the requisite intention to permanently deprive the owner of it.",
+          "principle_summary": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.intention_permanently_deprive"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00225",
+          "case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+          "citation": "[2025] HKCA 451",
+          "paragraph_number": "15",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p15",
+          "exact_quote": "The prosecution explained to the jury that the offence of theft is committed when a person dishonestly appropriates property belonging to another with the intention of permanently depriving the other of it.",
+          "principle_summary": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.intention_permanently_deprive"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        }
+      ],
+      "top_result": {
+        "authority_id": "authority_00237",
+        "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+        "citation": "[2022] HKCA 1135",
+        "paragraph_number": "20",
+        "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p20",
+        "exact_quote": "Mr Beel submits that the evidence did not establish that the applicant had no intention to return the notice, nor did it establish that the applicant’s removal of the notice fell within the ambit of section 7 of the Thef",
+        "principle_summary": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review.",
+        "issue_tags": [
+          "criminal_law.theft",
+          "criminal_law.theft.intention_permanently_deprive",
+          "criminal_law.theft.belonging_to_another"
+        ],
+        "doctrine_node_ids": [
+          "criminal_law_hk.theft"
+        ],
+        "answer_mode": "research_prototype",
+        "lawyer_review_status": "unreviewed",
+        "professional_advice_certified": false,
+        "verified_public_paragraph_authority": true
+      }
+    },
+    {
+      "id": "belonging_to_another",
+      "query": "belonging to another theft",
+      "passed": true,
+      "checks": {
+        "has_result": true,
+        "correct_case": true,
+        "correct_citation": true,
+        "correct_issue": true,
+        "public_source_url": true,
+        "paragraph_anchor": true,
+        "exact_quote_verified": true,
+        "short_summary": true,
+        "no_unresolved_seed_authority": true
+      },
+      "top_results": [
+        {
+          "authority_id": "authority_00237",
+          "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+          "citation": "[2022] HKCA 1135",
+          "paragraph_number": "20",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p20",
+          "exact_quote": "Mr Beel submits that the evidence did not establish that the applicant had no intention to return the notice, nor did it establish that the applicant’s removal of the notice fell within the ambit of section 7 of the Thef",
+          "principle_summary": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.intention_permanently_deprive",
+            "criminal_law.theft.belonging_to_another"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00107",
+          "case_name": "HKSAR v CHOI PING CHIU",
+          "citation": "[2021] HKDC 494",
+          "paragraph_number": "32",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494#p32",
+          "exact_quote": "The Court of Appeal in the case of HKSAR v Tandon William Chaing CACC 404/2012, approved sentencing starting point of 3 years’ imprisonment adopted in the case of HKSAR v Kwan Po Keung [2012] 2 HKLRD 12 , for the unautho",
+          "principle_summary": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.deception"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00175",
+          "case_name": "BETWEEN HKSAR Respondent and CHAN Wai-ho (陳偉豪) Appellant",
+          "citation": "[2021] HKCFI 3439",
+          "paragraph_number": "6",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfi/2021/3439#p6",
+          "exact_quote": "Theft Ordinance , Cap 210 states: “(1) Any person who by any deception (whether or not such deception was the sole or main inducement)",
+          "principle_summary": "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.deception"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00225",
+          "case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+          "citation": "[2025] HKCA 451",
+          "paragraph_number": "15",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p15",
+          "exact_quote": "The prosecution explained to the jury that the offence of theft is committed when a person dishonestly appropriates property belonging to another with the intention of permanently depriving the other of it.",
+          "principle_summary": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.belonging_to_another",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.intention_permanently_deprive"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00226",
+          "case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+          "citation": "[2025] HKCA 451",
+          "paragraph_number": "27",
+          "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p27",
+          "exact_quote": "The final point made by Mr Young concerns s.6 (3) of the Theft Ordinance regarding the element of “belonging to another”, which provides: Where a person receives property from or on account of another, and is under an ob",
+          "principle_summary": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.belonging_to_another"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        }
+      ],
+      "top_result": {
+        "authority_id": "authority_00237",
+        "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+        "citation": "[2022] HKCA 1135",
+        "paragraph_number": "20",
+        "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p20",
+        "exact_quote": "Mr Beel submits that the evidence did not establish that the applicant had no intention to return the notice, nor did it establish that the applicant’s removal of the notice fell within the ambit of section 7 of the Thef",
+        "principle_summary": "Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review.",
+        "issue_tags": [
+          "criminal_law.theft",
+          "criminal_law.theft.intention_permanently_deprive",
+          "criminal_law.theft.belonging_to_another"
+        ],
+        "doctrine_node_ids": [
+          "criminal_law_hk.theft"
+        ],
+        "answer_mode": "research_prototype",
+        "lawyer_review_status": "unreviewed",
+        "professional_advice_certified": false,
+        "verified_public_paragraph_authority": true
+      }
+    },
+    {
+      "id": "appropriation",
+      "query": "appropriation theft Hong Kong",
+      "passed": true,
+      "checks": {
+        "has_result": true,
+        "correct_case": true,
+        "correct_citation": true,
+        "correct_issue": true,
+        "public_source_url": true,
+        "paragraph_anchor": true,
+        "exact_quote_verified": true,
+        "short_summary": true,
+        "no_unresolved_seed_authority": true
+      },
+      "top_results": [
+        {
+          "authority_id": "authority_00032",
+          "case_name": "HKSAR v Kwok Wai-hong",
+          "citation": "[2021] HKDC 931",
+          "paragraph_number": "17",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/931#p17",
+          "exact_quote": "stolen the phone case",
+          "principle_summary": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing",
+            "criminal_law.deception"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00271",
+          "case_name": "HKSAR v ZOU Yaxue (D1) ZHA Xingmei (D2) HUANG Jiaqiang (D3)",
+          "citation": "[2025] HKDC 756",
+          "paragraph_number": "21",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/756#p21",
+          "exact_quote": "imprisonment, which I would adopt, appropriate and just for each charge",
+          "principle_summary": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing",
+            "criminal_law.deception"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft.appropriation"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00280",
+          "case_name": "HKSAR v TANG CHI WANG",
+          "citation": "[2024] HKDC 2191",
+          "paragraph_number": "15",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/2191#p15",
+          "exact_quote": "sentence for this offence because the ways in which the offence can be committed are many-fold and it is not appropriate for the court to create a g",
+          "principle_summary": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing",
+            "criminal_law.fraud"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft.appropriation"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00288",
+          "case_name": "HKSAR v FANG SIYUAN",
+          "citation": "[2026] HKDC 741",
+          "paragraph_number": "29",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/741#p29",
+          "exact_quote": "imprisonment",
+          "principle_summary": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing",
+            "criminal_law.fraud",
+            "criminal_law.deception"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft.appropriation"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00181",
+          "case_name": "HKSAR v GUAN Xinghua (D2)",
+          "citation": "[2025] HKDC 2118",
+          "paragraph_number": "11",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2025/2118#p11",
+          "exact_quote": "obtaining property by deception by using the stolen card 5 times",
+          "principle_summary": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.theft.appropriation",
+            "criminal_law.theft.sentencing",
+            "criminal_law.deception",
+            "criminal_law.theft.handling_stolen_goods"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        }
+      ],
+      "top_result": {
+        "authority_id": "authority_00032",
+        "case_name": "HKSAR v Kwok Wai-hong",
+        "citation": "[2021] HKDC 931",
+        "paragraph_number": "17",
+        "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/931#p17",
+        "exact_quote": "stolen the phone case",
+        "principle_summary": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+        "issue_tags": [
+          "criminal_law.theft",
+          "criminal_law.theft.appropriation",
+          "criminal_law.theft.sentencing",
+          "criminal_law.deception"
+        ],
+        "doctrine_node_ids": [
+          "criminal_law_hk.theft"
+        ],
+        "answer_mode": "research_prototype",
+        "lawyer_review_status": "unreviewed",
+        "professional_advice_certified": false,
+        "verified_public_paragraph_authority": true
+      }
+    },
+    {
+      "id": "bail",
+      "query": "bail factors theft dishonesty",
+      "passed": true,
+      "checks": {
+        "has_result": true,
+        "correct_case": true,
+        "correct_citation": true,
+        "correct_issue": true,
+        "public_source_url": true,
+        "paragraph_anchor": true,
+        "exact_quote_verified": true,
+        "short_summary": true,
+        "no_unresolved_seed_authority": true
+      },
+      "top_results": [
+        {
+          "authority_id": "authority_00217",
+          "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+          "citation": "[2021] HKDC 236",
+          "paragraph_number": "46",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/236#p46",
+          "exact_quote": "Further, defendant committed the second incident whilst he was on bail.",
+          "principle_summary": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_procedure.bail",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.fraud"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00247",
+          "case_name": "HKSAR v MARIA MANINDER SINGH",
+          "citation": "[2026] HKDC 358",
+          "paragraph_number": "11",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/358#p11",
+          "exact_quote": "He committed the present 2 offences whilst he jumped bail of the case numbered KCCC 3007/23, which he was sentenced to 16 months imprisonment.",
+          "principle_summary": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_procedure.bail",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00250",
+          "case_name": "HKSAR v CHEUNG CHI CHIU",
+          "citation": "[2023] HKDC 924",
+          "paragraph_number": "27",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2023/924#p27",
+          "exact_quote": "When considering sentence, I bear in mind that the defendant committed the present offences while he was on bail for the offences in KTCC 55/2022.",
+          "principle_summary": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_procedure.bail",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00245",
+          "case_name": "HKSAR v NG KONG FAI (D1) CHAN SZE TO (D2) LEE HON KI (D3) CHI KIN ON (D4)",
+          "citation": "[2024] HKDC 1195",
+          "paragraph_number": "52",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/1195#p52",
+          "exact_quote": "However, D3 was unable to comply with the condition of payment of cash bail.",
+          "principle_summary": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_procedure.bail"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00255",
+          "case_name": "HKSAR v CHAN HUNG WAI",
+          "citation": "[2021] HKDC 1071",
+          "paragraph_number": "17",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1071#p17",
+          "exact_quote": "dishonesty offences",
+          "principle_summary": "Treat the paragraph as a dishonesty or mens rea research candidate, subject to full-judgment and current-treatment review.",
+          "issue_tags": [
+            "criminal_law.theft.dishonesty",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.mens_rea",
+            "criminal_law.theft.sentencing",
+            "criminal_law.deception"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft.dishonesty"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        }
+      ],
+      "top_result": {
+        "authority_id": "authority_00217",
+        "case_name": "HKSAR v LAM SEE CHUNG STEPHEN",
+        "citation": "[2021] HKDC 236",
+        "paragraph_number": "46",
+        "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/236#p46",
+        "exact_quote": "Further, defendant committed the second incident whilst he was on bail.",
+        "principle_summary": "Use this paragraph only as research-only bail or procedural context in a theft/dishonesty-linked case; it must not be used as a liability rule.",
+        "issue_tags": [
+          "criminal_law.theft",
+          "criminal_procedure.bail",
+          "criminal_law.dishonesty",
+          "criminal_law.theft.dishonesty",
+          "criminal_law.theft.mens_rea",
+          "criminal_law.fraud"
+        ],
+        "doctrine_node_ids": [
+          "criminal_law_hk.theft"
+        ],
+        "answer_mode": "research_prototype",
+        "lawyer_review_status": "unreviewed",
+        "professional_advice_certified": false,
+        "verified_public_paragraph_authority": true
+      }
+    },
+    {
+      "id": "interview_caution",
+      "query": "interview caution Hong Kong criminal procedure",
+      "passed": true,
+      "checks": {
+        "has_result": true,
+        "correct_case": true,
+        "correct_citation": true,
+        "correct_issue": true,
+        "public_source_url": true,
+        "paragraph_anchor": true,
+        "exact_quote_verified": true,
+        "short_summary": true,
+        "no_unresolved_seed_authority": true
+      },
+      "top_results": [
+        {
+          "authority_id": "authority_00337",
+          "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+          "citation": "(2000) 3 HKCFAR 168",
+          "paragraph_number": "24",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p24",
+          "exact_quote": "as soon as a law enforcement officer has evidence which would afford reasonable grounds for suspecting that a person has committed an offence, he shall caution the suspect before putting any or any further questions to him",
+          "principle_summary": "A suspect's right of silence is protected by the Secretary for Security rules and directions; once there are reasonable grounds to suspect an offence, caution is required before questioning.",
+          "issue_tags": [
+            "criminal_procedure.interview_caution",
+            "criminal_procedure.confession",
+            "criminal_procedure.right_of_silence"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.hksar_v_lam_tat_ming"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00030",
+          "case_name": "HKSAR v Kwok Wai-hong",
+          "citation": "[2021] HKDC 931",
+          "paragraph_number": "7",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/931#p7",
+          "exact_quote": "under caution, he admitted stealing the phone together with those credit cards, as well as an earlier attempt to steal a phone from a handbag on the esca",
+          "principle_summary": "Use this case only as public-source interview/caution context unless a reviewer confirms an evidential rule.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.deception",
+            "criminal_procedure.interview_caution"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00300",
+          "case_name": "HKSAR v PUN HONG TING (D1) YUEN KA KIN (D2)",
+          "citation": "[2024] HKDC 229",
+          "paragraph_number": "9",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2024/229#p9",
+          "exact_quote": "obtaining property by deception",
+          "principle_summary": "Use this case only as public-source interview/caution context unless a reviewer confirms an evidential rule.",
+          "issue_tags": [
+            "criminal_law.fraud",
+            "criminal_law.deception",
+            "criminal_procedure.interview_caution"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.fraud"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00338",
+          "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+          "citation": "(2000) 3 HKCFAR 168",
+          "paragraph_number": "39",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p39",
+          "exact_quote": "once the officer actively questions the suspect, we enter into an area which may engage the exercise of the residual discretion",
+          "principle_summary": "Active questioning by an undercover officer that procures a confession may engage the court's residual discretion because the suspect could not be cautioned.",
+          "issue_tags": [
+            "criminal_procedure.undercover_confession",
+            "criminal_procedure.confession",
+            "criminal_procedure.right_of_silence"
+          ],
+          "doctrine_node_ids": [
+            "criminal_procedure_hk.hksar_v_lam_tat_ming"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        },
+        {
+          "authority_id": "authority_00043",
+          "case_name": "HKSAR v CHAN HUNG WAI",
+          "citation": "[2021] HKDC 1071",
+          "paragraph_number": "4",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/1071#p4",
+          "exact_quote": "Obtaining property by deception)",
+          "principle_summary": "Use this case only as public-source interview/caution context unless a reviewer confirms an evidential rule.",
+          "issue_tags": [
+            "criminal_law.theft",
+            "criminal_law.deception",
+            "criminal_procedure.interview_caution"
+          ],
+          "doctrine_node_ids": [
+            "criminal_law_hk.theft"
+          ],
+          "answer_mode": "research_prototype",
+          "lawyer_review_status": "unreviewed",
+          "professional_advice_certified": false,
+          "verified_public_paragraph_authority": true
+        }
+      ],
+      "top_result": {
+        "authority_id": "authority_00337",
+        "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+        "citation": "(2000) 3 HKCFAR 168",
+        "paragraph_number": "24",
+        "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p24",
+        "exact_quote": "as soon as a law enforcement officer has evidence which would afford reasonable grounds for suspecting that a person has committed an offence, he shall caution the suspect before putting any or any further questions to him",
+        "principle_summary": "A suspect's right of silence is protected by the Secretary for Security rules and directions; once there are reasonable grounds to suspect an offence, caution is required before questioning.",
+        "issue_tags": [
+          "criminal_procedure.interview_caution",
+          "criminal_procedure.confession",
+          "criminal_procedure.right_of_silence"
+        ],
+        "doctrine_node_ids": [
+          "criminal_procedure_hk.hksar_v_lam_tat_ming"
+        ],
+        "answer_mode": "research_prototype",
+        "lawyer_review_status": "unreviewed",
+        "professional_advice_certified": false,
+        "verified_public_paragraph_authority": true
+      }
+    }
+  ]
+}

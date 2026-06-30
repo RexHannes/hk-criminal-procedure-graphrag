@@ -85,6 +85,11 @@ const QUERY_EXPANSIONS = [
     preferred_domains: ["criminal_procedure_hk", "criminal_law_hk"]
   },
   {
+    pattern: /\b(interview|interviewed|question(?:ed|ing)?|caution|rights?|right of silence|silence|confession|admission|undercover|explaining my rights)\b/i,
+    terms: ["interview caution", "right of silence", "confession", "admissibility", "residual discretion", "Lam Tat Ming", "undercover questioning"],
+    preferred_domains: ["criminal_procedure_hk"]
+  },
+  {
     pattern: /\b(probate|letters of administration|intestate|executor|administrator|grant of representation|caveat|warning|citation|reseal|resealing|foreign grant|lost will|copy will|swear death|rectification of will|inventory|estate distribution)\b/i,
     terms: ["probate", "grant", "executor", "administrator", "will", "estate", "probate registry", "common form", "contentious probate", "assets liabilities"],
     preferred_domains: ["probate_law_hk"]
@@ -139,7 +144,7 @@ function detectsCriminalPublicOrderQuery(query) {
 
 function detectsCriminalLawQuery(query) {
   const q = String(query || "").toLowerCase();
-  return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|steal|stealing|stole|stolen|shoplift|shoplifting|assault|battery|manslaughter|murder|dishonesty|dishonest|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting|forgot to pay|forget to pay|without paying|bail|surety|recognizance|recognisance|remand|custody)\b/.test(q);
+  return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|steal|stealing|stole|stolen|shoplift|shoplifting|assault|battery|manslaughter|murder|dishonesty|dishonest|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting|forgot to pay|forget to pay|without paying|bail|surety|recognizance|recognisance|remand|custody|interview|interviewed|caution|right of silence|confession|admission)\b/.test(q);
 }
 
 function detectsUnsupportedLandlordQuery(query) {
@@ -463,6 +468,76 @@ async function askAiToRank(query, candidates) {
   }
 }
 
+function deterministicSourceLinkedAnalysis(query, matches, provider, status, warnings = []) {
+  const evidenceItems = matches
+    .flatMap(match => (match.evidence || []).map(item => ({ ...item, doctrine_node_id: match.doctrine_node_id, node_title: match.title })))
+    .filter(isSourceLinkedPublicEvidence);
+  if (!evidenceItems.length) {
+    return {
+      provider,
+      status,
+      analysis: null,
+      warnings,
+    };
+  }
+
+  const caseReferences = evidenceItems.slice(0, 5).map(item => ({
+    case_name: item.case_name,
+    neutral_citation: item.neutral_citation || item.citation || "",
+    para_no: item.para_no || item.paragraph_number || "",
+    paragraph_id: item.paragraph_id || "",
+    proposition_id: item.proposition_id || "",
+    proposition_text: item.proposition_text || item.principle_text || "",
+    supporting_quote: item.supporting_quote || item.exact_quote || "",
+    paragraph_text: item.paragraph_text || "",
+    source_url: item.source_url || "",
+    status: item.answer_layer_status || "research_only",
+    verification_status: item.verification_status || "paragraph_linked_public_source",
+    doctrine_node_id: item.doctrine_node_id,
+    quote_verified: Boolean((item.supporting_quote || item.exact_quote) && item.paragraph_text && String(item.paragraph_text).includes(item.supporting_quote || item.exact_quote)),
+  }));
+  const nodeReferences = matches
+    .filter(match => (match.evidence || []).some(isSourceLinkedPublicEvidence))
+    .slice(0, 5)
+    .map(match => ({
+      doctrine_node_id: match.doctrine_node_id,
+      title: match.title,
+      role: "source_linked_match",
+      coverage_status: match.coverage_status || "paragraph_verified",
+    }));
+  const first = caseReferences[0];
+  const summary = first
+    ? `Source-linked public paragraph evidence was retrieved for ${first.case_name} at paragraph ${first.para_no}.`
+    : "Source-linked public paragraph evidence was retrieved.";
+  const legalPosition = caseReferences
+    .slice(0, 3)
+    .map(ref => {
+      const principle = ref.proposition_text ? ` ${ref.proposition_text}` : "";
+      return `${ref.case_name} ${ref.neutral_citation} para ${ref.para_no}:${principle}`;
+    })
+    .join("\n");
+  const application = [
+    `For the query "${query}", use only the retrieved public paragraph links as research-prototype authority.`,
+    first?.supporting_quote ? `The leading retrieved quote is: "${first.supporting_quote}"` : "",
+    "Treat missing facts and current-treatment review as separate follow-up work; do not convert this research output into professional legal advice.",
+  ].filter(Boolean).join(" ");
+
+  return {
+    provider,
+    status: "deterministic_source_linked_summary",
+    analysis: {
+      summary,
+      legal_position: legalPosition,
+      application,
+      node_references: nodeReferences,
+      case_references: caseReferences,
+      warnings: Array.from(new Set(["ai_not_configured_deterministic_source_summary", ...warnings])),
+      abstain: false,
+    },
+    warnings: ["ai_not_configured_deterministic_source_summary"],
+  };
+}
+
 async function askAiToAnalyze(query, matches, evidenceCount) {
   const evidenceBrief = matches.slice(0, 6).map(match => ({
     doctrine_node_id: match.doctrine_node_id,
@@ -508,12 +583,8 @@ async function askAiToAnalyze(query, matches, evidenceCount) {
     prompt,
   );
   if (ai.status !== "used" || !ai.json) {
-    return {
-      provider: ai.provider,
-      status: ai.status,
-      analysis: null,
-      warnings: ai.warnings,
-    };
+    if (evidenceCount > 0) return deterministicSourceLinkedAnalysis(query, matches, ai.provider, ai.status, ai.warnings);
+    return { provider: ai.provider, status: ai.status, analysis: null, warnings: ai.warnings };
   }
   const parsed = ai.json;
   const validation = validateAiAnalysis(parsed, matches);
@@ -1187,13 +1258,18 @@ module.exports = async function handler(req, res) {
       })
     : null;
   const hasCaseCorpusAuthorities = (caseLawResearch?.cases_returned || 0) > 0;
-  const productMode = hasCaseCorpusAuthorities && presentation.product_mode.mode === "unsupported_general_query"
+  const hasGraphSourceLinkedAuthorities = matched.some(match => (match.evidence || []).some(isSourceLinkedPublicEvidence));
+  const shouldUpgradeUnsupportedToResearch =
+    presentation.product_mode.mode === "unsupported_general_query" &&
+    !unsupportedLandlordQuery &&
+    (hasCaseCorpusAuthorities || hasGraphSourceLinkedAuthorities);
+  const productMode = shouldUpgradeUnsupportedToResearch
     ? {
         ...presentation.product_mode,
         mode: "source_grounded_research_only",
         labels: Array.from(new Set([
           "source_grounded_research_only",
-          "case_corpus_l1_l35_research_only",
+          hasCaseCorpusAuthorities ? "case_corpus_l1_l35_research_only" : "graph_paragraph_proof",
           "research_prototype",
         ])),
         unsupported_reason: "",
