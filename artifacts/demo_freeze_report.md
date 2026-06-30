@@ -72,6 +72,23 @@ Generated: 2026-06-30T00:00:00.000Z
 | paragraph_match_rate | 1 |
 | quote_support_match_rate | 1 |
 
+## Public Demo URL
+
+- Boss/VC URL: https://hk-criminal-procedure-graphrag.vercel.app/viewer/
+- Verified case-corpus demo URL: https://hk-criminal-procedure-graphrag.vercel.app/viewer/case_corpus_demo.html
+- Legacy graph viewer URL: https://hk-criminal-procedure-graphrag.vercel.app/viewer/index_legacy.html
+- Page to show: Open /viewer/ or /viewer/case_corpus_demo.html. The default boss/VC page must be the verified PR #6 case-corpus demo.
+- Legacy warning: The legacy visual tree is an unverified seed map. It is not the PR #6 source-proofed case-corpus demo and must not be presented as verified authority.
+
+## Safe Demo Instructions
+
+- Show the verified case-law demo page first.
+- Point to the 120-case sample metrics and the 344 paragraph/proposition/principle card counts.
+- Open at least one HKLII/LegalRef paragraph URL with a #p anchor from the demo output.
+- State that every supported demo remains answer_safe=false and lawyer-review-required.
+- Use the unsupported landlord/rent query to show abstention and wrong-domain control.
+- Avoid the legacy graph viewer unless explaining historical seed-map work.
+
 ## Unsupported Query Abstention
 
 - Unsupported-query abstention rate: 1

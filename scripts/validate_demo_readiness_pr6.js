@@ -101,6 +101,16 @@ function validateFreezeReport({ status, coverage, retrieval }) {
   assertEqual(report.source_proof_metrics?.source_proof_rate, retrieval.metrics?.source_proof_rate, "demo freeze source_proof_rate");
   assertEqual(report.source_proof_metrics?.wrong_domain_leak_rate, retrieval.metrics?.wrong_domain_leak_rate, "demo freeze wrong_domain_leak_rate");
   assertEqual(report.unsupported_query_abstention, retrieval.metrics?.unsupported_query_abstention_rate, "demo freeze unsupported abstention");
+  assertEqual(report.public_demo?.boss_demo_url, "https://hk-criminal-procedure-graphrag.vercel.app/viewer/", "demo freeze boss URL");
+  if (!String(report.public_demo?.verified_case_corpus_demo_url || "").includes("/viewer/case_corpus_demo.html")) {
+    fail("demo freeze report missing verified case-corpus demo URL");
+  }
+  if (!String(report.public_demo?.legacy_warning || "").includes("unverified seed map")) {
+    fail("demo freeze report missing legacy unverified seed-map warning");
+  }
+  if (!md.includes("Legacy graph viewer") && !md.includes("legacy visual tree")) {
+    fail("demo freeze markdown missing legacy viewer warning");
+  }
 
   const reportCoverage = coverageMap({ coverage: report.issue_coverage || [] });
   for (const current of coverage.coverage || []) {
@@ -201,6 +211,7 @@ function validateDemoOutputsFresh({ status }) {
     "artifacts/demo_outputs/forgot_to_pay_with_evidence_text.md",
     "artifacts/demo_outputs/intention_permanently_deprive_research_memo.md",
     "artifacts/demo_outputs/belonging_to_another_research_memo.md",
+    "artifacts/demo_outputs/bail_research_memo.md",
     "artifacts/demo_outputs/unsupported_landlord_query.md",
     "artifacts/demo_outputs/theft_case_corpus_l35_answer.json",
   ];
@@ -216,6 +227,12 @@ function validateDemoOutputsFresh({ status }) {
   const unsupported = readText("artifacts/demo_outputs/unsupported_landlord_query.md");
   if (!unsupported.includes("unsupported_general_query")) fail("unsupported landlord demo no longer abstains");
   if (/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\//.test(unsupported)) fail("unsupported landlord demo cites case-corpus authority");
+  const bail = readText("artifacts/demo_outputs/bail_research_memo.md");
+  if (!bail.includes("criminal_procedure.bail")) fail("bail demo missing issue mapping");
+  if (!bail.includes("Answer safe: `false`")) fail("bail demo must show answer_safe=false");
+  if ((bail.match(/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\/[^#\s]+#p\d+/g) || []).length < 5) {
+    fail("bail demo should show at least five paragraph URLs");
+  }
 }
 
 const status = readJson("artifacts/case_corpus_l1_l35_status.json");

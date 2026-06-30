@@ -1,5 +1,13 @@
 # PR #6 Boss/VC Demo Script
 
+## Public Demo Page
+
+Open: https://hk-criminal-procedure-graphrag.vercel.app/viewer/
+
+Direct verified case-corpus page: https://hk-criminal-procedure-graphrag.vercel.app/viewer/case_corpus_demo.html
+
+Do not present the legacy visual tree as the verified demo. The legacy visual tree is an unverified seed map. It is not the PR #6 source-proofed case-corpus demo and must not be presented as verified authority.
+
 ## Timing
 
 This is a 5-7 minute script for a boss or investor review. Keep the tone simple: this is a careful legal-research demo, not a finished legal-advice product.
@@ -41,6 +49,12 @@ Expected explanation: the answer should return a research memo, show case-by-cas
 ### C. Belonging to another
 
 Ask: "How does Hong Kong theft law handle property belonging to another?"
+
+Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say `answer_safe=false` with lawyer review required.
+
+### D. Bail
+
+Ask: "What bail factors matter in a theft or dishonesty-related case?"
 
 Expected explanation: the answer should return a research memo, show case-by-case authorities, include paragraph URLs and exact quote support, and clearly say `answer_safe=false` with lawyer review required.
 

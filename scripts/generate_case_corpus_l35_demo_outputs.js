@@ -108,6 +108,18 @@ const REQUESTS = [
     },
   },
   {
+    file: "bail_research_memo",
+    title: "Bail Research Memo",
+    request: {
+      query: "What bail factors matter in a theft or dishonesty-related case, and why should bail/procedure material not be used as a liability rule?",
+      use_case_corpus: true,
+      case_corpus_mode: "sample",
+      issue_id: "criminal_procedure.bail",
+      max_cases: 8,
+      max_paragraphs: 12,
+    },
+  },
+  {
     file: "fraud_dishonesty_boundary",
     title: "Fraud Dishonesty Boundary",
     request: {

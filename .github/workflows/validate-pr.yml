@@ -108,8 +108,17 @@ jobs:
       - name: Validate PR 6 demo readiness
         run: node scripts/validate_demo_readiness_pr6.js
 
+      - name: Validate public demo source links
+        run: node scripts/validate_public_demo_source_links.js
+
       - name: Smoke test PR 6 demo API
         run: node scripts/smoke_test_pr6_demo_api.js --local-only --skip-network
+
+      - name: Smoke test public Vercel demo
+        if: ${{ vars.PUBLIC_DEMO_URL != '' }}
+        env:
+          PUBLIC_DEMO_URL: ${{ vars.PUBLIC_DEMO_URL }}
+        run: node scripts/smoke_test_public_vercel_demo.js
 
       - name: Ensure PR 6 demo freeze artifacts are committed
         run: git diff --exit-code artifacts/demo_freeze_report.json artifacts/demo_freeze_report.md artifacts/demo_outputs/demo_query_pack.json artifacts/demo_outputs/demo_query_pack.md docs/boss_demo_script_pr6.md

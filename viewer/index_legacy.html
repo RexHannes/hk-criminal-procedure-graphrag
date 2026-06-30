@@ -3,15 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HK Criminal Procedure — Doctrine Tree Map</title>
+  <title>Legacy Graph Viewer - Unverified Seed Map</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .legacy-warning {
+      border: 1px solid #f59e0b;
+      background: #fffbeb;
+      color: #78350f;
+      padding: 12px 16px;
+      font-family: Inter, system-ui, sans-serif;
+      line-height: 1.45;
+    }
+    .legacy-warning a {
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
+  <div class="legacy-warning">
+    <strong>Legacy graph viewer - unverified seed map.</strong>
+    This page is not the PR #6 verified case-corpus demo and must not be presented as source-proofed authority.
+    Open the <a href="case_corpus_demo.html">verified case-law demo</a> for the frozen 120-case sample, HKLII paragraph links, exact quotes, and answer_safe=false boundary.
+  </div>
   <div id="header">
     <div id="header-title">
-      <span class="domain-badge">not_product_answer_layer</span>
-      <span class="domain-badge verification">needs_hklii_verification</span>
-      <h1>Hong Kong Criminal Procedure — Doctrine Tree</h1>
+      <span class="domain-badge">legacy_unverified_seed_map</span>
+      <span class="domain-badge verification">not_pr6_verified_demo</span>
+      <h1>Legacy graph viewer - unverified seed map</h1>
     </div>
     <div id="header-controls">
       <input type="text" id="search-box" placeholder="Search by keyword, case, statute..." />
@@ -29,7 +48,9 @@
   <div id="main">
     <div id="side-panel">
       <div id="disclaimer-box">
-        <strong>Seed-layer map.</strong> Not a product answer layer. Use verified paragraph proof before legal reliance.
+        <strong>Legacy seed-layer map.</strong> Not the verified PR #6 case-corpus demo. Do not use this page as source-proofed legal authority.
+        <br>
+        <a href="case_corpus_demo.html">Open verified case-law demo</a>
       </div>
 
       <div id="filter-box">

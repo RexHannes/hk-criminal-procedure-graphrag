@@ -281,6 +281,21 @@
   },
   "unsupported_query_abstention": 1,
   "answer_safe_count": 0,
+  "public_demo": {
+    "boss_demo_url": "https://hk-criminal-procedure-graphrag.vercel.app/viewer/",
+    "verified_case_corpus_demo_url": "https://hk-criminal-procedure-graphrag.vercel.app/viewer/case_corpus_demo.html",
+    "legacy_graph_viewer_url": "https://hk-criminal-procedure-graphrag.vercel.app/viewer/index_legacy.html",
+    "page_to_show": "Open /viewer/ or /viewer/case_corpus_demo.html. The default boss/VC page must be the verified PR #6 case-corpus demo.",
+    "legacy_warning": "The legacy visual tree is an unverified seed map. It is not the PR #6 source-proofed case-corpus demo and must not be presented as verified authority.",
+    "safe_demo_instructions": [
+      "Show the verified case-law demo page first.",
+      "Point to the 120-case sample metrics and the 344 paragraph/proposition/principle card counts.",
+      "Open at least one HKLII/LegalRef paragraph URL with a #p anchor from the demo output.",
+      "State that every supported demo remains answer_safe=false and lawyer-review-required.",
+      "Use the unsupported landlord/rent query to show abstention and wrong-domain control.",
+      "Avoid the legacy graph viewer unless explaining historical seed-map work."
+    ]
+  },
   "quality_audit": {
     "audited_case_count": 28,
     "proposition_quality_pass_rate": 0.987805,
@@ -305,6 +320,9 @@
     "demo_query_pack_json": "artifacts/demo_outputs/demo_query_pack.json",
     "demo_query_pack_md": "artifacts/demo_outputs/demo_query_pack.md",
     "readiness_validator": "scripts/validate_demo_readiness_pr6.js",
-    "smoke_test": "scripts/smoke_test_pr6_demo_api.js"
+    "smoke_test": "scripts/smoke_test_pr6_demo_api.js",
+    "public_demo_page": "viewer/case_corpus_demo.html",
+    "public_demo_validator": "scripts/validate_public_demo_source_links.js",
+    "public_vercel_smoke_test": "scripts/smoke_test_public_vercel_demo.js"
   }
 }

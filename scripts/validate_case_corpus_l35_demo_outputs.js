@@ -32,6 +32,7 @@ const forgotEvidence = read("forgot_to_pay_with_evidence_text.md");
 const sentencingBoundary = read("theft_sentencing_boundary.md");
 const intentionMemo = read("intention_permanently_deprive_research_memo.md");
 const belongingMemo = read("belonging_to_another_research_memo.md");
+const bailMemo = read("bail_research_memo.md");
 const fraudBoundary = read("fraud_dishonesty_boundary.md");
 const unsupportedLandlord = read("unsupported_landlord_query.md");
 
@@ -77,6 +78,7 @@ for (const [label, content] of [
   ["belonging_to_another_research_memo", belongingMemo],
   ["theft_sentencing_boundary", sentencingBoundary],
   ["fraud_dishonesty_boundary", fraudBoundary],
+  ["bail_research_memo", bailMemo],
 ]) {
   assert(content.includes("Case-by-Case Authorities"), `${label} missing case-by-case authorities`);
   assert(content.includes("Extracted Legal Principles"), `${label} missing extracted principles`);
@@ -92,6 +94,8 @@ assert(/permanent(?:ly)? to deprive|permanently deprive|intention/i.test(intenti
 assert(/belong(?:ing)? to another|belonged to another|property of another/i.test(belongingMemo), "belonging-to-another demo missing target issue language");
 assert(sentencingBoundary.includes("sentencing") && sentencingBoundary.includes("liability"), "sentencing boundary demo missing liability boundary");
 assert(fraudBoundary.includes("fraud") || fraudBoundary.includes("deception"), "fraud boundary demo missing fraud/deception content");
+assert(bailMemo.includes("bail") || bailMemo.includes("Bail"), "bail demo missing bail content");
+assert(bailMemo.includes("liability") || bailMemo.includes("procedure"), "bail demo missing procedure/liability boundary");
 assert(unsupportedLandlord.includes("unsupported_general_query"), "new landlord demo missing unsupported mode");
 assert(!/Source URL: https:\/\/www\.hklii\.hk\/en\/cases\//.test(unsupportedLandlord), "new landlord demo must not cite case-corpus authorities");
 assert(unsupportedLandlord.includes("Answer safe: `false`"), "new landlord demo must show answer_safe=false");

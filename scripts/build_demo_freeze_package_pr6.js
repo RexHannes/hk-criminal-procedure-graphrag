@@ -31,6 +31,22 @@ const KNOWN_LIMITATIONS = [
   "Private/licensed sources, AI candidates and recall-only cases cannot support answer-layer authority.",
 ];
 
+const PUBLIC_DEMO = {
+  boss_demo_url: "https://hk-criminal-procedure-graphrag.vercel.app/viewer/",
+  verified_case_corpus_demo_url: "https://hk-criminal-procedure-graphrag.vercel.app/viewer/case_corpus_demo.html",
+  legacy_graph_viewer_url: "https://hk-criminal-procedure-graphrag.vercel.app/viewer/index_legacy.html",
+  page_to_show: "Open /viewer/ or /viewer/case_corpus_demo.html. The default boss/VC page must be the verified PR #6 case-corpus demo.",
+  legacy_warning: "The legacy visual tree is an unverified seed map. It is not the PR #6 source-proofed case-corpus demo and must not be presented as verified authority.",
+  safe_demo_instructions: [
+    "Show the verified case-law demo page first.",
+    "Point to the 120-case sample metrics and the 344 paragraph/proposition/principle card counts.",
+    "Open at least one HKLII/LegalRef paragraph URL with a #p anchor from the demo output.",
+    "State that every supported demo remains answer_safe=false and lawyer-review-required.",
+    "Use the unsupported landlord/rent query to show abstention and wrong-domain control.",
+    "Avoid the legacy graph viewer unless explaining historical seed-map work."
+  ],
+};
+
 const DEMO_QUERIES = [
   {
     id: "A",
@@ -191,6 +207,7 @@ function buildReport() {
     source_proof_metrics: sourceProofMetrics,
     unsupported_query_abstention: retrieval.metrics.unsupported_query_abstention_rate,
     answer_safe_count: status.answer_safe_count,
+    public_demo: PUBLIC_DEMO,
     quality_audit: {
       audited_case_count: quality.summary.audited_case_count,
       proposition_quality_pass_rate: quality.summary.proposition_quality_pass_rate,
@@ -207,6 +224,9 @@ function buildReport() {
       demo_query_pack_md: "artifacts/demo_outputs/demo_query_pack.md",
       readiness_validator: "scripts/validate_demo_readiness_pr6.js",
       smoke_test: "scripts/smoke_test_pr6_demo_api.js",
+      public_demo_page: "viewer/case_corpus_demo.html",
+      public_demo_validator: "scripts/validate_public_demo_source_links.js",
+      public_vercel_smoke_test: "scripts/smoke_test_public_vercel_demo.js",
     },
   };
 
@@ -286,6 +306,18 @@ function renderReportMarkdown(report) {
     "",
     mdTable(Object.entries(report.source_proof_metrics).map(([Metric, Value]) => ({ Metric, Value })), ["Metric", "Value"]),
     "",
+    "## Public Demo URL",
+    "",
+    `- Boss/VC URL: ${report.public_demo.boss_demo_url}`,
+    `- Verified case-corpus demo URL: ${report.public_demo.verified_case_corpus_demo_url}`,
+    `- Legacy graph viewer URL: ${report.public_demo.legacy_graph_viewer_url}`,
+    `- Page to show: ${report.public_demo.page_to_show}`,
+    `- Legacy warning: ${report.public_demo.legacy_warning}`,
+    "",
+    "## Safe Demo Instructions",
+    "",
+    ...report.public_demo.safe_demo_instructions.map(item => `- ${item}`),
+    "",
     "## Unsupported Query Abstention",
     "",
     `- Unsupported-query abstention rate: ${report.unsupported_query_abstention}`,
@@ -337,10 +369,18 @@ function renderQueryPackMarkdown(pack) {
 }
 
 function renderBossDemoScript(report, pack) {
-  const supported = pack.queries.filter(query => !query.should_abstain).slice(0, 3);
+  const supported = pack.queries.filter(query => !query.should_abstain);
   const unsupported = pack.queries.find(query => query.should_abstain);
   return [
     "# PR #6 Boss/VC Demo Script",
+    "",
+    "## Public Demo Page",
+    "",
+    `Open: ${report.public_demo.boss_demo_url}`,
+    "",
+    `Direct verified case-corpus page: ${report.public_demo.verified_case_corpus_demo_url}`,
+    "",
+    `Do not present the legacy visual tree as the verified demo. ${report.public_demo.legacy_warning}`,
     "",
     "## Timing",
     "",
