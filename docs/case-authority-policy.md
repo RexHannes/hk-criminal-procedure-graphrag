@@ -31,6 +31,29 @@ The committed case-authority registry currently reports:
 
 Correct product claim: the viewer and AI Inquiry expose only paragraph-linked public-source authority. Do not say every legacy seed case is verified.
 
+## Current Law-Tree Case Fruit Packs
+
+The repeatable law-tree pack pipeline currently processes six trees:
+
+- `criminal_law.theft.dishonesty`;
+- `criminal_law.theft.intention_permanently_deprive`;
+- `criminal_law.theft.belonging_to_another`;
+- `criminal_procedure.interview_caution_confession`;
+- `criminal_procedure.bail`;
+- `criminal_public_order.assembly_proportionality`.
+
+Current pack output:
+
+- 427 per-tree candidate case matches considered from committed source-linked/audit inputs;
+- 53 verified case entries represented in the six packs;
+- 81 paragraph cards and 81 searchable chunks;
+- 81 principle/sub-issue/application summaries;
+- 12 viewer nodes mapped;
+- Level 1 pack eval: pass;
+- Level 2 pack eval: pass.
+
+Pack output is generated from committed public paragraph proof only. NotebookLM/DeepSeek-style proposals may feed candidate lists later, but candidate output is not authority unless the public paragraph proof gate passes.
+
 ## Product Labels
 
 Use clean visible labels:

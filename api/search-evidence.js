@@ -14,6 +14,7 @@ const {
   viewerCaseCorpusEvidenceForNode,
   hasPublicParagraphProof: hasNormalizedPublicParagraphProof,
 } = require("../src/case_graph/viewer_case_corpus_evidence");
+const { searchLawTreeCaseFruitPacks } = require("../src/case_graph/law_tree_case_fruit_packs");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -842,6 +843,36 @@ function localEvidenceFallbackForNode(doctrineNodeId) {
   });
 }
 
+function mergeLawTreePackMatches(matches, lawTreeMatches) {
+  const out = matches.slice();
+  const byId = new Map(out.map((match, index) => [match.doctrine_node_id, index]));
+  for (const lawTreeMatch of lawTreeMatches || []) {
+    const existingIndex = byId.get(lawTreeMatch.doctrine_node_id);
+    if (existingIndex === undefined) {
+      out.push(lawTreeMatch);
+      byId.set(lawTreeMatch.doctrine_node_id, out.length - 1);
+      continue;
+    }
+    const existing = out[existingIndex];
+    const evidence = [];
+    const seen = new Set();
+    for (const item of [...(existing.evidence || []), ...(lawTreeMatch.evidence || [])]) {
+      const key = [item.source_url, item.para_no || item.paragraph_number, item.exact_quote || item.supporting_quote].join("|");
+      if (seen.has(key)) continue;
+      seen.add(key);
+      evidence.push(item);
+    }
+    out[existingIndex] = {
+      ...existing,
+      evidence,
+      coverage_status: evidence.length ? "paragraph_verified" : existing.coverage_status,
+      matched_via: [...(existing.matched_via || []), ...(lawTreeMatch.matched_via || [])].slice(0, 8),
+      match_score: Math.max(existing.match_score || 0, lawTreeMatch.match_score || 0),
+    };
+  }
+  return out;
+}
+
 function warningsForResult(matches, aiStatus, backendStatus, legalSourceCardCount = 0) {
   const warnings = [];
   const hasGraphEvidence = matches.some(m => m.evidence && m.evidence.length);
@@ -1181,6 +1212,9 @@ module.exports = async function handler(req, res) {
       match.coverage_status = coverageForEvidence(match.evidence);
     });
   }
+
+  const lawTreeMatches = unsupportedLandlordQuery ? [] : searchLawTreeCaseFruitPacks(query, 4);
+  if (lawTreeMatches.length) matched = mergeLawTreePackMatches(matched, lawTreeMatches);
 
   const paragraphBackedMatches = matched.filter(match => (match.evidence || []).length > 0);
   if (paragraphBackedMatches.length) {

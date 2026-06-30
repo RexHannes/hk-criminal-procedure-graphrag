@@ -5,6 +5,7 @@ const {
   viewerCaseCorpusEvidenceForNode,
   hasPublicParagraphProof: hasNormalizedPublicParagraphProof,
 } = require("../src/case_graph/viewer_case_corpus_evidence");
+const { lawTreeEvidenceForNode } = require("../src/case_graph/law_tree_case_fruit_packs");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -70,6 +71,24 @@ function noEvidencePayload(node, extraWarnings = []) {
       evidence: viewerEvidence,
       candidate_evidence: [],
       verified_evidence: viewerEvidence,
+      answer_safe_evidence: [],
+      answer_mode: "research_prototype",
+      professional_advice_certified: false,
+    };
+  }
+  const lawTreeEvidence = lawTreeEvidenceForNode(node.doctrine_node_id);
+  if (lawTreeEvidence.length) {
+    return {
+      doctrine_node_id: node.doctrine_node_id,
+      source_node_id: node.source_node_id,
+      title: node.title,
+      node_type: node.node_type,
+      domain_id: node.domain_id,
+      coverage_status: "paragraph_verified",
+      warnings: Array.from(new Set(["law_tree_case_fruit_pack", "source_linked_public_judgment", "research_prototype", ...extraWarnings])),
+      evidence: lawTreeEvidence,
+      candidate_evidence: [],
+      verified_evidence: lawTreeEvidence,
       answer_safe_evidence: [],
       answer_mode: "research_prototype",
       professional_advice_certified: false,
@@ -234,6 +253,25 @@ module.exports = async function handler(req, res) {
       evidence: viewerEvidence,
       candidate_evidence: [],
       verified_evidence: viewerEvidence,
+      answer_safe_evidence: [],
+      answer_mode: "research_prototype",
+      professional_advice_certified: false,
+    });
+    return;
+  }
+  const lawTreeEvidence = lawTreeEvidenceForNode(node.doctrine_node_id);
+  if (lawTreeEvidence.length) {
+    res.status(200).json({
+      doctrine_node_id: node.doctrine_node_id,
+      source_node_id: node.source_node_id,
+      title: node.title,
+      node_type: node.node_type,
+      domain_id: node.domain_id,
+      coverage_status: "paragraph_verified",
+      warnings: Array.from(new Set(["law_tree_case_fruit_pack", "source_linked_public_judgment", "research_prototype"])),
+      evidence: lawTreeEvidence,
+      candidate_evidence: [],
+      verified_evidence: lawTreeEvidence,
       answer_safe_evidence: [],
       answer_mode: "research_prototype",
       professional_advice_certified: false,

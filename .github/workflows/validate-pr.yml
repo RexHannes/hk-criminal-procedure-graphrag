@@ -141,6 +141,18 @@ jobs:
       - name: Evaluate AI Inquiry Level 2
         run: node scripts/evaluate_ai_inquiry_level2.js
 
+      - name: Build law-tree case fruit packs
+        run: node scripts/build_law_tree_case_fruit_packs.js
+
+      - name: Validate law-tree case fruit packs
+        run: node scripts/validate_law_tree_case_fruit_packs.js
+
+      - name: Evaluate law-tree case fruit Level 1
+        run: node scripts/evaluate_law_tree_case_fruit_level1.js
+
+      - name: Evaluate law-tree case fruit Level 2
+        run: node scripts/evaluate_law_tree_case_fruit_level2.js
+
       - name: Generate case authority final report
         run: node scripts/generate_case_authority_final_report.js
 
@@ -163,10 +175,10 @@ jobs:
         run: node scripts/smoke_test_public_vercel_demo.js
 
       - name: Ensure PR 6 demo freeze artifacts are committed
-        run: git diff --exit-code artifacts/demo_freeze_report.json artifacts/demo_freeze_report.md artifacts/demo_outputs/demo_query_pack.json artifacts/demo_outputs/demo_query_pack.md artifacts/ui_demo_quality_check.md artifacts/excluded_unverified_case_seeds_report.json artifacts/excluded_unverified_case_seeds_report.md artifacts/all_visible_case_seed_inventory.json artifacts/all_visible_case_seed_inventory.md artifacts/visible_case_source_resolution_report.json artifacts/visible_case_source_resolution_report.md artifacts/case_recall_level1_eval.json artifacts/case_recall_level1_eval.md artifacts/ai_inquiry_level2_eval.json artifacts/ai_inquiry_level2_eval.md artifacts/case_authority_final_report.json artifacts/case_authority_final_report.md docs/boss_demo_script_pr6.md
+        run: git diff --exit-code artifacts/demo_freeze_report.json artifacts/demo_freeze_report.md artifacts/demo_outputs/demo_query_pack.json artifacts/demo_outputs/demo_query_pack.md artifacts/ui_demo_quality_check.md artifacts/excluded_unverified_case_seeds_report.json artifacts/excluded_unverified_case_seeds_report.md artifacts/all_visible_case_seed_inventory.json artifacts/all_visible_case_seed_inventory.md artifacts/visible_case_source_resolution_report.json artifacts/visible_case_source_resolution_report.md artifacts/case_recall_level1_eval.json artifacts/case_recall_level1_eval.md artifacts/ai_inquiry_level2_eval.json artifacts/ai_inquiry_level2_eval.md artifacts/law_tree_case_fruit_pack_report.json artifacts/law_tree_case_fruit_pack_report.md artifacts/law_tree_case_fruit_level1_eval.json artifacts/law_tree_case_fruit_level1_eval.md artifacts/law_tree_case_fruit_level2_eval.json artifacts/law_tree_case_fruit_level2_eval.md artifacts/case_authority_final_report.json artifacts/case_authority_final_report.md docs/boss_demo_script_pr6.md
 
       - name: Ensure L1-L3.5 artifacts are committed
-        run: git diff --exit-code data/legal_ingest/case_corpus data/legal_ingest/case_authority_registry.json artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/case_corpus_ingest_run_status.json artifacts/case_corpus_ingest_run_status.md artifacts/case_corpus_embedding_dry_run.json artifacts/case_corpus_qdrant_dry_run.json artifacts/case_corpus_retrieval_eval.json artifacts/case_corpus_retrieval_eval.md artifacts/case_corpus_duplicates_report.json artifacts/candidate_extraction_verification_report.json artifacts/candidate_extraction_verification_report.md artifacts/candidate_verified_cards_report.json artifacts/candidate_verified_cards_report.md artifacts/case_corpus_quality_audit.json artifacts/case_corpus_quality_audit.md artifacts/case_corpus_issue_coverage.json artifacts/case_corpus_issue_coverage.md artifacts/principle_quality_repair_report.json artifacts/principle_quality_repair_report.md artifacts/weak_issue_target_discovery_report.json artifacts/weak_issue_target_discovery_report.md artifacts/demo_outputs
+        run: git diff --exit-code data/legal_ingest/case_corpus data/legal_ingest/case_authority_registry.json artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/case_corpus_ingest_run_status.json artifacts/case_corpus_ingest_run_status.md artifacts/case_corpus_embedding_dry_run.json artifacts/case_corpus_qdrant_dry_run.json artifacts/case_corpus_retrieval_eval.json artifacts/case_corpus_retrieval_eval.md artifacts/case_corpus_duplicates_report.json artifacts/candidate_extraction_verification_report.json artifacts/candidate_extraction_verification_report.md artifacts/candidate_verified_cards_report.json artifacts/candidate_verified_cards_report.md artifacts/case_corpus_quality_audit.json artifacts/case_corpus_quality_audit.md artifacts/case_corpus_issue_coverage.json artifacts/case_corpus_issue_coverage.md artifacts/principle_quality_repair_report.json artifacts/principle_quality_repair_report.md artifacts/weak_issue_target_discovery_report.json artifacts/weak_issue_target_discovery_report.md artifacts/law_tree_case_fruit_pack_report.json artifacts/law_tree_case_fruit_pack_report.md artifacts/law_tree_case_fruit_level1_eval.json artifacts/law_tree_case_fruit_level1_eval.md artifacts/law_tree_case_fruit_level2_eval.json artifacts/law_tree_case_fruit_level2_eval.md artifacts/demo_outputs
 
       - name: Dry-run Part 1 source-card Qdrant indexer
         run: node scripts/index_part1_two_vertical_source_cards_qdrant.js --dry-run

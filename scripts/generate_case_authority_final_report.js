@@ -25,6 +25,9 @@ const registry = writeCaseAuthorityRegistry();
 const inventory = readJson("artifacts/all_visible_case_seed_inventory.json");
 const level1 = readJson("artifacts/case_recall_level1_eval.json");
 const level2 = readJson("artifacts/ai_inquiry_level2_eval.json");
+const lawTreePack = readJson("artifacts/law_tree_case_fruit_pack_report.json");
+const lawTreeLevel1 = readJson("artifacts/law_tree_case_fruit_level1_eval.json");
+const lawTreeLevel2 = readJson("artifacts/law_tree_case_fruit_level2_eval.json");
 const sourceUrls = new Set((registry.authorities || []).map(item => item.source_url).filter(Boolean));
 const exactQuotes = (registry.authorities || []).filter(item => item.exact_quote || item.supporting_quote).length;
 const summaries = (registry.authorities || []).filter(item => item.principle_text || item.proposition_text).length;
@@ -57,6 +60,17 @@ const report = {
     passed_query_count: level2.passed_query_count,
     query_count: level2.query_count,
   } : { pass: null, note: "not run yet" },
+  law_tree_case_fruit_packs: lawTreePack ? {
+    trees_processed: lawTreePack.counts.trees_processed,
+    candidate_cases_proposed: lawTreePack.counts.candidate_cases_proposed,
+    candidate_authority_records_considered: lawTreePack.counts.candidate_authority_records_considered,
+    cases_verified: lawTreePack.counts.cases_verified,
+    cases_excluded: lawTreePack.counts.cases_excluded,
+    paragraph_cards_created: lawTreePack.counts.paragraph_cards_created,
+    chunks_created: lawTreePack.counts.chunks_created,
+    level1_pass: lawTreeLevel1?.pass ?? null,
+    level2_pass: lawTreeLevel2?.pass ?? null,
+  } : { trees_processed: 0, note: "not run yet" },
   remaining_limitations: [
     "Lawyer-review certification is later HITL metadata and does not block research-prototype retrieval.",
     "Unresolved seed cases remain excluded until a public paragraph link, exact quote, paragraph text, and issue mapping are attached.",
@@ -85,6 +99,19 @@ write(OUT_MD, [
   `| HKLII/LegalRef/Judiciary links | ${counts.hklii_legalref_judiciary_links} |`,
   `| Exact quotes | ${counts.exact_quotes} |`,
   `| Short summaries | ${counts.short_summaries} |`,
+  "",
+  "## Law-Tree Case Fruit Packs",
+  "",
+  lawTreePack
+    ? [
+        `- Trees processed: ${lawTreePack.counts.trees_processed}`,
+        `- Candidate cases proposed: ${lawTreePack.counts.candidate_cases_proposed}`,
+        `- Cases verified in packs: ${lawTreePack.counts.cases_verified}`,
+        `- Paragraph cards / chunks: ${lawTreePack.counts.paragraph_cards_created}`,
+        `- Level 1 pack eval: ${lawTreeLevel1?.pass ? "pass" : "not passed"}`,
+        `- Level 2 pack eval: ${lawTreeLevel2?.pass ? "pass" : "not passed"}`,
+      ].join("\n")
+    : "- Not run yet.",
   "",
   "## Evals",
   "",

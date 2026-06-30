@@ -17,6 +17,15 @@ The original Fable viewer and AI Inquiry expose paragraph-linked public-source c
 | Exact quotes | 458 |
 | Short summaries | 458 |
 
+## Law-Tree Case Fruit Packs
+
+- Trees processed: 6
+- Candidate cases proposed: 179
+- Cases verified in packs: 52
+- Paragraph cards / chunks: 81
+- Level 1 pack eval: pass
+- Level 2 pack eval: pass
+
 ## Evals
 
 - Level 1 case recall: pass

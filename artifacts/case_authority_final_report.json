@@ -24,6 +24,17 @@
     "passed_query_count": 7,
     "query_count": 7
   },
+  "law_tree_case_fruit_packs": {
+    "trees_processed": 6,
+    "candidate_cases_proposed": 179,
+    "candidate_authority_records_considered": 262,
+    "cases_verified": 52,
+    "cases_excluded": 27,
+    "paragraph_cards_created": 81,
+    "chunks_created": 81,
+    "level1_pass": true,
+    "level2_pass": true
+  },
   "remaining_limitations": [
     "Lawyer-review certification is later HITL metadata and does not block research-prototype retrieval.",
     "Unresolved seed cases remain excluded until a public paragraph link, exact quote, paragraph text, and issue mapping are attached.",
