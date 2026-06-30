@@ -1,0 +1,144 @@
+{
+  "report_id": "pr6_merge_readiness_report",
+  "generated_at": "2026-07-01T00:00:00+08:00",
+  "repository": "RexHannes/hk-criminal-procedure-graphrag",
+  "pull_request": {
+    "number": 6,
+    "url": "https://github.com/RexHannes/hk-criminal-procedure-graphrag/pull/6",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "github_mergeable": false,
+    "head_branch": "codex/investor-recall-25k-path",
+    "head_sha": "82f333e56a4365c093b5122a2d01376de7893220",
+    "base_branch": "main",
+    "pr_recorded_base_sha": "12ba4e96a49a9a8453faf67023f190da78324c81",
+    "current_origin_main_sha": "00d74184150cef784d4a3507b4c1ed1362b6f23d",
+    "merge_base_sha": "12ba4e96a49a9a8453faf67023f190da78324c81",
+    "main_commits_ahead_of_merge_base": 4,
+    "pr_commits_ahead_of_merge_base": 31
+  },
+  "mergeability": {
+    "status": "not_mergeable_without_conflict_resolution",
+    "dry_merge_command": "git merge-tree --write-tree origin/main HEAD",
+    "dry_merge_exit_code": 1,
+    "reason": "origin/main moved through PR #9 and overlaps with PR #6 in API, viewer, retrieval, and investor recall files.",
+    "conflict_count": 11,
+    "conflict_files": [
+      {
+        "path": "api/doctrine-evidence.js",
+        "type": "content",
+        "risk": "backend/API retrieval conflict"
+      },
+      {
+        "path": "api/search-evidence.js",
+        "type": "content",
+        "risk": "backend/API retrieval and domain routing conflict"
+      },
+      {
+        "path": "data/legal_domain_packs/demo_maps/civil_procedure_hk/flows.json",
+        "type": "add/add",
+        "risk": "domain-pack data conflict"
+      },
+      {
+        "path": "data/legal_domain_packs/demo_maps/data_privacy_hk/flows.json",
+        "type": "add/add",
+        "risk": "domain-pack data conflict"
+      },
+      {
+        "path": "scripts/build_investor_recall_corpus.js",
+        "type": "add/add",
+        "risk": "investor recall/scaling script conflict"
+      },
+      {
+        "path": "scripts/run_investor_recall_pipeline.js",
+        "type": "add/add",
+        "risk": "investor recall/scaling pipeline conflict"
+      },
+      {
+        "path": "scripts/run_retrieval_benchmark.js",
+        "type": "content",
+        "risk": "retrieval benchmark conflict"
+      },
+      {
+        "path": "scripts/validate_viewer_case_fruits.js",
+        "type": "content",
+        "risk": "viewer/case-fruit validator conflict"
+      },
+      {
+        "path": "src/legal_answer/build_evidence_pack.js",
+        "type": "content",
+        "risk": "legal-answer evidence-pack conflict"
+      },
+      {
+        "path": "viewer/app.js",
+        "type": "content",
+        "risk": "Fable viewer integration conflict"
+      },
+      {
+        "path": "viewer/index_legacy.html",
+        "type": "content",
+        "risk": "viewer legacy-route labelling conflict"
+      }
+    ]
+  },
+  "pull_request_size": {
+    "changed_files": 281,
+    "additions": 184336,
+    "deletions": 384,
+    "risk": "large_pr_not_safe_to_merge_casually"
+  },
+  "change_classification": {
+    "core_production_demo_code": 36,
+    "case_authority_bridge": 6,
+    "viewer_fable_ui_integration": 10,
+    "backend_api_retrieval": 10,
+    "law_tree_packs": 15,
+    "validators": 45,
+    "demo_artifacts": 91,
+    "experimental_scaling_artifacts": 46,
+    "old_dead_artifacts": 0,
+    "other": 22
+  },
+  "major_risk_areas": [
+    "Merge conflicts touch viewer/app.js, so a conflict resolution could accidentally damage the Fable viewer shell.",
+    "Merge conflicts touch api/search-evidence.js and api/doctrine-evidence.js, so a conflict resolution could break source-gated retrieval, probate routing, or law-tree evidence search.",
+    "origin/main contains PR #9 viewer/domain-pack changes that overlap with PR #6, so production release should reconcile both intentionally.",
+    "PR #6 contains many generated artifacts and scaling/retrieval files beyond the minimum production demo path.",
+    "Production URL currently does not contain /viewer/case_corpus_demo.html, so production has not been promoted to the PR #6 demo surface."
+  ],
+  "test_status": {
+    "github_actions_validate": "success",
+    "vercel_preview": "success_READY",
+    "local_smoke_set": {
+      "node scripts/run_case_authority_pipeline.js": "passed",
+      "node scripts/validate_verified_case_authority.js": "passed",
+      "node scripts/validate_all_visible_cases_resolved_or_excluded.js": "passed",
+      "node scripts/validate_no_visible_unverified_case_authorities.js": "passed",
+      "node scripts/validate_backend_case_search_uses_verified_only.js": "passed",
+      "node scripts/evaluate_case_recall_level1.js": "passed_9_of_9",
+      "node scripts/evaluate_ai_inquiry_level2.js": "passed_7_of_7",
+      "node scripts/validate_law_tree_case_fruit_packs.js": "passed_6_trees_81_chunks",
+      "node scripts/evaluate_law_tree_case_fruit_level1.js": "passed_6_of_6",
+      "node scripts/evaluate_law_tree_case_fruit_level2.js": "passed_6_of_6",
+      "node scripts/smoke_test_viewer_ui_quality.js": "passed_local_files",
+      "node scripts/validate_demo_readiness_pr6.js": "passed",
+      "node scripts/smoke_test_pr6_demo_api.js --local-only --skip-network": "passed",
+      "node scripts/validate_no_secrets_committed.js": "passed",
+      "git diff --check": "passed"
+    }
+  },
+  "urls": {
+    "vercel_preview_url": "https://hk-criminal-procedure-graphrag-k9ffcsgku-montycareless-projects.vercel.app/viewer/",
+    "vercel_preview_direct_demo_url": "https://hk-criminal-procedure-graphrag-k9ffcsgku-montycareless-projects.vercel.app/viewer/case_corpus_demo.html",
+    "production_url": "https://hk-criminal-procedure-graphrag.vercel.app/viewer/",
+    "production_status": "not_promoted_to_pr6_demo; production smoke failed because /viewer/case_corpus_demo.html returned HTTP 404"
+  },
+  "recommendation": {
+    "decision": "split_or_rebase_before_merge",
+    "do_not_merge_pr6_as_is": true,
+    "preferred_path": "Create a smaller pr6-production-release branch from current main and cherry-pick only the Fable viewer preservation, case-authority bridge, backend/API retrieval, six law-tree packs, validators, and required demo artifacts.",
+    "acceptable_alternative": "Resolve conflicts in a dedicated integration branch by merging origin/main into PR #6, then rerun the full workflow and perform manual Fable viewer sanity checks before marking ready.",
+    "not_recommended": "Do not force-merge or mark PR #6 ready while draft=true, mergeable=false, production demo route is missing, and conflicts touch API/viewer files."
+  }
+}
