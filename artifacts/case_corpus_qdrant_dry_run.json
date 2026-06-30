@@ -17,13 +17,13 @@
   "qdrant_collection_targets": {
     "primary_chunk_collection": "hk_case_corpus_chunks_local_hash_legal_demo_v1_2048",
     "legacy_artifact_collections": {
-      "hk_case_paragraphs_openrouter_2048": 344,
-      "hk_case_propositions_openrouter_2048": 344,
-      "hk_case_principles_openrouter_2048": 344,
-      "hk_case_digests_openrouter_2048": 120
+      "hk_case_paragraphs_openrouter_2048": 1633,
+      "hk_case_propositions_openrouter_2048": 1633,
+      "hk_case_principles_openrouter_2048": 1633,
+      "hk_case_digests_openrouter_2048": 530
     }
   },
-  "dry_run_vector_count": 918,
+  "dry_run_vector_count": 4433,
   "sample_payload": {
     "chunk_id": "chunk_hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant_p1",
     "chunk_type": "case_paragraph_chunk",
@@ -33,6 +33,8 @@
     "citation": "[2022] HKCFI 1220",
     "court": "Court of First Instance",
     "judgment_date": "2022-04-27",
+    "domain_id": "criminal_law_hk",
+    "source_kind": "case_law",
     "issue_tags": [
       "criminal_law.theft",
       "criminal_law.theft.sentencing"
@@ -43,13 +45,21 @@
     "paragraph_ids": [
       "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant_p1"
     ],
+    "paragraph_id": "hk_hkcfi_2022_1220_between_hksar_respondent_and_khan_altaf_appellant_p1",
+    "proposition_ids": [],
+    "proposition_id": "",
+    "principle_ids": [],
+    "principle_id": "",
+    "digest_ids": [],
+    "digest_id": "",
     "checksum": "64a2f50af1b291944584d1144b907c2f0ec83f763508fbcf102a5678517e7e40",
     "embedding_model": "local-hash-legal-demo-v1",
     "embedding_version": "case-corpus-embedding-v1",
     "vector_dimension": 2048,
+    "current_treatment_status": "unchecked",
     "answer_layer_status": "research_only",
     "review_status": "machine_candidate",
-    "source_visibility": "public_demo",
+    "source_visibility": "public",
     "tenant_id": "public"
   },
   "status": "dry_run_ready_no_provider_calls"

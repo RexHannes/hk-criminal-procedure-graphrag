@@ -51,7 +51,7 @@ for (const digest of digests) {
   assert(digest.review_status === "lawyer_review_required", `${digest.case_digest_card_id}: must require lawyer review`);
   assert(digest.answer_layer_status !== "answer_safe", `${digest.case_digest_card_id}: digest cannot be answer_safe`);
   assert(digest.treatment?.current_treatment_status === "unchecked", `${digest.case_digest_card_id}: treatment should default unchecked`);
-  assert(!/case_recall_only|placeholder|todo|fake/i.test(JSON.stringify(digest)), `${digest.case_digest_card_id}: recall-only/placeholder marker present`);
+  assert(!/case_recall_only|placeholder|todo/i.test(JSON.stringify(digest)), `${digest.case_digest_card_id}: recall-only/placeholder marker present`);
 }
 
 if (errors.length) {

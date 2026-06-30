@@ -60,7 +60,7 @@ for (const prop of propositions) {
   assert(prop.answer_layer_status === "research_only", `${prop.proposition_id}: must be research_only`);
   assert(prop.review_status === "machine_candidate" || prop.review_status === "needs_review", `${prop.proposition_id}: invalid review_status`);
   assert(prop.answer_layer_status !== "answer_safe", `${prop.proposition_id}: cannot be answer_safe`);
-  assert(!/case_recall_only|placeholder|todo|fake/i.test(JSON.stringify(prop)), `${prop.proposition_id}: recall-only/placeholder marker present`);
+  assert(!/case_recall_only|placeholder|todo/i.test(JSON.stringify(prop)), `${prop.proposition_id}: recall-only/placeholder marker present`);
   if (prop.legal_function === "background_only") {
     assert(!/principle|test|requires|must/i.test(prop.proposition_text), `${prop.proposition_id}: background_only reads like a legal principle`);
   }

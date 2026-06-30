@@ -387,7 +387,8 @@
         "criminal_law.deception",
         "criminal_law.theft.sentencing",
         "criminal_law.theft.handling_stolen_goods",
-        "criminal_procedure.interview_caution"
+        "criminal_procedure.interview_caution",
+        "criminal_law.theft.appropriation"
       ],
       "candidate_facts_summary": "Public HKLII criminal judgment involving: Offence(s): [1] Theft (盜竊罪) [2] Attempted to obtain property by deception (企圖以欺騙  手段取得財產) [3-4] Obtaining property by deception (以欺騙手段取得財產)",
       "candidate_issues": [
@@ -431,7 +432,8 @@
             "criminal_law.deception",
             "criminal_law.theft.sentencing",
             "criminal_law.theft.handling_stolen_goods",
-            "criminal_procedure.interview_caution"
+            "criminal_procedure.interview_caution",
+            "criminal_law.theft.appropriation"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
@@ -456,7 +458,8 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.theft.handling_stolen_goods",
-            "criminal_procedure.interview_caution"
+            "criminal_procedure.interview_caution",
+            "criminal_law.theft.appropriation"
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
@@ -482,7 +485,8 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing",
-            "criminal_law.theft.handling_stolen_goods"
+            "criminal_law.theft.handling_stolen_goods",
+            "criminal_law.theft.appropriation"
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
@@ -506,7 +510,8 @@
             "criminal_law.deception",
             "criminal_procedure.interview_caution",
             "criminal_law.theft.sentencing",
-            "criminal_law.theft.handling_stolen_goods"
+            "criminal_law.theft.handling_stolen_goods",
+            "criminal_law.theft.appropriation"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -546,12 +551,14 @@
       "source_url": "https://www.hklii.hk/en/cases/hkdc/2026/909",
       "candidate_issue_tags": [
         "criminal_law.theft",
-        "criminal_law.theft.sentencing"
+        "criminal_law.theft.sentencing",
+        "criminal_procedure.bail"
       ],
       "candidate_facts_summary": "Public HKLII criminal judgment involving: Offence(s): [1] Theft (盜竊罪) [2] Driving while disqualified (於取消駕駛資格期間駕駛) [3] Using a motor vehicle without third party insurance (沒有第三者保險而使用汽車)",
       "candidate_issues": [
         "theft",
-        "sentencing"
+        "sentencing",
+        "bail"
       ],
       "candidate_holdings": [
         "No final ratio/current-treatment conclusion is made at L3.5.",
@@ -582,7 +589,8 @@
           "match_type": "exact_substring",
           "issue_tags": [
             "criminal_law.theft",
-            "criminal_law.theft.sentencing"
+            "criminal_law.theft.sentencing",
+            "criminal_procedure.bail"
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
@@ -603,7 +611,8 @@
           "match_type": "exact_substring",
           "issue_tags": [
             "criminal_law.theft",
-            "criminal_law.theft.sentencing"
+            "criminal_law.theft.sentencing",
+            "criminal_procedure.bail"
           ],
           "proposition_text": "This paragraph identifies research-only theft or Theft Ordinance context and should be checked against the full judgment before use.",
           "legal_function": "statutory_interpretation",
@@ -624,7 +633,8 @@
           "match_type": "exact_substring",
           "issue_tags": [
             "criminal_law.theft",
-            "criminal_law.theft.sentencing"
+            "criminal_law.theft.sentencing",
+            "criminal_procedure.bail"
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
@@ -645,7 +655,8 @@
           "exact_quote_support": "sentences of considerable length",
           "issue_tags": [
             "criminal_law.theft",
-            "criminal_law.theft.sentencing"
+            "criminal_law.theft.sentencing",
+            "criminal_procedure.bail"
           ],
           "demotion_flags": [
             "quote_context_insufficient",
@@ -688,7 +699,10 @@
         "criminal_law.theft.sentencing",
         "criminal_law.deception",
         "criminal_law.theft.appropriation",
-        "criminal_law.fraud"
+        "criminal_law.fraud",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea"
       ],
       "candidate_facts_summary": "Public HKLII criminal judgment involving: Offence: [1]-[14]  Theft (盜竊罪) [15]-[29]  Obtaining property by deception (以欺騙手段取得財產)",
       "candidate_issues": [
@@ -704,6 +718,7 @@
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
+        "A theft, fraud or deception question turns on dishonesty or mens rea.",
         "The user needs sentencing context after liability is established or admitted.",
         "The question involves deception, fraud, or obtaining property by deception."
       ],
@@ -731,7 +746,10 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
@@ -756,7 +774,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
@@ -781,7 +802,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.deception",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
@@ -806,7 +830,10 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "demotion_flags": [
             "sentencing_only_not_liability",
@@ -825,7 +852,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "demotion_flags": [
             "quote_context_insufficient",
@@ -844,7 +874,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.deception",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "demotion_flags": [
             "quote_context_insufficient",
@@ -1421,7 +1454,10 @@
         "criminal_law.deception",
         "criminal_law.theft.sentencing",
         "criminal_law.fraud",
-        "criminal_law.theft.appropriation"
+        "criminal_law.theft.appropriation",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea"
       ],
       "candidate_facts_summary": "Public HKLII criminal judgment involving: Offence: [1] Theft (盜竊罪)  - D1 [2] Theft (盜竊罪)  - D2 [3], [4], [5], [6], [8], [10] & [11] Obtaining property by deception (以欺騙手段取得財產)  - D2 [7] Theft (盜竊罪)  - D1 & D2 [9], [12] & [13] Attempting to obtain property by deception (企圖以欺騙手段取得財產)  - D2",
       "candidate_issues": [
@@ -1437,6 +1473,7 @@
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
+        "A theft, fraud or deception question turns on dishonesty or mens rea.",
         "The user needs sentencing context after liability is established or admitted.",
         "The question involves deception, fraud, or obtaining property by deception."
       ],
@@ -1464,7 +1501,10 @@
             "criminal_law.deception",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.theft.appropriation"
+            "criminal_law.theft.appropriation",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
@@ -1488,7 +1528,10 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception",
-            "criminal_law.theft.appropriation"
+            "criminal_law.theft.appropriation",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
@@ -1513,7 +1556,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
@@ -1537,7 +1583,10 @@
             "criminal_law.deception",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.theft.appropriation"
+            "criminal_law.theft.appropriation",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -1555,7 +1604,10 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception",
-            "criminal_law.theft.appropriation"
+            "criminal_law.theft.appropriation",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "demotion_flags": [
             "sentencing_only_not_liability",
@@ -1574,7 +1626,10 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -3638,7 +3693,8 @@
         "criminal_law.deception",
         "criminal_law.theft.appropriation",
         "criminal_law.theft.sentencing",
-        "criminal_law.fraud"
+        "criminal_law.fraud",
+        "criminal_procedure.interview_caution"
       ],
       "candidate_facts_summary": "Public HKLII criminal judgment involving: Offence: [1] Theft [2, 4, 5] Obtaining property by deception [3] Attempting to obtain property by deception",
       "candidate_issues": [
@@ -3655,6 +3711,7 @@
       ],
       "candidate_applies_when": [
         "The user needs sentencing context after liability is established or admitted.",
+        "The case involves caution/interview material relevant to evidence triage.",
         "The question involves deception, fraud, or obtaining property by deception."
       ],
       "candidate_distinguishable_when": [
@@ -3681,7 +3738,8 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.interview_caution"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
@@ -3706,7 +3764,8 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.deception",
+            "criminal_procedure.interview_caution"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
@@ -3730,7 +3789,8 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
-            "criminal_law.theft.sentencing"
+            "criminal_law.theft.sentencing",
+            "criminal_procedure.interview_caution"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
@@ -3754,7 +3814,8 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.deception",
+            "criminal_procedure.interview_caution"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -3772,7 +3833,8 @@
             "criminal_law.fraud",
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
-            "criminal_law.theft.sentencing"
+            "criminal_law.theft.sentencing",
+            "criminal_procedure.interview_caution"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -4762,7 +4824,8 @@
         "criminal_law.deception",
         "criminal_law.theft.appropriation",
         "criminal_law.theft.sentencing",
-        "criminal_law.fraud"
+        "criminal_law.fraud",
+        "criminal_procedure.interview_caution"
       ],
       "candidate_facts_summary": "Public HKLII criminal judgment involving: Offences: [1] Theft（盜竊罪） [2][4] [6] [7][9] [10] Obtaining property by deception（以欺騙手段取得財產）",
       "candidate_issues": [
@@ -4779,6 +4842,7 @@
       ],
       "candidate_applies_when": [
         "The user needs sentencing context after liability is established or admitted.",
+        "The case involves caution/interview material relevant to evidence triage.",
         "The question involves deception, fraud, or obtaining property by deception."
       ],
       "candidate_distinguishable_when": [
@@ -4805,7 +4869,8 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.interview_caution"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
@@ -4829,7 +4894,8 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.deception",
+            "criminal_procedure.interview_caution"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
@@ -4853,7 +4919,8 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.interview_caution"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "case_application",
@@ -4877,7 +4944,8 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.interview_caution"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -4895,7 +4963,8 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.deception",
+            "criminal_procedure.interview_caution"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -4913,7 +4982,8 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.interview_caution"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -6181,7 +6251,8 @@
         "criminal_law.theft.mens_rea",
         "criminal_law.theft.appropriation",
         "criminal_law.fraud",
-        "criminal_procedure.interview_caution"
+        "criminal_procedure.interview_caution",
+        "criminal_procedure.bail"
       ],
       "candidate_facts_summary": "Public HKLII criminal judgment involving: Offence: [1], [2] & [6] Theft (盜竊罪) [3] - [5] Obtaining property by deception (以欺騙手段取得財產)",
       "candidate_issues": [
@@ -6230,7 +6301,8 @@
             "criminal_law.theft.mens_rea",
             "criminal_law.theft.appropriation",
             "criminal_law.fraud",
-            "criminal_procedure.interview_caution"
+            "criminal_procedure.interview_caution",
+            "criminal_procedure.bail"
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
@@ -6259,7 +6331,8 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception",
-            "criminal_procedure.interview_caution"
+            "criminal_procedure.interview_caution",
+            "criminal_procedure.bail"
           ],
           "proposition_text": "This paragraph is a research-only candidate on dishonesty or mens rea and requires current-treatment and lawyer review.",
           "legal_function": "evidential_factor",
@@ -6287,7 +6360,8 @@
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea",
             "criminal_law.theft.appropriation",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.bail"
           ],
           "proposition_text": "This paragraph records research-only caution/interview material relevant to evidential triage, not final proof of guilt.",
           "legal_function": "procedure",
@@ -6315,7 +6389,8 @@
             "criminal_law.theft.mens_rea",
             "criminal_law.theft.appropriation",
             "criminal_law.fraud",
-            "criminal_procedure.interview_caution"
+            "criminal_procedure.interview_caution",
+            "criminal_procedure.bail"
           ],
           "demotion_flags": [
             "sentencing_only_not_liability",
@@ -6338,7 +6413,8 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception",
-            "criminal_procedure.interview_caution"
+            "criminal_procedure.interview_caution",
+            "criminal_procedure.bail"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -6360,7 +6436,8 @@
             "criminal_law.theft.dishonesty",
             "criminal_law.theft.mens_rea",
             "criminal_law.theft.appropriation",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.bail"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -6392,7 +6469,11 @@
         "criminal_law.theft.handling_stolen_goods",
         "criminal_law.theft.appropriation",
         "criminal_law.theft.sentencing",
-        "criminal_law.fraud"
+        "criminal_law.fraud",
+        "criminal_procedure.interview_caution",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea"
       ],
       "candidate_facts_summary": "Public HKLII criminal judgment involving: Offence: [1] Handling stolen goods (處理贓物罪) [2] to [4] Obtaining property by deception (以欺騙手段取得財產)",
       "candidate_issues": [
@@ -6408,7 +6489,9 @@
         "No final ratio/current-treatment conclusion is made at L3.5."
       ],
       "candidate_applies_when": [
+        "A theft, fraud or deception question turns on dishonesty or mens rea.",
         "The user needs sentencing context after liability is established or admitted.",
+        "The case involves caution/interview material relevant to evidence triage.",
         "The question involves deception, fraud, or obtaining property by deception."
       ],
       "candidate_distinguishable_when": [
@@ -6436,7 +6519,11 @@
             "criminal_law.theft.handling_stolen_goods",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.interview_caution",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
@@ -6461,7 +6548,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.deception",
             "criminal_law.theft.handling_stolen_goods",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.interview_caution",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
@@ -6488,7 +6579,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception",
-            "criminal_law.theft.handling_stolen_goods"
+            "criminal_law.theft.handling_stolen_goods",
+            "criminal_procedure.interview_caution",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
@@ -6513,7 +6608,11 @@
             "criminal_law.theft.handling_stolen_goods",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.interview_caution",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -6532,7 +6631,11 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception",
-            "criminal_law.theft.handling_stolen_goods"
+            "criminal_law.theft.handling_stolen_goods",
+            "criminal_procedure.interview_caution",
+            "criminal_law.dishonesty",
+            "criminal_law.theft.dishonesty",
+            "criminal_law.theft.mens_rea"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -6767,7 +6870,8 @@
         "criminal_law.deception",
         "criminal_law.theft.appropriation",
         "criminal_law.theft.sentencing",
-        "criminal_law.fraud"
+        "criminal_law.fraud",
+        "criminal_procedure.interview_caution"
       ],
       "candidate_facts_summary": "Public HKLII criminal judgment involving: Offence: DCCC 532/2023 [2] Having custody or control of counterfeit currency notes (保管或控制偽製流通紙幣) DCCC 561/2023 [1] to [3] Passing counterfeit notes or coins (行使偽製紙幣或硬幣) [6] Possession of an identity card relating to another person (管有他人的身分證) DCCC 983/2023 [1] Theft (盜竊罪) [2] to [4] Obtaining property by deception (以欺騙手段取得財產)",
       "candidate_issues": [
@@ -6784,6 +6888,7 @@
       ],
       "candidate_applies_when": [
         "The user needs sentencing context after liability is established or admitted.",
+        "The case involves caution/interview material relevant to evidence triage.",
         "The question involves deception, fraud, or obtaining property by deception."
       ],
       "candidate_distinguishable_when": [
@@ -6810,7 +6915,8 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.interview_caution"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "statutory_interpretation",
@@ -6834,7 +6940,8 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.deception",
+            "criminal_procedure.interview_caution"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
@@ -6858,7 +6965,8 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception",
-            "criminal_law.theft.appropriation"
+            "criminal_law.theft.appropriation",
+            "criminal_procedure.interview_caution"
           ],
           "proposition_text": "This paragraph provides research-only sentencing context for a theft, dishonesty, deception or theft-linked offence; it must not be used as a liability rule.",
           "legal_function": "sentencing",
@@ -6883,7 +6991,8 @@
             "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_procedure.interview_caution"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -6901,7 +7010,8 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception"
+            "criminal_law.deception",
+            "criminal_procedure.interview_caution"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -6919,7 +7029,8 @@
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
             "criminal_law.deception",
-            "criminal_law.theft.appropriation"
+            "criminal_law.theft.appropriation",
+            "criminal_procedure.interview_caution"
           ],
           "demotion_flags": [
             "sentencing_only_not_liability",
@@ -7130,7 +7241,6 @@
       "candidate_issue_tags": [
         "criminal_law.theft",
         "criminal_law.deception",
-        "criminal_law.theft.belonging_to_another",
         "criminal_law.theft.appropriation",
         "criminal_law.theft.sentencing",
         "criminal_law.fraud"
@@ -7139,9 +7249,9 @@
       "candidate_issues": [
         "theft",
         "deception",
-        "belonging to another",
         "appropriation",
-        "sentencing"
+        "sentencing",
+        "fraud"
       ],
       "candidate_holdings": [
         "No final ratio/current-treatment conclusion is made at L3.5.",
@@ -7158,7 +7268,7 @@
       ],
       "matched_paragraph_ids": [
         "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p1",
-        "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p32",
+        "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p36",
         "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p33"
       ],
       "accepted_quotes": [
@@ -7174,7 +7284,6 @@
           "issue_tags": [
             "criminal_law.theft",
             "criminal_law.deception",
-            "criminal_law.theft.belonging_to_another",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
@@ -7189,23 +7298,22 @@
         },
         {
           "quote_index": 1,
-          "candidate_quote": "The Court of Appeal in the case of HKSAR v Tandon William Chaing CACC 404/2012, approved sentencing starting point of 3 years’ imprisonment adopted in the case of HKSAR v Kwan Po Keung [2012] 2 HKLRD 12 , for the unautho",
-          "exact_quote_support": "The Court of Appeal in the case of HKSAR v Tandon William Chaing CACC 404/2012, approved sentencing starting point of 3 years’ imprisonment adopted in the case of HKSAR v Kwan Po Keung [2012] 2 HKLRD 12 , for the unautho",
-          "paragraph_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p32",
-          "para_no": "32",
-          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494#p32",
+          "candidate_quote": "imprisonment is an appropriate sentencing starting point for this charge involving simple case of credit card fraud where stolen genuine credit cards ar",
+          "exact_quote_support": "imprisonment is an appropriate sentencing starting point for this charge involving simple case of credit card fraud where stolen genuine credit cards ar",
+          "paragraph_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p36",
+          "para_no": "36",
+          "source_url": "https://www.hklii.hk/en/cases/hkdc/2021/494#p36",
           "match_score": 1,
           "match_type": "exact_substring",
           "issue_tags": [
-            "criminal_law.theft.belonging_to_another",
             "criminal_law.theft",
-            "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_law.deception"
           ],
-          "proposition_text": "This paragraph provides research-only paragraph proof relevant to whether property belonged to another in a theft-linked case.",
-          "legal_function": "case_application",
+          "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
+          "legal_function": "evidential_factor",
           "authority_role_candidate": "application_to_facts",
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -7226,8 +7334,7 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception",
-            "criminal_law.theft.belonging_to_another"
+            "criminal_law.deception"
           ],
           "proposition_text": "This paragraph is a research-only candidate on fraud or deception issues and requires lawyer review before reliance.",
           "legal_function": "evidential_factor",
@@ -7249,7 +7356,6 @@
           "issue_tags": [
             "criminal_law.theft",
             "criminal_law.deception",
-            "criminal_law.theft.belonging_to_another",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud"
@@ -7261,17 +7367,16 @@
         },
         {
           "principle_index": 1,
-          "principle_text": "Treat this paragraph as a research-only candidate on the property-belonging-to-another element; use only with full-judgment and current-treatment review.",
-          "paragraph_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p32",
+          "principle_text": "Treat the paragraph as a fraud or deception research candidate, subject to full-judgment and current-treatment review.",
+          "paragraph_id": "hk_hkdc_2021_494_hksar_v_choi_ping_chiu_p36",
           "quote_index": 1,
-          "exact_quote_support": "The Court of Appeal in the case of HKSAR v Tandon William Chaing CACC 404/2012, approved sentencing starting point of 3 years’ imprisonment adopted in the case of HKSAR v Kwan Po Keung [2012] 2 HKLRD 12 , for the unautho",
+          "exact_quote_support": "imprisonment is an appropriate sentencing starting point for this charge involving simple case of credit card fraud where stolen genuine credit cards ar",
           "issue_tags": [
-            "criminal_law.theft.belonging_to_another",
             "criminal_law.theft",
-            "criminal_law.deception",
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
-            "criminal_law.fraud"
+            "criminal_law.fraud",
+            "criminal_law.deception"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",
@@ -7289,8 +7394,7 @@
             "criminal_law.theft.appropriation",
             "criminal_law.theft.sentencing",
             "criminal_law.fraud",
-            "criminal_law.deception",
-            "criminal_law.theft.belonging_to_another"
+            "criminal_law.deception"
           ],
           "demotion_flags": [
             "issue_tag_overbroad",

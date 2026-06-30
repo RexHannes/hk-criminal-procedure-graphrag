@@ -1,0 +1,717 @@
+{
+  "report_id": "verified_500_case_regression_report_v1",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "corpus_counts": {
+    "registry_case_count": 530,
+    "paragraph_card_count": 1633,
+    "proposition_card_count": 1633,
+    "principle_card_count": 1633,
+    "case_digest_card_count": 530
+  },
+  "metrics": {
+    "supported_query_count": 4,
+    "unsupported_query_count": 1,
+    "supported_queries_with_authorities": 4,
+    "paragraph_anchor_rate": 1,
+    "answer_safe_count": 0,
+    "wrong_domain_leak_rate": 0,
+    "unsupported_query_abstention_rate": 1
+  },
+  "query_results": [
+    {
+      "query_id": "theft_dishonesty_research_memo",
+      "supported_expected": true,
+      "query": "For a Hong Kong theft/shoplifting case, what are the dishonesty issues if the suspect says they forgot to pay?",
+      "requested_issue_id": "criminal_law.theft.dishonesty",
+      "inferred_issue_ids": [
+        "criminal_law.theft.dishonesty",
+        "criminal_law.dishonesty",
+        "criminal_law.theft.mens_rea",
+        "criminal_law.theft.mistake_or_forgot_to_pay",
+        "criminal_law.theft"
+      ],
+      "cases_returned": 5,
+      "paragraph_url_count": 15,
+      "paragraph_url_anchor_pass_rate": 1,
+      "exact_quote_count": 15,
+      "answer_safe": false,
+      "answer_layer_status": "research_only",
+      "review_status": "lawyer_review_required",
+      "l4_answer_safe_implemented": false,
+      "evidence_ingested": true,
+      "source_audit": {
+        "registry_case_count": 530,
+        "paragraph_card_count": 1633,
+        "proposition_card_count": 1633,
+        "principle_card_count": 1633,
+        "case_digest_card_count": 530,
+        "issue_map_count": 2290,
+        "returned_case_count": 5,
+        "hybrid_candidate_count": 4346,
+        "source_proof_pass_count": 4317,
+        "source_proof_excluded_count": 29,
+        "answer_layer_status": "research_only",
+        "review_status": "lawyer_review_required",
+        "l4_answer_safe_implemented": false
+      },
+      "cases": [
+        {
+          "case_id": "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant",
+          "case_name": "HKSAR Respondent and LI LINLIN Appellant",
+          "neutral_citation": "[2023] HKCFI 424",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2023/424#p1",
+            "https://www.hklii.hk/en/cases/hkcfi/2023/424#p3",
+            "https://www.hklii.hk/en/cases/hkcfi/2023/424#p15"
+          ],
+          "exact_quotes": [
+            "Theft Ordinance , Cap 210 and find $3500",
+            "dishonest or had she forgotten to pay on her way out?",
+            "dishonestly steal and appropriate property was proved by the fact there were 5 oranges in one bag and 6 oranges in the other"
+          ],
+          "principle_ids": [
+            "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant_p3_principle",
+            "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant_p15_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2024_1361_hksar_v_leung_chi_kit",
+          "case_name": "HKSAR v LEUNG CHI KIT",
+          "neutral_citation": "[2024] HKDC 1361",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2024/1361#p65",
+            "https://www.hklii.hk/en/cases/hkdc/2024/1361#p1",
+            "https://www.hklii.hk/en/cases/hkdc/2024/1361#p27"
+          ],
+          "exact_quotes": [
+            "dishonest ” according to the two-fold test in the case of R v Ghosh [1982] 75 Cr App R 154",
+            "Theft Ordinance , Cap 210",
+            "PW3 was the arresting officer. He testified that he arrested the defendant on 17 August 2022 in relation to a ‘theft’ case in Tsim Sha Tsui. Upon arrest"
+          ],
+          "principle_ids": [
+            "hk_hkdc_2024_1361_hksar_v_leung_chi_kit_p65_principle",
+            "hk_hkdc_2024_1361_hksar_v_leung_chi_kit_p27_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2025_190_hksar_respondent_v_lam_tsz_him_d2_1st_applicant_tsang_tsz_tong_d4_2nd_ap",
+          "case_name": "HKSAR Respondent v Lam Tsz Him (林子謙) (D2) 1st Applicant Tsang Tsz Tong (曾梓朗) (D4) 2nd Applicant",
+          "neutral_citation": "[2025] HKCA 190",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2025/190#p26",
+            "https://www.hklii.hk/en/cases/hkca/2025/190#p29",
+            "https://www.hklii.hk/en/cases/hkca/2025/190#p30"
+          ],
+          "exact_quotes": [
+            "dishonest by the ordinary standards of reasonable and honest people; and if so, did he himself realise that what he was doing was by those standards",
+            "dishonesty was an essential element, and the means agreed upon must be dishonest according to the Ghosh test",
+            "dishonest by ordinary standards; but (3) D4 did not realise that what he had done was dishonest by ordinary standards"
+          ],
+          "principle_ids": [
+            "hk_hkca_2025_190_hksar_respondent_v_lam_tsz_him_d2_1st_applicant_tsang_tsz_tong_d4_2nd_ap_p26_principle",
+            "hk_hkca_2025_190_hksar_respondent_v_lam_tsz_him_d2_1st_applicant_tsang_tsz_tong_d4_2nd_ap_p29_principle",
+            "hk_hkca_2025_190_hksar_respondent_v_lam_tsz_him_d2_1st_applicant_tsang_tsz_tong_d4_2nd_ap_p30_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkcfi_2022_2438_between_1_st_plaintiff_tang_yau_ping_2_nd_plaintiff_leung_shu_lam_3_rd_p",
+          "case_name": "BETWEEN 廣州市鄰港貿易有限分司 1 st Plaintiff TANG YAU PING (鄧一平) 2 nd Plaintiff LEUNG SHU LAM (梁樹林) 3 rd Plaintiff and SECRETARY FOR JUSTICE Defendant",
+          "neutral_citation": "[2022] HKCFI 2438",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2022/2438#p58",
+            "https://www.hklii.hk/en/cases/hkcfi/2022/2438#p122",
+            "https://www.hklii.hk/en/cases/hkcfi/2022/2438#p436"
+          ],
+          "exact_quotes": [
+            "Theft Ordinance Cap 210 (“ TO ”): “(1) A person commits blackmail if, with a view to gain for himself or another or with intent to cause loss to another, he makes any unwarran",
+            "dishonesty, corrupt motive and/or unreliability",
+            "bail by reporting to TSW Police Station, firstly to “O/C of [DCI Team 1] of [TSW Police Station]”, and later to “O/C of Team 5 CID [ie Divisional Crime Investigation Team 5, “ DCI Team"
+          ],
+          "principle_ids": [
+            "hk_hkcfi_2022_2438_between_1_st_plaintiff_tang_yau_ping_2_nd_plaintiff_leung_shu_lam_3_rd_p_p58_principle",
+            "hk_hkcfi_2022_2438_between_1_st_plaintiff_tang_yau_ping_2_nd_plaintiff_leung_shu_lam_3_rd_p_p436_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2024_231_between_hksar_respondent_and_tam_tak_chi_applicant",
+          "case_name": "BETWEEN HKSAR Respondent and TAM TAK CHI (譚得志) Applicant",
+          "neutral_citation": "[2024] HKCA 231",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2024/231#p177",
+            "https://www.hklii.hk/en/cases/hkca/2024/231#p151",
+            "https://www.hklii.hk/en/cases/hkca/2024/231#p38"
+          ],
+          "exact_quotes": [
+            "Theft Ordinance Cap 210 , abolishing a range of common law offences concerning dishonesty while preserving just those relating to the public revenue and cheating",
+            "Here, the context in which the applicant uttered the Slogan involves two facets, resulting in a two-step approach: (1) First, the socio-political context. The Slogan first emerged in",
+            "It was stressed in mitigation that while participating in the anti-extradition law movement in 2019, the applicant had remained respectful of the freedom of speech that Hong Kong"
+          ],
+          "principle_ids": [
+            "hk_hkca_2024_231_between_hksar_respondent_and_tam_tak_chi_applicant_p38_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        }
+      ],
+      "markdown_excerpt": "# L1-L3.5 Case-Law Research Memo\n\n## Short Answer\n- The case-corpus layer found research-only public case authorities with paragraph proof. They may support legal research and issue spotting, but they are not answer-safe legal advice.\n\n## Issues\n- Issue mapped: criminal_law.theft.dishonesty\n- Issue mapped: criminal_law.dishonesty\n- Issue mapped: criminal_law.theft.mens_rea\n- Issue mapped: criminal_law.theft.mistake_or_forgot_to_pay\n- Issue mapped: criminal_law.theft\n\n## Governing Law / Elements\n- Use statute/source cards for governing elements; case-corpus cards provide paragraph-backed research context and factual application only.\n\n## Case-by-Case Authorities\n- HKSAR Respondent and LI LINLIN Appellant [2023] HKCFI 424 (Court of First Instance, 2023-02-17). Facts: Public HKLII criminal judgment mapped to criminal_law.theft, criminal_law.dishonesty, criminal_law.theft.dishonesty, criminal_law.theft.mens_rea. Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 1 - https://www.hklii.hk/en/cases/hkcfi/2023/424#p1 Exact quote: \"Theft Ordinance , Cap 210 and find $3500\" Principle: Treat this paragraph as a research-only candidate on in",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "query_id": "intention_permanently_deprive",
+      "supported_expected": true,
+      "query": "In a Hong Kong theft case, what authorities discuss intention permanently to deprive?",
+      "requested_issue_id": "criminal_law.theft.intention_permanently_deprive",
+      "inferred_issue_ids": [
+        "criminal_law.theft.intention_permanently_deprive"
+      ],
+      "cases_returned": 5,
+      "paragraph_url_count": 15,
+      "paragraph_url_anchor_pass_rate": 1,
+      "exact_quote_count": 15,
+      "answer_safe": false,
+      "answer_layer_status": "research_only",
+      "review_status": "lawyer_review_required",
+      "l4_answer_safe_implemented": false,
+      "evidence_ingested": false,
+      "source_audit": {
+        "registry_case_count": 530,
+        "paragraph_card_count": 1633,
+        "proposition_card_count": 1633,
+        "principle_card_count": 1633,
+        "case_digest_card_count": 530,
+        "issue_map_count": 2290,
+        "returned_case_count": 5,
+        "hybrid_candidate_count": 4347,
+        "source_proof_pass_count": 4318,
+        "source_proof_excluded_count": 29,
+        "answer_layer_status": "research_only",
+        "review_status": "lawyer_review_required",
+        "l4_answer_safe_implemented": false
+      },
+      "cases": [
+        {
+          "case_id": "hk_hkdc_2025_295_hksar_v_cheung_hing_chik",
+          "case_name": "HKSAR v Cheung Hing Chik",
+          "neutral_citation": "[2025] HKDC 295",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2025/295#p41",
+            "https://www.hklii.hk/en/cases/hkdc/2025/295#p40",
+            "https://www.hklii.hk/en/cases/hkdc/2025/295#p61"
+          ],
+          "exact_quotes": [
+            "dishonestly and with an intention to permanently deprive",
+            "dishonestly, (2) appropriates, (3) property, (4) belonging to another, (5) with the intention of permanently depriving that other of it",
+            "dishonestly is proved"
+          ],
+          "principle_ids": [
+            "hk_hkdc_2025_295_hksar_v_cheung_hing_chik_p41_principle",
+            "hk_hkdc_2025_295_hksar_v_cheung_hing_chik_p40_principle",
+            "hk_hkdc_2025_295_hksar_v_cheung_hing_chik_p61_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2023_396_hksar_respondent_v_christopher_okechi_nwosu_appellant",
+          "case_name": "HKSAR Respondent v Christopher Okechi Nwosu Appellant",
+          "neutral_citation": "[2023] HKCA 396",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2023/396#p5",
+            "https://www.hklii.hk/en/cases/hkca/2023/396#p1",
+            "https://www.hklii.hk/en/cases/hkca/2023/396#p41"
+          ],
+          "exact_quotes": [
+            "permanently deprive the owner of it",
+            "Theft Ordinance , Cap 210 , and one charge of failing to surrender to custody without reasonable cause, contrary to section 9L (1) and (3) of the Criminal Procedure Ordinance",
+            "sentenced the appellant to 15 months’ imprisonment for the burglary charge and 3 months’ imprisonment for the failing to surrender charge"
+          ],
+          "principle_ids": [
+            "hk_hkca_2023_396_hksar_respondent_v_christopher_okechi_nwosu_appellant_p5_principle",
+            "hk_hkca_2023_396_hksar_respondent_v_christopher_okechi_nwosu_appellant_p1_principle",
+            "hk_hkca_2023_396_hksar_respondent_v_christopher_okechi_nwosu_appellant_p41_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkcfi_2021_94_between_hksar_respondent_and_yeung_sarah_sum_yee_appellant",
+          "case_name": "BETWEEN HKSAR Respondent and YEUNG SARAH SUM YEE Appellant",
+          "neutral_citation": "[2021] HKCFI 94",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2021/94#p10",
+            "https://www.hklii.hk/en/cases/hkcfi/2021/94#p15",
+            "https://www.hklii.hk/en/cases/hkcfi/2021/94#p3"
+          ],
+          "exact_quotes": [
+            "dishonesty issue and the intention to permanently deprive issue",
+            "dishonesty, and the matter was not argued before the learned Magistrate, be that as it may,as I have said, the intent of the Appellant, at the time of stealing was uppermost in the learned M",
+            "under caution in which she admitted to stealing the items for personal use"
+          ],
+          "principle_ids": [
+            "hk_hkcfi_2021_94_between_hksar_respondent_and_yeung_sarah_sum_yee_appellant_p10_principle",
+            "hk_hkcfi_2021_94_between_hksar_respondent_and_yeung_sarah_sum_yee_appellant_p15_principle",
+            "hk_hkcfi_2021_94_between_hksar_respondent_and_yeung_sarah_sum_yee_appellant_p3_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant",
+          "case_name": "BETWEEN HKSAR Respondent and Chan Pui-Yu Appellant",
+          "neutral_citation": "[2024] HKCFI 3560",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2024/3560#p9",
+            "https://www.hklii.hk/en/cases/hkcfi/2024/3560#p1",
+            "https://www.hklii.hk/en/cases/hkcfi/2024/3560#p14"
+          ],
+          "exact_quotes": [
+            "dishonest with an intention to permanently deprive the owner of the Phone",
+            "Theft Ordinance , Cap",
+            "It was submitted that there was no basis to complain that the Magistrate failed to apply the Ghosh test and automatically jumped to the conclusion of guilt after"
+          ],
+          "principle_ids": [
+            "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant_p9_principle",
+            "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant_p1_principle",
+            "hk_hkcfi_2024_3560_between_hksar_respondent_and_chan_pui_yu_appellant_p14_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkcfi_2021_3253_between_hksar_respondent_and_shiv_kumar_appellant",
+          "case_name": "BETWEEN HKSAR Respondent and SHIV Kumar Appellant",
+          "neutral_citation": "[2021] HKCFI 3253",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2021/3253#p29",
+            "https://www.hklii.hk/en/cases/hkcfi/2021/3253#p1",
+            "https://www.hklii.hk/en/cases/hkcfi/2021/3253#p33"
+          ],
+          "exact_quotes": [
+            "dishonest and he had the intention to permanently deprive the owner of those items, applying the test in R v Ghosh [1982] QB 1053",
+            "Theft Ordinance , Cap 210 [Charge 1] and one of Possession of an Identity Card relating to Another Person, contrary to section 7A (1A) of the Registration of Persons Ordinance",
+            "The Magistrate was told the Appellant was 35 years old and single. He came to Hong Kong from India in 2015. Between 2017 and 2019, the Appellant had"
+          ],
+          "principle_ids": [
+            "hk_hkcfi_2021_3253_between_hksar_respondent_and_shiv_kumar_appellant_p29_principle",
+            "hk_hkcfi_2021_3253_between_hksar_respondent_and_shiv_kumar_appellant_p1_principle",
+            "hk_hkcfi_2021_3253_between_hksar_respondent_and_shiv_kumar_appellant_p33_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        }
+      ],
+      "markdown_excerpt": "# L1-L3.5 Case-Law Research Memo\n\n## Short Answer\n- The case-corpus layer found research-only public case authorities with paragraph proof. They may support legal research and issue spotting, but they are not answer-safe legal advice.\n\n## Issues\n- Issue mapped: criminal_law.theft.intention_permanently_deprive\n\n## Governing Law / Elements\n- Use statute/source cards for governing elements; case-corpus cards provide paragraph-backed research context and factual application only.\n\n## Case-by-Case Authorities\n- HKSAR v Cheung Hing Chik [2025] HKDC 295 (District Court, 2024-12-20). Facts: Public HKLII criminal judgment involving: Offences: [1] & [2] Theft（盜竊罪） Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 41 - https://www.hklii.hk/en/cases/hkdc/2025/295#p41 Exact quote: \"dishonestly and with an intention to permanently deprive\" Principle: Treat this paragraph as a research-only candidate on intention permanently to deprive; use only with full-judgment and current-treatment review. Why relevant: Hybrid retrieval matched exact issue tags, synonyms, BM25/keyword evidence and public paragraph proof. How distinguishable: The user's fac",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "query_id": "belonging_to_another",
+      "supported_expected": true,
+      "query": "In Hong Kong theft, what case-law research exists on property belonging to another?",
+      "requested_issue_id": "criminal_law.theft.belonging_to_another",
+      "inferred_issue_ids": [
+        "criminal_law.theft.belonging_to_another"
+      ],
+      "cases_returned": 5,
+      "paragraph_url_count": 15,
+      "paragraph_url_anchor_pass_rate": 1,
+      "exact_quote_count": 15,
+      "answer_safe": false,
+      "answer_layer_status": "research_only",
+      "review_status": "lawyer_review_required",
+      "l4_answer_safe_implemented": false,
+      "evidence_ingested": false,
+      "source_audit": {
+        "registry_case_count": 530,
+        "paragraph_card_count": 1633,
+        "proposition_card_count": 1633,
+        "principle_card_count": 1633,
+        "case_digest_card_count": 530,
+        "issue_map_count": 2290,
+        "returned_case_count": 5,
+        "hybrid_candidate_count": 4349,
+        "source_proof_pass_count": 4320,
+        "source_proof_excluded_count": 29,
+        "answer_layer_status": "research_only",
+        "review_status": "lawyer_review_required",
+        "l4_answer_safe_implemented": false
+      },
+      "cases": [
+        {
+          "case_id": "hk_hkdc_2022_913_hksar_v_chung_karman",
+          "case_name": "HKSAR v CHUNG KARMAN",
+          "neutral_citation": "[2022] HKDC 913",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2022/913#p29",
+            "https://www.hklii.hk/en/cases/hkdc/2022/913#p46",
+            "https://www.hklii.hk/en/cases/hkdc/2022/913#p9"
+          ],
+          "exact_quotes": [
+            "belonging to another, even if the offender’s presence in Hong Kong is lawful, the starting point upon a plea of guilty should ordinarily be 12 months’ imprisonment, so as to reflect the seriousness of",
+            "Theft Ordinance , Cap",
+            "bail for that case"
+          ],
+          "principle_ids": [
+            "hk_hkdc_2022_913_hksar_v_chung_karman_p46_principle",
+            "hk_hkdc_2022_913_hksar_v_chung_karman_p9_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2021_1321_hksar_v_rabara_bobby",
+          "case_name": "HKSAR v RABARA BOBBY",
+          "neutral_citation": "[2021] HKDC 1321",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2021/1321#p2",
+            "https://www.hklii.hk/en/cases/hkdc/2021/1321#p1",
+            "https://www.hklii.hk/en/cases/hkdc/2021/1321#p10"
+          ],
+          "exact_quotes": [
+            "belonging to another",
+            "Theft Ordinance , Cap 210",
+            "bail of the present case"
+          ],
+          "principle_ids": [
+            "hk_hkdc_2021_1321_hksar_v_rabara_bobby_p10_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2024_1965_hksar_v_lo_tsz_ho_vincent",
+          "case_name": "HKSAR v LO TSZ HO, VINCENT",
+          "neutral_citation": "[2024] HKDC 1965",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2024/1965#p3",
+            "https://www.hklii.hk/en/cases/hkdc/2024/1965#p2",
+            "https://www.hklii.hk/en/cases/hkdc/2024/1965#p24"
+          ],
+          "exact_quotes": [
+            "Theft Ordinance , Cap 210",
+            "Theft Ordinance , Cap 210",
+            "Sentence in Chinese)"
+          ],
+          "principle_ids": [],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant",
+          "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+          "neutral_citation": "[2022] HKCA 1135",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2022/1135#p20",
+            "https://www.hklii.hk/en/cases/hkca/2022/1135#p1",
+            "https://www.hklii.hk/en/cases/hkca/2022/1135#p21"
+          ],
+          "exact_quotes": [
+            "Theft Ordinance , which sets out the circumstances by which a person is said to have the intention to permanently deprive property belonging to another",
+            "Theft Ordinance , Cap 210 , and one charge of failing to surrender to custody without reasonable cause, contrary to section 9L(1) and (3) of the Criminal Procedure Ordinance ,",
+            "Theft Ordinance"
+          ],
+          "principle_ids": [
+            "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant_p20_principle",
+            "hk_hkca_2022_1135_hksar_respondent_v_christopher_okechi_nwosu_applicant_p1_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkdc_2021_1034_hksar_v_rahayu_nike",
+          "case_name": "HKSAR v RAHAYU NIKE",
+          "neutral_citation": "[2021] HKDC 1034",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkdc/2021/1034#p22",
+            "https://www.hklii.hk/en/cases/hkdc/2021/1034#p1",
+            "https://www.hklii.hk/en/cases/hkdc/2021/1034#p18"
+          ],
+          "exact_quotes": [
+            "belonging to another, instead of the guidelines for theft involving breach of trust",
+            "Theft Ordinance , Cap 210 (Charges 1, 3 and 5); (ii) 3 alternative charges to Charges 1, 3 and 5 of obtaining access to a computer with dishonest intent, contrary to section 1",
+            "Counsel rightly pointed out that there are no sentencing guidelines or tariffs for the offence of fraud or “operating a money service without a licence”. She referred the"
+          ],
+          "principle_ids": [
+            "hk_hkdc_2021_1034_hksar_v_rahayu_nike_p22_principle",
+            "hk_hkdc_2021_1034_hksar_v_rahayu_nike_p1_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        }
+      ],
+      "markdown_excerpt": "# L1-L3.5 Case-Law Research Memo\n\n## Short Answer\n- The case-corpus layer found research-only public case authorities with paragraph proof. They may support legal research and issue spotting, but they are not answer-safe legal advice.\n\n## Issues\n- Issue mapped: criminal_law.theft.belonging_to_another\n\n## Governing Law / Elements\n- Use statute/source cards for governing elements; case-corpus cards provide paragraph-backed research context and factual application only.\n\n## Case-by-Case Authorities\n- HKSAR v CHUNG KARMAN [2022] HKDC 913 (District Court, 2022-08-25). Facts: Public HKLII criminal judgment involving: Offence: [1] Theft (盜竊罪) [2] Possession of identity cards relating to other persons (管有他人的身分證) [3] Burglary (入屋犯法罪) Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 29 - https://www.hklii.hk/en/cases/hkdc/2022/913#p29 Exact quote: \"belonging to another, even if the offender’s presence in Hong Kong is lawful, the starting point upon a plea of guilty should ordinarily be 12 months’ imprisonment, so as to reflect the seriousness of\" Principle: Use this case only as sentencing context for theft or theft-linked offending unle",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "query_id": "bail_theft_dishonesty",
+      "supported_expected": true,
+      "query": "What public Hong Kong case-law research is available about bail in theft or dishonesty cases?",
+      "requested_issue_id": "criminal_procedure.bail",
+      "inferred_issue_ids": [
+        "criminal_procedure.bail",
+        "criminal_law.theft",
+        "criminal_law.theft.dishonesty",
+        "criminal_law.theft.mens_rea",
+        "criminal_law.dishonesty"
+      ],
+      "cases_returned": 5,
+      "paragraph_url_count": 15,
+      "paragraph_url_anchor_pass_rate": 1,
+      "exact_quote_count": 15,
+      "answer_safe": false,
+      "answer_layer_status": "research_only",
+      "review_status": "lawyer_review_required",
+      "l4_answer_safe_implemented": false,
+      "evidence_ingested": false,
+      "source_audit": {
+        "registry_case_count": 530,
+        "paragraph_card_count": 1633,
+        "proposition_card_count": 1633,
+        "principle_card_count": 1633,
+        "case_digest_card_count": 530,
+        "issue_map_count": 2290,
+        "returned_case_count": 5,
+        "hybrid_candidate_count": 4357,
+        "source_proof_pass_count": 4328,
+        "source_proof_excluded_count": 29,
+        "answer_layer_status": "research_only",
+        "review_status": "lawyer_review_required",
+        "l4_answer_safe_implemented": false
+      },
+      "cases": [
+        {
+          "case_id": "hk_hkcfi_2022_1152_hksar_respondent_and_lee_heung_yee_appellant",
+          "case_name": "HKSAR Respondent and LEE HEUNG YEE （李香儀） Appellant",
+          "neutral_citation": "[2022] HKCFI 1152",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2022/1152#p39",
+            "https://www.hklii.hk/en/cases/hkcfi/2022/1152#p38",
+            "https://www.hklii.hk/en/cases/hkcfi/2022/1152#p67"
+          ],
+          "exact_quotes": [
+            "Theft Ordinance , a two-stage approach for consideration were put forward in Ghosh",
+            "Theft Ordinance and R v Ghosh were rather fundamental and well-known legal principles",
+            "Theft Ordinance , Cap 210 of the Laws of Hong Kong"
+          ],
+          "principle_ids": [
+            "hk_hkcfi_2022_1152_hksar_respondent_and_lee_heung_yee_appellant_p39_principle",
+            "hk_hkcfi_2022_1152_hksar_respondent_and_lee_heung_yee_appellant_p38_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2025_190_hksar_respondent_v_lam_tsz_him_d2_1st_applicant_tsang_tsz_tong_d4_2nd_ap",
+          "case_name": "HKSAR Respondent v Lam Tsz Him (林子謙) (D2) 1st Applicant Tsang Tsz Tong (曾梓朗) (D4) 2nd Applicant",
+          "neutral_citation": "[2025] HKCA 190",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2025/190#p26",
+            "https://www.hklii.hk/en/cases/hkca/2025/190#p29",
+            "https://www.hklii.hk/en/cases/hkca/2025/190#p30"
+          ],
+          "exact_quotes": [
+            "dishonest by the ordinary standards of reasonable and honest people; and if so, did he himself realise that what he was doing was by those standards",
+            "dishonesty was an essential element, and the means agreed upon must be dishonest according to the Ghosh test",
+            "dishonest by ordinary standards; but (3) D4 did not realise that what he had done was dishonest by ordinary standards"
+          ],
+          "principle_ids": [
+            "hk_hkca_2025_190_hksar_respondent_v_lam_tsz_him_d2_1st_applicant_tsang_tsz_tong_d4_2nd_ap_p26_principle",
+            "hk_hkca_2025_190_hksar_respondent_v_lam_tsz_him_d2_1st_applicant_tsang_tsz_tong_d4_2nd_ap_p29_principle",
+            "hk_hkca_2025_190_hksar_respondent_v_lam_tsz_him_d2_1st_applicant_tsang_tsz_tong_d4_2nd_ap_p30_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkcfi_2022_2438_between_1_st_plaintiff_tang_yau_ping_2_nd_plaintiff_leung_shu_lam_3_rd_p",
+          "case_name": "BETWEEN 廣州市鄰港貿易有限分司 1 st Plaintiff TANG YAU PING (鄧一平) 2 nd Plaintiff LEUNG SHU LAM (梁樹林) 3 rd Plaintiff and SECRETARY FOR JUSTICE Defendant",
+          "neutral_citation": "[2022] HKCFI 2438",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2022/2438#p58",
+            "https://www.hklii.hk/en/cases/hkcfi/2022/2438#p122",
+            "https://www.hklii.hk/en/cases/hkcfi/2022/2438#p436"
+          ],
+          "exact_quotes": [
+            "Theft Ordinance Cap 210 (“ TO ”): “(1) A person commits blackmail if, with a view to gain for himself or another or with intent to cause loss to another, he makes any unwarran",
+            "dishonesty, corrupt motive and/or unreliability",
+            "bail by reporting to TSW Police Station, firstly to “O/C of [DCI Team 1] of [TSW Police Station]”, and later to “O/C of Team 5 CID [ie Divisional Crime Investigation Team 5, “ DCI Team"
+          ],
+          "principle_ids": [
+            "hk_hkcfi_2022_2438_between_1_st_plaintiff_tang_yau_ping_2_nd_plaintiff_leung_shu_lam_3_rd_p_p58_principle",
+            "hk_hkcfi_2022_2438_between_1_st_plaintiff_tang_yau_ping_2_nd_plaintiff_leung_shu_lam_3_rd_p_p436_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkca_2024_231_between_hksar_respondent_and_tam_tak_chi_applicant",
+          "case_name": "BETWEEN HKSAR Respondent and TAM TAK CHI (譚得志) Applicant",
+          "neutral_citation": "[2024] HKCA 231",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkca/2024/231#p177",
+            "https://www.hklii.hk/en/cases/hkca/2024/231#p151",
+            "https://www.hklii.hk/en/cases/hkca/2024/231#p38"
+          ],
+          "exact_quotes": [
+            "Theft Ordinance Cap 210 , abolishing a range of common law offences concerning dishonesty while preserving just those relating to the public revenue and cheating",
+            "Here, the context in which the applicant uttered the Slogan involves two facets, resulting in a two-step approach: (1) First, the socio-political context. The Slogan first emerged in",
+            "It was stressed in mitigation that while participating in the anti-extradition law movement in 2019, the applicant had remained respectful of the freedom of speech that Hong Kong"
+          ],
+          "principle_ids": [
+            "hk_hkca_2024_231_between_hksar_respondent_and_tam_tak_chi_applicant_p38_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        },
+        {
+          "case_id": "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant",
+          "case_name": "HKSAR Respondent and LI LINLIN Appellant",
+          "neutral_citation": "[2023] HKCFI 424",
+          "paragraph_urls": [
+            "https://www.hklii.hk/en/cases/hkcfi/2023/424#p1",
+            "https://www.hklii.hk/en/cases/hkcfi/2023/424#p3",
+            "https://www.hklii.hk/en/cases/hkcfi/2023/424#p15"
+          ],
+          "exact_quotes": [
+            "Theft Ordinance , Cap 210 and find $3500",
+            "dishonest or had she forgotten to pay on her way out?",
+            "dishonestly steal and appropriate property was proved by the fact there were 5 oranges in one bag and 6 oranges in the other"
+          ],
+          "principle_ids": [
+            "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant_p3_principle",
+            "hk_hkcfi_2023_424_hksar_respondent_and_li_linlin_appellant_p15_principle"
+          ],
+          "answer_layer_statuses": [
+            "research_only"
+          ],
+          "review_statuses": [
+            "machine_candidate"
+          ]
+        }
+      ],
+      "markdown_excerpt": "# L1-L3.5 Case-Law Research Memo\n\n## Short Answer\n- The case-corpus layer found research-only public case authorities with paragraph proof. They may support legal research and issue spotting, but they are not answer-safe legal advice.\n\n## Issues\n- Issue mapped: criminal_procedure.bail\n- Issue mapped: criminal_law.theft\n- Issue mapped: criminal_law.theft.dishonesty\n- Issue mapped: criminal_law.theft.mens_rea\n- Issue mapped: criminal_law.dishonesty\n\n## Governing Law / Elements\n- Use statute/source cards for governing elements; case-corpus cards provide paragraph-backed research context and factual application only.\n\n## Case-by-Case Authorities\n- HKSAR Respondent and LEE HEUNG YEE （李香儀） Appellant [2022] HKCFI 1152 (Court of First Instance, 2022-05-04). Facts: Public HKLII criminal judgment mapped to criminal_law.theft, criminal_law.dishonesty, criminal_law.theft.dishonesty, criminal_law.theft.mens_rea. Issue: theft Holding: No final ratio/current-treatment conclusion is made at L3.5. Key paragraph: para. 39 - https://www.hklii.hk/en/cases/hkcfi/2022/1152#p39 Exact quote: \"Theft Ordinance , a two-stage approach for consideration were put forward in Ghosh\" Principle: Treat the paragraph",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "query_id": "unsupported_landlord_query",
+      "supported_expected": false,
+      "query": "My landlord is increasing rent and refusing repairs. What cases answer this?",
+      "requested_issue_id": "",
+      "inferred_issue_ids": [],
+      "cases_returned": 0,
+      "paragraph_url_count": 0,
+      "paragraph_url_anchor_pass_rate": 1,
+      "exact_quote_count": 0,
+      "answer_safe": false,
+      "answer_layer_status": "research_only",
+      "review_status": "lawyer_review_required",
+      "l4_answer_safe_implemented": false,
+      "evidence_ingested": false,
+      "source_audit": {
+        "registry_case_count": 530,
+        "paragraph_card_count": 1633,
+        "proposition_card_count": 1633,
+        "principle_card_count": 1633,
+        "case_digest_card_count": 530,
+        "issue_map_count": 2290,
+        "returned_case_count": 0,
+        "abstain_reason": "no_supported_case_corpus_issue_detected",
+        "answer_layer_status": "research_only",
+        "review_status": "lawyer_review_required",
+        "l4_answer_safe_implemented": false
+      },
+      "cases": [],
+      "markdown_excerpt": "# Unsupported Case-Corpus Research Query\n\n## Short Answer\n- unsupported_general_query\n\n## Issues\n- The query is outside the current sample case-corpus issue map, or the relevant vertical remains statute-first.\n\n## Governing Law / Elements\n- No case-corpus governing law is asserted.\n\n## Case-by-Case Authorities\n- No case-by-case authority is attached in the sample L1-L3.5 corpus.\n\n## Extracted Legal Principles\n- No extracted case principle is available for this query.\n\n## Application to User Facts\n- No case-law application is made because the sample corpus has no mapped authority for this query.\n\n## Evidence Analysis\n- No uploaded evidence text was supplied for this case-corpus memo. User facts remain separate from legal authority.\n\n## Missing Facts\n- Supported issue id, paragraph proof, proposition/principle extraction and lawyer review.\n\n## Practical Next Steps\n- Build or load a source-grounded vertical pack before answering.\n- Do not cite case law as authority without paragraph cards and exact quote support.\n\n## Source Audit\n- L1 registry cases: 530\n- L2 paragraph cards: 1633\n- L3 propositions/principles: 3266\n- L3.5 digests returned: 0\n- L4 answer-safe propositions: not implemen",
+      "pass": true,
+      "errors": []
+    }
+  ],
+  "status": "passed"
+}

@@ -1,0 +1,81 @@
+{
+  "report_id": "dataset_readiness_projection_500_case_v1",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "scope": "Projection only. This branch does not write PR #7 dataset files, run training, or promote answer-safe propositions.",
+  "corpus_counts": {
+    "registry_case_count": 530,
+    "paragraph_card_count": 1633,
+    "proposition_card_count": 1633,
+    "principle_card_count": 1633,
+    "usable_principle_count": 623,
+    "demoted_principle_count": 1010,
+    "digest_card_count": 530,
+    "issue_map_count": 2290
+  },
+  "projected_tasks": [
+    {
+      "task_type": "paragraph_to_proposition",
+      "projected_rows": 1633,
+      "basis": "One quote-verified proposition row per verified proposition card."
+    },
+    {
+      "task_type": "proposition_to_principle",
+      "projected_rows": 623,
+      "basis": "One usable research-only principle row per pass-quality principle."
+    },
+    {
+      "task_type": "demotion_classifier",
+      "projected_rows": 1010,
+      "basis": "One demotion classifier row per demoted principle card, preserving the demotion reason."
+    },
+    {
+      "task_type": "issue_map_relevance",
+      "projected_rows": 2290,
+      "basis": "One issue-to-case relevance row per issue map row with paragraph/proposition proof."
+    },
+    {
+      "task_type": "case_digest_summarization",
+      "projected_rows": 530,
+      "basis": "One digest summarization row per case digest with paragraph proof."
+    },
+    {
+      "task_type": "retrieved_authorities_to_memo",
+      "projected_rows": 5,
+      "basis": "Only the committed local demo/regression query patterns; no synthetic broad legal-advice prompts."
+    }
+  ],
+  "projected_total_rows": 6091,
+  "projected_thresholds": {
+    "min_1000_rows_met": true,
+    "min_5000_rows_met": true,
+    "recommended_before_training": [
+      "Run the PR #7 exporter on its own branch after this PR is reviewed.",
+      "Keep answer_safe=false and current_treatment_status=unchecked in exported examples.",
+      "Deduplicate near-identical sentencing/background rows before training.",
+      "Separate demotion/abstention examples from legal-memo examples."
+    ]
+  },
+  "issue_distribution": {
+    "criminal_law.theft": 507,
+    "criminal_law.theft.sentencing": 463,
+    "criminal_procedure.interview_caution": 231,
+    "criminal_law.theft.appropriation": 213,
+    "criminal_law.dishonesty": 138,
+    "criminal_law.fraud": 138,
+    "criminal_law.theft.dishonesty": 138,
+    "criminal_law.theft.mens_rea": 138,
+    "criminal_law.deception": 135,
+    "criminal_procedure.bail": 81,
+    "criminal_law.theft.handling_stolen_goods": 70,
+    "criminal_law.theft.belonging_to_another": 15,
+    "criminal_law.theft.intention_permanently_deprive": 12,
+    "criminal_law.theft.mistake_or_forgot_to_pay": 11
+  },
+  "forbidden_actions": [
+    "No PR #7 files are modified by this projection.",
+    "No model training is run.",
+    "No private/licensed material is used.",
+    "No answer_safe labels are produced."
+  ],
+  "status": "projection_ready_for_pr7_exporter_review"
+}

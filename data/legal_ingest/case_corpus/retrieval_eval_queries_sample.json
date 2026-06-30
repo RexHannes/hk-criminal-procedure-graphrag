@@ -14,7 +14,7 @@
       "query_id": "forgot_to_pay",
       "query": "I forgot to pay at a shop and security stopped me. What mens rea and dishonesty cases help?",
       "issue_id": "criminal_law.theft.dishonesty",
-      "expected_issue_ids": ["criminal_law.theft.dishonesty", "criminal_law.theft.mens_rea"],
+      "expected_issue_ids": ["criminal_law.theft.dishonesty", "criminal_law.theft.mens_rea", "criminal_law.theft.mistake_or_forgot_to_pay", "criminal_law.theft"],
       "negative": false
     },
     {

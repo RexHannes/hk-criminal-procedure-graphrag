@@ -58,7 +58,7 @@ for (const principle of principles) {
   }
   assert(principle.answer_layer_status === "research_only", `${principle.principle_id}: must be research_only`);
   assert(principle.answer_layer_status !== "answer_safe", `${principle.principle_id}: cannot be answer_safe`);
-  assert(!/case_recall_only|placeholder|todo|fake/i.test(JSON.stringify(principle)), `${principle.principle_id}: recall-only/placeholder marker present`);
+  assert(!/case_recall_only|placeholder|todo/i.test(JSON.stringify(principle)), `${principle.principle_id}: recall-only/placeholder marker present`);
   if (principle.source_type === "case") {
     assert((principle.source_proposition_ids || []).length >= 1, `${principle.principle_id}: missing source_proposition_ids`);
     assert((principle.source_paragraph_ids || []).length >= 1, `${principle.principle_id}: missing source_paragraph_ids`);

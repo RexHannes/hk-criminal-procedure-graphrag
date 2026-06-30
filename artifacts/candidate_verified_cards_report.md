@@ -6,7 +6,7 @@
 | Proposition cards | 120 |
 | Principle cards | 106 |
 | Digest cards | 40 |
-| Issue map records | 205 |
+| Issue map records | 220 |
 | Cards with demotion flags | 226 |
 | Answer-safe cards | 0 |
 

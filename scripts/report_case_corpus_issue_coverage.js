@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Issue coverage audit for the current 100-case sample; no scaling. */
+/* Issue coverage audit for the current verified L1-L3.5 criminal corpus. */
 
 const fs = require("fs");
 const path = require("path");
@@ -38,7 +38,7 @@ function updateStatus(report) {
   status.weak_issue_tags = report.coverage.filter(item => item.coverage_band === "weak").map(item => item.issue_id);
   status.medium_issue_tags = report.coverage.filter(item => item.coverage_band === "medium").map(item => item.issue_id);
   status.demo_credible_issue_tags = report.coverage.filter(item => item.coverage_band === "demo-credible").map(item => item.issue_id);
-  status.next_target_500_cases = "Before scaling to 500, prioritize weak/medium issue tags, especially belonging_to_another, intention_permanently_deprive, bail, and dishonesty/mens_rea.";
+  status.next_target_500_cases = "500-case branch reached; before scaling beyond 500, prioritize any weak/medium issue tags and lawyer review of demoted cards.";
   fs.writeFileSync(STATUS_JSON, `${JSON.stringify(status, null, 2)}\n`, "utf8");
 
   if (fs.existsSync(STATUS_MD)) {
@@ -78,8 +78,8 @@ function main() {
   });
   const report = {
     report_id: "case_corpus_issue_coverage_sample_v1",
-    generated_at: "2026-06-29T00:00:00.000Z",
-    scope: "Current targeted L1-L3.5 criminal-law sample only; no 500-case scaling.",
+    generated_at: "2026-06-30T00:00:00.000Z",
+    scope: "Current verified L1-L3.5 criminal-law corpus branch; no answer-safe promotion and no scaling beyond this branch in CI.",
     thresholds: {
       weak: "fewer than 10 cases",
       medium: "10-24 cases",
@@ -104,8 +104,8 @@ function main() {
     "## Scale Guidance",
     "",
     report.weak_issue_tags.length
-      ? "- Weak issues need targeted discovery before 500-case scaling."
-      : "- No target issue remains weak; medium issues still need lawyer review and more coverage before 500-case scaling.",
+      ? "- Weak issues need targeted discovery before scaling beyond this branch."
+      : "- No target issue remains weak; medium issues still need lawyer review and more coverage before broader scaling.",
     "- Demo-credible issues can support investor-facing research-only demos.",
     "- No issue is answer-safe without L4 review.",
     "",

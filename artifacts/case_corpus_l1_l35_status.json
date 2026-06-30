@@ -1,97 +1,99 @@
 {
   "status_id": "case_corpus_l1_l35_status_v1",
-  "generated_at": "2026-06-29T00:00:00.000Z",
-  "scope_note": "This is a real L1-L3.5 public criminal-law sample corpus with 120 HKLII-verified cases. It is not 10k answer-safe and L4 is not implemented.",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "scope_note": "This is a real L1-L3.5 public criminal-law corpus branch with 530 HKLII-verified cases. It is not 10k answer-safe and L4/current-treatment review is not implemented.",
   "source_artifact": "data/legal_ingest/case_corpus/criminal_sample_source_cases.json",
-  "source_artifact_case_count": 120,
-  "registry_case_count": 120,
-  "paragraphized_case_count": 120,
-  "paragraph_card_count": 344,
-  "proposition_card_count": 344,
-  "principle_card_count": 344,
-  "case_digest_card_count": 120,
-  "issue_mapped_case_count": 120,
+  "source_artifact_case_count": 530,
+  "registry_case_count": 530,
+  "paragraphized_case_count": 530,
+  "paragraph_card_count": 1633,
+  "proposition_card_count": 1633,
+  "principle_card_count": 1633,
+  "case_digest_card_count": 530,
+  "issue_mapped_case_count": 530,
   "paragraph_anchor_pass_rate": 1,
   "quote_support_pass_rate": 1,
   "checksum_pass_rate": 1,
   "answer_safe_count": 0,
-  "research_only_count": 1272,
-  "lawyer_review_required_count": 120,
+  "research_only_count": 5959,
+  "lawyer_review_required_count": 530,
   "top_issue_coverage": [
     {
       "issue_id": "criminal_law.theft",
-      "case_count": 101
+      "case_count": 507
     },
     {
       "issue_id": "criminal_law.theft.sentencing",
-      "case_count": 94
-    },
-    {
-      "issue_id": "criminal_law.deception",
-      "case_count": 90
-    },
-    {
-      "issue_id": "criminal_law.theft.appropriation",
-      "case_count": 63
-    },
-    {
-      "issue_id": "criminal_law.fraud",
-      "case_count": 56
+      "case_count": 463
     },
     {
       "issue_id": "criminal_procedure.interview_caution",
-      "case_count": 37
+      "case_count": 231
+    },
+    {
+      "issue_id": "criminal_law.theft.appropriation",
+      "case_count": 213
     },
     {
       "issue_id": "criminal_law.dishonesty",
-      "case_count": 30
+      "case_count": 138
+    },
+    {
+      "issue_id": "criminal_law.fraud",
+      "case_count": 138
     },
     {
       "issue_id": "criminal_law.theft.dishonesty",
-      "case_count": 30
+      "case_count": 138
     },
     {
       "issue_id": "criminal_law.theft.mens_rea",
-      "case_count": 30
+      "case_count": 138
     },
     {
-      "issue_id": "criminal_law.theft.handling_stolen_goods",
-      "case_count": 15
+      "issue_id": "criminal_law.deception",
+      "case_count": 135
     },
     {
       "issue_id": "criminal_procedure.bail",
-      "case_count": 15
+      "case_count": 81
+    },
+    {
+      "issue_id": "criminal_law.theft.handling_stolen_goods",
+      "case_count": 70
     },
     {
       "issue_id": "criminal_law.theft.belonging_to_another",
-      "case_count": 13
+      "case_count": 15
     }
   ],
   "cases_by_court": {
-    "District Court": 98,
-    "Court of Appeal": 11,
-    "Court of First Instance": 11
+    "District Court": 432,
+    "Court of Appeal": 52,
+    "Court of First Instance": 44,
+    "Court of Final Appeal": 2
   },
   "cases_by_year": {
-    "2020": 3,
-    "2021": 28,
-    "2022": 11,
-    "2023": 16,
-    "2024": 25,
-    "2025": 25,
-    "2026": 12
+    "2020": 8,
+    "2021": 155,
+    "2022": 72,
+    "2023": 82,
+    "2024": 91,
+    "2025": 80,
+    "2026": 42
   },
   "extraction_limitations": [
     "Automated paragraph selection is term-based and conservative.",
     "Legal propositions and principles remain machine_candidate / research_only.",
     "Current treatment and ratio/obiter classification are unchecked unless later lawyer-reviewed.",
     "The sample focuses on theft, dishonesty, deception, fraud and theft-linked procedure; it is not a whole HK criminal-law corpus.",
-    "Targeted weak-issue cases were added only where public HKLII paragraphs contained the weak issue signal.",
-    "This is not a 500-case scale-up; it is a narrow quality/coverage repair pass."
+    "500-case discovery is public-source and term-based; actual count may be below 500 where public source proof is not discovered in this run.",
+    "Current treatment and ratio/obiter classification remain unchecked unless later lawyer-reviewed.",
+    "No answer-safe propositions are created by this scale pass."
   ],
   "next_scale_target": {
-    "target": "Expand from this verified sample toward 500 then 10,000 L1/L2 cases only after adding reviewer gates and stronger current-treatment checks.",
-    "safe_claim": "Validated L1-L3.5 sample corpus; not a 10k answer-safe corpus."
+    "target": "Audit this 500-case branch before any later 1k/10k L1/L2 growth; add reviewer gates and current-treatment checks before answer-safe promotion.",
+    "safe_claim": "Validated public-source L1-L3.5 research-only criminal-law corpus; not a 10k answer-safe corpus."
   },
   "demo_vertical_coverage": {
     "theft_shoplifting": "L1-L3.5 sample case-law corpus available with paragraph proof",
@@ -107,68 +109,68 @@
   },
   "principle_quality_repair": {
     "repaired_at": "2026-06-30T00:00:00.000Z",
-    "principle_card_count": 344,
-    "usable_principle_count": 97,
-    "demoted_principle_count": 247,
+    "principle_card_count": 1633,
+    "usable_principle_count": 623,
+    "demoted_principle_count": 1010,
     "needs_review_principle_count": 0,
     "principle_quality_status_counts": {
-      "demoted": 247,
-      "pass": 97
+      "demoted": 1010,
+      "pass": 623
     },
     "demotion_reason_counts": {
-      "sentencing_only_not_liability": 187,
-      "quote_context_insufficient": 40,
-      "background_only_not_principle": 29,
-      "procedural_only_not_liability": 25
+      "sentencing_only_not_liability": 521,
+      "background_only_not_principle": 480,
+      "quote_context_insufficient": 334,
+      "procedural_only_not_liability": 56
     },
     "liability_relevance_counts": {
-      "sentencing": 214,
-      "liability": 77,
-      "procedure": 38,
-      "background": 15
+      "sentencing": 972,
+      "background": 276,
+      "procedure": 225,
+      "liability": 160
     }
   },
-  "usable_principle_count": 97,
-  "demoted_principle_count": 247,
+  "usable_principle_count": 623,
+  "demoted_principle_count": 1010,
   "principle_quality_status_counts": {
-    "demoted": 247,
-    "pass": 97
+    "demoted": 1010,
+    "pass": 623
   },
   "principle_demotion_reason_counts": {
-    "sentencing_only_not_liability": 187,
-    "quote_context_insufficient": 40,
-    "background_only_not_principle": 29,
-    "procedural_only_not_liability": 25
+    "sentencing_only_not_liability": 521,
+    "background_only_not_principle": 480,
+    "quote_context_insufficient": 334,
+    "procedural_only_not_liability": 56
   },
   "chunk_count_by_type": {
-    "case_paragraph_chunk": 344,
-    "case_proposition_chunk": 344,
-    "case_principle_chunk": 97,
-    "case_digest_chunk": 120,
-    "issue_cluster_chunk": 13
+    "case_paragraph_chunk": 1633,
+    "case_proposition_chunk": 1633,
+    "case_principle_chunk": 623,
+    "case_digest_chunk": 530,
+    "issue_cluster_chunk": 14
   },
-  "embedded_chunk_count": 918,
-  "dry_run_vector_count": 918,
+  "embedded_chunk_count": 4433,
+  "dry_run_vector_count": 4433,
   "qdrant_collection_targets": {
     "primary_chunk_collection": "hk_case_corpus_chunks_local_hash_legal_demo_v1_2048",
     "legacy_artifact_collections": {
-      "hk_case_paragraphs_openrouter_2048": 344,
-      "hk_case_propositions_openrouter_2048": 344,
-      "hk_case_principles_openrouter_2048": 344,
-      "hk_case_digests_openrouter_2048": 120
+      "hk_case_paragraphs_openrouter_2048": 1633,
+      "hk_case_propositions_openrouter_2048": 1633,
+      "hk_case_principles_openrouter_2048": 1633,
+      "hk_case_digests_openrouter_2048": 530
     }
   },
   "retrieval_eval_precision_at_5": 0.945455,
-  "retrieval_eval_recall_at_10": 0.909091,
-  "retrieval_eval_legacy_corpus_recall_at_10": 0.223482,
-  "retrieval_recall_improvement": 0.567293,
+  "retrieval_eval_recall_at_10": 0.945455,
+  "retrieval_eval_legacy_corpus_recall_at_10": 0.093773,
+  "retrieval_recall_improvement": 0.603657,
   "source_proof_rate": 1,
   "wrong_domain_leak_rate": 0,
   "unsupported_query_abstention_rate": 1,
-  "duplicate_rate": 0,
+  "duplicate_rate": 0.016181,
   "failed_ingest_count": 0,
   "retryable_failure_count": 0,
-  "ingest_queue_count": 120,
+  "ingest_queue_count": 530,
   "candidate_extractions_total": 42,
   "candidates_verified": 40,
   "candidates_rejected": 2,
@@ -199,19 +201,21 @@
     "background_only_not_principle": 3
   },
   "fast_growth_workflow": "candidate_extractor_to_public_paragraph_verification_to_research_only_cards",
-  "quality_audit_pass_rate": 0.997561,
+  "quality_audit_pass_rate": 0.991579,
   "principle_quality_pass_rate": 1,
   "principle_quality_pass_rate_basis": "usable_principles_only_after_repair",
-  "usable_principle_count_in_audit": 30,
-  "quality_audited_case_count": 28,
-  "cards_demoted": 53,
-  "quality_suspicious_card_count": 53,
-  "next_target_500_cases": "Before scaling to 500, prioritize weak/medium issue tags, especially belonging_to_another, intention_permanently_deprive, bail, and dishonesty/mens_rea.",
+  "usable_principle_count_in_audit": 32,
+  "quality_audited_case_count": 30,
+  "cards_demoted": 67,
+  "quality_suspicious_card_count": 67,
+  "current_treatment_unchecked_count": 5959,
+  "current_treatment_checked_count": 0,
+  "private_or_licensed_source_count": 0,
+  "next_target_500_cases": "500-case branch reached; before scaling beyond 500, prioritize any weak/medium issue tags and lawyer review of demoted cards.",
   "weak_issue_tags": [],
   "medium_issue_tags": [
     "criminal_law.theft.belonging_to_another",
-    "criminal_law.theft.intention_permanently_deprive",
-    "criminal_procedure.bail"
+    "criminal_law.theft.intention_permanently_deprive"
   ],
   "demo_credible_issue_tags": [
     "criminal_law.theft",
@@ -221,6 +225,7 @@
     "criminal_law.theft.sentencing",
     "criminal_law.fraud",
     "criminal_law.deception",
-    "criminal_procedure.interview_caution"
+    "criminal_procedure.interview_caution",
+    "criminal_procedure.bail"
   ]
 }

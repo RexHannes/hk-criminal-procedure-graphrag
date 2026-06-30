@@ -73,8 +73,8 @@ assert(report.cases_by_court && Object.keys(report.cases_by_court).length >= 1, 
 assert(report.cases_by_year && Object.keys(report.cases_by_year).length >= 1, "cases_by_year missing");
 assert(Array.isArray(report.extraction_limitations) && report.extraction_limitations.length >= 2, "extraction_limitations missing");
 assert(report.next_scale_target?.safe_claim?.includes("not a 10k answer-safe corpus"), "next_scale_target safe claim missing");
-assert(report.scope_note?.includes("real L1-L3.5 public criminal-law sample corpus"), "scope note must identify real sample corpus");
-assert(report.scope_note?.includes("L4 is not implemented"), "scope note missing L4 boundary");
+assert(/real L1-L3\.5 public criminal-law (sample corpus|corpus branch)/i.test(report.scope_note || ""), "scope note must identify real public criminal-law corpus");
+assert(/L4.*not implemented|L4\/current-treatment review is not implemented/i.test(report.scope_note || ""), "scope note missing L4 boundary");
 assert(markdown.includes("L4 answer-safe review: not implemented"), "status markdown missing L4 boundary");
 assert(markdown.includes("Do not describe this sample as 10k answer-safe propositions"), "status markdown missing forbidden claim");
 assert(markdown.includes("Top Issue Coverage"), "status markdown missing top issue coverage");
@@ -96,7 +96,7 @@ assert(report.retrieval_eval_legacy_corpus_recall_at_10 >= 0, "legacy corpus rec
 assert(report.source_proof_rate === 1, "source_proof_rate must be 1");
 assert(report.wrong_domain_leak_rate === 0, "wrong_domain_leak_rate must be 0");
 assert(report.unsupported_query_abstention_rate === 1, "unsupported_query_abstention_rate must be 1");
-assert(report.duplicate_rate === 0, "duplicate_rate must be 0 for sample");
+assert(report.duplicate_rate <= 0.03, "duplicate_rate must remain low; same-name/date related judgments may be reported but hard IDs/URLs must stay unique");
 assert(report.failed_ingest_count === 0, "failed_ingest_count must be 0");
 assert(report.retryable_failure_count === 0, "retryable_failure_count must be 0");
 assert(markdown.includes("RAG Pipeline Metrics"), "status markdown missing RAG pipeline metrics");
