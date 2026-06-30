@@ -101,8 +101,11 @@ function validateFreezeReport({ status, coverage, retrieval }) {
   assertEqual(report.source_proof_metrics?.source_proof_rate, retrieval.metrics?.source_proof_rate, "demo freeze source_proof_rate");
   assertEqual(report.source_proof_metrics?.wrong_domain_leak_rate, retrieval.metrics?.wrong_domain_leak_rate, "demo freeze wrong_domain_leak_rate");
   assertEqual(report.unsupported_query_abstention, retrieval.metrics?.unsupported_query_abstention_rate, "demo freeze unsupported abstention");
-  assertEqual(report.public_demo?.boss_demo_url, "https://hk-criminal-procedure-graphrag.vercel.app/viewer/", "demo freeze boss URL");
-  if (!String(report.public_demo?.verified_case_corpus_demo_url || "").includes("/viewer/case_corpus_demo.html")) {
+  assertEqual(report.public_demo?.production_target_url, "https://hk-criminal-procedure-graphrag.vercel.app/viewer/", "demo freeze production target URL");
+  if (!String(report.public_demo?.current_pr_preview_url_source || "").includes("Vercel Preview URL")) {
+    fail("demo freeze report missing current preview URL source note");
+  }
+  if (!String(report.public_demo?.verified_case_corpus_direct_route || "").includes("/viewer/case_corpus_demo.html")) {
     fail("demo freeze report missing verified case-corpus demo URL");
   }
   if (!String(report.public_demo?.legacy_warning || "").includes("unverified seed map")) {

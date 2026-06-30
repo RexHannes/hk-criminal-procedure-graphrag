@@ -32,18 +32,21 @@ const KNOWN_LIMITATIONS = [
 ];
 
 const PUBLIC_DEMO = {
-  boss_demo_url: "https://hk-criminal-procedure-graphrag.vercel.app/viewer/",
-  verified_case_corpus_demo_url: "https://hk-criminal-procedure-graphrag.vercel.app/viewer/case_corpus_demo.html",
-  legacy_graph_viewer_url: "https://hk-criminal-procedure-graphrag.vercel.app/viewer/index_legacy.html",
-  page_to_show: "Open /viewer/ or /viewer/case_corpus_demo.html. The default boss/VC page must be the verified PR #6 case-corpus demo.",
+  current_pr_preview_url_source: "Use the exact Vercel Preview URL recorded in the PR #6 body and GitHub deployment status for the current head commit.",
+  production_target_url: "https://hk-criminal-procedure-graphrag.vercel.app/viewer/",
+  verified_case_corpus_route: "/viewer/",
+  verified_case_corpus_direct_route: "/viewer/case_corpus_demo.html",
+  legacy_graph_viewer_route: "/viewer/index_legacy.html",
+  page_to_show: "For the unmerged draft PR, show the Vercel Preview deployment at /viewer/. After merge or production promotion, the production /viewer/ URL should show the same verified case-corpus demo.",
   legacy_warning: "The legacy visual tree is an unverified seed map. It is not the PR #6 source-proofed case-corpus demo and must not be presented as verified authority.",
   safe_demo_instructions: [
-    "Show the verified case-law demo page first.",
+    "Show the verified case-law demo page first: /viewer/ on the current Vercel Preview deployment.",
     "Point to the 120-case sample metrics and the 344 paragraph/proposition/principle card counts.",
     "Open at least one HKLII/LegalRef paragraph URL with a #p anchor from the demo output.",
     "State that every supported demo remains answer_safe=false and lawyer-review-required.",
     "Use the unsupported landlord/rent query to show abstention and wrong-domain control.",
-    "Avoid the legacy graph viewer unless explaining historical seed-map work."
+    "Avoid the legacy graph viewer unless explaining historical seed-map work.",
+    "Do not use the production URL for the boss/VC demo until the production smoke test passes."
   ],
 };
 
@@ -308,9 +311,11 @@ function renderReportMarkdown(report) {
     "",
     "## Public Demo URL",
     "",
-    `- Boss/VC URL: ${report.public_demo.boss_demo_url}`,
-    `- Verified case-corpus demo URL: ${report.public_demo.verified_case_corpus_demo_url}`,
-    `- Legacy graph viewer URL: ${report.public_demo.legacy_graph_viewer_url}`,
+    `- Current PR preview URL source: ${report.public_demo.current_pr_preview_url_source}`,
+    `- Production target URL after merge/promotion: ${report.public_demo.production_target_url}`,
+    `- Verified case-corpus route: ${report.public_demo.verified_case_corpus_route}`,
+    `- Direct verified case-corpus route: ${report.public_demo.verified_case_corpus_direct_route}`,
+    `- Legacy graph viewer route: ${report.public_demo.legacy_graph_viewer_route}`,
     `- Page to show: ${report.public_demo.page_to_show}`,
     `- Legacy warning: ${report.public_demo.legacy_warning}`,
     "",
@@ -376,9 +381,11 @@ function renderBossDemoScript(report, pack) {
     "",
     "## Public Demo Page",
     "",
-    `Open: ${report.public_demo.boss_demo_url}`,
+    `For the current unmerged PR, open the Vercel Preview URL recorded in PR #6 and use ${report.public_demo.verified_case_corpus_route}.`,
     "",
-    `Direct verified case-corpus page: ${report.public_demo.verified_case_corpus_demo_url}`,
+    `After merge or production promotion, open: ${report.public_demo.production_target_url}`,
+    "",
+    `Direct verified case-corpus route: ${report.public_demo.verified_case_corpus_direct_route}`,
     "",
     `Do not present the legacy visual tree as the verified demo. ${report.public_demo.legacy_warning}`,
     "",
