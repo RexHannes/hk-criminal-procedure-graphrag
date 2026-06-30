@@ -1224,6 +1224,21 @@ module.exports = async function handler(req, res) {
       ? caseLawResearch.markdown
       : `${presentation.answer_markdown.trim()}\n\n---\n\n${caseLawResearch.markdown}`
     : presentation.answer_markdown;
+  const detectedDomainSet = new Set(
+    ai.detected_domains && ai.detected_domains.length
+      ? ai.detected_domains
+      : matched.map(item => item.domain_id).filter(Boolean)
+  );
+  (arbiter.allowed_static_domains || []).forEach(domainId => detectedDomainSet.add(domainId));
+  const classificationDomainMap = {
+    probate: "probate_law_hk",
+    personal_injury: "tort_law_hk",
+    criminal_law: "criminal_law_hk",
+    criminal_procedure: "criminal_procedure_hk",
+    company_forms: "hk_listing_and_listed_company_regulation",
+  };
+  const classifiedDomainId = classificationDomainMap[applied.classification?.matter_type];
+  if (classifiedDomainId) detectedDomainSet.add(classifiedDomainId);
   const responsePayload = {
     query,
     presentation_mode: presentation.presentation_mode,
@@ -1248,9 +1263,7 @@ module.exports = async function handler(req, res) {
     ai_query_focus: ai.query_focus || "",
     backend_status: backendStatus,
     arbiter_trace: arbiter,
-    detected_domains: ai.detected_domains && ai.detected_domains.length
-      ? ai.detected_domains
-      : Array.from(new Set(matched.map(item => item.domain_id))),
+    detected_domains: Array.from(detectedDomainSet),
     applied_answer: applied.applied_answer,
     answer_contract: applied.answer_contract,
     classification: applied.classification,
