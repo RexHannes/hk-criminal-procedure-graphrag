@@ -311,6 +311,17 @@
     "suspicious_card_count": 53,
     "rejected_or_demoted_card_count": 53
   },
+  "case_authority_bridge": {
+    "paragraph_linked_public_source_records": 458,
+    "product_visible_verified_seed_nodes": 2,
+    "excluded_unresolved_seed_cases": 175
+  },
+  "law_tree_case_fruit_packs": {
+    "trees_processed": 6,
+    "verified_case_entries": 52,
+    "paragraph_cards_created": 81,
+    "searchable_chunks": 81
+  },
   "known_limitations": [
     "The PR remains a draft research/demo preview, not a merged production release.",
     "The sample is intentionally frozen at 120 targeted criminal-law cases; this run does not scale to 500, 10k or 25k cases.",

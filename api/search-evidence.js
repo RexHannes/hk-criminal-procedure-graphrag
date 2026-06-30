@@ -942,6 +942,22 @@ function composerDomainForQuery(query, matched, piWorkflow) {
   return "generic";
 }
 
+function detectsProbateQuery(query) {
+  return /\b(probate|letters of administration|intestate|executor|administrator|estate|will|codicil|caveat|warning|citation|reseal|resealing|foreign grant|grant of representation|inventory|grant pending suit|ad colligenda|lost will|swear death|rectification of will|grandchild|granddaughter|grandson)\b/i.test(String(query || ""));
+}
+
+function shouldSearchLawTreePacks(query, arbiter) {
+  if (detectsProbateQuery(query)) return false;
+  if (detectsUnsupportedLandlordQuery(query)) return false;
+  if (["criminal_law", "criminal_procedure"].includes(arbiter.selected_domain)) return true;
+  return (
+    detectsCriminalLawQuery(query) ||
+    detectsCriminalLawPriority(query) ||
+    detectsCriminalPublicOrderQuery(query) ||
+    /\b(theft|steal|stole|stolen|shoplift|shoplifting|dishonest|dishonesty|intention permanently to deprive|permanently to deprive|permanently deprive|deprive|belonging to another|appropriation|bail|remand|custody|police|interview|caution|confession|right of silence|protest|assembly|riot|public order|unlawful assembly)\b/i.test(String(query || ""))
+  );
+}
+
 function scorePiChunk(terms, chunk) {
   const counts = chunk.tokens || {};
   return terms.reduce((sum, term) => sum + (counts[term] ? 1 + Math.log1p(counts[term]) : 0), 0);
@@ -1213,7 +1229,7 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const lawTreeMatches = unsupportedLandlordQuery ? [] : searchLawTreeCaseFruitPacks(query, 4);
+  const lawTreeMatches = shouldSearchLawTreePacks(query, arbiter) ? searchLawTreeCaseFruitPacks(query, 4) : [];
   if (lawTreeMatches.length) matched = mergeLawTreePackMatches(matched, lawTreeMatches);
 
   const paragraphBackedMatches = matched.filter(match => (match.evidence || []).length > 0);

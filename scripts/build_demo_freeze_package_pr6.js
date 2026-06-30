@@ -130,6 +130,12 @@ function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, relativePath), "utf8"));
 }
 
+function readJsonIfExists(relativePath) {
+  const filePath = path.join(ROOT, relativePath);
+  if (!fs.existsSync(filePath)) return null;
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
 function writeText(relativePath, text) {
   const filePath = path.join(ROOT, relativePath);
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
@@ -157,6 +163,8 @@ function buildReport() {
   const quality = readJson("artifacts/case_corpus_quality_audit.json");
   const repair = readJson("artifacts/principle_quality_repair_report.json");
   const weakDiscovery = readJson("artifacts/weak_issue_target_discovery_report.json");
+  const caseAuthority = readJsonIfExists("artifacts/case_authority_final_report.json");
+  const lawTreePack = readJsonIfExists("artifacts/law_tree_case_fruit_pack_report.json");
 
   const corpusCounts = {
     registry_case_count: status.registry_case_count,
@@ -228,6 +236,17 @@ function buildReport() {
       suspicious_card_count: quality.summary.suspicious_cards.length,
       rejected_or_demoted_card_count: quality.summary.rejected_or_demoted_cards.length,
     },
+    case_authority_bridge: caseAuthority ? {
+      paragraph_linked_public_source_records: caseAuthority.counts?.paragraph_linked_public_source_records || null,
+      product_visible_verified_seed_nodes: caseAuthority.counts?.product_visible_verified_case_seeds || null,
+      excluded_unresolved_seed_cases: caseAuthority.counts?.excluded_unresolved_seeds || null,
+    } : null,
+    law_tree_case_fruit_packs: lawTreePack ? {
+      trees_processed: lawTreePack.counts?.trees_processed || 0,
+      verified_case_entries: lawTreePack.counts?.cases_verified || 0,
+      paragraph_cards_created: lawTreePack.counts?.paragraph_cards_created || 0,
+      searchable_chunks: lawTreePack.counts?.chunks_created || 0,
+    } : null,
     known_limitations: KNOWN_LIMITATIONS,
     artifact_paths: {
       boss_demo_script: "docs/boss_demo_script_pr6.md",
@@ -420,6 +439,14 @@ function renderBossDemoScript(report, pack) {
     "",
     `The frozen sample has ${report.corpus_counts.registry_case_count} targeted public Hong Kong criminal-law cases, ${report.corpus_counts.paragraph_card_count} paragraph cards, ${report.corpus_counts.proposition_card_count} proposition cards, and ${report.corpus_counts.principle_card_count} principle cards. The important point is not the count alone. The important point is that weak material is filtered: ${report.corpus_counts.usable_principle_count} principles are currently usable for the research layer, while ${report.corpus_counts.demoted_principle_count} weaker principles are preserved for audit instead of being hidden or used as authority.`,
     "",
+    report.case_authority_bridge
+      ? `The viewer/backend authority bridge is stricter than the old graph seed map: it currently exposes ${report.case_authority_bridge.paragraph_linked_public_source_records} paragraph-linked public-source records, with ${report.case_authority_bridge.product_visible_verified_seed_nodes} legacy case seed nodes fully source-linked. The remaining ${report.case_authority_bridge.excluded_unresolved_seed_cases} unresolved seed cases are excluded from authority surfaces until a public paragraph link, exact quote, paragraph text, and issue mapping are attached.`
+      : "",
+    "",
+    report.law_tree_case_fruit_packs
+      ? `The law-tree pack layer groups verified authority into six demo-ready trees: theft dishonesty, intention permanently to deprive, belonging to another, interview/caution/confession, bail, and public assembly/proportionality. It does not blindly expand case count: it exports ${report.law_tree_case_fruit_packs.paragraph_cards_created} paragraph-linked case fruits over ${report.law_tree_case_fruit_packs.verified_case_entries} verified case entries, with Level 1 and Level 2 pack evals passing.`
+      : "",
+    "",
     "## 1:45-2:45 - Why Source Proof Matters",
     "",
     "When the system cites a case, it should show a public paragraph URL and an exact quote path. That gives the user something concrete to inspect. It also lets the product say no when the source is missing, private, unverified, recall-only, or outside the loaded issue map.",
@@ -447,6 +474,8 @@ function renderBossDemoScript(report, pack) {
     "## 6:00-6:45 - How To Explain Research Prototype Mode",
     "",
     "`research_prototype` means the system can retrieve, quote, summarize and apply public paragraph-linked authorities for research analysis, but professional_advice_certified remains false until a later HITL certification step checks current treatment, ratio/obiter status, the full judgment, and the user's actual evidence.",
+    "",
+    "The local regression reports for this branch are `artifacts/case_recall_level1_eval.md`, `artifacts/ai_inquiry_level2_eval.md`, `artifacts/law_tree_case_fruit_pack_report.md`, `artifacts/law_tree_case_fruit_level1_eval.md`, `artifacts/law_tree_case_fruit_level2_eval.md`, and `artifacts/case_authority_final_report.md`. The key acceptance numbers are: visible_unverified_authorities = 0, backend_searchable_unverified_authorities = 0, Level 1 recall = pass, Level 2 AI Inquiry = pass, law-tree Level 1 = pass, and law-tree Level 2 = pass.",
     "",
     "## Next Roadmap",
     "",

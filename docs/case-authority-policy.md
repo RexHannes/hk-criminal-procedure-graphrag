@@ -44,8 +44,8 @@ The repeatable law-tree pack pipeline currently processes six trees:
 
 Current pack output:
 
-- 427 per-tree candidate case matches considered from committed source-linked/audit inputs;
-- 53 verified case entries represented in the six packs;
+- 179 per-tree candidate case matches considered from committed source-linked/audit inputs;
+- 52 verified case entries represented in the six packs;
 - 81 paragraph cards and 81 searchable chunks;
 - 81 principle/sub-issue/application summaries;
 - 12 viewer nodes mapped;

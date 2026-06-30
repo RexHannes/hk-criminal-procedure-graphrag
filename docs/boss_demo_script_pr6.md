@@ -28,9 +28,9 @@ Legal AI often sounds confident even when it has not proved the source. For crim
 
 The frozen sample has 120 targeted public Hong Kong criminal-law cases, 344 paragraph cards, 344 proposition cards, and 344 principle cards. The important point is not the count alone. The important point is that weak material is filtered: 97 principles are currently usable for the research layer, while 247 weaker principles are preserved for audit instead of being hidden or used as authority.
 
-The viewer/backend authority bridge is stricter than the old graph seed map: it currently exposes 458 paragraph-linked public-source records, with 2 legacy case seed nodes fully source-linked (Leung Kwok Hung 2005 and Lam Tat Ming 2000). The remaining 175 unresolved seed cases are excluded from authority surfaces until a public paragraph link, exact quote, paragraph text, and issue mapping are attached.
+The viewer/backend authority bridge is stricter than the old graph seed map: it currently exposes 458 paragraph-linked public-source records, with 2 legacy case seed nodes fully source-linked. The remaining 175 unresolved seed cases are excluded from authority surfaces until a public paragraph link, exact quote, paragraph text, and issue mapping are attached.
 
-The new law-tree pack layer groups verified authority into six demo-ready trees: theft dishonesty, intention permanently to deprive, belonging to another, interview/caution/confession, bail, and public assembly/proportionality. It does not blindly expand case count: it exports 81 paragraph-linked case fruits over 53 verified case entries, with Level 1 and Level 2 pack evals passing.
+The law-tree pack layer groups verified authority into six demo-ready trees: theft dishonesty, intention permanently to deprive, belonging to another, interview/caution/confession, bail, and public assembly/proportionality. It does not blindly expand case count: it exports 81 paragraph-linked case fruits over 52 verified case entries, with Level 1 and Level 2 pack evals passing.
 
 ## 1:45-2:45 - Why Source Proof Matters
 
