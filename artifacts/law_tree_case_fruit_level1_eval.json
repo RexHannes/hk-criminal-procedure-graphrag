@@ -1,0 +1,142 @@
+{
+  "report_id": "law_tree_case_fruit_level1_eval_v1",
+  "generated_at": "2026-07-01T00:00:00+08:00",
+  "pass": true,
+  "tree_count": 6,
+  "passed_tree_count": 6,
+  "failed_tree_count": 0,
+  "results": [
+    {
+      "tree_id": "criminal_law.theft.dishonesty",
+      "query": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant [2025] HKCA 451",
+      "passed": true,
+      "checks": {
+        "tree_has_authorities": true,
+        "exact_case_recall": true,
+        "source_url_present": true,
+        "paragraph_number_present": true,
+        "paragraph_anchor_present": true,
+        "quote_exactness": true,
+        "principle_summary_present": true,
+        "all_authorities_verified": true
+      },
+      "returned_authority_count": 12,
+      "first_authority": {
+        "case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+        "citation": "[2025] HKCA 451",
+        "para_no": "35",
+        "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p35"
+      }
+    },
+    {
+      "tree_id": "criminal_law.theft.intention_permanently_deprive",
+      "query": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant [2022] HKCA 1135",
+      "passed": true,
+      "checks": {
+        "tree_has_authorities": true,
+        "exact_case_recall": true,
+        "source_url_present": true,
+        "paragraph_number_present": true,
+        "paragraph_anchor_present": true,
+        "quote_exactness": true,
+        "principle_summary_present": true,
+        "all_authorities_verified": true
+      },
+      "returned_authority_count": 12,
+      "first_authority": {
+        "case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+        "citation": "[2022] HKCA 1135",
+        "para_no": "22",
+        "source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p22"
+      }
+    },
+    {
+      "tree_id": "criminal_law.theft.belonging_to_another",
+      "query": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant [2025] HKCA 451",
+      "passed": true,
+      "checks": {
+        "tree_has_authorities": true,
+        "exact_case_recall": true,
+        "source_url_present": true,
+        "paragraph_number_present": true,
+        "paragraph_anchor_present": true,
+        "quote_exactness": true,
+        "principle_summary_present": true,
+        "all_authorities_verified": true
+      },
+      "returned_authority_count": 12,
+      "first_authority": {
+        "case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+        "citation": "[2025] HKCA 451",
+        "para_no": "15",
+        "source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p15"
+      }
+    },
+    {
+      "tree_id": "criminal_procedure.interview_caution_confession",
+      "query": "Secretary for Justice v Lam Tat Ming and Another (2000) 3 HKCFAR 168",
+      "passed": true,
+      "checks": {
+        "tree_has_authorities": true,
+        "exact_case_recall": true,
+        "source_url_present": true,
+        "paragraph_number_present": true,
+        "paragraph_anchor_present": true,
+        "quote_exactness": true,
+        "principle_summary_present": true,
+        "all_authorities_verified": true
+      },
+      "returned_authority_count": 12,
+      "first_authority": {
+        "case_name": "Secretary for Justice v Lam Tat Ming and Another",
+        "citation": "(2000) 3 HKCFAR 168",
+        "para_no": "24",
+        "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p24"
+      }
+    },
+    {
+      "tree_id": "criminal_procedure.bail",
+      "query": "HKSAR v Lai Chee Ying [2021] HKCFA 3",
+      "passed": true,
+      "checks": {
+        "tree_has_authorities": true,
+        "exact_case_recall": true,
+        "source_url_present": true,
+        "paragraph_number_present": true,
+        "paragraph_anchor_present": true,
+        "quote_exactness": true,
+        "principle_summary_present": true,
+        "all_authorities_verified": true
+      },
+      "returned_authority_count": 12,
+      "first_authority": {
+        "case_name": "HKSAR v Lai Chee Ying",
+        "citation": "[2021] HKCFA 3",
+        "para_no": "52",
+        "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en#p52"
+      }
+    },
+    {
+      "tree_id": "criminal_public_order.assembly_proportionality",
+      "query": "Leung Kwok Hung and Others v HKSAR [2005] HKCFA 2",
+      "passed": true,
+      "checks": {
+        "tree_has_authorities": true,
+        "exact_case_recall": true,
+        "source_url_present": true,
+        "paragraph_number_present": true,
+        "paragraph_anchor_present": true,
+        "quote_exactness": true,
+        "principle_summary_present": true,
+        "all_authorities_verified": true
+      },
+      "returned_authority_count": 6,
+      "first_authority": {
+        "case_name": "Leung Kwok Hung and Others v HKSAR",
+        "citation": "[2005] HKCFA 2",
+        "para_no": "17",
+        "source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p17"
+      }
+    }
+  ]
+}

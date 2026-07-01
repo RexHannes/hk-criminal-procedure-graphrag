@@ -4,6 +4,11 @@ const { composeAnswer } = require("../src/api/answer-composers");
 const { filterPiChunksByContract } = require("../src/api/answer-composers/pi");
 const { findCachedLegalAnswer, writeLegalAnswerCache } = require("../src/api/legal-ingest/cache");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
+const {
+  viewerCaseCorpusEvidenceForNode,
+  hasPublicParagraphProof: hasNormalizedPublicParagraphProof,
+} = require("../src/case_graph/viewer_case_corpus_evidence");
+const { searchLawTreeCaseFruitPacks } = require("../src/case_graph/law_tree_case_fruit_packs");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
 const {
@@ -104,6 +109,12 @@ function detectsCriminalPublicOrderQuery(query) {
 function detectsCriminalLawQuery(query) {
   const q = String(query || "").toLowerCase();
   return detectsCriminalPublicOrderQuery(q) || /\b(sedition|seditious|theft|assault|battery|manslaughter|murder|dishonesty|conspiracy|attempt|incitement|joint enterprise|accessory|aiding|abetting)\b/.test(q);
+}
+
+function detectsUnsupportedLandlordQuery(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(landlord|tenant|rent|lease|tenancy|deposit)\b/.test(q) &&
+    !/\b(theft|steal|stolen|shoplift|shoplifting|dishonest|dishonesty|bail|criminal|fraud|deception)\b/.test(q);
 }
 
 function detectsPersonalInjuryPurpose(query) {
@@ -420,6 +431,83 @@ async function askAiToRank(query, candidates) {
   }
 }
 
+function isSourceLinkedPublicEvidence(item) {
+  return Boolean(
+    hasNormalizedPublicParagraphProof(item) ||
+    (
+      ["source_verified", "paragraph_verified", "answer_safe", "research_only"].includes(item?.answer_layer_status) &&
+      item?.public_source_link_verified &&
+      /#p\d+/i.test(item?.source_url || "") &&
+      (item?.supporting_quote || item?.exact_quote)
+    )
+  );
+}
+
+function deterministicSourceLinkedAnalysis(query, matches, provider, status, warnings = []) {
+  const evidenceItems = matches
+    .flatMap(match => (match.evidence || []).map(item => ({ ...item, doctrine_node_id: match.doctrine_node_id, node_title: match.title })))
+    .filter(isSourceLinkedPublicEvidence);
+  if (!evidenceItems.length) {
+    return { provider, status, analysis: null, warnings };
+  }
+
+  const caseReferences = evidenceItems.slice(0, 5).map(item => ({
+    case_name: item.case_name,
+    neutral_citation: item.neutral_citation || item.citation || "",
+    para_no: item.para_no || item.paragraph_number || "",
+    paragraph_id: item.paragraph_id || "",
+    proposition_id: item.proposition_id || "",
+    proposition_text: item.proposition_text || item.principle_text || "",
+    supporting_quote: item.supporting_quote || item.exact_quote || "",
+    paragraph_text: item.paragraph_text || "",
+    source_url: item.source_url || "",
+    status: item.answer_layer_status || "research_only",
+    verification_status: item.verification_status || "paragraph_linked_public_source",
+    doctrine_node_id: item.doctrine_node_id,
+    quote_verified: Boolean((item.supporting_quote || item.exact_quote) && item.paragraph_text && String(item.paragraph_text).includes(item.supporting_quote || item.exact_quote)),
+  }));
+  const nodeReferences = matches
+    .filter(match => (match.evidence || []).some(isSourceLinkedPublicEvidence))
+    .slice(0, 5)
+    .map(match => ({
+      doctrine_node_id: match.doctrine_node_id,
+      title: match.title,
+      role: "source_linked_match",
+      coverage_status: match.coverage_status || "paragraph_verified",
+    }));
+  const first = caseReferences[0];
+  const summary = first
+    ? `Source-linked public paragraph evidence was retrieved for ${first.case_name} at paragraph ${first.para_no}.`
+    : "Source-linked public paragraph evidence was retrieved.";
+  const legalPosition = caseReferences
+    .slice(0, 3)
+    .map(ref => {
+      const principle = ref.proposition_text ? ` ${ref.proposition_text}` : "";
+      return `${ref.case_name} ${ref.neutral_citation} para ${ref.para_no}:${principle}`;
+    })
+    .join("\n");
+  const application = [
+    `For the query "${query}", use only the retrieved public paragraph links as research-prototype authority.`,
+    first?.supporting_quote ? `The leading retrieved quote is: "${first.supporting_quote}"` : "",
+    "Treat missing facts and current-treatment review as separate follow-up work; do not convert this research output into professional legal advice.",
+  ].filter(Boolean).join(" ");
+
+  return {
+    provider,
+    status: "deterministic_source_linked_summary",
+    analysis: {
+      summary,
+      legal_position: legalPosition,
+      application,
+      node_references: nodeReferences,
+      case_references: caseReferences,
+      warnings: Array.from(new Set(["ai_not_configured_deterministic_source_summary", ...warnings])),
+      abstain: false,
+    },
+    warnings: ["ai_not_configured_deterministic_source_summary"],
+  };
+}
+
 async function askAiToAnalyze(query, matches, evidenceCount) {
   const evidenceBrief = matches.slice(0, 6).map(match => ({
     doctrine_node_id: match.doctrine_node_id,
@@ -465,6 +553,7 @@ async function askAiToAnalyze(query, matches, evidenceCount) {
     prompt,
   );
   if (ai.status !== "used" || !ai.json) {
+    if (evidenceCount > 0) return deterministicSourceLinkedAnalysis(query, matches, ai.provider, ai.status, ai.warnings);
     return {
       provider: ai.provider,
       status: ai.status,
@@ -544,13 +633,13 @@ function validateAiAnalysis(parsed, matches) {
   }
 
   const evidenceCount = evidenceItems.length;
-  const verifiedEvidenceCount = evidenceItems.filter(item => VERIFIED_COVERAGE_STATUSES.has(item.answer_layer_status)).length;
+  const verifiedEvidenceCount = evidenceItems.filter(isSourceLinkedPublicEvidence).length;
   let abstain = Boolean(parsed.abstain);
   if (!evidenceCount) {
     warnings.push("analysis_has_no_paragraph_evidence");
     abstain = true;
   } else if (!verifiedEvidenceCount) {
-    warnings.push("analysis_has_candidate_only_evidence");
+    warnings.push("analysis_has_no_public_paragraph_proof");
     abstain = true;
   }
 
@@ -637,8 +726,10 @@ function cleanEvidenceItem({ link, proposition, paragraph, legalCase }) {
       : reviewStatus,
     public_source_link_verified: ["source_verified", "paragraph_verified", "answer_safe"].includes(answerLayerStatus),
     answer_layer_status: answerLayerStatus,
+    answer_mode: "research_prototype",
     quote_verified: quoteVerified,
-    human_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
+    lawyer_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
+    professional_advice_certified: false,
     validator_flags: [],
   };
 }
@@ -678,16 +769,27 @@ async function evidenceForNode(baseUrl, serviceKey, doctrineNodeId) {
 
 function coverageForEvidence(evidence) {
   if (evidence.some(item => item.answer_layer_status === "answer_safe")) return "answer_safe";
-  if (evidence.some(item => item.answer_layer_status === "paragraph_verified" || item.answer_layer_status === "source_verified")) return "paragraph_verified";
+  if (evidence.some(item => item.answer_layer_status === "paragraph_verified" || item.answer_layer_status === "source_verified" || isSourceLinkedPublicEvidence(item))) return "paragraph_verified";
   if (evidence.length) return "candidate_only";
   return "no_evidence";
 }
 
 function hasLocalPublicParagraphProof(item) {
-  return Boolean(item?.source_url && item?.para_no && (item?.paragraph_text || item?.supporting_quote || item?.proposition_text));
+  const quote = item?.supporting_quote || item?.exact_quote || "";
+  return Boolean(
+    item?.source_url &&
+    /(?:hklii\.hk|legalref\.judiciary\.hk)/i.test(item.source_url) &&
+    /#p\d+/i.test(item.source_url) &&
+    item?.para_no &&
+    quote &&
+    item?.paragraph_text &&
+    String(item.paragraph_text).includes(quote)
+  );
 }
 
 function localEvidenceFallbackForNode(doctrineNodeId) {
+  const viewerEvidence = viewerCaseCorpusEvidenceForNode(doctrineNodeId);
+  if (viewerEvidence.length) return viewerEvidence;
   return localCaseFruitEvidenceForNode(doctrineNodeId).map(item => {
     if (item.answer_layer_status === "candidate_only" && hasLocalPublicParagraphProof(item)) {
       return {
@@ -701,13 +803,44 @@ function localEvidenceFallbackForNode(doctrineNodeId) {
   });
 }
 
+function mergeLawTreePackMatches(matches, lawTreeMatches) {
+  const out = matches.slice();
+  const byId = new Map(out.map((match, index) => [match.doctrine_node_id, index]));
+  for (const lawTreeMatch of lawTreeMatches || []) {
+    const existingIndex = byId.get(lawTreeMatch.doctrine_node_id);
+    if (existingIndex === undefined) {
+      out.push(lawTreeMatch);
+      byId.set(lawTreeMatch.doctrine_node_id, out.length - 1);
+      continue;
+    }
+    const existing = out[existingIndex];
+    const evidence = [];
+    const seen = new Set();
+    for (const item of [...(existing.evidence || []), ...(lawTreeMatch.evidence || [])]) {
+      const key = [item.source_url, item.para_no || item.paragraph_number, item.exact_quote || item.supporting_quote].join("|");
+      if (seen.has(key)) continue;
+      seen.add(key);
+      evidence.push(item);
+    }
+    out[existingIndex] = {
+      ...existing,
+      evidence,
+      coverage_status: evidence.length ? "paragraph_verified" : existing.coverage_status,
+      matched_via: [...(existing.matched_via || []), ...(lawTreeMatch.matched_via || [])].slice(0, 8),
+      match_score: Math.max(existing.match_score || 0, lawTreeMatch.match_score || 0),
+    };
+  }
+  return out;
+}
+
 function warningsForResult(matches, aiStatus, backendStatus, legalSourceCardCount = 0) {
   const warnings = [];
+  const hasGraphEvidence = matches.some(m => m.evidence && m.evidence.length);
   if (aiStatus !== "used") warnings.push(aiStatus === "not_configured" ? "ai_not_configured_fallback_search" : "ai_ranking_unavailable");
-  if (backendStatus !== "connected") warnings.push("backend_evidence_unavailable");
-  if (!matches.some(m => m.evidence && m.evidence.length) && !legalSourceCardCount) warnings.push("no_verified_paragraph_proof", "insufficient_authority");
-  if (matches.some(m => (m.evidence || []).some(e => e.answer_layer_status === "candidate_only"))) warnings.push("candidate_only", "needs_human_review");
-  if (legalSourceCardCount) warnings.push("legal_ingest_source_cards_research_only", "needs_human_review");
+  if (backendStatus !== "connected" && !hasGraphEvidence && !legalSourceCardCount) warnings.push("backend_evidence_unavailable");
+  if (!hasGraphEvidence && !legalSourceCardCount) warnings.push("no_verified_paragraph_proof", "insufficient_authority");
+  if (matches.some(m => (m.evidence || []).some(e => !isSourceLinkedPublicEvidence(e)))) warnings.push("unverified_candidates_excluded");
+  if (legalSourceCardCount) warnings.push("legal_ingest_source_cards_research_only");
   return Array.from(new Set(warnings));
 }
 
@@ -767,6 +900,22 @@ function composerDomainForQuery(query, matched, piWorkflow) {
     /\b(arrest|bail|charge|plea|mention|search warrant|seizure|police|magistrate|appeal|review)\b/.test(q)
   ) return "criminal_procedure";
   return "generic";
+}
+
+function detectsProbateQuery(query) {
+  return /\b(probate|letters of administration|intestate|executor|administrator|estate|will|codicil|caveat|warning|citation|reseal|resealing|foreign grant|grant of representation|inventory|grant pending suit|ad colligenda|lost will|swear death|rectification of will|grandchild|granddaughter|grandson)\b/i.test(String(query || ""));
+}
+
+function shouldSearchLawTreePacks(query, arbiter) {
+  if (detectsProbateQuery(query)) return false;
+  if (detectsUnsupportedLandlordQuery(query)) return false;
+  if (["criminal_law", "criminal_procedure"].includes(arbiter.selected_domain)) return true;
+  return (
+    detectsCriminalLawQuery(query) ||
+    detectsCriminalLawPriority(query) ||
+    detectsCriminalPublicOrderQuery(query) ||
+    /\b(theft|steal|stole|stolen|shoplift|shoplifting|dishonest|dishonesty|intention permanently to deprive|permanently to deprive|permanently deprive|deprive|belonging to another|appropriation|bail|remand|custody|police|interview|caution|confession|right of silence|protest|assembly|riot|public order|unlawful assembly)\b/i.test(String(query || ""))
+  );
 }
 
 function scorePiChunk(terms, chunk) {
@@ -967,8 +1116,11 @@ module.exports = async function handler(req, res) {
 
   const graph = loadGraph();
   const arbiter = arbitrateLegalQuery(query);
-  const deterministic = deterministicMatches(query, graph, 14);
-  const ai = await askAiToRank(query, deterministic);
+  const unsupportedLandlordQuery = detectsUnsupportedLandlordQuery(query);
+  const deterministic = unsupportedLandlordQuery ? [] : deterministicMatches(query, graph, 14);
+  const ai = unsupportedLandlordQuery
+    ? { provider: "none", status: "unsupported_domain_abstained", ranked_ids: [], warnings: ["unsupported_landlord_query_abstained"] }
+    : await askAiToRank(query, deterministic);
   let matched = deterministic;
   if (ai.ranked_ids && ai.ranked_ids.length) {
     const byId = new Map(deterministic.map(item => [item.doctrine_node_id, item]));
@@ -980,7 +1132,9 @@ module.exports = async function handler(req, res) {
   const legalAnswerCache = legalIngestBundle
     ? await findCachedLegalAnswer({ query, legalIngestBundle })
     : { status: "skipped_no_legal_ingest_bundle" };
-  matched = filterMatchesByArbiter(postFilterMatchesForQuery(query, matched), arbiter).slice(0, 8);
+  matched = unsupportedLandlordQuery
+    ? []
+    : filterMatchesByArbiter(postFilterMatchesForQuery(query, matched), arbiter).slice(0, 8);
 
   const supabaseUrl = (process.env.SUPABASE_URL || "").trim().replace(/\/$/, "");
   const serviceKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
@@ -1006,6 +1160,12 @@ module.exports = async function handler(req, res) {
     });
   }
 
+  const lawTreeMatches = shouldSearchLawTreePacks(query, arbiter) ? searchLawTreeCaseFruitPacks(query, 4) : [];
+  if (lawTreeMatches.length) matched = mergeLawTreePackMatches(matched, lawTreeMatches);
+
+  const paragraphBackedMatches = matched.filter(match => (match.evidence || []).some(isSourceLinkedPublicEvidence));
+  if (paragraphBackedMatches.length) matched = paragraphBackedMatches;
+
   const graphEvidenceCount = matched.reduce((sum, item) => sum + (item.evidence || []).length, 0);
   const legalSourceCardCount = legalIngestBundle ? (legalIngestBundle.proposition_cards || []).length : 0;
   const totalEvidenceCount = graphEvidenceCount + legalSourceCardCount;
@@ -1016,6 +1176,21 @@ module.exports = async function handler(req, res) {
         analysis: null,
         warnings: ["pi_workflow_used_no_freeform_analysis"],
       }
+    : unsupportedLandlordQuery
+      ? {
+          provider: ai.provider || "none",
+          status: "unsupported_domain_abstained",
+          analysis: {
+            summary: "This query is outside the frozen PR #6 criminal-law case-authority demo.",
+            legal_position: "",
+            application: "",
+            node_references: [],
+            case_references: [],
+            warnings: ["unsupported_query_abstention"],
+            abstain: true,
+          },
+          warnings: ["unsupported_query_abstention"],
+        }
     : legalSourceCardCount
       ? {
           provider: ai.provider || getAiProvider()?.name || "none",
@@ -1072,6 +1247,20 @@ module.exports = async function handler(req, res) {
       form_count: (legalIngestBundle.form_metadata || []).length,
     } : null,
     pi_workflow: piWorkflow,
+    product_mode: unsupportedLandlordQuery
+      ? {
+          mode: "unsupported_general_query",
+          answer_mode: "research_prototype",
+          labels: ["unsupported_query_abstention"],
+          unsupported_reason: "Outside the source-linked PR #6 criminal-law case-authority demo.",
+          professional_advice_certified: false,
+        }
+      : {
+          mode: totalEvidenceCount ? "source_grounded_research_only" : "source_grounded_research_only",
+          answer_mode: "research_prototype",
+          labels: ["source_linked_public_judgment", "research_prototype"],
+          professional_advice_certified: false,
+        },
     matched_doctrine_nodes: matched,
     evidence_count: totalEvidenceCount,
     graph_evidence_count: graphEvidenceCount,
@@ -1081,7 +1270,7 @@ module.exports = async function handler(req, res) {
       : "low",
     warnings: Array.from(new Set(warningsForResult(matched, ai.status, backendStatus, legalSourceCardCount).concat(aiWarnings))),
     inquiry_analysis: inquiry.analysis,
-    answer_note: "This endpoint returns a source-bounded graph/evidence trail. It does not produce legal advice and does not treat candidate evidence as answer-safe.",
+    answer_note: "This endpoint returns a source-bounded graph/evidence trail for research-prototype use. It does not produce professional legal advice.",
   };
   if (legalIngestBundle) {
     const cacheWrite = await writeLegalAnswerCache({ query, legalIngestBundle, applied, responsePayload });

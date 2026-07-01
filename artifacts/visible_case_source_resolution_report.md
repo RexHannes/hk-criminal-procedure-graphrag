@@ -1,0 +1,193 @@
+# Visible Case Source Resolution Report
+
+Generated: 2026-07-01T00:00:00+08:00
+
+| Metric | Count |
+|---|---:|
+| Total case-like seed records | 177 |
+| Resolved source-linked seed nodes | 3 |
+| Excluded unresolved seed nodes | 174 |
+| Visible unverified authorities | 0 |
+
+## Resolved Seed Nodes
+
+- HKSAR v Lam Tat Ming (2000) 3 HKCFAR 168: 3 public paragraph proof record(s).
+- Lai Chee Ying v Commissioner of Police [2020] 2 HKLRD 1289: 2 public paragraph proof record(s).
+- HKSAR v Leung Kwok Hung [2005] 3 HKLRD 164: 2 public paragraph proof record(s).
+
+## Excluded Seed Nodes
+
+- R v Miller [1983] 2 AC 161: No exact public paragraph proof is attached to this seed.
+- Thabo Meli v R [1954] 1 WLR 228: No exact public paragraph proof is attached to this seed.
+- R v Le Brun [1992] QB 61: No exact public paragraph proof is attached to this seed.
+- R v Cheshire [1991] 1 WLR 844: No exact public paragraph proof is attached to this seed.
+- R v Hughes [2013] UKSC 56: No exact public paragraph proof is attached to this seed.
+- R v Blaue [1975] 1 WLR 1411: No exact public paragraph proof is attached to this seed.
+- HKSAR v Lam Chiu Yin (2002) 5 HKCFAR 416: No exact public paragraph proof is attached to this seed.
+- R v Woollin [1999] 1 AC 82: No exact public paragraph proof is attached to this seed.
+- HKSAR v Li Defan (2002) 5 HKCFAR 320: No exact public paragraph proof is attached to this seed.
+- R v G [2003] UKHL 50: No exact public paragraph proof is attached to this seed.
+- Sin Kam Wah v HKSAR (2005) 8 HKCFAR 192: No exact public paragraph proof is attached to this seed.
+- R v Latimer (1886) 17 QBD 359: No exact public paragraph proof is attached to this seed.
+- Fagan v MPC [1969] 1 QB 439: No exact public paragraph proof is attached to this seed.
+- Sweet v Parsley [1970] AC 132: No exact public paragraph proof is attached to this seed.
+- Gammon (HK) Ltd v AG [1985] AC 1: No exact public paragraph proof is attached to this seed.
+- Hin Lin Yee v HKSAR (2010) 13 HKCFAR 142: No exact public paragraph proof is attached to this seed.
+- Kulemesin v HKSAR (2013) 16 HKCFAR 195: No exact public paragraph proof is attached to this seed.
+- R v Cunningham [1982] AC 566: No exact public paragraph proof is attached to this seed.
+- HKSAR v Lee Kwok Wah: No exact public paragraph proof is attached to this seed.
+- HKSAR v Cheung Kin Shing: No exact public paragraph proof is attached to this seed.
+- R v Church [1966] 1 QB 59: No exact public paragraph proof is attached to this seed.
+- HKSAR v Lee Wai Yin: No exact public paragraph proof is attached to this seed.
+- R v Adomako [1995] 1 AC 171: No exact public paragraph proof is attached to this seed.
+- HKSAR v Lai Shui Yin: No exact public paragraph proof is attached to this seed.
+- HKSAR v Mak Wan Ling: No exact public paragraph proof is attached to this seed.
+- Collins v Wilcock [1984] 1 WLR 1172: No exact public paragraph proof is attached to this seed.
+- R v Saunders [1985] Crim LR 230: No exact public paragraph proof is attached to this seed.
+- DPP v Morgan [1976] AC 182: No exact public paragraph proof is attached to this seed.
+- HKSAR v Cheung Chi Wai: No exact public paragraph proof is attached to this seed.
+- R v Morris [1984] AC 320: No exact public paragraph proof is attached to this seed.
+- R v Ghosh [1982] QB 1053: No exact public paragraph proof is attached to this seed.
+- Ivey v Genting Casinos [2017] UKSC 67: No exact public paragraph proof is attached to this seed.
+- HKSAR v Lam Hin Fai: No exact public paragraph proof is attached to this seed.
+- HKSAR v Chan Wai Lam: No exact public paragraph proof is attached to this seed.
+- HKSAR v Ng Po On: No exact public paragraph proof is attached to this seed.
+- HKSAR v Hui Kin Hong: No exact public paragraph proof is attached to this seed.
+- HKSAR v Chan Chi Wan: No exact public paragraph proof is attached to this seed.
+- HKSAR v Chan Kwok Keung: No exact public paragraph proof is attached to this seed.
+- Shum Kwok Sher v HKSAR (2002) 5 HKCFAR 381: No exact public paragraph proof is attached to this seed.
+- HKSAR v Hui Rafael: No exact public paragraph proof is attached to this seed.
+- HKSAR v Tsang Yam Kuen: No exact public paragraph proof is attached to this seed.
+- Pang Hung Fai v HKSAR (2014) 17 HKCFAR 778: No exact public paragraph proof is attached to this seed.
+- HKSAR v Lam Hei Wai: No exact public paragraph proof is attached to this seed.
+- Chan Wing Siu v R [1985] AC 168: No exact public paragraph proof is attached to this seed.
+- HKSAR v Chan Kam Shing (2016) 19 HKCFAR 640: No exact public paragraph proof is attached to this seed.
+- R v Jogee [2016] UKSC 8: No exact public paragraph proof is attached to this seed.
+- HKSAR v Lai Man Ling: No exact public paragraph proof is attached to this seed.
+- DPP v Majewski [1977] AC 443: No exact public paragraph proof is attached to this seed.
+- HKSAR v Leung Kwok Hung: No exact public paragraph proof is attached to this seed.
+- HKSAR v Ma Wai Kwan David [1997] HKCFA 28: No exact public paragraph proof is attached to this seed.
+- Ng Ka Ling v Director of Immigration [1999] 2 HKCFAR 4: No exact public paragraph proof is attached to this seed.
+- HKSAR v Lai Chee Ying (2021) 24 HKCFAR 121: No exact public paragraph proof is attached to this seed.
+- HKSAR v Chen Keen [2013] 4 HKC 615: No exact public paragraph proof is attached to this seed.
+- HKSAR v Milne John (2019) 22 HKCFAR 218: No exact public paragraph proof is attached to this seed.
+- Archer v Commissioner of Police of the Metropolis (comparative): No exact public paragraph proof is attached to this seed.
+- Zenuni v R (PC) (comparative): No exact public paragraph proof is attached to this seed.
+- R v Leach (comparative): No exact public paragraph proof is attached to this seed.
+- Lai Chee Ying v Commissioner of Police (No 2): No exact public paragraph proof is attached to this seed.
+- HKSAR v Lai Man Ling [2021] HKCFA 28: No exact public paragraph proof is attached to this seed.
+- DPP v Richards (comparative): No exact public paragraph proof is attached to this seed.
+- Gizzonio v Chief Constable of Derbyshire Constabulary (comparative): No exact public paragraph proof is attached to this seed.
+- HKSAR v Cheung Tsz Wan (2009) 12 HKCFAR 520: No exact public paragraph proof is attached to this seed.
+- HKSAR v Chan Tai Sum (2021): No exact public paragraph proof is attached to this seed.
+- R v Holgate (No 1) (comparative): No exact public paragraph proof is attached to this seed.
+- HKSAR v Leung Kwok Hung (1996): No exact public paragraph proof is attached to this seed.
+- HKSAR v Tam Shing Hoi (2004): No exact public paragraph proof is attached to this seed.
+- Talbot v R (PC) (comparative): No exact public paragraph proof is attached to this seed.
+- R v Tailford (comparative): No exact public paragraph proof is attached to this seed.
+- HKSAR v Asif Ahfaq Mehmood: No exact public paragraph proof is attached to this seed.
+- HKSAR v Chan Hon Wing (2006): No exact public paragraph proof is attached to this seed.
+- HKSAR v Wong Sau Ming (2003) 6 HKCFAR 163: No exact public paragraph proof is attached to this seed.
+- HKSAR v Lee Kwok Wah (2008) 11 HKCFAR 318: No exact public paragraph proof is attached to this seed.
+- HKSAR v Amarjit: No exact public paragraph proof is attached to this seed.
+- HKSAR v Cheung Shu Cheong (2018): No exact public paragraph proof is attached to this seed.
+- HKSAR v Chan Kam Shing (2010): No exact public paragraph proof is attached to this seed.
+- HKSAR v Ma Ka Kin (2015): No exact public paragraph proof is attached to this seed.
+- HKSAR v Chan Kam Ching (2008): No exact public paragraph proof is attached to this seed.
+- HKSAR v Fu Chiu Wa (2013): No exact public paragraph proof is attached to this seed.
+- HKSAR v Khaw Kin Sun (2019): No exact public paragraph proof is attached to this seed.
+- HKSAR v Malik Mohammad Tariq: No exact public paragraph proof is attached to this seed.
+- HKSAR v Chen Keen (No 2): No exact public paragraph proof is attached to this seed.
+- Earl of Oxford's Case (1615) 1 Ch Rep 1: No exact public paragraph proof is attached to this seed.
+- Ng Yat Chi v Max Share Ltd [2005] 2 HKLRD 1 (CFA): No exact public paragraph proof is attached to this seed.
+- Li Hung Chan v Wong Woon Heung [1994] 1 HKLR 265 (CA): No exact public paragraph proof is attached to this seed.
+- Walsh v Lonsdale (1882) 21 ChD 9: No exact public paragraph proof is attached to this seed.
+- Wu Koon Tai v Wu Yau Loi [1997] 2 HKC 154: No exact public paragraph proof is attached to this seed.
+- Official Administrator v The Luk Hoi Tong Co Ltd [2003] 2 HKLRD 31: No exact public paragraph proof is attached to this seed.
+- Hong Thai Citizens Travel Services Ltd v Hang Seng Bank Ltd [1993] 1 HKC 482: No exact public paragraph proof is attached to this seed.
+- Fu Chuen Sang v Cheung Ching Tak [1961] HKLR 573: No exact public paragraph proof is attached to this seed.
+- Re London Wine Co (Shippers) Ltd [1986] PCC 121: No exact public paragraph proof is attached to this seed.
+- Re Goldcorp Exchange Ltd [1995] 1 AC 74 (PC): No exact public paragraph proof is attached to this seed.
+- Hunter v Moss [1994] 1 WLR 452: No exact public paragraph proof is attached to this seed.
+- Re CA Pacific Finance Ltd [2000] 1 BCLC 494: No exact public paragraph proof is attached to this seed.
+- JSC Mezhdunarodniy Promyshlenniy Bank v Pugachev [2017] EWHC 2426 (Ch): No exact public paragraph proof is attached to this seed.
+- Re Chu Wai Tung (a bankrupt) (No 2) [2013] 5 HKLRD 202: No exact public paragraph proof is attached to this seed.
+- Clayton v Clayton [2016] NZSC 30: No exact public paragraph proof is attached to this seed.
+- Webb v Webb [2020] UKPC 22: No exact public paragraph proof is attached to this seed.
+- Tsang Tat Hung v Tsang Tat Wing [2005] 3 HKLRD 24: No exact public paragraph proof is attached to this seed.
+- Gilmour v Coats [1949] AC 426: No exact public paragraph proof is attached to this seed.
+- Dingle v Turner [1972] AC 601: No exact public paragraph proof is attached to this seed.
+- To Kan Chi v Pui Man Yau (Tsing Shan Monastery) [1995] 2 HKLR 22 (CA): No exact public paragraph proof is attached to this seed.
+- Secretary for Justice v Joseph Lo Kin Ching [2001] 4 HKCFAR 1: No exact public paragraph proof is attached to this seed.
+- Westdeutsche Landesbank Girozentrale v Islington London Borough Council [1996] AC 669 (HL): No exact public paragraph proof is attached to this seed.
+- Cheung Yuk Ying Engarcia v Macgregor Isabella [2003] 2 HKLRD 177: No exact public paragraph proof is attached to this seed.
+- Yau Kwong-Chiu v Yau Kwong-Ha [2007] 3 HKLRD 692: No exact public paragraph proof is attached to this seed.
+- Twinsectra Ltd v Yardley [2002] UKHL 12: No exact public paragraph proof is attached to this seed.
+- Prickly Bay Waterside Ltd v British American Insurance Co Ltd [2022] UKPC 8: No exact public paragraph proof is attached to this seed.
+- Hancock v Watson [1902] AC 14 (HL): No exact public paragraph proof is attached to this seed.
+- Muschinski v Dodds (1985) 160 CLR 583 (Aus HC): No exact public paragraph proof is attached to this seed.
+- Baumgartner v Baumgartner (1987) 164 CLR 137 (Aus HC): No exact public paragraph proof is attached to this seed.
+- Luo Xing Juan v Estate of Hui Shui See [2009] 4 HKLRD 1 (CFA): No exact public paragraph proof is attached to this seed.
+- Lai Hon Tim v Lai Tsz Nang Wilson [2011] 4 HKLRD 412: No exact public paragraph proof is attached to this seed.
+- Attorney-General (HK) v Reid [1994] 1 AC 324 (PC): No exact public paragraph proof is attached to this seed.
+- FHR European Ventures LLP v Cedar Capital Partners LLC [2014] UKSC 45: No exact public paragraph proof is attached to this seed.
+- Thanakorn Kasikorn Thai Chamkat v Cheuk Wan Choi [2019] 2 HKLRD 13 (CFA): No exact public paragraph proof is attached to this seed.
+- Pitt v Holt / Futter v Futter [2013] UKSC 26: No exact public paragraph proof is attached to this seed.
+- Zhang Hong Li v DBS Bank (Hong Kong) Ltd [2019] 3 HKLRD 650 (CFA): No exact public paragraph proof is attached to this seed.
+- Armitage v Nurse [1998] Ch 241 (CA): No exact public paragraph proof is attached to this seed.
+- Spread Trustee Co Ltd v Hutcheson [2011] UKPC 13: No exact public paragraph proof is attached to this seed.
+- Grand View Private Trust Co v Wong [2022] UKPC 47: No exact public paragraph proof is attached to this seed.
+- Foskett v McKeown [2001] 1 AC 102 (HL): No exact public paragraph proof is attached to this seed.
+- Re Hallett's Estate (1880) 13 ChD 696: No exact public paragraph proof is attached to this seed.
+- Re Diplock [1948] Ch 465: No exact public paragraph proof is attached to this seed.
+- R v BMA & Others (Shanghai Land) — Prospectus Fraud: No exact public paragraph proof is attached to this seed.
+- SFC v Hontex International Holdings [2012] 4 HKLRD 1: No exact public paragraph proof is attached to this seed.
+- SFC v UBA Investments Ltd (2008) — Director Liability: No exact public paragraph proof is attached to this seed.
+- Re Bank of China (Hong Kong) Ltd [2009] HKCFI 123: No exact public paragraph proof is attached to this seed.
+- Re Hontex Listing [2012] HKCFI 134: No exact public paragraph proof is attached to this seed.
+- Market Misconduct Tribunal — Tiger Asia: No exact public paragraph proof is attached to this seed.
+- HKEX Disciplinary Action — Hontex: No exact public paragraph proof is attached to this seed.
+- HKEX Disciplinary Action — HCIG: No exact public paragraph proof is attached to this seed.
+- Letang v Cooper [1965] 1 QB 232: No exact public paragraph proof is attached to this seed.
+- Fowler v Lanning [1959] 1 QB 426: No exact public paragraph proof is attached to this seed.
+- Kong Cheuk Ki v Li Kwok Wing [1998] HKCFI 131: No exact public paragraph proof is attached to this seed.
+- Chui Kwai Ping v Lee Kwok Lun [2008] HKCFI 123: No exact public paragraph proof is attached to this seed.
+- Tse Ching Sau v Cheng Chun Wah [2014] HKCFI 456: No exact public paragraph proof is attached to this seed.
+- Donoghue v Stevenson [1932] AC 562: No exact public paragraph proof is attached to this seed.
+- Caparo Industries plc v Dickman [1990] 2 AC 605: No exact public paragraph proof is attached to this seed.
+- Luen Hing Fat Coating & Finishing Factory Ltd v Waan Chuen Ming [2011] 4 HKLRD 293: No exact public paragraph proof is attached to this seed.
+- Lau Luen Hung v Lee Kwok Lun [2008] HKCFI 78: No exact public paragraph proof is attached to this seed.
+- Bolam v Friern Hospital Management Committee [1957] 1 WLR 582: No exact public paragraph proof is attached to this seed.
+- Bolitho v City and Hackney Health Authority [1998] AC 232: No exact public paragraph proof is attached to this seed.
+- Sanfield Building Contractors Ltd v Li Kai Cheong [2000] HKCFI 89: No exact public paragraph proof is attached to this seed.
+- Wong Hon Leung v Leung Kwok Kee [2005] HKCFI 345: No exact public paragraph proof is attached to this seed.
+- Lam Pak Keung v Liu Chi Keung [2012] HKCFI 567: No exact public paragraph proof is attached to this seed.
+- The Wagon Mound (No 1) [1961] AC 388: No exact public paragraph proof is attached to this seed.
+- The Wagon Mound (No 2) [1967] 1 AC 617: No exact public paragraph proof is attached to this seed.
+- McGhee v National Coal Board [1973] 1 WLR 1: No exact public paragraph proof is attached to this seed.
+- Froom v Butcher [1976] QB 286: No exact public paragraph proof is attached to this seed.
+- Ng Wai Ming v HKSAR [2008] HKCFI 234: No exact public paragraph proof is attached to this seed.
+- Morris v Murray [1991] 2 QB 6: No exact public paragraph proof is attached to this seed.
+- Hong Yuen Fu v Sun Lee Transport Ltd [2010] HKCFI 456: No exact public paragraph proof is attached to this seed.
+- Hedley Byrne & Co Ltd v Heller & Partners Ltd [1964] AC 465: No exact public paragraph proof is attached to this seed.
+- Tai Hing Cotton Mill Ltd v Liu Chong Hing Bank Ltd [1986] AC 80: No exact public paragraph proof is attached to this seed.
+- Yuen Kun Yeu v Attorney General of Hong Kong [1988] AC 175: No exact public paragraph proof is attached to this seed.
+- Cheng Yuen v Royal Hongkong Jockey Club [1993] HKCFI 89: No exact public paragraph proof is attached to this seed.
+- Alcock v Chief Constable of South Yorkshire [1992] 1 AC 310: No exact public paragraph proof is attached to this seed.
+- McLoughlin v O'Brian [1983] 1 AC 410: No exact public paragraph proof is attached to this seed.
+- Page v Smith [1996] AC 155: No exact public paragraph proof is attached to this seed.
+- Chu Siu Kuk Yuen v Jockey Club [1994] HKCFI 234: No exact public paragraph proof is attached to this seed.
+- Lau Luen Hung v Commissioner of Police [2009] HKCFI 678: No exact public paragraph proof is attached to this seed.
+- Chan Yuen Ling v Lee Kwok Lun [2012] HKCFI 345: No exact public paragraph proof is attached to this seed.
+- Joel v Morrison (1834) 6 C&P 501: No exact public paragraph proof is attached to this seed.
+- Lister v Hesley Hall Ltd [2002] 1 AC 215: No exact public paragraph proof is attached to this seed.
+- Mohan v Osborne [2014] HKCFI 789: No exact public paragraph proof is attached to this seed.
+- Lau Luen Hung v Lee Kwok Lun [2008] HKCFI 78: No exact public paragraph proof is attached to this seed.
+- Hui Kin Sing v Chan Chi Keung [2015] HKCFI 234: No exact public paragraph proof is attached to this seed.
+- Rylands v Fletcher (1868) LR 3 HL 330: No exact public paragraph proof is attached to this seed.
+- Cambridge Water Co v Eastern Counties Leather plc [1994] 2 AC 264: No exact public paragraph proof is attached to this seed.
+- Wong Cheuk Fai v Secretary for Justice [2016] HKCFI 567: No exact public paragraph proof is attached to this seed.
+- Leung Ka Fai v Commissioner of Police [2013] HKCFI 890: No exact public paragraph proof is attached to this seed.
+- Wilson v Pringle [1987] QB 237: No exact public paragraph proof is attached to this seed.
+- East Week Weekly v Secretary for Justice [2004] HKCA 123: No exact public paragraph proof is attached to this seed.
+- Cheung Yu Shing v Apple Daily Ltd [2015] HKCFI 345: No exact public paragraph proof is attached to this seed.

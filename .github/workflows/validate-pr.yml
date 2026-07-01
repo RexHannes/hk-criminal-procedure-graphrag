@@ -1,0 +1,61 @@
+name: Validate PR6 Production Release
+
+on:
+  pull_request:
+  push:
+    branches:
+      - pr6-production-release
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Audit law-tree case diversity
+        run: node scripts/audit_law_tree_case_diversity.js
+
+      - name: Run verified case authority pipeline
+        run: node scripts/run_case_authority_pipeline.js
+
+      - name: Validate verified case authority registry
+        run: node scripts/validate_verified_case_authority.js
+
+      - name: Validate visible cases resolved or excluded
+        run: node scripts/validate_no_visible_unverified_case_authorities.js
+
+      - name: Validate backend search uses verified only
+        run: node scripts/validate_backend_case_search_uses_verified_only.js
+
+      - name: Evaluate case recall Level 1
+        run: node scripts/evaluate_case_recall_level1.js
+
+      - name: Evaluate AI Inquiry Level 2
+        run: node scripts/evaluate_ai_inquiry_level2.js
+
+      - name: Validate law-tree case fruit packs
+        run: node scripts/validate_law_tree_case_fruit_packs.js
+
+      - name: Evaluate law-tree Level 1
+        run: node scripts/evaluate_law_tree_case_fruit_level1.js
+
+      - name: Evaluate law-tree Level 2
+        run: node scripts/evaluate_law_tree_case_fruit_level2.js
+
+      - name: Smoke test viewer UI quality
+        run: node scripts/smoke_test_viewer_ui_quality.js
+
+      - name: Validate demo readiness
+        run: node scripts/validate_demo_readiness_pr6.js
+
+      - name: Validate committed secrets
+        run: node scripts/validate_no_secrets_committed.js
+
+      - name: Check whitespace
+        run: git diff --check

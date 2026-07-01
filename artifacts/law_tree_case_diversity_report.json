@@ -1,0 +1,161 @@
+{
+  "report_id": "law_tree_case_diversity_audit_v1",
+  "generated_at": "2026-07-01T00:00:00+08:00",
+  "pass": true,
+  "thresholds": {
+    "minimum_distinct_cases_where_available": 5,
+    "max_top_case_share_without_exception": 0.4,
+    "grouped_display_required": true
+  },
+  "trees": [
+    {
+      "tree_id": "criminal_law.theft.dishonesty",
+      "label": "Theft / dishonesty",
+      "total_paragraph_cards": 15,
+      "distinct_cases": 11,
+      "top_case": {
+        "case_name": "BETWEEN HKSAR Respondent and Chan Pui-Yu Appellant",
+        "citation": "[2024] HKCFI 3560",
+        "paragraph_count": 2
+      },
+      "top_case_share": 0.1333,
+      "repeated_paragraphs": [],
+      "missing_required_proof": [],
+      "grouped_display_required": true,
+      "leading_case_cluster_exception": null,
+      "diversity_findings": {
+        "too_few_distinct_cases": false,
+        "single_case_over_40_percent": false,
+        "duplicate_paragraph_cards": false,
+        "missing_url_para_quote_or_summary": false
+      },
+      "passes_diversity_threshold": true
+    },
+    {
+      "tree_id": "criminal_law.theft.intention_permanently_deprive",
+      "label": "Intention permanently to deprive",
+      "total_paragraph_cards": 15,
+      "distinct_cases": 10,
+      "top_case": {
+        "case_name": "BETWEEN HKSAR Respondent and Chan Pui-Yu Appellant",
+        "citation": "[2024] HKCFI 3560",
+        "paragraph_count": 2
+      },
+      "top_case_share": 0.1333,
+      "repeated_paragraphs": [],
+      "missing_required_proof": [],
+      "grouped_display_required": true,
+      "leading_case_cluster_exception": null,
+      "diversity_findings": {
+        "too_few_distinct_cases": false,
+        "single_case_over_40_percent": false,
+        "duplicate_paragraph_cards": false,
+        "missing_url_para_quote_or_summary": false
+      },
+      "passes_diversity_threshold": true
+    },
+    {
+      "tree_id": "criminal_law.theft.belonging_to_another",
+      "label": "Belonging to another",
+      "total_paragraph_cards": 15,
+      "distinct_cases": 11,
+      "top_case": {
+        "case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+        "citation": "[2025] HKCA 451",
+        "paragraph_count": 3
+      },
+      "top_case_share": 0.2,
+      "repeated_paragraphs": [],
+      "missing_required_proof": [],
+      "grouped_display_required": true,
+      "leading_case_cluster_exception": null,
+      "diversity_findings": {
+        "too_few_distinct_cases": false,
+        "single_case_over_40_percent": false,
+        "duplicate_paragraph_cards": false,
+        "missing_url_para_quote_or_summary": false
+      },
+      "passes_diversity_threshold": true
+    },
+    {
+      "tree_id": "criminal_procedure.interview_caution_confession",
+      "label": "Interview, caution and confession",
+      "total_paragraph_cards": 15,
+      "distinct_cases": 14,
+      "top_case": {
+        "case_name": "HKSAR v Chow Kuen Fung (D1) Tsang Chiu Po (D2)",
+        "citation": "[2024] HKDC 980",
+        "paragraph_count": 2
+      },
+      "top_case_share": 0.1333,
+      "repeated_paragraphs": [],
+      "missing_required_proof": [],
+      "grouped_display_required": true,
+      "leading_case_cluster_exception": null,
+      "diversity_findings": {
+        "too_few_distinct_cases": false,
+        "single_case_over_40_percent": false,
+        "duplicate_paragraph_cards": false,
+        "missing_url_para_quote_or_summary": false
+      },
+      "passes_diversity_threshold": true
+    },
+    {
+      "tree_id": "criminal_procedure.bail",
+      "label": "Bail",
+      "total_paragraph_cards": 15,
+      "distinct_cases": 6,
+      "top_case": {
+        "case_name": "HKSAR v Lai Chee Ying",
+        "citation": "[2021] HKCFA 3",
+        "paragraph_count": 5
+      },
+      "top_case_share": 0.3333,
+      "repeated_paragraphs": [],
+      "missing_required_proof": [],
+      "grouped_display_required": true,
+      "leading_case_cluster_exception": null,
+      "diversity_findings": {
+        "too_few_distinct_cases": false,
+        "single_case_over_40_percent": false,
+        "duplicate_paragraph_cards": false,
+        "missing_url_para_quote_or_summary": false
+      },
+      "passes_diversity_threshold": true
+    },
+    {
+      "tree_id": "criminal_public_order.assembly_proportionality",
+      "label": "Public assembly and proportionality",
+      "total_paragraph_cards": 6,
+      "distinct_cases": 3,
+      "top_case": {
+        "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+        "citation": "[2021] HKCA 404",
+        "paragraph_count": 4
+      },
+      "top_case_share": 0.6667,
+      "repeated_paragraphs": [],
+      "missing_required_proof": [],
+      "grouped_display_required": true,
+      "leading_case_cluster_exception": {
+        "allowed": true,
+        "reason": "Narrow public-assembly/proportionality demo cluster currently rests on verified Leung Kwok Hung and Tong Wai Hung CFA/CA paragraph proof. Additional public authorities should be mined later, but the current display must group paragraphs by case."
+      },
+      "diversity_findings": {
+        "too_few_distinct_cases": true,
+        "single_case_over_40_percent": true,
+        "duplicate_paragraph_cards": false,
+        "missing_url_para_quote_or_summary": false
+      },
+      "passes_diversity_threshold": true
+    }
+  ],
+  "summary": {
+    "trees_audited": 6,
+    "trees_passing": 6,
+    "trees_with_leading_case_cluster_exception": [
+      "criminal_public_order.assembly_proportionality"
+    ],
+    "weak_diversity_trees": []
+  }
+}

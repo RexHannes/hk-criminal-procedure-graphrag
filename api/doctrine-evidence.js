@@ -1,6 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
+const {
+  viewerCaseCorpusEvidenceForNode,
+  hasPublicParagraphProof: hasNormalizedPublicParagraphProof,
+} = require("../src/case_graph/viewer_case_corpus_evidence");
+const { lawTreeEvidenceForNode } = require("../src/case_graph/law_tree_case_fruit_packs");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
@@ -91,6 +96,42 @@ function mergeLocalEvidence(node, evidence = [], extraWarnings = []) {
 }
 
 function noEvidencePayload(node, extraWarnings = []) {
+  const viewerEvidence = viewerCaseCorpusEvidenceForNode(node.doctrine_node_id);
+  if (viewerEvidence.length) {
+    return {
+      doctrine_node_id: node.doctrine_node_id,
+      source_node_id: node.source_node_id,
+      title: node.title,
+      node_type: node.node_type,
+      domain_id: node.domain_id,
+      coverage_status: "paragraph_verified",
+      warnings: Array.from(new Set(["pr6_viewer_case_corpus_fallback", "source_linked_public_judgment", "research_prototype", ...extraWarnings])),
+      evidence: viewerEvidence,
+      candidate_evidence: [],
+      verified_evidence: viewerEvidence,
+      answer_safe_evidence: [],
+      answer_mode: "research_prototype",
+      professional_advice_certified: false,
+    };
+  }
+  const lawTreeEvidence = lawTreeEvidenceForNode(node.doctrine_node_id);
+  if (lawTreeEvidence.length) {
+    return {
+      doctrine_node_id: node.doctrine_node_id,
+      source_node_id: node.source_node_id,
+      title: node.title,
+      node_type: node.node_type,
+      domain_id: node.domain_id,
+      coverage_status: "paragraph_verified",
+      warnings: Array.from(new Set(["law_tree_case_fruit_pack", "source_linked_public_judgment", "research_prototype", ...extraWarnings])),
+      evidence: lawTreeEvidence,
+      candidate_evidence: [],
+      verified_evidence: lawTreeEvidence,
+      answer_safe_evidence: [],
+      answer_mode: "research_prototype",
+      professional_advice_certified: false,
+    };
+  }
   const localEvidence = localEvidenceForNode(node);
   if (localEvidence.length) {
     return mergeLocalEvidence(node, [], ["local_case_fruits_fixture_fallback", ...extraWarnings]);
@@ -169,7 +210,9 @@ function cleanEvidenceItem({ link, proposition, paragraph, legalCase, reviewItem
     source_verification_status: answerLayerStatus === "source_verified" ? "public_paragraph_linked" : reviewStatus,
     public_source_link_verified: answerLayerStatus === "source_verified" || answerLayerStatus === "paragraph_verified" || answerLayerStatus === "answer_safe",
     answer_layer_status: answerLayerStatus,
-    human_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
+    answer_mode: "research_prototype",
+    lawyer_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
+    professional_advice_certified: false,
     validator_flags: [],
   };
 }
@@ -180,7 +223,7 @@ function splitEvidence(items) {
   const answerSafe = [];
   for (const item of items) {
     if (item.answer_layer_status === "answer_safe") answerSafe.push(item);
-    else if (item.answer_layer_status === "paragraph_verified" || item.answer_layer_status === "source_verified") verified.push(item);
+    else if (item.answer_layer_status === "paragraph_verified" || item.answer_layer_status === "source_verified" || hasNormalizedPublicParagraphProof(item)) verified.push(item);
     else candidate.push(item);
   }
   let coverage = "no_evidence";
@@ -208,6 +251,45 @@ module.exports = async function handler(req, res) {
   const node = findStaticNode(nodeId);
   if (!node) {
     res.status(404).json({ error: "doctrine_node_not_found", doctrine_node_id: nodeId });
+    return;
+  }
+
+  const viewerEvidence = viewerCaseCorpusEvidenceForNode(node.doctrine_node_id);
+  if (viewerEvidence.length) {
+    res.status(200).json({
+      doctrine_node_id: node.doctrine_node_id,
+      source_node_id: node.source_node_id,
+      title: node.title,
+      node_type: node.node_type,
+      domain_id: node.domain_id,
+      coverage_status: "paragraph_verified",
+      warnings: Array.from(new Set(["pr6_viewer_case_corpus_fallback", "source_linked_public_judgment", "research_prototype"])),
+      evidence: viewerEvidence,
+      candidate_evidence: [],
+      verified_evidence: viewerEvidence,
+      answer_safe_evidence: [],
+      answer_mode: "research_prototype",
+      professional_advice_certified: false,
+    });
+    return;
+  }
+  const lawTreeEvidence = lawTreeEvidenceForNode(node.doctrine_node_id);
+  if (lawTreeEvidence.length) {
+    res.status(200).json({
+      doctrine_node_id: node.doctrine_node_id,
+      source_node_id: node.source_node_id,
+      title: node.title,
+      node_type: node.node_type,
+      domain_id: node.domain_id,
+      coverage_status: "paragraph_verified",
+      warnings: Array.from(new Set(["law_tree_case_fruit_pack", "source_linked_public_judgment", "research_prototype"])),
+      evidence: lawTreeEvidence,
+      candidate_evidence: [],
+      verified_evidence: lawTreeEvidence,
+      answer_safe_evidence: [],
+      answer_mode: "research_prototype",
+      professional_advice_certified: false,
+    });
     return;
   }
 

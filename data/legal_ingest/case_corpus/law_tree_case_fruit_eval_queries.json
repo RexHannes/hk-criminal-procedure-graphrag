@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-07-01T00:00:00+08:00",
+  "queries": [
+    {
+      "id": "criminal_law.theft.dishonesty.exact_case",
+      "level": 1,
+      "tree_id": "criminal_law.theft.dishonesty",
+      "query": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant [2025] HKCA 451",
+      "expected_case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+      "expected_source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p35",
+      "expected_para_no": "35"
+    },
+    {
+      "id": "criminal_law.theft.dishonesty.fact_pattern",
+      "level": 2,
+      "tree_id": "criminal_law.theft.dishonesty",
+      "query": "I picked up goods in a shop, forgot to pay, and left. What theft dishonesty issues matter?"
+    },
+    {
+      "id": "criminal_law.theft.intention_permanently_deprive.exact_case",
+      "level": 1,
+      "tree_id": "criminal_law.theft.intention_permanently_deprive",
+      "query": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant [2022] HKCA 1135",
+      "expected_case_name": "HKSAR Respondent v CHRISTOPHER OKECHI NWOSU Applicant",
+      "expected_source_url": "https://www.hklii.hk/en/cases/hkca/2022/1135#p22",
+      "expected_para_no": "22"
+    },
+    {
+      "id": "criminal_law.theft.intention_permanently_deprive.fact_pattern",
+      "level": 2,
+      "tree_id": "criminal_law.theft.intention_permanently_deprive",
+      "query": "What does intention permanently to deprive mean if I planned to return the item?"
+    },
+    {
+      "id": "criminal_law.theft.belonging_to_another.exact_case",
+      "level": 1,
+      "tree_id": "criminal_law.theft.belonging_to_another",
+      "query": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant [2025] HKCA 451",
+      "expected_case_name": "HKSAR Respondent v Ma Chun-kit (馬振傑) Appellant",
+      "expected_source_url": "https://www.hklii.hk/en/cases/hkca/2025/451#p15",
+      "expected_para_no": "15"
+    },
+    {
+      "id": "criminal_law.theft.belonging_to_another.fact_pattern",
+      "level": 2,
+      "tree_id": "criminal_law.theft.belonging_to_another",
+      "query": "The property was in someone else's possession, but I thought it was mine. What theft issue is this?"
+    },
+    {
+      "id": "criminal_procedure.interview_caution_confession.exact_case",
+      "level": 1,
+      "tree_id": "criminal_procedure.interview_caution_confession",
+      "query": "Secretary for Justice v Lam Tat Ming and Another (2000) 3 HKCFAR 168",
+      "expected_case_name": "Secretary for Justice v Lam Tat Ming and Another",
+      "expected_source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=33993&AH=&QS=&FN=&currpage=T&loc=#p24",
+      "expected_para_no": "24"
+    },
+    {
+      "id": "criminal_procedure.interview_caution_confession.fact_pattern",
+      "level": 2,
+      "tree_id": "criminal_procedure.interview_caution_confession",
+      "query": "The police interviewed me without explaining my rights. What issues matter?"
+    },
+    {
+      "id": "criminal_procedure.bail.exact_case",
+      "level": 1,
+      "tree_id": "criminal_procedure.bail",
+      "query": "HKSAR v Lai Chee Ying [2021] HKCFA 3",
+      "expected_case_name": "HKSAR v Lai Chee Ying",
+      "expected_source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en#p52",
+      "expected_para_no": "52"
+    },
+    {
+      "id": "criminal_procedure.bail.fact_pattern",
+      "level": 2,
+      "tree_id": "criminal_procedure.bail",
+      "query": "What bail factors matter after a theft arrest?"
+    },
+    {
+      "id": "criminal_public_order.assembly_proportionality.exact_case",
+      "level": 1,
+      "tree_id": "criminal_public_order.assembly_proportionality",
+      "query": "Leung Kwok Hung and Others v HKSAR [2005] HKCFA 2",
+      "expected_case_name": "Leung Kwok Hung and Others v HKSAR",
+      "expected_source_url": "https://legalref.judiciary.hk/lrs/common/ju/ju_body.jsp?DIS=45653&AH=&QS=&FN=&currpage=T&loc=#p17",
+      "expected_para_no": "17"
+    },
+    {
+      "id": "criminal_public_order.assembly_proportionality.fact_pattern",
+      "level": 2,
+      "tree_id": "criminal_public_order.assembly_proportionality",
+      "query": "I joined a peaceful protest and police restricted the route. What legal issues matter?"
+    }
+  ]
+}
