@@ -2,23 +2,95 @@
   "section_id": "10",
   "domain_id": "equity_trusts_hk",
   "edges": [
-    { "from": "equity_flows_gaps", "to": "equity_express_trust_creation_flow_start", "relationship": "has_subtopic" },
-    { "from": "equity_express_trust_creation_flow_start", "to": "equity_express_trust_creation_flow_step2", "relationship": "flow_transition" },
-    { "from": "equity_express_trust_creation_flow_step2", "to": "equity_express_trust_creation_flow_step3", "relationship": "flow_transition" },
-    { "from": "equity_flows_gaps", "to": "equity_resulting_trust_flow_start", "relationship": "has_subtopic" },
-    { "from": "equity_resulting_trust_flow_start", "to": "equity_resulting_trust_flow_step2", "relationship": "flow_transition" },
-    { "from": "equity_resulting_trust_flow_step2", "to": "equity_resulting_trust_flow_step3", "relationship": "flow_transition" },
-    { "from": "equity_flows_gaps", "to": "equity_constructive_trust_flow_start", "relationship": "has_subtopic" },
-    { "from": "equity_constructive_trust_flow_start", "to": "equity_constructive_trust_flow_step2", "relationship": "flow_transition" },
-    { "from": "equity_flows_gaps", "to": "equity_tracing_flow_start", "relationship": "has_subtopic" },
-    { "from": "equity_tracing_flow_start", "to": "equity_tracing_flow_step2", "relationship": "flow_transition" },
-    { "from": "equity_flows_gaps", "to": "gap_verify_all_case_seeds_hklii", "relationship": "has_subtopic" },
-    { "from": "equity_flows_gaps", "to": "gap_add_hk_cfa_ca_quistclose", "relationship": "has_subtopic" },
-    { "from": "equity_flows_gaps", "to": "gap_expand_cap29_provisions", "relationship": "has_subtopic" },
-    { "from": "equity_flows_gaps", "to": "gap_add_protective_trusts", "relationship": "has_subtopic" },
-    { "from": "equity_flows_gaps", "to": "gap_add_hk_secret_trust_comm_accept", "relationship": "has_subtopic" },
-    { "from": "equity_flows_gaps", "to": "gap_add_equitable_defences_cases", "relationship": "has_subtopic" },
-    { "from": "equity_flows_gaps", "to": "gap_update_recent_cfa_decisions", "relationship": "has_subtopic" },
-    { "from": "equity_flows_gaps", "to": "gap_distinguish_hk_vs_uk_authorities", "relationship": "has_subtopic" }
+    {
+      "from": "equity_flows_gaps",
+      "to": "equity_express_trust_creation_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_express_trust_creation_flow_start",
+      "to": "equity_express_trust_creation_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "equity_express_trust_creation_flow_step2",
+      "to": "equity_express_trust_creation_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "equity_resulting_trust_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_resulting_trust_flow_start",
+      "to": "equity_resulting_trust_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "equity_resulting_trust_flow_step2",
+      "to": "equity_resulting_trust_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "equity_constructive_trust_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_constructive_trust_flow_start",
+      "to": "equity_constructive_trust_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "equity_tracing_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_tracing_flow_start",
+      "to": "equity_tracing_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "gap_verify_all_case_seeds_hklii",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "gap_add_hk_cfa_ca_quistclose",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "gap_expand_cap29_provisions",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "gap_add_protective_trusts",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "gap_add_hk_secret_trust_comm_accept",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "gap_add_equitable_defences_cases",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "gap_update_recent_cfa_decisions",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_flows_gaps",
+      "to": "gap_distinguish_hk_vs_uk_authorities",
+      "relationship": "has_subtopic"
+    }
   ]
 }

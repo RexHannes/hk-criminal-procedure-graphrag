@@ -7,62 +7,151 @@
     {
       "family_id": "admissibility",
       "label": "Admissibility",
-      "tree_node_ids": ["criminal_evidence.admissibility", "criminal_procedure.pretrial_admissibility"],
-      "keywords": ["admissible", "admissibility", "exclude", "excluded", "relevance", "voir dire"]
+      "tree_node_ids": [
+        "criminal_evidence.admissibility",
+        "criminal_procedure.pretrial_admissibility"
+      ],
+      "keywords": [
+        "admissible",
+        "admissibility",
+        "exclude",
+        "excluded",
+        "relevance",
+        "voir dire"
+      ]
     },
     {
       "family_id": "confession",
       "label": "Confession",
-      "tree_node_ids": ["criminal_evidence.confession", "criminal_evidence.voir_dire"],
-      "keywords": ["confession", "admission", "voluntary", "oppression", "inducement", "caution", "interview"]
+      "tree_node_ids": [
+        "criminal_evidence.confession",
+        "criminal_evidence.voir_dire"
+      ],
+      "keywords": [
+        "confession",
+        "admission",
+        "voluntary",
+        "oppression",
+        "inducement",
+        "caution",
+        "interview"
+      ]
     },
     {
       "family_id": "identification",
       "label": "Identification Evidence",
-      "tree_node_ids": ["criminal_evidence.identification_evidence"],
-      "keywords": ["identification", "recognition", "dock identification", "parade", "eyewitness", "turnbull"]
+      "tree_node_ids": [
+        "criminal_evidence.identification_evidence"
+      ],
+      "keywords": [
+        "identification",
+        "recognition",
+        "dock identification",
+        "parade",
+        "eyewitness",
+        "turnbull"
+      ]
     },
     {
       "family_id": "hearsay",
       "label": "Hearsay",
-      "tree_node_ids": ["criminal_evidence.hearsay"],
-      "keywords": ["hearsay", "out of court", "unavailable witness", "statement"]
+      "tree_node_ids": [
+        "criminal_evidence.hearsay"
+      ],
+      "keywords": [
+        "hearsay",
+        "out of court",
+        "unavailable witness",
+        "statement"
+      ]
     },
     {
       "family_id": "similar_fact",
       "label": "Similar Fact / Propensity",
-      "tree_node_ids": ["criminal_evidence.similar_fact"],
-      "keywords": ["similar fact", "propensity", "striking similarity", "prejudice", "probative"]
+      "tree_node_ids": [
+        "criminal_evidence.similar_fact"
+      ],
+      "keywords": [
+        "similar fact",
+        "propensity",
+        "striking similarity",
+        "prejudice",
+        "probative"
+      ]
     },
     {
       "family_id": "proof",
       "label": "Burden And Standard",
-      "tree_node_ids": ["criminal_evidence.burden_of_proof", "criminal_evidence.standard_of_proof"],
-      "keywords": ["burden", "standard", "reasonable doubt", "evidential burden", "legal burden"]
+      "tree_node_ids": [
+        "criminal_evidence.burden_of_proof",
+        "criminal_evidence.standard_of_proof"
+      ],
+      "keywords": [
+        "burden",
+        "standard",
+        "reasonable doubt",
+        "evidential burden",
+        "legal burden"
+      ]
     },
     {
       "family_id": "silence",
       "label": "Right To Silence",
-      "tree_node_ids": ["criminal_evidence.right_to_silence"],
-      "keywords": ["silence", "adverse inference", "right to silence", "interview"]
+      "tree_node_ids": [
+        "criminal_evidence.right_to_silence"
+      ],
+      "keywords": [
+        "silence",
+        "adverse inference",
+        "right to silence",
+        "interview"
+      ]
     },
     {
       "family_id": "abuse",
       "label": "Abuse Of Process",
-      "tree_node_ids": ["criminal_evidence.abuse_of_process", "criminal_procedure.stay_abuse"],
-      "keywords": ["abuse of process", "stay", "oppressive", "fair trial", "inconsistent positions"]
+      "tree_node_ids": [
+        "criminal_evidence.abuse_of_process",
+        "criminal_procedure.stay_abuse"
+      ],
+      "keywords": [
+        "abuse of process",
+        "stay",
+        "oppressive",
+        "fair trial",
+        "inconsistent positions"
+      ]
     },
     {
       "family_id": "bail",
       "label": "Bail",
-      "tree_node_ids": ["criminal_evidence.bail", "criminal_procedure.bail"],
-      "keywords": ["bail", "remand", "surety", "flight risk", "conditions"]
+      "tree_node_ids": [
+        "criminal_evidence.bail",
+        "criminal_procedure.bail"
+      ],
+      "keywords": [
+        "bail",
+        "remand",
+        "surety",
+        "flight risk",
+        "conditions"
+      ]
     },
     {
       "family_id": "appeal",
       "label": "Appeal / Review",
-      "tree_node_ids": ["criminal_evidence.appeal_review", "criminal_procedure.appeal_review"],
-      "keywords": ["appeal", "review", "fresh evidence", "miscarriage", "conviction", "sentence"]
+      "tree_node_ids": [
+        "criminal_evidence.appeal_review",
+        "criminal_procedure.appeal_review"
+      ],
+      "keywords": [
+        "appeal",
+        "review",
+        "fresh evidence",
+        "miscarriage",
+        "conviction",
+        "sentence"
+      ]
     }
   ]
 }

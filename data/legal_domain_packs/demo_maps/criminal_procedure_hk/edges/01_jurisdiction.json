@@ -2,23 +2,95 @@
   "section_id": "01",
   "domain_id": "criminal_procedure_hk",
   "edges": [
-    { "from": "crim_sys_jurisdiction", "to": "crim_sys_territorial_jurisdiction", "relationship": "has_subtopic" },
-    { "from": "crim_sys_jurisdiction", "to": "crim_sys_courts_hierarchy", "relationship": "has_subtopic" },
-    { "from": "crim_sys_jurisdiction", "to": "crim_sys_constitutional_limits", "relationship": "has_subtopic" },
-    { "from": "crim_sys_territorial_jurisdiction", "to": "bl_art19", "relationship": "statutory_anchor" },
-    { "from": "crim_sys_territorial_jurisdiction", "to": "hksar_v_ma_wai_kwan_david", "relationship": "case_seed" },
-    { "from": "crim_sys_territorial_jurisdiction", "to": "ng_ka_ling_v_director_of_immigration", "relationship": "case_seed" },
-    { "from": "crim_sys_territorial_jurisdiction", "to": "hksar_v_lai_chee_ying", "relationship": "case_seed" },
-    { "from": "crim_sys_territorial_jurisdiction", "to": "crim_sys_jurisdiction_flow", "relationship": "flow_transition" },
-    { "from": "crim_sys_courts_hierarchy", "to": "cap227", "relationship": "statutory_anchor" },
-    { "from": "crim_sys_courts_hierarchy", "to": "cap336", "relationship": "statutory_anchor" },
-    { "from": "crim_sys_courts_hierarchy", "to": "cap4", "relationship": "statutory_anchor" },
-    { "from": "crim_sys_courts_hierarchy", "to": "cap484", "relationship": "statutory_anchor" },
-    { "from": "crim_sys_courts_hierarchy", "to": "hksar_v_chen_keen", "relationship": "case_seed" },
-    { "from": "crim_sys_courts_hierarchy", "to": "hksar_v_milne_john", "relationship": "case_seed" },
-    { "from": "crim_sys_constitutional_limits", "to": "bl_art19", "relationship": "statutory_anchor" },
-    { "from": "crim_sys_constitutional_limits", "to": "cap159_s27a", "relationship": "statutory_anchor" },
-    { "from": "crim_sys_constitutional_limits", "to": "hksar_v_lai_chee_ying", "relationship": "case_seed" },
-    { "from": "crim_sys_constitutional_limits", "to": "nsl_submap_overview", "relationship": "cross_reference" }
+    {
+      "from": "crim_sys_jurisdiction",
+      "to": "crim_sys_territorial_jurisdiction",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_sys_jurisdiction",
+      "to": "crim_sys_courts_hierarchy",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_sys_jurisdiction",
+      "to": "crim_sys_constitutional_limits",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_sys_territorial_jurisdiction",
+      "to": "bl_art19",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_sys_territorial_jurisdiction",
+      "to": "hksar_v_ma_wai_kwan_david",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_sys_territorial_jurisdiction",
+      "to": "ng_ka_ling_v_director_of_immigration",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_sys_territorial_jurisdiction",
+      "to": "hksar_v_lai_chee_ying",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_sys_territorial_jurisdiction",
+      "to": "crim_sys_jurisdiction_flow",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "crim_sys_courts_hierarchy",
+      "to": "cap227",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_sys_courts_hierarchy",
+      "to": "cap336",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_sys_courts_hierarchy",
+      "to": "cap4",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_sys_courts_hierarchy",
+      "to": "cap484",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_sys_courts_hierarchy",
+      "to": "hksar_v_chen_keen",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_sys_courts_hierarchy",
+      "to": "hksar_v_milne_john",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_sys_constitutional_limits",
+      "to": "bl_art19",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_sys_constitutional_limits",
+      "to": "cap159_s27a",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "crim_sys_constitutional_limits",
+      "to": "hksar_v_lai_chee_ying",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "crim_sys_constitutional_limits",
+      "to": "nsl_submap_overview",
+      "relationship": "cross_reference"
+    }
   ]
 }

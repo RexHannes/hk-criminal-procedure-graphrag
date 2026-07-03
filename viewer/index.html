@@ -28,8 +28,8 @@
       <select id="domain-select" aria-label="Select legal domain"></select>
     </div>
     <div class="masthead-badges">
-      <span class="badge badge-research" title="This map is a research layer, not a product answer layer.">Research layer</span>
-      <span class="badge badge-pending" title="Sources await HKLII paragraph verification.">Verification pending</span>
+      <span class="badge badge-verified" title="Paragraph-linked public judgments with source proof.">Source-linked authorities</span>
+      <span class="badge badge-research" title="Research prototype — not professional legal advice.">Research prototype</span>
     </div>
   </header>
   <div class="masthead-rule"></div>
@@ -84,12 +84,17 @@
     <span id="status-selected">Nothing selected</span>
   </footer>
 
+  <div id="prototype-banner" class="prototype-banner" role="note">
+    Research prototype. Public source-linked case law. Lawyer-review workflow to be added before professional/legal-advice deployment.
+  </div>
+
   <script>
     window.DATA_INDEX = '../data/index.json';
     window.DATA_ROOT = '../data/legal_domain_packs/demo_maps/';
     window.DEFAULT_DOMAIN_ID = 'criminal_procedure_hk';
     window.FIRM_OVERLAY_PATH = '../data/firm_overlay/demo_firm.json';
   </script>
+  <script src="sop_editor.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

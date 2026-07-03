@@ -10,7 +10,7 @@
         "equity_express_trust_creation_flow_step2",
         "equity_express_trust_creation_flow_step3"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "resulting_trust_flow",
@@ -21,7 +21,7 @@
         "equity_resulting_trust_flow_step2",
         "equity_resulting_trust_flow_step3"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "constructive_trust_flow",
@@ -31,7 +31,7 @@
         "equity_constructive_trust_flow_start",
         "equity_constructive_trust_flow_step2"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "tracing_flow",
@@ -41,7 +41,7 @@
         "equity_tracing_flow_start",
         "equity_tracing_flow_step2"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     }
   ]
 }

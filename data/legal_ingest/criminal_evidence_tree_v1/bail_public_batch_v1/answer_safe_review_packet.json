@@ -117,7 +117,7 @@
         "criminal_procedure_hk.bail_flow_step5",
         "criminal_procedure_hk.nsl_bail"
       ],
-      "current_review_state": "machine_candidate",
+      "current_review_state": "paragraph_verified",
       "current_answer_safe": false,
       "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
       "required_human_checks": [
@@ -145,7 +145,7 @@
         "criminal_procedure_hk.bail_flow_step5",
         "criminal_procedure_hk.nsl_bail"
       ],
-      "current_review_state": "machine_candidate",
+      "current_review_state": "paragraph_verified",
       "current_answer_safe": false,
       "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
       "required_human_checks": [
@@ -172,7 +172,7 @@
         "criminal_procedure_hk.nsl_bail",
         "criminal_procedure_hk.bail_right_to_bail"
       ],
-      "current_review_state": "machine_candidate",
+      "current_review_state": "paragraph_verified",
       "current_answer_safe": false,
       "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
       "required_human_checks": [
@@ -198,7 +198,7 @@
       "target_doctrine_node_ids": [
         "criminal_procedure_hk.nsl_bail"
       ],
-      "current_review_state": "machine_candidate",
+      "current_review_state": "paragraph_verified",
       "current_answer_safe": false,
       "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en",
       "required_human_checks": [

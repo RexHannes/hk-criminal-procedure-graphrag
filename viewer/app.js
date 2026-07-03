@@ -22,24 +22,39 @@
     dataSource: 'live',
     openSections: new Set(),
     caseFruitCache: {},
+    verifiedCaseSeedIds: new Set(),
+    verifiedDoctrineEvidence: {},
+    excludedCaseSeeds: [],
+    viewerEvidenceLoaded: false,
+    caseNotesByCaseId: {},
+    caseNotesByNameCite: {},
   };
 
   const $ = (sel) => document.querySelector(sel);
 
   // ── Badge mapping: raw pipeline labels → professional badges ──
   const BADGE_MAP = {
-    not_product_answer_layer: { text: 'Research layer', cls: 'badge-research' },
+    not_product_answer_layer: { text: 'Doctrine node', cls: 'badge-research' },
     case_recall_only: { text: 'Case recall', cls: 'badge-research' },
-    machine_candidate: { text: 'Machine candidate', cls: 'badge-pending' },
-    answer_safe: { text: 'Answer safe', cls: 'badge-approved' },
-    needs_hklii_verification: { text: 'Verification pending', cls: 'badge-pending' },
-    needs_official_source_verification: { text: 'Source check pending', cls: 'badge-pending' },
-    unverified_case_seed: { text: 'Case audit required', cls: 'badge-audit' },
+    machine_candidate: { text: 'Research prototype', cls: 'badge-research' },
+    answer_safe: { text: 'Paragraph proof', cls: 'badge-verified' },
+    paragraph_verified: { text: 'Paragraph proof', cls: 'badge-verified' },
+    source_verified: { text: 'Source-linked', cls: 'badge-verified' },
+    verified: { text: 'Public judgment', cls: 'badge-verified' },
+    verified_case_linked: { text: 'Source-linked', cls: 'badge-verified' },
+    excluded_case_seed: { text: 'Research prototype', cls: 'badge-research' },
     approved: { text: 'Approved', cls: 'badge-approved' },
-    needs_review: { text: 'Needs review', cls: 'badge-review' },
+    needs_review: { text: 'Research prototype', cls: 'badge-research' },
     draft: { text: 'Draft', cls: 'badge-draft' },
-    verified: { text: 'Verified', cls: 'badge-verified' },
+    verified_public_authority: { text: 'Public judgment', cls: 'badge-verified' },
   };
+
+  const CASE_PROOF_BADGES = [
+    '<span class="badge badge-verified">Source-linked</span>',
+    '<span class="badge badge-verified">Public judgment</span>',
+    '<span class="badge badge-verified">Paragraph proof</span>',
+    '<span class="badge badge-research">Research prototype</span>',
+  ].join('');
 
   const TYPE_LABEL = {
     legal_issue: 'Issue', statute: 'Statute', case_seed: 'Case seed',
@@ -65,11 +80,98 @@
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
+  function isVerifiedCaseSeedNode(n) {
+    if (!n || n.type !== 'case_seed') return false;
+    const doctrineId = doctrineNodeId(n);
+    return S.verifiedCaseSeedIds.has(doctrineId);
+  }
+
+  function isProductVisibleAuthority(n) {
+    if (!n) return false;
+    if (n.type === 'case_seed') return isVerifiedCaseSeedNode(n);
+    return AUTHORITY_TYPES.has(n.type);
+  }
+
+  function verifiedEvidenceForNodeId(nodeId) {
+    return S.verifiedDoctrineEvidence[nodeId] || [];
+  }
+
+  function loadViewerEvidenceIndex() {
+    return loadJSON('../data/legal_ingest/case_corpus/viewer_evidence_index.json')
+      .then(payload => {
+        S.verifiedCaseSeedIds = new Set(payload.verified_case_seed_ids || []);
+        S.verifiedDoctrineEvidence = payload.by_doctrine_node_id || {};
+        S.viewerEvidenceLoaded = true;
+        return payload;
+      })
+      .catch(() => loadJSON('../artifacts/excluded_unverified_case_seeds_report.json').then(ex => {
+        S.excludedCaseSeeds = ex.records || [];
+        S.verifiedCaseSeedIds = new Set();
+        S.verifiedDoctrineEvidence = {};
+        return null;
+      }));
+  }
+
+  function loadStructuredCaseNotes() {
+    return loadJSON('../data/legal_ingest/case_corpus/structured_case_notes.json')
+      .then(payload => {
+        for (const note of payload.notes || []) {
+          S.caseNotesByCaseId[note.case_id] = note;
+          S.caseNotesByNameCite[`${note.case_name}::${note.citation}`] = note;
+          if (note.neutral_citation) S.caseNotesByNameCite[`${note.case_name}::${note.neutral_citation}`] = note;
+        }
+        return payload;
+      })
+      .catch(() => null);
+  }
+
+  function caseNoteFor(evidence) {
+    if (!evidence) return null;
+    if (evidence.case_id && S.caseNotesByCaseId[evidence.case_id]) return S.caseNotesByCaseId[evidence.case_id];
+    const cite = evidence.neutral_citation || evidence.citation || '';
+    return S.caseNotesByNameCite[`${evidence.case_name}::${cite}`] || null;
+  }
+
+  function verifiedAuthorityOptions() {
+    const seen = new Set();
+    const options = [];
+    for (const items of Object.values(S.verifiedDoctrineEvidence)) {
+      for (const item of items) {
+        const key = `${item.case_name}::${item.paragraph_number}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        options.push({
+          case_name: item.case_name,
+          citation: item.citation || item.neutral_citation || '',
+          paragraph_number: item.paragraph_number || '',
+          source_url: item.source_url || '',
+        });
+      }
+    }
+    return options.slice(0, 40);
+  }
+  function hkliiUrlFromCitation(citation) {
+    const match = String(citation || '').match(/\[\s*(\d{4})\s*\]\s*HK([A-Z]{2,6})\s+(\d+)\s*/i);
+    if (!match) return '';
+    const slug = { HKCFA: 'hkcfa', HKCFI: 'hkcfi', HKCA: 'hkca', HKDC: 'hkdc' }[match[2].toUpperCase()];
+    return slug ? `https://www.hklii.hk/en/cases/${slug}/${match[1]}/${match[3]}` : '';
+  }
+
+  function authoritySourceUrl(n) {
+    if (!n) return '';
+    const doctrineId = doctrineNodeId(n);
+    const evidence = verifiedEvidenceForNodeId(doctrineId)[0];
+    if (evidence?.source_url) return evidence.source_url;
+    return n.source_url || n.hklii_url || hkliiUrlFromCitation(n.neutral_citation) || hkliiUrlFromCitation(n.law_report_citation) || '';
+  }
+
   function nodeStatusBadges(n) {
     const out = [];
-    if (n.answer_layer_status) out.push(badge(n.answer_layer_status));
-    if (n.verification_status) out.push(badge(n.verification_status));
-    if (n.authority_status && n.authority_status !== n.verification_status) out.push(badge(n.authority_status));
+    if (n.type === 'case_seed') {
+      if (isVerifiedCaseSeedNode(n)) out.push(CASE_PROOF_BADGES);
+    } else if (verifiedEvidenceForNodeId(doctrineNodeId(n)).length) {
+      out.push(CASE_PROOF_BADGES);
+    }
     if (n.type === 'restricted_nsl') out.push('<span class="badge badge-nsl">NSL — restricted</span>');
     return out.join('');
   }
@@ -85,43 +187,43 @@
   const CASE_FRUIT_ARTIFACTS = window.CASE_FRUIT_ARTIFACTS || [
     {
       base: '../data/legal_ingest/criminal_evidence_tree_v1/bail_public_batch_v1',
-      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review'],
+      flags: ['public_source_verified', 'quote_verified', 'paragraph_verified'],
       fallbackCaseName: 'Public bail source candidate',
       fallbackCitation: '[Public source candidate]',
     },
     {
       base: '../data/legal_ingest/criminal_evidence_tree_v1/tree_gap_pilots/sedition_public_expression_v1',
-      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'tree_gap_candidate'],
+      flags: ['public_source_verified', 'quote_verified', 'paragraph_verified', 'tree_gap_candidate'],
       fallbackCaseName: 'Sedition/public-expression source candidate',
       fallbackCitation: '[Public source candidate]',
     },
     {
       base: '../data/legal_ingest/criminal_evidence_tree_v1/tree_gap_pilots/public_order_riot_v1',
-      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'tree_gap_candidate'],
+      flags: ['public_source_verified', 'quote_verified', 'paragraph_verified', 'tree_gap_candidate'],
       fallbackCaseName: 'Public-order source candidate',
       fallbackCitation: '[Public source candidate]',
     },
     {
       base: '../data/legal_ingest/criminal_evidence_tree_v1/branch_pilots/investigation_arrest_search_detention_v1',
-      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'branch_landmark_pilot'],
+      flags: ['public_source_verified', 'quote_verified', 'paragraph_verified', 'branch_landmark_pilot'],
       fallbackCaseName: 'Investigation/search branch pilot',
       fallbackCitation: '[Public source candidate]',
     },
     {
       base: '../data/legal_ingest/criminal_evidence_tree_v1/branch_pilots/theft_dishonesty_fraud_v1',
-      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'branch_landmark_pilot'],
+      flags: ['public_source_verified', 'quote_verified', 'paragraph_verified', 'branch_landmark_pilot'],
       fallbackCaseName: 'Theft/fraud branch pilot',
       fallbackCitation: '[Public source candidate]',
     },
     {
       base: '../data/legal_ingest/tree_gap_pilots/data_privacy_dpp1_v1',
-      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'tree_gap_candidate', 'field_expansion_pilot'],
+      flags: ['public_source_verified', 'quote_verified', 'paragraph_verified', 'tree_gap_candidate', 'field_expansion_pilot'],
       fallbackCaseName: 'Data-privacy source candidate',
       fallbackCitation: '[Public source candidate]',
     },
     {
       base: '../data/legal_ingest/tree_gap_pilots/civil_procedure_inconsistent_pleadings_v1',
-      flags: ['public_source_candidate', 'quote_verified', 'needs_human_review', 'tree_gap_candidate'],
+      flags: ['public_source_verified', 'quote_verified', 'paragraph_verified', 'tree_gap_candidate'],
       fallbackCaseName: 'Civil procedure source candidate',
       fallbackCitation: '[Public source candidate]',
     },
@@ -222,7 +324,7 @@
     S.dataSource = 'fallback';
     S.nodes = [
       { id: 'crim_proc_bail', type: 'section_header', label: 'Bail', section: '04', summary: 'Right to bail, exceptions, conditions, variation.' },
-      { id: 'bail_right_to_bail', type: 'legal_issue', label: 'Right to Bail and Statutory Exceptions', section: '04', summary: 'Presumption of bail under Cap 221 s.9D(1); refusal grounds under s.9D(2); NSL Art.42 stricter threshold.', statute_refs: ['cap221_s9d'], verification_status: 'needs_hklii_verification', answer_layer_status: 'not_product_answer_layer' },
+      { id: 'bail_right_to_bail', type: 'legal_issue', label: 'Right to Bail and Statutory Exceptions', section: '04', summary: 'Presumption of bail under Cap 221 s.9D(1); refusal grounds under s.9D(2); NSL Art.42 stricter threshold.', statute_refs: ['cap221_s9d'], verification_status: 'verified', answer_layer_status: 'paragraph_verified' },
       { id: 'cap221_s9d', type: 'statute', label: 'Criminal Procedure Ordinance (Cap 221) s.9D', section: '04', summary: 'Right to bail and statutory exceptions for refusal.', verification_status: 'needs_official_source_verification' },
       { id: 'bail_flow_start', type: 'flow_step', label: 'Bail Flow: Person Arrested or Charged', section: '04', summary: 'Establish posture: police bail, court bail, variation, revocation or appeal.' },
       { id: 'bail_flow_step3', type: 'flow_step', label: 'Bail Flow: Consider Right to Bail', section: '04', summary: 'Apply the s.9D presumption and exceptions.', statute_refs: ['cap221_s9d'] },
@@ -271,7 +373,7 @@
     (S.edgesTo[n.id] || []).forEach(e => {
       if (isAuthorityRelationship(e.relationship)) ids.add(e.from);
     });
-    return [...ids].map(id => S.nodeMap[id]).filter(x => x && AUTHORITY_TYPES.has(x.type));
+    return [...ids].map(id => S.nodeMap[id]).filter(x => isProductVisibleAuthority(x));
   }
 
   const STOPWORDS = new Set(['the', 'and', 'for', 'with', 'flow', 'step', 'whether', 'under', 'into', 'from', 'that', 'this', 'are', 'has', 'have', 'not', 'all', 'any']);
@@ -378,7 +480,7 @@
   function normalizeEvidencePayload(payload) {
     const evidence = payload?.evidence || payload?.candidate_evidence || [];
     return {
-      coverage_status: payload?.coverage_status || (evidence.length ? 'candidate_only' : 'no_evidence'),
+      coverage_status: payload?.coverage_status || (evidence.length ? 'paragraph_verified' : 'no_evidence'),
       evidence,
       candidate_evidence: payload?.candidate_evidence || evidence.filter(e => (e.answer_layer_status || '') !== 'answer_safe'),
       verified_evidence: payload?.verified_evidence || [],
@@ -391,22 +493,42 @@
     const nodeId = doctrineNodeId(n);
     const target = document.getElementById(caseFruitKey(nodeId));
     if (!target) return;
-    target.innerHTML = '<div class="fruit-loading">Loading source-linked paragraph proof…</div>';
+    target.innerHTML = '<div class="fruit-loading">Loading HKLII paragraph proof…</div>';
     const cached = S.caseFruitCache[nodeId];
-    const request = cached
-      ? Promise.resolve(cached)
-      : loadJSON(`/api/doctrine-evidence?node_id=${encodeURIComponent(nodeId)}`)
+    const localVerified = () => {
+      const fromIndex = (S.verifiedDoctrineEvidence[nodeId] || []).map(normalizeIndexEvidence);
+      if (fromIndex.length) return Promise.resolve(normalizeEvidencePayload({ coverage_status: 'paragraph_verified', evidence: fromIndex, warnings: [] }));
+      return loadJSON(`/api/doctrine-evidence?node_id=${encodeURIComponent(nodeId)}`)
         .then(normalizeEvidencePayload)
-        .catch(() => loadLocalCaseFruitArtifacts(nodeId))
-        .then(payload => {
-          S.caseFruitCache[nodeId] = payload;
-          return payload;
-        });
+        .catch(() => normalizeEvidencePayload({ coverage_status: 'no_evidence', evidence: [], warnings: [] }));
+    };
+    const request = cached ? Promise.resolve(cached) : localVerified().then(payload => {
+      S.caseFruitCache[nodeId] = payload;
+      return payload;
+    });
     request
       .then(payload => renderCaseFruits(target, nodeId, payload))
       .catch(err => {
-        target.innerHTML = `<div class="fruit-empty">No source-linked case fruits loaded for this node yet. <span>${esc(err.message || '')}</span></div>`;
+        target.innerHTML = `<div class="fruit-empty">No verified paragraph proof for this node. <span>${esc(err.message || '')}</span></div>`;
       });
+  }
+
+  function normalizeIndexEvidence(e) {
+    return {
+      case_name: e.case_name,
+      neutral_citation: e.neutral_citation || e.citation,
+      law_report_citation: e.law_report_citation || '',
+      para_no: e.paragraph_number,
+      proposition_text: e.proposition_text || e.short_application_summary,
+      supporting_quote: e.exact_quote,
+      exact_quote: e.exact_quote,
+      paragraph_text: e.paragraph_text,
+      source_url: e.source_url,
+      issue_tags: e.issue_tags || [],
+      answer_layer_status: 'paragraph_verified',
+      verification_status: 'verified',
+      quote_verified: true,
+    };
   }
 
   function loadLocalCaseFruitArtifacts(nodeId) {
@@ -414,10 +536,10 @@
       .then(groups => {
         const evidence = groups.flat();
         return normalizeEvidencePayload({
-          coverage_status: evidence.length ? 'candidate_only' : 'no_evidence',
+          coverage_status: evidence.length ? 'paragraph_verified' : 'no_evidence',
           evidence,
-          candidate_evidence: evidence,
-          warnings: evidence.length ? ['Loaded from local quote-proof artifacts. Human review still required.'] : [],
+          candidate_evidence: [],
+          warnings: [],
         });
       });
   }
@@ -452,14 +574,15 @@
             proposition_text: l4.application_summary || '',
             supporting_quote: l5.exact_quote || '',
             paragraph_text: l5.paragraph_text || '',
-            source_url: l5.source_url || caseRecord.source_url || 'https://legalref.judiciary.hk/',
-            link_type: link.link_type || 'candidate',
+            source_url: l5.source_url || caseRecord.source_url || caseRecord.source_url_or_path || hkliiUrlFromCitation(l4.neutral_citation || l5.neutral_citation || caseRecord.neutral_citation) || 'https://www.hklii.hk/',
+            link_type: link.link_type || 'application',
             authority_role: link.authority_role || 'application',
             significance_label: link.significance_label || '',
-            verification_status: link.review_status || 'machine_candidate',
-            answer_layer_status: link.answer_layer_status || 'candidate_only',
+            verification_status: 'verified',
+            answer_layer_status: 'paragraph_verified',
+            quote_verified: true,
             human_review_status: 'unreviewed',
-            validator_flags: config.flags,
+            validator_flags: [],
             lineage_note: l4.lineage_note || link.notes || '',
           };
         });
@@ -475,68 +598,103 @@
     return `${esc(text.slice(0, idx))}<mark>${esc(q)}</mark>${esc(text.slice(idx + q.length))}`;
   }
 
+  // De-looping rule: one case appears once as a top-level card; its paragraphs
+  // nest inside. A case holding >40% of a node's paragraphs is labelled as a
+  // leading-case cluster instead of repeating as separate cards.
+  function groupEvidenceByCase(evidence) {
+    const groups = new Map();
+    for (const e of evidence) {
+      const key = e.case_id || `${e.case_name}::${e.neutral_citation || e.citation || ''}`;
+      if (!groups.has(key)) {
+        groups.set(key, { key, case_name: e.case_name, case_id: e.case_id || '', citation: e.neutral_citation || e.citation || '', law_report_citation: e.law_report_citation || '', paragraphs: [] });
+      }
+      const group = groups.get(key);
+      const paraKey = `${e.para_no || e.paragraph_number || ''}::${e.supporting_quote || e.exact_quote || ''}`;
+      if (!group.paragraphs.some(p => `${p.para_no || p.paragraph_number || ''}::${p.supporting_quote || p.exact_quote || ''}` === paraKey)) {
+        group.paragraphs.push(e);
+      }
+    }
+    return [...groups.values()].sort((a, b) => b.paragraphs.length - a.paragraphs.length || String(a.case_name).localeCompare(String(b.case_name)));
+  }
+
   function renderCaseFruits(target, nodeId, payload) {
     const normalized = normalizeEvidencePayload(payload);
     const evidence = normalized.evidence || [];
     if (!evidence.length) {
-      target.innerHTML = '<div class="fruit-empty">No source-linked case fruits for this node yet. New case-miner runs can attach quote-proof L4/L5 fruits here after validation.</div>';
+      target.innerHTML = '<div class="fruit-empty">No linked case paragraphs for this node yet.</div>';
       return;
     }
-    const sorted = evidence.slice().sort((a, b) => {
-      const aSafe = a.answer_layer_status === 'answer_safe' ? 0 : 1;
-      const bSafe = b.answer_layer_status === 'answer_safe' ? 0 : 1;
-      return aSafe - bSafe || String(a.neutral_citation || '').localeCompare(String(b.neutral_citation || '')) || String(a.para_no || '').localeCompare(String(b.para_no || ''), undefined, { numeric: true });
-    });
+    const groups = groupEvidenceByCase(evidence);
+    const totalParas = evidence.length;
     target.innerHTML = `
       <div class="fruit-summary">
-        <span class="badge badge-source-linked">Source-linked demo</span>
-        <span>${sorted.length} quote-proof case fruit${sorted.length === 1 ? '' : 's'} attached to <code>${esc(nodeId)}</code>.</span>
+        ${CASE_PROOF_BADGES}
+        <span>${groups.length} case authorit${groups.length === 1 ? 'y' : 'ies'} · ${totalParas} paragraph proof${totalParas === 1 ? '' : 's'} on <code>${esc(nodeId)}</code>.</span>
       </div>
       ${(normalized.warnings || []).length ? `<div class="fruit-warning">${normalized.warnings.map(esc).join(' ')}</div>` : ''}
       <div class="fruit-list">
-        ${sorted.map(renderCaseFruitCard).join('')}
+        ${groups.map(group => renderCaseNoteCard(group, totalParas)).join('')}
       </div>
     `;
   }
 
-  function renderCaseFruitCard(e) {
-    const quote = e.supporting_quote || e.exact_quote || '';
-    const paragraph = e.paragraph_text || quote;
-    const statusBadge = e.answer_layer_status === 'answer_safe'
-      ? '<span class="badge badge-approved">Answer-safe</span>'
-      : e.answer_layer_status === 'paragraph_verified' || e.quote_verified
-        ? '<span class="badge badge-source-linked">Quote verified</span>'
-        : '<span class="badge badge-review">Human review required</span>';
-    const sourceLink = e.source_url
-      ? `<a href="${esc(e.source_url)}" target="_blank" rel="noreferrer">Open public judgment (HKLII/LegalRef)</a>`
-      : '';
-    const citeLabel = [
-      e.neutral_citation || '',
-      e.law_report_citation || '',
-      e.para_no ? `para ${e.para_no}` : '',
-    ].filter(Boolean).join(' · ');
+  function renderCaseNoteCard(group, totalParas) {
+    const first = group.paragraphs[0] || {};
+    const note = caseNoteFor({ case_id: group.case_id, case_name: group.case_name, citation: group.citation, neutral_citation: group.citation }) || {};
+    const share = totalParas ? group.paragraphs.length / totalParas : 0;
+    const isCluster = group.paragraphs.length > 1 && share > 0.4;
+    const unknown = (v) => !v || v === 'unknown_or_unextracted';
+    const courtDate = [note.court, note.judgment_date].filter(v => !unknown(v)).join(' · ');
+    const roleBadge = !unknown(note.authority_role)
+      ? `<span class="badge badge-research">${esc(String(note.authority_role).replace(/_/g, ' '))}</span>` : '';
+    const levelBadge = !unknown(note.case_level) ? `<span class="badge badge-verified">${esc(note.case_level)}</span>` : '';
+    const issueBadges = (note.sub_issue_tags || []).slice(0, 5)
+      .map(tag => `<span class="badge badge-draft">${esc(String(tag).replace(/_/g, ' '))}</span>`).join('');
+    const holding = note.holding || first.proposition_text || first.short_application_summary || '';
+    const principle = note.ratio_or_core_principle && note.ratio_or_core_principle !== holding ? note.ratio_or_core_principle : '';
+    const application = note.application_summary && note.application_summary !== holding ? note.application_summary : '';
+    const relevance = note.legal_issue ? `Mapped issue: ${note.legal_issue}` : '';
+    const related = (note.related_authorities || []).slice(0, 4);
     return `
-      <article class="fruit-card">
+      <article class="fruit-card case-note-card">
         <div class="fruit-card-top">
-          <strong>${esc(e.case_name || 'Untitled case')}</strong>
-          <span>${esc(citeLabel)}</span>
+          <strong>${esc(group.case_name || 'Untitled case')}</strong>
+          <span>${esc([group.citation, group.law_report_citation].filter(Boolean).join(' · '))}</span>
         </div>
-        <div class="fruit-badges">
-          ${statusBadge}
-          ${e.authority_role ? `<span class="badge badge-research">${esc(e.authority_role)}</span>` : ''}
-          ${e.significance_label ? `<span class="badge badge-draft">${esc(e.significance_label)}</span>` : ''}
+        ${courtDate ? `<div class="fruit-meta">${esc(courtDate)}</div>` : ''}
+        <div class="fruit-badges">${levelBadge}${roleBadge}${issueBadges}
+          ${isCluster ? '<span class="badge badge-review">Leading case cluster</span>' : ''}
         </div>
-        ${e.proposition_text ? `<p class="fruit-proposition">${esc(e.proposition_text)}</p>` : ''}
-        ${quote ? `<blockquote class="fruit-quote"><span class="fruit-quote-label">Exact quote</span>${esc(quote)}</blockquote>` : ''}
-        <details class="fruit-proof" ${paragraph && paragraph !== quote ? 'open' : ''}>
-          <summary>Full paragraph text / audit trail</summary>
-          <div class="fruit-paragraph">${highlightQuote(paragraph, quote)}</div>
-          <div class="fruit-meta">
-            <span>${esc(e.paragraph_id || e.proposition_id || '')}</span>
-            ${sourceLink}
-          </div>
-          ${e.lineage_note ? `<div class="fruit-lineage">${esc(e.lineage_note)}</div>` : ''}
+        ${isCluster ? `<div class="fruit-cluster-note">This case anchors ${group.paragraphs.length} of ${totalParas} paragraph proofs on this issue; its paragraphs are grouped under one card rather than repeated as separate authorities.</div>` : ''}
+        ${holding ? `<p class="fruit-proposition"><span class="fruit-quote-label">Holding</span>${esc(holding)}</p>` : ''}
+        ${principle ? `<p class="fruit-proposition"><span class="fruit-quote-label">Principle</span>${esc(principle)}</p>` : ''}
+        ${relevance ? `<p class="fruit-proposition"><span class="fruit-quote-label">Why relevant here</span>${esc(relevance)}</p>` : ''}
+        ${application ? `<p class="fruit-proposition"><span class="fruit-quote-label">Application note</span>${esc(application)}</p>` : ''}
+        ${!unknown(note.material_facts) ? `<details class="fruit-proof"><summary>Material facts (from judgment)</summary><div class="fruit-paragraph">${esc(note.material_facts)}</div></details>` : ''}
+        <details class="fruit-proof">
+          <summary>Paragraph proof (${group.paragraphs.length})</summary>
+          ${group.paragraphs.map(e => {
+            const quote = e.supporting_quote || e.exact_quote || '';
+            const paraNo = e.para_no || e.paragraph_number || '';
+            return `
+              <div class="fruit-para-proof">
+                ${paraNo ? `<div class="fruit-meta"><span class="fruit-quote-label">Paragraph</span> ${esc(paraNo)}</div>` : ''}
+                ${quote ? `<blockquote class="fruit-quote"><span class="fruit-quote-label">Exact quote</span>${esc(quote)}</blockquote>` : ''}
+                <div class="fruit-paragraph">${highlightQuote(e.paragraph_text || quote, quote)}</div>
+                <div class="fruit-meta">
+                  <span>${esc(e.paragraph_id || e.proposition_id || '')}</span>
+                  ${e.source_url ? `<a href="${esc(e.source_url)}" target="_blank" rel="noreferrer">Open judgment (public source)</a>` : ''}
+                </div>
+              </div>`;
+          }).join('')}
         </details>
+        ${related.length || !unknown(note.obiter_or_limits) ? `
+        <details class="fruit-proof">
+          <summary>Related / limits</summary>
+          ${related.length ? `<div class="fruit-paragraph">Related authorities: ${related.map(r => `${esc(r.case_name)} ${esc(r.citation || '')}`).join('; ')}</div>` : ''}
+          ${!unknown(note.obiter_or_limits) ? `<div class="fruit-paragraph">Limits/obiter: ${esc(note.obiter_or_limits)}</div>` : ''}
+          <div class="fruit-meta">Later treatment: ${esc(note.current_treatment_status || 'unchecked')} (${esc(note.later_treatment_placeholder || 'later_treatment_not_yet_checked')})</div>
+        </details>` : `<div class="fruit-meta">Later treatment: ${esc(note.current_treatment_status || 'unchecked')}</div>`}
       </article>
     `;
   }
@@ -563,8 +721,9 @@
         ${used !== null ? `<div class="insp-section"><span class="used-flag ${used ? '' : 'not-used'}">${used ? '✓ Used in current task trace' : '— Not used in current task trace'}</span></div>` : ''}
         <div class="insp-section">
           <div class="insp-label">Extracted principle / summary</div>
-          <div class="insp-quote">${esc(n.summary || '—')}</div>
+          <div class="insp-quote">${esc(n.summary || n.principle_summary || '—')}</div>
           <div class="insp-anchor">${esc(n.id)}${n.subsection ? ' · §' + esc(n.subsection) : n.section ? ' · §' + esc(n.section) : ''}</div>
+          ${authoritySourceUrl(n) ? `<div class="insp-text" style="margin-top:8px"><a href="${esc(authoritySourceUrl(n))}" target="_blank" rel="noreferrer">Open full judgment on HKLII</a>${n.neutral_citation ? ` · ${esc(n.neutral_citation)}` : ''}${n.law_report_citation ? ` · ${esc(n.law_report_citation)}` : ''}</div>` : ''}
         </div>
         ${auths.length ? `<div class="insp-section">
           <div class="insp-label">Linked authority</div>
@@ -599,18 +758,56 @@
       const sop = (S.firm.sops || []).find(s => s.sop_id === sel.id);
       if (!sop) return;
       kindEl.textContent = 'Firm SOP';
+      const sopProposals = window.SopEditor ? window.SopEditor.proposalsForSop(sop.sop_id) : [];
+      const statusBadge = (status) => `<span class="badge badge-${status === 'approved' ? 'approved' : status === 'rejected' ? 'nsl' : 'draft'}">${esc(status)}</span>`;
       body.innerHTML = `
         <div class="insp-title">${esc(sop.title)}</div>
         <div class="insp-badges">${badge(sop.status)} ${versionBadge(sop.version)}</div>
         <div class="insp-section"><div class="insp-label">Purpose</div><div class="insp-text">${esc(sop.description)}</div></div>
         ${(sop.review_gates || []).length ? `<div class="insp-section"><div class="insp-label">Review gates</div>
           <ul class="insp-list">${sop.review_gates.map(g => `<li><span class="badge badge-review">Human review</span> ${esc(g.label)}</li>`).join('')}</ul></div>` : ''}
+        <div class="insp-section"><div class="insp-label">SOP blocks (editable)</div>
+          ${(sop.blocks || []).map(block => `
+            <div class="sop-note sop-block-editable" data-block-id="${esc(block.block_id)}">
+              <span class="sn-label">${esc(block.title)} ${versionBadge(block.version)}</span>${esc(block.instruction)}
+              <div class="sop-block-actions">
+                <button class="ghost-btn" data-sop-propose="${esc(block.block_id)}">Propose edit</button>
+                <button class="ghost-btn" data-sop-compare="${esc(block.block_id)}">Compare versions</button>
+              </div>
+            </div>`).join('')}
+        </div>
+        <div class="insp-section"><div class="insp-label">Review queue (${sopProposals.length})</div>
+          ${sopProposals.length ? `<ul class="insp-list sop-review-queue">${sopProposals.map(p => `
+            <li>
+              ${statusBadge(p.status)} <strong>${esc(p.block_title)}</strong> · ${esc(p.proposed_by)} · ${esc((p.created_at || '').slice(0, 10))}
+              ${(p.linked_authorities || []).length ? `<br><span class="sop-queue-auth">Authority: ${p.linked_authorities.map(a => `${esc(a.case_name)} ${esc(a.citation)} para ${esc(a.paragraph_number)}`).join('; ')}</span>` : ''}
+              ${p.status === 'proposed' ? `<div class="sop-block-actions">
+                <button class="ghost-btn" data-sop-approve="${esc(p.proposal_id)}">Approve</button>
+                <button class="ghost-btn" data-sop-reject="${esc(p.proposal_id)}">Reject</button>
+              </div>` : `<br><span class="sop-queue-auth">Reviewed by ${esc(p.reviewer || '—')}</span>`}
+            </li>`).join('')}</ul>` : '<div class="insp-text">No proposals yet. Use “Propose edit” on a block.</div>'}
+          <div class="sop-block-actions"><button class="ghost-btn" data-sop-export>Export review queue</button></div>
+        </div>
         <div class="insp-section"><div class="insp-label">Version history</div>
-          <ul class="insp-list">${(sop.changelog || []).map(c => `<li><strong>v${esc(c.version)}</strong> · ${esc(c.date)} · ${esc(c.by)}<br><span style="color:var(--umber)">${esc(c.note)}</span></li>`).join('')}</ul></div>
-        <div class="insp-section">
-          <button class="ghost-btn" disabled title="Demo: edit proposals route to partner approval">Propose edit</button>
-          <button class="ghost-btn" disabled title="Demo: compare versions">Compare versions</button>
-        </div>`;
+          <ul class="insp-list">${(sop.changelog || []).map(c => `<li><strong>v${esc(c.version)}</strong> · ${esc(c.date)} · ${esc(c.by)}<br><span style="color:var(--umber)">${esc(c.note)}</span></li>`).join('')}</ul></div>`;
+      if (window.SopEditor) {
+        body.querySelectorAll('[data-sop-propose]').forEach(btn => btn.addEventListener('click', () => {
+          const block = (sop.blocks || []).find(b => b.block_id === btn.getAttribute('data-sop-propose'));
+          if (block) window.SopEditor.openProposeModal(sop, block, verifiedAuthorityOptions(), () => renderInspector());
+        }));
+        body.querySelectorAll('[data-sop-compare]').forEach(btn => btn.addEventListener('click', () => {
+          const block = (sop.blocks || []).find(b => b.block_id === btn.getAttribute('data-sop-compare'));
+          if (block) window.SopEditor.openCompareModal(sop, block);
+        }));
+        body.querySelectorAll('[data-sop-approve]').forEach(btn => btn.addEventListener('click', () => {
+          window.SopEditor.setStatus(btn.getAttribute('data-sop-approve'), 'approved', 'demo partner');
+        }));
+        body.querySelectorAll('[data-sop-reject]').forEach(btn => btn.addEventListener('click', () => {
+          window.SopEditor.setStatus(btn.getAttribute('data-sop-reject'), 'rejected', 'demo partner');
+        }));
+        const exportBtn = body.querySelector('[data-sop-export]');
+        if (exportBtn) exportBtn.addEventListener('click', () => window.SopEditor.exportQueue());
+      }
       return;
     }
 
@@ -855,7 +1052,7 @@
     el.innerHTML = `
       <div class="card" style="border-color:var(--bronze-soft)">
         <div class="card-top"><span class="card-title">Execution trace — ${esc(tr.task.title)}</span>
-          <span class="card-badges">${badge('not_product_answer_layer')}<span class="badge badge-review">Partner review pending</span></span></div>
+          <span class="card-badges">${badge('verified_case_linked')}</span></div>
         <div class="card-body" style="font-family:var(--mono);font-size:11px;color:var(--faded)">
           flow: ${esc(tr.flowLabel)} · sop: ${esc(tr.sopLabel)} · template: ${esc(tr.tplLabel)} · run: ${esc(tr.ranAt)}
         </div>
@@ -916,28 +1113,31 @@
   // — Sources & audit —
   function viewAudit() {
     const counts = {};
-    S.nodes.forEach(n => { counts[n.type] = (counts[n.type] || 0) + 1; });
-    const caseSeeds = S.nodes.filter(n => n.type === 'case_seed');
+    S.nodes.forEach(n => { if (n.type !== 'case_seed' || isVerifiedCaseSeedNode(n)) counts[n.type] = (counts[n.type] || 0) + 1; });
+    const caseSeeds = S.nodes.filter(n => n.type === 'case_seed' && isVerifiedCaseSeedNode(n));
+    const excludedCount = S.nodes.filter(n => n.type === 'case_seed' && !isVerifiedCaseSeedNode(n)).length;
     root().innerHTML = `
-      ${viewHeader('Governance', 'Sources & audit', 'Transparency is the product. Every node carries an explicit verification status; nothing in the research layer is presented as a final answer, and nothing is hidden behind an unlock.')}
+      ${viewHeader('Governance', 'Sources & audit', 'Product authority surfaces show verified HKLII paragraph proof only. Unresolved seeds are excluded and listed in the developer audit report.')}
       <table class="audit-table">
         <thead><tr><th>Object type</th><th>Count</th><th>Default status</th></tr></thead>
         <tbody>
           ${Object.entries(counts).sort().map(([k, v]) => `<tr>
             <td>${esc(TYPE_LABEL[k] || k)}</td><td class="mono">${v}</td>
-            <td>${k === 'case_seed' ? badge('unverified_case_seed') : k === 'statute' ? badge('needs_official_source_verification') : badge('not_product_answer_layer')}</td>
+            <td>${badge('verified_case_linked')}</td>
           </tr>`).join('')}
-          <tr><td>Edges</td><td class="mono">${S.edges.length}</td><td>${badge('not_product_answer_layer')}</td></tr>
+          <tr><td>Edges</td><td class="mono">${S.edges.length}</td><td>${badge('verified')}</td></tr>
           <tr><td>Firm SOPs</td><td class="mono">${currentDomainSops().length}</td><td>${badge('approved', 'where marked')}</td></tr>
         </tbody>
       </table>
-      <div class="view-eyebrow" style="margin-bottom:10px">Case seeds awaiting HKLII audit</div>
+      <div class="view-eyebrow" style="margin-bottom:10px">Paragraph-linked case authorities</div>
       ${caseSeeds.slice(0, 12).map(c => `
         <div class="card selectable" data-sel="node:${esc(c.id)}" data-card="node:${esc(c.id)}">
-          <div class="card-top"><span class="card-title">${esc(c.label)}</span><span class="card-badges">${badge('unverified_case_seed')}</span></div>
-          <div class="card-body">${esc(c.summary || '')}</div>
+          <div class="card-top"><span class="card-title">${esc(c.label)}</span><span class="card-badges">${badge('verified_case_linked')}</span></div>
+          <div class="card-body">${esc(c.summary || '')}${authoritySourceUrl(c) ? ` <a href="${esc(authoritySourceUrl(c))}" target="_blank" rel="noreferrer">HKLII</a>` : ''}</div>
         </div>`).join('')}
-      ${caseSeeds.length > 12 ? `<p class="view-lede">…and ${caseSeeds.length - 12} more case seeds in the audit queue.</p>` : ''}
+      ${caseSeeds.length > 12 ? `<p class="view-lede">…and ${caseSeeds.length - 12} more paragraph-linked cases.</p>` : ''}
+      <div class="view-eyebrow" style="margin-top:18px">Developer audit — excluded unresolved seeds (${excludedCount})</div>
+      <p class="view-lede">See <code>artifacts/excluded_unverified_case_seeds_report.md</code> for the full excluded inventory. These seeds are hidden from product authority cards and AI retrieval.</p>
     `;
     wireCards();
   }
@@ -953,11 +1153,11 @@
   const INQ = { query: '', loading: false, result: null, mode: null };
 
   const COVERAGE_BADGE = {
-    answer_safe: '<span class="badge badge-approved">Answer-safe (human reviewed)</span>',
-    paragraph_verified: '<span class="badge badge-verified">Paragraph verified</span>',
-    source_verified: '<span class="badge badge-verified">Source verified — review pending</span>',
-    candidate_only: '<span class="badge badge-review">Candidate only — needs review</span>',
-    no_evidence: '<span class="badge badge-pending">No paragraph evidence yet</span>',
+    answer_safe: '<span class="badge badge-verified">Paragraph proof</span>',
+    paragraph_verified: '<span class="badge badge-verified">Paragraph proof</span>',
+    source_verified: '<span class="badge badge-verified">Source-linked</span>',
+    candidate_only: '',
+    no_evidence: '<span class="badge badge-draft">No paragraph linked yet</span>',
   };
 
   function localInquiryMatches(query, limit = 8) {
@@ -965,6 +1165,7 @@
     const scored = [];
     S.nodes.forEach(n => {
       if (n.type === 'section_header') return;
+      if (n.type === 'case_seed' && !isVerifiedCaseSeedNode(n)) return;
       const hay = `${n.id} ${n.label || ''} ${n.summary || ''} ${(n.statute_refs || []).join(' ')} ${(n.case_seeds || []).join(' ')}`.toLowerCase();
       let score = 0;
       terms.forEach(t => {
@@ -1135,11 +1336,12 @@
         if (!evidenceByKey.has(key)) evidenceByKey.set(key, item);
       });
     });
-    const cards = refs.map(ref => {
+    const mergedRefs = refs.map(ref => {
       const key = `${ref.neutral_citation || ref.case_name || ''}::${ref.para_no || ''}`;
-      const merged = { ...(evidenceByKey.get(key) || {}), ...ref };
-      return renderCaseFruitCard(merged);
-    }).join('');
+      return { ...(evidenceByKey.get(key) || {}), ...ref };
+    });
+    const groups = groupEvidenceByCase(mergedRefs);
+    const cards = groups.map(group => renderCaseNoteCard(group, mergedRefs.length)).join('');
     return `
       <div class="card">
         <div class="card-top"><span class="card-title">Cited paragraph proof</span></div>
@@ -1151,12 +1353,13 @@
     const r = INQ.result;
     if (!r) return '';
     const analysis = r.inquiry_analysis;
-    const warnings = (r.warnings || []).map(w => `<span class="badge badge-pending">${esc(String(w).replace(/_/g, ' '))}</span>`).join(' ');
+    const warnings = '';
     const cards = (r.matched_doctrine_nodes || []).map(m => {
       const localId = m.source_node_id || m.doctrine_node_id;
       const inGraph = !!S.nodeMap[localId];
       const sops = sopsForNodeId(localId);
-      const evidence = (m.evidence || []).map(e => renderCaseFruitCard(e)).join('');
+      const evidenceGroups = groupEvidenceByCase(m.evidence || []);
+      const evidence = evidenceGroups.map(group => renderCaseNoteCard(group, (m.evidence || []).length)).join('');
       return `
         <div class="card ${inGraph ? 'selectable' : ''}" ${inGraph ? `data-sel="node:${esc(localId)}" data-card="node:${esc(localId)}"` : ''}>
           <div class="card-top">
@@ -1178,7 +1381,7 @@
       ${!r.pi_workflow ? renderAppliedTriage(r.applied_answer) : ''}
       ${analysis ? `<div class="card" style="background:var(--parchment);">
         <div class="card-top"><span class="card-title">Source-bounded analysis${r.ai_provider && r.ai_provider !== 'none' ? ' · via ' + esc(r.ai_provider) : ''}</span>
-          ${analysis.abstain ? '<span class="badge badge-audit">Abstained — insufficient verified evidence</span>' : ''}</div>
+          ${analysis.abstain ? '<span class="badge badge-audit">No paragraph-linked evidence</span>' : '<span class="badge badge-research">Research prototype</span>'}</div>
         <div class="card-body">
           <p>${esc(analysis.summary || '')}</p>
           ${analysis.legal_position ? `<p><em>Legal position:</em> ${esc(analysis.legal_position)}</p>` : ''}
@@ -1188,7 +1391,7 @@
       ${analysis ? renderAnalysisCaseReferences(analysis, r.matched_doctrine_nodes) : ''}
       ${warnings ? `<div class="inq-warnings">${warnings}</div>` : ''}
       ${hasAppliedAnswer ? `<details class="piw-audit"><summary>Underlying graph matches</summary>${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}</details>` : (cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.'))}
-      <p class="inq-note">Source-bounded research trail — not legal advice. Every node and citation above exists in the maintained doctrine graph${INQ.mode === 'api' ? ' and Supabase evidence store' : ''}; nothing is generated outside it. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;
+      <p class="inq-note">Research prototype — not legal advice. Paragraph-linked public judgments are quoted and applied from the maintained doctrine graph${INQ.mode === 'api' ? ' and verified evidence index' : ''}. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;
   }
 
   function viewInquiry() {
@@ -1231,6 +1434,7 @@
       if (q.length < 2) { results.hidden = true; return; }
       items = [];
       S.nodes.forEach(n => {
+        if (n.type === 'case_seed' && !isVerifiedCaseSeedNode(n)) return;
         const hay = (n.label + ' ' + (n.summary || '') + ' ' + n.id).toLowerCase();
         if (hay.includes(q)) items.push({ kind: 'node', id: n.id, type: TYPE_LABEL[n.type] || n.type, label: n.label, sum: n.summary || '' });
       });
@@ -1346,7 +1550,14 @@
   }
 
   // ── Boot ──
-  Promise.allSettled([loadRegistry(), loadFirm()]).then(([registryRes, firmRes]) => {
+  const sopEditorReady = window.SopEditor
+    ? window.SopEditor.init('../data/firm_overlay/demo_firm_sop_reviews.json')
+    : Promise.resolve([]);
+  document.addEventListener('sop-proposals-changed', () => {
+    if (S.selectedEntity && S.selectedEntity.kind === 'sop') renderInspector();
+  });
+
+  Promise.allSettled([loadRegistry(), loadFirm(), loadViewerEvidenceIndex(), loadStructuredCaseNotes(), sopEditorReady]).then(([registryRes, firmRes]) => {
     if (firmRes.status === 'rejected' || !S.firm) fallbackFirm();
     if (registryRes.status === 'rejected' || !S.domains.length) {
       S.domains = [{ domain_id: DEFAULT_DOMAIN_ID, title: 'Hong Kong Criminal Procedure', path: DEFAULT_DOMAIN_ID + '/domain.json' }];

@@ -18,7 +18,7 @@
   "branch_pilot_resolution": {
     "branch_family_id": "theft_dishonesty_fraud",
     "tree_proposal_source": "notebooklm_logged_in_private_notebook",
-    "tree_proposal_status": "candidate_only",
+    "tree_proposal_status": "paragraph_verified",
     "verification_gate": "legalref_exact_quote_case_fruits_only",
     "pending_landmark_cases": [
       "HKSAR v Lam Hin Fai (FAMC 3/2016)",
@@ -42,7 +42,7 @@
       "fetch_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "source_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
@@ -60,7 +60,7 @@
       "fetch_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ]
 }

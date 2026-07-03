@@ -20,7 +20,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ],
   "paragraph_cards": [
@@ -34,7 +34,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p19",
@@ -46,7 +46,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p29",
@@ -58,7 +58,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p30",
@@ -70,7 +70,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p34",
@@ -82,7 +82,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p44",
@@ -94,7 +94,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p48",
@@ -106,7 +106,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p50",
@@ -118,7 +118,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p51",
@@ -130,7 +130,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p54",
@@ -142,7 +142,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p57",
@@ -154,7 +154,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p66",
@@ -166,7 +166,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2021_tong_wai_hung_casj_1_2020_p80",
@@ -178,7 +178,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ]
 }

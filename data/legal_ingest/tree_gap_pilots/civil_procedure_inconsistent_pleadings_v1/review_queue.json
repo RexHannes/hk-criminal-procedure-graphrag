@@ -5,7 +5,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_inconsistent_positions_scope_minloy_p31",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_case_2020_minloy",
@@ -25,7 +25,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_abuse_estoppel_lancom_p43",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_case_2022_lancom_capxon",
@@ -45,7 +45,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_diametrically_opposed_integrity_vasily_p39",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_case_2025_vasily_trubnikov",
@@ -65,7 +65,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_alternative_pleading_within_knowledge_liu_p16",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_case_2023_liu_hao_tsing",
@@ -84,7 +84,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_summary_judgment_material_deviation_shinyei_p19",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_case_2019_shinyei_jenus",

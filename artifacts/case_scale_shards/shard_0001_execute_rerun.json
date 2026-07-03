@@ -1,0 +1,74 @@
+{
+  "worker": "case_scale_ingest_worker_v1",
+  "generated_at": "2026-06-24T16:32:31.959Z",
+  "run_plan_id": "case_scale_criminal_domain_public_cases_10000_v1",
+  "shard_id": "shard_0001",
+  "case_ordinal_range": [
+    1,
+    100
+  ],
+  "seeded_cases_in_range": 28,
+  "pending_discovery_in_range": 72,
+  "dry_run": false,
+  "runtime_mode": "production_scale",
+  "registry_id": "hk_criminal_public_case_registry_v1",
+  "seeded_case_ids": [
+    "hk_ca_2021_tong_wai_hung_casj_1_2020",
+    "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+    "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+    "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+    "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+    "hk_cfi_2020_tong_ying_kit_hcal_1601_2020",
+    "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+    "hk_cfi_2021_chan_chi_chuen_hccp_473_2021",
+    "hk_cfi_2021_chow_ka_shing_hccp_294_2021",
+    "hk_cfi_2021_chui_chi_kin_hccp_126_2021",
+    "hk_cfi_2021_chung_kam_lun_hccp_137_2021",
+    "hk_cfi_2021_kwok_ka_ki_hccp_118_2021",
+    "hk_cfi_2021_lai_chee_ying_hccp_738_2020",
+    "hk_cfi_2021_leung_kwok_hung_hccp_136_2021",
+    "hk_cfi_2021_mo_man_ching_claudia_hccp_134_2021",
+    "hk_cfi_2021_or_yiu_lam_ricky_hccp_119_2021",
+    "hk_cfi_2021_sze_tak_loy_hccp_115_2021",
+    "hk_cfi_2021_tam_hoi_pong_hccp_417_2021",
+    "hk_cfi_2021_tam_man_ho_jeremy_jansen_hccp_114_2021",
+    "hk_cfi_2021_wan_siu_kin_andrew_hccp_141_2021",
+    "hk_cfi_2021_wong_pak_yu_hccp_430_2021",
+    "hk_cfi_2021_wong_pik_wan_hccp_113_2021",
+    "hk_cfi_2021_yung_chung_hei_hccp_446_2021",
+    "hk_cfi_2022_fan_kwok_wai_hccp_454_2021",
+    "hk_cfi_2022_fung_tat_chun_frankie_hccp_584_2021",
+    "hk_cfi_2022_fung_wai_kong_hccp_678_2021",
+    "hk_cfi_2022_lam_cheuk_ting_hccp_138_2022",
+    "hk_cfi_2022_ng_man_yee_carol_hccp_193_2021"
+  ],
+  "index_runs": [
+    {
+      "batch_id": "public_order_riot_v1",
+      "ok": false,
+      "status": "indexer_not_implemented_for_batch",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "batch_id": "sedition_public_expression_v1",
+      "ok": false,
+      "status": "indexer_not_implemented_for_batch",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "batch_id": "criminal_bail_public_batch_v1",
+      "ok": true,
+      "status": 0,
+      "stdout": "{\n  \"indexer\": \"public_bail_batch_qdrant_v1\",\n  \"batch_id\": \"criminal_bail_public_batch_v1\",\n  \"dry_run\": false,\n  \"qdrant_configured\": true,\n  \"embedding_provider\": \"openrouter\",\n  \"embedding_model\": \"openai/text-embedding-3-small\",\n  \"dimension\": 1536,\n  \"collections\": {\n    \"paragraphs\": \"hk_legal_paragraphs_prod\",\n    \"propositions\": \"hk_proposition_cards_prod\"\n  },\n  \"point_counts\": {\n    \"paragraphs\": 71,\n    \"propositions\": 71\n  },\n  \"review_policy\": \"machine_candidate_only_no_answer_safe_promotion\",\n  \"collection_status\": [\n    {\n      \"collection\": \"hk_legal_paragraphs_prod\",\n      \"status\": \"exists\",\n      \"vector_size\": 1536,\n      \"points_count\": 71\n    },\n    {\n      \"collection\": \"hk_proposition_cards_prod\",\n      \"status\": \"exists\",\n      \"vector_size\": 1536,\n      \"points_count\": 71\n    }\n  ],\n  \"status\": \"indexed\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "status": "indexed_seeded_cases_with_skipped_batches",
+  "skipped_batches": [
+    "public_order_riot_v1",
+    "sedition_public_expression_v1"
+  ],
+  "message": "Seeded cases indexed; some pilot batches await dedicated indexers."
+}

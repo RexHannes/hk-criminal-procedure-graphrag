@@ -2,24 +2,100 @@
   "section_id": "09",
   "domain_id": "hk_listing_and_listed_company_regulation",
   "edges": [
-    { "from": "capital_management", "to": "share_buybacks", "relationship": "has_subtopic" },
-    { "from": "capital_management", "to": "dividends", "relationship": "has_subtopic" },
-    { "from": "capital_management", "to": "capital_reduction", "relationship": "has_subtopic" },
-    { "from": "capital_management", "to": "financial_assistance", "relationship": "has_subtopic" },
-    { "from": "capital_management", "to": "schemes_of_arrangement", "relationship": "has_subtopic" },
-    { "from": "capital_management", "to": "rights_issues", "relationship": "has_subtopic" },
-    { "from": "share_buybacks", "to": "mbl_10_06", "relationship": "listing_rule_anchor" },
-    { "from": "share_buybacks", "to": "mbl_10_07", "relationship": "listing_rule_anchor" },
-    { "from": "share_buybacks", "to": "co_s114", "relationship": "statutory_anchor" },
-    { "from": "dividends", "to": "mbl_13_36", "relationship": "listing_rule_anchor" },
-    { "from": "dividends", "to": "co_s120", "relationship": "statutory_anchor" },
-    { "from": "capital_reduction", "to": "co_s141", "relationship": "statutory_anchor" },
-    { "from": "financial_assistance", "to": "mbl_10_08", "relationship": "listing_rule_anchor" },
-    { "from": "financial_assistance", "to": "co_s275", "relationship": "statutory_anchor" },
-    { "from": "schemes_of_arrangement", "to": "mbl_14_81", "relationship": "listing_rule_anchor" },
-    { "from": "schemes_of_arrangement", "to": "co_s673", "relationship": "statutory_anchor" },
-    { "from": "rights_issues", "to": "mbl_7_08", "relationship": "listing_rule_anchor" },
-    { "from": "rights_issues", "to": "mbl_7_12", "relationship": "listing_rule_anchor" },
-    { "from": "rights_issues", "to": "mbl_7_19", "relationship": "listing_rule_anchor" }
+    {
+      "from": "capital_management",
+      "to": "share_buybacks",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "capital_management",
+      "to": "dividends",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "capital_management",
+      "to": "capital_reduction",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "capital_management",
+      "to": "financial_assistance",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "capital_management",
+      "to": "schemes_of_arrangement",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "capital_management",
+      "to": "rights_issues",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "share_buybacks",
+      "to": "mbl_10_06",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "share_buybacks",
+      "to": "mbl_10_07",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "share_buybacks",
+      "to": "co_s114",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "dividends",
+      "to": "mbl_13_36",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "dividends",
+      "to": "co_s120",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "capital_reduction",
+      "to": "co_s141",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "financial_assistance",
+      "to": "mbl_10_08",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "financial_assistance",
+      "to": "co_s275",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "schemes_of_arrangement",
+      "to": "mbl_14_81",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "schemes_of_arrangement",
+      "to": "co_s673",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "rights_issues",
+      "to": "mbl_7_08",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "rights_issues",
+      "to": "mbl_7_12",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "rights_issues",
+      "to": "mbl_7_19",
+      "relationship": "listing_rule_anchor"
+    }
   ]
 }

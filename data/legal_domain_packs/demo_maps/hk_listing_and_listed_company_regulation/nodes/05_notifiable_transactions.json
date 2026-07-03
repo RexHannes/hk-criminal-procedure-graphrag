@@ -18,9 +18,14 @@
       "subsection": "05.01",
       "subtopic": "Classification",
       "section": "05",
-      "listing_rule_refs": ["mbl_14_06", "mbl_14_07", "mbl_14_08", "mbl_14_22"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_14_06",
+        "mbl_14_07",
+        "mbl_14_08",
+        "mbl_14_22"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -32,7 +37,7 @@
       "rule_chapter": "14",
       "rule_number": "14.06",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_14_07",
@@ -43,7 +48,7 @@
       "rule_chapter": "14",
       "rule_number": "14.07",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_14_08",
@@ -54,7 +59,7 @@
       "rule_chapter": "14",
       "rule_number": "14.08",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_14_22",
@@ -65,7 +70,7 @@
       "rule_chapter": "14",
       "rule_number": "14.22",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "percentage_ratios",
@@ -75,9 +80,11 @@
       "subsection": "05.02",
       "subtopic": "Percentage Ratios",
       "section": "05",
-      "listing_rule_refs": ["mbl_14_04"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_14_04"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -89,7 +96,7 @@
       "rule_chapter": "14",
       "rule_number": "14.04(9)",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "shareholder_approval",
@@ -99,9 +106,12 @@
       "subsection": "05.03",
       "subtopic": "Shareholder Approval",
       "section": "05",
-      "listing_rule_refs": ["mbl_14_40", "mbl_14_42"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_14_40",
+        "mbl_14_42"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -113,7 +123,7 @@
       "rule_chapter": "14",
       "rule_number": "14.40",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_14_42",
@@ -124,7 +134,7 @@
       "rule_chapter": "14",
       "rule_number": "14.42",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "notifiable_flow_start",

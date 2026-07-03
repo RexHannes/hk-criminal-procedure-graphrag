@@ -11,7 +11,7 @@
       "summary": "Nature of resulting trusts, presumed resulting trust, presumption of advancement, rebutting presumptions, Quistclose trusts, and the rule in Hancock v Watson.",
       "section": "04",
       "verification_status": "book_seed_needs_case_and_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "textbook_seed_only",
       "human_review_status": "unreviewed"
     },
@@ -25,12 +25,14 @@
       "subsection": "04.01",
       "subtopic": "Nature of Resulting Trusts",
       "source_basis": "book_seed",
-      "case_seeds": ["case_westdeutsche"],
+      "case_seeds": [
+        "case_westdeutsche"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -44,12 +46,14 @@
       "subsection": "04.02",
       "subtopic": "Presumption of Resulting Trust",
       "source_basis": "book_seed",
-      "case_seeds": ["case_cheung_yuk_ying"],
+      "case_seeds": [
+        "case_cheung_yuk_ying"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -63,12 +67,14 @@
       "subsection": "04.02",
       "subtopic": "Presumption of Advancement",
       "source_basis": "book_seed",
-      "case_seeds": ["case_yau_kwong_chiu"],
+      "case_seeds": [
+        "case_yau_kwong_chiu"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -82,12 +88,14 @@
       "subsection": "04.02",
       "subtopic": "Rebutting Presumptions",
       "source_basis": "book_seed",
-      "case_seeds": ["case_cheung_yuk_ying"],
+      "case_seeds": [
+        "case_cheung_yuk_ying"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -101,12 +109,15 @@
       "subsection": "04.03",
       "subtopic": "Quistclose Trusts",
       "source_basis": "book_seed",
-      "case_seeds": ["case_twinsectra", "case_prickly_bay"],
+      "case_seeds": [
+        "case_twinsectra",
+        "case_prickly_bay"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -120,12 +131,14 @@
       "subsection": "04.04",
       "subtopic": "Hancock v Watson",
       "source_basis": "book_seed",
-      "case_seeds": ["case_hancock"],
+      "case_seeds": [
+        "case_hancock"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -138,9 +151,9 @@
       "neutral_citation": "[1996] AC 669",
       "court": "HL (UK)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -151,9 +164,9 @@
       "section": "04",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -164,9 +177,9 @@
       "section": "04",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -178,9 +191,9 @@
       "neutral_citation": "[2002] UKHL 12",
       "court": "HL (UK)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -192,9 +205,9 @@
       "neutral_citation": "[2022] UKPC 8",
       "court": "PC",
       "jurisdiction": "UK/PC",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -206,9 +219,9 @@
       "neutral_citation": "[1902] AC 14",
       "court": "HL (UK)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -217,9 +230,9 @@
       "label": "Verify HK Quistclose and Resulting Trust Cases",
       "summary": "Research HK CFA/CA decisions on Quistclose trusts, resulting trusts and advancement. Confirm HK adoption of Twinsectra and Prickly Bay.",
       "section": "04",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     }
   ]

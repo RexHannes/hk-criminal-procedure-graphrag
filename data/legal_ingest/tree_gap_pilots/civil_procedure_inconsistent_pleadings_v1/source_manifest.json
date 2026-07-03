@@ -26,7 +26,7 @@
       "fetch_url": "https://www.hklii.hk/en/cases/hkcfi/2020/2215",
       "source_format": "stored_public_vertical_paragraph",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "source_id": "hk_case_2022_lancom_capxon",
@@ -44,7 +44,7 @@
       "fetch_url": "https://www.hklii.hk/en/cases/hkcfi/2022/381",
       "source_format": "stored_public_vertical_paragraph",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "source_id": "hk_case_2025_vasily_trubnikov",
@@ -62,7 +62,7 @@
       "fetch_url": "https://www.hklii.hk/en/cases/hkcfi/2025/1576",
       "source_format": "stored_public_vertical_paragraph",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "source_id": "hk_case_2023_liu_hao_tsing",
@@ -80,7 +80,7 @@
       "fetch_url": "https://www.hklii.hk/en/cases/hkcfi/2023/1463",
       "source_format": "stored_public_vertical_paragraph",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "source_id": "hk_case_2019_shinyei_jenus",
@@ -98,13 +98,13 @@
       "fetch_url": "https://www.hklii.hk/en/cases/hkcfi/2019/2377",
       "source_format": "stored_public_vertical_paragraph",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ],
   "tree_gap_resolution": {
     "existing_tree_match": "new_domain_pack_candidate_created",
     "tree_proposal_source": "inconsistent_pleadings_public_vertical",
-    "tree_proposal_status": "candidate_only",
+    "tree_proposal_status": "paragraph_verified",
     "verification_gate": "stored_public_vertical_exact_quote_only"
   }
 }

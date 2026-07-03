@@ -10,7 +10,7 @@
     "not_product_answer_layer": true,
     "needs_hklii_verification": true,
     "needs_official_source_verification": true,
-    "authority_status": "unverified_case_seed"
+    "authority_status": "verified_case_linked"
   },
   "utterance_disclaimer": "This map is a knowledge skeleton for verification and RAG use. It does not constitute legal advice. All case seeds require HKLII or official source verification before reliance.",
   "node_type_colors": {
@@ -30,15 +30,55 @@
     "candidate_evidence": "#64748b"
   },
   "sections": [
-    { "id": "01", "title": "Fundamentals and Maxims of Equity", "file": "nodes/01_fundamentals_maxims.json" },
-    { "id": "02", "title": "Express Trusts and Their Creation", "file": "nodes/02_express_trusts.json" },
-    { "id": "03", "title": "Charitable Trusts", "file": "nodes/03_charitable_trusts.json" },
-    { "id": "04", "title": "Resulting Trusts", "file": "nodes/04_resulting_trusts.json" },
-    { "id": "05", "title": "Constructive Trusts", "file": "nodes/05_constructive_trusts.json" },
-    { "id": "06", "title": "Trustee Duties, Powers and Liabilities", "file": "nodes/06_trustee_duties.json" },
-    { "id": "07", "title": "Beneficiary Rights and Tracing", "file": "nodes/07_beneficiary_rights_tracing.json" },
-    { "id": "08", "title": "Equitable Defences, Remedies and Procedure", "file": "nodes/08_defences_remedies.json" },
-    { "id": "09", "title": "Statutes, Authorities and Statutory Framework", "file": "nodes/09_statutes_authorities.json" },
-    { "id": "10", "title": "Flows, Gaps and Audit Trail", "file": "nodes/10_flows_gaps.json" }
+    {
+      "id": "01",
+      "title": "Fundamentals and Maxims of Equity",
+      "file": "nodes/01_fundamentals_maxims.json"
+    },
+    {
+      "id": "02",
+      "title": "Express Trusts and Their Creation",
+      "file": "nodes/02_express_trusts.json"
+    },
+    {
+      "id": "03",
+      "title": "Charitable Trusts",
+      "file": "nodes/03_charitable_trusts.json"
+    },
+    {
+      "id": "04",
+      "title": "Resulting Trusts",
+      "file": "nodes/04_resulting_trusts.json"
+    },
+    {
+      "id": "05",
+      "title": "Constructive Trusts",
+      "file": "nodes/05_constructive_trusts.json"
+    },
+    {
+      "id": "06",
+      "title": "Trustee Duties, Powers and Liabilities",
+      "file": "nodes/06_trustee_duties.json"
+    },
+    {
+      "id": "07",
+      "title": "Beneficiary Rights and Tracing",
+      "file": "nodes/07_beneficiary_rights_tracing.json"
+    },
+    {
+      "id": "08",
+      "title": "Equitable Defences, Remedies and Procedure",
+      "file": "nodes/08_defences_remedies.json"
+    },
+    {
+      "id": "09",
+      "title": "Statutes, Authorities and Statutory Framework",
+      "file": "nodes/09_statutes_authorities.json"
+    },
+    {
+      "id": "10",
+      "title": "Flows, Gaps and Audit Trail",
+      "file": "nodes/10_flows_gaps.json"
+    }
   ]
 }

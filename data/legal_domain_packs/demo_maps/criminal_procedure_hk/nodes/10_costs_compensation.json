@@ -18,11 +18,16 @@
       "subsection": "10.01",
       "subtopic": "Costs",
       "section": "10",
-      "statute_refs": ["cap492_s3", "cap492_s7"],
-      "case_seeds": ["hksar_v_chen_keen_no2"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap492_s3",
+        "cap492_s7"
+      ],
+      "case_seeds": [
+        "hksar_v_chen_keen_no2"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap492_s3",
@@ -30,7 +35,7 @@
       "label": "Costs in Criminal Cases Ordinance (Cap 492) s.3",
       "summary": "Defence costs may be ordered if acquitted and no sufficient reason for prosecution.",
       "section": "10",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap492_s7",
@@ -38,7 +43,7 @@
       "label": "Costs in Criminal Cases Ordinance (Cap 492) s.7",
       "summary": "Prosecution costs may be ordered against convicted defendant.",
       "section": "10",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "hksar_v_chen_keen_no2",
@@ -46,8 +51,9 @@
       "label": "HKSAR v Chen Keen (No 2)",
       "summary": "Costs after jury discharge before verdict.",
       "section": "10",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "costs_compensation",
@@ -57,10 +63,12 @@
       "subsection": "10.02",
       "subtopic": "Compensation",
       "section": "10",
-      "statute_refs": ["cap221_s73"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s73"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s73",
@@ -68,7 +76,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.73",
       "summary": "Compensation order for personal injury, loss or damage.",
       "section": "10",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "costs_restitution",
@@ -78,10 +86,12 @@
       "subsection": "10.03",
       "subtopic": "Restitution",
       "section": "10",
-      "statute_refs": ["cap221_s102"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s102"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "costs_bankruptcy_orders",
@@ -91,10 +101,12 @@
       "subsection": "10.04",
       "subtopic": "Bankruptcy",
       "section": "10",
-      "statute_refs": ["cap221_s84a"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s84a"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s84a",
@@ -102,7 +114,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.84A",
       "summary": "Criminal bankruptcy orders (may be repealed; check status).",
       "section": "10",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "costs_post_sentence",
@@ -112,9 +124,9 @@
       "subsection": "10.05",
       "subtopic": "Post-Sentence",
       "section": "10",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     }
   ]
 }

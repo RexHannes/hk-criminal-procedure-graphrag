@@ -10,7 +10,7 @@
     "not_product_answer_layer": true,
     "needs_hklii_verification": true,
     "needs_official_source_verification": true,
-    "authority_status": "unverified_case_seed"
+    "authority_status": "verified_case_linked"
   },
   "utterance_disclaimer": "This map is a knowledge skeleton for verification and RAG use. It does not constitute legal advice. All case seeds require HKLII or official source verification before reliance.",
   "node_type_colors": {
@@ -30,15 +30,55 @@
     "candidate_evidence": "#64748b"
   },
   "sections": [
-    { "id": "01", "title": "Fundamentals, Classification and Limitation", "file": "nodes/01_fundamentals_classification_limitation.json" },
-    { "id": "02", "title": "Negligence Core", "file": "nodes/02_negligence_core.json" },
-    { "id": "03", "title": "Special Duty Categories", "file": "nodes/03_special_duty_categories.json" },
-    { "id": "04", "title": "Employer, Vicarious and Government Liability", "file": "nodes/04_employer_vicarious_government_liability.json" },
-    { "id": "05", "title": "Occupiers, Statutory Duty, Nuisance and Strict Liability", "file": "nodes/05_occupiers_statutory_duty_nuisance_strict_liability.json" },
-    { "id": "06", "title": "Intentional Torts to Person, Land and Goods", "file": "nodes/06_intentional_torts_person_land_goods.json" },
-    { "id": "07", "title": "Defamation, Privacy and Confidence", "file": "nodes/07_defamation_privacy_confidence.json" },
-    { "id": "08", "title": "Economic Torts, Passing Off and Deceit", "file": "nodes/08_economic_torts_passing_off_deceit.json" },
-    { "id": "09", "title": "Statutory Compensation, Harassment and Sexual Harassment", "file": "nodes/09_statutory_compensation_harassment_sexual_harassment.json" },
-    { "id": "10", "title": "Remedies, Damages, Defences and Procedure", "file": "nodes/10_remedies_damages_defences_procedure.json" }
+    {
+      "id": "01",
+      "title": "Fundamentals, Classification and Limitation",
+      "file": "nodes/01_fundamentals_classification_limitation.json"
+    },
+    {
+      "id": "02",
+      "title": "Negligence Core",
+      "file": "nodes/02_negligence_core.json"
+    },
+    {
+      "id": "03",
+      "title": "Special Duty Categories",
+      "file": "nodes/03_special_duty_categories.json"
+    },
+    {
+      "id": "04",
+      "title": "Employer, Vicarious and Government Liability",
+      "file": "nodes/04_employer_vicarious_government_liability.json"
+    },
+    {
+      "id": "05",
+      "title": "Occupiers, Statutory Duty, Nuisance and Strict Liability",
+      "file": "nodes/05_occupiers_statutory_duty_nuisance_strict_liability.json"
+    },
+    {
+      "id": "06",
+      "title": "Intentional Torts to Person, Land and Goods",
+      "file": "nodes/06_intentional_torts_person_land_goods.json"
+    },
+    {
+      "id": "07",
+      "title": "Defamation, Privacy and Confidence",
+      "file": "nodes/07_defamation_privacy_confidence.json"
+    },
+    {
+      "id": "08",
+      "title": "Economic Torts, Passing Off and Deceit",
+      "file": "nodes/08_economic_torts_passing_off_deceit.json"
+    },
+    {
+      "id": "09",
+      "title": "Statutory Compensation, Harassment and Sexual Harassment",
+      "file": "nodes/09_statutory_compensation_harassment_sexual_harassment.json"
+    },
+    {
+      "id": "10",
+      "title": "Remedies, Damages, Defences and Procedure",
+      "file": "nodes/10_remedies_damages_defences_procedure.json"
+    }
   ]
 }

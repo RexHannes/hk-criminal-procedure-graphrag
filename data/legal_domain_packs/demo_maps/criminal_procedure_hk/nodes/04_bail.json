@@ -18,10 +18,13 @@
       "subsection": "04.01",
       "subtopic": "Right to Bail",
       "section": "04",
-      "statute_refs": ["cap221_s9d", "nsl_art42"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s9d",
+        "nsl_art42"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s9d",
@@ -29,7 +32,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.9D",
       "summary": "Right to bail (s.9D(1)) and statutory exceptions for refusal (s.9D(2)).",
       "section": "04",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "nsl_art42",
@@ -37,7 +40,7 @@
       "label": "National Security Law Article 42",
       "summary": "Bail shall not be granted unless judge satisfied no risk of national security danger.",
       "section": "04",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "bail_factors",
@@ -47,10 +50,12 @@
       "subsection": "04.02",
       "subtopic": "Bail Factors",
       "section": "04",
-      "statute_refs": ["cap221_s9d"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s9d"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "bail_pending_appeal",
@@ -60,11 +65,16 @@
       "subsection": "04.03",
       "subtopic": "Bail Pending Appeal",
       "section": "04",
-      "statute_refs": ["cap221_s9k", "cap484_s35"],
-      "case_seeds": ["hksar_v_milne_john"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s9k",
+        "cap484_s35"
+      ],
+      "case_seeds": [
+        "hksar_v_milne_john"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s9k",
@@ -72,7 +82,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.9K",
       "summary": "Bail pending appeal; special test — must not be in interests of justice.",
       "section": "04",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap484_s35",
@@ -80,7 +90,7 @@
       "label": "Hong Kong Court of Final Appeal Ordinance (Cap 484) s.35",
       "summary": "CFA bail pending appeal; exceptional.",
       "section": "04",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "bail_variation_revocation",
@@ -90,10 +100,12 @@
       "subsection": "04.04",
       "subtopic": "Bail Variation",
       "section": "04",
-      "statute_refs": ["cap221_s9n"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s9n"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s9n",
@@ -101,7 +113,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.9N",
       "summary": "Breach of bail condition; arrest without warrant and new bail hearing.",
       "section": "04",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "bail_police_icac",
@@ -111,11 +123,17 @@
       "subsection": "04.05",
       "subtopic": "Police/ICAC Bail",
       "section": "04",
-      "statute_refs": ["cap232_s52", "cap204_s10a"],
-      "case_seeds": ["dpp_v_richards", "gizzonio_v_chief_constable"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap232_s52",
+        "cap204_s10a"
+      ],
+      "case_seeds": [
+        "dpp_v_richards",
+        "gizzonio_v_chief_constable"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "bail_flow_start",
@@ -124,7 +142,7 @@
       "summary": "Step 1: Person is arrested or charged with an offence.",
       "section": "04",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "bail_flow_step2",
@@ -133,7 +151,7 @@
       "summary": "Step 2: Determine whether bail route is police, ICAC, or court-based.",
       "section": "04",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "bail_flow_step3",
@@ -142,7 +160,7 @@
       "summary": "Step 3: Apply presumption of right to bail under Cap 221 s.9D(1).",
       "section": "04",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "bail_flow_step4",
@@ -151,7 +169,7 @@
       "summary": "Step 4: Check statutory refusal grounds (s.9D(2): absconding, reoffending, witness interference). Check NSL Art.42 if applicable.",
       "section": "04",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "bail_flow_step5",
@@ -160,7 +178,7 @@
       "summary": "Step 5: If bail granted, impose proportionate conditions, recognizance, or surety.",
       "section": "04",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "bail_flow_step6",
@@ -169,7 +187,7 @@
       "summary": "Step 6: If conditions breached or breach anticipated, apply for arrest warrant or variation.",
       "section": "04",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "bail_flow_step7",
@@ -178,7 +196,7 @@
       "summary": "Step 7: Variation or revocation of bail, or appeal against bail decision.",
       "section": "04",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     }
   ]
 }

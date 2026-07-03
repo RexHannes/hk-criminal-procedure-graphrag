@@ -11,7 +11,12 @@
       "label": "Criminal Procedure",
       "parent_id": null,
       "description": "Root node for criminal procedure steps.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -19,7 +24,12 @@
       "label": "Investigation / Arrest",
       "parent_id": "criminal_procedure.root",
       "description": "Police powers, arrest, search, seizure, interview, caution, and investigation fairness.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -27,7 +37,12 @@
       "label": "Bail Procedure",
       "parent_id": "criminal_procedure.root",
       "description": "Bail application, bail review, conditions, sureties, and remand issues.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -35,7 +50,12 @@
       "label": "Plea / Mention",
       "parent_id": "criminal_procedure.root",
       "description": "Mention hearings, plea, directions, transfer, and listing.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -43,7 +63,12 @@
       "label": "Pre-Trial Admissibility",
       "parent_id": "criminal_procedure.root",
       "description": "Voir dire, exclusion applications, disclosure, and evidence admissibility disputes.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -51,7 +76,12 @@
       "label": "Trial",
       "parent_id": "criminal_procedure.root",
       "description": "Trial management, evidence, submissions, directions, and verdict.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -59,7 +89,11 @@
       "label": "Stay / Abuse Of Process Application",
       "parent_id": "criminal_procedure.root",
       "description": "Application to stay proceedings for abuse of process or unfairness.",
-      "allowed_source_kinds": ["case", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -67,7 +101,12 @@
       "label": "Sentence",
       "parent_id": "criminal_procedure.root",
       "description": "Sentence procedure, mitigation, sentence indications, and sentencing evidence.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -75,7 +114,12 @@
       "label": "Appeal / Review",
       "parent_id": "criminal_procedure.root",
       "description": "Appeal procedure, leave, review, fresh evidence, and miscarriage issues.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     }
   ]

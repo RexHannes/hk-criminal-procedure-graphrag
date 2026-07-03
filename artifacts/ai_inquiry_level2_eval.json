@@ -1,0 +1,254 @@
+{
+  "generated_at": "2026-07-03T04:06:41.837Z",
+  "level": 2,
+  "pass": true,
+  "total": 7,
+  "passed": 7,
+  "failed": 0,
+  "results": [
+    {
+      "id": "peaceful_protest",
+      "query": "I joined a peaceful protest and police restricted the route. What legal issues matter?",
+      "pass": true,
+      "errors": [],
+      "abstain": false,
+      "evidence_count": 4,
+      "case_references": [
+        {
+          "case_name": "LEUNG KWOK HUNG AND OTHERS V. HKSAR",
+          "neutral_citation": "[2005] HKCFA 40",
+          "para_no": "1",
+          "supporting_quote": "The freedom of peaceful assembly is a fundamental right.",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2005/40"
+        },
+        {
+          "case_name": "LEUNG KWOK HUNG AND OTHERS V. HKSAR",
+          "neutral_citation": "[2005] HKCFA 40",
+          "para_no": "35",
+          "supporting_quote": "a proper balance is struck between the interests of society on the one hand and the individual's right of peaceful assembly on the other",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2005/40"
+        },
+        {
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "neutral_citation": "[2021] HKCA 404",
+          "para_no": "80",
+          "supporting_quote": "his mere presence without more will not render him liable under section 18 or 19",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en"
+        },
+        {
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "neutral_citation": "[2021] HKCA 404",
+          "para_no": "48",
+          "supporting_quote": "the construction must ensure that all the perpetrators of the offences are caught by the sections so that public order is effectively maintained",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en"
+        }
+      ],
+      "summary": "Retrieved 4 paragraph-linked authority record(s) for research analysis."
+    },
+    {
+      "id": "shop_forgot_pay",
+      "query": "I picked up goods in a shop, forgot to pay, and left. What theft issues matter?",
+      "pass": true,
+      "errors": [],
+      "abstain": false,
+      "evidence_count": 4,
+      "case_references": [
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "neutral_citation": "CACC 223/2022",
+          "para_no": "3",
+          "supporting_quote": "a concealment attracts criminal liability only if it was made in breach of a duty of disclosure",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "neutral_citation": "CACC 223/2022",
+          "para_no": "4",
+          "supporting_quote": "no general duty to disclose one’s own breach of contract",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm"
+        },
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "neutral_citation": "FACV 7/2018",
+          "para_no": "9",
+          "supporting_quote": "S 300 is a general provision that outlaws fraudulent conduct in securities transactions",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm"
+        },
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "neutral_citation": "FACV 7/2018",
+          "para_no": "12",
+          "supporting_quote": "insider dealing is a species of fraud",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm"
+        }
+      ],
+      "summary": "Retrieved 4 paragraph-linked authority record(s) for research analysis."
+    },
+    {
+      "id": "intention_return",
+      "query": "What does intention permanently to deprive mean if I planned to return the item?",
+      "pass": true,
+      "errors": [],
+      "abstain": false,
+      "evidence_count": 4,
+      "case_references": [
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "neutral_citation": "FACV 7/2018",
+          "para_no": "9",
+          "supporting_quote": "S 300 is a general provision that outlaws fraudulent conduct in securities transactions",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "neutral_citation": "CACC 223/2022",
+          "para_no": "3",
+          "supporting_quote": "a concealment attracts criminal liability only if it was made in breach of a duty of disclosure",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm"
+        },
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "neutral_citation": "FACV 7/2018",
+          "para_no": "12",
+          "supporting_quote": "insider dealing is a species of fraud",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm"
+        },
+        {
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "neutral_citation": "[2021] HKCA 404",
+          "para_no": "44",
+          "supporting_quote": "Those common law principles should continue to apply unless on a proper construction they do not",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en"
+        }
+      ],
+      "summary": "Retrieved 4 paragraph-linked authority record(s) for research analysis."
+    },
+    {
+      "id": "belonging_mistake",
+      "query": "The property was in someone else's possession, but I thought it was mine. What theft issue is this?",
+      "pass": true,
+      "errors": [],
+      "abstain": false,
+      "evidence_count": 4,
+      "case_references": [
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "neutral_citation": "FACV 7/2018",
+          "para_no": "9",
+          "supporting_quote": "S 300 is a general provision that outlaws fraudulent conduct in securities transactions",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm"
+        },
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "neutral_citation": "FACV 7/2018",
+          "para_no": "12",
+          "supporting_quote": "insider dealing is a species of fraud",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "neutral_citation": "CACC 223/2022",
+          "para_no": "3",
+          "supporting_quote": "a concealment attracts criminal liability only if it was made in breach of a duty of disclosure",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "neutral_citation": "CACC 223/2022",
+          "para_no": "4",
+          "supporting_quote": "no general duty to disclose one’s own breach of contract",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm"
+        }
+      ],
+      "summary": "Retrieved 4 paragraph-linked authority record(s) for research analysis."
+    },
+    {
+      "id": "bail_after_theft",
+      "query": "What bail factors matter after a theft arrest?",
+      "pass": true,
+      "errors": [],
+      "abstain": false,
+      "evidence_count": 4,
+      "case_references": [
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "neutral_citation": "FACV 7/2018",
+          "para_no": "9",
+          "supporting_quote": "S 300 is a general provision that outlaws fraudulent conduct in securities transactions",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm"
+        },
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "neutral_citation": "FACV 7/2018",
+          "para_no": "12",
+          "supporting_quote": "insider dealing is a species of fraud",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "neutral_citation": "CACC 223/2022",
+          "para_no": "3",
+          "supporting_quote": "a concealment attracts criminal liability only if it was made in breach of a duty of disclosure",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm"
+        },
+        {
+          "case_name": "HKSAR v Chan Chi Chuen Raymond",
+          "neutral_citation": "[2021] HKCFI 2997",
+          "para_no": "5",
+          "supporting_quote": "the “judge should consider everything that appears to the court to be relevant to making that decision including the possible imposition of appropriate bail conditions and materials which would not be admissible as evidence at the trial”.",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=139819&QS=%2B&TP=JU&ILAN=en"
+        }
+      ],
+      "summary": "Retrieved 4 paragraph-linked authority record(s) for research analysis."
+    },
+    {
+      "id": "interview_rights",
+      "query": "The police interviewed me without explaining my rights. What issues matter?",
+      "pass": true,
+      "errors": [],
+      "abstain": false,
+      "evidence_count": 4,
+      "case_references": [
+        {
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "neutral_citation": "[2021] HKCA 404",
+          "para_no": "80",
+          "supporting_quote": "his mere presence without more will not render him liable under section 18 or 19",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=134508&QS=%2B&TP=JU&ILAN=en"
+        },
+        {
+          "case_name": "Sham Wing Kan v Commissioner of Police",
+          "neutral_citation": "[2020] HKCA 186",
+          "para_no": "33",
+          "supporting_quote": "Section 50(6) on a proper construction authorizes police officers to search the digital contents of a mobile phone",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en"
+        },
+        {
+          "case_name": "Sham Wing Kan v Commissioner of Police",
+          "neutral_citation": "[2020] HKCA 186",
+          "para_no": "103",
+          "supporting_quote": "a search of the digital contents of a mobile phone (as opposed to the mobile phone itself as an object) as a specie of the power of search by law enforcement officer incidental to arrest is governed by the common law instead of Section 50",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en"
+        },
+        {
+          "case_name": "Sham Wing Kan v Commissioner of Police",
+          "neutral_citation": "[2020] HKCA 186",
+          "para_no": "106",
+          "supporting_quote": "any warrantless search must be subject to scrutiny under the proportionality test",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=127304&QS=%2B&TP=JU&ILAN=en"
+        }
+      ],
+      "summary": "Retrieved 4 paragraph-linked authority record(s) for research analysis."
+    },
+    {
+      "id": "landlord_rent",
+      "query": "My landlord increased my rent. What should I do?",
+      "pass": true,
+      "errors": [],
+      "abstain": true,
+      "evidence_count": 0,
+      "case_references": [],
+      "summary": "No supported criminal-law paragraph-linked authority is attached for this civil rent/landlord issue in the current prototype corpus."
+    }
+  ]
+}

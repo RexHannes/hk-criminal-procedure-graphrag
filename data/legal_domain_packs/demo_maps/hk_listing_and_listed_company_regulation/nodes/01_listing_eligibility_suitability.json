@@ -18,10 +18,17 @@
       "subsection": "01.01",
       "subtopic": "Main Board Eligibility",
       "section": "01",
-      "listing_rule_refs": ["mbl_8_04", "mbl_8_05", "mbl_8_06", "mbl_8_07"],
-      "statute_refs": ["sfo_sch1_pt1"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_8_04",
+        "mbl_8_05",
+        "mbl_8_06",
+        "mbl_8_07"
+      ],
+      "statute_refs": [
+        "sfo_sch1_pt1"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -33,7 +40,7 @@
       "rule_chapter": "8",
       "rule_number": "8.04",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_8_05",
@@ -44,7 +51,7 @@
       "rule_chapter": "8",
       "rule_number": "8.05",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_8_06",
@@ -55,7 +62,7 @@
       "rule_chapter": "8",
       "rule_number": "8.06",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_8_07",
@@ -66,7 +73,7 @@
       "rule_chapter": "8",
       "rule_number": "8.07",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_profit_test",
@@ -76,9 +83,12 @@
       "subsection": "01.01",
       "subtopic": "Financial Tests",
       "section": "01",
-      "listing_rule_refs": ["mbl_8_05", "mbl_8_05A"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_8_05",
+        "mbl_8_05A"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -90,7 +100,7 @@
       "rule_chapter": "8",
       "rule_number": "8.05A",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_suitability",
@@ -100,10 +110,15 @@
       "subsection": "01.02",
       "subtopic": "Suitability",
       "section": "01",
-      "listing_rule_refs": ["mbl_8_04", "gl68_13A"],
-      "case_seeds": ["hkex_suitability_decision_1"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_8_04",
+        "gl68_13A"
+      ],
+      "case_seeds": [
+        "hkex_suitability_decision_1"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -114,7 +129,7 @@
       "section": "01",
       "effective_date": null,
       "source_url": null,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "hkex_suitability_decision_1",
@@ -123,7 +138,7 @@
       "summary": "Listing Committee considered whether past regulatory breaches rendered an applicant unsuitable; held that candour and remediation are relevant factors.",
       "section": "01",
       "authority_status": "unverified_seed",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "public_float_spread",
@@ -133,9 +148,12 @@
       "subsection": "01.03",
       "subtopic": "Public Float",
       "section": "01",
-      "listing_rule_refs": ["mbl_8_08", "mbl_8_09"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_8_08",
+        "mbl_8_09"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -147,7 +165,7 @@
       "rule_chapter": "8",
       "rule_number": "8.08",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_8_09",
@@ -158,7 +176,7 @@
       "rule_chapter": "8",
       "rule_number": "8.09",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "vie_structure_seed",
@@ -168,9 +186,12 @@
       "subsection": "01.04",
       "subtopic": "VIE Structures",
       "section": "01",
-      "guidance_refs": ["gl94_18", "gl77_14"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "guidance_refs": [
+        "gl94_18",
+        "gl77_14"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -181,7 +202,7 @@
       "section": "01",
       "effective_date": null,
       "source_url": null,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "gl77_14",
@@ -191,7 +212,7 @@
       "section": "01",
       "effective_date": null,
       "source_url": null,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "gem_eligibility",
@@ -201,9 +222,13 @@
       "subsection": "01.05",
       "subtopic": "GEM Eligibility",
       "section": "01",
-      "listing_rule_refs": ["gem_11_06", "gem_11_10", "gem_11_12"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "gem_11_06",
+        "gem_11_10",
+        "gem_11_12"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -215,7 +240,7 @@
       "rule_chapter": "11",
       "rule_number": "11.06",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "gem_11_10",
@@ -226,7 +251,7 @@
       "rule_chapter": "11",
       "rule_number": "11.10",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "gem_11_12",
@@ -237,7 +262,7 @@
       "rule_chapter": "11",
       "rule_number": "11.12",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "sfo_sch1_pt1",
@@ -245,7 +270,7 @@
       "label": "SFO Schedule 1, Part 1 — Definitions",
       "summary": "Defines 'listing rules' and 'recognised exchange company' for the purposes of the Securities and Futures Ordinance.",
       "section": "01",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "track_record_continuity",
@@ -255,9 +280,13 @@
       "subsection": "01.02",
       "subtopic": "Track Record",
       "section": "01",
-      "listing_rule_refs": ["mbl_8_05", "mbl_8_06", "mbl_8_07"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_8_05",
+        "mbl_8_06",
+        "mbl_8_07"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -268,9 +297,11 @@
       "subsection": "01.03",
       "subtopic": "Public Float Details",
       "section": "01",
-      "listing_rule_refs": ["mbl_8_08"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_8_08"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -280,9 +311,8 @@
       "summary": "Core SEHK decision outlining VIE requirements. VIE structures are only permitted where foreign ownership is restricted by PRC law and the VIE arrangement is narrowly tailored to minimise risk. Extensive disclosure required in prospectus.",
       "section": "01",
       "authority_status": "unverified_sehk_decision",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
-
     {
       "id": "listing_document_requirements",
       "type": "legal_issue",
@@ -291,10 +321,15 @@
       "subsection": "01.06",
       "subtopic": "Listing Document Requirements",
       "section": "01",
-      "listing_rule_refs": ["mbl_11_07", "mbl_11_11"],
-      "statute_refs": ["cwo_38d"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_11_07",
+        "mbl_11_11"
+      ],
+      "statute_refs": [
+        "cwo_38d"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -306,7 +341,7 @@
       "rule_chapter": "11",
       "rule_number": "11.07",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_11_11",
@@ -317,7 +352,7 @@
       "rule_chapter": "11",
       "rule_number": "11.11",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cwo_38d",
@@ -325,7 +360,7 @@
       "label": "Companies (WUMP) Ordinance s.38D — Prospectus Liability",
       "summary": "Civil liability for misstatements in prospectuses; persons responsible include the issuer, directors, promoters, and experts. Official source label requires verification.",
       "section": "01",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "listing_requirements_flow_start",

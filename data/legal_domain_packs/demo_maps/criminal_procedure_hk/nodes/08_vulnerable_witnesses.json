@@ -18,10 +18,13 @@
       "subsection": "08.01",
       "subtopic": "Child Witnesses",
       "section": "08",
-      "statute_refs": ["cap8_s4", "cap221_s79b"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap8_s4",
+        "cap221_s79b"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap8_s4",
@@ -29,7 +32,7 @@
       "label": "Evidence Ordinance (Cap 8) s.4",
       "summary": "Child witness unsworn evidence if understands duty to tell truth.",
       "section": "08",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap221_s79b",
@@ -37,7 +40,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) ss.79B-79E",
       "summary": "Special measures for vulnerable witnesses: live TV link, video-recorded evidence-in-chief.",
       "section": "08",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "witness_mentally_incapacitated",
@@ -47,10 +50,12 @@
       "subsection": "08.02",
       "subtopic": "Mentally Incapacitated",
       "section": "08",
-      "statute_refs": ["cap221_s79b"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s79b"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "witness_sexual_offence_complainants",
@@ -60,10 +65,13 @@
       "subsection": "08.03",
       "subtopic": "Sexual Offence Complainants",
       "section": "08",
-      "statute_refs": ["cap221_s79c", "cap221_s79d"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s79c",
+        "cap221_s79d"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s79c",
@@ -71,7 +79,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.79C",
       "summary": "Complainants of certain sexual offences automatically eligible for live TV link.",
       "section": "08",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap221_s79d",
@@ -79,7 +87,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.79D",
       "summary": "Video-recorded evidence-in-chief for vulnerable witnesses.",
       "section": "08",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "witness_outside_hk",
@@ -89,10 +97,12 @@
       "subsection": "08.04",
       "subtopic": "Outside HK Witnesses",
       "section": "08",
-      "statute_refs": ["cap221_part3b"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_part3b"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "witness_anonymity",
@@ -102,10 +112,13 @@
       "subsection": "08.05",
       "subtopic": "Anonymity",
       "section": "08",
-      "case_seeds": ["hksar_v_cheung_shu_cheong", "hksar_v_chan_kam_shing"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "case_seeds": [
+        "hksar_v_cheung_shu_cheong",
+        "hksar_v_chan_kam_shing"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "hksar_v_cheung_shu_cheong",
@@ -113,8 +126,9 @@
       "label": "HKSAR v Cheung Shu Cheong (2018)",
       "summary": "Vulnerable witness and live-link procedures.",
       "section": "08",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "hksar_v_chan_kam_shing",
@@ -122,8 +136,9 @@
       "label": "HKSAR v Chan Kam Shing (2010)",
       "summary": "Vulnerable witness procedures.",
       "section": "08",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     }
   ]
 }

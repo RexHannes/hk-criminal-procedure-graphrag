@@ -1,0 +1,280 @@
+{
+  "generated_at": "2026-07-03T04:06:41.750Z",
+  "level": 1,
+  "pass": true,
+  "total": 9,
+  "passed": 9,
+  "failed": 0,
+  "results": [
+    {
+      "id": "leung_citation_exact",
+      "query": "HKSAR v Leung Kwok Hung [2005] 3 HKLRD 164",
+      "pass": true,
+      "errors": [],
+      "hit_count": 8,
+      "top_hits": [
+        {
+          "case_name": "HKSAR v Leung Kwok Hung",
+          "citation": "[2005] HKCFA 2",
+          "paragraph_number": "17",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2005/2",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "LEUNG KWOK HUNG AND OTHERS V. HKSAR",
+          "citation": "[2005] HKCFA 40",
+          "paragraph_number": "1",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2005/40",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "LEUNG KWOK HUNG AND OTHERS V. HKSAR",
+          "citation": "[2005] HKCFA 40",
+          "paragraph_number": "2",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2005/40",
+          "source_status": "paragraph_linked_public_source"
+        }
+      ]
+    },
+    {
+      "id": "leung_public_assembly",
+      "query": "Leung Kwok Hung public assembly proportionality",
+      "pass": true,
+      "errors": [],
+      "hit_count": 8,
+      "top_hits": [
+        {
+          "case_name": "LEUNG KWOK HUNG AND OTHERS V. HKSAR",
+          "citation": "[2005] HKCFA 40",
+          "paragraph_number": "1",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2005/40",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "LEUNG KWOK HUNG AND OTHERS V. HKSAR",
+          "citation": "[2005] HKCFA 40",
+          "paragraph_number": "2",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2005/40",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "LEUNG KWOK HUNG AND OTHERS V. HKSAR",
+          "citation": "[2005] HKCFA 40",
+          "paragraph_number": "33",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2005/40",
+          "source_status": "paragraph_linked_public_source"
+        }
+      ]
+    },
+    {
+      "id": "lam_detention_confession",
+      "query": "Lam Tat Ming detention after arrest confession",
+      "pass": true,
+      "errors": [],
+      "hit_count": 8,
+      "top_hits": [
+        {
+          "case_name": "Secretary for Justice v Lam Tat Ming",
+          "citation": "[2000] HKCFA 8",
+          "paragraph_number": "1",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2000/8",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "Secretary for Justice v Lam Tat Ming",
+          "citation": "[2000] HKCFA 8",
+          "paragraph_number": "2",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2000/8",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "HKSAR v Fung Tat Chun Frankie",
+          "citation": "[2022] HKCFI 744",
+          "paragraph_number": "8",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=143383&QS=%2B&TP=JU&ILAN=en",
+          "source_status": "paragraph_linked_public_source"
+        }
+      ]
+    },
+    {
+      "id": "theft_forgot_pay",
+      "query": "forgot to pay at shop dishonesty theft",
+      "pass": true,
+      "errors": [],
+      "hit_count": 8,
+      "top_hits": [
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "citation": "FACV 7/2018",
+          "paragraph_number": "9",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "citation": "FACV 7/2018",
+          "paragraph_number": "12",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "citation": "CACC 223/2022",
+          "paragraph_number": "3",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        }
+      ]
+    },
+    {
+      "id": "theft_intention_deprive",
+      "query": "intention permanently to deprive theft",
+      "pass": true,
+      "errors": [],
+      "hit_count": 8,
+      "top_hits": [
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "citation": "FACV 7/2018",
+          "paragraph_number": "9",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "citation": "FACV 7/2018",
+          "paragraph_number": "12",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "citation": "CACC 223/2022",
+          "paragraph_number": "3",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        }
+      ]
+    },
+    {
+      "id": "theft_belonging_another",
+      "query": "belonging to another theft",
+      "pass": true,
+      "errors": [],
+      "hit_count": 8,
+      "top_hits": [
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "citation": "CACC 223/2022",
+          "paragraph_number": "3",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "citation": "CACC 223/2022",
+          "paragraph_number": "4",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "citation": "CACC 223/2022",
+          "paragraph_number": "3",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        }
+      ]
+    },
+    {
+      "id": "theft_appropriation",
+      "query": "appropriation theft Hong Kong",
+      "pass": true,
+      "errors": [],
+      "hit_count": 7,
+      "top_hits": [
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "citation": "FACV 7/2018",
+          "paragraph_number": "9",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "citation": "FACV 7/2018",
+          "paragraph_number": "12",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "citation": "CACC 223/2022",
+          "paragraph_number": "3",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        }
+      ]
+    },
+    {
+      "id": "bail_theft",
+      "query": "bail factors theft dishonesty",
+      "pass": true,
+      "errors": [],
+      "hit_count": 8,
+      "top_hits": [
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "citation": "FACV 7/2018",
+          "paragraph_number": "9",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "citation": "FACV 7/2018",
+          "paragraph_number": "12",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "citation": "CACC 223/2022",
+          "paragraph_number": "3",
+          "source_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
+          "source_status": "paragraph_linked_public_source"
+        }
+      ]
+    },
+    {
+      "id": "interview_caution",
+      "query": "interview caution Hong Kong criminal procedure",
+      "pass": true,
+      "errors": [],
+      "hit_count": 8,
+      "top_hits": [
+        {
+          "case_name": "Secretary for Justice v Lam Tat Ming",
+          "citation": "[2000] HKCFA 8",
+          "paragraph_number": "1",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2000/8",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "Secretary for Justice v Lam Tat Ming",
+          "citation": "[2000] HKCFA 8",
+          "paragraph_number": "2",
+          "source_url": "https://www.hklii.hk/en/cases/hkcfa/2000/8",
+          "source_status": "paragraph_linked_public_source"
+        },
+        {
+          "case_name": "HKSAR v Fung Wai Kong",
+          "citation": "[2022] HKCFI 1017",
+          "paragraph_number": "19",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=143568&QS=%2B&TP=JU&ILAN=en",
+          "source_status": "paragraph_linked_public_source"
+        }
+      ]
+    }
+  ]
+}

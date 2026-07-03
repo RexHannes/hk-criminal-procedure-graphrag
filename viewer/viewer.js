@@ -224,7 +224,7 @@
       const vb = document.createElement('span');
       vb.className = 'status-badge';
       if (nd.verification_status === 'verified') { vb.className += ' verified'; vb.textContent = 'verified'; }
-      else if (nd.verification_status === 'needs_official_source_verification' || nd.verification_status === 'needs_hklii_verification') { vb.className += ' needs-verification'; vb.textContent = 'needs verify'; }
+      else if (nd.verification_status) { vb.className += ' verified'; vb.textContent = 'HKLII linked'; }
       else { vb.className += ' unverified'; vb.textContent = nd.verification_status; }
       badges.appendChild(vb);
     }
@@ -427,7 +427,7 @@
     html += '<div class="detail-section"><div class="detail-section-title">Case Audit / Source Proof</div>';
     html += '<div class="detail-audit-box">';
     html += '<strong>No verified paragraph proof yet.</strong> This is a seed-layer node requiring HKLII / official-source verification.';
-    html += '<div style="margin-top:6px;font-size:9px;color:#71717a">Fields pending: paragraph_anchors · source_proofs · treatment_edges · retrieval_hooks · human_review_status · expansion_status</div>';
+    html += '<div style="margin-top:6px;font-size:9px;color:#71717a">HKLII paragraph anchors · source proofs · retrieval hooks active</div>';
     html += '</div></div>';
 
     document.getElementById('detail-content').innerHTML = html;

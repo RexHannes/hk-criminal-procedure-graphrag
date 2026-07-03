@@ -13,8 +13,8 @@
       "section": "01",
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -25,11 +25,17 @@
       "summary": "When inconsistent factual positions, allegations or assumptions across proceedings may amount to abuse of process.",
       "section": "01",
       "subsection": "01.01",
-      "search_terms": ["abuse of process", "inconsistent positions", "inconsistent pleadings", "different proceedings", "assumptions"],
+      "search_terms": [
+        "abuse of process",
+        "inconsistent positions",
+        "inconsistent pleadings",
+        "different proceedings",
+        "assumptions"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -40,11 +46,17 @@
       "summary": "Potential estoppel and res judicata consequences arising from inconsistent positions or previous determinations.",
       "section": "01",
       "subsection": "01.02",
-      "search_terms": ["estoppel", "res judicata", "issue estoppel", "previous proceedings", "inconsistent and incompatible"],
+      "search_terms": [
+        "estoppel",
+        "res judicata",
+        "issue estoppel",
+        "previous proceedings",
+        "inconsistent and incompatible"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -55,11 +67,16 @@
       "summary": "Serious inconsistency where a party advances a later position diametrically opposed to an earlier one with knowledge of the facts.",
       "section": "01",
       "subsection": "01.03",
-      "search_terms": ["diametrically opposed", "integrity of justice", "full knowledge", "earlier proceedings"],
+      "search_terms": [
+        "diametrically opposed",
+        "integrity of justice",
+        "full knowledge",
+        "earlier proceedings"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -70,11 +87,17 @@
       "summary": "Limits on inconsistent alternative factual pleading where the matters pleaded are plainly within a party's own knowledge.",
       "section": "01",
       "subsection": "01.04",
-      "search_terms": ["alternative pleading", "within knowledge", "inconsistent alternatives", "pleadings", "party knowledge"],
+      "search_terms": [
+        "alternative pleading",
+        "within knowledge",
+        "inconsistent alternatives",
+        "pleadings",
+        "party knowledge"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -85,11 +108,17 @@
       "summary": "Effect of a material deviation between pleaded case and verifying affirmation evidence on summary judgment.",
       "section": "01",
       "subsection": "01.05",
-      "search_terms": ["summary judgment", "affirmation", "pleaded case", "material deviation", "verify claim"],
+      "search_terms": [
+        "summary judgment",
+        "affirmation",
+        "pleaded case",
+        "material deviation",
+        "verify claim"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -100,11 +129,16 @@
       "summary": "Placeholder branch for matters which could and should have been raised in earlier proceedings. Requires full pinpoint verification before source-backed use.",
       "section": "01",
       "subsection": "01.06",
-      "search_terms": ["Henderson", "could and should have been raised", "duplicative litigation", "split proceedings"],
+      "search_terms": [
+        "Henderson",
+        "could and should have been raised",
+        "duplicative litigation",
+        "split proceedings"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -115,11 +149,17 @@
       "summary": "Placeholder branch for indirect attacks on earlier judgments, orders or awards. Requires separate public paragraph proof.",
       "section": "01",
       "subsection": "01.07",
-      "search_terms": ["collateral attack", "indirect attack", "previous judgment", "set aside", "abuse of process"],
+      "search_terms": [
+        "collateral attack",
+        "indirect attack",
+        "previous judgment",
+        "set aside",
+        "abuse of process"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     }
   ]

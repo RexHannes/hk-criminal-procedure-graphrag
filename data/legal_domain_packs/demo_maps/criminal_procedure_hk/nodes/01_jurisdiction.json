@@ -18,11 +18,17 @@
       "subsection": "01.01",
       "subtopic": "Territorial Jurisdiction",
       "section": "01",
-      "statute_refs": ["bl_art19"],
-      "case_seeds": ["hksar_v_ma_wai_kwan_david", "ng_ka_ling_v_director_of_immigration", "hksar_v_lai_chee_ying"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "bl_art19"
+      ],
+      "case_seeds": [
+        "hksar_v_ma_wai_kwan_david",
+        "ng_ka_ling_v_director_of_immigration",
+        "hksar_v_lai_chee_ying"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "bl_art19",
@@ -30,7 +36,7 @@
       "label": "Basic Law Article 19",
       "summary": "Courts have jurisdiction except over acts of state; NPCSC may interpret.",
       "section": "01",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "hksar_v_ma_wai_kwan_david",
@@ -39,8 +45,9 @@
       "summary": "Continuity of law and jurisdiction after 1997.",
       "section": "01",
       "neutral_citation": "[1997] HKCFA 28",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "ng_ka_ling_v_director_of_immigration",
@@ -49,8 +56,9 @@
       "summary": "Constitutional jurisdiction; courts may review legislation for inconsistency with Basic Law but cannot strike down.",
       "section": "01",
       "neutral_citation": "[1999] 2 HKCFAR 4",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "hksar_v_lai_chee_ying",
@@ -59,8 +67,9 @@
       "summary": "No jurisdiction to review NPC/NPCSC acts.",
       "section": "01",
       "neutral_citation": "(2021) 24 HKCFAR 121",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "crim_sys_jurisdiction_flow",
@@ -69,7 +78,7 @@
       "summary": "Step 1: Determine locus of offence. Step 2: Check if statute provides extra-territorial reach. Step 3: If national security offence, apply NSL separate jurisdictional rules.",
       "section": "01",
       "subsection": "01.01",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "crim_sys_courts_hierarchy",
@@ -79,11 +88,19 @@
       "subsection": "01.02",
       "subtopic": "Court Hierarchy",
       "section": "01",
-      "statute_refs": ["cap227", "cap336", "cap4", "cap484"],
-      "case_seeds": ["hksar_v_chen_keen", "hksar_v_milne_john"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap227",
+        "cap336",
+        "cap4",
+        "cap484"
+      ],
+      "case_seeds": [
+        "hksar_v_chen_keen",
+        "hksar_v_milne_john"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap227",
@@ -91,7 +108,7 @@
       "label": "Magistrates Ordinance (Cap 227)",
       "summary": "Summary trial, committal, bail, transfer jurisdiction.",
       "section": "01",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap336",
@@ -99,7 +116,7 @@
       "label": "District Court Ordinance (Cap 336)",
       "summary": "Indictable offences transferred from magistrates; max sentence 7 years (or aggregate).",
       "section": "01",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap4",
@@ -107,7 +124,7 @@
       "label": "High Court Ordinance (Cap 4)",
       "summary": "Original jurisdiction over most serious indictable offences; trial by judge and jury.",
       "section": "01",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap484",
@@ -115,7 +132,7 @@
       "label": "Hong Kong Court of Final Appeal Ordinance (Cap 484)",
       "summary": "Final appellate court; leave required; only 'final decisions' in criminal matters, except where miscarriage of justice.",
       "section": "01",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "hksar_v_chen_keen",
@@ -124,8 +141,9 @@
       "summary": "Final vs interlocutory decision in CFA jurisdiction.",
       "section": "01",
       "neutral_citation": "[2013] 4 HKC 615",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "hksar_v_milne_john",
@@ -134,8 +152,9 @@
       "summary": "Prosecution appeal; bail pending CFA proceedings.",
       "section": "01",
       "neutral_citation": "(2019) 22 HKCFAR 218",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "crim_sys_constitutional_limits",
@@ -145,12 +164,19 @@
       "subsection": "01.03",
       "subtopic": "Constitutional Limits",
       "section": "01",
-      "statute_refs": ["bl_art19", "cap159_s27a"],
-      "case_seeds": ["hksar_v_lai_chee_ying"],
-      "cross_refs": ["nsl_submap_overview"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "bl_art19",
+        "cap159_s27a"
+      ],
+      "case_seeds": [
+        "hksar_v_lai_chee_ying"
+      ],
+      "cross_refs": [
+        "nsl_submap_overview"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap159_s27a",
@@ -158,7 +184,7 @@
       "label": "Legal Practitioners Ordinance (Cap 159) s.27A",
       "summary": "Overseas lawyers need Chief Executive certificate for NSL cases.",
       "section": "01",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     }
   ]
 }

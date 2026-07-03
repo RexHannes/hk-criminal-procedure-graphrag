@@ -20,7 +20,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
@@ -37,7 +37,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ],
   "paragraph_cards": [
@@ -51,7 +51,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022_p4",
@@ -63,7 +63,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018_p9",
@@ -75,7 +75,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018_p12",
@@ -87,7 +87,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ]
 }

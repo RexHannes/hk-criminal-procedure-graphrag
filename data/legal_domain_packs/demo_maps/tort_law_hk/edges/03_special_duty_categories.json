@@ -2,33 +2,145 @@
   "section_id": "03",
   "domain_id": "tort_law_hk",
   "edges": [
-    { "from": "tort_special_duty_categories", "to": "tort_pure_economic_loss", "relationship": "has_subtopic" },
-    { "from": "tort_special_duty_categories", "to": "tort_negligent_misstatement", "relationship": "has_subtopic" },
-    { "from": "tort_special_duty_categories", "to": "tort_assumption_of_responsibility", "relationship": "has_subtopic" },
-    { "from": "tort_special_duty_categories", "to": "tort_professional_adviser_duty", "relationship": "has_subtopic" },
-    { "from": "tort_special_duty_categories", "to": "tort_product_liability_common_law", "relationship": "has_subtopic" },
-    { "from": "tort_special_duty_categories", "to": "tort_psychiatric_injury", "relationship": "has_subtopic" },
-    { "from": "tort_special_duty_categories", "to": "tort_omissions_and_duty_to_control", "relationship": "has_subtopic" },
-    { "from": "tort_special_duty_categories", "to": "tort_public_authority_duty", "relationship": "has_subtopic" },
-    { "from": "tort_special_duty_categories", "to": "tort_rescuers", "relationship": "has_subtopic" },
-    { "from": "tort_special_duty_categories", "to": "tort_unborn_wrongful_life_parental_autonomy", "relationship": "has_subtopic" },
-    { "from": "tort_psychiatric_injury", "to": "tort_psychiatric_primary_victims", "relationship": "has_subtopic" },
-    { "from": "tort_psychiatric_injury", "to": "tort_psychiatric_secondary_victims_alcock", "relationship": "has_subtopic" },
-    { "from": "tort_psychiatric_injury", "to": "tort_psychiatric_rescuers", "relationship": "has_subtopic" },
-    { "from": "tort_pure_economic_loss", "to": "case_hedley_byrne", "relationship": "case_seed" },
-    { "from": "tort_pure_economic_loss", "to": "case_tai_hing_cotton_mill", "relationship": "case_seed" },
-    { "from": "tort_pure_economic_loss", "to": "case_yuen_kun_yeu", "relationship": "case_seed" },
-    { "from": "tort_negligent_misstatement", "to": "case_hedley_byrne", "relationship": "case_seed" },
-    { "from": "tort_negligent_misstatement", "to": "case_cheng_yuen_jockey_club", "relationship": "case_seed" },
-    { "from": "tort_product_liability_common_law", "to": "case_donoghue", "relationship": "case_seed" },
-    { "from": "tort_psychiatric_primary_victims", "to": "case_page_v_smith", "relationship": "case_seed" },
-    { "from": "tort_psychiatric_secondary_victims_alcock", "to": "case_alcock", "relationship": "case_seed" },
-    { "from": "tort_psychiatric_secondary_victims_alcock", "to": "case_mcloughlin", "relationship": "case_seed" },
-    { "from": "tort_psychiatric_injury", "to": "case_chu_siu_kuk_yuen", "relationship": "case_seed" },
-    { "from": "tort_public_authority_duty", "to": "case_lau_luen_hung_police", "relationship": "case_seed" },
-    { "from": "tort_pure_economic_loss", "to": "tort_negligence_duty_of_care", "relationship": "cross_reference" },
-    { "from": "tort_psychiatric_injury", "to": "tort_negligence_duty_of_care", "relationship": "cross_reference" },
-    { "from": "tort_special_duty_categories", "to": "gap_verify_hk_pure_economic_loss_cases", "relationship": "has_subtopic" },
-    { "from": "tort_special_duty_categories", "to": "gap_verify_hk_psychiatric_injury_cases", "relationship": "has_subtopic" }
+    {
+      "from": "tort_special_duty_categories",
+      "to": "tort_pure_economic_loss",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "tort_negligent_misstatement",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "tort_assumption_of_responsibility",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "tort_professional_adviser_duty",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "tort_product_liability_common_law",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "tort_psychiatric_injury",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "tort_omissions_and_duty_to_control",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "tort_public_authority_duty",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "tort_rescuers",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "tort_unborn_wrongful_life_parental_autonomy",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_psychiatric_injury",
+      "to": "tort_psychiatric_primary_victims",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_psychiatric_injury",
+      "to": "tort_psychiatric_secondary_victims_alcock",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_psychiatric_injury",
+      "to": "tort_psychiatric_rescuers",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_pure_economic_loss",
+      "to": "case_hedley_byrne",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_pure_economic_loss",
+      "to": "case_tai_hing_cotton_mill",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_pure_economic_loss",
+      "to": "case_yuen_kun_yeu",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligent_misstatement",
+      "to": "case_hedley_byrne",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligent_misstatement",
+      "to": "case_cheng_yuen_jockey_club",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_product_liability_common_law",
+      "to": "case_donoghue",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_psychiatric_primary_victims",
+      "to": "case_page_v_smith",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_psychiatric_secondary_victims_alcock",
+      "to": "case_alcock",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_psychiatric_secondary_victims_alcock",
+      "to": "case_mcloughlin",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_psychiatric_injury",
+      "to": "case_chu_siu_kuk_yuen",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_public_authority_duty",
+      "to": "case_lau_luen_hung_police",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_pure_economic_loss",
+      "to": "tort_negligence_duty_of_care",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_psychiatric_injury",
+      "to": "tort_negligence_duty_of_care",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "gap_verify_hk_pure_economic_loss_cases",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_special_duty_categories",
+      "to": "gap_verify_hk_psychiatric_injury_cases",
+      "relationship": "has_subtopic"
+    }
   ]
 }

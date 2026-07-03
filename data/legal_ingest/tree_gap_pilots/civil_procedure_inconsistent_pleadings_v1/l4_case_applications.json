@@ -9,8 +9,8 @@
       "application_summary": "The inconsistent-positions principle is not confined to inconsistent factual allegations and may apply to inconsistent positions or assumptions adopted in different proceedings.",
       "significance_label": "states_rule",
       "authority_role": "applied_principle",
-      "review_status": "machine_candidate",
-      "answer_layer_status": "candidate_only"
+      "review_status": "paragraph_verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "l4_application_id": "prop_abuse_estoppel_lancom_p43_application",
@@ -21,8 +21,8 @@
       "application_summary": "A party adopting a position inconsistent and incompatible with one adopted in previous proceedings may face an abuse-of-process and estoppel objection.",
       "significance_label": "states_rule",
       "authority_role": "applied_principle",
-      "review_status": "machine_candidate",
-      "answer_layer_status": "candidate_only"
+      "review_status": "paragraph_verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "l4_application_id": "prop_diametrically_opposed_integrity_vasily_p39_application",
@@ -33,8 +33,8 @@
       "application_summary": "A diametrically opposed later claim advanced with full knowledge of the facts may be abusive because it undermines the integrity of the administration of justice.",
       "significance_label": "states_rule",
       "authority_role": "applied_principle",
-      "review_status": "machine_candidate",
-      "answer_layer_status": "candidate_only"
+      "review_status": "paragraph_verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "l4_application_id": "prop_alternative_pleading_within_knowledge_liu_p16_application",
@@ -45,8 +45,8 @@
       "application_summary": "Where the relevant facts are plainly within a party's knowledge, inconsistent alternative factual cases may be impermissible.",
       "significance_label": "states_rule",
       "authority_role": "applied_principle",
-      "review_status": "machine_candidate",
-      "answer_layer_status": "candidate_only"
+      "review_status": "paragraph_verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "l4_application_id": "prop_summary_judgment_material_deviation_shinyei_p19_application",
@@ -57,8 +57,8 @@
       "application_summary": "A material deviation between a verifying affirmation and the pleaded case may prevent summary judgment because the claim is not verified as pleaded.",
       "significance_label": "procedural_consequence",
       "authority_role": "applied_principle",
-      "review_status": "machine_candidate",
-      "answer_layer_status": "candidate_only"
+      "review_status": "paragraph_verified",
+      "answer_layer_status": "paragraph_verified"
     }
   ]
 }

@@ -75,7 +75,7 @@
       "fetch_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2022/CACC000223_2022_files/CACC000223_2022ES.htm",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "source_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
@@ -93,7 +93,7 @@
       "fetch_url": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2018/FACV000007_2018_files/FACV000007_2018ES.htm",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ],
   "rules": [
@@ -118,7 +118,7 @@
       "paragraph_no": "4",
       "proposition_id": "prop_mo_yuk_ping_2022_no_general_duty_disclose_breach_p4",
       "proposition_text": "The Court of Appeal held there is no general common-law duty to disclose one's own breach of contract, and a commercial lease did not create a special disclosure duty on these facts.",
-      "exact_quote": "no general duty to disclose one\u2019s own breach of contract",
+      "exact_quote": "no general duty to disclose one’s own breach of contract",
       "target_doctrine_node_ids": [
         "criminal_law_hk.fraud"
       ],

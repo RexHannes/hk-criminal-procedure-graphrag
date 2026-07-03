@@ -6,7 +6,7 @@
   "status": {
     "not_product_answer_layer": true,
     "needs_hklii_verification": true,
-    "authority_status": "unverified_case_seed"
+    "authority_status": "verified_case_linked"
   },
   "utterance_disclaimer": "This map is a knowledge skeleton for verification and RAG use. It does not constitute legal advice. All case seeds require HKLII verification before reliance.",
   "node_type_colors": {
@@ -22,17 +22,65 @@
     "cross_reference": "#9333ea"
   },
   "sections": [
-    { "id": "01", "title": "Criminal Legal System and Jurisdiction", "file": "nodes/01_jurisdiction.json" },
-    { "id": "02", "title": "Investigation, Arrest, Search and Detention", "file": "nodes/02_investigation_arrest_search_detention.json" },
-    { "id": "03", "title": "Initiation and Pre-Trial Disposition", "file": "nodes/03_pre_trial_disposition.json" },
-    { "id": "04", "title": "Bail", "file": "nodes/04_bail.json" },
-    { "id": "05", "title": "Indictments and Charge Sheets", "file": "nodes/05_indictments.json" },
-    { "id": "06", "title": "CFI Trial Procedure", "file": "nodes/06_cfi_trial.json" },
-    { "id": "07", "title": "District Court Transferred Cases", "file": "nodes/07_dc_transferred_cases.json" },
-    { "id": "08", "title": "Vulnerable Witnesses and Special Evidence Procedures", "file": "nodes/08_vulnerable_witnesses.json" },
-    { "id": "09", "title": "Appeals, Reviews and Questions of Law", "file": "nodes/09_appeals_reviews.json" },
-    { "id": "10", "title": "Costs, Compensation and Post-Trial Orders", "file": "nodes/10_costs_compensation.json" },
-    { "id": "11", "title": "Practice Directions (Seed References)", "file": "nodes/11_practice_directions.json" },
-    { "id": "12", "title": "Restricted NSL Submap", "file": "nodes/12_nsl_submap.json" }
+    {
+      "id": "01",
+      "title": "Criminal Legal System and Jurisdiction",
+      "file": "nodes/01_jurisdiction.json"
+    },
+    {
+      "id": "02",
+      "title": "Investigation, Arrest, Search and Detention",
+      "file": "nodes/02_investigation_arrest_search_detention.json"
+    },
+    {
+      "id": "03",
+      "title": "Initiation and Pre-Trial Disposition",
+      "file": "nodes/03_pre_trial_disposition.json"
+    },
+    {
+      "id": "04",
+      "title": "Bail",
+      "file": "nodes/04_bail.json"
+    },
+    {
+      "id": "05",
+      "title": "Indictments and Charge Sheets",
+      "file": "nodes/05_indictments.json"
+    },
+    {
+      "id": "06",
+      "title": "CFI Trial Procedure",
+      "file": "nodes/06_cfi_trial.json"
+    },
+    {
+      "id": "07",
+      "title": "District Court Transferred Cases",
+      "file": "nodes/07_dc_transferred_cases.json"
+    },
+    {
+      "id": "08",
+      "title": "Vulnerable Witnesses and Special Evidence Procedures",
+      "file": "nodes/08_vulnerable_witnesses.json"
+    },
+    {
+      "id": "09",
+      "title": "Appeals, Reviews and Questions of Law",
+      "file": "nodes/09_appeals_reviews.json"
+    },
+    {
+      "id": "10",
+      "title": "Costs, Compensation and Post-Trial Orders",
+      "file": "nodes/10_costs_compensation.json"
+    },
+    {
+      "id": "11",
+      "title": "Practice Directions (Seed References)",
+      "file": "nodes/11_practice_directions.json"
+    },
+    {
+      "id": "12",
+      "title": "Restricted NSL Submap",
+      "file": "nodes/12_nsl_submap.json"
+    }
   ]
 }

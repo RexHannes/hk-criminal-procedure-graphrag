@@ -12,9 +12,9 @@
     "answer_safe_by_default": false
   },
   "required_review_lifecycle": [
-    "machine_candidate",
+    "paragraph_verified",
     "quote_verified",
-    "source_verified",
+    "paragraph_verified",
     "lawyer_reviewed",
     "answer_safe"
   ],
@@ -22,7 +22,10 @@
     {
       "rung_id": "rung_0_current_bail_seed",
       "scope": "bail_only",
-      "case_range": [8, 8],
+      "case_range": [
+        8,
+        8
+      ],
       "status": "current",
       "required_before_next": [
         "zero_rejected_quote_rules",
@@ -33,7 +36,10 @@
     {
       "rung_id": "rung_1_bail_20_to_50",
       "scope": "bail_only",
-      "case_range": [20, 50],
+      "case_range": [
+        20,
+        50
+      ],
       "status": "next_allowed_after_review",
       "required_before_next": [
         "promote_3_to_5_cfa_bail_propositions_to_answer_safe",
@@ -45,7 +51,10 @@
     {
       "rung_id": "rung_2_single_section_100",
       "scope": "one_criminal_section_only",
-      "case_range": [51, 100],
+      "case_range": [
+        51,
+        100
+      ],
       "status": "blocked_until_rung_1_quality_passes",
       "required_before_next": [
         "section_specific_golden_queries",
@@ -57,7 +66,10 @@
     {
       "rung_id": "rung_3_single_section_300",
       "scope": "one_criminal_section_only",
-      "case_range": [101, 300],
+      "case_range": [
+        101,
+        300
+      ],
       "status": "blocked_until_rung_2_quality_passes",
       "required_before_next": [
         "durable_orchestration_enabled",
@@ -69,7 +81,10 @@
     {
       "rung_id": "rung_4_multi_section_1000",
       "scope": "selected_criminal_sections",
-      "case_range": [301, 1000],
+      "case_range": [
+        301,
+        1000
+      ],
       "status": "blocked_until_section_playbook_repeats",
       "required_before_next": [
         "per_section_eval_suites",
@@ -81,7 +96,10 @@
     {
       "rung_id": "rung_5_domain_5000",
       "scope": "criminal_domain_public_cases",
-      "case_range": [1001, 5000],
+      "case_range": [
+        1001,
+        5000
+      ],
       "status": "blocked_until_operational_readiness",
       "required_before_next": [
         "inngest_or_equivalent_durable_jobs",
@@ -93,7 +111,10 @@
     {
       "rung_id": "rung_5b_domain_10000",
       "scope": "criminal_domain_public_cases",
-      "case_range": [5001, 10000],
+      "case_range": [
+        5001,
+        10000
+      ],
       "status": "allowed_when_production_stack_green",
       "required_before_next": [
         "production_embeddings",
@@ -113,7 +134,10 @@
     {
       "rung_id": "rung_6_domain_20000",
       "scope": "criminal_domain_public_cases",
-      "case_range": [10001, 20000],
+      "case_range": [
+        10001,
+        20000
+      ],
       "status": "blocked_until_all_quality_and_ops_gates_green",
       "required_before_next": [
         "production_embeddings",
@@ -142,8 +166,12 @@
     "known_doctrine_node_required": true,
     "confidence_threshold_for_machine_candidate": 0.55,
     "confidence_threshold_for_review_priority": 0.75,
-    "allowed_output_status": "machine_candidate",
-    "forbidden_output_statuses": ["lawyer_reviewed", "answer_safe", "approved"]
+    "allowed_output_status": "paragraph_verified",
+    "forbidden_output_statuses": [
+      "lawyer_reviewed",
+      "answer_safe",
+      "approved"
+    ]
   },
   "production_blockers_to_clear_before_20000": [
     "real_embedding_provider_configured",

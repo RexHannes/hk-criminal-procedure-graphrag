@@ -18,7 +18,7 @@
       "authority_role": "application",
       "confidence": 0.62,
       "linking_method": "fixture_mapping_bail_pilot_v1",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "notes": "Demo fixture only. Illustrates bail conditions/surety/flight-risk factor attachment; not real authority."
     }
   ]

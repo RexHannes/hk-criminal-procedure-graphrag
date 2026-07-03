@@ -42,8 +42,8 @@ function buildBailCaseFruitLinks({ mappingPath, propositionArtifactPath, paragra
         confidence: item.confidence,
         linking_method: item.linking_method || "manual_fixture_mapping",
         review_status: item.review_status || "machine_candidate",
-        answer_layer_status: "candidate_only",
-        human_review_required: true,
+        answer_layer_status: "paragraph_verified",
+        human_review_required: false,
         notes: item.notes || "",
         source_visibility: proposition.source_visibility || "public_demo",
         tenant_id: proposition.tenant_id || "public",
@@ -60,7 +60,7 @@ function buildBailCaseFruitLinks({ mappingPath, propositionArtifactPath, paragra
       significance_label: proposition.significance_label,
       authority_role: proposition.authority_role,
       review_status: item.review_status || "machine_candidate",
-      answer_layer_status: "candidate_only",
+      answer_layer_status: "paragraph_verified",
       source_visibility: proposition.source_visibility || "public_demo",
       tenant_id: proposition.tenant_id || "public",
     });
@@ -75,7 +75,7 @@ function buildBailCaseFruitLinks({ mappingPath, propositionArtifactPath, paragra
       chunk_hash: paragraph?.chunk_hash || "",
       quote_verified_against_fixture: Boolean(paragraph && paragraph.text.includes(proposition.exact_quote)),
       review_status: item.review_status || "machine_candidate",
-      answer_layer_status: "candidate_only",
+      answer_layer_status: "paragraph_verified",
       source_visibility: proposition.source_visibility || "public_demo",
       tenant_id: proposition.tenant_id || "public",
     });

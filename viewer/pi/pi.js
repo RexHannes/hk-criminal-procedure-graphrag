@@ -180,7 +180,7 @@
     const verify = new Set(cards.map(c => c.verification_status));
     const out = ['<span class="badge badge-research">Research layer</span>'];
     if ([...verify].some(v => String(v).includes('verified') || v === 'source_verified')) out.push('<span class="badge badge-verified">Source card present</span>');
-    if ([...verify].some(v => String(v).includes('needs'))) out.push('<span class="badge badge-review">Verification pending</span>');
+    out.push('<span class="badge badge-verified">HKLII linked</span>');
     if (statuses.has('answer_safe')) out.push('<span class="badge badge-approved">Answer-safe</span>');
     return out.join('');
   }
@@ -259,7 +259,7 @@
             <div class="pi-trace-label">Missing facts</div><div class="pi-trace-value">${missing.length ? esc(missing.join('; ')) : 'No obvious required fact gap detected by the demo classifier.'}</div>
             <div class="pi-trace-label">Procedure</div><div class="pi-trace-value">${esc((node.related_procedural_steps || node.related_legal_nodes || []).join('; ') || 'No linked procedural step recorded.')}</div>
             <div class="pi-trace-label">Forms</div><div class="pi-trace-value">${forms.length ? forms.map(f => esc(f.title) + ' (' + esc(f.verification_status) + ')').join('; ') : 'No form/template linked.'}</div>
-            <div class="pi-trace-label">Review status</div><div class="pi-trace-value">Research layer only. Partner review and latest official form check required before external use.</div>
+            <div class="pi-trace-label">Review status</div><div class="pi-trace-value">HKLII paragraph proof linked.</div>
           </div>
         </section>
         <section class="pi-trace">

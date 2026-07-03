@@ -18,11 +18,17 @@
       "subsection": "03.01",
       "subtopic": "Initiation",
       "section": "03",
-      "statute_refs": ["cap227_s8", "cap227_s26", "cap221_s14a"],
-      "case_seeds": ["hksar_v_cheung_tsz_wan"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap227_s8",
+        "cap227_s26",
+        "cap221_s14a"
+      ],
+      "case_seeds": [
+        "hksar_v_cheung_tsz_wan"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap227_s8",
@@ -30,7 +36,7 @@
       "label": "Magistrates Ordinance (Cap 227) s.8",
       "summary": "Information/complaint for summary trial.",
       "section": "03",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap227_s26",
@@ -38,7 +44,7 @@
       "label": "Magistrates Ordinance (Cap 227) s.26",
       "summary": "Time limit for laying information: 6 months for summary offences.",
       "section": "03",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap221_s14a",
@@ -46,7 +52,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.14A",
       "summary": "Charge sheet for indictable offences; classification of offences as summary/indictable/either way.",
       "section": "03",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "hksar_v_cheung_tsz_wan",
@@ -55,8 +61,9 @@
       "summary": "Prosecutorial discretion; judicial review only in exceptional circumstances. Reaffirmation of burden for stay.",
       "section": "03",
       "neutral_citation": "(2009) 12 HKCFAR 520",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "pre_trial_offence_classification",
@@ -66,11 +73,15 @@
       "subsection": "03.02",
       "subtopic": "Classification",
       "section": "03",
-      "statute_refs": ["cap221_s14a"],
-      "case_seeds": ["hksar_v_chan_tai_sum"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s14a"
+      ],
+      "case_seeds": [
+        "hksar_v_chan_tai_sum"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "hksar_v_chan_tai_sum",
@@ -78,8 +89,9 @@
       "label": "HKSAR v Chan Tai Sum (2021)",
       "summary": "Classification under s.14A; whether offence is summary or indictable.",
       "section": "03",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "pre_trial_committal_transfer",
@@ -89,10 +101,13 @@
       "subsection": "03.03",
       "subtopic": "Committal",
       "section": "03",
-      "statute_refs": ["cap221_s79a", "cap221_s77c"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s79a",
+        "cap221_s77c"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s79a",
@@ -100,7 +115,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) ss.79A-79H",
       "summary": "Paper committal procedure for indictable only offences to CFI.",
       "section": "03",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap221_s77c",
@@ -108,7 +123,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.77C",
       "summary": "Transfer to District Court; Secretary for Justice may apply.",
       "section": "03",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pre_trial_discharge",
@@ -118,10 +133,15 @@
       "subsection": "03.04",
       "subtopic": "Discharge",
       "section": "03",
-      "case_seeds": ["hksar_v_milne_john", "r_v_holgate_no1", "hksar_v_cheung_tsz_wan", "hksar_v_chen_keen"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "case_seeds": [
+        "hksar_v_milne_john",
+        "r_v_holgate_no1",
+        "hksar_v_cheung_tsz_wan",
+        "hksar_v_chen_keen"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "r_v_holgate_no1",
@@ -129,8 +149,9 @@
       "label": "R v Holgate (No 1) (comparative)",
       "summary": "Burden on applicant for stay.",
       "section": "03",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "pre_trial_time_limits",
@@ -140,11 +161,15 @@
       "subsection": "03.05",
       "subtopic": "Time Limits",
       "section": "03",
-      "statute_refs": ["cap227_s26"],
-      "case_seeds": ["hksar_v_lai_man_ling"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap227_s26"
+      ],
+      "case_seeds": [
+        "hksar_v_lai_man_ling"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "pre_trial_stay_flow_start",
@@ -153,7 +178,7 @@
       "summary": "Step 1: Identify alleged abuse of process (prosecutorial misconduct, delay, unfairness).",
       "section": "03",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pre_trial_stay_flow_step2",
@@ -162,7 +187,7 @@
       "summary": "Step 2: Is a fair trial still possible? If yes, stay rarely granted.",
       "section": "03",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pre_trial_stay_flow_step3",
@@ -171,7 +196,7 @@
       "summary": "Step 3: Are the circumstances exceptional? Stay is a rare remedy.",
       "section": "03",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pre_trial_stay_flow_step4",
@@ -180,7 +205,7 @@
       "summary": "Step 4: Applicant bears burden of establishing grounds for stay.",
       "section": "03",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pre_trial_stay_flow_step5",
@@ -189,7 +214,7 @@
       "summary": "Step 5: Court considers stay or lesser remedy (adjournment, exclusion of evidence).",
       "section": "03",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pre_trial_stay_flow_step6",
@@ -198,7 +223,7 @@
       "summary": "Step 6: Appeal route if stay granted or refused.",
       "section": "03",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     }
   ]
 }

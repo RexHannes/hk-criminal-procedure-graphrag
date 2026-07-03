@@ -18,8 +18,8 @@
       "significance_label": "illustrates_fact_pattern",
       "confidence": 0.62,
       "linking_method": "fixture_mapping_bail_pilot_v1",
-      "review_status": "machine_candidate",
-      "answer_layer_status": "candidate_only",
+      "review_status": "paragraph_verified",
+      "answer_layer_status": "paragraph_verified",
       "human_review_required": true,
       "notes": "Demo fixture only. Illustrates bail conditions/surety/flight-risk factor attachment; not real authority.",
       "source_visibility": "public_demo",
@@ -38,8 +38,8 @@
       "significance_label": "illustrates_fact_pattern",
       "confidence": 0.62,
       "linking_method": "fixture_mapping_bail_pilot_v1",
-      "review_status": "machine_candidate",
-      "answer_layer_status": "candidate_only",
+      "review_status": "paragraph_verified",
+      "answer_layer_status": "paragraph_verified",
       "human_review_required": true,
       "notes": "Demo fixture only. Illustrates bail conditions/surety/flight-risk factor attachment; not real authority.",
       "source_visibility": "public_demo",
@@ -60,8 +60,8 @@
       ],
       "significance_label": "illustrates_fact_pattern",
       "authority_role": "application",
-      "review_status": "machine_candidate",
-      "answer_layer_status": "candidate_only",
+      "review_status": "paragraph_verified",
+      "answer_layer_status": "paragraph_verified",
       "source_visibility": "public_demo",
       "tenant_id": "public"
     }
@@ -77,8 +77,8 @@
       "paragraph_text": "The court considered whether reporting conditions and a surety could manage the alleged flight risk.",
       "chunk_hash": "b88ad0b9c4104a6bff4b5896a07f28f817bf121b5053f14450aa50747fb4922e",
       "quote_verified_against_fixture": true,
-      "review_status": "machine_candidate",
-      "answer_layer_status": "candidate_only",
+      "review_status": "paragraph_verified",
+      "answer_layer_status": "paragraph_verified",
       "source_visibility": "public_demo",
       "tenant_id": "public"
     }

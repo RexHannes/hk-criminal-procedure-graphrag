@@ -2,35 +2,155 @@
   "section_id": "06",
   "domain_id": "criminal_procedure_hk",
   "edges": [
-    { "from": "crim_proc_cfi_trial", "to": "trial_allocation_and_ptp", "relationship": "has_subtopic" },
-    { "from": "crim_proc_cfi_trial", "to": "trial_judge_and_jury", "relationship": "has_subtopic" },
-    { "from": "crim_proc_cfi_trial", "to": "trial_arraignment", "relationship": "has_subtopic" },
-    { "from": "crim_proc_cfi_trial", "to": "trial_prosecution_case", "relationship": "has_subtopic" },
-    { "from": "crim_proc_cfi_trial", "to": "trial_no_case_submission", "relationship": "has_subtopic" },
-    { "from": "crim_proc_cfi_trial", "to": "trial_defence_case", "relationship": "has_subtopic" },
-    { "from": "crim_proc_cfi_trial", "to": "trial_witnesses", "relationship": "has_subtopic" },
-    { "from": "crim_proc_cfi_trial", "to": "trial_live_tv_link", "relationship": "has_subtopic" },
-    { "from": "crim_proc_cfi_trial", "to": "trial_summng_up", "relationship": "has_subtopic" },
-    { "from": "crim_proc_cfi_trial", "to": "trial_verdict", "relationship": "has_subtopic" },
-    { "from": "crim_proc_cfi_trial", "to": "trial_sentencing", "relationship": "has_subtopic" },
-    { "from": "trial_judge_and_jury", "to": "cap3_s4", "relationship": "statutory_anchor" },
-    { "from": "trial_judge_and_jury", "to": "hksar_v_chan_hon_wing", "relationship": "case_seed" },
-    { "from": "trial_prosecution_case", "to": "hksar_v_wong_sau_ming", "relationship": "case_seed" },
-    { "from": "trial_prosecution_case", "to": "hksar_v_lee_kwok_wah", "relationship": "case_seed" },
-    { "from": "trial_no_case_submission", "to": "hksar_v_wong_sau_ming", "relationship": "case_seed" },
-    { "from": "trial_no_case_submission", "to": "hksar_v_lee_kwok_wah", "relationship": "case_seed" },
-    { "from": "trial_defence_case", "to": "cap8_s54", "relationship": "statutory_anchor" },
-    { "from": "trial_witnesses", "to": "cap221_part3a", "relationship": "statutory_anchor" },
-    { "from": "trial_live_tv_link", "to": "cap221_part3b", "relationship": "statutory_anchor" },
-    { "from": "trial_summng_up", "to": "hksar_v_amarjit", "relationship": "case_seed" },
-    { "from": "trial_verdict", "to": "cap3_s24", "relationship": "statutory_anchor" },
-    { "from": "trial_allocation_and_ptp", "to": "pd_9_2", "relationship": "statutory_anchor" },
-    { "from": "trial_cfi_flow_start", "to": "trial_cfi_flow_step2", "relationship": "flow_transition" },
-    { "from": "trial_cfi_flow_step2", "to": "trial_cfi_flow_step3", "relationship": "flow_transition" },
-    { "from": "trial_cfi_flow_step3", "to": "trial_cfi_flow_step4", "relationship": "flow_transition" },
-    { "from": "trial_cfi_flow_step4", "to": "trial_cfi_flow_step5", "relationship": "flow_transition" },
-    { "from": "trial_cfi_flow_step5", "to": "trial_cfi_flow_step6", "relationship": "flow_transition" },
-    { "from": "trial_cfi_flow_step6", "to": "trial_cfi_flow_step7", "relationship": "flow_transition" },
-    { "from": "trial_cfi_flow_step7", "to": "trial_cfi_flow_step8", "relationship": "flow_transition" }
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_allocation_and_ptp",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_judge_and_jury",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_arraignment",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_prosecution_case",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_no_case_submission",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_defence_case",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_witnesses",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_live_tv_link",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_summng_up",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_verdict",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_cfi_trial",
+      "to": "trial_sentencing",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "trial_judge_and_jury",
+      "to": "cap3_s4",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "trial_judge_and_jury",
+      "to": "hksar_v_chan_hon_wing",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "trial_prosecution_case",
+      "to": "hksar_v_wong_sau_ming",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "trial_prosecution_case",
+      "to": "hksar_v_lee_kwok_wah",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "trial_no_case_submission",
+      "to": "hksar_v_wong_sau_ming",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "trial_no_case_submission",
+      "to": "hksar_v_lee_kwok_wah",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "trial_defence_case",
+      "to": "cap8_s54",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "trial_witnesses",
+      "to": "cap221_part3a",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "trial_live_tv_link",
+      "to": "cap221_part3b",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "trial_summng_up",
+      "to": "hksar_v_amarjit",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "trial_verdict",
+      "to": "cap3_s24",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "trial_allocation_and_ptp",
+      "to": "pd_9_2",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "trial_cfi_flow_start",
+      "to": "trial_cfi_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "trial_cfi_flow_step2",
+      "to": "trial_cfi_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "trial_cfi_flow_step3",
+      "to": "trial_cfi_flow_step4",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "trial_cfi_flow_step4",
+      "to": "trial_cfi_flow_step5",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "trial_cfi_flow_step5",
+      "to": "trial_cfi_flow_step6",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "trial_cfi_flow_step6",
+      "to": "trial_cfi_flow_step7",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "trial_cfi_flow_step7",
+      "to": "trial_cfi_flow_step8",
+      "relationship": "flow_transition"
+    }
   ]
 }

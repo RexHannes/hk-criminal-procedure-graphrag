@@ -5,7 +5,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_mo_yuk_ping_2022_fraud_concealment_duty_p3",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
@@ -26,7 +26,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_mo_yuk_ping_2022_no_general_duty_disclose_breach_p4",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
@@ -46,7 +46,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_mo_yuk_ping_2022_actus_reus_not_proved_p4",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
@@ -66,7 +66,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_betty_2018_s300_fraudulent_conduct_p9",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
@@ -87,7 +87,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_betty_2018_insider_dealing_species_of_fraud_p12",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",

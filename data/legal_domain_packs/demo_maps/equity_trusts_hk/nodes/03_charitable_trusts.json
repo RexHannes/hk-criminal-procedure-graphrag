@@ -11,7 +11,7 @@
       "summary": "The four heads of charity (Pemsel classification), public benefit requirement, exclusive charitability, cy-pres doctrine, and parens patriae jurisdiction.",
       "section": "03",
       "verification_status": "book_seed_needs_case_and_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "textbook_seed_only",
       "human_review_status": "unreviewed"
     },
@@ -28,9 +28,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -44,12 +44,15 @@
       "subsection": "03.01",
       "subtopic": "Public Benefit",
       "source_basis": "book_seed",
-      "case_seeds": ["case_gilmour", "case_dingle"],
+      "case_seeds": [
+        "case_gilmour",
+        "case_dingle"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -63,12 +66,14 @@
       "subsection": "03.01",
       "subtopic": "Exclusive Charitability",
       "source_basis": "book_seed",
-      "case_seeds": ["case_to_kan_chi"],
+      "case_seeds": [
+        "case_to_kan_chi"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -82,12 +87,14 @@
       "subsection": "03.02",
       "subtopic": "Cy-pres",
       "source_basis": "book_seed",
-      "case_seeds": ["case_sj_joseph_lo"],
+      "case_seeds": [
+        "case_sj_joseph_lo"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -101,12 +108,14 @@
       "subsection": "03.02",
       "subtopic": "Parens Patriae",
       "source_basis": "book_seed",
-      "case_seeds": ["case_sj_joseph_lo"],
+      "case_seeds": [
+        "case_sj_joseph_lo"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -119,9 +128,9 @@
       "neutral_citation": "[1949] AC 426",
       "court": "HL (UK)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -133,9 +142,9 @@
       "neutral_citation": "[1972] AC 601",
       "court": "HL (UK)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -146,9 +155,9 @@
       "section": "03",
       "court": "CA",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -160,9 +169,9 @@
       "neutral_citation": "[2001] 4 HKCFAR 1",
       "court": "CFA",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -171,9 +180,9 @@
       "label": "Verify HK Charitable Trust Cases",
       "summary": "Research HK statutory regulation of charities, Inland Revenue Ordinance charitable exemption provisions, and HK court decisions on cy-pres and public benefit.",
       "section": "03",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     }
   ]

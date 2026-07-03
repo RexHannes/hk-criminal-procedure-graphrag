@@ -2,13 +2,45 @@
   "section_id": "10",
   "domain_id": "hk_listing_and_listed_company_regulation",
   "edges": [
-    { "from": "esg_sustainability", "to": "esg_guide", "relationship": "has_subtopic" },
-    { "from": "esg_sustainability", "to": "board_oversight_esg", "relationship": "has_subtopic" },
-    { "from": "esg_sustainability", "to": "climate_disclosures", "relationship": "has_subtopic" },
-    { "from": "esg_sustainability", "to": "scope_1_2_3", "relationship": "has_subtopic" },
-    { "from": "esg_guide", "to": "mbl_esg_guide", "relationship": "listing_rule_anchor" },
-    { "from": "board_oversight_esg", "to": "mbl_esg_guide", "relationship": "listing_rule_anchor" },
-    { "from": "climate_disclosures", "to": "mbl_esg_guide", "relationship": "listing_rule_anchor" },
-    { "from": "scope_1_2_3", "to": "mbl_esg_guide", "relationship": "listing_rule_anchor" }
+    {
+      "from": "esg_sustainability",
+      "to": "esg_guide",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "esg_sustainability",
+      "to": "board_oversight_esg",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "esg_sustainability",
+      "to": "climate_disclosures",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "esg_sustainability",
+      "to": "scope_1_2_3",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "esg_guide",
+      "to": "mbl_esg_guide",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "board_oversight_esg",
+      "to": "mbl_esg_guide",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "climate_disclosures",
+      "to": "mbl_esg_guide",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "scope_1_2_3",
+      "to": "mbl_esg_guide",
+      "relationship": "listing_rule_anchor"
+    }
   ]
 }

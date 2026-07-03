@@ -20,7 +20,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_cfi_2020_tong_ying_kit_hcal_1601_2020",
@@ -37,7 +37,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
@@ -54,7 +54,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020",
@@ -71,7 +71,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
@@ -156,7 +156,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_cfi_2021_chui_chi_kin_hccp_126_2021",
@@ -173,7 +173,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_cfi_2021_wan_siu_kin_andrew_hccp_141_2021",
@@ -190,7 +190,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_cfi_2021_mo_man_ching_claudia_hccp_134_2021",
@@ -207,7 +207,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021",
@@ -224,7 +224,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_cfi_2021_wong_pik_wan_hccp_113_2021",
@@ -459,7 +459,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p53",
@@ -471,7 +471,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p54",
@@ -483,7 +483,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p57",
@@ -495,7 +495,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p58",
@@ -507,7 +507,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p70",
@@ -519,7 +519,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021_p72",
@@ -531,7 +531,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2020_tong_ying_kit_hcal_1601_2020_p50",
@@ -543,7 +543,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020_p14",
@@ -555,7 +555,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020_p16",
@@ -567,7 +567,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020_p17",
@@ -579,7 +579,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020_p32",
@@ -591,7 +591,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020_p32",
@@ -603,7 +603,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020_p33",
@@ -615,7 +615,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020_p36",
@@ -627,7 +627,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020_p30",
@@ -879,7 +879,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2021_sze_tak_loy_hccp_115_2021_p10",
@@ -891,7 +891,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2021_chui_chi_kin_hccp_126_2021_p5",
@@ -903,7 +903,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2021_chui_chi_kin_hccp_126_2021_p11",
@@ -915,7 +915,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2021_wan_siu_kin_andrew_hccp_141_2021_p13",
@@ -927,7 +927,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2021_wan_siu_kin_andrew_hccp_141_2021_p14",
@@ -939,7 +939,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2021_mo_man_ching_claudia_hccp_134_2021_p21",
@@ -951,7 +951,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021_p12",
@@ -963,7 +963,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021_p25",
@@ -975,7 +975,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021_p26",
@@ -987,7 +987,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_batch",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_cfi_2021_wong_pik_wan_hccp_113_2021_p4",

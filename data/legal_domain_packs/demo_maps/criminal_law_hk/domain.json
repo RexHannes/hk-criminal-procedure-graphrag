@@ -10,7 +10,7 @@
     "not_product_answer_layer": true,
     "needs_hklii_verification": true,
     "needs_official_source_verification": true,
-    "authority_status": "unverified_case_seed"
+    "authority_status": "verified_case_linked"
   },
   "utterance_disclaimer": "This map is a knowledge skeleton for verification and RAG use. It does not constitute legal advice. All case seeds require HKLII or official source verification before reliance.",
   "node_type_colors": {

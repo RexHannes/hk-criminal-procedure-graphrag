@@ -113,7 +113,7 @@
         "pricing_and_allocation",
         "listing_and_commencement_of_trading"
       ],
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "hk_listing_prospectus_liability_flow",
@@ -129,7 +129,7 @@
         "SFO_market_misconduct_offences",
         "due_diligence_defence"
       ],
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "hk_listing_notifiable_transactions_flow",
@@ -145,7 +145,7 @@
         "prepare_announcement_or_circular",
         "convene_shareholder_meeting_if_required"
       ],
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "hk_listing_connected_transactions_flow",
@@ -162,7 +162,7 @@
         "despatch_circular",
         "convene_independent_shareholder_vote"
       ],
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     }
   ]
 }

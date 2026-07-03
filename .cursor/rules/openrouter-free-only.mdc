@@ -1,0 +1,46 @@
+---
+description: OpenRouter must use free models only; never default to paid OpenRouter routes.
+alwaysApply: true
+---
+
+# OpenRouter Free-Only (Hard Rule)
+
+Never route OpenRouter requests to paid/non-free models unless the user explicitly overrides for that exact run.
+
+## Required env defaults
+
+```text
+OPENROUTER_FREE_ONLY=true
+OPENROUTER_ALLOW_PAID=false
+OPENROUTER_MODEL=openrouter/owl-alpha
+OPENROUTER_EMBEDDING_MODEL=nvidia/llama-nemotron-embed-vl-1b-v2:free
+OPENROUTER_RERANK_MODEL=nvidia/llama-nemotron-rerank-vl-1b-v2:free
+LEGAL_EMBEDDING_DIM=2048
+```
+
+Canonical defaults live in `src/retrieval/openrouter_free_models.js`.
+
+## Allowed OpenRouter model ids
+
+- Curated free stack: `openrouter/owl-alpha`, `nvidia/llama-nemotron-embed-vl-1b-v2:free`, `nvidia/llama-nemotron-rerank-vl-1b-v2:free`
+- `openrouter/free` (auto-router fallback)
+- Any model id ending in `:free`
+
+## Forbidden without explicit user override
+
+- `openrouter/auto`
+- Paid OpenRouter routes (`openai/text-embedding-3-small`, `cohere/rerank-v3.5`, etc.)
+- `OPENROUTER_ALLOW_PAID=true`
+
+## Implementation
+
+- All OpenRouter HTTP calls must pass `assertFreeOpenRouterModel()` before request.
+- Chat, embedding, and rerank each use role-specific model env vars (do not reuse chat model for embed/rerank).
+- If free-only is on and no valid free model is configured, skip OpenRouter and use deterministic/local fallback.
+- Paid embeddings/rerank may use non-OpenRouter providers only (OpenAI/Voyage/Cohere direct keys), not OpenRouter.
+
+## Validation
+
+```bash
+node ~/.codex/bin/validate-openrouter-free-only.js
+```

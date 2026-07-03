@@ -55,10 +55,35 @@ function warningsForHit(hit) {
   return warnings;
 }
 
+let caseNoteLookup = null;
+function structuredCaseNoteFor(payload = {}) {
+  try {
+    if (!caseNoteLookup) {
+      const { loadStructuredCaseNotes } = require("../case_graph/structured_case_notes");
+      const notes = loadStructuredCaseNotes().notes || [];
+      caseNoteLookup = { byCaseId: new Map(notes.map(note => [note.case_id, note])), byName: new Map(notes.map(note => [note.case_name, note])) };
+    }
+    const note = (payload.case_id && caseNoteLookup.byCaseId.get(payload.case_id))
+      || (payload.case_name && caseNoteLookup.byName.get(payload.case_name))
+      || null;
+    if (!note) return null;
+    return {
+      holding: note.holding,
+      ratio_or_core_principle: note.ratio_or_core_principle,
+      legal_issue: note.legal_issue,
+      application_summary: note.application_summary,
+      case_level: note.case_level,
+      current_treatment_status: note.current_treatment_status,
+    };
+  } catch (error) {
+    return null;
+  }
+}
+
 function chunkFromHit(hit, collectionName) {
   const payload = hit.payload || {};
   const source = sourceFromHit(hit, collectionName);
-  return evidenceChunk({
+  const chunk = evidenceChunk({
     excerpt_id: source.chunk_id,
     chunk_id: source.chunk_id,
     chunk_hash: source.chunk_hash,
@@ -70,6 +95,9 @@ function chunkFromHit(hit, collectionName) {
     review_status: payload.review_status,
     warnings: warningsForHit(hit),
   });
+  const caseNote = structuredCaseNoteFor(payload);
+  if (caseNote) chunk.case_note = caseNote;
+  return chunk;
 }
 
 function groupByPropositionFamily(chunks) {

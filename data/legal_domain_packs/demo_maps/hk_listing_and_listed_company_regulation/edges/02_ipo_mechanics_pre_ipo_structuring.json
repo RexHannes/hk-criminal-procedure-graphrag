@@ -2,36 +2,160 @@
   "section_id": "02",
   "domain_id": "hk_listing_and_listed_company_regulation",
   "edges": [
-    { "from": "ipo_mechanics", "to": "sponsor_engagement", "relationship": "has_subtopic" },
-    { "from": "ipo_mechanics", "to": "a1_filing", "relationship": "has_subtopic" },
-    { "from": "ipo_mechanics", "to": "sfc_dual_filing", "relationship": "has_subtopic" },
-    { "from": "ipo_mechanics", "to": "pre_ipo_investments", "relationship": "has_subtopic" },
-    { "from": "ipo_mechanics", "to": "reverse_takeovers", "relationship": "has_subtopic" },
-    { "from": "ipo_mechanics", "to": "pn18_clawback", "relationship": "has_subtopic" },
-    { "from": "ipo_mechanics", "to": "placing_mechanics", "relationship": "has_subtopic" },
-    { "from": "ipo_mechanics", "to": "ipo_timeline", "relationship": "has_subtopic" },
-    { "from": "ipo_mechanics", "to": "tranche_structure", "relationship": "has_subtopic" },
-    { "from": "ipo_mechanics", "to": "pre_ipo_timing", "relationship": "has_subtopic" },
-    { "from": "ipo_mechanics", "to": "reverse_takeover_detailed", "relationship": "has_subtopic" },
-    { "from": "sponsor_engagement", "to": "mbl_3A_02", "relationship": "listing_rule_anchor" },
-    { "from": "sponsor_engagement", "to": "mbl_3A_10", "relationship": "listing_rule_anchor" },
-    { "from": "sponsor_engagement", "to": "sponsor_gl", "relationship": "guidance_letter_seed" },
-    { "from": "a1_filing", "to": "mbl_9_03", "relationship": "listing_rule_anchor" },
-    { "from": "a1_filing", "to": "mbl_9_11", "relationship": "listing_rule_anchor" },
-    { "from": "sfc_dual_filing", "to": "cwo_38d", "relationship": "statutory_anchor" },
-    { "from": "sfc_dual_filing", "to": "sfo_105", "relationship": "statutory_anchor" },
-    { "from": "pre_ipo_investments", "to": "gl43_12", "relationship": "guidance_letter_seed" },
-    { "from": "pre_ipo_timing", "to": "gl43_12", "relationship": "guidance_letter_seed" },
-    { "from": "pre_ipo_timing", "to": "mbl_2_03", "relationship": "listing_rule_anchor" },
-    { "from": "pre_ipo_timing", "to": "mbl_3_08", "relationship": "listing_rule_anchor" },
-    { "from": "pre_ipo_timing", "to": "ld59_1_to_6", "relationship": "sehk_decision_seed" },
-    { "from": "reverse_takeovers", "to": "mbl_14_06b", "relationship": "listing_rule_anchor" },
-    { "from": "reverse_takeovers", "to": "gl104_19", "relationship": "guidance_letter_seed" },
-    { "from": "reverse_takeover_detailed", "to": "mbl_14_06b", "relationship": "listing_rule_anchor" },
-    { "from": "pn18_clawback", "to": "mbl_pn18", "relationship": "practice_note_anchor" },
-    { "from": "tranche_structure", "to": "mbl_pn18", "relationship": "practice_note_anchor" },
-    { "from": "placing_mechanics", "to": "mbl_10_02", "relationship": "listing_rule_anchor" },
-    { "from": "placing_mechanics", "to": "mbl_10_03", "relationship": "listing_rule_anchor" },
-    { "from": "placing_mechanics", "to": "sfo_105", "relationship": "statutory_anchor" }
+    {
+      "from": "ipo_mechanics",
+      "to": "sponsor_engagement",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "ipo_mechanics",
+      "to": "a1_filing",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "ipo_mechanics",
+      "to": "sfc_dual_filing",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "ipo_mechanics",
+      "to": "pre_ipo_investments",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "ipo_mechanics",
+      "to": "reverse_takeovers",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "ipo_mechanics",
+      "to": "pn18_clawback",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "ipo_mechanics",
+      "to": "placing_mechanics",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "ipo_mechanics",
+      "to": "ipo_timeline",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "ipo_mechanics",
+      "to": "tranche_structure",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "ipo_mechanics",
+      "to": "pre_ipo_timing",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "ipo_mechanics",
+      "to": "reverse_takeover_detailed",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "sponsor_engagement",
+      "to": "mbl_3A_02",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "sponsor_engagement",
+      "to": "mbl_3A_10",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "sponsor_engagement",
+      "to": "sponsor_gl",
+      "relationship": "guidance_letter_seed"
+    },
+    {
+      "from": "a1_filing",
+      "to": "mbl_9_03",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "a1_filing",
+      "to": "mbl_9_11",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "sfc_dual_filing",
+      "to": "cwo_38d",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "sfc_dual_filing",
+      "to": "sfo_105",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "pre_ipo_investments",
+      "to": "gl43_12",
+      "relationship": "guidance_letter_seed"
+    },
+    {
+      "from": "pre_ipo_timing",
+      "to": "gl43_12",
+      "relationship": "guidance_letter_seed"
+    },
+    {
+      "from": "pre_ipo_timing",
+      "to": "mbl_2_03",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "pre_ipo_timing",
+      "to": "mbl_3_08",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "pre_ipo_timing",
+      "to": "ld59_1_to_6",
+      "relationship": "sehk_decision_seed"
+    },
+    {
+      "from": "reverse_takeovers",
+      "to": "mbl_14_06b",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "reverse_takeovers",
+      "to": "gl104_19",
+      "relationship": "guidance_letter_seed"
+    },
+    {
+      "from": "reverse_takeover_detailed",
+      "to": "mbl_14_06b",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "pn18_clawback",
+      "to": "mbl_pn18",
+      "relationship": "practice_note_anchor"
+    },
+    {
+      "from": "tranche_structure",
+      "to": "mbl_pn18",
+      "relationship": "practice_note_anchor"
+    },
+    {
+      "from": "placing_mechanics",
+      "to": "mbl_10_02",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "placing_mechanics",
+      "to": "mbl_10_03",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "placing_mechanics",
+      "to": "sfo_105",
+      "relationship": "statutory_anchor"
+    }
   ]
 }
