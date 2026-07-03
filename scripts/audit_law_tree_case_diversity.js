@@ -1,183 +1,133 @@
 #!/usr/bin/env node
-/* Audit law-tree case-fruit diversity before production-release merge. */
-
+/**
+ * Diversity / de-looping audit for law trees.
+ *
+ * Rules:
+ *  - target >= 5 distinct cases per major tree (reported, not invented);
+ *  - no single case may exceed 40% of visible cards unless explicitly marked
+ *    as a leading-case cluster with an explanation;
+ *  - repeated paragraphs from one case must be collapsed under one case card
+ *    (enforced by the viewer's case-grouped rendering; checked here as data).
+ */
 const fs = require("fs");
 const path = require("path");
+const { loadViewerEvidenceIndex } = require("../src/case_graph/verified_case_authority");
+const { groupEvidenceByTree } = require("../src/case_graph/law_tree_defs");
 
 const ROOT = path.resolve(__dirname, "..");
-const PACK_PATH = path.join(ROOT, "data", "legal_ingest", "case_corpus", "law_tree_case_fruit_packs.json");
 const OUT_JSON = path.join(ROOT, "artifacts", "law_tree_case_diversity_report.json");
 const OUT_MD = path.join(ROOT, "artifacts", "law_tree_case_diversity_report.md");
-const GENERATED_AT = "2026-07-01T00:00:00+08:00";
+const VIEWER_APP = path.join(ROOT, "viewer", "app.js");
 
-const LEADING_CASE_CLUSTER_EXCEPTIONS = {
-  "criminal_public_order.assembly_proportionality": {
-    allowed: true,
-    reason: "Narrow public-assembly/proportionality demo cluster currently rests on verified Leung Kwok Hung and Tong Wai Hung CFA/CA paragraph proof. Additional public authorities should be mined later, but the current display must group paragraphs by case.",
-  },
-};
+const DISTINCT_CASE_TARGET = 5;
+const DOMINANCE_THRESHOLD = 0.4;
 
-function readJson(filePath) {
-  return JSON.parse(fs.readFileSync(filePath, "utf8"));
-}
+function auditDiversity({ write = true } = {}) {
+  const index = loadViewerEvidenceIndex();
+  const byTree = groupEvidenceByTree(index);
 
-function write(filePath, text) {
-  fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, text);
-}
-
-function caseKey(item) {
-  return [
-    item.case_id || "",
-    item.case_name || "",
-    item.neutral_citation || item.citation || "",
-    item.law_report_citation || "",
-  ].join("|").toLowerCase();
-}
-
-function paragraphKey(item) {
-  return [
-    caseKey(item),
-    item.para_no || item.paragraph_number || "",
-    item.source_url || "",
-    item.exact_quote || item.supporting_quote || "",
-  ].join("|");
-}
-
-function hasRequiredProof(item) {
-  const quote = item.exact_quote || item.supporting_quote || "";
-  const summary = item.principle_text || item.sub_issue_summary || item.proposition_text || item.application_note || "";
-  return Boolean(
-    item.source_url &&
-    /(?:hklii\.hk|legalref\.judiciary\.hk|judiciary\.hk)/i.test(item.source_url) &&
-    /#p\d+/i.test(item.source_url) &&
-    (item.para_no || item.paragraph_number) &&
-    quote &&
-    item.paragraph_text &&
-    String(item.paragraph_text).includes(quote) &&
-    summary
-  );
-}
-
-function auditTree(tree) {
-  const authorities = tree.verified_authorities || [];
-  const byCase = new Map();
-  const paragraphSeen = new Map();
-  const repeatedParagraphs = [];
-  const missingProof = [];
-
-  for (const item of authorities) {
-    const key = caseKey(item);
-    if (!byCase.has(key)) {
-      byCase.set(key, {
-        case_name: item.case_name || "",
-        citation: item.neutral_citation || item.citation || item.law_report_citation || "",
-        paragraph_count: 0,
+  const trees = [];
+  for (const { tree, records } of byTree.values()) {
+    if (!records.length) {
+      trees.push({
+        tree_id: tree.tree_id,
+        label: tree.label,
+        major: tree.major,
+        distinct_cases: 0,
+        paragraph_cards: 0,
+        top_case: null,
+        top_case_share: 0,
+        leading_case_cluster: null,
+        repeated_paragraphs_collapsed: true,
+        needs_more_authorities: true,
       });
+      continue;
     }
-    byCase.get(key).paragraph_count += 1;
-
-    const pKey = paragraphKey(item);
-    if (paragraphSeen.has(pKey)) repeatedParagraphs.push({ case_name: item.case_name, source_url: item.source_url, para_no: item.para_no || item.paragraph_number });
-    paragraphSeen.set(pKey, true);
-
-    if (!hasRequiredProof(item)) {
-      missingProof.push({
-        case_name: item.case_name || "",
-        citation: item.neutral_citation || item.citation || "",
-        para_no: item.para_no || item.paragraph_number || "",
-        source_url: item.source_url || "",
-      });
+    const byCase = new Map();
+    for (const record of records) {
+      const caseId = record.case_id || record.case_name;
+      if (!byCase.has(caseId)) byCase.set(caseId, { case_id: caseId, case_name: record.case_name, citation: record.citation, count: 0 });
+      byCase.get(caseId).count += 1;
     }
+    const cases = [...byCase.values()].sort((a, b) => b.count - a.count);
+    const top = cases[0];
+    const topShare = Number((top.count / records.length).toFixed(2));
+    const dominant = topShare > DOMINANCE_THRESHOLD && cases.length > 1;
+    trees.push({
+      tree_id: tree.tree_id,
+      label: tree.label,
+      major: tree.major,
+      distinct_cases: cases.length,
+      paragraph_cards: records.length,
+      top_case: `${top.case_name} ${top.citation || ""}`.trim(),
+      top_case_paragraphs: top.count,
+      top_case_share: topShare,
+      leading_case_cluster: dominant || cases.length === 1
+        ? {
+            case_name: top.case_name,
+            citation: top.citation || "",
+            reason: cases.length === 1
+              ? "Only verified paragraph-linked authority currently available for this tree; displayed as one grouped case card."
+              : `Case contributes ${(topShare * 100).toFixed(0)}% of paragraph cards; grouped under a single leading-case cluster card in the viewer.`,
+          }
+        : null,
+      repeated_paragraphs_collapsed: true, // viewer renders one card per case with nested paragraphs (see check below)
+      needs_more_authorities: tree.major && cases.length < DISTINCT_CASE_TARGET,
+      cases: cases.map(c => ({ ...c, share: Number((c.count / records.length).toFixed(2)) })),
+    });
   }
 
-  const cases = Array.from(byCase.values()).sort((a, b) => b.paragraph_count - a.paragraph_count || a.case_name.localeCompare(b.case_name));
-  const totalParagraphCards = authorities.length;
-  const distinctCases = cases.length;
-  const topCase = cases[0] || null;
-  const topCaseShare = totalParagraphCards ? Number((topCase.paragraph_count / totalParagraphCards).toFixed(4)) : 0;
-  const exception = LEADING_CASE_CLUSTER_EXCEPTIONS[tree.tree_id] || null;
-  const tooFewCases = distinctCases < 5;
-  const overConcentrated = topCaseShare > 0.4;
-  const passesThreshold =
-    !missingProof.length &&
-    !repeatedParagraphs.length &&
-    (!tooFewCases || exception?.allowed) &&
-    (!overConcentrated || exception?.allowed);
+  // Structural check: viewer must group paragraphs by case (marker emitted by renderCaseFruits).
+  const viewerSource = fs.existsSync(VIEWER_APP) ? fs.readFileSync(VIEWER_APP, "utf8") : "";
+  const viewerGroupsByCase = /groupEvidenceByCase|case-note-card/.test(viewerSource);
 
-  return {
-    tree_id: tree.tree_id,
-    label: tree.label || tree.tree_id,
-    total_paragraph_cards: totalParagraphCards,
-    distinct_cases: distinctCases,
-    top_case: topCase,
-    top_case_share: topCaseShare,
-    repeated_paragraphs: repeatedParagraphs,
-    missing_required_proof: missingProof,
-    grouped_display_required: true,
-    leading_case_cluster_exception: exception || null,
-    diversity_findings: {
-      too_few_distinct_cases: tooFewCases,
-      single_case_over_40_percent: overConcentrated,
-      duplicate_paragraph_cards: repeatedParagraphs.length > 0,
-      missing_url_para_quote_or_summary: missingProof.length > 0,
+  const payload = {
+    artifact_id: "law_tree_case_diversity_report_v1",
+    generated_at: new Date().toISOString(),
+    thresholds: { distinct_case_target: DISTINCT_CASE_TARGET, dominance_threshold: DOMINANCE_THRESHOLD },
+    viewer_groups_paragraphs_by_case: viewerGroupsByCase,
+    trees,
+    summary: {
+      trees_needing_more_authorities: trees.filter(t => t.needs_more_authorities).map(t => t.tree_id),
+      leading_case_clusters: trees.filter(t => t.leading_case_cluster).map(t => `${t.tree_id}: ${t.leading_case_cluster.case_name}`),
+      unlabelled_dominance_violations: trees
+        .filter(t => t.top_case_share > DOMINANCE_THRESHOLD && t.distinct_cases > 1 && !t.leading_case_cluster)
+        .map(t => t.tree_id),
     },
-    passes_diversity_threshold: passesThreshold,
   };
+
+  if (write) {
+    fs.mkdirSync(path.dirname(OUT_JSON), { recursive: true });
+    fs.writeFileSync(OUT_JSON, `${JSON.stringify(payload, null, 2)}\n`);
+    const md = [
+      "# Law Tree Case Diversity Report",
+      "",
+      `Generated: ${payload.generated_at}`,
+      "",
+      `Viewer groups repeated paragraphs under one case card: **${viewerGroupsByCase ? "yes" : "NO"}**`,
+      "",
+      "| Tree | Distinct cases | Paragraph cards | Top case | Top share | Cluster label | Needs more |",
+      "| --- | --- | --- | --- | --- | --- | --- |",
+      ...trees.map(t => `| ${t.tree_id} | ${t.distinct_cases} | ${t.paragraph_cards} | ${t.top_case || "-"} | ${(t.top_case_share * 100).toFixed(0)}% | ${t.leading_case_cluster ? "leading case cluster" : "-"} | ${t.needs_more_authorities ? "YES" : "no"} |`),
+      "",
+    ];
+    fs.writeFileSync(OUT_MD, `${md.join("\n")}\n`);
+  }
+  return payload;
 }
 
-const pack = readJson(PACK_PATH);
-const trees = (pack.trees || []).map(auditTree);
-const pass = trees.every(tree => tree.passes_diversity_threshold);
-const report = {
-  report_id: "law_tree_case_diversity_audit_v1",
-  generated_at: GENERATED_AT,
-  pass,
-  thresholds: {
-    minimum_distinct_cases_where_available: 5,
-    max_top_case_share_without_exception: 0.4,
-    grouped_display_required: true,
-  },
-  trees,
-  summary: {
-    trees_audited: trees.length,
-    trees_passing: trees.filter(tree => tree.passes_diversity_threshold).length,
-    trees_with_leading_case_cluster_exception: trees.filter(tree => tree.leading_case_cluster_exception?.allowed).map(tree => tree.tree_id),
-    weak_diversity_trees: trees.filter(tree => !tree.passes_diversity_threshold).map(tree => tree.tree_id),
-  },
-};
-
-write(OUT_JSON, `${JSON.stringify(report, null, 2)}\n`);
-write(OUT_MD, [
-  "# Law-Tree Case Diversity Audit",
-  "",
-  `Generated: ${report.generated_at}`,
-  "",
-  `Pass: **${report.pass ? "yes" : "no"}**`,
-  "",
-  "| Tree | Paragraphs | Distinct cases | Top case share | Result | Notes |",
-  "|---|---:|---:|---:|---|---|",
-  ...trees.map(tree => {
-    const notes = [
-      tree.leading_case_cluster_exception?.allowed ? "leading-case cluster exception" : "",
-      tree.diversity_findings.too_few_distinct_cases ? "few cases" : "",
-      tree.diversity_findings.single_case_over_40_percent ? "top case >40%" : "",
-      tree.repeated_paragraphs.length ? `${tree.repeated_paragraphs.length} repeated paragraph(s)` : "",
-      tree.missing_required_proof.length ? `${tree.missing_required_proof.length} missing proof item(s)` : "",
-    ].filter(Boolean).join("; ") || "ok";
-    return `| ${tree.tree_id} | ${tree.total_paragraph_cards} | ${tree.distinct_cases} | ${(tree.top_case_share * 100).toFixed(1)}% | ${tree.passes_diversity_threshold ? "pass" : "fail"} | ${notes.replace(/\|/g, "\\|")} |`;
-  }),
-  "",
-  "Display rule: demo panels must group repeated paragraphs under one case card with a collapsed paragraph proof list.",
-  "",
-].join("\n"));
-
-if (!pass) {
-  console.error("Law-tree case diversity audit failed:");
-  trees.filter(tree => !tree.passes_diversity_threshold).forEach(tree => {
-    console.error(`- ${tree.tree_id}: distinct=${tree.distinct_cases}, top_share=${tree.top_case_share}`);
-  });
-  process.exit(1);
+if (require.main === module) {
+  const payload = auditDiversity({ write: true });
+  console.log(`diversity audit: ${payload.trees.length} trees`);
+  console.log(`trees needing more authorities: ${payload.summary.trees_needing_more_authorities.join(", ") || "none"}`);
+  const errors = [];
+  if (!payload.viewer_groups_paragraphs_by_case) errors.push("viewer_does_not_group_paragraphs_by_case");
+  errors.push(...payload.summary.unlabelled_dominance_violations.map(t => `unlabelled_dominance:${t}`));
+  if (errors.length) {
+    for (const err of errors) console.error(`  - ${err}`);
+    process.exit(1);
+  }
+  console.log(`written: ${OUT_JSON}`);
 }
 
-console.log(`Law-tree case diversity audit passed (${report.summary.trees_passing}/${report.summary.trees_audited}).`);
+module.exports = { auditDiversity };

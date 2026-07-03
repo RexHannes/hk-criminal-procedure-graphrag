@@ -2,39 +2,175 @@
   "section_id": "02",
   "domain_id": "tort_law_hk",
   "edges": [
-    { "from": "tort_negligence_core", "to": "tort_negligence_duty_of_care", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_core", "to": "tort_negligence_breach_standard_of_care", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_core", "to": "tort_negligence_professional_standard_bolam_bolitho", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_core", "to": "tort_negligence_res_ipsa_loquitur", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_core", "to": "tort_negligence_causation_but_for", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_core", "to": "tort_negligence_causation_material_contribution", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_core", "to": "tort_negligence_novus_actus", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_core", "to": "tort_negligence_remoteness", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_core", "to": "tort_negligence_thin_skull", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_core", "to": "tort_negligence_defences_overview", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_defences_overview", "to": "tort_negligence_contributory_negligence", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_defences_overview", "to": "tort_negligence_volenti", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_defences_overview", "to": "tort_negligence_illegality", "relationship": "has_subtopic" },
-    { "from": "tort_negligence_duty_of_care", "to": "case_donoghue", "relationship": "case_seed" },
-    { "from": "tort_negligence_duty_of_care", "to": "case_caparo", "relationship": "case_seed" },
-    { "from": "tort_negligence_duty_of_care", "to": "case_luen_hing_fat", "relationship": "case_seed" },
-    { "from": "tort_negligence_breach_standard_of_care", "to": "case_lau_luen_hung", "relationship": "case_seed" },
-    { "from": "tort_negligence_breach_standard_of_care", "to": "case_wong_hon_leung", "relationship": "case_seed" },
-    { "from": "tort_negligence_professional_standard_bolam_bolitho", "to": "case_bolam", "relationship": "case_seed" },
-    { "from": "tort_negligence_professional_standard_bolam_bolitho", "to": "case_bolitho", "relationship": "case_seed" },
-    { "from": "tort_negligence_res_ipsa_loquitur", "to": "case_sanfield", "relationship": "case_seed" },
-    { "from": "tort_negligence_causation_but_for", "to": "case_wong_hon_leung", "relationship": "case_seed" },
-    { "from": "tort_negligence_causation_but_for", "to": "case_lam_pak_keung", "relationship": "case_seed" },
-    { "from": "tort_negligence_causation_material_contribution", "to": "case_mcghee", "relationship": "case_seed" },
-    { "from": "tort_negligence_novus_actus", "to": "case_hong_yuen_fu", "relationship": "case_seed" },
-    { "from": "tort_negligence_remoteness", "to": "case_wagon_mound_1", "relationship": "case_seed" },
-    { "from": "tort_negligence_remoteness", "to": "case_wagon_mound_2", "relationship": "case_seed" },
-    { "from": "tort_negligence_contributory_negligence", "to": "cap23_larco", "relationship": "statutory_anchor" },
-    { "from": "tort_negligence_contributory_negligence", "to": "case_froom", "relationship": "case_seed" },
-    { "from": "tort_negligence_volenti", "to": "case_morris", "relationship": "case_seed" },
-    { "from": "tort_negligence_illegality", "to": "case_ng_wai_ming", "relationship": "case_seed" },
-    { "from": "tort_negligence_defences_overview", "to": "cap23_larco", "relationship": "statutory_anchor" },
-    { "from": "tort_negligence_duty_of_care", "to": "tort_pure_economic_loss", "relationship": "cross_reference" },
-    { "from": "tort_negligence_duty_of_care", "to": "tort_psychiatric_injury", "relationship": "cross_reference" }
+    {
+      "from": "tort_negligence_core",
+      "to": "tort_negligence_duty_of_care",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_core",
+      "to": "tort_negligence_breach_standard_of_care",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_core",
+      "to": "tort_negligence_professional_standard_bolam_bolitho",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_core",
+      "to": "tort_negligence_res_ipsa_loquitur",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_core",
+      "to": "tort_negligence_causation_but_for",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_core",
+      "to": "tort_negligence_causation_material_contribution",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_core",
+      "to": "tort_negligence_novus_actus",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_core",
+      "to": "tort_negligence_remoteness",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_core",
+      "to": "tort_negligence_thin_skull",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_core",
+      "to": "tort_negligence_defences_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_defences_overview",
+      "to": "tort_negligence_contributory_negligence",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_defences_overview",
+      "to": "tort_negligence_volenti",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_defences_overview",
+      "to": "tort_negligence_illegality",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_negligence_duty_of_care",
+      "to": "case_donoghue",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_duty_of_care",
+      "to": "case_caparo",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_duty_of_care",
+      "to": "case_luen_hing_fat",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_breach_standard_of_care",
+      "to": "case_lau_luen_hung",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_breach_standard_of_care",
+      "to": "case_wong_hon_leung",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_professional_standard_bolam_bolitho",
+      "to": "case_bolam",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_professional_standard_bolam_bolitho",
+      "to": "case_bolitho",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_res_ipsa_loquitur",
+      "to": "case_sanfield",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_causation_but_for",
+      "to": "case_wong_hon_leung",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_causation_but_for",
+      "to": "case_lam_pak_keung",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_causation_material_contribution",
+      "to": "case_mcghee",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_novus_actus",
+      "to": "case_hong_yuen_fu",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_remoteness",
+      "to": "case_wagon_mound_1",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_remoteness",
+      "to": "case_wagon_mound_2",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_contributory_negligence",
+      "to": "cap23_larco",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_negligence_contributory_negligence",
+      "to": "case_froom",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_volenti",
+      "to": "case_morris",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_illegality",
+      "to": "case_ng_wai_ming",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_negligence_defences_overview",
+      "to": "cap23_larco",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_negligence_duty_of_care",
+      "to": "tort_pure_economic_loss",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_negligence_duty_of_care",
+      "to": "tort_psychiatric_injury",
+      "relationship": "cross_reference"
+    }
   ]
 }

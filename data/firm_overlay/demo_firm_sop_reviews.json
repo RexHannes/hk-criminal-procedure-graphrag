@@ -1,0 +1,74 @@
+{
+  "artifact_id": "demo_firm_sop_reviews_v1",
+  "description": "Seed review queue for the editable SOP / HITL wiki prototype. Merged with localStorage proposals in the viewer.",
+  "proposals": [
+    {
+      "proposal_id": "prop_seed_nsl_screen_001",
+      "sop_id": "sop_bail_application",
+      "sop_title": "Criminal Bail Application SOP",
+      "block_id": "blk_nsl_screen",
+      "block_title": "NSL screening",
+      "base_version": "1.0",
+      "old_text": "Screen every bail matter for national security elements at intake. If NSL Art.42 may be engaged, flag the matter, apply the stricter threshold, and route through the senior partner gate before any client communication.",
+      "new_text": "Screen every bail matter for national security elements at intake. If NSL Art.42 may be engaged, flag the matter, apply the stricter no-bail-unless threshold as construed by the CFA in HKSAR v Lai Chee Ying [2021] HKCFA 3, and route through the senior partner gate before any client communication.",
+      "status": "proposed",
+      "proposed_by": "demo associate",
+      "reviewer": null,
+      "linked_authorities": [
+        {
+          "case_name": "HKSAR v Lai Chee Ying",
+          "citation": "[2021] HKCFA 3",
+          "paragraph_number": "53",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en"
+        }
+      ],
+      "note": "Anchor the NSL screening block to the CFA construction of NSL Art.42(2).",
+      "created_at": "2026-07-01T09:00:00.000Z",
+      "changelog": [
+        {
+          "at": "2026-07-01T09:00:00.000Z",
+          "by": "demo associate",
+          "action": "proposed",
+          "note": "Anchor the NSL screening block to the CFA construction of NSL Art.42(2)."
+        }
+      ]
+    },
+    {
+      "proposal_id": "prop_seed_posture_002",
+      "sop_id": "sop_bail_application",
+      "sop_title": "Criminal Bail Application SOP",
+      "block_id": "blk_posture_first",
+      "block_title": "Procedural posture first",
+      "base_version": "1.1",
+      "old_text": "Always identify the client's procedural posture (police bail, court bail, variation, revocation, bail pending appeal) before applying any bail principles. If facts are incomplete, produce an assumptions list and mark the advice as preliminary.",
+      "new_text": "Always identify the client's procedural posture (police bail, court bail, variation, revocation, bail pending appeal) and whether the charge falls under ordinary Cap 221 bail or the NSL regime before applying any bail principles. If facts are incomplete, produce an assumptions list and mark the advice as preliminary.",
+      "status": "approved",
+      "proposed_by": "demo associate",
+      "reviewer": "demo partner",
+      "linked_authorities": [
+        {
+          "case_name": "HKSAR v Lai Chee Ying",
+          "citation": "[2021] HKCFA 3",
+          "paragraph_number": "70",
+          "source_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_frame.jsp?DIS=133491&QS=%2B&TP=JU&ILAN=en"
+        }
+      ],
+      "note": "Distinguish the two bail regimes at posture stage.",
+      "created_at": "2026-06-28T10:00:00.000Z",
+      "changelog": [
+        {
+          "at": "2026-06-28T10:00:00.000Z",
+          "by": "demo associate",
+          "action": "proposed",
+          "note": "Distinguish the two bail regimes at posture stage."
+        },
+        {
+          "at": "2026-06-29T11:30:00.000Z",
+          "by": "demo partner",
+          "action": "approved",
+          "note": "Approved; consistent with firm bail bundle."
+        }
+      ]
+    }
+  ]
+}

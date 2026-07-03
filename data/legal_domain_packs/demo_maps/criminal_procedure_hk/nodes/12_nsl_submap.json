@@ -18,9 +18,9 @@
       "subsection": "12.01",
       "subtopic": "NSL Overview",
       "section": "12",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "nsl_bail",
@@ -30,10 +30,12 @@
       "subsection": "12.01",
       "subtopic": "NSL Bail",
       "section": "12",
-      "statute_refs": ["nsl_art42"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "nsl_art42"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "nsl_search_seizure",
@@ -43,10 +45,13 @@
       "subsection": "12.02",
       "subtopic": "NSL Search",
       "section": "12",
-      "case_seeds": ["lai_chee_ying_v_commissioner_of_police", "hksar_v_lai_man_ling"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "case_seeds": [
+        "lai_chee_ying_v_commissioner_of_police",
+        "hksar_v_lai_man_ling"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "nsl_designated_judges",
@@ -56,10 +61,12 @@
       "subsection": "12.03",
       "subtopic": "Designated Judges",
       "section": "12",
-      "statute_refs": ["nsl_art44"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "nsl_art44"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "nsl_art44",
@@ -67,7 +74,7 @@
       "label": "National Security Law Article 44",
       "summary": "Chief Executive designates judges to handle national security cases.",
       "section": "12",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "nsl_overseas_lawyers",
@@ -77,10 +84,12 @@
       "subsection": "12.04",
       "subtopic": "Overseas Lawyers",
       "section": "12",
-      "statute_refs": ["cap159_s27a"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap159_s27a"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "nsl_no_jury",
@@ -90,10 +99,12 @@
       "subsection": "12.05",
       "subtopic": "No Jury",
       "section": "12",
-      "statute_refs": ["nsl_art46"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "nsl_art46"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "nsl_art46",
@@ -101,7 +112,7 @@
       "label": "National Security Law Article 46",
       "summary": "Certain NSL offences may be tried without a jury; three designated judges instead.",
       "section": "12",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "nsl_surveillance",
@@ -111,9 +122,9 @@
       "subsection": "12.06",
       "subtopic": "Surveillance",
       "section": "12",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "nsl_key_cases",
@@ -123,10 +134,14 @@
       "subsection": "12.07",
       "subtopic": "Key Cases",
       "section": "12",
-      "case_seeds": ["hksar_v_lai_chee_ying", "lai_chee_ying_v_commissioner_of_police", "hksar_v_lai_man_ling"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "case_seeds": [
+        "hksar_v_lai_chee_ying",
+        "lai_chee_ying_v_commissioner_of_police",
+        "hksar_v_lai_man_ling"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     }
   ]
 }

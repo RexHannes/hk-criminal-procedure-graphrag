@@ -23,9 +23,9 @@ function main() {
   [
     "/api/doctrine-evidence",
     "CASE_FRUIT_ARTIFACTS",
-    "loadLocalCaseFruitArtifacts",
-    "l5_paragraph_proof.json",
-    "Source-linked demo",
+    "loadViewerEvidenceIndex",
+    "verifiedCaseSeedIds",
+    "HKLII paragraph proof",
     "Case Fruits / Paragraph Proof",
   ].forEach(marker => assertContains("viewer/app.js", app, marker));
 

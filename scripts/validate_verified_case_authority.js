@@ -1,84 +1,73 @@
 #!/usr/bin/env node
-/* Validate the shared verified case-authority registry. */
-
+/**
+ * CI gate: visible/searchable case authorities must be verified paragraph proof or excluded.
+ */
 const fs = require("fs");
 const path = require("path");
 const {
-  hasVerifiedPublicParagraphAuthority,
-  principleSummaryForAuthority,
-  normalizeAuthorityForReport,
+  resolveAllVisibleCaseSources,
+  loadViewerEvidenceIndex,
+  collectCaseLikeInventory,
+  isVerifiedParagraphProof,
+  authoritySummaryStats,
+  VIEWER_EVIDENCE_INDEX_PATH,
+  EXCLUDED_REPORT_JSON,
 } = require("../src/case_graph/verified_case_authority");
+const { evidenceForDoctrineNode } = require("../src/case_graph/case_authority_bridge");
 
 const ROOT = path.resolve(__dirname, "..");
-const REGISTRY_PATH = path.join(ROOT, "data", "legal_ingest", "case_authority_registry.json");
 const errors = [];
-
-function fail(message) {
-  errors.push(message);
+function assert(cond, msg) {
+  if (!cond) errors.push(msg);
 }
 
-function readJson(filePath) {
-  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+if (!fs.existsSync(VIEWER_EVIDENCE_INDEX_PATH)) {
+  resolveAllVisibleCaseSources({ write: true });
+}
+const index = loadViewerEvidenceIndex({ refresh: true });
+const inventory = collectCaseLikeInventory();
+const verifiedSeedIds = new Set(index.verified_case_seed_ids || []);
+const excluded = JSON.parse(fs.readFileSync(EXCLUDED_REPORT_JSON, "utf8"));
+
+for (const record of index.records || []) {
+  assert(isVerifiedParagraphProof(record), `index record not verified: ${record.paragraph_id || record.case_id}`);
+  assert(record.source_url, `missing source_url: ${record.paragraph_id || record.case_id}`);
+  assert(record.paragraph_number, `missing paragraph_number: ${record.paragraph_id || record.case_id}`);
+  assert(record.exact_quote, `missing exact_quote: ${record.paragraph_id || record.case_id}`);
+  assert(record.short_application_summary || record.proposition_text, `missing summary: ${record.paragraph_id || record.case_id}`);
 }
 
-const registry = readJson(REGISTRY_PATH);
-const authorities = registry.authorities || [];
-const byId = new Map(authorities.map(item => [item.authority_id, item]));
+const visibleUnverified = inventory.filter(seed => !verifiedSeedIds.has(seed.doctrine_node_id) && !excluded.records.some(e => e.doctrine_node_id === seed.doctrine_node_id));
+assert(visibleUnverified.length === 0, `case seeds must be verified or excluded: ${visibleUnverified.slice(0, 5).map(s => s.doctrine_node_id).join(", ")}`);
 
-if (!authorities.length) fail("registry contains no paragraph-linked authorities");
+for (const seed of inventory.filter(s => verifiedSeedIds.has(s.doctrine_node_id))) {
+  const apiEvidence = evidenceForDoctrineNode(seed.doctrine_node_id);
+  const verifiedApi = apiEvidence.filter(isVerifiedParagraphProof);
+  assert(verifiedApi.length > 0, `backend searchable unverified for ${seed.doctrine_node_id}`);
+}
 
-for (const item of authorities) {
-  const label = item.authority_id || item.evidence_id || item.case_name || "unknown";
-  if (!hasVerifiedPublicParagraphAuthority(item)) {
-    fail(`${label}: missing public URL, #p anchor, paragraph number, or exact quote support`);
+const demoNodes = [
+  "criminal_procedure_hk.hksar_v_leung_kwok_hung",
+  "criminal_procedure_hk.bail_right_to_bail",
+  "criminal_procedure_hk.invest_search_without_warrant",
+];
+for (const nodeId of demoNodes) {
+  const hits = (index.by_doctrine_node_id || {})[nodeId] || [];
+  if (nodeId.includes("leung_kwok_hung") || nodeId.includes("bail_right")) {
+    assert(hits.length > 0, `AI inquiry demo node missing verified evidence: ${nodeId}`);
   }
-  if (!principleSummaryForAuthority(item)) fail(`${label}: missing short principle/proposition summary`);
-  if (item.answer_safe === true) fail(`${label}: answer_safe must not be true`);
-  if (item.answer_mode !== "research_prototype") fail(`${label}: answer_mode must be research_prototype`);
-  if (item.professional_advice_certified !== false) fail(`${label}: professional_advice_certified must be false`);
 }
 
-for (const seed of registry.case_seed_nodes || []) {
-  const ids = seed.verified_authority_ids || [];
-  if (seed.product_status === "source_linked_public_judgment") {
-    if (!ids.length) fail(`${seed.doctrine_node_id}: source-linked seed has no verified_authority_ids`);
-    for (const id of ids) {
-      const authority = byId.get(id);
-      if (!authority) fail(`${seed.doctrine_node_id}: references missing authority ${id}`);
-      else if (!hasVerifiedPublicParagraphAuthority(authority)) fail(`${seed.doctrine_node_id}: references unverified authority ${id}`);
-    }
-  }
-  if (seed.product_status === "excluded_from_product_authority_surfaces" && ids.length) {
-    fail(`${seed.doctrine_node_id}: excluded seed should not carry verified_authority_ids`);
-  }
-}
+const appJs = fs.readFileSync(path.join(ROOT, "viewer", "app.js"), "utf8");
+assert(!appJs.includes("Verification pending"), "viewer still contains Verification pending label");
+assert(!appJs.includes("Case audit required"), "viewer still contains Case audit required label");
+assert(appJs.includes("verifiedCaseSeedIds"), "viewer missing verifiedCaseSeedIds filter");
 
-const counts = registry.counts || {};
-if (counts.scanned_case_seed_count !== counts.source_linked_case_seed_count + counts.excluded_case_seed_count) {
-  fail("case seed counts do not satisfy resolved-or-excluded invariant");
-}
-if ((registry.unresolved_case_seed_nodes || []).length !== counts.excluded_case_seed_count) {
-  fail("unresolved case seed list length does not match excluded count");
-}
-
-const leungSeed = authorities.filter(item =>
-  /Leung Kwok Hung/i.test(item.case_name || "") &&
-  (item.doctrine_node_ids || []).includes("criminal_procedure_hk.hksar_v_leung_kwok_hung")
-);
-if (leungSeed.length !== 2) fail("Leung Kwok Hung 2005 seed proof must have exactly paras 17 and 18");
-if (leungSeed.some(item => !/\[2005\] HKCFA 2/.test(item.neutral_citation || "") || !/DIS=45653/.test(item.source_url || ""))) {
-  fail("Leung Kwok Hung 2005 seed proof must use the 2005 CFA judgment, not the 2021 bail judgment");
-}
-const lam = authorities.filter(item => /Lam Tat Ming/i.test(item.case_name || ""));
-if (!lam.length) fail("Lam Tat Ming public paragraph proof is missing");
-if (lam.some(item => !/DIS=33993/.test(item.source_url || ""))) fail("Lam Tat Ming proof must use LegalRef DIS=33993");
+const stats = authoritySummaryStats();
+assert(stats.total_still_visible_unverified === 0, `stats report visible unverified ${stats.total_still_visible_unverified}`);
 
 if (errors.length) {
-  console.error("Verified case-authority validation failed:");
-  errors.forEach(error => console.error(`- ${error}`));
-  console.error("Sample authorities:");
-  authorities.slice(0, 3).forEach(item => console.error(JSON.stringify(normalizeAuthorityForReport(item), null, 2)));
+  console.error(JSON.stringify({ ok: false, errors, stats }, null, 2));
   process.exit(1);
 }
-
-console.log(`Verified case-authority validation passed for ${authorities.length} public paragraph records.`);
+console.log(JSON.stringify({ ok: true, stats, excluded: excluded.total_excluded }, null, 2));

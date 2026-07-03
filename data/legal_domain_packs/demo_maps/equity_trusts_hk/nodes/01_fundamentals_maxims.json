@@ -11,7 +11,7 @@
       "summary": "Jurisdiction of equity, the core maxims guiding equitable relief, the conscience-based jurisdiction, and the relationship between equity and common law in Hong Kong.",
       "section": "01",
       "verification_status": "book_seed_needs_case_and_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "textbook_seed_only",
       "human_review_status": "unreviewed"
     },
@@ -25,12 +25,14 @@
       "subsection": "01.01",
       "subtopic": "Role of Equity",
       "source_basis": "book_seed",
-      "case_seeds": ["case_earl_of_oxford"],
+      "case_seeds": [
+        "case_earl_of_oxford"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -47,9 +49,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -66,9 +68,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -85,9 +87,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -101,12 +103,14 @@
       "subsection": "01.02",
       "subtopic": "Do Equity",
       "source_basis": "book_seed",
-      "case_seeds": ["case_max_share"],
+      "case_seeds": [
+        "case_max_share"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -120,12 +124,14 @@
       "subsection": "01.02",
       "subtopic": "Clean Hands",
       "source_basis": "book_seed",
-      "case_seeds": ["case_li_hung_chan"],
+      "case_seeds": [
+        "case_li_hung_chan"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -139,12 +145,16 @@
       "subsection": "01.02",
       "subtopic": "Regards as Done",
       "source_basis": "book_seed",
-      "case_seeds": ["case_walsh"],
-      "statute_refs": ["cap219_cpo"],
+      "case_seeds": [
+        "case_walsh"
+      ],
+      "statute_refs": [
+        "cap219_cpo"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -158,12 +168,15 @@
       "subsection": "01.02",
       "subtopic": "No Assistance to Volunteers",
       "source_basis": "book_seed",
-      "case_seeds": ["case_wu_koon_tai", "case_luk_hoi_tong"],
+      "case_seeds": [
+        "case_wu_koon_tai",
+        "case_luk_hoi_tong"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -179,10 +192,12 @@
       "source_basis": "book_seed",
       "case_seeds": [],
       "statute_refs": [],
-      "cross_refs": ["equity_laches"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "cross_refs": [
+        "equity_laches"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -195,9 +210,9 @@
       "neutral_citation": "(1615) 1 Ch Rep 1",
       "court": "Ch",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -208,9 +223,9 @@
       "section": "01",
       "court": "CFA",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -221,9 +236,9 @@
       "section": "01",
       "court": "CA",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -235,9 +250,9 @@
       "neutral_citation": "(1882) 21 ChD 9",
       "court": "CA (Eng)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -248,9 +263,9 @@
       "section": "01",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -261,9 +276,9 @@
       "section": "01",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -272,9 +287,9 @@
       "label": "Verify HK Equity Maxims Leading Cases",
       "summary": "Confirm HK CFA/CA paragraph anchors for all maxim case seeds. Research further HK authorities on each maxim, especially clean hands and laches.",
       "section": "01",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     }
   ]

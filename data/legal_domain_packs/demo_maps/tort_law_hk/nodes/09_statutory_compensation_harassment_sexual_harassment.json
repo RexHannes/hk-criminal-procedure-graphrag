@@ -11,7 +11,7 @@
       "summary": "Statutory compensation and discrimination-related torts, including employees' compensation, discrimination, sexual harassment, and related compensation schemes. Standalone harassment liability remains a verification gap unless supported by official-source proof.",
       "section": "09",
       "verification_status": "book_seed_needs_case_and_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "textbook_seed_only",
       "human_review_status": "unreviewed"
     },
@@ -26,11 +26,15 @@
       "subtopic": "ECO Scheme",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap282_employees_compensation"],
-      "cross_refs": ["tort_employees_compensation_overview"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "statute_refs": [
+        "cap282_employees_compensation"
+      ],
+      "cross_refs": [
+        "tort_employees_compensation_overview"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -45,11 +49,13 @@
       "subtopic": "Occupational Disease",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap282_employees_compensation"],
+      "statute_refs": [
+        "cap282_employees_compensation"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -64,11 +70,13 @@
       "subtopic": "Sex Discrimination",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap480_sdo"],
+      "statute_refs": [
+        "cap480_sdo"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -83,11 +91,13 @@
       "subtopic": "Disability Discrimination",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap487_ddo"],
+      "statute_refs": [
+        "cap487_ddo"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -102,11 +112,14 @@
       "subtopic": "Family & Race Discrimination",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap480_sdo", "cap602_rdo"],
+      "statute_refs": [
+        "cap480_sdo",
+        "cap602_rdo"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -121,11 +134,13 @@
       "subtopic": "Sexual Harassment",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap480_sdo"],
+      "statute_refs": [
+        "cap480_sdo"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -141,10 +156,14 @@
       "source_basis": "book_seed",
       "case_seeds": [],
       "statute_refs": [],
-      "cross_refs": ["tort_battery", "tort_assault", "tort_intentional_defences_overview"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "cross_refs": [
+        "tort_battery",
+        "tort_assault",
+        "tort_intentional_defences_overview"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -161,9 +180,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -178,11 +197,15 @@
       "subtopic": "EOC Remedies",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap480_sdo", "cap487_ddo", "cap602_rdo"],
+      "statute_refs": [
+        "cap480_sdo",
+        "cap487_ddo",
+        "cap602_rdo"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -199,9 +222,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -211,8 +234,8 @@
       "label": "Sex Discrimination Ordinance (Cap. 480)",
       "summary": "Prohibits sex, marital status, pregnancy and family status discrimination, and sexual harassment. Enforced by the Equal Opportunities Commission.",
       "section": "09",
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_statutory_anchor",
       "human_review_status": "unreviewed"
     },
@@ -222,8 +245,8 @@
       "label": "Disability Discrimination Ordinance (Cap. 487)",
       "summary": "Prohibits disability discrimination in employment, education, and access to goods/services. Enforced by the Equal Opportunities Commission.",
       "section": "09",
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_statutory_anchor",
       "human_review_status": "unreviewed"
     },
@@ -233,8 +256,8 @@
       "label": "Race Discrimination Ordinance (Cap. 602)",
       "summary": "Prohibits race-based discrimination and harassment. Enforced by the Equal Opportunities Commission.",
       "section": "09",
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_statutory_anchor",
       "human_review_status": "unreviewed"
     },
@@ -244,9 +267,9 @@
       "label": "Verify HK Discrimination and Harassment Cases",
       "summary": "Research and verify HK EOC decisions and court cases on sexual harassment, sex discrimination, disability discrimination, common-law harassment-type claims, and any alleged standalone anti-harassment statute.",
       "section": "09",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     }
   ]

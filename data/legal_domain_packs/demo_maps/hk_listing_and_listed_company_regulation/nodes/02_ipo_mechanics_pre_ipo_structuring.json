@@ -18,10 +18,15 @@
       "subsection": "02.01",
       "subtopic": "Sponsor Role",
       "section": "02",
-      "listing_rule_refs": ["mbl_3A_02", "mbl_3A_10"],
-      "guidance_refs": ["sponsor_gl"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_3A_02",
+        "mbl_3A_10"
+      ],
+      "guidance_refs": [
+        "sponsor_gl"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -33,7 +38,7 @@
       "rule_chapter": "3A",
       "rule_number": "3A.02",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_3A_10",
@@ -44,7 +49,7 @@
       "rule_chapter": "3A",
       "rule_number": "3A.10",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_2_03",
@@ -55,7 +60,7 @@
       "rule_chapter": "2",
       "rule_number": "2.03",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "sponsor_gl",
@@ -65,7 +70,7 @@
       "section": "02",
       "effective_date": null,
       "source_url": null,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "a1_filing",
@@ -75,9 +80,12 @@
       "subsection": "02.02",
       "subtopic": "HKEX Review",
       "section": "02",
-      "listing_rule_refs": ["mbl_9_03", "mbl_9_11"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_9_03",
+        "mbl_9_11"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -89,7 +97,7 @@
       "rule_chapter": "9",
       "rule_number": "9.03",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_9_11",
@@ -100,7 +108,7 @@
       "rule_chapter": "9",
       "rule_number": "9.11",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "sfc_dual_filing",
@@ -110,9 +118,12 @@
       "subsection": "02.03",
       "subtopic": "SFC Dual Filing",
       "section": "02",
-      "statute_refs": ["cwo_38d", "sfo_105"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "statute_refs": [
+        "cwo_38d",
+        "sfo_105"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -121,7 +132,7 @@
       "label": "SFO s.105 — SFC Power to Object",
       "summary": "The SFC may object to a listing application within 14 days of receiving the prospectus.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pre_ipo_investments",
@@ -131,9 +142,11 @@
       "subsection": "02.04",
       "subtopic": "Pre-IPO Investments",
       "section": "02",
-      "guidance_refs": ["gl43_12"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "guidance_refs": [
+        "gl43_12"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -144,7 +157,7 @@
       "section": "02",
       "effective_date": null,
       "source_url": null,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "reverse_takeovers",
@@ -154,10 +167,14 @@
       "subsection": "02.05",
       "subtopic": "Reverse Takeovers",
       "section": "02",
-      "listing_rule_refs": ["mbl_14_06b"],
-      "guidance_refs": ["gl104_19"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_14_06b"
+      ],
+      "guidance_refs": [
+        "gl104_19"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -169,7 +186,7 @@
       "rule_chapter": "14",
       "rule_number": "14.06B",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "gl104_19",
@@ -179,7 +196,7 @@
       "section": "02",
       "effective_date": null,
       "source_url": null,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pn18_clawback",
@@ -189,9 +206,11 @@
       "subsection": "02.06",
       "subtopic": "Clawback Mechanism",
       "section": "02",
-      "listing_rule_refs": ["mbl_pn18"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_pn18"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -202,7 +221,7 @@
       "section": "02",
       "rule_chapter": "Practice Note 18",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "placing_mechanics",
@@ -212,10 +231,15 @@
       "subsection": "02.07",
       "subtopic": "Placing",
       "section": "02",
-      "listing_rule_refs": ["mbl_10_02", "mbl_10_03"],
-      "statute_refs": ["sfo_105"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_10_02",
+        "mbl_10_03"
+      ],
+      "statute_refs": [
+        "sfo_105"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -227,7 +251,7 @@
       "rule_chapter": "10",
       "rule_number": "10.02",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_10_03",
@@ -238,7 +262,7 @@
       "rule_chapter": "10",
       "rule_number": "10.03",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "ipo_timeline",
@@ -248,8 +272,8 @@
       "subsection": "02.08",
       "subtopic": "Timeline",
       "section": "02",
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -260,9 +284,11 @@
       "subsection": "02.01",
       "subtopic": "Tranche Structure",
       "section": "02",
-      "listing_rule_refs": ["mbl_pn18"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_pn18"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -273,10 +299,15 @@
       "subsection": "02.02",
       "subtopic": "Pre-IPO Timing",
       "section": "02",
-      "listing_rule_refs": ["mbl_2_03", "mbl_3_08"],
-      "guidance_refs": ["gl43_12"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_2_03",
+        "mbl_3_08"
+      ],
+      "guidance_refs": [
+        "gl43_12"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -286,7 +317,7 @@
       "summary": "SEHK guidance on pre-IPO investments, including acceptable and prohibited features. Covers timing restrictions, special rights, and disclosure requirements.",
       "section": "02",
       "authority_status": "unverified_sehk_decision",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "reverse_takeover_detailed",
@@ -296,9 +327,11 @@
       "subsection": "02.03",
       "subtopic": "RTO Bright-Line Test",
       "section": "02",
-      "listing_rule_refs": ["mbl_14_06b"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_14_06b"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {

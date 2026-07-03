@@ -1,44 +1,34 @@
 {
-  "report_id": "case_authority_final_report_v1",
-  "generated_at": "2026-07-01T00:00:00+08:00",
-  "product_claim": "The original Fable viewer and AI Inquiry expose paragraph-linked public-source case law only. Unresolved seed cases are excluded from authority surfaces and tracked in audit.",
-  "counts": {
-    "total_case_like_records_inventoried": 177,
-    "paragraph_linked_public_source_records": 449,
-    "product_visible_verified_case_seeds": 3,
-    "doctrine_nodes_with_verified_evidence": 257,
-    "excluded_unresolved_seeds": 174,
-    "visible_unverified_authorities": 0,
-    "backend_searchable_unverified_authorities": 0,
-    "hklii_legalref_judiciary_links": 447,
-    "exact_quotes": 449,
-    "short_summaries": 449
-  },
-  "level1_case_recall": {
+  "generated_at": "2026-07-03T04:07:19.443Z",
+  "total_case_like_records_inventoried": 177,
+  "total_paragraph_linked_public_source_cases": 252,
+  "total_excluded_unresolved_cases": 174,
+  "total_visible_unverified_authorities": 0,
+  "total_backend_searchable_unverified_authorities": 0,
+  "total_hklii_legalref_judiciary_links": 252,
+  "total_exact_quotes": 252,
+  "total_short_summaries": 252,
+  "searchable_doctrine_node_count": 35,
+  "level1_recall": {
     "pass": true,
-    "passed_query_count": 9,
-    "query_count": 9
+    "passed": 9,
+    "total": 9
   },
   "level2_ai_inquiry": {
     "pass": true,
-    "passed_query_count": 7,
-    "query_count": 7
+    "passed": 7,
+    "total": 7
   },
-  "law_tree_case_fruit_packs": {
-    "trees_processed": 6,
-    "candidate_cases_proposed": 180,
-    "candidate_authority_records_considered": 257,
-    "cases_verified": 52,
-    "cases_excluded": 27,
-    "paragraph_cards_created": 81,
-    "chunks_created": 81,
-    "level1_pass": true,
-    "level2_pass": true
+  "success_criteria": {
+    "visible_unverified_zero": true,
+    "backend_searchable_unverified_zero": true,
+    "level1_recall_passes": true,
+    "level2_analysis_passes": true
   },
   "remaining_limitations": [
-    "Lawyer-review certification is later HITL metadata and does not block research-prototype retrieval.",
-    "Unresolved seed cases remain excluded until a public paragraph link, exact quote, paragraph text, and issue mapping are attached.",
-    "Current-treatment review is not completed for every source-linked paragraph.",
-    "The corpus is not yet scaled to 500 or 10000 cases in this PR #6 pass."
-  ]
+    "174 case seeds remain excluded until real public paragraph proof is mined per case.",
+    "Lawyer review / answer-safe certification is a later HITL layer and does not gate research retrieval.",
+    "Theft element queries currently retrieve dishonesty/fraud paragraph proof on criminal_law_hk.theft.dishonesty."
+  ],
+  "ok": true
 }

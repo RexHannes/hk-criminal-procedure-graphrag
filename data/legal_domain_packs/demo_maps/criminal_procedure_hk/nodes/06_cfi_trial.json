@@ -18,10 +18,12 @@
       "subsection": "06.01",
       "subtopic": "Allocation",
       "section": "06",
-      "practice_direction_refs": ["pd_9_2"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "practice_direction_refs": [
+        "pd_9_2"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "trial_judge_and_jury",
@@ -31,11 +33,15 @@
       "subsection": "06.02",
       "subtopic": "Judge and Jury",
       "section": "06",
-      "statute_refs": ["cap3_s4"],
-      "case_seeds": ["hksar_v_chan_hon_wing"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap3_s4"
+      ],
+      "case_seeds": [
+        "hksar_v_chan_hon_wing"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap3_s4",
@@ -43,7 +49,7 @@
       "label": "Jury Ordinance (Cap 3) s.4",
       "summary": "Jury selection and discharge of juror.",
       "section": "06",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "hksar_v_chan_hon_wing",
@@ -51,8 +57,9 @@
       "label": "HKSAR v Chan Hon Wing (2006)",
       "summary": "Discharge of juror unable to understand proceedings.",
       "section": "06",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "trial_arraignment",
@@ -62,9 +69,9 @@
       "subsection": "06.03",
       "subtopic": "Arraignment",
       "section": "06",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "trial_prosecution_case",
@@ -74,10 +81,13 @@
       "subsection": "06.04",
       "subtopic": "Prosecution Case",
       "section": "06",
-      "case_seeds": ["hksar_v_wong_sau_ming", "hksar_v_lee_kwok_wah"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "case_seeds": [
+        "hksar_v_wong_sau_ming",
+        "hksar_v_lee_kwok_wah"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "trial_no_case_submission",
@@ -87,10 +97,13 @@
       "subsection": "06.04",
       "subtopic": "Prosecution Case",
       "section": "06",
-      "case_seeds": ["hksar_v_wong_sau_ming", "hksar_v_lee_kwok_wah"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "case_seeds": [
+        "hksar_v_wong_sau_ming",
+        "hksar_v_lee_kwok_wah"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "hksar_v_wong_sau_ming",
@@ -99,8 +112,9 @@
       "summary": "Galbraith test applied in HK for no-case submissions.",
       "section": "06",
       "neutral_citation": "(2003) 6 HKCFAR 163",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "hksar_v_lee_kwok_wah",
@@ -109,8 +123,9 @@
       "summary": "Judge must not usurp jury function in no-case submission.",
       "section": "06",
       "neutral_citation": "(2008) 11 HKCFAR 318",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "trial_defence_case",
@@ -120,10 +135,12 @@
       "subsection": "06.05",
       "subtopic": "Defence Case",
       "section": "06",
-      "statute_refs": ["cap8_s54"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap8_s54"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap8_s54",
@@ -131,7 +148,7 @@
       "label": "Evidence Ordinance (Cap 8) s.54",
       "summary": "Accused's silence: cannot strengthen prosecution case but inference may be drawn in limited circumstances.",
       "section": "06",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_witnesses",
@@ -141,10 +158,12 @@
       "subsection": "06.06",
       "subtopic": "Witnesses",
       "section": "06",
-      "statute_refs": ["cap221_part3a"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_part3a"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_part3a",
@@ -152,7 +171,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) Part IIIA",
       "summary": "Special procedures for vulnerable witnesses.",
       "section": "06",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_live_tv_link",
@@ -162,10 +181,12 @@
       "subsection": "06.07",
       "subtopic": "Live TV Link",
       "section": "06",
-      "statute_refs": ["cap221_part3b"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_part3b"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_part3b",
@@ -173,7 +194,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) Part IIIB (s.79I)",
       "summary": "Evidence from outside Hong Kong by live television link.",
       "section": "06",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_summng_up",
@@ -183,10 +204,12 @@
       "subsection": "06.08",
       "subtopic": "Summing Up",
       "section": "06",
-      "case_seeds": ["hksar_v_amarjit"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "case_seeds": [
+        "hksar_v_amarjit"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "hksar_v_amarjit",
@@ -194,8 +217,9 @@
       "label": "HKSAR v Amarjit",
       "summary": "Circumstantial evidence, lies/flight directions.",
       "section": "06",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "trial_verdict",
@@ -205,10 +229,12 @@
       "subsection": "06.09",
       "subtopic": "Verdict",
       "section": "06",
-      "statute_refs": ["cap3_s24"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap3_s24"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap3_s24",
@@ -216,7 +242,7 @@
       "label": "Jury Ordinance (Cap 3) s.24",
       "summary": "Majority verdict: at least 7:2 or 6:1 in 9/7-person jury.",
       "section": "06",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_sentencing",
@@ -226,9 +252,9 @@
       "subsection": "06.10",
       "subtopic": "Sentencing",
       "section": "06",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "trial_cfi_flow_start",
@@ -237,7 +263,7 @@
       "summary": "Step 1: Allocation to CFI; pre-trial review to narrow issues.",
       "section": "06",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_cfi_flow_step2",
@@ -246,7 +272,7 @@
       "summary": "Step 2: Judge assigned; jury selected and sworn.",
       "section": "06",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_cfi_flow_step3",
@@ -255,7 +281,7 @@
       "summary": "Step 3: Accused arraigned; plea taken before jury.",
       "section": "06",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_cfi_flow_step4",
@@ -264,7 +290,7 @@
       "summary": "Step 4: Prosecution opening; evidence led; voir dire if needed.",
       "section": "06",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_cfi_flow_step5",
@@ -273,7 +299,7 @@
       "summary": "Step 5: Defence may submit no case to answer at close of prosecution case.",
       "section": "06",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_cfi_flow_step6",
@@ -282,7 +308,7 @@
       "summary": "Step 6: Defence opening (optional); defence evidence led.",
       "section": "06",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_cfi_flow_step7",
@@ -291,7 +317,7 @@
       "summary": "Step 7: Judge sums up facts and law; directs jury on burden, standard, and specific issues.",
       "section": "06",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "trial_cfi_flow_step8",
@@ -300,7 +326,7 @@
       "summary": "Step 8: Jury returns verdict; if guilty, sentencing hearing (may be adjourned for reports).",
       "section": "06",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     }
   ]
 }

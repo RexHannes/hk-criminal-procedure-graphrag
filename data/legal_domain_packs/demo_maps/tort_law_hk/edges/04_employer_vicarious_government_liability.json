@@ -2,33 +2,145 @@
   "section_id": "04",
   "domain_id": "tort_law_hk",
   "edges": [
-    { "from": "tort_employer_vicarious", "to": "tort_vicarious_liability_overview", "relationship": "has_subtopic" },
-    { "from": "tort_vicarious_liability_overview", "to": "tort_vicarious_employment_relationship", "relationship": "has_subtopic" },
-    { "from": "tort_vicarious_liability_overview", "to": "tort_vicarious_course_of_employment", "relationship": "has_subtopic" },
-    { "from": "tort_vicarious_liability_overview", "to": "tort_vicarious_salmond_test", "relationship": "has_subtopic" },
-    { "from": "tort_vicarious_liability_overview", "to": "tort_vicarious_close_connection_test", "relationship": "has_subtopic" },
-    { "from": "tort_vicarious_liability_overview", "to": "tort_vicarious_agent_borrowed_employee", "relationship": "has_subtopic" },
-    { "from": "tort_employer_vicarious", "to": "tort_employer_primary_duty", "relationship": "has_subtopic" },
-    { "from": "tort_employer_vicarious", "to": "tort_employer_safe_system_of_work", "relationship": "has_subtopic" },
-    { "from": "tort_employer_vicarious", "to": "tort_employer_non_delegable_duty", "relationship": "has_subtopic" },
-    { "from": "tort_employer_vicarious", "to": "tort_employees_compensation_overview", "relationship": "has_subtopic" },
-    { "from": "tort_employer_vicarious", "to": "tort_government_liability_overview", "relationship": "has_subtopic" },
-    { "from": "tort_government_liability_overview", "to": "tort_government_liability_crown", "relationship": "has_subtopic" },
-    { "from": "tort_government_liability_overview", "to": "tort_government_liability_police", "relationship": "has_subtopic" },
-    { "from": "tort_government_liability_overview", "to": "tort_government_judicial_immunity", "relationship": "has_subtopic" },
-    { "from": "tort_government_liability_overview", "to": "tort_government_public_authority_human_rights", "relationship": "has_subtopic" },
-    { "from": "tort_vicarious_employment_relationship", "to": "case_chan_yuen_ling", "relationship": "case_seed" },
-    { "from": "tort_vicarious_course_of_employment", "to": "case_joel_v_morrison", "relationship": "case_seed" },
-    { "from": "tort_vicarious_course_of_employment", "to": "case_lister_v_hse", "relationship": "case_seed" },
-    { "from": "tort_vicarious_close_connection_test", "to": "case_lister_v_hse", "relationship": "case_seed" },
-    { "from": "tort_vicarious_close_connection_test", "to": "case_mohan_v_osborne", "relationship": "case_seed" },
-    { "from": "tort_employer_primary_duty", "to": "case_lau_luen_hung_employer", "relationship": "case_seed" },
-    { "from": "tort_employer_primary_duty", "to": "cap282_employees_compensation", "relationship": "statutory_anchor" },
-    { "from": "tort_employees_compensation_overview", "to": "cap282_employees_compensation", "relationship": "statutory_anchor" },
-    { "from": "tort_government_liability_overview", "to": "cap300_crown_proceedings", "relationship": "statutory_anchor" },
-    { "from": "tort_government_liability_crown", "to": "cap300_crown_proceedings", "relationship": "statutory_anchor" },
-    { "from": "tort_government_liability_police", "to": "case_lau_luen_hung_police", "relationship": "case_seed" },
-    { "from": "tort_employer_vicarious", "to": "gap_verify_hk_vicarious_liability_cases", "relationship": "has_subtopic" },
-    { "from": "tort_employer_vicarious", "to": "gap_verify_hk_crown_proceedings_coverage", "relationship": "has_subtopic" }
+    {
+      "from": "tort_employer_vicarious",
+      "to": "tort_vicarious_liability_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_vicarious_liability_overview",
+      "to": "tort_vicarious_employment_relationship",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_vicarious_liability_overview",
+      "to": "tort_vicarious_course_of_employment",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_vicarious_liability_overview",
+      "to": "tort_vicarious_salmond_test",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_vicarious_liability_overview",
+      "to": "tort_vicarious_close_connection_test",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_vicarious_liability_overview",
+      "to": "tort_vicarious_agent_borrowed_employee",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_employer_vicarious",
+      "to": "tort_employer_primary_duty",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_employer_vicarious",
+      "to": "tort_employer_safe_system_of_work",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_employer_vicarious",
+      "to": "tort_employer_non_delegable_duty",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_employer_vicarious",
+      "to": "tort_employees_compensation_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_employer_vicarious",
+      "to": "tort_government_liability_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_government_liability_overview",
+      "to": "tort_government_liability_crown",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_government_liability_overview",
+      "to": "tort_government_liability_police",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_government_liability_overview",
+      "to": "tort_government_judicial_immunity",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_government_liability_overview",
+      "to": "tort_government_public_authority_human_rights",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_vicarious_employment_relationship",
+      "to": "case_chan_yuen_ling",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_vicarious_course_of_employment",
+      "to": "case_joel_v_morrison",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_vicarious_course_of_employment",
+      "to": "case_lister_v_hse",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_vicarious_close_connection_test",
+      "to": "case_lister_v_hse",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_vicarious_close_connection_test",
+      "to": "case_mohan_v_osborne",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_employer_primary_duty",
+      "to": "case_lau_luen_hung_employer",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_employer_primary_duty",
+      "to": "cap282_employees_compensation",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_employees_compensation_overview",
+      "to": "cap282_employees_compensation",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_government_liability_overview",
+      "to": "cap300_crown_proceedings",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_government_liability_crown",
+      "to": "cap300_crown_proceedings",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_government_liability_police",
+      "to": "case_lau_luen_hung_police",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_employer_vicarious",
+      "to": "gap_verify_hk_vicarious_liability_cases",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_employer_vicarious",
+      "to": "gap_verify_hk_crown_proceedings_coverage",
+      "relationship": "has_subtopic"
+    }
   ]
 }

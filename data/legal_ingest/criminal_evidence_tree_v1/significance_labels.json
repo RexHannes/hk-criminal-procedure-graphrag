@@ -46,15 +46,26 @@
   "forbidden_promotions": [
     {
       "if_label": "not_authority_party_argument",
-      "forbidden_as": ["states_rule", "sets_out_test", "answer_safe"]
+      "forbidden_as": [
+        "states_rule",
+        "sets_out_test",
+        "answer_safe"
+      ]
     },
     {
       "if_label": "procedural_history_only",
-      "forbidden_as": ["states_rule", "answer_safe"]
+      "forbidden_as": [
+        "states_rule",
+        "answer_safe"
+      ]
     },
     {
       "if_label": "irrelevant",
-      "forbidden_as": ["states_rule", "applies_rule", "answer_safe"]
+      "forbidden_as": [
+        "states_rule",
+        "applies_rule",
+        "answer_safe"
+      ]
     }
   ]
 }

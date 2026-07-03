@@ -3,48 +3,263 @@
   "section_title": "Personal Injury Principles",
   "domain_id": "tort_law_hk",
   "edges": [
-    { "from": "tort_pi_principles", "to": "tort_pi_claim_router", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_negligence_application", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_duty_foreseeability", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_duty_proximity", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_duty_fair_just_reasonable", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_breach_risk_precautions", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_causation_and_remoteness", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_occupiers_liability_application", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_occupiers_control", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_occupiers_warning_inspection", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_occupiers_independent_contractor", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_occupiers_children_allurement", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_employer_workplace_router", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_employer_safe_system", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_employer_safe_plant_equipment", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_employees_compensation_overlap", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_rta_router", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_rta_driver_duty", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_rta_contributory_negligence", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_psychiatric_injury_router", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_psychiatric_secondary_victim", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_fatal_accident_router", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_fatal_dependency", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_quantum_router", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_quantum_psla", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_quantum_special_damages", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_quantum_loss_of_earnings", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_quantum_future_loss_multiplier", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_quantum_care_aids_housing", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_quantum_interest_interim_provisional", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_defence_router", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_principles", "to": "tort_pi_defence_mitigation_exaggeration", "relationship": "has_subtopic", "edge_type": "pi_principle_section" },
-    { "from": "tort_pi_claim_router", "to": "tort_pi_negligence_application", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" },
-    { "from": "tort_pi_claim_router", "to": "tort_pi_occupiers_liability_application", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" },
-    { "from": "tort_pi_claim_router", "to": "tort_pi_employer_workplace_router", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" },
-    { "from": "tort_pi_claim_router", "to": "tort_pi_rta_router", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" },
-    { "from": "tort_pi_claim_router", "to": "tort_pi_psychiatric_injury_router", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" },
-    { "from": "tort_pi_claim_router", "to": "tort_pi_fatal_accident_router", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" },
-    { "from": "tort_pi_negligence_application", "to": "tort_pi_breach_risk_precautions", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" },
-    { "from": "tort_pi_negligence_application", "to": "tort_pi_causation_and_remoteness", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" },
-    { "from": "tort_pi_quantum_router", "to": "tort_pi_quantum_psla", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" },
-    { "from": "tort_pi_quantum_router", "to": "tort_pi_quantum_special_damages", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" },
-    { "from": "tort_pi_quantum_router", "to": "tort_pi_quantum_loss_of_earnings", "relationship": "pi_refines", "edge_type": "pi_principle_hierarchy" }
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_claim_router",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_negligence_application",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_duty_foreseeability",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_duty_proximity",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_duty_fair_just_reasonable",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_breach_risk_precautions",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_causation_and_remoteness",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_occupiers_liability_application",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_occupiers_control",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_occupiers_warning_inspection",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_occupiers_independent_contractor",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_occupiers_children_allurement",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_employer_workplace_router",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_employer_safe_system",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_employer_safe_plant_equipment",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_employees_compensation_overlap",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_rta_router",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_rta_driver_duty",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_rta_contributory_negligence",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_psychiatric_injury_router",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_psychiatric_secondary_victim",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_fatal_accident_router",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_fatal_dependency",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_quantum_router",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_quantum_psla",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_quantum_special_damages",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_quantum_loss_of_earnings",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_quantum_future_loss_multiplier",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_quantum_care_aids_housing",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_quantum_interest_interim_provisional",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_defence_router",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_principles",
+      "to": "tort_pi_defence_mitigation_exaggeration",
+      "relationship": "has_subtopic",
+      "edge_type": "pi_principle_section"
+    },
+    {
+      "from": "tort_pi_claim_router",
+      "to": "tort_pi_negligence_application",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    },
+    {
+      "from": "tort_pi_claim_router",
+      "to": "tort_pi_occupiers_liability_application",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    },
+    {
+      "from": "tort_pi_claim_router",
+      "to": "tort_pi_employer_workplace_router",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    },
+    {
+      "from": "tort_pi_claim_router",
+      "to": "tort_pi_rta_router",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    },
+    {
+      "from": "tort_pi_claim_router",
+      "to": "tort_pi_psychiatric_injury_router",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    },
+    {
+      "from": "tort_pi_claim_router",
+      "to": "tort_pi_fatal_accident_router",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    },
+    {
+      "from": "tort_pi_negligence_application",
+      "to": "tort_pi_breach_risk_precautions",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    },
+    {
+      "from": "tort_pi_negligence_application",
+      "to": "tort_pi_causation_and_remoteness",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    },
+    {
+      "from": "tort_pi_quantum_router",
+      "to": "tort_pi_quantum_psla",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    },
+    {
+      "from": "tort_pi_quantum_router",
+      "to": "tort_pi_quantum_special_damages",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    },
+    {
+      "from": "tort_pi_quantum_router",
+      "to": "tort_pi_quantum_loss_of_earnings",
+      "relationship": "pi_refines",
+      "edge_type": "pi_principle_hierarchy"
+    }
   ]
 }

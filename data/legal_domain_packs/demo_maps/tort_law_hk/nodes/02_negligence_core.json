@@ -11,7 +11,7 @@
       "summary": "The tort of negligence: duty of care, breach, causation, remoteness, and defences. Core HK and persuasive common law authorities requiring verification.",
       "section": "02",
       "verification_status": "book_seed_needs_case_and_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "textbook_seed_only",
       "human_review_status": "unreviewed"
     },
@@ -25,12 +25,19 @@
       "subsection": "02.01",
       "subtopic": "Duty of Care",
       "source_basis": "book_seed",
-      "case_seeds": ["case_donoghue", "case_caparo", "case_luen_hing_fat"],
+      "case_seeds": [
+        "case_donoghue",
+        "case_caparo",
+        "case_luen_hing_fat"
+      ],
       "statute_refs": [],
-      "cross_refs": ["tort_pure_economic_loss", "tort_psychiatric_injury"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "cross_refs": [
+        "tort_pure_economic_loss",
+        "tort_psychiatric_injury"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -44,12 +51,15 @@
       "subsection": "02.02",
       "subtopic": "Breach of Duty",
       "source_basis": "book_seed",
-      "case_seeds": ["case_lau_luen_hung", "case_wong_hon_leung"],
+      "case_seeds": [
+        "case_lau_luen_hung",
+        "case_wong_hon_leung"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -63,12 +73,15 @@
       "subsection": "02.02",
       "subtopic": "Professional Standard",
       "source_basis": "book_seed",
-      "case_seeds": ["case_bolam", "case_bolitho"],
+      "case_seeds": [
+        "case_bolam",
+        "case_bolitho"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -82,12 +95,14 @@
       "subsection": "02.02",
       "subtopic": "Res Ipsa Loquitur",
       "source_basis": "book_seed",
-      "case_seeds": ["case_sanfield"],
+      "case_seeds": [
+        "case_sanfield"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -101,12 +116,15 @@
       "subsection": "02.03",
       "subtopic": "Causation",
       "source_basis": "book_seed",
-      "case_seeds": ["case_wong_hon_leung", "case_lam_pak_keung"],
+      "case_seeds": [
+        "case_wong_hon_leung",
+        "case_lam_pak_keung"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -120,12 +138,14 @@
       "subsection": "02.03",
       "subtopic": "Material Contribution",
       "source_basis": "book_seed",
-      "case_seeds": ["case_mcghee"],
+      "case_seeds": [
+        "case_mcghee"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -139,12 +159,14 @@
       "subsection": "02.03",
       "subtopic": "Novus Actus",
       "source_basis": "book_seed",
-      "case_seeds": ["case_hong_yuen_fu"],
+      "case_seeds": [
+        "case_hong_yuen_fu"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -158,12 +180,15 @@
       "subsection": "02.04",
       "subtopic": "Remoteness",
       "source_basis": "book_seed",
-      "case_seeds": ["case_wagon_mound_1", "case_wagon_mound_2"],
+      "case_seeds": [
+        "case_wagon_mound_1",
+        "case_wagon_mound_2"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -180,9 +205,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -197,11 +222,13 @@
       "subtopic": "Defences Overview",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap23_larco"],
+      "statute_refs": [
+        "cap23_larco"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -215,12 +242,16 @@
       "subsection": "02.05",
       "subtopic": "Contributory Negligence",
       "source_basis": "book_seed",
-      "case_seeds": ["case_froom"],
-      "statute_refs": ["cap23_larco"],
+      "case_seeds": [
+        "case_froom"
+      ],
+      "statute_refs": [
+        "cap23_larco"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -234,12 +265,14 @@
       "subsection": "02.05",
       "subtopic": "Volenti",
       "source_basis": "book_seed",
-      "case_seeds": ["case_morris"],
+      "case_seeds": [
+        "case_morris"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -253,12 +286,14 @@
       "subsection": "02.05",
       "subtopic": "Illegality",
       "source_basis": "book_seed",
-      "case_seeds": ["case_ng_wai_ming"],
+      "case_seeds": [
+        "case_ng_wai_ming"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -268,8 +303,8 @@
       "label": "Law Reform and Contributory Negligence Ordinance (Cap. 23)",
       "summary": "Provides for apportionment of damages where contributory negligence is established. Replaces common law last opportunity rule.",
       "section": "02",
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_statutory_anchor",
       "human_review_status": "unreviewed"
     },
@@ -282,9 +317,9 @@
       "neutral_citation": "[1932] AC 562",
       "court": "HL (UK)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -296,9 +331,9 @@
       "neutral_citation": "[1990] 2 AC 605",
       "court": "HL (UK)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -310,9 +345,9 @@
       "neutral_citation": "[2011] 4 HKLRD 293",
       "court": "CFA",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -323,9 +358,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -337,9 +372,9 @@
       "neutral_citation": "[1957] 1 WLR 582",
       "court": "QB (Eng)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -351,9 +386,9 @@
       "neutral_citation": "[1998] AC 232",
       "court": "HL (UK)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -364,9 +399,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -377,9 +412,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -390,9 +425,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -404,9 +439,9 @@
       "neutral_citation": "[1961] AC 388",
       "court": "PC",
       "jurisdiction": "UK/PC",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -418,9 +453,9 @@
       "neutral_citation": "[1967] 1 AC 617",
       "court": "PC",
       "jurisdiction": "UK/PC",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -432,9 +467,9 @@
       "neutral_citation": "[1973] 1 WLR 1",
       "court": "HL (UK)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -446,9 +481,9 @@
       "neutral_citation": "[1976] QB 286",
       "court": "CA (Eng)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -459,9 +494,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -473,9 +508,9 @@
       "neutral_citation": "[1991] 2 QB 6",
       "court": "CA (Eng)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -486,9 +521,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     }
   ]

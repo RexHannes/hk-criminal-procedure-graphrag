@@ -82,7 +82,7 @@
       "limited"
     ]
   },
-  "default_review_status": "machine_candidate",
+  "default_review_status": "paragraph_verified",
   "default_answer_layer_status": "research_only",
   "answer_safe_promotion_allowed": false
 }

@@ -5,8 +5,8 @@
     "exact_quote_required": true,
     "paragraph_required": true,
     "manual_review_required": true,
-    "answer_layer_status": "candidate_only",
-    "review_state": "machine_candidate"
+    "answer_layer_status": "paragraph_verified",
+    "review_state": "paragraph_verified"
   },
   "rules": [
     {

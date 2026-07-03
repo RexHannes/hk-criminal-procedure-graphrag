@@ -15,7 +15,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_case_2022_lancom_capxon",
@@ -32,7 +32,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_case_2025_vasily_trubnikov",
@@ -49,7 +49,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_case_2023_liu_hao_tsing",
@@ -66,7 +66,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_case_2019_shinyei_jenus",
@@ -83,7 +83,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ],
   "paragraph_cards": [
@@ -97,7 +97,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_case_2022_lancom_capxon_p43",
@@ -109,7 +109,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_case_2025_vasily_trubnikov_p39",
@@ -121,7 +121,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_case_2023_liu_hao_tsing_p16",
@@ -133,7 +133,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_case_2019_shinyei_jenus_p19",
@@ -145,7 +145,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ]
 }

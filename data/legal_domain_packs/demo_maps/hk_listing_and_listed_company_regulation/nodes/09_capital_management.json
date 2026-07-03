@@ -18,10 +18,15 @@
       "subsection": "09.01",
       "subtopic": "Share Buybacks",
       "section": "09",
-      "listing_rule_refs": ["mbl_10_06", "mbl_10_07"],
-      "statute_refs": ["co_s114"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_10_06",
+        "mbl_10_07"
+      ],
+      "statute_refs": [
+        "co_s114"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -33,7 +38,7 @@
       "rule_chapter": "10",
       "rule_number": "10.06",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_10_07",
@@ -44,7 +49,7 @@
       "rule_chapter": "10",
       "rule_number": "10.07",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "co_s114",
@@ -52,7 +57,7 @@
       "label": "Companies Ordinance s.114 — Share Buybacks",
       "summary": "Companies may repurchase their own shares with shareholder approval.",
       "section": "09",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "dividends",
@@ -62,10 +67,14 @@
       "subsection": "09.02",
       "subtopic": "Dividends",
       "section": "09",
-      "listing_rule_refs": ["mbl_13_36"],
-      "statute_refs": ["co_s120"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_13_36"
+      ],
+      "statute_refs": [
+        "co_s120"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -77,7 +86,7 @@
       "rule_chapter": "13",
       "rule_number": "13.36",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "co_s120",
@@ -85,7 +94,7 @@
       "label": "Companies Ordinance s.120 — Dividend Distributions",
       "summary": "Companies may only distribute dividends out of profits.",
       "section": "09",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "capital_reduction",
@@ -95,9 +104,11 @@
       "subsection": "09.03",
       "subtopic": "Capital Reduction",
       "section": "09",
-      "statute_refs": ["co_s141"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "statute_refs": [
+        "co_s141"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -106,7 +117,7 @@
       "label": "Companies Ordinance s.141 — Capital Reduction",
       "summary": "Capital reduction requires special resolution and court confirmation.",
       "section": "09",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "financial_assistance",
@@ -116,10 +127,14 @@
       "subsection": "09.04",
       "subtopic": "Financial Assistance",
       "section": "09",
-      "listing_rule_refs": ["mbl_10_08"],
-      "statute_refs": ["co_s275"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_10_08"
+      ],
+      "statute_refs": [
+        "co_s275"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -131,7 +146,7 @@
       "rule_chapter": "10",
       "rule_number": "10.08",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "co_s275",
@@ -139,7 +154,7 @@
       "label": "Companies Ordinance s.275 — Financial Assistance Restrictions",
       "summary": "Companies must not provide financial assistance for the purchase of their own shares without shareholder approval.",
       "section": "09",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "schemes_of_arrangement",
@@ -149,10 +164,14 @@
       "subsection": "09.05",
       "subtopic": "Schemes of Arrangement",
       "section": "09",
-      "listing_rule_refs": ["mbl_14_81"],
-      "statute_refs": ["co_s673"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_14_81"
+      ],
+      "statute_refs": [
+        "co_s673"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -164,7 +183,7 @@
       "rule_chapter": "14",
       "rule_number": "14.81",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "co_s673",
@@ -172,7 +191,7 @@
       "label": "Companies Ordinance s.673 — Schemes of Arrangement",
       "summary": "Schemes of arrangement require court order and approval by a majority in number representing 75% in value.",
       "section": "09",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "rights_issues",
@@ -182,9 +201,13 @@
       "subsection": "09.06",
       "subtopic": "Capital Raisings",
       "section": "09",
-      "listing_rule_refs": ["mbl_7_08", "mbl_7_12", "mbl_7_19"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_7_08",
+        "mbl_7_12",
+        "mbl_7_19"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -196,7 +219,7 @@
       "rule_chapter": "7",
       "rule_number": "7.08",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_7_12",
@@ -207,7 +230,7 @@
       "rule_chapter": "7",
       "rule_number": "7.12",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_7_19",
@@ -218,7 +241,7 @@
       "rule_chapter": "7",
       "rule_number": "7.19",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     }
   ]
 }

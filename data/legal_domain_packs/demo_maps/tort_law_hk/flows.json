@@ -11,7 +11,7 @@
         "negligence_flow_step3",
         "negligence_flow_step4"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "defamation_claim_flow",
@@ -22,7 +22,7 @@
         "defamation_flow_step2",
         "defamation_flow_step3"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "vicarious_liability_flow",
@@ -34,7 +34,7 @@
         "vicarious_liability_flow_step3",
         "vicarious_liability_flow_step4"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "occupiers_liability_flow",
@@ -45,7 +45,7 @@
         "occupiers_liability_flow_step2",
         "occupiers_liability_flow_step3"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "nuisance_rylands_flow",
@@ -56,7 +56,7 @@
         "nuisance_rylands_flow_step2",
         "nuisance_rylands_flow_step3"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "economic_torts_flow",
@@ -67,7 +67,7 @@
         "economic_torts_flow_step2",
         "economic_torts_flow_step3"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "limitation_check_flow",
@@ -78,7 +78,7 @@
         "limitation_flow_step2",
         "limitation_flow_step3"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     }
   ]
 }

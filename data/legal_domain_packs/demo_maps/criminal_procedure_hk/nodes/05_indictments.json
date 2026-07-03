@@ -18,11 +18,16 @@
       "subsection": "05.01",
       "subtopic": "Drafting",
       "section": "05",
-      "statute_refs": ["cap221_s16"],
-      "case_seeds": ["hksar_v_leung_kwok_hung", "hksar_v_tam_shing_hoi"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s16"
+      ],
+      "case_seeds": [
+        "hksar_v_leung_kwok_hung",
+        "hksar_v_tam_shing_hoi"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "hksar_v_leung_kwok_hung_1996",
@@ -30,8 +35,9 @@
       "label": "HKSAR v Leung Kwok Hung (1996)",
       "summary": "Indictment quashed for defect/duplicity.",
       "section": "05",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "hksar_v_tam_shing_hoi",
@@ -39,8 +45,9 @@
       "label": "HKSAR v Tam Shing Hoi (2004)",
       "summary": "Indictment defect and uncertainty.",
       "section": "05",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "indictment_filing_service",
@@ -50,9 +57,9 @@
       "subsection": "05.02",
       "subtopic": "Filing",
       "section": "05",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "indictment_amendment",
@@ -62,10 +69,12 @@
       "subsection": "05.03",
       "subtopic": "Amendment",
       "section": "05",
-      "statute_refs": ["cap221_s23"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s23"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s23",
@@ -73,7 +82,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.23",
       "summary": "Court may amend indictment at any stage before verdict if no injustice.",
       "section": "05",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "indictment_joinder_severance",
@@ -83,11 +92,17 @@
       "subsection": "05.04",
       "subtopic": "Joinder",
       "section": "05",
-      "statute_refs": ["cap221_s16", "cap221_s17", "cap221_s18"],
-      "case_seeds": ["talbot_v_r"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s16",
+        "cap221_s17",
+        "cap221_s18"
+      ],
+      "case_seeds": [
+        "talbot_v_r"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s16",
@@ -95,7 +110,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.16",
       "summary": "Joinder of counts: same facts or series of similar character.",
       "section": "05",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap221_s17",
@@ -103,7 +118,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.17",
       "summary": "Joinder of defendants: same or connected offences.",
       "section": "05",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap221_s18",
@@ -111,7 +126,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.18",
       "summary": "Severance: court may order separate trials if joinder prejudicial or embarrassing.",
       "section": "05",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "talbot_v_r",
@@ -119,8 +134,9 @@
       "label": "Talbot v R (PC) (comparative)",
       "summary": "Severance test; prejudice not curable by jury direction.",
       "section": "05",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "indictment_quashing",
@@ -130,9 +146,9 @@
       "subsection": "05.05",
       "subtopic": "Quashing",
       "section": "05",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "indictment_plea",
@@ -142,11 +158,17 @@
       "subsection": "05.06",
       "subtopic": "Plea",
       "section": "05",
-      "statute_refs": ["cap221_s51"],
-      "case_seeds": ["r_v_tailford", "hksar_v_asif_ahfaq_mehmood", "hksar_v_lai_man_ling"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap221_s51"
+      ],
+      "case_seeds": [
+        "r_v_tailford",
+        "hksar_v_asif_ahfaq_mehmood",
+        "hksar_v_lai_man_ling"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s51",
@@ -154,7 +176,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.51",
       "summary": "Alternative offences: jury may convict of lesser alternative if supported by evidence.",
       "section": "05",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "r_v_tailford",
@@ -162,8 +184,9 @@
       "label": "R v Tailford (comparative)",
       "summary": "Plea to alternative offence not averred in indictment.",
       "section": "05",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "hksar_v_asif_ahfaq_mehmood",
@@ -171,8 +194,9 @@
       "label": "HKSAR v Asif Ahfaq Mehmood",
       "summary": "Alternative offence issue under Cap 221 s.51.",
       "section": "05",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "indictment_flow_start",
@@ -181,7 +205,7 @@
       "summary": "Step 1: Criminal proceedings are instituted by information, complaint, or charge sheet.",
       "section": "05",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "indictment_flow_step2",
@@ -190,7 +214,7 @@
       "summary": "Step 2: Classify the offence as summary, indictable, or either way.",
       "section": "05",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "indictment_flow_step3",
@@ -199,7 +223,7 @@
       "summary": "Step 3: Draft indictment with proper particulars, avoiding duplicity.",
       "section": "05",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "indictment_flow_step4",
@@ -208,7 +232,7 @@
       "summary": "Step 4: Check particulars for date, place, person, property, and statutory provision.",
       "section": "05",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "indictment_flow_step5",
@@ -217,7 +241,7 @@
       "summary": "Step 5: File indictment and serve on accused.",
       "section": "05",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "indictment_flow_step6",
@@ -226,7 +250,7 @@
       "summary": "Step 6: Consider amendment, severance, or joinder issues.",
       "section": "05",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "indictment_flow_step7",
@@ -235,7 +259,7 @@
       "summary": "Step 7: Arraignment and plea to each count.",
       "section": "05",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "indictment_flow_step8",
@@ -244,7 +268,7 @@
       "summary": "Step 8: Proceed to trial or other disposal (guilty plea, discharge, etc.).",
       "section": "05",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     }
   ]
 }

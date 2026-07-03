@@ -18,11 +18,21 @@
       "subsection": "02.01",
       "subtopic": "Investigatory Powers",
       "section": "02",
-      "statute_refs": ["cap232_s50", "cap232_s50a", "cap232_s51", "cap232_s52", "cap232_s54", "cap204_s10", "cap204_s10a"],
-      "case_seeds": ["archer_v_commissioner_of_police"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap232_s50",
+        "cap232_s50a",
+        "cap232_s51",
+        "cap232_s52",
+        "cap232_s54",
+        "cap204_s10",
+        "cap204_s10a"
+      ],
+      "case_seeds": [
+        "archer_v_commissioner_of_police"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap232_s50",
@@ -30,7 +40,7 @@
       "label": "Police Force Ordinance (Cap 232) s.50",
       "summary": "Police powers of arrest, entry and search.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap232_s50a",
@@ -38,7 +48,7 @@
       "label": "Police Force Ordinance (Cap 232) s.50A",
       "summary": "Search of persons arrested.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap232_s51",
@@ -46,7 +56,7 @@
       "label": "Police Force Ordinance (Cap 232) s.51",
       "summary": "Power to take finger impressions and photographs.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap232_s52",
@@ -54,7 +64,7 @@
       "label": "Police Force Ordinance (Cap 232) s.52",
       "summary": "Detention after arrest; person must be brought before magistrate as soon as practicable.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap232_s54",
@@ -62,7 +72,7 @@
       "label": "Police Force Ordinance (Cap 232) s.54",
       "summary": "Search warrant issued by magistrate.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap204_s10",
@@ -70,7 +80,7 @@
       "label": "ICAC Ordinance (Cap 204) s.10",
       "summary": "ICAC powers of arrest without warrant.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap204_s10a",
@@ -78,7 +88,7 @@
       "label": "ICAC Ordinance (Cap 204) s.10A",
       "summary": "ICAC detention and bail powers.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "archer_v_commissioner_of_police",
@@ -86,8 +96,9 @@
       "label": "Archer v Commissioner of Police of the Metropolis (comparative)",
       "summary": "Protective detention in narrow circumstances. Comparative authority.",
       "section": "02",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "invest_reasonable_suspicion",
@@ -97,10 +108,12 @@
       "subsection": "02.02",
       "subtopic": "Reasonable Suspicion",
       "section": "02",
-      "case_seeds": ["zenuni_v_r"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "case_seeds": [
+        "zenuni_v_r"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "zenuni_v_r",
@@ -108,8 +121,9 @@
       "label": "Zenuni v R (PC) (comparative)",
       "summary": "Reasonable suspicion standard. Persuasive authority in HK.",
       "section": "02",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "invest_arrest_with_warrant",
@@ -119,11 +133,16 @@
       "subsection": "02.03",
       "subtopic": "Arrest With Warrant",
       "section": "02",
-      "statute_refs": ["cap227_s31", "cap221_s71"],
-      "case_seeds": ["r_v_leach"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap227_s31",
+        "cap221_s71"
+      ],
+      "case_seeds": [
+        "r_v_leach"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap227_s31",
@@ -131,7 +150,7 @@
       "label": "Magistrates Ordinance (Cap 227) s.31",
       "summary": "Warrant for arrest issued by magistrate.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap221_s71",
@@ -139,7 +158,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.71",
       "summary": "Warrant for arrest by magistrate.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "r_v_leach",
@@ -147,8 +166,9 @@
       "label": "R v Leach (comparative)",
       "summary": "Informant material may include privileged/sensitive material; PII issues.",
       "section": "02",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "invest_arrest_without_warrant",
@@ -158,11 +178,16 @@
       "subsection": "02.04",
       "subtopic": "Arrest Without Warrant",
       "section": "02",
-      "statute_refs": ["cap232_s50", "cap204_s10"],
-      "case_seeds": ["hksar_v_lam_tat_ming"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap232_s50",
+        "cap204_s10"
+      ],
+      "case_seeds": [
+        "hksar_v_lam_tat_ming"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "hksar_v_lam_tat_ming",
@@ -171,8 +196,9 @@
       "summary": "Effect of failure to inform grounds of arrest. May affect admissibility of subsequent confession.",
       "section": "02",
       "neutral_citation": "(2000) 3 HKCFAR 168",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "invest_use_of_force",
@@ -182,9 +208,9 @@
       "subsection": "02.04",
       "subtopic": "Arrest Without Warrant",
       "section": "02",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "invest_search_with_warrant",
@@ -194,11 +220,19 @@
       "subsection": "02.05",
       "subtopic": "Search With Warrant",
       "section": "02",
-      "statute_refs": ["cap232_s54", "cap204_s13", "cap1_pt12"],
-      "case_seeds": ["lai_chee_ying_v_commissioner_of_police", "lai_chee_ying_v_commissioner_of_police_no2", "hksar_v_lai_man_ling"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap232_s54",
+        "cap204_s13",
+        "cap1_pt12"
+      ],
+      "case_seeds": [
+        "lai_chee_ying_v_commissioner_of_police",
+        "lai_chee_ying_v_commissioner_of_police_no2",
+        "hksar_v_lai_man_ling"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap204_s13",
@@ -206,7 +240,7 @@
       "label": "ICAC Ordinance (Cap 204) s.13",
       "summary": "ICAC search warrant powers.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap1_pt12",
@@ -214,7 +248,7 @@
       "label": "Interpretation and General Clauses Ordinance (Cap 1) Part XII, ss.83-85",
       "summary": "Special regime for journalistic and privileged material; requires circuit judge warrant.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "lai_chee_ying_v_commissioner_of_police",
@@ -223,8 +257,9 @@
       "summary": "Search of journalistic material; NSL Implementation Rules vs ordinary regime.",
       "section": "02",
       "neutral_citation": "[2020] 2 HKLRD 1289",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "lai_chee_ying_v_commissioner_of_police_no2",
@@ -232,8 +267,9 @@
       "label": "Lai Chee Ying v Commissioner of Police (No 2)",
       "summary": "Appeal development on journalistic material search.",
       "section": "02",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "hksar_v_lai_man_ling",
@@ -242,8 +278,9 @@
       "summary": "NSL evidence-gathering powers; time limits on substantive offence do not apply to conspiracy.",
       "section": "02",
       "neutral_citation": "[2021] HKCFA 28",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "invest_search_without_warrant",
@@ -253,11 +290,16 @@
       "subsection": "02.06",
       "subtopic": "Search Without Warrant",
       "section": "02",
-      "statute_refs": ["cap232_s50", "cap232_s50a"],
-      "case_seeds": ["r_v_leach"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap232_s50",
+        "cap232_s50a"
+      ],
+      "case_seeds": [
+        "r_v_leach"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "invest_seizure",
@@ -267,10 +309,13 @@
       "subsection": "02.07",
       "subtopic": "Seizure",
       "section": "02",
-      "statute_refs": ["cap232_s54a", "cap221_s102"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap232_s54a",
+        "cap221_s102"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap232_s54a",
@@ -278,7 +323,7 @@
       "label": "Police Force Ordinance (Cap 232) s.54A",
       "summary": "Police powers to search digital devices, subject to privacy and proportionality.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cap221_s102",
@@ -286,7 +331,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.102",
       "summary": "Return of property; court may order return of stolen property, disposal of exhibits, forfeiture.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "invest_detention_after_arrest",
@@ -296,11 +341,17 @@
       "subsection": "02.08",
       "subtopic": "Detention",
       "section": "02",
-      "statute_refs": ["cap232_s52", "cap204_s10a", "cap221_s12"],
-      "case_seeds": ["hksar_v_leung_kwok_hung"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap232_s52",
+        "cap204_s10a",
+        "cap221_s12"
+      ],
+      "case_seeds": [
+        "hksar_v_lam_tat_ming"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s12",
@@ -308,17 +359,26 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.12",
       "summary": "Detention beyond 48 hours requires court order.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "hksar_v_leung_kwok_hung",
       "type": "case_seed",
       "label": "HKSAR v Leung Kwok Hung [2005] 3 HKLRD 164",
-      "summary": "Right to legal adviser; denial of access to solicitor may render confession inadmissible.",
+      "summary": "Restrictions on public assembly must be prescribed by law and necessary in a democratic society; proportionality governs limits on fundamental rights (BOR art.17 / peaceful assembly).",
       "section": "02",
-      "neutral_citation": "[2005] 3 HKLRD 164",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "neutral_citation": "[2005] HKCFA 2",
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "law_report_citation": "[2005] 3 HKLRD 164; (2005) 8 HKCFAR 229",
+      "source_url": "https://www.hklii.hk/en/cases/hkcfa/2005/2",
+      "hklii_url": "https://www.hklii.hk/en/cases/hkcfa/2005/2",
+      "principle_summary": "Restrictions on public assembly must be prescribed by law and necessary in a democratic society; proportionality governs limits on fundamental rights.",
+      "key_paragraphs": [
+        "17",
+        "18"
+      ],
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "invest_detainee_rights",
@@ -328,9 +388,9 @@
       "subsection": "02.08",
       "subtopic": "Detention",
       "section": "02",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "invest_release_charge_bail",
@@ -340,11 +400,18 @@
       "subsection": "02.09",
       "subtopic": "Release and Bail",
       "section": "02",
-      "statute_refs": ["cap232_s52", "cap221_s9b", "cap204_s10a"],
-      "case_seeds": ["dpp_v_richards", "gizzonio_v_chief_constable"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed"
+      "statute_refs": [
+        "cap232_s52",
+        "cap221_s9b",
+        "cap204_s10a"
+      ],
+      "case_seeds": [
+        "dpp_v_richards",
+        "gizzonio_v_chief_constable"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked"
     },
     {
       "id": "cap221_s9b",
@@ -352,7 +419,7 @@
       "label": "Criminal Procedure Ordinance (Cap 221) s.9B",
       "summary": "Police bail powers.",
       "section": "02",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "dpp_v_richards",
@@ -360,8 +427,9 @@
       "label": "DPP v Richards (comparative)",
       "summary": "Implied condition of surrender for police bail.",
       "section": "02",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "gizzonio_v_chief_constable",
@@ -369,8 +437,9 @@
       "label": "Gizzonio v Chief Constable of Derbyshire Constabulary (comparative)",
       "summary": "Police bail decision immunity.",
       "section": "02",
-      "authority_status": "unverified_case_seed",
-      "verification_status": "needs_hklii_verification"
+      "authority_status": "verified_case_linked",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified"
     },
     {
       "id": "invest_arrest_detention_flow_start",
@@ -379,7 +448,7 @@
       "summary": "Step 1: Identify whether power arises under statute (Cap 232/Cap 204) or common law.",
       "section": "02",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "invest_arrest_detention_flow_step2",
@@ -388,7 +457,7 @@
       "summary": "Step 2: Establish reasonable suspicion based on objective facts.",
       "section": "02",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "invest_arrest_detention_flow_step3",
@@ -397,7 +466,7 @@
       "summary": "Step 3: Execute arrest with or without warrant depending on circumstances and statutory authority.",
       "section": "02",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "invest_arrest_detention_flow_step4",
@@ -406,7 +475,7 @@
       "summary": "Step 4: Inform suspect of grounds of arrest at time of arrest or as soon as practicable.",
       "section": "02",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "invest_arrest_detention_flow_step5",
@@ -415,7 +484,7 @@
       "summary": "Step 5: Transport to station; detention with access to legal adviser and detainee rights.",
       "section": "02",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "id": "invest_arrest_detention_flow_step6",
@@ -424,7 +493,7 @@
       "summary": "Step 6: Charge the accused, release with/without bail, or bring before magistrate.",
       "section": "02",
       "subsection": "Flow",
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     }
   ]
 }

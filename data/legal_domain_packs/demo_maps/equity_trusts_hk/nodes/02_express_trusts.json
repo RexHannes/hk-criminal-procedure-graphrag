@@ -11,7 +11,7 @@
       "summary": "The three certainties (intention, subject matter, objects), formalities, constitution of trusts, sham and illusory trusts, and secret trusts.",
       "section": "02",
       "verification_status": "book_seed_needs_case_and_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "textbook_seed_only",
       "human_review_status": "unreviewed"
     },
@@ -28,9 +28,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -44,12 +44,15 @@
       "subsection": "02.01",
       "subtopic": "Certainty of Intention",
       "source_basis": "book_seed",
-      "case_seeds": ["case_hong_thai", "case_fu_chuen_sang"],
+      "case_seeds": [
+        "case_hong_thai",
+        "case_fu_chuen_sang"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -63,12 +66,17 @@
       "subsection": "02.01",
       "subtopic": "Certainty of Subject Matter",
       "source_basis": "book_seed",
-      "case_seeds": ["case_re_london_wine", "case_re_goldcorp", "case_hunter_moss", "case_re_ca_pacific"],
+      "case_seeds": [
+        "case_re_london_wine",
+        "case_re_goldcorp",
+        "case_hunter_moss",
+        "case_re_ca_pacific"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -82,12 +90,14 @@
       "subsection": "02.01",
       "subtopic": "Certainty of Objects",
       "source_basis": "book_seed",
-      "case_seeds": ["case_hong_thai"],
+      "case_seeds": [
+        "case_hong_thai"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -102,11 +112,13 @@
       "subtopic": "Formalities and Constitution",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap219_cpo"],
+      "statute_refs": [
+        "cap219_cpo"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -120,12 +132,14 @@
       "subsection": "02.03",
       "subtopic": "Sham Trusts",
       "source_basis": "book_seed",
-      "case_seeds": ["case_pugachev"],
+      "case_seeds": [
+        "case_pugachev"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -139,12 +153,16 @@
       "subsection": "02.03",
       "subtopic": "Illusory Trusts",
       "source_basis": "book_seed",
-      "case_seeds": ["case_chu_wai_tung", "case_clayton", "case_webb"],
+      "case_seeds": [
+        "case_chu_wai_tung",
+        "case_clayton",
+        "case_webb"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -158,12 +176,14 @@
       "subsection": "02.04",
       "subtopic": "Secret Trusts",
       "source_basis": "book_seed",
-      "case_seeds": ["case_tsang_tat_hung"],
+      "case_seeds": [
+        "case_tsang_tat_hung"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -180,9 +200,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -194,9 +214,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -207,9 +227,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -220,9 +240,9 @@
       "section": "02",
       "court": "ChD (Eng)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -234,9 +254,9 @@
       "neutral_citation": "[1995] 1 AC 74",
       "court": "PC",
       "jurisdiction": "UK/PC",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -248,9 +268,9 @@
       "neutral_citation": "[1994] 1 WLR 452",
       "court": "CA (Eng)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -261,9 +281,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -275,9 +295,9 @@
       "neutral_citation": "[2017] EWHC 2426 (Ch)",
       "court": "ChD (Eng)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -288,9 +308,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -301,9 +321,9 @@
       "section": "02",
       "court": "NZSC",
       "jurisdiction": "NZ",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -315,9 +335,9 @@
       "neutral_citation": "[2020] UKPC 22",
       "court": "PC",
       "jurisdiction": "UK/PC",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -328,9 +348,9 @@
       "section": "02",
       "court": "CFI",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -339,9 +359,9 @@
       "label": "Verify HK Secret Trust Cases and Formalities",
       "summary": "Research and verify HK cases on secret trusts (fully secret and half-secret), formalities under Cap 219 s.5, and constitution of trusts.",
       "section": "02",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     }
   ]

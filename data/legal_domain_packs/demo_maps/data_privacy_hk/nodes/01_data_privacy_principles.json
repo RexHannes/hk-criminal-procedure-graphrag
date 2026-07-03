@@ -13,8 +13,8 @@
       "section": "01",
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -25,11 +25,18 @@
       "summary": "When information or a photograph is personal data, including identifiability and relevance of the subject's identity.",
       "section": "01",
       "subsection": "01.01",
-      "search_terms": ["personal data", "identifiable", "identity", "photograph", "data subject", "collection"],
+      "search_terms": [
+        "personal data",
+        "identifiable",
+        "identity",
+        "photograph",
+        "data subject",
+        "collection"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -40,11 +47,19 @@
       "summary": "Data Protection Principle 1 restrictions on collection purpose, necessity/direct relationship and adequacy/non-excessiveness.",
       "section": "01",
       "subsection": "01.02",
-      "search_terms": ["DPP1", "data protection principle 1", "lawful purpose", "necessary", "directly related", "not excessive", "collection"],
+      "search_terms": [
+        "DPP1",
+        "data protection principle 1",
+        "lawful purpose",
+        "necessary",
+        "directly related",
+        "not excessive",
+        "collection"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -55,11 +70,18 @@
       "summary": "Data Protection Principle 1 requirement that personal data collection means be lawful and fair in the circumstances.",
       "section": "01",
       "subsection": "01.03",
-      "search_terms": ["DPP1", "fair collection", "lawful collection", "fair in the circumstances", "means of collection", "consent"],
+      "search_terms": [
+        "DPP1",
+        "fair collection",
+        "lawful collection",
+        "fair in the circumstances",
+        "means of collection",
+        "consent"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -70,11 +92,20 @@
       "summary": "Collection of employee medical records, occupational-health purposes, consent pressure, disciplinary context and proportionality/fairness issues.",
       "section": "01",
       "subsection": "01.04",
-      "search_terms": ["employee", "employer", "medical records", "cabin crew", "consent", "disciplinary", "sick leave", "health monitoring"],
+      "search_terms": [
+        "employee",
+        "employer",
+        "medical records",
+        "cabin crew",
+        "consent",
+        "disciplinary",
+        "sick leave",
+        "health monitoring"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -85,11 +116,18 @@
       "summary": "Privacy Commissioner investigation outcomes, enforcement notices, Administrative Appeals Board appeals and judicial review.",
       "section": "01",
       "subsection": "01.05",
-      "search_terms": ["Privacy Commissioner", "PCPD", "enforcement notice", "Administrative Appeals Board", "AAB", "judicial review"],
+      "search_terms": [
+        "Privacy Commissioner",
+        "PCPD",
+        "enforcement notice",
+        "Administrative Appeals Board",
+        "AAB",
+        "judicial review"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     },
     {
@@ -100,11 +138,17 @@
       "summary": "Placeholder branch for direct marketing controls, doxxing offences and later statutory enforcement materials.",
       "section": "01",
       "subsection": "01.06",
-      "search_terms": ["direct marketing", "doxxing", "personal data offence", "PCPD", "statutory offence"],
+      "search_terms": [
+        "direct marketing",
+        "doxxing",
+        "personal data offence",
+        "PCPD",
+        "statutory offence"
+      ],
       "source_card_ids": [],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "candidate_tree_seed",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_tree_seed",
       "human_review_status": "unreviewed"
     }
   ]

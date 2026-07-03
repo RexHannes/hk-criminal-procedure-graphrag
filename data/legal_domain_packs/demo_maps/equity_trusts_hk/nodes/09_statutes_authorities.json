@@ -11,7 +11,7 @@
       "summary": "Key Hong Kong ordinances governing trusts: Trustee Ordinance, Perpetuities and Accumulations Ordinance, Conveyancing and Property Ordinance, and the regulatory framework for charities.",
       "section": "09",
       "verification_status": "book_seed_needs_case_and_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "textbook_seed_only",
       "human_review_status": "unreviewed"
     },
@@ -26,11 +26,13 @@
       "subtopic": "Trustee Ordinance Overview",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap29_trustee_ordinance"],
+      "statute_refs": [
+        "cap29_trustee_ordinance"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -45,11 +47,13 @@
       "subtopic": "Trustee Powers",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap29_trustee_ordinance"],
+      "statute_refs": [
+        "cap29_trustee_ordinance"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -64,11 +68,15 @@
       "subtopic": "Trustee Investment",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap29_trustee_ordinance"],
-      "cross_refs": ["equity_trustee_duty_invest"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "statute_refs": [
+        "cap29_trustee_ordinance"
+      ],
+      "cross_refs": [
+        "equity_trustee_duty_invest"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -83,11 +91,13 @@
       "subtopic": "Duty of Care",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap29_trustee_ordinance"],
+      "statute_refs": [
+        "cap29_trustee_ordinance"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -102,11 +112,15 @@
       "subtopic": "Advancement Powers",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap29_trustee_ordinance"],
-      "cross_refs": ["equity_trustee_powers_advancement"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "statute_refs": [
+        "cap29_trustee_ordinance"
+      ],
+      "cross_refs": [
+        "equity_trustee_powers_advancement"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -121,11 +135,13 @@
       "subtopic": "Perpetuities",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap2_perpetuities"],
+      "statute_refs": [
+        "cap2_perpetuities"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -140,11 +156,15 @@
       "subtopic": "CPO Formalities",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap219_cpo"],
-      "cross_refs": ["equity_formalities_writing"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "statute_refs": [
+        "cap219_cpo"
+      ],
+      "cross_refs": [
+        "equity_formalities_writing"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -160,10 +180,12 @@
       "source_basis": "book_seed",
       "case_seeds": [],
       "statute_refs": [],
-      "cross_refs": ["equity_pemsel_heads"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "cross_refs": [
+        "equity_pemsel_heads"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -173,8 +195,8 @@
       "label": "Trustee Ordinance (Cap 29)",
       "summary": "Primary HK statute governing trustee powers, duties, investment, delegation, advancement, and statutory duty of care.",
       "section": "09",
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_statutory_anchor",
       "human_review_status": "unreviewed"
     },
@@ -184,8 +206,8 @@
       "label": "Perpetuities and Accumulations Ordinance (Cap 2)",
       "summary": "HK statute governing the rule against perpetuities and accumulations in trusts.",
       "section": "09",
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_statutory_anchor",
       "human_review_status": "unreviewed"
     },
@@ -195,8 +217,8 @@
       "label": "Conveyancing and Property Ordinance (Cap 219)",
       "summary": "HK statute governing formalities for creation of trusts of land and disposition of equitable interests.",
       "section": "09",
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_statutory_anchor",
       "human_review_status": "unreviewed"
     },
@@ -206,8 +228,8 @@
       "label": "Verify Statutory Provisions and Anchors",
       "summary": "Verify specific sections of Cap 29 (Trustee Ordinance), Cap 2 (Perpetuities), Cap 219 (CPO) and confirm precise section numbers and current legislative text. Identify any recent amendments.",
       "section": "09",
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_statutory_anchor",
       "human_review_status": "unreviewed"
     }

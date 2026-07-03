@@ -2,28 +2,120 @@
   "section_id": "07",
   "domain_id": "tort_law_hk",
   "edges": [
-    { "from": "tort_defamation_privacy", "to": "tort_defamation_overview", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "tort_defamation_elements", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "tort_libel_distinction", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "tort_defamation_justification", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "tort_defamation_fair_comment_honest_opinion", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "tort_defamation_absolute_privilege", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "tort_defamation_qualified_privilege", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "tort_defamation_reynolds_defence", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "tort_defamation_offer_amends", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "tort_defamation_internet_publishers", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "tort_defamation_remedies", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_privacy", "to": "tort_privacy_overview", "relationship": "has_subtopic" },
-    { "from": "tort_privacy_overview", "to": "tort_misuse_private_information", "relationship": "has_subtopic" },
-    { "from": "tort_privacy_overview", "to": "tort_breach_of_confidence", "relationship": "has_subtopic" },
-    { "from": "tort_defamation_overview", "to": "cap21_defamation", "relationship": "statutory_anchor" },
-    { "from": "tort_defamation_elements", "to": "cap21_defamation", "relationship": "statutory_anchor" },
-    { "from": "tort_defamation_offer_amends", "to": "cap21_defamation", "relationship": "statutory_anchor" },
-    { "from": "tort_defamation_internet_publishers", "to": "cap21_defamation", "relationship": "statutory_anchor" },
-    { "from": "tort_defamation_remedies", "to": "tort_damages_compensatory", "relationship": "cross_reference" },
-    { "from": "tort_defamation_remedies", "to": "tort_damages_aggravated", "relationship": "cross_reference" },
-    { "from": "tort_defamation_privacy", "to": "case_east_week_weekly", "relationship": "case_seed" },
-    { "from": "tort_defamation_privacy", "to": "case_cheung_yu_shing", "relationship": "case_seed" },
-    { "from": "tort_defamation_privacy", "to": "gap_verify_hk_defamation_ordinance", "relationship": "has_subtopic" }
+    {
+      "from": "tort_defamation_privacy",
+      "to": "tort_defamation_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "tort_defamation_elements",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "tort_libel_distinction",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "tort_defamation_justification",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "tort_defamation_fair_comment_honest_opinion",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "tort_defamation_absolute_privilege",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "tort_defamation_qualified_privilege",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "tort_defamation_reynolds_defence",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "tort_defamation_offer_amends",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "tort_defamation_internet_publishers",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "tort_defamation_remedies",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_privacy",
+      "to": "tort_privacy_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_privacy_overview",
+      "to": "tort_misuse_private_information",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_privacy_overview",
+      "to": "tort_breach_of_confidence",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_defamation_overview",
+      "to": "cap21_defamation",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_defamation_elements",
+      "to": "cap21_defamation",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_defamation_offer_amends",
+      "to": "cap21_defamation",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_defamation_internet_publishers",
+      "to": "cap21_defamation",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_defamation_remedies",
+      "to": "tort_damages_compensatory",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_defamation_remedies",
+      "to": "tort_damages_aggravated",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_defamation_privacy",
+      "to": "case_east_week_weekly",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_defamation_privacy",
+      "to": "case_cheung_yu_shing",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_defamation_privacy",
+      "to": "gap_verify_hk_defamation_ordinance",
+      "relationship": "has_subtopic"
+    }
   ]
 }

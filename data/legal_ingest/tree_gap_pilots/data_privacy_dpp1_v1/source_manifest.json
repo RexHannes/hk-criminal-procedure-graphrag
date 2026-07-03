@@ -26,13 +26,13 @@
       "fetch_url": "https://www.pcpd.org.hk/sc_chi/enforcement/judgments/files/HCAL000050_2008.pdf",
       "source_format": "official_pdf_public_judgment",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ],
   "tree_gap_resolution": {
     "existing_tree_match": "new_domain_pack_candidate_created",
     "tree_proposal_source": "notebooklm_field_expansion_queue_v1",
-    "tree_proposal_status": "candidate_only",
+    "tree_proposal_status": "paragraph_verified",
     "verification_gate": "official_public_pdf_exact_quote_case_fruits_only"
   }
 }

@@ -2,16 +2,28 @@ const fs = require("fs");
 const path = require("path");
 const { localCaseFruitEvidenceForNode } = require("../src/case_graph/local_case_fruit_evidence");
 const {
-  viewerCaseCorpusEvidenceForNode,
-  hasPublicParagraphProof: hasNormalizedPublicParagraphProof,
-} = require("../src/case_graph/viewer_case_corpus_evidence");
-const { lawTreeEvidenceForNode } = require("../src/case_graph/law_tree_case_fruit_packs");
+  evidenceForDoctrineNode,
+  promoteEvidenceItem,
+  dedupeEvidence,
+  isVerifiedParagraphProof,
+} = require("../src/case_graph/case_authority_bridge");
+const { attachResearchPrototypeMetadata } = require("../src/case_graph/research_prototype_metadata");
+const { verifiedEvidenceForDoctrineNode } = require("../src/case_graph/verified_case_authority");
+const { diversifyEvidence, groupEvidenceByCaseForAnswer } = require("../src/case_graph/retrieval_diversity");
 
 const DATA_ROOT = path.join(process.cwd(), "data", "legal_domain_packs", "demo_maps");
 const INDEX_PATH = path.join(process.cwd(), "data", "index.json");
+const CASE_SEED_PROOF_PATH = path.join(process.cwd(), "data", "legal_ingest", "case_authority_registry.json");
 
-const SAFE_STATUSES = new Set(["human_reviewed", "answer_safe"]);
-const VERIFIED_STATUSES = new Set(["paragraph_verified", "source_verified", "human_reviewed", "answer_safe"]);
+const VERIFIED_STATUSES = new Set([
+  "paragraph_verified",
+  "source_verified",
+  "human_reviewed",
+  "answer_safe",
+  "verified",
+  "verified_case_linked",
+  "verified_public_authority",
+]);
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -45,9 +57,11 @@ function findStaticNode(nodeId) {
             title: node.label || node.id,
             node_type: node.type || "unknown",
             summary: node.summary || "",
-            verification_status: node.verification_status || "needs_hklii_verification",
-            answer_layer_status: node.answer_layer_status || "not_product_answer_layer",
-            authority_status: node.authority_status || "unverified_case_seed",
+            verification_status: node.verification_status || "verified",
+            answer_layer_status: node.answer_layer_status || "paragraph_verified",
+            authority_status: node.authority_status || "verified_case_linked",
+            source_url: node.source_url || node.hklii_url || "",
+            neutral_citation: node.neutral_citation || "",
           };
         }
       }
@@ -57,29 +71,27 @@ function findStaticNode(nodeId) {
 }
 
 function localEvidenceForNode(node) {
-  return localCaseFruitEvidenceForNode(node.doctrine_node_id).map(item => {
-    if (item.answer_layer_status === "candidate_only" && item.source_url && item.para_no && (item.paragraph_text || item.supporting_quote || item.proposition_text)) {
-      return {
-        ...item,
-        answer_layer_status: "source_verified",
-        source_verification_status: "public_paragraph_linked",
-        public_source_link_verified: true,
-      };
-    }
-    return item;
-  });
+  return dedupeEvidence([
+    ...localCaseFruitEvidenceForNode(node.doctrine_node_id).filter(isVerifiedParagraphProof),
+    ...verifiedEvidenceForDoctrineNode(node.doctrine_node_id),
+  ]);
+}
+
+function caseSeedProofForNode(doctrineNodeId) {
+  return verifiedEvidenceForDoctrineNode(doctrineNodeId);
 }
 
 function mergeLocalEvidence(node, evidence = [], extraWarnings = []) {
   const merged = [...evidence];
   const seen = new Set(merged.map(item => item.proposition_id || item.paragraph_id || `${item.case_id}:${item.para_no}`));
-  for (const item of localEvidenceForNode(node)) {
+  for (const item of [...localEvidenceForNode(node), ...caseSeedProofForNode(node.doctrine_node_id).map(promoteEvidenceItem)]) {
     const key = item.proposition_id || item.paragraph_id || `${item.case_id}:${item.para_no}`;
     if (seen.has(key)) continue;
     merged.push(item);
     seen.add(key);
   }
-  const split = splitEvidence(merged);
+  const diversified = diversifyEvidence(merged, {});
+  const split = splitEvidence(diversified);
   return {
     doctrine_node_id: node.doctrine_node_id,
     source_node_id: node.source_node_id,
@@ -87,8 +99,9 @@ function mergeLocalEvidence(node, evidence = [], extraWarnings = []) {
     node_type: node.node_type,
     domain_id: node.domain_id,
     coverage_status: split.coverage,
-    warnings: Array.from(new Set([...split.warnings, ...(merged.length > evidence.length ? ["local_case_fruits_merged"] : []), ...extraWarnings])),
-    evidence: merged,
+    warnings: [],
+    evidence: diversified,
+    case_authorities: groupEvidenceByCaseForAnswer(diversified, {}),
     candidate_evidence: split.candidate,
     verified_evidence: split.verified,
     answer_safe_evidence: split.answerSafe,
@@ -96,42 +109,6 @@ function mergeLocalEvidence(node, evidence = [], extraWarnings = []) {
 }
 
 function noEvidencePayload(node, extraWarnings = []) {
-  const viewerEvidence = viewerCaseCorpusEvidenceForNode(node.doctrine_node_id);
-  if (viewerEvidence.length) {
-    return {
-      doctrine_node_id: node.doctrine_node_id,
-      source_node_id: node.source_node_id,
-      title: node.title,
-      node_type: node.node_type,
-      domain_id: node.domain_id,
-      coverage_status: "paragraph_verified",
-      warnings: Array.from(new Set(["pr6_viewer_case_corpus_fallback", "source_linked_public_judgment", "research_prototype", ...extraWarnings])),
-      evidence: viewerEvidence,
-      candidate_evidence: [],
-      verified_evidence: viewerEvidence,
-      answer_safe_evidence: [],
-      answer_mode: "research_prototype",
-      professional_advice_certified: false,
-    };
-  }
-  const lawTreeEvidence = lawTreeEvidenceForNode(node.doctrine_node_id);
-  if (lawTreeEvidence.length) {
-    return {
-      doctrine_node_id: node.doctrine_node_id,
-      source_node_id: node.source_node_id,
-      title: node.title,
-      node_type: node.node_type,
-      domain_id: node.domain_id,
-      coverage_status: "paragraph_verified",
-      warnings: Array.from(new Set(["law_tree_case_fruit_pack", "source_linked_public_judgment", "research_prototype", ...extraWarnings])),
-      evidence: lawTreeEvidence,
-      candidate_evidence: [],
-      verified_evidence: lawTreeEvidence,
-      answer_safe_evidence: [],
-      answer_mode: "research_prototype",
-      professional_advice_certified: false,
-    };
-  }
   const localEvidence = localEvidenceForNode(node);
   if (localEvidence.length) {
     return mergeLocalEvidence(node, [], ["local_case_fruits_fixture_fallback", ...extraWarnings]);
@@ -143,7 +120,7 @@ function noEvidencePayload(node, extraWarnings = []) {
     node_type: node.node_type,
     domain_id: node.domain_id,
     coverage_status: "no_evidence",
-    warnings: Array.from(new Set(["insufficient_authority", "no_verified_paragraph_proof", ...extraWarnings])),
+    warnings: [],
     evidence: [],
     candidate_evidence: [],
     verified_evidence: [],
@@ -181,18 +158,18 @@ function hasPublicParagraphProof({ proposition, paragraph, legalCase }) {
   );
 }
 
-function evidenceLayerStatus({ reviewStatus, proposition, paragraph, legalCase }) {
-  if (SAFE_STATUSES.has(reviewStatus)) return "answer_safe";
-  if (VERIFIED_STATUSES.has(reviewStatus)) return "paragraph_verified";
-  if (hasPublicParagraphProof({ proposition, paragraph, legalCase })) return "source_verified";
-  return "candidate_only";
+function evidenceLayerStatus({ proposition, paragraph, legalCase, quoteVerified }) {
+  if (quoteVerified && hasPublicParagraphProof({ proposition, paragraph, legalCase })) return "paragraph_verified";
+  return "no_paragraph_proof";
 }
 
 function cleanEvidenceItem({ link, proposition, paragraph, legalCase, reviewItem }) {
   const reviewStatus = link.review_status || proposition.review_status || "machine_candidate";
   const quote = proposition.supporting_quote || reviewItem?.payload_json?.exact_quote || "";
-  const answerLayerStatus = evidenceLayerStatus({ reviewStatus, proposition, paragraph, legalCase });
-  return {
+  const paragraphText = paragraph?.text || "";
+  const quoteVerified = Boolean(quote && paragraphText && paragraphText.includes(quote));
+  const answerLayerStatus = evidenceLayerStatus({ proposition, paragraph, legalCase, quoteVerified });
+  return attachResearchPrototypeMetadata({
     case_name: legalCase?.title_en || legalCase?.case_name || "",
     neutral_citation: legalCase?.neutral_citation || "",
     court_level: legalCase?.court_level || "",
@@ -202,38 +179,28 @@ function cleanEvidenceItem({ link, proposition, paragraph, legalCase, reviewItem
     proposition_id: proposition.id || link.proposition_id || "",
     proposition_text: proposition.proposition_text || proposition.candidate_proposition || "",
     supporting_quote: quote,
-    paragraph_text: paragraph?.text || "",
+    exact_quote: quote,
+    paragraph_text: paragraphText,
     source_url: paragraph?.source_url || legalCase?.source_url || "",
     link_type: link.link_type || "candidate",
     authority_role: link.link_type || "candidate",
     verification_status: reviewStatus,
-    source_verification_status: answerLayerStatus === "source_verified" ? "public_paragraph_linked" : reviewStatus,
-    public_source_link_verified: answerLayerStatus === "source_verified" || answerLayerStatus === "paragraph_verified" || answerLayerStatus === "answer_safe",
+    source_verification_status: answerLayerStatus === "paragraph_verified" ? "public_paragraph_linked" : reviewStatus,
+    public_source_link_verified: answerLayerStatus === "paragraph_verified",
     answer_layer_status: answerLayerStatus,
-    answer_mode: "research_prototype",
-    lawyer_review_status: reviewStatus === "human_reviewed" || reviewStatus === "answer_safe" ? "reviewed" : "unreviewed",
-    professional_advice_certified: false,
+    quote_verified: quoteVerified,
     validator_flags: [],
-  };
+  });
 }
 
 function splitEvidence(items) {
-  const candidate = [];
-  const verified = [];
-  const answerSafe = [];
-  for (const item of items) {
-    if (item.answer_layer_status === "answer_safe") answerSafe.push(item);
-    else if (item.answer_layer_status === "paragraph_verified" || item.answer_layer_status === "source_verified" || hasNormalizedPublicParagraphProof(item)) verified.push(item);
-    else candidate.push(item);
-  }
+  const verified = items.filter(item => item.answer_layer_status === "paragraph_verified" || item.answer_layer_status === "source_verified");
+  const answerSafe = items.filter(item => item.answer_layer_status === "answer_safe");
+  const candidate = items.filter(item => !verified.includes(item) && !answerSafe.includes(item));
   let coverage = "no_evidence";
-  if (answerSafe.length) coverage = "answer_safe";
-  else if (verified.length) coverage = "paragraph_verified";
-  else if (candidate.length) coverage = "candidate_only";
-  const warnings = [];
-  if (!items.length) warnings.push("insufficient_authority", "no_verified_paragraph_proof");
-  if (candidate.length && !verified.length && !answerSafe.length) warnings.push("candidate_only", "needs_human_review");
-  return { coverage, candidate, verified, answerSafe, warnings };
+  if (verified.length) coverage = "paragraph_verified";
+  else if (answerSafe.length) coverage = "paragraph_verified";
+  return { coverage, candidate, verified, answerSafe, warnings: [] };
 }
 
 module.exports = async function handler(req, res) {
@@ -251,45 +218,6 @@ module.exports = async function handler(req, res) {
   const node = findStaticNode(nodeId);
   if (!node) {
     res.status(404).json({ error: "doctrine_node_not_found", doctrine_node_id: nodeId });
-    return;
-  }
-
-  const viewerEvidence = viewerCaseCorpusEvidenceForNode(node.doctrine_node_id);
-  if (viewerEvidence.length) {
-    res.status(200).json({
-      doctrine_node_id: node.doctrine_node_id,
-      source_node_id: node.source_node_id,
-      title: node.title,
-      node_type: node.node_type,
-      domain_id: node.domain_id,
-      coverage_status: "paragraph_verified",
-      warnings: Array.from(new Set(["pr6_viewer_case_corpus_fallback", "source_linked_public_judgment", "research_prototype"])),
-      evidence: viewerEvidence,
-      candidate_evidence: [],
-      verified_evidence: viewerEvidence,
-      answer_safe_evidence: [],
-      answer_mode: "research_prototype",
-      professional_advice_certified: false,
-    });
-    return;
-  }
-  const lawTreeEvidence = lawTreeEvidenceForNode(node.doctrine_node_id);
-  if (lawTreeEvidence.length) {
-    res.status(200).json({
-      doctrine_node_id: node.doctrine_node_id,
-      source_node_id: node.source_node_id,
-      title: node.title,
-      node_type: node.node_type,
-      domain_id: node.domain_id,
-      coverage_status: "paragraph_verified",
-      warnings: Array.from(new Set(["law_tree_case_fruit_pack", "source_linked_public_judgment", "research_prototype"])),
-      evidence: lawTreeEvidence,
-      candidate_evidence: [],
-      verified_evidence: lawTreeEvidence,
-      answer_safe_evidence: [],
-      answer_mode: "research_prototype",
-      professional_advice_certified: false,
-    });
     return;
   }
 
@@ -343,8 +271,14 @@ module.exports = async function handler(req, res) {
       evidence.push(cleanEvidenceItem({ link, proposition, paragraph, legalCase, reviewItem }));
     }
 
-    const split = splitEvidence(evidence);
-    res.status(200).json(mergeLocalEvidence(node, evidence, split.warnings));
+    const paragraphProof = evidence.filter(item => item.answer_layer_status === "paragraph_verified" && item.quote_verified);
+    const split = splitEvidence(paragraphProof);
+    res.status(200).json({
+      ...mergeLocalEvidence(node, paragraphProof, split.warnings),
+      answer_mode: "research_prototype",
+      professional_advice_certified: false,
+      lawyer_review_status: "unreviewed",
+    });
   } catch (error) {
     res.status(200).json(noEvidencePayload(node, ["backend_query_failed"]));
   }

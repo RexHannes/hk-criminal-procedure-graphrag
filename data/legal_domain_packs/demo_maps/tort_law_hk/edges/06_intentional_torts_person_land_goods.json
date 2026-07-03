@@ -2,26 +2,110 @@
   "section_id": "06",
   "domain_id": "tort_law_hk",
   "edges": [
-    { "from": "tort_intentional_torts", "to": "tort_trespass_person_overview", "relationship": "has_subtopic" },
-    { "from": "tort_trespass_person_overview", "to": "tort_battery", "relationship": "has_subtopic" },
-    { "from": "tort_trespass_person_overview", "to": "tort_assault", "relationship": "has_subtopic" },
-    { "from": "tort_trespass_person_overview", "to": "tort_false_imprisonment", "relationship": "has_subtopic" },
-    { "from": "tort_intentional_torts", "to": "tort_trespass_land_overview", "relationship": "has_subtopic" },
-    { "from": "tort_trespass_land_overview", "to": "tort_trespass_land_airspace_subsurface", "relationship": "has_subtopic" },
-    { "from": "tort_intentional_torts", "to": "tort_trespass_goods_overview", "relationship": "has_subtopic" },
-    { "from": "tort_trespass_goods_overview", "to": "tort_conversion", "relationship": "has_subtopic" },
-    { "from": "tort_trespass_goods_overview", "to": "tort_detinue", "relationship": "has_subtopic" },
-    { "from": "tort_intentional_torts", "to": "tort_intentional_defences_overview", "relationship": "has_subtopic" },
-    { "from": "tort_intentional_defences_overview", "to": "tort_consent_medical", "relationship": "has_subtopic" },
-    { "from": "tort_trespass_person_overview", "to": "case_letang", "relationship": "case_seed" },
-    { "from": "tort_trespass_person_overview", "to": "case_fowler", "relationship": "case_seed" },
-    { "from": "tort_trespass_person_overview", "to": "case_kong_cheuk_ki", "relationship": "case_seed" },
-    { "from": "tort_battery", "to": "case_wong_cheuk_fai", "relationship": "case_seed" },
-    { "from": "tort_battery", "to": "case_wilson_v_pringle", "relationship": "case_seed" },
-    { "from": "tort_false_imprisonment", "to": "case_leung_ka_fai", "relationship": "case_seed" },
-    { "from": "tort_trespass_person_overview", "to": "tort_classification_intentional_vs_negligent", "relationship": "cross_reference" },
-    { "from": "tort_intentional_defences_overview", "to": "tort_negligence_volenti", "relationship": "cross_reference" },
-    { "from": "tort_intentional_defences_overview", "to": "tort_negligence_illegality", "relationship": "cross_reference" },
-    { "from": "tort_intentional_torts", "to": "gap_verify_hk_intentional_tort_cases", "relationship": "has_subtopic" }
+    {
+      "from": "tort_intentional_torts",
+      "to": "tort_trespass_person_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_trespass_person_overview",
+      "to": "tort_battery",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_trespass_person_overview",
+      "to": "tort_assault",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_trespass_person_overview",
+      "to": "tort_false_imprisonment",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_intentional_torts",
+      "to": "tort_trespass_land_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_trespass_land_overview",
+      "to": "tort_trespass_land_airspace_subsurface",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_intentional_torts",
+      "to": "tort_trespass_goods_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_trespass_goods_overview",
+      "to": "tort_conversion",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_trespass_goods_overview",
+      "to": "tort_detinue",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_intentional_torts",
+      "to": "tort_intentional_defences_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_intentional_defences_overview",
+      "to": "tort_consent_medical",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_trespass_person_overview",
+      "to": "case_letang",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_trespass_person_overview",
+      "to": "case_fowler",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_trespass_person_overview",
+      "to": "case_kong_cheuk_ki",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_battery",
+      "to": "case_wong_cheuk_fai",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_battery",
+      "to": "case_wilson_v_pringle",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_false_imprisonment",
+      "to": "case_leung_ka_fai",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_trespass_person_overview",
+      "to": "tort_classification_intentional_vs_negligent",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_intentional_defences_overview",
+      "to": "tort_negligence_volenti",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_intentional_defences_overview",
+      "to": "tort_negligence_illegality",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_intentional_torts",
+      "to": "gap_verify_hk_intentional_tort_cases",
+      "relationship": "has_subtopic"
+    }
   ]
 }

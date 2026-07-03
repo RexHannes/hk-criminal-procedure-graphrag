@@ -66,7 +66,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=127304&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "source_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
@@ -84,7 +84,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=148078&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ],
   "rules": [

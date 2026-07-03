@@ -1,0 +1,837 @@
+{
+  "artifact_id": "case_authority_relevance_report_v1",
+  "generated_at": "2026-07-03T04:07:18.828Z",
+  "trees": [
+    {
+      "tree_id": "criminal_public_order.assembly_proportionality",
+      "label": "Public assembly / proportionality",
+      "major": true,
+      "distinct_cases": 3,
+      "paragraph_cards": 20,
+      "authorities": [
+        {
+          "case_id": "hk_ca_2021_tong_wai_hung_casj_1_2020",
+          "case_name": "Secretary for Justice v Tong Wai Hung and Others",
+          "citation": "[2021] HKCA 404",
+          "case_level": "CA",
+          "paragraph_count": 14,
+          "duplicate_paragraphs_from_same_case": 13,
+          "classification": "appellate_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "public_order",
+            "peaceful_assembly",
+            "unlawful_assembly",
+            "riot",
+            "assembly"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.7,
+          "overused": true
+        },
+        {
+          "case_id": "mined_leung_kwok_hung_and_others_v_hksar_2005_hkcfa_40",
+          "case_name": "LEUNG KWOK HUNG AND OTHERS V. HKSAR",
+          "citation": "[2005] HKCFA 40",
+          "case_level": "CFA",
+          "paragraph_count": 5,
+          "duplicate_paragraphs_from_same_case": 4,
+          "classification": "leading_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "proportionality",
+            "assembly"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.25,
+          "overused": false
+        },
+        {
+          "case_id": "hksar_v_leung_kwok_hung",
+          "case_name": "HKSAR v Leung Kwok Hung",
+          "citation": "[2005] HKCFA 2",
+          "case_level": "CFA",
+          "paragraph_count": 1,
+          "duplicate_paragraphs_from_same_case": 0,
+          "classification": "leading_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "public_order",
+            "peaceful_assembly",
+            "assembly"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.05,
+          "overused": false
+        }
+      ],
+      "better_leading_case_missing": false,
+      "missing_appellate_authority": false,
+      "wrong_fit_count": 0
+    },
+    {
+      "tree_id": "criminal_procedure.bail",
+      "label": "Bail (incl. NSL bail)",
+      "major": true,
+      "distinct_cases": 26,
+      "paragraph_cards": 71,
+      "authorities": [
+        {
+          "case_id": "hk_cfa_2021_lai_chee_ying_facc_1_2021",
+          "case_name": "HKSAR v Lai Chee Ying",
+          "citation": "[2021] HKCFA 3",
+          "case_level": "CFA",
+          "paragraph_count": 7,
+          "duplicate_paragraphs_from_same_case": 6,
+          "classification": "leading_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.1,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_lai_chee_ying_hccp_738_2020",
+          "case_name": "HKSAR v Lai Chee Ying",
+          "citation": "[2021] HKCFI 448",
+          "case_level": "CFI",
+          "paragraph_count": 6,
+          "duplicate_paragraphs_from_same_case": 5,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.08,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_chan_chi_chuen_hccp_473_2021",
+          "case_name": "HKSAR v Chan Chi Chuen Raymond",
+          "citation": "[2021] HKCFI 2997",
+          "case_level": "CFI",
+          "paragraph_count": 6,
+          "duplicate_paragraphs_from_same_case": 5,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.08,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2022_fan_kwok_wai_hccp_454_2021",
+          "case_name": "HKSAR v Fan Kwok Wai Gary",
+          "citation": "[2022] HKCFI 1173",
+          "case_level": "CFI",
+          "paragraph_count": 5,
+          "duplicate_paragraphs_from_same_case": 4,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.07,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2020_tong_ying_kit_hccp_463_2020",
+          "case_name": "HKSAR v Tong Ying Kit",
+          "citation": "[2020] HKCFI 2196",
+          "case_level": "CFI",
+          "paragraph_count": 4,
+          "duplicate_paragraphs_from_same_case": 3,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.06,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2020_ma_chun_man_hccp_711_2020",
+          "case_name": "HKSAR v Ma Chun Man",
+          "citation": "[2020] HKCFI 3132",
+          "case_level": "CFI",
+          "paragraph_count": 3,
+          "duplicate_paragraphs_from_same_case": 2,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.04,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2020_lai_chee_ying_hccp_727_738_2020",
+          "case_name": "HKSAR v Lai Chee Ying",
+          "citation": "[2020] HKCFI 3161",
+          "case_level": "CFI",
+          "paragraph_count": 3,
+          "duplicate_paragraphs_from_same_case": 2,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.04,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_chow_ka_shing_hccp_294_2021",
+          "case_name": "HKSAR v Chow Ka Shing",
+          "citation": "[2021] HKCFI 2075",
+          "case_level": "CFI",
+          "paragraph_count": 3,
+          "duplicate_paragraphs_from_same_case": 2,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.04,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_sze_tak_loy_hccp_115_2021",
+          "case_name": "Secretary for Justice v Sze Tak Loy",
+          "citation": "[2021] HKCFI 900",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_chui_chi_kin_hccp_126_2021",
+          "case_name": "HKSAR v Chui Chi Kin",
+          "citation": "[2021] HKCFI 969",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_wan_siu_kin_andrew_hccp_141_2021",
+          "case_name": "HKSAR v Wan Siu Kin Andrew",
+          "citation": "[2021] HKCFI 1255",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_wong_pik_wan_hccp_113_2021",
+          "case_name": "Secretary for Justice v Wong Pik Wan",
+          "citation": "[2021] HKCFI 771",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_or_yiu_lam_ricky_hccp_119_2021",
+          "case_name": "Secretary for Justice v Or Yiu Lam Ricky",
+          "citation": "[2021] HKCFI 849",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_leung_kwok_hung_hccp_136_2021",
+          "case_name": "HKSAR v Leung Kwok Hung",
+          "citation": "[2021] HKCFI 1227",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_tam_hoi_pong_hccp_417_2021",
+          "case_name": "HKSAR v Tam Hoi Pong",
+          "citation": "[2021] HKCFI 2669",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_wong_pak_yu_hccp_430_2021",
+          "case_name": "HKSAR v Wong Pak Yu",
+          "citation": "[2021] HKCFI 2875",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2022_fung_tat_chun_frankie_hccp_584_2021",
+          "case_name": "HKSAR v Fung Tat Chun Frankie",
+          "citation": "[2022] HKCFI 744",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_tam_man_ho_jeremy_jansen_hccp_114_2021",
+          "case_name": "Secretary for Justice v Tam Man Ho Jeremy Jansen",
+          "citation": "[2021] HKCFI 791",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_kwok_ka_ki_hccp_118_2021",
+          "case_name": "Secretary for Justice v Kwok Ka Ki",
+          "citation": "[2021] HKCFI 862",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_chung_kam_lun_hccp_137_2021",
+          "case_name": "HKSAR v Chung Kam Lun",
+          "citation": "[2021] HKCFI 1473",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_yung_chung_hei_hccp_446_2021",
+          "case_name": "HKSAR v Yung Chung Hei",
+          "citation": "[2021] HKCFI 2765",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2022_fung_wai_kong_hccp_678_2021",
+          "case_name": "HKSAR v Fung Wai Kong",
+          "citation": "[2022] HKCFI 1017",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2022_ng_man_yee_carol_hccp_193_2021",
+          "case_name": "HKSAR v Ng Man Yee Carol",
+          "citation": "[2022] HKCFI 1061",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2022_lam_cheuk_ting_hccp_138_2022",
+          "case_name": "HKSAR v Lam Cheuk Ting",
+          "citation": "[2022] HKCFI 1797",
+          "case_level": "CFI",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.03,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2020_tong_ying_kit_hcal_1601_2020",
+          "case_name": "Tong Ying Kit v HKSAR",
+          "citation": "[2020] HKCFI 2133",
+          "case_level": "CFI",
+          "paragraph_count": 1,
+          "duplicate_paragraphs_from_same_case": 0,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.01,
+          "overused": false
+        },
+        {
+          "case_id": "hk_cfi_2021_mo_man_ching_claudia_hccp_134_2021",
+          "case_name": "HKSAR v Mo Man Ching Claudia",
+          "citation": "[2021] HKCFI 1435",
+          "case_level": "CFI",
+          "paragraph_count": 1,
+          "duplicate_paragraphs_from_same_case": 0,
+          "classification": "recent_application",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "bail",
+            "nsl"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.01,
+          "overused": false
+        }
+      ],
+      "better_leading_case_missing": false,
+      "missing_appellate_authority": false,
+      "wrong_fit_count": 0
+    },
+    {
+      "tree_id": "criminal_law.theft.dishonesty",
+      "label": "Theft / dishonesty & fraud",
+      "major": true,
+      "distinct_cases": 2,
+      "paragraph_cards": 4,
+      "authorities": [
+        {
+          "case_id": "hk_ca_2022_mo_yuk_ping_cacc_223_2022",
+          "case_name": "HKSAR v Mo Yuk Ping and Another",
+          "citation": "CACC 223/2022",
+          "case_level": "CA",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "appellate_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "dishonesty",
+            "fraud"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.5,
+          "overused": true
+        },
+        {
+          "case_id": "hk_cfa_2018_betty_kwan_insider_dealing_facv_7_2018",
+          "case_name": "Betty Kwan and Others v Securities and Futures Commission",
+          "citation": "FACV 7/2018",
+          "case_level": "CFA",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "leading_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "dishonesty",
+            "fraud"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.5,
+          "overused": true
+        }
+      ],
+      "better_leading_case_missing": false,
+      "missing_appellate_authority": false,
+      "wrong_fit_count": 0
+    },
+    {
+      "tree_id": "criminal_procedure.interview_caution_confession",
+      "label": "Interview / caution / confession",
+      "major": true,
+      "distinct_cases": 1,
+      "paragraph_cards": 2,
+      "authorities": [
+        {
+          "case_id": "hksar_v_lam_tat_ming",
+          "case_name": "Secretary for Justice v Lam Tat Ming",
+          "citation": "[2000] HKCFA 8",
+          "case_level": "CFA",
+          "paragraph_count": 2,
+          "duplicate_paragraphs_from_same_case": 1,
+          "classification": "leading_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "confession",
+            "admissibility",
+            "interview",
+            "detention",
+            "fair_trial",
+            "residual_discretion",
+            "undercover"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 1,
+          "overused": false
+        }
+      ],
+      "better_leading_case_missing": false,
+      "missing_appellate_authority": false,
+      "wrong_fit_count": 0
+    },
+    {
+      "tree_id": "criminal_procedure.investigation_search",
+      "label": "Investigation / search / seizure",
+      "major": true,
+      "distinct_cases": 2,
+      "paragraph_cards": 7,
+      "authorities": [
+        {
+          "case_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017",
+          "case_name": "Sham Wing Kan v Commissioner of Police",
+          "citation": "[2020] HKCA 186",
+          "case_level": "CA",
+          "paragraph_count": 4,
+          "duplicate_paragraphs_from_same_case": 3,
+          "classification": "appellate_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "search",
+            "warrant"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.57,
+          "overused": true
+        },
+        {
+          "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
+          "case_name": "Lai Chee Ying v Commissioner of Police",
+          "citation": "[2022] HKCA 1574",
+          "case_level": "CA",
+          "paragraph_count": 3,
+          "duplicate_paragraphs_from_same_case": 2,
+          "classification": "appellate_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "search",
+            "warrant"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 0.43,
+          "overused": true
+        }
+      ],
+      "better_leading_case_missing": true,
+      "missing_appellate_authority": false,
+      "wrong_fit_count": 0
+    },
+    {
+      "tree_id": "criminal_law.sedition_public_expression",
+      "label": "Sedition / public expression",
+      "major": true,
+      "distinct_cases": 1,
+      "paragraph_cards": 8,
+      "authorities": [
+        {
+          "case_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022",
+          "case_name": "HKSAR v Tam Tak Chi",
+          "citation": "[2024] HKCA 231",
+          "case_level": "CA",
+          "paragraph_count": 8,
+          "duplicate_paragraphs_from_same_case": 7,
+          "classification": "appellate_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "sedition",
+            "expression",
+            "seditious_intention",
+            "public_expression"
+          ],
+          "right_paragraph": true,
+          "background_only": false,
+          "paragraph_share": 1,
+          "overused": false
+        }
+      ],
+      "better_leading_case_missing": true,
+      "missing_appellate_authority": false,
+      "wrong_fit_count": 0
+    },
+    {
+      "tree_id": "civil_procedure.abuse_process_pleadings",
+      "label": "Civil procedure / abuse of process & pleadings",
+      "major": false,
+      "distinct_cases": 5,
+      "paragraph_cards": 5,
+      "authorities": [
+        {
+          "case_id": "hk_case_2020_minloy",
+          "case_name": "Re Minloy Ltd and others",
+          "citation": "[2020] HKCFI 2215",
+          "case_level": "CFI",
+          "paragraph_count": 1,
+          "duplicate_paragraphs_from_same_case": 0,
+          "classification": "weak_background_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "abuse_process",
+            "res_judicata",
+            "inconsistent_positions"
+          ],
+          "right_paragraph": true,
+          "background_only": true,
+          "paragraph_share": 0.2,
+          "overused": false
+        },
+        {
+          "case_id": "hk_case_2022_lancom_capxon",
+          "case_name": "Lancom Ltd v Capxon International Electronic Co Ltd",
+          "citation": "[2022] HKCFI 381",
+          "case_level": "CFI",
+          "paragraph_count": 1,
+          "duplicate_paragraphs_from_same_case": 0,
+          "classification": "weak_background_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "abuse_process",
+            "res_judicata",
+            "inconsistent_positions"
+          ],
+          "right_paragraph": true,
+          "background_only": true,
+          "paragraph_share": 0.2,
+          "overused": false
+        },
+        {
+          "case_id": "hk_case_2025_vasily_trubnikov",
+          "case_name": "Vasily Trubnikov v Evgeny Volosov and others",
+          "citation": "[2025] HKCFI 1576",
+          "case_level": "CFI",
+          "paragraph_count": 1,
+          "duplicate_paragraphs_from_same_case": 0,
+          "classification": "weak_background_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "abuse_process",
+            "inconsistent_positions"
+          ],
+          "right_paragraph": true,
+          "background_only": true,
+          "paragraph_share": 0.2,
+          "overused": false
+        },
+        {
+          "case_id": "hk_case_2023_liu_hao_tsing",
+          "case_name": "Liu Hao Tsing Education Foundation Ltd and another v Liu Tieh Ching Brandon",
+          "citation": "[2023] HKCFI 1463",
+          "case_level": "CFI",
+          "paragraph_count": 1,
+          "duplicate_paragraphs_from_same_case": 0,
+          "classification": "weak_background_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "pleadings"
+          ],
+          "right_paragraph": true,
+          "background_only": true,
+          "paragraph_share": 0.2,
+          "overused": false
+        },
+        {
+          "case_id": "hk_case_2019_shinyei_jenus",
+          "case_name": "Shinyei (Shanghai) Trading Co Ltd v Jenus Top Ltd",
+          "citation": "[2019] HKCFI 2377",
+          "case_level": "CFI",
+          "paragraph_count": 1,
+          "duplicate_paragraphs_from_same_case": 0,
+          "classification": "weak_background_authority",
+          "supports_tree": true,
+          "matched_tree_tags": [
+            "summary_judgment"
+          ],
+          "right_paragraph": true,
+          "background_only": true,
+          "paragraph_share": 0.2,
+          "overused": false
+        }
+      ],
+      "better_leading_case_missing": true,
+      "missing_appellate_authority": true,
+      "wrong_fit_count": 0
+    }
+  ],
+  "summary": {
+    "total_trees": 7,
+    "trees_missing_leading_authority": [
+      "criminal_procedure.investigation_search",
+      "criminal_law.sedition_public_expression",
+      "civil_procedure.abuse_process_pleadings"
+    ],
+    "trees_with_wrong_fit": [],
+    "overused_authorities": [
+      "criminal_public_order.assembly_proportionality:Secretary for Justice v Tong Wai Hung and Others",
+      "criminal_law.theft.dishonesty:HKSAR v Mo Yuk Ping and Another",
+      "criminal_law.theft.dishonesty:Betty Kwan and Others v Securities and Futures Commission",
+      "criminal_procedure.investigation_search:Sham Wing Kan v Commissioner of Police",
+      "criminal_procedure.investigation_search:Lai Chee Ying v Commissioner of Police"
+    ]
+  }
+}

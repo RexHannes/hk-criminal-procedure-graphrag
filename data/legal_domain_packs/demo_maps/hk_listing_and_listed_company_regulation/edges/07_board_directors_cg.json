@@ -2,26 +2,110 @@
   "section_id": "07",
   "domain_id": "hk_listing_and_listed_company_regulation",
   "edges": [
-    { "from": "board_directors_cg", "to": "directors_duties", "relationship": "has_subtopic" },
-    { "from": "board_directors_cg", "to": "ined_requirements", "relationship": "has_subtopic" },
-    { "from": "board_directors_cg", "to": "board_committees", "relationship": "has_subtopic" },
-    { "from": "board_directors_cg", "to": "cg_code", "relationship": "has_subtopic" },
-    { "from": "board_directors_cg", "to": "company_secretary", "relationship": "has_subtopic" },
-    { "from": "board_directors_cg", "to": "internal_controls", "relationship": "has_subtopic" },
-    { "from": "board_directors_cg", "to": "cg_report", "relationship": "has_subtopic" },
-    { "from": "directors_duties", "to": "co_s465", "relationship": "statutory_anchor" },
-    { "from": "directors_duties", "to": "co_s468", "relationship": "statutory_anchor" },
-    { "from": "directors_duties", "to": "mbl_3_08", "relationship": "listing_rule_anchor" },
-    { "from": "directors_duties", "to": "mbl_3_09", "relationship": "listing_rule_anchor" },
-    { "from": "ined_requirements", "to": "mbl_3_10", "relationship": "listing_rule_anchor" },
-    { "from": "ined_requirements", "to": "mbl_3_11", "relationship": "listing_rule_anchor" },
-    { "from": "board_committees", "to": "mbl_3_23", "relationship": "listing_rule_anchor" },
-    { "from": "board_committees", "to": "mbl_3_25", "relationship": "listing_rule_anchor" },
-    { "from": "board_committees", "to": "mbl_3_27", "relationship": "listing_rule_anchor" },
-    { "from": "cg_code", "to": "mbl_app_c2", "relationship": "listing_rule_anchor" },
-    { "from": "company_secretary", "to": "mbl_3_29", "relationship": "listing_rule_anchor" },
-    { "from": "company_secretary", "to": "co_s470", "relationship": "statutory_anchor" },
-    { "from": "internal_controls", "to": "mbl_3_24", "relationship": "listing_rule_anchor" },
-    { "from": "cg_report", "to": "mbl_app_c2", "relationship": "listing_rule_anchor" }
+    {
+      "from": "board_directors_cg",
+      "to": "directors_duties",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "board_directors_cg",
+      "to": "ined_requirements",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "board_directors_cg",
+      "to": "board_committees",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "board_directors_cg",
+      "to": "cg_code",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "board_directors_cg",
+      "to": "company_secretary",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "board_directors_cg",
+      "to": "internal_controls",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "board_directors_cg",
+      "to": "cg_report",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "directors_duties",
+      "to": "co_s465",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "directors_duties",
+      "to": "co_s468",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "directors_duties",
+      "to": "mbl_3_08",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "directors_duties",
+      "to": "mbl_3_09",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "ined_requirements",
+      "to": "mbl_3_10",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "ined_requirements",
+      "to": "mbl_3_11",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "board_committees",
+      "to": "mbl_3_23",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "board_committees",
+      "to": "mbl_3_25",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "board_committees",
+      "to": "mbl_3_27",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "cg_code",
+      "to": "mbl_app_c2",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "company_secretary",
+      "to": "mbl_3_29",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "company_secretary",
+      "to": "co_s470",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "internal_controls",
+      "to": "mbl_3_24",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "cg_report",
+      "to": "mbl_app_c2",
+      "relationship": "listing_rule_anchor"
+    }
   ]
 }

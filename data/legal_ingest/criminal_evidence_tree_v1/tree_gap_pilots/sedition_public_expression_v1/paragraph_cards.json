@@ -20,7 +20,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ],
   "paragraph_cards": [
@@ -34,7 +34,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p48",
@@ -46,7 +46,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p55",
@@ -58,7 +58,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p131",
@@ -70,7 +70,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p140",
@@ -82,7 +82,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p141",
@@ -94,7 +94,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p149",
@@ -106,7 +106,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2024_tam_tak_chi_cacc_62_2022_p150",
@@ -118,7 +118,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ]
 }

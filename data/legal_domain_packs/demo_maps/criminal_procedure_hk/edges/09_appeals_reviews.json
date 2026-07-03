@@ -2,33 +2,145 @@
   "section_id": "09",
   "domain_id": "criminal_procedure_hk",
   "edges": [
-    { "from": "crim_proc_appeals", "to": "appeal_conviction", "relationship": "has_subtopic" },
-    { "from": "crim_proc_appeals", "to": "appeal_sentence", "relationship": "has_subtopic" },
-    { "from": "crim_proc_appeals", "to": "appeal_reference_sj", "relationship": "has_subtopic" },
-    { "from": "crim_proc_appeals", "to": "appeal_discharge", "relationship": "has_subtopic" },
-    { "from": "crim_proc_appeals", "to": "appeal_retrial", "relationship": "has_subtopic" },
-    { "from": "crim_proc_appeals", "to": "appeal_insanity_unfitness", "relationship": "has_subtopic" },
-    { "from": "crim_proc_appeals", "to": "appeal_cfa_jurisdiction", "relationship": "has_subtopic" },
-    { "from": "crim_proc_appeals", "to": "appeal_procedural_compliance", "relationship": "has_subtopic" },
-    { "from": "appeal_conviction", "to": "cap221_s83", "relationship": "statutory_anchor" },
-    { "from": "appeal_conviction", "to": "hksar_v_ma_ka_kin", "relationship": "case_seed" },
-    { "from": "appeal_conviction", "to": "hksar_v_chan_kam_ching", "relationship": "case_seed" },
-    { "from": "appeal_sentence", "to": "cap221_s81a", "relationship": "statutory_anchor" },
-    { "from": "appeal_reference_sj", "to": "cap221_s81a", "relationship": "statutory_anchor" },
-    { "from": "appeal_reference_sj", "to": "cap221_s81d", "relationship": "statutory_anchor" },
-    { "from": "appeal_reference_sj", "to": "hksar_v_fu_chiu_wa", "relationship": "case_seed" },
-    { "from": "appeal_discharge", "to": "cap221_s81g", "relationship": "statutory_anchor" },
-    { "from": "appeal_insanity_unfitness", "to": "cap221_part4", "relationship": "statutory_anchor" },
-    { "from": "appeal_cfa_jurisdiction", "to": "hksar_v_chen_keen", "relationship": "case_seed" },
-    { "from": "appeal_cfa_jurisdiction", "to": "hksar_v_milne_john", "relationship": "case_seed" },
-    { "from": "appeal_procedural_compliance", "to": "pd_4_2", "relationship": "statutory_anchor" },
-    { "from": "appeal_procedural_compliance", "to": "hksar_v_khaw_kin_sun", "relationship": "case_seed" },
-    { "from": "appeal_procedural_compliance", "to": "hksar_v_malik_mohammad_tariq", "relationship": "case_seed" },
-    { "from": "appeal_conviction_flow_start", "to": "appeal_conviction_flow_step2", "relationship": "flow_transition" },
-    { "from": "appeal_conviction_flow_step2", "to": "appeal_conviction_flow_step3", "relationship": "flow_transition" },
-    { "from": "appeal_conviction_flow_step3", "to": "appeal_conviction_flow_step4", "relationship": "flow_transition" },
-    { "from": "appeal_conviction_flow_step4", "to": "appeal_conviction_flow_step5", "relationship": "flow_transition" },
-    { "from": "appeal_conviction_flow_step5", "to": "appeal_conviction_flow_step6", "relationship": "flow_transition" },
-    { "from": "appeal_conviction_flow_step6", "to": "appeal_conviction_flow_step7", "relationship": "flow_transition" }
+    {
+      "from": "crim_proc_appeals",
+      "to": "appeal_conviction",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_appeals",
+      "to": "appeal_sentence",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_appeals",
+      "to": "appeal_reference_sj",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_appeals",
+      "to": "appeal_discharge",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_appeals",
+      "to": "appeal_retrial",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_appeals",
+      "to": "appeal_insanity_unfitness",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_appeals",
+      "to": "appeal_cfa_jurisdiction",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "crim_proc_appeals",
+      "to": "appeal_procedural_compliance",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "appeal_conviction",
+      "to": "cap221_s83",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "appeal_conviction",
+      "to": "hksar_v_ma_ka_kin",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "appeal_conviction",
+      "to": "hksar_v_chan_kam_ching",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "appeal_sentence",
+      "to": "cap221_s81a",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "appeal_reference_sj",
+      "to": "cap221_s81a",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "appeal_reference_sj",
+      "to": "cap221_s81d",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "appeal_reference_sj",
+      "to": "hksar_v_fu_chiu_wa",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "appeal_discharge",
+      "to": "cap221_s81g",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "appeal_insanity_unfitness",
+      "to": "cap221_part4",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "appeal_cfa_jurisdiction",
+      "to": "hksar_v_chen_keen",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "appeal_cfa_jurisdiction",
+      "to": "hksar_v_milne_john",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "appeal_procedural_compliance",
+      "to": "pd_4_2",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "appeal_procedural_compliance",
+      "to": "hksar_v_khaw_kin_sun",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "appeal_procedural_compliance",
+      "to": "hksar_v_malik_mohammad_tariq",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "appeal_conviction_flow_start",
+      "to": "appeal_conviction_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "appeal_conviction_flow_step2",
+      "to": "appeal_conviction_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "appeal_conviction_flow_step3",
+      "to": "appeal_conviction_flow_step4",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "appeal_conviction_flow_step4",
+      "to": "appeal_conviction_flow_step5",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "appeal_conviction_flow_step5",
+      "to": "appeal_conviction_flow_step6",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "appeal_conviction_flow_step6",
+      "to": "appeal_conviction_flow_step7",
+      "relationship": "flow_transition"
+    }
   ]
 }

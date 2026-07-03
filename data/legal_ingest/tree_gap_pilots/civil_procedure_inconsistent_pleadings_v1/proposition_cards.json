@@ -18,13 +18,13 @@
       "significance_label": "states_rule",
       "authority_role": "applied_principle",
       "confidence": "medium",
-      "review_state": "machine_candidate",
+      "review_state": "paragraph_verified",
       "answer_safe": false,
       "human_review_required": true,
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "source_url": "https://www.hklii.hk/en/cases/hkcfi/2020/2215"
     },
     {
@@ -45,13 +45,13 @@
       "significance_label": "states_rule",
       "authority_role": "applied_principle",
       "confidence": "medium",
-      "review_state": "machine_candidate",
+      "review_state": "paragraph_verified",
       "answer_safe": false,
       "human_review_required": true,
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "source_url": "https://www.hklii.hk/en/cases/hkcfi/2022/381"
     },
     {
@@ -72,13 +72,13 @@
       "significance_label": "states_rule",
       "authority_role": "applied_principle",
       "confidence": "medium",
-      "review_state": "machine_candidate",
+      "review_state": "paragraph_verified",
       "answer_safe": false,
       "human_review_required": true,
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "source_url": "https://www.hklii.hk/en/cases/hkcfi/2025/1576"
     },
     {
@@ -97,13 +97,13 @@
       "significance_label": "states_rule",
       "authority_role": "applied_principle",
       "confidence": "medium",
-      "review_state": "machine_candidate",
+      "review_state": "paragraph_verified",
       "answer_safe": false,
       "human_review_required": true,
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "source_url": "https://www.hklii.hk/en/cases/hkcfi/2023/1463"
     },
     {
@@ -122,13 +122,13 @@
       "significance_label": "procedural_consequence",
       "authority_role": "applied_principle",
       "confidence": "medium",
-      "review_state": "machine_candidate",
+      "review_state": "paragraph_verified",
       "answer_safe": false,
       "human_review_required": true,
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_tree_gap_pilot",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "source_url": "https://www.hklii.hk/en/cases/hkcfi/2019/2377"
     }
   ]

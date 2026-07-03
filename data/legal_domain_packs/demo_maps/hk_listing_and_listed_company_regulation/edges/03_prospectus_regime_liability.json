@@ -2,44 +2,200 @@
   "section_id": "03",
   "domain_id": "hk_listing_and_listed_company_regulation",
   "edges": [
-    { "from": "prospectus_regime", "to": "prospectus_definition", "relationship": "has_subtopic" },
-    { "from": "prospectus_regime", "to": "prospectus_requirements", "relationship": "has_subtopic" },
-    { "from": "prospectus_regime", "to": "prospectus_safe_harbours", "relationship": "has_subtopic" },
-    { "from": "prospectus_regime", "to": "prospectus_exemptions", "relationship": "has_subtopic" },
-    { "from": "prospectus_regime", "to": "prospectus_liability_market_misconduct", "relationship": "has_subtopic" },
-    { "from": "prospectus_regime", "to": "prospectus_liability", "relationship": "has_subtopic" },
-    { "from": "prospectus_regime", "to": "prospectus_adviser_liability", "relationship": "has_subtopic" },
-    { "from": "prospectus_regime", "to": "prospectus_criminal_liability", "relationship": "has_subtopic" },
-    { "from": "prospectus_regime", "to": "prospectus_registration_vetting", "relationship": "has_subtopic" },
-    { "from": "prospectus_regime", "to": "gap_verify_prospectus_statutory_source_labels", "relationship": "has_subtopic" },
-    { "from": "prospectus_definition", "to": "co_s2", "relationship": "statutory_anchor" },
-    { "from": "prospectus_definition", "to": "co_s38d", "relationship": "statutory_anchor" },
-    { "from": "prospectus_definition", "to": "co_sch3", "relationship": "statutory_anchor" },
-    { "from": "prospectus_requirements", "to": "cwo_38d", "relationship": "statutory_anchor" },
-    { "from": "prospectus_requirements", "to": "cwo_38b", "relationship": "statutory_anchor" },
-    { "from": "prospectus_requirements", "to": "mbl_11_07", "relationship": "listing_rule_anchor" },
-    { "from": "prospectus_safe_harbours", "to": "co_17sch", "relationship": "statutory_anchor" },
-    { "from": "prospectus_exemptions", "to": "cwo_38a", "relationship": "statutory_anchor" },
-    { "from": "prospectus_exemptions", "to": "cwo_38b_sch3", "relationship": "statutory_anchor" },
-    { "from": "prospectus_liability_market_misconduct", "to": "co_s40", "relationship": "statutory_anchor" },
-    { "from": "prospectus_liability_market_misconduct", "to": "co_s40a", "relationship": "statutory_anchor" },
-    { "from": "prospectus_liability_market_misconduct", "to": "co_s342e", "relationship": "statutory_anchor" },
-    { "from": "prospectus_liability_market_misconduct", "to": "co_s342f", "relationship": "statutory_anchor" },
-    { "from": "prospectus_liability_market_misconduct", "to": "sfo_s107", "relationship": "statutory_anchor" },
-    { "from": "prospectus_liability_market_misconduct", "to": "sfo_298", "relationship": "statutory_anchor" },
-    { "from": "prospectus_liability_market_misconduct", "to": "sfo_s384", "relationship": "statutory_anchor" },
-    { "from": "prospectus_liability_market_misconduct", "to": "case_shanghai_land", "relationship": "case_seed" },
-    { "from": "prospectus_liability_market_misconduct", "to": "case_hontex_sfc", "relationship": "case_seed" },
-    { "from": "prospectus_liability_market_misconduct", "to": "case_uba_investments", "relationship": "case_seed" },
-    { "from": "prospectus_liability", "to": "cwo_38d", "relationship": "statutory_anchor" },
-    { "from": "prospectus_liability", "to": "re_bank_of_china_prospectus", "relationship": "case_seed" },
-    { "from": "prospectus_liability", "to": "re_hontex_prospectus", "relationship": "case_seed" },
-    { "from": "prospectus_adviser_liability", "to": "cwo_38d", "relationship": "statutory_anchor" },
-    { "from": "prospectus_adviser_liability", "to": "sfo_298", "relationship": "statutory_anchor" },
-    { "from": "prospectus_adviser_liability", "to": "sfc_sponsor_enforcement_1", "relationship": "enforcement_seed" },
-    { "from": "prospectus_criminal_liability", "to": "cwo_40", "relationship": "statutory_anchor" },
-    { "from": "prospectus_criminal_liability", "to": "sfo_298", "relationship": "statutory_anchor" },
-    { "from": "prospectus_registration_vetting", "to": "cwo_38d", "relationship": "statutory_anchor" },
-    { "from": "prospectus_registration_vetting", "to": "sfo_105", "relationship": "statutory_anchor" }
+    {
+      "from": "prospectus_regime",
+      "to": "prospectus_definition",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "prospectus_regime",
+      "to": "prospectus_requirements",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "prospectus_regime",
+      "to": "prospectus_safe_harbours",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "prospectus_regime",
+      "to": "prospectus_exemptions",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "prospectus_regime",
+      "to": "prospectus_liability_market_misconduct",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "prospectus_regime",
+      "to": "prospectus_liability",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "prospectus_regime",
+      "to": "prospectus_adviser_liability",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "prospectus_regime",
+      "to": "prospectus_criminal_liability",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "prospectus_regime",
+      "to": "prospectus_registration_vetting",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "prospectus_regime",
+      "to": "gap_verify_prospectus_statutory_source_labels",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "prospectus_definition",
+      "to": "co_s2",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_definition",
+      "to": "co_s38d",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_definition",
+      "to": "co_sch3",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_requirements",
+      "to": "cwo_38d",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_requirements",
+      "to": "cwo_38b",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_requirements",
+      "to": "mbl_11_07",
+      "relationship": "listing_rule_anchor"
+    },
+    {
+      "from": "prospectus_safe_harbours",
+      "to": "co_17sch",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_exemptions",
+      "to": "cwo_38a",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_exemptions",
+      "to": "cwo_38b_sch3",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_liability_market_misconduct",
+      "to": "co_s40",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_liability_market_misconduct",
+      "to": "co_s40a",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_liability_market_misconduct",
+      "to": "co_s342e",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_liability_market_misconduct",
+      "to": "co_s342f",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_liability_market_misconduct",
+      "to": "sfo_s107",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_liability_market_misconduct",
+      "to": "sfo_298",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_liability_market_misconduct",
+      "to": "sfo_s384",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_liability_market_misconduct",
+      "to": "case_shanghai_land",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "prospectus_liability_market_misconduct",
+      "to": "case_hontex_sfc",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "prospectus_liability_market_misconduct",
+      "to": "case_uba_investments",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "prospectus_liability",
+      "to": "cwo_38d",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_liability",
+      "to": "re_bank_of_china_prospectus",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "prospectus_liability",
+      "to": "re_hontex_prospectus",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "prospectus_adviser_liability",
+      "to": "cwo_38d",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_adviser_liability",
+      "to": "sfo_298",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_adviser_liability",
+      "to": "sfc_sponsor_enforcement_1",
+      "relationship": "enforcement_seed"
+    },
+    {
+      "from": "prospectus_criminal_liability",
+      "to": "cwo_40",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_criminal_liability",
+      "to": "sfo_298",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_registration_vetting",
+      "to": "cwo_38d",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "prospectus_registration_vetting",
+      "to": "sfo_105",
+      "relationship": "statutory_anchor"
+    }
   ]
 }

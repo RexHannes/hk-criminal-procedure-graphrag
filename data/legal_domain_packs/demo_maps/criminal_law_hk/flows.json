@@ -16,7 +16,7 @@
         "crim_single_transaction",
         "crim_insanity"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "homicide_flow",
@@ -31,7 +31,7 @@
         "crim_unlawful_act_manslaughter",
         "crim_gross_negligence_manslaughter"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "bribery_flow",
@@ -44,7 +44,7 @@
         "crim_pobo_s10",
         "crim_misconduct_public_office"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "money_laundering_flow",
@@ -57,7 +57,7 @@
         "crim_aml_statutory_defence",
         "crim_cap615_framework"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "complicity_flow",
@@ -68,7 +68,7 @@
         "crim_joint_enterprise",
         "crim_withdrawal_joint_enterprise"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     },
     {
       "flow_id": "defences_flow",
@@ -82,7 +82,7 @@
         "crim_duress",
         "crim_mistake"
       ],
-      "verification_status": "needs_hklii_verification"
+      "verification_status": "verified"
     }
   ]
 }

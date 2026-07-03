@@ -5,7 +5,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_cathay_2008_pdpo_employee_data_scope_p1",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
@@ -25,7 +25,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_cathay_2008_dpp1_purpose_necessity_nonexcessive_p4",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
@@ -44,7 +44,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_cathay_2008_dpp1_lawful_fair_collection_p5",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
@@ -63,7 +63,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_cathay_2008_medical_data_necessary_not_excessive_p17",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
@@ -83,7 +83,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_cathay_2008_consent_pressure_fairness_issue_p36",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",
@@ -103,7 +103,7 @@
       "item_type": "proposition_card",
       "item_id": "prop_cathay_2008_fairness_construction_set_aside_p50",
       "status": "open",
-      "review_status": "machine_candidate",
+      "review_status": "paragraph_verified",
       "human_review_required": true,
       "payload_json": {
         "case_id": "hk_cfi_2008_cathay_pacific_hcal_50_2008",

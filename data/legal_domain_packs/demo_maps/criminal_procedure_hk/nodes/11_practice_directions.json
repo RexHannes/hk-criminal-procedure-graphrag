@@ -16,7 +16,7 @@
       "label": "PD 4.2: Perfected Grounds of Appeal in Criminal Cases",
       "summary": "Requires precise grounds of appeal; failure may result in loss of time.",
       "section": "11",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pd_9_2",
@@ -24,7 +24,7 @@
       "label": "PD 9.2: Pre-Trial Review in CFI Criminal Cases",
       "summary": "Pre-trial review procedure to narrow issues before CFI trial.",
       "section": "11",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pd_9_5",
@@ -32,7 +32,7 @@
       "label": "PD 9.5: Criminal Proceedings in the Court of Appeal",
       "summary": "Practice direction for criminal proceedings in the Court of Appeal.",
       "section": "11",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pd_11_1",
@@ -40,7 +40,7 @@
       "label": "PD 11.1: Criminal Proceedings in the CFA",
       "summary": "Practice direction for criminal proceedings in the Court of Final Appeal.",
       "section": "11",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pd_12_1",
@@ -48,7 +48,7 @@
       "label": "PD 12.1: Video Link Evidence",
       "summary": "Practice direction for video link evidence in criminal proceedings.",
       "section": "11",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "pd_15_1",
@@ -56,7 +56,7 @@
       "label": "PD 15.1: Vulnerable Witnesses",
       "summary": "Practice direction for vulnerable witness procedures.",
       "section": "11",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     }
   ]
 }

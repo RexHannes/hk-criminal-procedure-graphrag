@@ -12,7 +12,7 @@
       "section": "11",
       "pi_answer_part": "principles",
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed"
     },
@@ -54,7 +54,7 @@
         "claim type"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -97,7 +97,7 @@
         "damage"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -133,7 +133,7 @@
         "injury"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -167,7 +167,7 @@
         "assumption of responsibility"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -201,7 +201,7 @@
         "omission"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -240,7 +240,7 @@
         "training"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -283,7 +283,7 @@
         "thin skull"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -328,7 +328,7 @@
         "common area"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -366,7 +366,7 @@
         "landlord"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -407,7 +407,7 @@
         "wet floor"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -443,7 +443,7 @@
         "competent contractor"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -481,7 +481,7 @@
         "supervision"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -526,7 +526,7 @@
         "industrial accident"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -564,7 +564,7 @@
         "PPE"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -605,7 +605,7 @@
         "electrocution"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -642,7 +642,7 @@
         "common law claim"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -686,7 +686,7 @@
         "taxi"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -724,7 +724,7 @@
         "signals"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -761,7 +761,7 @@
         "pedestrian"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -799,7 +799,7 @@
         "aftermath"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -835,7 +835,7 @@
         "aftermath"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -875,7 +875,7 @@
         "administrator"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -912,7 +912,7 @@
         "funeral expenses"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -951,7 +951,7 @@
         "schedule of damages"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -990,7 +990,7 @@
         "injury valuation"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -1028,7 +1028,7 @@
         "transport"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -1066,7 +1066,7 @@
         "tax"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -1104,7 +1104,7 @@
         "discount rate"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -1142,7 +1142,7 @@
         "rehabilitation"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -1177,7 +1177,7 @@
         "provisional damages"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -1216,7 +1216,7 @@
         "mitigation"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
@@ -1254,7 +1254,7 @@
         "inconsistent medical evidence"
       ],
       "verification_status": "needs_source_card_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "practice_seed_needs_authority",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0

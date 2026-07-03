@@ -1,0 +1,211 @@
+{
+  "artifact_id": "product_quality_repair_report_v1",
+  "generated_at": "2026-07-03T04:07:19.600Z",
+  "structured_case_notes": {
+    "count": 40,
+    "validation_failures": 0,
+    "schema": "src/case_graph/case_note_schema.js"
+  },
+  "case_diversity_per_tree": [
+    {
+      "tree_id": "criminal_public_order.assembly_proportionality",
+      "distinct_cases": 3,
+      "paragraph_cards": 20,
+      "top_case": "Secretary for Justice v Tong Wai Hung and Others [2021] HKCA 404",
+      "top_case_share": 0.7,
+      "leading_case_cluster": true,
+      "needs_more_authorities": true
+    },
+    {
+      "tree_id": "criminal_procedure.bail",
+      "distinct_cases": 26,
+      "paragraph_cards": 71,
+      "top_case": "HKSAR v Lai Chee Ying [2021] HKCFA 3",
+      "top_case_share": 0.1,
+      "leading_case_cluster": false,
+      "needs_more_authorities": false
+    },
+    {
+      "tree_id": "criminal_law.theft.dishonesty",
+      "distinct_cases": 2,
+      "paragraph_cards": 4,
+      "top_case": "HKSAR v Mo Yuk Ping and Another CACC 223/2022",
+      "top_case_share": 0.5,
+      "leading_case_cluster": true,
+      "needs_more_authorities": true
+    },
+    {
+      "tree_id": "criminal_procedure.interview_caution_confession",
+      "distinct_cases": 1,
+      "paragraph_cards": 2,
+      "top_case": "Secretary for Justice v Lam Tat Ming [2000] HKCFA 8",
+      "top_case_share": 1,
+      "leading_case_cluster": true,
+      "needs_more_authorities": true
+    },
+    {
+      "tree_id": "criminal_procedure.investigation_search",
+      "distinct_cases": 2,
+      "paragraph_cards": 7,
+      "top_case": "Sham Wing Kan v Commissioner of Police [2020] HKCA 186",
+      "top_case_share": 0.57,
+      "leading_case_cluster": true,
+      "needs_more_authorities": true
+    },
+    {
+      "tree_id": "criminal_law.sedition_public_expression",
+      "distinct_cases": 1,
+      "paragraph_cards": 8,
+      "top_case": "HKSAR v Tam Tak Chi [2024] HKCA 231",
+      "top_case_share": 1,
+      "leading_case_cluster": true,
+      "needs_more_authorities": true
+    },
+    {
+      "tree_id": "civil_procedure.abuse_process_pleadings",
+      "distinct_cases": 5,
+      "paragraph_cards": 5,
+      "top_case": "Re Minloy Ltd and others [2020] HKCFI 2215",
+      "top_case_share": 0.2,
+      "leading_case_cluster": false,
+      "needs_more_authorities": false
+    }
+  ],
+  "repeated_case_audit": {
+    "viewer_groups_paragraphs_by_case": true,
+    "leading_case_clusters": [
+      "criminal_public_order.assembly_proportionality: Secretary for Justice v Tong Wai Hung and Others",
+      "criminal_law.theft.dishonesty: HKSAR v Mo Yuk Ping and Another",
+      "criminal_procedure.interview_caution_confession: Secretary for Justice v Lam Tat Ming",
+      "criminal_procedure.investigation_search: Sham Wing Kan v Commissioner of Police",
+      "criminal_law.sedition_public_expression: HKSAR v Tam Tak Chi"
+    ],
+    "unlabelled_dominance_violations": []
+  },
+  "relevance_audit": {
+    "trees_missing_leading_authority": [
+      "criminal_procedure.investigation_search",
+      "criminal_law.sedition_public_expression",
+      "civil_procedure.abuse_process_pleadings"
+    ],
+    "trees_with_wrong_fit": [],
+    "overused_authorities": [
+      "criminal_public_order.assembly_proportionality:Secretary for Justice v Tong Wai Hung and Others",
+      "criminal_law.theft.dishonesty:HKSAR v Mo Yuk Ping and Another",
+      "criminal_law.theft.dishonesty:Betty Kwan and Others v Securities and Futures Commission",
+      "criminal_procedure.investigation_search:Sham Wing Kan v Commissioner of Police",
+      "criminal_procedure.investigation_search:Lai Chee Ying v Commissioner of Police"
+    ]
+  },
+  "weak_trees_needing_authorities": [
+    "criminal_public_order.assembly_proportionality",
+    "criminal_law.theft.dishonesty",
+    "criminal_procedure.interview_caution_confession",
+    "criminal_procedure.investigation_search",
+    "criminal_law.sedition_public_expression"
+  ],
+  "authority_mining": {
+    "mined_candidates": 5,
+    "mined_source": "hklii_browser_session",
+    "integrated": true
+  },
+  "level2_analysis_quality": {
+    "pass": true,
+    "overall_average": 4.85,
+    "gates": {
+      "average_at_least_3_5": true,
+      "quote_accuracy_5_of_5": true,
+      "unsupported_domain_abstention_5_of_5": true,
+      "no_wrong_case_citation": true
+    },
+    "per_query": [
+      {
+        "id": "theft_forgot_to_pay",
+        "average": 4.95
+      },
+      {
+        "id": "theft_intention_return",
+        "average": 4.73
+      },
+      {
+        "id": "theft_belonging_another",
+        "average": 4.73
+      },
+      {
+        "id": "bail_after_theft",
+        "average": 4.95
+      },
+      {
+        "id": "interview_no_rights",
+        "average": 4.59
+      },
+      {
+        "id": "peaceful_protest_route",
+        "average": 5
+      },
+      {
+        "id": "landlord_rent",
+        "average": 5
+      }
+    ]
+  },
+  "sop_editing_demo": {
+    "status": "working_demo",
+    "features": [
+      "propose edit modal",
+      "compare versions diff",
+      "approve/reject review queue",
+      "changelog",
+      "authority attachment",
+      "export queue",
+      "localStorage + seeded JSON persistence"
+    ]
+  },
+  "backend_retrieval_quality": {
+    "diversity_module": "src/case_graph/retrieval_diversity.js",
+    "behaviours": [
+      "round-robin case diversification (repeat paragraphs from one case rank after distinct authorities)",
+      "appellate/leading cases (CFA/CA) ranked first",
+      "leading_case_cluster flag when one case exceeds 40% of retrieved paragraphs",
+      "structured case notes attached to every evidence item and passed to the answer composer",
+      "retrieval metadata: issue_tag, sub_issue_tag, authority_role, case_level, paragraph_role, leading_case_cluster, diversity_rank, application_relevance_score",
+      "case-grouped authorities exposed via case_authorities on /api/search-evidence and /api/doctrine-evidence",
+      "structured research memo (research_memo) on /api/search-evidence"
+    ]
+  },
+  "level1_level2_gates": {
+    "visible_unverified_zero": true,
+    "backend_searchable_unverified_zero": true,
+    "level1_recall_passes": true,
+    "level2_analysis_passes": true
+  },
+  "production_branch": {
+    "branch": "pr6-production-release",
+    "head": "093a033",
+    "origin_main": "00d7418",
+    "based_on_current_main": true,
+    "conflict_files_resolved": [
+      "viewer/app.js",
+      "api/search-evidence.js",
+      "api/doctrine-evidence.js",
+      "src/legal_answer/build_evidence_pack.js"
+    ]
+  },
+  "remaining_limitations": [
+    "Material facts / procedural posture / obiter fields are only filled where the verified proof paragraphs support them; other cases carry structured unknown_or_unextracted markers pending full-judgment ingestion.",
+    "Several trees remain below the 5-distinct-case target (see weak_trees_needing_authorities); single-authority trees are displayed as labelled leading-case clusters, not fake breadth.",
+    "later_treatment/current_treatment_status is unchecked for all cases (no citator integration yet).",
+    "Analysis-quality scoring is deterministic/heuristic; an LLM-judge pass is a future upgrade.",
+    "Lawyer review / answer-safe certification remains a later HITL layer and does not gate research retrieval."
+  ],
+  "product_quality_fixed": true,
+  "claims": {
+    "case_notes_structured_and_useful": true,
+    "repeated_case_problem_grouped": true,
+    "level2_analysis_fact_sensitive": true,
+    "sop_editing_works_as_demo": true,
+    "fable_viewer_intact": true,
+    "backend_uses_case_notes_and_diversity": true,
+    "production_branch_mergeable": true
+  }
+}

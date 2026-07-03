@@ -2,49 +2,225 @@
   "section_id": "10",
   "domain_id": "tort_law_hk",
   "edges": [
-    { "from": "tort_remedies_defences_procedure", "to": "tort_damages_overview", "relationship": "has_subtopic" },
-    { "from": "tort_damages_overview", "to": "tort_damages_compensatory", "relationship": "has_subtopic" },
-    { "from": "tort_damages_overview", "to": "tort_damages_pecuniary", "relationship": "has_subtopic" },
-    { "from": "tort_damages_overview", "to": "tort_damages_non_pecuniary", "relationship": "has_subtopic" },
-    { "from": "tort_damages_overview", "to": "tort_provisional_damages", "relationship": "has_subtopic" },
-    { "from": "tort_damages_overview", "to": "tort_damages_aggravated", "relationship": "has_subtopic" },
-    { "from": "tort_damages_overview", "to": "tort_damages_exemplary", "relationship": "has_subtopic" },
-    { "from": "tort_damages_overview", "to": "tort_damages_nominal_contemptuous", "relationship": "has_subtopic" },
-    { "from": "tort_remedies_defences_procedure", "to": "tort_injunctions", "relationship": "has_subtopic" },
-    { "from": "tort_remedies_defences_procedure", "to": "tort_account_profits_restitution", "relationship": "has_subtopic" },
-    { "from": "tort_remedies_defences_procedure", "to": "tort_self_help_remedies", "relationship": "has_subtopic" },
-    { "from": "tort_remedies_defences_procedure", "to": "tort_defences_general_overview", "relationship": "has_subtopic" },
-    { "from": "tort_remedies_defences_procedure", "to": "tort_tort_procedure_overview", "relationship": "has_subtopic" },
-    { "from": "tort_tort_procedure_overview", "to": "tort_pleading_burden_of_proof", "relationship": "has_subtopic" },
-    { "from": "tort_tort_procedure_overview", "to": "tort_multiple_tortfeasors", "relationship": "has_subtopic" },
-    { "from": "tort_remedies_defences_procedure", "to": "negligence_flow_start", "relationship": "has_subtopic" },
-    { "from": "negligence_flow_start", "to": "negligence_flow_step2", "relationship": "flow_transition" },
-    { "from": "negligence_flow_step2", "to": "negligence_flow_step3", "relationship": "flow_transition" },
-    { "from": "negligence_flow_step3", "to": "negligence_flow_step4", "relationship": "flow_transition" },
-    { "from": "tort_remedies_defences_procedure", "to": "defamation_flow_start", "relationship": "has_subtopic" },
-    { "from": "defamation_flow_start", "to": "defamation_flow_step2", "relationship": "flow_transition" },
-    { "from": "defamation_flow_step2", "to": "defamation_flow_step3", "relationship": "flow_transition" },
-    { "from": "tort_remedies_defences_procedure", "to": "vicarious_liability_flow_start", "relationship": "has_subtopic" },
-    { "from": "vicarious_liability_flow_start", "to": "vicarious_liability_flow_step2", "relationship": "flow_transition" },
-    { "from": "vicarious_liability_flow_step2", "to": "vicarious_liability_flow_step3", "relationship": "flow_transition" },
-    { "from": "vicarious_liability_flow_step3", "to": "vicarious_liability_flow_step4", "relationship": "flow_transition" },
-    { "from": "tort_remedies_defences_procedure", "to": "occupiers_liability_flow_start", "relationship": "has_subtopic" },
-    { "from": "occupiers_liability_flow_start", "to": "occupiers_liability_flow_step2", "relationship": "flow_transition" },
-    { "from": "occupiers_liability_flow_step2", "to": "occupiers_liability_flow_step3", "relationship": "flow_transition" },
-    { "from": "tort_remedies_defences_procedure", "to": "nuisance_rylands_flow_start", "relationship": "has_subtopic" },
-    { "from": "nuisance_rylands_flow_start", "to": "nuisance_rylands_flow_step2", "relationship": "flow_transition" },
-    { "from": "nuisance_rylands_flow_step2", "to": "nuisance_rylands_flow_step3", "relationship": "flow_transition" },
-    { "from": "tort_remedies_defences_procedure", "to": "economic_torts_flow_start", "relationship": "has_subtopic" },
-    { "from": "economic_torts_flow_start", "to": "economic_torts_flow_step2", "relationship": "flow_transition" },
-    { "from": "economic_torts_flow_step2", "to": "economic_torts_flow_step3", "relationship": "flow_transition" },
-    { "from": "tort_remedies_defences_procedure", "to": "limitation_flow_start", "relationship": "has_subtopic" },
-    { "from": "limitation_flow_start", "to": "limitation_flow_step2", "relationship": "flow_transition" },
-    { "from": "limitation_flow_step2", "to": "limitation_flow_step3", "relationship": "flow_transition" },
-    { "from": "tort_defences_general_overview", "to": "tort_negligence_contributory_negligence", "relationship": "cross_reference" },
-    { "from": "tort_defences_general_overview", "to": "tort_negligence_volenti", "relationship": "cross_reference" },
-    { "from": "tort_defences_general_overview", "to": "tort_negligence_illegality", "relationship": "cross_reference" },
-    { "from": "tort_defences_general_overview", "to": "tort_intentional_defences_overview", "relationship": "cross_reference" },
-    { "from": "tort_defences_general_overview", "to": "tort_limitation_overview", "relationship": "cross_reference" },
-    { "from": "tort_remedies_defences_procedure", "to": "gap_verify_hk_damages_principles", "relationship": "has_subtopic" }
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "tort_damages_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_damages_overview",
+      "to": "tort_damages_compensatory",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_damages_overview",
+      "to": "tort_damages_pecuniary",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_damages_overview",
+      "to": "tort_damages_non_pecuniary",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_damages_overview",
+      "to": "tort_provisional_damages",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_damages_overview",
+      "to": "tort_damages_aggravated",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_damages_overview",
+      "to": "tort_damages_exemplary",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_damages_overview",
+      "to": "tort_damages_nominal_contemptuous",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "tort_injunctions",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "tort_account_profits_restitution",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "tort_self_help_remedies",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "tort_defences_general_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "tort_tort_procedure_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_tort_procedure_overview",
+      "to": "tort_pleading_burden_of_proof",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_tort_procedure_overview",
+      "to": "tort_multiple_tortfeasors",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "negligence_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "negligence_flow_start",
+      "to": "negligence_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "negligence_flow_step2",
+      "to": "negligence_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "negligence_flow_step3",
+      "to": "negligence_flow_step4",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "defamation_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "defamation_flow_start",
+      "to": "defamation_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "defamation_flow_step2",
+      "to": "defamation_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "vicarious_liability_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "vicarious_liability_flow_start",
+      "to": "vicarious_liability_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "vicarious_liability_flow_step2",
+      "to": "vicarious_liability_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "vicarious_liability_flow_step3",
+      "to": "vicarious_liability_flow_step4",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "occupiers_liability_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "occupiers_liability_flow_start",
+      "to": "occupiers_liability_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "occupiers_liability_flow_step2",
+      "to": "occupiers_liability_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "nuisance_rylands_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "nuisance_rylands_flow_start",
+      "to": "nuisance_rylands_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "nuisance_rylands_flow_step2",
+      "to": "nuisance_rylands_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "economic_torts_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "economic_torts_flow_start",
+      "to": "economic_torts_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "economic_torts_flow_step2",
+      "to": "economic_torts_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "limitation_flow_start",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "limitation_flow_start",
+      "to": "limitation_flow_step2",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "limitation_flow_step2",
+      "to": "limitation_flow_step3",
+      "relationship": "flow_transition"
+    },
+    {
+      "from": "tort_defences_general_overview",
+      "to": "tort_negligence_contributory_negligence",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_defences_general_overview",
+      "to": "tort_negligence_volenti",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_defences_general_overview",
+      "to": "tort_negligence_illegality",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_defences_general_overview",
+      "to": "tort_intentional_defences_overview",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_defences_general_overview",
+      "to": "tort_limitation_overview",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_remedies_defences_procedure",
+      "to": "gap_verify_hk_damages_principles",
+      "relationship": "has_subtopic"
+    }
   ]
 }

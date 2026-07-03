@@ -2,23 +2,95 @@
   "section_id": "01",
   "domain_id": "equity_trusts_hk",
   "edges": [
-    { "from": "equity_fundamentals", "to": "equity_role_in_personam", "relationship": "has_subtopic" },
-    { "from": "equity_fundamentals", "to": "equity_follows_law", "relationship": "has_subtopic" },
-    { "from": "equity_fundamentals", "to": "equity_acts_on_conscience", "relationship": "has_subtopic" },
-    { "from": "equity_fundamentals", "to": "equity_maxims_overview", "relationship": "has_subtopic" },
-    { "from": "equity_maxims_overview", "to": "equity_maxim_do_equity", "relationship": "has_subtopic" },
-    { "from": "equity_maxims_overview", "to": "equity_maxim_clean_hands", "relationship": "has_subtopic" },
-    { "from": "equity_maxims_overview", "to": "equity_maxim_regards_done", "relationship": "has_subtopic" },
-    { "from": "equity_maxims_overview", "to": "equity_maxim_no_assist_volunteer", "relationship": "has_subtopic" },
-    { "from": "equity_maxims_overview", "to": "equity_maxim_delay", "relationship": "has_subtopic" },
-    { "from": "equity_role_in_personam", "to": "case_earl_of_oxford", "relationship": "case_seed" },
-    { "from": "equity_maxim_do_equity", "to": "case_max_share", "relationship": "case_seed" },
-    { "from": "equity_maxim_clean_hands", "to": "case_li_hung_chan", "relationship": "case_seed" },
-    { "from": "equity_maxim_regards_done", "to": "case_walsh", "relationship": "case_seed" },
-    { "from": "equity_maxim_no_assist_volunteer", "to": "case_wu_koon_tai", "relationship": "case_seed" },
-    { "from": "equity_maxim_no_assist_volunteer", "to": "case_luk_hoi_tong", "relationship": "case_seed" },
-    { "from": "equity_maxim_regards_done", "to": "cap219_cpo", "relationship": "statutory_anchor" },
-    { "from": "equity_maxim_delay", "to": "equity_laches", "relationship": "cross_reference" },
-    { "from": "equity_fundamentals", "to": "gap_verify_hk_equity_maxims_cases", "relationship": "has_subtopic" }
+    {
+      "from": "equity_fundamentals",
+      "to": "equity_role_in_personam",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_fundamentals",
+      "to": "equity_follows_law",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_fundamentals",
+      "to": "equity_acts_on_conscience",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_fundamentals",
+      "to": "equity_maxims_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_maxims_overview",
+      "to": "equity_maxim_do_equity",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_maxims_overview",
+      "to": "equity_maxim_clean_hands",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_maxims_overview",
+      "to": "equity_maxim_regards_done",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_maxims_overview",
+      "to": "equity_maxim_no_assist_volunteer",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_maxims_overview",
+      "to": "equity_maxim_delay",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_role_in_personam",
+      "to": "case_earl_of_oxford",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "equity_maxim_do_equity",
+      "to": "case_max_share",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "equity_maxim_clean_hands",
+      "to": "case_li_hung_chan",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "equity_maxim_regards_done",
+      "to": "case_walsh",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "equity_maxim_no_assist_volunteer",
+      "to": "case_wu_koon_tai",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "equity_maxim_no_assist_volunteer",
+      "to": "case_luk_hoi_tong",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "equity_maxim_regards_done",
+      "to": "cap219_cpo",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "equity_maxim_delay",
+      "to": "equity_laches",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "equity_fundamentals",
+      "to": "gap_verify_hk_equity_maxims_cases",
+      "relationship": "has_subtopic"
+    }
   ]
 }

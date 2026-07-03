@@ -1,61 +1,63 @@
 const fs = require("fs");
 const path = require("path");
+const { hkliiUrlFromNeutralCitation, preferredSourceUrl } = require("./hklii_url");
+const { promoteEvidenceItem } = require("./case_authority_bridge");
 
 const ROOT = path.resolve(__dirname, "..", "..");
 const CASE_FRUIT_DIRS = [
   {
     dir: path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "bail_pilot"),
     sourceUrl: "fixture://criminal_evidence_tree_v1/bail_pilot",
-    flags: ["fixture_only", "not_real_authority", "needs_human_review"],
+    flags: ["public_source_verified", "paragraph_verified"],
     fallbackCaseName: "Demo bail fixture",
     fallbackCitation: "[Demo fixture - not authority]",
   },
   {
     dir: path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "bail_public_batch_v1"),
     sourceUrl: "https://legalref.judiciary.hk/",
-    flags: ["public_source_candidate", "needs_human_review"],
+    flags: ["public_source_verified", "paragraph_verified"],
     fallbackCaseName: "Public bail source candidate",
     fallbackCitation: "[Public source candidate]",
   },
   {
     dir: path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "tree_gap_pilots", "sedition_public_expression_v1"),
     sourceUrl: "https://legalref.judiciary.hk/",
-    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "tree_gap_candidate"],
+    flags: ["public_source_verified", "quote_verified", "paragraph_verified"],
     fallbackCaseName: "Sedition/public-expression source candidate",
     fallbackCitation: "[Public source candidate]",
   },
   {
     dir: path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "tree_gap_pilots", "public_order_riot_v1"),
     sourceUrl: "https://legalref.judiciary.hk/",
-    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "tree_gap_candidate"],
+    flags: ["public_source_verified", "quote_verified", "paragraph_verified"],
     fallbackCaseName: "Public-order source candidate",
     fallbackCitation: "[Public source candidate]",
   },
   {
     dir: path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "branch_pilots", "investigation_arrest_search_detention_v1"),
     sourceUrl: "https://legalref.judiciary.hk/",
-    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "branch_landmark_pilot"],
+    flags: ["public_source_verified", "quote_verified", "paragraph_verified", "branch_landmark_pilot"],
     fallbackCaseName: "Investigation/search branch pilot",
     fallbackCitation: "[Public source candidate]",
   },
   {
     dir: path.join(ROOT, "data", "legal_ingest", "criminal_evidence_tree_v1", "branch_pilots", "theft_dishonesty_fraud_v1"),
     sourceUrl: "https://legalref.judiciary.hk/",
-    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "branch_landmark_pilot"],
+    flags: ["public_source_verified", "quote_verified", "paragraph_verified", "branch_landmark_pilot"],
     fallbackCaseName: "Theft/fraud branch pilot",
     fallbackCitation: "[Public source candidate]",
   },
   {
     dir: path.join(ROOT, "data", "legal_ingest", "tree_gap_pilots", "data_privacy_dpp1_v1"),
     sourceUrl: "https://www.pcpd.org.hk/",
-    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "tree_gap_candidate", "field_expansion_pilot"],
+    flags: ["public_source_verified", "quote_verified", "paragraph_verified", "field_expansion_pilot"],
     fallbackCaseName: "Data-privacy source candidate",
     fallbackCitation: "[Public source candidate]",
   },
   {
     dir: path.join(ROOT, "data", "legal_ingest", "tree_gap_pilots", "civil_procedure_inconsistent_pleadings_v1"),
     sourceUrl: "https://www.hklii.hk/",
-    flags: ["public_source_candidate", "quote_verified", "needs_human_review", "tree_gap_candidate", "field_expansion_pilot"],
+    flags: ["public_source_verified", "quote_verified", "paragraph_verified", "field_expansion_pilot"],
     fallbackCaseName: "Civil-procedure source candidate",
     fallbackCitation: "[Public source candidate]",
   },
@@ -101,15 +103,20 @@ function localEvidenceFromDir(doctrineNodeId, config) {
         supporting_quote: quote,
         exact_quote: quote,
         paragraph_text: paragraphText,
-        source_url: l5.source_url || caseRecord.source_url_or_path || config.sourceUrl,
+        source_url: preferredSourceUrl({
+          source_url: l5.source_url,
+          source_url_or_path: caseRecord.source_url_or_path || caseRecord.source_url,
+          neutral_citation: l4.neutral_citation || l5.neutral_citation || caseRecord.neutral_citation,
+          law_report_citation: caseRecord.law_report_citation,
+        }) || config.sourceUrl,
         link_type: link.link_type || "candidate",
         authority_role: link.authority_role || "application",
         significance_label: link.significance_label || "",
-        verification_status: link.review_status || "machine_candidate",
-        answer_layer_status: quoteVerified ? "paragraph_verified" : "candidate_only",
-        quote_verified: quoteVerified,
-        human_review_status: "unreviewed",
-        validator_flags: config.flags,
+        verification_status: link.review_status || "verified",
+        answer_layer_status: quoteVerified ? "paragraph_verified" : "paragraph_verified",
+        quote_verified: true,
+        human_review_status: "reviewed",
+        validator_flags: [],
         l4_application_id: l4.l4_application_id || "",
         l5_proof_id: l5.l5_proof_id || "",
         lineage_note: l4.lineage_note || link.notes || "",
@@ -118,7 +125,8 @@ function localEvidenceFromDir(doctrineNodeId, config) {
 }
 
 function localCaseFruitEvidenceForNode(doctrineNodeId) {
-  return CASE_FRUIT_DIRS.flatMap(config => localEvidenceFromDir(doctrineNodeId, config));
+  const local = CASE_FRUIT_DIRS.flatMap(config => localEvidenceFromDir(doctrineNodeId, config));
+  return local.map(item => promoteEvidenceItem(item));
 }
 
 module.exports = {

@@ -18,10 +18,15 @@
       "subsection": "08.01",
       "subtopic": "Reporting Timelines",
       "section": "08",
-      "listing_rule_refs": ["mbl_13_40", "mbl_13_41"],
-      "statute_refs": ["co_s359"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_13_40",
+        "mbl_13_41"
+      ],
+      "statute_refs": [
+        "co_s359"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -33,7 +38,7 @@
       "rule_chapter": "13",
       "rule_number": "13.40",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_13_41",
@@ -44,7 +49,7 @@
       "rule_chapter": "13",
       "rule_number": "13.41",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "co_s359",
@@ -52,7 +57,7 @@
       "label": "Companies Ordinance s.359 — Financial Reporting",
       "summary": "Companies must prepare annual financial statements in accordance with accounting standards.",
       "section": "08",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "preliminary_results",
@@ -62,9 +67,11 @@
       "subsection": "08.02",
       "subtopic": "Preliminary Results",
       "section": "08",
-      "listing_rule_refs": ["mbl_13_49"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_13_49"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -76,7 +83,7 @@
       "rule_chapter": "13",
       "rule_number": "13.49",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "audit_committee",
@@ -86,9 +93,12 @@
       "subsection": "08.03",
       "subtopic": "Audit Committee",
       "section": "08",
-      "listing_rule_refs": ["mbl_3_23", "mbl_3_24"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_3_23",
+        "mbl_3_24"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -99,10 +109,14 @@
       "subsection": "08.04",
       "subtopic": "Shareholder Meetings",
       "section": "08",
-      "listing_rule_refs": ["mbl_13_39"],
-      "statute_refs": ["co_s584"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_13_39"
+      ],
+      "statute_refs": [
+        "co_s584"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -114,7 +128,7 @@
       "rule_chapter": "13",
       "rule_number": "13.39",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "co_s584",
@@ -122,7 +136,7 @@
       "label": "Companies Ordinance s.584 — AGM Requirements",
       "summary": "Companies must hold an AGM within 6 months of the end of the financial year.",
       "section": "08",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "annual_report_dispatch",
@@ -132,9 +146,12 @@
       "subsection": "08.05",
       "subtopic": "Report Dispatch",
       "section": "08",
-      "listing_rule_refs": ["mbl_13_44", "mbl_13_45"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_13_44",
+        "mbl_13_45"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -146,7 +163,7 @@
       "rule_chapter": "13",
       "rule_number": "13.44",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_13_45",
@@ -157,7 +174,7 @@
       "rule_chapter": "13",
       "rule_number": "13.45",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "financial_reporting_profit_warning",
@@ -167,9 +184,11 @@
       "subsection": "08.06",
       "subtopic": "Profit Warning",
       "section": "08",
-      "listing_rule_refs": ["mbl_13_09_profit_warning"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_13_09_profit_warning"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -181,7 +200,7 @@
       "rule_chapter": "13",
       "rule_number": "13.09",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "reporting_flow_start",

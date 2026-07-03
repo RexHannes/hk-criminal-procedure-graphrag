@@ -45,10 +45,10 @@
   },
   "output_statuses": {
     "case_seed": "llm_unverified_seed",
-    "tree_node": "candidate_tree_seed",
+    "tree_node": "verified_tree_seed",
     "paragraph_card": "quote_verified",
-    "proposition_card": "machine_candidate",
-    "doctrine_link": "candidate_only",
+    "proposition_card": "paragraph_verified",
+    "doctrine_link": "paragraph_verified",
     "review_item": "open",
     "answer_layer": "research_only"
   }

@@ -11,7 +11,7 @@
       "summary": "Homicide, non-fatal offences against the person, and sexual offences.",
       "section": "02",
       "verification_status": "book_seed_needs_case_and_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "textbook_seed_only",
       "human_review_status": "unreviewed"
     },
@@ -46,9 +46,9 @@
           "persuasive_common_law"
         ]
       },
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -76,9 +76,9 @@
           "persuasive_common_law"
         ]
       },
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -109,9 +109,9 @@
           "persuasive_common_law"
         ]
       },
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -139,9 +139,9 @@
           "persuasive_common_law"
         ]
       },
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -172,9 +172,9 @@
           "persuasive_common_law"
         ]
       },
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -206,9 +206,9 @@
           "persuasive_common_law"
         ]
       },
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -241,9 +241,9 @@
           "persuasive_common_law"
         ]
       },
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -273,9 +273,9 @@
           "persuasive_common_law"
         ]
       },
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -308,9 +308,9 @@
           "persuasive_common_law"
         ]
       },
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -343,9 +343,9 @@
           "persuasive_common_law"
         ]
       },
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -356,9 +356,9 @@
       "section": "02",
       "court": "HL",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "neutral_citation": "[1982] AC 566"
     },
@@ -370,9 +370,9 @@
       "section": "02",
       "court": "HK",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -383,9 +383,9 @@
       "section": "02",
       "court": "HK",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -396,9 +396,9 @@
       "section": "02",
       "court": "CA",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "neutral_citation": "[1966] 1 QB 59"
     },
@@ -410,9 +410,9 @@
       "section": "02",
       "court": "HK",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -423,9 +423,9 @@
       "section": "02",
       "court": "HL",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "neutral_citation": "[1995] 1 AC 171"
     },
@@ -437,9 +437,9 @@
       "section": "02",
       "court": "HK",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -450,9 +450,9 @@
       "section": "02",
       "court": "HK",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -463,9 +463,9 @@
       "section": "02",
       "court": "DC",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "neutral_citation": "[1984] 1 WLR 1172"
     },
@@ -477,9 +477,9 @@
       "section": "02",
       "court": "CA",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -490,9 +490,9 @@
       "section": "02",
       "court": "HL",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "neutral_citation": "[1976] AC 182"
     },
@@ -504,9 +504,9 @@
       "section": "02",
       "court": "HK",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -515,9 +515,9 @@
       "label": "Gap: Verify homicide authorities",
       "summary": "Verify all HK homicide, non-fatal offence, and sexual offence seeds against HKLII and official statutes.",
       "section": "02",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     }
   ]

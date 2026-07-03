@@ -21,7 +21,11 @@
       "source_type": "official_reference",
       "trust_level": "high",
       "url": "https://www.judiciary.hk/en/court_services_facilities/forms.html",
-      "use_for": ["form_registry", "official_form_links", "latest_form_warning"],
+      "use_for": [
+        "form_registry",
+        "official_form_links",
+        "latest_form_warning"
+      ],
       "warning": "Judiciary states forms are for general reference and not complete/authoritative law; check current legislation before use.",
       "status": "source_verified_metadata_only"
     },
@@ -31,7 +35,13 @@
       "source_type": "official_reference",
       "trust_level": "high",
       "url": "https://www.judiciary.hk/en/court_services_facilities/hcf_cfi.html",
-      "use_for": ["cfi_form_registry", "writ", "acknowledgment_of_service", "admission", "list_of_documents"],
+      "use_for": [
+        "cfi_form_registry",
+        "writ",
+        "acknowledgment_of_service",
+        "admission",
+        "list_of_documents"
+      ],
       "warning": "Official form metadata only; verify the current form and legislation before production filing.",
       "status": "source_verified_metadata_only"
     },
@@ -41,7 +51,13 @@
       "source_type": "official_reference",
       "trust_level": "high",
       "url": "https://www.judiciary.hk/en/court_services_facilities/dcf.html",
-      "use_for": ["district_court_form_registry", "writ", "acknowledgment_of_service", "admission", "list_of_documents"],
+      "use_for": [
+        "district_court_form_registry",
+        "writ",
+        "acknowledgment_of_service",
+        "admission",
+        "list_of_documents"
+      ],
       "warning": "Official form metadata only; verify the current form and legislation before production filing.",
       "status": "source_verified_metadata_only"
     },
@@ -51,7 +67,10 @@
       "source_type": "official_reference",
       "trust_level": "high",
       "url": "https://www.judiciary.hk/en/court_services_facilities/dc.html",
-      "use_for": ["court_band_initial_routing", "district_court_limit_warning"],
+      "use_for": [
+        "court_band_initial_routing",
+        "district_court_limit_warning"
+      ],
       "warning": "Use only as preliminary routing; verify the current Judiciary page and legislation before filing.",
       "status": "source_verified_metadata_only"
     },
@@ -61,7 +80,10 @@
       "source_type": "official_reference",
       "trust_level": "high",
       "url": "https://www.judiciary.hk/en/court_services_facilities/sc.html",
-      "use_for": ["court_band_initial_routing", "small_claims_limit_warning"],
+      "use_for": [
+        "court_band_initial_routing",
+        "small_claims_limit_warning"
+      ],
       "warning": "Use only as preliminary routing; verify the current Judiciary page and legislation before filing.",
       "status": "source_verified_metadata_only"
     },
@@ -71,7 +93,10 @@
       "source_type": "official_reference",
       "trust_level": "high",
       "url": "https://www.judiciary.hk/en/judgments_legal_reference/prac_directn.html",
-      "use_for": ["current_practice_direction_lookup", "effective_date_check"],
+      "use_for": [
+        "current_practice_direction_lookup",
+        "effective_date_check"
+      ],
       "warning": "Check the current authentic version and effective date before production use.",
       "status": "metadata_seed_needs_current_copy_check"
     },
@@ -80,7 +105,13 @@
       "title": "Practice Direction 18.1 - The Personal Injuries List",
       "source_type": "practice_direction",
       "trust_level": "high_if_current_official_copy",
-      "use_for": ["pi_procedure", "pre_action_protocol", "checklist_review", "ptr", "pd_annex_templates"],
+      "use_for": [
+        "pi_procedure",
+        "pre_action_protocol",
+        "checklist_review",
+        "ptr",
+        "pd_annex_templates"
+      ],
       "warning": "Must verify against the current Judiciary/HKLII version before production.",
       "status": "metadata_seed_needs_current_copy_check"
     },
@@ -90,7 +121,12 @@
       "source_type": "public_legal_information",
       "trust_level": "medium",
       "url": "https://www.clic.org.hk/en/topics/personalInjuries",
-      "use_for": ["preliminary_explanation", "user_friendly_sop", "court_band_initial_guidance", "limitation_initial_guidance"],
+      "use_for": [
+        "preliminary_explanation",
+        "user_friendly_sop",
+        "court_band_initial_guidance",
+        "limitation_initial_guidance"
+      ],
       "warning": "CLIC is preliminary public legal information and not legal advice; verify with official law and solicitor review.",
       "status": "metadata_seed_public_guide"
     },
@@ -99,7 +135,10 @@
       "title": "Tort Law in Hong Kong textbook",
       "source_type": "private_or_licensed_textbook",
       "trust_level": "high_for_private_learning_if_lawfully_accessed",
-      "use_for": ["doctrine_explanation", "private_doctrine_mapping"],
+      "use_for": [
+        "doctrine_explanation",
+        "private_doctrine_mapping"
+      ],
       "warning": "Do not ship commercially or expose text unless licence permits ingestion/use.",
       "status": "metadata_only_unless_licensed"
     },
@@ -108,7 +147,11 @@
       "title": "Firm / user uploaded PI precedents",
       "source_type": "private_precedent",
       "trust_level": "medium",
-      "use_for": ["drafting_style", "precedent_adaptation", "template_vault"],
+      "use_for": [
+        "drafting_style",
+        "precedent_adaptation",
+        "template_vault"
+      ],
       "warning": "Precedent is not legal authority and must not override current law.",
       "status": "firm_private_metadata_only"
     },
@@ -118,7 +161,13 @@
       "source_type": "official_public_information",
       "trust_level": "medium",
       "url": "https://www.gov.hk/en/residents/employment/employee/workinjury.htm",
-      "use_for": ["employee_compensation_overlay", "form_2", "form_2a", "form_2b", "notification_warning"],
+      "use_for": [
+        "employee_compensation_overlay",
+        "form_2",
+        "form_2a",
+        "form_2b",
+        "notification_warning"
+      ],
       "warning": "Use for employee-compensation overlay only; common-law PI claim and Employees' Compensation routes must remain distinct.",
       "status": "metadata_seed_needs_current_copy_check"
     }
@@ -127,79 +176,213 @@
     {
       "module_id": "matter_intake_router",
       "label": "Matter Intake Router",
-      "routes": ["road_traffic", "workplace", "medical_negligence", "slip_fall", "assault", "fatal_accident", "minor", "other"],
-      "outputs": ["accident_type", "court_band_candidate", "task_type", "missing_facts"],
+      "routes": [
+        "road_traffic",
+        "workplace",
+        "medical_negligence",
+        "slip_fall",
+        "assault",
+        "fatal_accident",
+        "minor",
+        "other"
+      ],
+      "outputs": [
+        "accident_type",
+        "court_band_candidate",
+        "task_type",
+        "missing_facts"
+      ],
       "gate": "intake_missing_facts_visible"
     },
     {
       "module_id": "principles_rag",
       "label": "Principles RAG",
-      "uses": ["tort doctrine", "negligence elements", "causation/remoteness", "defences", "quantum heads", "limitation"],
+      "uses": [
+        "tort doctrine",
+        "negligence elements",
+        "causation/remoteness",
+        "defences",
+        "quantum heads",
+        "limitation"
+      ],
       "answer_section": "principles"
     },
     {
       "module_id": "procedure_rag",
       "label": "Procedure / SOP RAG",
-      "uses": ["PD18.1", "pre-action", "pleadings", "discovery", "expert reports", "checklist review", "CMC/PTR", "trial/assessment"],
+      "uses": [
+        "PD18.1",
+        "pre-action",
+        "pleadings",
+        "discovery",
+        "expert reports",
+        "checklist review",
+        "CMC/PTR",
+        "trial/assessment"
+      ],
       "answer_section": "procedures_forms"
     },
     {
       "module_id": "forms_rag",
       "label": "Forms RAG",
-      "uses": ["CFI forms", "District Court forms", "PD18.1 annex templates", "employee compensation forms", "firm templates"],
+      "uses": [
+        "CFI forms",
+        "District Court forms",
+        "PD18.1 annex templates",
+        "employee compensation forms",
+        "firm templates"
+      ],
       "answer_section": "procedures_forms"
     },
     {
       "module_id": "precedent_rag",
       "label": "Precedent RAG",
-      "uses": ["statement of claim precedents", "damages schedules", "pre-action letters", "settlement templates", "firm drafting style"],
+      "uses": [
+        "statement of claim precedents",
+        "damages schedules",
+        "pre-action letters",
+        "settlement templates",
+        "firm drafting style"
+      ],
       "answer_section": "procedures_forms",
       "gate": "precedent_not_authority"
     },
     {
       "module_id": "verification_layer",
       "label": "Verification Layer",
-      "uses": ["claim-source alignment", "form existence", "citation completeness", "source date/version", "conflict detection", "cannot verify fallback"],
+      "uses": [
+        "claim-source alignment",
+        "form existence",
+        "citation completeness",
+        "source date/version",
+        "conflict detection",
+        "cannot verify fallback"
+      ],
       "answer_section": "governance"
     }
   ],
   "routing_rules": [
     {
       "rule_id": "principles_questions",
-      "if_query_mentions": ["law", "test", "element", "defence", "duty", "breach", "causation", "quantum", "limitation"],
-      "route_to": ["principles_rag", "verification_layer"],
+      "if_query_mentions": [
+        "law",
+        "test",
+        "element",
+        "defence",
+        "duty",
+        "breach",
+        "causation",
+        "quantum",
+        "limitation"
+      ],
+      "route_to": [
+        "principles_rag",
+        "verification_layer"
+      ],
       "must_not": "answer_from_llm_memory"
     },
     {
       "rule_id": "procedure_questions",
-      "if_query_mentions": ["procedure", "steps", "SOP", "checklist", "CMC", "PTR", "pre-action", "discovery"],
-      "route_to": ["procedure_rag", "verification_layer"],
-      "source_priority": ["pd18_1_personal_injuries_list", "judiciary_practice_directions", "clic_personal_injuries"]
+      "if_query_mentions": [
+        "procedure",
+        "steps",
+        "SOP",
+        "checklist",
+        "CMC",
+        "PTR",
+        "pre-action",
+        "discovery"
+      ],
+      "route_to": [
+        "procedure_rag",
+        "verification_layer"
+      ],
+      "source_priority": [
+        "pd18_1_personal_injuries_list",
+        "judiciary_practice_directions",
+        "clic_personal_injuries"
+      ]
     },
     {
       "rule_id": "forms_questions",
-      "if_query_mentions": ["form", "writ", "draft", "fill", "template", "statement of claim", "schedule of damages"],
-      "route_to": ["forms_rag", "procedure_rag", "precedent_rag", "verification_layer"],
+      "if_query_mentions": [
+        "form",
+        "writ",
+        "draft",
+        "fill",
+        "template",
+        "statement of claim",
+        "schedule of damages"
+      ],
+      "route_to": [
+        "forms_rag",
+        "procedure_rag",
+        "precedent_rag",
+        "verification_layer"
+      ],
       "gate": "no_retrieved_form_no_draft"
     },
     {
       "rule_id": "workplace_overlay",
-      "if_query_mentions": ["workplace", "employee", "employer", "work injury", "industrial accident", "occupational disease"],
-      "route_to": ["principles_rag", "forms_rag", "employee_compensation_overlay", "verification_layer"],
+      "if_query_mentions": [
+        "workplace",
+        "employee",
+        "employer",
+        "work injury",
+        "industrial accident",
+        "occupational disease"
+      ],
+      "route_to": [
+        "principles_rag",
+        "forms_rag",
+        "employee_compensation_overlay",
+        "verification_layer"
+      ],
       "warning": "Employees' compensation and common-law PI claim are distinct routes."
     },
     {
       "rule_id": "limitation_warning",
-      "if_query_mentions": ["limitation", "deadline", "time limit", "out of time"],
-      "route_to": ["principles_rag", "verification_layer"],
-      "required_facts": ["accident date", "date of knowledge", "claimant age/disability", "fatal accident status"],
+      "if_query_mentions": [
+        "limitation",
+        "deadline",
+        "time limit",
+        "out of time"
+      ],
+      "route_to": [
+        "principles_rag",
+        "verification_layer"
+      ],
+      "required_facts": [
+        "accident date",
+        "date of knowledge",
+        "claimant age/disability",
+        "fatal accident status"
+      ],
       "warning": "Verify urgently with solicitor."
     },
     {
       "rule_id": "court_band_warning",
-      "if_query_mentions": ["court", "forum", "jurisdiction", "CFI", "District Court", "Small Claims", "claim value", "HK$"],
-      "route_to": ["procedure_rag", "forms_rag", "verification_layer"],
-      "required_facts": ["estimated claim value", "claim type", "parties", "current jurisdiction limit check"],
+      "if_query_mentions": [
+        "court",
+        "forum",
+        "jurisdiction",
+        "CFI",
+        "District Court",
+        "Small Claims",
+        "claim value",
+        "HK$"
+      ],
+      "route_to": [
+        "procedure_rag",
+        "forms_rag",
+        "verification_layer"
+      ],
+      "required_facts": [
+        "estimated claim value",
+        "claim type",
+        "parties",
+        "current jurisdiction limit check"
+      ],
       "warning": "Court band is preliminary routing only; verify current jurisdiction before filing."
     }
   ],
@@ -248,9 +431,25 @@
       "form_no": "Form 1",
       "cap": "Cap 4A",
       "source_id": "judiciary_forms_general",
-      "trigger_conditions": ["CFI", "High Court", "writ", "personal injury", "claim over district court limit"],
-      "required_facts": ["court heading", "plaintiff", "defendant", "indorsement", "solicitor details", "date"],
-      "linked_procedure_nodes": ["pi_procedure.forum_jurisdiction", "pi_procedure.statement_of_claim"],
+      "trigger_conditions": [
+        "CFI",
+        "High Court",
+        "writ",
+        "personal injury",
+        "claim over district court limit"
+      ],
+      "required_facts": [
+        "court heading",
+        "plaintiff",
+        "defendant",
+        "indorsement",
+        "solicitor details",
+        "date"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.forum_jurisdiction",
+        "pi_procedure.statement_of_claim"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -261,9 +460,24 @@
       "form_no": "Form 1",
       "cap": "Cap 336H",
       "source_id": "judiciary_forms_general",
-      "trigger_conditions": ["District Court", "writ", "personal injury", "claim under district court limit"],
-      "required_facts": ["court heading", "plaintiff", "defendant", "indorsement", "solicitor details", "date"],
-      "linked_procedure_nodes": ["pi_procedure.forum_jurisdiction", "pi_procedure.statement_of_claim"],
+      "trigger_conditions": [
+        "District Court",
+        "writ",
+        "personal injury",
+        "claim under district court limit"
+      ],
+      "required_facts": [
+        "court heading",
+        "plaintiff",
+        "defendant",
+        "indorsement",
+        "solicitor details",
+        "date"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.forum_jurisdiction",
+        "pi_procedure.statement_of_claim"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -274,9 +488,24 @@
       "form_no": "Form 14",
       "cap": "Cap 4A",
       "source_id": "judiciary_cfi_forms",
-      "trigger_conditions": ["CFI", "High Court", "acknowledgment of service", "writ", "defence tracking"],
-      "required_facts": ["court heading", "action number", "plaintiff", "defendant", "service date", "intention to defend"],
-      "linked_procedure_nodes": ["pi_procedure.defence"],
+      "trigger_conditions": [
+        "CFI",
+        "High Court",
+        "acknowledgment of service",
+        "writ",
+        "defence tracking"
+      ],
+      "required_facts": [
+        "court heading",
+        "action number",
+        "plaintiff",
+        "defendant",
+        "service date",
+        "intention to defend"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.defence"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -287,9 +516,23 @@
       "form_no": "Form 14",
       "cap": "Cap 336H",
       "source_id": "judiciary_dc_forms",
-      "trigger_conditions": ["District Court", "acknowledgment of service", "writ", "defence tracking"],
-      "required_facts": ["court heading", "action number", "plaintiff", "defendant", "service date", "intention to defend"],
-      "linked_procedure_nodes": ["pi_procedure.defence"],
+      "trigger_conditions": [
+        "District Court",
+        "acknowledgment of service",
+        "writ",
+        "defence tracking"
+      ],
+      "required_facts": [
+        "court heading",
+        "action number",
+        "plaintiff",
+        "defendant",
+        "service date",
+        "intention to defend"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.defence"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -300,9 +543,24 @@
       "form_no": "Form 16C",
       "cap": "Cap 4A",
       "source_id": "judiciary_cfi_forms",
-      "trigger_conditions": ["CFI", "admission", "unliquidated amount", "damages", "settlement"],
-      "required_facts": ["court heading", "parties", "admission scope", "amount/terms if any", "signature/date"],
-      "linked_procedure_nodes": ["pi_procedure.settlement_offer", "pi_procedure.statement_of_damages"],
+      "trigger_conditions": [
+        "CFI",
+        "admission",
+        "unliquidated amount",
+        "damages",
+        "settlement"
+      ],
+      "required_facts": [
+        "court heading",
+        "parties",
+        "admission scope",
+        "amount/terms if any",
+        "signature/date"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.settlement_offer",
+        "pi_procedure.statement_of_damages"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -313,9 +571,24 @@
       "form_no": "Form 16C",
       "cap": "Cap 336H",
       "source_id": "judiciary_dc_forms",
-      "trigger_conditions": ["District Court", "admission", "unliquidated amount", "damages", "settlement"],
-      "required_facts": ["court heading", "parties", "admission scope", "amount/terms if any", "signature/date"],
-      "linked_procedure_nodes": ["pi_procedure.settlement_offer", "pi_procedure.statement_of_damages"],
+      "trigger_conditions": [
+        "District Court",
+        "admission",
+        "unliquidated amount",
+        "damages",
+        "settlement"
+      ],
+      "required_facts": [
+        "court heading",
+        "parties",
+        "admission scope",
+        "amount/terms if any",
+        "signature/date"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.settlement_offer",
+        "pi_procedure.statement_of_damages"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -326,9 +599,22 @@
       "form_no": "Form 26",
       "cap": "Cap 4A",
       "source_id": "judiciary_cfi_forms",
-      "trigger_conditions": ["CFI", "list of documents", "discovery", "disclosure"],
-      "required_facts": ["court heading", "parties", "document categories", "privilege claims", "verification/signature"],
-      "linked_procedure_nodes": ["pi_procedure.discovery"],
+      "trigger_conditions": [
+        "CFI",
+        "list of documents",
+        "discovery",
+        "disclosure"
+      ],
+      "required_facts": [
+        "court heading",
+        "parties",
+        "document categories",
+        "privilege claims",
+        "verification/signature"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.discovery"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -339,9 +625,22 @@
       "form_no": "Form 26",
       "cap": "Cap 336H",
       "source_id": "judiciary_dc_forms",
-      "trigger_conditions": ["District Court", "list of documents", "discovery", "disclosure"],
-      "required_facts": ["court heading", "parties", "document categories", "privilege claims", "verification/signature"],
-      "linked_procedure_nodes": ["pi_procedure.discovery"],
+      "trigger_conditions": [
+        "District Court",
+        "list of documents",
+        "discovery",
+        "disclosure"
+      ],
+      "required_facts": [
+        "court heading",
+        "parties",
+        "document categories",
+        "privilege claims",
+        "verification/signature"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.discovery"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -351,9 +650,21 @@
       "court": "PI List",
       "form_no": "Annex A",
       "source_id": "pd18_1_personal_injuries_list",
-      "trigger_conditions": ["personal injury", "pre-action letter", "letter before action"],
-      "required_facts": ["defendant identity", "accident facts", "injury summary", "liability basis", "insurer copy"],
-      "linked_procedure_nodes": ["pi_procedure.pre_action_letter"],
+      "trigger_conditions": [
+        "personal injury",
+        "pre-action letter",
+        "letter before action"
+      ],
+      "required_facts": [
+        "defendant identity",
+        "accident facts",
+        "injury summary",
+        "liability basis",
+        "insurer copy"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.pre_action_letter"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_current_pd_check"
     },
@@ -363,9 +674,23 @@
       "court": "PI List",
       "form_no": "Annex B",
       "source_id": "pd18_1_personal_injuries_list",
-      "trigger_conditions": ["road traffic", "fatal road traffic", "writ indorsement"],
-      "required_facts": ["driver", "owner", "vehicle", "accident date/location", "injuries", "loss"],
-      "linked_procedure_nodes": ["pi_procedure.statement_of_claim", "pi_procedure.particulars_of_claim"],
+      "trigger_conditions": [
+        "road traffic",
+        "fatal road traffic",
+        "writ indorsement"
+      ],
+      "required_facts": [
+        "driver",
+        "owner",
+        "vehicle",
+        "accident date/location",
+        "injuries",
+        "loss"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.statement_of_claim",
+        "pi_procedure.particulars_of_claim"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_current_pd_check"
     },
@@ -375,9 +700,23 @@
       "court": "PI List",
       "form_no": "Annex C",
       "source_id": "pd18_1_personal_injuries_list",
-      "trigger_conditions": ["employer's liability", "workplace injury", "fatal accident", "writ indorsement"],
-      "required_facts": ["employment", "work task", "accident mechanism", "injury/death", "loss"],
-      "linked_procedure_nodes": ["pi_procedure.statement_of_claim", "pi_procedure.particulars_of_claim"],
+      "trigger_conditions": [
+        "employer's liability",
+        "workplace injury",
+        "fatal accident",
+        "writ indorsement"
+      ],
+      "required_facts": [
+        "employment",
+        "work task",
+        "accident mechanism",
+        "injury/death",
+        "loss"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.statement_of_claim",
+        "pi_procedure.particulars_of_claim"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_current_pd_check"
     },
@@ -387,9 +726,23 @@
       "court": "PI List",
       "form_no": "Annex D",
       "source_id": "pd18_1_personal_injuries_list",
-      "trigger_conditions": ["checklist review", "notice", "PI List directions"],
-      "required_facts": ["action number", "parties", "review date", "outstanding directions", "solicitor details"],
-      "linked_procedure_nodes": ["pi_procedure.discovery", "pi_procedure.expert_evidence", "pi_procedure.trial_preparation"],
+      "trigger_conditions": [
+        "checklist review",
+        "notice",
+        "PI List directions"
+      ],
+      "required_facts": [
+        "action number",
+        "parties",
+        "review date",
+        "outstanding directions",
+        "solicitor details"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.discovery",
+        "pi_procedure.expert_evidence",
+        "pi_procedure.trial_preparation"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_current_pd_check"
     },
@@ -399,9 +752,23 @@
       "court": "PI List",
       "form_no": "Annex E",
       "source_id": "pd18_1_personal_injuries_list",
-      "trigger_conditions": ["checklist review", "directions", "PI List"],
-      "required_facts": ["pleadings status", "discovery", "medical reports", "expert evidence", "trial estimate"],
-      "linked_procedure_nodes": ["pi_procedure.discovery", "pi_procedure.expert_evidence", "pi_procedure.trial_preparation"],
+      "trigger_conditions": [
+        "checklist review",
+        "directions",
+        "PI List"
+      ],
+      "required_facts": [
+        "pleadings status",
+        "discovery",
+        "medical reports",
+        "expert evidence",
+        "trial estimate"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.discovery",
+        "pi_procedure.expert_evidence",
+        "pi_procedure.trial_preparation"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_current_pd_check"
     },
@@ -411,9 +778,22 @@
       "court": "PI List",
       "form_no": "Annex F",
       "source_id": "pd18_1_personal_injuries_list",
-      "trigger_conditions": ["pre-trial review", "PTR", "trial preparation", "PI List"],
-      "required_facts": ["action number", "parties", "PTR date", "trial readiness", "bundle/witness/expert status"],
-      "linked_procedure_nodes": ["pi_procedure.trial_preparation"],
+      "trigger_conditions": [
+        "pre-trial review",
+        "PTR",
+        "trial preparation",
+        "PI List"
+      ],
+      "required_facts": [
+        "action number",
+        "parties",
+        "PTR date",
+        "trial readiness",
+        "bundle/witness/expert status"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.trial_preparation"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_current_pd_check"
     },
@@ -423,9 +803,24 @@
       "court": "PI List",
       "form_no": "Annex G",
       "source_id": "pd18_1_personal_injuries_list",
-      "trigger_conditions": ["checklist review", "pre-trial review", "PTR", "directions order", "PI List"],
-      "required_facts": ["directions sought", "outstanding pleadings/discovery/expert steps", "trial estimate", "costs/reservation"],
-      "linked_procedure_nodes": ["pi_procedure.discovery", "pi_procedure.expert_evidence", "pi_procedure.trial_preparation"],
+      "trigger_conditions": [
+        "checklist review",
+        "pre-trial review",
+        "PTR",
+        "directions order",
+        "PI List"
+      ],
+      "required_facts": [
+        "directions sought",
+        "outstanding pleadings/discovery/expert steps",
+        "trial estimate",
+        "costs/reservation"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.discovery",
+        "pi_procedure.expert_evidence",
+        "pi_procedure.trial_preparation"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_current_pd_check"
     },
@@ -435,9 +830,23 @@
       "court": "Employees' Compensation / Labour Department",
       "form_no": "Form 2",
       "source_id": "govhk_work_injury",
-      "trigger_conditions": ["workplace accident", "death", "incapacity", "employee compensation"],
-      "required_facts": ["employer", "employee", "accident date", "death/incapacity", "notification deadline"],
-      "linked_procedure_nodes": ["pi_procedure.intake", "pi_procedure.limitation_check"],
+      "trigger_conditions": [
+        "workplace accident",
+        "death",
+        "incapacity",
+        "employee compensation"
+      ],
+      "required_facts": [
+        "employer",
+        "employee",
+        "accident date",
+        "death/incapacity",
+        "notification deadline"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.intake",
+        "pi_procedure.limitation_check"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -447,9 +856,22 @@
       "court": "Employees' Compensation / Labour Department",
       "form_no": "Form 2A",
       "source_id": "govhk_work_injury",
-      "trigger_conditions": ["occupational disease", "workplace", "employee compensation"],
-      "required_facts": ["employer", "employee", "occupational disease", "diagnosis date", "notification deadline"],
-      "linked_procedure_nodes": ["pi_procedure.intake", "pi_procedure.medical_evidence"],
+      "trigger_conditions": [
+        "occupational disease",
+        "workplace",
+        "employee compensation"
+      ],
+      "required_facts": [
+        "employer",
+        "employee",
+        "occupational disease",
+        "diagnosis date",
+        "notification deadline"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.intake",
+        "pi_procedure.medical_evidence"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     },
@@ -459,9 +881,22 @@
       "court": "Employees' Compensation / Labour Department",
       "form_no": "Form 2B",
       "source_id": "govhk_work_injury",
-      "trigger_conditions": ["workplace accident", "minor incapacity", "three days", "employee compensation"],
-      "required_facts": ["employer", "employee", "accident date", "incapacity period", "notification deadline"],
-      "linked_procedure_nodes": ["pi_procedure.intake"],
+      "trigger_conditions": [
+        "workplace accident",
+        "minor incapacity",
+        "three days",
+        "employee compensation"
+      ],
+      "required_facts": [
+        "employer",
+        "employee",
+        "accident date",
+        "incapacity period",
+        "notification deadline"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.intake"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_latest_form_check"
     }
@@ -470,42 +905,90 @@
     "source_id": "judiciary_district_court_civil",
     "title": "Preliminary court band guidance",
     "summary": "For PI routing only, tort claims over HK$75,000 and not more than HK$3 million should surface District Court as a preliminary candidate, claims above that band should surface CFI, and claims not exceeding HK$75,000 may surface Small Claims. Always verify current jurisdiction before filing.",
-    "trigger_conditions": ["court", "forum", "jurisdiction", "claim value", "HK$75,000", "HK$3 million", "District Court", "CFI", "Small Claims"],
-    "required_facts": ["estimated claim value", "claim type", "current jurisdiction limits", "filing strategy"],
+    "trigger_conditions": [
+      "court",
+      "forum",
+      "jurisdiction",
+      "claim value",
+      "HK$75,000",
+      "HK$3 million",
+      "District Court",
+      "CFI",
+      "Small Claims"
+    ],
+    "required_facts": [
+      "estimated claim value",
+      "claim type",
+      "current jurisdiction limits",
+      "filing strategy"
+    ],
     "warning": "Preliminary routing only; verify current jurisdiction and procedural rules before filing."
   },
   "acceptance_tests": [
     {
       "test_id": "no_source_no_answer",
       "query": "What is the limitation period for a HK personal injury claim?",
-      "must_include": ["source citation", "accident date/date of knowledge caveat", "disability/minor caveat"],
-      "must_not_include": ["definitive deadline without facts"]
+      "must_include": [
+        "source citation",
+        "accident date/date of knowledge caveat",
+        "disability/minor caveat"
+      ],
+      "must_not_include": [
+        "definitive deadline without facts"
+      ]
     },
     {
       "test_id": "form_draft_requires_template",
       "query": "Draft a District Court writ for my PI case.",
-      "must_do": ["retrieve dc_writ_form_1", "ask for missing plaintiff/defendant/accident/indorsement details", "refuse final form if template not loaded"]
+      "must_do": [
+        "retrieve dc_writ_form_1",
+        "ask for missing plaintiff/defendant/accident/indorsement details",
+        "refuse final form if template not loaded"
+      ]
     },
     {
       "test_id": "precedent_not_authority",
       "query": "Use my old statement of claim to tell me the legal test.",
-      "must_include": ["precedent-based, not authority", "separate authority lookup"]
+      "must_include": [
+        "precedent-based, not authority",
+        "separate authority lookup"
+      ]
     },
     {
       "test_id": "workplace_overlay",
       "query": "I was injured at work. What forms are needed?",
-      "must_route_to": ["employee_compensation_overlay", "pi_principles"],
-      "must_include": ["Labour Department notification issue", "Form 2 / 2A / 2B candidates", "common law PI route caveat"]
+      "must_route_to": [
+        "employee_compensation_overlay",
+        "pi_principles"
+      ],
+      "must_include": [
+        "Labour Department notification issue",
+        "Form 2 / 2A / 2B candidates",
+        "common law PI route caveat"
+      ]
     },
     {
       "test_id": "court_band",
       "query": "My claim is about HK$2.5m. Which court?",
-      "must_include": ["preliminary District Court routing", "source citation", "verify-current-jurisdiction warning"]
+      "must_include": [
+        "preliminary District Court routing",
+        "source citation",
+        "verify-current-jurisdiction warning"
+      ]
     },
     {
       "test_id": "pd18_1_sop",
       "query": "What are the key PI procedural steps?",
-      "must_include": ["letter before action", "writ", "statement of claim", "statement of damages", "defence", "expert reports", "checklist review", "CMC / PTR"]
+      "must_include": [
+        "letter before action",
+        "writ",
+        "statement of claim",
+        "statement of damages",
+        "defence",
+        "expert reports",
+        "checklist review",
+        "CMC / PTR"
+      ]
     }
   ]
 }

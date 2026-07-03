@@ -11,7 +11,12 @@
       "label": "HK Criminal Procedure And Evidence",
       "parent_id": null,
       "description": "Root node for criminal procedure and evidence proposition cards.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -19,7 +24,12 @@
       "label": "Pleadings / Charge / Indictment",
       "parent_id": "criminal_evidence.root",
       "description": "Sufficiency, amendment, particulars, duplicity, variance, and statement of offence issues.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -27,7 +37,11 @@
       "label": "Burden Of Proof",
       "parent_id": "criminal_evidence.root",
       "description": "Legal burden, evidential burden, reverse burden, and prosecution burden issues.",
-      "allowed_source_kinds": ["case", "ordinance", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -35,7 +49,11 @@
       "label": "Standard Of Proof",
       "parent_id": "criminal_evidence.burden_of_proof",
       "description": "Beyond reasonable doubt, civil standards on preliminary issues, and related directions.",
-      "allowed_source_kinds": ["case", "ordinance", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -43,7 +61,11 @@
       "label": "Admissibility",
       "parent_id": "criminal_evidence.root",
       "description": "Threshold admissibility, relevance, exclusion, and voir dire issues.",
-      "allowed_source_kinds": ["case", "ordinance", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -51,7 +73,11 @@
       "label": "Confession Evidence",
       "parent_id": "criminal_evidence.admissibility",
       "description": "Voluntariness, oppression, inducement, fairness, and admission of confession evidence.",
-      "allowed_source_kinds": ["case", "ordinance", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -59,7 +85,11 @@
       "label": "Voir Dire",
       "parent_id": "criminal_evidence.admissibility",
       "description": "Procedure for determining disputed admissibility issues before the tribunal of fact.",
-      "allowed_source_kinds": ["case", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -67,7 +97,11 @@
       "label": "Identification Evidence",
       "parent_id": "criminal_evidence.admissibility",
       "description": "Visual identification, recognition, parade/procedure issues, and warning directions.",
-      "allowed_source_kinds": ["case", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -75,7 +109,11 @@
       "label": "Hearsay",
       "parent_id": "criminal_evidence.admissibility",
       "description": "Hearsay rule, statutory gateways, exceptions, reliability, and confrontation/fairness issues.",
-      "allowed_source_kinds": ["case", "ordinance", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -83,7 +121,11 @@
       "label": "Similar Fact / Propensity Evidence",
       "parent_id": "criminal_evidence.admissibility",
       "description": "Similar fact evidence, propensity, probative value, prejudice, and exclusion.",
-      "allowed_source_kinds": ["case", "ordinance", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -91,7 +133,11 @@
       "label": "Right To Silence",
       "parent_id": "criminal_evidence.root",
       "description": "Silence in investigation, interview, trial, adverse inference, and fairness issues.",
-      "allowed_source_kinds": ["case", "ordinance", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -99,7 +145,11 @@
       "label": "Abuse Of Process",
       "parent_id": "criminal_evidence.root",
       "description": "Stay, oppressive prosecution, manipulation of procedure, inconsistent positions, and integrity of justice.",
-      "allowed_source_kinds": ["case", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -107,7 +157,12 @@
       "label": "Delay",
       "parent_id": "criminal_evidence.abuse_of_process",
       "description": "Delay affecting fairness, prejudice, lost evidence, and stay applications.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -115,7 +170,12 @@
       "label": "Bail",
       "parent_id": "criminal_evidence.root",
       "description": "Bail pending trial or appeal, risk factors, conditions, and review.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -123,7 +183,12 @@
       "label": "Appeal / Review",
       "parent_id": "criminal_evidence.root",
       "description": "Appeal routes, conviction/sentence review, fresh evidence, and miscarriage of justice issues.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     },
     {
@@ -131,7 +196,12 @@
       "label": "Judicial Discretion",
       "parent_id": "criminal_evidence.root",
       "description": "Discretion to exclude evidence, manage trial fairness, give directions, or grant procedural relief.",
-      "allowed_source_kinds": ["case", "ordinance", "practice_direction", "proposition_card"],
+      "allowed_source_kinds": [
+        "case",
+        "ordinance",
+        "practice_direction",
+        "proposition_card"
+      ],
       "review_required": true
     }
   ]

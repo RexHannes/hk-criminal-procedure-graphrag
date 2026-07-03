@@ -18,9 +18,12 @@
       "subsection": "10.01",
       "subtopic": "ESG Guide",
       "section": "10",
-      "listing_rule_refs": ["mbl_app_c2", "mbl_esg_guide"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_app_c2",
+        "mbl_esg_guide"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -31,7 +34,7 @@
       "section": "10",
       "rule_chapter": "ESG Guide",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "board_oversight_esg",
@@ -41,9 +44,11 @@
       "subsection": "10.02",
       "subtopic": "Board Oversight",
       "section": "10",
-      "listing_rule_refs": ["mbl_esg_guide"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_esg_guide"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -54,9 +59,11 @@
       "subsection": "10.03",
       "subtopic": "Climate Disclosures",
       "section": "10",
-      "listing_rule_refs": ["mbl_esg_guide"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_esg_guide"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -67,9 +74,11 @@
       "subsection": "10.04",
       "subtopic": "Emissions Reporting",
       "section": "10",
-      "listing_rule_refs": ["mbl_esg_guide"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_esg_guide"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     }
   ]

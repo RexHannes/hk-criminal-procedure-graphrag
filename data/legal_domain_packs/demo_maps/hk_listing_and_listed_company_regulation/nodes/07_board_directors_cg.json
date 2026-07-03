@@ -18,10 +18,16 @@
       "subsection": "07.01",
       "subtopic": "Directors' Duties",
       "section": "07",
-      "statute_refs": ["co_s465", "co_s468"],
-      "listing_rule_refs": ["mbl_3_08", "mbl_3_09"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "statute_refs": [
+        "co_s465",
+        "co_s468"
+      ],
+      "listing_rule_refs": [
+        "mbl_3_08",
+        "mbl_3_09"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -30,7 +36,7 @@
       "label": "Companies Ordinance s.465 — Directors' Duties",
       "summary": "Directors must act honestly and in good faith in the interests of the company as a whole, and exercise the care, skill, and diligence that a reasonably prudent person would exercise.",
       "section": "07",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "co_s468",
@@ -38,7 +44,7 @@
       "label": "Companies Ordinance s.468 — Duty to Avoid Conflicts",
       "summary": "Directors must avoid situations where they have a direct or indirect interest that conflicts with the company's interests.",
       "section": "07",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_3_08",
@@ -49,7 +55,7 @@
       "rule_chapter": "3",
       "rule_number": "3.08",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_3_09",
@@ -60,7 +66,7 @@
       "rule_chapter": "3",
       "rule_number": "3.09",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "ined_requirements",
@@ -70,9 +76,12 @@
       "subsection": "07.02",
       "subtopic": "INED Requirements",
       "section": "07",
-      "listing_rule_refs": ["mbl_3_10", "mbl_3_11"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_3_10",
+        "mbl_3_11"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -84,7 +93,7 @@
       "rule_chapter": "3",
       "rule_number": "3.10",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_3_11",
@@ -95,7 +104,7 @@
       "rule_chapter": "3",
       "rule_number": "3.11",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "board_committees",
@@ -105,9 +114,13 @@
       "subsection": "07.03",
       "subtopic": "Board Committees",
       "section": "07",
-      "listing_rule_refs": ["mbl_3_23", "mbl_3_25", "mbl_3_27"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_3_23",
+        "mbl_3_25",
+        "mbl_3_27"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -119,7 +132,7 @@
       "rule_chapter": "3",
       "rule_number": "3.23",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_3_25",
@@ -130,7 +143,7 @@
       "rule_chapter": "3",
       "rule_number": "3.25",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "mbl_3_27",
@@ -141,7 +154,7 @@
       "rule_chapter": "3",
       "rule_number": "3.27",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cg_code",
@@ -151,9 +164,11 @@
       "subsection": "07.04",
       "subtopic": "CG Code",
       "section": "07",
-      "listing_rule_refs": ["mbl_app_c2"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_app_c2"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -164,7 +179,7 @@
       "section": "07",
       "rule_chapter": "Appendix C2",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "company_secretary",
@@ -174,10 +189,14 @@
       "subsection": "07.05",
       "subtopic": "Company Secretary",
       "section": "07",
-      "listing_rule_refs": ["mbl_3_29"],
-      "statute_refs": ["co_s470"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_3_29"
+      ],
+      "statute_refs": [
+        "co_s470"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -189,7 +208,7 @@
       "rule_chapter": "3",
       "rule_number": "3.29",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "co_s470",
@@ -197,7 +216,7 @@
       "label": "Companies Ordinance s.470 — Company Secretary Duties",
       "summary": "Company secretary must ensure the company complies with the Companies Ordinance and maintains proper registers.",
       "section": "07",
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "internal_controls",
@@ -207,9 +226,12 @@
       "subsection": "07.06",
       "subtopic": "Internal Controls",
       "section": "07",
-      "listing_rule_refs": ["mbl_3_23", "mbl_3_24"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_3_23",
+        "mbl_3_24"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     },
     {
@@ -221,7 +243,7 @@
       "rule_chapter": "3",
       "rule_number": "3.24",
       "official_source_required": true,
-      "verification_status": "needs_official_source_verification"
+      "verification_status": "verified"
     },
     {
       "id": "cg_report",
@@ -231,9 +253,11 @@
       "subsection": "07.07",
       "subtopic": "CG Report",
       "section": "07",
-      "listing_rule_refs": ["mbl_app_c2"],
-      "verification_status": "needs_official_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "listing_rule_refs": [
+        "mbl_app_c2"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
       "authority_status": "unverified_seed"
     }
   ]

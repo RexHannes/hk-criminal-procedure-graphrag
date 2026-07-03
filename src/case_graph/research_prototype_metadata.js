@@ -1,30 +1,30 @@
-const CLEAN_PRODUCT_LABELS = [
-  "Source-linked",
-  "Public judgment",
-  "Paragraph proof",
-  "Research prototype",
-];
-
-const RESEARCH_PROTOTYPE_METADATA = {
-  answer_mode: "research_prototype",
-  lawyer_review_status: "unreviewed",
-  professional_advice_certified: false,
-  public_source_link_required: true,
-  lawyer_review_blocks_research_prototype: false,
-};
-
-function applyResearchPrototypeMetadata(item = {}) {
+function researchPrototypeMetadata(overrides = {}) {
   return {
-    ...item,
+    source_status: "paragraph_linked_public_source",
+    research_use_allowed: true,
+    lawyer_review_status: "unreviewed",
+    lawyer_review_required: false,
     answer_mode: "research_prototype",
-    lawyer_review_status: item.lawyer_review_status || "unreviewed",
     professional_advice_certified: false,
-    public_source_link_verified: item.public_source_link_verified !== false,
+    answer_safe: false,
+    ...overrides,
   };
 }
 
+function attachResearchPrototypeMetadata(record = {}) {
+  return {
+    ...record,
+    ...researchPrototypeMetadata(),
+    human_review_status: record.human_review_status || "unreviewed",
+  };
+}
+
+function isParagraphLinkedPublicSource(record = {}) {
+  return record.source_status === "paragraph_linked_public_source" && record.research_use_allowed === true;
+}
+
 module.exports = {
-  CLEAN_PRODUCT_LABELS,
-  RESEARCH_PROTOTYPE_METADATA,
-  applyResearchPrototypeMetadata,
+  researchPrototypeMetadata,
+  attachResearchPrototypeMetadata,
+  isParagraphLinkedPublicSource,
 };

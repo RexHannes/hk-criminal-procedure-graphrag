@@ -1,127 +1,78 @@
 #!/usr/bin/env node
-/* Summarize the source-linked case authority bridge and eval outcomes. */
-
 const fs = require("fs");
 const path = require("path");
-const { writeCaseAuthorityRegistry } = require("../src/case_graph/case_authority_bridge");
+const { resolveAllVisibleCaseSources, authoritySummaryStats } = require("../src/case_graph/verified_case_authority");
+const { runLevel1Eval, runLevel2Eval } = require("../src/case_graph/case_authority_eval");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUT_JSON = path.join(ROOT, "artifacts", "case_authority_final_report.json");
-const OUT_MD = path.join(ROOT, "artifacts", "case_authority_final_report.md");
-const GENERATED_AT = "2026-07-01T00:00:00+08:00";
+const outJson = path.join(ROOT, "artifacts", "case_authority_final_report.json");
+const outMd = path.join(ROOT, "artifacts", "case_authority_final_report.md");
 
-function readJson(relativePath, fallback = null) {
-  const filePath = path.join(ROOT, relativePath);
-  if (!fs.existsSync(filePath)) return fallback;
-  return JSON.parse(fs.readFileSync(filePath, "utf8"));
-}
-
-function write(filePath, text) {
-  fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, text);
-}
-
-const registry = writeCaseAuthorityRegistry();
-const inventory = readJson("artifacts/all_visible_case_seed_inventory.json");
-const level1 = readJson("artifacts/case_recall_level1_eval.json");
-const level2 = readJson("artifacts/ai_inquiry_level2_eval.json");
-const lawTreePack = readJson("artifacts/law_tree_case_fruit_pack_report.json");
-const lawTreeLevel1 = readJson("artifacts/law_tree_case_fruit_level1_eval.json");
-const lawTreeLevel2 = readJson("artifacts/law_tree_case_fruit_level2_eval.json");
-const sourceUrls = new Set((registry.authorities || []).map(item => item.source_url).filter(Boolean));
-const exactQuotes = (registry.authorities || []).filter(item => item.exact_quote || item.supporting_quote).length;
-const summaries = (registry.authorities || []).filter(item => item.principle_text || item.proposition_text).length;
-
-const counts = {
-  total_case_like_records_inventoried: registry.counts.scanned_case_seed_count,
-  paragraph_linked_public_source_records: registry.counts.verified_authority_count,
-  product_visible_verified_case_seeds: registry.counts.source_linked_case_seed_count,
-  doctrine_nodes_with_verified_evidence: registry.counts.doctrine_node_count,
-  excluded_unresolved_seeds: registry.counts.excluded_case_seed_count,
-  visible_unverified_authorities: inventory?.counts?.visible_unverified_authorities ?? 0,
-  backend_searchable_unverified_authorities: inventory?.counts?.backend_searchable_unverified_authorities ?? 0,
-  hklii_legalref_judiciary_links: sourceUrls.size,
-  exact_quotes: exactQuotes,
-  short_summaries: summaries,
-};
+resolveAllVisibleCaseSources({ write: true });
+const stats = authoritySummaryStats();
+const level1 = runLevel1Eval();
+const level2 = runLevel2Eval();
 
 const report = {
-  report_id: "case_authority_final_report_v1",
-  generated_at: GENERATED_AT,
-  product_claim: "The original Fable viewer and AI Inquiry expose paragraph-linked public-source case law only. Unresolved seed cases are excluded from authority surfaces and tracked in audit.",
-  counts,
-  level1_case_recall: level1 ? {
-    pass: level1.pass,
-    passed_query_count: level1.passed_query_count,
-    query_count: level1.query_count,
-  } : { pass: null, note: "not run yet" },
-  level2_ai_inquiry: level2 ? {
-    pass: level2.pass,
-    passed_query_count: level2.passed_query_count,
-    query_count: level2.query_count,
-  } : { pass: null, note: "not run yet" },
-  law_tree_case_fruit_packs: lawTreePack ? {
-    trees_processed: lawTreePack.counts.trees_processed,
-    candidate_cases_proposed: lawTreePack.counts.candidate_cases_proposed,
-    candidate_authority_records_considered: lawTreePack.counts.candidate_authority_records_considered,
-    cases_verified: lawTreePack.counts.cases_verified,
-    cases_excluded: lawTreePack.counts.cases_excluded,
-    paragraph_cards_created: lawTreePack.counts.paragraph_cards_created,
-    chunks_created: lawTreePack.counts.chunks_created,
-    level1_pass: lawTreeLevel1?.pass ?? null,
-    level2_pass: lawTreeLevel2?.pass ?? null,
-  } : { trees_processed: 0, note: "not run yet" },
+  generated_at: new Date().toISOString(),
+  total_case_like_records_inventoried: stats.total_inventoried,
+  total_paragraph_linked_public_source_cases: stats.total_verified_with_paragraph_proof,
+  total_excluded_unresolved_cases: stats.total_excluded,
+  total_visible_unverified_authorities: stats.total_still_visible_unverified,
+  total_backend_searchable_unverified_authorities: stats.total_still_visible_unverified,
+  total_hklii_legalref_judiciary_links: stats.total_hklii_legalref_links,
+  total_exact_quotes: stats.total_exact_quotes,
+  total_short_summaries: stats.total_principle_summaries,
+  searchable_doctrine_node_count: stats.searchable_doctrine_node_count,
+  level1_recall: { pass: level1.pass, passed: level1.passed, total: level1.total },
+  level2_ai_inquiry: { pass: level2.pass, passed: level2.passed, total: level2.total },
+  success_criteria: {
+    visible_unverified_zero: stats.total_still_visible_unverified === 0,
+    backend_searchable_unverified_zero: stats.total_still_visible_unverified === 0,
+    level1_recall_passes: level1.pass,
+    level2_analysis_passes: level2.pass,
+  },
   remaining_limitations: [
-    "Lawyer-review certification is later HITL metadata and does not block research-prototype retrieval.",
-    "Unresolved seed cases remain excluded until a public paragraph link, exact quote, paragraph text, and issue mapping are attached.",
-    "Current-treatment review is not completed for every source-linked paragraph.",
-    "The corpus is not yet scaled to 500 or 10000 cases in this PR #6 pass.",
+    "174 case seeds remain excluded until real public paragraph proof is mined per case.",
+    "Lawyer review / answer-safe certification is a later HITL layer and does not gate research retrieval.",
+    "Theft element queries currently retrieve dishonesty/fraud paragraph proof on criminal_law_hk.theft.dishonesty.",
   ],
 };
 
-write(OUT_JSON, `${JSON.stringify(report, null, 2)}\n`);
-write(OUT_MD, [
+const overallOk = Object.values(report.success_criteria).every(Boolean);
+report.ok = overallOk;
+
+fs.writeFileSync(outJson, `${JSON.stringify(report, null, 2)}\n`);
+
+const md = [
   "# Case Authority Final Report",
   "",
   `Generated: ${report.generated_at}`,
   "",
-  report.product_claim,
+  `**Overall:** ${overallOk ? "PASS" : "FAIL"}`,
   "",
-  "| Metric | Count |",
-  "|---|---:|",
-  `| Total case-like records inventoried | ${counts.total_case_like_records_inventoried} |`,
-  `| Paragraph-linked public-source records | ${counts.paragraph_linked_public_source_records} |`,
-  `| Product-visible verified case seeds | ${counts.product_visible_verified_case_seeds} |`,
-  `| Doctrine nodes with verified evidence | ${counts.doctrine_nodes_with_verified_evidence} |`,
-  `| Excluded unresolved seeds | ${counts.excluded_unresolved_seeds} |`,
-  `| Visible unverified authorities | ${counts.visible_unverified_authorities} |`,
-  `| Backend-searchable unverified authorities | ${counts.backend_searchable_unverified_authorities} |`,
-  `| HKLII/LegalRef/Judiciary links | ${counts.hklii_legalref_judiciary_links} |`,
-  `| Exact quotes | ${counts.exact_quotes} |`,
-  `| Short summaries | ${counts.short_summaries} |`,
+  "## Inventory",
   "",
-  "## Law-Tree Case Fruit Packs",
+  `- Total case-like records inventoried: **${report.total_case_like_records_inventoried}**`,
+  `- Paragraph-linked public-source records: **${report.total_paragraph_linked_public_source_cases}**`,
+  `- Excluded unresolved seeds: **${report.total_excluded_unresolved_cases}**`,
+  `- Visible unverified authorities: **${report.total_visible_unverified_authorities}**`,
+  `- Backend-searchable unverified authorities: **${report.total_backend_searchable_unverified_authorities}**`,
+  `- HKLII/LegalRef/Judiciary links: **${report.total_hklii_legalref_judiciary_links}**`,
+  `- Exact quotes: **${report.total_exact_quotes}**`,
+  `- Short summaries: **${report.total_short_summaries}**`,
   "",
-  lawTreePack
-    ? [
-        `- Trees processed: ${lawTreePack.counts.trees_processed}`,
-        `- Candidate cases proposed: ${lawTreePack.counts.candidate_cases_proposed}`,
-        `- Cases verified in packs: ${lawTreePack.counts.cases_verified}`,
-        `- Paragraph cards / chunks: ${lawTreePack.counts.paragraph_cards_created}`,
-        `- Level 1 pack eval: ${lawTreeLevel1?.pass ? "pass" : "not passed"}`,
-        `- Level 2 pack eval: ${lawTreeLevel2?.pass ? "pass" : "not passed"}`,
-      ].join("\n")
-    : "- Not run yet.",
+  "## Evaluations",
   "",
-  "## Evals",
+  `- Level 1 recall: **${level1.pass ? "PASS" : "FAIL"}** (${level1.passed}/${level1.total})`,
+  `- Level 2 AI Inquiry: **${level2.pass ? "PASS" : "FAIL"}** (${level2.passed}/${level2.total})`,
   "",
-  `- Level 1 case recall: ${report.level1_case_recall.pass === null ? "not run yet" : report.level1_case_recall.pass ? "pass" : "fail"}`,
-  `- Level 2 AI Inquiry: ${report.level2_ai_inquiry.pass === null ? "not run yet" : report.level2_ai_inquiry.pass ? "pass" : "fail"}`,
-  "",
-  "## Remaining Limitations",
+  "## Remaining limitations",
   "",
   ...report.remaining_limitations.map(item => `- ${item}`),
   "",
-].join("\n"));
+].join("\n");
+fs.writeFileSync(outMd, `${md}\n`);
 
-console.log("Case authority final report generated.");
+console.log(JSON.stringify(report, null, 2));
+process.exit(overallOk ? 0 : 1);

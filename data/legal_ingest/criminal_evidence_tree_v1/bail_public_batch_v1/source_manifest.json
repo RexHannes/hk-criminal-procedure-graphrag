@@ -44,7 +44,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=133491&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "notes": "Full public judgment page from Judiciary Legal Reference System. Extracted propositions remain machine_candidate until reviewed."
     },
     {
@@ -64,7 +64,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=130336&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai",
+      "authority_status": "verified_public_authority",
       "notes": "Earlier NSL bail judgment. Later treatment in HKSAR v Lai Chee Ying must be shown in lineage/audit trail."
     },
     {
@@ -84,7 +84,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=130396&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai",
+      "authority_status": "verified_public_authority",
       "notes": "CFI bail review decision refusing bail in the first NSL prosecution. Candidate propositions must be read with later CFA treatment in HKSAR v Lai Chee Ying."
     },
     {
@@ -104,7 +104,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=132658&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate_later_considered_in_lai",
+      "authority_status": "verified_public_authority",
       "notes": "CFI NSL bail review decision addressing undertakings, risk of reoffending, and renewed bail review if detention becomes unjust before trial."
     },
     {
@@ -204,7 +204,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=135135&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "notes": "Targeted browser-guided public LegalRef discovery. Extracted propositions remain machine_candidate until reviewed."
     },
     {
@@ -224,7 +224,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=135137&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "notes": "Targeted browser-guided public LegalRef discovery. Extracted propositions remain machine_candidate until reviewed."
     },
     {
@@ -244,7 +244,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=136081&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "notes": "Targeted browser-guided public LegalRef discovery. Extracted propositions remain machine_candidate until reviewed."
     },
     {
@@ -264,7 +264,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=136080&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "notes": "Targeted browser-guided public LegalRef discovery. Extracted propositions remain machine_candidate until reviewed."
     },
     {
@@ -284,7 +284,7 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=137836&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate",
+      "authority_status": "verified_public_authority",
       "notes": "Targeted browser-guided public LegalRef discovery. Extracted propositions remain machine_candidate until reviewed."
     },
     {

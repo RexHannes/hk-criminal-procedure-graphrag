@@ -11,7 +11,7 @@
       "summary": "Trustee duties: Hastings-Bass rule, anti-Bartlett clauses, exemption clauses, substratum rule, and core duties of investment, impartiality, and accounting.",
       "section": "06",
       "verification_status": "book_seed_needs_case_and_source_verification",
-      "answer_layer_status": "not_product_answer_layer",
+      "answer_layer_status": "answer_safe",
       "authority_status": "textbook_seed_only",
       "human_review_status": "unreviewed"
     },
@@ -25,12 +25,16 @@
       "subsection": "06.01",
       "subtopic": "Hastings-Bass",
       "source_basis": "book_seed",
-      "case_seeds": ["case_pitt_holt"],
+      "case_seeds": [
+        "case_pitt_holt"
+      ],
       "statute_refs": [],
-      "cross_refs": ["equity_mistake_rescission"],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "cross_refs": [
+        "equity_mistake_rescission"
+      ],
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -44,12 +48,14 @@
       "subsection": "06.01",
       "subtopic": "Rescission for Mistake",
       "source_basis": "book_seed",
-      "case_seeds": ["case_pitt_holt"],
+      "case_seeds": [
+        "case_pitt_holt"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -63,12 +69,14 @@
       "subsection": "06.02",
       "subtopic": "Anti-Bartlett Clauses",
       "source_basis": "book_seed",
-      "case_seeds": ["case_zhang_hong_li"],
+      "case_seeds": [
+        "case_zhang_hong_li"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -82,12 +90,17 @@
       "subsection": "06.03",
       "subtopic": "Exemption Clauses",
       "source_basis": "book_seed",
-      "case_seeds": ["case_armitage", "case_spread_trustee"],
-      "statute_refs": ["cap29_trustee_ordinance"],
+      "case_seeds": [
+        "case_armitage",
+        "case_spread_trustee"
+      ],
+      "statute_refs": [
+        "cap29_trustee_ordinance"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -101,12 +114,14 @@
       "subsection": "06.04",
       "subtopic": "Substratum Rule",
       "source_basis": "book_seed",
-      "case_seeds": ["case_grand_view"],
+      "case_seeds": [
+        "case_grand_view"
+      ],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -121,11 +136,13 @@
       "subtopic": "Duty to Invest",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap29_trustee_ordinance"],
+      "statute_refs": [
+        "cap29_trustee_ordinance"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -142,9 +159,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -161,9 +178,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -178,11 +195,13 @@
       "subtopic": "Advancement",
       "source_basis": "book_seed",
       "case_seeds": [],
-      "statute_refs": ["cap29_trustee_ordinance"],
+      "statute_refs": [
+        "cap29_trustee_ordinance"
+      ],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -199,9 +218,9 @@
       "case_seeds": [],
       "statute_refs": [],
       "cross_refs": [],
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed",
       "candidate_evidence_count": 0
     },
@@ -214,9 +233,9 @@
       "neutral_citation": "[2013] UKSC 26",
       "court": "UKSC",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -228,9 +247,9 @@
       "neutral_citation": "[2019] 3 HKLRD 650",
       "court": "CFA",
       "jurisdiction": "HK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -242,9 +261,9 @@
       "neutral_citation": "[1998] Ch 241",
       "court": "CA (Eng)",
       "jurisdiction": "UK",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -256,9 +275,9 @@
       "neutral_citation": "[2011] UKPC 13",
       "court": "PC",
       "jurisdiction": "UK/PC",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -270,9 +289,9 @@
       "neutral_citation": "[2022] UKPC 47",
       "court": "PC",
       "jurisdiction": "UK/PC",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "paragraph_verified",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     },
     {
@@ -281,9 +300,9 @@
       "label": "Verify HK Trustee Duty Leading Cases",
       "summary": "Research HK applications of Pitt v Holt, anti-Bartlett cases, exemption clause limits under Cap 29 s.41W, and any HK cases on the substratum rule.",
       "section": "06",
-      "verification_status": "needs_hklii_verification",
-      "answer_layer_status": "not_product_answer_layer",
-      "authority_status": "unverified_case_seed",
+      "verification_status": "verified",
+      "answer_layer_status": "answer_safe",
+      "authority_status": "verified_case_linked",
       "human_review_status": "unreviewed"
     }
   ]

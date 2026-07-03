@@ -33,16 +33,60 @@
     "gap_node": "#6b7280"
   },
   "sections": [
-    { "id": "01", "title": "Listing Eligibility & Suitability", "file": "nodes/01_listing_eligibility_suitability.json" },
-    { "id": "02", "title": "IPO Mechanics & Pre-IPO Structuring", "file": "nodes/02_ipo_mechanics_pre_ipo_structuring.json" },
-    { "id": "03", "title": "Prospectus Regime & Liability", "file": "nodes/03_prospectus_regime_liability.json" },
-    { "id": "04", "title": "Continuing Disclosure & Inside Information", "file": "nodes/04_continuing_disclosure.json" },
-    { "id": "05", "title": "Notifiable Transactions", "file": "nodes/05_notifiable_transactions.json" },
-    { "id": "06", "title": "Connected Transactions", "file": "nodes/06_connected_transactions.json" },
-    { "id": "07", "title": "Board, Directors & Corporate Governance", "file": "nodes/07_board_directors_cg.json" },
-    { "id": "08", "title": "Financial Reporting, Audit & Shareholder Communications", "file": "nodes/08_financial_reporting_audit.json" },
-    { "id": "09", "title": "Capital Management & Corporate Actions", "file": "nodes/09_capital_management.json" },
-    { "id": "10", "title": "ESG, Sustainability & Climate Disclosure", "file": "nodes/10_esg_sustainability.json" },
-    { "id": "11", "title": "Compliance, Waivers, Enforcement & Sanctions", "file": "nodes/11_compliance_waivers_enforcement.json" }
+    {
+      "id": "01",
+      "title": "Listing Eligibility & Suitability",
+      "file": "nodes/01_listing_eligibility_suitability.json"
+    },
+    {
+      "id": "02",
+      "title": "IPO Mechanics & Pre-IPO Structuring",
+      "file": "nodes/02_ipo_mechanics_pre_ipo_structuring.json"
+    },
+    {
+      "id": "03",
+      "title": "Prospectus Regime & Liability",
+      "file": "nodes/03_prospectus_regime_liability.json"
+    },
+    {
+      "id": "04",
+      "title": "Continuing Disclosure & Inside Information",
+      "file": "nodes/04_continuing_disclosure.json"
+    },
+    {
+      "id": "05",
+      "title": "Notifiable Transactions",
+      "file": "nodes/05_notifiable_transactions.json"
+    },
+    {
+      "id": "06",
+      "title": "Connected Transactions",
+      "file": "nodes/06_connected_transactions.json"
+    },
+    {
+      "id": "07",
+      "title": "Board, Directors & Corporate Governance",
+      "file": "nodes/07_board_directors_cg.json"
+    },
+    {
+      "id": "08",
+      "title": "Financial Reporting, Audit & Shareholder Communications",
+      "file": "nodes/08_financial_reporting_audit.json"
+    },
+    {
+      "id": "09",
+      "title": "Capital Management & Corporate Actions",
+      "file": "nodes/09_capital_management.json"
+    },
+    {
+      "id": "10",
+      "title": "ESG, Sustainability & Climate Disclosure",
+      "file": "nodes/10_esg_sustainability.json"
+    },
+    {
+      "id": "11",
+      "title": "Compliance, Waivers, Enforcement & Sanctions",
+      "file": "nodes/11_compliance_waivers_enforcement.json"
+    }
   ]
 }

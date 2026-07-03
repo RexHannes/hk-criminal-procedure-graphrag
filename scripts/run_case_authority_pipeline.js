@@ -1,24 +1,39 @@
 #!/usr/bin/env node
-/* Rebuild the verified case-authority bridge artifacts in deterministic order. */
+const { execSync } = require("child_process");
+const path = require("path");
 
-const { spawnSync } = require("child_process");
-
+const ROOT = path.resolve(__dirname, "..");
 const steps = [
-  "build_viewer_case_evidence_index.js",
-  "build_case_authority_registry.js",
-  "inventory_all_visible_case_seeds.js",
-  "resolve_all_visible_case_sources.js",
-  "build_excluded_unverified_case_seeds_report.js",
-  "build_law_tree_case_fruit_packs.js",
-  "validate_law_tree_case_fruit_packs.js",
-  "evaluate_law_tree_case_fruit_level1.js",
-  "evaluate_law_tree_case_fruit_level2.js",
-  "generate_case_authority_final_report.js",
+  "node scripts/inventory_all_visible_case_seeds.js",
+  "node scripts/resolve_all_visible_case_sources.js",
+  "node scripts/build_viewer_evidence_index.js",
+  "node scripts/build_case_authority_registry.js",
+  "node scripts/validate_all_visible_cases_resolved_or_excluded.js",
+  "node scripts/validate_no_visible_unverified_case_authorities.js",
+  "node scripts/validate_verified_case_authority.js",
+  "node scripts/validate_case_authority_registry.js",
+  "node scripts/validate_backend_case_search_uses_verified_only.js",
+  "node scripts/build_structured_case_notes.js",
+  "node scripts/validate_structured_case_notes.js",
+  "node scripts/audit_case_authority_relevance.js",
+  "node scripts/audit_law_tree_case_diversity.js",
+  "node scripts/validate_sop_editing_demo.js",
+  "node scripts/evaluate_case_recall_level1.js",
+  "node scripts/evaluate_ai_inquiry_level2.js",
+  "node scripts/evaluate_ai_inquiry_analysis_quality.js",
+  "node scripts/validate_ai_inquiry_case_recall.js",
+  "node scripts/generate_case_authority_final_report.js",
 ];
 
-for (const script of steps) {
-  const result = spawnSync(process.execPath, [`scripts/${script}`], { stdio: "inherit" });
-  if (result.status !== 0) process.exit(result.status || 1);
+let failed = false;
+for (const step of steps) {
+  console.log(`\n> ${step}`);
+  try {
+    execSync(step, { cwd: ROOT, stdio: "inherit" });
+  } catch (error) {
+    failed = true;
+    console.error(`Step failed: ${step}`);
+    break;
+  }
 }
-
-console.log("Case authority pipeline completed.");
+process.exit(failed ? 1 : 0);

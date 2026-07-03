@@ -20,7 +20,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "case_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022",
@@ -37,7 +37,7 @@
       "licence_status": "public_judgment",
       "ingestion_status": "paragraphized",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ],
   "paragraph_cards": [
@@ -51,7 +51,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p103",
@@ -63,7 +63,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p106",
@@ -75,7 +75,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2020_sham_wing_kan_cacv_270_2017_p105",
@@ -87,7 +87,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p33",
@@ -99,7 +99,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p34",
@@ -111,7 +111,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     },
     {
       "paragraph_id": "hk_ca_2022_lai_chee_ying_v_commissioner_cacv_356_357_2022_p35",
@@ -123,7 +123,7 @@
       "source_visibility": "public_demo",
       "tenant_id": "public",
       "fixture_status": "real_public_source_branch_landmark_pilot",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ]
 }

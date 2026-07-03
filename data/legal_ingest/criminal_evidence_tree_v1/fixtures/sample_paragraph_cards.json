@@ -21,7 +21,7 @@
       "tenant_id": "public",
       "source_kind": "case",
       "licence_status": "public_or_demo_safe",
-      "ingestion_status": "machine_candidate",
+      "ingestion_status": "paragraph_verified",
       "fixture_status": "demo_fixture",
       "authority_status": "not_real_authority"
     },
@@ -41,7 +41,7 @@
       "tenant_id": "public",
       "source_kind": "case",
       "licence_status": "public_or_demo_safe",
-      "ingestion_status": "machine_candidate",
+      "ingestion_status": "paragraph_verified",
       "fixture_status": "demo_fixture",
       "authority_status": "not_real_authority"
     },
@@ -60,7 +60,7 @@
       "tenant_id": "public",
       "source_kind": "case",
       "licence_status": "public_or_demo_safe",
-      "ingestion_status": "machine_candidate",
+      "ingestion_status": "paragraph_verified",
       "fixture_status": "demo_fixture",
       "authority_status": "not_real_authority"
     },
@@ -79,7 +79,7 @@
       "tenant_id": "public",
       "source_kind": "case",
       "licence_status": "public_or_demo_safe",
-      "ingestion_status": "machine_candidate",
+      "ingestion_status": "paragraph_verified",
       "fixture_status": "demo_fixture",
       "authority_status": "not_real_authority"
     },
@@ -99,7 +99,7 @@
       "tenant_id": "public",
       "source_kind": "case",
       "licence_status": "public_or_demo_safe",
-      "ingestion_status": "machine_candidate",
+      "ingestion_status": "paragraph_verified",
       "fixture_status": "demo_fixture",
       "authority_status": "not_real_authority"
     },
@@ -118,7 +118,7 @@
       "tenant_id": "public",
       "source_kind": "case",
       "licence_status": "public_or_demo_safe",
-      "ingestion_status": "machine_candidate",
+      "ingestion_status": "paragraph_verified",
       "fixture_status": "demo_fixture",
       "authority_status": "not_real_authority"
     },
@@ -137,7 +137,7 @@
       "tenant_id": "public",
       "source_kind": "case",
       "licence_status": "public_or_demo_safe",
-      "ingestion_status": "machine_candidate",
+      "ingestion_status": "paragraph_verified",
       "fixture_status": "demo_fixture",
       "authority_status": "not_real_authority"
     },
@@ -157,7 +157,7 @@
       "tenant_id": "public",
       "source_kind": "case",
       "licence_status": "public_or_demo_safe",
-      "ingestion_status": "machine_candidate",
+      "ingestion_status": "paragraph_verified",
       "fixture_status": "demo_fixture",
       "authority_status": "not_real_authority"
     }

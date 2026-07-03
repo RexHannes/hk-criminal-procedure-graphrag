@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HK Criminal Procedure - Legal Graph-SOP Workspace</title>
-  <link rel="icon" href="data:,">
+  <title>HK Criminal Procedure — Legal Graph-SOP Workspace</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -17,11 +16,11 @@
       <div class="brand-mark">¶</div>
       <div class="brand-text">
         <h1>Hong Kong Criminal Procedure</h1>
-        <span class="brand-sub">Legal Graph-SOP Workspace</span>
+        <span class="brand-sub">Legal Graph-SOP Workspace · Casemap4</span>
       </div>
     </div>
     <div class="command-wrap">
-      <input type="text" id="command-bar" placeholder="Search authority, run a legal flow, or draft from firm SOP..." autocomplete="off" />
+      <input type="text" id="command-bar" placeholder="Search authority, run a legal flow, or draft from firm SOP…" autocomplete="off" />
       <div id="command-results" class="command-results" hidden></div>
     </div>
     <div class="domain-wrap">
@@ -29,8 +28,8 @@
       <select id="domain-select" aria-label="Select legal domain"></select>
     </div>
     <div class="masthead-badges">
-      <span class="badge badge-research" title="The workspace is a research UI with flow, source and SOP inspection.">Workspace</span>
-      <button class="verified-demo-chip" type="button" data-view="caseDemo" title="Open the source-proofed PR #6 case-corpus demo inside the workspace">Verified Case Demo</button>
+      <span class="badge badge-verified" title="Paragraph-linked public judgments with source proof.">Source-linked authorities</span>
+      <span class="badge badge-research" title="Research prototype — not professional legal advice.">Research prototype</span>
     </div>
   </header>
   <div class="masthead-rule"></div>
@@ -42,14 +41,10 @@
       <button class="nav-item active" data-view="domains"><span class="nav-glyph">◇</span>Domains</button>
       <button class="nav-item" data-view="flows"><span class="nav-glyph">→</span>Legal Flows</button>
       <button class="nav-item" data-view="doctrine"><span class="nav-glyph">§</span>Doctrine Map</button>
+      <a class="nav-item" href="index_legacy.html"><span class="nav-glyph">⊞</span>Visual Tree</a>
       <a class="nav-item" href="pi/"><span class="nav-glyph">PI</span>PI Workflow</a>
-      <button class="nav-item" data-view="inquiry"><span class="nav-glyph">?</span>AI Inquiry</button>
+      <button class="nav-item" data-view="inquiry"><span class="nav-glyph">？</span>AI Inquiry</button>
       <button class="nav-item" data-view="tasks"><span class="nav-glyph">▸</span>Tasks</button>
-
-      <div class="nav-section-label">Verified Proof</div>
-      <button class="nav-item nav-item-emphasis" data-view="caseDemo">
-        <span class="nav-glyph">✓</span>Verified Case Demo
-      </button>
 
       <div class="nav-section-label">Firm Overlay</div>
       <button class="nav-item" data-view="playbooks"><span class="nav-glyph">¶</span>Firm Playbooks</button>
@@ -60,7 +55,7 @@
 
       <div id="firm-card">
         <div class="firm-card-label">Firm profile</div>
-        <div class="firm-card-name" id="firm-name">-</div>
+        <div class="firm-card-name" id="firm-name">—</div>
         <div class="firm-card-meta" id="firm-meta"></div>
       </div>
     </nav>
@@ -82,12 +77,16 @@
   </div>
 
   <footer id="status-bar">
-    <span id="status-data">Loading data...</span>
+    <span id="status-data">Loading data…</span>
     <span class="status-sep"></span>
     <span id="status-counts"></span>
     <span class="status-spacer"></span>
     <span id="status-selected">Nothing selected</span>
   </footer>
+
+  <div id="prototype-banner" class="prototype-banner" role="note">
+    Research prototype. Public source-linked case law. Lawyer-review workflow to be added before professional/legal-advice deployment.
+  </div>
 
   <script>
     window.DATA_INDEX = '../data/index.json';
@@ -95,6 +94,7 @@
     window.DEFAULT_DOMAIN_ID = 'criminal_procedure_hk';
     window.FIRM_OVERLAY_PATH = '../data/firm_overlay/demo_firm.json';
   </script>
+  <script src="sop_editor.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

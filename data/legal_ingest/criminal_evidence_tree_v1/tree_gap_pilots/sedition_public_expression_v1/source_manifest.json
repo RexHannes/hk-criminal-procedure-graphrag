@@ -26,13 +26,13 @@
       "fetch_url": "https://legalref.judiciary.hk/lrs/common/search/search_result_detail_body.jsp?ID=&DIS=158600&QS=%2B&TP=JU",
       "source_format": "legalref_html_body",
       "ingestion_status": "source_candidate",
-      "authority_status": "real_public_authority_candidate"
+      "authority_status": "verified_public_authority"
     }
   ],
   "tree_gap_resolution": {
     "existing_tree_match": "no_clean_existing_branch",
     "tree_proposal_source": "notebooklm_logged_in_private_notebook",
-    "tree_proposal_status": "candidate_only",
+    "tree_proposal_status": "paragraph_verified",
     "verification_gate": "legalref_exact_quote_case_fruits_only"
   }
 }

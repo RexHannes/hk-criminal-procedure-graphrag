@@ -1,0 +1,227 @@
+{
+  "artifact_id": "ai_inquiry_analysis_quality_report_v1",
+  "generated_at": "2026-07-03T04:07:19.184Z",
+  "pass": true,
+  "overall_average": 4.85,
+  "gates": {
+    "average_at_least_3_5": true,
+    "quote_accuracy_5_of_5": true,
+    "unsupported_domain_abstention_5_of_5": true,
+    "no_wrong_case_citation": true
+  },
+  "results": [
+    {
+      "id": "theft_forgot_to_pay",
+      "query": "I picked up goods in a shop, forgot to pay, and left. What theft issues matter?",
+      "scores": {
+        "unsupported_domain_abstention": 5,
+        "issue_spotting": 5,
+        "sub_issue_mapping": 5,
+        "authority_relevance": 5,
+        "quote_accuracy": 5,
+        "use_of_facts": 5,
+        "legal_application": 5,
+        "missing_facts": 5,
+        "distinguishing": 5,
+        "answer_structure": 5,
+        "depth_comprehensiveness": 4.5
+      },
+      "average": 4.95,
+      "problems": [],
+      "wrong_case_citation": false,
+      "abstained": false,
+      "authorities": [
+        "Betty Kwan and Others v Securities and Futures Commission FACV 7/2018",
+        "HKSAR v Mo Yuk Ping and Another CACC 223/2022"
+      ],
+      "distinguished": [
+        "Secretary for Justice v Tong Wai Hung and Others",
+        "HKSAR v Tam Tak Chi",
+        "Re Minloy Ltd and others",
+        "Lancom Ltd v Capxon International Electronic Co Ltd",
+        "Vasily Trubnikov v Evgeny Volosov and others"
+      ]
+    },
+    {
+      "id": "theft_intention_return",
+      "query": "What does intention permanently to deprive mean if I planned to return the item?",
+      "scores": {
+        "unsupported_domain_abstention": 5,
+        "issue_spotting": 5,
+        "sub_issue_mapping": 5,
+        "authority_relevance": 5,
+        "quote_accuracy": 5,
+        "use_of_facts": 5,
+        "legal_application": 3,
+        "missing_facts": 5,
+        "distinguishing": 5,
+        "answer_structure": 5,
+        "depth_comprehensiveness": 4
+      },
+      "average": 4.73,
+      "problems": [],
+      "wrong_case_citation": false,
+      "abstained": false,
+      "authorities": [
+        "Betty Kwan and Others v Securities and Futures Commission FACV 7/2018",
+        "HKSAR v Mo Yuk Ping and Another CACC 223/2022"
+      ],
+      "distinguished": [
+        "Secretary for Justice v Lam Tat Ming",
+        "HKSAR v Tam Tak Chi",
+        "Secretary for Justice v Tong Wai Hung and Others",
+        "Re Minloy Ltd and others",
+        "Lancom Ltd v Capxon International Electronic Co Ltd",
+        "Vasily Trubnikov v Evgeny Volosov and others"
+      ]
+    },
+    {
+      "id": "theft_belonging_another",
+      "query": "The property was in someone else's possession, but I thought it was mine. What theft issue is this?",
+      "scores": {
+        "unsupported_domain_abstention": 5,
+        "issue_spotting": 5,
+        "sub_issue_mapping": 5,
+        "authority_relevance": 5,
+        "quote_accuracy": 5,
+        "use_of_facts": 5,
+        "legal_application": 3,
+        "missing_facts": 5,
+        "distinguishing": 5,
+        "answer_structure": 5,
+        "depth_comprehensiveness": 4
+      },
+      "average": 4.73,
+      "problems": [],
+      "wrong_case_citation": false,
+      "abstained": false,
+      "authorities": [
+        "Betty Kwan and Others v Securities and Futures Commission FACV 7/2018",
+        "HKSAR v Mo Yuk Ping and Another CACC 223/2022"
+      ],
+      "distinguished": [
+        "Secretary for Justice v Lam Tat Ming",
+        "LEUNG KWOK HUNG AND OTHERS V. HKSAR",
+        "HKSAR v Tam Tak Chi",
+        "Lai Chee Ying v Commissioner of Police",
+        "Secretary for Justice v Tong Wai Hung and Others",
+        "Re Minloy Ltd and others"
+      ]
+    },
+    {
+      "id": "bail_after_theft",
+      "query": "What bail factors matter after a theft arrest?",
+      "scores": {
+        "unsupported_domain_abstention": 5,
+        "issue_spotting": 5,
+        "sub_issue_mapping": 5,
+        "authority_relevance": 5,
+        "quote_accuracy": 5,
+        "use_of_facts": 5,
+        "legal_application": 5,
+        "missing_facts": 5,
+        "distinguishing": 5,
+        "answer_structure": 5,
+        "depth_comprehensiveness": 4.5
+      },
+      "average": 4.95,
+      "problems": [],
+      "wrong_case_citation": false,
+      "abstained": false,
+      "authorities": [
+        "HKSAR v Lai Chee Ying [2021] HKCFA 3",
+        "Betty Kwan and Others v Securities and Futures Commission FACV 7/2018",
+        "HKSAR v Mo Yuk Ping and Another CACC 223/2022",
+        "HKSAR v Tong Ying Kit [2020] HKCFI 2196",
+        "HKSAR v Ma Chun Man [2020] HKCFI 3132",
+        "HKSAR v Chui Chi Kin [2021] HKCFI 969",
+        "HKSAR v Yung Chung Hei [2021] HKCFI 2765",
+        "HKSAR v Mo Man Ching Claudia [2021] HKCFI 1435",
+        "HKSAR v Chan Chi Chuen Raymond [2021] HKCFI 2997",
+        "HKSAR v Lai Chee Ying [2021] HKCFI 448"
+      ],
+      "distinguished": [
+        "Secretary for Justice v Lam Tat Ming",
+        "Secretary for Justice v Tong Wai Hung and Others",
+        "Sham Wing Kan v Commissioner of Police"
+      ]
+    },
+    {
+      "id": "interview_no_rights",
+      "query": "The police interviewed me without explaining my rights. What issues matter?",
+      "scores": {
+        "unsupported_domain_abstention": 5,
+        "issue_spotting": 5,
+        "sub_issue_mapping": 5,
+        "authority_relevance": 5,
+        "quote_accuracy": 5,
+        "use_of_facts": 5,
+        "legal_application": 3,
+        "missing_facts": 5,
+        "distinguishing": 5,
+        "answer_structure": 5,
+        "depth_comprehensiveness": 2.5
+      },
+      "average": 4.59,
+      "problems": [],
+      "wrong_case_citation": false,
+      "abstained": false,
+      "authorities": [
+        "Secretary for Justice v Lam Tat Ming [2000] HKCFA 8"
+      ],
+      "distinguished": [
+        "HKSAR v Lai Chee Ying",
+        "HKSAR v Leung Kwok Hung",
+        "Betty Kwan and Others v Securities and Futures Commission",
+        "Secretary for Justice v Tong Wai Hung and Others",
+        "Sham Wing Kan v Commissioner of Police",
+        "HKSAR v Tam Tak Chi"
+      ]
+    },
+    {
+      "id": "peaceful_protest_route",
+      "query": "I joined a peaceful protest and police restricted the route. What legal issues matter?",
+      "scores": {
+        "unsupported_domain_abstention": 5,
+        "issue_spotting": 5,
+        "sub_issue_mapping": 5,
+        "authority_relevance": 5,
+        "quote_accuracy": 5,
+        "use_of_facts": 5,
+        "legal_application": 5,
+        "missing_facts": 5,
+        "distinguishing": 5,
+        "answer_structure": 5,
+        "depth_comprehensiveness": 5
+      },
+      "average": 5,
+      "problems": [],
+      "wrong_case_citation": false,
+      "abstained": false,
+      "authorities": [
+        "LEUNG KWOK HUNG AND OTHERS V. HKSAR [2005] HKCFA 40",
+        "HKSAR v Leung Kwok Hung [2005] HKCFA 2",
+        "Secretary for Justice v Tong Wai Hung and Others [2021] HKCA 404"
+      ],
+      "distinguished": [
+        "Betty Kwan and Others v Securities and Futures Commission",
+        "HKSAR v Mo Yuk Ping and Another"
+      ]
+    },
+    {
+      "id": "landlord_rent",
+      "query": "My landlord increased my rent. What should I do?",
+      "scores": {
+        "unsupported_domain_abstention": 5,
+        "answer_structure": 5,
+        "quote_accuracy": 5
+      },
+      "average": 5,
+      "problems": [],
+      "wrong_case_citation": false,
+      "abstained": true,
+      "authorities": [],
+      "distinguished": []
+    }
+  ]
+}

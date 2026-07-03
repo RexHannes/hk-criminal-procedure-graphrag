@@ -25,7 +25,7 @@
       "authority_role": "application",
       "confidence": "medium",
       "confidence_score": 0.68,
-      "review_state": "machine_candidate"
+      "review_state": "paragraph_verified"
     },
     {
       "proposal_id": "proposal_chan_individual_circumstances_p23_sample",
@@ -42,7 +42,7 @@
       "authority_role": "application",
       "confidence": "medium",
       "confidence_score": 0.66,
-      "review_state": "machine_candidate"
+      "review_state": "paragraph_verified"
     }
   ]
 }

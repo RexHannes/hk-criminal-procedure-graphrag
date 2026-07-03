@@ -19,10 +19,25 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "intake",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["new personal injury matter", "accident facts"],
-      "required_facts": ["client identity", "accident date", "location", "injury", "defendant", "limitation", "insurance"],
-      "linked_principle_nodes": ["tort_law_hk.pi.claim_router"],
-      "linked_procedure_nodes": ["pi_procedure.intake"],
+      "trigger_conditions": [
+        "new personal injury matter",
+        "accident facts"
+      ],
+      "required_facts": [
+        "client identity",
+        "accident date",
+        "location",
+        "injury",
+        "defendant",
+        "limitation",
+        "insurance"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.claim_router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.intake"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -35,10 +50,25 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "pre_action",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["claim notice", "pre-action letter", "injury claim"],
-      "required_facts": ["parties", "facts", "alleged breach", "injuries", "evidence requests", "insurance details"],
-      "linked_principle_nodes": ["tort_law_hk.pi.negligence.application"],
-      "linked_procedure_nodes": ["pi_procedure.pre_action_letter"],
+      "trigger_conditions": [
+        "claim notice",
+        "pre-action letter",
+        "injury claim"
+      ],
+      "required_facts": [
+        "parties",
+        "facts",
+        "alleged breach",
+        "injuries",
+        "evidence requests",
+        "insurance details"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.negligence.application"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.pre_action_letter"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -51,10 +81,25 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "pre_action",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["CCTV", "cleaning logs", "incident report", "premises accident", "road accident"],
-      "required_facts": ["recipient", "date/time/location", "evidence requested", "preservation deadline"],
-      "linked_principle_nodes": ["tort_law_hk.pi.occupiers.warning_inspection"],
-      "linked_procedure_nodes": ["pi_procedure.evidence_preservation"],
+      "trigger_conditions": [
+        "CCTV",
+        "cleaning logs",
+        "incident report",
+        "premises accident",
+        "road accident"
+      ],
+      "required_facts": [
+        "recipient",
+        "date/time/location",
+        "evidence requested",
+        "preservation deadline"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.occupiers.warning_inspection"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.evidence_preservation"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -67,10 +112,24 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "pre_action",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["medical report", "injury proof", "sick leave"],
-      "required_facts": ["diagnosis", "treatment", "prognosis", "sick leave", "causation opinion"],
-      "linked_principle_nodes": ["tort_law_hk.pi.quantum.psla"],
-      "linked_procedure_nodes": ["pi_procedure.medical_evidence"],
+      "trigger_conditions": [
+        "medical report",
+        "injury proof",
+        "sick leave"
+      ],
+      "required_facts": [
+        "diagnosis",
+        "treatment",
+        "prognosis",
+        "sick leave",
+        "causation opinion"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.quantum.psla"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.medical_evidence"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -83,10 +142,24 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "commencement",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["issue proceedings", "writ", "personal injury"],
-      "required_facts": ["plaintiff", "defendant", "cause of action", "relief claimed", "court"],
-      "linked_principle_nodes": ["tort_law_hk.pi.claim_router"],
-      "linked_procedure_nodes": ["pi_procedure.forum_jurisdiction"],
+      "trigger_conditions": [
+        "issue proceedings",
+        "writ",
+        "personal injury"
+      ],
+      "required_facts": [
+        "plaintiff",
+        "defendant",
+        "cause of action",
+        "relief claimed",
+        "court"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.claim_router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.forum_jurisdiction"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -99,10 +172,25 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "commencement",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["statement of claim", "personal injury claim"],
-      "required_facts": ["parties", "duty", "breach", "causation", "injury", "loss and damage"],
-      "linked_principle_nodes": ["tort_law_hk.pi.negligence.application", "tort_law_hk.pi.quantum.router"],
-      "linked_procedure_nodes": ["pi_procedure.statement_of_claim"],
+      "trigger_conditions": [
+        "statement of claim",
+        "personal injury claim"
+      ],
+      "required_facts": [
+        "parties",
+        "duty",
+        "breach",
+        "causation",
+        "injury",
+        "loss and damage"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.negligence.application",
+        "tort_law_hk.pi.quantum.router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.statement_of_claim"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -115,10 +203,31 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "commencement",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["slip", "trip", "fall", "premises", "mall", "stairs", "restaurant"],
-      "required_facts": ["hazard", "occupier/control", "visitor status", "warning", "inspection/cleaning system", "injury", "loss"],
-      "linked_principle_nodes": ["tort_law_hk.pi.occupiers.application", "tort_law_hk.pi.occupiers.warning_inspection"],
-      "linked_procedure_nodes": ["pi_procedure.particulars_of_claim"],
+      "trigger_conditions": [
+        "slip",
+        "trip",
+        "fall",
+        "premises",
+        "mall",
+        "stairs",
+        "restaurant"
+      ],
+      "required_facts": [
+        "hazard",
+        "occupier/control",
+        "visitor status",
+        "warning",
+        "inspection/cleaning system",
+        "injury",
+        "loss"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.occupiers.application",
+        "tort_law_hk.pi.occupiers.warning_inspection"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.particulars_of_claim"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -131,10 +240,29 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "commencement",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["road traffic", "car accident", "driver", "pedestrian", "passenger", "collision"],
-      "required_facts": ["vehicle roles", "road layout", "traffic signals", "driver conduct", "police report", "injury/loss"],
-      "linked_principle_nodes": ["tort_law_hk.pi.rta.router", "tort_law_hk.pi.rta.driver_duty"],
-      "linked_procedure_nodes": ["pi_procedure.particulars_of_claim"],
+      "trigger_conditions": [
+        "road traffic",
+        "car accident",
+        "driver",
+        "pedestrian",
+        "passenger",
+        "collision"
+      ],
+      "required_facts": [
+        "vehicle roles",
+        "road layout",
+        "traffic signals",
+        "driver conduct",
+        "police report",
+        "injury/loss"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.rta.router",
+        "tort_law_hk.pi.rta.driver_duty"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.particulars_of_claim"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -147,10 +275,29 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "commencement",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["work injury", "construction site", "scaffold", "machinery", "industrial disease"],
-      "required_facts": ["employment status", "work task", "equipment/hazard", "training", "PPE", "statutory duty facts", "injury/loss"],
-      "linked_principle_nodes": ["tort_law_hk.pi.employer.workplace_router", "tort_law_hk.pi.employer.safe_system"],
-      "linked_procedure_nodes": ["pi_procedure.particulars_of_claim"],
+      "trigger_conditions": [
+        "work injury",
+        "construction site",
+        "scaffold",
+        "machinery",
+        "industrial disease"
+      ],
+      "required_facts": [
+        "employment status",
+        "work task",
+        "equipment/hazard",
+        "training",
+        "PPE",
+        "statutory duty facts",
+        "injury/loss"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.employer.workplace_router",
+        "tort_law_hk.pi.employer.safe_system"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.particulars_of_claim"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -163,10 +310,24 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "commencement",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["nervous shock", "psychiatric injury", "secondary victim"],
-      "required_facts": ["relationship", "direct perception", "time/space proximity", "diagnosis", "causation"],
-      "linked_principle_nodes": ["tort_law_hk.pi.psychiatric_injury.router"],
-      "linked_procedure_nodes": ["pi_procedure.particulars_of_claim"],
+      "trigger_conditions": [
+        "nervous shock",
+        "psychiatric injury",
+        "secondary victim"
+      ],
+      "required_facts": [
+        "relationship",
+        "direct perception",
+        "time/space proximity",
+        "diagnosis",
+        "causation"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.psychiatric_injury.router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.particulars_of_claim"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -179,10 +340,26 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "commencement",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["fatal accident", "estate", "dependency", "widow", "dependant"],
-      "required_facts": ["death circumstances", "estate representative", "dependants", "income/services", "funeral expenses"],
-      "linked_principle_nodes": ["tort_law_hk.pi.fatal_accident.router"],
-      "linked_procedure_nodes": ["pi_procedure.particulars_of_claim"],
+      "trigger_conditions": [
+        "fatal accident",
+        "estate",
+        "dependency",
+        "widow",
+        "dependant"
+      ],
+      "required_facts": [
+        "death circumstances",
+        "estate representative",
+        "dependants",
+        "income/services",
+        "funeral expenses"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.fatal_accident.router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.particulars_of_claim"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -195,10 +372,24 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "quantum",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["damages", "quantum", "schedule of damages"],
-      "required_facts": ["PSLA support", "expenses", "earnings records", "future loss evidence", "care/equipment/medical costs"],
-      "linked_principle_nodes": ["tort_law_hk.pi.quantum.router"],
-      "linked_procedure_nodes": ["pi_procedure.statement_of_damages"],
+      "trigger_conditions": [
+        "damages",
+        "quantum",
+        "schedule of damages"
+      ],
+      "required_facts": [
+        "PSLA support",
+        "expenses",
+        "earnings records",
+        "future loss evidence",
+        "care/equipment/medical costs"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.quantum.router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.statement_of_damages"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -211,10 +402,23 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "pleadings",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["defence", "deny negligence", "personal injury"],
-      "required_facts": ["admissions/denials", "positive defences", "causation position", "quantum position"],
-      "linked_principle_nodes": ["tort_law_hk.pi.defences.router"],
-      "linked_procedure_nodes": ["pi_procedure.defence"],
+      "trigger_conditions": [
+        "defence",
+        "deny negligence",
+        "personal injury"
+      ],
+      "required_facts": [
+        "admissions/denials",
+        "positive defences",
+        "causation position",
+        "quantum position"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.defences.router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.defence"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -227,10 +431,26 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "pleadings",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["occupiers liability defence", "not occupier", "warning", "independent contractor"],
-      "required_facts": ["control position", "warning", "contractor details", "act of stranger", "visitor/trespasser status"],
-      "linked_principle_nodes": ["tort_law_hk.pi.occupiers.application", "tort_law_hk.pi.defences.router"],
-      "linked_procedure_nodes": ["pi_procedure.defence"],
+      "trigger_conditions": [
+        "occupiers liability defence",
+        "not occupier",
+        "warning",
+        "independent contractor"
+      ],
+      "required_facts": [
+        "control position",
+        "warning",
+        "contractor details",
+        "act of stranger",
+        "visitor/trespasser status"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.occupiers.application",
+        "tort_law_hk.pi.defences.router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.defence"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -243,10 +463,24 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "pleadings",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["road traffic defence", "contributory negligence", "seatbelt", "latent defect"],
-      "required_facts": ["driver conduct", "claimant conduct", "seatbelt", "accident/defect facts"],
-      "linked_principle_nodes": ["tort_law_hk.pi.rta.contributory_negligence"],
-      "linked_procedure_nodes": ["pi_procedure.defence"],
+      "trigger_conditions": [
+        "road traffic defence",
+        "contributory negligence",
+        "seatbelt",
+        "latent defect"
+      ],
+      "required_facts": [
+        "driver conduct",
+        "claimant conduct",
+        "seatbelt",
+        "accident/defect facts"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.rta.contributory_negligence"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.defence"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -259,10 +493,25 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "pleadings",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["work injury defence", "safe system", "employee negligence"],
-      "required_facts": ["system of work", "training", "PPE", "employee conduct", "contractor/third party"],
-      "linked_principle_nodes": ["tort_law_hk.pi.employer.workplace_router", "tort_law_hk.pi.defences.router"],
-      "linked_procedure_nodes": ["pi_procedure.defence"],
+      "trigger_conditions": [
+        "work injury defence",
+        "safe system",
+        "employee negligence"
+      ],
+      "required_facts": [
+        "system of work",
+        "training",
+        "PPE",
+        "employee conduct",
+        "contractor/third party"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.employer.workplace_router",
+        "tort_law_hk.pi.defences.router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.defence"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -275,10 +524,22 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "pleadings",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["reply", "counterclaim", "limitation reply"],
-      "required_facts": ["matters in defence requiring reply", "counterclaim facts", "limitation response"],
-      "linked_principle_nodes": ["tort_law_hk.pi.defences.router"],
-      "linked_procedure_nodes": ["pi_procedure.reply"],
+      "trigger_conditions": [
+        "reply",
+        "counterclaim",
+        "limitation reply"
+      ],
+      "required_facts": [
+        "matters in defence requiring reply",
+        "counterclaim facts",
+        "limitation response"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.defences.router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.reply"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -291,10 +552,26 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "interlocutory",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["disclosure", "discovery", "documents"],
-      "required_facts": ["medical records", "wage records", "CCTV", "incident reports", "maintenance logs", "training/risk records"],
-      "linked_principle_nodes": ["tort_law_hk.pi.occupiers.warning_inspection", "tort_law_hk.pi.employer.safe_system"],
-      "linked_procedure_nodes": ["pi_procedure.discovery"],
+      "trigger_conditions": [
+        "disclosure",
+        "discovery",
+        "documents"
+      ],
+      "required_facts": [
+        "medical records",
+        "wage records",
+        "CCTV",
+        "incident reports",
+        "maintenance logs",
+        "training/risk records"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.occupiers.warning_inspection",
+        "tort_law_hk.pi.employer.safe_system"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.discovery"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -307,10 +584,24 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "interlocutory",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["expert evidence", "engineering", "medical", "psychiatric"],
-      "required_facts": ["expert discipline", "issue for expert", "documents", "inspection/medical exam"],
-      "linked_principle_nodes": ["tort_law_hk.pi.quantum.router"],
-      "linked_procedure_nodes": ["pi_procedure.expert_evidence"],
+      "trigger_conditions": [
+        "expert evidence",
+        "engineering",
+        "medical",
+        "psychiatric"
+      ],
+      "required_facts": [
+        "expert discipline",
+        "issue for expert",
+        "documents",
+        "inspection/medical exam"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.quantum.router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.expert_evidence"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -323,10 +614,22 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "interlocutory",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["interim payment", "provisional damages"],
-      "required_facts": ["liability status", "financial need", "future deterioration risk", "medical evidence"],
-      "linked_principle_nodes": ["tort_law_hk.pi.quantum.interest_interim_provisional"],
-      "linked_procedure_nodes": ["pi_procedure.interim_payment"],
+      "trigger_conditions": [
+        "interim payment",
+        "provisional damages"
+      ],
+      "required_facts": [
+        "liability status",
+        "financial need",
+        "future deterioration risk",
+        "medical evidence"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.quantum.interest_interim_provisional"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.interim_payment"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -339,10 +642,23 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "settlement",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["settlement", "offer", "mediation"],
-      "required_facts": ["offer amount", "basis", "liability/quantum support", "costs consequences"],
-      "linked_principle_nodes": ["tort_law_hk.pi.quantum.router"],
-      "linked_procedure_nodes": ["pi_procedure.settlement_offer"],
+      "trigger_conditions": [
+        "settlement",
+        "offer",
+        "mediation"
+      ],
+      "required_facts": [
+        "offer amount",
+        "basis",
+        "liability/quantum support",
+        "costs consequences"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.quantum.router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.settlement_offer"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"
@@ -355,10 +671,25 @@
       "practice_area": "Personal Injury",
       "procedural_stage": "trial",
       "source_status": "metadata_only_or_firm_private_template",
-      "trigger_conditions": ["summons", "order", "amendment", "witness", "letter of request"],
-      "required_facts": ["application type", "relief sought", "supporting evidence", "draft order"],
-      "linked_principle_nodes": ["tort_law_hk.pi.claim_router"],
-      "linked_procedure_nodes": ["pi_procedure.trial_preparation"],
+      "trigger_conditions": [
+        "summons",
+        "order",
+        "amendment",
+        "witness",
+        "letter of request"
+      ],
+      "required_facts": [
+        "application type",
+        "relief sought",
+        "supporting evidence",
+        "draft order"
+      ],
+      "linked_principle_nodes": [
+        "tort_law_hk.pi.claim_router"
+      ],
+      "linked_procedure_nodes": [
+        "pi_procedure.trial_preparation"
+      ],
       "output_mode": "draft_only_lawyer_review_required",
       "verification_status": "needs_form_review",
       "copyright_status": "metadata_only_no_full_text_reproduced"

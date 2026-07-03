@@ -2,29 +2,125 @@
   "section_id": "05",
   "domain_id": "tort_law_hk",
   "edges": [
-    { "from": "tort_occupiers_nuisance_strict", "to": "tort_occupiers_liability_overview", "relationship": "has_subtopic" },
-    { "from": "tort_occupiers_liability_overview", "to": "tort_occupiers_definition_occupier", "relationship": "has_subtopic" },
-    { "from": "tort_occupiers_liability_overview", "to": "tort_occupiers_duty_to_invitee_licensee_trespasser", "relationship": "has_subtopic" },
-    { "from": "tort_occupiers_liability_overview", "to": "tort_occupiers_child_entrants_special", "relationship": "has_subtopic" },
-    { "from": "tort_occupiers_liability_overview", "to": "tort_occupiers_landlord_liability", "relationship": "has_subtopic" },
-    { "from": "tort_occupiers_liability_overview", "to": "cap314_occupiers_liability", "relationship": "statutory_anchor" },
-    { "from": "tort_occupiers_duty_to_invitee_licensee_trespasser", "to": "cap314_occupiers_liability", "relationship": "statutory_anchor" },
-    { "from": "tort_occupiers_nuisance_strict", "to": "tort_breach_of_statutory_duty", "relationship": "has_subtopic" },
-    { "from": "tort_occupiers_nuisance_strict", "to": "tort_nuisance_overview", "relationship": "has_subtopic" },
-    { "from": "tort_nuisance_overview", "to": "tort_private_nuisance", "relationship": "has_subtopic" },
-    { "from": "tort_nuisance_overview", "to": "tort_public_nuisance", "relationship": "has_subtopic" },
-    { "from": "tort_nuisance_overview", "to": "tort_nuisance_defendants", "relationship": "has_subtopic" },
-    { "from": "tort_nuisance_overview", "to": "tort_nuisance_defences", "relationship": "has_subtopic" },
-    { "from": "tort_occupiers_nuisance_strict", "to": "tort_rylands_v_fletcher", "relationship": "has_subtopic" },
-    { "from": "tort_rylands_v_fletcher", "to": "tort_rylands_non_natural_use", "relationship": "has_subtopic" },
-    { "from": "tort_rylands_v_fletcher", "to": "tort_rylands_defences", "relationship": "has_subtopic" },
-    { "from": "tort_occupiers_nuisance_strict", "to": "tort_animals_scienter", "relationship": "has_subtopic" },
-    { "from": "tort_private_nuisance", "to": "case_hui_kin_sing", "relationship": "case_seed" },
-    { "from": "tort_private_nuisance", "to": "case_wagon_mound_2", "relationship": "case_seed" },
-    { "from": "tort_rylands_v_fletcher", "to": "case_rylands", "relationship": "case_seed" },
-    { "from": "tort_rylands_v_fletcher", "to": "case_cambridge_water", "relationship": "case_seed" },
-    { "from": "tort_breach_of_statutory_duty", "to": "tort_statutory_torts", "relationship": "cross_reference" },
-    { "from": "tort_occupiers_nuisance_strict", "to": "gap_verify_hk_occupiers_liability_law", "relationship": "has_subtopic" },
-    { "from": "tort_occupiers_nuisance_strict", "to": "gap_verify_hk_breach_statutory_duty_cases", "relationship": "has_subtopic" }
+    {
+      "from": "tort_occupiers_nuisance_strict",
+      "to": "tort_occupiers_liability_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_occupiers_liability_overview",
+      "to": "tort_occupiers_definition_occupier",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_occupiers_liability_overview",
+      "to": "tort_occupiers_duty_to_invitee_licensee_trespasser",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_occupiers_liability_overview",
+      "to": "tort_occupiers_child_entrants_special",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_occupiers_liability_overview",
+      "to": "tort_occupiers_landlord_liability",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_occupiers_liability_overview",
+      "to": "cap314_occupiers_liability",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_occupiers_duty_to_invitee_licensee_trespasser",
+      "to": "cap314_occupiers_liability",
+      "relationship": "statutory_anchor"
+    },
+    {
+      "from": "tort_occupiers_nuisance_strict",
+      "to": "tort_breach_of_statutory_duty",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_occupiers_nuisance_strict",
+      "to": "tort_nuisance_overview",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_nuisance_overview",
+      "to": "tort_private_nuisance",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_nuisance_overview",
+      "to": "tort_public_nuisance",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_nuisance_overview",
+      "to": "tort_nuisance_defendants",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_nuisance_overview",
+      "to": "tort_nuisance_defences",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_occupiers_nuisance_strict",
+      "to": "tort_rylands_v_fletcher",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_rylands_v_fletcher",
+      "to": "tort_rylands_non_natural_use",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_rylands_v_fletcher",
+      "to": "tort_rylands_defences",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_occupiers_nuisance_strict",
+      "to": "tort_animals_scienter",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_private_nuisance",
+      "to": "case_hui_kin_sing",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_private_nuisance",
+      "to": "case_wagon_mound_2",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_rylands_v_fletcher",
+      "to": "case_rylands",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_rylands_v_fletcher",
+      "to": "case_cambridge_water",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "tort_breach_of_statutory_duty",
+      "to": "tort_statutory_torts",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "tort_occupiers_nuisance_strict",
+      "to": "gap_verify_hk_occupiers_liability_law",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "tort_occupiers_nuisance_strict",
+      "to": "gap_verify_hk_breach_statutory_duty_cases",
+      "relationship": "has_subtopic"
+    }
   ]
 }

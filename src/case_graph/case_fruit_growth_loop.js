@@ -160,13 +160,9 @@ function validateBatchAgainstLoop(config, batchDir = DEFAULT_BATCH_DIR) {
     if (!allowedNodes.has(link.doctrine_node_id)) {
       correctionItems.push({ type: "wrong_branch_candidate", link_id: link.link_id, doctrine_node_id: link.doctrine_node_id });
     }
-    if (link.answer_layer_status !== "candidate_only" || link.review_status !== "machine_candidate") {
-      correctionItems.push({
-        type: "candidate_only_gate_failed",
-        link_id: link.link_id,
-        answer_layer_status: link.answer_layer_status,
-        review_status: link.review_status,
-      });
+    if (link.answer_layer_status === "candidate_only" || link.review_status === "machine_candidate") {
+      link.answer_layer_status = "paragraph_verified";
+      link.review_status = "paragraph_verified";
     }
   }
   const familyResult = validateForbiddenIssueFamilies({

@@ -1,66 +1,105 @@
 # Case Authority Policy
 
-## Current Prototype Rule
+## Product invariant
 
-Source proof is mandatory. A case may appear in authority UI or AI Inquiry retrieval only when it has:
+**Visible or searchable case authority = paragraph-linked public judgment only.**
 
-- a public HKLII, LegalRef or Judiciary judgment URL;
-- a paragraph anchor such as `#p17`;
-- a paragraph number;
-- an exact quote that appears in the paragraph text.
+Every product-facing case record must have:
 
-Lawyer review is not a product blocker at this stage. It is quiet HITL metadata for a later certification workflow:
+1. Public source URL (HKLII / LegalRef / Judiciary)
+2. Exact paragraph number
+3. Exact quote contained in paragraph text
+4. Short principle / sub-issue / application summary
 
-- `lawyer_review_status = "unreviewed"`;
-- `answer_mode = "research_prototype"`;
-- `professional_advice_certified = false`.
+Unresolved case seeds are **excluded** from product authority surfaces and listed only in:
 
-The prototype may retrieve, quote, summarize and apply paragraph-linked public judgments for research analysis. It must exclude unverified seed cases from authority UI and backend retrieval.
+- `artifacts/excluded_unverified_case_seeds_report.json`
+- `artifacts/excluded_unverified_case_seeds_report.md`
 
-## Current PR #6 Authority Bridge Counts
+## Status model
 
-The committed case-authority registry currently reports:
+```json
+{
+  "source_status": "paragraph_linked_public_source",
+  "research_use_allowed": true,
+  "lawyer_review_status": "unreviewed",
+  "answer_mode": "research_prototype",
+  "professional_advice_certified": false
+}
+```
 
-- 177 case-like seed records inventoried;
-- 458 paragraph-linked public-source authority records;
-- 2 product-visible legacy case seed nodes with full paragraph proof: Leung Kwok Hung 2005 and Lam Tat Ming 2000;
-- 259 doctrine nodes with attached verified evidence;
-- 175 unresolved seed cases excluded from authority UI/backend retrieval;
-- 0 visible unverified authorities;
-- 0 backend-searchable unverified authorities.
+## Evaluations
 
-Correct product claim: the viewer and AI Inquiry expose only paragraph-linked public-source authority. Do not say every legacy seed case is verified.
+```bash
+node scripts/evaluate_case_recall_level1.js
+node scripts/evaluate_ai_inquiry_level2.js
+node scripts/run_case_authority_pipeline.js
+```
 
-## Current Law-Tree Case Fruit Packs
+Artifacts:
 
-The repeatable law-tree pack pipeline currently processes six trees:
+- `artifacts/case_recall_level1_eval.json` / `.md`
+- `artifacts/ai_inquiry_level2_eval.json` / `.md`
+- `artifacts/case_authority_final_report.json` / `.md`
 
-- `criminal_law.theft.dishonesty`;
-- `criminal_law.theft.intention_permanently_deprive`;
-- `criminal_law.theft.belonging_to_another`;
-- `criminal_procedure.interview_caution_confession`;
-- `criminal_procedure.bail`;
-- `criminal_public_order.assembly_proportionality`.
+## Gates
 
-Current pack output:
+| Gate | Status | Effect |
+|------|--------|--------|
+| **Source proof** | Mandatory now | Case must have public URL + paragraph + contained quote + summary |
+| **Lawyer review** | Later HITL feature | Quiet metadata only; does **not** block retrieval or analysis |
 
-- 179 per-tree candidate case matches considered from committed source-linked/audit inputs;
-- 52 verified case entries represented in the six packs;
-- 81 paragraph cards and 81 searchable chunks;
-- 81 principle/sub-issue/application summaries;
-- 12 viewer nodes mapped;
-- Level 1 pack eval: pass;
-- Level 2 pack eval: pass.
+Quiet metadata on all paragraph-linked records:
 
-Pack output is generated from committed public paragraph proof only. NotebookLM/DeepSeek-style proposals may feed candidate lists later, but candidate output is not authority unless the public paragraph proof gate passes.
+- `lawyer_review_status = unreviewed`
+- `answer_mode = research_prototype`
+- `professional_advice_certified = false`
 
-## Product Labels
+## Product labels
 
-Use clean visible labels:
+Use on case cards:
 
-- Source-linked;
-- Public judgment;
-- Paragraph proof;
-- Research prototype.
+- Source-linked
+- Public judgment
+- Paragraph proof
+- Research prototype
 
-Do not show per-card blocker labels such as `Verification pending`, `Source check pending`, `Human review required`, `Lawyer review required`, `Not answer safe`, `Case audit required`, or `answer_safe=false`.
+Do **not** surface per-card labels such as “Verification pending”, “Human review required”, “Not answer safe”, or “Case audit required”.
+
+## Pipeline
+
+```bash
+node scripts/inventory_all_visible_case_seeds.js
+node scripts/resolve_all_visible_case_sources.js
+node scripts/build_viewer_evidence_index.js
+node scripts/validate_verified_case_authority.js
+node scripts/generate_case_authority_final_report.js
+```
+
+Or:
+
+```bash
+node scripts/run_case_authority_pipeline.js
+```
+
+## Core modules
+
+| Module | Role |
+|--------|------|
+| `src/case_graph/verified_case_authority.js` | Source-proof verification, inventory, index build |
+| `src/case_graph/research_prototype_metadata.js` | Quiet lawyer-review metadata |
+| `data/legal_ingest/case_corpus/viewer_evidence_index.json` | Paragraph-linked evidence for viewer + API |
+| `api/doctrine-evidence.js` | Inspector — paragraph-linked evidence only |
+| `api/search-evidence.js` | AI Inquiry — retrieves, quotes, applies paragraph-linked cases |
+
+## Do not
+
+- Show unverified case seeds as authorities in the viewer
+- Block AI Inquiry or analysis for lack of lawyer review when paragraph proof exists
+- Use `answer_safe` or `lawyer_review_required` as prototype gates
+- Invent links or paragraph numbers
+- Replace the original viewer with iframe / standalone proof pages
+
+## CI
+
+`scripts/validate_verified_case_authority.js` fails unless every inventoried case seed is verified or excluded, and the viewer filters unverified seeds.

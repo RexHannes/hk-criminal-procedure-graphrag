@@ -2,19 +2,75 @@
   "section_id": "08",
   "domain_id": "equity_trusts_hk",
   "edges": [
-    { "from": "equity_defences_remedies", "to": "equity_laches", "relationship": "has_subtopic" },
-    { "from": "equity_defences_remedies", "to": "equity_acquiescence", "relationship": "has_subtopic" },
-    { "from": "equity_defences_remedies", "to": "equity_change_of_position", "relationship": "has_subtopic" },
-    { "from": "equity_defences_remedies", "to": "equity_limitation_by_analogy", "relationship": "has_subtopic" },
-    { "from": "equity_defences_remedies", "to": "equity_injunctions", "relationship": "has_subtopic" },
-    { "from": "equity_defences_remedies", "to": "equity_specific_performance", "relationship": "has_subtopic" },
-    { "from": "equity_defences_remedies", "to": "equity_rescission", "relationship": "has_subtopic" },
-    { "from": "equity_defences_remedies", "to": "equity_account_profits", "relationship": "has_subtopic" },
-    { "from": "equity_defences_remedies", "to": "equity_equitable_compensation", "relationship": "has_subtopic" },
-    { "from": "equity_defences_remedies", "to": "equity_proprietary_claims", "relationship": "has_subtopic" },
-    { "from": "equity_account_profits", "to": "case_ag_v_reid", "relationship": "case_seed" },
-    { "from": "equity_laches", "to": "equity_maxim_delay", "relationship": "cross_reference" },
-    { "from": "equity_rescission", "to": "equity_mistake_rescission", "relationship": "cross_reference" },
-    { "from": "equity_proprietary_claims", "to": "equity_tracing_overview", "relationship": "cross_reference" }
+    {
+      "from": "equity_defences_remedies",
+      "to": "equity_laches",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_defences_remedies",
+      "to": "equity_acquiescence",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_defences_remedies",
+      "to": "equity_change_of_position",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_defences_remedies",
+      "to": "equity_limitation_by_analogy",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_defences_remedies",
+      "to": "equity_injunctions",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_defences_remedies",
+      "to": "equity_specific_performance",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_defences_remedies",
+      "to": "equity_rescission",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_defences_remedies",
+      "to": "equity_account_profits",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_defences_remedies",
+      "to": "equity_equitable_compensation",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_defences_remedies",
+      "to": "equity_proprietary_claims",
+      "relationship": "has_subtopic"
+    },
+    {
+      "from": "equity_account_profits",
+      "to": "case_ag_v_reid",
+      "relationship": "case_seed"
+    },
+    {
+      "from": "equity_laches",
+      "to": "equity_maxim_delay",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "equity_rescission",
+      "to": "equity_mistake_rescission",
+      "relationship": "cross_reference"
+    },
+    {
+      "from": "equity_proprietary_claims",
+      "to": "equity_tracing_overview",
+      "relationship": "cross_reference"
+    }
   ]
 }
