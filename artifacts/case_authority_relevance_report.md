@@ -1,6 +1,6 @@
 # Case Authority Relevance Report
 
-Generated: 2026-07-03T04:07:18.828Z
+Generated: 2026-07-03T18:20:31.704Z
 
 | Tree | Distinct cases | Paragraphs | Leading missing | Wrong-fit | Overused |
 | --- | --- | --- | --- | --- | --- |

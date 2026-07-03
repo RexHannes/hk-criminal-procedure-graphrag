@@ -1,6 +1,6 @@
 # Law Tree Case Diversity Report
 
-Generated: 2026-07-03T04:07:18.876Z
+Generated: 2026-07-03T18:20:31.776Z
 
 Viewer groups repeated paragraphs under one case card: **yes**
 

@@ -1,0 +1,27 @@
+{
+  "job_id": "case_scale_2ae728d47ab7fb2390647a5d",
+  "workflow": "legal/case_scale.shard",
+  "run_plan_id": "test_plan_dispatch",
+  "shard_id": "shard_0002",
+  "shard": {
+    "shard_id": "shard_0002",
+    "case_ordinal_start": 101,
+    "case_ordinal_end": 200,
+    "max_cases": 100
+  },
+  "target_cases": 10000,
+  "scope": "criminal_domain_public_cases",
+  "status": "queued_local_manifest_only",
+  "attempts": 0,
+  "checksum": "a691c68ea7e9492eb21398068b8bd295c6e232578d38b5ad39ea531508d15a81",
+  "created_at": "2026-06-24T16:20:11.515Z",
+  "updated_at": "2026-06-24T16:34:07.863Z",
+  "resume_manifest_required": true,
+  "idempotent_upserts_required": true,
+  "last_dispatch": {
+    "at": "2026-06-24T16:34:07.863Z",
+    "inngest_event_sent": false,
+    "inngest_status": null,
+    "inngest_reason": "missing_inngest_event_key"
+  }
+}

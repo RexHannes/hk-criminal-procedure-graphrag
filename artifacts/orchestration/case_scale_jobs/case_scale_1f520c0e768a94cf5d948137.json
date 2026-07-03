@@ -1,0 +1,21 @@
+{
+  "job_id": "case_scale_1f520c0e768a94cf5d948137",
+  "workflow": "legal/case_scale.shard",
+  "run_plan_id": "test_plan",
+  "shard_id": "shard_0001",
+  "shard": {
+    "shard_id": "shard_0001",
+    "case_ordinal_start": 1,
+    "case_ordinal_end": 100,
+    "max_cases": 100
+  },
+  "target_cases": 10000,
+  "scope": "criminal_domain_public_cases",
+  "status": "queued",
+  "attempts": 0,
+  "checksum": "f58ef4ebb17f9172d111b4714953b3706a3a3084be5c314e4542c3ea29f94191",
+  "created_at": "2026-06-24T16:20:04.721Z",
+  "updated_at": "2026-06-24T16:34:07.847Z",
+  "resume_manifest_required": true,
+  "idempotent_upserts_required": true
+}

@@ -1,6 +1,6 @@
 {
   "artifact_id": "law_tree_case_diversity_report_v1",
-  "generated_at": "2026-07-03T04:07:18.876Z",
+  "generated_at": "2026-07-03T18:20:31.776Z",
   "thresholds": {
     "distinct_case_target": 5,
     "dominance_threshold": 0.4

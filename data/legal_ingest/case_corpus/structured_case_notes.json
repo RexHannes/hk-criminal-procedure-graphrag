@@ -1,6 +1,6 @@
 {
   "artifact_id": "structured_case_notes_v1",
-  "generated_at": "2026-07-03T04:07:18.734Z",
+  "generated_at": "2026-07-03T18:20:31.596Z",
   "policy": "source_grounded_case_notes_from_paragraph_proof",
   "note_count": 40,
   "validation_failures": [],

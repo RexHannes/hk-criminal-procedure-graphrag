@@ -1,6 +1,6 @@
 {
   "artifact_id": "product_quality_repair_report_v1",
-  "generated_at": "2026-07-03T04:07:19.600Z",
+  "generated_at": "2026-07-03T18:20:32.753Z",
   "structured_case_notes": {
     "count": 40,
     "validation_failures": 0,
@@ -181,8 +181,8 @@
   },
   "production_branch": {
     "branch": "pr6-production-release",
-    "head": "093a033",
-    "origin_main": "00d7418",
+    "head": "4cf4ae0",
+    "origin_main": "4cf4ae0",
     "based_on_current_main": true,
     "conflict_files_resolved": [
       "viewer/app.js",
