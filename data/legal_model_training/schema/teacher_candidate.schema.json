@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hk_legal_model_training.teacher_candidate.v1",
+  "title": "Teacher Candidate Extraction Record",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "source_object_ids",
+    "case_id",
+    "teacher_tool",
+    "teacher_model",
+    "case_name",
+    "citation",
+    "court",
+    "judgment_date",
+    "source_url",
+    "source_urls",
+    "paragraph_ids",
+    "exact_quote_support",
+    "issue_tags",
+    "candidate_issue_tags",
+    "candidate_paragraph_numbers",
+    "candidate_quotes",
+    "candidate_propositions",
+    "candidate_principles",
+    "candidate_digest",
+    "candidate_demotion_prediction",
+    "demotion_reasons",
+    "authority_status",
+    "answer_layer_status",
+    "review_status",
+    "usable_in_answer_layer",
+    "answer_safe"
+  ],
+  "properties": {
+    "candidate_id": { "type": "string" },
+    "source_object_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "case_id": { "type": "string" },
+    "teacher_tool": { "enum": ["DeepSeek", "NotebookLM", "Claude", "GPT", "manual_analysis"] },
+    "teacher_model": { "type": "string" },
+    "case_name": { "type": "string" },
+    "citation": { "type": "string" },
+    "court": { "type": "string" },
+    "judgment_date": { "type": "string" },
+    "source_url": { "type": "string", "pattern": "^https://(www\\.)?(hklii|legalref|judiciary)\\." },
+    "source_urls": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "paragraph_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "exact_quote_support": { "type": "string", "minLength": 8 },
+    "issue_tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "candidate_issue_tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "candidate_paragraph_numbers": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "candidate_quotes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "candidate_propositions": { "type": "array", "items": { "type": "string" } },
+    "candidate_principles": { "type": "array", "items": { "type": "string" } },
+    "candidate_digest": { "type": "object" },
+    "candidate_demotion_prediction": {
+      "type": "object",
+      "required": ["principle_quality_status", "demotion_reasons"],
+      "properties": {
+        "principle_quality_status": { "enum": ["pass", "demoted", "needs_review"] },
+        "demotion_reasons": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "demotion_reasons": { "type": "array", "items": { "type": "string" } },
+    "authority_status": { "const": "candidate_only" },
+    "answer_layer_status": { "const": "not_admissible_until_verified" },
+    "review_status": { "const": "candidate_unverified" },
+    "usable_in_answer_layer": { "const": false },
+    "answer_safe": { "const": false }
+  },
+  "not": {
+    "anyOf": [
+      { "required": ["private_source_content"] },
+      { "required": ["licensed_source_content"] },
+      { "required": ["client_document_text"] },
+      { "required": ["final_legal_advice"] },
+      { "required": ["answer_safe_reasoning"] }
+    ]
+  },
+  "additionalProperties": false
+}

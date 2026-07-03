@@ -1,0 +1,31 @@
+# Documentation-only LoRA example. Do not run in CI.
+base_model: "placeholder-7b-instruct"
+dataset_paths:
+  - "data/legal_model_training/sft/paragraph_to_proposition_train.jsonl"
+  - "data/legal_model_training/sft/proposition_to_principle_train.jsonl"
+  - "data/legal_model_training/sft/demotion_classifier_train.jsonl"
+  - "data/legal_model_training/sft/retrieved_authorities_to_memo_train.jsonl"
+eval_set_paths:
+  - "data/legal_model_training/eval/legal_extraction_eval_prompts.jsonl"
+  - "data/legal_model_training/eval/legal_memo_eval_prompts.jsonl"
+max_sequence_length: 4096
+lora_rank: 16
+lora_alpha: 32
+lora_dropout: 0.05
+target_modules:
+  - "q_proj"
+  - "k_proj"
+  - "v_proj"
+  - "o_proj"
+  - "gate_proj"
+  - "up_proj"
+  - "down_proj"
+output_dir: "training_runs/legal_extraction_7b_lora"
+commit_weights: false
+requires_secrets: false
+run_in_ci: false
+safety_notes:
+  - "Use only verified public source-proofed dataset rows."
+  - "Do not train on unverified teacher prose."
+  - "Model output must remain behind retrieval and verifier."
+  - "No final legal advice or answer-safe promotion."

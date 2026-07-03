@@ -180,6 +180,27 @@ jobs:
       - name: Ensure L1-L3.5 artifacts are committed
         run: git diff --exit-code data/legal_ingest/case_corpus data/legal_ingest/case_authority_registry.json artifacts/case_corpus_l1_l35_status.json artifacts/case_corpus_l1_l35_status.md artifacts/case_corpus_ingest_run_status.json artifacts/case_corpus_ingest_run_status.md artifacts/case_corpus_embedding_dry_run.json artifacts/case_corpus_qdrant_dry_run.json artifacts/case_corpus_retrieval_eval.json artifacts/case_corpus_retrieval_eval.md artifacts/case_corpus_duplicates_report.json artifacts/candidate_extraction_verification_report.json artifacts/candidate_extraction_verification_report.md artifacts/candidate_verified_cards_report.json artifacts/candidate_verified_cards_report.md artifacts/case_corpus_quality_audit.json artifacts/case_corpus_quality_audit.md artifacts/case_corpus_issue_coverage.json artifacts/case_corpus_issue_coverage.md artifacts/principle_quality_repair_report.json artifacts/principle_quality_repair_report.md artifacts/weak_issue_target_discovery_report.json artifacts/weak_issue_target_discovery_report.md artifacts/law_tree_case_fruit_pack_report.json artifacts/law_tree_case_fruit_pack_report.md artifacts/law_tree_case_fruit_level1_eval.json artifacts/law_tree_case_fruit_level1_eval.md artifacts/law_tree_case_fruit_level2_eval.json artifacts/law_tree_case_fruit_level2_eval.md artifacts/demo_outputs
 
+      - name: Dry-run verified legal model SFT export
+        run: node scripts/export_verified_cards_to_sft_dataset.js --dry-run
+
+      - name: Validate teacher candidates
+        run: node scripts/validate_teacher_candidates.js
+
+      - name: Dry-run verified teacher SFT bridge
+        run: node scripts/build_verified_teacher_sft_dataset.js --dry-run
+
+      - name: Validate legal model training dataset
+        run: node scripts/validate_legal_model_training_dataset.js
+
+      - name: Report legal model training dataset
+        run: node scripts/report_legal_model_training_dataset.js
+
+      - name: Evaluate legal model outputs offline fixtures
+        run: node scripts/evaluate_legal_model_outputs_offline.js --fixtures-only
+
+      - name: Ensure legal model training artifacts are committed
+        run: git diff --exit-code data/legal_model_training artifacts/legal_model_training_dataset_report.json artifacts/legal_model_training_dataset_report.md docs/legal_model_training_plan.md docs/teacher_assisted_extraction_policy.md training
+
       - name: Dry-run Part 1 source-card Qdrant indexer
         run: node scripts/index_part1_two_vertical_source_cards_qdrant.js --dry-run
 

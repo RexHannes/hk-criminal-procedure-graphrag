@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hk_legal_model_training.demotion_classifier.v1",
+  "title": "Principle Demotion Classifier Example",
+  "type": "object",
+  "required": [
+    "example_id",
+    "task",
+    "source_object_ids",
+    "case_id",
+    "case_name",
+    "citation",
+    "court",
+    "judgment_date",
+    "paragraph_ids",
+    "source_urls",
+    "exact_quote_support",
+    "issue_tags",
+    "answer_layer_status",
+    "review_status",
+    "usable_in_answer_layer",
+    "demotion_reasons",
+    "answer_safe",
+    "input",
+    "output",
+    "provenance"
+  ],
+  "properties": {
+    "example_id": { "type": "string" },
+    "task": { "const": "demotion_classifier" },
+    "split": { "enum": ["train", "eval"] },
+    "source_object_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "case_id": { "type": "string" },
+    "case_name": { "type": "string" },
+    "citation": { "type": "string" },
+    "court": { "type": "string" },
+    "judgment_date": { "type": "string" },
+    "paragraph_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "source_urls": { "type": "array", "items": { "type": "string", "pattern": "^https://.*#p[0-9]+$" }, "minItems": 1 },
+    "exact_quote_support": { "type": "string", "minLength": 8 },
+    "issue_tags": { "type": "array", "items": { "type": "string" } },
+    "answer_layer_status": { "const": "research_only" },
+    "review_status": { "type": "string" },
+    "usable_in_answer_layer": { "type": "boolean" },
+    "demotion_reasons": { "type": "array", "items": { "type": "string" } },
+    "answer_safe": { "const": false },
+    "input": {
+      "type": "object",
+      "required": ["principle_text", "exact_quote_support", "paragraph_text"],
+      "properties": {
+        "principle_text": { "type": "string" },
+        "exact_quote_support": { "type": "string" },
+        "paragraph_text": { "type": "string" },
+        "authority_role_candidate": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "required": ["principle_quality_status", "liability_relevance", "usable_in_answer_layer", "demotion_reasons"],
+      "properties": {
+        "principle_quality_status": { "enum": ["pass", "demoted", "needs_review"] },
+        "liability_relevance": { "enum": ["liability", "sentencing", "procedure", "background"] },
+        "usable_in_answer_layer": { "type": "boolean" },
+        "demotion_reasons": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source", "teacher_candidate", "verification_status"],
+      "properties": {
+        "source": { "type": "string" },
+        "teacher_candidate": { "const": false },
+        "verification_status": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "not": {
+    "anyOf": [
+      { "required": ["private_source_content"] },
+      { "required": ["licensed_source_content"] },
+      { "required": ["client_document_text"] },
+      { "required": ["teacher_unverified_prose"] }
+    ]
+  },
+  "additionalProperties": false
+}
