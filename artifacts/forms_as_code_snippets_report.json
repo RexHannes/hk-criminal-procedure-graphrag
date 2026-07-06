@@ -21,6 +21,24 @@
     "forms_mapped_to_workflow_stages": true,
     "backend_index_records": 23
   },
+  "private_ingestion_dry_run": {
+    "status": "no_private_uploads_found",
+    "private_uploads_dir": "private_uploads/",
+    "private_output_dir": "private_ingest_output/",
+    "metadata_only_report_created": true,
+    "private_text_committed": false,
+    "external_services_used": false,
+    "templates_inactive_until_review": true
+  },
+  "approved_demo_subset": {
+    "source": "synthetic_redacted_metadata_only",
+    "private_text_committed": false,
+    "approved_pi_templates": 3,
+    "approved_clauses": 9,
+    "approved_usage_rules": 10,
+    "classification_reviews": 3,
+    "approval_workflow_validated": true
+  },
   "hardening_status": {
     "user_path_access_blocked": true,
     "classification_review_queue": {
@@ -68,7 +86,9 @@
     "missing_fact_blockers": true,
     "draft_from_form_prototype": true,
     "viewer_forms_workspace": true,
-    "private_data_safety_checks": true
+    "private_data_safety_checks": true,
+    "private_ingestion_dry_run_metadata_only": true,
+    "approved_demo_subset_routing": true
   },
   "sem_b_inventory_note": "Sem B / Downloads material was inventoried by metadata only. No private/licensed document content was extracted into git or sent to external services.",
   "remaining_limitations": [

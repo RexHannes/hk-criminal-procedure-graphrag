@@ -80,11 +80,23 @@ jobs:
       - name: Validate private form ingestion policy
         run: node scripts/validate_private_form_ingestion_policy.js
 
+      - name: Run private ingestion dry-run metadata report
+        run: node scripts/run_private_form_ingestion_dry_run.js
+
+      - name: Validate private ingestion dry-run report
+        run: node scripts/validate_private_form_ingestion_dry_run_report.js
+
       - name: Validate forms API blocks user path access
         run: node scripts/validate_forms_api_no_user_path_access.js
 
       - name: Validate no private forms committed
         run: node scripts/validate_no_private_forms_committed.js
+
+      - name: Build approved synthetic forms subset
+        run: node scripts/build_forms_approved_demo_subset.js
+
+      - name: Validate approved synthetic forms subset
+        run: node scripts/validate_forms_approved_demo_subset.js
 
       - name: Validate form classification review queue
         run: node scripts/validate_form_classification_review_required.js

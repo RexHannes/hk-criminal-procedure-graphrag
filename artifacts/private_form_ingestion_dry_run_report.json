@@ -1,0 +1,33 @@
+{
+  "report_id": "private_form_ingestion_dry_run",
+  "generated_at": "2026-07-06T00:00:00.000Z",
+  "status": "no_private_uploads_found",
+  "privacy_boundary": {
+    "private_uploads_dir": "private_uploads/",
+    "private_notebooklm_notes_dir": "private_notebooklm_notes/",
+    "private_output_dir": "private_ingest_output/",
+    "committed_private_text": false,
+    "external_services_used": false,
+    "metadata_only_report": true,
+    "candidate_titles_redacted_by_default": true
+  },
+  "packs_discovered": 0,
+  "packs_processed": 0,
+  "pack_summaries": [],
+  "totals": {
+    "templates_detected": 0,
+    "clauses_detected": 0,
+    "notebooklm_notes_linked": 0,
+    "classification_reviews_created": 0,
+    "templates_inactive_until_review": true,
+    "percentage_requiring_manual_classification": 0,
+    "extraction_warning_count": 0,
+    "rejected_or_suspicious_file_count": 0
+  },
+  "errors": [],
+  "recommended_manual_review_actions": [
+    "Place private ZIPs/forms under private_uploads/ and optional NotebookLM notes under private_notebooklm_notes/.",
+    "Run node scripts/run_private_form_ingestion_dry_run.js locally.",
+    "Inspect gitignored private_ingest_output/ before approving any template."
+  ]
+}

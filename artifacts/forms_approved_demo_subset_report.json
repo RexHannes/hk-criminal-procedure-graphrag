@@ -1,0 +1,21 @@
+{
+  "report_id": "forms_approved_demo_subset",
+  "generated_at": "2026-07-06T00:00:00.000Z",
+  "status": "approved_synthetic_redacted_demo_subset_ready",
+  "output_dir": "fixtures/forms/approved_demo_subset_store",
+  "private_text_committed": false,
+  "approved_templates": 3,
+  "approved_clauses": 9,
+  "approved_usage_rules": 10,
+  "classification_reviews": 3,
+  "document_intent_distribution": {
+    "LETTER_OF_CLAIM": 1,
+    "MEDICAL_RECORDS_REQUEST": 1,
+    "POLICE_REPORT_REQUEST": 1
+  },
+  "stage_distribution": {
+    "PRE_ACTION_CORRESPONDENCE": 1,
+    "MEDICAL_EVIDENCE": 1,
+    "URGENT_ACTIONS": 1
+  }
+}

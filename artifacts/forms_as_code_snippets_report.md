@@ -19,6 +19,29 @@ The branch adds private precedent/form ingestion, schema definitions, clause ext
 | NotebookLM/internal notes linked | 1 |
 | Private-form index records | 23 |
 
+## Private Dry Run
+
+No private uploads were present in this checkout, so the committed dry-run report records `no_private_uploads_found`. The local runner is now in place:
+
+```bash
+node scripts/run_private_form_ingestion_dry_run.js
+```
+
+It reads from `private_uploads/`, writes extracted output only to gitignored `private_ingest_output/`, and commits only metadata counts in `artifacts/private_form_ingestion_dry_run_report.*`.
+
+## Approved Demo Subset
+
+The branch now includes a synthetic/redacted approved subset proving the approval workflow:
+
+| Metric | Count |
+|---|---:|
+| Approved PI templates | 3 |
+| Approved clauses | 9 |
+| Approved usage rules | 10 |
+| Classification reviews | 3 |
+
+All committed approved-demo clause text is synthetic/redacted and marked `privateTextCommitted=false`.
+
 ## Safety
 
 - Real private forms committed: no.
@@ -48,6 +71,8 @@ The branch adds private precedent/form ingestion, schema definitions, clause ext
 | Wrong-stage gates | Writ/letter/finalisation blockers tested |
 | Draft provenance | Field provenance, fact trace, placeholder audit, lawyer-only gate |
 | Forms/principles separation | Private form recommendations stay separate from public authority analysis |
+| Private ingestion dry-run report | Metadata-only; no private text committed |
+| Approved-demo subset | Synthetic/redacted routing fixture validates approval workflow |
 
 ## Sem B Handling
 
