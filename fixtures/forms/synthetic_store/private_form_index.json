@@ -1,0 +1,435 @@
+{
+  "indexVersion": "forms-as-code-snippets-mvp-1",
+  "retrievalPolicy": "structured_filters_before_keyword_or_vector",
+  "vectorOnlyAllowed": false,
+  "records": [
+    {
+      "recordId": "template:form_cbe2b96ca480",
+      "kind": "template",
+      "templateId": "form_cbe2b96ca480",
+      "text": "letter of claim synthetic personal_injury LETTER_OF_CLAIM PRE_ACTION_CORRESPONDENCE pre-action stage opponent or insurer identified liability facts sufficiently known opponentIdentified liabilityFactsKnown",
+      "filters": {
+        "firmId": "demo-firm",
+        "workspaceId": "demo-pi",
+        "practiceArea": "personal_injury",
+        "matterTypes": [
+          "road_traffic_pi"
+        ],
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "reviewStatus": "lawyer_review_required"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "template:form_5529c886f381",
+      "kind": "template",
+      "templateId": "form_5529c886f381",
+      "text": "medical records request synthetic personal_injury MEDICAL_RECORDS_REQUEST MEDICAL_EVIDENCE injury exists medical evidence incomplete injuryExists clientIdentityKnown",
+      "filters": {
+        "firmId": "demo-firm",
+        "workspaceId": "demo-pi",
+        "practiceArea": "personal_injury",
+        "matterTypes": [
+          "general_matter"
+        ],
+        "documentIntent": "MEDICAL_RECORDS_REQUEST",
+        "workflowStage": "MEDICAL_EVIDENCE",
+        "reviewStatus": "lawyer_review_required"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "template:form_5b2574d75330",
+      "kind": "template",
+      "templateId": "form_5b2574d75330",
+      "text": "police report request synthetic personal_injury POLICE_REPORT_REQUEST URGENT_ACTIONS opponent unknown police report missing road traffic accident accidentDate accidentLocation",
+      "filters": {
+        "firmId": "demo-firm",
+        "workspaceId": "demo-pi",
+        "practiceArea": "personal_injury",
+        "matterTypes": [
+          "road_traffic_pi"
+        ],
+        "documentIntent": "POLICE_REPORT_REQUEST",
+        "workflowStage": "URGENT_ACTIONS",
+        "reviewStatus": "lawyer_review_required"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "template:form_27a08fac197f",
+      "kind": "template",
+      "templateId": "form_27a08fac197f",
+      "text": "writ synthetic personal_injury WRIT COMMENCEMENT lawyer decides to commence proceedings not commenced lawyerDecisionToCommence defendantIdentified limitationChecked",
+      "filters": {
+        "firmId": "demo-firm",
+        "workspaceId": "demo-pi",
+        "practiceArea": "personal_injury",
+        "matterTypes": [
+          "road_traffic_pi"
+        ],
+        "documentIntent": "WRIT",
+        "workflowStage": "COMMENCEMENT",
+        "reviewStatus": "lawyer_review_required"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_21b2cf57212f",
+      "kind": "clause",
+      "clauseId": "clause_21b2cf57212f",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Opening SYNTHETIC FIXTURE - NOT A REAL PRECEDENT BACKGROUND_FACTS pre-action stage opponent or insurer identified liability facts sufficiently known",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "background_facts"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_1a1c8c3d2f32",
+      "kind": "clause",
+      "clauseId": "clause_1a1c8c3d2f32",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Letter of Claim - Road Traffic Personal Injury Use when: opponent or insurer identified; pre-action correspondence; liability facts sufficiently known.\nDo not use when: proceedings already commenced; opponent identity unknown; final quantum unsupported by medical evidence. BACKGROUND_FACTS pre-action stage opponent or insurer identified liability facts sufficiently known",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "background_facts"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_254093ce0990",
+      "kind": "clause",
+      "clauseId": "clause_254093ce0990",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Client and accident details We act for {{client_name}} regarding the road traffic accident on {{accident_date}} at {{accident_location}}. PARTY_DESCRIPTION pre-action stage opponent or insurer identified liability facts sufficiently known",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "PARTY_DESCRIPTION",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "party_description"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_039d2e9534ad",
+      "kind": "clause",
+      "clauseId": "clause_039d2e9534ad",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Liability allegation Our client says your insured driver collided with our client and caused injury. LIABILITY_ALLEGATION pre-action stage opponent or insurer identified liability facts sufficiently known",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "LIABILITY_ALLEGATION",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "liability_allegation"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_dbee6fbdd00c",
+      "kind": "clause",
+      "clauseId": "clause_dbee6fbdd00c",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Medical evidence Medical report: {{medical_report_summary}}. MEDICAL_EVIDENCE medical evidence exists or is being requested",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "MEDICAL_EVIDENCE",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "medical_evidence"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_da93122bec66",
+      "kind": "clause",
+      "clauseId": "clause_da93122bec66",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Special damages Special damages supported by receipts: {{special_damages_items}}. SPECIAL_DAMAGES receipts, pay slips, medical bills, or other supporting documents are available",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "SPECIAL_DAMAGES",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "special_damages"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_e73c527162ff",
+      "kind": "clause",
+      "clauseId": "clause_e73c527162ff",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Settlement proposal Please confirm liability and insurer details within {{response_deadline_days}} days. SETTLEMENT_PROPOSAL pre-action stage opponent or insurer identified liability facts sufficiently known",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "SETTLEMENT_PROPOSAL",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "settlement_proposal"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_3ad9461cb216",
+      "kind": "clause",
+      "clauseId": "clause_3ad9461cb216",
+      "templateId": "form_5529c886f381",
+      "text": "Opening SYNTHETIC FIXTURE - NOT A REAL PRECEDENT BACKGROUND_FACTS injury exists medical evidence incomplete",
+      "filters": {
+        "documentIntent": "MEDICAL_RECORDS_REQUEST",
+        "workflowStage": "MEDICAL_EVIDENCE",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "personal_injury",
+          "medical_records_request",
+          "background_facts"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_7a2a8fb7e9b8",
+      "kind": "clause",
+      "clauseId": "clause_7a2a8fb7e9b8",
+      "templateId": "form_5529c886f381",
+      "text": "Medical Records Request Use when: injury exists and medical evidence is incomplete.\nDo not use when: full medical records and report are already received. MEDICAL_EVIDENCE medical evidence exists or is being requested",
+      "filters": {
+        "documentIntent": "MEDICAL_RECORDS_REQUEST",
+        "workflowStage": "MEDICAL_EVIDENCE",
+        "clauseType": "MEDICAL_EVIDENCE",
+        "issueTags": [
+          "personal_injury",
+          "medical_records_request",
+          "medical_evidence"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_2e34b8376360",
+      "kind": "clause",
+      "clauseId": "clause_2e34b8376360",
+      "templateId": "form_5529c886f381",
+      "text": "Patient details Patient: {{client_name}}. Injury date: {{accident_date}}. PARTY_DESCRIPTION injury exists medical evidence incomplete",
+      "filters": {
+        "documentIntent": "MEDICAL_RECORDS_REQUEST",
+        "workflowStage": "MEDICAL_EVIDENCE",
+        "clauseType": "PARTY_DESCRIPTION",
+        "issueTags": [
+          "personal_injury",
+          "medical_records_request",
+          "party_description"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_f713477cfbea",
+      "kind": "clause",
+      "clauseId": "clause_f713477cfbea",
+      "templateId": "form_5529c886f381",
+      "text": "Records requested Please provide consultation notes, diagnosis, treatment, sick leave, invoices, and prognosis materials. DOCUMENT_REQUEST injury exists medical evidence incomplete",
+      "filters": {
+        "documentIntent": "MEDICAL_RECORDS_REQUEST",
+        "workflowStage": "MEDICAL_EVIDENCE",
+        "clauseType": "DOCUMENT_REQUEST",
+        "issueTags": [
+          "personal_injury",
+          "medical_records_request",
+          "document_request"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_eced84ccc071",
+      "kind": "clause",
+      "clauseId": "clause_eced84ccc071",
+      "templateId": "form_5b2574d75330",
+      "text": "Opening SYNTHETIC FIXTURE - NOT A REAL PRECEDENT BACKGROUND_FACTS opponent unknown police report missing road traffic accident",
+      "filters": {
+        "documentIntent": "POLICE_REPORT_REQUEST",
+        "workflowStage": "URGENT_ACTIONS",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "police_report_request",
+          "background_facts"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_3b236863b183",
+      "kind": "clause",
+      "clauseId": "clause_3b236863b183",
+      "templateId": "form_5b2574d75330",
+      "text": "Police Report / Traffic Accident Record Request Use when: road traffic accident; police report or accident reference is missing; opponent identity or insurer details are unknown.\nDo not use when: police report already obtained and verified. POLICE_REPORT_REQUEST police report or opponent identity is missing",
+      "filters": {
+        "documentIntent": "POLICE_REPORT_REQUEST",
+        "workflowStage": "URGENT_ACTIONS",
+        "clauseType": "POLICE_REPORT_REQUEST",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "police_report_request"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_9ab2845a2eda",
+      "kind": "clause",
+      "clauseId": "clause_9ab2845a2eda",
+      "templateId": "form_5b2574d75330",
+      "text": "Request details Client: {{client_name}}. Accident date: {{accident_date}}. Location: {{accident_location}}. DOCUMENT_REQUEST opponent unknown police report missing road traffic accident",
+      "filters": {
+        "documentIntent": "POLICE_REPORT_REQUEST",
+        "workflowStage": "URGENT_ACTIONS",
+        "clauseType": "DOCUMENT_REQUEST",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "police_report_request",
+          "document_request"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_58022d60ed71",
+      "kind": "clause",
+      "clauseId": "clause_58022d60ed71",
+      "templateId": "form_5b2574d75330",
+      "text": "Purpose Please provide the traffic accident record or report reference for opponent identification and insurance follow-up. DOCUMENT_REQUEST opponent unknown police report missing road traffic accident",
+      "filters": {
+        "documentIntent": "POLICE_REPORT_REQUEST",
+        "workflowStage": "URGENT_ACTIONS",
+        "clauseType": "DOCUMENT_REQUEST",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "police_report_request",
+          "document_request"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_24d8806e6389",
+      "kind": "clause",
+      "clauseId": "clause_24d8806e6389",
+      "templateId": "form_27a08fac197f",
+      "text": "Opening SYNTHETIC FIXTURE - NOT A REAL PRECEDENT BACKGROUND_FACTS lawyer decides to commence proceedings not commenced",
+      "filters": {
+        "documentIntent": "WRIT",
+        "workflowStage": "COMMENCEMENT",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "writ",
+          "background_facts"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_bfe323800f25",
+      "kind": "clause",
+      "clauseId": "clause_bfe323800f25",
+      "templateId": "form_27a08fac197f",
+      "text": "Writ - Personal Injury Commencement Use when: lawyer has decided to commence proceedings and proceedings have not yet commenced.\nDo not use when: proceedings already commenced or limitation/procedure route requires a different originating process. BACKGROUND_FACTS lawyer decides to commence proceedings not commenced",
+      "filters": {
+        "documentIntent": "WRIT",
+        "workflowStage": "COMMENCEMENT",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "writ",
+          "background_facts"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_44b0e332f907",
+      "kind": "clause",
+      "clauseId": "clause_44b0e332f907",
+      "templateId": "form_27a08fac197f",
+      "text": "Parties Plaintiff: {{client_name}}. Defendant: {{defendant_name}}. PARTY_DESCRIPTION lawyer decides to commence proceedings not commenced",
+      "filters": {
+        "documentIntent": "WRIT",
+        "workflowStage": "COMMENCEMENT",
+        "clauseType": "PARTY_DESCRIPTION",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "writ",
+          "party_description"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_732919ca3d1b",
+      "kind": "clause",
+      "clauseId": "clause_732919ca3d1b",
+      "templateId": "form_27a08fac197f",
+      "text": "Claim The plaintiff claims damages arising from the road traffic accident on {{accident_date}}. BACKGROUND_FACTS lawyer decides to commence proceedings not commenced",
+      "filters": {
+        "documentIntent": "WRIT",
+        "workflowStage": "COMMENCEMENT",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "writ",
+          "background_facts"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    }
+  ]
+}

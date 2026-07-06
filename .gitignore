@@ -18,3 +18,14 @@ data/legal_ingest/private/
 data/legal_ingest/reports/
 qdrant_storage/
 .qdrant-initialized
+
+# Private forms / precedent ingestion. Real forms, licensed precedents,
+# NotebookLM notes, extracted text, and generated private drafts stay local.
+private_uploads/
+private_ingest_output/
+private_templates/
+private_exports/
+private_notebooklm_notes/
+*.local.zip
+*.private.docx
+*.private.pdf

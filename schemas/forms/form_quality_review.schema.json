@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FormQualityReview",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "targetId",
+    "targetKind",
+    "reviewStatus",
+    "findings"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "targetId": {
+      "type": "string"
+    },
+    "targetKind": {
+      "type": "string"
+    },
+    "reviewStatus": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "reviewedAt": {
+      "type": "string"
+    },
+    "provenanceLabel": {
+      "type": "string",
+      "enum": [
+        "SOURCE_BACKED",
+        "TEMPLATE_BASED",
+        "FIRM_SOP",
+        "AI_SUGGESTED",
+        "INTERNAL_USAGE_NOTE",
+        "LAWYER_APPROVED"
+      ]
+    }
+  }
+}

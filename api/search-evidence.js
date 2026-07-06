@@ -10,6 +10,7 @@ const { diversifyEvidence, groupEvidenceByCaseForAnswer } = require("../src/case
 const { composeResearchMemo } = require("../src/case_graph/research_memo_composer");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
+const { buildAnswerForFormsQuestion, loadFormStore, routeForms } = require("../src/forms/form_system");
 const {
   assertFreeOpenRouterModel,
   defaultFreeOpenRouterChatModel,
@@ -114,6 +115,10 @@ function detectsCriminalLawQuery(query) {
 function detectsPersonalInjuryPurpose(query) {
   const q = String(query || "").toLowerCase();
   return /\b(personal injury|injur(?:y|ed|ies)|medical|compensation|damages|quantum|fracture|pain|suffering|loss of earnings|hospital|sick leave|accident claim)\b/.test(q);
+}
+
+function detectsFormsDraftingQuery(query) {
+  return /\b(form|forms|precedent|precedents|template|templates|draft|drafting|letter of claim|claim letter|writ|clause|clauses|document|which form|use this clause)\b/i.test(String(query || ""));
 }
 
 function detectsCriminalLawPriority(query) {
@@ -1040,6 +1045,19 @@ module.exports = async function handler(req, res) {
     : legalAnswerCache.status === "hit" && legalAnswerCache.answer_json
       ? legalAnswerCache.answer_json
       : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched, legalIngestBundle });
+  let formsLayer = null;
+  if (detectsFormsDraftingQuery(query)) {
+    try {
+      const formStore = loadFormStore(process.env.PRIVATE_FORM_STORE_PATH);
+      const routing = routeForms({ store: formStore, query });
+      formsLayer = {
+        routing,
+        answer: buildAnswerForFormsQuestion({ store: formStore, query }),
+      };
+    } catch (error) {
+      formsLayer = { error: error.message, routing: null, answer: null };
+    }
+  }
   const responsePayload = {
     query,
     ai_status: ai.status,
@@ -1056,6 +1074,39 @@ module.exports = async function handler(req, res) {
     classification: applied.classification,
     source_backed_rules: applied.source_backed_rules || [],
     form_candidates: applied.form_candidates || [],
+    private_form_recommendations: formsLayer ? {
+      recommended_forms: formsLayer.routing?.recommendedForms?.map(item => ({
+        id: item.template.id,
+        title: item.template.title,
+        documentIntent: item.template.documentIntent,
+        proceduralStage: item.template.proceduralStage,
+        caveats: item.caveats || [],
+        provenanceLabel: item.template.provenanceLabel,
+      })) || [],
+      blocked_forms: formsLayer.routing?.blockedForms?.map(item => ({
+        id: item.template.id,
+        title: item.template.title,
+        documentIntent: item.template.documentIntent,
+        reasons: item.blockedBy || [],
+      })) || [],
+      applicable_clauses: formsLayer.routing?.applicableClauses?.map(clause => ({
+        id: clause.id,
+        heading: clause.heading,
+        clauseType: clause.clauseType,
+        provenanceLabel: clause.provenanceLabel,
+      })) || [],
+      blocked_clauses: formsLayer.routing?.blockedClauses?.map(item => ({
+        id: item.clause.id,
+        heading: item.clause.heading,
+        clauseType: item.clause.clauseType,
+        reasons: item.reasons,
+      })) || [],
+      missing_facts: formsLayer.routing?.missingFacts || [],
+      required_evidence: formsLayer.routing?.requiredEvidence || [],
+      retrieval_policy: formsLayer.routing?.retrievalPolicy || null,
+      answer_structure: formsLayer.answer,
+      error: formsLayer.error || null,
+    } : null,
     unsupported_claims: applied.unsupported_claims || [],
     source_audit: applied.source_audit,
     legal_answer_cache: {

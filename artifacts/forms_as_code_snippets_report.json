@@ -1,0 +1,42 @@
+{
+  "report_id": "forms_as_code_snippets_mvp",
+  "generated_at": "2026-07-06T00:00:00+08:00",
+  "status": "implemented_mvp",
+  "privacy_status": {
+    "real_private_forms_committed": false,
+    "private_paths_gitignored": true,
+    "synthetic_fixtures_only": true,
+    "external_llm_private_content_sent": false
+  },
+  "synthetic_demo": {
+    "form_packs_processed": 1,
+    "templates_extracted": 4,
+    "clauses_extracted": 19,
+    "usage_rules_inferred": 20,
+    "notebooklm_notes_linked": 1,
+    "forms_mapped_to_workflow_stages": true,
+    "backend_index_records": 23
+  },
+  "product_layers": [
+    "SOURCE_BACKED public authority remains separate",
+    "TEMPLATE_BASED private precedent/form routing",
+    "INTERNAL_USAGE_NOTE NotebookLM/internal note guidance",
+    "FIRM_SOP procedural gates",
+    "AI_SUGGESTED draft placeholders and missing-fact questions"
+  ],
+  "validation_targets": {
+    "structured_filters_before_keyword_or_vector": true,
+    "wrong_stage_forms_blocked": true,
+    "missing_fact_blockers": true,
+    "draft_from_form_prototype": true,
+    "viewer_forms_workspace": true,
+    "private_data_safety_checks": true
+  },
+  "sem_b_inventory_note": "Sem B / Downloads material was inventoried by metadata only. No private/licensed document content was extracted into git or sent to external services.",
+  "remaining_limitations": [
+    "DOC/PDF extraction quality depends on local tools and private approval.",
+    "Real Sem B packs should be ingested into private_ingest_output only.",
+    "Lawyer approval workflow is metadata-ready but not a full multi-user HITL product yet.",
+    "Vector embeddings are represented by index policy and keyword fallback in this MVP; production vector storage should remain private."
+  ]
+}

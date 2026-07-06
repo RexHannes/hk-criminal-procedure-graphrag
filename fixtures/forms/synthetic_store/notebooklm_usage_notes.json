@@ -1,0 +1,41 @@
+[
+  {
+    "id": "note_2f2d7b3b57c1",
+    "sourceNotebook": "pi_usage_notes.synthetic.md",
+    "noteTitle": "PI Motor Accident - Letter of Claim",
+    "noteText": "# PI Motor Accident - Letter of Claim\n\n## Use when\n- Opponent or insurer identified.\n- Pre-action settlement demand.\n- Liability facts sufficiently known.\n\n## Do not use when\n- Proceedings already commenced.\n- Defendant identity unknown.\n- Medical position too uncertain for quantum demand.\n\n## Clauses\n### CCTV preservation\nUse early where incident location has likely CCTV. Do not use if stale unless lawyer wants preservation request anyway. [VERIFY]\n\n### Special damages\nUse only when receipts/pay slips/medical bills are available; otherwise insert placeholder and evidence task.",
+    "relatedTemplateIds": [
+      "form_cbe2b96ca480",
+      "form_5529c886f381",
+      "form_5b2574d75330"
+    ],
+    "relatedClauseIds": [
+      "clause_21b2cf57212f",
+      "clause_1a1c8c3d2f32",
+      "clause_254093ce0990",
+      "clause_039d2e9534ad",
+      "clause_dbee6fbdd00c",
+      "clause_da93122bec66",
+      "clause_e73c527162ff",
+      "clause_3ad9461cb216",
+      "clause_7a2a8fb7e9b8",
+      "clause_f713477cfbea",
+      "clause_eced84ccc071",
+      "clause_3b236863b183",
+      "clause_9ab2845a2eda",
+      "clause_58022d60ed71",
+      "clause_24d8806e6389",
+      "clause_bfe323800f25",
+      "clause_44b0e332f907",
+      "clause_732919ca3d1b"
+    ],
+    "suggestedUseWhen": [],
+    "suggestedDoNotUseWhen": [],
+    "suggestedWorkflowStage": "PRE_ACTION_CORRESPONDENCE",
+    "suggestedMatterType": "road_traffic_pi",
+    "confidence": 0.55,
+    "status": "verification_required",
+    "reviewerComment": "",
+    "provenanceLabel": "INTERNAL_USAGE_NOTE"
+  }
+]

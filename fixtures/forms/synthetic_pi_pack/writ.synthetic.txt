@@ -1,0 +1,12 @@
+SYNTHETIC FIXTURE - NOT A REAL PRECEDENT
+
+Writ - Personal Injury Commencement
+
+Use when: lawyer has decided to commence proceedings and proceedings have not yet commenced.
+Do not use when: proceedings already commenced or limitation/procedure route requires a different originating process.
+
+Parties
+Plaintiff: {{client_name}}. Defendant: {{defendant_name}}.
+
+Claim
+The plaintiff claims damages arising from the road traffic accident on {{accident_date}}.

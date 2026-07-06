@@ -1,0 +1,12 @@
+SYNTHETIC FIXTURE - NOT A REAL PRECEDENT
+
+Police Report / Traffic Accident Record Request
+
+Use when: road traffic accident; police report or accident reference is missing; opponent identity or insurer details are unknown.
+Do not use when: police report already obtained and verified.
+
+Request details
+Client: {{client_name}}. Accident date: {{accident_date}}. Location: {{accident_location}}.
+
+Purpose
+Please provide the traffic accident record or report reference for opponent identification and insurance follow-up.

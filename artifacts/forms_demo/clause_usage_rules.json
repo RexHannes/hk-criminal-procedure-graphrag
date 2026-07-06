@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "applicableClauseTypes": [
+    "BACKGROUND_FACTS",
+    "BACKGROUND_FACTS",
+    "PARTY_DESCRIPTION",
+    "LIABILITY_ALLEGATION",
+    "SETTLEMENT_PROPOSAL"
+  ],
+  "blockedClauseTypes": [
+    "MEDICAL_EVIDENCE",
+    "SPECIAL_DAMAGES"
+  ],
+  "blockedReasons": [
+    "Medical evidence is missing or incomplete; do not finalise this clause.",
+    "Missing required fact: medicalEvidenceReceived",
+    "Special damages evidence is missing; use placeholder and evidence task only.",
+    "Missing required fact: specialDamagesEvidenceAvailable"
+  ],
+  "provenance": [
+    "TEMPLATE_BASED",
+    "INTERNAL_USAGE_NOTE",
+    "FIRM_SOP",
+    "AI_SUGGESTED"
+  ]
+}

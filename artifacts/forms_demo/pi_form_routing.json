@@ -1,0 +1,41 @@
+{
+  "status": "ok",
+  "scenarios": {
+    "initial": {
+      "recommendedForms": [
+        "POLICE_REPORT_REQUEST",
+        "MEDICAL_RECORDS_REQUEST"
+      ],
+      "blockedForms": [],
+      "alternativeForms": [],
+      "missingFacts": [
+        "medicalEvidenceReceived"
+      ],
+      "requiredEvidence": [
+        "MEDICAL_EVIDENCE"
+      ]
+    },
+    "preActionReady": {
+      "recommendedForms": [
+        "LETTER_OF_CLAIM"
+      ],
+      "blockedForms": [],
+      "alternativeForms": [],
+      "missingFacts": [],
+      "requiredEvidence": []
+    },
+    "commenced": {
+      "recommendedForms": [],
+      "blockedForms": [
+        "WRIT"
+      ],
+      "alternativeForms": [
+        "AMENDED_PLEADING",
+        "SUMMONS",
+        "CONSENT_ORDER"
+      ],
+      "missingFacts": [],
+      "requiredEvidence": []
+    }
+  }
+}

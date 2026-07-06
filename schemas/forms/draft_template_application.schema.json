@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DraftTemplateApplication",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "templateId",
+    "draftDocument",
+    "fieldCompletionReport",
+    "missingFactBlockers",
+    "assumptions",
+    "recommendedEvidenceTasks",
+    "blockedClausesReport"
+  ],
+  "properties": {
+    "templateId": {
+      "type": "string"
+    },
+    "draftDocument": {
+      "type": "object"
+    },
+    "fieldCompletionReport": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "missingFactBlockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendedEvidenceTasks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lawyerOnlyFields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blockedClausesReport": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "finalApprovalBlocked": {
+      "type": "boolean"
+    }
+  }
+}

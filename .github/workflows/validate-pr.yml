@@ -1,13 +1,15 @@
-name: Validate PR6 Production Release
+name: Validate Legal GraphRAG
 
 on:
   pull_request:
   push:
     branches:
       - pr6-production-release
+      - forms-as-code-snippets-mvp
 
 jobs:
-  validate:
+  validate-pr6-release:
+    if: github.ref_name == 'pr6-production-release' || github.head_ref == 'pr6-production-release'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -53,6 +55,66 @@ jobs:
 
       - name: Validate demo readiness
         run: node scripts/validate_demo_readiness_pr6.js
+
+      - name: Validate committed secrets
+        run: node scripts/validate_no_secrets_committed.js
+
+      - name: Check whitespace
+        run: git diff --check
+
+  validate-forms-mvp:
+    if: github.ref_name == 'forms-as-code-snippets-mvp' || github.head_ref == 'forms-as-code-snippets-mvp'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Build synthetic forms demo store
+        run: node scripts/demo_forms_ingestion_synthetic.js
+
+      - name: Validate private form ingestion policy
+        run: node scripts/validate_private_form_ingestion_policy.js
+
+      - name: Validate no private forms committed
+        run: node scripts/validate_no_private_forms_committed.js
+
+      - name: Validate form template schema
+        run: node scripts/validate_form_template_schema.js
+
+      - name: Validate clause snippet schema
+        run: node scripts/validate_clause_snippet_schema.js
+
+      - name: Validate clause usage rules
+        run: node scripts/validate_clause_usage_rules.js
+
+      - name: Validate NotebookLM usage notes
+        run: node scripts/validate_notebooklm_usage_notes.js
+
+      - name: Validate form routing engine
+        run: node scripts/validate_form_routing_engine.js
+
+      - name: Validate workflow stage mapping
+        run: node scripts/validate_workflow_stage_mapping.js
+
+      - name: Validate retrieval is not vector only
+        run: node scripts/validate_form_retrieval_not_vector_only.js
+
+      - name: Validate draft from form
+        run: node scripts/validate_draft_from_form.js
+
+      - name: Validate wrong-stage forms blocked
+        run: node scripts/validate_blocked_wrong_stage_forms.js
+
+      - name: Validate forms backend recall
+        run: node scripts/validate_forms_backend_recall.js
+
+      - name: Smoke test forms workspace
+        run: node scripts/smoke_test_forms_workspace_ui.js
 
       - name: Validate committed secrets
         run: node scripts/validate_no_secrets_committed.js

@@ -1,0 +1,12 @@
+SYNTHETIC FIXTURE - NOT A REAL PRECEDENT
+
+Medical Records Request
+
+Use when: injury exists and medical evidence is incomplete.
+Do not use when: full medical records and report are already received.
+
+Patient details
+Patient: {{client_name}}. Injury date: {{accident_date}}.
+
+Records requested
+Please provide consultation notes, diagnosis, treatment, sick leave, invoices, and prognosis materials.

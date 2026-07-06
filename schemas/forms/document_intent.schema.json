@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DocumentIntent",
+  "type": "string",
+  "enum": [
+    "CLIENT_INTAKE",
+    "EVIDENCE_CHECKLIST",
+    "MEDICAL_RECORDS_REQUEST",
+    "POLICE_REPORT_REQUEST",
+    "LETTER_OF_CLAIM",
+    "DEMAND_LETTER",
+    "SETTLEMENT_OFFER",
+    "CALDERBANK_LETTER",
+    "SANCTIONED_OFFER",
+    "WRIT",
+    "ORIGINATING_SUMMONS",
+    "STATEMENT_OF_CLAIM",
+    "PARTICULARS_OF_CLAIM",
+    "DEFENCE",
+    "REPLY",
+    "WITNESS_STATEMENT",
+    "LIST_OF_DOCUMENTS",
+    "EXPERT_REPORT_REQUEST",
+    "BUNDLE_INDEX",
+    "COSTS_SCHEDULE",
+    "CONSENT_SUMMONS",
+    "ORDER_DRAFT",
+    "AMENDED_PLEADING",
+    "SUMMONS",
+    "CONSENT_ORDER"
+  ]
+}

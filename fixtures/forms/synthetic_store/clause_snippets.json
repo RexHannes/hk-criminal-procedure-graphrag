@@ -1,0 +1,800 @@
+[
+  {
+    "id": "clause_21b2cf57212f",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.opening",
+    "heading": "Opening",
+    "text": "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT",
+    "normalizedText": "synthetic fixture - not a real precedent",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "background_facts"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "letter_of_claim.synthetic.txt",
+      "heading": "Opening",
+      "ordinal": 1
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_1a1c8c3d2f32",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.letter_of_claim_road_traffic_personal_injury",
+    "heading": "Letter of Claim - Road Traffic Personal Injury",
+    "text": "Use when: opponent or insurer identified; pre-action correspondence; liability facts sufficiently known.\nDo not use when: proceedings already commenced; opponent identity unknown; final quantum unsupported by medical evidence.",
+    "normalizedText": "use when: opponent or insurer identified; pre-action correspondence; liability facts sufficiently known.\ndo not use when: proceedings already commenced; opponent identity unknown; final quantum unsupported by medical evidence.",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "background_facts"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "letter_of_claim.synthetic.txt",
+      "heading": "Letter of Claim - Road Traffic Personal Injury",
+      "ordinal": 2
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_254093ce0990",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.client_and_accident_details",
+    "heading": "Client and accident details",
+    "text": "We act for {{client_name}} regarding the road traffic accident on {{accident_date}} at {{accident_location}}.",
+    "normalizedText": "we act for {{client_name}} regarding the road traffic accident on {{accident_date}} at {{accident_location}}.",
+    "clauseType": "PARTY_DESCRIPTION",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "party_description"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [
+      "client_name",
+      "accident_date",
+      "accident_location"
+    ],
+    "useWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "letter_of_claim.synthetic.txt",
+      "heading": "Client and accident details",
+      "ordinal": 3
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_039d2e9534ad",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.liability_allegation",
+    "heading": "Liability allegation",
+    "text": "Our client says your insured driver collided with our client and caused injury.",
+    "normalizedText": "our client says your insured driver collided with our client and caused injury.",
+    "clauseType": "LIABILITY_ALLEGATION",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "liability_allegation"
+    ],
+    "factRequirements": [
+      "liabilityFactsKnown"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "letter_of_claim.synthetic.txt",
+      "heading": "Liability allegation",
+      "ordinal": 4
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_dbee6fbdd00c",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.medical_evidence",
+    "heading": "Medical evidence",
+    "text": "Medical report: {{medical_report_summary}}.",
+    "normalizedText": "medical report: {{medical_report_summary}}.",
+    "clauseType": "MEDICAL_EVIDENCE",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "medical_evidence"
+    ],
+    "factRequirements": [
+      "medicalEvidenceReceived"
+    ],
+    "fieldRequirements": [
+      "medical_report_summary"
+    ],
+    "useWhen": [
+      "medical evidence exists or is being requested"
+    ],
+    "doNotUseWhen": [
+      "medical position is complete and already summarised elsewhere"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "letter_of_claim.synthetic.txt",
+      "heading": "Medical evidence",
+      "ordinal": 5
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_da93122bec66",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.special_damages",
+    "heading": "Special damages",
+    "text": "Special damages supported by receipts: {{special_damages_items}}.",
+    "normalizedText": "special damages supported by receipts: {{special_damages_items}}.",
+    "clauseType": "SPECIAL_DAMAGES",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "special_damages"
+    ],
+    "factRequirements": [
+      "specialDamagesEvidenceAvailable"
+    ],
+    "fieldRequirements": [
+      "special_damages_items"
+    ],
+    "useWhen": [
+      "receipts, pay slips, medical bills, or other supporting documents are available"
+    ],
+    "doNotUseWhen": [
+      "supporting evidence for the figures is missing"
+    ],
+    "alternatives": [
+      "insert placeholder and evidence task"
+    ],
+    "risks": [
+      "Do not invent figures; require supporting documents."
+    ],
+    "sourceLocation": {
+      "sourceFileRef": "letter_of_claim.synthetic.txt",
+      "heading": "Special damages",
+      "ordinal": 6
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_e73c527162ff",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.settlement_proposal",
+    "heading": "Settlement proposal",
+    "text": "Please confirm liability and insurer details within {{response_deadline_days}} days.",
+    "normalizedText": "please confirm liability and insurer details within {{response_deadline_days}} days.",
+    "clauseType": "SETTLEMENT_PROPOSAL",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "settlement_proposal"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [
+      "response_deadline_days"
+    ],
+    "useWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "alternatives": [],
+    "risks": [
+      "Settlement authority and lawyer decision required."
+    ],
+    "sourceLocation": {
+      "sourceFileRef": "letter_of_claim.synthetic.txt",
+      "heading": "Settlement proposal",
+      "ordinal": 7
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_3ad9461cb216",
+    "templateId": "form_5529c886f381",
+    "clauseKey": "medical_records_request_synthetic.opening",
+    "heading": "Opening",
+    "text": "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT",
+    "normalizedText": "synthetic fixture - not a real precedent",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "MEDICAL_RECORDS_REQUEST",
+    "proceduralStage": "MEDICAL_EVIDENCE",
+    "issueTags": [
+      "personal_injury",
+      "medical_records_request",
+      "background_facts"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "injury exists",
+      "medical evidence incomplete"
+    ],
+    "doNotUseWhen": [
+      "fullMedicalEvidenceAlreadyReceived"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "medical_records_request.synthetic.txt",
+      "heading": "Opening",
+      "ordinal": 1
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_7a2a8fb7e9b8",
+    "templateId": "form_5529c886f381",
+    "clauseKey": "medical_records_request_synthetic.medical_records_request",
+    "heading": "Medical Records Request",
+    "text": "Use when: injury exists and medical evidence is incomplete.\nDo not use when: full medical records and report are already received.",
+    "normalizedText": "use when: injury exists and medical evidence is incomplete.\ndo not use when: full medical records and report are already received.",
+    "clauseType": "MEDICAL_EVIDENCE",
+    "documentIntent": "MEDICAL_RECORDS_REQUEST",
+    "proceduralStage": "MEDICAL_EVIDENCE",
+    "issueTags": [
+      "personal_injury",
+      "medical_records_request",
+      "medical_evidence"
+    ],
+    "factRequirements": [
+      "medicalEvidenceReceived"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "medical evidence exists or is being requested"
+    ],
+    "doNotUseWhen": [
+      "medical position is complete and already summarised elsewhere"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "medical_records_request.synthetic.txt",
+      "heading": "Medical Records Request",
+      "ordinal": 2
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_2e34b8376360",
+    "templateId": "form_5529c886f381",
+    "clauseKey": "medical_records_request_synthetic.patient_details",
+    "heading": "Patient details",
+    "text": "Patient: {{client_name}}. Injury date: {{accident_date}}.",
+    "normalizedText": "patient: {{client_name}}. injury date: {{accident_date}}.",
+    "clauseType": "PARTY_DESCRIPTION",
+    "documentIntent": "MEDICAL_RECORDS_REQUEST",
+    "proceduralStage": "MEDICAL_EVIDENCE",
+    "issueTags": [
+      "personal_injury",
+      "medical_records_request",
+      "party_description"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [
+      "client_name",
+      "accident_date"
+    ],
+    "useWhen": [
+      "injury exists",
+      "medical evidence incomplete"
+    ],
+    "doNotUseWhen": [
+      "fullMedicalEvidenceAlreadyReceived"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "medical_records_request.synthetic.txt",
+      "heading": "Patient details",
+      "ordinal": 3
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_f713477cfbea",
+    "templateId": "form_5529c886f381",
+    "clauseKey": "medical_records_request_synthetic.records_requested",
+    "heading": "Records requested",
+    "text": "Please provide consultation notes, diagnosis, treatment, sick leave, invoices, and prognosis materials.",
+    "normalizedText": "please provide consultation notes, diagnosis, treatment, sick leave, invoices, and prognosis materials.",
+    "clauseType": "DOCUMENT_REQUEST",
+    "documentIntent": "MEDICAL_RECORDS_REQUEST",
+    "proceduralStage": "MEDICAL_EVIDENCE",
+    "issueTags": [
+      "personal_injury",
+      "medical_records_request",
+      "document_request"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "injury exists",
+      "medical evidence incomplete"
+    ],
+    "doNotUseWhen": [
+      "fullMedicalEvidenceAlreadyReceived"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "medical_records_request.synthetic.txt",
+      "heading": "Records requested",
+      "ordinal": 4
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_eced84ccc071",
+    "templateId": "form_5b2574d75330",
+    "clauseKey": "police_report_request_synthetic.opening",
+    "heading": "Opening",
+    "text": "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT",
+    "normalizedText": "synthetic fixture - not a real precedent",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "POLICE_REPORT_REQUEST",
+    "proceduralStage": "URGENT_ACTIONS",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "police_report_request",
+      "background_facts"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "opponent unknown",
+      "police report missing",
+      "road traffic accident"
+    ],
+    "doNotUseWhen": [
+      "policeReportAlreadyObtained"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "police_report_request.synthetic.txt",
+      "heading": "Opening",
+      "ordinal": 1
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_3b236863b183",
+    "templateId": "form_5b2574d75330",
+    "clauseKey": "police_report_request_synthetic.police_report_traffic_accident_record_request",
+    "heading": "Police Report / Traffic Accident Record Request",
+    "text": "Use when: road traffic accident; police report or accident reference is missing; opponent identity or insurer details are unknown.\nDo not use when: police report already obtained and verified.",
+    "normalizedText": "use when: road traffic accident; police report or accident reference is missing; opponent identity or insurer details are unknown.\ndo not use when: police report already obtained and verified.",
+    "clauseType": "POLICE_REPORT_REQUEST",
+    "documentIntent": "POLICE_REPORT_REQUEST",
+    "proceduralStage": "URGENT_ACTIONS",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "police_report_request"
+    ],
+    "factRequirements": [
+      "accidentDate",
+      "accidentLocation"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "police report or opponent identity is missing"
+    ],
+    "doNotUseWhen": [
+      "policeReportAlreadyObtained"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "police_report_request.synthetic.txt",
+      "heading": "Police Report / Traffic Accident Record Request",
+      "ordinal": 2
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_9ab2845a2eda",
+    "templateId": "form_5b2574d75330",
+    "clauseKey": "police_report_request_synthetic.request_details",
+    "heading": "Request details",
+    "text": "Client: {{client_name}}. Accident date: {{accident_date}}. Location: {{accident_location}}.",
+    "normalizedText": "client: {{client_name}}. accident date: {{accident_date}}. location: {{accident_location}}.",
+    "clauseType": "DOCUMENT_REQUEST",
+    "documentIntent": "POLICE_REPORT_REQUEST",
+    "proceduralStage": "URGENT_ACTIONS",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "police_report_request",
+      "document_request"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [
+      "client_name",
+      "accident_date",
+      "accident_location"
+    ],
+    "useWhen": [
+      "opponent unknown",
+      "police report missing",
+      "road traffic accident"
+    ],
+    "doNotUseWhen": [
+      "policeReportAlreadyObtained"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "police_report_request.synthetic.txt",
+      "heading": "Request details",
+      "ordinal": 3
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_58022d60ed71",
+    "templateId": "form_5b2574d75330",
+    "clauseKey": "police_report_request_synthetic.purpose",
+    "heading": "Purpose",
+    "text": "Please provide the traffic accident record or report reference for opponent identification and insurance follow-up.",
+    "normalizedText": "please provide the traffic accident record or report reference for opponent identification and insurance follow-up.",
+    "clauseType": "DOCUMENT_REQUEST",
+    "documentIntent": "POLICE_REPORT_REQUEST",
+    "proceduralStage": "URGENT_ACTIONS",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "police_report_request",
+      "document_request"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "opponent unknown",
+      "police report missing",
+      "road traffic accident"
+    ],
+    "doNotUseWhen": [
+      "policeReportAlreadyObtained"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "police_report_request.synthetic.txt",
+      "heading": "Purpose",
+      "ordinal": 4
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_24d8806e6389",
+    "templateId": "form_27a08fac197f",
+    "clauseKey": "writ_synthetic.opening",
+    "heading": "Opening",
+    "text": "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT",
+    "normalizedText": "synthetic fixture - not a real precedent",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "WRIT",
+    "proceduralStage": "COMMENCEMENT",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "writ",
+      "background_facts"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "lawyer decides to commence",
+      "proceedings not commenced"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced"
+    ],
+    "alternatives": [
+      "SUMMONS",
+      "AMENDED_PLEADING",
+      "CONSENT_ORDER"
+    ],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "writ.synthetic.txt",
+      "heading": "Opening",
+      "ordinal": 1
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_bfe323800f25",
+    "templateId": "form_27a08fac197f",
+    "clauseKey": "writ_synthetic.writ_personal_injury_commencement",
+    "heading": "Writ - Personal Injury Commencement",
+    "text": "Use when: lawyer has decided to commence proceedings and proceedings have not yet commenced.\nDo not use when: proceedings already commenced or limitation/procedure route requires a different originating process.",
+    "normalizedText": "use when: lawyer has decided to commence proceedings and proceedings have not yet commenced.\ndo not use when: proceedings already commenced or limitation/procedure route requires a different originating process.",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "WRIT",
+    "proceduralStage": "COMMENCEMENT",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "writ",
+      "background_facts"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "lawyer decides to commence",
+      "proceedings not commenced"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced"
+    ],
+    "alternatives": [
+      "SUMMONS",
+      "AMENDED_PLEADING",
+      "CONSENT_ORDER"
+    ],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "writ.synthetic.txt",
+      "heading": "Writ - Personal Injury Commencement",
+      "ordinal": 2
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_44b0e332f907",
+    "templateId": "form_27a08fac197f",
+    "clauseKey": "writ_synthetic.parties",
+    "heading": "Parties",
+    "text": "Plaintiff: {{client_name}}. Defendant: {{defendant_name}}.",
+    "normalizedText": "plaintiff: {{client_name}}. defendant: {{defendant_name}}.",
+    "clauseType": "PARTY_DESCRIPTION",
+    "documentIntent": "WRIT",
+    "proceduralStage": "COMMENCEMENT",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "writ",
+      "party_description"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [
+      "client_name",
+      "defendant_name"
+    ],
+    "useWhen": [
+      "lawyer decides to commence",
+      "proceedings not commenced"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced"
+    ],
+    "alternatives": [
+      "SUMMONS",
+      "AMENDED_PLEADING",
+      "CONSENT_ORDER"
+    ],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "writ.synthetic.txt",
+      "heading": "Parties",
+      "ordinal": 3
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "clause_732919ca3d1b",
+    "templateId": "form_27a08fac197f",
+    "clauseKey": "writ_synthetic.claim",
+    "heading": "Claim",
+    "text": "The plaintiff claims damages arising from the road traffic accident on {{accident_date}}.",
+    "normalizedText": "the plaintiff claims damages arising from the road traffic accident on {{accident_date}}.",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "WRIT",
+    "proceduralStage": "COMMENCEMENT",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "writ",
+      "background_facts"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [
+      "accident_date"
+    ],
+    "useWhen": [
+      "lawyer decides to commence",
+      "proceedings not commenced"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced"
+    ],
+    "alternatives": [
+      "SUMMONS",
+      "AMENDED_PLEADING",
+      "CONSENT_ORDER"
+    ],
+    "risks": [],
+    "sourceLocation": {
+      "sourceFileRef": "writ.synthetic.txt",
+      "heading": "Claim",
+      "ordinal": 4
+    },
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "lawyerReviewStatus": "unreviewed",
+    "reviewStatus": "lawyer_review_required",
+    "provenanceLabel": "TEMPLATE_BASED"
+  }
+]

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClauseSnippet",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "templateId",
+    "clauseKey",
+    "heading",
+    "text",
+    "clauseType",
+    "documentIntent",
+    "proceduralStage",
+    "sourceLocation",
+    "reviewStatus",
+    "provenanceLabel"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "templateId": {
+      "type": "string"
+    },
+    "clauseKey": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "normalizedText": {
+      "type": "string"
+    },
+    "clauseType": {
+      "type": "string",
+      "enum": [
+        "PARTY_DESCRIPTION",
+        "JURISDICTION",
+        "BACKGROUND_FACTS",
+        "LIABILITY_ALLEGATION",
+        "PARTICULARS_OF_NEGLIGENCE",
+        "CONTRIBUTORY_NEGLIGENCE_RESPONSE",
+        "INJURY_DESCRIPTION",
+        "SPECIAL_DAMAGES",
+        "GENERAL_DAMAGES",
+        "MEDICAL_EVIDENCE",
+        "DOCUMENT_REQUEST",
+        "SETTLEMENT_PROPOSAL",
+        "COSTS_WARNING",
+        "RESERVATION_OF_RIGHTS",
+        "PRAYER_FOR_RELIEF",
+        "VERIFICATION",
+        "SIGNATURE_BLOCK",
+        "CCTV_PRESERVATION",
+        "POLICE_REPORT_REQUEST",
+        "INSURER_IDENTIFICATION"
+      ]
+    },
+    "documentIntent": {
+      "type": "string",
+      "enum": [
+        "CLIENT_INTAKE",
+        "EVIDENCE_CHECKLIST",
+        "MEDICAL_RECORDS_REQUEST",
+        "POLICE_REPORT_REQUEST",
+        "LETTER_OF_CLAIM",
+        "DEMAND_LETTER",
+        "SETTLEMENT_OFFER",
+        "CALDERBANK_LETTER",
+        "SANCTIONED_OFFER",
+        "WRIT",
+        "ORIGINATING_SUMMONS",
+        "STATEMENT_OF_CLAIM",
+        "PARTICULARS_OF_CLAIM",
+        "DEFENCE",
+        "REPLY",
+        "WITNESS_STATEMENT",
+        "LIST_OF_DOCUMENTS",
+        "EXPERT_REPORT_REQUEST",
+        "BUNDLE_INDEX",
+        "COSTS_SCHEDULE",
+        "CONSENT_SUMMONS",
+        "ORDER_DRAFT",
+        "AMENDED_PLEADING",
+        "SUMMONS",
+        "CONSENT_ORDER"
+      ]
+    },
+    "proceduralStage": {
+      "type": "string",
+      "enum": [
+        "INTAKE",
+        "URGENT_ACTIONS",
+        "EVIDENCE_COLLECTION",
+        "MEDICAL_EVIDENCE",
+        "LIABILITY_ASSESSMENT",
+        "PRE_ACTION_CORRESPONDENCE",
+        "SETTLEMENT_NEGOTIATION",
+        "COMMENCEMENT",
+        "PLEADINGS",
+        "DISCOVERY",
+        "EXPERT_EVIDENCE",
+        "MEDIATION",
+        "TRIAL_PREPARATION",
+        "TRIAL",
+        "POST_JUDGMENT",
+        "COSTS",
+        "CLOSURE"
+      ]
+    },
+    "issueTags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "factRequirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "fieldRequirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "useWhen": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "doNotUseWhen": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourceLocation": {
+      "type": "object"
+    },
+    "notebooklmUsageNoteIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lawyerReviewStatus": {
+      "type": "string"
+    },
+    "reviewStatus": {
+      "type": "string"
+    },
+    "provenanceLabel": {
+      "type": "string",
+      "enum": [
+        "SOURCE_BACKED",
+        "TEMPLATE_BASED",
+        "FIRM_SOP",
+        "AI_SUGGESTED",
+        "INTERNAL_USAGE_NOTE",
+        "LAWYER_APPROVED"
+      ]
+    }
+  }
+}

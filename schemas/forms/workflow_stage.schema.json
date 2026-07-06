@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkflowStage",
+  "type": "string",
+  "enum": [
+    "INTAKE",
+    "URGENT_ACTIONS",
+    "EVIDENCE_COLLECTION",
+    "MEDICAL_EVIDENCE",
+    "LIABILITY_ASSESSMENT",
+    "PRE_ACTION_CORRESPONDENCE",
+    "SETTLEMENT_NEGOTIATION",
+    "COMMENCEMENT",
+    "PLEADINGS",
+    "DISCOVERY",
+    "EXPERT_EVIDENCE",
+    "MEDIATION",
+    "TRIAL_PREPARATION",
+    "TRIAL",
+    "POST_JUDGMENT",
+    "COSTS",
+    "CLOSURE"
+  ]
+}

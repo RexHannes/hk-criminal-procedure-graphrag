@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClauseUsageRule",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "clauseId",
+    "ruleType",
+    "conditionExpression",
+    "naturalLanguageCondition",
+    "reviewStatus"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "clauseId": {
+      "type": "string"
+    },
+    "ruleType": {
+      "type": "string",
+      "enum": [
+        "USE_WHEN",
+        "DO_NOT_USE_WHEN",
+        "REQUIRE_FACT",
+        "REQUIRE_STAGE",
+        "REQUIRE_ROLE",
+        "BLOCK_IF_STAGE_PASSED",
+        "BLOCK_IF_OPPONENT_UNKNOWN",
+        "BLOCK_IF_EVIDENCE_MISSING",
+        "REQUIRE_LAWYER_DECISION",
+        "ALTERNATIVE_TO"
+      ]
+    },
+    "conditionExpression": {
+      "type": "string"
+    },
+    "naturalLanguageCondition": {
+      "type": "string"
+    },
+    "examplesUse": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "examplesDoNotUse": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requiredFacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blockingMissingFacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notebooklmUsageNoteIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "publicAuthorityIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "firmSopStepIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "priority": {
+      "type": "number"
+    },
+    "confidence": {
+      "type": "number"
+    },
+    "reviewStatus": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FormRoutingRule",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "ruleType",
+    "documentIntent",
+    "conditionExpression",
+    "outcome"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "ruleType": {
+      "type": "string",
+      "enum": [
+        "USE_WHEN",
+        "DO_NOT_USE_WHEN",
+        "REQUIRE_FACT",
+        "REQUIRE_STAGE",
+        "REQUIRE_ROLE",
+        "BLOCK_IF_STAGE_PASSED",
+        "BLOCK_IF_OPPONENT_UNKNOWN",
+        "BLOCK_IF_EVIDENCE_MISSING",
+        "REQUIRE_LAWYER_DECISION",
+        "ALTERNATIVE_TO"
+      ]
+    },
+    "documentIntent": {
+      "type": "string",
+      "enum": [
+        "CLIENT_INTAKE",
+        "EVIDENCE_CHECKLIST",
+        "MEDICAL_RECORDS_REQUEST",
+        "POLICE_REPORT_REQUEST",
+        "LETTER_OF_CLAIM",
+        "DEMAND_LETTER",
+        "SETTLEMENT_OFFER",
+        "CALDERBANK_LETTER",
+        "SANCTIONED_OFFER",
+        "WRIT",
+        "ORIGINATING_SUMMONS",
+        "STATEMENT_OF_CLAIM",
+        "PARTICULARS_OF_CLAIM",
+        "DEFENCE",
+        "REPLY",
+        "WITNESS_STATEMENT",
+        "LIST_OF_DOCUMENTS",
+        "EXPERT_REPORT_REQUEST",
+        "BUNDLE_INDEX",
+        "COSTS_SCHEDULE",
+        "CONSENT_SUMMONS",
+        "ORDER_DRAFT",
+        "AMENDED_PLEADING",
+        "SUMMONS",
+        "CONSENT_ORDER"
+      ]
+    },
+    "workflowStage": {
+      "type": "string",
+      "enum": [
+        "INTAKE",
+        "URGENT_ACTIONS",
+        "EVIDENCE_COLLECTION",
+        "MEDICAL_EVIDENCE",
+        "LIABILITY_ASSESSMENT",
+        "PRE_ACTION_CORRESPONDENCE",
+        "SETTLEMENT_NEGOTIATION",
+        "COMMENCEMENT",
+        "PLEADINGS",
+        "DISCOVERY",
+        "EXPERT_EVIDENCE",
+        "MEDIATION",
+        "TRIAL_PREPARATION",
+        "TRIAL",
+        "POST_JUDGMENT",
+        "COSTS",
+        "CLOSURE"
+      ]
+    },
+    "conditionExpression": {
+      "type": "string"
+    },
+    "outcome": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "provenanceLabel": {
+      "type": "string",
+      "enum": [
+        "SOURCE_BACKED",
+        "TEMPLATE_BASED",
+        "FIRM_SOP",
+        "AI_SUGGESTED",
+        "INTERNAL_USAGE_NOTE",
+        "LAWYER_APPROVED"
+      ]
+    }
+  }
+}

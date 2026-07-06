@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FormIngestionManifest",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "formPack",
+    "templates",
+    "clauses",
+    "usageRules",
+    "privateStorePath"
+  ],
+  "properties": {
+    "formPack": {
+      "type": "object"
+    },
+    "templates": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "clauses": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "usageRules": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "notebooklmUsageNotes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "privateStorePath": {
+      "type": "string"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
