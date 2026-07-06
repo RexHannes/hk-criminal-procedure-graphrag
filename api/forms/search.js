@@ -13,5 +13,9 @@ module.exports = async function handler(req, res) {
     documentIntent: req.query.documentIntent,
     workflowStage: req.query.workflowStage,
   };
-  json(res, 200, searchForms({ store: storeFromReq(req), query, filters }));
+  try {
+    json(res, 200, searchForms({ store: storeFromReq(req), query, filters }));
+  } catch (error) {
+    json(res, error.statusCode || 400, { error: error.code || "forms_search_failed", message: error.message });
+  }
 };

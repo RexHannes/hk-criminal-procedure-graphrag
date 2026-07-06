@@ -42,6 +42,7 @@ function ensureSyntheticStore() {
     notebooklmNotes: SYNTHETIC_NOTES,
     output: SYNTHETIC_STORE,
     uploadedBy: "codex-demo",
+    demoMode: true,
   });
 }
 

@@ -14,6 +14,6 @@ module.exports = async function handler(req, res) {
       selectedClauseIds: payload.selectedClauseIds || null,
     }));
   } catch (error) {
-    json(res, 400, { error: error.message });
+    json(res, error.statusCode || 400, { error: error.code || "forms_apply_template_failed", message: error.message });
   }
 };

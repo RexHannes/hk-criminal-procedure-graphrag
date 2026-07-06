@@ -3,6 +3,10 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 const { execFileSync } = require("child_process");
+const {
+  buildClassificationReview,
+  isTemplateActiveForRouting,
+} = require("./form_classification_review");
 
 const PROVENANCE = {
   SOURCE_BACKED: "SOURCE_BACKED",
@@ -305,7 +309,8 @@ function classifyFormTemplate(doc, context = {}) {
   const useWhen = readUseBlock(doc.text, "Use");
   const doNotUseWhen = readUseBlock(doc.text, "Do not use");
   const id = stableId("form", [context.firmId, context.workspaceId, doc.fileRef?.sha256, doc.title]);
-  return {
+  const demoFixture = context.demoMode === true || /synthetic fixture only/i.test(context.sourceLicenseNote || "");
+  const template = {
     id,
     firmId: context.firmId,
     workspaceId: context.workspaceId,
@@ -333,8 +338,37 @@ function classifyFormTemplate(doc, context = {}) {
     sourceLicenseNote: context.sourceLicenseNote,
     templateVersion: "0.1.0",
     reviewStatus: REVIEW.LAWYER_REQUIRED,
+    classificationStatus: "machine_candidate",
+    classificationReviewId: "",
+    routingActiveInDemo: demoFixture,
+    activeInRouting: false,
+    demoFixture,
+    proposedPracticeArea: cls.practiceArea,
+    proposedDocumentIntent: cls.documentIntent,
+    proposedProceduralStage: cls.proceduralStage,
+    proposedMatterTypes: cls.applicableMatterTypes,
+    proposedPrerequisites: prerequisitesForIntent(cls.documentIntent),
+    proposedContraindications: contraindicationsForIntent(cls.documentIntent),
+    classificationExtractionTrace: {
+      method: "regex_keyword_machine_extraction",
+      title: doc.title,
+      sourceFileRef: doc.fileRef,
+      confidence: 0.72,
+      caveat: "Machine classification only; not lawyer-approved.",
+    },
+    reviewerDecision: {
+      status: "pending",
+      reviewer: "",
+      reviewedAt: "",
+      comment: "",
+      approvedValues: null,
+    },
     provenanceLabel: PROVENANCE.TEMPLATE_BASED,
   };
+  const review = buildClassificationReview(template, doc);
+  template.classificationReviewId = review.id;
+  template.activeInRouting = isTemplateActiveForRouting(template);
+  return template;
 }
 
 function headingsFromText(text) {
@@ -535,6 +569,10 @@ function parseNotebooklmNotes(markdown, sourceNotebook = "notebooklm") {
       noteText: section,
       relatedTemplateIds: [],
       relatedClauseIds: [],
+      templateLinks: [],
+      clauseLinks: [],
+      note_template_link_status: "candidate",
+      note_clause_link_status: "candidate",
       suggestedUseWhen: markdownListAfter(section, "Use when"),
       suggestedDoNotUseWhen: markdownListAfter(section, "Do not use when"),
       suggestedWorkflowStage: inferStageFromText(section),
@@ -568,13 +606,31 @@ function linkNotebooklmUsageNotes(templates, clauses, notes) {
     const noteTokens = new Set(tokenize(`${note.noteTitle} ${note.noteText}`));
     for (const template of templates) {
       const overlap = tokenize(`${template.title} ${template.documentIntent} ${template.proceduralStage}`).filter(t => noteTokens.has(t));
-      if (overlap.length || note.suggestedWorkflowStage === template.proceduralStage) note.relatedTemplateIds.push(template.id);
+      if (overlap.length || note.suggestedWorkflowStage === template.proceduralStage) {
+        note.relatedTemplateIds.push(template.id);
+        note.templateLinks = note.templateLinks || [];
+        note.templateLinks.push({
+          templateId: template.id,
+          note_template_link_status: "candidate",
+          reason: overlap.length ? `token_overlap:${overlap.slice(0, 6).join(",")}` : "workflow_stage_match",
+        });
+      }
     }
     for (const clause of clauses) {
       const overlap = tokenize(`${clause.heading} ${clause.clauseType} ${clause.text}`).filter(t => noteTokens.has(t));
       if (overlap.length >= 1) {
         note.relatedClauseIds.push(clause.id);
+        note.clauseLinks = note.clauseLinks || [];
+        note.clauseLinks.push({
+          clauseId: clause.id,
+          note_clause_link_status: "candidate",
+          reason: `token_overlap:${overlap.slice(0, 6).join(",")}`,
+        });
         clause.notebooklmUsageNoteIds = Array.from(new Set([...(clause.notebooklmUsageNoteIds || []), note.id]));
+        clause.notebooklmUsageLinks = Array.from(new Map([
+          ...(clause.notebooklmUsageLinks || []),
+          { noteId: note.id, note_clause_link_status: "candidate", reason: `token_overlap:${overlap.slice(0, 6).join(",")}` },
+        ].map(link => [link.noteId, link])).values());
       }
     }
   }
@@ -637,6 +693,7 @@ function writePrivateFormStore(outputDir, store) {
   const files = {
     "form_pack_manifest.json": store.formPack,
     "form_templates.json": store.templates,
+    "form_classification_reviews.json": store.classificationReviews || [],
     "clause_snippets.json": store.clauses,
     "clause_usage_rules.json": store.usageRules,
     "notebooklm_usage_notes.json": store.notebooklmUsageNotes || [],
@@ -692,6 +749,8 @@ function ingestPrivateFormPack(options) {
     notebooklmNotes,
     output,
     uploadedBy = "local-user",
+    demoMode = false,
+    uploadedAt = "",
   } = options;
   if (!input) throw new Error("--input is required");
   if (!firm) throw new Error("--firm is required");
@@ -711,7 +770,7 @@ function ingestPrivateFormPack(options) {
     workspaceId: workspace,
     sourcePackName: sourcePack,
     uploadHash: packHash,
-    uploadedAt: new Date().toISOString(),
+    uploadedAt: uploadedAt || (demoMode ? "2026-07-06T00:00:00.000Z" : new Date().toISOString()),
     uploadedBy,
     sourceLicenseNote: licenseNote,
     visibility: "FIRM_PRIVATE",
@@ -732,17 +791,22 @@ function ingestPrivateFormPack(options) {
   });
   const templates = [];
   const clauses = [];
+  const classificationReviews = [];
   for (const doc of docs) {
     const template = classifyFormTemplate(doc, {
       firmId: firm,
       workspaceId: workspace,
       formPackId,
       sourceLicenseNote: licenseNote,
+      demoMode,
     });
+    const review = buildClassificationReview(template, doc);
+    template.classificationReviewId = review.id;
     const templateClauses = extractClauseSnippets(template);
     template.clauseIds = templateClauses.map(clause => clause.id);
     templates.push(template);
     clauses.push(...templateClauses);
+    classificationReviews.push(review);
   }
   let notes = [];
   if (notebooklmNotes && fs.existsSync(notebooklmNotes)) {
@@ -753,6 +817,7 @@ function ingestPrivateFormPack(options) {
   const store = {
     formPack,
     templates,
+    classificationReviews,
     clauses,
     usageRules,
     notebooklmUsageNotes: notes,
@@ -766,6 +831,7 @@ function ingestPrivateFormPack(options) {
     manifest: {
       formPack,
       templates,
+      classificationReviews,
       clauses,
       usageRules,
       notebooklmUsageNotes: notes,
@@ -785,6 +851,7 @@ function loadFormStore(storePath) {
     basePath: base,
     formPack: readMaybe("form_pack_manifest.json", null),
     templates: readMaybe("form_templates.json", []),
+    classificationReviews: readMaybe("form_classification_reviews.json", []),
     clauses: readMaybe("clause_snippets.json", []),
     usageRules: readMaybe("clause_usage_rules.json", []),
     notebooklmUsageNotes: readMaybe("notebooklm_usage_notes.json", []),
@@ -795,9 +862,10 @@ function loadFormStore(storePath) {
 
 function inferMatterFromQuery(query) {
   const q = String(query || "").toLowerCase();
+  const roadVehicle = /\b(traffic|car|vehicle|road)\b/.test(q);
   return {
-    practiceArea: /injur|accident|traffic|car|medical|police|writ|claim letter|letter of claim/.test(q) ? "personal_injury" : "",
-    matterType: /traffic|car|vehicle|road/.test(q) ? "road_traffic_pi" : "",
+    practiceArea: /\binjur|accident|medical|police|writ|claim letter|letter of claim/.test(q) || roadVehicle ? "personal_injury" : "",
+    matterType: roadVehicle ? "road_traffic_pi" : "",
     workflowStage: /writ|commence|proceedings/.test(q) ? "COMMENCEMENT" : /letter|claim|demand/.test(q) ? "PRE_ACTION_CORRESPONDENCE" : /medical/.test(q) ? "MEDICAL_EVIDENCE" : /police|opponent|insurer/.test(q) ? "URGENT_ACTIONS" : "",
     documentIntent: /writ/.test(q) ? "WRIT" : /letter of claim|claim letter|demand/.test(q) ? "LETTER_OF_CLAIM" : /medical/.test(q) ? "MEDICAL_RECORDS_REQUEST" : /police/.test(q) ? "POLICE_REPORT_REQUEST" : "",
     clientRole: "claimant",
@@ -811,6 +879,12 @@ function inferMatterFromQuery(query) {
   };
 }
 
+function isFormsIntentQuery(query) {
+  const q = String(query || "").toLowerCase();
+  if (!q.trim()) return false;
+  return /\b(form|forms|precedent|precedents|template|templates|draft|drafting|letter of claim|claim letter|writ|clause|clauses|document|which form|use this clause|generate|prepare)\b/.test(q);
+}
+
 function scoreRecord(query, record) {
   const qTokens = tokenize(query);
   if (!qTokens.length) return 0;
@@ -819,6 +893,7 @@ function scoreRecord(query, record) {
 }
 
 function templateEligibleByStructuredFilters(template, matter, documentIntent) {
+  if (!isTemplateActiveForRouting(template, { allowDemoCandidates: matter.allowDemoCandidates === true })) return false;
   if (matter.practiceArea && template.practiceArea !== matter.practiceArea) return false;
   if (
     matter.matterType &&
@@ -826,6 +901,12 @@ function templateEligibleByStructuredFilters(template, matter, documentIntent) {
     template.applicableMatterTypes.length &&
     !template.applicableMatterTypes.includes("general_matter") &&
     !template.applicableMatterTypes.includes(matter.matterType)
+  ) return false;
+  if (
+    matter.clientRole &&
+    Array.isArray(template.applicableRoles) &&
+    template.applicableRoles.length &&
+    !template.applicableRoles.includes(matter.clientRole)
   ) return false;
   if (documentIntent && template.documentIntent !== documentIntent) return false;
   if (matter.workflowStage && template.proceduralStage !== matter.workflowStage) {
@@ -885,6 +966,33 @@ function clauseBlockedReasons(clause, matter) {
 
 function routeForms({ store = loadFormStore(), matter = {}, query = "", documentIntent = "", workflowStage = "" }) {
   const enrichedMatter = { ...inferMatterFromQuery(query), ...matter };
+  const hasStructuredFormContext = !!(
+    documentIntent ||
+    workflowStage ||
+    enrichedMatter.documentIntent ||
+    enrichedMatter.workflowStage ||
+    enrichedMatter.practiceArea ||
+    enrichedMatter.matterType
+  );
+  if (query && !isFormsIntentQuery(query) && !hasStructuredFormContext) {
+    return {
+      recommendedForms: [],
+      blockedForms: [],
+      alternativeForms: [],
+      missingFacts: [],
+      requiredEvidence: [],
+      applicableClauses: [],
+      blockedClauses: [],
+      notebooklmUsageNotes: [],
+      provenance: [],
+      retrievalPolicy: {
+        structuredFiltersFirst: true,
+        keywordAfterStructuredFilters: false,
+        vectorOnlyAllowed: false,
+        abstainedBecauseNoFormsIntent: true,
+      },
+    };
+  }
   if (workflowStage) enrichedMatter.workflowStage = workflowStage;
   const intent = documentIntent || enrichedMatter.documentIntent || "";
   const q = query || [intent, enrichedMatter.workflowStage, enrichedMatter.matterType].filter(Boolean).join(" ");
@@ -1013,22 +1121,35 @@ function applyFormTemplate({ store = loadFormStore(), templateId, matter = {}, s
   const allClauses = (store.clauses || []).filter(c => c.templateId === templateId);
   const selected = selectedClauseIds ? allClauses.filter(c => selectedClauseIds.includes(c.id)) : allClauses;
   const fieldCompletionReport = [];
+  const fieldProvenance = [];
+  const factToFieldTrace = [];
+  const placeholderAudit = [];
   const missingFactBlockers = [];
   const recommendedEvidenceTasks = [];
   const lawyerOnlyFields = [];
+  const lawyerOnlyFieldBlocks = [];
   const fieldValues = {};
   for (const field of template.fieldSchema || []) {
     const value = matterValueForField(matter, field.fieldKey);
     if (value === undefined || value === null || value === "") {
       fieldValues[field.fieldKey] = `[[${field.fieldKey}]]`;
-      fieldCompletionReport.push({ fieldKey: field.fieldKey, status: "missing", placeholder: `[[${field.fieldKey}]]`, provenanceLabel: PROVENANCE.AI_SUGGESTED });
+      const placeholder = `[[${field.fieldKey}]]`;
+      fieldCompletionReport.push({ fieldKey: field.fieldKey, status: "missing", placeholder, provenanceLabel: PROVENANCE.AI_SUGGESTED });
+      fieldProvenance.push({ fieldKey: field.fieldKey, source: "missing", provenanceLabel: PROVENANCE.AI_SUGGESTED, valuePreview: placeholder });
+      placeholderAudit.push({ fieldKey: field.fieldKey, placeholder, status: "unresolved" });
       missingFactBlockers.push(field.fieldKey);
       if (field.evidenceRequired) recommendedEvidenceTasks.push(`Provide evidence for ${field.label}`);
     } else {
       fieldValues[field.fieldKey] = value;
       fieldCompletionReport.push({ fieldKey: field.fieldKey, status: "completed_from_matter_fact", provenanceLabel: PROVENANCE.AI_SUGGESTED });
+      fieldProvenance.push({ fieldKey: field.fieldKey, source: "matter", matterPath: field.fieldKey, provenanceLabel: PROVENANCE.AI_SUGGESTED, valuePreview: String(value).slice(0, 80) });
+      factToFieldTrace.push({ matterPath: field.fieldKey, fieldKey: field.fieldKey, status: "mapped" });
     }
-    if (field.lawyerOnly) lawyerOnlyFields.push(field.fieldKey);
+    if (field.lawyerOnly) {
+      lawyerOnlyFields.push(field.fieldKey);
+      const approved = Array.isArray(matter.lawyerApprovedFields) && matter.lawyerApprovedFields.includes(field.fieldKey);
+      if (!approved) lawyerOnlyFieldBlocks.push({ fieldKey: field.fieldKey, reason: "lawyer_only_field_not_approved" });
+    }
   }
   const blockedClausesReport = [];
   const renderedSections = [];
@@ -1058,12 +1179,22 @@ function applyFormTemplate({ store = loadFormStore(), templateId, matter = {}, s
       provenanceLabel: PROVENANCE.TEMPLATE_BASED,
     },
     fieldCompletionReport,
+    fieldProvenance,
+    factToFieldTrace,
+    placeholderAudit,
     missingFactBlockers: Array.from(new Set(missingFactBlockers)),
     assumptions: [],
     recommendedEvidenceTasks: Array.from(new Set(recommendedEvidenceTasks)),
     lawyerOnlyFields: Array.from(new Set(lawyerOnlyFields)),
+    lawyerOnlyFieldBlocks,
     blockedClausesReport,
-    finalApprovalBlocked: missingFactBlockers.length > 0 || blockedClausesReport.length > 0,
+    finalApprovalBlocked: missingFactBlockers.length > 0 || blockedClausesReport.length > 0 || lawyerOnlyFieldBlocks.length > 0,
+    finalApprovalGate: {
+      status: missingFactBlockers.length > 0 || blockedClausesReport.length > 0 || lawyerOnlyFieldBlocks.length > 0 ? "blocked" : "ready_for_lawyer_review",
+      requiredFieldsResolvedOrWaived: missingFactBlockers.length === 0,
+      placeholdersResolved: placeholderAudit.length === 0,
+      lawyerOnlyFieldsApproved: lawyerOnlyFieldBlocks.length === 0,
+    },
   };
 }
 
@@ -1118,6 +1249,7 @@ module.exports = {
   extractTemplateFields,
   inferClauseUsageRules,
   inferMatterFromQuery,
+  isFormsIntentQuery,
   ingestPrivateFormPack,
   inventoryFormPack,
   linkNotebooklmUsageNotes,

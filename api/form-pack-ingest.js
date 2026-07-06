@@ -1,4 +1,4 @@
-const { body, ingestPrivateFormPack, json } = require("./forms/_utils");
+const { body, ingestPrivateFormPack, isProductionRuntime, json, privateFormsApiEnabled } = require("./forms/_utils");
 
 module.exports = async function handler(req, res) {
   if (req.method === "GET") {
@@ -11,6 +11,13 @@ module.exports = async function handler(req, res) {
   }
   if (req.method !== "POST") {
     json(res, 405, { error: "method_not_allowed" });
+    return;
+  }
+  if (!privateFormsApiEnabled() || isProductionRuntime()) {
+    json(res, 403, {
+      error: "private_forms_api_disabled",
+      message: "Private form ingestion is local-script only unless FORMS_PRIVATE_API_ENABLED=true in a non-production environment.",
+    });
     return;
   }
   const payload = body(req);
@@ -31,6 +38,7 @@ module.exports = async function handler(req, res) {
       notebooklmNotes: payload.notebooklmNotes,
       output: payload.output,
       uploadedBy: payload.uploadedBy || "api-local-user",
+      demoMode: payload.demoMode === true,
     });
     json(res, 200, {
       status: "ok",

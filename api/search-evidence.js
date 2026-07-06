@@ -10,7 +10,7 @@ const { diversifyEvidence, groupEvidenceByCaseForAnswer } = require("../src/case
 const { composeResearchMemo } = require("../src/case_graph/research_memo_composer");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
-const { buildAnswerForFormsQuestion, loadFormStore, routeForms } = require("../src/forms/form_system");
+const { buildAnswerForFormsQuestion, isFormsIntentQuery, loadFormStore, routeForms } = require("../src/forms/form_system");
 const {
   assertFreeOpenRouterModel,
   defaultFreeOpenRouterChatModel,
@@ -119,6 +119,20 @@ function detectsPersonalInjuryPurpose(query) {
 
 function detectsFormsDraftingQuery(query) {
   return /\b(form|forms|precedent|precedents|template|templates|draft|drafting|letter of claim|claim letter|writ|clause|clauses|document|which form|use this clause)\b/i.test(String(query || ""));
+}
+
+function detectsProbateQuery(query) {
+  return /\b(probate|letters of administration|intestate|executor|administrator|grant of representation|estate distribution|will|caveat|reseal)\b/i.test(String(query || ""));
+}
+
+function shouldAttachPrivateFormsLayer(query) {
+  const q = String(query || "");
+  if (!detectsFormsDraftingQuery(q) || !isFormsIntentQuery(q)) return false;
+  if (detectsCriminalLawPriority(q)) return false;
+  if (detectsCriminalLawQuery(q)) return false;
+  if (detectsProbateQuery(q)) return false;
+  if (detectsPersonalInjuryPurpose(q)) return true;
+  return /\b(personal injury|road traffic|motor accident|letter of claim|writ|claimant|plaintiff)\b/i.test(q);
 }
 
 function detectsCriminalLawPriority(query) {
@@ -1046,7 +1060,7 @@ module.exports = async function handler(req, res) {
       ? legalAnswerCache.answer_json
       : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched, legalIngestBundle });
   let formsLayer = null;
-  if (detectsFormsDraftingQuery(query)) {
+  if (shouldAttachPrivateFormsLayer(query)) {
     try {
       const formStore = loadFormStore(process.env.PRIVATE_FORM_STORE_PATH);
       const routing = routeForms({ store: formStore, query });

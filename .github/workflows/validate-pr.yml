@@ -80,8 +80,14 @@ jobs:
       - name: Validate private form ingestion policy
         run: node scripts/validate_private_form_ingestion_policy.js
 
+      - name: Validate forms API blocks user path access
+        run: node scripts/validate_forms_api_no_user_path_access.js
+
       - name: Validate no private forms committed
         run: node scripts/validate_no_private_forms_committed.js
+
+      - name: Validate form classification review queue
+        run: node scripts/validate_form_classification_review_required.js
 
       - name: Validate form template schema
         run: node scripts/validate_form_template_schema.js
@@ -95,8 +101,14 @@ jobs:
       - name: Validate NotebookLM usage notes
         run: node scripts/validate_notebooklm_usage_notes.js
 
+      - name: Validate NotebookLM links remain candidates
+        run: node scripts/validate_notebooklm_links_are_candidate_until_reviewed.js
+
       - name: Validate form routing engine
         run: node scripts/validate_form_routing_engine.js
+
+      - name: Validate adversarial form routing
+        run: node scripts/validate_forms_adversarial_routing.js
 
       - name: Validate workflow stage mapping
         run: node scripts/validate_workflow_stage_mapping.js
@@ -107,11 +119,17 @@ jobs:
       - name: Validate draft from form
         run: node scripts/validate_draft_from_form.js
 
+      - name: Validate draft field provenance
+        run: node scripts/validate_draft_field_provenance.js
+
       - name: Validate wrong-stage forms blocked
         run: node scripts/validate_blocked_wrong_stage_forms.js
 
       - name: Validate forms backend recall
         run: node scripts/validate_forms_backend_recall.js
+
+      - name: Validate forms/principles separation
+        run: node scripts/validate_forms_do_not_pollute_principles_analysis.js
 
       - name: Smoke test forms workspace
         run: node scripts/smoke_test_forms_workspace_ui.js

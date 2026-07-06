@@ -884,10 +884,20 @@
         <div class="insp-badges">
           <span class="badge badge-research">Research prototype</span>
           <span class="badge badge-verified">${esc(t.provenanceLabel)}</span>
-          <span class="badge badge-draft">${esc(t.reviewStatus || 'unreviewed')}</span>
+          ${t.demoFixture ? '<span class="badge badge-research">Synthetic demo</span>' : '<span class="badge badge-draft">Lawyer review required</span>'}
+          <span class="badge badge-draft">${esc(t.classificationStatus || 'machine_candidate')}</span>
         </div>
         <div class="insp-section"><div class="insp-label">Routing position</div>
           <div class="insp-text">${esc(t.practiceArea)} · ${esc(t.documentIntent)} · ${esc(t.proceduralStage)}</div>
+        </div>
+        <div class="insp-section"><div class="insp-label">Classification review decision</div>
+          <div class="insp-text">Status: ${esc(t.classificationStatus || 'machine_candidate')} · reviewer decision: ${esc(t.reviewerDecision?.status || 'pending')} · active in routing: ${t.activeInRouting || t.routingActiveInDemo ? 'yes' : 'no'}</div>
+          <ul class="insp-list">
+            <li>Proposed practice area: ${esc(t.proposedPracticeArea || t.practiceArea)}</li>
+            <li>Proposed intent: ${esc(t.proposedDocumentIntent || t.documentIntent)}</li>
+            <li>Proposed stage: ${esc(t.proposedProceduralStage || t.proceduralStage)}</li>
+            <li>Trace: ${esc(t.classificationExtractionTrace?.method || 'machine extraction')}</li>
+          </ul>
         </div>
         <div class="insp-section"><div class="insp-label">Use when</div>
           <ul class="insp-list">${(t.recommendedWhen || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>Structured filters match.</li>'}</ul>
@@ -921,7 +931,7 @@
         <div class="insp-badges">
           <span class="badge badge-verified">${esc(c.provenanceLabel)}</span>
           <span class="badge badge-research">${esc(c.clauseType)}</span>
-          <span class="badge badge-draft">${esc(c.reviewStatus || 'unreviewed')}</span>
+          <span class="badge badge-draft">${esc(c.reviewStatus || 'lawyer_review_required')}</span>
         </div>
         <div class="insp-section"><div class="insp-label">Clause text</div><div class="insp-quote">${esc(c.text)}</div></div>
         <div class="insp-section"><div class="insp-label">Use conditions</div>
@@ -937,7 +947,7 @@
           <ul class="insp-list">${[...(c.alternatives || []), ...(c.risks || [])].map(x => `<li>${esc(x)}</li>`).join('') || '<li>No alternatives configured.</li>'}</ul>
         </div>
         <div class="insp-section"><div class="insp-label">NotebookLM usage references</div>
-          <ul class="insp-list">${notes.map(n => `<li><button data-go="note:${esc(n.id)}">${esc(n.noteTitle)}</button></li>`).join('') || '<li>No linked notes.</li>'}</ul>
+          <ul class="insp-list">${notes.map(n => `<li><button data-go="note:${esc(n.id)}">${esc(n.noteTitle)}</button> · candidate link</li>`).join('') || '<li>No linked notes.</li>'}</ul>
         </div>`;
       wireInspectorLinks(body);
       return;
@@ -949,10 +959,16 @@
       kindEl.textContent = 'Internal usage note';
       body.innerHTML = `
         <div class="insp-title">${esc(n.noteTitle)}</div>
-        <div class="insp-badges"><span class="badge badge-research">${esc(n.provenanceLabel)}</span><span class="badge badge-draft">${esc(n.status || 'candidate_usage_note')}</span></div>
+        <div class="insp-badges"><span class="badge badge-research">${esc(n.provenanceLabel)}</span><span class="badge badge-draft">${esc(n.status || 'candidate_usage_note')}</span><span class="badge badge-draft">candidate links</span></div>
         <div class="insp-section"><div class="insp-label">Use when</div><ul class="insp-list">${(n.suggestedUseWhen || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>—</li>'}</ul></div>
         <div class="insp-section"><div class="insp-label">Do not use when</div><ul class="insp-list">${(n.suggestedDoNotUseWhen || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>—</li>'}</ul></div>
         <div class="insp-section"><div class="insp-label">Authority boundary</div><div class="insp-text">Internal usage note only. It may guide form routing, but it is not public legal authority.</div></div>
+        <div class="insp-section"><div class="insp-label">Linked candidates</div>
+          <ul class="insp-list">
+            ${(n.templateLinks || []).map(link => `<li>Template ${esc(link.templateId)} · ${esc(link.note_template_link_status || 'candidate')}</li>`).join('')}
+            ${(n.clauseLinks || []).map(link => `<li>Clause ${esc(link.clauseId)} · ${esc(link.note_clause_link_status || 'candidate')}</li>`).join('')}
+          </ul>
+        </div>
       `;
       return;
     }
@@ -1258,7 +1274,7 @@
     root().innerHTML = `
       ${viewHeader('Private drafting layer', 'Forms & Precedent Snippets', 'Forms behave like code snippets: classified by stage and intent, governed by use/do-not-use rules, and applied only when matter facts support them. Synthetic fixtures are shown here; real packs stay in private storage.')}
       <div class="forms-hero card">
-        <div class="card-top"><span class="card-title">Forms-as-code MVP</span><span class="card-badges"><span class="badge badge-research">Private metadata layer</span><span class="badge badge-verified">Structured gates first</span></span></div>
+        <div class="card-top"><span class="card-title">Forms-as-code MVP</span><span class="card-badges"><span class="badge badge-research">Private metadata layer</span><span class="badge badge-research">Synthetic demo</span><span class="badge badge-verified">Structured gates first</span></span></div>
         <div class="forms-metrics">
           <span><strong>${templates.length}</strong> templates</span>
           <span><strong>${clauses.length}</strong> clauses</span>
@@ -1275,9 +1291,9 @@
         </section>
 
         <section class="card">
-          <div class="card-top"><span class="card-title">Form Classification Review</span><span class="badge badge-draft">candidate</span></div>
+          <div class="card-top"><span class="card-title">Form Classification Review</span><span class="badge badge-draft">machine candidate</span></div>
           ${templates.map(t => `<div class="forms-row selectable" data-card="form:${esc(t.id)}" data-sel="form:${esc(t.id)}">
-            <span>${esc(t.title)}</span><small>${esc(t.practiceArea)} · ${esc(t.documentIntent)} · ${esc(t.proceduralStage)}</small>
+            <span>${esc(t.title)}</span><small>${esc(t.practiceArea)} · ${esc(t.documentIntent)} · ${esc(t.proceduralStage)} · ${esc(t.classificationStatus || 'machine_candidate')}${t.demoFixture ? ' · synthetic/demo' : ' · lawyer review required'}</small>
           </div>`).join('') || emptyState('No forms loaded', 'Run the synthetic ingestion demo or configure a private form store.')}
         </section>
 
@@ -1303,7 +1319,7 @@
 
         <section class="card">
           <div class="card-top"><span class="card-title">NotebookLM Usage Notes</span><span class="badge badge-research">INTERNAL_USAGE_NOTE</span></div>
-          ${notes.map(n => `<div class="forms-row selectable" data-card="note:${esc(n.id)}" data-sel="note:${esc(n.id)}"><span>${esc(n.noteTitle)}</span><small>${esc(n.suggestedWorkflowStage)} · not authority</small></div>`).join('') || '<div class="card-body">No notes loaded.</div>'}
+          ${notes.map(n => `<div class="forms-row selectable" data-card="note:${esc(n.id)}" data-sel="note:${esc(n.id)}"><span>${esc(n.noteTitle)}</span><small>${esc(n.suggestedWorkflowStage)} · not authority · candidate links</small></div>`).join('') || '<div class="card-body">No notes loaded.</div>'}
         </section>
 
         <section class="card">
@@ -1602,7 +1618,7 @@
       <div class="card forms-inquiry-panel">
         <div class="card-top">
           <span class="card-title">Private forms / precedent snippets</span>
-          <span class="card-badges"><span class="badge badge-research">TEMPLATE_BASED</span><span class="badge badge-verified">Structured filters first</span></span>
+          <span class="card-badges"><span class="badge badge-research">TEMPLATE_BASED</span><span class="badge badge-draft">machine candidate</span><span class="badge badge-verified">Structured filters first</span></span>
         </div>
         <div class="forms-grid compact">
           <section>

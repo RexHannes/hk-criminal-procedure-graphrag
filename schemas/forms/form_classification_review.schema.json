@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/forms/form_classification_review.schema.json",
+  "title": "Form Classification Review",
+  "type": "object",
+  "required": [
+    "id",
+    "templateId",
+    "firmId",
+    "workspaceId",
+    "proposed",
+    "extractionTrace",
+    "classificationStatus",
+    "reviewStatus",
+    "reviewerDecision"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "templateId": { "type": "string" },
+    "firmId": { "type": "string" },
+    "workspaceId": { "type": "string" },
+    "proposed": {
+      "type": "object",
+      "required": ["practiceArea", "documentIntent", "proceduralStage", "matterTypes", "prerequisites", "contraindications"],
+      "properties": {
+        "practiceArea": { "type": "string" },
+        "documentIntent": { "type": "string" },
+        "proceduralStage": { "type": "string" },
+        "matterTypes": { "type": "array", "items": { "type": "string" } },
+        "prerequisites": { "type": "array", "items": { "type": "string" } },
+        "contraindications": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "extractionTrace": {
+      "type": "object",
+      "required": ["method", "confidence", "caveat"],
+      "properties": {
+        "method": { "type": "string" },
+        "confidence": { "type": "number" },
+        "caveat": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "classificationStatus": { "enum": ["machine_candidate", "review_approved", "rejected"] },
+    "reviewStatus": { "enum": ["lawyer_review_required", "approved", "rejected"] },
+    "reviewerDecision": {
+      "type": "object",
+      "required": ["status", "reviewer", "reviewedAt", "comment"],
+      "properties": {
+        "status": { "enum": ["pending", "approved", "rejected", "needs_changes"] },
+        "reviewer": { "type": "string" },
+        "reviewedAt": { "type": "string" },
+        "comment": { "type": "string" },
+        "approvedValues": { "type": ["object", "null"] }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -4,7 +4,7 @@ Generated: 2026-07-06T00:00:00+08:00
 
 ## Status
 
-Implemented as an MVP foundation.
+Implemented as a hardened MVP foundation. PR #11 should remain draft until production private-store configuration and reviewer permissions are selected.
 
 The branch adds private precedent/form ingestion, schema definitions, clause extraction, usage rules, NotebookLM usage-note parsing, structured retrieval, procedural gates, draft-from-template placeholders, APIs, validators, synthetic demo fixtures, and a native Forms & Snippets workspace inside the existing viewer.
 
@@ -24,11 +24,30 @@ The branch adds private precedent/form ingestion, schema definitions, clause ext
 - Real private forms committed: no.
 - Synthetic fixtures only under `fixtures/forms/`.
 - Private inputs/outputs gitignored.
+- `FORMS_PRIVATE_API_ENABLED=false` by default.
+- Production/Vercel private ingestion returns `403`.
+- Request-provided `store`, `storePath`, `input`, and `output` are not accepted by public forms APIs.
+- Store selection is by `firmId` + `workspaceId` through server-side configuration.
 - NotebookLM notes are labelled `INTERNAL_USAGE_NOTE`.
+- NotebookLM template/clause links are candidate links until reviewed; token overlap is not approval.
 - Private templates are labelled `TEMPLATE_BASED`.
+- Real/private ingested templates start as `classificationStatus=machine_candidate` and `reviewStatus=lawyer_review_required`.
+- Real/private machine candidates are inactive in routing unless reviewed or explicitly allowed in demo/local mode.
 - Structured filters run before keyword/vector retrieval.
 - Vector-only retrieval is disallowed.
 - Missing facts create placeholders/evidence tasks instead of invented facts.
+
+## Hardening Added
+
+| Area | Result |
+|---|---|
+| Private path API access | Blocked |
+| Classification review queue | Enabled |
+| NotebookLM link review status | Candidate until reviewed |
+| Adversarial routing | Criminal/probate/principle-only queries do not return PI forms |
+| Wrong-stage gates | Writ/letter/finalisation blockers tested |
+| Draft provenance | Field provenance, fact trace, placeholder audit, lawyer-only gate |
+| Forms/principles separation | Private form recommendations stay separate from public authority analysis |
 
 ## Sem B Handling
 
@@ -38,4 +57,5 @@ The Sem B / Downloads material was inventoried by metadata only. No private/lice
 
 - Real DOC/PDF extraction remains private and tool-dependent.
 - Lawyer approval is represented as metadata and review gates, not a full multi-user HITL workflow.
+- PR #11 is hardened but should remain draft until a production private-store mapping and reviewer permission model are configured.
 - Production vector indexing should use private storage/Qdrant collections, not public fixtures.

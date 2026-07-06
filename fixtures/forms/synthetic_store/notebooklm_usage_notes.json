@@ -29,6 +29,117 @@
       "clause_44b0e332f907",
       "clause_732919ca3d1b"
     ],
+    "templateLinks": [
+      {
+        "templateId": "form_cbe2b96ca480",
+        "note_template_link_status": "candidate",
+        "reason": "token_overlap:letter,of,claim"
+      },
+      {
+        "templateId": "form_5529c886f381",
+        "note_template_link_status": "candidate",
+        "reason": "token_overlap:medical,request"
+      },
+      {
+        "templateId": "form_5b2574d75330",
+        "note_template_link_status": "candidate",
+        "reason": "token_overlap:request"
+      }
+    ],
+    "clauseLinks": [
+      {
+        "clauseId": "clause_21b2cf57212f",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:not"
+      },
+      {
+        "clauseId": "clause_1a1c8c3d2f32",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:letter,of,claim,use,when,opponent"
+      },
+      {
+        "clauseId": "clause_254093ce0990",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:and,accident,for"
+      },
+      {
+        "clauseId": "clause_039d2e9534ad",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:liability,and"
+      },
+      {
+        "clauseId": "clause_dbee6fbdd00c",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:medical,evidence"
+      },
+      {
+        "clauseId": "clause_da93122bec66",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:special,damages,receipts"
+      },
+      {
+        "clauseId": "clause_e73c527162ff",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:settlement,liability,and,insurer"
+      },
+      {
+        "clauseId": "clause_3ad9461cb216",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:not"
+      },
+      {
+        "clauseId": "clause_7a2a8fb7e9b8",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:medical,request,use,when,and,evidence"
+      },
+      {
+        "clauseId": "clause_f713477cfbea",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:and"
+      },
+      {
+        "clauseId": "clause_eced84ccc071",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:not"
+      },
+      {
+        "clauseId": "clause_3b236863b183",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:accident,request,use,when,or,opponent"
+      },
+      {
+        "clauseId": "clause_9ab2845a2eda",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:request,accident,location"
+      },
+      {
+        "clauseId": "clause_58022d60ed71",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:accident,or,for,opponent,and"
+      },
+      {
+        "clauseId": "clause_24d8806e6389",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:not"
+      },
+      {
+        "clauseId": "clause_bfe323800f25",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:use,when,lawyer,has,proceedings,and"
+      },
+      {
+        "clauseId": "clause_44b0e332f907",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:defendant"
+      },
+      {
+        "clauseId": "clause_732919ca3d1b",
+        "note_clause_link_status": "candidate",
+        "reason": "token_overlap:claim,damages,accident"
+      }
+    ],
+    "note_template_link_status": "candidate",
+    "note_clause_link_status": "candidate",
     "suggestedUseWhen": [],
     "suggestedDoNotUseWhen": [],
     "suggestedWorkflowStage": "PRE_ACTION_CORRESPONDENCE",

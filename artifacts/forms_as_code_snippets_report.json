@@ -1,12 +1,16 @@
 {
   "report_id": "forms_as_code_snippets_mvp",
   "generated_at": "2026-07-06T00:00:00+08:00",
-  "status": "implemented_mvp",
+  "status": "implemented_mvp_hardened_draft",
   "privacy_status": {
     "real_private_forms_committed": false,
     "private_paths_gitignored": true,
     "synthetic_fixtures_only": true,
-    "external_llm_private_content_sent": false
+    "external_llm_private_content_sent": false,
+    "production_private_api_enabled_default": false,
+    "production_private_ingest_endpoint": "403_disabled",
+    "request_controlled_store_paths": "blocked",
+    "store_selection": "firmId_workspaceId_server_config_only"
   },
   "synthetic_demo": {
     "form_packs_processed": 1,
@@ -16,6 +20,40 @@
     "notebooklm_notes_linked": 1,
     "forms_mapped_to_workflow_stages": true,
     "backend_index_records": 23
+  },
+  "hardening_status": {
+    "user_path_access_blocked": true,
+    "classification_review_queue": {
+      "enabled": true,
+      "default_reviewStatus": "lawyer_review_required",
+      "default_classificationStatus": "machine_candidate",
+      "real_private_templates_active_until_reviewed": false,
+      "synthetic_demo_templates_explicitly_demo_enabled": true
+    },
+    "notebooklm_link_review": {
+      "notes_are_authority": false,
+      "template_links_default": "candidate",
+      "clause_links_default": "candidate",
+      "token_overlap_links_auto_approved": false
+    },
+    "adversarial_routing": {
+      "criminal_queries_return_private_forms": false,
+      "probate_queries_return_private_forms": false,
+      "principle_only_queries_return_private_forms": false,
+      "structured_filters_override_similarity": true,
+      "wrong_stage_forms_blocked": true
+    },
+    "draft_field_provenance": {
+      "field_provenance": true,
+      "fact_to_field_trace": true,
+      "placeholder_audit": true,
+      "lawyer_only_field_gate": true,
+      "final_approval_blocked_until_required_fields_resolved_or_waived": true
+    },
+    "principle_forms_separation": {
+      "private_form_recommendations_separate_response_field": true,
+      "public_authority_analysis_not_polluted": true
+    }
   },
   "product_layers": [
     "SOURCE_BACKED public authority remains separate",
@@ -37,6 +75,7 @@
     "DOC/PDF extraction quality depends on local tools and private approval.",
     "Real Sem B packs should be ingested into private_ingest_output only.",
     "Lawyer approval workflow is metadata-ready but not a full multi-user HITL product yet.",
+    "PR #11 should remain draft until private production store configuration and reviewer UI permissions are selected.",
     "Vector embeddings are represented by index policy and keyword fallback in this MVP; production vector storage should remain private."
   ]
 }
