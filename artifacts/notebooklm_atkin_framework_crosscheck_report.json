@@ -1,0 +1,81 @@
+{
+  "report_id": "notebooklm_atkin_framework_crosscheck",
+  "status": "no_private_notes_found_backend_expectations_only",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "privacy_boundary": {
+    "internal_usage_note_only": true,
+    "notebooklm_runtime_engine": false,
+    "notebooklm_activates_templates": false,
+    "notebooklm_is_authority": false,
+    "private_note_text_committed": false,
+    "mismatches_auto_fixed": false
+  },
+  "internal_notes_discovered": 0,
+  "note_metadata": [],
+  "expectations": [
+    {
+      "expectation_id": "company_winding_up_petition_framework",
+      "practice_lane": "company_winding_up",
+      "expected_document_intents": [
+        "COMPANY_WINDING_UP_PETITION"
+      ],
+      "expected_blockers": [
+        "companyIdentified",
+        "debtOrGroundIdentified",
+        "standingChecked",
+        "statutoryDemandOrServiceEvidenceAvailable"
+      ],
+      "expected_alternatives": [
+        "EVIDENCE_CHECKLIST",
+        "COMPANY_COMPLIANCE_MEMO"
+      ]
+    },
+    {
+      "expectation_id": "pi_pre_action_framework",
+      "practice_lane": "road_traffic_personal_injury",
+      "expected_document_intents": [
+        "LETTER_OF_CLAIM",
+        "POLICE_REPORT_REQUEST",
+        "MEDICAL_RECORDS_REQUEST"
+      ],
+      "expected_blockers": [
+        "opponentIdentified",
+        "medicalEvidenceReceived",
+        "specialDamagesEvidenceAvailable"
+      ],
+      "expected_alternatives": [
+        "POLICE_REPORT_REQUEST",
+        "MEDICAL_RECORDS_REQUEST",
+        "EVIDENCE_CHECKLIST"
+      ]
+    },
+    {
+      "expectation_id": "consent_route_warning",
+      "practice_lane": "civil_litigation_general",
+      "expected_document_intents": [
+        "CONSENT_SUMMONS",
+        "CONSENT_ORDER"
+      ],
+      "expected_blockers": [
+        "consentOrderAgreed"
+      ],
+      "expected_alternatives": [
+        "CONSENT_SUMMONS",
+        "CONSENT_ORDER"
+      ]
+    }
+  ],
+  "backend_probes": [
+    {
+      "probe_id": "company_winding_up_framework_probe",
+      "form_family_count": 1,
+      "practical_step_count": 4,
+      "alternatives": [
+        "EVIDENCE_CHECKLIST",
+        "COMPANY_COMPLIANCE_MEMO"
+      ],
+      "private_text_committed": false
+    }
+  ],
+  "mismatches": []
+}

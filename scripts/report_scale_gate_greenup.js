@@ -42,7 +42,7 @@ function writeLocalDevEnv() {
     OPENROUTER_ALLOW_PAID: "false",
   };
   if (process.env.OPENROUTER_API_KEY || entries.has("OPENROUTER_API_KEY")) {
-    safeDefaults.OPENROUTER_MODEL = OPENROUTER_FREE_CHAT_MODEL;
+    safeDefaults.OPENROUTER_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free";
     safeDefaults.LEGAL_EMBEDDING_PROVIDER = "openrouter";
     safeDefaults.LEGAL_EMBEDDING_MODEL = OPENROUTER_FREE_EMBEDDING_MODEL;
     safeDefaults.LEGAL_EMBEDDING_DIM = OPENROUTER_FREE_EMBEDDING_DIM;
@@ -74,7 +74,7 @@ function providerSuggestions(env) {
         "LEGAL_EMBEDDING_PROVIDER=openai + OPENAI_API_KEY + LEGAL_EMBEDDING_MODEL=text-embedding-3-small",
         `LEGAL_EMBEDDING_PROVIDER=openrouter + OPENROUTER_API_KEY + LEGAL_EMBEDDING_MODEL=${OPENROUTER_FREE_EMBEDDING_MODEL} + LEGAL_EMBEDDING_DIM=${OPENROUTER_FREE_EMBEDDING_DIM}`,
       ],
-      note: "OpenRouter can clear this gate only with an embedding model id ending in :free, unless OPENROUTER_ALLOW_PAID=true is explicit.",
+      note: "OpenRouter can clear this gate only with an embedding model id ending in :free, unless a paid-model override is explicit.",
     });
   }
   if (!env.COHERE_API_KEY && !env.VOYAGE_API_KEY && !env.LEGAL_RERANK_API_KEY && !env.OPENROUTER_API_KEY) {
@@ -86,7 +86,7 @@ function providerSuggestions(env) {
         "LEGAL_RERANK_PROVIDER=voyage + VOYAGE_API_KEY + LEGAL_RERANK_MODEL=rerank-2",
         `LEGAL_RERANK_PROVIDER=openrouter + OPENROUTER_API_KEY + LEGAL_RERANK_MODEL=${OPENROUTER_FREE_RERANK_MODEL}`,
       ],
-      note: "OpenRouter can clear this gate only with a rerank model id ending in :free, unless OPENROUTER_ALLOW_PAID=true is explicit.",
+      note: "OpenRouter can clear this gate only with a rerank model id ending in :free, unless a paid-model override is explicit.",
     });
   }
   if (env.OPENROUTER_API_KEY && String(env.OPENROUTER_FREE_ONLY || "true").toLowerCase() !== "false" && String(env.OPENROUTER_ALLOW_PAID || "").toLowerCase() !== "true") {

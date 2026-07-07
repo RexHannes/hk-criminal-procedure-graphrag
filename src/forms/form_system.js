@@ -1024,6 +1024,14 @@ function templateEligibleByStructuredFilters(template, matter, documentIntent) {
 
 function proceduralBlocksForTemplate(template, matter) {
   const blocks = [];
+  if (isTruthyValue(matter.consentOrderAgreed) && COMMENCEMENT_INTENTS.has(template.documentIntent)) {
+    blocks.push({
+      gateId: "gate_consent_route_not_new_commencement",
+      severity: "block",
+      reason: "A consent route appears available; do not recommend a fresh commencement form for this stage.",
+      alternatives: ["CONSENT_SUMMONS", "CONSENT_ORDER", "DRAFT_ORDER"],
+    });
+  }
   if (
     (isTruthyValue(matter.proceedingsCommenced) || isTruthyValue(matter.companyInExistingProcedure)) &&
     COMMENCEMENT_INTENTS.has(template.documentIntent)

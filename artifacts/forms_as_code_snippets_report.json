@@ -199,10 +199,70 @@
       "workflow_modes_reuse_existing_forms_handler": true,
       "routes": [
         "/api/forms/recommend?formsMode=private-recall",
+        "/api/forms/recommend?formsMode=private-qdrant-recall",
+        "/api/forms/recommend?formsMode=private-form-framework",
         "/api/forms/recommend?formsMode=matter-advice",
         "/api/forms/recommend?formsMode=workflow-timeline"
       ]
     }
+  },
+  "atkin_private_rag_ingestion": {
+    "status": "no_local_source_export_found",
+    "input_root": "private_uploads/atkin_forms/",
+    "output_root": "private_ingest_output/atkin_forms/",
+    "metadata_report_created": true,
+    "source_present": false,
+    "private_text_committed": false,
+    "external_services_used": false,
+    "notebooklm_runtime_engine": false,
+    "templates_detected": 0,
+    "clause_chunks_detected": 0,
+    "classification_reviews_created": 0
+  },
+  "atkin_private_qdrant": {
+    "enabled": true,
+    "api_enabled_default": false,
+    "forms_mode": "private-qdrant-recall",
+    "framework_mode": "private-form-framework",
+    "collections": {
+      "chunks": "hk_private_form_chunks_<tenant>_<workspace>",
+      "templates": "hk_private_form_templates_<tenant>_<workspace>"
+    },
+    "private_collections_only": true,
+    "tenant_workspace_filters_required": true,
+    "structured_filters_before_semantic": true,
+    "missing_fact_blockers_before_semantic": true,
+    "local_offline_embeddings_default": true,
+    "openrouter_used_for_private_content": false,
+    "external_embedding_services_used": false,
+    "public_legal_collections_touched": false,
+    "private_text_committed": false,
+    "dry_run_shape_validated_with_redacted_fixture": true,
+    "templates_ready_in_shape_check": 1,
+    "chunks_ready_in_shape_check": 1
+  },
+  "notebooklm_atkin_crosscheck": {
+    "status": "no_private_notes_found_backend_expectations_only",
+    "notebooklm_runtime_engine": false,
+    "notebooklm_is_authority": false,
+    "notebooklm_activates_templates": false,
+    "private_note_text_committed": false,
+    "mismatches_auto_fixed": false,
+    "framework_expectations_tracked": 3,
+    "textbook_scenario_expectations_tracked": 4,
+    "reported_mismatches": 0
+  },
+  "private_forms_context_awareness": {
+    "eval_passed": true,
+    "passed_cases": 5,
+    "failed_cases": 0,
+    "correct_lane_stage_intent_role_retrieves": true,
+    "wrong_stage_blocks_before_semantic": true,
+    "missing_facts_block_clause_semantic_return": true,
+    "consent_route_suggests_alternative": true,
+    "part_1_public_authority_separate": true,
+    "part_2_private_forms_retrieval": true,
+    "part_3_timeline_crm_rules": true
   },
   "hardening_status": {
     "user_path_access_blocked": true,
@@ -263,6 +323,9 @@
       "form_to_workflow_mapping_enabled": true,
       "reviewed_only_backend_recall": true,
       "private_semantic_retrieval_after_structured_filters": true,
+      "private_qdrant_recall_after_structured_filters": true,
+      "private_qdrant_api_disabled_by_default": true,
+      "private_qdrant_requires_tenant_workspace_filters": true,
       "private_vector_chunks_not_public": true,
       "part2_documentary_flow_enabled": true,
       "part3_timeline_crm_export_enabled": true,
@@ -273,6 +336,7 @@
       "same_lane_different_facts_change_recommendations": true,
       "wrong_stage_blocks_even_with_semantic_match": true,
       "missing_fact_blocks_private_semantic_chunk": true,
+      "consent_route_suggests_alternative_not_new_commencement": true,
       "private_draft_renderer_local_only": true,
       "public_reports_contain_no_private_text": true
     }
@@ -320,7 +384,16 @@
     "crm_export_rows": true,
     "advice_parts_separation": true,
     "inactive_real_templates_do_not_route": true,
-    "reviewed_templates_route_only_after_activation": true
+    "reviewed_templates_route_only_after_activation": true,
+    "atkin_private_rag_ingestion_report": true,
+    "atkin_private_qdrant_index_report": true,
+    "private_qdrant_tenant_workspace_filters": true,
+    "private_qdrant_api_disabled_by_default": true,
+    "private_qdrant_recall_after_structured_filters": true,
+    "notebooklm_atkin_crosscheck_reports": true,
+    "private_forms_context_awareness_eval": true,
+    "part1_part2_part3_boundaries_for_atkin_forms": true,
+    "no_raw_atkin_text_committed": true
   },
   "sem_b_inventory_note": "Sem B / Downloads material was processed locally into gitignored private_ingest_output for a metadata-only dry run. No private/licensed document content was extracted into git or sent to external services.",
   "remaining_limitations": [
@@ -331,6 +404,9 @@
     "The court-form workflow layer routes reviewed metadata only; it does not expose or commit private form wording.",
     "Family-service activation is a redacted metadata shell until private family materials are placed in private_ingest_output/private_notebooklm_notes locally.",
     "NotebookLM cross-checks are comparison/audit metadata only and do not activate or approve templates.",
+    "The actual Atkin source export was not present under private_uploads/atkin_forms during this committed run; the ingestion lane and Qdrant payload contract are ready, but real source ingestion must be rerun locally after export/recovery.",
+    "Private Qdrant recall is disabled by default in the API and requires PRIVATE_QDRANT_FORMS_ENABLED plus tenant/workspace server configuration.",
+    "Private form embeddings default to local/offline hash vectors; any external private embedding provider would require a separate explicit approval.",
     "Private draft rendering writes only to private_exports and is not a deployed production drafting endpoint.",
     "PR #11 should remain draft until private production store configuration and reviewer UI permissions are selected.",
     "Vector embeddings are represented by index policy and keyword fallback in this MVP; production vector storage should remain private."

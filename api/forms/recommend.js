@@ -1,5 +1,7 @@
 const { json, readBody, routeForms, storeFromReq } = require("./_utils");
 const { recallPrivateForms } = require("../../src/forms/private_form_recall");
+const { recallPrivateFormsFromQdrant, privateQdrantEnabled } = require("../../src/forms/private_atkin_rag");
+const { buildPrivateFormFramework } = require("../../src/forms/private_form_framework");
 const { buildPart2DocumentAdvice } = require("../../src/advice/part2_document_advice");
 const { composeWorkflowTimeline } = require("../../src/advice/workflow_timeline_composer");
 const { crmRowsToCsv } = require("../../src/advice/crm_export_composer");
@@ -47,6 +49,16 @@ module.exports = async function handler(req, res) {
       debtOrGroundIdentified: queryBool(req.query.debtOrGroundIdentified),
       standingChecked: queryBool(req.query.standingChecked),
       statutoryDemandOrServiceEvidenceAvailable: queryBool(req.query.statutoryDemandOrServiceEvidenceAvailable),
+      proceedingsIssued: queryBool(req.query.proceedingsIssued),
+      respondentIdentified: queryBool(req.query.respondentIdentified),
+      serviceAddressKnown: queryBool(req.query.serviceAddressKnown),
+      serviceMethodSelected: queryBool(req.query.serviceMethodSelected),
+      postTrialStage: queryBool(req.query.postTrialStage),
+      urgencyGroundsIdentified: queryBool(req.query.urgencyGroundsIdentified),
+      assetRiskEvidenceAvailable: queryBool(req.query.assetRiskEvidenceAvailable),
+      voluntaryWindingUpOnly: queryBool(req.query.voluntaryWindingUpOnly),
+      consentOrderAgreed: queryBool(req.query.consentOrderAgreed),
+      proceedingsCommenced: queryBool(req.query.proceedingsCommenced),
     };
     Object.keys(queryMatter).forEach(key => queryMatter[key] === undefined && delete queryMatter[key]);
     const matter = {
@@ -59,6 +71,37 @@ module.exports = async function handler(req, res) {
     const workflowStage = payload.workflowStage || req.query.workflowStage || "";
     if (mode === "private-recall") {
       json(res, 200, recallPrivateForms({
+        store: storeFromReq(req),
+        matter,
+        query,
+        documentIntent,
+        workflowStage,
+      }));
+      return;
+    }
+    if (mode === "private-qdrant-recall") {
+      if (!privateQdrantEnabled(process.env)) {
+        json(res, 403, {
+          error: "private_qdrant_forms_disabled",
+          message: "Private Qdrant form recall is disabled unless PRIVATE_QDRANT_FORMS_ENABLED=true in server configuration.",
+        });
+        return;
+      }
+      const result = await recallPrivateFormsFromQdrant({
+        store: storeFromReq(req),
+        matter,
+        query,
+        documentIntent,
+        workflowStage,
+        env: process.env,
+        execute: true,
+        includePrivateSnippetText: String(process.env.PRIVATE_FORM_SNIPPET_TEXT_ENABLED || "false").toLowerCase() === "true",
+      });
+      json(res, 200, result);
+      return;
+    }
+    if (mode === "private-form-framework") {
+      json(res, 200, buildPrivateFormFramework({
         store: storeFromReq(req),
         matter,
         query,

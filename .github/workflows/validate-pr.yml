@@ -92,8 +92,47 @@ jobs:
       - name: Build court form workflow reports
         run: node scripts/build_court_form_workflow_reports.js
 
+      - name: Build Atkin private forms ingestion report
+        run: node scripts/ingest_atkin_private_forms.js
+
+      - name: Build Atkin private Qdrant index dry run
+        run: node scripts/index_atkin_private_forms_qdrant.js --dry-run
+
+      - name: Build NotebookLM Atkin cross-check reports
+        run: node scripts/build_notebooklm_atkin_crosscheck_reports.js
+
+      - name: Evaluate private forms context awareness
+        run: node scripts/evaluate_private_forms_context_awareness.js
+
       - name: Validate court form dropzone ingestion contract
         run: node scripts/validate_court_form_dropzone_ingestion.js
+
+      - name: Validate Atkin private RAG ingestion report
+        run: node scripts/validate_atkin_private_rag_ingestion_report.js
+
+      - name: Validate Atkin private Qdrant index report
+        run: node scripts/validate_atkin_private_qdrant_index_report.js
+
+      - name: Validate private Qdrant tenant filters
+        run: node scripts/validate_private_qdrant_requires_tenant_filters.js
+
+      - name: Validate private Qdrant API disabled by default
+        run: node scripts/validate_private_qdrant_api_disabled_by_default.js
+
+      - name: Validate private Qdrant filter-first recall
+        run: node scripts/validate_private_qdrant_recall_after_structured_filters.js
+
+      - name: Validate NotebookLM Atkin cross-checks
+        run: node scripts/validate_notebooklm_atkin_crosscheck_reports.js
+
+      - name: Validate private forms context awareness
+        run: node scripts/validate_private_forms_context_awareness_eval.js
+
+      - name: Validate Atkin Part 1/2/3 boundaries
+        run: node scripts/validate_part1_part2_part3_boundaries_for_atkin_forms.js
+
+      - name: Validate no raw Atkin text committed
+        run: node scripts/validate_no_raw_atkin_text_committed.js
 
       - name: Validate practice lane taxonomy
         run: node scripts/validate_practice_lane_taxonomy.js

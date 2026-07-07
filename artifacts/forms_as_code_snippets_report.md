@@ -155,6 +155,27 @@ Current metadata-only workflow metrics:
 
 The advice APIs keep the layers separate: public legal analysis is not polluted by private template recommendations, and private form recall only appears where the query is about drafting, forms, documents, or procedural workflow.
 
+## Private Atkin Forms RAG + Qdrant Lane
+
+The branch now adds a private Atkin forms lane for Part 2 forms retrieval. NotebookLM remains cross-check/spec metadata only; it is not the runtime engine and does not approve templates.
+
+| Area | Result |
+|---|---|
+| Local ingestion lane | `private_uploads/atkin_forms/` -> `private_ingest_output/atkin_forms/` |
+| Current source status | No local source export found during the committed run |
+| Reports | `artifacts/atkin_private_rag_ingestion_report.*` |
+| Private Qdrant collections | `hk_private_form_chunks_<tenant>_<workspace>` and `hk_private_form_templates_<tenant>_<workspace>` |
+| API modes | `/api/forms/recommend?formsMode=private-qdrant-recall` and `private-form-framework` |
+| API default | Disabled unless `PRIVATE_QDRANT_FORMS_ENABLED=true` |
+| Embeddings | Local/offline hash vectors by default |
+| Public legal collections touched | no |
+| NotebookLM cross-check | `INTERNAL_USAGE_NOTE` reports only |
+| Context-awareness eval | 5/5 passed |
+
+The Qdrant dry run validates the payload shape with a redacted approved fixture: tenant/workspace filters, `source_visibility=private_form`, `part_layer=part_2_forms`, approved/reviewed status, practice lane, stage, document intent, role/matter filters, blockers, and legal-tree node IDs only.
+
+Context-awareness checks now cover correct lane/stage/intent/role, wrong-stage blocking, missing-fact blocking, consent-route alternatives, and Part 1/2/3 separation.
+
 ## Safety
 
 - Real private forms committed: no.
@@ -172,6 +193,8 @@ The advice APIs keep the layers separate: public legal analysis is not polluted 
 - Structured filters run before keyword/vector retrieval.
 - Vector-only retrieval is disallowed.
 - Private semantic retrieval is Part 2 only, uses approved private clause chunks only, and cannot override lane, stage, intent, role/matter, or missing-fact blockers.
+- Private Qdrant recall is Part 2 only, disabled by default, and requires tenant/workspace filters plus reviewed approved chunks.
+- Private form embeddings default to local/offline hash vectors; private form text is not sent to OpenRouter or other external embedding APIs.
 - Private semantic chunks cross-link to legal-knowledge nodes by ID only; they are not public authority and are not committed as raw private text.
 - Missing facts create placeholders/evidence tasks instead of invented facts.
 
@@ -198,6 +221,10 @@ The advice APIs keep the layers separate: public legal analysis is not polluted 
 | Practice lane taxonomy | Structured lane classifier keeps company, probate, PI, contract, employment, criminal and litigation forms separate |
 | Backend private recall | Reviewed-only metadata recall supports routeable document suggestions |
 | Private semantic retrieval | Local private vector ranking runs only after structured blockers pass |
+| Private Qdrant recall | Isolated private collections; tenant/workspace filters required; disabled by default |
+| Atkin ingestion lane | Local/private source lane added; committed run found no local source export |
+| NotebookLM Atkin cross-check | Framework and textbook scenario reports are internal-note metadata only |
+| Context-awareness eval | Wrong stage, missing facts, and consent-route alternatives validated |
 | Part 2 documentary flow | Missing facts and evidence blockers are surfaced before drafting |
 | Part 3 timeline/CRM | Exportable rows generated without private form text |
 | NotebookLM scenario cross-check | Parsed as internal usage-note metadata; backend comparison reports mismatches only |
@@ -219,6 +246,9 @@ The Sem B / Downloads material was processed locally into `private_ingest_output
 - The court-form workflow layer routes reviewed metadata only; it does not expose or commit private form wording.
 - Family-service activation is a redacted metadata shell until private family materials are placed in `private_ingest_output/` / `private_notebooklm_notes/` locally.
 - NotebookLM cross-checks are comparison/audit metadata only and do not activate or approve templates.
+- The actual Atkin source export was not present under `private_uploads/atkin_forms/` during this committed run; source ingestion must be rerun locally after export/recovery.
+- Private Qdrant recall is disabled by default and needs server-side tenant/workspace configuration before production use.
+- Local/offline hash embeddings are the default for private forms. Any external private embedding provider needs a separate explicit approval.
 - Private draft rendering writes only to `private_exports/` and is not a deployed production drafting endpoint.
 - PR #11 is hardened but should remain draft until a production private-store mapping and reviewer permission model are configured.
 - Production vector indexing should use private storage/Qdrant collections, not public fixtures.

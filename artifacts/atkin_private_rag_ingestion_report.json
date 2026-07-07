@@ -1,0 +1,33 @@
+{
+  "report_id": "atkin_private_rag_ingestion",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "status": "no_local_source_export_found",
+  "source_present": false,
+  "privacy_boundary": {
+    "input_root": "private_uploads/atkin_forms/",
+    "output_root": "private_ingest_output/atkin_forms/",
+    "committed_private_text": false,
+    "metadata_only_report": true,
+    "external_services_used": false,
+    "notebooklm_runtime_engine": false,
+    "notebooklm_provenance": "INTERNAL_USAGE_NOTE"
+  },
+  "packs_discovered": 0,
+  "packs_processed": 0,
+  "pack_summaries": [],
+  "totals": {
+    "templates_detected": 0,
+    "clause_chunks_detected": 0,
+    "field_schemas_detected": 0,
+    "classification_reviews_created": 0,
+    "notebooklm_usage_notes_linked": 0,
+    "extraction_warning_count": 0,
+    "inactive_until_review": true
+  },
+  "errors": [],
+  "recommended_next_actions": [
+    "Recover/export the original private form source files locally under private_uploads/atkin_forms/.",
+    "Keep NotebookLM as a cross-check notebook, not as the raw RAG corpus.",
+    "Re-run this script locally; extracted output must remain under private_ingest_output/."
+  ]
+}

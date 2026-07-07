@@ -30,7 +30,7 @@ function run(query) {
 (async () => {
   const payload = await run("What is bail in Hong Kong?");
   const warnings = payload.warnings || [];
-  if (!warnings.includes("openrouter_free_model_required")) {
+  if (!warnings.some(warning => String(warning).startsWith("openrouter_free_model_required"))) {
     console.error("Expected OpenRouter auto/paid guard warning.");
     console.error(JSON.stringify({ warnings, inquiry_analysis: payload.inquiry_analysis }, null, 2));
     process.exit(1);
