@@ -23,7 +23,9 @@ for (const file of trackedFiles()) {
     continue;
   }
   if (!/\.(js|py|md|json|yml|yaml|example|sh|txt|html|css)$/i.test(file)) continue;
-  const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+  const fullPath = path.join(ROOT, file);
+  if (!fs.existsSync(fullPath)) continue;
+  const text = fs.readFileSync(fullPath, "utf8");
   const secretPatterns = [
     /sk-live-[A-Za-z0-9_\\-]{12,}/,
     /sk-ant-[A-Za-z0-9_\\-]{12,}/,

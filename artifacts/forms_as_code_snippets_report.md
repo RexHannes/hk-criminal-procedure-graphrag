@@ -100,6 +100,7 @@ The branch now adds the backend layer needed to turn reviewed form metadata into
 | Part 2 advice | Documentary-flow output recommends, blocks, or marks templates placeholder-only |
 | Part 3 timeline | CRM-export rows are generated from Part 1 legal analysis, Part 2 document flow, and Part 3 operations tasks |
 | Viewer | Existing Fable Forms & Snippets workspace shows compact workflow cards, not raw reports |
+| Vercel API shape | New workflow endpoints are rewrites into the existing Forms API handler to stay under the preview function cap |
 
 Current metadata-only workflow metrics:
 
@@ -160,6 +161,7 @@ The advice APIs keep the layers separate: public legal analysis is not polluted 
 | Part 2 documentary flow | Missing facts and evidence blockers are surfaced before drafting |
 | Part 3 timeline/CRM | Exportable rows generated without private form text |
 | Advice separation | Legal authority, document suggestions, and workflow timeline are distinct response layers |
+| Vercel function cap | Private recall, matter advice, and workflow timeline routes reuse the Forms API function via rewrites |
 
 ## Sem B Handling
 

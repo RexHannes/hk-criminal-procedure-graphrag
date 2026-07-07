@@ -1,4 +1,26 @@
 const { body, json, routeForms, storeFromReq } = require("./_utils");
+const { recallPrivateForms } = require("../../src/forms/private_form_recall");
+const { buildPart2DocumentAdvice } = require("../../src/advice/part2_document_advice");
+const { composeWorkflowTimeline } = require("../../src/advice/workflow_timeline_composer");
+const { crmRowsToCsv } = require("../../src/advice/crm_export_composer");
+
+function part1Placeholder({ query = "", matter = {} }) {
+  return {
+    status: "research_required",
+    query,
+    matterClassification: {
+      practiceLane: matter.practiceLane || matter.practiceArea || "",
+      matterType: matter.matterType || "",
+      workflowStage: matter.workflowStage || "",
+    },
+    relevantIssues: [],
+    publicAuthorities: [],
+    legalUncertainties: ["Public source-backed legal analysis must be composed separately from private form routing."],
+    unsupportedDomainAbstention: false,
+    professionalAdviceCertified: false,
+    provenance: ["SOURCE_BACKED_PUBLIC_AUTHORITY_LAYER_PLACEHOLDER"],
+  };
+}
 
 module.exports = async function handler(req, res) {
   if (!["GET", "POST"].includes(req.method)) {
@@ -7,12 +29,80 @@ module.exports = async function handler(req, res) {
   }
   const payload = body(req);
   try {
+    const mode = String(payload.formsMode || payload.mode || req.query.formsMode || req.query.mode || "recommend").trim();
+    const query = String(payload.query || req.query.q || req.query.query || "").trim();
+    const matter = {
+      ...(payload.matter || {}),
+      firmId: payload.firmId || req.query.firmId || payload.matter?.firmId,
+      workspaceId: payload.workspaceId || req.query.workspaceId || payload.matter?.workspaceId,
+    };
+    const documentIntent = payload.documentIntent || req.query.documentIntent || "";
+    const workflowStage = payload.workflowStage || req.query.workflowStage || "";
+    if (mode === "private-recall") {
+      json(res, 200, recallPrivateForms({
+        store: storeFromReq(req),
+        matter,
+        query,
+        documentIntent,
+        workflowStage,
+      }));
+      return;
+    }
+    if (mode === "matter-advice") {
+      const part1LegalAnalysis = part1Placeholder({ query, matter });
+      const part2 = buildPart2DocumentAdvice({
+        store: storeFromReq(req),
+        matter,
+        query,
+        documentIntent,
+        workflowStage,
+      });
+      const part3WorkflowTimeline = composeWorkflowTimeline({
+        part1LegalAnalysis,
+        documentaryFlow: part2.documentaryFlow,
+      });
+      json(res, 200, {
+        part1LegalAnalysis,
+        part2DocumentaryFlow: part2.documentaryFlow,
+        part3WorkflowTimeline,
+        boundaries: {
+          publicAuthoritySeparate: true,
+          privateFormsSeparate: true,
+          notebooklmInternalOnly: true,
+          notLegalAdvice: true,
+          lawyerReviewRequired: true,
+          privateTextCommitted: false,
+        },
+      });
+      return;
+    }
+    if (mode === "workflow-timeline") {
+      const part2 = buildPart2DocumentAdvice({
+        store: storeFromReq(req),
+        matter,
+        query,
+        documentIntent,
+        workflowStage,
+      });
+      const timeline = composeWorkflowTimeline({
+        part1LegalAnalysis: { status: "research_required" },
+        documentaryFlow: part2.documentaryFlow,
+      });
+      if (String(req.query.format || payload.format || "").toLowerCase() === "csv") {
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "text/csv; charset=utf-8");
+        res.end(crmRowsToCsv(timeline.timeline));
+        return;
+      }
+      json(res, 200, timeline);
+      return;
+    }
     const result = routeForms({
       store: storeFromReq(req),
-      matter: payload.matter || {},
-      query: String(payload.query || req.query.q || req.query.query || "").trim(),
-      documentIntent: payload.documentIntent || req.query.documentIntent || "",
-      workflowStage: payload.workflowStage || req.query.workflowStage || "",
+      matter,
+      query,
+      documentIntent,
+      workflowStage,
     });
     json(res, 200, result);
   } catch (error) {

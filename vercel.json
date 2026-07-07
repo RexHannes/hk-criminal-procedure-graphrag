@@ -1,5 +1,8 @@
 {
   "rewrites": [
+    { "source": "/api/forms/private-recall", "destination": "/api/forms/recommend?formsMode=private-recall" },
+    { "source": "/api/advice/matter-advice", "destination": "/api/forms/recommend?formsMode=matter-advice" },
+    { "source": "/api/advice/workflow-timeline", "destination": "/api/forms/recommend?formsMode=workflow-timeline" },
     { "source": "/", "destination": "/viewer/index.html" },
     { "source": "/tree", "destination": "/viewer/index_legacy.html" }
   ],

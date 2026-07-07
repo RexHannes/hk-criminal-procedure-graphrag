@@ -144,6 +144,15 @@
       "public_legal_analysis_separate": true,
       "private_form_recommendations_separate": true,
       "workflow_timeline_separate": true
+    },
+    "vercel_function_cap_hardening": {
+      "new_physical_api_functions": 0,
+      "workflow_routes_rewrite_to_existing_forms_handler": true,
+      "routes": [
+        "/api/forms/private-recall",
+        "/api/advice/matter-advice",
+        "/api/advice/workflow-timeline"
+      ]
     }
   },
   "hardening_status": {
@@ -204,7 +213,8 @@
       "reviewed_only_backend_recall": true,
       "part2_documentary_flow_enabled": true,
       "part3_timeline_crm_export_enabled": true,
-      "advice_layers_separated": true
+      "advice_layers_separated": true,
+      "workflow_routes_reuse_existing_forms_function": true
     }
   },
   "product_layers": [
