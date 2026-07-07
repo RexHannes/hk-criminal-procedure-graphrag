@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/forms/workflow_timeline_rule.schema.json",
+  "title": "Workflow Timeline Rule",
+  "type": "object",
+  "required": ["id", "templateId", "practiceLane", "documentIntent", "workflowStage", "taskName"],
+  "properties": {
+    "id": { "type": "string" },
+    "templateId": { "type": "string" },
+    "practiceLane": { "type": "string" },
+    "documentIntent": { "type": "string" },
+    "workflowStage": { "type": "string" },
+    "taskType": { "type": "string" },
+    "taskName": { "type": "string" },
+    "ownerPlaceholder": { "type": "string" },
+    "dueDatePlaceholder": { "type": ["string", "null"] },
+    "dependencyPolicy": { "type": "string" }
+  }
+}

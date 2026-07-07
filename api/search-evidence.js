@@ -10,6 +10,7 @@ const { diversifyEvidence, groupEvidenceByCaseForAnswer } = require("../src/case
 const { composeResearchMemo } = require("../src/case_graph/research_memo_composer");
 const { exactJsonHeaders, rejectUnsupportedJsonContentType } = require("../src/api/json_content_type");
 const { arbitrateLegalQuery } = require("../src/routing/legal_domain_arbiter");
+const { buildAnswerForFormsQuestion, isFormsIntentQuery, loadFormStore, routeForms } = require("../src/forms/form_system");
 const {
   assertFreeOpenRouterModel,
   defaultFreeOpenRouterChatModel,
@@ -114,6 +115,42 @@ function detectsCriminalLawQuery(query) {
 function detectsPersonalInjuryPurpose(query) {
   const q = String(query || "").toLowerCase();
   return /\b(personal injury|injur(?:y|ed|ies)|medical|compensation|damages|quantum|fracture|pain|suffering|loss of earnings|hospital|sick leave|accident claim)\b/.test(q);
+}
+
+function detectsCompanyFormsPurpose(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(company|companies|corporate|director|shareholder|board|winding up|winding-up|liquidation|insolvency|statutory demand|originating summons|companies ordinance)\b/.test(q);
+}
+
+function detectsContractFormsPurpose(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(contract|agreement|consultancy|lease|shareholders.? agreement|joint venture|commercial terms|clause|clauses|supply of it equipment|purchase of it equipment)\b/.test(q);
+}
+
+function detectsFinancialRegulatoryFormsPurpose(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(sfc|securities|futures|listing rules|market misconduct|regulated activity|financial regulatory)\b/.test(q);
+}
+
+function detectsFormsDraftingQuery(query) {
+  return /\b(form|forms|precedent|precedents|template|templates|draft|drafting|letter of claim|claim letter|writ|clause|clauses|document|which form|use this clause)\b/i.test(String(query || ""));
+}
+
+function detectsProbateQuery(query) {
+  return /\b(probate|letters of administration|intestate|executor|administrator|grant of representation|estate distribution|will|caveat|reseal)\b/i.test(String(query || ""));
+}
+
+function shouldAttachPrivateFormsLayer(query) {
+  const q = String(query || "");
+  if (!detectsFormsDraftingQuery(q) || !isFormsIntentQuery(q)) return false;
+  if (detectsCriminalLawPriority(q)) return false;
+  if (detectsCriminalLawQuery(q)) return false;
+  if (detectsProbateQuery(q)) return false;
+  if (detectsPersonalInjuryPurpose(q)) return true;
+  if (detectsCompanyFormsPurpose(q)) return true;
+  if (detectsContractFormsPurpose(q)) return true;
+  if (detectsFinancialRegulatoryFormsPurpose(q)) return true;
+  return /\b(personal injury|road traffic|motor accident|letter of claim|writ|claimant|plaintiff)\b/i.test(q);
 }
 
 function detectsCriminalLawPriority(query) {
@@ -1040,6 +1077,19 @@ module.exports = async function handler(req, res) {
     : legalAnswerCache.status === "hit" && legalAnswerCache.answer_json
       ? legalAnswerCache.answer_json
       : composeAnswer({ domain: composerDomainForQuery(query, matched, piWorkflow), query, matched, legalIngestBundle });
+  let formsLayer = null;
+  if (shouldAttachPrivateFormsLayer(query)) {
+    try {
+      const formStore = loadFormStore(process.env.PRIVATE_FORM_STORE_PATH);
+      const routing = routeForms({ store: formStore, query });
+      formsLayer = {
+        routing,
+        answer: buildAnswerForFormsQuestion({ store: formStore, query }),
+      };
+    } catch (error) {
+      formsLayer = { error: error.message, routing: null, answer: null };
+    }
+  }
   const responsePayload = {
     query,
     ai_status: ai.status,
@@ -1056,6 +1106,41 @@ module.exports = async function handler(req, res) {
     classification: applied.classification,
     source_backed_rules: applied.source_backed_rules || [],
     form_candidates: applied.form_candidates || [],
+    private_form_recommendations: formsLayer ? {
+      recommended_forms: formsLayer.routing?.recommendedForms?.map(item => ({
+        id: item.template.id,
+        title: item.template.title,
+        documentIntent: item.template.documentIntent,
+        proceduralStage: item.template.proceduralStage,
+        caveats: item.caveats || [],
+        provenanceLabel: item.template.provenanceLabel,
+      })) || [],
+      blocked_forms: formsLayer.routing?.blockedForms?.map(item => ({
+        id: item.template.id,
+        title: item.template.title,
+        documentIntent: item.template.documentIntent,
+        reasons: item.blockedBy || [],
+      })) || [],
+      applicable_clauses: formsLayer.routing?.applicableClauses?.map(clause => ({
+        id: clause.id,
+        heading: clause.heading,
+        clauseType: clause.clauseType,
+        provenanceLabel: clause.provenanceLabel,
+      })) || [],
+      blocked_clauses: formsLayer.routing?.blockedClauses?.map(item => ({
+        id: item.clause.id,
+        heading: item.clause.heading,
+        clauseType: item.clause.clauseType,
+        reasons: item.reasons,
+      })) || [],
+      missing_facts: formsLayer.routing?.missingFacts || [],
+      required_evidence: formsLayer.routing?.requiredEvidence || [],
+      workflow_timeline: formsLayer.answer?.workflowTimeline || null,
+      crm_workflow_export: formsLayer.answer?.crmWorkflowExport || [],
+      retrieval_policy: formsLayer.routing?.retrievalPolicy || null,
+      answer_structure: formsLayer.answer,
+      error: formsLayer.error || null,
+    } : null,
     unsupported_claims: applied.unsupported_claims || [],
     source_audit: applied.source_audit,
     legal_answer_cache: {

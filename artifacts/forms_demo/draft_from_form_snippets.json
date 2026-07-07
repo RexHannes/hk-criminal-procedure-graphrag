@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "templateId": "form_cbe2b96ca480",
+  "initial": {
+    "finalApprovalBlocked": true,
+    "missingFactBlockers": [
+      "medical_report_summary",
+      "special_damages_items",
+      "response_deadline_days"
+    ],
+    "recommendedEvidenceTasks": [
+      "Provide evidence for Medical Report Summary",
+      "Provide evidence for Special Damages Items"
+    ],
+    "blockedClauses": [
+      "Liability allegation",
+      "Medical evidence",
+      "Special damages"
+    ]
+  },
+  "preActionReady": {
+    "finalApprovalBlocked": false,
+    "missingFactBlockers": [],
+    "sectionCount": 7
+  }
+}

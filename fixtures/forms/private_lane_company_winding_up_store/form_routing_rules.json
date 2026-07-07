@@ -1,0 +1,32 @@
+[
+  {
+    "id": "gate_no_writ_after_commencement",
+    "ruleType": "BLOCK_IF_STAGE_PASSED",
+    "documentIntent": "WRIT",
+    "workflowStage": "COMMENCEMENT",
+    "conditionExpression": "matter.proceedingsCommenced == true",
+    "outcome": "block",
+    "message": "Proceedings have already commenced; do not suggest a new writ.",
+    "provenanceLabel": "FIRM_SOP"
+  },
+  {
+    "id": "gate_letter_final_opponent_unknown",
+    "ruleType": "BLOCK_IF_OPPONENT_UNKNOWN",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+    "conditionExpression": "matter.opponentIdentified != true",
+    "outcome": "block_finalisation",
+    "message": "Letter of claim may be drafted as incomplete, but finalisation is blocked until opponent or insurer is identified.",
+    "provenanceLabel": "FIRM_SOP"
+  },
+  {
+    "id": "gate_quantum_medical_missing",
+    "ruleType": "BLOCK_IF_EVIDENCE_MISSING",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+    "conditionExpression": "matter.medicalEvidenceReceived != true",
+    "outcome": "placeholder_only",
+    "message": "Quantum and medical-evidence sections must remain placeholders until medical evidence is received.",
+    "provenanceLabel": "FIRM_SOP"
+  }
+]

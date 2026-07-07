@@ -1,0 +1,71 @@
+{
+  "id": "pack_forms_approved_demo_subset",
+  "firmId": "demo-firm",
+  "workspaceId": "demo-pi",
+  "sourcePackName": "Approved Synthetic PI Demo Subset",
+  "uploadHash": "synthetic-redacted-approved-demo",
+  "uploadedAt": "2026-07-06T00:00:00.000Z",
+  "uploadedBy": "codex-demo",
+  "sourceLicenseNote": "Synthetic/redacted metadata only; no private form text.",
+  "visibility": "FIRM_PRIVATE",
+  "fileInventory": [
+    {
+      "fileId": "file_0ddda895d881",
+      "relativePath": "letter_of_claim.synthetic.txt",
+      "fileName": "letter_of_claim.synthetic.txt",
+      "extension": ".txt",
+      "byteSize": 809,
+      "sha256": "2010c9780947e62aa5960bce6da6e29e03b7a7f8b240225acf7ad13166e897e2",
+      "supported": true,
+      "rejected": false,
+      "warnings": []
+    },
+    {
+      "fileId": "file_81c3660937a9",
+      "relativePath": "medical_records_request.synthetic.txt",
+      "fileName": "medical_records_request.synthetic.txt",
+      "extension": ".txt",
+      "byteSize": 396,
+      "sha256": "173e019789b5edd6168ea3ec80188e5643f05a48e18a505041cca404172cd409",
+      "supported": true,
+      "rejected": false,
+      "warnings": []
+    },
+    {
+      "fileId": "file_279c0e2de347",
+      "relativePath": "pi_usage_notes.synthetic.md",
+      "fileName": "pi_usage_notes.synthetic.md",
+      "extension": ".md",
+      "byteSize": 585,
+      "sha256": "565f77cb3e9800bf4a9c610055bab9666067ae2154f731f41d9ca6f37cf0f18e",
+      "supported": true,
+      "rejected": false,
+      "warnings": []
+    },
+    {
+      "fileId": "file_0cc4c9f2ff2f",
+      "relativePath": "police_report_request.synthetic.txt",
+      "fileName": "police_report_request.synthetic.txt",
+      "extension": ".txt",
+      "byteSize": 518,
+      "sha256": "4e0c90c7db6383eed4931e8b304715ad793e9e7db3429f659ee6bc127e43da75",
+      "supported": true,
+      "rejected": false,
+      "warnings": []
+    },
+    {
+      "fileId": "file_5387fc094f5a",
+      "relativePath": "writ.synthetic.txt",
+      "fileName": "writ.synthetic.txt",
+      "extension": ".txt",
+      "byteSize": 456,
+      "sha256": "0d8ed1791c62d79dea021d7f35e26d0e27ce6e950f44fded8a963a72b2223cba",
+      "supported": true,
+      "rejected": false,
+      "warnings": []
+    }
+  ],
+  "ingestionStatus": "extracted_classified_indexed",
+  "extractionWarnings": [],
+  "reviewStatus": "approved_demo"
+}

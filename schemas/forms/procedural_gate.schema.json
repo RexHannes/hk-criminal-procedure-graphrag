@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProceduralGate",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "gateName",
+    "practiceArea",
+    "workflowStage",
+    "conditionExpression",
+    "blockMessage",
+    "severity"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "gateName": {
+      "type": "string"
+    },
+    "practiceArea": {
+      "type": "string"
+    },
+    "workflowStage": {
+      "type": "string",
+      "enum": [
+        "INTAKE",
+        "URGENT_ACTIONS",
+        "EVIDENCE_COLLECTION",
+        "MEDICAL_EVIDENCE",
+        "LIABILITY_ASSESSMENT",
+        "PRE_ACTION_CORRESPONDENCE",
+        "SETTLEMENT_NEGOTIATION",
+        "COMMENCEMENT",
+        "PLEADINGS",
+        "DISCOVERY",
+        "EXPERT_EVIDENCE",
+        "MEDIATION",
+        "TRIAL_PREPARATION",
+        "TRIAL",
+        "POST_JUDGMENT",
+        "COSTS",
+        "CLOSURE"
+      ]
+    },
+    "conditionExpression": {
+      "type": "string"
+    },
+    "blockMessage": {
+      "type": "string"
+    },
+    "suggestedAlternativeDocumentIntents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verifyAtIngest": {
+      "type": "boolean"
+    },
+    "sourceAuthorityIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "firmSopStepIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "severity": {
+      "type": "string"
+    }
+  }
+}

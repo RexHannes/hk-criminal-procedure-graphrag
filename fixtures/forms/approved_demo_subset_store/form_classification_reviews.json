@@ -1,0 +1,120 @@
+[
+  {
+    "id": "classification_review_d21cdd4d3dde",
+    "templateId": "form_cbe2b96ca480",
+    "firmId": "demo-firm",
+    "workspaceId": "demo-pi",
+    "proposed": {
+      "practiceArea": "personal_injury",
+      "documentIntent": "LETTER_OF_CLAIM",
+      "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+      "matterTypes": [
+        "road_traffic_pi"
+      ],
+      "prerequisites": [
+        "opponentIdentified",
+        "liabilityFactsKnown"
+      ],
+      "contraindications": [
+        "proceedingsCommenced",
+        "opponentUnknownForFinalVersion"
+      ]
+    },
+    "extractionTrace": {
+      "method": "synthetic_redacted_demo_review",
+      "confidence": 1,
+      "caveat": "Approved only for the synthetic/redacted demo subset."
+    },
+    "classificationStatus": "review_approved",
+    "reviewStatus": "approved",
+    "reviewerDecision": {
+      "status": "approved",
+      "reviewer": "synthetic-demo-reviewer",
+      "reviewedAt": "2026-07-06T00:00:00.000Z",
+      "comment": "Synthetic/redacted approved-demo subset only.",
+      "approvedValues": {
+        "practiceArea": "personal_injury",
+        "documentIntent": "LETTER_OF_CLAIM",
+        "proceduralStage": "PRE_ACTION_CORRESPONDENCE"
+      }
+    }
+  },
+  {
+    "id": "classification_review_1be5756f25fd",
+    "templateId": "form_5529c886f381",
+    "firmId": "demo-firm",
+    "workspaceId": "demo-pi",
+    "proposed": {
+      "practiceArea": "personal_injury",
+      "documentIntent": "MEDICAL_RECORDS_REQUEST",
+      "proceduralStage": "MEDICAL_EVIDENCE",
+      "matterTypes": [
+        "general_matter"
+      ],
+      "prerequisites": [
+        "injuryExists",
+        "clientIdentityKnown"
+      ],
+      "contraindications": [
+        "fullMedicalEvidenceAlreadyReceived"
+      ]
+    },
+    "extractionTrace": {
+      "method": "synthetic_redacted_demo_review",
+      "confidence": 1,
+      "caveat": "Approved only for the synthetic/redacted demo subset."
+    },
+    "classificationStatus": "review_approved",
+    "reviewStatus": "approved",
+    "reviewerDecision": {
+      "status": "approved",
+      "reviewer": "synthetic-demo-reviewer",
+      "reviewedAt": "2026-07-06T00:00:00.000Z",
+      "comment": "Synthetic/redacted approved-demo subset only.",
+      "approvedValues": {
+        "practiceArea": "personal_injury",
+        "documentIntent": "MEDICAL_RECORDS_REQUEST",
+        "proceduralStage": "MEDICAL_EVIDENCE"
+      }
+    }
+  },
+  {
+    "id": "classification_review_908896dc0ea3",
+    "templateId": "form_5b2574d75330",
+    "firmId": "demo-firm",
+    "workspaceId": "demo-pi",
+    "proposed": {
+      "practiceArea": "personal_injury",
+      "documentIntent": "POLICE_REPORT_REQUEST",
+      "proceduralStage": "URGENT_ACTIONS",
+      "matterTypes": [
+        "road_traffic_pi"
+      ],
+      "prerequisites": [
+        "accidentDate",
+        "accidentLocation"
+      ],
+      "contraindications": [
+        "policeReportAlreadyObtained"
+      ]
+    },
+    "extractionTrace": {
+      "method": "synthetic_redacted_demo_review",
+      "confidence": 1,
+      "caveat": "Approved only for the synthetic/redacted demo subset."
+    },
+    "classificationStatus": "review_approved",
+    "reviewStatus": "approved",
+    "reviewerDecision": {
+      "status": "approved",
+      "reviewer": "synthetic-demo-reviewer",
+      "reviewedAt": "2026-07-06T00:00:00.000Z",
+      "comment": "Synthetic/redacted approved-demo subset only.",
+      "approvedValues": {
+        "practiceArea": "personal_injury",
+        "documentIntent": "POLICE_REPORT_REQUEST",
+        "proceduralStage": "URGENT_ACTIONS"
+      }
+    }
+  }
+]

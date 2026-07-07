@@ -1,0 +1,86 @@
+[
+  {
+    "id": "classification_review_2805f640aa05",
+    "templateId": "lane_template_a7c186c77f0b",
+    "firmId": "private-lane-pilot-firm",
+    "workspaceId": "family_service-pilot",
+    "proposed": {
+      "practiceArea": "family_service",
+      "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+      "proceduralStage": "FAMILY_SERVICE",
+      "matterTypes": [
+        "family_service",
+        "family_service"
+      ],
+      "prerequisites": [
+        "proceedingsIssued",
+        "respondentIdentified",
+        "serviceAddressKnown",
+        "serviceMethodSelected"
+      ],
+      "contraindications": [
+        "postTrialStage"
+      ]
+    },
+    "extractionTrace": {
+      "method": "expanded_lane_redacted_metadata_review",
+      "confidence": 0.8,
+      "caveat": "Approval applies only to redacted routing metadata; no private text is committed."
+    },
+    "classificationStatus": "review_approved",
+    "reviewStatus": "approved",
+    "reviewerDecision": {
+      "status": "approved",
+      "reviewer": "lane-reviewer-placeholder",
+      "reviewedAt": "2026-07-07T00:00:00+08:00",
+      "comment": "Approved as redacted metadata only for focused lane routing tests.",
+      "approvedValues": {
+        "practiceArea": "family_service",
+        "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+        "proceduralStage": "FAMILY_SERVICE"
+      }
+    }
+  },
+  {
+    "id": "classification_review_081d23c7c22a",
+    "templateId": "lane_template_4ec8e426c63d",
+    "firmId": "private-lane-pilot-firm",
+    "workspaceId": "family_service-pilot",
+    "proposed": {
+      "practiceArea": "family_service",
+      "documentIntent": "FAMILY_SERVICE_AFFIRMATION",
+      "proceduralStage": "FAMILY_SERVICE",
+      "matterTypes": [
+        "family_service",
+        "family_service"
+      ],
+      "prerequisites": [
+        "proceedingsIssued",
+        "respondentIdentified",
+        "serviceAddressKnown",
+        "serviceMethodSelected"
+      ],
+      "contraindications": [
+        "postTrialStage"
+      ]
+    },
+    "extractionTrace": {
+      "method": "expanded_lane_redacted_metadata_review",
+      "confidence": 0.8,
+      "caveat": "Approval applies only to redacted routing metadata; no private text is committed."
+    },
+    "classificationStatus": "review_approved",
+    "reviewStatus": "approved",
+    "reviewerDecision": {
+      "status": "approved",
+      "reviewer": "lane-reviewer-placeholder",
+      "reviewedAt": "2026-07-07T00:00:00+08:00",
+      "comment": "Approved as redacted metadata only for focused lane routing tests.",
+      "approvedValues": {
+        "practiceArea": "family_service",
+        "documentIntent": "FAMILY_SERVICE_AFFIRMATION",
+        "proceduralStage": "FAMILY_SERVICE"
+      }
+    }
+  }
+]

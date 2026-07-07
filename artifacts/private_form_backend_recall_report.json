@@ -1,0 +1,37 @@
+{
+  "report_id": "private_form_backend_recall",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "private_text_committed": false,
+  "public_authority": false,
+  "reviewed_only": true,
+  "store": "fixtures/forms/private_lane_company_winding_up_store",
+  "index_stats": {
+    "records": 2,
+    "approvedPrivateClauseChunks": 1,
+    "flows": 1,
+    "timelineRules": 1
+  },
+  "recommended_count": 1,
+  "blocked_count": 0,
+  "approved_private_clause_chunks": 1,
+  "semantic_retrieval_order": [
+    "practice_lane_filter",
+    "workflow_stage_filter",
+    "document_intent_filter",
+    "client_role_matter_type_filter",
+    "missing_fact_blocker_filter",
+    "semantic_vector_retrieval"
+  ],
+  "semantic_blocked_by_missing_facts": true,
+  "semantic_positive_returned_chunks": 1,
+  "vector_cannot_override_structured_blockers": true,
+  "missing_facts": [
+    "statutoryDemandOrServiceEvidenceAvailable"
+  ],
+  "required_evidence": [
+    "statutoryDemandOrServiceEvidenceAvailable"
+  ],
+  "backend_index_records": 2,
+  "matter_document_flow_records": 1,
+  "workflow_timeline_rules": 1
+}

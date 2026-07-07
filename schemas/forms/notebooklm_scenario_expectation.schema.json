@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/forms/notebooklm_scenario_expectation.schema.json",
+  "title": "NotebookLM Scenario Expectation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "note_type",
+    "scenario_id",
+    "lane",
+    "provenance",
+    "workflow_stage",
+    "facts",
+    "expected_recommended_forms",
+    "expected_blocked_forms",
+    "expected_timeline_tasks"
+  ],
+  "properties": {
+    "note_type": { "const": "scenario_expectation" },
+    "scenario_id": { "type": "string", "minLength": 1 },
+    "lane": { "type": "string", "minLength": 1 },
+    "provenance": { "const": "INTERNAL_USAGE_NOTE" },
+    "source_notebook": { "type": "string" },
+    "exported_at": { "type": "string" },
+    "workflow_stage": { "type": "string", "minLength": 1 },
+    "client_role": { "type": "string" },
+    "matter_type": { "type": "string" },
+    "facts": { "type": "object", "additionalProperties": true },
+    "expected_recommended_forms": { "type": "array", "items": { "type": "string" } },
+    "expected_blocked_forms": { "type": "array", "items": { "type": "string" } },
+    "expected_placeholder_only_forms": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "expected_missing_facts": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "expected_required_evidence": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "expected_timeline_tasks": { "type": "array", "items": { "type": "string" } },
+    "procedural_traps": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "source_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reference_label", "source_type"],
+        "properties": {
+          "reference_label": { "type": "string" },
+          "source_type": {
+            "type": "string",
+            "enum": ["notebook_internal_reference", "public_rule_reference", "private_source_reference"]
+          },
+          "citation_or_pointer": { "type": "string" }
+        }
+      },
+      "default": []
+    }
+  }
+}

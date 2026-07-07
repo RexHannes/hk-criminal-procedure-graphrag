@@ -1,0 +1,230 @@
+{
+  "indexVersion": "forms-as-code-snippets-mvp-1",
+  "retrievalPolicy": "structured_filters_before_keyword_or_vector",
+  "vectorOnlyAllowed": false,
+  "records": [
+    {
+      "recordId": "template:form_cbe2b96ca480",
+      "kind": "template",
+      "templateId": "form_cbe2b96ca480",
+      "text": "letter of claim synthetic personal_injury LETTER_OF_CLAIM PRE_ACTION_CORRESPONDENCE pre-action stage opponent or insurer identified liability facts sufficiently known opponentIdentified liabilityFactsKnown",
+      "filters": {
+        "firmId": "demo-firm",
+        "workspaceId": "demo-pi",
+        "practiceArea": "personal_injury",
+        "matterTypes": [
+          "road_traffic_pi"
+        ],
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "reviewStatus": "approved"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "template:form_5529c886f381",
+      "kind": "template",
+      "templateId": "form_5529c886f381",
+      "text": "medical records request synthetic personal_injury MEDICAL_RECORDS_REQUEST MEDICAL_EVIDENCE injury exists medical evidence incomplete injuryExists clientIdentityKnown",
+      "filters": {
+        "firmId": "demo-firm",
+        "workspaceId": "demo-pi",
+        "practiceArea": "personal_injury",
+        "matterTypes": [
+          "general_matter"
+        ],
+        "documentIntent": "MEDICAL_RECORDS_REQUEST",
+        "workflowStage": "MEDICAL_EVIDENCE",
+        "reviewStatus": "approved"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "template:form_5b2574d75330",
+      "kind": "template",
+      "templateId": "form_5b2574d75330",
+      "text": "police report request synthetic personal_injury POLICE_REPORT_REQUEST URGENT_ACTIONS opponent unknown police report missing road traffic accident accidentDate accidentLocation",
+      "filters": {
+        "firmId": "demo-firm",
+        "workspaceId": "demo-pi",
+        "practiceArea": "personal_injury",
+        "matterTypes": [
+          "road_traffic_pi"
+        ],
+        "documentIntent": "POLICE_REPORT_REQUEST",
+        "workflowStage": "URGENT_ACTIONS",
+        "reviewStatus": "approved"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_21b2cf57212f",
+      "kind": "clause",
+      "clauseId": "clause_21b2cf57212f",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Opening [Synthetic approved demo clause 0: BACKGROUND_FACTS. No private form text.] BACKGROUND_FACTS pre-action stage opponent or insurer identified liability facts sufficiently known",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "background_facts"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_1a1c8c3d2f32",
+      "kind": "clause",
+      "clauseId": "clause_1a1c8c3d2f32",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Letter of Claim - Road Traffic Personal Injury [Synthetic approved demo clause 1: BACKGROUND_FACTS. No private form text.] BACKGROUND_FACTS pre-action stage opponent or insurer identified liability facts sufficiently known",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "background_facts"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_254093ce0990",
+      "kind": "clause",
+      "clauseId": "clause_254093ce0990",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Client and accident details [Synthetic approved demo clause 2: PARTY_DESCRIPTION. No private form text.] PARTY_DESCRIPTION pre-action stage opponent or insurer identified liability facts sufficiently known",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "PARTY_DESCRIPTION",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "party_description"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_039d2e9534ad",
+      "kind": "clause",
+      "clauseId": "clause_039d2e9534ad",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Liability allegation [Synthetic approved demo clause 3: LIABILITY_ALLEGATION. No private form text.] LIABILITY_ALLEGATION pre-action stage opponent or insurer identified liability facts sufficiently known",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "LIABILITY_ALLEGATION",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "liability_allegation"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_dbee6fbdd00c",
+      "kind": "clause",
+      "clauseId": "clause_dbee6fbdd00c",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Medical evidence [Synthetic approved demo clause 4: MEDICAL_EVIDENCE. No private form text.] MEDICAL_EVIDENCE medical evidence exists or is being requested",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "MEDICAL_EVIDENCE",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "medical_evidence"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_da93122bec66",
+      "kind": "clause",
+      "clauseId": "clause_da93122bec66",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Special damages [Synthetic approved demo clause 5: SPECIAL_DAMAGES. No private form text.] SPECIAL_DAMAGES receipts, pay slips, medical bills, or other supporting documents are available",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "SPECIAL_DAMAGES",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "special_damages"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_e73c527162ff",
+      "kind": "clause",
+      "clauseId": "clause_e73c527162ff",
+      "templateId": "form_cbe2b96ca480",
+      "text": "Settlement proposal [Synthetic approved demo clause 6: SETTLEMENT_PROPOSAL. No private form text.] SETTLEMENT_PROPOSAL pre-action stage opponent or insurer identified liability facts sufficiently known",
+      "filters": {
+        "documentIntent": "LETTER_OF_CLAIM",
+        "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+        "clauseType": "SETTLEMENT_PROPOSAL",
+        "issueTags": [
+          "personal_injury",
+          "road_traffic_personal_injury",
+          "letter_of_claim",
+          "settlement_proposal"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_3ad9461cb216",
+      "kind": "clause",
+      "clauseId": "clause_3ad9461cb216",
+      "templateId": "form_5529c886f381",
+      "text": "Opening [Synthetic approved demo clause 7: BACKGROUND_FACTS. No private form text.] BACKGROUND_FACTS injury exists medical evidence incomplete",
+      "filters": {
+        "documentIntent": "MEDICAL_RECORDS_REQUEST",
+        "workflowStage": "MEDICAL_EVIDENCE",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "personal_injury",
+          "medical_records_request",
+          "background_facts"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:clause_7a2a8fb7e9b8",
+      "kind": "clause",
+      "clauseId": "clause_7a2a8fb7e9b8",
+      "templateId": "form_5529c886f381",
+      "text": "Medical Records Request [Synthetic approved demo clause 8: MEDICAL_EVIDENCE. No private form text.] MEDICAL_EVIDENCE medical evidence exists or is being requested",
+      "filters": {
+        "documentIntent": "MEDICAL_RECORDS_REQUEST",
+        "workflowStage": "MEDICAL_EVIDENCE",
+        "clauseType": "MEDICAL_EVIDENCE",
+        "issueTags": [
+          "personal_injury",
+          "medical_records_request",
+          "medical_evidence"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    }
+  ]
+}

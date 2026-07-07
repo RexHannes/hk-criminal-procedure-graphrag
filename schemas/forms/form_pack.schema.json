@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FormPack",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "firmId",
+    "workspaceId",
+    "sourcePackName",
+    "uploadHash",
+    "uploadedAt",
+    "uploadedBy",
+    "sourceLicenseNote",
+    "visibility",
+    "fileInventory",
+    "ingestionStatus",
+    "reviewStatus"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "firmId": {
+      "type": "string"
+    },
+    "workspaceId": {
+      "type": "string"
+    },
+    "sourcePackName": {
+      "type": "string"
+    },
+    "uploadHash": {
+      "type": "string"
+    },
+    "uploadedAt": {
+      "type": "string"
+    },
+    "uploadedBy": {
+      "type": "string"
+    },
+    "sourceLicenseNote": {
+      "type": "string"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "FIRM_PRIVATE"
+      ]
+    },
+    "fileInventory": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "ingestionStatus": {
+      "type": "string"
+    },
+    "extractionWarnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reviewStatus": {
+      "type": "string"
+    }
+  }
+}

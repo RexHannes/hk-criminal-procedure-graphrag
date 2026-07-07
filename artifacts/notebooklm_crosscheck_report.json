@@ -1,0 +1,62 @@
+{
+  "report_id": "notebooklm_crosscheck",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "parser_version": "notebooklm-scenario-parser-v1",
+  "private_note_text_committed": false,
+  "notebooklm_is_authority": false,
+  "provenance": "INTERNAL_USAGE_NOTE",
+  "notes_dir": "private_notebooklm_notes/",
+  "files_found": [],
+  "expected_note_files": [
+    "family_service.md",
+    "family_answer.md",
+    "family_children.md",
+    "family_ancillary_relief.md",
+    "family_post_trial.md",
+    "company_winding_up_provisional_liquidator.md",
+    "company_winding_up_meetings.md",
+    "company_winding_up_voluntary.md"
+  ],
+  "used_sanitized_fallback": true,
+  "scenario_count": 2,
+  "scenarios": [
+    {
+      "scenario_id": "fallback_family_service:1",
+      "source_file": "sanitized_fallback_family_service",
+      "source_hash": "292ee6e70c540dc83de54cf25b75f5834a319fd0f1abc70d566218fa5597fe8b",
+      "source_text_committed": false,
+      "provenance": "INTERNAL_USAGE_NOTE",
+      "notebooklm_is_authority": false,
+      "expected_practice_lane": "family_service",
+      "expected_workflow_stage": "FAMILY_SERVICE",
+      "expected_recommended_forms": [
+        "FAMILY_SERVICE_ACKNOWLEDGMENT"
+      ],
+      "expected_blocked_forms": [],
+      "missing_facts": [],
+      "required_evidence": [],
+      "draftability": "draftable_metadata_only",
+      "timeline_task_count": 1,
+      "citation_reference_count": 0
+    },
+    {
+      "scenario_id": "fallback_provisional_liquidator:1",
+      "source_file": "sanitized_fallback_company_winding_up_provisional_liquidator",
+      "source_hash": "2111f28eed189375dc042e2c8258ec8609a01d4fbb7b50158a5c6c952a8a2d25",
+      "source_text_committed": false,
+      "provenance": "INTERNAL_USAGE_NOTE",
+      "notebooklm_is_authority": false,
+      "expected_practice_lane": "company_winding_up",
+      "expected_workflow_stage": "PROVISIONAL_LIQUIDATOR",
+      "expected_recommended_forms": [
+        "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION"
+      ],
+      "expected_blocked_forms": [],
+      "missing_facts": [],
+      "required_evidence": [],
+      "draftability": "draftable_metadata_only",
+      "timeline_task_count": 1,
+      "citation_reference_count": 0
+    }
+  ]
+}

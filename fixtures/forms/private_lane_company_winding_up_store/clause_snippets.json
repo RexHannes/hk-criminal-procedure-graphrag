@@ -1,0 +1,47 @@
+[
+  {
+    "id": "real_lane_clause_961aaa8b898b",
+    "templateId": "real_lane_template_356c0f92da55",
+    "clauseKey": "company_winding_up_petition_metadata.evidence_gate",
+    "heading": "Redacted evidence gate",
+    "text": "[Redacted metadata-only clause. No private form text.]",
+    "normalizedText": "redacted metadata only clause no private form text",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "COMPANY_WINDING_UP_PETITION",
+    "proceduralStage": "COMPANY_WINDING_UP",
+    "issueTags": [
+      "company_corporate",
+      "company_winding_up",
+      "company_winding_up_petition"
+    ],
+    "legalKnowledgeNodeIds": [
+      "company_corporate.company_winding_up.petition",
+      "company_corporate.company_winding_up.service_evidence"
+    ],
+    "factRequirements": [
+      "statutoryDemandOrServiceEvidenceAvailable"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "Use only after company, debt/ground, standing, and service evidence are checked."
+    ],
+    "doNotUseWhen": [
+      "Do not finalise if service evidence or standing is unresolved."
+    ],
+    "alternatives": [
+      "EVIDENCE_CHECKLIST",
+      "COMPANY_COMPLIANCE_MEMO"
+    ],
+    "risks": [
+      "Do not invent service or standing facts."
+    ],
+    "sourceLocation": {
+      "source": "real_private_lane_redacted_metadata",
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_metadata_only",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED"
+  }
+]

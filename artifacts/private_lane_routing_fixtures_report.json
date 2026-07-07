@@ -1,0 +1,51 @@
+{
+  "report_id": "private_lane_routing_fixtures",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "selected_lane": "company_winding_up",
+  "private_text_committed": false,
+  "public_authority_analysis_separate": true,
+  "scenarios": [
+    {
+      "scenario_id": "company_winding_up_correct_stage",
+      "expected": "recommend",
+      "passed": true,
+      "recommended_count": 1,
+      "blocked_count": 0,
+      "missing_facts": [],
+      "required_evidence": [],
+      "caveats": []
+    },
+    {
+      "scenario_id": "company_winding_up_wrong_stage",
+      "expected": "block",
+      "passed": true,
+      "recommended_count": 0,
+      "blocked_count": 1,
+      "missing_facts": [],
+      "required_evidence": [],
+      "caveats": []
+    },
+    {
+      "scenario_id": "company_winding_up_missing_prerequisite",
+      "expected": "placeholder_or_blocker",
+      "passed": true,
+      "recommended_count": 1,
+      "blocked_count": 0,
+      "missing_facts": [
+        "statutoryDemandOrServiceEvidenceAvailable"
+      ],
+      "required_evidence": [
+        "statutoryDemandOrServiceEvidenceAvailable"
+      ],
+      "caveats": [
+        {
+          "gateId": "gate_company_winding_up_statutoryDemandOrServiceEvidenceAvailable",
+          "severity": "placeholder_only",
+          "reason": "Statutory demand/service evidence is missing; keep petition drafting as placeholder-only.",
+          "missingFact": "statutoryDemandOrServiceEvidenceAvailable"
+        }
+      ]
+    }
+  ],
+  "all_scenarios_passed": true
+}

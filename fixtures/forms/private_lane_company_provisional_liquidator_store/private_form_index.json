@@ -1,0 +1,117 @@
+{
+  "indexVersion": "forms-as-code-snippets-mvp-1",
+  "retrievalPolicy": "structured_filters_before_keyword_or_vector",
+  "vectorOnlyAllowed": false,
+  "records": [
+    {
+      "recordId": "template:lane_template_6714fafb2711",
+      "kind": "template",
+      "templateId": "lane_template_6714fafb2711",
+      "text": "Provisional liquidator application metadata template company_corporate COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION PROVISIONAL_LIQUIDATOR companyIdentified == true standingChecked == true urgencyGroundsIdentified == true assetRiskEvidenceAvailable == true companyIdentified standingChecked urgencyGroundsIdentified assetRiskEvidenceAvailable",
+      "filters": {
+        "firmId": "private-lane-pilot-firm",
+        "workspaceId": "company_winding_up_provisional_liquidator-pilot",
+        "practiceArea": "company_corporate",
+        "matterTypes": [
+          "provisional_liquidator",
+          "company_corporate"
+        ],
+        "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION",
+        "workflowStage": "PROVISIONAL_LIQUIDATOR",
+        "reviewStatus": "approved"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "template:lane_template_dc046b529fc6",
+      "kind": "template",
+      "templateId": "lane_template_dc046b529fc6",
+      "text": "Provisional liquidator supporting affidavit metadata template company_corporate COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT PROVISIONAL_LIQUIDATOR companyIdentified == true standingChecked == true urgencyGroundsIdentified == true assetRiskEvidenceAvailable == true companyIdentified standingChecked urgencyGroundsIdentified assetRiskEvidenceAvailable",
+      "filters": {
+        "firmId": "private-lane-pilot-firm",
+        "workspaceId": "company_winding_up_provisional_liquidator-pilot",
+        "practiceArea": "company_corporate",
+        "matterTypes": [
+          "provisional_liquidator",
+          "company_corporate"
+        ],
+        "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT",
+        "workflowStage": "PROVISIONAL_LIQUIDATOR",
+        "reviewStatus": "approved"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:lane_clause_5c7193a56d3a",
+      "kind": "clause",
+      "clauseId": "lane_clause_5c7193a56d3a",
+      "templateId": "lane_template_6714fafb2711",
+      "text": "Redacted routing gate [Redacted company_winding_up_provisional_liquidator metadata-only clause 1. No private form text.] BACKGROUND_FACTS Use only after structured lane, stage, role, and missing-fact gates pass.",
+      "filters": {
+        "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION",
+        "workflowStage": "PROVISIONAL_LIQUIDATOR",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "company_corporate",
+          "company_winding_up_provisional_liquidator",
+          "company_provisional_liquidator_application"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:lane_clause_c71da68299bf",
+      "kind": "clause",
+      "clauseId": "lane_clause_c71da68299bf",
+      "templateId": "lane_template_6714fafb2711",
+      "text": "Redacted evidence gate [Redacted company_winding_up_provisional_liquidator metadata-only clause 2. No private form text.] EVIDENCE_GATE Use only after structured lane, stage, role, and missing-fact gates pass.",
+      "filters": {
+        "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION",
+        "workflowStage": "PROVISIONAL_LIQUIDATOR",
+        "clauseType": "EVIDENCE_GATE",
+        "issueTags": [
+          "company_corporate",
+          "company_winding_up_provisional_liquidator",
+          "company_provisional_liquidator_application"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:lane_clause_94d65ea06c70",
+      "kind": "clause",
+      "clauseId": "lane_clause_94d65ea06c70",
+      "templateId": "lane_template_dc046b529fc6",
+      "text": "Redacted routing gate [Redacted company_winding_up_provisional_liquidator metadata-only clause 1. No private form text.] BACKGROUND_FACTS Use only after structured lane, stage, role, and missing-fact gates pass.",
+      "filters": {
+        "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT",
+        "workflowStage": "PROVISIONAL_LIQUIDATOR",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "company_corporate",
+          "company_winding_up_provisional_liquidator",
+          "company_provisional_liquidator_affidavit"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:lane_clause_5ba666756f3b",
+      "kind": "clause",
+      "clauseId": "lane_clause_5ba666756f3b",
+      "templateId": "lane_template_dc046b529fc6",
+      "text": "Redacted evidence gate [Redacted company_winding_up_provisional_liquidator metadata-only clause 2. No private form text.] EVIDENCE_GATE Use only after structured lane, stage, role, and missing-fact gates pass.",
+      "filters": {
+        "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT",
+        "workflowStage": "PROVISIONAL_LIQUIDATOR",
+        "clauseType": "EVIDENCE_GATE",
+        "issueTags": [
+          "company_corporate",
+          "company_winding_up_provisional_liquidator",
+          "company_provisional_liquidator_affidavit"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "source": "synthetic_fixture_only",
+  "privateStorePath": "fixtures/forms/synthetic_store",
+  "templatesExtracted": 4,
+  "clausesExtracted": 19,
+  "usageRulesInferred": 20,
+  "notebooklmNotesLinked": 1,
+  "provenanceLabels": [
+    "TEMPLATE_BASED",
+    "INTERNAL_USAGE_NOTE"
+  ]
+}

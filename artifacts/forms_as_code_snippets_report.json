@@ -1,0 +1,559 @@
+{
+  "report_id": "forms_as_code_snippets_mvp",
+  "generated_at": "2026-07-08T00:00:00+08:00",
+  "status": "implemented_mvp_hardened_real_atkin_family_service_manual_review_activated_draft",
+  "privacy_status": {
+    "real_private_forms_committed": false,
+    "private_paths_gitignored": true,
+    "synthetic_fixtures_only": false,
+    "external_llm_private_content_sent": false,
+    "production_private_api_enabled_default": false,
+    "production_private_ingest_endpoint": "403_disabled",
+    "request_controlled_store_paths": "blocked",
+    "store_selection": "firmId_workspaceId_server_config_only",
+    "committed_fixtures_are_synthetic_or_redacted_only": true
+  },
+  "synthetic_demo": {
+    "form_packs_processed": 1,
+    "templates_extracted": 4,
+    "clauses_extracted": 19,
+    "usage_rules_inferred": 20,
+    "notebooklm_notes_linked": 1,
+    "forms_mapped_to_workflow_stages": true,
+    "backend_index_records": 23
+  },
+  "private_ingestion_dry_run": {
+    "status": "completed_metadata_only",
+    "private_uploads_dir": "private_uploads/",
+    "private_output_dir": "private_ingest_output/",
+    "metadata_only_report_created": true,
+    "private_text_committed": false,
+    "external_services_used": false,
+    "packs_processed": 5,
+    "templates_detected": 27,
+    "clauses_detected": 1150,
+    "classification_reviews_created": 27,
+    "notebooklm_notes_linked": 0,
+    "extraction_warnings": 3,
+    "rejected_or_suspicious_files": 0,
+    "manual_classification_required_percent": 100,
+    "templates_inactive_until_review": true,
+    "detected_lanes": [
+      "probate",
+      "commercial_contracts",
+      "company_corporate",
+      "company_winding_up",
+      "originating_summons",
+      "financial_regulatory"
+    ]
+  },
+  "approved_demo_subset": {
+    "source": "synthetic_redacted_metadata_only",
+    "private_text_committed": false,
+    "approved_pi_templates": 3,
+    "approved_clauses": 9,
+    "approved_usage_rules": 10,
+    "classification_reviews": 3,
+    "approval_workflow_validated": true
+  },
+  "focused_real_lane_approval_pilot": {
+    "selected_lane": "company_winding_up",
+    "private_text_committed": false,
+    "source": "private_real_lane_redacted_metadata_only",
+    "candidate_templates_reviewed": 4,
+    "candidate_clauses": 127,
+    "approved_metadata_templates": 1,
+    "needs_manual_review": 2,
+    "rejected_or_deferred": 1,
+    "notebooklm_notes_linked": 0,
+    "notebooklm_status": "no_private_notebooklm_notes_found",
+    "routing_fixtures": {
+      "scenarios": 3,
+      "all_passed": true,
+      "correct_stage_recommends": true,
+      "wrong_stage_blocks": true,
+      "missing_prerequisite_placeholder_only": true
+    },
+    "workflow_timeline_export": {
+      "part_1_legal_analysis": true,
+      "part_2_documentary_flow": true,
+      "part_3_crm_workflow_export": true,
+      "crm_export_rows": 3,
+      "professional_advice_certified": false
+    }
+  },
+  "court_form_workflow_backend": {
+    "status": "implemented_metadata_only",
+    "private_text_committed": false,
+    "dropzone": {
+      "script": "scripts/ingest_court_form_dropzone.js",
+      "expected_input": "private_uploads/court_forms/",
+      "expected_output": "private_ingest_output/<workspace>/",
+      "external_services_used": false,
+      "existing_private_packs_represented": 5,
+      "templates_detected_from_existing_dry_run": 27,
+      "review_queue_records": 27
+    },
+    "practice_lane_taxonomy": {
+      "enabled": true,
+      "lanes": [
+        "personal_injury",
+        "probate",
+        "commercial_contracts",
+        "company_corporate",
+        "company_winding_up",
+        "employment",
+        "criminal_defence",
+        "civil_litigation_general"
+      ]
+    },
+    "form_to_workflow_mapping": {
+      "enabled": true,
+      "structured_stage_rules": true,
+      "wrong_stage_blockers": true,
+      "missing_evidence_placeholder_only": true
+    },
+    "private_form_backend_recall": {
+      "reviewed_only": true,
+      "public_authority": false,
+      "backend_index_records": 2,
+      "approved_private_clause_chunks": 1,
+      "structured_filters_before_semantic_retrieval": true,
+      "semantic_retrieval_after_blockers_only": true,
+      "matter_document_flow_records": 1,
+      "workflow_timeline_rules": 1,
+      "recommended_count": 1,
+      "blocked_count": 0
+    },
+    "private_semantic_clause_retrieval": {
+      "enabled_for_part_2": true,
+      "private_store_only": true,
+      "approved_chunks_only": true,
+      "raw_text_stored_in_committed_index": false,
+      "external_services_used": false,
+      "notebooklm_runtime_engine": false,
+      "legal_tree_cross_links": "id_only",
+      "retrieval_order": [
+        "practice_lane_filter",
+        "workflow_stage_filter",
+        "document_intent_filter",
+        "client_role_matter_type_filter",
+        "missing_fact_blocker_filter",
+        "semantic_vector_retrieval"
+      ],
+      "vector_cannot_override_structured_blockers": true
+    },
+    "notebooklm_crosscheck": {
+      "scenario_parser_enabled": true,
+      "backend_comparison_enabled": true,
+      "private_note_text_committed": false,
+      "notebooklm_is_authority": false,
+      "notebooklm_runtime_engine": false,
+      "mismatches_auto_fixed": false,
+      "scenarios_parsed": 2,
+      "backend_comparison_mismatches": 0
+    },
+    "expanded_lane_activation": {
+      "metadata_only": true,
+      "private_text_committed": false,
+      "lanes": [
+        "family_service",
+        "company_winding_up_provisional_liquidator"
+      ],
+      "approved_metadata_templates": 4,
+      "approved_redacted_clause_records": 8,
+      "raw_private_text_committed": false
+    },
+    "private_draft_rendering": {
+      "enabled_local_only": true,
+      "output_scope": "private_exports_only",
+      "metadata_report_only": true,
+      "private_text_committed": false,
+      "finalisation_blockers_enforced": true
+    },
+    "part2_documentary_flow": {
+      "enabled": true,
+      "recommended_documents": 1,
+      "placeholder_only_documents": 1,
+      "missing_crucial_information": 1,
+      "required_evidence": 1,
+      "private_text_committed": false
+    },
+    "part3_workflow_timeline": {
+      "enabled": true,
+      "crm_export_rows": 3,
+      "professional_advice_certified": false,
+      "private_text_committed": false
+    },
+    "viewer_integration": {
+      "fable_shell_preserved": true,
+      "forms_workspace_cards": true,
+      "raw_json_primary_ui": false
+    },
+    "advice_api_separation": {
+      "public_legal_analysis_separate": true,
+      "private_form_recommendations_separate": true,
+      "workflow_timeline_separate": true
+    },
+    "vercel_function_cap_hardening": {
+      "new_physical_api_functions": 0,
+      "workflow_modes_reuse_existing_forms_handler": true,
+      "routes": [
+        "/api/forms/recommend?formsMode=private-recall",
+        "/api/forms/recommend?formsMode=private-qdrant-recall",
+        "/api/forms/recommend?formsMode=private-form-framework",
+        "/api/forms/recommend?formsMode=matter-advice",
+        "/api/forms/recommend?formsMode=workflow-timeline"
+      ]
+    }
+  },
+  "atkin_private_rag_ingestion": {
+    "status": "completed",
+    "input_root": "private_uploads/atkin_forms/",
+    "output_root": "private_ingest_output/atkin_forms/",
+    "metadata_report_created": true,
+    "source_present": true,
+    "private_text_committed": false,
+    "external_services_used": false,
+    "notebooklm_runtime_engine": false,
+    "packs_discovered": 71,
+    "packs_processed": 71,
+    "templates_detected": 2212,
+    "clause_chunks_detected": 15802,
+    "field_schemas_detected": 0,
+    "classification_reviews_created": 2212,
+    "notebooklm_notes_linked": 0,
+    "extraction_warning_count": 79,
+    "inactive_until_review": true,
+    "review_status": "lawyer_review_required",
+    "classification_status": "machine_candidate",
+    "real_ingestion_unblocked": true
+  },
+  "fable_design_gap_audit": {
+    "report": "artifacts/fable_part2_part3_gap_audit.md",
+    "status": "completed_pre_expansion_audit",
+    "done": 3,
+    "partial": 7,
+    "missing": 1,
+    "blocked_by_private_source_absence": 1,
+    "overall_recommendation": "Hold runtime expansion until source export, NotebookLM export, and production private backend design are ready."
+  },
+  "atkin_source_availability": {
+    "report": "artifacts/atkin_source_availability_gate_report.md",
+    "status": "ATKIN_SOURCE_AVAILABLE_METADATA_INGESTION_ALLOWED",
+    "source_forms_available": true,
+    "source_form_file_count": 365,
+    "supported_source_file_count": 361,
+    "notebooklm_exports_available": false,
+    "notebooklm_note_file_count": 0,
+    "ingestion_can_proceed": true,
+    "only_dry_run_fixtures_available": false,
+    "private_paths_gitignored": true,
+    "private_text_committed": false
+  },
+  "notebooklm_export_contract": {
+    "document": "docs/notebooklm_export_contract_for_forms.md",
+    "form_usage_note_schema": "schemas/forms/notebooklm_form_usage_note.schema.json",
+    "scenario_expectation_schema": "schemas/forms/notebooklm_scenario_expectation.schema.json",
+    "export_directory": "private_notebooklm_notes/",
+    "supported_files": [
+      "family_service.md",
+      "family_answer.md",
+      "family_children.md",
+      "family_ancillary_relief.md",
+      "company_winding_up.md",
+      "pi_forms.md",
+      "contract_commercial.md",
+      "probate.md"
+    ],
+    "provenance": "INTERNAL_USAGE_NOTE",
+    "notebooklm_runtime_engine": false,
+    "notebooklm_activates_templates": false,
+    "notebooklm_overrides_review_gates": false,
+    "notebooklm_public_authority": false
+  },
+  "current_real_ingestion_status": {
+    "real_atkin_ingestion_complete": true,
+    "real_ingestion_unblocked": true,
+    "source_files_available": 365,
+    "packs_processed": 71,
+    "templates_detected": 2212,
+    "clause_chunks_detected": 15802,
+    "extraction_warnings": 79,
+    "templates_auto_activated": false,
+    "review_status": "lawyer_review_required",
+    "classification_status": "machine_candidate",
+    "next_manual_action_required": "Review selected private classification queues locally, then approve only specific templates/clauses into private stores."
+  },
+  "atkin_private_qdrant": {
+    "enabled": true,
+    "api_enabled_default": false,
+    "forms_mode": "private-qdrant-recall",
+    "framework_mode": "private-form-framework",
+    "collections": {
+      "chunks": "hk_private_form_chunks_<tenant>_<workspace>",
+      "templates": "hk_private_form_templates_<tenant>_<workspace>"
+    },
+    "private_collections_only": true,
+    "tenant_workspace_filters_required": true,
+    "structured_filters_before_semantic": true,
+    "missing_fact_blockers_before_semantic": true,
+    "local_offline_embeddings_default": true,
+    "openrouter_used_for_private_content": false,
+    "external_embedding_services_used": false,
+    "public_legal_collections_touched": false,
+    "private_text_committed": false,
+    "dry_run_shape_validated_with_redacted_fixture": false,
+    "templates_ready_in_shape_check": 1,
+    "chunks_ready_in_shape_check": 1,
+    "source_present": true,
+    "private_stores_scanned": 69,
+    "real_templates_detected": 2018,
+    "real_clause_chunks_detected": 14495,
+    "real_templates_inactive_until_review": true,
+    "real_templates_ready_for_qdrant": 4,
+    "real_chunks_ready_for_qdrant": 8,
+    "approved_metadata_templates_active": 4
+  },
+  "notebooklm_atkin_crosscheck": {
+    "status": "no_private_notes_found_backend_expectations_only",
+    "notebooklm_runtime_engine": false,
+    "notebooklm_is_authority": false,
+    "notebooklm_activates_templates": false,
+    "private_note_text_committed": false,
+    "mismatches_auto_fixed": false,
+    "framework_expectations_tracked": 3,
+    "textbook_scenario_expectations_tracked": 4,
+    "reported_mismatches": 0,
+    "note_files_discovered": 0
+  },
+  "private_forms_context_awareness": {
+    "eval_passed": true,
+    "passed_cases": 5,
+    "failed_cases": 0,
+    "correct_lane_stage_intent_role_retrieves": true,
+    "wrong_stage_blocks_before_semantic": true,
+    "missing_facts_block_clause_semantic_return": true,
+    "consent_route_suggests_alternative": true,
+    "part_1_public_authority_separate": true,
+    "part_2_private_forms_retrieval": true,
+    "part_3_timeline_crm_rules": true
+  },
+  "hardening_status": {
+    "user_path_access_blocked": true,
+    "classification_review_queue": {
+      "enabled": true,
+      "default_reviewStatus": "lawyer_review_required",
+      "default_classificationStatus": "machine_candidate",
+      "real_private_templates_active_until_reviewed": false,
+      "synthetic_demo_templates_explicitly_demo_enabled": true
+    },
+    "notebooklm_link_review": {
+      "notes_are_authority": false,
+      "scenario_notes_are_authority": false,
+      "scenario_notes_activate_templates": false,
+      "template_links_default": "candidate",
+      "clause_links_default": "candidate",
+      "token_overlap_links_auto_approved": false
+    },
+    "adversarial_routing": {
+      "criminal_queries_return_private_forms": false,
+      "probate_queries_return_private_forms": false,
+      "principle_only_queries_return_private_forms": false,
+      "structured_filters_override_similarity": true,
+      "wrong_stage_forms_blocked": true
+    },
+    "draft_field_provenance": {
+      "field_provenance": true,
+      "fact_to_field_trace": true,
+      "placeholder_audit": true,
+      "lawyer_only_field_gate": true,
+      "final_approval_blocked_until_required_fields_resolved_or_waived": true
+    },
+    "principle_forms_separation": {
+      "private_form_recommendations_separate_response_field": true,
+      "public_authority_analysis_not_polluted": true
+    },
+    "workflow_timeline_export": {
+      "enabled": true,
+      "source": "synthetic_redacted_approved_demo_subset",
+      "part_1_legal_analysis": true,
+      "part_2_documentary_flow": true,
+      "part_3_crm_workflow_export": true,
+      "recommended_demo_forms": 1,
+      "timeline_steps": 3,
+      "crm_export_rows": 3,
+      "professional_advice_certified": false
+    },
+    "private_lane_review_activation": {
+      "selected_lane": "company_winding_up",
+      "approved_templates_active_in_routing": 1,
+      "rejected_templates_active_in_routing": 0,
+      "other_lanes_not_activated": true,
+      "metadata_only": true
+    },
+    "court_form_workflow_backend": {
+      "dropzone_private_output_only": true,
+      "practice_lane_taxonomy_enabled": true,
+      "form_to_workflow_mapping_enabled": true,
+      "reviewed_only_backend_recall": true,
+      "private_semantic_retrieval_after_structured_filters": true,
+      "private_qdrant_recall_after_structured_filters": true,
+      "private_qdrant_api_disabled_by_default": true,
+      "private_qdrant_requires_tenant_workspace_filters": true,
+      "private_vector_chunks_not_public": true,
+      "part2_documentary_flow_enabled": true,
+      "part3_timeline_crm_export_enabled": true,
+      "advice_layers_separated": true,
+      "workflow_modes_reuse_existing_forms_function": true
+    },
+    "anti_static_runtime_checks": {
+      "same_lane_different_facts_change_recommendations": true,
+      "wrong_stage_blocks_even_with_semantic_match": true,
+      "missing_fact_blocks_private_semantic_chunk": true,
+      "consent_route_suggests_alternative_not_new_commencement": true,
+      "private_draft_renderer_local_only": true,
+      "public_reports_contain_no_private_text": true
+    }
+  },
+  "product_layers": [
+    "SOURCE_BACKED public authority remains separate",
+    "TEMPLATE_BASED private precedent/form routing",
+    "INTERNAL_USAGE_NOTE NotebookLM/internal note guidance",
+    "FIRM_SOP procedural gates",
+    "AI_SUGGESTED draft placeholders and missing-fact questions"
+  ],
+  "validation_targets": {
+    "structured_filters_before_keyword_or_vector": true,
+    "wrong_stage_forms_blocked": true,
+    "missing_fact_blockers": true,
+    "draft_from_form_prototype": true,
+    "viewer_forms_workspace": true,
+    "private_data_safety_checks": true,
+    "private_ingestion_dry_run_metadata_only": true,
+    "approved_demo_subset_routing": true,
+    "private_form_taxonomy_report": true,
+    "workflow_timeline_export": true,
+    "private_lane_review_activation": true,
+    "private_lane_routing_fixtures": true,
+    "private_lane_workflow_timeline_export": true,
+    "private_lane_no_text_leakage": true,
+    "notebooklm_private_link_metadata_only": true,
+    "court_form_dropzone_ingestion_contract": true,
+    "practice_lane_taxonomy": true,
+    "form_to_workflow_mapping": true,
+    "private_form_backend_recall": true,
+    "private_semantic_retrieval_order": true,
+    "private_vector_cannot_override_structured_blockers": true,
+    "private_form_chunks_not_public": true,
+    "notebooklm_scenarios_parse": true,
+    "backend_against_notebooklm_expected_forms": true,
+    "notebooklm_not_authority": true,
+    "notebooklm_does_not_override_review_gates": true,
+    "runtime_matter_facts_change_forms": true,
+    "wrong_stage_blocks_even_with_semantic_match": true,
+    "missing_fact_blocks_private_semantic_chunk": true,
+    "private_draft_renderer_local_only": true,
+    "part2_documentary_flow": true,
+    "part3_workflow_timeline": true,
+    "crm_export_rows": true,
+    "advice_parts_separation": true,
+    "inactive_real_templates_do_not_route": true,
+    "reviewed_templates_route_only_after_activation": true,
+    "fable_part2_part3_gap_audit": true,
+    "atkin_source_availability_gate": true,
+    "notebooklm_export_contract_for_forms": true,
+    "atkin_private_rag_ingestion_report": true,
+    "atkin_private_qdrant_index_report": true,
+    "private_qdrant_tenant_workspace_filters": true,
+    "private_qdrant_api_disabled_by_default": true,
+    "private_qdrant_recall_after_structured_filters": true,
+    "notebooklm_atkin_crosscheck_reports": true,
+    "private_forms_context_awareness_eval": true,
+    "part1_part2_part3_boundaries_for_atkin_forms": true,
+    "no_raw_atkin_text_committed": true,
+    "atkin_selected_lane_activation": true,
+    "family_service_manual_review_activation": true
+  },
+  "sem_b_inventory_note": "Sem B / Downloads material was processed locally into gitignored private_ingest_output for a metadata-only dry run. No private/licensed document content was extracted into git or sent to external services.",
+  "remaining_limitations": [
+    "Only the family_service lane has a real manual-review metadata activation in this pass; all other real Atkin candidates remain machine-candidate/review-required and inactive until later review.",
+    "Real Atkin metadata ingestion is now unblocked locally, but all real candidates remain machine_candidate/lawyer_review_required and inactive until specific review approval.",
+    "DOC/PDF extraction quality depends on local tools and private approval; current Atkin metadata ingestion records 79 extraction warnings.",
+    "Real Sem B packs are ingested into private_ingest_output only and must remain out of git.",
+    "Lawyer approval workflow is metadata-ready but not a full multi-user HITL product yet.",
+    "The focused company winding-up lane approves routing metadata only, not private clause text or professional advice.",
+    "The court-form workflow layer routes reviewed metadata only; it does not expose or commit private form wording.",
+    "NotebookLM cross-checks are comparison/audit metadata only and do not activate or approve templates.",
+    "Private Qdrant recall is disabled by default in the API and requires PRIVATE_QDRANT_FORMS_ENABLED plus tenant/workspace server configuration.",
+    "Private form embeddings default to local/offline hash vectors; any external private embedding provider would require a separate explicit approval.",
+    "Private draft rendering writes only to private_exports and is not a deployed production drafting endpoint.",
+    "PR #11 should remain draft until private production store configuration and reviewer UI permissions are selected.",
+    "Vector embeddings are represented by index policy and keyword fallback in this MVP; production vector storage should remain private."
+  ],
+  "atkin_selected_lane_activation": {
+    "report": "artifacts/atkin_selected_lane_activation_report.md",
+    "selected_lanes": [
+      "family_service",
+      "company_winding_up_provisional_liquidator"
+    ],
+    "metadata_only": true,
+    "real_templates_auto_activated": false,
+    "private_text_committed": false,
+    "generated_drafts_committed": false,
+    "proofs": [
+      {
+        "lane_id": "family_service",
+        "real_candidate_templates": 119,
+        "real_candidate_clause_chunks": 601,
+        "active_real_templates": 4,
+        "correct_stage_forms_route": true,
+        "wrong_stage_forms_block": true,
+        "missing_facts_produce_blockers_or_placeholders": true,
+        "private_semantic_retrieval_after_structured_filters": true,
+        "part2_document_flow_changes_with_facts": true,
+        "part3_timeline_crm_rows_generated": true
+      },
+      {
+        "lane_id": "company_winding_up_provisional_liquidator",
+        "real_candidate_templates": 399,
+        "real_candidate_clause_chunks": 2086,
+        "active_real_templates": 0,
+        "correct_stage_forms_route": true,
+        "wrong_stage_forms_block": true,
+        "missing_facts_produce_blockers_or_placeholders": true,
+        "private_semantic_retrieval_after_structured_filters": true,
+        "part2_document_flow_changes_with_facts": true,
+        "part3_timeline_crm_rows_generated": true
+      }
+    ]
+  },
+  "family_service_manual_review_activation": {
+    "report": "artifacts/family_service_manual_review_activation_report.md",
+    "lane": "family_service",
+    "candidates_reviewed": 18,
+    "selected_for_manual_review": 12,
+    "approved_metadata_templates": 4,
+    "approved_redacted_clause_chunks": 8,
+    "classifier_drift_summary": {
+      "practice_area_not_family_service": 18,
+      "mislabelled_company": 16,
+      "service_candidate_wrong_stage": 12,
+      "sub_lane_not_family_service": 3,
+      "family_answer_not_fresh_service_route": 6
+    },
+    "private_text_committed": false,
+    "generated_drafts_committed": false,
+    "raw_titles_committed": false,
+    "external_services_used": false,
+    "qdrant_templates_ready_after_activation": 4,
+    "qdrant_chunks_ready_after_activation": 8,
+    "validators": {
+      "correct_stage_routes": true,
+      "answer_trial_post_trial_blocked": true,
+      "respondent_already_served_blocks_fresh_service": true,
+      "missing_respondent_address_blocks_semantic_chunks": true,
+      "legal_analysis_only_query_abstains_from_forms": true
+    }
+  }
+}

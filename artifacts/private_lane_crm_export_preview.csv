@@ -1,0 +1,4 @@
+rowId,part,stage,task,owner,dueDate,dependencyIds,status,exportCategory,documentIntent,templateId
+crm_001,Part 1,LEGAL_ANALYSIS,Review source-backed legal issue classification,lawyer,,,research_required,legal_analysis,,
+crm_002,Part 2,COMPANY_WINDING_UP,Resolve blockers for Company winding-up petition metadata template,lawyer,,crm_001,blocked_missing_information,documentary_flow,COMPANY_WINDING_UP_PETITION,real_lane_template_356c0f92da55
+crm_003,Part 3,CRM_EXPORT,Export matter workflow timeline,operations,,crm_002,ready_for_crm_mapping,crm_export,,

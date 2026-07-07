@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/advice/documentary_flow_result.schema.json",
+  "title": "Documentary Flow Result",
+  "type": "object",
+  "required": ["documentaryFlow"],
+  "properties": {
+    "documentaryFlow": {
+      "type": "object",
+      "required": ["recommendedDocuments", "blockedDocuments", "draftableDocuments", "placeholderOnlyDocuments", "missingCrucialInformation", "requiredEvidence", "recommendedNextActions", "reviewGates", "provenance"],
+      "properties": {
+        "recommendedDocuments": { "type": "array" },
+        "blockedDocuments": { "type": "array" },
+        "draftableDocuments": { "type": "array" },
+        "placeholderOnlyDocuments": { "type": "array" },
+        "missingCrucialInformation": { "type": "array" },
+        "requiredEvidence": { "type": "array" },
+        "recommendedNextActions": { "type": "array" },
+        "reviewGates": { "type": "array" },
+        "provenance": { "type": "array" }
+      }
+    }
+  }
+}

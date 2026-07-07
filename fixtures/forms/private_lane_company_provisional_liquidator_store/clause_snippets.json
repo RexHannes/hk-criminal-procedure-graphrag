@@ -1,0 +1,190 @@
+[
+  {
+    "id": "lane_clause_5c7193a56d3a",
+    "templateId": "lane_template_6714fafb2711",
+    "clauseKey": "provisional_liquidator_application_metadata_template.routing_gate",
+    "heading": "Redacted routing gate",
+    "text": "[Redacted company_winding_up_provisional_liquidator metadata-only clause 1. No private form text.]",
+    "normalizedText": "redacted company_winding_up_provisional_liquidator metadata only clause 1",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION",
+    "proceduralStage": "PROVISIONAL_LIQUIDATOR",
+    "issueTags": [
+      "company_corporate",
+      "company_winding_up_provisional_liquidator",
+      "company_provisional_liquidator_application"
+    ],
+    "legalKnowledgeNodeIds": [
+      "company_corporate.company_winding_up.provisional_liquidator",
+      "company_corporate.company_winding_up.asset_risk_evidence"
+    ],
+    "factRequirements": [
+      "companyIdentified",
+      "standingChecked",
+      "urgencyGroundsIdentified",
+      "assetRiskEvidenceAvailable"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "Use only after structured lane, stage, role, and missing-fact gates pass."
+    ],
+    "doNotUseWhen": [
+      "Do not finalise if required facts/evidence are unresolved."
+    ],
+    "alternatives": [
+      "EVIDENCE_CHECKLIST"
+    ],
+    "risks": [
+      "Do not invent missing facts or evidence."
+    ],
+    "sourceLocation": {
+      "source": "private_ingest_output_redacted_metadata_review",
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_metadata_only",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "lane_clause_c71da68299bf",
+    "templateId": "lane_template_6714fafb2711",
+    "clauseKey": "provisional_liquidator_application_metadata_template.evidence_gate",
+    "heading": "Redacted evidence gate",
+    "text": "[Redacted company_winding_up_provisional_liquidator metadata-only clause 2. No private form text.]",
+    "normalizedText": "redacted company_winding_up_provisional_liquidator metadata only clause 2",
+    "clauseType": "EVIDENCE_GATE",
+    "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION",
+    "proceduralStage": "PROVISIONAL_LIQUIDATOR",
+    "issueTags": [
+      "company_corporate",
+      "company_winding_up_provisional_liquidator",
+      "company_provisional_liquidator_application"
+    ],
+    "legalKnowledgeNodeIds": [
+      "company_corporate.company_winding_up.provisional_liquidator",
+      "company_corporate.company_winding_up.asset_risk_evidence"
+    ],
+    "factRequirements": [
+      "companyIdentified",
+      "standingChecked",
+      "urgencyGroundsIdentified",
+      "assetRiskEvidenceAvailable"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "Use only after structured lane, stage, role, and missing-fact gates pass."
+    ],
+    "doNotUseWhen": [
+      "Do not finalise if required facts/evidence are unresolved."
+    ],
+    "alternatives": [
+      "EVIDENCE_CHECKLIST"
+    ],
+    "risks": [
+      "Do not invent missing facts or evidence."
+    ],
+    "sourceLocation": {
+      "source": "private_ingest_output_redacted_metadata_review",
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_metadata_only",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "lane_clause_94d65ea06c70",
+    "templateId": "lane_template_dc046b529fc6",
+    "clauseKey": "provisional_liquidator_supporting_affidavit_metadata_template.routing_gate",
+    "heading": "Redacted routing gate",
+    "text": "[Redacted company_winding_up_provisional_liquidator metadata-only clause 1. No private form text.]",
+    "normalizedText": "redacted company_winding_up_provisional_liquidator metadata only clause 1",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT",
+    "proceduralStage": "PROVISIONAL_LIQUIDATOR",
+    "issueTags": [
+      "company_corporate",
+      "company_winding_up_provisional_liquidator",
+      "company_provisional_liquidator_affidavit"
+    ],
+    "legalKnowledgeNodeIds": [
+      "company_corporate.company_winding_up.provisional_liquidator",
+      "company_corporate.company_winding_up.asset_risk_evidence"
+    ],
+    "factRequirements": [
+      "companyIdentified",
+      "standingChecked",
+      "urgencyGroundsIdentified",
+      "assetRiskEvidenceAvailable"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "Use only after structured lane, stage, role, and missing-fact gates pass."
+    ],
+    "doNotUseWhen": [
+      "Do not finalise if required facts/evidence are unresolved."
+    ],
+    "alternatives": [
+      "EVIDENCE_CHECKLIST"
+    ],
+    "risks": [
+      "Do not invent missing facts or evidence."
+    ],
+    "sourceLocation": {
+      "source": "private_ingest_output_redacted_metadata_review",
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_metadata_only",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "lane_clause_5ba666756f3b",
+    "templateId": "lane_template_dc046b529fc6",
+    "clauseKey": "provisional_liquidator_supporting_affidavit_metadata_template.evidence_gate",
+    "heading": "Redacted evidence gate",
+    "text": "[Redacted company_winding_up_provisional_liquidator metadata-only clause 2. No private form text.]",
+    "normalizedText": "redacted company_winding_up_provisional_liquidator metadata only clause 2",
+    "clauseType": "EVIDENCE_GATE",
+    "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT",
+    "proceduralStage": "PROVISIONAL_LIQUIDATOR",
+    "issueTags": [
+      "company_corporate",
+      "company_winding_up_provisional_liquidator",
+      "company_provisional_liquidator_affidavit"
+    ],
+    "legalKnowledgeNodeIds": [
+      "company_corporate.company_winding_up.provisional_liquidator",
+      "company_corporate.company_winding_up.asset_risk_evidence"
+    ],
+    "factRequirements": [
+      "companyIdentified",
+      "standingChecked",
+      "urgencyGroundsIdentified",
+      "assetRiskEvidenceAvailable"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "Use only after structured lane, stage, role, and missing-fact gates pass."
+    ],
+    "doNotUseWhen": [
+      "Do not finalise if required facts/evidence are unresolved."
+    ],
+    "alternatives": [
+      "EVIDENCE_CHECKLIST"
+    ],
+    "risks": [
+      "Do not invent missing facts or evidence."
+    ],
+    "sourceLocation": {
+      "source": "private_ingest_output_redacted_metadata_review",
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_metadata_only",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED"
+  }
+]

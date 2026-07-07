@@ -1,0 +1,47 @@
+{
+  "report_id": "private_forms_context_awareness_eval",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "private_text_committed": false,
+  "external_services_used": false,
+  "notebooklm_runtime_engine": false,
+  "structured_filters_before_qdrant_semantic": true,
+  "vector_cannot_override_structured_blockers": true,
+  "cases": [
+    {
+      "id": "correct_lane_stage_intent_role_allows_private_qdrant_gate",
+      "passed": true,
+      "qdrantExecuted": false,
+      "dryRun": true
+    },
+    {
+      "id": "wrong_stage_blocks_before_semantic",
+      "passed": true,
+      "returnedChunks": 0
+    },
+    {
+      "id": "missing_fact_blocks_clause_semantic_return",
+      "passed": true,
+      "missingFacts": [
+        "statutoryDemandOrServiceEvidenceAvailable"
+      ]
+    },
+    {
+      "id": "consent_route_suggests_alternative_not_new_writ",
+      "passed": true,
+      "alternatives": [
+        "CONSENT_SUMMONS",
+        "CONSENT_ORDER",
+        "DRAFT_ORDER"
+      ]
+    },
+    {
+      "id": "part1_part2_part3_boundaries_visible",
+      "passed": true,
+      "part1": "public_authority_only",
+      "part2": "private_forms_retrieval",
+      "part3": "timeline_crm_rules"
+    }
+  ],
+  "passed_count": 5,
+  "failed_count": 0
+}

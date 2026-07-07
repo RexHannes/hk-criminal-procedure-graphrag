@@ -1,0 +1,97 @@
+{
+  "report_id": "notebooklm_backend_comparison",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "private_note_text_committed": false,
+  "notebooklm_is_authority": false,
+  "provenance": "INTERNAL_USAGE_NOTE",
+  "notebooklm_overrides_review_gates": false,
+  "mismatches_auto_fixed": false,
+  "compared_count": 2,
+  "mismatch_count": 0,
+  "comparisons": [
+    {
+      "scenarioId": "fallback_family_service:1",
+      "lane": "family_service",
+      "storeDir": "fixtures/forms/private_lane_family_service_store",
+      "compared": true,
+      "sourceTextCommitted": false,
+      "notebooklmIsAuthority": false,
+      "notebooklmOverridesReviewGates": false,
+      "publicAuthority": false,
+      "recommendedCompare": {
+        "expected": [
+          "FAMILY_SERVICE_ACKNOWLEDGMENT"
+        ],
+        "actual": [
+          "FAMILY_SERVICE_ACKNOWLEDGMENT"
+        ],
+        "missing": [],
+        "extra": []
+      },
+      "blockedCompare": {
+        "expected": [],
+        "actual": [],
+        "missing": [],
+        "extra": []
+      },
+      "missingFactsCompare": {
+        "expected": [],
+        "actual": [],
+        "missing": [],
+        "extra": []
+      },
+      "requiredEvidenceCompare": {
+        "expected": [],
+        "actual": [],
+        "missing": [],
+        "extra": []
+      },
+      "draftabilityActual": "draftable_metadata_only",
+      "timelineRows": 3,
+      "mismatchCount": 0,
+      "mismatches": []
+    },
+    {
+      "scenarioId": "fallback_provisional_liquidator:1",
+      "lane": "company_winding_up",
+      "storeDir": "fixtures/forms/private_lane_company_provisional_liquidator_store",
+      "compared": true,
+      "sourceTextCommitted": false,
+      "notebooklmIsAuthority": false,
+      "notebooklmOverridesReviewGates": false,
+      "publicAuthority": false,
+      "recommendedCompare": {
+        "expected": [
+          "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION"
+        ],
+        "actual": [
+          "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION"
+        ],
+        "missing": [],
+        "extra": []
+      },
+      "blockedCompare": {
+        "expected": [],
+        "actual": [],
+        "missing": [],
+        "extra": []
+      },
+      "missingFactsCompare": {
+        "expected": [],
+        "actual": [],
+        "missing": [],
+        "extra": []
+      },
+      "requiredEvidenceCompare": {
+        "expected": [],
+        "actual": [],
+        "missing": [],
+        "extra": []
+      },
+      "draftabilityActual": "draftable_metadata_only",
+      "timelineRows": 3,
+      "mismatchCount": 0,
+      "mismatches": []
+    }
+  ]
+}

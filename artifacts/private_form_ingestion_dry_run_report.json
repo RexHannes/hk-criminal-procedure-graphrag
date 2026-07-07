@@ -1,0 +1,230 @@
+{
+  "report_id": "private_form_ingestion_dry_run",
+  "generated_at": "2026-07-07T03:05:10.081Z",
+  "status": "completed",
+  "privacy_boundary": {
+    "private_uploads_dir": "private_uploads/",
+    "private_notebooklm_notes_dir": "private_notebooklm_notes/",
+    "private_output_dir": "private_ingest_output/",
+    "committed_private_text": false,
+    "external_services_used": false,
+    "metadata_only_report": true,
+    "candidate_titles_redacted_by_default": true
+  },
+  "packs_discovered": 5,
+  "packs_processed": 5,
+  "pack_summaries": [
+    {
+      "pack_id": "pack_84b47a6be343",
+      "private_output_dir": "private_ingest_output/companies_general_commentary",
+      "file_count": 9,
+      "file_type_counts": {
+        ".docx": 9
+      },
+      "supported_file_count": 9,
+      "rejected_or_suspicious_file_count": 0,
+      "templates_detected": 9,
+      "clauses_detected": 540,
+      "notebooklm_notes_linked": 0,
+      "classification_reviews_created": 9,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 6,
+        "COMPANY_WINDING_UP_PETITION": 1,
+        "ORIGINATING_SUMMONS": 1,
+        "REGULATORY_COMPLIANCE_NOTE": 1
+      },
+      "stage_distribution": {
+        "COMPANY_COMPLIANCE": 6,
+        "COMPANY_WINDING_UP": 1,
+        "COMMENCEMENT": 1,
+        "REGULATORY_COMPLIANCE": 1
+      },
+      "practice_area_distribution": {
+        "company_corporate": 9
+      },
+      "review_status_distribution": {
+        "lawyer_review_required": 9
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 9
+      },
+      "templates_inactive_until_review": true,
+      "percentage_requiring_manual_classification": 100,
+      "extraction_warning_count": 0,
+      "extraction_warnings": [],
+      "candidate_template_titles": [],
+      "titles_redacted_by_default": true
+    },
+    {
+      "pack_id": "pack_f573e9dc6a08",
+      "private_output_dir": "private_ingest_output/frp_topic_2_export",
+      "file_count": 3,
+      "file_type_counts": {
+        ".pdf": 2,
+        ".pptx": 1
+      },
+      "supported_file_count": 2,
+      "rejected_or_suspicious_file_count": 0,
+      "templates_detected": 2,
+      "clauses_detected": 0,
+      "notebooklm_notes_linked": 0,
+      "classification_reviews_created": 2,
+      "document_intent_distribution": {
+        "REGULATORY_COMPLIANCE_NOTE": 2
+      },
+      "stage_distribution": {
+        "REGULATORY_COMPLIANCE": 2
+      },
+      "practice_area_distribution": {
+        "financial_regulatory": 2
+      },
+      "review_status_distribution": {
+        "lawyer_review_required": 2
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 2
+      },
+      "templates_inactive_until_review": true,
+      "percentage_requiring_manual_classification": 100,
+      "extraction_warning_count": 2,
+      "extraction_warnings": [
+        ".pdf_text_extraction_empty_or_unavailable"
+      ],
+      "candidate_template_titles": [],
+      "titles_redacted_by_default": true
+    },
+    {
+      "pack_id": "pack_a0032a628333",
+      "private_output_dir": "private_ingest_output/commercial_contracts",
+      "file_count": 6,
+      "file_type_counts": {
+        ".doc": 5,
+        ".pdf": 1
+      },
+      "supported_file_count": 6,
+      "rejected_or_suspicious_file_count": 0,
+      "templates_detected": 6,
+      "clauses_detected": 276,
+      "notebooklm_notes_linked": 0,
+      "classification_reviews_created": 6,
+      "document_intent_distribution": {
+        "SHAREHOLDERS_AGREEMENT": 1,
+        "LEASE_AGREEMENT": 1,
+        "CONTRACT_CLAUSE": 3,
+        "CONTRACT_AGREEMENT": 1
+      },
+      "stage_distribution": {
+        "TRANSACTIONAL_DRAFTING": 6
+      },
+      "practice_area_distribution": {
+        "commercial_contracts": 6
+      },
+      "review_status_distribution": {
+        "lawyer_review_required": 6
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 6
+      },
+      "templates_inactive_until_review": true,
+      "percentage_requiring_manual_classification": 100,
+      "extraction_warning_count": 1,
+      "extraction_warnings": [
+        ".pdf_text_extraction_empty_or_unavailable"
+      ],
+      "candidate_template_titles": [],
+      "titles_redacted_by_default": true
+    },
+    {
+      "pack_id": "pack_ec3ec6665203",
+      "private_output_dir": "private_ingest_output/company_corporate",
+      "file_count": 4,
+      "file_type_counts": {
+        ".docx": 4
+      },
+      "supported_file_count": 4,
+      "rejected_or_suspicious_file_count": 0,
+      "templates_detected": 4,
+      "clauses_detected": 322,
+      "notebooklm_notes_linked": 0,
+      "classification_reviews_created": 4,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 1,
+        "COMPANY_WINDING_UP_PETITION": 3
+      },
+      "stage_distribution": {
+        "COMPANY_COMPLIANCE": 1,
+        "COMPANY_WINDING_UP": 3
+      },
+      "practice_area_distribution": {
+        "company_corporate": 4
+      },
+      "review_status_distribution": {
+        "lawyer_review_required": 4
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 4
+      },
+      "templates_inactive_until_review": true,
+      "percentage_requiring_manual_classification": 100,
+      "extraction_warning_count": 0,
+      "extraction_warnings": [],
+      "candidate_template_titles": [],
+      "titles_redacted_by_default": true
+    },
+    {
+      "pack_id": "pack_795af8bde17d",
+      "private_output_dir": "private_ingest_output/probate_forms",
+      "file_count": 6,
+      "file_type_counts": {
+        ".doc": 6
+      },
+      "supported_file_count": 6,
+      "rejected_or_suspicious_file_count": 0,
+      "templates_detected": 6,
+      "clauses_detected": 12,
+      "notebooklm_notes_linked": 0,
+      "classification_reviews_created": 6,
+      "document_intent_distribution": {
+        "PROBATE_APPLICATION": 2,
+        "PROBATE_AFFIDAVIT": 4
+      },
+      "stage_distribution": {
+        "PROBATE_APPLICATION": 2,
+        "EVIDENCE_COLLECTION": 4
+      },
+      "practice_area_distribution": {
+        "probate": 6
+      },
+      "review_status_distribution": {
+        "lawyer_review_required": 6
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 6
+      },
+      "templates_inactive_until_review": true,
+      "percentage_requiring_manual_classification": 100,
+      "extraction_warning_count": 0,
+      "extraction_warnings": [],
+      "candidate_template_titles": [],
+      "titles_redacted_by_default": true
+    }
+  ],
+  "totals": {
+    "templates_detected": 27,
+    "clauses_detected": 1150,
+    "notebooklm_notes_linked": 0,
+    "classification_reviews_created": 27,
+    "templates_inactive_until_review": true,
+    "percentage_requiring_manual_classification": 100,
+    "extraction_warning_count": 3,
+    "rejected_or_suspicious_file_count": 0
+  },
+  "errors": [],
+  "recommended_manual_review_actions": [
+    "Open the gitignored classification review JSON under private_ingest_output/.",
+    "Review practice area, document intent, procedural stage, prerequisites, and contraindications.",
+    "Approve only one small practice-lane subset first, such as PI, company winding-up, contracts, or probate.",
+    "Keep rejected and uncertain templates inactive in routing.",
+    "Re-run adversarial routing tests after any approval."
+  ]
+}

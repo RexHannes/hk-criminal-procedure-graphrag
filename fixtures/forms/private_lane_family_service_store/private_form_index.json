@@ -1,0 +1,117 @@
+{
+  "indexVersion": "forms-as-code-snippets-mvp-1",
+  "retrievalPolicy": "structured_filters_before_keyword_or_vector",
+  "vectorOnlyAllowed": false,
+  "records": [
+    {
+      "recordId": "template:lane_template_a7c186c77f0b",
+      "kind": "template",
+      "templateId": "lane_template_a7c186c77f0b",
+      "text": "Family service acknowledgment metadata template family_service FAMILY_SERVICE_ACKNOWLEDGMENT FAMILY_SERVICE proceedingsIssued == true respondentIdentified == true serviceAddressKnown == true serviceMethodSelected == true proceedingsIssued respondentIdentified serviceAddressKnown serviceMethodSelected",
+      "filters": {
+        "firmId": "private-lane-pilot-firm",
+        "workspaceId": "family_service-pilot",
+        "practiceArea": "family_service",
+        "matterTypes": [
+          "family_service",
+          "family_service"
+        ],
+        "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+        "workflowStage": "FAMILY_SERVICE",
+        "reviewStatus": "approved"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "template:lane_template_4ec8e426c63d",
+      "kind": "template",
+      "templateId": "lane_template_4ec8e426c63d",
+      "text": "Family service affirmation metadata template family_service FAMILY_SERVICE_AFFIRMATION FAMILY_SERVICE proceedingsIssued == true respondentIdentified == true serviceAddressKnown == true serviceMethodSelected == true proceedingsIssued respondentIdentified serviceAddressKnown serviceMethodSelected",
+      "filters": {
+        "firmId": "private-lane-pilot-firm",
+        "workspaceId": "family_service-pilot",
+        "practiceArea": "family_service",
+        "matterTypes": [
+          "family_service",
+          "family_service"
+        ],
+        "documentIntent": "FAMILY_SERVICE_AFFIRMATION",
+        "workflowStage": "FAMILY_SERVICE",
+        "reviewStatus": "approved"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:lane_clause_f9070e8cc883",
+      "kind": "clause",
+      "clauseId": "lane_clause_f9070e8cc883",
+      "templateId": "lane_template_a7c186c77f0b",
+      "text": "Redacted routing gate [Redacted family_service metadata-only clause 1. No private form text.] BACKGROUND_FACTS Use only after structured lane, stage, role, and missing-fact gates pass.",
+      "filters": {
+        "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+        "workflowStage": "FAMILY_SERVICE",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "family_service",
+          "family_service",
+          "family_service_acknowledgment"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:lane_clause_4a7d9cc19245",
+      "kind": "clause",
+      "clauseId": "lane_clause_4a7d9cc19245",
+      "templateId": "lane_template_a7c186c77f0b",
+      "text": "Redacted evidence gate [Redacted family_service metadata-only clause 2. No private form text.] EVIDENCE_GATE Use only after structured lane, stage, role, and missing-fact gates pass.",
+      "filters": {
+        "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+        "workflowStage": "FAMILY_SERVICE",
+        "clauseType": "EVIDENCE_GATE",
+        "issueTags": [
+          "family_service",
+          "family_service",
+          "family_service_acknowledgment"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:lane_clause_c628412bdae9",
+      "kind": "clause",
+      "clauseId": "lane_clause_c628412bdae9",
+      "templateId": "lane_template_4ec8e426c63d",
+      "text": "Redacted routing gate [Redacted family_service metadata-only clause 1. No private form text.] BACKGROUND_FACTS Use only after structured lane, stage, role, and missing-fact gates pass.",
+      "filters": {
+        "documentIntent": "FAMILY_SERVICE_AFFIRMATION",
+        "workflowStage": "FAMILY_SERVICE",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "family_service",
+          "family_service",
+          "family_service_affirmation"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:lane_clause_fd5c154baa09",
+      "kind": "clause",
+      "clauseId": "lane_clause_fd5c154baa09",
+      "templateId": "lane_template_4ec8e426c63d",
+      "text": "Redacted evidence gate [Redacted family_service metadata-only clause 2. No private form text.] EVIDENCE_GATE Use only after structured lane, stage, role, and missing-fact gates pass.",
+      "filters": {
+        "documentIntent": "FAMILY_SERVICE_AFFIRMATION",
+        "workflowStage": "FAMILY_SERVICE",
+        "clauseType": "EVIDENCE_GATE",
+        "issueTags": [
+          "family_service",
+          "family_service",
+          "family_service_affirmation"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    }
+  ]
+}

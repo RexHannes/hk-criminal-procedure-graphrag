@@ -1,0 +1,577 @@
+[
+  {
+    "id": "form_cbe2b96ca480",
+    "firmId": "demo-firm",
+    "workspaceId": "demo-pi",
+    "formPackId": "pack_29d61acd4e0b",
+    "title": "letter of claim synthetic",
+    "normalizedTitle": "letter_of_claim_synthetic",
+    "practiceArea": "personal_injury",
+    "subPracticeArea": "road_traffic_personal_injury",
+    "jurisdiction": "HK",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "applicableMatterTypes": [
+      "road_traffic_pi"
+    ],
+    "applicableRoles": [
+      "claimant",
+      "plaintiff",
+      "solicitor"
+    ],
+    "prerequisites": [
+      "opponentIdentified",
+      "liabilityFactsKnown"
+    ],
+    "contraindications": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "blockedWhen": [
+      "matter.proceedingsCommenced == true",
+      "matter.opponentIdentified == false blocks finalisation"
+    ],
+    "recommendedWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "bodyStructured": {
+      "headings": [
+        "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT",
+        "Letter of Claim - Road Traffic Personal Injury",
+        "Client and accident details",
+        "Liability allegation",
+        "Our client says your insured driver collided with our client and caused injury.",
+        "Medical evidence",
+        "Special damages",
+        "Settlement proposal"
+      ],
+      "text": "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT\n\nLetter of Claim - Road Traffic Personal Injury\n\nUse when: opponent or insurer identified; pre-action correspondence; liability facts sufficiently known.\nDo not use when: proceedings already commenced; opponent identity unknown; final quantum unsupported by medical evidence.\n\nClient and accident details\nWe act for {{client_name}} regarding the road traffic accident on {{accident_date}} at {{accident_location}}.\n\nLiability allegation\nOur client says your insured driver collided with our client and caused injury.\n\nMedical evidence\nMedical report: {{medical_report_summary}}.\n\nSpecial damages\nSpecial damages supported by receipts: {{special_damages_items}}.\n\nSettlement proposal\nPlease confirm liability and insurer details within {{response_deadline_days}} days."
+    },
+    "fieldSchema": [
+      {
+        "fieldKey": "client_name",
+        "label": "Client Name",
+        "valueType": "text",
+        "required": true,
+        "placeholder": "{{client_name}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "accident_date",
+        "label": "Accident Date",
+        "valueType": "date",
+        "required": true,
+        "placeholder": "{{accident_date}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "accident_location",
+        "label": "Accident Location",
+        "valueType": "text",
+        "required": true,
+        "placeholder": "{{accident_location}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "medical_report_summary",
+        "label": "Medical Report Summary",
+        "valueType": "text",
+        "required": true,
+        "placeholder": "{{medical_report_summary}}",
+        "evidenceRequired": true,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "special_damages_items",
+        "label": "Special Damages Items",
+        "valueType": "text",
+        "required": true,
+        "placeholder": "{{special_damages_items}}",
+        "evidenceRequired": true,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "response_deadline_days",
+        "label": "Response Deadline Days",
+        "valueType": "number",
+        "required": true,
+        "placeholder": "{{response_deadline_days}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      }
+    ],
+    "clauseIds": [
+      "clause_21b2cf57212f",
+      "clause_1a1c8c3d2f32",
+      "clause_254093ce0990",
+      "clause_039d2e9534ad",
+      "clause_dbee6fbdd00c",
+      "clause_da93122bec66",
+      "clause_e73c527162ff"
+    ],
+    "sourceFileRef": {
+      "fileId": "file_0ddda895d881",
+      "relativePath": "letter_of_claim.synthetic.txt",
+      "fileName": "letter_of_claim.synthetic.txt",
+      "extension": ".txt",
+      "byteSize": 809,
+      "sha256": "2010c9780947e62aa5960bce6da6e29e03b7a7f8b240225acf7ad13166e897e2",
+      "supported": true,
+      "rejected": false,
+      "warnings": []
+    },
+    "sourceLicenseNote": "Synthetic fixture only; no private or licensed template text.",
+    "templateVersion": "0.1.0",
+    "reviewStatus": "lawyer_review_required",
+    "classificationStatus": "machine_candidate",
+    "classificationReviewId": "classification_review_d21cdd4d3dde",
+    "routingActiveInDemo": true,
+    "activeInRouting": true,
+    "demoFixture": true,
+    "proposedPracticeArea": "personal_injury",
+    "proposedDocumentIntent": "LETTER_OF_CLAIM",
+    "proposedProceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "proposedMatterTypes": [
+      "road_traffic_pi"
+    ],
+    "proposedPrerequisites": [
+      "opponentIdentified",
+      "liabilityFactsKnown"
+    ],
+    "proposedContraindications": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "classificationExtractionTrace": {
+      "method": "regex_keyword_machine_extraction",
+      "title": "letter of claim synthetic",
+      "sourceFileRef": {
+        "fileId": "file_0ddda895d881",
+        "relativePath": "letter_of_claim.synthetic.txt",
+        "fileName": "letter_of_claim.synthetic.txt",
+        "extension": ".txt",
+        "byteSize": 809,
+        "sha256": "2010c9780947e62aa5960bce6da6e29e03b7a7f8b240225acf7ad13166e897e2",
+        "supported": true,
+        "rejected": false,
+        "warnings": []
+      },
+      "confidence": 0.72,
+      "caveat": "Machine classification only; not lawyer-approved."
+    },
+    "reviewerDecision": {
+      "status": "pending",
+      "reviewer": "",
+      "reviewedAt": "",
+      "comment": "",
+      "approvedValues": null
+    },
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "form_5529c886f381",
+    "firmId": "demo-firm",
+    "workspaceId": "demo-pi",
+    "formPackId": "pack_29d61acd4e0b",
+    "title": "medical records request synthetic",
+    "normalizedTitle": "medical_records_request_synthetic",
+    "practiceArea": "personal_injury",
+    "subPracticeArea": "",
+    "jurisdiction": "HK",
+    "documentIntent": "MEDICAL_RECORDS_REQUEST",
+    "proceduralStage": "MEDICAL_EVIDENCE",
+    "applicableMatterTypes": [
+      "general_matter"
+    ],
+    "applicableRoles": [
+      "claimant",
+      "plaintiff",
+      "solicitor"
+    ],
+    "prerequisites": [
+      "injuryExists",
+      "clientIdentityKnown"
+    ],
+    "contraindications": [
+      "fullMedicalEvidenceAlreadyReceived"
+    ],
+    "blockedWhen": [],
+    "recommendedWhen": [
+      "injury exists",
+      "medical evidence incomplete"
+    ],
+    "bodyStructured": {
+      "headings": [
+        "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT",
+        "Medical Records Request",
+        "Use when: injury exists and medical evidence is incomplete.",
+        "Do not use when: full medical records and report are already received.",
+        "Patient details",
+        "Records requested"
+      ],
+      "text": "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT\n\nMedical Records Request\n\nUse when: injury exists and medical evidence is incomplete.\nDo not use when: full medical records and report are already received.\n\nPatient details\nPatient: {{client_name}}. Injury date: {{accident_date}}.\n\nRecords requested\nPlease provide consultation notes, diagnosis, treatment, sick leave, invoices, and prognosis materials."
+    },
+    "fieldSchema": [
+      {
+        "fieldKey": "client_name",
+        "label": "Client Name",
+        "valueType": "text",
+        "required": true,
+        "placeholder": "{{client_name}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "accident_date",
+        "label": "Accident Date",
+        "valueType": "date",
+        "required": true,
+        "placeholder": "{{accident_date}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      }
+    ],
+    "clauseIds": [
+      "clause_3ad9461cb216",
+      "clause_7a2a8fb7e9b8",
+      "clause_2e34b8376360",
+      "clause_f713477cfbea"
+    ],
+    "sourceFileRef": {
+      "fileId": "file_81c3660937a9",
+      "relativePath": "medical_records_request.synthetic.txt",
+      "fileName": "medical_records_request.synthetic.txt",
+      "extension": ".txt",
+      "byteSize": 396,
+      "sha256": "173e019789b5edd6168ea3ec80188e5643f05a48e18a505041cca404172cd409",
+      "supported": true,
+      "rejected": false,
+      "warnings": []
+    },
+    "sourceLicenseNote": "Synthetic fixture only; no private or licensed template text.",
+    "templateVersion": "0.1.0",
+    "reviewStatus": "lawyer_review_required",
+    "classificationStatus": "machine_candidate",
+    "classificationReviewId": "classification_review_1be5756f25fd",
+    "routingActiveInDemo": true,
+    "activeInRouting": true,
+    "demoFixture": true,
+    "proposedPracticeArea": "personal_injury",
+    "proposedDocumentIntent": "MEDICAL_RECORDS_REQUEST",
+    "proposedProceduralStage": "MEDICAL_EVIDENCE",
+    "proposedMatterTypes": [
+      "general_matter"
+    ],
+    "proposedPrerequisites": [
+      "injuryExists",
+      "clientIdentityKnown"
+    ],
+    "proposedContraindications": [
+      "fullMedicalEvidenceAlreadyReceived"
+    ],
+    "classificationExtractionTrace": {
+      "method": "regex_keyword_machine_extraction",
+      "title": "medical records request synthetic",
+      "sourceFileRef": {
+        "fileId": "file_81c3660937a9",
+        "relativePath": "medical_records_request.synthetic.txt",
+        "fileName": "medical_records_request.synthetic.txt",
+        "extension": ".txt",
+        "byteSize": 396,
+        "sha256": "173e019789b5edd6168ea3ec80188e5643f05a48e18a505041cca404172cd409",
+        "supported": true,
+        "rejected": false,
+        "warnings": []
+      },
+      "confidence": 0.72,
+      "caveat": "Machine classification only; not lawyer-approved."
+    },
+    "reviewerDecision": {
+      "status": "pending",
+      "reviewer": "",
+      "reviewedAt": "",
+      "comment": "",
+      "approvedValues": null
+    },
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "form_5b2574d75330",
+    "firmId": "demo-firm",
+    "workspaceId": "demo-pi",
+    "formPackId": "pack_29d61acd4e0b",
+    "title": "police report request synthetic",
+    "normalizedTitle": "police_report_request_synthetic",
+    "practiceArea": "personal_injury",
+    "subPracticeArea": "road_traffic_personal_injury",
+    "jurisdiction": "HK",
+    "documentIntent": "POLICE_REPORT_REQUEST",
+    "proceduralStage": "URGENT_ACTIONS",
+    "applicableMatterTypes": [
+      "road_traffic_pi"
+    ],
+    "applicableRoles": [
+      "claimant",
+      "plaintiff",
+      "solicitor"
+    ],
+    "prerequisites": [
+      "accidentDate",
+      "accidentLocation"
+    ],
+    "contraindications": [
+      "policeReportAlreadyObtained"
+    ],
+    "blockedWhen": [],
+    "recommendedWhen": [
+      "opponent unknown",
+      "police report missing",
+      "road traffic accident"
+    ],
+    "bodyStructured": {
+      "headings": [
+        "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT",
+        "Police Report / Traffic Accident Record Request",
+        "Do not use when: police report already obtained and verified.",
+        "Request details",
+        "Purpose"
+      ],
+      "text": "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT\n\nPolice Report / Traffic Accident Record Request\n\nUse when: road traffic accident; police report or accident reference is missing; opponent identity or insurer details are unknown.\nDo not use when: police report already obtained and verified.\n\nRequest details\nClient: {{client_name}}. Accident date: {{accident_date}}. Location: {{accident_location}}.\n\nPurpose\nPlease provide the traffic accident record or report reference for opponent identification and insurance follow-up."
+    },
+    "fieldSchema": [
+      {
+        "fieldKey": "client_name",
+        "label": "Client Name",
+        "valueType": "text",
+        "required": true,
+        "placeholder": "{{client_name}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "accident_date",
+        "label": "Accident Date",
+        "valueType": "date",
+        "required": true,
+        "placeholder": "{{accident_date}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "accident_location",
+        "label": "Accident Location",
+        "valueType": "text",
+        "required": true,
+        "placeholder": "{{accident_location}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      }
+    ],
+    "clauseIds": [
+      "clause_eced84ccc071",
+      "clause_3b236863b183",
+      "clause_9ab2845a2eda",
+      "clause_58022d60ed71"
+    ],
+    "sourceFileRef": {
+      "fileId": "file_0cc4c9f2ff2f",
+      "relativePath": "police_report_request.synthetic.txt",
+      "fileName": "police_report_request.synthetic.txt",
+      "extension": ".txt",
+      "byteSize": 518,
+      "sha256": "4e0c90c7db6383eed4931e8b304715ad793e9e7db3429f659ee6bc127e43da75",
+      "supported": true,
+      "rejected": false,
+      "warnings": []
+    },
+    "sourceLicenseNote": "Synthetic fixture only; no private or licensed template text.",
+    "templateVersion": "0.1.0",
+    "reviewStatus": "lawyer_review_required",
+    "classificationStatus": "machine_candidate",
+    "classificationReviewId": "classification_review_908896dc0ea3",
+    "routingActiveInDemo": true,
+    "activeInRouting": true,
+    "demoFixture": true,
+    "proposedPracticeArea": "personal_injury",
+    "proposedDocumentIntent": "POLICE_REPORT_REQUEST",
+    "proposedProceduralStage": "URGENT_ACTIONS",
+    "proposedMatterTypes": [
+      "road_traffic_pi"
+    ],
+    "proposedPrerequisites": [
+      "accidentDate",
+      "accidentLocation"
+    ],
+    "proposedContraindications": [
+      "policeReportAlreadyObtained"
+    ],
+    "classificationExtractionTrace": {
+      "method": "regex_keyword_machine_extraction",
+      "title": "police report request synthetic",
+      "sourceFileRef": {
+        "fileId": "file_0cc4c9f2ff2f",
+        "relativePath": "police_report_request.synthetic.txt",
+        "fileName": "police_report_request.synthetic.txt",
+        "extension": ".txt",
+        "byteSize": 518,
+        "sha256": "4e0c90c7db6383eed4931e8b304715ad793e9e7db3429f659ee6bc127e43da75",
+        "supported": true,
+        "rejected": false,
+        "warnings": []
+      },
+      "confidence": 0.72,
+      "caveat": "Machine classification only; not lawyer-approved."
+    },
+    "reviewerDecision": {
+      "status": "pending",
+      "reviewer": "",
+      "reviewedAt": "",
+      "comment": "",
+      "approvedValues": null
+    },
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "form_27a08fac197f",
+    "firmId": "demo-firm",
+    "workspaceId": "demo-pi",
+    "formPackId": "pack_29d61acd4e0b",
+    "title": "writ synthetic",
+    "normalizedTitle": "writ_synthetic",
+    "practiceArea": "personal_injury",
+    "subPracticeArea": "road_traffic_personal_injury",
+    "jurisdiction": "HK",
+    "documentIntent": "WRIT",
+    "proceduralStage": "COMMENCEMENT",
+    "applicableMatterTypes": [
+      "road_traffic_pi"
+    ],
+    "applicableRoles": [
+      "claimant",
+      "plaintiff",
+      "solicitor"
+    ],
+    "prerequisites": [
+      "lawyerDecisionToCommence",
+      "defendantIdentified",
+      "limitationChecked"
+    ],
+    "contraindications": [
+      "proceedingsCommenced"
+    ],
+    "blockedWhen": [
+      "matter.proceedingsCommenced == true"
+    ],
+    "recommendedWhen": [
+      "lawyer decides to commence",
+      "proceedings not commenced"
+    ],
+    "bodyStructured": {
+      "headings": [
+        "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT",
+        "Writ - Personal Injury Commencement",
+        "Parties",
+        "Claim"
+      ],
+      "text": "SYNTHETIC FIXTURE - NOT A REAL PRECEDENT\n\nWrit - Personal Injury Commencement\n\nUse when: lawyer has decided to commence proceedings and proceedings have not yet commenced.\nDo not use when: proceedings already commenced or limitation/procedure route requires a different originating process.\n\nParties\nPlaintiff: {{client_name}}. Defendant: {{defendant_name}}.\n\nClaim\nThe plaintiff claims damages arising from the road traffic accident on {{accident_date}}."
+    },
+    "fieldSchema": [
+      {
+        "fieldKey": "client_name",
+        "label": "Client Name",
+        "valueType": "text",
+        "required": true,
+        "placeholder": "{{client_name}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "defendant_name",
+        "label": "Defendant Name",
+        "valueType": "text",
+        "required": true,
+        "placeholder": "{{defendant_name}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "accident_date",
+        "label": "Accident Date",
+        "valueType": "date",
+        "required": true,
+        "placeholder": "{{accident_date}}",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      }
+    ],
+    "clauseIds": [
+      "clause_24d8806e6389",
+      "clause_bfe323800f25",
+      "clause_44b0e332f907",
+      "clause_732919ca3d1b"
+    ],
+    "sourceFileRef": {
+      "fileId": "file_5387fc094f5a",
+      "relativePath": "writ.synthetic.txt",
+      "fileName": "writ.synthetic.txt",
+      "extension": ".txt",
+      "byteSize": 456,
+      "sha256": "0d8ed1791c62d79dea021d7f35e26d0e27ce6e950f44fded8a963a72b2223cba",
+      "supported": true,
+      "rejected": false,
+      "warnings": []
+    },
+    "sourceLicenseNote": "Synthetic fixture only; no private or licensed template text.",
+    "templateVersion": "0.1.0",
+    "reviewStatus": "lawyer_review_required",
+    "classificationStatus": "machine_candidate",
+    "classificationReviewId": "classification_review_978263380dae",
+    "routingActiveInDemo": true,
+    "activeInRouting": true,
+    "demoFixture": true,
+    "proposedPracticeArea": "personal_injury",
+    "proposedDocumentIntent": "WRIT",
+    "proposedProceduralStage": "COMMENCEMENT",
+    "proposedMatterTypes": [
+      "road_traffic_pi"
+    ],
+    "proposedPrerequisites": [
+      "lawyerDecisionToCommence",
+      "defendantIdentified",
+      "limitationChecked"
+    ],
+    "proposedContraindications": [
+      "proceedingsCommenced"
+    ],
+    "classificationExtractionTrace": {
+      "method": "regex_keyword_machine_extraction",
+      "title": "writ synthetic",
+      "sourceFileRef": {
+        "fileId": "file_5387fc094f5a",
+        "relativePath": "writ.synthetic.txt",
+        "fileName": "writ.synthetic.txt",
+        "extension": ".txt",
+        "byteSize": 456,
+        "sha256": "0d8ed1791c62d79dea021d7f35e26d0e27ce6e950f44fded8a963a72b2223cba",
+        "supported": true,
+        "rejected": false,
+        "warnings": []
+      },
+      "confidence": 0.72,
+      "caveat": "Machine classification only; not lawyer-approved."
+    },
+    "reviewerDecision": {
+      "status": "pending",
+      "reviewer": "",
+      "reviewedAt": "",
+      "comment": "",
+      "approvedValues": null
+    },
+    "provenanceLabel": "TEMPLATE_BASED"
+  }
+]

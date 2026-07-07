@@ -1,0 +1,25 @@
+{
+  "report_id": "sem_b_private_inventory_metadata",
+  "generated_at": "2026-07-06T00:00:00+08:00",
+  "privacy_mode": "metadata_only_no_content_extracted",
+  "external_services_used_for_private_content": false,
+  "total_relevant_files_counted": 506,
+  "counts_by_area": [
+    { "area": "Conveyancing Practice", "zip": 1, "docx": 28, "doc": 0, "pdf": 41, "likely_area": "property sale/purchase, SPAs, undertakings, leases, stamp duty, title docs" },
+    { "area": "Corporate & Commercial", "zip": 0, "docx": 28, "doc": 12, "pdf": 33, "likely_area": "banking/finance, facility agreements, guarantees/security, IPO/listing, insolvency" },
+    { "area": "Wills and Probate", "zip": 0, "docx": 26, "doc": 6, "pdf": 48, "likely_area": "will drafting, probate grants, estate administration, intestacy" },
+    { "area": "Bar Course", "zip": 0, "docx": 32, "doc": 0, "pdf": 31, "likely_area": "civil/criminal procedure, pleadings, summonses, affidavits, advice/evidence" },
+    { "area": "Financial Regulatory Practice", "zip": 1, "docx": 12, "doc": 0, "pdf": 27, "likely_area": "SFC/regulatory compliance, governance, market misconduct, investigations" },
+    { "area": "Family Law", "zip": 0, "docx": 17, "doc": 1, "pdf": 27, "likely_area": "matrimonial finance, Form E, family proceedings, cases/ordinances" },
+    { "area": "Trial Advocacy", "zip": 3, "docx": 16, "doc": 2, "pdf": 25, "likely_area": "civil/criminal advocacy, EIC, cross-exam, openings/closings, case files" },
+    { "area": "Commercial Writing & Drafting", "zip": 0, "docx": 23, "doc": 10, "pdf": 15, "likely_area": "commercial contracts, JV/shareholders, IT terms, consultancy/IP, leases" },
+    { "area": "Companies General Commentary ZIP", "zip": 1, "docx": 9, "doc": 0, "pdf": 0, "likely_area": "company proceedings/commentary, petitions, originating summons, director disqualification" }
+  ],
+  "recommended_private_ingestion_policy": [
+    "Default to metadata-only inventory first.",
+    "Extract real text only into gitignored private_ingest_output after confirming rights to use the pack.",
+    "Do not send private/licensed content to hosted or external services without explicit approval for that run.",
+    "Quarantine likely commentary/course/licensed material from snippet generation unless separately approved.",
+    "Use synthetic fixtures for committed demos."
+  ]
+}

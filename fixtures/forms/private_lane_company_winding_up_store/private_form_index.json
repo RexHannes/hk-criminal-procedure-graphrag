@@ -1,0 +1,45 @@
+{
+  "indexVersion": "forms-as-code-snippets-mvp-1",
+  "retrievalPolicy": "structured_filters_before_keyword_or_vector",
+  "vectorOnlyAllowed": false,
+  "records": [
+    {
+      "recordId": "template:real_lane_template_356c0f92da55",
+      "kind": "template",
+      "templateId": "real_lane_template_356c0f92da55",
+      "text": "Company winding-up petition metadata template company_corporate COMPANY_WINDING_UP_PETITION COMPANY_WINDING_UP creditor winding-up lane company identified debt or statutory ground identified standing checked statutory demand/service evidence available companyIdentified debtOrGroundIdentified standingChecked statutoryDemandOrServiceEvidenceAvailable",
+      "filters": {
+        "firmId": "private-lane-pilot-firm",
+        "workspaceId": "company-winding-up-pilot",
+        "practiceArea": "company_corporate",
+        "matterTypes": [
+          "company",
+          "corporate",
+          "company_winding_up"
+        ],
+        "documentIntent": "COMPANY_WINDING_UP_PETITION",
+        "workflowStage": "COMPANY_WINDING_UP",
+        "reviewStatus": "approved"
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    },
+    {
+      "recordId": "clause:real_lane_clause_961aaa8b898b",
+      "kind": "clause",
+      "clauseId": "real_lane_clause_961aaa8b898b",
+      "templateId": "real_lane_template_356c0f92da55",
+      "text": "Redacted evidence gate [Redacted metadata-only clause. No private form text.] BACKGROUND_FACTS Use only after company, debt/ground, standing, and service evidence are checked.",
+      "filters": {
+        "documentIntent": "COMPANY_WINDING_UP_PETITION",
+        "workflowStage": "COMPANY_WINDING_UP",
+        "clauseType": "BACKGROUND_FACTS",
+        "issueTags": [
+          "company_corporate",
+          "company_winding_up",
+          "company_winding_up_petition"
+        ]
+      },
+      "provenanceLabel": "TEMPLATE_BASED"
+    }
+  ]
+}

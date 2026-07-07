@@ -3,6 +3,23 @@
     { "source": "/", "destination": "/viewer/index.html" },
     { "source": "/tree", "destination": "/viewer/index_legacy.html" }
   ],
+  "functions": {
+    "api/forms/recommend.js": {
+      "includeFiles": "fixtures/forms/**"
+    },
+    "api/forms/search.js": {
+      "includeFiles": "fixtures/forms/**"
+    },
+    "api/forms/apply-template.js": {
+      "includeFiles": "fixtures/forms/**"
+    },
+    "api/forms/clauses/recommend.js": {
+      "includeFiles": "fixtures/forms/**"
+    },
+    "api/forms/usage-notes.js": {
+      "includeFiles": "fixtures/forms/**"
+    }
+  },
   "headers": [
     {
       "source": "/data/(.*)",

@@ -1,0 +1,15 @@
+{
+  "id": "pack_company_winding_up_provisional_liquidator_redacted_metadata",
+  "firmId": "private-lane-pilot-firm",
+  "workspaceId": "company_winding_up_provisional_liquidator-pilot",
+  "sourcePackName": "company_winding_up_provisional_liquidator - Redacted Metadata",
+  "uploadHash": "lane_hash_8fb78eed5468",
+  "uploadedAt": "2026-07-07T00:00:00+08:00",
+  "uploadedBy": "codex-local-expanded-lane-pilot",
+  "sourceLicenseNote": "Private lane metadata only; no private form text committed.",
+  "visibility": "FIRM_PRIVATE",
+  "fileInventory": [],
+  "ingestionStatus": "redacted_metadata_reviewed",
+  "extractionWarnings": [],
+  "reviewStatus": "approved_metadata_only"
+}

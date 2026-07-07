@@ -1,0 +1,514 @@
+[
+  {
+    "id": "rule_8fba1e0036ec",
+    "clauseId": "clause_21b2cf57212f",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true",
+    "naturalLanguageCondition": "pre-action stage",
+    "examplesUse": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "examplesDoNotUse": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_6a61796b43df",
+    "clauseId": "clause_1a1c8c3d2f32",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true",
+    "naturalLanguageCondition": "pre-action stage",
+    "examplesUse": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "examplesDoNotUse": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_8565df77c541",
+    "clauseId": "clause_254093ce0990",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true",
+    "naturalLanguageCondition": "pre-action stage",
+    "examplesUse": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "examplesDoNotUse": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_1f886b035ae7",
+    "clauseId": "clause_039d2e9534ad",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true",
+    "naturalLanguageCondition": "pre-action stage",
+    "examplesUse": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "examplesDoNotUse": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "requiredFacts": [
+      "liabilityFactsKnown"
+    ],
+    "blockingMissingFacts": [
+      "liabilityFactsKnown"
+    ],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_8eb84e1afe56",
+    "clauseId": "clause_dbee6fbdd00c",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true",
+    "naturalLanguageCondition": "medical evidence exists or is being requested",
+    "examplesUse": [
+      "medical evidence exists or is being requested"
+    ],
+    "examplesDoNotUse": [
+      "medical position is complete and already summarised elsewhere"
+    ],
+    "requiredFacts": [
+      "medicalEvidenceReceived"
+    ],
+    "blockingMissingFacts": [
+      "medicalEvidenceReceived"
+    ],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_3ce8562fc4f9",
+    "clauseId": "clause_da93122bec66",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true",
+    "naturalLanguageCondition": "receipts, pay slips, medical bills, or other supporting documents are available",
+    "examplesUse": [
+      "receipts, pay slips, medical bills, or other supporting documents are available"
+    ],
+    "examplesDoNotUse": [
+      "supporting evidence for the figures is missing"
+    ],
+    "requiredFacts": [
+      "specialDamagesEvidenceAvailable"
+    ],
+    "blockingMissingFacts": [
+      "specialDamagesEvidenceAvailable"
+    ],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_29fe4c088342",
+    "clauseId": "clause_da93122bec66",
+    "ruleType": "BLOCK_IF_EVIDENCE_MISSING",
+    "conditionExpression": "matter.specialDamagesEvidenceAvailable != true",
+    "naturalLanguageCondition": "Block final special-damages wording until supporting evidence is available.",
+    "examplesUse": [
+      "Receipts or pay slips uploaded"
+    ],
+    "examplesDoNotUse": [
+      "Client has not provided receipts or wage evidence"
+    ],
+    "requiredFacts": [
+      "specialDamagesEvidenceAvailable"
+    ],
+    "blockingMissingFacts": [
+      "specialDamagesEvidenceAvailable"
+    ],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 90,
+    "confidence": 0.86,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_a2c7f736d540",
+    "clauseId": "clause_e73c527162ff",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true",
+    "naturalLanguageCondition": "pre-action stage",
+    "examplesUse": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "examplesDoNotUse": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_f68854d13fbc",
+    "clauseId": "clause_3ad9461cb216",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "structured_filters_match == true",
+    "naturalLanguageCondition": "injury exists",
+    "examplesUse": [
+      "injury exists",
+      "medical evidence incomplete"
+    ],
+    "examplesDoNotUse": [
+      "fullMedicalEvidenceAlreadyReceived"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_4d178756e00a",
+    "clauseId": "clause_7a2a8fb7e9b8",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.injuryExists == true",
+    "naturalLanguageCondition": "medical evidence exists or is being requested",
+    "examplesUse": [
+      "medical evidence exists or is being requested"
+    ],
+    "examplesDoNotUse": [
+      "medical position is complete and already summarised elsewhere"
+    ],
+    "requiredFacts": [
+      "medicalEvidenceReceived"
+    ],
+    "blockingMissingFacts": [
+      "medicalEvidenceReceived"
+    ],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_6985eb5635ad",
+    "clauseId": "clause_2e34b8376360",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "structured_filters_match == true",
+    "naturalLanguageCondition": "injury exists",
+    "examplesUse": [
+      "injury exists",
+      "medical evidence incomplete"
+    ],
+    "examplesDoNotUse": [
+      "fullMedicalEvidenceAlreadyReceived"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_a778cbe60625",
+    "clauseId": "clause_f713477cfbea",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "structured_filters_match == true",
+    "naturalLanguageCondition": "injury exists",
+    "examplesUse": [
+      "injury exists",
+      "medical evidence incomplete"
+    ],
+    "examplesDoNotUse": [
+      "fullMedicalEvidenceAlreadyReceived"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_1ce7627c9b0e",
+    "clauseId": "clause_eced84ccc071",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "structured_filters_match == true",
+    "naturalLanguageCondition": "opponent unknown",
+    "examplesUse": [
+      "opponent unknown",
+      "police report missing",
+      "road traffic accident"
+    ],
+    "examplesDoNotUse": [
+      "policeReportAlreadyObtained"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_7536792f62b4",
+    "clauseId": "clause_3b236863b183",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "structured_filters_match == true",
+    "naturalLanguageCondition": "police report or opponent identity is missing",
+    "examplesUse": [
+      "police report or opponent identity is missing"
+    ],
+    "examplesDoNotUse": [
+      "policeReportAlreadyObtained"
+    ],
+    "requiredFacts": [
+      "accidentDate",
+      "accidentLocation"
+    ],
+    "blockingMissingFacts": [
+      "accidentDate",
+      "accidentLocation"
+    ],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_5bf15e225a3c",
+    "clauseId": "clause_9ab2845a2eda",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "structured_filters_match == true",
+    "naturalLanguageCondition": "opponent unknown",
+    "examplesUse": [
+      "opponent unknown",
+      "police report missing",
+      "road traffic accident"
+    ],
+    "examplesDoNotUse": [
+      "policeReportAlreadyObtained"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_ed56fe7cc8de",
+    "clauseId": "clause_58022d60ed71",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "structured_filters_match == true",
+    "naturalLanguageCondition": "opponent unknown",
+    "examplesUse": [
+      "opponent unknown",
+      "police report missing",
+      "road traffic accident"
+    ],
+    "examplesDoNotUse": [
+      "policeReportAlreadyObtained"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_167807df87d9",
+    "clauseId": "clause_24d8806e6389",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true && matter.lawyerDecisionToCommence == true",
+    "naturalLanguageCondition": "lawyer decides to commence",
+    "examplesUse": [
+      "lawyer decides to commence",
+      "proceedings not commenced"
+    ],
+    "examplesDoNotUse": [
+      "proceedingsCommenced"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_ddd451faf57b",
+    "clauseId": "clause_bfe323800f25",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true && matter.lawyerDecisionToCommence == true",
+    "naturalLanguageCondition": "lawyer decides to commence",
+    "examplesUse": [
+      "lawyer decides to commence",
+      "proceedings not commenced"
+    ],
+    "examplesDoNotUse": [
+      "proceedingsCommenced"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_e2234918bc35",
+    "clauseId": "clause_44b0e332f907",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true && matter.lawyerDecisionToCommence == true",
+    "naturalLanguageCondition": "lawyer decides to commence",
+    "examplesUse": [
+      "lawyer decides to commence",
+      "proceedings not commenced"
+    ],
+    "examplesDoNotUse": [
+      "proceedingsCommenced"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  },
+  {
+    "id": "rule_fb87d0fa30c9",
+    "clauseId": "clause_732919ca3d1b",
+    "ruleType": "USE_WHEN",
+    "conditionExpression": "matter.proceedingsCommenced != true && matter.lawyerDecisionToCommence == true",
+    "naturalLanguageCondition": "lawyer decides to commence",
+    "examplesUse": [
+      "lawyer decides to commence",
+      "proceedings not commenced"
+    ],
+    "examplesDoNotUse": [
+      "proceedingsCommenced"
+    ],
+    "requiredFacts": [],
+    "blockingMissingFacts": [],
+    "notebooklmUsageNoteIds": [
+      "note_2f2d7b3b57c1"
+    ],
+    "publicAuthorityIds": [],
+    "firmSopStepIds": [],
+    "priority": 50,
+    "confidence": 0.72,
+    "reviewStatus": "lawyer_review_required"
+  }
+]

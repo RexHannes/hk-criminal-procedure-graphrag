@@ -1,0 +1,15 @@
+{
+  "id": "pack_private_lane_company_winding_up_redacted",
+  "firmId": "private-lane-pilot-firm",
+  "workspaceId": "company-winding-up-pilot",
+  "sourcePackName": "Private Company Winding-Up Lane - Redacted Metadata",
+  "uploadHash": "private_lane_hash_bd1c27571bf7",
+  "uploadedAt": "2026-07-07T00:00:00+08:00",
+  "uploadedBy": "codex-local-private-lane-pilot",
+  "sourceLicenseNote": "Private real-lane metadata only; no private form text committed.",
+  "visibility": "FIRM_PRIVATE",
+  "fileInventory": [],
+  "ingestionStatus": "redacted_metadata_reviewed",
+  "extractionWarnings": [],
+  "reviewStatus": "approved_metadata_only"
+}

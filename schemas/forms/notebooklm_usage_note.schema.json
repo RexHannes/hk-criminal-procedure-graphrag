@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NotebookLMUsageNote",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "noteTitle",
+    "noteText",
+    "provenanceLabel"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "sourceNotebook": {
+      "type": "string"
+    },
+    "noteTitle": {
+      "type": "string"
+    },
+    "noteText": {
+      "type": "string"
+    },
+    "relatedTemplateIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "relatedClauseIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "suggestedUseWhen": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "suggestedDoNotUseWhen": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "suggestedWorkflowStage": {
+      "type": "string",
+      "enum": [
+        "INTAKE",
+        "URGENT_ACTIONS",
+        "EVIDENCE_COLLECTION",
+        "MEDICAL_EVIDENCE",
+        "LIABILITY_ASSESSMENT",
+        "PRE_ACTION_CORRESPONDENCE",
+        "SETTLEMENT_NEGOTIATION",
+        "COMMENCEMENT",
+        "PLEADINGS",
+        "DISCOVERY",
+        "EXPERT_EVIDENCE",
+        "MEDIATION",
+        "TRIAL_PREPARATION",
+        "TRIAL",
+        "POST_JUDGMENT",
+        "COSTS",
+        "CLOSURE"
+      ]
+    },
+    "suggestedMatterType": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string"
+    },
+    "reviewerComment": {
+      "type": "string"
+    },
+    "provenanceLabel": {
+      "type": "string",
+      "enum": [
+        "SOURCE_BACKED",
+        "TEMPLATE_BASED",
+        "FIRM_SOP",
+        "AI_SUGGESTED",
+        "INTERNAL_USAGE_NOTE",
+        "LAWYER_APPROVED"
+      ]
+    }
+  }
+}

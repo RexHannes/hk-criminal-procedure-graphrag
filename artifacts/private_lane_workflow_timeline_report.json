@@ -1,0 +1,122 @@
+{
+  "report_id": "private_lane_workflow_timeline",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "selected_lane": "company_winding_up",
+  "private_text_committed": false,
+  "professional_advice_certified": false,
+  "part_1": {
+    "issue": "Whether the matter is ready for a company winding-up petition workflow.",
+    "relevant_public_authority_placeholders": [
+      "Companies (Winding Up and Miscellaneous Provisions) Ordinance source pack pending"
+    ],
+    "source_status": "public_authority_placeholder_only",
+    "legal_analysis_status": "research_required_separate_from_forms"
+  },
+  "part_2": {
+    "recommended_form": "Company winding-up petition metadata template",
+    "blocked_forms": [
+      "company_winding_up_wrong_stage"
+    ],
+    "missing_facts": [
+      "statutoryDemandOrServiceEvidenceAvailable"
+    ],
+    "clause_blockers": [
+      "statutoryDemandOrServiceEvidenceAvailable"
+    ],
+    "draftability_status": "metadata_routable_but_private_text_not_committed",
+    "lawyer_review_gate": "approved_metadata_only_for_one_template"
+  },
+  "part_3": {
+    "export_format": "crm_workflow_v0",
+    "crm_rows": [
+      {
+        "rowId": "crm_001",
+        "sequence": 1,
+        "part": "Part 1",
+        "taskName": "Legal analysis and source classification",
+        "taskType": "legal_analysis",
+        "status": "research_required",
+        "documentIntent": "",
+        "proceduralStage": "",
+        "blockers": [],
+        "professionalAdviceCertified": false,
+        "ownerPlaceholder": "lane-owner-placeholder",
+        "dueDatePlaceholder": "TBD",
+        "dependency": ""
+      },
+      {
+        "rowId": "crm_002",
+        "sequence": 2,
+        "part": "Part 2",
+        "taskName": "Company winding-up petition metadata template",
+        "taskType": "part_2_documentary_action",
+        "status": "candidate_action",
+        "documentIntent": "COMPANY_WINDING_UP_PETITION",
+        "proceduralStage": "COMPANY_WINDING_UP",
+        "blockers": [],
+        "professionalAdviceCertified": false,
+        "ownerPlaceholder": "lane-owner-placeholder",
+        "dueDatePlaceholder": "TBD",
+        "dependency": "crm_001"
+      },
+      {
+        "rowId": "crm_003",
+        "sequence": 3,
+        "part": "Part 3",
+        "taskName": "Export workflow timeline",
+        "taskType": "crm_timeline_export",
+        "status": "ready_for_crm_mapping",
+        "documentIntent": "",
+        "proceduralStage": "",
+        "blockers": [],
+        "professionalAdviceCertified": false,
+        "ownerPlaceholder": "lane-owner-placeholder",
+        "dueDatePlaceholder": "TBD",
+        "dependency": "crm_002"
+      }
+    ]
+  },
+  "routing_fixture_results": [
+    {
+      "scenario_id": "company_winding_up_correct_stage",
+      "expected": "recommend",
+      "passed": true,
+      "recommended_count": 1,
+      "blocked_count": 0,
+      "missing_facts": [],
+      "required_evidence": [],
+      "caveats": []
+    },
+    {
+      "scenario_id": "company_winding_up_wrong_stage",
+      "expected": "block",
+      "passed": true,
+      "recommended_count": 0,
+      "blocked_count": 1,
+      "missing_facts": [],
+      "required_evidence": [],
+      "caveats": []
+    },
+    {
+      "scenario_id": "company_winding_up_missing_prerequisite",
+      "expected": "placeholder_or_blocker",
+      "passed": true,
+      "recommended_count": 1,
+      "blocked_count": 0,
+      "missing_facts": [
+        "statutoryDemandOrServiceEvidenceAvailable"
+      ],
+      "required_evidence": [
+        "statutoryDemandOrServiceEvidenceAvailable"
+      ],
+      "caveats": [
+        {
+          "gateId": "gate_company_winding_up_statutoryDemandOrServiceEvidenceAvailable",
+          "severity": "placeholder_only",
+          "reason": "Statutory demand/service evidence is missing; keep petition drafting as placeholder-only.",
+          "missingFact": "statutoryDemandOrServiceEvidenceAvailable"
+        }
+      ]
+    }
+  ]
+}

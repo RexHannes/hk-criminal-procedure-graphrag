@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/forms/notebooklm_form_usage_note.schema.json",
+  "title": "NotebookLM Form Usage Note",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "note_type",
+    "lane",
+    "provenance",
+    "form_document_intent",
+    "workflow_stage",
+    "use_when",
+    "do_not_use_when",
+    "missing_facts",
+    "required_evidence",
+    "wrong_stage_blockers",
+    "alternative_forms",
+    "draftability_status",
+    "expected_scenarios"
+  ],
+  "properties": {
+    "note_type": { "const": "form_usage_note" },
+    "lane": { "type": "string", "minLength": 1 },
+    "provenance": { "const": "INTERNAL_USAGE_NOTE" },
+    "source_notebook": { "type": "string" },
+    "exported_at": { "type": "string" },
+    "form_document_intent": { "type": "string", "minLength": 1 },
+    "workflow_stage": { "type": "string", "minLength": 1 },
+    "use_when": { "type": "array", "items": { "type": "string" } },
+    "do_not_use_when": { "type": "array", "items": { "type": "string" } },
+    "missing_facts": { "type": "array", "items": { "type": "string" } },
+    "required_evidence": { "type": "array", "items": { "type": "string" } },
+    "wrong_stage_blockers": { "type": "array", "items": { "type": "string" } },
+    "alternative_forms": { "type": "array", "items": { "type": "string" } },
+    "draftability_status": {
+      "type": "string",
+      "enum": ["draftable", "placeholder_only", "blocked", "lawyer_only"]
+    },
+    "expected_scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["scenario_id"],
+        "properties": {
+          "scenario_id": { "type": "string", "minLength": 1 },
+          "facts": { "type": "object", "additionalProperties": true },
+          "expected_recommended_forms": { "type": "array", "items": { "type": "string" } },
+          "expected_blocked_forms": { "type": "array", "items": { "type": "string" } },
+          "expected_timeline_tasks": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "source_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reference_label", "source_type"],
+        "properties": {
+          "reference_label": { "type": "string" },
+          "source_type": {
+            "type": "string",
+            "enum": ["notebook_internal_reference", "public_rule_reference", "private_source_reference"]
+          },
+          "citation_or_pointer": { "type": "string" }
+        }
+      },
+      "default": []
+    }
+  }
+}

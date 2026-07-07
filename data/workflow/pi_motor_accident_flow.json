@@ -1,0 +1,298 @@
+{
+  "flowId": "pi_motor_accident_flow",
+  "practiceArea": "personal_injury",
+  "matterType": "road_traffic_pi",
+  "stages": [
+    {
+      "stage": "INTAKE",
+      "purpose": "Capture parties, accident, injury, limitation, and urgent risks.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [
+        "CLIENT_INTAKE"
+      ],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.intake"
+      ]
+    },
+    {
+      "stage": "URGENT_ACTIONS",
+      "purpose": "Preserve evidence and identify opponent/insurer.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [
+        "POLICE_REPORT_REQUEST"
+      ],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.urgent_actions"
+      ]
+    },
+    {
+      "stage": "EVIDENCE_COLLECTION",
+      "purpose": "Collect police, CCTV, witness, and liability documents.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.evidence_collection"
+      ]
+    },
+    {
+      "stage": "MEDICAL_EVIDENCE",
+      "purpose": "Collect medical notes, reports, invoices, prognosis, and sick leave.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [
+        "MEDICAL_RECORDS_REQUEST"
+      ],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.medical_evidence"
+      ]
+    },
+    {
+      "stage": "LIABILITY_ASSESSMENT",
+      "purpose": "Assess breach, causation, contributory negligence, and prospects.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.liability_assessment"
+      ]
+    },
+    {
+      "stage": "PRE_ACTION_CORRESPONDENCE",
+      "purpose": "Send appropriate pre-action correspondence and requests.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [
+        "LETTER_OF_CLAIM",
+        "DEMAND_LETTER"
+      ],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.pre_action_correspondence"
+      ]
+    },
+    {
+      "stage": "SETTLEMENT_NEGOTIATION",
+      "purpose": "Negotiate liability, quantum, costs, and settlement terms.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.settlement_negotiation"
+      ]
+    },
+    {
+      "stage": "COMMENCEMENT",
+      "purpose": "Commence proceedings when authorised and procedurally ready.",
+      "entryConditions": [
+        "lawyer_decision_to_commence == true",
+        "proceedingsCommenced == false"
+      ],
+      "exitConditions": [],
+      "relevantDocumentIntents": [
+        "WRIT",
+        "STATEMENT_OF_CLAIM"
+      ],
+      "formsToAvoid": [],
+      "avoidIf": [
+        "matter.proceedingsCommenced == true"
+      ],
+      "alternativesIfAvoided": [
+        "AMENDED_PLEADING",
+        "SUMMONS",
+        "CONSENT_ORDER"
+      ],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.commencement"
+      ]
+    },
+    {
+      "stage": "PLEADINGS",
+      "purpose": "Prepare pleadings and amendments after commencement.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.pleadings"
+      ]
+    },
+    {
+      "stage": "DISCOVERY",
+      "purpose": "Exchange and inspect documents.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.discovery"
+      ]
+    },
+    {
+      "stage": "EXPERT_EVIDENCE",
+      "purpose": "Manage expert reports and joint expert process.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.expert_evidence"
+      ]
+    },
+    {
+      "stage": "MEDIATION",
+      "purpose": "Prepare mediation papers and settlement authority.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.mediation"
+      ]
+    },
+    {
+      "stage": "TRIAL_PREPARATION",
+      "purpose": "Prepare bundles, witness proofs, and trial logistics.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.trial_preparation"
+      ]
+    },
+    {
+      "stage": "TRIAL",
+      "purpose": "Conduct trial.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.trial"
+      ]
+    },
+    {
+      "stage": "POST_JUDGMENT",
+      "purpose": "Handle judgment, interest, enforcement, and appeals screening.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.post_judgment"
+      ]
+    },
+    {
+      "stage": "COSTS",
+      "purpose": "Prepare costs schedules and taxation materials.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.costs"
+      ]
+    },
+    {
+      "stage": "CLOSURE",
+      "purpose": "Close file and capture lessons for SOP updates.",
+      "entryConditions": [],
+      "exitConditions": [],
+      "relevantDocumentIntents": [],
+      "formsToAvoid": [
+        "WRIT"
+      ],
+      "avoidIf": [],
+      "alternativesIfAvoided": [],
+      "missingFactsEvidenceBlockers": [],
+      "sopStepMapping": [
+        "pi.closure"
+      ]
+    }
+  ]
+}

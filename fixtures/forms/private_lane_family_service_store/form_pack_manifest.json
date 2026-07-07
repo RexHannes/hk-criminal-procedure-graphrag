@@ -1,0 +1,15 @@
+{
+  "id": "pack_family_service_redacted_metadata",
+  "firmId": "private-lane-pilot-firm",
+  "workspaceId": "family_service-pilot",
+  "sourcePackName": "family_service - Redacted Metadata",
+  "uploadHash": "lane_hash_aaa373fe744f",
+  "uploadedAt": "2026-07-07T00:00:00+08:00",
+  "uploadedBy": "codex-local-expanded-lane-pilot",
+  "sourceLicenseNote": "Private lane metadata only; no private form text committed.",
+  "visibility": "FIRM_PRIVATE",
+  "fileInventory": [],
+  "ingestionStatus": "redacted_metadata_reviewed",
+  "extractionWarnings": [],
+  "reviewStatus": "approved_metadata_only"
+}

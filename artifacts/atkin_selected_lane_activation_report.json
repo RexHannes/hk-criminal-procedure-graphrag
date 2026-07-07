@@ -1,0 +1,93 @@
+{
+  "report_id": "atkin_selected_lane_activation",
+  "generated_at": "2026-07-08T00:00:00+08:00",
+  "status": "metadata_only_selected_lane_activation_proved",
+  "selected_lanes": [
+    "family_service",
+    "company_winding_up_provisional_liquidator"
+  ],
+  "source_output_root": "private_ingest_output/atkin_forms/",
+  "private_text_committed": false,
+  "generated_drafts_committed": false,
+  "external_services_used": false,
+  "notebooklm_runtime_engine": false,
+  "notebooklm_is_authority": false,
+  "real_templates_auto_activated": false,
+  "real_templates_required_status": {
+    "classificationStatus": "machine_candidate",
+    "reviewStatus": "lawyer_review_required",
+    "activeInRouting": false
+  },
+  "lanes": [
+    {
+      "lane_id": "family_service",
+      "store_path": "fixtures/forms/private_lane_family_service_store",
+      "real_source_candidates": {
+        "templates_detected": 119,
+        "clause_chunks_detected": 601,
+        "review_required_templates": 115,
+        "active_real_templates": 4
+      },
+      "activation_scope": "redacted_metadata_only",
+      "real_templates_remain_inactive_until_review": true,
+      "correct_stage_forms_route": true,
+      "wrong_stage_forms_block": true,
+      "missing_facts_produce_blockers_or_placeholders": true,
+      "private_semantic_retrieval_after_structured_filters": true,
+      "private_semantic_blocks_when_missing_fact": true,
+      "private_qdrant_dry_run_after_structured_filters": true,
+      "private_qdrant_dry_run_blocks_before_semantic_on_missing_fact": true,
+      "part2_document_flow_changes_with_facts": true,
+      "part3_timeline_crm_rows_generated": true,
+      "ready_counts": {
+        "recommended_forms": 1,
+        "applicable_clauses": 2,
+        "semantic_chunks": 2,
+        "crm_rows": 3
+      },
+      "missing_counts": {
+        "recommended_forms": 1,
+        "missing_facts": 4,
+        "required_evidence": 1,
+        "semantic_chunks": 0
+      },
+      "private_text_committed": false,
+      "public_authority": false
+    },
+    {
+      "lane_id": "company_winding_up_provisional_liquidator",
+      "store_path": "fixtures/forms/private_lane_company_provisional_liquidator_store",
+      "real_source_candidates": {
+        "templates_detected": 399,
+        "clause_chunks_detected": 2086,
+        "review_required_templates": 399,
+        "active_real_templates": 0
+      },
+      "activation_scope": "redacted_metadata_only",
+      "real_templates_remain_inactive_until_review": true,
+      "correct_stage_forms_route": true,
+      "wrong_stage_forms_block": true,
+      "missing_facts_produce_blockers_or_placeholders": true,
+      "private_semantic_retrieval_after_structured_filters": true,
+      "private_semantic_blocks_when_missing_fact": true,
+      "private_qdrant_dry_run_after_structured_filters": true,
+      "private_qdrant_dry_run_blocks_before_semantic_on_missing_fact": true,
+      "part2_document_flow_changes_with_facts": true,
+      "part3_timeline_crm_rows_generated": true,
+      "ready_counts": {
+        "recommended_forms": 1,
+        "applicable_clauses": 2,
+        "semantic_chunks": 2,
+        "crm_rows": 3
+      },
+      "missing_counts": {
+        "recommended_forms": 1,
+        "missing_facts": 4,
+        "required_evidence": 4,
+        "semantic_chunks": 0
+      },
+      "private_text_committed": false,
+      "public_authority": false
+    }
+  ]
+}

@@ -1,0 +1,400 @@
+[
+  {
+    "id": "clause_21b2cf57212f",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.opening",
+    "heading": "Opening",
+    "text": "[Synthetic approved demo clause 0: BACKGROUND_FACTS. No private form text.]",
+    "normalizedText": "synthetic approved demo clause 0 background_facts",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "background_facts"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "source": "synthetic_redacted_demo_metadata",
+      "ordinal": 0,
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_demo",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED",
+    "notebooklmUsageLinks": [],
+    "legalKnowledgeNodeIds": [
+      "forms_demo.letter_of_claim.background_facts"
+    ]
+  },
+  {
+    "id": "clause_1a1c8c3d2f32",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.letter_of_claim_road_traffic_personal_injury",
+    "heading": "Letter of Claim - Road Traffic Personal Injury",
+    "text": "[Synthetic approved demo clause 1: BACKGROUND_FACTS. No private form text.]",
+    "normalizedText": "synthetic approved demo clause 1 background_facts",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "background_facts"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "source": "synthetic_redacted_demo_metadata",
+      "ordinal": 1,
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_demo",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED",
+    "notebooklmUsageLinks": [],
+    "legalKnowledgeNodeIds": [
+      "forms_demo.letter_of_claim.background_facts"
+    ]
+  },
+  {
+    "id": "clause_254093ce0990",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.client_and_accident_details",
+    "heading": "Client and accident details",
+    "text": "[Synthetic approved demo clause 2: PARTY_DESCRIPTION. No private form text.]",
+    "normalizedText": "synthetic approved demo clause 2 party_description",
+    "clauseType": "PARTY_DESCRIPTION",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "party_description"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [
+      "client_name",
+      "accident_date",
+      "accident_location"
+    ],
+    "useWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "source": "synthetic_redacted_demo_metadata",
+      "ordinal": 2,
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_demo",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED",
+    "notebooklmUsageLinks": [],
+    "legalKnowledgeNodeIds": [
+      "forms_demo.letter_of_claim.party_description"
+    ]
+  },
+  {
+    "id": "clause_039d2e9534ad",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.liability_allegation",
+    "heading": "Liability allegation",
+    "text": "[Synthetic approved demo clause 3: LIABILITY_ALLEGATION. No private form text.]",
+    "normalizedText": "synthetic approved demo clause 3 liability_allegation",
+    "clauseType": "LIABILITY_ALLEGATION",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "liability_allegation"
+    ],
+    "factRequirements": [
+      "liabilityFactsKnown"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "source": "synthetic_redacted_demo_metadata",
+      "ordinal": 3,
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_demo",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED",
+    "notebooklmUsageLinks": [],
+    "legalKnowledgeNodeIds": [
+      "forms_demo.letter_of_claim.liability_allegation"
+    ]
+  },
+  {
+    "id": "clause_dbee6fbdd00c",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.medical_evidence",
+    "heading": "Medical evidence",
+    "text": "[Synthetic approved demo clause 4: MEDICAL_EVIDENCE. No private form text.]",
+    "normalizedText": "synthetic approved demo clause 4 medical_evidence",
+    "clauseType": "MEDICAL_EVIDENCE",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "medical_evidence"
+    ],
+    "factRequirements": [
+      "medicalEvidenceReceived"
+    ],
+    "fieldRequirements": [
+      "medical_report_summary"
+    ],
+    "useWhen": [
+      "medical evidence exists or is being requested"
+    ],
+    "doNotUseWhen": [
+      "medical position is complete and already summarised elsewhere"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "source": "synthetic_redacted_demo_metadata",
+      "ordinal": 4,
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_demo",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED",
+    "notebooklmUsageLinks": [],
+    "legalKnowledgeNodeIds": [
+      "forms_demo.letter_of_claim.medical_evidence"
+    ]
+  },
+  {
+    "id": "clause_da93122bec66",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.special_damages",
+    "heading": "Special damages",
+    "text": "[Synthetic approved demo clause 5: SPECIAL_DAMAGES. No private form text.]",
+    "normalizedText": "synthetic approved demo clause 5 special_damages",
+    "clauseType": "SPECIAL_DAMAGES",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "special_damages"
+    ],
+    "factRequirements": [
+      "specialDamagesEvidenceAvailable"
+    ],
+    "fieldRequirements": [
+      "special_damages_items"
+    ],
+    "useWhen": [
+      "receipts, pay slips, medical bills, or other supporting documents are available"
+    ],
+    "doNotUseWhen": [
+      "supporting evidence for the figures is missing"
+    ],
+    "alternatives": [
+      "insert placeholder and evidence task"
+    ],
+    "risks": [
+      "Do not invent figures; require supporting documents."
+    ],
+    "sourceLocation": {
+      "source": "synthetic_redacted_demo_metadata",
+      "ordinal": 5,
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_demo",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED",
+    "notebooklmUsageLinks": [],
+    "legalKnowledgeNodeIds": [
+      "forms_demo.letter_of_claim.special_damages"
+    ]
+  },
+  {
+    "id": "clause_e73c527162ff",
+    "templateId": "form_cbe2b96ca480",
+    "clauseKey": "letter_of_claim_synthetic.settlement_proposal",
+    "heading": "Settlement proposal",
+    "text": "[Synthetic approved demo clause 6: SETTLEMENT_PROPOSAL. No private form text.]",
+    "normalizedText": "synthetic approved demo clause 6 settlement_proposal",
+    "clauseType": "SETTLEMENT_PROPOSAL",
+    "documentIntent": "LETTER_OF_CLAIM",
+    "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+    "issueTags": [
+      "personal_injury",
+      "road_traffic_personal_injury",
+      "letter_of_claim",
+      "settlement_proposal"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [
+      "response_deadline_days"
+    ],
+    "useWhen": [
+      "pre-action stage",
+      "opponent or insurer identified",
+      "liability facts sufficiently known"
+    ],
+    "doNotUseWhen": [
+      "proceedingsCommenced",
+      "opponentUnknownForFinalVersion"
+    ],
+    "alternatives": [],
+    "risks": [
+      "Settlement authority and lawyer decision required."
+    ],
+    "sourceLocation": {
+      "source": "synthetic_redacted_demo_metadata",
+      "ordinal": 6,
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_demo",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED",
+    "notebooklmUsageLinks": [],
+    "legalKnowledgeNodeIds": [
+      "forms_demo.letter_of_claim.settlement_proposal"
+    ]
+  },
+  {
+    "id": "clause_3ad9461cb216",
+    "templateId": "form_5529c886f381",
+    "clauseKey": "medical_records_request_synthetic.opening",
+    "heading": "Opening",
+    "text": "[Synthetic approved demo clause 7: BACKGROUND_FACTS. No private form text.]",
+    "normalizedText": "synthetic approved demo clause 7 background_facts",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "MEDICAL_RECORDS_REQUEST",
+    "proceduralStage": "MEDICAL_EVIDENCE",
+    "issueTags": [
+      "personal_injury",
+      "medical_records_request",
+      "background_facts"
+    ],
+    "factRequirements": [],
+    "fieldRequirements": [],
+    "useWhen": [
+      "injury exists",
+      "medical evidence incomplete"
+    ],
+    "doNotUseWhen": [
+      "fullMedicalEvidenceAlreadyReceived"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "source": "synthetic_redacted_demo_metadata",
+      "ordinal": 7,
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_demo",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED",
+    "notebooklmUsageLinks": [],
+    "legalKnowledgeNodeIds": [
+      "forms_demo.medical_records_request.background_facts"
+    ]
+  },
+  {
+    "id": "clause_7a2a8fb7e9b8",
+    "templateId": "form_5529c886f381",
+    "clauseKey": "medical_records_request_synthetic.medical_records_request",
+    "heading": "Medical Records Request",
+    "text": "[Synthetic approved demo clause 8: MEDICAL_EVIDENCE. No private form text.]",
+    "normalizedText": "synthetic approved demo clause 8 medical_evidence",
+    "clauseType": "MEDICAL_EVIDENCE",
+    "documentIntent": "MEDICAL_RECORDS_REQUEST",
+    "proceduralStage": "MEDICAL_EVIDENCE",
+    "issueTags": [
+      "personal_injury",
+      "medical_records_request",
+      "medical_evidence"
+    ],
+    "factRequirements": [
+      "medicalEvidenceReceived"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "medical evidence exists or is being requested"
+    ],
+    "doNotUseWhen": [
+      "medical position is complete and already summarised elsewhere"
+    ],
+    "alternatives": [],
+    "risks": [],
+    "sourceLocation": {
+      "source": "synthetic_redacted_demo_metadata",
+      "ordinal": 8,
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_demo",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED",
+    "notebooklmUsageLinks": [],
+    "legalKnowledgeNodeIds": [
+      "forms_demo.medical_records_request.medical_evidence"
+    ]
+  }
+]

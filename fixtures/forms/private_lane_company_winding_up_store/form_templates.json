@@ -1,0 +1,126 @@
+[
+  {
+    "id": "real_lane_template_356c0f92da55",
+    "firmId": "private-lane-pilot-firm",
+    "workspaceId": "company-winding-up-pilot",
+    "formPackId": "pack_private_lane_company_winding_up_redacted",
+    "title": "Company winding-up petition metadata template",
+    "normalizedTitle": "company_winding_up_petition_metadata_template",
+    "practiceArea": "company_corporate",
+    "subPracticeArea": "company_winding_up",
+    "jurisdiction": "HK",
+    "documentIntent": "COMPANY_WINDING_UP_PETITION",
+    "proceduralStage": "COMPANY_WINDING_UP",
+    "applicableMatterTypes": [
+      "company",
+      "corporate",
+      "company_winding_up"
+    ],
+    "applicableRoles": [
+      "creditor",
+      "solicitor"
+    ],
+    "prerequisites": [
+      "companyIdentified",
+      "debtOrGroundIdentified",
+      "standingChecked",
+      "statutoryDemandOrServiceEvidenceAvailable"
+    ],
+    "contraindications": [
+      "debtGenuinelyDisputed",
+      "standingUnclear",
+      "companyInExistingProcedure"
+    ],
+    "blockedWhen": [
+      "matter.companyInExistingProcedure == true",
+      "matter.debtOrGroundIdentified != true",
+      "matter.standingChecked != true",
+      "matter.statutoryDemandOrServiceEvidenceAvailable != true"
+    ],
+    "recommendedWhen": [
+      "creditor winding-up lane",
+      "company identified",
+      "debt or statutory ground identified",
+      "standing checked",
+      "statutory demand/service evidence available"
+    ],
+    "legalKnowledgeNodeIds": [
+      "company_corporate.company_winding_up.petition",
+      "company_corporate.company_winding_up.creditor_standing",
+      "company_corporate.company_winding_up.service_evidence"
+    ],
+    "bodyStructured": {
+      "headings": [
+        "Redacted petition metadata",
+        "Prerequisite checklist",
+        "Evidence gate"
+      ],
+      "text": "[Redacted metadata only. No private form text.]"
+    },
+    "fieldSchema": [
+      {
+        "fieldKey": "companyIdentified",
+        "label": "Company Identified",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[companyIdentified]]",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "debtOrGroundIdentified",
+        "label": "Debt Or Ground Identified",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[debtOrGroundIdentified]]",
+        "evidenceRequired": false,
+        "lawyerOnly": true
+      },
+      {
+        "fieldKey": "standingChecked",
+        "label": "Standing Checked",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[standingChecked]]",
+        "evidenceRequired": false,
+        "lawyerOnly": true
+      },
+      {
+        "fieldKey": "statutoryDemandOrServiceEvidenceAvailable",
+        "label": "Statutory Demand Or Service Evidence Available",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[statutoryDemandOrServiceEvidenceAvailable]]",
+        "evidenceRequired": true,
+        "lawyerOnly": true
+      }
+    ],
+    "clauseIds": [
+      "real_lane_clause_961aaa8b898b"
+    ],
+    "sourceFileRef": {
+      "source": "real_private_lane_redacted_metadata",
+      "privateTextCommitted": false
+    },
+    "sourceLicenseNote": "Private real-lane metadata only; no private form text committed.",
+    "templateVersion": "0.1.0-private-lane-pilot",
+    "reviewStatus": "approved",
+    "classificationStatus": "review_approved",
+    "classificationReviewId": "classification_review_d7daab634e0b",
+    "routingActiveInDemo": false,
+    "activeInRouting": true,
+    "demoFixture": false,
+    "reviewerDecision": {
+      "status": "approved",
+      "reviewer": "lane-reviewer-placeholder",
+      "reviewedAt": "2026-07-07T00:00:00+08:00",
+      "comment": "Approved only as redacted metadata for the focused private company winding-up lane pilot.",
+      "approvedValues": {
+        "practiceArea": "company_corporate",
+        "documentIntent": "COMPANY_WINDING_UP_PETITION",
+        "proceduralStage": "COMPANY_WINDING_UP"
+      }
+    },
+    "provenanceLabel": "TEMPLATE_BASED"
+  }
+]

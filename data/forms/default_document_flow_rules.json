@@ -1,0 +1,83 @@
+{
+  "rules_version": "default-document-flow-rules-v1",
+  "private_forms_are_authority": false,
+  "rules": [
+    {
+      "documentIntent": "LETTER_OF_CLAIM",
+      "practiceLane": "personal_injury",
+      "workflowStage": "PRE_ACTION_CORRESPONDENCE",
+      "useWhen": ["opponentIdentified == true", "liabilityFactsKnown == true", "proceedingsCommenced != true"],
+      "blockFinalisationWhen": ["opponentIdentified != true", "medicalEvidenceReceived != true"],
+      "wrongStageBlockers": ["proceedingsCommenced == true"],
+      "alternatives": ["POLICE_REPORT_REQUEST", "MEDICAL_RECORDS_REQUEST"],
+      "timelineTask": "Prepare and review letter of claim",
+      "crmExportCategory": "pre_action_document"
+    },
+    {
+      "documentIntent": "WRIT",
+      "practiceLane": "general_civil_procedure",
+      "workflowStage": "COMMENCEMENT",
+      "useWhen": ["lawyerDecisionToCommence == true", "proceedingsCommenced != true"],
+      "blockFinalisationWhen": ["proceedingsCommenced == true", "limitationChecked != true"],
+      "wrongStageBlockers": ["proceedingsCommenced == true"],
+      "alternatives": ["AMENDED_PLEADING", "SUMMONS", "CONSENT_ORDER"],
+      "timelineTask": "Prepare commencement document",
+      "crmExportCategory": "commencement_document"
+    },
+    {
+      "documentIntent": "COMPANY_WINDING_UP_PETITION",
+      "practiceLane": "company_winding_up",
+      "workflowStage": "COMPANY_WINDING_UP",
+      "useWhen": ["companyIdentified == true", "debtOrGroundIdentified == true", "standingChecked == true", "statutoryDemandOrServiceEvidenceAvailable == true"],
+      "blockFinalisationWhen": ["companyInExistingProcedure == true", "debtOrGroundIdentified != true", "standingChecked != true", "statutoryDemandOrServiceEvidenceAvailable != true"],
+      "wrongStageBlockers": ["companyInExistingProcedure == true"],
+      "alternatives": ["EVIDENCE_CHECKLIST", "COMPANY_COMPLIANCE_MEMO"],
+      "timelineTask": "Prepare company winding-up petition metadata pack",
+      "crmExportCategory": "company_winding_up_document"
+    },
+    {
+      "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION",
+      "practiceLane": "company_winding_up",
+      "workflowStage": "PROVISIONAL_LIQUIDATOR",
+      "useWhen": ["companyIdentified == true", "standingChecked == true", "urgencyGroundsIdentified == true", "assetRiskEvidenceAvailable == true"],
+      "blockFinalisationWhen": ["voluntaryWindingUpOnly == true", "standingChecked != true", "urgencyGroundsIdentified != true", "assetRiskEvidenceAvailable != true"],
+      "wrongStageBlockers": ["voluntaryWindingUpOnly == true"],
+      "alternatives": ["EVIDENCE_CHECKLIST", "COMPANY_COMPLIANCE_MEMO"],
+      "timelineTask": "Prepare provisional liquidator application metadata pack",
+      "crmExportCategory": "company_winding_up_document"
+    },
+    {
+      "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+      "practiceLane": "family_service",
+      "workflowStage": "FAMILY_SERVICE",
+      "useWhen": ["proceedingsIssued == true", "respondentIdentified == true", "serviceAddressKnown == true", "serviceMethodSelected == true"],
+      "blockFinalisationWhen": ["postTrialStage == true", "respondentIdentified != true", "serviceAddressKnown != true", "serviceMethodSelected != true"],
+      "wrongStageBlockers": ["postTrialStage == true"],
+      "alternatives": ["FAMILY_SERVICE_INSTRUCTIONS", "EVIDENCE_CHECKLIST"],
+      "timelineTask": "Prepare family service acknowledgment metadata pack",
+      "crmExportCategory": "family_service_document"
+    },
+    {
+      "documentIntent": "CONTRACT_AGREEMENT",
+      "practiceLane": "commercial_contract",
+      "workflowStage": "TRANSACTIONAL_DRAFTING",
+      "useWhen": ["partiesIdentified == true", "commercialTermsSettled == true", "authorityToDraft == true"],
+      "blockFinalisationWhen": ["commercialTermsSettled != true", "clientAuthorityMissing == true"],
+      "wrongStageBlockers": ["transactionAbandoned == true"],
+      "alternatives": ["CONTRACT_CLAUSE", "EVIDENCE_CHECKLIST"],
+      "timelineTask": "Prepare commercial agreement draft",
+      "crmExportCategory": "transactional_document"
+    },
+    {
+      "documentIntent": "PROBATE_APPLICATION",
+      "practiceLane": "probate",
+      "workflowStage": "PROBATE_APPLICATION",
+      "useWhen": ["deathCertificate == true", "executorIdentity == true", "estateAssetsKnown == true"],
+      "blockFinalisationWhen": ["contentiousProbate == true", "foreignDomicileUnresolved == true"],
+      "wrongStageBlockers": ["contentiousProbate == true"],
+      "alternatives": ["PROBATE_AFFIDAVIT", "EVIDENCE_CHECKLIST"],
+      "timelineTask": "Prepare probate application metadata",
+      "crmExportCategory": "probate_document"
+    }
+  ]
+}

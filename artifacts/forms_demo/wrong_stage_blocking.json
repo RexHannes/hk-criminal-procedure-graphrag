@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "blockedForms": [
+    {
+      "title": "writ synthetic",
+      "documentIntent": "WRIT",
+      "reasons": [
+        "Proceedings have already commenced; commencement forms are not recommended."
+      ]
+    }
+  ],
+  "alternatives": [
+    {
+      "documentIntent": "AMENDED_PLEADING",
+      "reason": "Proceedings have already commenced; commencement forms are not recommended."
+    },
+    {
+      "documentIntent": "SUMMONS",
+      "reason": "Proceedings have already commenced; commencement forms are not recommended."
+    },
+    {
+      "documentIntent": "CONSENT_ORDER",
+      "reason": "Proceedings have already commenced; commencement forms are not recommended."
+    }
+  ]
+}

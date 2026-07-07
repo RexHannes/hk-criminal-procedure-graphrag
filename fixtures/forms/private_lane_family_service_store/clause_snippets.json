@@ -1,0 +1,194 @@
+[
+  {
+    "id": "lane_clause_f9070e8cc883",
+    "templateId": "lane_template_a7c186c77f0b",
+    "clauseKey": "family_service_acknowledgment_metadata_template.routing_gate",
+    "heading": "Redacted routing gate",
+    "text": "[Redacted family_service metadata-only clause 1. No private form text.]",
+    "normalizedText": "redacted family_service metadata only clause 1",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+    "proceduralStage": "FAMILY_SERVICE",
+    "issueTags": [
+      "family_service",
+      "family_service",
+      "family_service_acknowledgment"
+    ],
+    "legalKnowledgeNodeIds": [
+      "family_service.service.respondent",
+      "family_service.service.method",
+      "family_service.service.evidence"
+    ],
+    "factRequirements": [
+      "proceedingsIssued",
+      "respondentIdentified",
+      "serviceAddressKnown",
+      "serviceMethodSelected"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "Use only after structured lane, stage, role, and missing-fact gates pass."
+    ],
+    "doNotUseWhen": [
+      "Do not finalise if required facts/evidence are unresolved."
+    ],
+    "alternatives": [
+      "EVIDENCE_CHECKLIST"
+    ],
+    "risks": [
+      "Do not invent missing facts or evidence."
+    ],
+    "sourceLocation": {
+      "source": "private_ingest_output_redacted_metadata_review",
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_metadata_only",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "lane_clause_4a7d9cc19245",
+    "templateId": "lane_template_a7c186c77f0b",
+    "clauseKey": "family_service_acknowledgment_metadata_template.evidence_gate",
+    "heading": "Redacted evidence gate",
+    "text": "[Redacted family_service metadata-only clause 2. No private form text.]",
+    "normalizedText": "redacted family_service metadata only clause 2",
+    "clauseType": "EVIDENCE_GATE",
+    "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+    "proceduralStage": "FAMILY_SERVICE",
+    "issueTags": [
+      "family_service",
+      "family_service",
+      "family_service_acknowledgment"
+    ],
+    "legalKnowledgeNodeIds": [
+      "family_service.service.respondent",
+      "family_service.service.method",
+      "family_service.service.evidence"
+    ],
+    "factRequirements": [
+      "proceedingsIssued",
+      "respondentIdentified",
+      "serviceAddressKnown",
+      "serviceMethodSelected"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "Use only after structured lane, stage, role, and missing-fact gates pass."
+    ],
+    "doNotUseWhen": [
+      "Do not finalise if required facts/evidence are unresolved."
+    ],
+    "alternatives": [
+      "EVIDENCE_CHECKLIST"
+    ],
+    "risks": [
+      "Do not invent missing facts or evidence."
+    ],
+    "sourceLocation": {
+      "source": "private_ingest_output_redacted_metadata_review",
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_metadata_only",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "lane_clause_c628412bdae9",
+    "templateId": "lane_template_4ec8e426c63d",
+    "clauseKey": "family_service_affirmation_metadata_template.routing_gate",
+    "heading": "Redacted routing gate",
+    "text": "[Redacted family_service metadata-only clause 1. No private form text.]",
+    "normalizedText": "redacted family_service metadata only clause 1",
+    "clauseType": "BACKGROUND_FACTS",
+    "documentIntent": "FAMILY_SERVICE_AFFIRMATION",
+    "proceduralStage": "FAMILY_SERVICE",
+    "issueTags": [
+      "family_service",
+      "family_service",
+      "family_service_affirmation"
+    ],
+    "legalKnowledgeNodeIds": [
+      "family_service.service.respondent",
+      "family_service.service.method",
+      "family_service.service.evidence"
+    ],
+    "factRequirements": [
+      "proceedingsIssued",
+      "respondentIdentified",
+      "serviceAddressKnown",
+      "serviceMethodSelected"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "Use only after structured lane, stage, role, and missing-fact gates pass."
+    ],
+    "doNotUseWhen": [
+      "Do not finalise if required facts/evidence are unresolved."
+    ],
+    "alternatives": [
+      "EVIDENCE_CHECKLIST"
+    ],
+    "risks": [
+      "Do not invent missing facts or evidence."
+    ],
+    "sourceLocation": {
+      "source": "private_ingest_output_redacted_metadata_review",
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_metadata_only",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "lane_clause_fd5c154baa09",
+    "templateId": "lane_template_4ec8e426c63d",
+    "clauseKey": "family_service_affirmation_metadata_template.evidence_gate",
+    "heading": "Redacted evidence gate",
+    "text": "[Redacted family_service metadata-only clause 2. No private form text.]",
+    "normalizedText": "redacted family_service metadata only clause 2",
+    "clauseType": "EVIDENCE_GATE",
+    "documentIntent": "FAMILY_SERVICE_AFFIRMATION",
+    "proceduralStage": "FAMILY_SERVICE",
+    "issueTags": [
+      "family_service",
+      "family_service",
+      "family_service_affirmation"
+    ],
+    "legalKnowledgeNodeIds": [
+      "family_service.service.respondent",
+      "family_service.service.method",
+      "family_service.service.evidence"
+    ],
+    "factRequirements": [
+      "proceedingsIssued",
+      "respondentIdentified",
+      "serviceAddressKnown",
+      "serviceMethodSelected"
+    ],
+    "fieldRequirements": [],
+    "useWhen": [
+      "Use only after structured lane, stage, role, and missing-fact gates pass."
+    ],
+    "doNotUseWhen": [
+      "Do not finalise if required facts/evidence are unresolved."
+    ],
+    "alternatives": [
+      "EVIDENCE_CHECKLIST"
+    ],
+    "risks": [
+      "Do not invent missing facts or evidence."
+    ],
+    "sourceLocation": {
+      "source": "private_ingest_output_redacted_metadata_review",
+      "privateTextCommitted": false
+    },
+    "notebooklmUsageNoteIds": [],
+    "lawyerReviewStatus": "approved_metadata_only",
+    "reviewStatus": "approved",
+    "provenanceLabel": "TEMPLATE_BASED"
+  }
+]

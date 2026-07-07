@@ -1,0 +1,21 @@
+SYNTHETIC FIXTURE - NOT A REAL PRECEDENT
+
+Letter of Claim - Road Traffic Personal Injury
+
+Use when: opponent or insurer identified; pre-action correspondence; liability facts sufficiently known.
+Do not use when: proceedings already commenced; opponent identity unknown; final quantum unsupported by medical evidence.
+
+Client and accident details
+We act for {{client_name}} regarding the road traffic accident on {{accident_date}} at {{accident_location}}.
+
+Liability allegation
+Our client says your insured driver collided with our client and caused injury.
+
+Medical evidence
+Medical report: {{medical_report_summary}}.
+
+Special damages
+Special damages supported by receipts: {{special_damages_items}}.
+
+Settlement proposal
+Please confirm liability and insurer details within {{response_deadline_days}} days.

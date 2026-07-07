@@ -28,6 +28,16 @@
     viewerEvidenceLoaded: false,
     caseNotesByCaseId: {},
     caseNotesByNameCite: {},
+    forms: {
+      formPack: null,
+      templates: [],
+      clauses: [],
+      usageRules: [],
+      notebooklmUsageNotes: [],
+      routingRules: [],
+      privateFormIndex: null,
+      reports: {},
+    },
   };
 
   const $ = (sel) => document.querySelector(sel);
@@ -319,6 +329,31 @@
     return loadJSON(window.FIRM_OVERLAY_PATH).then(d => { S.firm = d; });
   }
 
+  function loadFormsDemoStore() {
+    const root = window.FORMS_DEMO_STORE_ROOT || '../fixtures/forms/synthetic_store/';
+    const artifactsRoot = window.FORMS_ARTIFACTS_ROOT || '../artifacts/';
+    return Promise.all([
+      loadJSON(root + 'form_pack_manifest.json').catch(() => null),
+      loadJSON(root + 'form_templates.json').catch(() => []),
+      loadJSON(root + 'clause_snippets.json').catch(() => []),
+      loadJSON(root + 'clause_usage_rules.json').catch(() => []),
+      loadJSON(root + 'notebooklm_usage_notes.json').catch(() => []),
+      loadJSON(root + 'form_routing_rules.json').catch(() => []),
+      loadJSON(root + 'private_form_index.json').catch(() => null),
+      loadJSON(artifactsRoot + 'court_form_dropzone_report.json').catch(() => null),
+      loadJSON(artifactsRoot + 'private_form_review_activation_report.json').catch(() => null),
+      loadJSON(artifactsRoot + 'private_form_backend_recall_report.json').catch(() => null),
+      loadJSON(artifactsRoot + 'part2_documentary_flow_report.json').catch(() => null),
+      loadJSON(artifactsRoot + 'part3_workflow_timeline_report.json').catch(() => null),
+    ]).then(([formPack, templates, clauses, usageRules, notebooklmUsageNotes, routingRules, privateFormIndex, dropzoneReport, activationReport, recallReport, part2Report, part3Report]) => {
+      S.forms = {
+        formPack, templates, clauses, usageRules, notebooklmUsageNotes, routingRules, privateFormIndex,
+        reports: { dropzoneReport, activationReport, recallReport, part2Report, part3Report },
+      };
+      return S.forms;
+    });
+  }
+
   // Fallback so the workspace never renders a dead, zero-node demo.
   function fallbackData() {
     S.dataSource = 'fallback';
@@ -448,6 +483,30 @@
     currentDomainSops().forEach(s => (s.linked_templates || []).forEach(id => templateIds.add(id)));
     currentDomainTasks().forEach(t => { if (t.template_id) templateIds.add(t.template_id); });
     return (S.firm.templates || []).filter(t => templateIds.has(t.template_id));
+  }
+
+  function formById(id) {
+    return (S.forms.templates || []).find(t => t.id === id);
+  }
+
+  function clauseById(id) {
+    return (S.forms.clauses || []).find(c => c.id === id);
+  }
+
+  function noteById(id) {
+    return (S.forms.notebooklmUsageNotes || []).find(n => n.id === id);
+  }
+
+  function clausesForTemplate(templateId) {
+    return (S.forms.clauses || []).filter(c => c.templateId === templateId);
+  }
+
+  function notesForTemplate(templateId) {
+    return (S.forms.notebooklmUsageNotes || []).filter(n => (n.relatedTemplateIds || []).includes(templateId));
+  }
+
+  function notesForClause(clauseId) {
+    return (S.forms.notebooklmUsageNotes || []).filter(n => (n.relatedClauseIds || []).includes(clauseId));
   }
 
   // ── Selection / inspector ──
@@ -823,6 +882,106 @@
         </div>`;
       return;
     }
+
+    if (sel.kind === 'form') {
+      const t = formById(sel.id);
+      if (!t) return;
+      const clauses = clausesForTemplate(t.id);
+      const notes = notesForTemplate(t.id);
+      kindEl.textContent = 'Private form';
+      body.innerHTML = `
+        <div class="insp-title">${esc(t.title)}</div>
+        <div class="insp-badges">
+          <span class="badge badge-research">Research prototype</span>
+          <span class="badge badge-verified">${esc(t.provenanceLabel)}</span>
+          ${t.demoFixture ? '<span class="badge badge-research">Synthetic demo</span>' : '<span class="badge badge-draft">Lawyer review required</span>'}
+          <span class="badge badge-draft">${esc(t.classificationStatus || 'machine_candidate')}</span>
+        </div>
+        <div class="insp-section"><div class="insp-label">Routing position</div>
+          <div class="insp-text">${esc(t.practiceArea)} · ${esc(t.documentIntent)} · ${esc(t.proceduralStage)}</div>
+        </div>
+        <div class="insp-section"><div class="insp-label">Classification review decision</div>
+          <div class="insp-text">Status: ${esc(t.classificationStatus || 'machine_candidate')} · reviewer decision: ${esc(t.reviewerDecision?.status || 'pending')} · active in routing: ${t.activeInRouting || t.routingActiveInDemo ? 'yes' : 'no'}</div>
+          <ul class="insp-list">
+            <li>Proposed practice area: ${esc(t.proposedPracticeArea || t.practiceArea)}</li>
+            <li>Proposed intent: ${esc(t.proposedDocumentIntent || t.documentIntent)}</li>
+            <li>Proposed stage: ${esc(t.proposedProceduralStage || t.proceduralStage)}</li>
+            <li>Trace: ${esc(t.classificationExtractionTrace?.method || 'machine extraction')}</li>
+          </ul>
+        </div>
+        <div class="insp-section"><div class="insp-label">Use when</div>
+          <ul class="insp-list">${(t.recommendedWhen || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>Structured filters match.</li>'}</ul>
+        </div>
+        <div class="insp-section"><div class="insp-label">Do not use when</div>
+          <ul class="insp-list">${(t.contraindications || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>No contraindication configured.</li>'}</ul>
+        </div>
+        <div class="insp-section"><div class="insp-label">Prerequisites</div>
+          <ul class="insp-list">${(t.prerequisites || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+        </div>
+        <div class="insp-section"><div class="insp-label">Field schema</div>
+          <ul class="insp-list">${(t.fieldSchema || []).map(f => `<li>${esc(f.fieldKey)}${f.evidenceRequired ? ' · evidence required' : ''}${f.lawyerOnly ? ' · lawyer field' : ''}</li>`).join('') || '<li>No fields extracted.</li>'}</ul>
+        </div>
+        <div class="insp-section"><div class="insp-label">Clause snippets</div>
+          <ul class="insp-list">${clauses.map(c => `<li><button data-go="clause:${esc(c.id)}">${esc(c.heading)}</button> · ${esc(c.clauseType)}</li>`).join('') || '<li>No clauses extracted.</li>'}</ul>
+        </div>
+        <div class="insp-section"><div class="insp-label">NotebookLM usage references</div>
+          <ul class="insp-list">${notes.map(n => `<li><button data-go="note:${esc(n.id)}">${esc(n.noteTitle)}</button></li>`).join('') || '<li>No linked notes.</li>'}</ul>
+        </div>`;
+      wireInspectorLinks(body);
+      return;
+    }
+
+    if (sel.kind === 'clause') {
+      const c = clauseById(sel.id);
+      if (!c) return;
+      const notes = notesForClause(c.id);
+      kindEl.textContent = 'Clause snippet';
+      body.innerHTML = `
+        <div class="insp-title">${esc(c.heading)}</div>
+        <div class="insp-badges">
+          <span class="badge badge-verified">${esc(c.provenanceLabel)}</span>
+          <span class="badge badge-research">${esc(c.clauseType)}</span>
+          <span class="badge badge-draft">${esc(c.reviewStatus || 'lawyer_review_required')}</span>
+        </div>
+        <div class="insp-section"><div class="insp-label">Clause text</div><div class="insp-quote">${esc(c.text)}</div></div>
+        <div class="insp-section"><div class="insp-label">Use conditions</div>
+          <ul class="insp-list">${(c.useWhen || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>Use only when structured filters match.</li>'}</ul>
+        </div>
+        <div class="insp-section"><div class="insp-label">Do-not-use conditions</div>
+          <ul class="insp-list">${(c.doNotUseWhen || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>No blocker configured.</li>'}</ul>
+        </div>
+        <div class="insp-section"><div class="insp-label">Required facts / missing fact blockers</div>
+          <ul class="insp-list">${(c.factRequirements || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>No required facts configured.</li>'}</ul>
+        </div>
+        <div class="insp-section"><div class="insp-label">Alternatives and risk notes</div>
+          <ul class="insp-list">${[...(c.alternatives || []), ...(c.risks || [])].map(x => `<li>${esc(x)}</li>`).join('') || '<li>No alternatives configured.</li>'}</ul>
+        </div>
+        <div class="insp-section"><div class="insp-label">NotebookLM usage references</div>
+          <ul class="insp-list">${notes.map(n => `<li><button data-go="note:${esc(n.id)}">${esc(n.noteTitle)}</button> · candidate link</li>`).join('') || '<li>No linked notes.</li>'}</ul>
+        </div>`;
+      wireInspectorLinks(body);
+      return;
+    }
+
+    if (sel.kind === 'note') {
+      const n = noteById(sel.id);
+      if (!n) return;
+      kindEl.textContent = 'Internal usage note';
+      body.innerHTML = `
+        <div class="insp-title">${esc(n.noteTitle)}</div>
+        <div class="insp-badges"><span class="badge badge-research">${esc(n.provenanceLabel)}</span><span class="badge badge-draft">${esc(n.status || 'candidate_usage_note')}</span><span class="badge badge-draft">candidate links</span></div>
+        <div class="insp-section"><div class="insp-label">Use when</div><ul class="insp-list">${(n.suggestedUseWhen || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>—</li>'}</ul></div>
+        <div class="insp-section"><div class="insp-label">Do not use when</div><ul class="insp-list">${(n.suggestedDoNotUseWhen || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>—</li>'}</ul></div>
+        <div class="insp-section"><div class="insp-label">Authority boundary</div><div class="insp-text">Internal usage note only. It may guide form routing, but it is not public legal authority.</div></div>
+        <div class="insp-section"><div class="insp-label">Linked candidates</div>
+          <ul class="insp-list">
+            ${(n.templateLinks || []).map(link => `<li>Template ${esc(link.templateId)} · ${esc(link.note_template_link_status || 'candidate')}</li>`).join('')}
+            ${(n.clauseLinks || []).map(link => `<li>Clause ${esc(link.clauseId)} · ${esc(link.note_clause_link_status || 'candidate')}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+      return;
+    }
   }
 
   function wireInspectorLinks(scope) {
@@ -839,7 +998,7 @@
   const root = () => $('#view-root');
 
   function renderView() {
-    ({ domains: viewDomains, flows: viewFlows, doctrine: viewDoctrine, inquiry: viewInquiry, tasks: viewTasks, playbooks: viewPlaybooks, templates: viewTemplates, audit: viewAudit }[S.view] || viewFlows)();
+    ({ domains: viewDomains, flows: viewFlows, doctrine: viewDoctrine, inquiry: viewInquiry, tasks: viewTasks, playbooks: viewPlaybooks, templates: viewTemplates, forms: viewForms, audit: viewAudit }[S.view] || viewFlows)();
   }
 
   function viewHeader(eyebrow, title, lede) {
@@ -1110,6 +1269,144 @@
     wireCards();
   }
 
+  // — Forms & Precedent Snippets —
+  function viewForms() {
+    const templates = S.forms.templates || [];
+    const clauses = S.forms.clauses || [];
+    const notes = S.forms.notebooklmUsageNotes || [];
+    const rules = S.forms.usageRules || [];
+    const letter = templates.find(t => t.documentIntent === 'LETTER_OF_CLAIM');
+    const writ = templates.find(t => t.documentIntent === 'WRIT');
+    const police = templates.find(t => t.documentIntent === 'POLICE_REPORT_REQUEST');
+    const medical = templates.find(t => t.documentIntent === 'MEDICAL_RECORDS_REQUEST');
+    const specialDamages = clauses.find(c => c.clauseType === 'SPECIAL_DAMAGES');
+    const reports = S.forms.reports || {};
+    const dropzone = reports.dropzoneReport || {};
+    const activation = reports.activationReport || {};
+    const recall = reports.recallReport || {};
+    const part2 = reports.part2Report?.part2 || {};
+    const part3Rows = reports.part3Report?.timeline || [];
+    const stagePills = Array.from(new Set(templates.map(t => t.proceduralStage))).map(s => `<span class="link-pill"><span class="lp-kind">stage</span>${esc(s)}</span>`).join('');
+    root().innerHTML = `
+      ${viewHeader('Private drafting layer', 'Forms & Precedent Snippets', 'Forms behave like code snippets: classified by stage and intent, governed by use/do-not-use rules, and applied only when matter facts support them. This view uses redacted metadata; private text stays in private storage.')}
+      <div class="forms-hero card">
+        <div class="card-top"><span class="card-title">Court forms → routable workflow</span><span class="card-badges"><span class="badge badge-research">Private metadata layer</span><span class="badge badge-approved">Reviewed metadata</span><span class="badge badge-verified">Structured gates first</span></span></div>
+        <div class="forms-metrics">
+          <span><strong>${templates.length}</strong> templates</span>
+          <span><strong>${clauses.length}</strong> clauses</span>
+          <span><strong>${rules.length}</strong> usage rules</span>
+          <span><strong>${notes.length}</strong> internal notes</span>
+        </div>
+      </div>
+
+      <div class="forms-grid">
+        <section class="card">
+          <div class="card-top"><span class="card-title">Dropzone Status</span><span class="badge badge-research">metadata-only</span></div>
+          <div class="forms-metrics">
+            <span><strong>${esc(dropzone.packs_processed_from_existing_dry_run || 0)}</strong> packs</span>
+            <span><strong>${esc(dropzone.templates_detected_from_existing_dry_run || 0)}</strong> templates</span>
+            <span><strong>${esc(dropzone.clauses_detected_from_existing_dry_run || 0)}</strong> segments</span>
+            <span><strong>${esc(dropzone.review_queue_count_from_existing_dry_run || 0)}</strong> review queue</span>
+          </div>
+          <div class="card-body">Drop in court-form packs through the local private intake. Extracted text remains private; committed reports show counts and routing metadata only.</div>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Review Activation</span><span class="badge badge-approved">approved metadata</span></div>
+          <div class="forms-metrics">
+            <span><strong>${esc(activation.approved_templates_active_in_routing || activation.approved_count || 0)}</strong> approved</span>
+            <span><strong>${esc(activation.rejected_templates_active_in_routing || activation.rejected_count || 0)}</strong> rejected active</span>
+            <span><strong>${esc((activation.reviewed_templates || []).filter(x => x.review_decision === 'needs_manual_review').length || activation.needs_review_count || 0)}</strong> needs review</span>
+          </div>
+          <div class="card-body">Only reviewed metadata routes. Other real/private candidates remain inactive until a reviewer approves their lane, stage, intent, prerequisites, and blockers.</div>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Form Pack Inventory</span><span class="badge badge-research">FIRM_PRIVATE</span></div>
+          <div class="card-body">${esc(S.forms.formPack?.sourcePackName || 'Synthetic PI Forms Pack')} · ${esc(S.forms.formPack?.sourceLicenseNote || 'Synthetic fixture only')}</div>
+          <div class="card-links">${templates.map(t => `<button class="link-pill" data-card="form:${esc(t.id)}"><span class="lp-kind">${esc(t.documentIntent)}</span>${esc(t.title)}</button>`).join('')}</div>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Form Classification Review</span><span class="badge badge-draft">machine candidate</span></div>
+          ${templates.map(t => `<div class="forms-row selectable" data-card="form:${esc(t.id)}" data-sel="form:${esc(t.id)}">
+            <span>${esc(t.title)}</span><small>${esc(t.practiceArea)} · ${esc(t.documentIntent)} · ${esc(t.proceduralStage)} · ${esc(t.classificationStatus || 'machine_candidate')}${t.demoFixture ? ' · synthetic/demo' : ' · lawyer review required'}</small>
+          </div>`).join('') || emptyState('No forms loaded', 'Run the synthetic ingestion demo or configure a private form store.')}
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Workflow Stage Mapping</span><span class="badge badge-verified">stage-gated</span></div>
+          <div class="card-links">${stagePills || '<span class="link-pill">No stages mapped</span>'}</div>
+          <div class="card-body">Commencement forms are blocked after proceedings have commenced. Company winding-up petition metadata becomes placeholder-only until standing and statutory demand/service evidence are present.</div>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Clause Snippet Library</span><span class="badge badge-research">TEMPLATE_BASED</span></div>
+          <div class="forms-chip-list">${clauses.slice(0, 12).map(c => `<button class="forms-chip" data-card="clause:${esc(c.id)}" data-sel="clause:${esc(c.id)}">${esc(c.heading)}<small>${esc(c.clauseType)}</small></button>`).join('')}</div>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Use / Do Not Use Rules</span><span class="badge badge-verified">rules</span></div>
+          <ul class="forms-list">
+            <li>LETTER_OF_CLAIM finalisation blocked if opponent / insurer is unknown.</li>
+            <li>WRIT blocked if proceedings already commenced.</li>
+            <li>SPECIAL_DAMAGES clause becomes placeholder-only if supporting evidence is missing.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">NotebookLM Usage Notes</span><span class="badge badge-research">INTERNAL_USAGE_NOTE</span></div>
+          ${notes.map(n => `<div class="forms-row selectable" data-card="note:${esc(n.id)}" data-sel="note:${esc(n.id)}"><span>${esc(n.noteTitle)}</span><small>${esc(n.suggestedWorkflowStage)} · not authority · candidate links</small></div>`).join('') || '<div class="card-body">No notes loaded.</div>'}
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Matter-Specific Document Advice</span><span class="badge badge-verified">structured retrieval</span></div>
+          <div class="card-body">Demo facts: company winding-up lane, creditor posture, statutory demand/service evidence missing.</div>
+          <div class="card-links">${(part2.recommendedDocuments || []).map(doc => `<button class="link-pill" data-card="form:${esc(doc.linkedPrivateTemplateId)}"><span class="lp-kind">${esc(doc.draftability)}</span>${esc(doc.title)}</button>`).join('') || '<span class="link-pill">No recommended document</span>'}</div>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Blocked Forms / Why Not</span><span class="badge badge-draft">gate</span></div>
+          <ul class="forms-list">
+            ${(part2.blockedDocuments || []).map(doc => `<li>${esc(doc.title)} · ${(doc.finalisationBlockers || []).map(esc).join('; ') || 'blocked by structured gate'}</li>`).join('') || '<li>No hard block in the current redacted matter facts.</li>'}
+            ${(part2.placeholderOnlyDocuments || []).map(doc => `<li>${esc(doc.title)} is placeholder-only until ${(doc.finalisationBlockers || []).map(esc).join('; ') || 'missing evidence is resolved'}.</li>`).join('')}
+          </ul>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Draft Builder</span><span class="badge badge-research">placeholder-safe</span></div>
+          <div class="card-body">Drafting fills known fields, leaves missing facts as placeholders, and blocks final approval where evidence is missing.</div>
+          ${letter ? `<button class="ghost-btn" data-card="form:${esc(letter.id)}">Inspect letter template</button>` : ''}
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Missing Facts / Evidence Blockers</span><span class="badge badge-draft">no invention</span></div>
+          <ul class="forms-list">
+            ${[...(part2.missingCrucialInformation || []), ...(part2.requiredEvidence || [])].map(item => `<li>${esc(item)}</li>`).join('') || '<li>No blockers surfaced.</li>'}
+          </ul>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Timeline / CRM Preview</span><span class="badge badge-verified">export rows</span></div>
+          <ul class="forms-list">
+            ${part3Rows.map(row => `<li><span class="mono">${esc(row.rowId)}</span> · ${esc(row.part)} · ${esc(row.task)} · ${esc(row.status)}</li>`).join('') || '<li>No workflow rows generated.</li>'}
+          </ul>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Layer Boundaries</span><span class="badge badge-research">separate parts</span></div>
+          <div class="card-body">Part 1 public authority analysis remains separate. Part 2 uses private form metadata. Part 3 creates workflow rows. NotebookLM/internal notes are guidance only.</div>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">SOP Update Suggestions</span><span class="badge badge-draft">AI_SUGGESTED</span></div>
+          <div class="card-body">When lawyers change a form classification or clause blocker, the correction becomes a proposed SOP/template rule rather than unstructured chat memory.</div>
+        </section>
+      </div>
+    `;
+    wireCards();
+  }
+
   // — Sources & audit —
   function viewAudit() {
     const counts = {};
@@ -1349,6 +1646,40 @@
       </div>`;
   }
 
+  function renderPrivateFormsInquiry(forms) {
+    if (!forms) return '';
+    const recommended = forms.recommended_forms || [];
+    const blocked = forms.blocked_forms || [];
+    const clauses = forms.applicable_clauses || [];
+    const blockedClauses = forms.blocked_clauses || [];
+    return `
+      <div class="card forms-inquiry-panel">
+        <div class="card-top">
+          <span class="card-title">Private forms / precedent snippets</span>
+          <span class="card-badges"><span class="badge badge-research">TEMPLATE_BASED</span><span class="badge badge-draft">machine candidate</span><span class="badge badge-verified">Structured filters first</span></span>
+        </div>
+        <div class="forms-grid compact">
+          <section>
+            <h3>Recommended forms</h3>
+            <ul class="forms-list">${recommended.map(f => `<li>${esc(f.title)} · ${esc(f.documentIntent)}${(f.caveats || []).length ? ' · caveated' : ''}</li>`).join('') || '<li>No private form matched the structured filters.</li>'}</ul>
+          </section>
+          <section>
+            <h3>Blocked forms / why not</h3>
+            <ul class="forms-list">${blocked.map(f => `<li>${esc(f.title)} · ${(f.reasons || []).map(r => esc(r.reason || r.gateId || 'blocked')).join('; ')}</li>`).join('') || '<li>No hard form block.</li>'}</ul>
+          </section>
+          <section>
+            <h3>Draftable clauses</h3>
+            <ul class="forms-list">${clauses.map(c => `<li>${esc(c.heading)} · ${esc(c.clauseType)}</li>`).join('') || '<li>No clause is final-draftable on the current facts.</li>'}</ul>
+          </section>
+          <section>
+            <h3>Missing facts / evidence</h3>
+            <ul class="forms-list">${[...(forms.missing_facts || []), ...(forms.required_evidence || [])].map(x => `<li>${esc(x)}</li>`).join('') || '<li>No blockers surfaced.</li>'}</ul>
+          </section>
+        </div>
+        ${blockedClauses.length ? `<details class="piw-audit"><summary>Blocked clauses</summary><ul class="forms-list">${blockedClauses.map(c => `<li>${esc(c.heading)} · ${(c.reasons || []).map(esc).join('; ')}</li>`).join('')}</ul></details>` : ''}
+      </div>`;
+  }
+
   function inquiryResultHTML() {
     const r = INQ.result;
     if (!r) return '';
@@ -1389,6 +1720,7 @@
         </div>
       </div>` : ''}
       ${analysis ? renderAnalysisCaseReferences(analysis, r.matched_doctrine_nodes) : ''}
+      ${renderPrivateFormsInquiry(r.private_form_recommendations)}
       ${warnings ? `<div class="inq-warnings">${warnings}</div>` : ''}
       ${hasAppliedAnswer ? `<details class="piw-audit"><summary>Underlying graph matches</summary>${cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.')}</details>` : (cards || emptyState('No matches', 'No doctrine nodes matched this inquiry in the maintained graph.'))}
       <p class="inq-note">Research prototype — not legal advice. Paragraph-linked public judgments are quoted and applied from the maintained doctrine graph${INQ.mode === 'api' ? ' and verified evidence index' : ''}. Mode: ${INQ.mode === 'api' ? 'API (all domains, AI-ranked)' : 'local fallback (current domain, lexical only)'}.</p>`;
@@ -1444,6 +1776,14 @@
       currentDomainTemplates().forEach(t => {
         if (t.title.toLowerCase().includes(q)) items.push({ kind: 'template', id: t.template_id, type: 'Template', label: t.title, sum: '' });
       });
+      (S.forms.templates || []).forEach(t => {
+        const hay = [t.title, t.documentIntent, t.proceduralStage, t.practiceArea, ...(t.recommendedWhen || [])].join(' ').toLowerCase();
+        if (hay.includes(q)) items.push({ kind: 'form', id: t.id, type: 'Private form', label: t.title, sum: `${t.documentIntent} · ${t.proceduralStage}` });
+      });
+      (S.forms.clauses || []).forEach(c => {
+        const hay = [c.heading, c.clauseType, c.text, ...(c.issueTags || [])].join(' ').toLowerCase();
+        if (hay.includes(q)) items.push({ kind: 'clause', id: c.id, type: 'Clause snippet', label: c.heading, sum: c.clauseType });
+      });
       S.flows.forEach(f => {
         if ((f.title + ' ' + (f.description || '')).toLowerCase().includes(q)) items.push({ kind: 'flow', id: f.flow_id, type: 'Flow', label: f.title, sum: f.description || '' });
       });
@@ -1460,7 +1800,7 @@
             <span class="cr-label">${esc(it.label)}</span>
             <span class="cr-sum">${esc(it.sum)}</span>
           </button>`).join('')
-        : '<div class="command-result"><span class="cr-sum">No matches in the graph, flows, or firm overlay.</span></div>';
+        : '<div class="command-result"><span class="cr-sum">No matches in the graph, flows, forms, or firm overlay.</span></div>';
       results.hidden = false;
       results.querySelectorAll('[data-i]').forEach(b => b.addEventListener('click', () => {
         const it = items[+b.dataset.i];
@@ -1469,6 +1809,7 @@
         else if (it.kind === 'flow') { S.view = 'flows'; S.selectedFlowId = it.id; renderView(); setActiveNav(); }
         else if (it.kind === 'sop') { S.view = 'playbooks'; renderView(); setActiveNav(); select('sop', it.id); }
         else if (it.kind === 'template') { S.view = 'templates'; renderView(); setActiveNav(); select('template', it.id); }
+        else if (it.kind === 'form' || it.kind === 'clause' || it.kind === 'note') { S.view = 'forms'; renderView(); setActiveNav(); select(it.kind, it.id); }
         else select('node', it.id);
       }));
     }
@@ -1539,14 +1880,14 @@
     $('#firm-name').textContent = p.name || '—';
     $('#firm-meta').innerHTML =
       `<strong>${esc(S.domainInfo?.title || 'Selected domain')}</strong>` +
-      `<br>${currentDomainSops().length} SOPs · ${currentDomainTemplates().length} templates in this domain` +
+      `<br>${currentDomainSops().length} SOPs · ${currentDomainTemplates().length} templates · ${(S.forms.templates || []).length} form snippets` +
       (p.review_policy ? `<br>${esc(p.review_policy)}` : '') +
       (p.overlay_version ? `<br>Overlay v${esc(p.overlay_version)}` : '');
   }
 
   function renderStatus() {
     $('#status-data').textContent = S.dataSource === 'live' ? `Data: ${S.domainInfo?.title || 'live domain pack'}` : 'Data: demo fallback (pack unreachable)';
-    $('#status-counts').textContent = `${S.nodes.length} nodes · ${S.edges.length} edges · ${S.flows.length} flows · ${currentDomainSops().length} SOPs · ${currentDomainTemplates().length} templates`;
+    $('#status-counts').textContent = `${S.nodes.length} nodes · ${S.edges.length} edges · ${S.flows.length} flows · ${currentDomainSops().length} SOPs · ${currentDomainTemplates().length} templates · ${(S.forms.templates || []).length} forms · ${(S.forms.clauses || []).length} clauses`;
   }
 
   // ── Boot ──
@@ -1557,7 +1898,7 @@
     if (S.selectedEntity && S.selectedEntity.kind === 'sop') renderInspector();
   });
 
-  Promise.allSettled([loadRegistry(), loadFirm(), loadViewerEvidenceIndex(), loadStructuredCaseNotes(), sopEditorReady]).then(([registryRes, firmRes]) => {
+  Promise.allSettled([loadRegistry(), loadFirm(), loadViewerEvidenceIndex(), loadStructuredCaseNotes(), loadFormsDemoStore(), sopEditorReady]).then(([registryRes, firmRes]) => {
     if (firmRes.status === 'rejected' || !S.firm) fallbackFirm();
     if (registryRes.status === 'rejected' || !S.domains.length) {
       S.domains = [{ domain_id: DEFAULT_DOMAIN_ID, title: 'Hong Kong Criminal Procedure', path: DEFAULT_DOMAIN_ID + '/domain.json' }];

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FormRetrievalResult",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "recommendedForms",
+    "blockedForms",
+    "alternativeForms",
+    "missingFacts",
+    "requiredEvidence",
+    "applicableClauses",
+    "blockedClauses",
+    "notebooklmUsageNotes",
+    "provenance"
+  ],
+  "properties": {
+    "recommendedForms": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "blockedForms": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "alternativeForms": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "missingFacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requiredEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "applicableClauses": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "blockedClauses": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "notebooklmUsageNotes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,13 +1,15 @@
-name: Validate PR6 Production Release
+name: Validate Legal GraphRAG
 
 on:
   pull_request:
   push:
     branches:
       - pr6-production-release
+      - forms-as-code-snippets-mvp
 
 jobs:
-  validate:
+  validate-pr6-release:
+    if: github.ref_name == 'pr6-production-release' || github.head_ref == 'pr6-production-release'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -53,6 +55,246 @@ jobs:
 
       - name: Validate demo readiness
         run: node scripts/validate_demo_readiness_pr6.js
+
+      - name: Validate committed secrets
+        run: node scripts/validate_no_secrets_committed.js
+
+      - name: Check whitespace
+        run: git diff --check
+
+  validate-forms-mvp:
+    if: github.ref_name == 'forms-as-code-snippets-mvp' || github.head_ref == 'forms-as-code-snippets-mvp'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Build synthetic forms demo store
+        run: node scripts/demo_forms_ingestion_synthetic.js
+
+      - name: Validate private form ingestion policy
+        run: node scripts/validate_private_form_ingestion_policy.js
+
+      - name: Run private ingestion dry-run metadata report
+        run: node scripts/run_private_form_ingestion_dry_run.js --input private_uploads/targeted_sem_b_forms
+
+      - name: Validate private ingestion dry-run report
+        run: node scripts/validate_private_form_ingestion_dry_run_report.js
+
+      - name: Validate private form taxonomy dry-run report
+        run: node scripts/validate_private_form_taxonomy_report.js
+
+      - name: Build court form workflow reports
+        run: node scripts/build_court_form_workflow_reports.js
+
+      - name: Build Atkin private forms ingestion report
+        run: node scripts/ingest_atkin_private_forms.js
+
+      - name: Validate Atkin source availability gate
+        run: node scripts/validate_atkin_source_availability_gate.js
+
+      - name: Build Atkin private Qdrant index dry run
+        run: node scripts/index_atkin_private_forms_qdrant.js --dry-run
+
+      - name: Build NotebookLM Atkin cross-check reports
+        run: node scripts/build_notebooklm_atkin_crosscheck_reports.js
+
+      - name: Evaluate private forms context awareness
+        run: node scripts/evaluate_private_forms_context_awareness.js
+
+      - name: Validate court form dropzone ingestion contract
+        run: node scripts/validate_court_form_dropzone_ingestion.js
+
+      - name: Validate Atkin private RAG ingestion report
+        run: node scripts/validate_atkin_private_rag_ingestion_report.js
+
+      - name: Validate Atkin private Qdrant index report
+        run: node scripts/validate_atkin_private_qdrant_index_report.js
+
+      - name: Validate private Qdrant tenant filters
+        run: node scripts/validate_private_qdrant_requires_tenant_filters.js
+
+      - name: Validate private Qdrant API disabled by default
+        run: node scripts/validate_private_qdrant_api_disabled_by_default.js
+
+      - name: Validate private Qdrant filter-first recall
+        run: node scripts/validate_private_qdrant_recall_after_structured_filters.js
+
+      - name: Validate NotebookLM Atkin cross-checks
+        run: node scripts/validate_notebooklm_atkin_crosscheck_reports.js
+
+      - name: Validate private forms context awareness
+        run: node scripts/validate_private_forms_context_awareness_eval.js
+
+      - name: Validate Atkin Part 1/2/3 boundaries
+        run: node scripts/validate_part1_part2_part3_boundaries_for_atkin_forms.js
+
+      - name: Validate no raw Atkin text committed
+        run: node scripts/validate_no_raw_atkin_text_committed.js
+
+      - name: Validate practice lane taxonomy
+        run: node scripts/validate_practice_lane_taxonomy.js
+
+      - name: Validate form-to-workflow mapping
+        run: node scripts/validate_form_to_workflow_mapping.js
+
+      - name: Validate private form backend recall
+        run: node scripts/validate_private_form_backend_recall.js
+
+      - name: Validate private semantic retrieval order
+        run: node scripts/validate_private_semantic_retrieval_order.js
+
+      - name: Validate private vector blockers
+        run: node scripts/validate_private_vector_cannot_override_structured_blockers.js
+
+      - name: Validate private chunks stay private
+        run: node scripts/validate_private_form_chunks_not_public.js
+
+      - name: Build expanded lane activation pilots
+        run: node scripts/build_expanded_lane_activation_pilots.js
+
+      - name: Build Atkin selected lane activation report
+        run: node scripts/build_atkin_selected_lane_activation_reports.js
+
+      - name: Validate Atkin selected lane activation
+        run: node scripts/validate_atkin_selected_lane_activation.js
+
+      - name: Ingest NotebookLM crosscheck scenarios
+        run: node scripts/ingest_notebooklm_crosscheck_scenarios.js
+
+      - name: Render private draft local-only metadata
+        run: node scripts/render_private_draft_local_only.js
+
+      - name: Validate NotebookLM scenarios parse
+        run: node scripts/validate_notebooklm_scenarios_parse.js
+
+      - name: Validate backend against NotebookLM expected forms
+        run: node scripts/validate_backend_against_notebooklm_expected_forms.js
+
+      - name: Validate NotebookLM is not authority
+        run: node scripts/validate_notebooklm_not_authority.js
+
+      - name: Validate NotebookLM does not override gates
+        run: node scripts/validate_notebooklm_does_not_override_review_gates.js
+
+      - name: Validate runtime matter facts affect forms
+        run: node scripts/validate_runtime_matter_facts_change_forms.js
+
+      - name: Validate wrong stage blocks semantic match
+        run: node scripts/validate_wrong_stage_blocks_even_with_semantic_match.js
+
+      - name: Validate missing fact blocks private semantic chunk
+        run: node scripts/validate_missing_fact_blocks_private_semantic_chunk.js
+
+      - name: Validate private draft renderer local-only
+        run: node scripts/validate_private_draft_renderer_local_only.js
+
+      - name: Validate Part 2 documentary flow
+        run: node scripts/validate_part2_documentary_flow.js
+
+      - name: Validate Part 3 workflow timeline
+        run: node scripts/validate_part3_workflow_timeline.js
+
+      - name: Validate CRM export rows
+        run: node scripts/validate_crm_export_rows.js
+
+      - name: Validate advice parts separation
+        run: node scripts/validate_advice_parts_separation.js
+
+      - name: Validate no private text in reports
+        run: node scripts/validate_no_private_text_in_reports.js
+
+      - name: Validate inactive real templates do not route
+        run: node scripts/validate_inactive_real_templates_do_not_route.js
+
+      - name: Validate reviewed templates route only after activation
+        run: node scripts/validate_reviewed_templates_route_only_after_activation.js
+
+      - name: Validate forms API blocks user path access
+        run: node scripts/validate_forms_api_no_user_path_access.js
+
+      - name: Validate no private forms committed
+        run: node scripts/validate_no_private_forms_committed.js
+
+      - name: Build approved synthetic forms subset
+        run: node scripts/build_forms_approved_demo_subset.js
+
+      - name: Validate approved synthetic forms subset
+        run: node scripts/validate_forms_approved_demo_subset.js
+
+      - name: Build forms workflow timeline demo
+        run: node scripts/build_forms_workflow_timeline_demo.js
+
+      - name: Validate forms workflow timeline export
+        run: node scripts/validate_forms_workflow_timeline_export.js
+
+      - name: Validate private lane review activation
+        run: node scripts/validate_private_lane_review_activation.js
+
+      - name: Validate private lane routing fixtures
+        run: node scripts/validate_private_lane_routing_fixtures.js
+
+      - name: Validate private lane workflow timeline export
+        run: node scripts/validate_private_lane_workflow_timeline_export.js
+
+      - name: Validate private lane has no text leakage
+        run: node scripts/validate_private_lane_no_text_leakage.js
+
+      - name: Validate NotebookLM private links are metadata-only
+        run: node scripts/validate_notebooklm_private_link_metadata_only.js
+
+      - name: Validate form classification review queue
+        run: node scripts/validate_form_classification_review_required.js
+
+      - name: Validate form template schema
+        run: node scripts/validate_form_template_schema.js
+
+      - name: Validate clause snippet schema
+        run: node scripts/validate_clause_snippet_schema.js
+
+      - name: Validate clause usage rules
+        run: node scripts/validate_clause_usage_rules.js
+
+      - name: Validate NotebookLM usage notes
+        run: node scripts/validate_notebooklm_usage_notes.js
+
+      - name: Validate NotebookLM links remain candidates
+        run: node scripts/validate_notebooklm_links_are_candidate_until_reviewed.js
+
+      - name: Validate form routing engine
+        run: node scripts/validate_form_routing_engine.js
+
+      - name: Validate adversarial form routing
+        run: node scripts/validate_forms_adversarial_routing.js
+
+      - name: Validate workflow stage mapping
+        run: node scripts/validate_workflow_stage_mapping.js
+
+      - name: Validate retrieval is not vector only
+        run: node scripts/validate_form_retrieval_not_vector_only.js
+
+      - name: Validate draft from form
+        run: node scripts/validate_draft_from_form.js
+
+      - name: Validate draft field provenance
+        run: node scripts/validate_draft_field_provenance.js
+
+      - name: Validate wrong-stage forms blocked
+        run: node scripts/validate_blocked_wrong_stage_forms.js
+
+      - name: Validate forms backend recall
+        run: node scripts/validate_forms_backend_recall.js
+
+      - name: Validate forms/principles separation
+        run: node scripts/validate_forms_do_not_pollute_principles_analysis.js
+
+      - name: Smoke test forms workspace
+        run: node scripts/smoke_test_forms_workspace_ui.js
 
       - name: Validate committed secrets
         run: node scripts/validate_no_secrets_committed.js

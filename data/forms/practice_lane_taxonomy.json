@@ -1,0 +1,121 @@
+{
+  "taxonomy_version": "court-form-workflow-v1",
+  "source_boundary": {
+    "private_forms_are_authority": false,
+    "private_forms_layer": "TEMPLATE_BASED",
+    "notebooklm_layer": "INTERNAL_USAGE_NOTE",
+    "public_authority_layer": "SOURCE_BACKED"
+  },
+  "lanes": [
+    {
+      "laneId": "personal_injury",
+      "matterTypes": ["road_traffic_pi", "work_injury_pi", "occupiers_liability_pi"],
+      "commonDocumentIntents": ["LETTER_OF_CLAIM", "MEDICAL_RECORDS_REQUEST", "POLICE_REPORT_REQUEST", "WRIT"],
+      "workflowStages": ["URGENT_ACTIONS", "MEDICAL_EVIDENCE", "PRE_ACTION_CORRESPONDENCE", "COMMENCEMENT"],
+      "roles": ["claimant", "plaintiff", "solicitor"],
+      "requiredFacts": ["injuryExists", "liabilityFactsKnown"],
+      "blockedConditions": ["proceedingsCommenced == true blocks WRIT", "medicalEvidenceReceived != true placeholders quantum"],
+      "suggestedNextTasks": ["request police report", "request medical records", "prepare letter of claim"],
+      "sourceBoundary": "private_template_metadata_only"
+    },
+    {
+      "laneId": "company_winding_up",
+      "matterTypes": ["company_winding_up", "creditor_petition", "provisional_liquidator"],
+      "commonDocumentIntents": ["COMPANY_WINDING_UP_PETITION", "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION", "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT", "ORIGINATING_SUMMONS", "COMPANY_COMPLIANCE_MEMO"],
+      "workflowStages": ["COMPANY_WINDING_UP", "PROVISIONAL_LIQUIDATOR", "COMMENCEMENT", "COMPANY_COMPLIANCE"],
+      "roles": ["creditor", "company", "director", "shareholder", "solicitor"],
+      "requiredFacts": ["companyIdentified", "debtOrGroundIdentified", "standingChecked", "statutoryDemandOrServiceEvidenceAvailable", "urgencyGroundsIdentified", "assetRiskEvidenceAvailable"],
+      "blockedConditions": ["companyInExistingProcedure == true", "debtGenuinelyDisputed == true", "standingChecked != true", "voluntaryWindingUpOnly == true blocks provisional liquidator route"],
+      "suggestedNextTasks": ["check creditor standing", "collect statutory demand/service evidence", "assess urgency and asset-risk evidence", "prepare redacted petition/provisional liquidator metadata workflow"],
+      "sourceBoundary": "private_template_metadata_only"
+    },
+    {
+      "laneId": "family_service",
+      "matterTypes": ["family_service", "family_proceedings"],
+      "commonDocumentIntents": ["FAMILY_SERVICE_ACKNOWLEDGMENT", "FAMILY_SERVICE_AFFIRMATION", "FAMILY_SERVICE_INSTRUCTIONS"],
+      "workflowStages": ["FAMILY_SERVICE", "EVIDENCE_COLLECTION"],
+      "roles": ["applicant", "respondent", "solicitor"],
+      "requiredFacts": ["proceedingsIssued", "respondentIdentified", "serviceAddressKnown", "serviceMethodSelected"],
+      "blockedConditions": ["postTrialStage == true", "serviceAddressKnown != true placeholders service evidence"],
+      "suggestedNextTasks": ["confirm issued proceedings", "identify respondent/service address", "select service method", "prepare redacted service metadata workflow"],
+      "sourceBoundary": "private_template_metadata_only"
+    },
+    {
+      "laneId": "company_corporate",
+      "matterTypes": ["company_general", "corporate_compliance"],
+      "commonDocumentIntents": ["COMPANY_COMPLIANCE_MEMO", "ORIGINATING_SUMMONS"],
+      "workflowStages": ["COMPANY_COMPLIANCE", "COMMENCEMENT"],
+      "roles": ["company", "director", "shareholder", "solicitor"],
+      "requiredFacts": ["companyIdentified", "transactionOrEventKnown"],
+      "blockedConditions": ["factsOrBoardApprovalUnclear == true"],
+      "suggestedNextTasks": ["identify company event", "check board/shareholder approval"],
+      "sourceBoundary": "private_template_metadata_only"
+    },
+    {
+      "laneId": "commercial_contract",
+      "matterTypes": ["commercial_contract", "transactional_drafting"],
+      "commonDocumentIntents": ["CONTRACT_AGREEMENT", "CONTRACT_CLAUSE", "LEASE_AGREEMENT", "SHAREHOLDERS_AGREEMENT"],
+      "workflowStages": ["TRANSACTIONAL_DRAFTING", "DOCUMENT_DRAFTING"],
+      "roles": ["buyer", "seller", "supplier", "customer", "company", "solicitor"],
+      "requiredFacts": ["partiesIdentified", "commercialTermsSettled", "authorityToDraft"],
+      "blockedConditions": ["commercialTermsSettled != true", "clientAuthorityMissing == true"],
+      "suggestedNextTasks": ["settle heads of terms", "select agreement type", "flag unresolved commercial terms"],
+      "sourceBoundary": "private_template_metadata_only"
+    },
+    {
+      "laneId": "probate",
+      "matterTypes": ["probate_grant", "wills_probate"],
+      "commonDocumentIntents": ["PROBATE_APPLICATION", "PROBATE_AFFIDAVIT", "WILL_DRAFT"],
+      "workflowStages": ["PROBATE_APPLICATION", "EVIDENCE_COLLECTION", "DOCUMENT_DRAFTING"],
+      "roles": ["executor", "administrator", "beneficiary", "solicitor"],
+      "requiredFacts": ["deathCertificate", "originalWillOrCopyWill", "executorIdentity", "estateAssetsKnown"],
+      "blockedConditions": ["contentiousProbate == true", "foreignDomicileUnresolved == true"],
+      "suggestedNextTasks": ["collect will/death documents", "identify affidavit route", "prepare grant application metadata"],
+      "sourceBoundary": "private_template_metadata_only"
+    },
+    {
+      "laneId": "employment",
+      "matterTypes": ["employment_dispute", "employment_contract"],
+      "commonDocumentIntents": ["LETTER_OF_CLAIM", "CONTRACT_AGREEMENT", "EVIDENCE_CHECKLIST"],
+      "workflowStages": ["INTAKE", "PRE_ACTION_CORRESPONDENCE", "DOCUMENT_DRAFTING"],
+      "roles": ["employee", "employer", "solicitor"],
+      "requiredFacts": ["employmentRelationshipKnown", "claimTypeKnown"],
+      "blockedConditions": ["claimTypeKnown != true"],
+      "suggestedNextTasks": ["classify employment posture", "collect employment documents"],
+      "sourceBoundary": "private_template_metadata_only"
+    },
+    {
+      "laneId": "equitable_remedies",
+      "matterTypes": ["injunction", "specific_performance", "trusts_equity"],
+      "commonDocumentIntents": ["ORIGINATING_SUMMONS", "AFFIDAVIT", "ORDER_DRAFT"],
+      "workflowStages": ["EVIDENCE_COLLECTION", "COMMENCEMENT", "DOCUMENT_DRAFTING"],
+      "roles": ["plaintiff", "applicant", "solicitor"],
+      "requiredFacts": ["reliefSoughtKnown", "urgentFactsKnown"],
+      "blockedConditions": ["urgentFactsKnown != true"],
+      "suggestedNextTasks": ["define remedy", "collect affidavit evidence"],
+      "sourceBoundary": "private_template_metadata_only"
+    },
+    {
+      "laneId": "financial_regulatory",
+      "matterTypes": ["financial_regulatory", "listed_company_compliance"],
+      "commonDocumentIntents": ["REGULATORY_COMPLIANCE_NOTE", "COMPANY_COMPLIANCE_MEMO"],
+      "workflowStages": ["REGULATORY_COMPLIANCE", "COMPANY_COMPLIANCE"],
+      "roles": ["regulated_entity", "listed_company", "solicitor"],
+      "requiredFacts": ["regulatedEntityIdentified", "regulatoryIssueKnown"],
+      "blockedConditions": ["regulatedStatusUnclear == true"],
+      "suggestedNextTasks": ["identify regulated activity", "classify compliance issue"],
+      "sourceBoundary": "private_template_metadata_only"
+    },
+    {
+      "laneId": "general_civil_procedure",
+      "matterTypes": ["general_litigation", "civil_procedure"],
+      "commonDocumentIntents": ["WRIT", "ORIGINATING_SUMMONS", "STATEMENT_OF_CLAIM", "SUMMONS", "ORDER_DRAFT"],
+      "workflowStages": ["COMMENCEMENT", "PLEADINGS", "DISCOVERY", "TRIAL_PREPARATION"],
+      "roles": ["plaintiff", "defendant", "applicant", "solicitor"],
+      "requiredFacts": ["partiesIdentified", "causeOfActionKnown", "limitationChecked"],
+      "blockedConditions": ["proceedingsCommenced == true blocks WRIT", "limitationChecked != true"],
+      "suggestedNextTasks": ["classify proceeding route", "check limitation", "prepare commencement metadata"],
+      "sourceBoundary": "private_template_metadata_only"
+    }
+  ]
+}

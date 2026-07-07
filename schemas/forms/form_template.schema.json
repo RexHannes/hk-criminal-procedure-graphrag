@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FormTemplate",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "firmId",
+    "workspaceId",
+    "formPackId",
+    "title",
+    "normalizedTitle",
+    "practiceArea",
+    "documentIntent",
+    "proceduralStage",
+    "prerequisites",
+    "contraindications",
+    "sourceLicenseNote",
+    "fieldSchema",
+    "provenanceLabel"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "firmId": {
+      "type": "string"
+    },
+    "workspaceId": {
+      "type": "string"
+    },
+    "formPackId": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "normalizedTitle": {
+      "type": "string"
+    },
+    "practiceArea": {
+      "type": "string"
+    },
+    "subPracticeArea": {
+      "type": "string"
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "documentIntent": {
+      "type": "string",
+      "enum": [
+        "CLIENT_INTAKE",
+        "EVIDENCE_CHECKLIST",
+        "MEDICAL_RECORDS_REQUEST",
+        "POLICE_REPORT_REQUEST",
+        "LETTER_OF_CLAIM",
+        "DEMAND_LETTER",
+        "SETTLEMENT_OFFER",
+        "CALDERBANK_LETTER",
+        "SANCTIONED_OFFER",
+        "WRIT",
+        "ORIGINATING_SUMMONS",
+        "STATEMENT_OF_CLAIM",
+        "PARTICULARS_OF_CLAIM",
+        "DEFENCE",
+        "REPLY",
+        "WITNESS_STATEMENT",
+        "LIST_OF_DOCUMENTS",
+        "EXPERT_REPORT_REQUEST",
+        "BUNDLE_INDEX",
+        "COSTS_SCHEDULE",
+        "CONSENT_SUMMONS",
+        "ORDER_DRAFT",
+        "AMENDED_PLEADING",
+        "SUMMONS",
+        "CONSENT_ORDER",
+        "PROBATE_APPLICATION",
+        "PROBATE_AFFIDAVIT",
+        "WILL_DRAFT",
+        "CONTRACT_AGREEMENT",
+        "CONTRACT_CLAUSE",
+        "LEASE_AGREEMENT",
+        "SHAREHOLDERS_AGREEMENT",
+        "COMPANY_WINDING_UP_PETITION",
+        "COMPANY_COMPLIANCE_MEMO",
+        "REGULATORY_COMPLIANCE_NOTE"
+      ]
+    },
+    "proceduralStage": {
+      "type": "string",
+      "enum": [
+        "INTAKE",
+        "URGENT_ACTIONS",
+        "EVIDENCE_COLLECTION",
+        "MEDICAL_EVIDENCE",
+        "LIABILITY_ASSESSMENT",
+        "PRE_ACTION_CORRESPONDENCE",
+        "SETTLEMENT_NEGOTIATION",
+        "COMMENCEMENT",
+        "PLEADINGS",
+        "DISCOVERY",
+        "EXPERT_EVIDENCE",
+        "MEDIATION",
+        "TRIAL_PREPARATION",
+        "TRIAL",
+        "POST_JUDGMENT",
+        "COSTS",
+        "CLOSURE",
+        "DOCUMENT_DRAFTING",
+        "TRANSACTIONAL_DRAFTING",
+        "PROBATE_APPLICATION",
+        "COMPANY_WINDING_UP",
+        "COMPANY_COMPLIANCE",
+        "REGULATORY_COMPLIANCE"
+      ]
+    },
+    "applicableMatterTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "applicableRoles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contraindications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blockedWhen": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendedWhen": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "bodyStructured": {
+      "type": "object"
+    },
+    "fieldSchema": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "clauseIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourceFileRef": {
+      "type": "object"
+    },
+    "sourceLicenseNote": {
+      "type": "string"
+    },
+    "templateVersion": {
+      "type": "string"
+    },
+    "reviewStatus": {
+      "type": "string"
+    },
+    "provenanceLabel": {
+      "type": "string",
+      "enum": [
+        "SOURCE_BACKED",
+        "TEMPLATE_BASED",
+        "FIRM_SOP",
+        "AI_SUGGESTED",
+        "INTERNAL_USAGE_NOTE",
+        "LAWYER_APPROVED"
+      ]
+    }
+  }
+}
