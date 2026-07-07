@@ -113,6 +113,39 @@ jobs:
       - name: Validate private chunks stay private
         run: node scripts/validate_private_form_chunks_not_public.js
 
+      - name: Build expanded lane activation pilots
+        run: node scripts/build_expanded_lane_activation_pilots.js
+
+      - name: Ingest NotebookLM crosscheck scenarios
+        run: node scripts/ingest_notebooklm_crosscheck_scenarios.js
+
+      - name: Render private draft local-only metadata
+        run: node scripts/render_private_draft_local_only.js
+
+      - name: Validate NotebookLM scenarios parse
+        run: node scripts/validate_notebooklm_scenarios_parse.js
+
+      - name: Validate backend against NotebookLM expected forms
+        run: node scripts/validate_backend_against_notebooklm_expected_forms.js
+
+      - name: Validate NotebookLM is not authority
+        run: node scripts/validate_notebooklm_not_authority.js
+
+      - name: Validate NotebookLM does not override gates
+        run: node scripts/validate_notebooklm_does_not_override_review_gates.js
+
+      - name: Validate runtime matter facts affect forms
+        run: node scripts/validate_runtime_matter_facts_change_forms.js
+
+      - name: Validate wrong stage blocks semantic match
+        run: node scripts/validate_wrong_stage_blocks_even_with_semantic_match.js
+
+      - name: Validate missing fact blocks private semantic chunk
+        run: node scripts/validate_missing_fact_blocks_private_semantic_chunk.js
+
+      - name: Validate private draft renderer local-only
+        run: node scripts/validate_private_draft_renderer_local_only.js
+
       - name: Validate Part 2 documentary flow
         run: node scripts/validate_part2_documentary_flow.js
 

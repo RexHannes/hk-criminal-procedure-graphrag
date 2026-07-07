@@ -1,0 +1,28 @@
+{
+  "report_id": "company_winding_up_provisional_liquidator_activation_report",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "selected_lane": "company_winding_up_provisional_liquidator",
+  "private_text_committed": false,
+  "public_authority": false,
+  "notebooklm_is_authority": false,
+  "source_dirs_checked": [
+    "private_ingest_output/company_corporate",
+    "private_ingest_output/sem_b_corporate_commercial"
+  ],
+  "private_candidate_status": "company_private_ingest_candidates_reviewed_redacted_metadata_only",
+  "private_candidates_detected": {
+    "templates": 10,
+    "clauses": 2215
+  },
+  "approved_metadata_templates": 2,
+  "approved_redacted_clause_records": 4,
+  "review_queue_records": 2,
+  "wrong_stage_tests_required": true,
+  "missing_fact_blocker_tests_required": true,
+  "part2_document_flow_tests_required": true,
+  "part3_timeline_tests_required": true,
+  "store_dir": "fixtures/forms/private_lane_company_provisional_liquidator_store",
+  "remaining_limitations": [
+    "Approved metadata only; raw private text remains private."
+  ]
+}

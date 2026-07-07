@@ -1,0 +1,246 @@
+[
+  {
+    "id": "lane_template_a7c186c77f0b",
+    "firmId": "private-lane-pilot-firm",
+    "workspaceId": "family_service-pilot",
+    "formPackId": "pack_family_service_redacted_metadata",
+    "title": "Family service acknowledgment metadata template",
+    "normalizedTitle": "family_service_acknowledgment_metadata_template",
+    "practiceArea": "family_service",
+    "subPracticeArea": "family_service",
+    "jurisdiction": "HK",
+    "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+    "proceduralStage": "FAMILY_SERVICE",
+    "applicableMatterTypes": [
+      "family_service",
+      "family_service"
+    ],
+    "applicableRoles": [
+      "applicant",
+      "solicitor"
+    ],
+    "prerequisites": [
+      "proceedingsIssued",
+      "respondentIdentified",
+      "serviceAddressKnown",
+      "serviceMethodSelected"
+    ],
+    "contraindications": [
+      "postTrialStage"
+    ],
+    "blockedWhen": [
+      "matter.proceedingsIssued != true",
+      "matter.respondentIdentified != true",
+      "matter.serviceAddressKnown != true",
+      "matter.serviceMethodSelected != true",
+      "matter.postTrialStage == true"
+    ],
+    "recommendedWhen": [
+      "proceedingsIssued == true",
+      "respondentIdentified == true",
+      "serviceAddressKnown == true",
+      "serviceMethodSelected == true"
+    ],
+    "legalKnowledgeNodeIds": [
+      "family_service.service.respondent",
+      "family_service.service.method",
+      "family_service.service.evidence"
+    ],
+    "bodyStructured": {
+      "headings": [
+        "Redacted lane metadata",
+        "Prerequisite checklist",
+        "Evidence gate"
+      ],
+      "text": "[Redacted metadata only. No private form text.]"
+    },
+    "fieldSchema": [
+      {
+        "fieldKey": "proceedingsIssued",
+        "label": "proceedingsIssued",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[proceedingsIssued]]",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "respondentIdentified",
+        "label": "respondentIdentified",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[respondentIdentified]]",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "serviceAddressKnown",
+        "label": "serviceAddressKnown",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[serviceAddressKnown]]",
+        "evidenceRequired": true,
+        "lawyerOnly": true
+      },
+      {
+        "fieldKey": "serviceMethodSelected",
+        "label": "serviceMethodSelected",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[serviceMethodSelected]]",
+        "evidenceRequired": true,
+        "lawyerOnly": true
+      }
+    ],
+    "clauseIds": [
+      "lane_clause_f9070e8cc883",
+      "lane_clause_4a7d9cc19245"
+    ],
+    "sourceFileRef": {
+      "source": "private_ingest_output_redacted_metadata_review",
+      "privateTextCommitted": false
+    },
+    "sourceLicenseNote": "Private lane metadata only; no private form text committed.",
+    "templateVersion": "0.1.0-expanded-lane-pilot",
+    "reviewStatus": "approved",
+    "classificationStatus": "review_approved",
+    "classificationReviewId": "classification_review_2805f640aa05",
+    "activeInRouting": true,
+    "routingActiveInDemo": false,
+    "demoFixture": false,
+    "reviewerDecision": {
+      "status": "approved",
+      "reviewer": "lane-reviewer-placeholder",
+      "reviewedAt": "2026-07-07T00:00:00+08:00",
+      "comment": "Approved as redacted metadata only for focused lane routing tests.",
+      "approvedValues": {
+        "practiceArea": "family_service",
+        "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+        "proceduralStage": "FAMILY_SERVICE"
+      }
+    },
+    "provenanceLabel": "TEMPLATE_BASED"
+  },
+  {
+    "id": "lane_template_4ec8e426c63d",
+    "firmId": "private-lane-pilot-firm",
+    "workspaceId": "family_service-pilot",
+    "formPackId": "pack_family_service_redacted_metadata",
+    "title": "Family service affirmation metadata template",
+    "normalizedTitle": "family_service_affirmation_metadata_template",
+    "practiceArea": "family_service",
+    "subPracticeArea": "family_service",
+    "jurisdiction": "HK",
+    "documentIntent": "FAMILY_SERVICE_AFFIRMATION",
+    "proceduralStage": "FAMILY_SERVICE",
+    "applicableMatterTypes": [
+      "family_service",
+      "family_service"
+    ],
+    "applicableRoles": [
+      "applicant",
+      "solicitor"
+    ],
+    "prerequisites": [
+      "proceedingsIssued",
+      "respondentIdentified",
+      "serviceAddressKnown",
+      "serviceMethodSelected"
+    ],
+    "contraindications": [
+      "postTrialStage"
+    ],
+    "blockedWhen": [
+      "matter.proceedingsIssued != true",
+      "matter.respondentIdentified != true",
+      "matter.serviceAddressKnown != true",
+      "matter.serviceMethodSelected != true",
+      "matter.postTrialStage == true"
+    ],
+    "recommendedWhen": [
+      "proceedingsIssued == true",
+      "respondentIdentified == true",
+      "serviceAddressKnown == true",
+      "serviceMethodSelected == true"
+    ],
+    "legalKnowledgeNodeIds": [
+      "family_service.service.respondent",
+      "family_service.service.method",
+      "family_service.service.evidence"
+    ],
+    "bodyStructured": {
+      "headings": [
+        "Redacted lane metadata",
+        "Prerequisite checklist",
+        "Evidence gate"
+      ],
+      "text": "[Redacted metadata only. No private form text.]"
+    },
+    "fieldSchema": [
+      {
+        "fieldKey": "proceedingsIssued",
+        "label": "proceedingsIssued",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[proceedingsIssued]]",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "respondentIdentified",
+        "label": "respondentIdentified",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[respondentIdentified]]",
+        "evidenceRequired": false,
+        "lawyerOnly": false
+      },
+      {
+        "fieldKey": "serviceAddressKnown",
+        "label": "serviceAddressKnown",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[serviceAddressKnown]]",
+        "evidenceRequired": true,
+        "lawyerOnly": true
+      },
+      {
+        "fieldKey": "serviceMethodSelected",
+        "label": "serviceMethodSelected",
+        "valueType": "boolean",
+        "required": true,
+        "placeholder": "[[serviceMethodSelected]]",
+        "evidenceRequired": true,
+        "lawyerOnly": true
+      }
+    ],
+    "clauseIds": [
+      "lane_clause_c628412bdae9",
+      "lane_clause_fd5c154baa09"
+    ],
+    "sourceFileRef": {
+      "source": "private_ingest_output_redacted_metadata_review",
+      "privateTextCommitted": false
+    },
+    "sourceLicenseNote": "Private lane metadata only; no private form text committed.",
+    "templateVersion": "0.1.0-expanded-lane-pilot",
+    "reviewStatus": "approved",
+    "classificationStatus": "review_approved",
+    "classificationReviewId": "classification_review_081d23c7c22a",
+    "activeInRouting": true,
+    "routingActiveInDemo": false,
+    "demoFixture": false,
+    "reviewerDecision": {
+      "status": "approved",
+      "reviewer": "lane-reviewer-placeholder",
+      "reviewedAt": "2026-07-07T00:00:00+08:00",
+      "comment": "Approved as redacted metadata only for focused lane routing tests.",
+      "approvedValues": {
+        "practiceArea": "family_service",
+        "documentIntent": "FAMILY_SERVICE_AFFIRMATION",
+        "proceduralStage": "FAMILY_SERVICE"
+      }
+    },
+    "provenanceLabel": "TEMPLATE_BASED"
+  }
+]

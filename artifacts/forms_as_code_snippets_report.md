@@ -86,6 +86,41 @@ Why selected: the dry run found multiple company winding-up candidates in the co
 
 The approved lane fixture is redacted metadata only. It proves that one company winding-up petition metadata template can route when prerequisites are present, is blocked when the company is already in another procedure, and becomes placeholder-only when statutory demand/service evidence is missing.
 
+## NotebookLM Cross-Check
+
+NotebookLM/manual note outputs can now be parsed from `private_notebooklm_notes/` as scenario expectations. They remain `INTERNAL_USAGE_NOTE` metadata only, not legal authority, not the runtime engine, and not an approval gate.
+
+| Metric | Count |
+|---|---:|
+| Scenarios parsed | 2 |
+| Backend comparisons | 2 |
+| Backend comparison mismatches | 0 |
+| Private note text committed | 0 |
+
+Mismatches are reported in `artifacts/notebooklm_backend_comparison_report.*`; they are not auto-fixed and do not activate templates.
+
+## Expanded Lane Activation
+
+Two additional redacted metadata lanes are now available for routing tests:
+
+| Lane | Approved metadata templates | Approved redacted clauses |
+|---|---:|---:|
+| `family_service` | 2 | 4 |
+| `company_winding_up_provisional_liquidator` | 2 | 4 |
+
+The company provisional-liquidator lane is backed by local private-ingest candidate metadata. The family-service lane is an activation shell until private family materials are added locally. Both are metadata-only and keep raw private text out of git.
+
+## Private Draft Rendering
+
+Local-only draft rendering now writes metadata output only under `private_exports/` and generates a committed metadata-only report:
+
+| Metric | Status |
+|---|---|
+| Output scope | `private_exports/` only |
+| Private text committed | no |
+| Missing facts create placeholders/blockers | yes |
+| Lawyer-only fields flagged | yes |
+
 ## Court Forms -> Routable Backend Workflow
 
 The branch now adds the backend layer needed to turn reviewed form metadata into document workflow suggestions without committing private text.
@@ -165,6 +200,10 @@ The advice APIs keep the layers separate: public legal analysis is not polluted 
 | Private semantic retrieval | Local private vector ranking runs only after structured blockers pass |
 | Part 2 documentary flow | Missing facts and evidence blockers are surfaced before drafting |
 | Part 3 timeline/CRM | Exportable rows generated without private form text |
+| NotebookLM scenario cross-check | Parsed as internal usage-note metadata; backend comparison reports mismatches only |
+| Expanded lane activation | Family-service and provisional-liquidator metadata lanes added with wrong-stage/missing-fact gates |
+| Private draft rendering | Local-only output under `private_exports/`; public report has counts only |
+| Anti-static runtime checks | Matter facts, wrong stage, and missing facts change backend output |
 | Advice separation | Legal authority, document suggestions, and workflow timeline are distinct response layers |
 | Vercel function cap | Private recall, matter advice, and workflow timeline modes reuse the Forms API function |
 
@@ -178,5 +217,8 @@ The Sem B / Downloads material was processed locally into `private_ingest_output
 - Lawyer approval is represented as metadata and review gates, not a full multi-user HITL workflow.
 - The focused company winding-up lane approves routing metadata only, not private clause text or professional advice.
 - The court-form workflow layer routes reviewed metadata only; it does not expose or commit private form wording.
+- Family-service activation is a redacted metadata shell until private family materials are placed in `private_ingest_output/` / `private_notebooklm_notes/` locally.
+- NotebookLM cross-checks are comparison/audit metadata only and do not activate or approve templates.
+- Private draft rendering writes only to `private_exports/` and is not a deployed production drafting endpoint.
 - PR #11 is hardened but should remain draft until a production private-store mapping and reviewer permission model are configured.
 - Production vector indexing should use private storage/Qdrant collections, not public fixtures.

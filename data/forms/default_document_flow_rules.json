@@ -36,6 +36,28 @@
       "crmExportCategory": "company_winding_up_document"
     },
     {
+      "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION",
+      "practiceLane": "company_winding_up",
+      "workflowStage": "PROVISIONAL_LIQUIDATOR",
+      "useWhen": ["companyIdentified == true", "standingChecked == true", "urgencyGroundsIdentified == true", "assetRiskEvidenceAvailable == true"],
+      "blockFinalisationWhen": ["voluntaryWindingUpOnly == true", "standingChecked != true", "urgencyGroundsIdentified != true", "assetRiskEvidenceAvailable != true"],
+      "wrongStageBlockers": ["voluntaryWindingUpOnly == true"],
+      "alternatives": ["EVIDENCE_CHECKLIST", "COMPANY_COMPLIANCE_MEMO"],
+      "timelineTask": "Prepare provisional liquidator application metadata pack",
+      "crmExportCategory": "company_winding_up_document"
+    },
+    {
+      "documentIntent": "FAMILY_SERVICE_ACKNOWLEDGMENT",
+      "practiceLane": "family_service",
+      "workflowStage": "FAMILY_SERVICE",
+      "useWhen": ["proceedingsIssued == true", "respondentIdentified == true", "serviceAddressKnown == true", "serviceMethodSelected == true"],
+      "blockFinalisationWhen": ["postTrialStage == true", "respondentIdentified != true", "serviceAddressKnown != true", "serviceMethodSelected != true"],
+      "wrongStageBlockers": ["postTrialStage == true"],
+      "alternatives": ["FAMILY_SERVICE_INSTRUCTIONS", "EVIDENCE_CHECKLIST"],
+      "timelineTask": "Prepare family service acknowledgment metadata pack",
+      "crmExportCategory": "family_service_document"
+    },
+    {
       "documentIntent": "CONTRACT_AGREEMENT",
       "practiceLane": "commercial_contract",
       "workflowStage": "TRANSACTIONAL_DRAFTING",

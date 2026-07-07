@@ -20,7 +20,11 @@ function laneForTemplate(template, taxonomy = loadPracticeLaneTaxonomy()) {
     if (lane.laneId === practice) score += 8;
     if (lane.laneId === "commercial_contract" && practice === "commercial_contracts") score += 8;
     if (lane.laneId === "company_winding_up" && intent === "COMPANY_WINDING_UP_PETITION") score += 12;
+    if (lane.laneId === "company_winding_up" && /^COMPANY_PROVISIONAL_LIQUIDATOR_/.test(intent)) score += 12;
     if (lane.laneId === "company_winding_up" && /winding|liquidation|statutory demand|creditor/.test(title)) score += 8;
+    if (lane.laneId === "company_winding_up" && /provisional liquidator|liquidator|asset risk|urgency/.test(title)) score += 8;
+    if (lane.laneId === "family_service" && /^FAMILY_SERVICE_/.test(intent)) score += 12;
+    if (lane.laneId === "family_service" && /family|service|respondent|acknowledgment|affirmation/.test(title)) score += 8;
     if (lane.laneId === "commercial_contract" && /shareholders|agreement|lease|contract|clause/.test(title)) score += 8;
     if (lane.laneId === "probate" && /\bformw\d|probate|grant|affidavit|will\b/.test(title)) score += 8;
     if ((lane.commonDocumentIntents || []).includes(intent)) score += 5;

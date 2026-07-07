@@ -1,0 +1,86 @@
+[
+  {
+    "id": "classification_review_69398b0c5404",
+    "templateId": "lane_template_6714fafb2711",
+    "firmId": "private-lane-pilot-firm",
+    "workspaceId": "company_winding_up_provisional_liquidator-pilot",
+    "proposed": {
+      "practiceArea": "company_corporate",
+      "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION",
+      "proceduralStage": "PROVISIONAL_LIQUIDATOR",
+      "matterTypes": [
+        "provisional_liquidator",
+        "company_corporate"
+      ],
+      "prerequisites": [
+        "companyIdentified",
+        "standingChecked",
+        "urgencyGroundsIdentified",
+        "assetRiskEvidenceAvailable"
+      ],
+      "contraindications": [
+        "voluntaryWindingUpOnly"
+      ]
+    },
+    "extractionTrace": {
+      "method": "expanded_lane_redacted_metadata_review",
+      "confidence": 0.8,
+      "caveat": "Approval applies only to redacted routing metadata; no private text is committed."
+    },
+    "classificationStatus": "review_approved",
+    "reviewStatus": "approved",
+    "reviewerDecision": {
+      "status": "approved",
+      "reviewer": "lane-reviewer-placeholder",
+      "reviewedAt": "2026-07-07T00:00:00+08:00",
+      "comment": "Approved as redacted metadata only for focused lane routing tests.",
+      "approvedValues": {
+        "practiceArea": "company_corporate",
+        "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION",
+        "proceduralStage": "PROVISIONAL_LIQUIDATOR"
+      }
+    }
+  },
+  {
+    "id": "classification_review_2284e418820a",
+    "templateId": "lane_template_dc046b529fc6",
+    "firmId": "private-lane-pilot-firm",
+    "workspaceId": "company_winding_up_provisional_liquidator-pilot",
+    "proposed": {
+      "practiceArea": "company_corporate",
+      "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT",
+      "proceduralStage": "PROVISIONAL_LIQUIDATOR",
+      "matterTypes": [
+        "provisional_liquidator",
+        "company_corporate"
+      ],
+      "prerequisites": [
+        "companyIdentified",
+        "standingChecked",
+        "urgencyGroundsIdentified",
+        "assetRiskEvidenceAvailable"
+      ],
+      "contraindications": [
+        "voluntaryWindingUpOnly"
+      ]
+    },
+    "extractionTrace": {
+      "method": "expanded_lane_redacted_metadata_review",
+      "confidence": 0.8,
+      "caveat": "Approval applies only to redacted routing metadata; no private text is committed."
+    },
+    "classificationStatus": "review_approved",
+    "reviewStatus": "approved",
+    "reviewerDecision": {
+      "status": "approved",
+      "reviewer": "lane-reviewer-placeholder",
+      "reviewedAt": "2026-07-07T00:00:00+08:00",
+      "comment": "Approved as redacted metadata only for focused lane routing tests.",
+      "approvedValues": {
+        "practiceArea": "company_corporate",
+        "documentIntent": "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT",
+        "proceduralStage": "PROVISIONAL_LIQUIDATOR"
+      }
+    }
+  }
+]

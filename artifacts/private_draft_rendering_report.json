@@ -1,0 +1,16 @@
+{
+  "report_id": "private_draft_rendering",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "template_id": "lane_template_6714fafb2711",
+  "document_intent": "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION",
+  "lane": "company_winding_up",
+  "field_count": 4,
+  "filled_count": 4,
+  "missing_count": 2,
+  "placeholder_count": 2,
+  "lawyer_only_count": 2,
+  "finalisation_status": "blocked",
+  "output_scope": "private_exports_only",
+  "private_text_committed": false,
+  "output_path_committed": false
+}

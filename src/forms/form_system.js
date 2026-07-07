@@ -1054,6 +1054,60 @@ function proceduralBlocksForTemplate(template, matter) {
       }
     }
   }
+  if (["COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION", "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT"].includes(template.documentIntent)) {
+    const required = [
+      ["companyIdentified", "Company identity is required before a provisional liquidator application workflow can be prepared."],
+      ["standingChecked", "Standing must be checked before finalising a provisional liquidator application workflow."],
+      ["urgencyGroundsIdentified", "Urgency grounds must be identified before finalising a provisional liquidator application workflow."],
+      ["assetRiskEvidenceAvailable", "Asset dissipation/risk evidence is missing; keep provisional liquidator drafting as placeholder-only."],
+    ];
+    for (const [fact, reason] of required) {
+      if (!isTruthyValue(matter[fact])) {
+        blocks.push({
+          gateId: `gate_provisional_liquidator_${fact}`,
+          severity: fact === "assetRiskEvidenceAvailable" ? "placeholder_only" : "block_finalisation",
+          reason,
+          missingFact: fact,
+          alternatives: ["EVIDENCE_CHECKLIST", "COMPANY_COMPLIANCE_MEMO"],
+        });
+      }
+    }
+    if (isTruthyValue(matter.voluntaryWindingUpOnly)) {
+      blocks.push({
+        gateId: "gate_provisional_liquidator_wrong_winding_up_path",
+        severity: "block",
+        reason: "Voluntary winding-up-only facts do not support this provisional liquidator route.",
+        alternatives: ["COMPANY_VOLUNTARY_WINDING_UP_MEMO"],
+      });
+    }
+  }
+  if (["FAMILY_SERVICE_ACKNOWLEDGMENT", "FAMILY_SERVICE_AFFIRMATION", "FAMILY_SERVICE_INSTRUCTIONS"].includes(template.documentIntent)) {
+    const required = [
+      ["proceedingsIssued", "Proceedings must be issued before service documents are finalised."],
+      ["respondentIdentified", "Respondent identity must be known before service documents are finalised."],
+      ["serviceAddressKnown", "Service address/location is missing; keep service drafting as placeholder-only."],
+      ["serviceMethodSelected", "Service method must be selected before service documents are finalised."],
+    ];
+    for (const [fact, reason] of required) {
+      if (!isTruthyValue(matter[fact])) {
+        blocks.push({
+          gateId: `gate_family_service_${fact}`,
+          severity: fact === "serviceAddressKnown" ? "placeholder_only" : "block_finalisation",
+          reason,
+          missingFact: fact,
+          alternatives: ["FAMILY_SERVICE_INSTRUCTIONS", "EVIDENCE_CHECKLIST"],
+        });
+      }
+    }
+    if (isTruthyValue(matter.postTrialStage)) {
+      blocks.push({
+        gateId: "gate_family_service_post_trial_wrong_stage",
+        severity: "block",
+        reason: "Post-trial facts do not support the service-stage document route.",
+        alternatives: ["FAMILY_POST_TRIAL_DIRECTIONS"],
+      });
+    }
+  }
   if (template.documentIntent === "LETTER_OF_CLAIM" && !isTruthyValue(matter.opponentIdentified)) {
     blocks.push({
       gateId: "gate_letter_final_opponent_unknown",
@@ -1083,6 +1137,18 @@ function clauseBlockedReasons(clause, matter) {
   }
   if (clause.documentIntent === "WRIT" && isTruthyValue(matter.proceedingsCommenced)) {
     blocks.push("Proceedings have already commenced; writ clauses are blocked.");
+  }
+  if (
+    ["COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION", "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT"].includes(clause.documentIntent) &&
+    isTruthyValue(matter.voluntaryWindingUpOnly)
+  ) {
+    blocks.push("Voluntary winding-up-only facts block provisional liquidator clauses.");
+  }
+  if (
+    ["FAMILY_SERVICE_ACKNOWLEDGMENT", "FAMILY_SERVICE_AFFIRMATION", "FAMILY_SERVICE_INSTRUCTIONS"].includes(clause.documentIntent) &&
+    isTruthyValue(matter.postTrialStage)
+  ) {
+    blocks.push("Post-trial facts block family service clauses.");
   }
   for (const req of clause.factRequirements || []) {
     if (matter[req] === false || matter[req] === undefined || matter[req] === null || matter[req] === "") {

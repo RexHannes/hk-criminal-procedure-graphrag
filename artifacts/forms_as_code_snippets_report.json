@@ -142,6 +142,34 @@
       ],
       "vector_cannot_override_structured_blockers": true
     },
+    "notebooklm_crosscheck": {
+      "scenario_parser_enabled": true,
+      "backend_comparison_enabled": true,
+      "private_note_text_committed": false,
+      "notebooklm_is_authority": false,
+      "notebooklm_runtime_engine": false,
+      "mismatches_auto_fixed": false,
+      "scenarios_parsed": 2,
+      "backend_comparison_mismatches": 0
+    },
+    "expanded_lane_activation": {
+      "metadata_only": true,
+      "private_text_committed": false,
+      "lanes": [
+        "family_service",
+        "company_winding_up_provisional_liquidator"
+      ],
+      "approved_metadata_templates": 4,
+      "approved_redacted_clause_records": 8,
+      "raw_private_text_committed": false
+    },
+    "private_draft_rendering": {
+      "enabled_local_only": true,
+      "output_scope": "private_exports_only",
+      "metadata_report_only": true,
+      "private_text_committed": false,
+      "finalisation_blockers_enforced": true
+    },
     "part2_documentary_flow": {
       "enabled": true,
       "recommended_documents": 1,
@@ -187,6 +215,8 @@
     },
     "notebooklm_link_review": {
       "notes_are_authority": false,
+      "scenario_notes_are_authority": false,
+      "scenario_notes_activate_templates": false,
       "template_links_default": "candidate",
       "clause_links_default": "candidate",
       "token_overlap_links_auto_approved": false
@@ -238,6 +268,13 @@
       "part3_timeline_crm_export_enabled": true,
       "advice_layers_separated": true,
       "workflow_modes_reuse_existing_forms_function": true
+    },
+    "anti_static_runtime_checks": {
+      "same_lane_different_facts_change_recommendations": true,
+      "wrong_stage_blocks_even_with_semantic_match": true,
+      "missing_fact_blocks_private_semantic_chunk": true,
+      "private_draft_renderer_local_only": true,
+      "public_reports_contain_no_private_text": true
     }
   },
   "product_layers": [
@@ -270,6 +307,14 @@
     "private_semantic_retrieval_order": true,
     "private_vector_cannot_override_structured_blockers": true,
     "private_form_chunks_not_public": true,
+    "notebooklm_scenarios_parse": true,
+    "backend_against_notebooklm_expected_forms": true,
+    "notebooklm_not_authority": true,
+    "notebooklm_does_not_override_review_gates": true,
+    "runtime_matter_facts_change_forms": true,
+    "wrong_stage_blocks_even_with_semantic_match": true,
+    "missing_fact_blocks_private_semantic_chunk": true,
+    "private_draft_renderer_local_only": true,
     "part2_documentary_flow": true,
     "part3_workflow_timeline": true,
     "crm_export_rows": true,
@@ -284,6 +329,9 @@
     "Lawyer approval workflow is metadata-ready but not a full multi-user HITL product yet.",
     "The focused company winding-up lane approves routing metadata only, not private clause text or professional advice.",
     "The court-form workflow layer routes reviewed metadata only; it does not expose or commit private form wording.",
+    "Family-service activation is a redacted metadata shell until private family materials are placed in private_ingest_output/private_notebooklm_notes locally.",
+    "NotebookLM cross-checks are comparison/audit metadata only and do not activate or approve templates.",
+    "Private draft rendering writes only to private_exports and is not a deployed production drafting endpoint.",
     "PR #11 should remain draft until private production store configuration and reviewer UI permissions are selected.",
     "Vector embeddings are represented by index policy and keyword fallback in this MVP; production vector storage should remain private."
   ]

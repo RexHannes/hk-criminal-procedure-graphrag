@@ -20,13 +20,24 @@
     },
     {
       "laneId": "company_winding_up",
-      "matterTypes": ["company_winding_up", "creditor_petition"],
-      "commonDocumentIntents": ["COMPANY_WINDING_UP_PETITION", "ORIGINATING_SUMMONS", "COMPANY_COMPLIANCE_MEMO"],
-      "workflowStages": ["COMPANY_WINDING_UP", "COMMENCEMENT", "COMPANY_COMPLIANCE"],
+      "matterTypes": ["company_winding_up", "creditor_petition", "provisional_liquidator"],
+      "commonDocumentIntents": ["COMPANY_WINDING_UP_PETITION", "COMPANY_PROVISIONAL_LIQUIDATOR_APPLICATION", "COMPANY_PROVISIONAL_LIQUIDATOR_AFFIDAVIT", "ORIGINATING_SUMMONS", "COMPANY_COMPLIANCE_MEMO"],
+      "workflowStages": ["COMPANY_WINDING_UP", "PROVISIONAL_LIQUIDATOR", "COMMENCEMENT", "COMPANY_COMPLIANCE"],
       "roles": ["creditor", "company", "director", "shareholder", "solicitor"],
-      "requiredFacts": ["companyIdentified", "debtOrGroundIdentified", "standingChecked", "statutoryDemandOrServiceEvidenceAvailable"],
-      "blockedConditions": ["companyInExistingProcedure == true", "debtGenuinelyDisputed == true", "standingChecked != true"],
-      "suggestedNextTasks": ["check creditor standing", "collect statutory demand/service evidence", "prepare redacted petition metadata workflow"],
+      "requiredFacts": ["companyIdentified", "debtOrGroundIdentified", "standingChecked", "statutoryDemandOrServiceEvidenceAvailable", "urgencyGroundsIdentified", "assetRiskEvidenceAvailable"],
+      "blockedConditions": ["companyInExistingProcedure == true", "debtGenuinelyDisputed == true", "standingChecked != true", "voluntaryWindingUpOnly == true blocks provisional liquidator route"],
+      "suggestedNextTasks": ["check creditor standing", "collect statutory demand/service evidence", "assess urgency and asset-risk evidence", "prepare redacted petition/provisional liquidator metadata workflow"],
+      "sourceBoundary": "private_template_metadata_only"
+    },
+    {
+      "laneId": "family_service",
+      "matterTypes": ["family_service", "family_proceedings"],
+      "commonDocumentIntents": ["FAMILY_SERVICE_ACKNOWLEDGMENT", "FAMILY_SERVICE_AFFIRMATION", "FAMILY_SERVICE_INSTRUCTIONS"],
+      "workflowStages": ["FAMILY_SERVICE", "EVIDENCE_COLLECTION"],
+      "roles": ["applicant", "respondent", "solicitor"],
+      "requiredFacts": ["proceedingsIssued", "respondentIdentified", "serviceAddressKnown", "serviceMethodSelected"],
+      "blockedConditions": ["postTrialStage == true", "serviceAddressKnown != true placeholders service evidence"],
+      "suggestedNextTasks": ["confirm issued proceedings", "identify respondent/service address", "select service method", "prepare redacted service metadata workflow"],
       "sourceBoundary": "private_template_metadata_only"
     },
     {
