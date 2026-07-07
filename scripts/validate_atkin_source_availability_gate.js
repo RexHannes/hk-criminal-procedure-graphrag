@@ -12,10 +12,10 @@ const REPORT_MD = path.join(ROOT, "artifacts", "atkin_source_availability_gate_r
 const SUPPORTED_SOURCE_EXT = new Set([".zip", ".docx", ".doc", ".pdf", ".txt", ".md", ".markdown"]);
 const SUPPORTED_NOTE_EXT = new Set([".md", ".markdown", ".txt", ".json"]);
 const REQUIRED_IGNORED_PATHS = [
-  "private_uploads/atkin_forms",
-  "private_notebooklm_notes",
-  "private_ingest_output/atkin_forms",
-  "private_exports",
+  { path: "private_uploads/atkin_forms", probe: "private_uploads/atkin_forms/source_probe.docx" },
+  { path: "private_notebooklm_notes", probe: "private_notebooklm_notes/note_probe.md" },
+  { path: "private_ingest_output/atkin_forms", probe: "private_ingest_output/atkin_forms/probe.json" },
+  { path: "private_exports", probe: "private_exports/draft_probe.json" },
 ];
 
 function listFilesRecursive(dir) {
@@ -47,9 +47,9 @@ function gitOutput(args) {
 
 function ignoredStatus() {
   return REQUIRED_IGNORED_PATHS.map(item => {
-    const output = gitOutput(["check-ignore", "-v", item]).trim();
+    const output = gitOutput(["check-ignore", "-v", item.probe]).trim();
     return {
-      path: item,
+      path: item.path,
       gitignored: Boolean(output),
       rule: output,
     };

@@ -40,22 +40,22 @@
     {
       "path": "private_uploads/atkin_forms",
       "gitignored": true,
-      "rule": ".gitignore:24:private_uploads/\tprivate_uploads/atkin_forms"
+      "rule": ".gitignore:24:private_uploads/\tprivate_uploads/atkin_forms/source_probe.docx"
     },
     {
       "path": "private_notebooklm_notes",
       "gitignored": true,
-      "rule": ".gitignore:28:private_notebooklm_notes/\tprivate_notebooklm_notes"
+      "rule": ".gitignore:28:private_notebooklm_notes/\tprivate_notebooklm_notes/note_probe.md"
     },
     {
       "path": "private_ingest_output/atkin_forms",
       "gitignored": true,
-      "rule": ".gitignore:25:private_ingest_output/\tprivate_ingest_output/atkin_forms"
+      "rule": ".gitignore:25:private_ingest_output/\tprivate_ingest_output/atkin_forms/probe.json"
     },
     {
       "path": "private_exports",
       "gitignored": true,
-      "rule": ".gitignore:27:private_exports/\tprivate_exports"
+      "rule": ".gitignore:27:private_exports/\tprivate_exports/draft_probe.json"
     }
   ],
   "tracked_private_files": [],
