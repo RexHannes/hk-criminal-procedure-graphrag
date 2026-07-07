@@ -147,11 +147,11 @@
     },
     "vercel_function_cap_hardening": {
       "new_physical_api_functions": 0,
-      "workflow_routes_rewrite_to_existing_forms_handler": true,
+      "workflow_modes_reuse_existing_forms_handler": true,
       "routes": [
-        "/api/forms/private-recall",
-        "/api/advice/matter-advice",
-        "/api/advice/workflow-timeline"
+        "/api/forms/recommend?formsMode=private-recall",
+        "/api/forms/recommend?formsMode=matter-advice",
+        "/api/forms/recommend?formsMode=workflow-timeline"
       ]
     }
   },
@@ -214,7 +214,7 @@
       "part2_documentary_flow_enabled": true,
       "part3_timeline_crm_export_enabled": true,
       "advice_layers_separated": true,
-      "workflow_routes_reuse_existing_forms_function": true
+      "workflow_modes_reuse_existing_forms_function": true
     }
   },
   "product_layers": [

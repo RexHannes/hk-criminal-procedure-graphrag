@@ -6,8 +6,7 @@ const { recallPrivateForms } = require("../src/forms/private_form_recall");
 
 const report = JSON.parse(fs.readFileSync("artifacts/private_form_backend_recall_report.json", "utf8"));
 const formsRecommend = fs.readFileSync("api/forms/recommend.js", "utf8");
-const vercel = JSON.parse(fs.readFileSync("vercel.json", "utf8"));
-assert((vercel.rewrites || []).some(rule => rule.source === "/api/forms/private-recall" && /private-recall/.test(rule.destination)), "Private recall API rewrite missing");
+assert(formsRecommend.includes('mode === "private-recall"'), "Private recall mode missing from shared Forms API");
 assert(formsRecommend.includes("recallPrivateForms"), "Private recall mode missing from shared Forms API handler");
 assert(report.private_text_committed === false, "Recall report must not commit private text");
 assert(report.public_authority === false, "Private recall must not be public authority");
