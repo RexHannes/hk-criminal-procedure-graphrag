@@ -1,4 +1,4 @@
-const { body, json, routeForms, storeFromReq } = require("./_utils");
+const { json, readBody, routeForms, storeFromReq } = require("./_utils");
 const { recallPrivateForms } = require("../../src/forms/private_form_recall");
 const { buildPart2DocumentAdvice } = require("../../src/advice/part2_document_advice");
 const { composeWorkflowTimeline } = require("../../src/advice/workflow_timeline_composer");
@@ -27,8 +27,9 @@ module.exports = async function handler(req, res) {
     json(res, 405, { error: "method_not_allowed" });
     return;
   }
-  const payload = body(req);
   try {
+    const payload = await readBody(req);
+    req.body = payload;
     const mode = String(payload.formsMode || payload.mode || req.query.formsMode || req.query.mode || "recommend").trim();
     const query = String(payload.query || req.query.q || req.query.query || "").trim();
     const matter = {

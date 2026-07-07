@@ -26,6 +26,21 @@ function body(req) {
   }
 }
 
+async function readBody(req) {
+  const parsed = body(req);
+  if (Object.keys(parsed).length || req.body) return parsed;
+  const chunks = [];
+  for await (const chunk of req) chunks.push(Buffer.from(chunk));
+  if (!chunks.length) return {};
+  try {
+    const payload = JSON.parse(Buffer.concat(chunks).toString("utf8"));
+    req.body = payload;
+    return payload;
+  } catch {
+    return {};
+  }
+}
+
 function isProductionRuntime() {
   return process.env.NODE_ENV === "production" || process.env.VERCEL === "1";
 }
@@ -81,6 +96,7 @@ module.exports = {
   isProductionRuntime,
   json,
   privateFormsApiEnabled,
+  readBody,
   recommendClauses,
   resolveConfiguredStorePath,
   routeForms,
