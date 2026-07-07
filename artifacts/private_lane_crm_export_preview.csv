@@ -1,0 +1,4 @@
+rowId,sequence,part,taskName,taskType,status,documentIntent,proceduralStage,blockers,professionalAdviceCertified
+crm_001,1,Part 1,Legal analysis and source classification,legal_analysis,research_required,,,,false
+crm_002,2,Part 2,Company winding-up petition metadata template,part_2_documentary_action,candidate_action,COMPANY_WINDING_UP_PETITION,COMPANY_WINDING_UP,,false
+crm_003,3,Part 3,Export workflow timeline,crm_timeline_export,ready_for_crm_mapping,,,,false

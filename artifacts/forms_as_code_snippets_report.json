@@ -1,7 +1,7 @@
 {
   "report_id": "forms_as_code_snippets_mvp",
   "generated_at": "2026-07-06T00:00:00+08:00",
-  "status": "implemented_mvp_hardened_private_dry_run_draft",
+  "status": "implemented_mvp_hardened_private_dry_run_one_lane_pilot_draft",
   "privacy_status": {
     "real_private_forms_committed": false,
     "private_paths_gitignored": true,
@@ -55,6 +55,32 @@
     "classification_reviews": 3,
     "approval_workflow_validated": true
   },
+  "focused_real_lane_approval_pilot": {
+    "selected_lane": "company_winding_up",
+    "private_text_committed": false,
+    "source": "private_real_lane_redacted_metadata_only",
+    "candidate_templates_reviewed": 4,
+    "candidate_clauses": 127,
+    "approved_metadata_templates": 1,
+    "needs_manual_review": 2,
+    "rejected_or_deferred": 1,
+    "notebooklm_notes_linked": 0,
+    "notebooklm_status": "no_private_notebooklm_notes_found",
+    "routing_fixtures": {
+      "scenarios": 3,
+      "all_passed": true,
+      "correct_stage_recommends": true,
+      "wrong_stage_blocks": true,
+      "missing_prerequisite_placeholder_only": true
+    },
+    "workflow_timeline_export": {
+      "part_1_legal_analysis": true,
+      "part_2_documentary_flow": true,
+      "part_3_crm_workflow_export": true,
+      "crm_export_rows": 3,
+      "professional_advice_certified": false
+    }
+  },
   "hardening_status": {
     "user_path_access_blocked": true,
     "classification_review_queue": {
@@ -98,6 +124,13 @@
       "timeline_steps": 3,
       "crm_export_rows": 3,
       "professional_advice_certified": false
+    },
+    "private_lane_review_activation": {
+      "selected_lane": "company_winding_up",
+      "approved_templates_active_in_routing": 1,
+      "rejected_templates_active_in_routing": 0,
+      "other_lanes_not_activated": true,
+      "metadata_only": true
     }
   },
   "product_layers": [
@@ -117,13 +150,19 @@
     "private_ingestion_dry_run_metadata_only": true,
     "approved_demo_subset_routing": true,
     "private_form_taxonomy_report": true,
-    "workflow_timeline_export": true
+    "workflow_timeline_export": true,
+    "private_lane_review_activation": true,
+    "private_lane_routing_fixtures": true,
+    "private_lane_workflow_timeline_export": true,
+    "private_lane_no_text_leakage": true,
+    "notebooklm_private_link_metadata_only": true
   },
   "sem_b_inventory_note": "Sem B / Downloads material was processed locally into gitignored private_ingest_output for a metadata-only dry run. No private/licensed document content was extracted into git or sent to external services.",
   "remaining_limitations": [
     "DOC/PDF extraction quality depends on local tools and private approval; current dry run records 3 extraction warnings.",
     "Real Sem B packs are ingested into private_ingest_output only and must remain out of git.",
     "Lawyer approval workflow is metadata-ready but not a full multi-user HITL product yet.",
+    "The focused company winding-up lane approves routing metadata only, not private clause text or professional advice.",
     "PR #11 should remain draft until private production store configuration and reviewer UI permissions are selected.",
     "Vector embeddings are represented by index policy and keyword fallback in this MVP; production vector storage should remain private."
   ]

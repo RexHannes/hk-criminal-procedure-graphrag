@@ -1,0 +1,38 @@
+{
+  "report_id": "private_form_lane_selection",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "selected_lane": "company_winding_up",
+  "why_selected": "Company winding-up has multiple real private candidates in the Sem B/Downloads dry run, no lane extraction warnings, and clear routing gates for correct stage, wrong stage, and missing service evidence.",
+  "packs_used": [
+    {
+      "source_pack": "private_ingest_output/company_corporate",
+      "candidate_templates": 3,
+      "candidate_clauses": 99,
+      "extraction_warnings": 0,
+      "notebooklm_notes_available": 0
+    },
+    {
+      "source_pack": "private_ingest_output/companies_general_commentary",
+      "candidate_templates": 1,
+      "candidate_clauses": 28,
+      "extraction_warnings": 0,
+      "notebooklm_notes_available": 0
+    }
+  ],
+  "candidate_templates": 4,
+  "candidate_clauses": 127,
+  "review_workload": {
+    "templates_to_review": 4,
+    "approved_for_first_pilot": 1,
+    "needs_manual_review": 2,
+    "rejected_or_deferred": 1
+  },
+  "extraction_warnings": 0,
+  "known_limitations": [
+    "Approval is metadata-only and does not certify private clause text.",
+    "Only one lane is active; other dry-run lanes remain inactive.",
+    "Public authority placeholders are not a legal-opinion source pack."
+  ],
+  "notebooklm_notes_available": false,
+  "private_text_committed": false
+}

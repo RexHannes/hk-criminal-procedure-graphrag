@@ -4,7 +4,7 @@ Generated: 2026-07-06T00:00:00+08:00
 
 ## Status
 
-Implemented as a hardened MVP foundation with a local/private Sem B + Downloads dry run. PR #11 should remain draft until production private-store configuration and reviewer permissions are selected.
+Implemented as a hardened MVP foundation with a local/private Sem B + Downloads dry run and one focused real-lane approval pilot. PR #11 should remain draft until production private-store configuration and reviewer permissions are selected.
 
 The branch adds private precedent/form ingestion, schema definitions, clause extraction, usage rules, NotebookLM usage-note parsing, structured retrieval, procedural gates, draft-from-template placeholders, APIs, validators, synthetic demo fixtures, and a native Forms & Snippets workspace inside the existing viewer.
 
@@ -67,6 +67,25 @@ The branch now emits a separate forms/workflow timeline layer for the approved s
 
 The flow is Part 1 legal analysis/source classification, Part 2 document/snippet routing, and Part 3 CRM/workflow export. This is not public authority analysis and is not professional-advice certified.
 
+## Focused Real-Lane Approval Pilot
+
+Selected lane: `company_winding_up`.
+
+Why selected: the dry run found multiple company winding-up candidates in the company/corporate packs, with no extraction warnings for the selected lane and clear routing gates for correct stage, wrong stage, and missing service evidence.
+
+| Metric | Count |
+|---|---:|
+| Candidate templates reviewed | 4 |
+| Candidate clause-like segments | 127 |
+| Approved metadata templates | 1 |
+| Needs manual review | 2 |
+| Rejected/deferred | 1 |
+| NotebookLM/private notes linked | 0 |
+| Routing scenarios passed | 3 |
+| Lane CRM export rows | 3 |
+
+The approved lane fixture is redacted metadata only. It proves that one company winding-up petition metadata template can route when prerequisites are present, is blocked when the company is already in another procedure, and becomes placeholder-only when statutory demand/service evidence is missing.
+
 ## Safety
 
 - Real private forms committed: no.
@@ -100,6 +119,10 @@ The flow is Part 1 legal analysis/source classification, Part 2 document/snippet
 | Private taxonomy dry-run | Probate / contract / company / regulatory lanes separated |
 | Approved-demo subset | Synthetic/redacted routing fixture validates approval workflow |
 | Workflow timeline export | Part 1/2/3 timeline and CRM rows generated from synthetic approved subset |
+| Real-lane approval pilot | One company winding-up metadata template approved for redacted routing |
+| Real-lane wrong-stage gate | Company already in another procedure blocks petition routing |
+| Real-lane missing prerequisite gate | Missing statutory demand/service evidence creates placeholder/evidence blocker |
+| NotebookLM private link status | No private notes found; no note text committed; NotebookLM remains internal note metadata |
 
 ## Sem B Handling
 
@@ -109,5 +132,6 @@ The Sem B / Downloads material was processed locally into `private_ingest_output
 
 - Real DOC/PDF extraction remains private and tool-dependent; current dry run records 3 extraction warnings.
 - Lawyer approval is represented as metadata and review gates, not a full multi-user HITL workflow.
+- The focused company winding-up lane approves routing metadata only, not private clause text or professional advice.
 - PR #11 is hardened but should remain draft until a production private-store mapping and reviewer permission model are configured.
 - Production vector indexing should use private storage/Qdrant collections, not public fixtures.

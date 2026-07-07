@@ -1,0 +1,14 @@
+{
+  "report_id": "private_notebooklm_usage_link",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "selected_lane": "company_winding_up",
+  "status": "no_private_notebooklm_notes_found",
+  "notes_count": 0,
+  "related_template_ids": [],
+  "related_clause_ids": [],
+  "note_template_link_status": "unavailable",
+  "note_clause_link_status": "unavailable",
+  "notebooklm_is_authority": false,
+  "provenance_label": "INTERNAL_USAGE_NOTE",
+  "committed_note_text": false
+}

@@ -1,0 +1,104 @@
+{
+  "report_id": "private_form_review_activation",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "selected_lane": "company_winding_up",
+  "private_review_artifact_dir": "private_ingest_output/company_winding_up_review/",
+  "committed_private_text": false,
+  "approved_templates_active_in_routing": 1,
+  "rejected_templates_active_in_routing": 0,
+  "reviewed_templates": [
+    {
+      "redacted_template_id": "real_lane_template_356c0f92da55",
+      "source_pack": "private_ingest_output/company_corporate",
+      "proposed_document_intent": "COMPANY_WINDING_UP_PETITION",
+      "approved_document_intent": "COMPANY_WINDING_UP_PETITION",
+      "proposed_workflow_stage": "COMPANY_WINDING_UP",
+      "approved_workflow_stage": "COMPANY_WINDING_UP",
+      "prerequisites": [
+        "companyIdentified",
+        "debtOrGroundIdentified",
+        "standingChecked",
+        "statutoryDemandOrServiceEvidenceAvailable"
+      ],
+      "contraindications": [
+        "debtGenuinelyDisputed",
+        "standingUnclear",
+        "companyInExistingProcedure"
+      ],
+      "review_decision": "approved",
+      "reason": "Best first lane candidate for creditor winding-up petition routing; approved as redacted metadata only.",
+      "reviewer_placeholder": "lane-reviewer-placeholder",
+      "private_text_committed": false
+    },
+    {
+      "redacted_template_id": "real_lane_template_733341357dd6",
+      "source_pack": "private_ingest_output/company_corporate",
+      "proposed_document_intent": "COMPANY_WINDING_UP_PETITION",
+      "approved_document_intent": "",
+      "proposed_workflow_stage": "COMPANY_WINDING_UP",
+      "approved_workflow_stage": "",
+      "prerequisites": [
+        "companyIdentified",
+        "debtOrGroundIdentified",
+        "standingChecked",
+        "statutoryDemandOrServiceEvidenceAvailable"
+      ],
+      "contraindications": [
+        "debtGenuinelyDisputed",
+        "standingUnclear",
+        "companyInExistingProcedure"
+      ],
+      "review_decision": "needs_manual_review",
+      "reason": "Candidate appears related but requires manual classification before routing.",
+      "reviewer_placeholder": "lane-reviewer-placeholder",
+      "private_text_committed": false
+    },
+    {
+      "redacted_template_id": "real_lane_template_a14e45eb8101",
+      "source_pack": "private_ingest_output/company_corporate",
+      "proposed_document_intent": "COMPANY_WINDING_UP_PETITION",
+      "approved_document_intent": "",
+      "proposed_workflow_stage": "COMPANY_WINDING_UP",
+      "approved_workflow_stage": "",
+      "prerequisites": [
+        "companyIdentified",
+        "debtOrGroundIdentified",
+        "standingChecked",
+        "statutoryDemandOrServiceEvidenceAvailable"
+      ],
+      "contraindications": [
+        "debtGenuinelyDisputed",
+        "standingUnclear",
+        "companyInExistingProcedure"
+      ],
+      "review_decision": "needs_manual_review",
+      "reason": "Candidate appears related but requires manual classification before routing.",
+      "reviewer_placeholder": "lane-reviewer-placeholder",
+      "private_text_committed": false
+    },
+    {
+      "redacted_template_id": "real_lane_template_add701794457",
+      "source_pack": "private_ingest_output/companies_general_commentary",
+      "proposed_document_intent": "COMPANY_WINDING_UP_PETITION",
+      "approved_document_intent": "",
+      "proposed_workflow_stage": "COMPANY_WINDING_UP",
+      "approved_workflow_stage": "",
+      "prerequisites": [
+        "companyIdentified",
+        "debtOrGroundIdentified",
+        "standingChecked",
+        "statutoryDemandOrServiceEvidenceAvailable"
+      ],
+      "contraindications": [
+        "debtGenuinelyDisputed",
+        "standingUnclear",
+        "companyInExistingProcedure"
+      ],
+      "review_decision": "rejected",
+      "reason": "Excluded from first pilot to keep one-lane activation narrow.",
+      "reviewer_placeholder": "lane-reviewer-placeholder",
+      "private_text_committed": false
+    }
+  ],
+  "redacted_store_dir": "fixtures/forms/private_lane_company_winding_up_store"
+}

@@ -972,8 +972,8 @@ function inferMatterFromQuery(query) {
   return {
     practiceArea: pi ? "personal_injury" : probate ? "probate" : company ? "company_corporate" : financialReg ? "financial_regulatory" : contract ? "commercial_contracts" : "",
     matterType: roadVehicle ? "road_traffic_pi" : probate ? "probate_grant" : companyWinding ? "company_winding_up" : company ? "company_general" : financialReg ? "financial_regulatory" : contract ? "commercial_contract" : "",
-    workflowStage: /writ|commence|proceedings/.test(q) ? "COMMENCEMENT" : /letter|claim|demand/.test(q) ? "PRE_ACTION_CORRESPONDENCE" : /medical/.test(q) ? "MEDICAL_EVIDENCE" : /police|opponent|insurer/.test(q) ? "URGENT_ACTIONS" : companyWinding ? "COMPANY_WINDING_UP" : contract ? "TRANSACTIONAL_DRAFTING" : probate ? "PROBATE_APPLICATION" : financialReg ? "REGULATORY_COMPLIANCE" : "",
-    documentIntent: /writ/.test(q) ? "WRIT" : /letter of claim|claim letter|demand/.test(q) ? "LETTER_OF_CLAIM" : /medical/.test(q) ? "MEDICAL_RECORDS_REQUEST" : /police/.test(q) ? "POLICE_REPORT_REQUEST" : companyWinding ? "COMPANY_WINDING_UP_PETITION" : /shareholders.? agreement|joint venture/.test(q) ? "SHAREHOLDERS_AGREEMENT" : /lease/.test(q) ? "LEASE_AGREEMENT" : /clause/.test(q) && contract ? "CONTRACT_CLAUSE" : contract ? "CONTRACT_AGREEMENT" : /affidavit|affirmation/.test(q) && probate ? "PROBATE_AFFIDAVIT" : /will drafting|draft.*will/.test(q) ? "WILL_DRAFT" : probate ? "PROBATE_APPLICATION" : financialReg ? "REGULATORY_COMPLIANCE_NOTE" : "",
+    workflowStage: companyWinding ? "COMPANY_WINDING_UP" : /writ|commence|proceedings/.test(q) ? "COMMENCEMENT" : /letter|claim|demand/.test(q) ? "PRE_ACTION_CORRESPONDENCE" : /medical/.test(q) ? "MEDICAL_EVIDENCE" : /police|opponent|insurer/.test(q) ? "URGENT_ACTIONS" : contract ? "TRANSACTIONAL_DRAFTING" : probate ? "PROBATE_APPLICATION" : financialReg ? "REGULATORY_COMPLIANCE" : "",
+    documentIntent: companyWinding ? "COMPANY_WINDING_UP_PETITION" : /writ/.test(q) ? "WRIT" : /letter of claim|claim letter|demand/.test(q) ? "LETTER_OF_CLAIM" : /medical/.test(q) ? "MEDICAL_RECORDS_REQUEST" : /police/.test(q) ? "POLICE_REPORT_REQUEST" : /shareholders.? agreement|joint venture/.test(q) ? "SHAREHOLDERS_AGREEMENT" : /lease/.test(q) ? "LEASE_AGREEMENT" : /clause/.test(q) && contract ? "CONTRACT_CLAUSE" : contract ? "CONTRACT_AGREEMENT" : /affidavit|affirmation/.test(q) && probate ? "PROBATE_AFFIDAVIT" : /will drafting|draft.*will/.test(q) ? "WILL_DRAFT" : probate ? "PROBATE_APPLICATION" : financialReg ? "REGULATORY_COMPLIANCE_NOTE" : "",
     clientRole: "claimant",
     proceedingsCommenced: /already commenced|proceedings commenced|action commenced/.test(q),
     opponentIdentified: /opponent identified|insurer identified|defendant known/.test(q),
@@ -1024,13 +1024,35 @@ function templateEligibleByStructuredFilters(template, matter, documentIntent) {
 
 function proceduralBlocksForTemplate(template, matter) {
   const blocks = [];
-  if (isTruthyValue(matter.proceedingsCommenced) && COMMENCEMENT_INTENTS.has(template.documentIntent)) {
+  if (
+    (isTruthyValue(matter.proceedingsCommenced) || isTruthyValue(matter.companyInExistingProcedure)) &&
+    COMMENCEMENT_INTENTS.has(template.documentIntent)
+  ) {
     blocks.push({
       gateId: "gate_no_writ_after_commencement",
       severity: "block",
       reason: "Proceedings have already commenced; commencement forms are not recommended.",
       alternatives: ["AMENDED_PLEADING", "SUMMONS", "CONSENT_ORDER"],
     });
+  }
+  if (template.documentIntent === "COMPANY_WINDING_UP_PETITION") {
+    const required = [
+      ["companyIdentified", "Company identity is required before a winding-up petition can be prepared."],
+      ["debtOrGroundIdentified", "Debt or statutory ground must be identified before finalising a winding-up petition."],
+      ["standingChecked", "Creditor/member standing must be checked before finalising a winding-up petition."],
+      ["statutoryDemandOrServiceEvidenceAvailable", "Statutory demand/service evidence is missing; keep petition drafting as placeholder-only."],
+    ];
+    for (const [fact, reason] of required) {
+      if (!isTruthyValue(matter[fact])) {
+        blocks.push({
+          gateId: `gate_company_winding_up_${fact}`,
+          severity: fact === "statutoryDemandOrServiceEvidenceAvailable" ? "placeholder_only" : "block_finalisation",
+          reason,
+          missingFact: fact,
+          alternatives: ["EVIDENCE_CHECKLIST", "COMPANY_COMPLIANCE_MEMO"],
+        });
+      }
+    }
   }
   if (template.documentIntent === "LETTER_OF_CLAIM" && !isTruthyValue(matter.opponentIdentified)) {
     blocks.push({
@@ -1119,11 +1141,13 @@ function routeForms({ store = loadFormStore(), matter = {}, query = "", document
       for (const alt of severeBlock.alternatives || []) alternativeForms.push({ documentIntent: alt, reason: severeBlock.reason });
       continue;
     }
-    for (const block of blocks) {
-      if (block.severity === "block_finalisation") missingFacts.add("opponentIdentified");
-      if (block.severity === "placeholder_only") requiredEvidence.add("medicalEvidenceReceived");
-      for (const alt of block.alternatives || []) alternativeForms.push({ documentIntent: alt, reason: block.reason });
-    }
+  for (const block of blocks) {
+    if (block.severity === "block_finalisation") missingFacts.add("opponentIdentified");
+    if (block.severity === "placeholder_only" && !block.missingFact) requiredEvidence.add("medicalEvidenceReceived");
+    if (block.missingFact) missingFacts.add(block.missingFact);
+    if (block.severity === "placeholder_only" && block.missingFact) requiredEvidence.add(block.missingFact);
+    for (const alt of block.alternatives || []) alternativeForms.push({ documentIntent: alt, reason: block.reason });
+  }
     recommendedForms.push({
       template,
       caveats: blocks,
@@ -1144,7 +1168,10 @@ function routeForms({ store = loadFormStore(), matter = {}, query = "", document
     if (reasons.length) {
       blockedClauses.push({ clause, reasons });
       for (const req of clause.factRequirements || []) missingFacts.add(req);
-      if (/evidence|medical|damages/i.test(reasons.join(" "))) requiredEvidence.add(clause.clauseType);
+      if (/evidence|medical|damages/i.test(reasons.join(" "))) {
+        for (const req of clause.factRequirements || []) requiredEvidence.add(req);
+        if (!(clause.factRequirements || []).length) requiredEvidence.add(clause.clauseType);
+      }
     } else {
       applicableClauses.push(clause);
     }

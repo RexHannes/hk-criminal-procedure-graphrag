@@ -107,6 +107,21 @@ jobs:
       - name: Validate forms workflow timeline export
         run: node scripts/validate_forms_workflow_timeline_export.js
 
+      - name: Validate private lane review activation
+        run: node scripts/validate_private_lane_review_activation.js
+
+      - name: Validate private lane routing fixtures
+        run: node scripts/validate_private_lane_routing_fixtures.js
+
+      - name: Validate private lane workflow timeline export
+        run: node scripts/validate_private_lane_workflow_timeline_export.js
+
+      - name: Validate private lane has no text leakage
+        run: node scripts/validate_private_lane_no_text_leakage.js
+
+      - name: Validate NotebookLM private links are metadata-only
+        run: node scripts/validate_notebooklm_private_link_metadata_only.js
+
       - name: Validate form classification review queue
         run: node scripts/validate_form_classification_review_required.js
 
