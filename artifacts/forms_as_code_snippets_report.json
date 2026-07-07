@@ -219,6 +219,53 @@
     "clause_chunks_detected": 0,
     "classification_reviews_created": 0
   },
+  "fable_design_gap_audit": {
+    "report": "artifacts/fable_part2_part3_gap_audit.md",
+    "status": "completed_pre_expansion_audit",
+    "done": 3,
+    "partial": 7,
+    "missing": 1,
+    "blocked_by_private_source_absence": 1,
+    "overall_recommendation": "Hold runtime expansion until source export, NotebookLM export, and production private backend design are ready."
+  },
+  "atkin_source_availability": {
+    "report": "artifacts/atkin_source_availability_gate_report.md",
+    "status": "REAL_ATKIN_INGESTION_BLOCKED_SOURCE_NOT_PRESENT",
+    "source_forms_available": false,
+    "source_form_file_count": 0,
+    "notebooklm_exports_available": false,
+    "notebooklm_note_file_count": 0,
+    "ingestion_can_proceed": false,
+    "only_dry_run_fixtures_available": true,
+    "private_paths_gitignored": true,
+    "private_text_committed": false
+  },
+  "notebooklm_export_contract": {
+    "document": "docs/notebooklm_export_contract_for_forms.md",
+    "form_usage_note_schema": "schemas/forms/notebooklm_form_usage_note.schema.json",
+    "scenario_expectation_schema": "schemas/forms/notebooklm_scenario_expectation.schema.json",
+    "export_directory": "private_notebooklm_notes/",
+    "supported_files": [
+      "family_service.md",
+      "family_answer.md",
+      "family_children.md",
+      "family_ancillary_relief.md",
+      "company_winding_up.md",
+      "pi_forms.md",
+      "contract_commercial.md",
+      "probate.md"
+    ],
+    "provenance": "INTERNAL_USAGE_NOTE",
+    "notebooklm_runtime_engine": false,
+    "notebooklm_activates_templates": false,
+    "notebooklm_overrides_review_gates": false,
+    "notebooklm_public_authority": false
+  },
+  "current_real_ingestion_status": {
+    "real_atkin_ingestion_complete": false,
+    "blocking_reason": "private_uploads/atkin_forms is empty",
+    "next_manual_action_required": "Export original private source files into private_uploads/atkin_forms/ and NotebookLM metadata notes into private_notebooklm_notes/."
+  },
   "atkin_private_qdrant": {
     "enabled": true,
     "api_enabled_default": false,
@@ -385,6 +432,9 @@
     "advice_parts_separation": true,
     "inactive_real_templates_do_not_route": true,
     "reviewed_templates_route_only_after_activation": true,
+    "fable_part2_part3_gap_audit": true,
+    "atkin_source_availability_gate": true,
+    "notebooklm_export_contract_for_forms": true,
     "atkin_private_rag_ingestion_report": true,
     "atkin_private_qdrant_index_report": true,
     "private_qdrant_tenant_workspace_filters": true,

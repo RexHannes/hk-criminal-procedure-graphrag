@@ -1,0 +1,121 @@
+{
+  "report_id": "fable_part2_part3_gap_audit",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "baseline_reference": "Fable Part 2/Part 3 design note supplied by user; NotebookLM remains INTERNAL_USAGE_NOTE only.",
+  "current_pr11_head_at_audit_start": "0a037e378961e528045457d518ec14a84e9866bb",
+  "real_atkin_source_status": "REAL_ATKIN_INGESTION_BLOCKED_SOURCE_NOT_PRESENT",
+  "summary": {
+    "DONE": 3,
+    "PARTIAL": 7,
+    "MISSING": 1,
+    "BLOCKED_BY_PRIVATE_SOURCE_ABSENCE": 1,
+    "NOT_YET_NEEDED": 0
+  },
+  "items": [
+    {
+      "area": "Product architecture",
+      "status": "PARTIAL",
+      "fable_expectation": "Three-plane separation: Part 1 public authority, Part 2 private documentary workflow, Part 3 operational timeline/CRM, with intent routing and live recompute.",
+      "current_pr11": "Part 1/2/3 separation exists in matter-advice, private forms are separate from public authority, and context-awareness validators cover Part 1/2/3 boundaries.",
+      "gap": "No full matter-store-backed live recompute engine or persisted amendment model yet.",
+      "next_action": "Keep current separation; defer richer matter-store recompute until real private source lane is available."
+    },
+    {
+      "area": "Data architecture",
+      "status": "PARTIAL",
+      "fable_expectation": "Separate public authority, private form store, private NotebookLM notes, matter store, and workflow SOP store with strict provenance.",
+      "current_pr11": "Private stores, gitignored private paths, provenance labels, classification review queues, and metadata-only reports exist.",
+      "gap": "Runtime matter store and full SOP store are still represented by fixtures/rules rather than a persistent product store.",
+      "next_action": "Do not expand fixture-only stores; wait for private source availability and reviewer/storage design."
+    },
+    {
+      "area": "Private retrieval / Qdrant architecture",
+      "status": "PARTIAL",
+      "fable_expectation": "Structured filters first, blockers second, semantic/Qdrant retrieval only inside surviving candidates, private tenant/workspace collections.",
+      "current_pr11": "Private Qdrant contract, collection naming, tenant/workspace filters, disabled-by-default API mode, local/offline embeddings, and filter-first validators exist.",
+      "gap": "Real private Atkin chunks are not indexed because source files are absent; Qdrant execution remains a dry-run contract.",
+      "next_action": "Run real metadata-only ingestion/indexing only after private_uploads/atkin_forms contains source files."
+    },
+    {
+      "area": "NotebookLM cross-check architecture",
+      "status": "PARTIAL",
+      "fable_expectation": "NotebookLM exports parse into form usage notes and scenario expectations, compare backend outputs, and report mismatches without runtime authority.",
+      "current_pr11": "NotebookLM is INTERNAL_USAGE_NOTE, non-authority, non-runtime, non-activating; cross-check reports exist.",
+      "gap": "Exact export contract and JSON schemas were missing before this pass; no private exported notes are present.",
+      "next_action": "Use docs/notebooklm_export_contract_for_forms.md and private_notebooklm_notes/ exports."
+    },
+    {
+      "area": "Part 2 documentary-flow design",
+      "status": "PARTIAL",
+      "fable_expectation": "Recommended, blocked, placeholder-only, missing-fact/evidence, clause suggestions, review gates, and provenance-rich outputs.",
+      "current_pr11": "Part 2 documentary flow has recommended documents, placeholder-only documents, missing facts/evidence, reviewed-only recall, and no private text committed.",
+      "gap": "Full Fable schema fields such as detailed blocked-document alternatives and notebook cross-check annotations are not complete across all lanes.",
+      "next_action": "Avoid broadening until source availability gate clears."
+    },
+    {
+      "area": "Part 3 timeline/CRM design",
+      "status": "PARTIAL",
+      "fable_expectation": "Generated timeline rows with dependencies, owners, status, due-date basis, amendment overlay, and CRM export.",
+      "current_pr11": "Workflow timeline and CRM export preview exist for metadata-only lanes.",
+      "gap": "Amendment overlay, stable row replay, detached-amendment handling, and source-backed due-date basis are not implemented.",
+      "next_action": "Treat current Part 3 as prototype; do not claim full Fable timeline engine."
+    },
+    {
+      "area": "UI/UX design",
+      "status": "PARTIAL",
+      "fable_expectation": "Matter facts panel, documentary flow cards, timeline grid, visible intent classification, and live recompute.",
+      "current_pr11": "Existing Fable shell is preserved and forms workspace cards exist.",
+      "gap": "No full three-panel live recompute UI or timeline amendment overlay yet.",
+      "next_action": "Do not redesign viewer in this pass; record UI as partial."
+    },
+    {
+      "area": "Backend/API design",
+      "status": "PARTIAL",
+      "fable_expectation": "Matter endpoints, fact updates, Part 2 recompute, draft endpoint, timeline/amendment endpoints, review endpoint, export endpoint.",
+      "current_pr11": "Existing /api/forms/recommend modes provide private recall, private Qdrant recall, private framework, matter advice, and workflow timeline without new Vercel functions.",
+      "gap": "No full matter CRUD, amendment API, review-decision API, or production draft endpoint.",
+      "next_action": "Keep current API small while source is absent."
+    },
+    {
+      "area": "Validator plan",
+      "status": "DONE",
+      "fable_expectation": "Validators for metadata-only notes, scenario parsing, backend comparison, NotebookLM not authority, wrong-stage blocking, missing facts, private drafts, and separation.",
+      "current_pr11": "The branch has validators covering private text, source gates, NotebookLM non-authority, wrong stage, missing facts, vector blockers, Qdrant tenant filters, Part 1/2/3 boundaries, and draft local-only behavior.",
+      "gap": "Frozen NotebookLM scenario regression is limited by absent exported notes.",
+      "next_action": "Add frozen expectations only after user exports NotebookLM notes."
+    },
+    {
+      "area": "Report plan",
+      "status": "DONE",
+      "fable_expectation": "Committed metadata-only reports for cross-checks, backend comparisons, lane activation, draft rendering, recompute, Part 2/3 completeness, and umbrella status.",
+      "current_pr11": "Umbrella report, private ingestion dry run, Atkin ingestion, Qdrant index, NotebookLM cross-check, context eval, and draft/timeline reports exist.",
+      "gap": "Fable gap audit and source availability gate were missing before this pass.",
+      "next_action": "Use this report as the pre-expansion gate."
+    },
+    {
+      "area": "Private draft rendering",
+      "status": "DONE",
+      "fable_expectation": "Draft rendering only under private_exports with placeholders, provenance, lawyer-only field gates, and finalisation blockers.",
+      "current_pr11": "Local-only private draft renderer and validator exist; reports contain metadata only.",
+      "gap": "Not a deployed drafting endpoint and not backed by real Atkin text in git.",
+      "next_action": "Keep local-only until private store and reviewer permissions exist."
+    },
+    {
+      "area": "Production private backend plan",
+      "status": "MISSING",
+      "fable_expectation": "Encrypted private object store, per-firm Qdrant collections, authenticated raw-text fetch, audit logs, reviewer permissions, production store mapping.",
+      "current_pr11": "Qdrant contract and disabled-by-default API mode exist; production private API remains disabled by default.",
+      "gap": "No encrypted private object store, reviewer permission model, raw-text access audit, or production tenant provisioning design is implemented.",
+      "next_action": "Create a separate production private backend design/implementation PR after source and reviewer model are ready."
+    },
+    {
+      "area": "Real Atkin source ingestion",
+      "status": "BLOCKED_BY_PRIVATE_SOURCE_ABSENCE",
+      "fable_expectation": "Actual private source files feed metadata-only ingestion, review queue, private chunks, and Qdrant indexing.",
+      "current_pr11": "private_uploads/atkin_forms is empty; existing report correctly says no local source export was found.",
+      "gap": "Real Atkin ingestion cannot be claimed or run until files are locally available.",
+      "next_action": "Place original source exports under private_uploads/atkin_forms/ and rerun the metadata-only ingestion script."
+    }
+  ],
+  "overall_recommendation": "Hold runtime expansion. Complete source export, NotebookLM export, and production private backend design before broadening Part 2/Part 3 beyond the current metadata-only prototype."
+}

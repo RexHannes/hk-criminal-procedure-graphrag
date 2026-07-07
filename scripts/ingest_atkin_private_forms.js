@@ -125,13 +125,15 @@ function aggregate(summaries) {
 function run() {
   const args = parseArgs();
   fs.mkdirSync(ARTIFACTS, { recursive: true });
-  fs.mkdirSync(INPUT_ROOT, { recursive: true });
-  fs.mkdirSync(OUTPUT_ROOT, { recursive: true });
-  const packs = listPacks(args.input || INPUT_ROOT);
+  const inputRoot = args.input ? path.resolve(args.input) : INPUT_ROOT;
+  const outputRoot = args.output ? path.resolve(args.output) : OUTPUT_ROOT;
+  fs.mkdirSync(inputRoot, { recursive: true });
+  fs.mkdirSync(outputRoot, { recursive: true });
+  const packs = listPacks(inputRoot);
   const packSummaries = [];
   const errors = [];
   for (const packPath of packs) {
-    const outputDir = path.join(OUTPUT_ROOT, slugify(path.basename(packPath, path.extname(packPath))));
+    const outputDir = path.join(outputRoot, slugify(path.basename(packPath, path.extname(packPath))));
     try {
       const result = ingestPrivateFormPack({
         input: packPath,

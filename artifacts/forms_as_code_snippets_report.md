@@ -176,6 +176,64 @@ The Qdrant dry run validates the payload shape with a redacted approved fixture:
 
 Context-awareness checks now cover correct lane/stage/intent/role, wrong-stage blocking, missing-fact blocking, consent-route alternatives, and Part 1/2/3 separation.
 
+## Fable Design Gap Audit
+
+The Fable Part 2/Part 3 design has now been audited against the current PR #11 implementation before any further runtime expansion.
+
+| Status | Count |
+|---|---:|
+| DONE | 3 |
+| PARTIAL | 7 |
+| MISSING | 1 |
+| BLOCKED_BY_PRIVATE_SOURCE_ABSENCE | 1 |
+
+Report: `artifacts/fable_part2_part3_gap_audit.md`.
+
+The audit recommendation is to hold runtime expansion until source export, NotebookLM export, and production private backend design are ready.
+
+## Atkin Source Availability
+
+Source gate report: `artifacts/atkin_source_availability_gate_report.md`.
+
+| Check | Status |
+|---|---|
+| Original source forms in `private_uploads/atkin_forms/` | no |
+| NotebookLM exported notes in `private_notebooklm_notes/` | no |
+| Ingestion can proceed | no |
+| Only dry-run fixtures available | yes |
+| Private paths gitignored | yes |
+| Private text committed | no |
+
+Current status: `REAL_ATKIN_INGESTION_BLOCKED_SOURCE_NOT_PRESENT`.
+
+## NotebookLM Export Contract
+
+NotebookLM output must be exported manually into `private_notebooklm_notes/`. The contract is documented in `docs/notebooklm_export_contract_for_forms.md`, with schemas:
+
+- `schemas/forms/notebooklm_form_usage_note.schema.json`
+- `schemas/forms/notebooklm_scenario_expectation.schema.json`
+
+Supported export filenames are:
+
+```text
+family_service.md
+family_answer.md
+family_children.md
+family_ancillary_relief.md
+company_winding_up.md
+pi_forms.md
+contract_commercial.md
+probate.md
+```
+
+NotebookLM remains `INTERNAL_USAGE_NOTE`, does not activate forms, does not override review gates, and is not public authority.
+
+## Current Real-Ingestion Status
+
+Real Atkin ingestion is not complete. The current blocker is simple and explicit: `private_uploads/atkin_forms/` is empty.
+
+Next manual action required: export original private source files into `private_uploads/atkin_forms/` and sanitized NotebookLM metadata notes into `private_notebooklm_notes/`, then rerun the metadata-only ingestion path.
+
 ## Safety
 
 - Real private forms committed: no.
@@ -247,6 +305,7 @@ The Sem B / Downloads material was processed locally into `private_ingest_output
 - Family-service activation is a redacted metadata shell until private family materials are placed in `private_ingest_output/` / `private_notebooklm_notes/` locally.
 - NotebookLM cross-checks are comparison/audit metadata only and do not activate or approve templates.
 - The actual Atkin source export was not present under `private_uploads/atkin_forms/` during this committed run; source ingestion must be rerun locally after export/recovery.
+- The source availability gate currently reports `REAL_ATKIN_INGESTION_BLOCKED_SOURCE_NOT_PRESENT`.
 - Private Qdrant recall is disabled by default and needs server-side tenant/workspace configuration before production use.
 - Local/offline hash embeddings are the default for private forms. Any external private embedding provider needs a separate explicit approval.
 - Private draft rendering writes only to `private_exports/` and is not a deployed production drafting endpoint.

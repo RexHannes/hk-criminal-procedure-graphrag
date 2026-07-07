@@ -1,0 +1,66 @@
+{
+  "report_id": "atkin_source_availability_gate",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "status": "REAL_ATKIN_INGESTION_BLOCKED_SOURCE_NOT_PRESENT",
+  "source_forms": {
+    "directory": "private_uploads/atkin_forms/",
+    "available": false,
+    "file_count": 0,
+    "supported_file_count": 0,
+    "supported_extensions": [
+      ".doc",
+      ".docx",
+      ".markdown",
+      ".md",
+      ".pdf",
+      ".txt",
+      ".zip"
+    ],
+    "sample_files": []
+  },
+  "notebooklm_notes": {
+    "directory": "private_notebooklm_notes/",
+    "available": false,
+    "file_count": 0,
+    "supported_file_count": 0,
+    "supported_extensions": [
+      ".json",
+      ".markdown",
+      ".md",
+      ".txt"
+    ],
+    "sample_files": [],
+    "provenance": "INTERNAL_USAGE_NOTE"
+  },
+  "ingestion_can_proceed": false,
+  "notebooklm_crosscheck_can_proceed": false,
+  "only_dry_run_fixtures_available": true,
+  "private_paths_gitignored": true,
+  "gitignore_checks": [
+    {
+      "path": "private_uploads/atkin_forms",
+      "gitignored": true,
+      "rule": ".gitignore:24:private_uploads/\tprivate_uploads/atkin_forms"
+    },
+    {
+      "path": "private_notebooklm_notes",
+      "gitignored": true,
+      "rule": ".gitignore:28:private_notebooklm_notes/\tprivate_notebooklm_notes"
+    },
+    {
+      "path": "private_ingest_output/atkin_forms",
+      "gitignored": true,
+      "rule": ".gitignore:25:private_ingest_output/\tprivate_ingest_output/atkin_forms"
+    },
+    {
+      "path": "private_exports",
+      "gitignored": true,
+      "rule": ".gitignore:27:private_exports/\tprivate_exports"
+    }
+  ],
+  "tracked_private_files": [],
+  "private_text_committed": false,
+  "private_text_marker_hits": [],
+  "ci_behavior": "non_failing_when_source_absent",
+  "next_manual_action_required": "Export original private source files into private_uploads/atkin_forms/ before claiming real Atkin ingestion."
+}

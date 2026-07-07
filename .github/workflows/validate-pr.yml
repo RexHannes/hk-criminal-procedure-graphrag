@@ -95,6 +95,9 @@ jobs:
       - name: Build Atkin private forms ingestion report
         run: node scripts/ingest_atkin_private_forms.js
 
+      - name: Validate Atkin source availability gate
+        run: node scripts/validate_atkin_source_availability_gate.js
+
       - name: Build Atkin private Qdrant index dry run
         run: node scripts/index_atkin_private_forms_qdrant.js --dry-run
 
