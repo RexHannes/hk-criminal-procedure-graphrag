@@ -1,0 +1,118 @@
+{
+  "report_id": "forms_workflow_timeline_demo",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "status": "synthetic_redacted_timeline_ready",
+  "source_store": "fixtures/forms/approved_demo_subset_store",
+  "private_text_committed": false,
+  "external_services_used": false,
+  "professional_advice_certified": false,
+  "product_flow": {
+    "part_1": "legal analysis and source classification",
+    "part_2": "documentary flow, form/snippet recommendation, and missing-fact gates",
+    "part_3": "CRM/workflow timeline export"
+  },
+  "query": "draft a letter of claim for a road traffic personal injury matter and export the workflow timeline",
+  "current_workflow_stage": "PRE_ACTION_CORRESPONDENCE",
+  "recommended_form_count": 1,
+  "recommended_forms": [
+    {
+      "id": "form_cbe2b96ca480",
+      "title": "letter of claim synthetic",
+      "documentIntent": "LETTER_OF_CLAIM",
+      "caveatCount": 0,
+      "provenanceLabel": "TEMPLATE_BASED"
+    }
+  ],
+  "missing_facts_evidence_blockers": {
+    "missingFacts": [],
+    "requiredEvidence": []
+  },
+  "source_provenance_notes": [
+    "TEMPLATE_BASED",
+    "INTERNAL_USAGE_NOTE",
+    "FIRM_SOP",
+    "AI_SUGGESTED"
+  ],
+  "workflow_timeline": {
+    "query": "draft a letter of claim for a road traffic personal injury matter and export the workflow timeline",
+    "matterType": "road_traffic_pi",
+    "professionalAdviceCertified": false,
+    "exportFormat": "crm_workflow_v0",
+    "steps": [
+      {
+        "stepId": "part1_legal_analysis",
+        "part": "Part 1",
+        "title": "Legal analysis and source classification",
+        "status": "research_required",
+        "actionType": "legal_analysis",
+        "description": "Identify issues, source authority requirements, missing facts, and route constraints before selecting documents.",
+        "blockers": []
+      },
+      {
+        "stepId": "part2_form_cbe2b96ca480",
+        "part": "Part 2",
+        "title": "letter of claim synthetic",
+        "status": "candidate_action",
+        "actionType": "part_2_documentary_flow",
+        "documentIntent": "LETTER_OF_CLAIM",
+        "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+        "reviewStatus": "approved",
+        "classificationStatus": "review_approved",
+        "blockers": []
+      },
+      {
+        "stepId": "part3_crm_timeline_export",
+        "part": "Part 3",
+        "title": "Export workflow timeline",
+        "status": "ready_for_crm_mapping",
+        "actionType": "crm_timeline_export",
+        "description": "Export legal-analysis, documentary-action, and litigation/deadline steps to a CRM/workflow system.",
+        "blockers": []
+      }
+    ]
+  },
+  "crm_workflow_export": [
+    {
+      "rowId": "crm_001",
+      "sequence": 1,
+      "part": "Part 1",
+      "taskName": "Legal analysis and source classification",
+      "taskType": "legal_analysis",
+      "status": "research_required",
+      "documentIntent": "",
+      "proceduralStage": "",
+      "blockers": [],
+      "professionalAdviceCertified": false
+    },
+    {
+      "rowId": "crm_002",
+      "sequence": 2,
+      "part": "Part 2",
+      "taskName": "letter of claim synthetic",
+      "taskType": "part_2_documentary_flow",
+      "status": "candidate_action",
+      "documentIntent": "LETTER_OF_CLAIM",
+      "proceduralStage": "PRE_ACTION_CORRESPONDENCE",
+      "blockers": [],
+      "professionalAdviceCertified": false
+    },
+    {
+      "rowId": "crm_003",
+      "sequence": 3,
+      "part": "Part 3",
+      "taskName": "Export workflow timeline",
+      "taskType": "crm_timeline_export",
+      "status": "ready_for_crm_mapping",
+      "documentIntent": "",
+      "proceduralStage": "",
+      "blockers": [],
+      "professionalAdviceCertified": false
+    }
+  ],
+  "boundaries": {
+    "public_authority_analysis_separate": true,
+    "private_template_layer_separate": true,
+    "synthetic_redacted_demo_only": true,
+    "reviewer_permissions_not_configured": true
+  }
+}

@@ -1,7 +1,7 @@
 {
   "report_id": "forms_as_code_snippets_mvp",
   "generated_at": "2026-07-06T00:00:00+08:00",
-  "status": "implemented_mvp_hardened_draft",
+  "status": "implemented_mvp_hardened_private_dry_run_draft",
   "privacy_status": {
     "real_private_forms_committed": false,
     "private_paths_gitignored": true,
@@ -22,13 +22,29 @@
     "backend_index_records": 23
   },
   "private_ingestion_dry_run": {
-    "status": "no_private_uploads_found",
+    "status": "completed_metadata_only",
     "private_uploads_dir": "private_uploads/",
     "private_output_dir": "private_ingest_output/",
     "metadata_only_report_created": true,
     "private_text_committed": false,
     "external_services_used": false,
-    "templates_inactive_until_review": true
+    "packs_processed": 5,
+    "templates_detected": 27,
+    "clauses_detected": 1150,
+    "classification_reviews_created": 27,
+    "notebooklm_notes_linked": 0,
+    "extraction_warnings": 3,
+    "rejected_or_suspicious_files": 0,
+    "manual_classification_required_percent": 100,
+    "templates_inactive_until_review": true,
+    "detected_lanes": [
+      "probate",
+      "commercial_contracts",
+      "company_corporate",
+      "company_winding_up",
+      "originating_summons",
+      "financial_regulatory"
+    ]
   },
   "approved_demo_subset": {
     "source": "synthetic_redacted_metadata_only",
@@ -71,6 +87,17 @@
     "principle_forms_separation": {
       "private_form_recommendations_separate_response_field": true,
       "public_authority_analysis_not_polluted": true
+    },
+    "workflow_timeline_export": {
+      "enabled": true,
+      "source": "synthetic_redacted_approved_demo_subset",
+      "part_1_legal_analysis": true,
+      "part_2_documentary_flow": true,
+      "part_3_crm_workflow_export": true,
+      "recommended_demo_forms": 1,
+      "timeline_steps": 3,
+      "crm_export_rows": 3,
+      "professional_advice_certified": false
     }
   },
   "product_layers": [
@@ -88,12 +115,14 @@
     "viewer_forms_workspace": true,
     "private_data_safety_checks": true,
     "private_ingestion_dry_run_metadata_only": true,
-    "approved_demo_subset_routing": true
+    "approved_demo_subset_routing": true,
+    "private_form_taxonomy_report": true,
+    "workflow_timeline_export": true
   },
-  "sem_b_inventory_note": "Sem B / Downloads material was inventoried by metadata only. No private/licensed document content was extracted into git or sent to external services.",
+  "sem_b_inventory_note": "Sem B / Downloads material was processed locally into gitignored private_ingest_output for a metadata-only dry run. No private/licensed document content was extracted into git or sent to external services.",
   "remaining_limitations": [
-    "DOC/PDF extraction quality depends on local tools and private approval.",
-    "Real Sem B packs should be ingested into private_ingest_output only.",
+    "DOC/PDF extraction quality depends on local tools and private approval; current dry run records 3 extraction warnings.",
+    "Real Sem B packs are ingested into private_ingest_output only and must remain out of git.",
     "Lawyer approval workflow is metadata-ready but not a full multi-user HITL product yet.",
     "PR #11 should remain draft until private production store configuration and reviewer UI permissions are selected.",
     "Vector embeddings are represented by index policy and keyword fallback in this MVP; production vector storage should remain private."

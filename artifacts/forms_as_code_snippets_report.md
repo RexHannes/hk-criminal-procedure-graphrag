@@ -4,7 +4,7 @@ Generated: 2026-07-06T00:00:00+08:00
 
 ## Status
 
-Implemented as a hardened MVP foundation. PR #11 should remain draft until production private-store configuration and reviewer permissions are selected.
+Implemented as a hardened MVP foundation with a local/private Sem B + Downloads dry run. PR #11 should remain draft until production private-store configuration and reviewer permissions are selected.
 
 The branch adds private precedent/form ingestion, schema definitions, clause extraction, usage rules, NotebookLM usage-note parsing, structured retrieval, procedural gates, draft-from-template placeholders, APIs, validators, synthetic demo fixtures, and a native Forms & Snippets workspace inside the existing viewer.
 
@@ -21,13 +21,26 @@ The branch adds private precedent/form ingestion, schema definitions, clause ext
 
 ## Private Dry Run
 
-No private uploads were present in this checkout, so the committed dry-run report records `no_private_uploads_found`. The local runner is now in place:
+A targeted local/private dry run processed the gitignored Sem B + Downloads packs into gitignored `private_ingest_output/`. The committed report is metadata-only.
 
 ```bash
-node scripts/run_private_form_ingestion_dry_run.js
+node scripts/run_private_form_ingestion_dry_run.js --input private_uploads/targeted_sem_b_forms
 ```
 
 It reads from `private_uploads/`, writes extracted output only to gitignored `private_ingest_output/`, and commits only metadata counts in `artifacts/private_form_ingestion_dry_run_report.*`.
+
+| Metric | Count |
+|---|---:|
+| Packs processed | 5 |
+| Templates detected | 27 |
+| Clause-like segments detected | 1,150 |
+| Classification reviews created | 27 |
+| NotebookLM notes linked | 0 |
+| Extraction warnings | 3 |
+| Rejected/suspicious files | 0 |
+| Manual classification required | 100% |
+
+Detected lanes include probate, commercial contracts, company/corporate, company winding-up, originating summons/compliance, and financial/regulatory notes. All real/private templates remain `classificationStatus=machine_candidate`, `reviewStatus=lawyer_review_required`, and inactive until review.
 
 ## Approved Demo Subset
 
@@ -41,6 +54,18 @@ The branch now includes a synthetic/redacted approved subset proving the approva
 | Classification reviews | 3 |
 
 All committed approved-demo clause text is synthetic/redacted and marked `privateTextCommitted=false`.
+
+## Workflow Timeline Prototype
+
+The branch now emits a separate forms/workflow timeline layer for the approved synthetic subset:
+
+| Metric | Count |
+|---|---:|
+| Recommended demo forms | 1 |
+| Timeline steps | 3 |
+| CRM export rows | 3 |
+
+The flow is Part 1 legal analysis/source classification, Part 2 document/snippet routing, and Part 3 CRM/workflow export. This is not public authority analysis and is not professional-advice certified.
 
 ## Safety
 
@@ -72,15 +97,17 @@ All committed approved-demo clause text is synthetic/redacted and marked `privat
 | Draft provenance | Field provenance, fact trace, placeholder audit, lawyer-only gate |
 | Forms/principles separation | Private form recommendations stay separate from public authority analysis |
 | Private ingestion dry-run report | Metadata-only; no private text committed |
+| Private taxonomy dry-run | Probate / contract / company / regulatory lanes separated |
 | Approved-demo subset | Synthetic/redacted routing fixture validates approval workflow |
+| Workflow timeline export | Part 1/2/3 timeline and CRM rows generated from synthetic approved subset |
 
 ## Sem B Handling
 
-The Sem B / Downloads material was inventoried by metadata only. No private/licensed content was committed or sent to external services. Real ingestion should run locally into `private_ingest_output/` after confirming rights to use the pack.
+The Sem B / Downloads material was processed locally into `private_ingest_output/` for a dry run. No private/licensed content was committed or sent to external services. Only metadata counts, distributions, warning counts, and review-gate state are committed.
 
 ## Limitations
 
-- Real DOC/PDF extraction remains private and tool-dependent.
+- Real DOC/PDF extraction remains private and tool-dependent; current dry run records 3 extraction warnings.
 - Lawyer approval is represented as metadata and review gates, not a full multi-user HITL workflow.
 - PR #11 is hardened but should remain draft until a production private-store mapping and reviewer permission model are configured.
 - Production vector indexing should use private storage/Qdrant collections, not public fixtures.

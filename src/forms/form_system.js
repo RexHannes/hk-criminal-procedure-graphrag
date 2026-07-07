@@ -7,6 +7,10 @@ const {
   buildClassificationReview,
   isTemplateActiveForRouting,
 } = require("./form_classification_review");
+const {
+  buildFormWorkflowTimeline,
+  crmExportRowsFromTimeline,
+} = require("./form_workflow_timeline");
 
 const PROVENANCE = {
   SOURCE_BACKED: "SOURCE_BACKED",
@@ -27,9 +31,9 @@ const DANGEROUS_EXTENSIONS = new Set([
   ".app", ".bat", ".bin", ".cmd", ".com", ".dmg", ".exe", ".js", ".msi", ".ps1", ".scr", ".sh",
 ]);
 
-const SUPPORTED_TEXT_EXTENSIONS = new Set([".txt", ".md", ".markdown", ".docx", ".pdf"]);
+const SUPPORTED_TEXT_EXTENSIONS = new Set([".txt", ".md", ".markdown", ".docx", ".doc", ".pdf"]);
 
-const COMMENCEMENT_INTENTS = new Set(["WRIT", "ORIGINATING_SUMMONS", "STATEMENT_OF_CLAIM"]);
+const COMMENCEMENT_INTENTS = new Set(["WRIT", "ORIGINATING_SUMMONS", "STATEMENT_OF_CLAIM", "PROBATE_APPLICATION", "COMPANY_WINDING_UP_PETITION"]);
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -186,9 +190,26 @@ function textFromPdfBuffer(buffer) {
   }
 }
 
+function textFromDocBuffer(buffer) {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "form-doc-"));
+  const docPath = path.join(tmp, "input.doc");
+  fs.writeFileSync(docPath, buffer);
+  try {
+    return execFileSync("textutil", ["-convert", "txt", "-stdout", docPath], {
+      encoding: "utf8",
+      maxBuffer: 30 * 1024 * 1024,
+    });
+  } catch (error) {
+    return "";
+  } finally {
+    fs.rmSync(tmp, { recursive: true, force: true });
+  }
+}
+
 function extractTextFromBuffer(buffer, ext) {
   if ([".txt", ".md", ".markdown"].includes(ext)) return buffer.toString("utf8");
   if (ext === ".docx") return textFromDocxBuffer(buffer);
+  if (ext === ".doc") return textFromDocBuffer(buffer);
   if (ext === ".pdf") return textFromPdfBuffer(buffer);
   return "";
 }
@@ -253,14 +274,64 @@ function readUseBlock(text, label) {
 }
 
 function classifyFromText(title, text) {
-  const hay = `${title} ${text}`.toLowerCase();
+  const titleHay = String(title || "").toLowerCase();
+  const textHay = String(text || "").toLowerCase();
+  const leadHay = textHay.slice(0, 8000);
+  const hay = `${titleHay} ${leadHay}`;
+  const explicitProbateTitle = /\b(formw\d|probate|letters of administration|grant of probate|testament(?:ary)?|executor|administrator|affidavit of due execution|handwriting and signature|plight and condition|alterations in will)\b/.test(titleHay)
+    || /\bwill\b/.test(titleHay) && !/\b(will be|will not|will have|will include|will apply|will provide)\b/.test(titleHay);
+  const probateBody = /\b(grant of probate|letters of administration|non-contentious probate|testamentary|executor|administrator|testator|deceased estate|affidavit of due execution|plight and condition|handwriting and signature|alterations in will)\b/.test(leadHay);
+  const explicitContractTitle = /\b(contract|agreement|consultancy|lease|conditions for the (purchase|supply)|purchase of it equipment|supply of it equipment|intellectual property clause|shareholders.? agreement|joint venture|facility agreement|guarantee)\b/.test(titleHay);
+  const contractBody = /\b(contract|agreement|consultancy|lease|supplier|customer|buyer|seller|intellectual property|shareholders.? agreement|joint venture|facility agreement|guarantee)\b/.test(leadHay);
+  const explicitCompanyTitle = /\b(company|companies|corporate|corp insolvency|insolvency|winding|liquidation|director|shareholder|board|creditor|petition|originating summons|proceedings by and against companies|voided|void|ccp|ipo|listing)\b/.test(titleHay);
+  const companyBody = /\b(company|companies|corporate|director|shareholder|board|winding up|insolvency|liquidation|creditor|petition|companies ordinance|cap 32|cap 622|ipo|listing)\b/.test(leadHay);
+  const explicitFinancialTitle = /\b(frp|financial regulatory|sfc|securities|futures|listing rules|market misconduct|regulated|regulatory)\b/.test(titleHay);
+  const financialRegBody = /\b(sfc|securities|futures|listing rules|market misconduct|regulated activity|regulatory|financial regulatory)\b/.test(leadHay);
+  const pi = /\b(personal injury|road traffic|traffic accident|medical report|police report|injury)\b/.test(hay);
+  const contract = explicitContractTitle || (!explicitProbateTitle && !explicitCompanyTitle && contractBody);
+  const financialReg = explicitFinancialTitle || (!explicitProbateTitle && financialRegBody);
+  const company = explicitCompanyTitle || (!explicitProbateTitle && !contract && companyBody);
+  const probate = explicitProbateTitle || (!contract && !company && !financialReg && probateBody);
   const base = {
-    practiceArea: /personal injury|road traffic|accident|medical|police report|injury/.test(hay) ? "personal_injury" : "general_litigation",
+    practiceArea: probate ? "probate" : contract ? "commercial_contracts" : company ? "company_corporate" : financialReg ? "financial_regulatory" : pi ? "personal_injury" : "general_litigation",
     subPracticeArea: /road traffic|traffic accident|driver|vehicle|car/.test(hay) ? "road_traffic_personal_injury" : "",
     jurisdiction: "HK",
-    applicableMatterTypes: /road traffic|traffic accident|driver|vehicle|car/.test(hay) ? ["road_traffic_pi"] : ["general_matter"],
-    applicableRoles: ["claimant", "plaintiff", "solicitor"],
+    applicableMatterTypes: probate ? ["probate_grant", "wills_probate"] : contract ? ["commercial_contract", "transactional_drafting"] : company ? ["company", "corporate", /winding|insolvency|liquidation|creditor|petition/.test(hay) ? "company_winding_up" : "company_general"].filter(Boolean) : financialReg ? ["financial_regulatory", "listed_company_compliance"] : /road traffic|traffic accident|driver|vehicle|car/.test(hay) ? ["road_traffic_pi"] : ["general_matter"],
+    applicableRoles: probate ? ["executor", "administrator", "beneficiary", "solicitor"] : contract ? ["buyer", "seller", "supplier", "customer", "company", "solicitor"] : company ? ["company", "director", "shareholder", "creditor", "solicitor"] : ["claimant", "plaintiff", "solicitor"],
   };
+  if (probate && /application for probate|application.*grant|grant of probate|letters of administration/.test(hay)) {
+    return { ...base, documentIntent: "PROBATE_APPLICATION", proceduralStage: "PROBATE_APPLICATION" };
+  }
+  if (/affirmation|affidavit|due execution|handwriting and signature|plight and condition|alterations in will/.test(hay) && probate) {
+    return { ...base, documentIntent: "PROBATE_AFFIDAVIT", proceduralStage: "EVIDENCE_COLLECTION" };
+  }
+  if (/will drafting|joanne.?s will|draft.*\bwill\b|\bwill\b/.test(titleHay) && probate) {
+    return { ...base, documentIntent: "WILL_DRAFT", proceduralStage: "DOCUMENT_DRAFTING" };
+  }
+  if (contract && /shareholders.? agreement|joint venture/.test(hay)) {
+    return { ...base, documentIntent: "SHAREHOLDERS_AGREEMENT", proceduralStage: "TRANSACTIONAL_DRAFTING" };
+  }
+  if (contract && /lease/.test(hay)) {
+    return { ...base, documentIntent: "LEASE_AGREEMENT", proceduralStage: "TRANSACTIONAL_DRAFTING" };
+  }
+  if (contract && /clause|intellectual property/.test(hay)) {
+    return { ...base, documentIntent: "CONTRACT_CLAUSE", proceduralStage: "TRANSACTIONAL_DRAFTING" };
+  }
+  if (contract && /agreement|conditions for the|consultancy|facility agreement|guarantee|purchase of it equipment|supply of it equipment/.test(hay)) {
+    return { ...base, documentIntent: "CONTRACT_AGREEMENT", proceduralStage: "TRANSACTIONAL_DRAFTING" };
+  }
+  if (company && /originating summons/.test(titleHay)) {
+    return { ...base, documentIntent: "ORIGINATING_SUMMONS", proceduralStage: "COMMENCEMENT" };
+  }
+  if (/winding|insolvency|liquidation|creditor|petition|voided|void/.test(titleHay) && company) {
+    return { ...base, documentIntent: "COMPANY_WINDING_UP_PETITION", proceduralStage: "COMPANY_WINDING_UP" };
+  }
+  if (financialReg) {
+    return { ...base, documentIntent: "REGULATORY_COMPLIANCE_NOTE", proceduralStage: "REGULATORY_COMPLIANCE" };
+  }
+  if (company) {
+    return { ...base, documentIntent: "COMPANY_COMPLIANCE_MEMO", proceduralStage: "COMPANY_COMPLIANCE" };
+  }
   if (/letter of claim|claim letter|demand/.test(hay)) {
     return { ...base, documentIntent: "LETTER_OF_CLAIM", proceduralStage: "PRE_ACTION_CORRESPONDENCE" };
   }
@@ -376,6 +447,14 @@ function headingsFromText(text) {
 }
 
 function prerequisitesForIntent(intent) {
+  if (intent === "PROBATE_APPLICATION") return ["deathCertificate", "originalWillOrCopyWill", "executorIdentity", "estateAssetsKnown"];
+  if (intent === "PROBATE_AFFIDAVIT") return ["willIssueIdentified", "deponentIdentity", "exhibitAvailable"];
+  if (intent === "WILL_DRAFT") return ["testatorCapacityConfirmed", "instructionsTaken", "beneficiariesIdentified"];
+  if (["CONTRACT_AGREEMENT", "LEASE_AGREEMENT", "SHAREHOLDERS_AGREEMENT"].includes(intent)) return ["partiesIdentified", "commercialTermsSettled", "authorityToDraft"];
+  if (intent === "CONTRACT_CLAUSE") return ["hostAgreementIdentified", "clausePurposeKnown"];
+  if (intent === "COMPANY_WINDING_UP_PETITION") return ["debtOrGroundIdentified", "companyIdentified", "standingChecked"];
+  if (intent === "COMPANY_COMPLIANCE_MEMO") return ["companyIdentified", "transactionOrEventKnown"];
+  if (intent === "REGULATORY_COMPLIANCE_NOTE") return ["regulatedEntityIdentified", "regulatoryIssueKnown"];
   if (intent === "LETTER_OF_CLAIM") return ["opponentIdentified", "liabilityFactsKnown"];
   if (intent === "POLICE_REPORT_REQUEST") return ["accidentDate", "accidentLocation"];
   if (intent === "MEDICAL_RECORDS_REQUEST") return ["injuryExists", "clientIdentityKnown"];
@@ -384,6 +463,13 @@ function prerequisitesForIntent(intent) {
 }
 
 function contraindicationsForIntent(intent) {
+  if (intent === "PROBATE_APPLICATION") return ["contentiousProbate", "foreignDomicileUnresolved", "originalWillMissingWithoutAffidavit"];
+  if (intent === "PROBATE_AFFIDAVIT") return ["noPersonalKnowledge", "exhibitsUnavailable"];
+  if (intent === "WILL_DRAFT") return ["capacityConcernUnresolved", "undueInfluenceConcernUnresolved"];
+  if (["CONTRACT_AGREEMENT", "LEASE_AGREEMENT", "SHAREHOLDERS_AGREEMENT", "CONTRACT_CLAUSE"].includes(intent)) return ["commercialTermsUnsettled", "clientAuthorityMissing"];
+  if (intent === "COMPANY_WINDING_UP_PETITION") return ["debtGenuinelyDisputed", "statutoryDemandDefectUnresolved", "standingUnclear"];
+  if (intent === "COMPANY_COMPLIANCE_MEMO") return ["factsOrBoardApprovalUnclear"];
+  if (intent === "REGULATORY_COMPLIANCE_NOTE") return ["regulatedStatusUnclear", "factsUnverified"];
   if (intent === "LETTER_OF_CLAIM") return ["proceedingsCommenced", "opponentUnknownForFinalVersion"];
   if (intent === "POLICE_REPORT_REQUEST") return ["policeReportAlreadyObtained"];
   if (intent === "MEDICAL_RECORDS_REQUEST") return ["fullMedicalEvidenceAlreadyReceived"];
@@ -392,12 +478,26 @@ function contraindicationsForIntent(intent) {
 }
 
 function blockedWhenForIntent(intent) {
+  if (intent === "PROBATE_APPLICATION") return ["matter.contentiousProbate == true", "matter.foreignDomicileUnresolved == true"];
+  if (intent === "PROBATE_AFFIDAVIT") return ["matter.deponentHasPersonalKnowledge == false"];
+  if (["CONTRACT_AGREEMENT", "LEASE_AGREEMENT", "SHAREHOLDERS_AGREEMENT", "CONTRACT_CLAUSE"].includes(intent)) return ["matter.commercialTermsSettled != true blocks finalisation"];
+  if (intent === "COMPANY_WINDING_UP_PETITION") return ["matter.debtGenuinelyDisputed == true", "matter.standingChecked != true"];
   if (intent === "LETTER_OF_CLAIM") return ["matter.proceedingsCommenced == true", "matter.opponentIdentified == false blocks finalisation"];
   if (COMMENCEMENT_INTENTS.has(intent)) return ["matter.proceedingsCommenced == true"];
   return [];
 }
 
 function recommendedWhenForIntent(intent) {
+  if (intent === "PROBATE_APPLICATION") return ["non-contentious probate", "executor or applicant identified", "core estate documents available"];
+  if (intent === "PROBATE_AFFIDAVIT") return ["probate registry requires evidence on execution, handwriting, condition, or alterations"];
+  if (intent === "WILL_DRAFT") return ["testamentary instructions are taken and capacity/undue influence checks are clear"];
+  if (intent === "CONTRACT_AGREEMENT") return ["commercial terms are sufficiently settled for first draft"];
+  if (intent === "CONTRACT_CLAUSE") return ["host agreement exists and clause objective is identified"];
+  if (intent === "LEASE_AGREEMENT") return ["lease heads of terms are agreed"];
+  if (intent === "SHAREHOLDERS_AGREEMENT") return ["joint venture/shareholding structure is known"];
+  if (intent === "COMPANY_WINDING_UP_PETITION") return ["debt or statutory ground identified and standing checked"];
+  if (intent === "COMPANY_COMPLIANCE_MEMO") return ["company event or transaction requires compliance steps"];
+  if (intent === "REGULATORY_COMPLIANCE_NOTE") return ["regulated entity or listed-company issue requires compliance triage"];
   if (intent === "LETTER_OF_CLAIM") return ["pre-action stage", "opponent or insurer identified", "liability facts sufficiently known"];
   if (intent === "POLICE_REPORT_REQUEST") return ["opponent unknown", "police report missing", "road traffic accident"];
   if (intent === "MEDICAL_RECORDS_REQUEST") return ["injury exists", "medical evidence incomplete"];
@@ -863,11 +963,17 @@ function loadFormStore(storePath) {
 function inferMatterFromQuery(query) {
   const q = String(query || "").toLowerCase();
   const roadVehicle = /\b(traffic|car|vehicle|road)\b/.test(q);
+  const probate = /\b(probate|letters of administration|grant of probate|executor|administrator|estate|will drafting|draft.*will)\b/.test(q);
+  const companyWinding = /\b(winding up|winding-up|liquidation|insolvency|statutory demand|creditor.?s petition|petition to wind|wind up)\b/.test(q);
+  const company = companyWinding || /\b(company|companies|corporate|director|shareholder|board|originating summons|companies ordinance)\b/.test(q);
+  const contract = /\b(contract|agreement|consultancy|lease|shareholders.? agreement|joint venture|clause|commercial terms|supply of it equipment|purchase of it equipment)\b/.test(q);
+  const financialReg = /\b(sfc|securities|futures|listing rules|market misconduct|regulated activity|financial regulatory)\b/.test(q);
+  const pi = /\binjur|accident|medical|police|writ|claim letter|letter of claim/.test(q) || roadVehicle;
   return {
-    practiceArea: /\binjur|accident|medical|police|writ|claim letter|letter of claim/.test(q) || roadVehicle ? "personal_injury" : "",
-    matterType: roadVehicle ? "road_traffic_pi" : "",
-    workflowStage: /writ|commence|proceedings/.test(q) ? "COMMENCEMENT" : /letter|claim|demand/.test(q) ? "PRE_ACTION_CORRESPONDENCE" : /medical/.test(q) ? "MEDICAL_EVIDENCE" : /police|opponent|insurer/.test(q) ? "URGENT_ACTIONS" : "",
-    documentIntent: /writ/.test(q) ? "WRIT" : /letter of claim|claim letter|demand/.test(q) ? "LETTER_OF_CLAIM" : /medical/.test(q) ? "MEDICAL_RECORDS_REQUEST" : /police/.test(q) ? "POLICE_REPORT_REQUEST" : "",
+    practiceArea: pi ? "personal_injury" : probate ? "probate" : company ? "company_corporate" : financialReg ? "financial_regulatory" : contract ? "commercial_contracts" : "",
+    matterType: roadVehicle ? "road_traffic_pi" : probate ? "probate_grant" : companyWinding ? "company_winding_up" : company ? "company_general" : financialReg ? "financial_regulatory" : contract ? "commercial_contract" : "",
+    workflowStage: /writ|commence|proceedings/.test(q) ? "COMMENCEMENT" : /letter|claim|demand/.test(q) ? "PRE_ACTION_CORRESPONDENCE" : /medical/.test(q) ? "MEDICAL_EVIDENCE" : /police|opponent|insurer/.test(q) ? "URGENT_ACTIONS" : companyWinding ? "COMPANY_WINDING_UP" : contract ? "TRANSACTIONAL_DRAFTING" : probate ? "PROBATE_APPLICATION" : financialReg ? "REGULATORY_COMPLIANCE" : "",
+    documentIntent: /writ/.test(q) ? "WRIT" : /letter of claim|claim letter|demand/.test(q) ? "LETTER_OF_CLAIM" : /medical/.test(q) ? "MEDICAL_RECORDS_REQUEST" : /police/.test(q) ? "POLICE_REPORT_REQUEST" : companyWinding ? "COMPANY_WINDING_UP_PETITION" : /shareholders.? agreement|joint venture/.test(q) ? "SHAREHOLDERS_AGREEMENT" : /lease/.test(q) ? "LEASE_AGREEMENT" : /clause/.test(q) && contract ? "CONTRACT_CLAUSE" : contract ? "CONTRACT_AGREEMENT" : /affidavit|affirmation/.test(q) && probate ? "PROBATE_AFFIDAVIT" : /will drafting|draft.*will/.test(q) ? "WILL_DRAFT" : probate ? "PROBATE_APPLICATION" : financialReg ? "REGULATORY_COMPLIANCE_NOTE" : "",
     clientRole: "claimant",
     proceedingsCommenced: /already commenced|proceedings commenced|action commenced/.test(q),
     opponentIdentified: /opponent identified|insurer identified|defendant known/.test(q),
@@ -1204,6 +1310,7 @@ function draftFromForm(args) {
 
 function buildAnswerForFormsQuestion({ store = loadFormStore(), query, matter = {} }) {
   const route = routeForms({ store, query, matter });
+  const workflowTimeline = buildFormWorkflowTimeline({ route, matter, query });
   return {
     currentWorkflowStage: matter.workflowStage || inferMatterFromQuery(query).workflowStage || "INTAKE",
     recommendedNextActions: [
@@ -1233,6 +1340,8 @@ function buildAnswerForFormsQuestion({ store = loadFormStore(), query, matter = 
     })),
     sourceProvenanceNotes: route.provenance,
     lawyerApprovalRequired: true,
+    workflowTimeline,
+    crmWorkflowExport: crmExportRowsFromTimeline(workflowTimeline),
   };
 }
 
@@ -1240,8 +1349,10 @@ module.exports = {
   PROVENANCE,
   REVIEW,
   buildAnswerForFormsQuestion,
+  buildFormWorkflowTimeline,
   buildPrivateFormIndex,
   classifyFormTemplate,
+  crmExportRowsFromTimeline,
   defaultFormRoutingRules,
   draftFromForm,
   extractClauseSnippets,

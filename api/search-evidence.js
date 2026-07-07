@@ -117,6 +117,21 @@ function detectsPersonalInjuryPurpose(query) {
   return /\b(personal injury|injur(?:y|ed|ies)|medical|compensation|damages|quantum|fracture|pain|suffering|loss of earnings|hospital|sick leave|accident claim)\b/.test(q);
 }
 
+function detectsCompanyFormsPurpose(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(company|companies|corporate|director|shareholder|board|winding up|winding-up|liquidation|insolvency|statutory demand|originating summons|companies ordinance)\b/.test(q);
+}
+
+function detectsContractFormsPurpose(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(contract|agreement|consultancy|lease|shareholders.? agreement|joint venture|commercial terms|clause|clauses|supply of it equipment|purchase of it equipment)\b/.test(q);
+}
+
+function detectsFinancialRegulatoryFormsPurpose(query) {
+  const q = String(query || "").toLowerCase();
+  return /\b(sfc|securities|futures|listing rules|market misconduct|regulated activity|financial regulatory)\b/.test(q);
+}
+
 function detectsFormsDraftingQuery(query) {
   return /\b(form|forms|precedent|precedents|template|templates|draft|drafting|letter of claim|claim letter|writ|clause|clauses|document|which form|use this clause)\b/i.test(String(query || ""));
 }
@@ -132,6 +147,9 @@ function shouldAttachPrivateFormsLayer(query) {
   if (detectsCriminalLawQuery(q)) return false;
   if (detectsProbateQuery(q)) return false;
   if (detectsPersonalInjuryPurpose(q)) return true;
+  if (detectsCompanyFormsPurpose(q)) return true;
+  if (detectsContractFormsPurpose(q)) return true;
+  if (detectsFinancialRegulatoryFormsPurpose(q)) return true;
   return /\b(personal injury|road traffic|motor accident|letter of claim|writ|claimant|plaintiff)\b/i.test(q);
 }
 
@@ -1117,6 +1135,8 @@ module.exports = async function handler(req, res) {
       })) || [],
       missing_facts: formsLayer.routing?.missingFacts || [],
       required_evidence: formsLayer.routing?.requiredEvidence || [],
+      workflow_timeline: formsLayer.answer?.workflowTimeline || null,
+      crm_workflow_export: formsLayer.answer?.crmWorkflowExport || [],
       retrieval_policy: formsLayer.routing?.retrievalPolicy || null,
       answer_structure: formsLayer.answer,
       error: formsLayer.error || null,

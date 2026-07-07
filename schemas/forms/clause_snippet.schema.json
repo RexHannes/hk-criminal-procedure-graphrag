@@ -87,7 +87,17 @@
         "ORDER_DRAFT",
         "AMENDED_PLEADING",
         "SUMMONS",
-        "CONSENT_ORDER"
+        "CONSENT_ORDER",
+        "PROBATE_APPLICATION",
+        "PROBATE_AFFIDAVIT",
+        "WILL_DRAFT",
+        "CONTRACT_AGREEMENT",
+        "CONTRACT_CLAUSE",
+        "LEASE_AGREEMENT",
+        "SHAREHOLDERS_AGREEMENT",
+        "COMPANY_WINDING_UP_PETITION",
+        "COMPANY_COMPLIANCE_MEMO",
+        "REGULATORY_COMPLIANCE_NOTE"
       ]
     },
     "proceduralStage": {
@@ -109,7 +119,13 @@
         "TRIAL",
         "POST_JUDGMENT",
         "COSTS",
-        "CLOSURE"
+        "CLOSURE",
+        "DOCUMENT_DRAFTING",
+        "TRANSACTIONAL_DRAFTING",
+        "PROBATE_APPLICATION",
+        "COMPANY_WINDING_UP",
+        "COMPANY_COMPLIANCE",
+        "REGULATORY_COMPLIANCE"
       ]
     },
     "issueTags": {

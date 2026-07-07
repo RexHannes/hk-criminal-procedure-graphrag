@@ -14,7 +14,7 @@ const PRIVATE_OUTPUT = path.join(process.cwd(), "private_ingest_output");
 const REPORT_JSON = path.join(process.cwd(), "artifacts", "private_form_ingestion_dry_run_report.json");
 const REPORT_MD = path.join(process.cwd(), "artifacts", "private_form_ingestion_dry_run_report.md");
 
-const INGESTIBLE_EXTENSIONS = new Set([".zip", ".txt", ".md", ".markdown", ".docx", ".pdf"]);
+const INGESTIBLE_EXTENSIONS = new Set([".zip", ".txt", ".md", ".markdown", ".docx", ".doc", ".pdf"]);
 
 function slugify(value) {
   return String(value || "pack")
@@ -32,8 +32,15 @@ function listCandidatePacks(root = PRIVATE_UPLOADS) {
   }
   const entries = fs.readdirSync(root, { withFileTypes: true });
   return entries
-    .filter(entry => entry.isDirectory() || INGESTIBLE_EXTENSIONS.has(path.extname(entry.name).toLowerCase()))
-    .map(entry => path.join(root, entry.name));
+    .map(entry => path.join(root, entry.name))
+    .filter(itemPath => {
+      try {
+        const stat = fs.statSync(itemPath);
+        return stat.isDirectory() || (stat.isFile() && INGESTIBLE_EXTENSIONS.has(path.extname(itemPath).toLowerCase()));
+      } catch (error) {
+        return false;
+      }
+    });
 }
 
 function findNotesForPack(packPath) {
@@ -186,6 +193,21 @@ function aggregate(packSummaries) {
   return totals;
 }
 
+function loadPreservableExistingReport() {
+  if (!fs.existsSync(REPORT_JSON)) return null;
+  try {
+    const existing = JSON.parse(fs.readFileSync(REPORT_JSON, "utf8"));
+    const safe = existing.privacy_boundary?.metadata_only_report === true
+      && existing.privacy_boundary?.committed_private_text === false
+      && existing.privacy_boundary?.external_services_used === false;
+    const hasLocalDryRunMetadata = ["completed", "completed_with_errors"].includes(existing.status)
+      && Number(existing.packs_processed || 0) > 0;
+    return safe && hasLocalDryRunMetadata ? existing : null;
+  } catch (error) {
+    return null;
+  }
+}
+
 function run() {
   const args = parseArgs();
   ensureArtifactsDir();
@@ -194,6 +216,18 @@ function run() {
   fs.mkdirSync(PRIVATE_OUTPUT, { recursive: true });
 
   const packs = listCandidatePacks(args.input || PRIVATE_UPLOADS);
+  const preserved = packs.length || args.forceEmptyReport ? null : loadPreservableExistingReport();
+  if (preserved) {
+    console.log(JSON.stringify({
+      status: "preserved_existing_metadata_report",
+      packsDiscovered: 0,
+      packsProcessed: preserved.packs_processed,
+      reportJson: path.relative(process.cwd(), REPORT_JSON),
+      reportMd: path.relative(process.cwd(), REPORT_MD),
+    }, null, 2));
+    return;
+  }
+
   const packSummaries = [];
   const errors = [];
   for (const packPath of packs) {
@@ -243,7 +277,7 @@ function run() {
     recommended_manual_review_actions: packs.length ? [
       "Open the gitignored classification review JSON under private_ingest_output/.",
       "Review practice area, document intent, procedural stage, prerequisites, and contraindications.",
-      "Approve only a small PI subset first.",
+      "Approve only one small practice-lane subset first, such as PI, company winding-up, contracts, or probate.",
       "Keep rejected and uncertain templates inactive in routing.",
       "Re-run adversarial routing tests after any approval.",
     ] : [
