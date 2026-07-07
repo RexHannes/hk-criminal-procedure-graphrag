@@ -17,8 +17,8 @@ const LANES = [
     laneId: "family_service",
     storeDir: "fixtures/forms/private_lane_family_service_store",
     reportBase: "family_service_lane_activation_report",
-    sourceDirs: ["private_ingest_output/family_service"],
-    privateCandidateStatus: "no_family_private_ingest_candidates_found_metadata_shell_created",
+    sourceDirs: ["private_ingest_output/atkin_forms"],
+    privateCandidateStatus: "family_private_ingest_candidates_detected_redacted_metadata_only",
     practiceArea: "family_service",
     matterType: "family_service",
     clientRole: "applicant",
@@ -34,7 +34,7 @@ const LANES = [
     laneId: "company_winding_up_provisional_liquidator",
     storeDir: "fixtures/forms/private_lane_company_provisional_liquidator_store",
     reportBase: "company_winding_up_provisional_liquidator_activation_report",
-    sourceDirs: ["private_ingest_output/company_corporate", "private_ingest_output/sem_b_corporate_commercial"],
+    sourceDirs: ["private_ingest_output/atkin_forms"],
     privateCandidateStatus: "company_private_ingest_candidates_reviewed_redacted_metadata_only",
     practiceArea: "company_corporate",
     matterType: "provisional_liquidator",
@@ -61,19 +61,33 @@ function countPrivateCandidates(lane) {
   let templates = 0;
   let clauses = 0;
   const intentSet = new Set(lane.templates.map(item => item[0]));
+  const storeDirs = [];
+  const walk = dir => {
+    if (!fs.existsSync(dir)) return;
+    if (fs.existsSync(path.join(dir, "form_templates.json"))) {
+      storeDirs.push(dir);
+      return;
+    }
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.isDirectory()) walk(path.join(dir, entry.name));
+    }
+  };
   for (const dir of lane.sourceDirs) {
-    const tPath = path.join(process.cwd(), dir, "form_templates.json");
-    const cPath = path.join(process.cwd(), dir, "clause_snippets.json");
+    walk(path.join(process.cwd(), dir));
+  }
+  for (const dir of storeDirs) {
+    const tPath = path.join(dir, "form_templates.json");
+    const cPath = path.join(dir, "clause_snippets.json");
     if (!fs.existsSync(tPath)) continue;
     const sourceTemplates = JSON.parse(fs.readFileSync(tPath, "utf8"));
     const sourceClauses = fs.existsSync(cPath) ? JSON.parse(fs.readFileSync(cPath, "utf8")) : [];
-    templates += sourceTemplates.filter(template => (
+    const matchedIds = new Set(sourceTemplates.filter(template => (
       intentSet.has(template.documentIntent) ||
       (lane.laneId.includes("provisional") && /winding|liquidat|insolv/i.test(`${template.title} ${template.documentIntent}`)) ||
       (lane.laneId === "family_service" && /family|service|children|answer/i.test(`${template.title} ${template.documentIntent}`))
-    )).length;
-    const templateIds = new Set(sourceTemplates.map(template => template.id));
-    clauses += sourceClauses.filter(clause => templateIds.has(clause.templateId)).length;
+    )).map(template => template.id));
+    templates += matchedIds.size;
+    clauses += sourceClauses.filter(clause => matchedIds.has(clause.templateId)).length;
   }
   return { templates, clauses };
 }

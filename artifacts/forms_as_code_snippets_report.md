@@ -1,10 +1,10 @@
 # Forms As Code Snippets MVP Report
 
-Generated: 2026-07-06T00:00:00+08:00
+Generated: 2026-07-08T00:00:00+08:00
 
 ## Status
 
-Implemented as a hardened MVP foundation with a local/private Sem B + Downloads dry run, one focused real-lane approval pilot, and a routable court-form workflow layer. PR #11 should remain draft until production private-store configuration and reviewer permissions are selected.
+Implemented as a hardened MVP foundation with a real local/private Atkin metadata ingestion, a private Qdrant dry-run contract, two selected redacted metadata activation lanes, and a routable court-form workflow layer. PR #11 should remain draft until production private-store configuration and reviewer permissions are selected.
 
 The branch adds private precedent/form ingestion, schema definitions, clause extraction, usage rules, NotebookLM usage-note parsing, structured retrieval, procedural gates, draft-from-template placeholders, APIs, validators, synthetic demo fixtures, and a native Forms & Snippets workspace inside the existing viewer.
 
@@ -108,7 +108,14 @@ Two additional redacted metadata lanes are now available for routing tests:
 | `family_service` | 2 | 4 |
 | `company_winding_up_provisional_liquidator` | 2 | 4 |
 
-The company provisional-liquidator lane is backed by local private-ingest candidate metadata. The family-service lane is an activation shell until private family materials are added locally. Both are metadata-only and keep raw private text out of git.
+Both selected lanes are now backed by matching real private-ingest candidate metadata, but the committed activation fixtures remain reviewed redacted metadata only. Raw private text stays out of git.
+
+Selected-lane proof report: `artifacts/atkin_selected_lane_activation_report.md`.
+
+| Lane | Real candidate templates | Real candidate chunks | Active real templates | Correct stage | Wrong stage block | Missing fact block | CRM rows |
+|---|---:|---:|---:|---|---|---|---:|
+| `family_service` | 115 | 593 | 0 | yes | yes | yes | 3 |
+| `company_winding_up_provisional_liquidator` | 399 | 2,086 | 0 | yes | yes | yes | 3 |
 
 ## Private Draft Rendering
 
@@ -162,7 +169,7 @@ The branch now adds a private Atkin forms lane for Part 2 forms retrieval. Noteb
 | Area | Result |
 |---|---|
 | Local ingestion lane | `private_uploads/atkin_forms/` -> `private_ingest_output/atkin_forms/` |
-| Current source status | No local source export found during the committed run |
+| Current source status | Real local source available; metadata ingestion completed |
 | Reports | `artifacts/atkin_private_rag_ingestion_report.*` |
 | Private Qdrant collections | `hk_private_form_chunks_<tenant>_<workspace>` and `hk_private_form_templates_<tenant>_<workspace>` |
 | API modes | `/api/forms/recommend?formsMode=private-qdrant-recall` and `private-form-framework` |
@@ -172,7 +179,9 @@ The branch now adds a private Atkin forms lane for Part 2 forms retrieval. Noteb
 | NotebookLM cross-check | `INTERNAL_USAGE_NOTE` reports only |
 | Context-awareness eval | 5/5 passed |
 
-The Qdrant dry run validates the payload shape with a redacted approved fixture: tenant/workspace filters, `source_visibility=private_form`, `part_layer=part_2_forms`, approved/reviewed status, practice lane, stage, document intent, role/matter filters, blockers, and legal-tree node IDs only.
+Real-source metadata ingestion processed 71 packs, detected 2,212 template candidates and 15,802 clause chunks, created 2,212 classification-review records, and recorded 79 extraction warnings. All real candidates remain `classificationStatus=machine_candidate`, `reviewStatus=lawyer_review_required`, and inactive until specific review approval.
+
+The Qdrant dry run scanned 68 private stores and detected 2,014 real template records plus 14,487 real clause records in the current output stores. It indexes zero real records by design because no real templates/chunks are approved yet. The payload shape is still validated with a redacted approved fixture: tenant/workspace filters, `source_visibility=private_form`, `part_layer=part_2_forms`, approved/reviewed status, practice lane, stage, document intent, role/matter filters, blockers, and legal-tree node IDs only.
 
 Context-awareness checks now cover correct lane/stage/intent/role, wrong-stage blocking, missing-fact blocking, consent-route alternatives, and Part 1/2/3 separation.
 
@@ -197,14 +206,16 @@ Source gate report: `artifacts/atkin_source_availability_gate_report.md`.
 
 | Check | Status |
 |---|---|
-| Original source forms in `private_uploads/atkin_forms/` | no |
+| Original source forms in `private_uploads/atkin_forms/` | yes |
 | NotebookLM exported notes in `private_notebooklm_notes/` | no |
-| Ingestion can proceed | no |
-| Only dry-run fixtures available | yes |
+| Source form files | 365 |
+| Supported source files | 361 |
+| Ingestion can proceed | yes |
+| Only dry-run fixtures available | no |
 | Private paths gitignored | yes |
 | Private text committed | no |
 
-Current status: `REAL_ATKIN_INGESTION_BLOCKED_SOURCE_NOT_PRESENT`.
+Current status: `ATKIN_SOURCE_AVAILABLE_METADATA_INGESTION_ALLOWED`.
 
 ## NotebookLM Export Contract
 
@@ -230,14 +241,14 @@ NotebookLM remains `INTERNAL_USAGE_NOTE`, does not activate forms, does not over
 
 ## Current Real-Ingestion Status
 
-Real Atkin ingestion is not complete. The current blocker is simple and explicit: `private_uploads/atkin_forms/` is empty.
+Real Atkin metadata ingestion is complete for the local source folder now present under `private_uploads/atkin_forms/`.
 
-Next manual action required: export original private source files into `private_uploads/atkin_forms/` and sanitized NotebookLM metadata notes into `private_notebooklm_notes/`, then rerun the metadata-only ingestion path.
+Next manual action required: review selected private classification queues locally, then approve only specific templates/clauses into private stores. NotebookLM exports, if any, should still go into `private_notebooklm_notes/` as `INTERNAL_USAGE_NOTE` cross-check material only.
 
 ## Safety
 
 - Real private forms committed: no.
-- Synthetic fixtures only under `fixtures/forms/`.
+- Committed fixtures under `fixtures/forms/` are synthetic or reviewed redacted metadata only.
 - Private inputs/outputs gitignored.
 - `FORMS_PRIVATE_API_ENABLED=false` by default.
 - Production/Vercel private ingestion returns `403`.
@@ -280,7 +291,7 @@ Next manual action required: export original private source files into `private_
 | Backend private recall | Reviewed-only metadata recall supports routeable document suggestions |
 | Private semantic retrieval | Local private vector ranking runs only after structured blockers pass |
 | Private Qdrant recall | Isolated private collections; tenant/workspace filters required; disabled by default |
-| Atkin ingestion lane | Local/private source lane added; committed run found no local source export |
+| Atkin ingestion lane | Local/private source lane processed; real candidates remain inactive until review |
 | NotebookLM Atkin cross-check | Framework and textbook scenario reports are internal-note metadata only |
 | Context-awareness eval | Wrong stage, missing facts, and consent-route alternatives validated |
 | Part 2 documentary flow | Missing facts and evidence blockers are surfaced before drafting |
@@ -298,14 +309,13 @@ The Sem B / Downloads material was processed locally into `private_ingest_output
 
 ## Limitations
 
-- Real DOC/PDF extraction remains private and tool-dependent; current dry run records 3 extraction warnings.
+- Real DOC/PDF extraction remains private and tool-dependent; current Atkin metadata ingestion records 79 extraction warnings.
 - Lawyer approval is represented as metadata and review gates, not a full multi-user HITL workflow.
 - The focused company winding-up lane approves routing metadata only, not private clause text or professional advice.
 - The court-form workflow layer routes reviewed metadata only; it does not expose or commit private form wording.
-- Family-service activation is a redacted metadata shell until private family materials are placed in `private_ingest_output/` / `private_notebooklm_notes/` locally.
 - NotebookLM cross-checks are comparison/audit metadata only and do not activate or approve templates.
-- The actual Atkin source export was not present under `private_uploads/atkin_forms/` during this committed run; source ingestion must be rerun locally after export/recovery.
-- The source availability gate currently reports `REAL_ATKIN_INGESTION_BLOCKED_SOURCE_NOT_PRESENT`.
+- Real Atkin candidates remain machine-candidate/review-required and inactive until specific review approval.
+- Private Qdrant dry-run finds zero real approved chunks by design; selected lane behavior is proven with reviewed redacted metadata fixtures only.
 - Private Qdrant recall is disabled by default and needs server-side tenant/workspace configuration before production use.
 - Local/offline hash embeddings are the default for private forms. Any external private embedding provider needs a separate explicit approval.
 - Private draft rendering writes only to `private_exports/` and is not a deployed production drafting endpoint.

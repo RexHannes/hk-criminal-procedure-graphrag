@@ -10,8 +10,6 @@
   "visibility": "FIRM_PRIVATE",
   "fileInventory": [],
   "ingestionStatus": "redacted_metadata_reviewed",
-  "extractionWarnings": [
-    "No matching private-ingest candidate files found locally for this lane; activation is redacted metadata shell only."
-  ],
+  "extractionWarnings": [],
   "reviewStatus": "approved_metadata_only"
 }

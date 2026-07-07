@@ -158,6 +158,12 @@ jobs:
       - name: Build expanded lane activation pilots
         run: node scripts/build_expanded_lane_activation_pilots.js
 
+      - name: Build Atkin selected lane activation report
+        run: node scripts/build_atkin_selected_lane_activation_reports.js
+
+      - name: Validate Atkin selected lane activation
+        run: node scripts/validate_atkin_selected_lane_activation.js
+
       - name: Ingest NotebookLM crosscheck scenarios
         run: node scripts/ingest_notebooklm_crosscheck_scenarios.js
 

@@ -2,8 +2,56 @@
   "report_id": "atkin_private_qdrant_index",
   "generated_at": "2026-07-07T00:00:00+08:00",
   "status": "dry_run_metadata_only",
-  "source_present": false,
-  "safe_redacted_fixture_fallback": true,
+  "source_present": true,
+  "safe_redacted_fixture_fallback": false,
+  "dry_run_shape_validated_with_redacted_fixture": true,
+  "private_stores_scanned": 68,
+  "real_templates_detected": 2014,
+  "real_clause_chunks_detected": 14487,
+  "real_classification_reviews_detected": 2014,
+  "real_templates_inactive_until_review": true,
+  "real_template_statuses": {
+    "review_status_distribution": {
+      "lawyer_review_required": 2014
+    },
+    "classification_status_distribution": {
+      "machine_candidate": 2014
+    },
+    "practice_lane_distribution": {
+      "general_litigation": 436,
+      "commercial_contracts": 273,
+      "company_corporate": 819,
+      "road_traffic_personal_injury": 459,
+      "personal_injury": 23,
+      "probate": 4
+    },
+    "document_intent_distribution": {
+      "CLIENT_INTAKE": 552,
+      "WRIT": 111,
+      "LETTER_OF_CLAIM": 15,
+      "COMPANY_COMPLIANCE_MEMO": 623,
+      "CONTRACT_AGREEMENT": 194,
+      "CONTRACT_CLAUSE": 31,
+      "LEASE_AGREEMENT": 52,
+      "COMPANY_WINDING_UP_PETITION": 249,
+      "MEDICAL_RECORDS_REQUEST": 49,
+      "ORIGINATING_SUMMONS": 116,
+      "REGULATORY_COMPLIANCE_NOTE": 14,
+      "SHAREHOLDERS_AGREEMENT": 3,
+      "PROBATE_APPLICATION": 5
+    },
+    "workflow_stage_distribution": {
+      "INTAKE": 552,
+      "COMMENCEMENT": 227,
+      "PRE_ACTION_CORRESPONDENCE": 15,
+      "COMPANY_COMPLIANCE": 623,
+      "TRANSACTIONAL_DRAFTING": 280,
+      "COMPANY_WINDING_UP": 249,
+      "MEDICAL_EVIDENCE": 49,
+      "REGULATORY_COMPLIANCE": 14,
+      "PROBATE_APPLICATION": 5
+    }
+  },
   "dry_run": true,
   "executed": false,
   "collections": {
@@ -46,8 +94,10 @@
     "workflow_stage",
     "workspace_id"
   ],
-  "templates_ready": 1,
-  "chunks_ready": 1,
+  "templates_ready": 0,
+  "chunks_ready": 0,
+  "shape_check_templates_ready": 1,
+  "shape_check_chunks_ready": 1,
   "review_status_required": "approved",
   "classification_status_required": "review_approved",
   "source_visibility": "private_form",
@@ -65,8 +115,8 @@
       "templates": "hk_private_form_templates_local_private_form_tenant_atkin_forms_workspace"
     },
     "dimension": 384,
-    "templates_ready": 1,
-    "chunks_ready": 1,
+    "templates_ready": 0,
+    "chunks_ready": 0,
     "external_embedding_services_used": false,
     "qdrant_required_for_runtime": true,
     "private_text_committed": false

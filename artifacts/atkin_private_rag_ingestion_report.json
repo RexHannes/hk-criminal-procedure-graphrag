@@ -1,8 +1,8 @@
 {
   "report_id": "atkin_private_rag_ingestion",
-  "generated_at": "2026-07-07T00:00:00+08:00",
-  "status": "no_local_source_export_found",
-  "source_present": false,
+  "generated_at": "2026-07-07T18:49:42.705Z",
+  "status": "completed",
+  "source_present": true,
   "privacy_boundary": {
     "input_root": "private_uploads/atkin_forms/",
     "output_root": "private_ingest_output/atkin_forms/",
@@ -12,22 +12,2662 @@
     "notebooklm_runtime_engine": false,
     "notebooklm_provenance": "INTERNAL_USAGE_NOTE"
   },
-  "packs_discovered": 0,
-  "packs_processed": 0,
-  "pack_summaries": [],
+  "packs_discovered": 71,
+  "packs_processed": 71,
+  "pack_summaries": [
+    {
+      "pack_id": "pack_53cbcc0082ee",
+      "private_output_dir": "private_ingest_output/atkin_forms/1_consent_of_next_friend_or_guardian_ad_litem_to_act",
+      "file_count": 2,
+      "file_type_counts": {
+        ".docx": 2
+      },
+      "templates_detected": 2,
+      "clause_chunks_detected": 4,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 2,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 2
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 2
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 2
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 2
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_00fef2a71387",
+      "private_output_dir": "private_ingest_output/atkin_forms/admiralty_2",
+      "file_count": 93,
+      "file_type_counts": {
+        ".docx": 93
+      },
+      "templates_detected": 93,
+      "clause_chunks_detected": 305,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 93,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "WRIT": 30,
+        "LETTER_OF_CLAIM": 4,
+        "COMPANY_COMPLIANCE_MEMO": 19,
+        "CONTRACT_AGREEMENT": 7,
+        "CONTRACT_CLAUSE": 1,
+        "CLIENT_INTAKE": 28,
+        "LEASE_AGREEMENT": 4
+      },
+      "workflow_stage_distribution": {
+        "COMMENCEMENT": 30,
+        "PRE_ACTION_CORRESPONDENCE": 4,
+        "COMPANY_COMPLIANCE": 19,
+        "TRANSACTIONAL_DRAFTING": 12,
+        "INTAKE": 28
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 49,
+        "commercial_contracts": 13,
+        "company_corporate": 13,
+        "road_traffic_personal_injury": 18
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 93
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 93
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_b78d0ea10eac",
+      "private_output_dir": "private_ingest_output/atkin_forms/admiralty_p1",
+      "file_count": 7,
+      "file_type_counts": {
+        ".docx": 7
+      },
+      "templates_detected": 7,
+      "clause_chunks_detected": 498,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 7,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "WRIT": 2,
+        "CONTRACT_AGREEMENT": 2,
+        "COMPANY_COMPLIANCE_MEMO": 2,
+        "LEASE_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "COMMENCEMENT": 2,
+        "TRANSACTIONAL_DRAFTING": 3,
+        "COMPANY_COMPLIANCE": 2
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 6,
+        "commercial_contracts": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 7
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 7
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_8ae71d3bca82",
+      "private_output_dir": "private_ingest_output/atkin_forms/cwumpo",
+      "file_count": 101,
+      "file_type_counts": {
+        ".docx": 101
+      },
+      "templates_detected": 101,
+      "clause_chunks_detected": 719,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 101,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "LEASE_AGREEMENT": 4,
+        "COMPANY_COMPLIANCE_MEMO": 64,
+        "COMPANY_WINDING_UP_PETITION": 28,
+        "REGULATORY_COMPLIANCE_NOTE": 2,
+        "CONTRACT_AGREEMENT": 3
+      },
+      "workflow_stage_distribution": {
+        "TRANSACTIONAL_DRAFTING": 7,
+        "COMPANY_COMPLIANCE": 64,
+        "COMPANY_WINDING_UP": 28,
+        "REGULATORY_COMPLIANCE": 2
+      },
+      "practice_lane_distribution": {
+        "commercial_contracts": 8,
+        "company_corporate": 81,
+        "road_traffic_personal_injury": 12
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 101
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 101
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_c856b7ab4202",
+      "private_output_dir": "private_ingest_output/atkin_forms/chapter_2_compromise_and_settlement",
+      "file_count": 90,
+      "file_type_counts": {
+        ".docx": 90
+      },
+      "templates_detected": 90,
+      "clause_chunks_detected": 648,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 90,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 40,
+        "CONTRACT_AGREEMENT": 28,
+        "COMPANY_COMPLIANCE_MEMO": 6,
+        "COMPANY_WINDING_UP_PETITION": 1,
+        "LEASE_AGREEMENT": 4,
+        "WRIT": 8,
+        "LETTER_OF_CLAIM": 1,
+        "MEDICAL_RECORDS_REQUEST": 1,
+        "CONTRACT_CLAUSE": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 40,
+        "TRANSACTIONAL_DRAFTING": 33,
+        "COMPANY_COMPLIANCE": 6,
+        "COMPANY_WINDING_UP": 1,
+        "COMMENCEMENT": 8,
+        "PRE_ACTION_CORRESPONDENCE": 1,
+        "MEDICAL_EVIDENCE": 1
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 40,
+        "road_traffic_personal_injury": 21,
+        "company_corporate": 5,
+        "commercial_contracts": 24
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 90
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 90
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_fb815b1d63a0",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_form_1",
+      "file_count": 101,
+      "file_type_counts": {
+        ".docx": 101
+      },
+      "templates_detected": 101,
+      "clause_chunks_detected": 593,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 101,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 48,
+        "ORIGINATING_SUMMONS": 5,
+        "COMPANY_WINDING_UP_PETITION": 45,
+        "LEASE_AGREEMENT": 1,
+        "CONTRACT_AGREEMENT": 2
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 48,
+        "COMMENCEMENT": 5,
+        "COMPANY_WINDING_UP": 45,
+        "TRANSACTIONAL_DRAFTING": 3
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 79,
+        "road_traffic_personal_injury": 20,
+        "commercial_contracts": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 101
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 101
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_af2bfe812810",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_01_proceedings_under_co",
+      "file_count": 17,
+      "file_type_counts": {
+        ".docx": 17
+      },
+      "templates_detected": 17,
+      "clause_chunks_detected": 566,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 17,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 9,
+        "COMPANY_WINDING_UP_PETITION": 2,
+        "ORIGINATING_SUMMONS": 5,
+        "REGULATORY_COMPLIANCE_NOTE": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 9,
+        "COMPANY_WINDING_UP": 2,
+        "COMMENCEMENT": 5,
+        "REGULATORY_COMPLIANCE": 1
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 5,
+        "company_corporate": 12
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 17
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 17
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_8c92518e0f56",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_02_proceedings_by_petition",
+      "file_count": 64,
+      "file_type_counts": {
+        ".docx": 64
+      },
+      "templates_detected": 64,
+      "clause_chunks_detected": 826,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 64,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_WINDING_UP_PETITION": 30,
+        "COMPANY_COMPLIANCE_MEMO": 26,
+        "LEASE_AGREEMENT": 1,
+        "CONTRACT_AGREEMENT": 1,
+        "ORIGINATING_SUMMONS": 5,
+        "REGULATORY_COMPLIANCE_NOTE": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_WINDING_UP": 30,
+        "COMPANY_COMPLIANCE": 26,
+        "TRANSACTIONAL_DRAFTING": 2,
+        "COMMENCEMENT": 5,
+        "REGULATORY_COMPLIANCE": 1
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 14,
+        "company_corporate": 48,
+        "commercial_contracts": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 64
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 64
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_8a2804f8bcb5",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_03_schemes_of_arrangement",
+      "file_count": 53,
+      "file_type_counts": {
+        ".docx": 53
+      },
+      "templates_detected": 53,
+      "clause_chunks_detected": 301,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 53,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 27,
+        "COMPANY_WINDING_UP_PETITION": 24,
+        "ORIGINATING_SUMMONS": 1,
+        "CONTRACT_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 27,
+        "COMPANY_WINDING_UP": 24,
+        "COMMENCEMENT": 1,
+        "TRANSACTIONAL_DRAFTING": 1
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 43,
+        "road_traffic_personal_injury": 10
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 53
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 53
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_5698ae9ab075",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_04_reconstruction_amalgamation",
+      "file_count": 4,
+      "file_type_counts": {
+        ".docx": 4
+      },
+      "templates_detected": 4,
+      "clause_chunks_detected": 19,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 4,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_WINDING_UP_PETITION": 4
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_WINDING_UP": 4
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 1,
+        "company_corporate": 3
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 4
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 4
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_8917bd422c34",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_05_relief_officer_auditor",
+      "file_count": 4,
+      "file_type_counts": {
+        ".docx": 4
+      },
+      "templates_detected": 4,
+      "clause_chunks_detected": 17,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 4,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_WINDING_UP_PETITION": 3,
+        "COMPANY_COMPLIANCE_MEMO": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_WINDING_UP": 3,
+        "COMPANY_COMPLIANCE": 1
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 4
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 4
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 4
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_ac1d6c4cd31d",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_06_section_724_unfair_prejudice",
+      "file_count": 5,
+      "file_type_counts": {
+        ".docx": 5
+      },
+      "templates_detected": 5,
+      "clause_chunks_detected": 44,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 5,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_WINDING_UP_PETITION": 5
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_WINDING_UP": 5
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 4,
+        "company_corporate": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 5
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 5
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_0d2a6aaf025a",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_07_originating_summons_general_forms",
+      "file_count": 13,
+      "file_type_counts": {
+        ".docx": 13
+      },
+      "templates_detected": 13,
+      "clause_chunks_detected": 65,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 13,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "ORIGINATING_SUMMONS": 7,
+        "LEASE_AGREEMENT": 1,
+        "COMPANY_COMPLIANCE_MEMO": 4,
+        "CONTRACT_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "COMMENCEMENT": 7,
+        "TRANSACTIONAL_DRAFTING": 2,
+        "COMPANY_COMPLIANCE": 4
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 2,
+        "commercial_contracts": 2,
+        "company_corporate": 9
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 13
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 13
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_2da72927e6fe",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_08_rectification_register",
+      "file_count": 52,
+      "file_type_counts": {
+        ".docx": 52
+      },
+      "templates_detected": 52,
+      "clause_chunks_detected": 224,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 52,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "ORIGINATING_SUMMONS": 30,
+        "COMPANY_COMPLIANCE_MEMO": 20,
+        "CONTRACT_CLAUSE": 1,
+        "COMPANY_WINDING_UP_PETITION": 1
+      },
+      "workflow_stage_distribution": {
+        "COMMENCEMENT": 30,
+        "COMPANY_COMPLIANCE": 20,
+        "TRANSACTIONAL_DRAFTING": 1,
+        "COMPANY_WINDING_UP": 1
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 7,
+        "company_corporate": 43,
+        "commercial_contracts": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 52
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 52
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_95a708d76891",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_09_dissolution",
+      "file_count": 7,
+      "file_type_counts": {
+        ".docx": 7
+      },
+      "templates_detected": 7,
+      "clause_chunks_detected": 27,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 7,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "ORIGINATING_SUMMONS": 3,
+        "COMPANY_COMPLIANCE_MEMO": 2,
+        "COMPANY_WINDING_UP_PETITION": 2
+      },
+      "workflow_stage_distribution": {
+        "COMMENCEMENT": 3,
+        "COMPANY_COMPLIANCE": 2,
+        "COMPANY_WINDING_UP": 2
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 5,
+        "road_traffic_personal_injury": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 7
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 7
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_af1340d7626d",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_10_restoring_company_register",
+      "file_count": 5,
+      "file_type_counts": {
+        ".docx": 5
+      },
+      "templates_detected": 5,
+      "clause_chunks_detected": 21,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 5,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "ORIGINATING_SUMMONS": 2,
+        "COMPANY_COMPLIANCE_MEMO": 3
+      },
+      "workflow_stage_distribution": {
+        "COMMENCEMENT": 2,
+        "COMPANY_COMPLIANCE": 3
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 4,
+        "road_traffic_personal_injury": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 5
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 5
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_73c48b17927e",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_11_disqualification_directors",
+      "file_count": 3,
+      "file_type_counts": {
+        ".docx": 3
+      },
+      "templates_detected": 3,
+      "clause_chunks_detected": 13,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 3,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "ORIGINATING_SUMMONS": 1,
+        "COMPANY_COMPLIANCE_MEMO": 2
+      },
+      "workflow_stage_distribution": {
+        "COMMENCEMENT": 1,
+        "COMPANY_COMPLIANCE": 2
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 3
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 3
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 3
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_8a193de5fe8c",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_general_forms_12_insurance_transfer_schemes",
+      "file_count": 7,
+      "file_type_counts": {
+        ".docx": 7
+      },
+      "templates_detected": 7,
+      "clause_chunks_detected": 50,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 7,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_WINDING_UP_PETITION": 2,
+        "COMPANY_COMPLIANCE_MEMO": 5
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_WINDING_UP": 2,
+        "COMPANY_COMPLIANCE": 5
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 2,
+        "company_corporate": 5
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 7
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 7
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_800cd643f07a",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_00_commentary",
+      "file_count": 21,
+      "file_type_counts": {
+        ".docx": 21
+      },
+      "templates_detected": 21,
+      "clause_chunks_detected": 421,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 21,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 12,
+        "COMPANY_WINDING_UP_PETITION": 4,
+        "REGULATORY_COMPLIANCE_NOTE": 1,
+        "CONTRACT_AGREEMENT": 3,
+        "LEASE_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 12,
+        "COMPANY_WINDING_UP": 4,
+        "REGULATORY_COMPLIANCE": 1,
+        "TRANSACTIONAL_DRAFTING": 4
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 11,
+        "road_traffic_personal_injury": 6,
+        "commercial_contracts": 4
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 21
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 21
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_700acf28d660",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_forms_01_general_forms",
+      "file_count": 2,
+      "file_type_counts": {
+        ".docx": 2
+      },
+      "templates_detected": 2,
+      "clause_chunks_detected": 6,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 2,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 2
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 2
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 2
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 2
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_43fee2d7fa75",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_forms_02_procedure",
+      "file_count": 27,
+      "file_type_counts": {
+        ".docx": 27
+      },
+      "templates_detected": 27,
+      "clause_chunks_detected": 110,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 27,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_WINDING_UP_PETITION": 14,
+        "COMPANY_COMPLIANCE_MEMO": 11,
+        "LEASE_AGREEMENT": 2
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_WINDING_UP": 14,
+        "COMPANY_COMPLIANCE": 11,
+        "TRANSACTIONAL_DRAFTING": 2
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 22,
+        "commercial_contracts": 3,
+        "road_traffic_personal_injury": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 27
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 27
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_99392296f38c",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_forms_03_provisional_liquidator",
+      "file_count": 4,
+      "file_type_counts": {
+        ".docx": 4
+      },
+      "templates_detected": 4,
+      "clause_chunks_detected": 14,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 4,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 4
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 4
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 3,
+        "road_traffic_personal_injury": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 4
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 4
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_b4f9cab38f78",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_forms_04_special_manager",
+      "file_count": 3,
+      "file_type_counts": {
+        ".docx": 3
+      },
+      "templates_detected": 3,
+      "clause_chunks_detected": 9,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 3,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 3
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 3
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 1,
+        "road_traffic_personal_injury": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 3
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 3
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_97b09fd688a0",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_forms_05_meetings_compulsory_winding_up",
+      "file_count": 22,
+      "file_type_counts": {
+        ".docx": 22
+      },
+      "templates_detected": 22,
+      "clause_chunks_detected": 82,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 22,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_WINDING_UP_PETITION": 10,
+        "COMPANY_COMPLIANCE_MEMO": 12
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_WINDING_UP": 10,
+        "COMPANY_COMPLIANCE": 12
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 22
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 22
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 22
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_939cdfe531b1",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_forms_06_liquidator_committee_inspection",
+      "file_count": 70,
+      "file_type_counts": {
+        ".docx": 70
+      },
+      "templates_detected": 70,
+      "clause_chunks_detected": 257,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 70,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 55,
+        "REGULATORY_COMPLIANCE_NOTE": 2,
+        "COMPANY_WINDING_UP_PETITION": 7,
+        "LEASE_AGREEMENT": 1,
+        "CLIENT_INTAKE": 1,
+        "WRIT": 2,
+        "CONTRACT_AGREEMENT": 2
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 55,
+        "REGULATORY_COMPLIANCE": 2,
+        "COMPANY_WINDING_UP": 7,
+        "TRANSACTIONAL_DRAFTING": 3,
+        "INTAKE": 1,
+        "COMMENCEMENT": 2
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 56,
+        "road_traffic_personal_injury": 11,
+        "commercial_contracts": 3
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 70
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 70
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_4b36e0efd794",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_forms_07_collection_preservation_assets",
+      "file_count": 54,
+      "file_type_counts": {
+        ".docx": 54
+      },
+      "templates_detected": 54,
+      "clause_chunks_detected": 192,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 54,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 40,
+        "COMPANY_WINDING_UP_PETITION": 3,
+        "CONTRACT_AGREEMENT": 11
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 40,
+        "COMPANY_WINDING_UP": 3,
+        "TRANSACTIONAL_DRAFTING": 11
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 38,
+        "commercial_contracts": 10,
+        "road_traffic_personal_injury": 6
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 54
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 54
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_d2028f6bd89e",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_forms_08_disclaimer_onerous_property",
+      "file_count": 2,
+      "file_type_counts": {
+        ".docx": 2
+      },
+      "templates_detected": 2,
+      "clause_chunks_detected": 6,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 2,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "LEASE_AGREEMENT": 2
+      },
+      "workflow_stage_distribution": {
+        "TRANSACTIONAL_DRAFTING": 2
+      },
+      "practice_lane_distribution": {
+        "commercial_contracts": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 2
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 2
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_be28081a5969",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_forms_09_debts",
+      "file_count": 36,
+      "file_type_counts": {
+        ".docx": 36
+      },
+      "templates_detected": 36,
+      "clause_chunks_detected": 142,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 36,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 30,
+        "REGULATORY_COMPLIANCE_NOTE": 2,
+        "COMPANY_WINDING_UP_PETITION": 4
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 30,
+        "REGULATORY_COMPLIANCE": 2,
+        "COMPANY_WINDING_UP": 4
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 36
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 36
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 36
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_c09fee526a1c",
+      "private_output_dir": "private_ingest_output/atkin_forms/companies_winding_up_forms_10_voluntary_winding_up",
+      "file_count": 12,
+      "file_type_counts": {
+        ".docx": 12
+      },
+      "templates_detected": 12,
+      "clause_chunks_detected": 42,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 12,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_WINDING_UP_PETITION": 5,
+        "ORIGINATING_SUMMONS": 2,
+        "COMPANY_COMPLIANCE_MEMO": 5
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_WINDING_UP": 5,
+        "COMMENCEMENT": 2,
+        "COMPANY_COMPLIANCE": 5
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 12
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 12
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 12
+      },
+      "extraction_warning_count": 1,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_f4eb94fd4ee4",
+      "private_output_dir": "private_ingest_output/atkin_forms/company_1_thx",
+      "file_count": 9,
+      "file_type_counts": {
+        ".docx": 9
+      },
+      "templates_detected": 9,
+      "clause_chunks_detected": 540,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 9,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 6,
+        "COMPANY_WINDING_UP_PETITION": 1,
+        "ORIGINATING_SUMMONS": 1,
+        "REGULATORY_COMPLIANCE_NOTE": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 6,
+        "COMPANY_WINDING_UP": 1,
+        "COMMENCEMENT": 1,
+        "REGULATORY_COMPLIANCE": 1
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 4,
+        "company_corporate": 5
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 9
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 9
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_5c4295481627",
+      "private_output_dir": "private_ingest_output/atkin_forms/company_forms_2",
+      "file_count": 88,
+      "file_type_counts": {
+        ".docx": 88
+      },
+      "templates_detected": 88,
+      "clause_chunks_detected": 456,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 88,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 37,
+        "ORIGINATING_SUMMONS": 43,
+        "LEASE_AGREEMENT": 1,
+        "CONTRACT_AGREEMENT": 1,
+        "CONTRACT_CLAUSE": 1,
+        "COMPANY_WINDING_UP_PETITION": 5
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 37,
+        "COMMENCEMENT": 43,
+        "TRANSACTIONAL_DRAFTING": 3,
+        "COMPANY_WINDING_UP": 5
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 70,
+        "road_traffic_personal_injury": 14,
+        "commercial_contracts": 4
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 88
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 88
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_11595e882ee5",
+      "private_output_dir": "private_ingest_output/atkin_forms/compreomise_and_settlement_2",
+      "file_count": 91,
+      "file_type_counts": {
+        ".docx": 91
+      },
+      "templates_detected": 91,
+      "clause_chunks_detected": 674,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 91,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "WRIT": 8,
+        "CLIENT_INTAKE": 40,
+        "CONTRACT_AGREEMENT": 29,
+        "CONTRACT_CLAUSE": 1,
+        "COMPANY_COMPLIANCE_MEMO": 6,
+        "COMPANY_WINDING_UP_PETITION": 1,
+        "LEASE_AGREEMENT": 4,
+        "LETTER_OF_CLAIM": 1,
+        "MEDICAL_RECORDS_REQUEST": 1
+      },
+      "workflow_stage_distribution": {
+        "COMMENCEMENT": 8,
+        "INTAKE": 40,
+        "TRANSACTIONAL_DRAFTING": 34,
+        "COMPANY_COMPLIANCE": 6,
+        "COMPANY_WINDING_UP": 1,
+        "PRE_ACTION_CORRESPONDENCE": 1,
+        "MEDICAL_EVIDENCE": 1
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 40,
+        "commercial_contracts": 24,
+        "road_traffic_personal_injury": 22,
+        "company_corporate": 5
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 91
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 91
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_4b3efef12899",
+      "private_output_dir": "private_ingest_output/atkin_forms/contract_forms",
+      "file_count": 100,
+      "file_type_counts": {
+        ".docx": 100
+      },
+      "templates_detected": 100,
+      "clause_chunks_detected": 334,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 100,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "LETTER_OF_CLAIM": 4,
+        "WRIT": 20,
+        "CONTRACT_AGREEMENT": 32,
+        "CLIENT_INTAKE": 32,
+        "CONTRACT_CLAUSE": 8,
+        "LEASE_AGREEMENT": 4
+      },
+      "workflow_stage_distribution": {
+        "PRE_ACTION_CORRESPONDENCE": 4,
+        "COMMENCEMENT": 20,
+        "TRANSACTIONAL_DRAFTING": 44,
+        "INTAKE": 32
+      },
+      "practice_lane_distribution": {
+        "commercial_contracts": 73,
+        "road_traffic_personal_injury": 27
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 100
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 100
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_26ae7f3033a9",
+      "private_output_dir": "private_ingest_output/atkin_forms/contract_forms",
+      "file_count": 100,
+      "file_type_counts": {
+        ".docx": 100
+      },
+      "templates_detected": 100,
+      "clause_chunks_detected": 334,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 100,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "LETTER_OF_CLAIM": 4,
+        "CONTRACT_AGREEMENT": 32,
+        "WRIT": 20,
+        "CONTRACT_CLAUSE": 8,
+        "LEASE_AGREEMENT": 4,
+        "CLIENT_INTAKE": 32
+      },
+      "workflow_stage_distribution": {
+        "PRE_ACTION_CORRESPONDENCE": 4,
+        "TRANSACTIONAL_DRAFTING": 44,
+        "COMMENCEMENT": 20,
+        "INTAKE": 32
+      },
+      "practice_lane_distribution": {
+        "commercial_contracts": 73,
+        "road_traffic_personal_injury": 27
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 100
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 100
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_7ed2b85c1046",
+      "private_output_dir": "private_ingest_output/atkin_forms/employment",
+      "file_count": 36,
+      "file_type_counts": {
+        ".docx": 36
+      },
+      "templates_detected": 36,
+      "clause_chunks_detected": 613,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 36,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 23,
+        "COMPANY_COMPLIANCE_MEMO": 7,
+        "CONTRACT_AGREEMENT": 6
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 23,
+        "COMPANY_COMPLIANCE": 7,
+        "TRANSACTIONAL_DRAFTING": 6
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 17,
+        "road_traffic_personal_injury": 7,
+        "commercial_contracts": 8,
+        "company_corporate": 4
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 36
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 36
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_be22356cf142",
+      "private_output_dir": "private_ingest_output/atkin_forms/employment",
+      "file_count": 36,
+      "file_type_counts": {
+        ".docx": 36
+      },
+      "templates_detected": 36,
+      "clause_chunks_detected": 573,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 36,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CONTRACT_AGREEMENT": 6,
+        "CLIENT_INTAKE": 24,
+        "COMPANY_COMPLIANCE_MEMO": 6
+      },
+      "workflow_stage_distribution": {
+        "TRANSACTIONAL_DRAFTING": 6,
+        "INTAKE": 24,
+        "COMPANY_COMPLIANCE": 6
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 6,
+        "commercial_contracts": 7,
+        "company_corporate": 3,
+        "general_litigation": 20
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 36
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 36
+      },
+      "extraction_warning_count": 5,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_663553c529a9",
+      "private_output_dir": "private_ingest_output/atkin_forms/equitable_remedies",
+      "file_count": 21,
+      "file_type_counts": {
+        ".docx": 21
+      },
+      "templates_detected": 21,
+      "clause_chunks_detected": 97,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 21,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 12,
+        "CONTRACT_AGREEMENT": 2,
+        "COMPANY_COMPLIANCE_MEMO": 2,
+        "CONTRACT_CLAUSE": 2,
+        "SHAREHOLDERS_AGREEMENT": 1,
+        "WRIT": 1,
+        "LEASE_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 12,
+        "TRANSACTIONAL_DRAFTING": 6,
+        "COMPANY_COMPLIANCE": 2,
+        "COMMENCEMENT": 1
+      },
+      "practice_lane_distribution": {
+        "commercial_contracts": 6,
+        "road_traffic_personal_injury": 3,
+        "general_litigation": 10,
+        "company_corporate": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 21
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 21
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_b0374f7a6ce7",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_commentary",
+      "file_count": 11,
+      "file_type_counts": {
+        ".docx": 11
+      },
+      "templates_detected": 11,
+      "clause_chunks_detected": 1039,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 11,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 2,
+        "WRIT": 3,
+        "CONTRACT_AGREEMENT": 4,
+        "CONTRACT_CLAUSE": 1,
+        "COMPANY_COMPLIANCE_MEMO": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 2,
+        "COMMENCEMENT": 3,
+        "TRANSACTIONAL_DRAFTING": 5,
+        "COMPANY_COMPLIANCE": 1
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 3,
+        "commercial_contracts": 4,
+        "road_traffic_personal_injury": 3,
+        "company_corporate": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 11
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 11
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_ed0d664945c3",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_01_parties",
+      "file_count": 8,
+      "file_type_counts": {
+        ".docx": 8
+      },
+      "templates_detected": 8,
+      "clause_chunks_detected": 37,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 8,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 5,
+        "COMPANY_COMPLIANCE_MEMO": 3
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 5,
+        "COMPANY_COMPLIANCE": 3
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 5,
+        "company_corporate": 3
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 8
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 8
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_e0b6b3995928",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_02_service",
+      "file_count": 12,
+      "file_type_counts": {
+        ".docx": 12
+      },
+      "templates_detected": 12,
+      "clause_chunks_detected": 61,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 12,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 6,
+        "CLIENT_INTAKE": 1,
+        "COMPANY_WINDING_UP_PETITION": 5
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 6,
+        "INTAKE": 1,
+        "COMPANY_WINDING_UP": 5
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 8,
+        "general_litigation": 1,
+        "road_traffic_personal_injury": 3
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 12
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 12
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_f2f813a8da45",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_03_amendment_supplemented_petition",
+      "file_count": 5,
+      "file_type_counts": {
+        ".docx": 5
+      },
+      "templates_detected": 5,
+      "clause_chunks_detected": 28,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 5,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_WINDING_UP_PETITION": 5
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_WINDING_UP": 5
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 5
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 5
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 5
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_4cf6fa6ae0bb",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_04_further_and_better_particulars",
+      "file_count": 6,
+      "file_type_counts": {
+        ".docx": 6
+      },
+      "templates_detected": 6,
+      "clause_chunks_detected": 38,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 6,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 5,
+        "COMPANY_WINDING_UP_PETITION": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 5,
+        "COMPANY_WINDING_UP": 1
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 6
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 6
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 6
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_80ebe8c762a4",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_05_answer",
+      "file_count": 20,
+      "file_type_counts": {
+        ".docx": 20
+      },
+      "templates_detected": 20,
+      "clause_chunks_detected": 148,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 20,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 3,
+        "COMPANY_WINDING_UP_PETITION": 11,
+        "CLIENT_INTAKE": 6
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 3,
+        "COMPANY_WINDING_UP": 11,
+        "INTAKE": 6
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 14,
+        "general_litigation": 6
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 20
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 20
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_8c381e6e8904",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_06_prescribed_forms_ancillary_relief",
+      "file_count": 13,
+      "file_type_counts": {
+        ".docx": 13
+      },
+      "templates_detected": 13,
+      "clause_chunks_detected": 116,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 13,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 4,
+        "CLIENT_INTAKE": 8,
+        "REGULATORY_COMPLIANCE_NOTE": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 4,
+        "INTAKE": 8,
+        "REGULATORY_COMPLIANCE": 1
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 3,
+        "general_litigation": 8,
+        "road_traffic_personal_injury": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 13
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 13
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_1e4a773c4d9c",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_07_practice_forms",
+      "file_count": 13,
+      "file_type_counts": {
+        ".docx": 13
+      },
+      "templates_detected": 13,
+      "clause_chunks_detected": 60,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 13,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 8,
+        "WRIT": 1,
+        "COMPANY_COMPLIANCE_MEMO": 1,
+        "CONTRACT_AGREEMENT": 3
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 8,
+        "COMMENCEMENT": 1,
+        "COMPANY_COMPLIANCE": 1,
+        "TRANSACTIONAL_DRAFTING": 3
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 7,
+        "road_traffic_personal_injury": 3,
+        "commercial_contracts": 3
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 13
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 13
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_45e5b04b5666",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_08_children",
+      "file_count": 20,
+      "file_type_counts": {
+        ".docx": 20
+      },
+      "templates_detected": 20,
+      "clause_chunks_detected": 43,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 20,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 18,
+        "ORIGINATING_SUMMONS": 2
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 18,
+        "COMMENCEMENT": 2
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 6,
+        "general_litigation": 13,
+        "company_corporate": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 20
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 20
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_06f3528bb47b",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_09_matrimonial_injunctions",
+      "file_count": 7,
+      "file_type_counts": {
+        ".docx": 7
+      },
+      "templates_detected": 7,
+      "clause_chunks_detected": 41,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 7,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 6,
+        "COMPANY_COMPLIANCE_MEMO": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 6,
+        "COMPANY_COMPLIANCE": 1
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 6,
+        "company_corporate": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 7
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 7
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_877884089199",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_10_attachment_of_income_order_rules_cap_13a",
+      "file_count": 8,
+      "file_type_counts": {
+        ".docx": 8
+      },
+      "templates_detected": 8,
+      "clause_chunks_detected": 52,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 8,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 7,
+        "COMPANY_COMPLIANCE_MEMO": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 7,
+        "COMPANY_COMPLIANCE": 1
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 7,
+        "company_corporate": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 8
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 8
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_740897b4edf8",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_11_special_procedure_list",
+      "file_count": 3,
+      "file_type_counts": {
+        ".docx": 3
+      },
+      "templates_detected": 3,
+      "clause_chunks_detected": 4,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 3,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 2,
+        "COMPANY_COMPLIANCE_MEMO": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 2,
+        "COMPANY_COMPLIANCE": 1
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 2,
+        "company_corporate": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 3
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 3
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_5af935cf1ffc",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_12_proceedings_before_trial",
+      "file_count": 24,
+      "file_type_counts": {
+        ".docx": 24
+      },
+      "templates_detected": 24,
+      "clause_chunks_detected": 110,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 24,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "WRIT": 3,
+        "COMPANY_COMPLIANCE_MEMO": 3,
+        "CLIENT_INTAKE": 18
+      },
+      "workflow_stage_distribution": {
+        "COMMENCEMENT": 3,
+        "COMPANY_COMPLIANCE": 3,
+        "INTAKE": 18
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 20,
+        "company_corporate": 3,
+        "road_traffic_personal_injury": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 24
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 24
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_f00831d64df9",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_13_disposal_of_suit",
+      "file_count": 7,
+      "file_type_counts": {
+        ".docx": 7
+      },
+      "templates_detected": 7,
+      "clause_chunks_detected": 27,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 7,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 4,
+        "CLIENT_INTAKE": 2,
+        "COMPANY_WINDING_UP_PETITION": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 4,
+        "INTAKE": 2,
+        "COMPANY_WINDING_UP": 1
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 5,
+        "general_litigation": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 7
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 7
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_123746f8cc70",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_14_proceedings_after_trial",
+      "file_count": 30,
+      "file_type_counts": {
+        ".docx": 30
+      },
+      "templates_detected": 30,
+      "clause_chunks_detected": 159,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 30,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 11,
+        "CLIENT_INTAKE": 18,
+        "COMPANY_WINDING_UP_PETITION": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 11,
+        "INTAKE": 18,
+        "COMPANY_WINDING_UP": 1
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 11,
+        "general_litigation": 17,
+        "road_traffic_personal_injury": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 30
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 30
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_29c0161a7876",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_15_forms",
+      "file_count": 62,
+      "file_type_counts": {
+        ".docx": 62
+      },
+      "templates_detected": 62,
+      "clause_chunks_detected": 368,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 62,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 10,
+        "CLIENT_INTAKE": 29,
+        "CONTRACT_AGREEMENT": 8,
+        "ORIGINATING_SUMMONS": 6,
+        "COMPANY_WINDING_UP_PETITION": 7,
+        "MEDICAL_RECORDS_REQUEST": 2
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 10,
+        "INTAKE": 29,
+        "TRANSACTIONAL_DRAFTING": 8,
+        "COMMENCEMENT": 6,
+        "COMPANY_WINDING_UP": 7,
+        "MEDICAL_EVIDENCE": 2
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 20,
+        "general_litigation": 23,
+        "road_traffic_personal_injury": 13,
+        "commercial_contracts": 6
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 62
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 62
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_58bba42bfe42",
+      "private_output_dir": "private_ingest_output/atkin_forms/family_forms_15_forms",
+      "file_count": 62,
+      "file_type_counts": {
+        ".docx": 62
+      },
+      "templates_detected": 62,
+      "clause_chunks_detected": 256,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 62,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CONTRACT_AGREEMENT": 6,
+        "COMPANY_COMPLIANCE_MEMO": 10,
+        "COMPANY_WINDING_UP_PETITION": 7,
+        "CLIENT_INTAKE": 31,
+        "MEDICAL_RECORDS_REQUEST": 2,
+        "ORIGINATING_SUMMONS": 6
+      },
+      "workflow_stage_distribution": {
+        "TRANSACTIONAL_DRAFTING": 6,
+        "COMPANY_COMPLIANCE": 10,
+        "COMPANY_WINDING_UP": 7,
+        "INTAKE": 31,
+        "MEDICAL_EVIDENCE": 2,
+        "COMMENCEMENT": 6
+      },
+      "practice_lane_distribution": {
+        "commercial_contracts": 5,
+        "company_corporate": 20,
+        "road_traffic_personal_injury": 7,
+        "general_litigation": 30
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 62
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 62
+      },
+      "extraction_warning_count": 16,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_c09fee526a1c",
+      "private_output_dir": "private_ingest_output/atkin_forms/files_12",
+      "file_count": 12,
+      "file_type_counts": {
+        ".docx": 12
+      },
+      "templates_detected": 12,
+      "clause_chunks_detected": 42,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 12,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_WINDING_UP_PETITION": 5,
+        "ORIGINATING_SUMMONS": 2,
+        "COMPANY_COMPLIANCE_MEMO": 5
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_WINDING_UP": 5,
+        "COMMENCEMENT": 2,
+        "COMPANY_COMPLIANCE": 5
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 12
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 12
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 12
+      },
+      "extraction_warning_count": 1,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_800cd643f07a",
+      "private_output_dir": "private_ingest_output/atkin_forms/files_21",
+      "file_count": 21,
+      "file_type_counts": {
+        ".docx": 21
+      },
+      "templates_detected": 21,
+      "clause_chunks_detected": 421,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 21,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 12,
+        "COMPANY_WINDING_UP_PETITION": 4,
+        "REGULATORY_COMPLIANCE_NOTE": 1,
+        "CONTRACT_AGREEMENT": 3,
+        "LEASE_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 12,
+        "COMPANY_WINDING_UP": 4,
+        "REGULATORY_COMPLIANCE": 1,
+        "TRANSACTIONAL_DRAFTING": 4
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 11,
+        "road_traffic_personal_injury": 6,
+        "commercial_contracts": 4
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 21
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 21
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_ed4c7fd6733a",
+      "private_output_dir": "private_ingest_output/atkin_forms/files_3",
+      "file_count": 3,
+      "file_type_counts": {
+        ".docx": 3
+      },
+      "templates_detected": 3,
+      "clause_chunks_detected": 12,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 3,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "ORIGINATING_SUMMONS": 1,
+        "COMPANY_COMPLIANCE_MEMO": 2
+      },
+      "workflow_stage_distribution": {
+        "COMMENCEMENT": 1,
+        "COMPANY_COMPLIANCE": 2
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 3
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 3
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 3
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_7f507899afbc",
+      "private_output_dir": "private_ingest_output/atkin_forms/files_5",
+      "file_count": 6,
+      "file_type_counts": {
+        ".docx": 6
+      },
+      "templates_detected": 6,
+      "clause_chunks_detected": 59,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 6,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 3,
+        "LEASE_AGREEMENT": 2,
+        "CONTRACT_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 3,
+        "TRANSACTIONAL_DRAFTING": 3
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 1,
+        "road_traffic_personal_injury": 5
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 6
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 6
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_8a2038575b76",
+      "private_output_dir": "private_ingest_output/atkin_forms/files_65",
+      "file_count": 66,
+      "file_type_counts": {
+        ".docx": 66
+      },
+      "templates_detected": 66,
+      "clause_chunks_detected": 362,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 66,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CONTRACT_CLAUSE": 14,
+        "WRIT": 17,
+        "CONTRACT_AGREEMENT": 12,
+        "CLIENT_INTAKE": 21,
+        "COMPANY_COMPLIANCE_MEMO": 1,
+        "LEASE_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "TRANSACTIONAL_DRAFTING": 27,
+        "COMMENCEMENT": 17,
+        "INTAKE": 21,
+        "COMPANY_COMPLIANCE": 1
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 25,
+        "commercial_contracts": 34,
+        "general_litigation": 6,
+        "company_corporate": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 66
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 66
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_939cdfe531b1",
+      "private_output_dir": "private_ingest_output/atkin_forms/files_70",
+      "file_count": 70,
+      "file_type_counts": {
+        ".docx": 70
+      },
+      "templates_detected": 70,
+      "clause_chunks_detected": 257,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 70,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 55,
+        "REGULATORY_COMPLIANCE_NOTE": 2,
+        "COMPANY_WINDING_UP_PETITION": 7,
+        "LEASE_AGREEMENT": 1,
+        "CLIENT_INTAKE": 1,
+        "WRIT": 2,
+        "CONTRACT_AGREEMENT": 2
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 55,
+        "REGULATORY_COMPLIANCE": 2,
+        "COMPANY_WINDING_UP": 7,
+        "TRANSACTIONAL_DRAFTING": 3,
+        "INTAKE": 1,
+        "COMMENCEMENT": 2
+      },
+      "practice_lane_distribution": {
+        "company_corporate": 56,
+        "road_traffic_personal_injury": 11,
+        "commercial_contracts": 3
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 70
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 70
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_568fa9fc5268",
+      "private_output_dir": "private_ingest_output/atkin_forms/files_90",
+      "file_count": 91,
+      "file_type_counts": {
+        ".docx": 91
+      },
+      "templates_detected": 91,
+      "clause_chunks_detected": 674,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 91,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CONTRACT_AGREEMENT": 29,
+        "CLIENT_INTAKE": 40,
+        "COMPANY_COMPLIANCE_MEMO": 6,
+        "COMPANY_WINDING_UP_PETITION": 1,
+        "LEASE_AGREEMENT": 4,
+        "WRIT": 8,
+        "LETTER_OF_CLAIM": 1,
+        "MEDICAL_RECORDS_REQUEST": 1,
+        "CONTRACT_CLAUSE": 1
+      },
+      "workflow_stage_distribution": {
+        "TRANSACTIONAL_DRAFTING": 34,
+        "INTAKE": 40,
+        "COMPANY_COMPLIANCE": 6,
+        "COMPANY_WINDING_UP": 1,
+        "COMMENCEMENT": 8,
+        "PRE_ACTION_CORRESPONDENCE": 1,
+        "MEDICAL_EVIDENCE": 1
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 22,
+        "general_litigation": 40,
+        "company_corporate": 5,
+        "commercial_contracts": 24
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 91
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 91
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_89188558ace1",
+      "private_output_dir": "private_ingest_output/atkin_forms/github_recovery",
+      "file_count": 1,
+      "file_type_counts": {
+        ".txt": 1
+      },
+      "templates_detected": 1,
+      "clause_chunks_detected": 0,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 1,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 1
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 1
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 1
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_0cfd05877790",
+      "private_output_dir": "private_ingest_output/atkin_forms/introduction",
+      "file_count": 2,
+      "file_type_counts": {
+        ".docx": 2
+      },
+      "templates_detected": 2,
+      "clause_chunks_detected": 15,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 2,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 1,
+        "LEASE_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 1,
+        "TRANSACTIONAL_DRAFTING": 1
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 1,
+        "road_traffic_personal_injury": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 2
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 2
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_8cb578ced1a9",
+      "private_output_dir": "private_ingest_output/atkin_forms/land_easement",
+      "file_count": 6,
+      "file_type_counts": {
+        ".docx": 6
+      },
+      "templates_detected": 6,
+      "clause_chunks_detected": 59,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 6,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 3,
+        "LEASE_AGREEMENT": 2,
+        "CONTRACT_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 3,
+        "TRANSACTIONAL_DRAFTING": 3
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 5,
+        "general_litigation": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 6
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 6
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_20b1a5e23261",
+      "private_output_dir": "private_ingest_output/atkin_forms/pi_forms_1",
+      "file_count": 101,
+      "file_type_counts": {
+        ".docx": 101
+      },
+      "templates_detected": 101,
+      "clause_chunks_detected": 740,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 101,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "PROBATE_APPLICATION": 3,
+        "CLIENT_INTAKE": 57,
+        "LETTER_OF_CLAIM": 2,
+        "CONTRACT_AGREEMENT": 1,
+        "MEDICAL_RECORDS_REQUEST": 22,
+        "WRIT": 2,
+        "COMPANY_COMPLIANCE_MEMO": 9,
+        "SHAREHOLDERS_AGREEMENT": 1,
+        "LEASE_AGREEMENT": 4
+      },
+      "workflow_stage_distribution": {
+        "PROBATE_APPLICATION": 3,
+        "INTAKE": 57,
+        "PRE_ACTION_CORRESPONDENCE": 2,
+        "TRANSACTIONAL_DRAFTING": 6,
+        "MEDICAL_EVIDENCE": 22,
+        "COMMENCEMENT": 2,
+        "COMPANY_COMPLIANCE": 9
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 64,
+        "personal_injury": 11,
+        "general_litigation": 21,
+        "probate": 2,
+        "commercial_contracts": 2,
+        "company_corporate": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 101
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 101
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_6b12673dcb30",
+      "private_output_dir": "private_ingest_output/atkin_forms/personal_injuries_quantum",
+      "file_count": 1,
+      "file_type_counts": {
+        ".docx": 1
+      },
+      "templates_detected": 1,
+      "clause_chunks_detected": 32,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 1,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 1
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 1
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 1
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_fc2097d4583c",
+      "private_output_dir": "private_ingest_output/atkin_forms/personal_injuries_litigation_and_principles",
+      "file_count": 1,
+      "file_type_counts": {
+        ".docx": 1
+      },
+      "templates_detected": 1,
+      "clause_chunks_detected": 58,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 1,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "LETTER_OF_CLAIM": 1
+      },
+      "workflow_stage_distribution": {
+        "PRE_ACTION_CORRESPONDENCE": 1
+      },
+      "practice_lane_distribution": {
+        "commercial_contracts": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 1
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 1
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_b8e052444f87",
+      "private_output_dir": "private_ingest_output/atkin_forms/personal_injury_form_1",
+      "file_count": 100,
+      "file_type_counts": {
+        ".docx": 100
+      },
+      "templates_detected": 100,
+      "clause_chunks_detected": 572,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 100,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "COMPANY_COMPLIANCE_MEMO": 10,
+        "MEDICAL_RECORDS_REQUEST": 22,
+        "CLIENT_INTAKE": 56,
+        "LEASE_AGREEMENT": 4,
+        "LETTER_OF_CLAIM": 1,
+        "CONTRACT_AGREEMENT": 1,
+        "PROBATE_APPLICATION": 2,
+        "WRIT": 4
+      },
+      "workflow_stage_distribution": {
+        "COMPANY_COMPLIANCE": 10,
+        "MEDICAL_EVIDENCE": 22,
+        "INTAKE": 56,
+        "TRANSACTIONAL_DRAFTING": 5,
+        "PRE_ACTION_CORRESPONDENCE": 1,
+        "PROBATE_APPLICATION": 2,
+        "COMMENCEMENT": 4
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 62,
+        "personal_injury": 11,
+        "company_corporate": 1,
+        "commercial_contracts": 3,
+        "general_litigation": 21,
+        "probate": 2
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 100
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 100
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_5aaee339604f",
+      "private_output_dir": "private_ingest_output/atkin_forms/personal_injury_principles",
+      "file_count": 1,
+      "file_type_counts": {
+        ".docx": 1
+      },
+      "templates_detected": 1,
+      "clause_chunks_detected": 70,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 1,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "SHAREHOLDERS_AGREEMENT": 1
+      },
+      "workflow_stage_distribution": {
+        "TRANSACTIONAL_DRAFTING": 1
+      },
+      "practice_lane_distribution": {
+        "road_traffic_personal_injury": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 1
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 1
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_4c5085808cdf",
+      "private_output_dir": "private_ingest_output/atkin_forms/personal_injury_handbook_kelly_matthias_brennan_etc_z_library_sk_1lib_sk_z_lib_s",
+      "file_count": 1,
+      "file_type_counts": {
+        ".pdf": 1
+      },
+      "templates_detected": 1,
+      "clause_chunks_detected": 0,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 1,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 1
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 1
+      },
+      "practice_lane_distribution": {
+        "personal_injury": 1
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 1
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 1
+      },
+      "extraction_warning_count": 0,
+      "private_text_committed": false
+    },
+    {
+      "pack_id": "pack_59066eb2c429",
+      "private_output_dir": "private_ingest_output/atkin_forms/professional_conduct_pc_20260706t145614z_3_001",
+      "file_count": 60,
+      "file_type_counts": {
+        ".docx": 35,
+        ".pdf": 21,
+        ".pptx": 4
+      },
+      "templates_detected": 56,
+      "clause_chunks_detected": 0,
+      "field_schemas_detected": 0,
+      "classification_reviews_created": 56,
+      "notebooklm_usage_notes_linked": 0,
+      "document_intent_distribution": {
+        "CLIENT_INTAKE": 56
+      },
+      "workflow_stage_distribution": {
+        "INTAKE": 56
+      },
+      "practice_lane_distribution": {
+        "general_litigation": 56
+      },
+      "inactive_until_review": true,
+      "review_status_distribution": {
+        "lawyer_review_required": 56
+      },
+      "classification_status_distribution": {
+        "machine_candidate": 56
+      },
+      "extraction_warning_count": 56,
+      "private_text_committed": false
+    }
+  ],
   "totals": {
-    "templates_detected": 0,
-    "clause_chunks_detected": 0,
+    "templates_detected": 2212,
+    "clause_chunks_detected": 15802,
     "field_schemas_detected": 0,
-    "classification_reviews_created": 0,
+    "classification_reviews_created": 2212,
     "notebooklm_usage_notes_linked": 0,
-    "extraction_warning_count": 0,
+    "extraction_warning_count": 79,
     "inactive_until_review": true
   },
   "errors": [],
   "recommended_next_actions": [
-    "Recover/export the original private form source files locally under private_uploads/atkin_forms/.",
-    "Keep NotebookLM as a cross-check notebook, not as the raw RAG corpus.",
-    "Re-run this script locally; extracted output must remain under private_ingest_output/."
+    "Open gitignored classification reviews under private_ingest_output/atkin_forms/.",
+    "Approve a small lane only after reviewing document intent, stage, role, blockers, and alternatives.",
+    "Run the private Qdrant indexer in dry-run mode first.",
+    "Enable PRIVATE_QDRANT_FORMS_ENABLED only after tenant/workspace Qdrant credentials are configured."
   ]
 }

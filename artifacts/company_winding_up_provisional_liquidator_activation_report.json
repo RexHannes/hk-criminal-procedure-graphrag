@@ -6,13 +6,12 @@
   "public_authority": false,
   "notebooklm_is_authority": false,
   "source_dirs_checked": [
-    "private_ingest_output/company_corporate",
-    "private_ingest_output/sem_b_corporate_commercial"
+    "private_ingest_output/atkin_forms"
   ],
   "private_candidate_status": "company_private_ingest_candidates_reviewed_redacted_metadata_only",
   "private_candidates_detected": {
-    "templates": 10,
-    "clauses": 2215
+    "templates": 399,
+    "clauses": 2086
   },
   "approved_metadata_templates": 2,
   "approved_redacted_clause_records": 4,

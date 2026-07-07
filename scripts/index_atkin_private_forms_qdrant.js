@@ -32,6 +32,45 @@ function payloadFieldList(records) {
   return sample ? Object.keys(sample.payload).sort() : [];
 }
 
+function countBy(items, keyFn) {
+  const out = {};
+  for (const item of items || []) {
+    const key = keyFn(item) || "unknown";
+    out[key] = (out[key] || 0) + 1;
+  }
+  return out;
+}
+
+function combineStores(stores) {
+  return stores.reduce((acc, store) => {
+    acc.templates.push(...(store.templates || []));
+    acc.classificationReviews.push(...(store.classificationReviews || []));
+    acc.clauses.push(...(store.clauses || []));
+    acc.usageRules.push(...(store.usageRules || []));
+    acc.notebooklmUsageNotes.push(...(store.notebooklmUsageNotes || []));
+    return acc;
+  }, {
+    formPack: null,
+    templates: [],
+    classificationReviews: [],
+    clauses: [],
+    usageRules: [],
+    notebooklmUsageNotes: [],
+    routingRules: [],
+    privateFormIndex: { records: [] },
+  });
+}
+
+function statusDistribution(store) {
+  return {
+    review_status_distribution: countBy(store.templates, item => item.reviewStatus),
+    classification_status_distribution: countBy(store.templates, item => item.classificationStatus),
+    practice_lane_distribution: countBy(store.templates, item => item.subPracticeArea || item.practiceLane || item.practiceArea),
+    document_intent_distribution: countBy(store.templates, item => item.documentIntent),
+    workflow_stage_distribution: countBy(store.templates, item => item.proceduralStage),
+  };
+}
+
 function md(report) {
   return `# Atkin Private Qdrant Index Report
 
@@ -42,9 +81,13 @@ Generated: ${report.generated_at}
 | Metric | Value |
 |---|---:|
 | Local source present | ${report.source_present ? "yes" : "no"} |
+| Private stores scanned | ${report.private_stores_scanned} |
+| Real templates detected | ${report.real_templates_detected} |
+| Real clause chunks detected | ${report.real_clause_chunks_detected} |
 | Dry run | ${report.dry_run ? "yes" : "no"} |
-| Templates ready | ${report.templates_ready} |
-| Clause chunks ready | ${report.chunks_ready} |
+| Real templates approved for Qdrant | ${report.templates_ready} |
+| Real clause chunks approved for Qdrant | ${report.chunks_ready} |
+| Redacted fixture used for payload-shape check | ${report.dry_run_shape_validated_with_redacted_fixture ? "yes" : "no"} |
 | External embedding services used | ${report.external_embedding_services_used ? "yes" : "no"} |
 
 ## Collections
@@ -58,6 +101,7 @@ Generated: ${report.generated_at}
 - Payloads are \`source_visibility=private_form\` and \`part_layer=part_2_forms\`.
 - Structured filters and blockers run before private Qdrant semantic search.
 - Public legal collections remain separate.
+- Real private templates remain inactive unless \`review_status=approved\` and \`classification_status=review_approved\`.
 
 Private text committed: no.
 `;
@@ -70,9 +114,13 @@ async function run() {
   const workspaceId = args.workspace || "atkin-forms-workspace";
   const stores = findStores(args.input || PRIVATE_OUTPUT);
   const sourcePresent = stores.length > 0;
-  const storePath = sourcePresent ? stores[0] : FALLBACK_STORE;
-  const store = loadFormStore(storePath);
+  const sourceStores = stores.map(storePath => loadFormStore(storePath));
+  const realStore = sourcePresent ? combineStores(sourceStores) : combineStores([]);
+  const fallbackStore = loadFormStore(FALLBACK_STORE);
+  const store = sourcePresent ? realStore : fallbackStore;
   const records = buildAtkinPrivateRecords(store, { tenantId, workspaceId, firmId: tenantId });
+  const fallbackRecords = buildAtkinPrivateRecords(fallbackStore, { tenantId, workspaceId, firmId: tenantId });
+  const shapeRecords = records.records.templates.length || records.records.chunks.length ? records : fallbackRecords;
   const execute = args.execute === true;
   const indexResult = await indexAtkinPrivateRecordsToQdrant({
     store,
@@ -88,14 +136,25 @@ async function run() {
     status: execute ? "executed_private_qdrant_upsert" : "dry_run_metadata_only",
     source_present: sourcePresent,
     safe_redacted_fixture_fallback: !sourcePresent,
+    dry_run_shape_validated_with_redacted_fixture: sourcePresent && !(records.records.templates.length || records.records.chunks.length),
+    private_stores_scanned: stores.length,
+    real_templates_detected: realStore.templates.length,
+    real_clause_chunks_detected: realStore.clauses.length,
+    real_classification_reviews_detected: realStore.classificationReviews.length,
+    real_templates_inactive_until_review: sourcePresent
+      ? realStore.templates.every(template => template.activeInRouting !== true)
+      : true,
+    real_template_statuses: statusDistribution(realStore),
     dry_run: !execute,
     executed: execute,
     collections,
     tenant_workspace_filters_required: true,
     payload_required_fields_present: true,
-    payload_field_list: payloadFieldList(records),
+    payload_field_list: payloadFieldList(shapeRecords),
     templates_ready: records.records.templates.length,
     chunks_ready: records.records.chunks.length,
+    shape_check_templates_ready: fallbackRecords.records.templates.length,
+    shape_check_chunks_ready: fallbackRecords.records.chunks.length,
     review_status_required: "approved",
     classification_status_required: "review_approved",
     source_visibility: "private_form",

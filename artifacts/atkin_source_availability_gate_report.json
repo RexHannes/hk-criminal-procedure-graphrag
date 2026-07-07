@@ -1,12 +1,12 @@
 {
   "report_id": "atkin_source_availability_gate",
-  "generated_at": "2026-07-07T00:00:00+08:00",
-  "status": "REAL_ATKIN_INGESTION_BLOCKED_SOURCE_NOT_PRESENT",
+  "generated_at": "2026-07-07T18:58:54.561Z",
+  "status": "ATKIN_SOURCE_AVAILABLE_METADATA_INGESTION_ALLOWED",
   "source_forms": {
     "directory": "private_uploads/atkin_forms/",
-    "available": false,
-    "file_count": 0,
-    "supported_file_count": 0,
+    "available": true,
+    "file_count": 365,
+    "supported_file_count": 361,
     "supported_extensions": [
       ".doc",
       ".docx",
@@ -16,7 +16,18 @@
       ".txt",
       ".zip"
     ],
-    "sample_files": []
+    "sample_files": [
+      "private_uploads/atkin_forms/1 CONSENT of next friend or guardian ad litem to act.ZIP",
+      "private_uploads/atkin_forms/8f7b50e8-ad08-4b0f-b8c5-91ead43c8a2f-aristotle (15).tar.gz",
+      "private_uploads/atkin_forms/8f7b50e8-ad08-4b0f-b8c5-91ead43c8a2f-aristotle (16).tar.gz",
+      "private_uploads/atkin_forms/8f7b50e8-ad08-4b0f-b8c5-91ead43c8a2f-aristotle (17).tar.gz",
+      "private_uploads/atkin_forms/Admiralty 2.Zip",
+      "private_uploads/atkin_forms/Admiralty P1.Zip",
+      "private_uploads/atkin_forms/CWUMPO.ZIP",
+      "private_uploads/atkin_forms/Chapter 2 compromise and settlement .ZIP",
+      "private_uploads/atkin_forms/Companies Form 1.ZIP",
+      "private_uploads/atkin_forms/Companies General Forms 01 Proceedings Under CO.ZIP"
+    ]
   },
   "notebooklm_notes": {
     "directory": "private_notebooklm_notes/",
@@ -32,9 +43,9 @@
     "sample_files": [],
     "provenance": "INTERNAL_USAGE_NOTE"
   },
-  "ingestion_can_proceed": false,
+  "ingestion_can_proceed": true,
   "notebooklm_crosscheck_can_proceed": false,
-  "only_dry_run_fixtures_available": true,
+  "only_dry_run_fixtures_available": false,
   "private_paths_gitignored": true,
   "gitignore_checks": [
     {
@@ -62,5 +73,5 @@
   "private_text_committed": false,
   "private_text_marker_hits": [],
   "ci_behavior": "non_failing_when_source_absent",
-  "next_manual_action_required": "Export original private source files into private_uploads/atkin_forms/ before claiming real Atkin ingestion."
+  "next_manual_action_required": "Run metadata-only private ingestion and review generated private output locally."
 }
