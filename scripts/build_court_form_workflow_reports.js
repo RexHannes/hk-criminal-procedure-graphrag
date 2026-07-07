@@ -30,7 +30,7 @@ function mdTable(rows) {
 }
 
 function writeMd(name, title, generatedAt, body) {
-  fs.writeFileSync(path.join(ARTIFACTS, `${name}.md`), `# ${title}\n\nGenerated: ${generatedAt}\n\n${body}\n`);
+  fs.writeFileSync(path.join(ARTIFACTS, `${name}.md`), `# ${title}\n\nGenerated: ${generatedAt}\n\n${body.trimEnd()}\n`);
 }
 
 function run() {
