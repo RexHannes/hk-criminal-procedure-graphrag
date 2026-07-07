@@ -1,0 +1,24 @@
+{
+  "report_id": "private_form_backend_recall",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "private_text_committed": false,
+  "public_authority": false,
+  "reviewed_only": true,
+  "store": "fixtures/forms/private_lane_company_winding_up_store",
+  "index_stats": {
+    "records": 2,
+    "flows": 1,
+    "timelineRules": 1
+  },
+  "recommended_count": 1,
+  "blocked_count": 0,
+  "missing_facts": [
+    "statutoryDemandOrServiceEvidenceAvailable"
+  ],
+  "required_evidence": [
+    "statutoryDemandOrServiceEvidenceAvailable"
+  ],
+  "backend_index_records": 2,
+  "matter_document_flow_records": 1,
+  "workflow_timeline_rules": 1
+}

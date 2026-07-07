@@ -4,7 +4,7 @@ Generated: 2026-07-06T00:00:00+08:00
 
 ## Status
 
-Implemented as a hardened MVP foundation with a local/private Sem B + Downloads dry run and one focused real-lane approval pilot. PR #11 should remain draft until production private-store configuration and reviewer permissions are selected.
+Implemented as a hardened MVP foundation with a local/private Sem B + Downloads dry run, one focused real-lane approval pilot, and a routable court-form workflow layer. PR #11 should remain draft until production private-store configuration and reviewer permissions are selected.
 
 The branch adds private precedent/form ingestion, schema definitions, clause extraction, usage rules, NotebookLM usage-note parsing, structured retrieval, procedural gates, draft-from-template placeholders, APIs, validators, synthetic demo fixtures, and a native Forms & Snippets workspace inside the existing viewer.
 
@@ -86,6 +86,37 @@ Why selected: the dry run found multiple company winding-up candidates in the co
 
 The approved lane fixture is redacted metadata only. It proves that one company winding-up petition metadata template can route when prerequisites are present, is blocked when the company is already in another procedure, and becomes placeholder-only when statutory demand/service evidence is missing.
 
+## Court Forms -> Routable Backend Workflow
+
+The branch now adds the backend layer needed to turn reviewed form metadata into document workflow suggestions without committing private text.
+
+| Area | Result |
+|---|---|
+| Court-form dropzone contract | `scripts/ingest_court_form_dropzone.js` writes to gitignored private output only |
+| Practice lane taxonomy | Probate, commercial contracts, company/corporate, company winding-up, PI, employment, criminal defence, and general litigation lanes separated |
+| Stage mapping | Forms map to matter stages and document intents through structured rules |
+| Review queue | Private/real candidates stay inactive until review activation metadata exists |
+| Backend recall | Reviewed-only private form metadata can be recalled by lane, stage, role, and blockers |
+| Part 2 advice | Documentary-flow output recommends, blocks, or marks templates placeholder-only |
+| Part 3 timeline | CRM-export rows are generated from Part 1 legal analysis, Part 2 document flow, and Part 3 operations tasks |
+| Viewer | Existing Fable Forms & Snippets workspace shows compact workflow cards, not raw reports |
+
+Current metadata-only workflow metrics:
+
+| Metric | Count |
+|---|---:|
+| Existing private packs represented | 5 |
+| Templates detected in dry run | 27 |
+| Review queue records | 27 |
+| Reviewed backend index records | 2 |
+| Reviewed matter document flows | 1 |
+| Reviewed timeline rules | 1 |
+| Part 2 recommended documents | 1 |
+| Part 2 placeholder-only documents | 1 |
+| Part 3 CRM rows | 3 |
+
+The advice APIs keep the layers separate: public legal analysis is not polluted by private template recommendations, and private form recall only appears where the query is about drafting, forms, documents, or procedural workflow.
+
 ## Safety
 
 - Real private forms committed: no.
@@ -123,6 +154,12 @@ The approved lane fixture is redacted metadata only. It proves that one company 
 | Real-lane wrong-stage gate | Company already in another procedure blocks petition routing |
 | Real-lane missing prerequisite gate | Missing statutory demand/service evidence creates placeholder/evidence blocker |
 | NotebookLM private link status | No private notes found; no note text committed; NotebookLM remains internal note metadata |
+| Court-form dropzone | Local/private ingestion contract writes only to gitignored private output |
+| Practice lane taxonomy | Structured lane classifier keeps company, probate, PI, contract, employment, criminal and litigation forms separate |
+| Backend private recall | Reviewed-only metadata recall supports routeable document suggestions |
+| Part 2 documentary flow | Missing facts and evidence blockers are surfaced before drafting |
+| Part 3 timeline/CRM | Exportable rows generated without private form text |
+| Advice separation | Legal authority, document suggestions, and workflow timeline are distinct response layers |
 
 ## Sem B Handling
 
@@ -133,5 +170,6 @@ The Sem B / Downloads material was processed locally into `private_ingest_output
 - Real DOC/PDF extraction remains private and tool-dependent; current dry run records 3 extraction warnings.
 - Lawyer approval is represented as metadata and review gates, not a full multi-user HITL workflow.
 - The focused company winding-up lane approves routing metadata only, not private clause text or professional advice.
+- The court-form workflow layer routes reviewed metadata only; it does not expose or commit private form wording.
 - PR #11 is hardened but should remain draft until a production private-store mapping and reviewer permission model are configured.
 - Production vector indexing should use private storage/Qdrant collections, not public fixtures.

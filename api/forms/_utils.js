@@ -46,6 +46,9 @@ function resolveConfiguredStorePath({ firmId, workspaceId } = {}) {
   if (firm === DEFAULT_DEMO_FIRM_ID && workspace === DEFAULT_DEMO_WORKSPACE_ID) {
     return process.env.FORMS_DEMO_STORE_PATH || "fixtures/forms/synthetic_store";
   }
+  if (firm === "private-lane-pilot-firm" && workspace === "company-winding-up-pilot") {
+    return process.env.FORMS_COMPANY_WINDING_UP_STORE_PATH || "fixtures/forms/private_lane_company_winding_up_store";
+  }
   if (privateFormsApiEnabled() && !isProductionRuntime() && process.env.PRIVATE_FORM_STORE_PATH) {
     return process.env.PRIVATE_FORM_STORE_PATH;
   }

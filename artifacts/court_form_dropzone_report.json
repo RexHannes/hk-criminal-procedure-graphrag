@@ -1,0 +1,24 @@
+{
+  "report_id": "court_form_dropzone",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "status": "contract_ready_existing_private_dry_run_metadata",
+  "dropzone_script": "scripts/ingest_court_form_dropzone.js",
+  "expected_input": "private_uploads/court_forms/",
+  "expected_output": "private_ingest_output/<workspace>/",
+  "private_text_committed": false,
+  "external_services_used": false,
+  "packs_processed_from_existing_dry_run": 5,
+  "templates_detected_from_existing_dry_run": 27,
+  "clauses_detected_from_existing_dry_run": 1150,
+  "review_queue_count_from_existing_dry_run": 27,
+  "workflow_indexes": [
+    "matter_document_flow_index.json",
+    "workflow_timeline_rules.json"
+  ],
+  "lane_distribution": {
+    "company_corporate": 13,
+    "financial_regulatory": 2,
+    "commercial_contracts": 6,
+    "probate": 6
+  }
+}

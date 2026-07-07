@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/forms/matter_document_flow.schema.json",
+  "title": "Matter Document Flow",
+  "type": "object",
+  "required": ["id", "templateId", "practiceLane", "workflowStage", "documentIntent", "privateTextCommitted"],
+  "properties": {
+    "id": { "type": "string" },
+    "templateId": { "type": "string" },
+    "practiceLane": { "type": "string" },
+    "matterType": { "type": "string" },
+    "clientRole": { "type": "string" },
+    "workflowStage": { "type": "string" },
+    "documentIntent": { "type": "string" },
+    "preconditions": { "type": "array", "items": { "type": "string" } },
+    "missingFactBlockers": { "type": "array", "items": { "type": "string" } },
+    "missingEvidenceBlockers": { "type": "array", "items": { "type": "string" } },
+    "wrongStageBlockers": { "type": "array", "items": { "type": "string" } },
+    "alternatives": { "type": "array", "items": { "type": "string" } },
+    "timelineTask": { "type": "string" },
+    "crmExportCategory": { "type": "string" },
+    "reviewStatus": { "type": "string" },
+    "classificationStatus": { "type": "string" },
+    "privateTextCommitted": { "const": false }
+  }
+}

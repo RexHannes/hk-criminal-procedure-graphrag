@@ -1,7 +1,7 @@
 {
   "report_id": "forms_as_code_snippets_mvp",
   "generated_at": "2026-07-06T00:00:00+08:00",
-  "status": "implemented_mvp_hardened_private_dry_run_one_lane_pilot_draft",
+  "status": "implemented_mvp_hardened_private_dry_run_one_lane_pilot_routable_workflow_draft",
   "privacy_status": {
     "real_private_forms_committed": false,
     "private_paths_gitignored": true,
@@ -81,6 +81,71 @@
       "professional_advice_certified": false
     }
   },
+  "court_form_workflow_backend": {
+    "status": "implemented_metadata_only",
+    "private_text_committed": false,
+    "dropzone": {
+      "script": "scripts/ingest_court_form_dropzone.js",
+      "expected_input": "private_uploads/court_forms/",
+      "expected_output": "private_ingest_output/<workspace>/",
+      "external_services_used": false,
+      "existing_private_packs_represented": 5,
+      "templates_detected_from_existing_dry_run": 27,
+      "review_queue_records": 27
+    },
+    "practice_lane_taxonomy": {
+      "enabled": true,
+      "lanes": [
+        "personal_injury",
+        "probate",
+        "commercial_contracts",
+        "company_corporate",
+        "company_winding_up",
+        "employment",
+        "criminal_defence",
+        "civil_litigation_general"
+      ]
+    },
+    "form_to_workflow_mapping": {
+      "enabled": true,
+      "structured_stage_rules": true,
+      "wrong_stage_blockers": true,
+      "missing_evidence_placeholder_only": true
+    },
+    "private_form_backend_recall": {
+      "reviewed_only": true,
+      "public_authority": false,
+      "backend_index_records": 2,
+      "matter_document_flow_records": 1,
+      "workflow_timeline_rules": 1,
+      "recommended_count": 1,
+      "blocked_count": 0
+    },
+    "part2_documentary_flow": {
+      "enabled": true,
+      "recommended_documents": 1,
+      "placeholder_only_documents": 1,
+      "missing_crucial_information": 1,
+      "required_evidence": 1,
+      "private_text_committed": false
+    },
+    "part3_workflow_timeline": {
+      "enabled": true,
+      "crm_export_rows": 3,
+      "professional_advice_certified": false,
+      "private_text_committed": false
+    },
+    "viewer_integration": {
+      "fable_shell_preserved": true,
+      "forms_workspace_cards": true,
+      "raw_json_primary_ui": false
+    },
+    "advice_api_separation": {
+      "public_legal_analysis_separate": true,
+      "private_form_recommendations_separate": true,
+      "workflow_timeline_separate": true
+    }
+  },
   "hardening_status": {
     "user_path_access_blocked": true,
     "classification_review_queue": {
@@ -131,6 +196,15 @@
       "rejected_templates_active_in_routing": 0,
       "other_lanes_not_activated": true,
       "metadata_only": true
+    },
+    "court_form_workflow_backend": {
+      "dropzone_private_output_only": true,
+      "practice_lane_taxonomy_enabled": true,
+      "form_to_workflow_mapping_enabled": true,
+      "reviewed_only_backend_recall": true,
+      "part2_documentary_flow_enabled": true,
+      "part3_timeline_crm_export_enabled": true,
+      "advice_layers_separated": true
     }
   },
   "product_layers": [
@@ -155,7 +229,17 @@
     "private_lane_routing_fixtures": true,
     "private_lane_workflow_timeline_export": true,
     "private_lane_no_text_leakage": true,
-    "notebooklm_private_link_metadata_only": true
+    "notebooklm_private_link_metadata_only": true,
+    "court_form_dropzone_ingestion_contract": true,
+    "practice_lane_taxonomy": true,
+    "form_to_workflow_mapping": true,
+    "private_form_backend_recall": true,
+    "part2_documentary_flow": true,
+    "part3_workflow_timeline": true,
+    "crm_export_rows": true,
+    "advice_parts_separation": true,
+    "inactive_real_templates_do_not_route": true,
+    "reviewed_templates_route_only_after_activation": true
   },
   "sem_b_inventory_note": "Sem B / Downloads material was processed locally into gitignored private_ingest_output for a metadata-only dry run. No private/licensed document content was extracted into git or sent to external services.",
   "remaining_limitations": [
@@ -163,6 +247,7 @@
     "Real Sem B packs are ingested into private_ingest_output only and must remain out of git.",
     "Lawyer approval workflow is metadata-ready but not a full multi-user HITL product yet.",
     "The focused company winding-up lane approves routing metadata only, not private clause text or professional advice.",
+    "The court-form workflow layer routes reviewed metadata only; it does not expose or commit private form wording.",
     "PR #11 should remain draft until private production store configuration and reviewer UI permissions are selected.",
     "Vector embeddings are represented by index policy and keyword fallback in this MVP; production vector storage should remain private."
   ]

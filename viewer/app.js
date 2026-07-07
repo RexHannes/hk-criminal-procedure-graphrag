@@ -36,6 +36,7 @@
       notebooklmUsageNotes: [],
       routingRules: [],
       privateFormIndex: null,
+      reports: {},
     },
   };
 
@@ -330,6 +331,7 @@
 
   function loadFormsDemoStore() {
     const root = window.FORMS_DEMO_STORE_ROOT || '../fixtures/forms/synthetic_store/';
+    const artifactsRoot = window.FORMS_ARTIFACTS_ROOT || '../artifacts/';
     return Promise.all([
       loadJSON(root + 'form_pack_manifest.json').catch(() => null),
       loadJSON(root + 'form_templates.json').catch(() => []),
@@ -338,8 +340,16 @@
       loadJSON(root + 'notebooklm_usage_notes.json').catch(() => []),
       loadJSON(root + 'form_routing_rules.json').catch(() => []),
       loadJSON(root + 'private_form_index.json').catch(() => null),
-    ]).then(([formPack, templates, clauses, usageRules, notebooklmUsageNotes, routingRules, privateFormIndex]) => {
-      S.forms = { formPack, templates, clauses, usageRules, notebooklmUsageNotes, routingRules, privateFormIndex };
+      loadJSON(artifactsRoot + 'court_form_dropzone_report.json').catch(() => null),
+      loadJSON(artifactsRoot + 'private_form_review_activation_report.json').catch(() => null),
+      loadJSON(artifactsRoot + 'private_form_backend_recall_report.json').catch(() => null),
+      loadJSON(artifactsRoot + 'part2_documentary_flow_report.json').catch(() => null),
+      loadJSON(artifactsRoot + 'part3_workflow_timeline_report.json').catch(() => null),
+    ]).then(([formPack, templates, clauses, usageRules, notebooklmUsageNotes, routingRules, privateFormIndex, dropzoneReport, activationReport, recallReport, part2Report, part3Report]) => {
+      S.forms = {
+        formPack, templates, clauses, usageRules, notebooklmUsageNotes, routingRules, privateFormIndex,
+        reports: { dropzoneReport, activationReport, recallReport, part2Report, part3Report },
+      };
       return S.forms;
     });
   }
@@ -1270,11 +1280,17 @@
     const police = templates.find(t => t.documentIntent === 'POLICE_REPORT_REQUEST');
     const medical = templates.find(t => t.documentIntent === 'MEDICAL_RECORDS_REQUEST');
     const specialDamages = clauses.find(c => c.clauseType === 'SPECIAL_DAMAGES');
+    const reports = S.forms.reports || {};
+    const dropzone = reports.dropzoneReport || {};
+    const activation = reports.activationReport || {};
+    const recall = reports.recallReport || {};
+    const part2 = reports.part2Report?.part2 || {};
+    const part3Rows = reports.part3Report?.timeline || [];
     const stagePills = Array.from(new Set(templates.map(t => t.proceduralStage))).map(s => `<span class="link-pill"><span class="lp-kind">stage</span>${esc(s)}</span>`).join('');
     root().innerHTML = `
-      ${viewHeader('Private drafting layer', 'Forms & Precedent Snippets', 'Forms behave like code snippets: classified by stage and intent, governed by use/do-not-use rules, and applied only when matter facts support them. Synthetic fixtures are shown here; real packs stay in private storage.')}
+      ${viewHeader('Private drafting layer', 'Forms & Precedent Snippets', 'Forms behave like code snippets: classified by stage and intent, governed by use/do-not-use rules, and applied only when matter facts support them. This view uses redacted metadata; private text stays in private storage.')}
       <div class="forms-hero card">
-        <div class="card-top"><span class="card-title">Forms-as-code MVP</span><span class="card-badges"><span class="badge badge-research">Private metadata layer</span><span class="badge badge-research">Synthetic demo</span><span class="badge badge-verified">Structured gates first</span></span></div>
+        <div class="card-top"><span class="card-title">Court forms → routable workflow</span><span class="card-badges"><span class="badge badge-research">Private metadata layer</span><span class="badge badge-approved">Reviewed metadata</span><span class="badge badge-verified">Structured gates first</span></span></div>
         <div class="forms-metrics">
           <span><strong>${templates.length}</strong> templates</span>
           <span><strong>${clauses.length}</strong> clauses</span>
@@ -1284,6 +1300,27 @@
       </div>
 
       <div class="forms-grid">
+        <section class="card">
+          <div class="card-top"><span class="card-title">Dropzone Status</span><span class="badge badge-research">metadata-only</span></div>
+          <div class="forms-metrics">
+            <span><strong>${esc(dropzone.packs_processed_from_existing_dry_run || 0)}</strong> packs</span>
+            <span><strong>${esc(dropzone.templates_detected_from_existing_dry_run || 0)}</strong> templates</span>
+            <span><strong>${esc(dropzone.clauses_detected_from_existing_dry_run || 0)}</strong> segments</span>
+            <span><strong>${esc(dropzone.review_queue_count_from_existing_dry_run || 0)}</strong> review queue</span>
+          </div>
+          <div class="card-body">Drop in court-form packs through the local private intake. Extracted text remains private; committed reports show counts and routing metadata only.</div>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Review Activation</span><span class="badge badge-approved">approved metadata</span></div>
+          <div class="forms-metrics">
+            <span><strong>${esc(activation.approved_templates_active_in_routing || activation.approved_count || 0)}</strong> approved</span>
+            <span><strong>${esc(activation.rejected_templates_active_in_routing || activation.rejected_count || 0)}</strong> rejected active</span>
+            <span><strong>${esc((activation.reviewed_templates || []).filter(x => x.review_decision === 'needs_manual_review').length || activation.needs_review_count || 0)}</strong> needs review</span>
+          </div>
+          <div class="card-body">Only reviewed metadata routes. Other real/private candidates remain inactive until a reviewer approves their lane, stage, intent, prerequisites, and blockers.</div>
+        </section>
+
         <section class="card">
           <div class="card-top"><span class="card-title">Form Pack Inventory</span><span class="badge badge-research">FIRM_PRIVATE</span></div>
           <div class="card-body">${esc(S.forms.formPack?.sourcePackName || 'Synthetic PI Forms Pack')} · ${esc(S.forms.formPack?.sourceLicenseNote || 'Synthetic fixture only')}</div>
@@ -1300,7 +1337,7 @@
         <section class="card">
           <div class="card-top"><span class="card-title">Workflow Stage Mapping</span><span class="badge badge-verified">stage-gated</span></div>
           <div class="card-links">${stagePills || '<span class="link-pill">No stages mapped</span>'}</div>
-          <div class="card-body">Commencement forms are blocked after proceedings have commenced. Claim letters can remain incomplete drafts until opponent and evidence prerequisites are met.</div>
+          <div class="card-body">Commencement forms are blocked after proceedings have commenced. Company winding-up petition metadata becomes placeholder-only until standing and statutory demand/service evidence are present.</div>
         </section>
 
         <section class="card">
@@ -1323,20 +1360,16 @@
         </section>
 
         <section class="card">
-          <div class="card-top"><span class="card-title">Matter-Specific Recommended Forms</span><span class="badge badge-verified">structured retrieval</span></div>
-          <div class="card-body">Demo facts: road traffic injury, opponent unknown, no police report, medical evidence incomplete.</div>
-          <div class="card-links">
-            ${police ? `<button class="link-pill" data-card="form:${esc(police.id)}"><span class="lp-kind">recommended</span>${esc(police.title)}</button>` : ''}
-            ${medical ? `<button class="link-pill" data-card="form:${esc(medical.id)}"><span class="lp-kind">recommended</span>${esc(medical.title)}</button>` : ''}
-            ${letter ? `<button class="link-pill" data-card="form:${esc(letter.id)}"><span class="lp-kind">incomplete draft</span>${esc(letter.title)}</button>` : ''}
-          </div>
+          <div class="card-top"><span class="card-title">Matter-Specific Document Advice</span><span class="badge badge-verified">structured retrieval</span></div>
+          <div class="card-body">Demo facts: company winding-up lane, creditor posture, statutory demand/service evidence missing.</div>
+          <div class="card-links">${(part2.recommendedDocuments || []).map(doc => `<button class="link-pill" data-card="form:${esc(doc.linkedPrivateTemplateId)}"><span class="lp-kind">${esc(doc.draftability)}</span>${esc(doc.title)}</button>`).join('') || '<span class="link-pill">No recommended document</span>'}</div>
         </section>
 
         <section class="card">
           <div class="card-top"><span class="card-title">Blocked Forms / Why Not</span><span class="badge badge-draft">gate</span></div>
           <ul class="forms-list">
-            ${writ ? `<li><button class="text-btn" data-card="form:${esc(writ.id)}">${esc(writ.title)}</button> is not recommended until the matter reaches commencement and proceedings have not already commenced.</li>` : ''}
-            <li>Letter of claim finalisation is blocked until opponent / insurer identification is complete.</li>
+            ${(part2.blockedDocuments || []).map(doc => `<li>${esc(doc.title)} · ${(doc.finalisationBlockers || []).map(esc).join('; ') || 'blocked by structured gate'}</li>`).join('') || '<li>No hard block in the current redacted matter facts.</li>'}
+            ${(part2.placeholderOnlyDocuments || []).map(doc => `<li>${esc(doc.title)} is placeholder-only until ${(doc.finalisationBlockers || []).map(esc).join('; ') || 'missing evidence is resolved'}.</li>`).join('')}
           </ul>
         </section>
 
@@ -1349,15 +1382,20 @@
         <section class="card">
           <div class="card-top"><span class="card-title">Missing Facts / Evidence Blockers</span><span class="badge badge-draft">no invention</span></div>
           <ul class="forms-list">
-            <li>opponentIdentified</li>
-            <li>medicalEvidenceReceived</li>
-            <li>specialDamagesEvidenceAvailable</li>
+            ${[...(part2.missingCrucialInformation || []), ...(part2.requiredEvidence || [])].map(item => `<li>${esc(item)}</li>`).join('') || '<li>No blockers surfaced.</li>'}
           </ul>
         </section>
 
         <section class="card">
-          <div class="card-top"><span class="card-title">Lawyer Review / Approval</span><span class="badge badge-research">quiet metadata</span></div>
-          <div class="card-body">Prototype retrieval is allowed for paragraph-linked public authority and private template metadata. Professional advice certification remains false until a later HITL layer approves the draft.</div>
+          <div class="card-top"><span class="card-title">Timeline / CRM Preview</span><span class="badge badge-verified">export rows</span></div>
+          <ul class="forms-list">
+            ${part3Rows.map(row => `<li><span class="mono">${esc(row.rowId)}</span> · ${esc(row.part)} · ${esc(row.task)} · ${esc(row.status)}</li>`).join('') || '<li>No workflow rows generated.</li>'}
+          </ul>
+        </section>
+
+        <section class="card">
+          <div class="card-top"><span class="card-title">Layer Boundaries</span><span class="badge badge-research">separate parts</span></div>
+          <div class="card-body">Part 1 public authority analysis remains separate. Part 2 uses private form metadata. Part 3 creates workflow rows. NotebookLM/internal notes are guidance only.</div>
         </section>
 
         <section class="card">

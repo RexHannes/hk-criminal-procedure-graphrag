@@ -89,6 +89,42 @@ jobs:
       - name: Validate private form taxonomy dry-run report
         run: node scripts/validate_private_form_taxonomy_report.js
 
+      - name: Build court form workflow reports
+        run: node scripts/build_court_form_workflow_reports.js
+
+      - name: Validate court form dropzone ingestion contract
+        run: node scripts/validate_court_form_dropzone_ingestion.js
+
+      - name: Validate practice lane taxonomy
+        run: node scripts/validate_practice_lane_taxonomy.js
+
+      - name: Validate form-to-workflow mapping
+        run: node scripts/validate_form_to_workflow_mapping.js
+
+      - name: Validate private form backend recall
+        run: node scripts/validate_private_form_backend_recall.js
+
+      - name: Validate Part 2 documentary flow
+        run: node scripts/validate_part2_documentary_flow.js
+
+      - name: Validate Part 3 workflow timeline
+        run: node scripts/validate_part3_workflow_timeline.js
+
+      - name: Validate CRM export rows
+        run: node scripts/validate_crm_export_rows.js
+
+      - name: Validate advice parts separation
+        run: node scripts/validate_advice_parts_separation.js
+
+      - name: Validate no private text in reports
+        run: node scripts/validate_no_private_text_in_reports.js
+
+      - name: Validate inactive real templates do not route
+        run: node scripts/validate_inactive_real_templates_do_not_route.js
+
+      - name: Validate reviewed templates route only after activation
+        run: node scripts/validate_reviewed_templates_route_only_after_activation.js
+
       - name: Validate forms API blocks user path access
         run: node scripts/validate_forms_api_no_user_path_access.js
 

@@ -1,0 +1,80 @@
+{
+  "report_id": "part2_documentary_flow",
+  "generated_at": "2026-07-07T00:00:00+08:00",
+  "private_text_committed": false,
+  "part2": {
+    "matterSummary": {
+      "practiceLane": "company_winding_up",
+      "matterType": "company_winding_up",
+      "workflowStage": "COMPANY_WINDING_UP",
+      "clientRole": "creditor"
+    },
+    "recommendedDocuments": [
+      {
+        "linkedPrivateTemplateId": "real_lane_template_356c0f92da55",
+        "title": "Company winding-up petition metadata template",
+        "documentIntent": "COMPANY_WINDING_UP_PETITION",
+        "workflowStage": "COMPANY_WINDING_UP",
+        "whyRelevant": "Structured filters match matter facts, lane, stage, and document intent.",
+        "requiredFacts": [],
+        "missingFacts": [
+          "statutoryDemandOrServiceEvidenceAvailable"
+        ],
+        "draftability": "placeholder_only",
+        "finalisationBlockers": [
+          "Statutory demand/service evidence is missing; keep petition drafting as placeholder-only."
+        ],
+        "linkedUsageRuleIds": [],
+        "lawyerReviewRequired": false,
+        "privateTextCommitted": false
+      }
+    ],
+    "blockedDocuments": [],
+    "draftableDocuments": [],
+    "placeholderOnlyDocuments": [
+      {
+        "linkedPrivateTemplateId": "real_lane_template_356c0f92da55",
+        "title": "Company winding-up petition metadata template",
+        "documentIntent": "COMPANY_WINDING_UP_PETITION",
+        "workflowStage": "COMPANY_WINDING_UP",
+        "whyRelevant": "Structured filters match matter facts, lane, stage, and document intent.",
+        "requiredFacts": [],
+        "missingFacts": [
+          "statutoryDemandOrServiceEvidenceAvailable"
+        ],
+        "draftability": "placeholder_only",
+        "finalisationBlockers": [
+          "Statutory demand/service evidence is missing; keep petition drafting as placeholder-only."
+        ],
+        "linkedUsageRuleIds": [],
+        "lawyerReviewRequired": false,
+        "privateTextCommitted": false
+      }
+    ],
+    "missingCrucialInformation": [
+      "statutoryDemandOrServiceEvidenceAvailable"
+    ],
+    "requiredEvidence": [
+      "statutoryDemandOrServiceEvidenceAvailable"
+    ],
+    "recommendedNextActions": [
+      "Ask for missing fact: statutoryDemandOrServiceEvidenceAvailable",
+      "Collect evidence: statutoryDemandOrServiceEvidenceAvailable"
+    ],
+    "reviewGates": [
+      "private_forms_are_template_metadata_not_public_authority",
+      "lawyer_review_required_before_final_document_output"
+    ],
+    "provenance": [
+      "TEMPLATE_BASED",
+      "FIRM_SOP",
+      "AI_SUGGESTED"
+    ],
+    "privateTextCommitted": false
+  },
+  "recommended_count": 1,
+  "blocked_count": 0,
+  "placeholder_only_count": 1,
+  "missing_crucial_information_count": 1,
+  "required_evidence_count": 1
+}

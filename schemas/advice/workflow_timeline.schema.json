@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/advice/workflow_timeline.schema.json",
+  "title": "Workflow Timeline",
+  "type": "object",
+  "required": ["timeline"],
+  "properties": {
+    "timeline": {
+      "type": "array",
+      "items": { "$ref": "crm_export_row.schema.json" }
+    }
+  }
+}
