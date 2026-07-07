@@ -1,9 +1,18 @@
 const { routeForms } = require("./form_system");
 const { buildPrivateFormBackendIndex } = require("./private_form_backend_index");
+const { retrieveApprovedPrivateClauseChunks } = require("./private_clause_semantic_retrieval");
 
 function recallPrivateForms({ store, matter = {}, query = "", documentIntent = "", workflowStage = "" }) {
   const routing = routeForms({ store, matter, query, documentIntent, workflowStage });
   const backendIndex = buildPrivateFormBackendIndex(store);
+  const semanticClauseRetrieval = retrieveApprovedPrivateClauseChunks({
+    store,
+    routing,
+    matter,
+    query,
+    documentIntent,
+    workflowStage,
+  });
   return {
     recallVersion: "private-form-recall-v1",
     privateTextCommitted: false,
@@ -53,8 +62,10 @@ function recallPrivateForms({ store, matter = {}, query = "", documentIntent = "
       reasons: item.reasons,
       privateTextCommitted: false,
     })),
+    semanticClauseRetrieval,
     indexStats: {
       records: backendIndex.formIndex.records.length,
+      approvedPrivateClauseChunks: backendIndex.privateClauseVectorIndex.chunks.length,
       flows: backendIndex.matterDocumentFlowIndex.flows.length,
       timelineRules: backendIndex.workflowTimelineRules.rules.length,
     },

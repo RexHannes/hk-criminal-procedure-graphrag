@@ -104,6 +104,15 @@ jobs:
       - name: Validate private form backend recall
         run: node scripts/validate_private_form_backend_recall.js
 
+      - name: Validate private semantic retrieval order
+        run: node scripts/validate_private_semantic_retrieval_order.js
+
+      - name: Validate private vector blockers
+        run: node scripts/validate_private_vector_cannot_override_structured_blockers.js
+
+      - name: Validate private chunks stay private
+        run: node scripts/validate_private_form_chunks_not_public.js
+
       - name: Validate Part 2 documentary flow
         run: node scripts/validate_part2_documentary_flow.js
 

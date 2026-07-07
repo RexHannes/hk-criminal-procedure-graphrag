@@ -14,6 +14,10 @@
       "company_winding_up",
       "company_winding_up_petition"
     ],
+    "legalKnowledgeNodeIds": [
+      "company_corporate.company_winding_up.petition",
+      "company_corporate.company_winding_up.service_evidence"
+    ],
     "factRequirements": [
       "statutoryDemandOrServiceEvidenceAvailable"
     ],

@@ -97,6 +97,7 @@ The branch now adds the backend layer needed to turn reviewed form metadata into
 | Stage mapping | Forms map to matter stages and document intents through structured rules |
 | Review queue | Private/real candidates stay inactive until review activation metadata exists |
 | Backend recall | Reviewed-only private form metadata can be recalled by lane, stage, role, and blockers |
+| Private semantic retrieval | Approved private clause chunks are ranked only after lane, stage, intent, role/matter, and missing-fact gates pass |
 | Part 2 advice | Documentary-flow output recommends, blocks, or marks templates placeholder-only |
 | Part 3 timeline | CRM-export rows are generated from Part 1 legal analysis, Part 2 document flow, and Part 3 operations tasks |
 | Viewer | Existing Fable Forms & Snippets workspace shows compact workflow cards, not raw reports |
@@ -110,6 +111,7 @@ Current metadata-only workflow metrics:
 | Templates detected in dry run | 27 |
 | Review queue records | 27 |
 | Reviewed backend index records | 2 |
+| Approved private semantic chunks | 1 |
 | Reviewed matter document flows | 1 |
 | Reviewed timeline rules | 1 |
 | Part 2 recommended documents | 1 |
@@ -134,6 +136,8 @@ The advice APIs keep the layers separate: public legal analysis is not polluted 
 - Real/private machine candidates are inactive in routing unless reviewed or explicitly allowed in demo/local mode.
 - Structured filters run before keyword/vector retrieval.
 - Vector-only retrieval is disallowed.
+- Private semantic retrieval is Part 2 only, uses approved private clause chunks only, and cannot override lane, stage, intent, role/matter, or missing-fact blockers.
+- Private semantic chunks cross-link to legal-knowledge nodes by ID only; they are not public authority and are not committed as raw private text.
 - Missing facts create placeholders/evidence tasks instead of invented facts.
 
 ## Hardening Added
@@ -158,6 +162,7 @@ The advice APIs keep the layers separate: public legal analysis is not polluted 
 | Court-form dropzone | Local/private ingestion contract writes only to gitignored private output |
 | Practice lane taxonomy | Structured lane classifier keeps company, probate, PI, contract, employment, criminal and litigation forms separate |
 | Backend private recall | Reviewed-only metadata recall supports routeable document suggestions |
+| Private semantic retrieval | Local private vector ranking runs only after structured blockers pass |
 | Part 2 documentary flow | Missing facts and evidence blockers are surfaced before drafting |
 | Part 3 timeline/CRM | Exportable rows generated without private form text |
 | Advice separation | Legal authority, document suggestions, and workflow timeline are distinct response layers |

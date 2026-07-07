@@ -168,7 +168,11 @@
         "proceduralStage": "PRE_ACTION_CORRESPONDENCE"
       }
     },
-    "provenanceLabel": "TEMPLATE_BASED"
+    "provenanceLabel": "TEMPLATE_BASED",
+    "legalKnowledgeNodeIds": [
+      "forms_demo.personal_injury.letter_of_claim",
+      "workflow.pre_action_correspondence"
+    ]
   },
   {
     "id": "form_5529c886f381",
@@ -290,7 +294,11 @@
         "proceduralStage": "MEDICAL_EVIDENCE"
       }
     },
-    "provenanceLabel": "TEMPLATE_BASED"
+    "provenanceLabel": "TEMPLATE_BASED",
+    "legalKnowledgeNodeIds": [
+      "forms_demo.personal_injury.medical_records_request",
+      "workflow.medical_evidence"
+    ]
   },
   {
     "id": "form_5b2574d75330",
@@ -418,6 +426,10 @@
         "proceduralStage": "URGENT_ACTIONS"
       }
     },
-    "provenanceLabel": "TEMPLATE_BASED"
+    "provenanceLabel": "TEMPLATE_BASED",
+    "legalKnowledgeNodeIds": [
+      "forms_demo.personal_injury.police_report_request",
+      "workflow.urgent_actions"
+    ]
   }
 ]

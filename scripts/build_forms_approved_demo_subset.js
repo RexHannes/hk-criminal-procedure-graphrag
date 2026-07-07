@@ -40,6 +40,10 @@ function approveTemplate(template) {
     activeInRouting: true,
     routingActiveInDemo: true,
     demoFixture: true,
+    legalKnowledgeNodeIds: [
+      `forms_demo.${template.practiceArea || "general"}.${String(template.documentIntent || "document").toLowerCase()}`,
+      `workflow.${String(template.proceduralStage || "stage").toLowerCase()}`,
+    ],
     reviewerDecision: {
       status: "approved",
       reviewer: "synthetic-demo-reviewer",
@@ -66,6 +70,9 @@ function redactClause(clause, ordinal) {
     },
     lawyerReviewStatus: "approved_demo",
     reviewStatus: "approved",
+    legalKnowledgeNodeIds: [
+      `forms_demo.${String(clause.documentIntent || "document").toLowerCase()}.${String(clause.clauseType || "clause").toLowerCase()}`,
+    ],
     notebooklmUsageNoteIds: [],
     notebooklmUsageLinks: [],
   };

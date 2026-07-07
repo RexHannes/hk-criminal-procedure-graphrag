@@ -32,4 +32,8 @@ const result = recallPrivateForms({
 });
 assert(result.recommended.length === 1, "Reviewed company winding-up metadata should route");
 assert(result.recommended.every(item => item.reviewStatus === "approved"), "Only approved templates should route");
+assert(result.semanticClauseRetrieval.semanticExecuted === true, "Approved private clause semantic retrieval should execute after structured filters pass");
+assert(result.semanticClauseRetrieval.indexStats.returnedChunks >= 1, "Approved private clause semantic retrieval should return chunks");
+assert(result.semanticClauseRetrieval.chunks.every(chunk => chunk.privateTextCommitted === false), "Semantic chunks must not commit private text");
+assert(result.semanticClauseRetrieval.chunks.every(chunk => chunk.publicAuthority === false), "Semantic chunks must not be public authority");
 console.log("private form backend recall ok");

@@ -149,6 +149,11 @@ function buildApprovedStore(decisions) {
       "standing checked",
       "statutory demand/service evidence available",
     ],
+    legalKnowledgeNodeIds: [
+      "company_corporate.company_winding_up.petition",
+      "company_corporate.company_winding_up.creditor_standing",
+      "company_corporate.company_winding_up.service_evidence",
+    ],
     bodyStructured: {
       headings: ["Redacted petition metadata", "Prerequisite checklist", "Evidence gate"],
       text: "[Redacted metadata only. No private form text.]",
@@ -196,6 +201,10 @@ function buildApprovedStore(decisions) {
     documentIntent: "COMPANY_WINDING_UP_PETITION",
     proceduralStage: "COMPANY_WINDING_UP",
     issueTags: ["company_corporate", "company_winding_up", "company_winding_up_petition"],
+    legalKnowledgeNodeIds: [
+      "company_corporate.company_winding_up.petition",
+      "company_corporate.company_winding_up.service_evidence",
+    ],
     factRequirements: ["statutoryDemandOrServiceEvidenceAvailable"],
     fieldRequirements: [],
     useWhen: ["Use only after company, debt/ground, standing, and service evidence are checked."],

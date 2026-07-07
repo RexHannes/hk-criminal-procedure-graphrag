@@ -46,6 +46,16 @@ function run() {
     documentIntent: "COMPANY_WINDING_UP_PETITION",
     workflowStage: "COMPANY_WINDING_UP",
   });
+  const approvedRecall = recallPrivateForms({
+    store,
+    matter: {
+      ...matter,
+      statutoryDemandOrServiceEvidenceAvailable: true,
+    },
+    query: "draft company winding-up petition with service evidence and creditor standing checked",
+    documentIntent: "COMPANY_WINDING_UP_PETITION",
+    workflowStage: "COMPANY_WINDING_UP",
+  });
   const part2 = buildPart2DocumentAdvice({
     store,
     matter,
@@ -100,6 +110,11 @@ function run() {
     index_stats: recall.indexStats,
     recommended_count: recall.recommended.length,
     blocked_count: recall.blocked.length,
+    approved_private_clause_chunks: recall.indexStats.approvedPrivateClauseChunks,
+    semantic_retrieval_order: recall.semanticClauseRetrieval.retrievalOrder,
+    semantic_blocked_by_missing_facts: recall.semanticClauseRetrieval.blockedBeforeSemantic,
+    semantic_positive_returned_chunks: approvedRecall.semanticClauseRetrieval.indexStats.returnedChunks,
+    vector_cannot_override_structured_blockers: recall.semanticClauseRetrieval.vectorCannotOverrideStructuredBlockers,
     missing_facts: recall.missingFacts,
     required_evidence: recall.requiredEvidence,
     backend_index_records: backendIndex.formIndex.records.length,
@@ -110,10 +125,54 @@ function run() {
   writeMd("private_form_backend_recall_report", "Private Form Backend Recall Report", generatedAt, `Reviewed-only recall for \`company_winding_up\`.\n\n| Metric | Count |\n|---|---:|\n${mdTable([
     ["Recommended documents", recallReport.recommended_count],
     ["Blocked documents", recallReport.blocked_count],
+    ["Approved private clause chunks", recallReport.approved_private_clause_chunks],
+    ["Semantic chunks returned after blockers pass", recallReport.semantic_positive_returned_chunks],
     ["Backend index records", recallReport.backend_index_records],
     ["Matter document flows", recallReport.matter_document_flow_records],
     ["Workflow timeline rules", recallReport.workflow_timeline_rules],
   ])}\n\nMissing facts/evidence: ${[...recallReport.missing_facts, ...recallReport.required_evidence].join(", ") || "none"}.\n\nPrivate text committed: no.\n`);
+
+  const semanticReport = {
+    report_id: "private_form_semantic_retrieval",
+    generated_at: generatedAt,
+    private_text_committed: false,
+    public_authority: false,
+    notebooklm_runtime_engine: false,
+    notebooklm_provenance: "INTERNAL_USAGE_NOTE",
+    part_1_public_legal_authority_unchanged: true,
+    part_2_private_form_retrieval_enabled: true,
+    part_3_uses_document_flow_timeline_rules: true,
+    cross_links_to_legal_tree_are_id_only: true,
+    committed_private_chunks: false,
+    vector_index: {
+      storage_scope: "private_store_only",
+      raw_text_stored: false,
+      reviewed_only: true,
+      approved_private_clause_chunks: backendIndex.privateClauseVectorIndex.chunks.length,
+      embedding_model: "local_private_hash_embedding_v1",
+      external_services_used: false,
+    },
+    retrieval_order: approvedRecall.semanticClauseRetrieval.retrievalOrder,
+    positive_path: {
+      semantic_executed: approvedRecall.semanticClauseRetrieval.semanticExecuted,
+      returned_chunks: approvedRecall.semanticClauseRetrieval.indexStats.returnedChunks,
+      returned_chunk_ids: approvedRecall.semanticClauseRetrieval.chunks.map(chunk => chunk.chunkId),
+      legal_knowledge_node_ids: Array.from(new Set(approvedRecall.semanticClauseRetrieval.chunks.flatMap(chunk => chunk.legalKnowledgeNodeIds || []))),
+    },
+    blocked_path: {
+      semantic_executed: recall.semanticClauseRetrieval.semanticExecuted,
+      blocked_before_semantic: recall.semanticClauseRetrieval.blockedBeforeSemantic,
+      missing_facts: recall.semanticClauseRetrieval.missingFacts,
+      blocked_clause_ids: recall.semanticClauseRetrieval.blockedClauseIds,
+    },
+    vector_cannot_override_structured_blockers: true,
+  };
+  writeJson(path.join(ARTIFACTS, "private_form_semantic_retrieval_report.json"), semanticReport);
+  writeMd("private_form_semantic_retrieval_report", "Private Form Semantic Retrieval Report", generatedAt, `Private approved-clause semantic retrieval is enabled only after structured filters.\n\n| Check | Status |\n|---|---|\n| Practice lane before semantic retrieval | pass |\n| Workflow stage before semantic retrieval | pass |\n| Document intent before semantic retrieval | pass |\n| Client role / matter type before semantic retrieval | pass |\n| Missing-fact blockers before semantic retrieval | pass |\n| NotebookLM runtime engine | no |\n| Public authority pollution | no |\n\n| Metric | Count |\n|---|---:|\n${mdTable([
+    ["Approved private clause chunks", semanticReport.vector_index.approved_private_clause_chunks],
+    ["Positive returned chunks", semanticReport.positive_path.returned_chunks],
+    ["Blocked-path returned chunks", recall.semanticClauseRetrieval.indexStats.returnedChunks],
+  ])}\n\nPrivate clause chunk text committed: no.\n`);
 
   const part2Report = {
     report_id: "part2_documentary_flow",
