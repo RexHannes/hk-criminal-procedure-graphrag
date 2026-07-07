@@ -1,7 +1,7 @@
 {
   "report_id": "forms_as_code_snippets_mvp",
   "generated_at": "2026-07-08T00:00:00+08:00",
-  "status": "implemented_mvp_hardened_real_atkin_metadata_ingested_selected_lanes_proved_draft",
+  "status": "implemented_mvp_hardened_real_atkin_family_service_manual_review_activated_draft",
   "privacy_status": {
     "real_private_forms_committed": false,
     "private_paths_gitignored": true,
@@ -303,16 +303,17 @@
     "external_embedding_services_used": false,
     "public_legal_collections_touched": false,
     "private_text_committed": false,
-    "dry_run_shape_validated_with_redacted_fixture": true,
+    "dry_run_shape_validated_with_redacted_fixture": false,
     "templates_ready_in_shape_check": 1,
     "chunks_ready_in_shape_check": 1,
     "source_present": true,
-    "private_stores_scanned": 68,
-    "real_templates_detected": 2014,
-    "real_clause_chunks_detected": 14487,
+    "private_stores_scanned": 69,
+    "real_templates_detected": 2018,
+    "real_clause_chunks_detected": 14495,
     "real_templates_inactive_until_review": true,
-    "real_templates_ready_for_qdrant": 0,
-    "real_chunks_ready_for_qdrant": 0
+    "real_templates_ready_for_qdrant": 4,
+    "real_chunks_ready_for_qdrant": 8,
+    "approved_metadata_templates_active": 4
   },
   "notebooklm_atkin_crosscheck": {
     "status": "no_private_notes_found_backend_expectations_only",
@@ -471,11 +472,12 @@
     "private_forms_context_awareness_eval": true,
     "part1_part2_part3_boundaries_for_atkin_forms": true,
     "no_raw_atkin_text_committed": true,
-    "atkin_selected_lane_activation": true
+    "atkin_selected_lane_activation": true,
+    "family_service_manual_review_activation": true
   },
   "sem_b_inventory_note": "Sem B / Downloads material was processed locally into gitignored private_ingest_output for a metadata-only dry run. No private/licensed document content was extracted into git or sent to external services.",
   "remaining_limitations": [
-    "Private Qdrant dry-run finds zero real approved chunks by design; selected lane behavior is proven with reviewed redacted metadata fixtures only.",
+    "Only the family_service lane has a real manual-review metadata activation in this pass; all other real Atkin candidates remain machine-candidate/review-required and inactive until later review.",
     "Real Atkin metadata ingestion is now unblocked locally, but all real candidates remain machine_candidate/lawyer_review_required and inactive until specific review approval.",
     "DOC/PDF extraction quality depends on local tools and private approval; current Atkin metadata ingestion records 79 extraction warnings.",
     "Real Sem B packs are ingested into private_ingest_output only and must remain out of git.",
@@ -502,9 +504,9 @@
     "proofs": [
       {
         "lane_id": "family_service",
-        "real_candidate_templates": 115,
-        "real_candidate_clause_chunks": 593,
-        "active_real_templates": 0,
+        "real_candidate_templates": 119,
+        "real_candidate_clause_chunks": 601,
+        "active_real_templates": 4,
         "correct_stage_forms_route": true,
         "wrong_stage_forms_block": true,
         "missing_facts_produce_blockers_or_placeholders": true,
@@ -525,5 +527,33 @@
         "part3_timeline_crm_rows_generated": true
       }
     ]
+  },
+  "family_service_manual_review_activation": {
+    "report": "artifacts/family_service_manual_review_activation_report.md",
+    "lane": "family_service",
+    "candidates_reviewed": 18,
+    "selected_for_manual_review": 12,
+    "approved_metadata_templates": 4,
+    "approved_redacted_clause_chunks": 8,
+    "classifier_drift_summary": {
+      "practice_area_not_family_service": 18,
+      "mislabelled_company": 16,
+      "service_candidate_wrong_stage": 12,
+      "sub_lane_not_family_service": 3,
+      "family_answer_not_fresh_service_route": 6
+    },
+    "private_text_committed": false,
+    "generated_drafts_committed": false,
+    "raw_titles_committed": false,
+    "external_services_used": false,
+    "qdrant_templates_ready_after_activation": 4,
+    "qdrant_chunks_ready_after_activation": 8,
+    "validators": {
+      "correct_stage_routes": true,
+      "answer_trial_post_trial_blocked": true,
+      "respondent_already_served_blocks_fresh_service": true,
+      "missing_respondent_address_blocks_semantic_chunks": true,
+      "legal_analysis_only_query_abstains_from_forms": true
+    }
   }
 }

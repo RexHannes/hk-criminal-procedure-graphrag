@@ -23,10 +23,10 @@
       "lane_id": "family_service",
       "store_path": "fixtures/forms/private_lane_family_service_store",
       "real_source_candidates": {
-        "templates_detected": 115,
-        "clause_chunks_detected": 593,
+        "templates_detected": 119,
+        "clause_chunks_detected": 601,
         "review_required_templates": 115,
-        "active_real_templates": 0
+        "active_real_templates": 4
       },
       "activation_scope": "redacted_metadata_only",
       "real_templates_remain_inactive_until_review": true,

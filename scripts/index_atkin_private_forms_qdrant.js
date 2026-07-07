@@ -121,6 +121,15 @@ async function run() {
   const records = buildAtkinPrivateRecords(store, { tenantId, workspaceId, firmId: tenantId });
   const fallbackRecords = buildAtkinPrivateRecords(fallbackStore, { tenantId, workspaceId, firmId: tenantId });
   const shapeRecords = records.records.templates.length || records.records.chunks.length ? records : fallbackRecords;
+  const unreviewedTemplates = realStore.templates.filter(template => !(
+    template.reviewStatus === "approved" &&
+    template.classificationStatus === "review_approved"
+  ));
+  const approvedActiveTemplates = realStore.templates.filter(template => (
+    template.reviewStatus === "approved" &&
+    template.classificationStatus === "review_approved" &&
+    template.activeInRouting === true
+  ));
   const execute = args.execute === true;
   const indexResult = await indexAtkinPrivateRecordsToQdrant({
     store,
@@ -142,8 +151,9 @@ async function run() {
     real_clause_chunks_detected: realStore.clauses.length,
     real_classification_reviews_detected: realStore.classificationReviews.length,
     real_templates_inactive_until_review: sourcePresent
-      ? realStore.templates.every(template => template.activeInRouting !== true)
+      ? unreviewedTemplates.every(template => template.activeInRouting !== true)
       : true,
+    approved_metadata_templates_active: approvedActiveTemplates.length,
     real_template_statuses: statusDistribution(realStore),
     dry_run: !execute,
     executed: execute,

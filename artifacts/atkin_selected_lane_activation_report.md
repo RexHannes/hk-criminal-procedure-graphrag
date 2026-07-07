@@ -6,7 +6,7 @@ Real private Atkin candidates remain machine-candidate/private review output onl
 
 | Lane | Real candidate templates | Real candidate chunks | Correct stage routes | Wrong stage blocks | Missing facts block | CRM rows |
 |---|---:|---:|---|---|---|---:|
-| family_service | 115 | 593 | yes | yes | yes | 3 |
+| family_service | 119 | 601 | yes | yes | yes | 3 |
 | company_winding_up_provisional_liquidator | 399 | 2086 | yes | yes | yes | 3 |
 
 Private text committed: no.

@@ -114,8 +114,24 @@ Selected-lane proof report: `artifacts/atkin_selected_lane_activation_report.md`
 
 | Lane | Real candidate templates | Real candidate chunks | Active real templates | Correct stage | Wrong stage block | Missing fact block | CRM rows |
 |---|---:|---:|---:|---|---|---|---:|
-| `family_service` | 115 | 593 | 0 | yes | yes | yes | 3 |
+| `family_service` | 119 | 601 | 4 | yes | yes | yes | 3 |
 | `company_winding_up_provisional_liquidator` | 399 | 2,086 | 0 | yes | yes | yes | 3 |
+
+## Family Service Manual Review Activation
+
+One real lane only, `family_service`, now has a manual-review metadata activation pass.
+
+Report: `artifacts/family_service_manual_review_activation_report.md`.
+
+| Metric | Count |
+|---|---:|
+| Redacted candidates reviewed | 18 |
+| Selected for manual review | 12 |
+| Approved metadata templates | 4 |
+| Approved redacted clause chunks | 8 |
+| Active real approved metadata templates | 4 |
+
+The pass flags classifier drift without exposing raw titles: 18 family candidates were not classified as `family_service`, 16 were mislabelled as company-related, and 12 service candidates had the wrong workflow stage. The approved corrections set the family-service practice lane, service workflow stage, applicant/petitioner/solicitor posture, required service facts/evidence, wrong-stage blockers, and alternatives. Fresh service routes are blocked for answer/trial/post-trial posture, already-served respondents, and missing respondent address evidence.
 
 ## Private Draft Rendering
 
@@ -181,7 +197,7 @@ The branch now adds a private Atkin forms lane for Part 2 forms retrieval. Noteb
 
 Real-source metadata ingestion processed 71 packs, detected 2,212 template candidates and 15,802 clause chunks, created 2,212 classification-review records, and recorded 79 extraction warnings. All real candidates remain `classificationStatus=machine_candidate`, `reviewStatus=lawyer_review_required`, and inactive until specific review approval.
 
-The Qdrant dry run scanned 68 private stores and detected 2,014 real template records plus 14,487 real clause records in the current output stores. It indexes zero real records by design because no real templates/chunks are approved yet. The payload shape is still validated with a redacted approved fixture: tenant/workspace filters, `source_visibility=private_form`, `part_layer=part_2_forms`, approved/reviewed status, practice lane, stage, document intent, role/matter filters, blockers, and legal-tree node IDs only.
+The Qdrant dry run scanned 69 private stores and detected 2,018 real template records plus 14,495 real clause records in the current output stores. It now sees 4 approved family-service metadata templates and 8 approved redacted family-service chunks. Tenant/workspace filters, `source_visibility=private_form`, `part_layer=part_2_forms`, approved/reviewed status, practice lane, stage, document intent, role/matter filters, blockers, and legal-tree node IDs remain mandatory.
 
 Context-awareness checks now cover correct lane/stage/intent/role, wrong-stage blocking, missing-fact blocking, consent-route alternatives, and Part 1/2/3 separation.
 
@@ -315,7 +331,7 @@ The Sem B / Downloads material was processed locally into `private_ingest_output
 - The court-form workflow layer routes reviewed metadata only; it does not expose or commit private form wording.
 - NotebookLM cross-checks are comparison/audit metadata only and do not activate or approve templates.
 - Real Atkin candidates remain machine-candidate/review-required and inactive until specific review approval.
-- Private Qdrant dry-run finds zero real approved chunks by design; selected lane behavior is proven with reviewed redacted metadata fixtures only.
+- Only the `family_service` lane has a real manual-review metadata activation in this pass; all other real Atkin candidates remain machine-candidate/review-required and inactive until later review.
 - Private Qdrant recall is disabled by default and needs server-side tenant/workspace configuration before production use.
 - Local/offline hash embeddings are the default for private forms. Any external private embedding provider needs a separate explicit approval.
 - Private draft rendering writes only to `private_exports/` and is not a deployed production drafting endpoint.

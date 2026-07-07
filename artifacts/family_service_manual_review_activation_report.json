@@ -1,0 +1,786 @@
+{
+  "report_id": "family_service_manual_review_activation",
+  "generated_at": "2026-07-08T00:00:00+08:00",
+  "status": "family_service_manual_review_metadata_activated",
+  "source_root": "private_ingest_output/atkin_forms/",
+  "activated_private_store": "private_ingest_output/atkin_forms/_family_service_manual_review_approved_metadata/",
+  "privacy_boundary": {
+    "private_text_committed": false,
+    "generated_drafts_committed": false,
+    "external_services_used": false,
+    "raw_titles_committed": false,
+    "raw_template_text_committed": false,
+    "notebooklm_runtime_engine": false
+  },
+  "lane": "family_service",
+  "candidates_reviewed_count": 18,
+  "selected_for_manual_review_count": 12,
+  "approved_metadata_templates": 4,
+  "approved_redacted_clause_chunks": 8,
+  "candidate_review_table": [
+    {
+      "review_candidate_id": "family_service_review_001",
+      "source_template_fingerprint": "d541e88e307d",
+      "redacted_title_key": "redacted_family_service_title_001",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_COMPLIANCE_MEMO",
+        "workflow_stage": "COMPANY_COMPLIANCE",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 7,
+      "manual_review_decision": "approved_metadata_only",
+      "proposed_correction": {
+        "practice_lane": "family_service",
+        "document_intent": "FAMILY_SERVICE_AFFIDAVIT_PERSONAL",
+        "workflow_stage": "FAMILY_SERVICE",
+        "role_posture": [
+          "applicant",
+          "petitioner",
+          "solicitor"
+        ],
+        "required_facts": [
+          "proceedingsIssued",
+          "respondentIdentified",
+          "serviceAddressKnown",
+          "serviceMethodSelected",
+          "serviceAttemptEvidenceAvailable"
+        ],
+        "required_evidence": [
+          "serviceAddressOrLocationEvidence",
+          "serviceMethodInstruction",
+          "serviceAttemptEvidence"
+        ],
+        "wrong_stage_blockers": [
+          "respondentAlreadyServed",
+          "answerStage",
+          "trialStage",
+          "postTrialStage"
+        ],
+        "alternatives": [
+          "FAMILY_ACKNOWLEDGMENT_OR_ANSWER_REVIEW",
+          "FAMILY_SERVICE_PROOF_AUDIT",
+          "EVIDENCE_CHECKLIST"
+        ]
+      },
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_002",
+      "source_template_fingerprint": "05b1fa9aff49",
+      "redacted_title_key": "redacted_family_service_title_002",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service"
+      ],
+      "current_machine_classification": {
+        "practice_area": "general_litigation",
+        "practice_lane": "",
+        "document_intent": "CLIENT_INTAKE",
+        "workflow_stage": "INTAKE",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 7,
+      "manual_review_decision": "approved_metadata_only",
+      "proposed_correction": {
+        "practice_lane": "family_service",
+        "document_intent": "FAMILY_SERVICE_AFFIDAVIT_POST",
+        "workflow_stage": "FAMILY_SERVICE",
+        "role_posture": [
+          "applicant",
+          "petitioner",
+          "solicitor"
+        ],
+        "required_facts": [
+          "proceedingsIssued",
+          "respondentIdentified",
+          "serviceAddressKnown",
+          "serviceMethodSelected",
+          "serviceAttemptEvidenceAvailable"
+        ],
+        "required_evidence": [
+          "serviceAddressOrLocationEvidence",
+          "serviceMethodInstruction",
+          "serviceAttemptEvidence"
+        ],
+        "wrong_stage_blockers": [
+          "respondentAlreadyServed",
+          "answerStage",
+          "trialStage",
+          "postTrialStage"
+        ],
+        "alternatives": [
+          "FAMILY_ACKNOWLEDGMENT_OR_ANSWER_REVIEW",
+          "FAMILY_SERVICE_PROOF_AUDIT",
+          "EVIDENCE_CHECKLIST"
+        ]
+      },
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_003",
+      "source_template_fingerprint": "bd6fbd35d17e",
+      "redacted_title_key": "redacted_family_service_title_003",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "road_traffic_personal_injury",
+        "document_intent": "COMPANY_WINDING_UP_PETITION",
+        "workflow_stage": "COMPANY_WINDING_UP",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "sub_lane_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 6,
+      "manual_review_decision": "selected_for_manual_review",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_004",
+      "source_template_fingerprint": "8a0b906b8cb5",
+      "redacted_title_key": "redacted_family_service_title_004",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "road_traffic_personal_injury",
+        "document_intent": "COMPANY_WINDING_UP_PETITION",
+        "workflow_stage": "COMPANY_WINDING_UP",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "sub_lane_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 6,
+      "manual_review_decision": "selected_for_manual_review",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_005",
+      "source_template_fingerprint": "b8f6e76a9cab",
+      "redacted_title_key": "redacted_family_service_title_005",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "road_traffic_personal_injury",
+        "document_intent": "COMPANY_COMPLIANCE_MEMO",
+        "workflow_stage": "COMPANY_COMPLIANCE",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "sub_lane_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 7,
+      "manual_review_decision": "approved_metadata_only",
+      "proposed_correction": {
+        "practice_lane": "family_service",
+        "document_intent": "FAMILY_SERVICE_SUBSTITUTED_SERVICE_APPLICATION",
+        "workflow_stage": "FAMILY_SERVICE",
+        "role_posture": [
+          "applicant",
+          "petitioner",
+          "solicitor"
+        ],
+        "required_facts": [
+          "proceedingsIssued",
+          "respondentIdentified",
+          "serviceAddressKnown",
+          "serviceMethodSelected",
+          "serviceAttemptEvidenceAvailable"
+        ],
+        "required_evidence": [
+          "serviceAddressOrLocationEvidence",
+          "serviceMethodInstruction",
+          "serviceAttemptEvidence"
+        ],
+        "wrong_stage_blockers": [
+          "respondentAlreadyServed",
+          "answerStage",
+          "trialStage",
+          "postTrialStage"
+        ],
+        "alternatives": [
+          "FAMILY_ACKNOWLEDGMENT_OR_ANSWER_REVIEW",
+          "FAMILY_SERVICE_PROOF_AUDIT",
+          "EVIDENCE_CHECKLIST"
+        ]
+      },
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_006",
+      "source_template_fingerprint": "f5977bd5c5c6",
+      "redacted_title_key": "redacted_family_service_title_006",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_COMPLIANCE_MEMO",
+        "workflow_stage": "COMPANY_COMPLIANCE",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 5,
+      "manual_review_decision": "selected_for_manual_review",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_007",
+      "source_template_fingerprint": "f108eeb438e9",
+      "redacted_title_key": "redacted_family_service_title_007",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_WINDING_UP_PETITION",
+        "workflow_stage": "COMPANY_WINDING_UP",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 1,
+      "manual_review_decision": "selected_for_manual_review",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_008",
+      "source_template_fingerprint": "51a89aa1921a",
+      "redacted_title_key": "redacted_family_service_title_008",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_WINDING_UP_PETITION",
+        "workflow_stage": "COMPANY_WINDING_UP",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 6,
+      "manual_review_decision": "approved_metadata_only",
+      "proposed_correction": {
+        "practice_lane": "family_service",
+        "document_intent": "FAMILY_SERVICE_DEEMED_SERVICE_APPLICATION",
+        "workflow_stage": "FAMILY_SERVICE",
+        "role_posture": [
+          "applicant",
+          "petitioner",
+          "solicitor"
+        ],
+        "required_facts": [
+          "proceedingsIssued",
+          "respondentIdentified",
+          "serviceAddressKnown",
+          "serviceMethodSelected",
+          "serviceAttemptEvidenceAvailable"
+        ],
+        "required_evidence": [
+          "serviceAddressOrLocationEvidence",
+          "serviceMethodInstruction",
+          "serviceAttemptEvidence"
+        ],
+        "wrong_stage_blockers": [
+          "respondentAlreadyServed",
+          "answerStage",
+          "trialStage",
+          "postTrialStage"
+        ],
+        "alternatives": [
+          "FAMILY_ACKNOWLEDGMENT_OR_ANSWER_REVIEW",
+          "FAMILY_SERVICE_PROOF_AUDIT",
+          "EVIDENCE_CHECKLIST"
+        ]
+      },
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_009",
+      "source_template_fingerprint": "6a359ad5dfeb",
+      "redacted_title_key": "redacted_family_service_title_009",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_WINDING_UP_PETITION",
+        "workflow_stage": "COMPANY_WINDING_UP",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 5,
+      "manual_review_decision": "selected_for_manual_review",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_010",
+      "source_template_fingerprint": "89c6535b5bf7",
+      "redacted_title_key": "redacted_family_service_title_010",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_COMPLIANCE_MEMO",
+        "workflow_stage": "COMPANY_COMPLIANCE",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 6,
+      "manual_review_decision": "selected_for_manual_review",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_011",
+      "source_template_fingerprint": "69f1102ad595",
+      "redacted_title_key": "redacted_family_service_title_011",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_COMPLIANCE_MEMO",
+        "workflow_stage": "COMPANY_COMPLIANCE",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 5,
+      "manual_review_decision": "selected_for_manual_review",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_012",
+      "source_template_fingerprint": "1b89a5ce0637",
+      "redacted_title_key": "redacted_family_service_title_012",
+      "source_pack_kind": "family_service",
+      "signal_tags": [
+        "service"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_COMPLIANCE_MEMO",
+        "workflow_stage": "COMPANY_COMPLIANCE",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "service_candidate_wrong_stage"
+      ],
+      "clause_chunk_count": 0,
+      "manual_review_decision": "selected_for_manual_review",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_013",
+      "source_template_fingerprint": "407f485a9a63",
+      "redacted_title_key": "redacted_family_service_title_013",
+      "source_pack_kind": "family_answer",
+      "signal_tags": [
+        "service",
+        "answer_stage"
+      ],
+      "current_machine_classification": {
+        "practice_area": "general_litigation",
+        "practice_lane": "",
+        "document_intent": "CLIENT_INTAKE",
+        "workflow_stage": "INTAKE",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "family_answer_not_fresh_service_route"
+      ],
+      "clause_chunk_count": 8,
+      "manual_review_decision": "excluded_wrong_stage_for_service_route",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_014",
+      "source_template_fingerprint": "e50955cbd7d8",
+      "redacted_title_key": "redacted_family_service_title_014",
+      "source_pack_kind": "family_answer",
+      "signal_tags": [
+        "answer_stage"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_COMPLIANCE_MEMO",
+        "workflow_stage": "COMPANY_COMPLIANCE",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "family_answer_not_fresh_service_route"
+      ],
+      "clause_chunk_count": 2,
+      "manual_review_decision": "excluded_wrong_stage_for_service_route",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_015",
+      "source_template_fingerprint": "3766c3d99c2c",
+      "redacted_title_key": "redacted_family_service_title_015",
+      "source_pack_kind": "family_answer",
+      "signal_tags": [
+        "answer_stage",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_WINDING_UP_PETITION",
+        "workflow_stage": "COMPANY_WINDING_UP",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "family_answer_not_fresh_service_route"
+      ],
+      "clause_chunk_count": 18,
+      "manual_review_decision": "excluded_wrong_stage_for_service_route",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_016",
+      "source_template_fingerprint": "aae5e04ddb70",
+      "redacted_title_key": "redacted_family_service_title_016",
+      "source_pack_kind": "family_answer",
+      "signal_tags": [
+        "answer_stage",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_WINDING_UP_PETITION",
+        "workflow_stage": "COMPANY_WINDING_UP",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "family_answer_not_fresh_service_route"
+      ],
+      "clause_chunk_count": 7,
+      "manual_review_decision": "excluded_wrong_stage_for_service_route",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_017",
+      "source_template_fingerprint": "9f38a2ae7b38",
+      "redacted_title_key": "redacted_family_service_title_017",
+      "source_pack_kind": "family_answer",
+      "signal_tags": [
+        "answer_stage",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_WINDING_UP_PETITION",
+        "workflow_stage": "COMPANY_WINDING_UP",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "family_answer_not_fresh_service_route"
+      ],
+      "clause_chunk_count": 13,
+      "manual_review_decision": "excluded_wrong_stage_for_service_route",
+      "proposed_correction": null,
+      "private_text_committed": false
+    },
+    {
+      "review_candidate_id": "family_service_review_018",
+      "source_template_fingerprint": "9e244fcfe225",
+      "redacted_title_key": "redacted_family_service_title_018",
+      "source_pack_kind": "family_answer",
+      "signal_tags": [
+        "answer_stage",
+        "family_respondent_or_petition"
+      ],
+      "current_machine_classification": {
+        "practice_area": "company_corporate",
+        "practice_lane": "",
+        "document_intent": "COMPANY_WINDING_UP_PETITION",
+        "workflow_stage": "COMPANY_WINDING_UP",
+        "review_status": "lawyer_review_required",
+        "classification_status": "machine_candidate"
+      },
+      "classifier_drift_flags": [
+        "practice_area_not_family_service",
+        "mislabelled_company",
+        "family_answer_not_fresh_service_route"
+      ],
+      "clause_chunk_count": 9,
+      "manual_review_decision": "excluded_wrong_stage_for_service_route",
+      "proposed_correction": null,
+      "private_text_committed": false
+    }
+  ],
+  "classifier_drift_summary": {
+    "practice_area_not_family_service": 18,
+    "mislabelled_company": 16,
+    "service_candidate_wrong_stage": 12,
+    "sub_lane_not_family_service": 3,
+    "family_answer_not_fresh_service_route": 6
+  },
+  "approved_metadata": [
+    {
+      "approved_template_id": "family_service_manual_e5661c9e94f0",
+      "document_intent": "FAMILY_SERVICE_AFFIDAVIT_PERSONAL",
+      "workflow_stage": "FAMILY_SERVICE",
+      "role_posture": [
+        "applicant",
+        "petitioner",
+        "solicitor"
+      ],
+      "required_facts": [
+        "proceedingsIssued",
+        "respondentIdentified",
+        "serviceAddressKnown",
+        "serviceMethodSelected",
+        "serviceAttemptEvidenceAvailable"
+      ],
+      "required_evidence": [
+        "serviceAddressOrLocationEvidence",
+        "serviceMethodInstruction",
+        "serviceAttemptEvidence"
+      ],
+      "wrong_stage_blockers": [
+        "respondentAlreadyServed",
+        "answerStage",
+        "trialStage",
+        "postTrialStage"
+      ],
+      "alternatives": [
+        "FAMILY_ACKNOWLEDGMENT_OR_ANSWER_REVIEW",
+        "FAMILY_SERVICE_PROOF_AUDIT",
+        "EVIDENCE_CHECKLIST"
+      ],
+      "source_template_fingerprint": "d541e88e307d",
+      "redacted_title_key": "redacted_family_service_title_001"
+    },
+    {
+      "approved_template_id": "family_service_manual_da7006b1b7ca",
+      "document_intent": "FAMILY_SERVICE_AFFIDAVIT_POST",
+      "workflow_stage": "FAMILY_SERVICE",
+      "role_posture": [
+        "applicant",
+        "petitioner",
+        "solicitor"
+      ],
+      "required_facts": [
+        "proceedingsIssued",
+        "respondentIdentified",
+        "serviceAddressKnown",
+        "serviceMethodSelected",
+        "serviceAttemptEvidenceAvailable"
+      ],
+      "required_evidence": [
+        "serviceAddressOrLocationEvidence",
+        "serviceMethodInstruction",
+        "serviceAttemptEvidence"
+      ],
+      "wrong_stage_blockers": [
+        "respondentAlreadyServed",
+        "answerStage",
+        "trialStage",
+        "postTrialStage"
+      ],
+      "alternatives": [
+        "FAMILY_ACKNOWLEDGMENT_OR_ANSWER_REVIEW",
+        "FAMILY_SERVICE_PROOF_AUDIT",
+        "EVIDENCE_CHECKLIST"
+      ],
+      "source_template_fingerprint": "05b1fa9aff49",
+      "redacted_title_key": "redacted_family_service_title_002"
+    },
+    {
+      "approved_template_id": "family_service_manual_5eaa63e1b285",
+      "document_intent": "FAMILY_SERVICE_SUBSTITUTED_SERVICE_APPLICATION",
+      "workflow_stage": "FAMILY_SERVICE",
+      "role_posture": [
+        "applicant",
+        "petitioner",
+        "solicitor"
+      ],
+      "required_facts": [
+        "proceedingsIssued",
+        "respondentIdentified",
+        "serviceAddressKnown",
+        "serviceMethodSelected",
+        "serviceAttemptEvidenceAvailable"
+      ],
+      "required_evidence": [
+        "serviceAddressOrLocationEvidence",
+        "serviceMethodInstruction",
+        "serviceAttemptEvidence"
+      ],
+      "wrong_stage_blockers": [
+        "respondentAlreadyServed",
+        "answerStage",
+        "trialStage",
+        "postTrialStage"
+      ],
+      "alternatives": [
+        "FAMILY_ACKNOWLEDGMENT_OR_ANSWER_REVIEW",
+        "FAMILY_SERVICE_PROOF_AUDIT",
+        "EVIDENCE_CHECKLIST"
+      ],
+      "source_template_fingerprint": "b8f6e76a9cab",
+      "redacted_title_key": "redacted_family_service_title_005"
+    },
+    {
+      "approved_template_id": "family_service_manual_3657f9e6232f",
+      "document_intent": "FAMILY_SERVICE_DEEMED_SERVICE_APPLICATION",
+      "workflow_stage": "FAMILY_SERVICE",
+      "role_posture": [
+        "applicant",
+        "petitioner",
+        "solicitor"
+      ],
+      "required_facts": [
+        "proceedingsIssued",
+        "respondentIdentified",
+        "serviceAddressKnown",
+        "serviceMethodSelected",
+        "serviceAttemptEvidenceAvailable"
+      ],
+      "required_evidence": [
+        "serviceAddressOrLocationEvidence",
+        "serviceMethodInstruction",
+        "serviceAttemptEvidence"
+      ],
+      "wrong_stage_blockers": [
+        "respondentAlreadyServed",
+        "answerStage",
+        "trialStage",
+        "postTrialStage"
+      ],
+      "alternatives": [
+        "FAMILY_ACKNOWLEDGMENT_OR_ANSWER_REVIEW",
+        "FAMILY_SERVICE_PROOF_AUDIT",
+        "EVIDENCE_CHECKLIST"
+      ],
+      "source_template_fingerprint": "51a89aa1921a",
+      "redacted_title_key": "redacted_family_service_title_008"
+    }
+  ],
+  "manual_review_policy": {
+    "real_private_candidates_remain_machine_candidate_until_selected": true,
+    "no_auto_approval_of_machine_classifications": true,
+    "approved_scope": "routing_metadata_only",
+    "raw_private_text_stays_in_gitignored_private_output": true
+  }
+}

@@ -4,21 +4,25 @@
   "status": "dry_run_metadata_only",
   "source_present": true,
   "safe_redacted_fixture_fallback": false,
-  "dry_run_shape_validated_with_redacted_fixture": true,
-  "private_stores_scanned": 68,
-  "real_templates_detected": 2014,
-  "real_clause_chunks_detected": 14487,
-  "real_classification_reviews_detected": 2014,
+  "dry_run_shape_validated_with_redacted_fixture": false,
+  "private_stores_scanned": 69,
+  "real_templates_detected": 2018,
+  "real_clause_chunks_detected": 14495,
+  "real_classification_reviews_detected": 2018,
   "real_templates_inactive_until_review": true,
+  "approved_metadata_templates_active": 4,
   "real_template_statuses": {
     "review_status_distribution": {
-      "lawyer_review_required": 2014
+      "lawyer_review_required": 2014,
+      "approved": 4
     },
     "classification_status_distribution": {
-      "machine_candidate": 2014
+      "machine_candidate": 2014,
+      "review_approved": 4
     },
     "practice_lane_distribution": {
       "general_litigation": 436,
+      "family_service": 4,
       "commercial_contracts": 273,
       "company_corporate": 819,
       "road_traffic_personal_injury": 459,
@@ -27,6 +31,10 @@
     },
     "document_intent_distribution": {
       "CLIENT_INTAKE": 552,
+      "FAMILY_SERVICE_AFFIDAVIT_PERSONAL": 1,
+      "FAMILY_SERVICE_AFFIDAVIT_POST": 1,
+      "FAMILY_SERVICE_SUBSTITUTED_SERVICE_APPLICATION": 1,
+      "FAMILY_SERVICE_DEEMED_SERVICE_APPLICATION": 1,
       "WRIT": 111,
       "LETTER_OF_CLAIM": 15,
       "COMPANY_COMPLIANCE_MEMO": 623,
@@ -42,6 +50,7 @@
     },
     "workflow_stage_distribution": {
       "INTAKE": 552,
+      "FAMILY_SERVICE": 4,
       "COMMENCEMENT": 227,
       "PRE_ACTION_CORRESPONDENCE": 15,
       "COMPANY_COMPLIANCE": 623,
@@ -94,8 +103,8 @@
     "workflow_stage",
     "workspace_id"
   ],
-  "templates_ready": 0,
-  "chunks_ready": 0,
+  "templates_ready": 4,
+  "chunks_ready": 8,
   "shape_check_templates_ready": 1,
   "shape_check_chunks_ready": 1,
   "review_status_required": "approved",
@@ -115,8 +124,8 @@
       "templates": "hk_private_form_templates_local_private_form_tenant_atkin_forms_workspace"
     },
     "dimension": 384,
-    "templates_ready": 0,
-    "chunks_ready": 0,
+    "templates_ready": 4,
+    "chunks_ready": 8,
     "external_embedding_services_used": false,
     "qdrant_required_for_runtime": true,
     "private_text_committed": false

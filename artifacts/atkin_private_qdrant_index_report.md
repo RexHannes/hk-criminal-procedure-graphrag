@@ -7,13 +7,13 @@ Generated: 2026-07-07T00:00:00+08:00
 | Metric | Value |
 |---|---:|
 | Local source present | yes |
-| Private stores scanned | 68 |
-| Real templates detected | 2014 |
-| Real clause chunks detected | 14487 |
+| Private stores scanned | 69 |
+| Real templates detected | 2018 |
+| Real clause chunks detected | 14495 |
 | Dry run | yes |
-| Real templates approved for Qdrant | 0 |
-| Real clause chunks approved for Qdrant | 0 |
-| Redacted fixture used for payload-shape check | yes |
+| Real templates approved for Qdrant | 4 |
+| Real clause chunks approved for Qdrant | 8 |
+| Redacted fixture used for payload-shape check | no |
 | External embedding services used | no |
 
 ## Collections

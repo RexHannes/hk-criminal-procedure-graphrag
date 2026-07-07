@@ -34,6 +34,15 @@ const DANGEROUS_EXTENSIONS = new Set([
 const SUPPORTED_TEXT_EXTENSIONS = new Set([".txt", ".md", ".markdown", ".docx", ".doc", ".pdf"]);
 
 const COMMENCEMENT_INTENTS = new Set(["WRIT", "ORIGINATING_SUMMONS", "STATEMENT_OF_CLAIM", "PROBATE_APPLICATION", "COMPANY_WINDING_UP_PETITION"]);
+const FAMILY_SERVICE_INTENTS = new Set([
+  "FAMILY_SERVICE_ACKNOWLEDGMENT",
+  "FAMILY_SERVICE_AFFIRMATION",
+  "FAMILY_SERVICE_INSTRUCTIONS",
+  "FAMILY_SERVICE_AFFIDAVIT_PERSONAL",
+  "FAMILY_SERVICE_AFFIDAVIT_POST",
+  "FAMILY_SERVICE_SUBSTITUTED_SERVICE_APPLICATION",
+  "FAMILY_SERVICE_DEEMED_SERVICE_APPLICATION",
+]);
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -1089,7 +1098,7 @@ function proceduralBlocksForTemplate(template, matter) {
       });
     }
   }
-  if (["FAMILY_SERVICE_ACKNOWLEDGMENT", "FAMILY_SERVICE_AFFIRMATION", "FAMILY_SERVICE_INSTRUCTIONS"].includes(template.documentIntent)) {
+  if (FAMILY_SERVICE_INTENTS.has(template.documentIntent)) {
     const required = [
       ["proceedingsIssued", "Proceedings must be issued before service documents are finalised."],
       ["respondentIdentified", "Respondent identity must be known before service documents are finalised."],
@@ -1107,12 +1116,20 @@ function proceduralBlocksForTemplate(template, matter) {
         });
       }
     }
-    if (isTruthyValue(matter.postTrialStage)) {
+    if (isTruthyValue(matter.answerStage) || isTruthyValue(matter.trialStage) || isTruthyValue(matter.postTrialStage)) {
       blocks.push({
-        gateId: "gate_family_service_post_trial_wrong_stage",
+        gateId: "gate_family_service_answer_trial_post_trial_wrong_stage",
         severity: "block",
-        reason: "Post-trial facts do not support the service-stage document route.",
-        alternatives: ["FAMILY_POST_TRIAL_DIRECTIONS"],
+        reason: "Answer, trial, or post-trial facts do not support a fresh service-stage document route.",
+        alternatives: ["FAMILY_ANSWER_REVIEW", "FAMILY_TRIAL_DIRECTIONS", "FAMILY_POST_TRIAL_DIRECTIONS"],
+      });
+    }
+    if (isTruthyValue(matter.respondentAlreadyServed)) {
+      blocks.push({
+        gateId: "gate_family_service_respondent_already_served",
+        severity: "block",
+        reason: "The respondent appears already served; do not recommend a fresh service route.",
+        alternatives: ["FAMILY_ACKNOWLEDGMENT_OR_ANSWER_REVIEW", "FAMILY_SERVICE_PROOF_AUDIT"],
       });
     }
   }
@@ -1153,10 +1170,10 @@ function clauseBlockedReasons(clause, matter) {
     blocks.push("Voluntary winding-up-only facts block provisional liquidator clauses.");
   }
   if (
-    ["FAMILY_SERVICE_ACKNOWLEDGMENT", "FAMILY_SERVICE_AFFIRMATION", "FAMILY_SERVICE_INSTRUCTIONS"].includes(clause.documentIntent) &&
-    isTruthyValue(matter.postTrialStage)
+    FAMILY_SERVICE_INTENTS.has(clause.documentIntent) &&
+    (isTruthyValue(matter.answerStage) || isTruthyValue(matter.trialStage) || isTruthyValue(matter.postTrialStage) || isTruthyValue(matter.respondentAlreadyServed))
   ) {
-    blocks.push("Post-trial facts block family service clauses.");
+    blocks.push("Answer/trial/post-trial or already-served facts block family service clauses.");
   }
   for (const req of clause.factRequirements || []) {
     if (matter[req] === false || matter[req] === undefined || matter[req] === null || matter[req] === "") {
