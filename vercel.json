@@ -8,19 +8,19 @@
   ],
   "functions": {
     "api/forms/recommend.js": {
-      "includeFiles": ["fixtures/forms/**", "data/forms/**"]
+      "includeFiles": "fixtures/forms/**"
     },
     "api/forms/search.js": {
-      "includeFiles": ["fixtures/forms/**", "data/forms/**"]
+      "includeFiles": "fixtures/forms/**"
     },
     "api/forms/apply-template.js": {
-      "includeFiles": ["fixtures/forms/**", "data/forms/**"]
+      "includeFiles": "fixtures/forms/**"
     },
     "api/forms/clauses/recommend.js": {
-      "includeFiles": ["fixtures/forms/**", "data/forms/**"]
+      "includeFiles": "fixtures/forms/**"
     },
     "api/forms/usage-notes.js": {
-      "includeFiles": ["fixtures/forms/**", "data/forms/**"]
+      "includeFiles": "fixtures/forms/**"
     }
   },
   "headers": [
