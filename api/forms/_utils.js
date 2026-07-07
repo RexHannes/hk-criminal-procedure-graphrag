@@ -17,7 +17,13 @@ function json(res, status, payload) {
 }
 
 function body(req) {
-  return req.body && typeof req.body === "object" ? req.body : {};
+  if (!req.body) return {};
+  if (typeof req.body === "object" && !Buffer.isBuffer(req.body)) return req.body;
+  try {
+    return JSON.parse(Buffer.isBuffer(req.body) ? req.body.toString("utf8") : String(req.body));
+  } catch {
+    return {};
+  }
 }
 
 function isProductionRuntime() {
