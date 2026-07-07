@@ -28,7 +28,8 @@ function body(req) {
 
 async function readBody(req) {
   const parsed = body(req);
-  if (Object.keys(parsed).length || req.body) return parsed;
+  if (Object.keys(parsed).length) return parsed;
+  if (req.body && !(typeof req.body === "object" && !Buffer.isBuffer(req.body))) return parsed;
   const chunks = [];
   for await (const chunk of req) chunks.push(Buffer.from(chunk));
   if (!chunks.length) return {};

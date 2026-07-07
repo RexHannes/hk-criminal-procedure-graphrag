@@ -22,6 +22,11 @@ function part1Placeholder({ query = "", matter = {} }) {
   };
 }
 
+function queryBool(value) {
+  if (value === undefined || value === null || value === "") return undefined;
+  return ["1", "true", "yes", "y"].includes(String(value).toLowerCase());
+}
+
 module.exports = async function handler(req, res) {
   if (!["GET", "POST"].includes(req.method)) {
     json(res, 405, { error: "method_not_allowed" });
@@ -32,7 +37,20 @@ module.exports = async function handler(req, res) {
     req.body = payload;
     const mode = String(payload.formsMode || payload.mode || req.query.formsMode || req.query.mode || "recommend").trim();
     const query = String(payload.query || req.query.q || req.query.query || "").trim();
+    const queryMatter = {
+      practiceArea: req.query.practiceArea,
+      practiceLane: req.query.practiceLane,
+      matterType: req.query.matterType,
+      workflowStage: req.query.workflowStage,
+      clientRole: req.query.clientRole,
+      companyIdentified: queryBool(req.query.companyIdentified),
+      debtOrGroundIdentified: queryBool(req.query.debtOrGroundIdentified),
+      standingChecked: queryBool(req.query.standingChecked),
+      statutoryDemandOrServiceEvidenceAvailable: queryBool(req.query.statutoryDemandOrServiceEvidenceAvailable),
+    };
+    Object.keys(queryMatter).forEach(key => queryMatter[key] === undefined && delete queryMatter[key]);
     const matter = {
+      ...queryMatter,
       ...(payload.matter || {}),
       firmId: payload.firmId || req.query.firmId || payload.matter?.firmId,
       workspaceId: payload.workspaceId || req.query.workspaceId || payload.matter?.workspaceId,
